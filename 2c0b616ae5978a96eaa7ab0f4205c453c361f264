@@ -240,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4c3d6d_f9e33516",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-18T15:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38e4f180_ac5e98a7",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8e94399_4ab5d3b8",
@@ -289,6 +307,24 @@
       "side": 1,
       "message": "Preconditions were used before fixtures, and fixtures can be added to the file you linked as well.\n\nIt is needed to protect the chrome instance you create in the fixture, so it cannot be closed by a test. If it is closed by a test, it can make the following test fail, and the TearDown() in the fixture will fail as well, as it cannot close the chrome instance (as it no longer exists anymore).\n\nThe list is required so a test cannot call Unlock().",
       "parentUuid": "a59fae09_68b5f532",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9544ddaa_d0c6233f",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-18T15:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69c4c2f5_651e559c",
       "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
