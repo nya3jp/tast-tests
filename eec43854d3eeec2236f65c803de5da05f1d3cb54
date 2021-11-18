@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54644307_6260b239",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-18T01:37:07Z",
+      "side": 1,
+      "message": "Optional: I hope this can be the ultimate video record solution, and name paired as StartVideoRecord and StopVideoRecord. Technical details such as VNC does not need to appear in the function name.",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "eec43854d3eeec2236f65c803de5da05f1d3cb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92dcbcd_aa068837",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-18T01:37:07Z",
+      "side": 1,
+      "message": "nit: remove the empty line.",
+      "revId": "eec43854d3eeec2236f65c803de5da05f1d3cb54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
