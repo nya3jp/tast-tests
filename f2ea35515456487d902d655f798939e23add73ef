@@ -16,6 +16,46 @@
       "message": "Owners, please approve the CL.",
       "revId": "f2ea35515456487d902d655f798939e23add73ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d89f0ef3_2be6c521",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-18T23:53:53Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f2ea35515456487d902d655f798939e23add73ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe865308_4f862484",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-18T23:53:53Z",
+      "side": 1,
+      "message": "nit: finish the comment with full stop.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 61
+      },
+      "revId": "f2ea35515456487d902d655f798939e23add73ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
