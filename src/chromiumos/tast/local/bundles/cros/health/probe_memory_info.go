@@ -45,9 +45,10 @@ func init() {
 		Params: []testing.Param{{
 			Val: false,
 		}, {
-			Name:              "memory_encryption",
-			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			Name: "memory_encryption",
+			Val:  true,
+			// TODO 207569436 , created partner bug and working on generic solution.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
