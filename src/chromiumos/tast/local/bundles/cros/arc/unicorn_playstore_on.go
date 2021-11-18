@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UnicornPlaystoreOn,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks if PlayStore is Enabled for Unicorn Acccount",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},

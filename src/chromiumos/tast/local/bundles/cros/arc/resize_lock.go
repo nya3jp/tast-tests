@@ -85,6 +85,7 @@ var testCases = []resizeLockTestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ResizeLock,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that ARC++ Resize Lock works as expected",
 		Contacts:     []string{"takise@chromium.org", "toshikikikuchi@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

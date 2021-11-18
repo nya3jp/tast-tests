@@ -48,6 +48,7 @@ const virtualKeyboardTestAppPkg = "org.chromium.arc.testapp.keyboard"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeVirtualKeyboard,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks Chrome virtual keyboard working on Android apps",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

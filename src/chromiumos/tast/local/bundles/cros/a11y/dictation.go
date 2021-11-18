@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Dictation,
-		Desc: "Tests that the Dictation feature can be used to input text using voice",
+		Func:         Dictation,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the Dictation feature can be used to input text using voice",
 		Contacts: []string{
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

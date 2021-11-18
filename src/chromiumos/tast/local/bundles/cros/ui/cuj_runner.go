@@ -16,6 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CUJRunner,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Run a CUJ json config and measure performance",
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
 		SoftwareDeps: []string{"chrome", "arc"},

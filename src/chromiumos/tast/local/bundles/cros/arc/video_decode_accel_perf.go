@@ -16,6 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoDecodeAccelPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures ARC++ hardware video decode performance by running the c2_e2e_test APK",
 		Contacts:     []string{"akahuang@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

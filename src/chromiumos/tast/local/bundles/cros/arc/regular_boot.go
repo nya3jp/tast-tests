@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RegularBoot,
-		Desc: "This exercises a scenario when user logs in Chrome where ARC is already provisioned and tries to use ARC app immediately. App launch delay is reported for this case. This does not do acutual reboot however drops caches before each iteration to match the cold start scenario",
+		Func:         RegularBoot,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "This exercises a scenario when user logs in Chrome where ARC is already provisioned and tries to use ARC app immediately. App launch delay is reported for this case. This does not do acutual reboot however drops caches before each iteration to match the cold start scenario",
 
 		Contacts: []string{
 			"khmel@chromium.org", // Original author.

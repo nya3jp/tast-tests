@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: VPNPolicy,
-		Desc: "Test that VPN can correctly be configured from device and user policy",
+		Func:         VPNPolicy,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test that VPN can correctly be configured from device and user policy",
 		Contacts: []string{
 			"taoyl@google.com",
 			"cros-networking@google.com",

@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AutoHideSmoke,
-		Desc: "Tests shelf autohide behavior",
+		Func:         AutoHideSmoke,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests shelf autohide behavior",
 		Contacts: []string{
 			"yulunwu@chromium.org",
 			"tbarzic@chromium.org",

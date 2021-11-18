@@ -24,12 +24,13 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Kiosk,
-		Desc:     "Test if factory UI is running",
-		Contacts: []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
-		Attr:     []string{"group:mainline", "informational"},
-		Timeout:  time.Minute,
-		Fixture:  fixture.EnsureToolkit,
+		Func:         Kiosk,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test if factory UI is running",
+		Contacts:     []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      time.Minute,
+		Fixture:      fixture.EnsureToolkit,
 		// Skip "nyan_kitty" due to slow reboot speed, skip nocturne as
 		// it can not open the Kiosk page and is not manufactured.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kitty", "nocturne")),

@@ -21,6 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SmokeMultiDUTUI,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks we can enable Nearby Share high-vis receving on two DUTs at once",
 		Contacts:     []string{"chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:nearby-share-remote"},

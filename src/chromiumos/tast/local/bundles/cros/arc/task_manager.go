@@ -20,6 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TaskManager,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks Task Manager Integration with Arc",
 		Fixture:      "arcBooted",
 		Contacts:     []string{"rnanjappan@chromium.org", "cros-arc-te@google.com"},

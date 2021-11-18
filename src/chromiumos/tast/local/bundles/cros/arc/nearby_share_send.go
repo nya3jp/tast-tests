@@ -57,8 +57,9 @@ type arcNearbyShareParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: NearbyShareSend,
-		Desc: "Installs ARC share test app and share text/file to Nearby Share via Sharesheet",
+		Func:         NearbyShareSend,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Installs ARC share test app and share text/file to Nearby Share via Sharesheet",
 		Contacts: []string{
 			"alanding@chromium.org",
 			"kyleshima@chromium.org",

@@ -31,9 +31,10 @@ type params struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     ScanESCLIPP,
-		Desc:     "Tests eSCL scanning via an ipp-over-usb tunnel",
-		Contacts: []string{"bmgordon@chromium.org", "project-bolton@google.com"},
+		Func:         ScanESCLIPP,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests eSCL scanning via an ipp-over-usb tunnel",
+		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",

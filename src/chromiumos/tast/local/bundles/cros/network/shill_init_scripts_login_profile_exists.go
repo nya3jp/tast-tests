@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShillInitScriptsLoginProfileExists,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test that shill init scripts perform as expected",
 		Contacts:     []string{"hugobenichi@google.com", "cros-networking@google.com"},
 		SoftwareDeps: []string{"chrome"},

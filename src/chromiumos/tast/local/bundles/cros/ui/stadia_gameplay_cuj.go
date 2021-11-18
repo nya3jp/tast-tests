@@ -29,9 +29,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     StadiaGameplayCUJ,
-		Desc:     "Measures the performance of critical user journey for game playing on Stadia",
-		Contacts: []string{"yichenz@chromium.org"},
+		Func:         StadiaGameplayCUJ,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measures the performance of critical user journey for game playing on Stadia",
+		Contacts:     []string{"yichenz@chromium.org"},
 		// TODO(http://crbug/1144356): Test is disabled until it can be fixed
 		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},

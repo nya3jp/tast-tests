@@ -41,6 +41,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SearchSections,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Search with keywords and verify the related results from OS Settings",
 		Contacts:     []string{"tim.chang@cienet.com", "cienet-development@googlegroups.com, chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

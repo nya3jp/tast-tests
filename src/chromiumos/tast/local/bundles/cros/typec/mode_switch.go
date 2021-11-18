@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ModeSwitch,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks USB Type C mode switch behaviour on login",
 		Contacts:     []string{"pmalani@chromium.org"},
 		Attr:         []string{"group:typec"},

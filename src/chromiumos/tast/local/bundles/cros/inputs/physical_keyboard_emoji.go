@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardEmoji,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that right click input field and select emoji with physical keyboard",
 		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},

@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeVariationsSmoke,
-		Desc: "Checks that Chrome doesn't crash and basic web content rendering is functional when loading a given variations seed",
+		Func:         ChromeVariationsSmoke,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that Chrome doesn't crash and basic web content rendering is functional when loading a given variations seed",
 		Contacts: []string{
 			"kyleshima@chromium.org", // Test author
 			"chromeos-sw-engprod@google.com",

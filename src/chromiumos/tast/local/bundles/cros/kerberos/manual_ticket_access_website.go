@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ManualTicketAccessWebsite,
-		Desc: "Checks the behavior of accessing website secured by Kerberos after adding Kerberos ticket",
+		Func:         ManualTicketAccessWebsite,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks the behavior of accessing website secured by Kerberos after adding Kerberos ticket",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
 			"alexanderhartl@google.com",

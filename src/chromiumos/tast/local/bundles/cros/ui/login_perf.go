@@ -29,8 +29,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LoginPerf,
-		Desc: "Measures animation smoothness of screen unlock",
+		Func:         LoginPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measures animation smoothness of screen unlock",
 		Contacts: []string{
 			"alemate@google.com",
 			"oshima@google.com",

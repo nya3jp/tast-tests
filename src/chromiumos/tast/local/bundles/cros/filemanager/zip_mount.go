@@ -33,8 +33,9 @@ type testEntry struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ZipMount,
-		Desc: "Tests Files app mounting workflow",
+		Func:         ZipMount,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests Files app mounting workflow",
 		Contacts: []string{
 			"jboulic@chromium.org",
 			"fdegros@chromium.org",

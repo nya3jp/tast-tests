@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromevoxNumberReadingStyle,
-		Desc: "Verifies ChromeVox honors its setting to read numbers as words or as digits",
+		Func:         ChromevoxNumberReadingStyle,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies ChromeVox honors its setting to read numbers as words or as digits",
 		Contacts: []string{
 			"josiahk@chromium.org",         // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

@@ -16,6 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CheckAndroidARM64Support,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Ensures that any board with x86_64 built-in capability must support ARM64 ABI as well",
 		Contacts:     []string{"arc-core@google.com", "vraheja@google.com"},
 		SoftwareDeps: []string{"chrome"},

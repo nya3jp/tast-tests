@@ -20,6 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MojoProxyCrash,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test mojo proxy crash handling",
 		Contacts:     []string{"hashimoto@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
