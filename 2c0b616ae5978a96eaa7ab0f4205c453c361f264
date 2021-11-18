@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8cae4e_49203e1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-18T09:26:02Z",
+      "side": 1,
+      "message": "Thanks for splitting the CL!",
+      "parentUuid": "f17ca460_5e2676fb",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fa2fcb8_18657fb9",
@@ -206,6 +224,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38e4f180_ac5e98a7",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-18T09:26:02Z",
+      "side": 1,
+      "message": "It is used so a certain subtask, like booting up ARC doesn\u0027t take more time than you want to allocate to it, in this case arc.BootTimeout.\nOtherwise it is possible that it will take much more, and\na) the remaining steps won\u0027t have enough time (not really an issue here)\nb) it can hide a problem, as you expect for this step to be done in 2 minutes, but it took 5 for some reason.\n\nSo while it is not that important for this last step, for the optin step it is quite useful.",
+      "parentUuid": "ef2a444d_83749e06",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8e94399_4ab5d3b8",
         "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
         "patchSetId": 6
@@ -235,6 +271,24 @@
       "side": 1,
       "message": "I\u0027m getting this error if I call chrome.Lock() here:\n\nPanic: chromiumos/tast/local/accountmanager.(*accountManagerTestFixture).SetUp is not allowed to call chrome.Lock; check the list in chrome.Lock\n        at chromiumos/tast/internal/usercode.ErrorOnPanic.func1 (usercode.go:28)\n        at chromiumos/tast/internal/usercode.SafeCall.func2.1.1 (usercode.go:101)\n        at chromiumos/tast/internal/usercode.SafeCall.func2.1 (usercode.go:107)\n        at runtime.gopanic (panic.go:969)\n        at chromiumos/tast/internal/caller.Check (caller.go:71)\n        at chromiumos/tast/caller.Check (caller.go:26)\n        at chromiumos/tast/local/chrome.Lock (chrome.go:118)\n        at chromiumos/tast/local/accountmanager.(*accountManagerTestFixture).SetUp (fixture.go:131)\n        ...\n        \nIt looks like I should add my fixture to [1]? Why is the list required?\nThey also say \"It can only be called by preconditions\". Is SetUp a precondition?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d92;drc\u003db7a71a6dc4848b8a1c182422b7e071bab02009eb",
       "parentUuid": "b8e94399_4ab5d3b8",
+      "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c4c2f5_651e559c",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-18T09:26:02Z",
+      "side": 1,
+      "message": "Preconditions were used before fixtures, and fixtures can be added to the file you linked as well.\n\nIt is needed to protect the chrome instance you create in the fixture, so it cannot be closed by a test. If it is closed by a test, it can make the following test fail, and the TearDown() in the fixture will fail as well, as it cannot close the chrome instance (as it no longer exists anymore).\n\nThe list is required so a test cannot call Unlock().",
+      "parentUuid": "a59fae09_68b5f532",
       "revId": "2c0b616ae5978a96eaa7ab0f4205c453c361f264",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
