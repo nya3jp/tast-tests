@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86827dd8_adec8317",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-11-18T02:29:35Z",
+      "side": 1,
+      "message": "It will be updated? If it has not been updated, I guess this cl will not pass the CQ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "4be0a25b38c9f4fa00a0c159e389b27be1089902",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
