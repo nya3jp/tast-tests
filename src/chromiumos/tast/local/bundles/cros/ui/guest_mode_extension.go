@@ -14,6 +14,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GuestModeExtension,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check Tast extension can be loaded in Guest mode",
 		Contacts:     []string{"benreich@chromium.org", "chromeos-engprod-syd@google.com"},
 		SoftwareDeps: []string{"chrome"},

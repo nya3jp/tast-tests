@@ -39,10 +39,11 @@ var deqpTests = []string{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     DEQP,
-		Desc:     "Runs a subset of the DEQP test suite via the android CTS-provided apk binary",
-		Contacts: []string{"morg@chromium.org", "arc-eng@google.com"},
-		Data:     deqpTests,
+		Func:         DEQP,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Runs a subset of the DEQP test suite via the android CTS-provided apk binary",
+		Contacts:     []string{"morg@chromium.org", "arc-eng@google.com"},
+		Data:         deqpTests,
 		// "no_qemu" disables the test on betty. b/168566159#comment3
 		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Fixture:      "arcBooted",

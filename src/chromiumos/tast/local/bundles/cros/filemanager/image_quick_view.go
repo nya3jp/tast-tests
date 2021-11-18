@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ImageQuickView,
-		Desc: "Tests image QuickView within the Files app",
+		Func:         ImageQuickView,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests image QuickView within the Files app",
 		Contacts: []string{
 			"chromeos-files-syd@google.com",
 		},

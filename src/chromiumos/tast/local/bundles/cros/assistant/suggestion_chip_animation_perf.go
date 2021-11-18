@@ -32,6 +32,7 @@ var uiPollOptions = testing.PollOptions{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SuggestionChipAnimationPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the animation smoothness of Assistant suggestion chips",
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

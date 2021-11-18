@@ -40,6 +40,7 @@ type chromePIPEnergyAndPowerTestParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromePIPEnergyAndPower,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures energy and power usage of Chrome PIP",
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},

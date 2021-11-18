@@ -34,6 +34,7 @@ type testParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Memory,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests lacros memory usage",
 		Contacts:     []string{"erikchen@chromium.org", "hidehiko@chromium.org", "edcourtney@chromium.org", "lacros-team@google.com"},
 		SoftwareDeps: []string{"chrome"},

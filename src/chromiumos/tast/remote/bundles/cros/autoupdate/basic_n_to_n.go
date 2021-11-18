@@ -30,8 +30,9 @@ var tlwAddress = testing.RegisterVarString(
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: BasicNToN,
-		Desc: "Example test for the N2N update using Nebraska and test images",
+		Func:         BasicNToN,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Example test for the N2N update using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 		},

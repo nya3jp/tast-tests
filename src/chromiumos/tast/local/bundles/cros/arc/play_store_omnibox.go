@@ -26,10 +26,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PlayStoreOmnibox,
-		Desc:     "Installs a TWA and WebAPK app via Omnibox in Play Store",
-		Contacts: []string{"benreich@chromium.org", "jshikaram@chromium.org"},
-		Attr:     []string{"group:mainline", "informational"},
+		Func:         PlayStoreOmnibox,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Installs a TWA and WebAPK app via Omnibox in Play Store",
+		Contacts:     []string{"benreich@chromium.org", "jshikaram@chromium.org"},
+		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {

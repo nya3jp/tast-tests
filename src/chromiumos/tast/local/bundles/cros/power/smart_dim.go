@@ -18,9 +18,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     SmartDim,
-		Desc:     "Check the SmartDim can make decision with ML Service",
-		Contacts: []string{"alanlxl@chromium.org"},
+		Func:         SmartDim,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check the SmartDim can make decision with ML Service",
+		Contacts:     []string{"alanlxl@chromium.org"},
 		// TODO(b/204399416): It works again inexplicably, mark it informational.
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "ml_service", "smartdim"},

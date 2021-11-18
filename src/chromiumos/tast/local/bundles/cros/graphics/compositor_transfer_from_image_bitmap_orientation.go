@@ -34,8 +34,9 @@ const delayToScreenshot = 7 * time.Second
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CompositorTransferFromImageBitmapOrientation,
-		Desc: "Verifies that transferFromImageBitmap is oriented correctly",
+		Func:         CompositorTransferFromImageBitmapOrientation,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that transferFromImageBitmap is oriented correctly",
 		Contacts: []string{
 			"aswolfers@chromium.org",
 			"chromeos-gfx-compositor@google.com",

@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DrivefsSearch,
-		Desc: "Verify that exact file search for Google Drive returns correct value",
+		Func:         DrivefsSearch,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify that exact file search for Google Drive returns correct value",
 		Contacts: []string{
 			"dats@chromium.org",
 			"austinct@chromium.org",

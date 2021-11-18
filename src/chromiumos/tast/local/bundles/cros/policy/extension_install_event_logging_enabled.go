@@ -38,8 +38,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ExtensionInstallEventLoggingEnabled,
-		Desc: "Behavior of ExtensionInstallEventLoggingEnabled policy, checking if all events from the installation of an extension are logged",
+		Func:         ExtensionInstallEventLoggingEnabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of ExtensionInstallEventLoggingEnabled policy, checking if all events from the installation of an extension are logged",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

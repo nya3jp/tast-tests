@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FullRestoreAlwaysRestore,
-		Desc: "Test full restore always restore setting",
+		Func:         FullRestoreAlwaysRestore,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test full restore always restore setting",
 		Contacts: []string{
 			"nancylingwang@google.com",
 			"chromeos-apps-foundation-team@google.com",

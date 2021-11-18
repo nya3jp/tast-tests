@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ZoomConfCUJ,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Host a Zoom video conference and do presentation to participants",
 		Contacts:     []string{"jane.yang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},

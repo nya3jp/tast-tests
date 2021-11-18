@@ -14,8 +14,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: FileSystemXattrs,
-		Desc: "Verifies filesystem extended attributes for ARC container",
+		Func:         FileSystemXattrs,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies filesystem extended attributes for ARC container",
 		Contacts: []string{
 			"kroot@chromium.org", // Original author.
 			"arc-core@google.com",

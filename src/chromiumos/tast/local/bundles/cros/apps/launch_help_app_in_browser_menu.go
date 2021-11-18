@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchHelpAppInBrowserMenu,
-		Desc: "Help app can be launched in browser menu",
+		Func:         LaunchHelpAppInBrowserMenu,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Help app can be launched in browser menu",
 		Contacts: []string{
 			"showoff-eng@google.com",
 			"shengjun@chromium.org", // original test author

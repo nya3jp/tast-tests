@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DeviceOffHours,
-		Desc: "Behavior of DeviceOffHours policy",
+		Func:         DeviceOffHours,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of DeviceOffHours policy",
 		Contacts: []string{
 			"rbock@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

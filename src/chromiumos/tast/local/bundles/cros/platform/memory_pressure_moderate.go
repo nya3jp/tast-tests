@@ -16,11 +16,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MemoryPressureModerate,
-		Desc:     "Measure tab switching performance under moderate memory pressure",
-		Contacts: []string{"vovoy@chromium.org", "chromeos-memory@google.com"},
-		Attr:     []string{"group:crosbolt", "crosbolt_memory_nightly"},
-		Timeout:  180 * time.Minute,
+		Func:         MemoryPressureModerate,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measure tab switching performance under moderate memory pressure",
+		Contacts:     []string{"vovoy@chromium.org", "chromeos-memory@google.com"},
+		Attr:         []string{"group:crosbolt", "crosbolt_memory_nightly"},
+		Timeout:      180 * time.Minute,
 		Data: []string{
 			mempressure.CompressibleData,
 			mempressure.WPRArchiveName,

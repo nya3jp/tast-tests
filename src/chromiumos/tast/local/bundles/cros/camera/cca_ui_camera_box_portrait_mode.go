@@ -15,6 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUICameraBoxPortraitMode,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies that CCA can take portrait mode photo via CameraBox",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},

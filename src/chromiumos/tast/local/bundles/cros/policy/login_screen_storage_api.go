@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LoginScreenStorageAPI,
-		Desc: "Test chrome.login.loginScreenStorage Extension API",
+		Func:         LoginScreenStorageAPI,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test chrome.login.loginScreenStorage Extension API",
 		Contacts: []string{
 			"jityao@google.com", // Test author
 			"chromeos-commercial-identity@google.com",

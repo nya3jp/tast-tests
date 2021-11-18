@@ -24,8 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: EnterpriseRollbackInPlace,
-		Desc: "Check the enterprise rollback data restore mechanism while faking a rollback on one image",
+		Func:         EnterpriseRollbackInPlace,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check the enterprise rollback data restore mechanism while faking a rollback on one image",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

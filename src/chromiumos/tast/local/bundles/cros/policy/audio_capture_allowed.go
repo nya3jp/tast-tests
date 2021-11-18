@@ -24,8 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AudioCaptureAllowed,
-		Desc: "Checking if audio capture is allowed on websites or not, depending on the value of the policy",
+		Func:         AudioCaptureAllowed,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checking if audio capture is allowed on websites or not, depending on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

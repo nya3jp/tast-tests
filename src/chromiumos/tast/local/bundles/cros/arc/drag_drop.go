@@ -33,6 +33,7 @@ type dragDropTestArgs struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DragDrop,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks drag and drop support from Chrome to ARC",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "group:arc-functional"},

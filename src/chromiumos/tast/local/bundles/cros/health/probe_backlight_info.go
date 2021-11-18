@@ -27,8 +27,9 @@ type backlightResult struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeBacklightInfo,
-		Desc: "Checks that cros_healthd can fetch backlight info",
+		Func:         ProbeBacklightInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that cros_healthd can fetch backlight info",
 		Contacts: []string{
 			"pmoy@google.com",
 			"cros-tdm@google.com",

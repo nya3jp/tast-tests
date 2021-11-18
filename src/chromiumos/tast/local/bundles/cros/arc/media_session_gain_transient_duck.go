@@ -20,6 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MediaSessionGainTransientDuck,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks Android ducking audio focus requests are forwarded to Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

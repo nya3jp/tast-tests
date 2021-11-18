@@ -29,6 +29,7 @@ type multiTaskingParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EverydayMultiTaskingCUJ,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the performance of everyday multi-tasking CUJ",
 		Contacts:     []string{"xliu@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome", "arc"},

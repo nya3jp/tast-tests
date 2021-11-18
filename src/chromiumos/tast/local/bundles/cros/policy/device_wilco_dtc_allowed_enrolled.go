@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DeviceWilcoDtcAllowedEnrolled,
-		Desc: "Test setting the DeviceWilcoDtcAllowed policy by checking if the Wilco DTC Support Daemon is running",
+		Func:         DeviceWilcoDtcAllowedEnrolled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test setting the DeviceWilcoDtcAllowed policy by checking if the Wilco DTC Support Daemon is running",
 		Contacts: []string{
 			"lamzin@google.com", // Test author
 			"vsavu@google.com",  // Test author

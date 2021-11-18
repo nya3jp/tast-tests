@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: MountOBB,
-		Desc: "Verifies mount-obb's fuse works",
+		Func:         MountOBB,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies mount-obb's fuse works",
 		Contacts: []string{
 			"hashimoto@chromium.org", // original author.
 			"arc-storage@google.com",

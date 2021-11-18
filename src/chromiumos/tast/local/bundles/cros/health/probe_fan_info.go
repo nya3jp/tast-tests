@@ -27,8 +27,9 @@ type fanResult struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeFanInfo,
-		Desc: "Checks that cros_healthd can fetch fan info",
+		Func:         ProbeFanInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that cros_healthd can fetch fan info",
 		Contacts: []string{
 			"pmoy@google.com",
 			"cros-tdm@google.com",

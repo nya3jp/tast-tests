@@ -28,8 +28,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: BubbleLauncherAnimationPerf,
-		Desc: "Measures animation smoothness of bubble launcher animations",
+		Func:         BubbleLauncherAnimationPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measures animation smoothness of bubble launcher animations",
 		Contacts: []string{
 			"cros-system-ui-eng@google.com",
 			"chromeos-sw-engprod@google.com",

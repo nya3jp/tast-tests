@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: NewTabPageLocation,
-		Desc: "Behavior of the NewTabPageLocation policy",
+		Func:         NewTabPageLocation,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of the NewTabPageLocation policy",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

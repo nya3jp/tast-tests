@@ -28,8 +28,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: IntegratedU2F,
-		Desc: "Verify U2F using the on-board cr50 firmware works",
+		Func:         IntegratedU2F,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify U2F using the on-board cr50 firmware works",
 		Contacts: []string{
 			"cros-hwsec@chromium.org",
 			"yich@google.com",

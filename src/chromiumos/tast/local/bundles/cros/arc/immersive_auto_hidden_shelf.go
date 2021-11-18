@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ImmersiveAutoHiddenShelf,
-		Desc: "Tests that the shelf is auto-hidden after launching an immersive ARC application",
+		Func:         ImmersiveAutoHiddenShelf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that the shelf is auto-hidden after launching an immersive ARC application",
 		Contacts: []string{
 			"yulunwu@chromium.org",
 			"tbarzic@chromium.org",

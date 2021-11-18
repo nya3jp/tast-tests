@@ -76,6 +76,7 @@ type evtestTabletModeExpects struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScreenWakeTabletMode,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check that tablet mode allows waking screen from additional triggers",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},

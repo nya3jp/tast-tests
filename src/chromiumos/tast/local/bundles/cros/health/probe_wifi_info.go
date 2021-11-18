@@ -28,8 +28,9 @@ type wifiInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeWifiInfo,
-		Desc: "Check that we can probe cros_healthd for WIFI info",
+		Func:         ProbeWifiInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that we can probe cros_healthd for WIFI info",
 		Contacts: []string{"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 			"cros-tdm-tpe-eng@google.com",

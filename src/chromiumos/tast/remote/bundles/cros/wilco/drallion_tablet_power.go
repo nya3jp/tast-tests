@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DrallionTabletPower,
-		Desc: "Verifies power button behavior on Drallion 360 devices in tablet mode",
+		Func:         DrallionTabletPower,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies power button behavior on Drallion 360 devices in tablet mode",
 		Contacts: []string{
 			"mwiitala@google.com", // Author
 			"tast-owners@google.com",

@@ -19,6 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DesksAnimationPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the smoothness of the desk-activation and removal animations",
 		Contacts:     []string{"afakhry@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

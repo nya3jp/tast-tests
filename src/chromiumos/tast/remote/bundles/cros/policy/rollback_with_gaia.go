@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RollbackWithGaia,
-		Desc: "Example test for the enterprise rollback update",
+		Func:         RollbackWithGaia,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Example test for the enterprise rollback update",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 			"chromeos-commercial-stability@google.com",

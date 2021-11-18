@@ -25,8 +25,9 @@ type decoderConfig struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: VAAPIUnittest,
-		Desc: "Verifies VA-API utility and image decode acceleration functionality",
+		Func:         VAAPIUnittest,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies VA-API utility and image decode acceleration functionality",
 		Contacts: []string{
 			"andrescj@chromium.org", // JPEG decoder test maintainer
 			"gildekel@chromium.org", // WebP decoder test author

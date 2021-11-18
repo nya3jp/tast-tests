@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DeviceTargetVersionSelector,
-		Desc: "Check of DeviceTargetVersionSelector policy by checking update_engine logs",
+		Func:         DeviceTargetVersionSelector,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check of DeviceTargetVersionSelector policy by checking update_engine logs",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

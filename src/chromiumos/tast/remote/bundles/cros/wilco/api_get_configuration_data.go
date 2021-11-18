@@ -24,8 +24,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: APIGetConfigurationData,
-		Desc: "Test sending GetConfigurationData gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
+		Func:         APIGetConfigurationData,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test sending GetConfigurationData gRPC request from Wilco DTC VM to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@google.com",  // Test author
 			"lamzin@google.com", // wilco_dtc_supportd maintainer

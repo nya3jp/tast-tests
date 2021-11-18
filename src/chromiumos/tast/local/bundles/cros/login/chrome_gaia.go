@@ -14,8 +14,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeGAIA,
-		Desc: "Checks that Chrome can make real GAIA logins",
+		Func:         ChromeGAIA,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that Chrome can make real GAIA logins",
 		Contacts: []string{
 			"tast-owners@google.com",
 			"cros-oac@google.com",
