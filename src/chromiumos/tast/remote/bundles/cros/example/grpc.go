@@ -17,6 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GRPC,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Demonstrates how to use gRPC support to run Go code on DUT",
 		Contacts:     []string{"nya@chromium.org", "tast-owners@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},

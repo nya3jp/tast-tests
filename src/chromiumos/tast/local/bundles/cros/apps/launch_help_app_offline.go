@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchHelpAppOffline,
-		Desc: "Help app can be launched offline with bundled content",
+		Func:         LaunchHelpAppOffline,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Help app can be launched offline with bundled content",
 		Contacts: []string{
 			"showoff-eng@google.com",
 			"shengjun@chromium.org", // Test author

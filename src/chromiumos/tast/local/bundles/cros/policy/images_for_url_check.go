@@ -35,8 +35,9 @@ const defaultImagesSettingBlocked = 2
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ImagesForURLCheck,
-		Desc: "Checks the behavior of images on URL with DefaultImagesSetting, ImagesAllowedForUrls and ImagesBlockedForUrls user policies",
+		Func:         ImagesForURLCheck,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks the behavior of images on URL with DefaultImagesSetting, ImagesAllowedForUrls and ImagesBlockedForUrls user policies",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
 			"mohamedaomar@google.com",

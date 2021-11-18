@@ -30,8 +30,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: VirtualDesksChromeApp,
-		Desc: "Checks that virtual desks works correctly when creating apps from tabs",
+		Func:         VirtualDesksChromeApp,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that virtual desks works correctly when creating apps from tabs",
 		Contacts: []string{
 			"shidi@chromium.org",
 			"chromeos-wmp@google.com",

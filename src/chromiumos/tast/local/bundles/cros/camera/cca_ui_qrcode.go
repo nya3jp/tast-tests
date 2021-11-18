@@ -26,6 +26,7 @@ type qrcodeTestParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIQRCode,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks QR code detection in CCA",
 		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},

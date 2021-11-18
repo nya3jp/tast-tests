@@ -28,8 +28,9 @@ type assistantOptions struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CCAUIAssistant,
-		Desc: "Tests opening Camera app using an Assistant query",
+		Func:         CCAUIAssistant,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests opening Camera app using an Assistant query",
 		Contacts: []string{
 			"pihsun@chromium.org",
 			"chromeos-camera-eng@google.com",

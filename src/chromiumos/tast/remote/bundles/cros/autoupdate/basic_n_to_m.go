@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: BasicNToM,
-		Desc: "Example test for updating to an older version using Nebraska and test images",
+		Func:         BasicNToM,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Example test for updating to an older version using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 		},

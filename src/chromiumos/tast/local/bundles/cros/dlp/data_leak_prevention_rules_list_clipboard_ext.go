@@ -27,8 +27,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DataLeakPreventionRulesListClipboardExt,
-		Desc: "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction when accessed by extension",
+		Func:         DataLeakPreventionRulesListClipboardExt,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction when accessed by extension",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
 			"chromeos-dlp@google.com",

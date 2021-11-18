@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Printer,
-		Desc: "Performs validity testing of printer-related D-Bus methods",
+		Func:         Printer,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Performs validity testing of printer-related D-Bus methods",
 		Contacts: []string{
 			"bmgordon@chromium.org",
 			"hidehiko@chromium.org", // Tast port author

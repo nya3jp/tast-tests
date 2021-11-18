@@ -30,8 +30,9 @@ type drawOnCanvasParams struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DrawOnCanvas,
-		Desc: "Verifies that a video can be drawn once onto a 2D canvas",
+		Func:         DrawOnCanvas,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that a video can be drawn once onto a 2D canvas",
 		Contacts: []string{
 			"andrescj@chromium.org",
 			"chromeos-gfx-video@google.com",

@@ -37,8 +37,9 @@ var extensionFiles = []string{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DisableScreenshotsExtension,
-		Desc: "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by chrome.tabs.captureVisibleTab extensions API",
+		Func:         DisableScreenshotsExtension,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by chrome.tabs.captureVisibleTab extensions API",
 		Contacts: []string{
 			"lamzin@google.com", // Test port author
 			"chromeos-commercial-remote-management@google.com",

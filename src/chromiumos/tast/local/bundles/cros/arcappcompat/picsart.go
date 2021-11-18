@@ -31,6 +31,7 @@ var touchviewLaunchForPicsart = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Picsart,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test for Picsart that install, launch the app and check that the main page is open, also checks Picsart correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

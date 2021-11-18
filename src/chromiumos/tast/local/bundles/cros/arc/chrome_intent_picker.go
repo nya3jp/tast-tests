@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromeIntentPicker,
-		Desc: "Verify Chrome Intent Picker can launch ARC app by visiting URL",
+		Func:         ChromeIntentPicker,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verify Chrome Intent Picker can launch ARC app by visiting URL",
 		Contacts: []string{
 			"benreich@chromium.org",
 			"mxcai@chromium.org",

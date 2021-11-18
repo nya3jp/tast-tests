@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DoNotDisturbOSSettings,
-		Desc: "Checks the Do Not Disturb toggle in the OS Settings Notifications subpage",
+		Func:         DoNotDisturbOSSettings,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks the Do Not Disturb toggle in the OS Settings Notifications subpage",
 		Contacts: []string{
 			"hsuregan@google.com",
 			"cros-connectivity@google.com",

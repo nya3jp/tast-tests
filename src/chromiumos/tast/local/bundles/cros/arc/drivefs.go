@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Drivefs,
-		Desc: "Android app can read files on Drive FS (Google Drive) via FilesApp",
+		Func:         Drivefs,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Android app can read files on Drive FS (Google Drive) via FilesApp",
 		Contacts: []string{
 			"cherieccy@google.com",
 			"arc-storage@google.com",

@@ -38,6 +38,7 @@ var (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BootPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Boot performance test",
 		Contacts:     []string{"chinglinyu@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

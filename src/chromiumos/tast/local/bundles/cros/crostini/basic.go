@@ -16,6 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Basic,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests basic Crostini startup only (where crostini was shipped with the build)",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

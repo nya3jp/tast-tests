@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: JavaScriptBlockedForUrls,
-		Desc: "Check that the JavaScriptBlockedForUrls policy blocks execution of JavaScript on the given sites",
+		Func:         JavaScriptBlockedForUrls,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that the JavaScriptBlockedForUrls policy blocks execution of JavaScript on the given sites",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

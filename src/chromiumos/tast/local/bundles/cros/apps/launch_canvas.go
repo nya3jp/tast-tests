@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: LaunchCanvas,
-		Desc: "Launches Chrome Canvas APP through the launcher after user login",
+		Func:         LaunchCanvas,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Launches Chrome Canvas APP through the launcher after user login",
 		Contacts: []string{
 			"blick-swe@google.com",
 			"shengjun@chromium.org",

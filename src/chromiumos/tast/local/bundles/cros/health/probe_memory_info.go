@@ -31,8 +31,9 @@ type memoryInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeMemoryInfo,
-		Desc: "Check that we can probe cros_healthd for memory info",
+		Func:         ProbeMemoryInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Check that we can probe cros_healthd for memory info",
 		Contacts: []string{
 			"pmoy@google.com",
 			"cros-tdm@google.com",

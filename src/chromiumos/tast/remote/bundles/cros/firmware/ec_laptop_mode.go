@@ -26,6 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECLaptopMode,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that power button actions at varied durations behave as expected in laptop mode",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental"},

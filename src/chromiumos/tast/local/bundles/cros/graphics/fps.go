@@ -28,6 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FPS,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measure frames per second and check it is close to 60 fps",
 		Contacts:     []string{"drinkcat@chromium.org", "chromeos-gfx@google.com"},
 		Attr:         []string{"group:mainline"},

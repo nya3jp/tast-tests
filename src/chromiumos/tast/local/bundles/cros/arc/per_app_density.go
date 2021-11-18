@@ -17,9 +17,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     PerAppDensity,
-		Desc:     "Checks that density can be changed with Android applications",
-		Contacts: []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
+		Func:         PerAppDensity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that density can be changed with Android applications",
+		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		// TODO(b/150909711): Enable this test after fix.
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,

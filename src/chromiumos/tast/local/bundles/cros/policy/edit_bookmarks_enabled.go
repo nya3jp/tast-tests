@@ -28,8 +28,9 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: EditBookmarksEnabled,
-		Desc: "Behavior of EditBookmarksEnabled policy: check if you can create, edit and remove bookmarks based on the policy value",
+		Func:         EditBookmarksEnabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of EditBookmarksEnabled policy: check if you can create, edit and remove bookmarks based on the policy value",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

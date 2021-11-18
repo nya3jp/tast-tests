@@ -17,8 +17,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SessionManagerRespawn,
-		Desc: "Checks that session_manager respawns after exit",
+		Func:         SessionManagerRespawn,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that session_manager respawns after exit",
 		Contacts: []string{
 			"mnissler@chromium.org", // session_manager owner
 			"chromeos-ui@google.com",

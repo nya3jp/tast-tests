@@ -27,6 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowResizePerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures animation smoothness of resizing a window",
 		Contacts:     []string{"mukai@chromium.org", "oshima@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

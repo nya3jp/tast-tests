@@ -35,8 +35,9 @@ type update struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RollbackWithNebraska,
-		Desc: "Example test for the enterprise rollback update using Nebraska and test images",
+		Func:         RollbackWithNebraska,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Example test for the enterprise rollback update using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 			"chromeos-commercial-stability@google.com",

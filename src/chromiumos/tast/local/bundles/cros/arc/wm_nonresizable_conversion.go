@@ -22,6 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WMNonresizableConversion,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies that Window Manager non-resizable/conversion use-cases behaves as described in go/arc-wm-r",
 		Contacts:     []string{"armenk@google.com", "takise@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
