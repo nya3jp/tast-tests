@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "809fe9ed_225b4b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-18T15:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3547f56_a8acb5f3",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "c381fb3e889d4c3dffce736ff98e2e49a3e553a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1eaa493_25d05a06",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-11-18T10:12:44Z",
       "side": 1,
       "message": "You don\u0027t have to include the timeouts of the fixtures. Timeout is only spent on the AddAccountOsSettings() call.",
+      "revId": "c381fb3e889d4c3dffce736ff98e2e49a3e553a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24608574_74bce91e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-18T15:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1eaa493_25d05a06",
       "revId": "c381fb3e889d4c3dffce736ff98e2e49a3e553a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b21e05_34d8ceae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-18T15:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7efcb4fe_534788e2",
+      "revId": "c381fb3e889d4c3dffce736ff98e2e49a3e553a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f443e4f4_66433314",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-11-18T10:12:44Z",
       "side": 1,
       "message": "This can be shortened to:\n\u003e  // Setup browser based on the chrome type.\n\u003e  br, closeBrowser, err :\u003d browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))\n\u003e  if err !\u003d nil {\n\u003e  \ts.Fatal(\"Failed to open the browser: \", err)\n\u003e  }\n\u003e  defer closeBrowser(cleanupCtx)\n\nBecause of s.FixtValue(), you might need to do some changes to the fixture, so it defines the necessary functions, and satisfies the HasChrome() interface.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "c381fb3e889d4c3dffce736ff98e2e49a3e553a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7497ad8f_5af410c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-18T15:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f443e4f4_66433314",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c173da_fd9438c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-18T15:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b44452ed_db861feb",
+      "range": {
+        "startLine": 131,
+        "startChar": 97,
+        "endLine": 131,
+        "endChar": 106
+      },
+      "revId": "c381fb3e889d4c3dffce736ff98e2e49a3e553a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e8e0ba0_5bdd7f64",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-11-18T10:12:44Z",
       "side": 1,
       "message": "Please move this check into an else if branch.",
+      "range": {
+        "startLine": 181,
+        "startChar": 97,
+        "endLine": 181,
+        "endChar": 104
+      },
+      "revId": "c381fb3e889d4c3dffce736ff98e2e49a3e553a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8041c22d_4ea1eb07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-18T15:52:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e8e0ba0_5bdd7f64",
       "range": {
         "startLine": 181,
         "startChar": 97,
