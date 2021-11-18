@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec6400a_dd1aaa61",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-18T02:15:58Z",
+      "side": 1,
+      "message": "5 is a magic number, could you make it a named constant at the top of the file.",
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0065d774_9bcefeee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-18T02:15:58Z",
+      "side": 1,
+      "message": "Use a regexp instead to extract the info you want instead. It makes it a lot clearer to understand exactly what you\u0027re doing.",
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
