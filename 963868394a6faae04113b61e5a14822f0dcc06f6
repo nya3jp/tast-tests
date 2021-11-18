@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3751d2f_7bf8d557",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-11-18T00:55:48Z",
+      "side": 1,
+      "message": "probably want to make DisallowServices a private field that gets set in NewHelper or a setter method on Helper so calling code can\u0027t set it to false once it gets set to true.  Also, if CopyTastFiles is same as !DisallowServices, then can just get rid of the CopyTastFiles field.",
+      "revId": "963868394a6faae04113b61e5a14822f0dcc06f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
