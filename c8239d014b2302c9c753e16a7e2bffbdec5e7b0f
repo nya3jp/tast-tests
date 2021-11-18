@@ -16,6 +16,98 @@
       "message": "I think I have address all comments. Please review. Thanks.",
       "revId": "c8239d014b2302c9c753e16a7e2bffbdec5e7b0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482266ac_5833911b",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T06:38:42Z",
+      "side": 1,
+      "message": "nit: cannot find?",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "c8239d014b2302c9c753e16a7e2bffbdec5e7b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a63637_2cae8d7f",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T06:38:42Z",
+      "side": 1,
+      "message": "This constant slice has to be in sync with the definition of ServerType constants, but it\u0027s a bit fragile because they\u0027re define in distant place.\n\nAn idiomatic way is to define a method on ServerType that returns a string representation of the enum, e..g.\n\n func (t ServerType) String() string {\n   switch t {\n   case Servo: return \"servo\"\n   case Provision: return \"provision server\"\n   ...\n   }\n }",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 87
+      },
+      "revId": "c8239d014b2302c9c753e16a7e2bffbdec5e7b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acd27c1_d5120617",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T06:38:42Z",
+      "side": 1,
+      "message": "err",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 14
+      },
+      "revId": "c8239d014b2302c9c753e16a7e2bffbdec5e7b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7acefa73_7d39534c",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T06:38:42Z",
+      "side": 1,
+      "message": "If we call this function twice, second call will always return non-error even if the first call returns an error. We need to save an error as well.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 29
+      },
+      "revId": "c8239d014b2302c9c753e16a7e2bffbdec5e7b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

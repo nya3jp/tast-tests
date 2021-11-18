@@ -200,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21782fd8_2dd5fa8e",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-18T06:38:42Z",
+      "side": 1,
+      "message": "Thanks, looks good.",
+      "parentUuid": "4052f7e6_0c03a1b8",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "fc1f904d4ee4f7da8d70f3c221351a3a4e8e43b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f18a19f_3a76cf4e",
