@@ -257,7 +257,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 
 	runConferenceAPI := func(ctx context.Context, sessionToken, host, api, parameterData string) (*responseData, error) {
-		reqURL := fmt.Sprintf("%s/api/room/zoom/%s%s", host, api, parameterData)
+		reqURL := fmt.Sprintf("%s/api/room/zoom/%s%s&iszoomcase=true", host, api, parameterData)
 		testing.ContextLog(ctx, "Requesting a zoom room from the zoom bot server with request URL: ", reqURL)
 		httpReq, err := http.NewRequestWithContext(ctx, "GET", reqURL, nil)
 		if err != nil {
