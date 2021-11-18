@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c4c4a6_65faa6c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T19:42:52Z",
+      "side": 1,
+      "message": "The python test checked the wp status at the beginning, and restored it at the end of the test. That is probably a good idea. I would expect that normally the WP would be off to start, but probably best to put it back how it started.",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 17
+      },
+      "revId": "9956830a121cf517af8135e74f2bda61b76bd0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80416586_2bf2156a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T19:42:52Z",
+      "side": 1,
+      "message": "No need to log this, it takes no time.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 67
+      },
+      "revId": "9956830a121cf517af8135e74f2bda61b76bd0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd25c5a_67d6e0e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-18T19:42:52Z",
+      "side": 1,
+      "message": "Likewise, no need to log this.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 52
+      },
+      "revId": "9956830a121cf517af8135e74f2bda61b76bd0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
