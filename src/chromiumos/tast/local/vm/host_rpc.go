@@ -12,7 +12,8 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
-	vmtools "chromiumos/vm_tools/vm_rpc"
+	vmtools "chromiumos/vm_tools/vm_tools_proto"
+	vmrpc "chromiumos/vm_tools/vm_rpc"
 )
 
 // StartupListenerServer is struct to manage an instance of a StartupListener
@@ -35,7 +36,7 @@ func NewStartupListenerServer(vsockPort uint32) (*StartupListenerServer, error) 
 		port:   vsockPort,
 	}
 
-	vmtools.RegisterStartupListenerServer(s.server, &s)
+	vmrpc.RegisterStartupListenerServer(s.server, &s)
 	return &s, nil
 }
 
