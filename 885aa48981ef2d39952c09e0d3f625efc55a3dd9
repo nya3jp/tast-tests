@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b6f63c_d1cf2090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-18T05:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb7caf8c_465186e7",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ece3ff18_ed8e16f5",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-18T05:01:49Z",
       "side": 1,
       "message": "Prefer chrome.EnableFeatures\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;l\u003d223;drc\u003d75a500f12dbe781dac39d566dbcd896fe0e10c71",
+      "range": {
+        "startLine": 39,
+        "startChar": 100,
+        "endLine": 39,
+        "endChar": 160
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d9f2579_3c50a62b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-18T05:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ece3ff18_ed8e16f5",
       "range": {
         "startLine": 39,
         "startChar": 100,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7cf8b2_5aa7c7d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-18T05:22:30Z",
+      "side": 1,
+      "message": "Done. Unfortunately, the new fixture can\u0027t extend arcBootedInClamshellMode, as it has to launch Chrome with a new feature flag. The fixture can still save some time as there will be another test for a similar feature though.",
+      "parentUuid": "854b9bec_afcf0ab1",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f7fb42e_77485a98",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e4d2a0_bc2c9937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-18T05:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7fb42e_77485a98",
+      "range": {
+        "startLine": 73,
+        "startChar": 16,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f56f7d0d_a8ec7447",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-11-18T05:01:49Z",
       "side": 1,
       "message": "nit: this feels like no particularly needed? the function name is expressive enough IMO",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17cfbdbc_847fb947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-18T05:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56f7d0d_a8ec7447",
       "range": {
         "startLine": 94,
         "startChar": 2,
