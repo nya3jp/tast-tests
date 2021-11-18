@@ -3,12 +3,16 @@
 ; found in the LICENSE file.
 
 [fio_rand_read]
+direct=1
+readwrite=randread
+thread=1
+blocksize=64k
+ioengine=io_uring
+iodepth=1024
+iodepth_low=512
+runtime=300
 time_based
 
-readwrite=randread
 randrepeat=0
 norandommap
 
-ioengine=libaio
-iodepth=1
-direct=1
