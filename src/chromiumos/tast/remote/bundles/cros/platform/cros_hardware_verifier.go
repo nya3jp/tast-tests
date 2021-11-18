@@ -5,22 +5,24 @@
 package platform
 
 import (
+	"bytes"
 	"context"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
-	"reflect"
 	"sort"
 	"strconv"
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/descriptor"
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
 	"github.com/google/go-cmp/cmp"
 	"golang.org/x/crypto/ssh"
+	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/testing/protocmp"
 
 	hvpb "chromiumos/hardware_verifier"
 	rppb "chromiumos/system_api/runtime_probe_proto"
@@ -31,7 +33,7 @@ import (
 
 type stringSet map[string]struct{}
 type requiredFieldSet map[string]*stringSet
-type sortableMessage []proto.Message
+type sortableMessage []protoreflect.ProtoMessage
 
 func (set *stringSet) Contains(s string) bool {
 	_, exists := (*set)[s]
@@ -40,6 +42,14 @@ func (set *stringSet) Contains(s string) bool {
 
 func (set *stringSet) Add(s string) {
 	(*set)[s] = struct{}{}
+}
+
+func (set stringSet) String() string {
+	keys := make([]string, 0, len(set))
+	for k := range set {
+		keys = append(keys, k)
+	}
+	return fmt.Sprintf("%v", keys)
 }
 
 func (s sortableMessage) Len() int {
@@ -51,7 +61,17 @@ func (s sortableMessage) Swap(i, j int) {
 }
 
 func (s sortableMessage) Less(i, j int) bool {
-	return s[i].String() < s[j].String()
+	return fmt.Sprintf("%v", s[i]) < fmt.Sprintf("%v", s[j])
+}
+
+func (s sortableMessage) String() string {
+	var buffer bytes.Buffer
+	buffer.WriteString("[\n")
+	for i := 0; i < len(s); i++ {
+		buffer.WriteString(fmt.Sprintf("%v\n", s[i]))
+	}
+	buffer.WriteString("]")
+	return buffer.String()
 }
 
 func init() {
@@ -92,13 +112,13 @@ func CrosHardwareVerifier(ctx context.Context, s *testing.State) {
 	}
 	s.Log("MessageFromFile:", messagesFromReport)
 
-	if diff := cmp.Diff(messagesFromReport, messagesFromVerifier); diff != "" {
+	if diff := cmp.Diff(messagesFromReport, messagesFromVerifier, protocmp.Transform()); diff != "" {
 		s.Log("Message mismatch (-report +hwVerifier):")
 		s.Log(diff)
 		s.Error("Message mismatch between report and hwVerifier (see logs for diff)")
 	}
 
-	if diff := cmp.Diff(messagesFromReport, messagesFromProbe); diff != "" {
+	if diff := cmp.Diff(messagesFromReport, messagesFromProbe, protocmp.Transform()); diff != "" {
 		s.Log("Message mismatch (-report +probe):")
 		s.Log(diff)
 		s.Error("Message mismatch between report and probe (see logs for diff)")
@@ -132,11 +152,7 @@ func requiredFields(ctx context.Context, s *testing.State) (requiredFieldSet, er
 	}
 
 	for _, allowlist := range message.GenericComponentValueAllowlists {
-		categorySplit := strings.Split(allowlist.ComponentCategory.String(), "_")
-		for i, sp := range categorySplit {
-			categorySplit[i] = strings.Title(sp)
-		}
-		category := strings.Join(categorySplit, "")
+		category := allowlist.ComponentCategory.String()
 
 		for _, field := range allowlist.FieldNames {
 			if m, ok := fieldsMapping[category]; ok {
@@ -165,73 +181,78 @@ func decodeResult(result string) []byte {
 }
 
 // trimFields trims fields not defined in fieldsMapping and return all
-// components in a slice.  The approach is to enumerate the fields by reflect
-// library and check if the names extracted by protobuf/descriptor library are
-// mentioned in the fieldsMapping.
+// components in a slice.  The approach is to enumerate the fields by
+// protoreflect library and check if the names are mentioned in the
+// fieldsMapping.
 func trimFields(message *rppb.ProbeResult, fieldsMapping requiredFieldSet) (sortableMessage, error) {
 	var probeResults sortableMessage
-	rpmsg := reflect.ValueOf(message)
-	if rpmsg.Kind() != reflect.Ptr {
-		return nil, errors.New("message is not Ptr type")
-	}
-	rmsg := rpmsg.Elem()
-	if rmsg.Kind() != reflect.Struct {
-		return nil, errors.New("rmsg is not Struct type")
-	}
+	messagePr := message.ProtoReflect()
+	messageDesc := messagePr.Descriptor()
+	messageFieldDescs := messageDesc.Fields()
 	for category, allowlist := range fieldsMapping {
-		rcomponents := rmsg.FieldByName(category)
-		if rcomponents.Kind() != reflect.Slice {
-			return nil, errors.New("rcomponents is not Slice type")
+		componentListDesc := messageFieldDescs.ByName(protoreflect.Name(category))
+		if componentListDesc.Kind() != protoreflect.MessageKind {
+			return nil, errors.New("componentList is not Message type")
 		}
-		for i := 0; i < rcomponents.Len(); i++ {
-			rpcomponent := rcomponents.Index(i)
-			if rpcomponent.Kind() != reflect.Ptr {
-				return nil, errors.New("rpcomponent is not Ptr type")
+		if !componentListDesc.IsList() {
+			return nil, errors.New("componentList is not a list")
+		}
+		components := messagePr.Get(componentListDesc).List()
+		for i := 0; i < components.Len(); i++ {
+			component := components.Get(i).Message()
+			compFieldsDesc := component.Descriptor().Fields()
+			compNameDesc := compFieldsDesc.ByName(protoreflect.Name("name"))
+			if compNameDesc.Kind() != protoreflect.StringKind {
+				return nil, errors.New("compName is not a string")
 			}
-			rcomponent := rpcomponent.Elem()
-			if rcomponent.Kind() != reflect.Struct {
-				return nil, errors.New("rcomponent is not Struct type")
-			}
-			rname := rcomponent.FieldByName("Name")
-			if rname.Kind() != reflect.String {
-				return nil, errors.New("rname is not String type")
-			}
-			// Only generic probe results are required.
-			if rname.String() == "generic" {
-				rpvalues := rcomponent.FieldByName("Values")
-				if rpvalues.Kind() != reflect.Ptr {
-					return nil, errors.New("rpvalues is not Ptr type")
+			compName := component.Get(compNameDesc).String()
+			if compName == "generic" {
+				compValuesDesc := compFieldsDesc.ByName(protoreflect.Name("values"))
+				if compValuesDesc.Kind() != protoreflect.MessageKind {
+					return nil, errors.New("compValues is not a message")
 				}
-				if !rpvalues.IsValid() || !rpvalues.CanInterface() {
-					return nil, errors.New("cannot get the value of rpvalues")
-				}
-				dmsg, ok := rpvalues.Interface().(descriptor.Message)
-				if !ok {
-					return nil, errors.New("values is not descriptor.Message")
-				}
-				_, desc := descriptor.ForMessage(dmsg)
-				if desc == nil {
-					return nil, errors.New("cannot get descriptor from message")
-				}
-				for j, field := range desc.GetField() {
-					if field == nil {
-						return nil, errors.New("field is nil")
-					}
-					if !allowlist.Contains(field.GetName()) {
-						rvalues := rpvalues.Elem()
-						if rvalues.Kind() != reflect.Struct {
-							return nil, errors.New("rvalues is not Struct type")
+				values := component.Get(compValuesDesc).Message()
+				valuesFieldsDesc := values.Descriptor().Fields()
+				for i := 0; i < valuesFieldsDesc.Len(); i++ {
+					valuesFieldDesc := valuesFieldsDesc.Get(i)
+					sp := strings.Split(string(valuesFieldDesc.FullName()), ".")
+					fieldName := sp[len(sp)-1]
+					if !allowlist.Contains(fieldName) {
+						switch valuesFieldDesc.Kind() {
+						case protoreflect.BoolKind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfBool(false))
+						case protoreflect.Int32Kind:
+							fallthrough
+						case protoreflect.Sint32Kind:
+							fallthrough
+						case protoreflect.Sfixed32Kind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfInt32(0))
+						case protoreflect.Uint32Kind:
+							fallthrough
+						case protoreflect.Fixed32Kind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfUint32(0))
+						case protoreflect.Int64Kind:
+							fallthrough
+						case protoreflect.Sint64Kind:
+							fallthrough
+						case protoreflect.Sfixed64Kind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfInt64(0))
+						case protoreflect.Uint64Kind:
+							fallthrough
+						case protoreflect.Fixed64Kind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfUint64(0))
+						case protoreflect.FloatKind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfFloat32(0))
+						case protoreflect.DoubleKind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfFloat64(0))
+						case protoreflect.StringKind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfString(""))
+						case protoreflect.BytesKind:
+							values.Set(valuesFieldDesc, protoreflect.ValueOfBytes([]byte{}))
 						}
-						rfield := rvalues.Field(j)
-						if !rfield.CanSet() {
-							return nil, errors.Errorf("cannot clear value of field %q", field.GetName())
-						}
-						rfield.Set(reflect.Zero(rfield.Type()))
 					}
 				}
-				// proto.Message is embedded in descriptor.Message, so we skip the
-				// check here.
-				probeResults = append(probeResults, rpvalues.Interface().(proto.Message))
+				probeResults = append(probeResults, values.Interface())
 			}
 		}
 	}
@@ -286,30 +307,21 @@ func probe(ctx context.Context, dut *dut.DUT, fieldsMapping requiredFieldSet) (s
 // .String() function for comparison.
 func collectFields(deviceInfo *hvpb.HwVerificationReport_GenericDeviceInfo, fieldsMapping requiredFieldSet) (sortableMessage, error) {
 	var messageList sortableMessage
-	rpDeviceInfo := reflect.ValueOf(deviceInfo)
-	if rpDeviceInfo.Kind() != reflect.Ptr {
-		return nil, errors.New("rpDeviceInfo is not Ptr type")
-	}
-	rDeviceInfo := rpDeviceInfo.Elem()
-	if rDeviceInfo.Kind() != reflect.Struct {
-		return nil, errors.New("rDeviceInfo is not Struct type")
-	}
+	deviceInfoPr := deviceInfo.ProtoReflect()
+	deviceInfoDesc := deviceInfoPr.Descriptor()
 
 	for category := range fieldsMapping {
-		fieldsList := rDeviceInfo.FieldByName(category)
-		if fieldsList.Kind() != reflect.Slice {
-			return nil, errors.New("fieldsList is not Slice type")
+		fieldsListDesc := deviceInfoDesc.Fields().ByName(protoreflect.Name(category))
+		if fieldsListDesc.Kind() != protoreflect.MessageKind {
+			return nil, errors.New("fieldsList is not Message type")
 		}
+		if !fieldsListDesc.IsList() {
+			return nil, errors.New("fieldsList is not list")
+		}
+		fieldsList := deviceInfoPr.Get(fieldsListDesc).List()
 		for i := 0; i < fieldsList.Len(); i++ {
-			fields := fieldsList.Index(i)
-			if !fields.IsValid() || !fields.CanInterface() {
-				return nil, errors.New("cannot get the value of fields")
-			}
-			fieldsMsg, ok := fields.Interface().(proto.Message)
-			if !ok {
-				return nil, errors.New("fieldsMsg is not proto.Message")
-			}
-			messageList = append(messageList, fieldsMsg)
+			fields := fieldsList.Get(i).Message()
+			messageList = append(messageList, fields.Interface())
 		}
 	}
 	sort.Sort(messageList)
@@ -415,7 +427,7 @@ func report(ctx context.Context, s *testing.State, fieldsMapping requiredFieldSe
 func pollResultFile(ctx context.Context, d *dut.DUT, s *testing.State, resultFilePath, outPath string) error {
 	const (
 		pollInterval = time.Second
-		pollTimeout  = 60 * time.Second
+		pollTimeout  = 2 * time.Minute
 	)
 
 	// Current implementation is to sleep 50s before dumping result file.
