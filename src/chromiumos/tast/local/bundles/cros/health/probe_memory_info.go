@@ -45,9 +45,10 @@ func init() {
 		Params: []testing.Param{{
 			Val: false,
 		}, {
-			Name:              "memory_encryption",
-			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			Name: "memory_encryption",
+			Val:  true,
+			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
