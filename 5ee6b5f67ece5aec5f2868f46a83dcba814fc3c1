@@ -39,6 +39,47 @@
       },
       "revId": "5ee6b5f67ece5aec5f2868f46a83dcba814fc3c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c609676_4374f951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:40:56Z",
+      "side": 1,
+      "message": "I prefer [1]. The current solution is not really reasable.",
+      "parentUuid": "7ddf82d6_7af3fdfd",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "5ee6b5f67ece5aec5f2868f46a83dcba814fc3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9198e4b9_ac9b0bbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-18T11:40:56Z",
+      "side": 1,
+      "message": "Disable the test, but leave it here if someone wants to run it manually.",
+      "revId": "5ee6b5f67ece5aec5f2868f46a83dcba814fc3c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
