@@ -129,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad9cea5_9c64a282",
+        "filename": "src/chromiumos/tast/common/servers/servers_for_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-18T05:51:06Z",
+      "side": 1,
+      "message": "I have changed to use empty string for primary. Please review. Thanks.",
+      "parentUuid": "3e97c1f8_e1c97414",
+      "range": {
+        "startLine": 30,
+        "startChar": 29,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "fc1f904d4ee4f7da8d70f3c221351a3a4e8e43b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7ebd4db_72175aa9",
