@@ -93,6 +93,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/typec"
 	_ "chromiumos/tast/local/bundles/cros/u2fd"
 	_ "chromiumos/tast/local/bundles/cros/ui"
+	_ "chromiumos/tast/local/bundles/cros/vdi"
 	_ "chromiumos/tast/local/bundles/cros/video"
 	_ "chromiumos/tast/local/bundles/cros/vm"
 	_ "chromiumos/tast/local/bundles/cros/wallpaper"
@@ -105,6 +106,7 @@ import (
 	// returns FixtData type from policyutil/fixtures.
 	_ "chromiumos/tast/local/kioskmode/fixtures"
 	_ "chromiumos/tast/local/meta" // import fixture for meta tests
+	_ "chromiumos/tast/local/vdi/fixtures"
 )
 
 func main() {
