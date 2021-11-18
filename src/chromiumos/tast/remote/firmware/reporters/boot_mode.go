@@ -29,7 +29,7 @@ func (r *Reporter) CurrentBootMode(ctx context.Context) (fwCommon.BootMode, erro
 	case "developer":
 		bootedDevice, err := r.BootedDevice(ctx)
 		if err != nil {
-			return fwCommon.BootModeUnspecified, errors.Wrapf(err, "determining if boot device is removable")
+			return fwCommon.BootModeUnspecified, errors.Wrap(err, "determining if boot device is removable")
 		}
 		if bootedDevice == BootedDeviceDeveloperRemovableSig || bootedDevice == BootedDeviceDeveloperRemovableHash {
 			return fwCommon.BootModeUSBDev, nil

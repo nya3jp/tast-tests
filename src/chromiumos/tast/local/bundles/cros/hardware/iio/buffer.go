@@ -82,7 +82,7 @@ func (s *Sensor) NewBuffer() (*Buffer, error) {
 		for _, t := range triggers {
 			if t.Type == RingTrigger {
 				if err := s.WriteAttr("trigger/current_trigger", t.Name); err != nil {
-					return nil, errors.Wrap(err, "Error updating trigger")
+					return nil, errors.Wrap(err, "error updating trigger")
 				}
 				found = true
 				break

@@ -45,7 +45,7 @@ type Config interface {
 func Run(ctx context.Context, outDir string, fixtValue interface{}, config Config) (resultErr error) {
 	// appendErr append the error with msg to resultErr.
 	var appendErr = func(err error, msg string, args ...interface{}) error {
-		resultErr = errors.Wrap(resultErr, errors.Wrapf(err, msg, args...).Error())
+		resultErr = errors.Wrap(resultErr, errors.Wrapf(err, msg, args).Error())
 		return resultErr
 	}
 

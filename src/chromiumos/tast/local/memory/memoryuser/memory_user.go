@@ -417,7 +417,7 @@ func RunTest(ctx context.Context, outDir string, tasks []MemoryTask, p *RunParam
 		for _, task := range tasks {
 			err = runTask(ctx, taskCtx, task, testEnv)
 			if err != nil {
-				return errors.Wrap(err, "failed to run task: ")
+				return errors.Wrap(err, "failed to run task")
 			}
 		}
 	}
