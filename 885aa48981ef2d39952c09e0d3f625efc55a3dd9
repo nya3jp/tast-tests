@@ -16,6 +16,121 @@
       "message": "tast-owners@: PTAL for OWNERS. Thank you.\nyhanada@, takise@: Thank you for reviewing.",
       "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7caf8c_465186e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-18T05:01:49Z",
+      "side": 1,
+      "message": "This might not be enough time on some devices, you\u0027re doing all the setup (not using the fixture timeouts). \n\nThe fixtures use chrome.LoginTimeout (80s) + BootTimeout (120s) + ui.StartTimeout (120s) \u003d 320s ~5.3 minutes and this is just for setting up the environment, the test will take some time as well. Consider moving your setup to the fixture",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece3ff18_ed8e16f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-18T05:01:49Z",
+      "side": 1,
+      "message": "Prefer chrome.EnableFeatures\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;l\u003d223;drc\u003d75a500f12dbe781dac39d566dbcd896fe0e10c71",
+      "range": {
+        "startLine": 39,
+        "startChar": 100,
+        "endLine": 39,
+        "endChar": 160
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854b9bec_afcf0ab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-18T05:01:49Z",
+      "side": 1,
+      "message": "I wonder if it might be worth extending the arcBooted suite of fixtures to leverage all this setup? Add a arcBootedRightClickLongPress which extends arcBootedInClamshellMode and you\u0027ll get a lot of this for free that way.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go;l\u003d122-140;drc\u003d12f8225ac991a14da85a473b8249471f052691de",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7fb42e_77485a98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-18T05:01:49Z",
+      "side": 1,
+      "message": "Whenever you\u0027re deferring a function that relies on a context, the function may be called due to a deadline exceeded in which case any functions that rely on the context supplied (which has exceeded the deadline) will also fail. Consider adding a cleanupCtx that will ensure you reserve enough time to run these cleanup activities, e.g.\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n```\nThen continue to pass ctx around, but in any \"cleanup\" activities, like the one selected here you pass cleanupCtx.",
+      "range": {
+        "startLine": 73,
+        "startChar": 16,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56f7d0d_a8ec7447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/right_click_long_press.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-18T05:01:49Z",
+      "side": 1,
+      "message": "nit: this feels like no particularly needed? the function name is expressive enough IMO",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 16
+      },
+      "revId": "885aa48981ef2d39952c09e0d3f625efc55a3dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
