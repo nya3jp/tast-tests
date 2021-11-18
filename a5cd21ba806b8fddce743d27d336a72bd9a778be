@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9f43ea_71890069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2021-11-18T10:52:34Z",
+      "side": 1,
+      "message": "I\u0027m hoping this commit will help us to troubleshoot BootBatteryCutoff(). \nI will appreciate your comments. ",
+      "revId": "a5cd21ba806b8fddce743d27d336a72bd9a778be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
