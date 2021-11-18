@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a2cdc9_7737ce6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-18T21:33:09Z",
+      "side": 1,
+      "message": "Done.\n\nMy right hand is faster to type \u0027j\u0027 to move down in vim than my left hand to press \"esc\" to get out of edit mode...",
+      "parentUuid": "a931e557_e8825517",
+      "range": {
+        "startLine": 30,
+        "startChar": 70,
+        "endLine": 30,
+        "endChar": 71
+      },
+      "revId": "6dd772eea10da9d24b84b9c4c636767f667b65c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b7831a7_2c0e7c23",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-18T21:28:06Z",
       "side": 1,
       "message": "nit: This value?",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "6dd772eea10da9d24b84b9c4c636767f667b65c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ffb70aa_12e5d9ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-11-18T21:33:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7831a7_2c0e7c23",
       "range": {
         "startLine": 31,
         "startChar": 4,
