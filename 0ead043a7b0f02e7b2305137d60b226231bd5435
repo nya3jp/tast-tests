@@ -140,6 +140,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8c2d2c5_c0370df8",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vdiconnector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-18T12:29:46Z",
+      "side": 1,
+      "message": "nit: VDIInt",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3711e78_dd35f7e2",
         "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
         "patchSetId": 1
