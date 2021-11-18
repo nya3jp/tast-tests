@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a500a56_00ca8b84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-11-18T18:23:54Z",
+      "side": 1,
+      "message": "This was exported to satisfy the linter requirements:\n\n  src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go: Tast requires exactly one symbol (test function or service type) to be exported in an entry file\n  \nNot sure if there is a preferred approach to getting around this?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "b9121c2e6b5183e08889477c95d0969ef89b402a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

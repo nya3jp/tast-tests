@@ -115,6 +115,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338794f7_18a53770",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/open_bluetooth_settings_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-11-18T18:23:54Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "1de209e3_eb6d9de2",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23811c14_931d5044",
@@ -128,6 +152,30 @@
       "writtenOn": "2021-11-18T00:28:39Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0240c0_df7d27a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-11-18T18:23:54Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "23811c14_931d5044",
       "range": {
         "startLine": 53,
         "startChar": 5,
@@ -161,6 +209,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4dbcf9_6f438e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-11-18T18:23:54Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "87d588a9_e4cf7a61",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a01ef252_80a2f3de",
@@ -174,6 +246,24 @@
       "writtenOn": "2021-11-18T00:28:39Z",
       "side": 1,
       "message": "I\u0027d suggest adding a check to wait for quicksettings to finish collapsing, since there\u0027s a brief animation there. quicksettings.Rect returns a coords.Rect which encodes the size, you could poll for that to be stable before proceeding",
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e59476_d64d215d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-11-18T18:23:54Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if that would cause issues, but this seems like the safer call. I went ahead and added a method to quicksettings to collapse the Quick Settings tray since that seems like functionality others might want to use, PTAL!",
+      "parentUuid": "a01ef252_80a2f3de",
       "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
