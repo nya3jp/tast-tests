@@ -35,6 +35,7 @@ type launcherTestConfig struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Launcher,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Runs applications from the launcher in low/high-DPI mode",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},

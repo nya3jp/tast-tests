@@ -20,6 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ImagePasteFromDownloads,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks image copy paste app compat from Files App",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome", "android_vm"},

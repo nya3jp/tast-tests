@@ -23,6 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ImageDropFromDownloads,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks image drag drop app compat from Files App",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome", "android_vm"},

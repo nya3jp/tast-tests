@@ -20,8 +20,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: UserFilesGuest,
-		Desc: "Checks ownership and permissions of files for guest users",
+		Func:         UserFilesGuest,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks ownership and permissions of files for guest users",
 		Contacts: []string{
 			"jorgelo@chromium.org", // Security team
 			"chromeos-security@google.com",

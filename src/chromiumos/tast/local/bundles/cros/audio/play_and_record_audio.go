@@ -27,6 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayAndRecordAudio,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Play local audio file and record it simultaneously. Then play the recorded audio and verify if it routes through expected audio node",
 		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),

@@ -19,10 +19,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     LauncherApps,
-		Desc:     "A functional test that checks if installed app appears in Launcher",
-		Contacts: []string{"rnanjappan@google.com", "arc-core@google.com", "cros-arc-te@google.com"},
-		Attr:     []string{"group:mainline", "informational", "group:arc-functional"},
+		Func:         LauncherApps,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "A functional test that checks if installed app appears in Launcher",
+		Contacts:     []string{"rnanjappan@google.com", "arc-core@google.com", "cros-arc-te@google.com"},
+		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p", "chrome"},
 		}, {

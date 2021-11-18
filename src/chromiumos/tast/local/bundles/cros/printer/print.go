@@ -27,9 +27,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     Print,
-		Desc:     "Tests that a virtual USB printer can be saved and printed to",
-		Contacts: []string{"gavinwill@google.com", "cros-peripherals@google.com"},
+		Func:         Print,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests that a virtual USB printer can be saved and printed to",
+		Contacts:     []string{"gavinwill@google.com", "cros-peripherals@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"informational",

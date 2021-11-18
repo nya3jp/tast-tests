@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ReporterStartup,
-		Desc: "Verifies crash reporter after reboot",
+		Func:         ReporterStartup,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies crash reporter after reboot",
 		Contacts: []string{
 			"cros-telemetry@google.com",
 			"domlaskowski@chromium.org", // Original autotest author

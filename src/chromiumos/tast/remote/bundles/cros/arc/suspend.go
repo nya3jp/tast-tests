@@ -29,8 +29,9 @@ type testArgsForSuspend struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Suspend,
-		Desc: "Checks the behavior of ARC around suspend/resume",
+		Func:         Suspend,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks the behavior of ARC around suspend/resume",
 		Contacts: []string{
 			"hikalium@chromium.org",
 			"cros-platform-kernel-core@google.com",

@@ -26,6 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EnableExternalStorage,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies ARC removable media can be enabled from Chrome OS Settings",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com", "arc-storage@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},

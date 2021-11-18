@@ -19,9 +19,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     BrightnessQueries,
-		Desc:     "Tests changing the screen brightness using Assistant queries",
-		Contacts: []string{"chromeos-sw-engprod@google.com", "assistive-eng@google.com"},
+		Func:         BrightnessQueries,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests changing the screen brightness using Assistant queries",
+		Contacts:     []string{"chromeos-sw-engprod@google.com", "assistive-eng@google.com"},
 		// TODO(b/204119676): currently broken by Assistant backendend.
 		Attr:         []string{},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),

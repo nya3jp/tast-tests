@@ -22,8 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PluginVMDataCollectionAllowed,
-		Desc: "Behavior of PluginVmDataCollectionAllowed policy",
+		Func:         PluginVMDataCollectionAllowed,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of PluginVmDataCollectionAllowed policy",
 		Contacts: []string{
 			"okalitova@chromium.org", // Test author
 			"chromeos-commercial-remote-management@google.com",

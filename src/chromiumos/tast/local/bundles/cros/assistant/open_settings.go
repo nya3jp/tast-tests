@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: OpenSettings,
-		Desc: "Tests opening the Settings app using an Assistant query",
+		Func:         OpenSettings,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Tests opening the Settings app using an Assistant query",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 			"meilinw@chromium.org",

@@ -39,8 +39,9 @@ const testFile = "files_app_test.png"
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Deletion,
-		Desc: "Ensure deletion of files & folders work fine",
+		Func:         Deletion,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Ensure deletion of files & folders work fine",
 		Contacts: []string{
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",

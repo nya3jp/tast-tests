@@ -29,8 +29,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: SavingBrowserHistoryDisabled,
-		Desc: "Behavior of SavingBrowserHistoryDisabled policy, check if browsing history entries are shown based on the value of the policy",
+		Func:         SavingBrowserHistoryDisabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of SavingBrowserHistoryDisabled policy, check if browsing history entries are shown based on the value of the policy",
 		Contacts: []string{
 			"alexanderhartl@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

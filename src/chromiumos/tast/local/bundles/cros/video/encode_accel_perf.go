@@ -30,6 +30,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures hardware video encode performance by running the video_encode_accelerator_perf_tests binary",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},

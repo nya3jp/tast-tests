@@ -25,8 +25,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DownloadRecentPhoto,
-		Desc: "Exercises toggling the Recent Photos feature and downloading a photo from a connected phone",
+		Func:         DownloadRecentPhoto,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Exercises toggling the Recent Photos feature and downloading a photo from a connected phone",
 		Contacts: []string{
 			"jasonsun@chromium.org",
 			"chromeos-sw-engprod@google.com",

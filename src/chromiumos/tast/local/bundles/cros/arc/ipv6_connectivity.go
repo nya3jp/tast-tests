@@ -17,9 +17,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     IPv6Connectivity,
-		Desc:     "Checks IPv6 connectivity inside ARC",
-		Contacts: []string{"taoyl@google.com", "cros-networking@google.com"},
+		Func:         IPv6Connectivity,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks IPv6 connectivity inside ARC",
+		Contacts:     []string{"taoyl@google.com", "cros-networking@google.com"},
 		// FIXME: Uncomment Attr: after lab supports IPv6.  http://b/161239666
 		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},

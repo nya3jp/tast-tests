@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ChromevoxTTSProcessingWhitespace,
-		Desc: "A test that verifies the way ChromeVox processes whitespace for speech in text areas",
+		Func:         ChromevoxTTSProcessingWhitespace,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "A test that verifies the way ChromeVox processes whitespace for speech in text areas",
 		Contacts: []string{
 			"katie@chromium.org",           // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list

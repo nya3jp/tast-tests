@@ -44,8 +44,9 @@ var resultPropRegexp = regexp.MustCompile(`OK,(\d+)`)
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AuthPerf,
-		Desc: "Measure auth times in ARC",
+		Func:         AuthPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measure auth times in ARC",
 		Contacts: []string{
 			"khmel@chromium.org", // Original author.
 			"niwa@chromium.org",  // Tast port author.

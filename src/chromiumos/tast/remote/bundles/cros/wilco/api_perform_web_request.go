@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: APIPerformWebRequest,
-		Desc: "Test sending PerformWebRequest to the Wilco DTC Support Daemon",
+		Func:         APIPerformWebRequest,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test sending PerformWebRequest to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@google.com",  // Test author
 			"lamzin@google.com", // wilco_dtc_supportd maintainer

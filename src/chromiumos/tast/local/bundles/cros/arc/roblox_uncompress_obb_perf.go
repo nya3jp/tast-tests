@@ -23,8 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: RobloxUncompressOBBPerf,
-		Desc: "Measures time it takes to uncompress Roblox OBB file",
+		Func:         RobloxUncompressOBBPerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Measures time it takes to uncompress Roblox OBB file",
 		Contacts: []string{
 			"ricardoq@chromium.org",
 			"arc-performance+tast@google.com",

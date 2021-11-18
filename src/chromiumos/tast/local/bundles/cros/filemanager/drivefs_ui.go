@@ -19,8 +19,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DrivefsUI,
-		Desc: "Verifies that drivefs can be accessed through the UI",
+		Func:         DrivefsUI,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that drivefs can be accessed through the UI",
 		Contacts: []string{
 			"dats@chromium.org",
 			"austinct@chromium.org",

@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PinnedLauncherApps,
-		Desc: "Test the behavior of PinnedLauncherApps policy: apps in the policy are pinned on the shelf and cannot be unpinned",
+		Func:         PinnedLauncherApps,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Test the behavior of PinnedLauncherApps policy: apps in the policy are pinned on the shelf and cannot be unpinned",
 		Contacts: []string{
 			"snijhara@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",

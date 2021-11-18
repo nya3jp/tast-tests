@@ -21,8 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Smoke,
-		Desc: "Basic smoke test for the Files app",
+		Func:         Smoke,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Basic smoke test for the Files app",
 		Contacts: []string{
 			"chromeos-files-syd@google.com",
 		},

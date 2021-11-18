@@ -37,6 +37,7 @@ type notificationClearTestVal struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NotificationClosePerf,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures animation performance of the clear all animation or individual notification deletion in the message center",
 		Contacts:     []string{"newcomer@chromium.org", "cros-status-area-eng@google.com", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

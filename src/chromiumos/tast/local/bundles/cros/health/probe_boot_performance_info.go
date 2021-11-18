@@ -25,6 +25,7 @@ type bootPerformanceInfo struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ProbeBootPerformanceInfo,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check that we can probe cros_healthd for boot performance info",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		Attr:         []string{"group:mainline"},

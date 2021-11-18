@@ -30,6 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardEmojiSuggestion,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks emoji suggestions with physical keyboard typing",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},

@@ -18,8 +18,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PersistenceWifiSansBluetooth,
-		Desc: "Verifies that WiFi remains operational when Bluetooth is disabled on reboot",
+		Func:         PersistenceWifiSansBluetooth,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Verifies that WiFi remains operational when Bluetooth is disabled on reboot",
 		Contacts: []string{
 			"billyzhao@google.com",            // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827

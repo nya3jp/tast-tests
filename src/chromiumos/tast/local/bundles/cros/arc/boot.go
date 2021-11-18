@@ -25,8 +25,9 @@ type bootConfig struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Boot,
-		Desc: "Checks that Android boots",
+		Func:         Boot,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks that Android boots",
 		Contacts: []string{
 			"arc-core@google.com",
 			"nya@chromium.org", // Tast port author.

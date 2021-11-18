@@ -18,6 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StandardizedTouchscreenLongTap,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test that installs an app and tests that a standard touchscreen long tap works",
 		Contacts:     []string{"davidwelling@google.com", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

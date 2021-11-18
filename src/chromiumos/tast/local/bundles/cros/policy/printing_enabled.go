@@ -33,8 +33,9 @@ type testData struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PrintingEnabled,
-		Desc: "Behavior of PrintingEnabled policy, checking the correspoding menu item restriction and printing preview dialog after setting the policy",
+		Func:         PrintingEnabled,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Behavior of PrintingEnabled policy, checking the correspoding menu item restriction and printing preview dialog after setting the policy",
 		Contacts: []string{
 			"omse@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
