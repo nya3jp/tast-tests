@@ -283,13 +283,13 @@ func getTimeout(ctx context.Context, cl Call) time.Duration {
 	timeout := cl.timeout
 	if timeout > maxRPCTimeout {
 		timeout = maxRPCTimeout
-		testing.ContextLogf(ctx, "Using max timeout %v", timeout)
+		testing.ContextLog(ctx, "Using max timeout ", timeout)
 	}
 	if dl, ok := ctx.Deadline(); ok {
 		newTimeout := dl.Sub(time.Now())
 		if newTimeout < timeout {
 			timeout = newTimeout
-			testing.ContextLogf(ctx, "Using context timeout %v", timeout)
+			testing.ContextLog(ctx, "Using context timeout ", timeout)
 		}
 	}
 	return timeout

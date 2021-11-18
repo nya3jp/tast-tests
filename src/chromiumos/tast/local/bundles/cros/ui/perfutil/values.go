@@ -136,8 +136,7 @@ func (v *Values) Verify(ctx context.Context, expects map[string]float64) []error
 			operator = "<="
 		}
 		if !isGood {
-			errs = append(errs, errors.Errorf(
-				"%s: got %v want %s%v", name, avg, operator, exp))
+			errs = append(errs, errors.Errorf("%s: got %v want %s%v", name, avg, operator, exp))
 		}
 	}
 	return errs

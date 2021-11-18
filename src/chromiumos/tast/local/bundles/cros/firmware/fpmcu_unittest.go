@@ -285,7 +285,7 @@ func getFpmcuConsolePath(ctx context.Context) (string, error) {
 	cmd := testexec.CommandContext(ctx, "dut-control", "raw_fpmcu_console_uart_pty")
 	output, err := cmd.Output()
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get FPMCU UART console: ")
+		return "", errors.Wrap(err, "failed to get FPMCU UART console")
 	}
 	// Example output: raw_fpmcu_console_uart_pty:/dev/pts/8
 	return strings.TrimSpace(strings.Split(string(output), ":")[1]), nil

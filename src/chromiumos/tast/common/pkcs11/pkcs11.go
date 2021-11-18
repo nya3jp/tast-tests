@@ -499,7 +499,7 @@ func HashFileProcessor(ctx context.Context, r hwsec.CmdRunner, input, hash strin
 	cmd := fmt.Sprintf("openssl dgst -binary -%s '%s' > '%s.%s'", hash, input, input, hash)
 	_, err := r.Run(ctx, "sh", "-c", cmd)
 	if err != nil {
-		testing.ContextLog(ctx, fmt.Sprintf("failed to %s the input file %s", hash, input))
+		testing.ContextLogf(ctx, "Failed to %s the input file %s", hash, input)
 		return ""
 	}
 	return fmt.Sprintf("%s.%s", input, hash)
