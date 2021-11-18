@@ -7,14 +7,18 @@ package cellular
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -352,4 +356,64 @@ func (h *Helper) CaptureDBusLogs(ctx context.Context) error {
 	}()
 
 	return nil
+}
+
+// Suspend - Put system into suspended state.
+// Returns duration, error
+func (h *Helper) Suspend(ctx context.Context, wakeUpTimeout time.Duration, checkEarlyWake bool) (time.Duration, error) {
+	const (
+		powerdDBusSuspendPath = "/usr/bin/powerd_dbus_suspend"
+		rtcPath               = "/sys/class/rtc/rtc0/since_epoch"
+		pauseEthernetHookPath = "/run/autotest_pause_ethernet_hook"
+	)
+
+	unlock, err := network.LockCheckNetworkHook(ctx)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to lock the check network hook")
+	}
+	defer unlock()
+
+	rtcTimeSeconds := func() (int, error) {
+		b, err := ioutil.ReadFile(rtcPath)
+		if err != nil {
+			return 0, errors.Wrapf(err, "failed to read the %s", rtcPath)
+		}
+		return strconv.Atoi(strings.TrimSpace(string(b)))
+	}
+
+	if wakeUpTimeout < 2*time.Second {
+		// May cause DUT not wake from sleep if the suspend time is 1 second.
+		// It happens when the current clock (floating point) is close to the
+		// next integer, as the RTC sysfs interface only accepts integers.
+		// Make sure it is larger than or equal to 2.
+		return 0, errors.Errorf("unexpected wake up timeout: got %s, want >= 2 seconds", wakeUpTimeout)
+	}
+
+	startRTC, err := rtcTimeSeconds()
+	if err != nil {
+		return 0, err
+	}
+
+	wakeUpTimeoutSecond := int(wakeUpTimeout.Seconds())
+	if err := testexec.CommandContext(ctx, powerdDBusSuspendPath,
+		"--delay=0", // By default it delays the start of suspending by a second.
+		fmt.Sprintf("--wakeup_timeout=%d", wakeUpTimeoutSecond),  // Ask the powerd_dbus_suspend to spawn a RTC alarm to wake the DUT up after wakeUpTimeoutSecond.
+		fmt.Sprintf("--suspend_for_sec=%d", wakeUpTimeoutSecond), // Request powerd daemon to suspend for wakeUpTimeoutSecond.
+	).Run(); err != nil {
+		return 0, err
+	}
+
+	finishRTC, err := rtcTimeSeconds()
+	if err != nil {
+		return 0, err
+	}
+
+	suspendedInterval := finishRTC - startRTC
+	testing.ContextLogf(ctx, "RTC suspend time: %d", suspendedInterval)
+
+	if checkEarlyWake && suspendedInterval < wakeUpTimeoutSecond {
+		return 0, errors.Errorf("the DUT wakes up too early, got %d, want %d", suspendedInterval, wakeUpTimeoutSecond)
+	}
+
+	return time.Duration(suspendedInterval) * time.Second, nil
 }
