@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d64ec5_40ce56e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-11-19T08:59:18Z",
+      "side": 1,
+      "message": "Hi deanliao@,\nCan we have this temporary solution to make the test green before the actual fix is out? Thanks.",
+      "revId": "33b4c480091fd4026b5ba11b168071c4b21c94ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
