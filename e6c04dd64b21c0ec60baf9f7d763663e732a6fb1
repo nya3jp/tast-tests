@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57adc8e1_642775da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-11-19T09:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6567874e_3b733845",
+      "range": {
+        "startLine": 36,
+        "startChar": 23,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8977b094_964b2d44",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-11-19T08:57:25Z",
       "side": 1,
       "message": "componentListDesc.Message() \u003d\u003d nil seems to be more reasonable.",
+      "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c5f460_05c12eda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-11-19T09:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8977b094_964b2d44",
       "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "706a491f_fed583a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-11-19T09:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71c57481_ce81f766",
+      "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cacf10b1_06b61a15",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-11-19T08:57:25Z",
       "side": 1,
       "message": "ditto",
+      "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57bf7c52_324d6636",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1335267
+      },
+      "writtenOn": "2021-11-19T09:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cacf10b1_06b61a15",
       "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
