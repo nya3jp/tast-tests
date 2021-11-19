@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff2b557e_31b61499",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T12:15:41Z",
+      "side": 1,
+      "message": "By local do you mean on your workstation? How to run it?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c722cd29_95858394",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T12:15:41Z",
+      "side": 1,
+      "message": "This is the same as another variable TLSAddrVar:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go;l\u003d20?q\u003dtast-tests%20testing.RegisterVarString\n\nMaybe we should not duplicate them?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9b9ebf_05e12fe3",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T12:15:41Z",
+      "side": 1,
+      "message": "nit: what does it mean? DUT cannot get access to these buckets?",
+      "range": {
+        "startLine": 123,
+        "startChar": 53,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90eed4dc_a60f6200",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T12:15:41Z",
+      "side": 1,
+      "message": "nit: create update client before it\u0027s first use",
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af1db1a_1c1b9591",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T12:15:41Z",
+      "side": 1,
+      "message": "if retErr !\u003d nil, then you lose its value. Maybe log it?\n\nsame in other places",
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed496867_dbda3e07",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T12:15:41Z",
+      "side": 1,
+      "message": "nit: no need for period for inline comments, also it looks like they can (or should) start with non-capital character",
+      "range": {
+        "startLine": 154,
+        "startChar": 40,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1e2a4b_687db891",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T12:15:41Z",
+      "side": 1,
+      "message": "nit: handle error?",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 16
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
