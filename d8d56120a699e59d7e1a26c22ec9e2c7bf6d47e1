@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc88328_abdd45be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-19T19:52:22Z",
+      "side": 1,
+      "message": "Hi Toni, this cl has been here for a few days. Would it doable to submit it directly by pass CQ? Is that something gardener can help decide? Thanks",
+      "revId": "d8d56120a699e59d7e1a26c22ec9e2c7bf6d47e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
