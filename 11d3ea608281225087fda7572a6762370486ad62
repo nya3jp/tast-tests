@@ -168,6 +168,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed3abf9a_aac7a5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2021-11-19T07:55:32Z",
+      "side": 1,
+      "message": "Why do you have to open the subpage if you don\u0027t do anything with it?",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 45
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a1ea45b_2da928a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
         "patchSetId": 6
@@ -284,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b3eda56_9c2a29e8",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2021-11-19T07:55:32Z",
+      "side": 1,
+      "message": "If I understand correctly, when consecutive parameters share the same type, you only need to declare the type once. These are all bools.",
+      "parentUuid": "58606c3a_86fba246",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 61
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba7732d_49ad0d1a",
@@ -326,6 +373,29 @@
         "startChar": 28,
         "endLine": 5,
         "endChar": 38
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f65adc11_48bdac73",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1417199
+      },
+      "writtenOn": "2021-11-19T07:55:32Z",
+      "side": 1,
+      "message": "I notice that this isn\u0027t used anywhere. Is this just for future tests?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 26
       },
       "revId": "11d3ea608281225087fda7572a6762370486ad62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
