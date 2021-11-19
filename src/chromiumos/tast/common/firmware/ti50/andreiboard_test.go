@@ -84,7 +84,7 @@ func TestAndreiboard(t *testing.T) {
 	t.Log("Read error should result in same error")
 	dut, port = createDut(ctrl, 5)
 	expectRead(port, 5, nil)
-	checkMatch(errors.New("port read error: EOF"), "")(dut.ReadSerialSubmatch(ctx, regexp.MustCompile("abc")))
+	checkMatch(errors.New("port read error (wanted abc): EOF"), "")(dut.ReadSerialSubmatch(ctx, regexp.MustCompile("abc")))
 
 	t.Log("Matched string should be returned")
 	dut, port = createDut(ctrl, 5)
@@ -116,7 +116,7 @@ func TestAndreiboard(t *testing.T) {
 	gomock.InOrder(
 		expectRead(port, 5, []byte("abcde")),
 	)
-	checkMatch(errors.New("buffer is full"), "")(dut.ReadSerialSubmatch(ctx, regexp.MustCompile("f")))
+	checkMatch(errors.New("buffer is full (wanted f)"), "")(dut.ReadSerialSubmatch(ctx, regexp.MustCompile("f")))
 
 	t.Log("Should be able to match after beginning of string")
 	dut, port = createDut(ctrl, 5)
