@@ -166,6 +166,21 @@ func (c *Chrome) Creds() Creds { return c.cfg.Creds() }
 // VKEnabled returns whether virtual keyboard is enabled.
 func (c *Chrome) VKEnabled() bool { return c.cfg.VKEnabled() }
 
+// LoginMode returns the user login mode as string.
+func (c *Chrome) LoginMode() string {
+	switch c.cfg.LoginMode() {
+	case config.FakeLogin:
+		return "Fake"
+	case config.GAIALogin:
+		return "GAIA"
+	case config.GuestLogin:
+		return "Guest"
+	case config.NoLogin:
+		return "NoLogin"
+	}
+	return "Unknown"
+}
+
 // User returns the username that was used to log in to Chrome. Note that in almost all cases you actually want NormalizedUser below.
 func (c *Chrome) User() string { return c.cfg.Creds().User }
 
