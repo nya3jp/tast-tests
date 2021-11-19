@@ -63,6 +63,30 @@
       },
       "revId": "6e88e1c57fd7f420be8bb14cdc7a5bf0756b2188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f3727f_0ac77412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T15:52:21Z",
+      "side": 1,
+      "message": "The one that looks better.",
+      "parentUuid": "12d81bee_c391f09f",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 66
+      },
+      "revId": "6e88e1c57fd7f420be8bb14cdc7a5bf0756b2188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
