@@ -16,6 +16,23 @@
       "message": "This test used to fail but by now it passes. Not sure what made the difference, probably a newer Lacros version.",
       "revId": "84a476fb902d50fe423140a62c9b5cf8d5c444e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f9db0a_5762ca9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T10:52:25Z",
+      "side": 1,
+      "message": "Please use the new browser package here as well.",
+      "revId": "84a476fb902d50fe423140a62c9b5cf8d5c444e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
