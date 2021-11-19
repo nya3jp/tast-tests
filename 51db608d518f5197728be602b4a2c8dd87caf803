@@ -51,6 +51,24 @@
       "parentUuid": "85f98ebc_feff9ca5",
       "revId": "51db608d518f5197728be602b4a2c8dd87caf803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8145bf7d_3167a359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T13:17:08Z",
+      "side": 1,
+      "message": "Yes, you are right.",
+      "parentUuid": "1172c221_eaa9d7ae",
+      "revId": "51db608d518f5197728be602b4a2c8dd87caf803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
