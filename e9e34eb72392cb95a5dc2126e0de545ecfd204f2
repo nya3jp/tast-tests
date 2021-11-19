@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f28711_39e89c8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T05:31:14Z",
+      "side": 1,
+      "message": "Solved a bug btw.",
+      "revId": "e9e34eb72392cb95a5dc2126e0de545ecfd204f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b9ee964_e2351f1b",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-11-19T05:12:13Z",
       "side": 1,
       "message": "nit: naming redundancy. just use attributes. userAction.attributes v.s. userAction.actionAttributes\n\nSame to Tags and UserContext/cfg.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "e9e34eb72392cb95a5dc2126e0de545ecfd204f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "827eb8ae_7d7955ea",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T05:31:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b9ee964_e2351f1b",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -47,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c307502_b7c74bbc",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T05:31:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86ac0cb7_7da93a22",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "e9e34eb72392cb95a5dc2126e0de545ecfd204f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "710cb932_2ff0aa04",
@@ -60,6 +125,30 @@
       "writtenOn": "2021-11-19T05:12:13Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "e9e34eb72392cb95a5dc2126e0de545ecfd204f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c42361a_d32088eb",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T05:31:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "710cb932_2ff0aa04",
       "range": {
         "startLine": 44,
         "startChar": 1,
