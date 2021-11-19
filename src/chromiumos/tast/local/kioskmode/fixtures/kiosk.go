@@ -58,6 +58,8 @@ type kioskFixture struct {
 	// proc is the root Chrome process. Kept to be used in Reset() checking if
 	// Chrome process hasn't restarted.
 	proc *process.Process
+	// kiosk is a reference to the Kiosk intstance.
+	kiosk *kioskmode.Kiosk
 }
 
 func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -68,30 +70,28 @@ func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 
 	k.fdms = fdms
 
-	cr, err := kioskmode.New(ctx,
+	kiosk, cr, err := kioskmode.New(ctx,
 		fdms,
 		kioskmode.AutoLaunch(k.autoLaunchKioskAppID),
 		kioskmode.CustomLocalAccounts(k.localAccounts),
 		kioskmode.ExtraChromeOptions(k.extraOpts...),
 	)
 	if err != nil {
-		// TODO: Add kiosk.Close() when implementing b/207112459.
 		s.Fatal("Failed to create Chrome in kiosk mode: ", err)
 	}
 
 	proc, err := ashproc.Root()
 	if err != nil {
-		// TODO: Replace with kiosk.Close() when implementing b/207112459.
-		if err := policyutil.ServeAndRefresh(ctx, k.fdms, k.cr, []policy.Policy{k.localAccounts}); err != nil {
-			testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test: ", err)
+		if err := kiosk.Close(ctx); err != nil {
+			s.Error("There was an error while closing Kiosk: ", err)
 		}
-		cr.Close(ctx)
 		s.Fatal("Failed to get root Chrome PID: ", err)
 	}
 
 	chrome.Lock()
 	k.cr = cr
 	k.proc = proc
+	k.kiosk = kiosk
 	return fixtures.NewFixtData(k.cr, k.fdms)
 }
 
@@ -102,17 +102,8 @@ func (k *kioskFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 		s.Fatal("Chrome not yet started")
 	}
 
-	// TODO: Replace with kiosk.Close() when implementing b/207112459.
-	// When applying an empty policies slice, Chrome crashes. Hence just local
-	// accounts are applied here. That way Chrome will load them but will
-	// start normally. If the next tests want to use policy they will override
-	// them.
-	if err := policyutil.ServeAndRefresh(ctx, k.fdms, k.cr, []policy.Policy{k.localAccounts}); err != nil {
-		s.Error("Failed to server local accounts on teardown: ", err)
-	}
-
-	if err := k.cr.Close(ctx); err != nil {
-		s.Error("Failed to close Chrome connection: ", err)
+	if err := k.kiosk.Close(ctx); err != nil {
+		s.Error("There was an error while closing Kiosk: ", err)
 	}
 
 	k.cr = nil

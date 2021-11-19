@@ -7,11 +7,11 @@ package kiosk
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/kioskmode"
-	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
@@ -25,7 +25,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "fakeDMSEnrolled",
+		Fixture:      fixture.FakeDMSEnrolled,
 		Params: []testing.Param{
 			{
 				Name: "ash",
@@ -42,7 +42,7 @@ func init() {
 func LaunchWithDeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 	chromeOptions := s.Param().(chrome.Option)
-	cr, err := kioskmode.New(
+	kiosk, _, err := kioskmode.New(
 		ctx,
 		fdms,
 		kioskmode.DefaultLocalAccounts(),
@@ -56,10 +56,5 @@ func LaunchWithDeviceEphemeralUsersEnabled(ctx context.Context, s *testing.State
 		s.Error("Failed to start Chrome in Kiosk mode: ", err)
 	}
 
-	defer cr.Close(ctx)
-	// Serving and refreshing of empty policies list is necessary because of
-	// the AutoLaunch option used for Kiosk mode. If policies are only cleaned
-	// before starting new Chrome instance then Kiosk mode starts
-	// automatically.
-	defer policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{})
+	defer kiosk.Close(ctx)
 }
