@@ -22,6 +22,30 @@
       },
       "revId": "63c65e3183de46ba3100fdf5e9e6658cf5e6bcd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4659da47_178a3dad",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T13:12:35Z",
+      "side": 1,
+      "message": "Good point 👍 I need to rebase.",
+      "parentUuid": "3ed76fcf_beecd092",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 59
+      },
+      "revId": "63c65e3183de46ba3100fdf5e9e6658cf5e6bcd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
