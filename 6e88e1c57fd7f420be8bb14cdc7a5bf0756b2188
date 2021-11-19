@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf931da8_a029a3a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T14:55:28Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6e88e1c57fd7f420be8bb14cdc7a5bf0756b2188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fb3b4dc_d55c2cae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T14:55:28Z",
+      "side": 1,
+      "message": "minor nit: can you order these by length?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 66
+      },
+      "revId": "6e88e1c57fd7f420be8bb14cdc7a5bf0756b2188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
