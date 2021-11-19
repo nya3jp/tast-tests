@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547c3cd1_68d500c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-19T18:43:03Z",
+      "side": 1,
+      "message": "The go code looks fine, but I think someone from the team is gonna have to look at the ITS repo/patch setup.",
+      "revId": "4848735e9879ad5238cdfd549030821be2d9ea26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa69e0d_97ca6571",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-19T18:43:03Z",
+      "side": 1,
+      "message": "arm?",
+      "range": {
+        "startLine": 36,
+        "startChar": 57,
+        "endLine": 36,
+        "endChar": 60
+      },
+      "revId": "4848735e9879ad5238cdfd549030821be2d9ea26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
