@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3fbb84_4faf0af7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-11-19T21:46:12Z",
+      "side": 1,
+      "message": "Seems reviewers are happy with the more minimal implementation, so we\u0027ll go that route. Thanks Hidehiko for your attention!",
+      "revId": "0406a7b256b6d12253049ac5b28dee845c9abcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd05ee91_a0eca083",
