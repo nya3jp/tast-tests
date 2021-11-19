@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "257ec34f_42004278",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2021-11-19T22:57:36Z",
+      "side": 1,
+      "message": "SGTM, just mention that context somewhere?",
+      "parentUuid": "1759736c_13c96ada",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4aac49cf_d96f8796",
         "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
         "patchSetId": 6
