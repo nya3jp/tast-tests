@@ -9,7 +9,6 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
-	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -30,13 +29,12 @@ import (
 const resetTimeout = 1 * time.Minute
 
 // NewNearbyShareFixture creates a fixture for Nearby Share tests in different configurations.
-func NewNearbyShareFixture(dataUsage nearbycommon.DataUsage, visibility nearbycommon.Visibility, enabledFeatures []string) testing.FixtureImpl {
+func NewNearbyShareFixture(dataUsage nearbycommon.DataUsage, visibility nearbycommon.Visibility, enabledFeatures, testFiles []string) testing.FixtureImpl {
 	return &nearbyShareFixture{
 		dataUsage:       dataUsage,
 		visibility:      visibility,
 		enabledFeatures: enabledFeatures,
-		// TODO(crbug/1127165): Remove after data is supported in fixture.
-		testFiles: []string{"small_jpg.zip", "small_png.zip", "big_txt.zip"},
+		testFiles:       testFiles,
 	}
 }
 
@@ -44,7 +42,8 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOfflineAllContacts",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'All Contacts'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityAllContacts, []string{}),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityAllContacts, []string{}, nearbycommon.OfflineFiles),
+		Data:     nearbycommon.OfflineFiles,
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -63,7 +62,8 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOfflineSomeContacts",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilitySelectedContacts, []string{}),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilitySelectedContacts, []string{}, nearbycommon.OfflineFiles),
+		Data:     nearbycommon.OfflineFiles,
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -82,7 +82,8 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOnlineAllContacts",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'All Contacts'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityAllContacts, []string{}),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityAllContacts, []string{}, nearbycommon.OnlineFiles),
+		Data:     nearbycommon.OnlineFiles,
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -101,7 +102,8 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOnlineSomeContacts",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'Some Contacts' with the sender selected as a contact on the receiver side",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilitySelectedContacts, []string{}),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilitySelectedContacts, []string{}, nearbycommon.OnlineFiles),
+		Data:     nearbycommon.OnlineFiles,
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -120,7 +122,8 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOnlineNoOne",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Online' and 'Visibility' set to 'No One'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityNoOne, []string{}),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityNoOne, []string{}, nearbycommon.OnlineFiles),
+		Data:     nearbycommon.OnlineFiles,
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -139,7 +142,8 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOfflineNoOne",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityNoOne, []string{}),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityNoOne, []string{}, nearbycommon.OfflineFiles),
+		Data:     nearbycommon.OfflineFiles,
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -158,7 +162,8 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "nearbyShareRemoteDataUsageOfflineNoOneBackgroundScanning",
 		Desc:     "Fixture for Nearby Share's CB -> CB tests. Each DUT is signed in with a real GAIA account that are in each other's contacts. Configured with 'Data Usage' set to 'Offline' and 'Visibility' set to 'No One'",
-		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityNoOne, []string{"BluetoothAdvertisementMonitoring", "NearbySharingBackgroundScanning"}),
+		Impl:     NewNearbyShareFixture(nearbycommon.DataUsageOffline, nearbycommon.VisibilityNoOne, []string{"BluetoothAdvertisementMonitoring", "NearbySharingBackgroundScanning"}, nearbycommon.OfflineFiles),
+		Data:     nearbycommon.OfflineFiles,
 		Contacts: []string{"chromeos-sw-engprod@google.com"},
 		Vars: []string{
 			"nearbyshare.cros_username",
@@ -223,24 +228,9 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	remoteDir := strings.TrimSpace(string(tempdir))
 	f.remoteFilePath = remoteDir
 
-	// TODO(crbug/1127165): Remove after data is supported in fixture.
-	// Workaround to use data files downloaded in other tests.
-	const (
-		prebuiltLocalDataPath = "/usr/local/tast/data/chromiumos/tast/remote/bundles/cros/nearbyshare/data"
-		builtLocalDataPath    = "../platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/nearbyshare/data"
-	)
-	pathToUse := builtLocalDataPath
-	// Use the built local data path if it exists, and fall back to the prebuilt data path otherwise.
-	testFileCheck := filepath.Join(builtLocalDataPath, f.testFiles[0])
-	if _, err := os.Stat(testFileCheck); os.IsNotExist(err) {
-		pathToUse = prebuiltLocalDataPath
-	} else if err != nil {
-		s.Fatal("Failed to check if built local data path exists: ", err)
-	}
-	s.Log("Moving data files to DUT1 (Sender)")
 	for _, data := range f.testFiles {
 		remoteFilePath := filepath.Join(remoteDir, data)
-		if _, err := linuxssh.PutFiles(ctx, d1.Conn(), map[string]string{filepath.Join(pathToUse, data): remoteFilePath}, linuxssh.DereferenceSymlinks); err != nil {
+		if _, err := linuxssh.PutFiles(ctx, d1.Conn(), map[string]string{s.DataPath(data): remoteFilePath}, linuxssh.DereferenceSymlinks); err != nil {
 			s.Fatalf("Failed to send data to remote data path %v: %v", remoteDir, err)
 		}
 	}
