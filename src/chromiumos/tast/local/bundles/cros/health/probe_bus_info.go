@@ -36,7 +36,7 @@ func init() {
 			Name:              "thunderbolt",
 			ExtraAttr:         []string{"informational"},
 			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix")),
 		}},
 	})
 }
@@ -120,6 +120,7 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 			SubClass:    fmt.Sprintf("%02x", udIn.SubClassID),
 			Protocol:    fmt.Sprintf("%02x", udIn.ProtocolID),
 		}
+
 		for _, ifc := range udIn.Interfaces {
 			udOut.Interfaces = append(udOut.Interfaces, usb.Interface{
 				InterfaceNumber: ifc.InterfaceNumber,
@@ -148,6 +149,10 @@ func validateThundeboltDevices(devs []busDevice) error {
 			return errors.New("failed to enable SecurityLevel")
 		}
 
+		if len(devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces) < 1 {
+			return errors.New("failed to get the connected Thunderbolt device")
+
+		}
 		for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
 			if !interfaces.Authorized {
 				return errors.New("failed to authorize the Thunderbolt device")

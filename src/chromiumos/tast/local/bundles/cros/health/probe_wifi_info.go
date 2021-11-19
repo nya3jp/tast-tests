@@ -36,7 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		HardwareDeps: hwdep.D(hwdep.Model("brya")),
+		HardwareDeps: hwdep.D(hwdep.Model("brya", "redrix")),
 		Fixture:      "crosHealthdRunning",
 	})
 }

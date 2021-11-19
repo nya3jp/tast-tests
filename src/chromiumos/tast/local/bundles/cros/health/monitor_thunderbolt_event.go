@@ -29,7 +29,7 @@ func init() {
 			"intel-chrome-system-automation-team@intel.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Model("brya")),
+		HardwareDeps: hwdep.D(hwdep.Model("brya", "redrix")),
 		Fixture:      "crosHealthdRunning",
 	})
 }
