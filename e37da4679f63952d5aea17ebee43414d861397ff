@@ -16,6 +16,24 @@
       "message": "From my previous experience, you might need CR+2 from Tast-owners to cherry-pick this CL.",
       "revId": "e37da4679f63952d5aea17ebee43414d861397ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c26137bd_a1cd8bcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-19T03:12:15Z",
+      "side": 1,
+      "message": "Got it, thanks for the hint.",
+      "parentUuid": "0c887aa8_794952f5",
+      "revId": "e37da4679f63952d5aea17ebee43414d861397ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
