@@ -6,6 +6,8 @@ package ti50
 
 import (
 	"context"
+	"os"
+	"path/filepath"
 	"regexp"
 
 	"chromiumos/tast/common/firmware/serial"
@@ -58,6 +60,25 @@ func (a *Andreiboard) Close(ctx context.Context) error {
 	return nil
 }
 
+func appendToLogFile(ctx context.Context, buf []byte) error {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("failed to get directory for saving files")
+	}
+	f, err := os.OpenFile(filepath.Join(dir, "andreiboard.log"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		return err
+	}
+	if _, err := f.Write(buf); err != nil {
+		f.Close()
+		return err
+	}
+	if err := f.Close(); err != nil {
+		return err
+	}
+	return nil
+}
+
 // ReadSerialSubmatch reads from the serial port until regex is matched.
 func (a *Andreiboard) ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp) (output [][]byte, err error) {
 	if err := a.openPort(ctx); err != nil {
@@ -76,15 +97,20 @@ func (a *Andreiboard) ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp)
 			testing.ContextLog(ctx, "Buffer full, contents:")
 			testing.ContextLog(ctx, string(buf))
 			a.targetBufferUnreadLen = copy(a.targetBufferUnread, buf)
-			return nil, errors.New("buffer is full")
+			return nil, errors.Errorf("buffer is full (wanted %s)", re)
 		}
 		current, err := a.port.Read(ctx, buf[total:])
+		if current > 0 {
+			if err := appendToLogFile(ctx, buf[total:total+current]); err != nil {
+				testing.ContextLog(ctx, "Log file error: ", err)
+			}
+		}
 		total += current
 		if err != nil {
 			testing.ContextLog(ctx, "Read error, buffer contents:")
 			testing.ContextLog(ctx, string(buf[:total]))
 			a.targetBufferUnreadLen = copy(a.targetBufferUnread, buf[:total])
-			return nil, errors.Wrap(err, "port read error")
+			return nil, errors.Wrapf(err, "port read error (wanted %s)", re)
 		}
 		if current == 0 {
 			break
