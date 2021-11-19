@@ -34,6 +34,24 @@
       "parentUuid": "270ab853_24a67a5f",
       "revId": "a2ab3a130bd0d8dc68c9fd80f8dc69ffcee88730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5bd4ed_28cc18cf",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-19T10:41:59Z",
+      "side": 1,
+      "message": "My point is that WithBackground is unused except for a test of CreateTarget itself. The only other value is WithNewWindow.",
+      "parentUuid": "eea25e2f_b4d37580",
+      "revId": "a2ab3a130bd0d8dc68c9fd80f8dc69ffcee88730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

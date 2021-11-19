@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac7f55b_d83684d8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-19T10:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e96029_d4792836",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95ba7f98_3469c6f7",
