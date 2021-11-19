@@ -68,7 +68,7 @@ func init() {
 		}, {
 			Name:              "keylocker",
 			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix")),
 		}},
 	})
 }
