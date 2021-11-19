@@ -33,6 +33,24 @@
       "message": "If you are using the ash chrome, I think you will need \"chrome\" as software dependency.",
       "revId": "51db608d518f5197728be602b4a2c8dd87caf803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1172c221_eaa9d7ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-19T12:58:54Z",
+      "side": 1,
+      "message": "I have \"chrome\" in \"SoftwareDeps\". As I understand, it\u0027s required for Lacros tests too?",
+      "parentUuid": "85f98ebc_feff9ca5",
+      "revId": "51db608d518f5197728be602b4a2c8dd87caf803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
