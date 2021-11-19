@@ -7,12 +7,18 @@ package health
 import (
 	"context"
 	"fmt"
+	"strconv"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 
+	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/usb"
+	"chromiumos/tast/local/bundles/cros/typec/typecutils"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -29,24 +35,73 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
-			Val: false,
+			Val:     false,
+			Fixture: "crosHealthdRunning",
 		}, {
-			Name:              "thunderbolt",
-			ExtraAttr:         []string{"informational"},
-			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			Name:      "thunderbolt",
+			ExtraAttr: []string{"informational"},
+			Val:       true,
+			// TODO 207569436 created partner bug and working on generic solution.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
+			Fixture:           "chromeLoggedIn",
 		}},
 	})
 }
 
 func ProbeBusInfo(ctx context.Context, s *testing.State) {
+
+	if s.Param().(bool) {
+		// For Thunderbolt TR devices ,first we have to disable the data procetion then plug the device.
+		// This Code will work for all TBT(AR,TR) device.
+
+		port, err := typecutils.CheckPortsForTBTPartner(ctx)
+		if err != nil {
+			s.Fatal("Failed to determine Thunderbolt device from PD identity: ", err)
+		}
+		s.Logf("Thunderbolt Port is: %d", port)
+		if port == -1 {
+			s.Fatal("Failed no Thunderbolt device connected to DUT")
+		}
+		portStr := strconv.Itoa(port)
+		cr := s.FixtValue().(*chrome.Chrome)
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create Test API connection: ", err)
+		}
+		ctxForCleanUp := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+
+		if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "suspend", portStr).Run(); err != nil {
+			s.Fatal("Failed to simulate unplug: ", err)
+		}
+		defer func() {
+			if err := testexec.CommandContext(ctxForCleanUp, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
+				s.Log("Failed to perform replug: ", err)
+			}
+		}()
+
+		if err := croshealthd.DisableDataAccessProtection(ctx, tconn); err != nil {
+			s.Fatal("Failed to disable data access protection: ", err)
+		}
+
+		if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
+			s.Fatal("Failed to simulate replug: ", err)
+		}
+
+		// expected sleep for 10 seconds, to detect the thunderbolt device values.
+		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+			s.Fatal("Failed to sleep: ", err)
+		}
+	}
+
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBus}
 	var res busResult
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &res); err != nil {
 		s.Fatal("Failed to get bus telemetry info: ", err)
 	}
+
 	var pciDevs []busDevice
 	var usbDevs []busDevice
 	var tbtDevs []busDevice
@@ -61,12 +116,14 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 			s.Fatal("Unknown types of bus devices: ", d)
 		}
 	}
+
 	if s.Param().(bool) {
 		if err := validateThundeboltDevices(tbtDevs); err != nil {
 			s.Fatal("Failed to validate Thunderbolt devices: ", err)
 		}
 		return
 	}
+
 	if err := validatePCIDevices(ctx, pciDevs); err != nil {
 		s.Fatal("PCI validation failed: ", err)
 	}
@@ -143,12 +200,14 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 }
 
 func validateThundeboltDevices(devs []busDevice) error {
+	checkThunderboltInterfaces := 0
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
 		}
 
 		for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
+			checkThunderboltInterfaces++
 			if !interfaces.Authorized {
 				return errors.New("failed to authorize the Thunderbolt device")
 			}
@@ -185,8 +244,57 @@ func validateThundeboltDevices(devs []busDevice) error {
 			return errors.New("failed to get Thunderbolt VendorName")
 		}
 	}
+	if checkThunderboltInterfaces < 1 {
+		return errors.New("failed to get  connected Thunderbolt devices,check Thunderbolt device connected or not")
+	}
 	return nil
 }
+
+/*
+func disableDataAccessProtection(ctx context.Context, tconn *chrome.TestConn) error {
+	// searchBox := nodewith.Name("Search settings").Role(role.SearchBox)
+	disableButton := nodewith.Name("Disable").Role(role.Button)
+	securityPrivacy := nodewith.Name("Security and Privacy").Role(role.Link)
+	dataAccessToggle := nodewith.Name("Data access protection for peripherals").Role(role.ToggleButton)
+
+	// Launch the Settings app and wait for it to open.
+	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
+		return errors.Wrap(err, "failed to launch the Settings app")
+	}
+
+	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to appear settings app in the shelf")
+	}
+
+	cui := uiauto.New(tconn)
+	if err := cui.LeftClick(securityPrivacy)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to left click %q with error", securityPrivacy)
+	}
+
+	if err := cui.LeftClick(dataAccessToggle)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to left click %q with error", dataAccessToggle)
+	}
+
+	if err := cui.WaitUntilExists(disableButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for element")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		found, err := cui.IsNodeFound(ctx, disableButton)
+		if err != nil {
+			return errors.Wrap(err, "failed to find disablebutton")
+		}
+		if found {
+			if err := cui.LeftClick(disableButton)(ctx); err != nil {
+				return errors.New("failed to left click disableButton")
+			}
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to find and click %q element", disableButton)
+	}
+	return nil
+}*/
 
 // busResult represents the BusResult in cros-healthd mojo interface.
 type busResult struct {

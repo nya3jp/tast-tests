@@ -14,10 +14,18 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/upstart"
+	"chromiumos/tast/testing"
 )
 
 // TelemCategory represents a category flag that can be passed to the
@@ -122,5 +130,50 @@ func RunAndParseJSONTelem(ctx context.Context, params TelemParams, outDir string
 		return errors.Wrapf(err, "failed to decode data [%q]", b)
 	}
 
+	return nil
+}
+
+// DisableDataAccessProtection for Thunderbolt devices.
+func DisableDataAccessProtection(ctx context.Context, tconn *chrome.TestConn) error {
+	disableButton := nodewith.Name("Disable").Role(role.Button)
+	securityPrivacy := nodewith.Name("Security and Privacy").Role(role.Link)
+	dataAccessToggle := nodewith.Name("Data access protection for peripherals").Role(role.ToggleButton)
+
+	// Launch the Settings app and wait for it to open.
+	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
+		return errors.Wrap(err, "failed to launch the Settings app")
+	}
+
+	if err := ash.WaitForApp(ctx, tconn, apps.Settings.ID, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to appear settings app in the shelf")
+	}
+
+	cui := uiauto.New(tconn)
+	if err := cui.LeftClick(securityPrivacy)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to left click %q with error", securityPrivacy)
+	}
+
+	if err := cui.LeftClick(dataAccessToggle)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to left click %q with error", dataAccessToggle)
+	}
+
+	if err := cui.WaitUntilExists(disableButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for element")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		found, err := cui.IsNodeFound(ctx, disableButton)
+		if err != nil {
+			return errors.Wrap(err, "failed to find disablebutton")
+		}
+		if found {
+			if err := cui.LeftClick(disableButton)(ctx); err != nil {
+				return errors.New("failed to left click disableButton")
+			}
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to find and click %q element", disableButton)
+	}
 	return nil
 }
