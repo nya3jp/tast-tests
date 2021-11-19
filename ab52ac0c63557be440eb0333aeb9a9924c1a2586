@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d90db25_ca5136c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T08:14:24Z",
+      "side": 1,
+      "message": "nit: add remote management here as well. We should be responsible for version management.",
+      "revId": "ab52ac0c63557be440eb0333aeb9a9924c1a2586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc09154_1af37f57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T08:14:24Z",
+      "side": 1,
+      "message": "Sometimes -2 will not be available (right after branch for ~1 week). Maybe -3 to be on the safe side.",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "ab52ac0c63557be440eb0333aeb9a9924c1a2586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86fa57da_c406ff83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T08:14:24Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "ab52ac0c63557be440eb0333aeb9a9924c1a2586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2eda81d_0acb8dea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T08:14:24Z",
+      "side": 1,
+      "message": "nit: use a timeout instead here",
+      "revId": "ab52ac0c63557be440eb0333aeb9a9924c1a2586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7af45b7c_bdc65c9b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T08:14:24Z",
+      "side": 1,
+      "message": "Is this needed, we are going forward again",
+      "range": {
+        "startLine": 101,
+        "startChar": 71,
+        "endLine": 101,
+        "endChar": 81
+      },
+      "revId": "ab52ac0c63557be440eb0333aeb9a9924c1a2586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02075f36_318f010f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T08:14:24Z",
+      "side": 1,
+      "message": "restore?",
+      "range": {
+        "startLine": 118,
+        "startChar": 40,
+        "endLine": 118,
+        "endChar": 51
+      },
+      "revId": "ab52ac0c63557be440eb0333aeb9a9924c1a2586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
