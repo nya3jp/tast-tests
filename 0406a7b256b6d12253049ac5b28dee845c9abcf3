@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "814c5a8d_b885012f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-11-19T19:57:40Z",
+      "side": 1,
+      "message": "Hi all, thanks for the detailed comments.\n\nI think I may have been operating under the old tauto mindset to find the most complete implementation of a feature (in this case Suspend) for future flexibility.\n\nAfter receiving this feedback I checked around, and it appears each test that requires suspend simply calls powerd_dbus_suspend using whatever arguments that test requires. Let me upload a CL that implements my new test using this simpler convention, and if everyone is happy, I will abandon this helper CL.",
+      "revId": "0406a7b256b6d12253049ac5b28dee845c9abcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd05ee91_a0eca083",
