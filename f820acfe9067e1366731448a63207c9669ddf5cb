@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8004406_f25359bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_mouse_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-19T04:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fec94fa_e6d91d1a",
+      "revId": "f820acfe9067e1366731448a63207c9669ddf5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17300244_6e01fde6",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-11-18T17:43:39Z",
       "side": 1,
       "message": "Is it OK that it uses input.Mouse below for the test? I assume yes but just wanted to double check since this fixture sounds like it could require touches.",
+      "revId": "f820acfe9067e1366731448a63207c9669ddf5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f2b5c2_075a5520",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_mouse_scroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-19T04:53:18Z",
+      "side": 1,
+      "message": "Yes, TouchModeMouse is a feature that converts mouse events to simulated touch events for phone-optimized Android apps, which means the feature is for clamshell Chromebook devices.",
+      "parentUuid": "17300244_6e01fde6",
       "revId": "f820acfe9067e1366731448a63207c9669ddf5cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1422acb6_ea661d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-19T04:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "217d5c91_128b3ffa",
+      "revId": "f820acfe9067e1366731448a63207c9669ddf5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb3aad3f_0aeb37df",
@@ -99,6 +153,24 @@
       "writtenOn": "2021-11-18T17:43:39Z",
       "side": 1,
       "message": "nit: could you add some a comment about what this is doing?",
+      "revId": "f820acfe9067e1366731448a63207c9669ddf5cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea18a94_14264a49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1195459
+      },
+      "writtenOn": "2021-11-19T04:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb3aad3f_0aeb37df",
       "revId": "f820acfe9067e1366731448a63207c9669ddf5cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
