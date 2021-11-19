@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34d05f4_51a2ea4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T13:17:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac1677c7_f0a1cc2d",
+      "revId": "ac766afbe2e42c53b31b9fb45077623cb814c934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00b7450e_6f829326",
