@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a366343c_8bb2d5a6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-19T02:33:41Z",
+      "side": 1,
+      "message": "\"a user\" instead of \"an user\"",
+      "parentUuid": "b5263677_62899404",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91789199_674d2aea",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
         "patchSetId": 7
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Yes. That\u0027s exactly why I made the validation as optional of an user action.\n\nThe validation result needs to reflect the UserAction result, so it needs to be part of the user action definition. \n\nBasically each user action is expected to be self validated, but it can be ignored as well.",
       "parentUuid": "dc0f9693_d1e4250c",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab1cea3_85fdfe97",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-19T02:33:41Z",
+      "side": 1,
+      "message": "I think an action is validated by returning error\u003dnil. The validateResult might be commonly used in inputs testing, but not for all. \n\nI don\u0027t see a need of separating validation from the action itself as an optional field. That being said, if validation is part of a user action, it should always being included in UserAction.action",
+      "parentUuid": "57dd083a_0d33bde1",
       "range": {
         "startLine": 43,
         "startChar": 1,
