@@ -34,3 +34,28 @@ func Gateway(ctx context.Context, ifname string) (string, error) {
 	gateway := m[1]
 	return gateway, nil
 }
+
+// BlockPortalDetector blocks outgoing HTTP and HTTPS packets.
+// When captive portal is checked in this state, it will return the state of "no-connectivity" of captive portal.
+func BlockPortalDetector(ctx context.Context) error {
+	for _, cmd := range []string{"iptables", "ip6tables"} {
+		for _, p := range []string{"80", "443"} {
+			if err := testexec.CommandContext(ctx, cmd, "-I", "OUTPUT", "-p", "tcp", "--dport", p, "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
+// UnblockPortalDetector unblocks outgoing HTTP and HTTPS packets.
+func UnblockPortalDetector(ctx context.Context) error {
+	for _, cmd := range []string{"iptables", "ip6tables"} {
+		for _, p := range []string{"80", "443"} {
+			if err := testexec.CommandContext(ctx, cmd, "-D", "OUTPUT", "-p", "tcp", "--dport", p, "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
