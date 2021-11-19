@@ -22,6 +22,30 @@
       },
       "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "458424cf_a354d3e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-19T01:12:46Z",
+      "side": 1,
+      "message": "Hi Kerker,\n\nThanks for suggestion.\n\nBTW, there are other models in board brya, e.g. kano, anahera. Don\u0027t they need this? I am not sure.\n\n@jason/Kerker\nIs there any command to check model supports  memory_encryption feature or not?\nPlease provide.\n\nThanks,\njilani",
+      "parentUuid": "d7199138_eaa5ba45",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
