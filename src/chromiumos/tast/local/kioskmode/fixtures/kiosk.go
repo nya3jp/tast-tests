@@ -14,6 +14,8 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -21,23 +23,23 @@ import (
 	"chromiumos/tast/local/kioskmode"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name:     "kioskLoggedIn",
+		Name:     fixture.KioskLoggedIn,
 		Desc:     "Kiosk mode started with default app setup, DUT is enrolled",
 		Contacts: []string{"kamilszarek@google.com", "alt-modalities-stability@google.com"},
 		Impl: &kioskFixture{
 			autoLaunchKioskAppID: kioskmode.WebKioskAccountID,
+			localAccounts:        &kioskmode.DefaultLocalAccountsConfiguration,
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		PostTestTimeout: 15 * time.Second,
-		Parent:          "fakeDMSEnrolled",
+		Parent:          fixture.FakeDMSEnrolled,
 	})
 }
 
@@ -46,11 +48,15 @@ type kioskFixture struct {
 	cr *chrome.Chrome
 	// fdms is the already running DMS server from the parent fixture.
 	fdms *fakedms.FakeDMS
-	// extraOpts contains extra options passed to Chrome.
-	extraOpts []chrome.Option
+	// localAccounts is the policy with local accounts configuration that will
+	// be applied for Kiosk mode.
+	localAccounts *policy.DeviceLocalAccounts
 	// autoLaunchKioskAppID is a preselected Kiosk app ID used for autolaunch.
 	autoLaunchKioskAppID string
-	// proc is the root chrome process.
+	// extraOpts contains extra options passed to Chrome.
+	extraOpts []chrome.Option
+	// proc is the root Chrome process. Kept to be used in Reset() checking if
+	// Chrome process hasn't restarted.
 	proc *process.Process
 }
 
@@ -62,72 +68,30 @@ func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 
 	k.fdms = fdms
 
-	func(ctx context.Context) {
-		// Start the first Chrome instance that will fetch policies from the
-		// FakeDMS.
-		testing.ContextLog(ctx, "kioskLoggedIn - starting Chrome to set Kiosk policies")
-		cr, err := chrome.New(ctx,
-			chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-			chrome.DMSPolicy(fdms.URL),
-			chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
-			chrome.KeepEnrollment(),
-		)
-		if err != nil {
-			s.Fatal("Chrome login failed: ", err)
-		}
-
-		// Close the first Chrome instance.
-		defer cr.Close(ctx)
-
-		// Prepare setup for Kiosk mode with autolaunch - set needed policies.
-		if err := kioskmode.SetAutolaunch(ctx, fdms, cr, k.autoLaunchKioskAppID); err != nil {
-			s.Fatal("Failed to update policies with Kiosk configuration: ", err)
-		}
-	}(ctx)
-
-	// Reader will be used to check if Kiosk has started successfully.
-	reader, err := syslog.NewReader(ctx, syslog.Program(syslog.Chrome))
+	cr, err := kioskmode.New(ctx,
+		fdms,
+		kioskmode.AutoLaunch(k.autoLaunchKioskAppID),
+		kioskmode.CustomLocalAccounts(k.localAccounts),
+		kioskmode.ExtraChromeOptions(k.extraOpts...),
+	)
 	if err != nil {
-		s.Fatal("Failed to start log reader: ", err)
-	}
-	defer reader.Close()
-
-	opts := []chrome.Option{
-		chrome.DMSPolicy(fdms.URL),
-		chrome.NoLogin(),
-		chrome.KeepEnrollment(),
-	}
-	opts = append(opts, k.extraOpts...)
-
-	// Restart Chrome with this Kiosk auto starts.
-	testing.ContextLog(ctx, "kioskLoggedIn - starting second Chrome instance. Launching Kiosk mode")
-	cr, err := chrome.New(ctx, opts...)
-	if err != nil {
-		s.Fatal("Chrome restart failed: ", err)
-	}
-	ok = false
-	defer func(ctx context.Context) {
-		if !ok {
-			if err := cr.Close(ctx); err != nil {
-				testing.ContextLog(ctx, "Failed to close Chrome: ", err)
-			}
-		}
-	}(ctx)
-
-	// Make sure Kiosk has successfully started.
-	if err := kioskmode.ConfirmKioskStarted(ctx, reader); err != nil {
-		s.Fatal("Problem while checking Chrome logs for Kiosk related entries: ", err)
+		// TODO: Add kiosk.Close() when implementing b/207112459.
+		s.Fatal("Failed to create Chrome in kiosk mode: ", err)
 	}
 
 	proc, err := ashproc.Root()
 	if err != nil {
+		// TODO: Replace with kiosk.Close() when implementing b/207112459.
+		if err := policyutil.ServeAndRefresh(ctx, k.fdms, k.cr, []policy.Policy{k.localAccounts}); err != nil {
+			testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test: ", err)
+		}
+		cr.Close(ctx)
 		s.Fatal("Failed to get root Chrome PID: ", err)
 	}
 
 	chrome.Lock()
 	k.cr = cr
 	k.proc = proc
-	ok = true
 	return fixtures.NewFixtData(k.cr, k.fdms)
 }
 
@@ -136,6 +100,15 @@ func (k *kioskFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 
 	if k.cr == nil {
 		s.Fatal("Chrome not yet started")
+	}
+
+	// TODO: Replace with kiosk.Close() when implementing b/207112459.
+	// When applying an empty policies slice, Chrome crashes. Hence just local
+	// accounts are applied here. That way Chrome will load them but will
+	// start normally. If the next tests want to use policy they will override
+	// them.
+	if err := policyutil.ServeAndRefresh(ctx, k.fdms, k.cr, []policy.Policy{k.localAccounts}); err != nil {
+		s.Error("Failed to server local accounts on teardown: ", err)
 	}
 
 	if err := k.cr.Close(ctx); err != nil {

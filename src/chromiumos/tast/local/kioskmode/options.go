@@ -21,7 +21,7 @@ func ExtraPolicies(p []policy.Policy) Option {
 // in kioskmode.defaultLocalAccountsConfiguration.
 func DefaultLocalAccounts() Option {
 	return func(cfg *MutableConfig) error {
-		cfg.DeviceLocalAccounts = &defaultLocalAccountsConfiguration
+		cfg.DeviceLocalAccounts = &DefaultLocalAccountsConfiguration
 		return nil
 	}
 }

@@ -55,43 +55,16 @@ var (
 			AppId: &kioskAppID,
 		}}
 
-	// defaultLocalAccountsConfiguration holds default Kiosks accounts
+	// DefaultLocalAccountsConfiguration holds default Kiosks accounts
 	// configuration. Each, when setting public account policies can be
 	// referred by id: KioskAppAccountID and WebKioskAccountID
-	defaultLocalAccountsConfiguration = policy.DeviceLocalAccounts{
+	DefaultLocalAccountsConfiguration = policy.DeviceLocalAccounts{
 		Val: []policy.DeviceLocalAccountInfo{
 			kioskAppPolicy,
 			webKioskPolicy,
 		},
 	}
 )
-
-// SetDefaultAppPolicies serves DeviceLocalAccounts policy with default
-// configuration for Kiosk accounts and triggers refresh of policies. If you
-// want to see the effect - restart Chrome instance to see Apps button on the
-// Sign-in screen.
-// Deprecated: Use kioskmode.New(...) instead
-func SetDefaultAppPolicies(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome) error {
-	// ServerAndRefresh is used instead of ServerAndVerify since Verify part
-	// uses Autotest private api that returns only Enterprise policies values
-	// but not device policies values.
-	return policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{
-		&defaultLocalAccountsConfiguration,
-	})
-}
-
-// SetAutolaunch sets all default congifurations for Kiosk accounts and sets
-// one of them to autolaunch.
-// appID is the Kiosk account ID that will be autolaunched.
-// Deprecated: Use kioskmode.New(...) instead
-func SetAutolaunch(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, appID string) error {
-	return policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{
-		&defaultLocalAccountsConfiguration,
-		&policy.DeviceLocalAccountAutoLoginId{
-			Val: appID,
-		},
-	})
-}
 
 // ConfirmKioskStarted uses reader for looking for logs that confirm Kiosk mode
 // starting and also successful launch of Kiosk.
