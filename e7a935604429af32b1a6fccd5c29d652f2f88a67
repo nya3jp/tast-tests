@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1280d422_6f58147f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T12:55:52Z",
+      "side": 1,
+      "message": "It is an internal infra tool, if you want I can send a link to you.",
+      "parentUuid": "ff2b557e_31b61499",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c722cd29_95858394",
         "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-19T12:15:41Z",
       "side": 1,
       "message": "This is the same as another variable TLSAddrVar:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/lacros/provision/tls_client.go;l\u003d20?q\u003dtast-tests%20testing.RegisterVarString\n\nMaybe we should not duplicate them?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2cd44da_096bc422",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T12:55:52Z",
+      "side": 1,
+      "message": "Almost, but the port is different: 7151 (TLW) and 7152 (TLS)",
+      "parentUuid": "c722cd29_95858394",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5396392a_2768376f",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T12:55:52Z",
+      "side": 1,
+      "message": "Yes. These buckets are only visible from corp network.",
+      "parentUuid": "fc9b9ebf_05e12fe3",
+      "range": {
+        "startLine": 123,
+        "startChar": 53,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90eed4dc_a60f6200",
         "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
         "patchSetId": 1
@@ -83,6 +155,24 @@
       "writtenOn": "2021-11-19T12:15:41Z",
       "side": 1,
       "message": "nit: create update client before it\u0027s first use",
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5573c4_d47e6ba3",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T12:55:52Z",
+      "side": 1,
+      "message": "I wanted to highlight what clients I use in the tests, but I have no problem separating these.",
+      "parentUuid": "90eed4dc_a60f6200",
       "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b8c441f_5cb07d98",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T12:55:52Z",
+      "side": 1,
+      "message": "What do you think about this approach?",
+      "parentUuid": "2af1db1a_1c1b9591",
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed496867_dbda3e07",
         "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
         "patchSetId": 1
@@ -117,6 +225,30 @@
       "writtenOn": "2021-11-19T12:15:41Z",
       "side": 1,
       "message": "nit: no need for period for inline comments, also it looks like they can (or should) start with non-capital character",
+      "range": {
+        "startLine": 154,
+        "startChar": 40,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06092758_333651fc",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T12:55:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed496867_dbda3e07",
       "range": {
         "startLine": 154,
         "startChar": 40,
