@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1643f6_fbd4abc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-19T10:25:04Z",
+      "side": 1,
+      "message": "This test used to fail but by now it passes. Not sure what made the difference, probably a newer Lacros version.",
+      "revId": "84a476fb902d50fe423140a62c9b5cf8d5c444e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
