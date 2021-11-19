@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ae412ae_78954c22",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T10:38:39Z",
+      "side": 1,
+      "message": "After I read the next CL, I am not so sure this was a good idea.\nSo pick the version you prefer.",
+      "parentUuid": "7d463509_47f2f2fe",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 15
+      },
+      "revId": "f77056248cb38ce2d6eacf538c367fa9cfd42632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1c92925_371f66b2",
         "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
         "patchSetId": 9
@@ -259,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9697633d_6bbf38f5",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T10:38:39Z",
+      "side": 1,
+      "message": "Yes, you are right, I missed that.",
+      "parentUuid": "afaabf76_e5aeaed4",
+      "range": {
+        "startLine": 94,
+        "startChar": 43,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "f77056248cb38ce2d6eacf538c367fa9cfd42632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b7027aa_badb92d1",
@@ -343,6 +391,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "3b36a523_a5e10e50",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "f77056248cb38ce2d6eacf538c367fa9cfd42632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7827a65a_32ba979f",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T10:38:39Z",
+      "side": 1,
+      "message": "Same as with AddAccount.",
+      "parentUuid": "a9574347_387ee3b5",
       "range": {
         "startLine": 150,
         "startChar": 5,
