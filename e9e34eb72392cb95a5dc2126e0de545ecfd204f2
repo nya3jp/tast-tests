@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b9ee964_e2351f1b",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-19T05:12:13Z",
+      "side": 1,
+      "message": "nit: naming redundancy. just use attributes. userAction.attributes v.s. userAction.actionAttributes\n\nSame to Tags and UserContext/cfg.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "e9e34eb72392cb95a5dc2126e0de545ecfd204f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ac0cb7_7da93a22",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-19T05:12:13Z",
+      "side": 1,
+      "message": "nit: Func is redundant, it is clear from the definition.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "e9e34eb72392cb95a5dc2126e0de545ecfd204f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710cb932_2ff0aa04",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-19T05:12:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "e9e34eb72392cb95a5dc2126e0de545ecfd204f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
