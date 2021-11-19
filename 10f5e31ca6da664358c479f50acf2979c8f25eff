@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d3d069a_cc58a595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_persist_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-11-19T19:59:36Z",
+      "side": 1,
+      "message": "This test specifically checks if the \"Enabled\" property is persisted correctly. I also intend to port another test that verifies that \"Autoconnect\" is persisted correctly, which I might name ShillCellularSuspendResumePersistAutoconnect. Do you think this convention makes sense, or should I change it to something else?",
+      "parentUuid": "ea1969b1_92ab4cef",
+      "revId": "10f5e31ca6da664358c479f50acf2979c8f25eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b254d34_eea0cf7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_persist_enabled.go",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-19T18:54:35Z",
       "side": 1,
       "message": "nit: I like the pattern used in the DNSProxy example where a struct is used and this looks like params.mode (here it would be params.enabled), even with just a single parameter. That seems more clear and more robust, e.g. if we add any additional params.",
+      "revId": "10f5e31ca6da664358c479f50acf2979c8f25eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f7758d7_96720c06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_persist_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-11-19T19:59:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b254d34_eea0cf7c",
       "revId": "10f5e31ca6da664358c479f50acf2979c8f25eff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
