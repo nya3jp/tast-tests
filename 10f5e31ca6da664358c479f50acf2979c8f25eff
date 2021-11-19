@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0120ea27_d0e45ce2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-19T18:54:35Z",
+      "side": 1,
+      "message": "Thanks for combining these. I\u0027ll wait for the previous CL to be resolved before doing a final review of this one.",
+      "revId": "10f5e31ca6da664358c479f50acf2979c8f25eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1969b1_92ab4cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_persist_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-19T18:54:35Z",
+      "side": 1,
+      "message": "Maybe remove the \u0027Enabled\u0027 from the test and the file name now :-)",
+      "revId": "10f5e31ca6da664358c479f50acf2979c8f25eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b254d34_eea0cf7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_persist_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-19T18:54:35Z",
+      "side": 1,
+      "message": "nit: I like the pattern used in the DNSProxy example where a struct is used and this looks like params.mode (here it would be params.enabled), even with just a single parameter. That seems more clear and more robust, e.g. if we add any additional params.",
+      "revId": "10f5e31ca6da664358c479f50acf2979c8f25eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
