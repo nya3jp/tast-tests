@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3007ff1_53963ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T07:56:58Z",
+      "side": 1,
+      "message": "Ran the test 10 times with 1 login with password and it passed 0/10\n\nRan the test 10 times with 2 login with password and it passed 6/10\nThe 4 failures were the same problem as running with 1 login\n\nSo what can I update the test to wait for?",
+      "parentUuid": "623fa2e2_fe973d66",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed3abf9a_aac7a5ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
         "patchSetId": 6
