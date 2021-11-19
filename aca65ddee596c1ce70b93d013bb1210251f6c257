@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06bb1e92_9831670c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T03:29:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a366343c_8bb2d5a6",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91789199_674d2aea",
@@ -322,6 +346,30 @@
       "side": 1,
       "message": "In that case, maybe you can put the validation in ifSuccessFunc? It is also not clear to me what ifSuccessFunc means. Does it mean the action succeeds? or the validation succeeds?",
       "parentUuid": "029b73f2_c27b3d05",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d931d4d_5819fca4",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T03:29:34Z",
+      "side": 1,
+      "message": "ifSuccessFunc \u0026 ifFailFunc \u0026 finalFunc only run after UserAction completed with a result.\n\nA good use case can be updating UserContext depending on the action result as below:\n\nfunc SwitchToInputMethodWithShortcut(uc *useractions.UserContext, kb *input.KeyboardEventWriter, im InputMethod) *useractions.UserAction {\n\treturn useractions.NewUserAction(\n\t\t\"Switch to input method with Ctrl+Shift+Space\",\n\t\tuiauto.Combine(\"switch to next input method and wait until it is activated\",\n\t\t\tkb.AccelAction(\"Ctrl+Shift+Space\"),\n\t\t\tim.WaitUntilActivated(uc.TestAPIConn()),\n\t\t),\n\t\tuc,\n\t\t\u0026useractions.UserActionCfg{\n\t\t\tActionTags: []useractions.ActionTag{useractions.ActionTagSwitchIME},\n\t\t\tIfSuccessFunc: func(ctx context.Context) error {\n\t\t\t\tuc.SetAttribute(useractions.AttributeInputMethod, im.Name)\n\t\t\t\treturn nil\n\t\t\t},\n\t\t})\n}",
+      "parentUuid": "76c92cf2_7f8e076d",
       "range": {
         "startLine": 43,
         "startChar": 1,
