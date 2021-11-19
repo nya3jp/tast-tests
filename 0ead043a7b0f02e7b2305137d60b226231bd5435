@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e48c9e2_151e6233",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T13:14:14Z",
+      "side": 1,
+      "message": "I will remove the code part but leave the comment about what was tried out already and why it didn\u0027t work.",
+      "parentUuid": "4e7c9312_e9ddfd40",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0ea3310_0e8a7223",
         "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
         "patchSetId": 1
