@@ -56,6 +56,30 @@
       },
       "revId": "ac8b22743eaf96dcaf260f2bc84afddbb52d5d94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19e6221_3f74e08f",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T14:23:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c0315b8_94ac3b7b",
+      "range": {
+        "startLine": 136,
+        "startChar": 35,
+        "endLine": 136,
+        "endChar": 42
+      },
+      "revId": "ac8b22743eaf96dcaf260f2bc84afddbb52d5d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
