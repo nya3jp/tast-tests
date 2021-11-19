@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99972853_93bc2c6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T15:51:13Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "fc2d174bc2f213c4abc0eceec246e632c8a3f1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f36840_18c80080",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printing_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T15:51:13Z",
+      "side": 1,
+      "message": "nit: for inline comments like this, you don\u0027t need . at the end.",
+      "range": {
+        "startLine": 30,
+        "startChar": 120,
+        "endLine": 30,
+        "endChar": 121
+      },
+      "revId": "fc2d174bc2f213c4abc0eceec246e632c8a3f1dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
