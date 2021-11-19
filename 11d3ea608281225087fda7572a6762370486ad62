@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1759736c_13c96ada",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T06:53:14Z",
+      "side": 1,
+      "message": "The screen recorder only works while you\u0027re logged in. This test does 3 login and logouts. The only thing of interest is opening the smart lock subpage on the first login. Doesn\u0027t seem worth. \n\nLet me know if you disagree",
+      "parentUuid": "546661f2_474949a1",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 25
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4aac49cf_d96f8796",
         "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-18T21:18:47Z",
       "side": 1,
       "message": "throughout",
+      "range": {
+        "startLine": 64,
+        "startChar": 63,
+        "endLine": 64,
+        "endChar": 74
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e873a540_f9ac80be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T06:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aac49cf_d96f8796",
       "range": {
         "startLine": 64,
         "startChar": 63,
@@ -96,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "623fa2e2_fe973d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T06:53:14Z",
+      "side": 1,
+      "message": "Yes same text both times",
+      "parentUuid": "4560dbb0_59fa2554",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a1ea45b_2da928a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
         "patchSetId": 6
@@ -143,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a840964_8d37d9c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T06:53:14Z",
+      "side": 1,
+      "message": "Nope the call to smartlock.OpenSmartLockSubpage waits for the page to open.\nThis is an extra 10 seconds on top of that",
+      "parentUuid": "79fdbd4e_e6aeb6a8",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58606c3a_86fba246",
         "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
         "patchSetId": 6
@@ -154,6 +250,30 @@
       "writtenOn": "2021-11-18T21:18:47Z",
       "side": 1,
       "message": "I\u0027m a go n00b: you don\u0027t need to declare types for each of these args?",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 61
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce96c662_d57b28b6",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T06:53:14Z",
+      "side": 1,
+      "message": "Nope. This is the way they want",
+      "parentUuid": "58606c3a_86fba246",
       "range": {
         "startLine": 34,
         "startChar": 29,
@@ -177,6 +297,30 @@
       "writtenOn": "2021-11-18T21:18:47Z",
       "side": 1,
       "message": "controlling",
+      "range": {
+        "startLine": 5,
+        "startChar": 28,
+        "endLine": 5,
+        "endChar": 38
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f45dd9e_1eed9e87",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T06:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba7732d_49ad0d1a",
       "range": {
         "startLine": 5,
         "startChar": 28,
