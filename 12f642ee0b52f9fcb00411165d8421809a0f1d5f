@@ -46,6 +46,30 @@
       },
       "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "249d3aef_10ff284d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-11-19T01:48:40Z",
+      "side": 1,
+      "message": "Usually we have `cros_config` to set some data. But according to the doc here[1], I think we don\u0027t have memory related info at this moment. Is there no command on the device can check this? I guess Intel has experts on this part.\n\n[1]: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/chromeos-config",
+      "parentUuid": "458424cf_a354d3e7",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
