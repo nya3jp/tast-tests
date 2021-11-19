@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddff814c_d2da1150",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-11-19T07:18:49Z",
+      "side": 1,
+      "message": "Looks fine for Tast review, but please get teammate review before submitting",
+      "revId": "35188020ee2b811c5276a97e6e5641337647b549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95439313_275de127",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-11-19T07:18:49Z",
+      "side": 1,
+      "message": "should this be *stringSet?",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "35188020ee2b811c5276a97e6e5641337647b549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
