@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0a82162_9cdff709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T10:48:34Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "ac766afbe2e42c53b31b9fb45077623cb814c934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa10bbb_23766a42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T10:48:34Z",
+      "side": 1,
+      "message": "nit: AddAccountFromOGB",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "ac766afbe2e42c53b31b9fb45077623cb814c934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a935632_fba586f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T10:48:34Z",
+      "side": 1,
+      "message": "Add \"chrome\" as well.",
+      "revId": "ac766afbe2e42c53b31b9fb45077623cb814c934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b7450e_6f829326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T10:48:34Z",
+      "side": 1,
+      "message": "nit: s.Fatal(\"Failed to check that account is present in ARC err: \", err)",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 72
+      },
+      "revId": "ac766afbe2e42c53b31b9fb45077623cb814c934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
