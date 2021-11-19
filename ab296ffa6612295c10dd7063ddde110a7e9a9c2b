@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56e96029_d4792836",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:34:07Z",
+      "side": 1,
+      "message": "Oops.\nI would just have a brief comment, with deferring details to cdputil. E.g.\n\n// DebuggingPortPath is the path to the file containing ash-chrome\u0027s debug port. See cdputil.DebuggingPortPath for details.\n\nor something.",
+      "parentUuid": "faeb5989_0076402f",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "95ba7f98_3469c6f7",
         "filename": "src/chromiumos/tast/local/chrome/chrome.go",
         "patchSetId": 4
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "browser makes a lot of sense since they are used in browser methods. Done.",
       "parentUuid": "95ba7f98_3469c6f7",
+      "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48eb79e6_090d80fd",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:34:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9574f7e0_1b3c3f33",
       "revId": "ab296ffa6612295c10dd7063ddde110a7e9a9c2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

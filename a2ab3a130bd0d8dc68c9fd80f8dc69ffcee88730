@@ -16,6 +16,24 @@
       "message": "Any thoughts on this?",
       "revId": "a2ab3a130bd0d8dc68c9fd80f8dc69ffcee88730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea25e2f_b4d37580",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:34:07Z",
+      "side": 1,
+      "message": "IIUC, this is an option to open a new window, rather than open a tab on the existing window (if there is).\n\nSo, I guess we need to keep this, right?",
+      "parentUuid": "270ab853_24a67a5f",
+      "revId": "a2ab3a130bd0d8dc68c9fd80f8dc69ffcee88730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
