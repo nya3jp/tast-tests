@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "437cbf87_d1d2efb3",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:59:20Z",
+      "side": 1,
+      "message": "Removed. I asked Bartosz who would be the right audience for those changes. That should help to assign a group here.",
+      "parentUuid": "ce133518_53367902",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc19b533_eb27da43",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-18T11:36:17Z",
       "side": 1,
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code\n\nOr at least use VarDeps",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "927d5abc_a74b0ead",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:59:20Z",
+      "side": 1,
+      "message": "VarDeps are not present in Fixture type.\n\nI tried runtime variables and as for credentials related (OTA, Citrix, Vmware) it made sense then for uidetection it requires package prefix for the key:\n\"Global runtime variable \"uidetection.server\" does not follow naming convention \u003cpkg\u003e.\u003crest_of_name\u003e\"\nwhich does not make sense as it can be used anywhere in Tast and I don\u0027t want to connect it to fixture package only.\n\nSo either we leave it as is or split - some will be RegisterVarString and uidetection will stay as Vars.",
+      "parentUuid": "cc19b533_eb27da43",
       "range": {
         "startLine": 42,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc8ba1c_88cc5275",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:59:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04291d23_06e6f147",
+      "range": {
+        "startLine": 49,
+        "startChar": 21,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f6255da_3c741f56",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-18T12:33:36Z",
       "side": 1,
       "message": "nit: VDIConnector\nSame for the whole file. Use either \"vdi\" or \"VDI\".",
+      "range": {
+        "startLine": 123,
+        "startChar": 23,
+        "endLine": 123,
+        "endChar": 35
+      },
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34136ac4_74954ab8",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:59:20Z",
+      "side": 1,
+      "message": "Changed where it made sense to VDI",
+      "parentUuid": "1f6255da_3c741f56",
       "range": {
         "startLine": 123,
         "startChar": 23,
@@ -127,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "032356e5_49b13cd3",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:59:20Z",
+      "side": 1,
+      "message": "removed from here and used chrome.HasChrome instead.",
+      "parentUuid": "2881a10f_0066ecda",
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e32de1d3_9e92d3e1",
@@ -144,6 +258,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc07d80_82a9bdf6",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:59:20Z",
+      "side": 1,
+      "message": "oohhh I missed that entirely. Good catch!",
+      "parentUuid": "e32de1d3_9e92d3e1",
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ef06a3f_9d3ce8ec",
@@ -157,6 +289,30 @@
       "writtenOn": "2021-11-18T12:33:36Z",
       "side": 1,
       "message": "minor nit: kb",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49d3b14_62344f0f",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:59:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ef06a3f_9d3ce8ec",
       "range": {
         "startLine": 196,
         "startChar": 1,
