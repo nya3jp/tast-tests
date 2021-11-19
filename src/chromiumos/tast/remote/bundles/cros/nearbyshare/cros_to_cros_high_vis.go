@@ -29,26 +29,22 @@ func init() {
 		Vars:         []string{"secondaryTarget"},
 		Params: []testing.Param{
 			{
-				Name:      "dataoffline_allcontacts_png5kb",
-				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOne",
-				Val:       nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
-				ExtraData: []string{"small_png.zip"},
-				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+				Name:    "dataoffline_allcontacts_png5kb",
+				Fixture: "nearbyShareRemoteDataUsageOfflineNoOne",
+				Val:     nearbycommon.TestData{Filename: nearbycommon.SmallPNGFileName, TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				Timeout: nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
-				Name:      "dataoffline_allcontacts_jpg11kb",
-				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOne",
-				Val:       nearbycommon.TestData{Filename: "small_jpg.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
-				ExtraData: []string{"small_jpg.zip"},
-				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+				Name:    "dataoffline_allcontacts_jpg11kb",
+				Fixture: "nearbyShareRemoteDataUsageOfflineNoOne",
+				Val:     nearbycommon.TestData{Filename: nearbycommon.SmallJPGFileName, TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				Timeout: nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
 				Name:    "dataonline_noone_txt30mb",
 				Fixture: "nearbyShareRemoteDataUsageOnlineNoOne",
-				Val: nearbycommon.TestData{
-					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
-				ExtraData: []string{"big_txt.zip"},
-				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
+				Val:     nearbycommon.TestData{Filename: nearbycommon.BigTextFileName, TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
+				Timeout: nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
 		},
 	})

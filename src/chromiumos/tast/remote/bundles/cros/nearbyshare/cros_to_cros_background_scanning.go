@@ -32,8 +32,7 @@ func init() {
 			{
 				Name:              "dataoffline_hidden_png5kb",
 				Fixture:           "nearbyShareRemoteDataUsageOfflineNoOneBackgroundScanning",
-				Val:               nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
-				ExtraData:         []string{"small_png.zip"},
+				Val:               nearbycommon.TestData{Filename: nearbycommon.SmallPNGFileName, TransferTimeout: nearbycommon.SmallFileTransferTimeout},
 				Timeout:           nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("coral")),
 			},
