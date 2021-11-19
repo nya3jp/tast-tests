@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e79b954_0a8c5b10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T13:37:27Z",
+      "side": 1,
+      "message": "i personally probably won\u0027t run it, but it might be helpful for other people to have some documentation how to run this test",
+      "parentUuid": "1280d422_6f58147f",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c722cd29_95858394",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee7c8889_34941703",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T13:37:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e2cd44da_096bc422",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 1
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc9b9ebf_05e12fe3",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Yes. These buckets are only visible from corp network.",
       "parentUuid": "fc9b9ebf_05e12fe3",
+      "range": {
+        "startLine": 123,
+        "startChar": 53,
+        "endLine": 123,
+        "endChar": 67
+      },
+      "revId": "e7a935604429af32b1a6fccd5c29d652f2f88a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552ed8d7_a6c5b4e1",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-19T13:37:27Z",
+      "side": 1,
+      "message": "Ack\n\nMaybe add \"limited access to corp network\" ?",
+      "parentUuid": "5396392a_2768376f",
       "range": {
         "startLine": 123,
         "startChar": 53,
