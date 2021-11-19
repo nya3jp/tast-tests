@@ -154,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26dba2e2_b2569119",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-19T12:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ae412ae_78954c22",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 15
+      },
+      "revId": "f77056248cb38ce2d6eacf538c367fa9cfd42632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1c92925_371f66b2",
@@ -415,6 +439,30 @@
       "side": 1,
       "message": "Same as with AddAccount.",
       "parentUuid": "a9574347_387ee3b5",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "f77056248cb38ce2d6eacf538c367fa9cfd42632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73fd166_4f9b9be7",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-19T12:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7827a65a_32ba979f",
       "range": {
         "startLine": 150,
         "startChar": 5,
