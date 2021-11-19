@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9df600_885bc516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T05:00:01Z",
+      "side": 1,
+      "message": "1) could you clarify why redrix is excluded in commit message?\n2) If this is to deal with some HW/SW featrues, should we encode this into more semantical dependencies?",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
