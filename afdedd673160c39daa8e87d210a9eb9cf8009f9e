@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236eeed4_9f15068a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-11-19T22:34:26Z",
+      "side": 1,
+      "message": "Note for reviewers: I\u0027ll be OOO next week, feel free to either let this sit until I get back on the 29th, or submit it to the CQ yourselves if you\u0027re comfortable with the change.",
+      "revId": "afdedd673160c39daa8e87d210a9eb9cf8009f9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
