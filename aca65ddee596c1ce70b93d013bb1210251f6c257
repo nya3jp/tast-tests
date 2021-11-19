@@ -282,6 +282,30 @@
       },
       "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "029b73f2_c27b3d05",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T02:59:09Z",
+      "side": 1,
+      "message": "It adds flexibility to user action. In different context, the result can be validated differently. \n\nFor example, you can see the current glidetyping UserAction is irrelevant of input field but purely operation on virtual keyboard. So this user action now works on ARC++ input field as well and the validation can related to input field or the context.",
+      "parentUuid": "fab1cea3_85fdfe97",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
