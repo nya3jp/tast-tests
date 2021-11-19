@@ -26,9 +26,7 @@ func init() {
 		Attr:         []string{"group:nearby-share-remote"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.nearbyservice.NearbyShareService"},
-		// TODO(crbug/1127165): Move to fixture when data is available in fixtures.
-		Data: []string{"small_jpg.zip", "small_png.zip", "big_txt.zip"},
-		Vars: []string{nearbycommon.KeepStateVar},
+		Vars:         []string{nearbycommon.KeepStateVar},
 	})
 }
 
