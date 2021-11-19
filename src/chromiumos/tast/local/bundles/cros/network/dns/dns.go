@@ -6,6 +6,7 @@ package dns
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -61,6 +62,9 @@ type ProxyTestCase struct {
 
 // GoogleDoHProvider is the Google DNS-over-HTTPS provider.
 const GoogleDoHProvider = "https://dns.google/dns-query"
+
+// DigProxyIPRE is the regular expressions for DNS proxy IP inside dig output.
+var DigProxyIPRE = regexp.MustCompile(`SERVER: 100.115.92.\d+#53`)
 
 // GetClientString get the string representation of a DNS client.
 func GetClientString(c Client) string {
@@ -271,4 +275,16 @@ func getDoHMode(ctx context.Context) (DoHMode, error) {
 		return DoHAutomatic, nil
 	}
 	return DoHAlwaysOn, nil
+}
+
+// DigMatch runs dig to check name resolution works and verifies the expected server was used.
+func DigMatch(ctx context.Context, re *regexp.Regexp, match bool) error {
+	out, err := testexec.CommandContext(ctx, "dig", "google.com").Output()
+	if err != nil {
+		return errors.Wrap(err, "dig failed")
+	}
+	if re.MatchString(string(out)) != match {
+		return errors.New("dig used unexpected nameserver")
+	}
+	return nil
 }
