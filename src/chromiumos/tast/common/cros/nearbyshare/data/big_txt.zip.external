@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromeos-test-assets-private/tast/nearbyshare/files/big_txt_20210305.zip",
+  "size": 22798332,
+  "sha256sum": "c07bbec74f0053b4d93e3131c02d765c2bca3c2031c80f27b144ee67c88e302b"
+}

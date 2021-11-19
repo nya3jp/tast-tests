@@ -140,3 +140,18 @@ const (
 	DeviceNameValidationResultErrorTooLong
 	DeviceNameValidationResultErrorNotValidUtf8
 )
+
+const (
+	// BigTextFileName is the name of the large text file used for online transfers.
+	BigTextFileName = "big_txt.zip"
+	// SmallPNGFileName is the name of the small PNG file used for online transfers.
+	SmallPNGFileName = "small_png.zip"
+	// SmallJPGFileName is the name of the small JPG file used for online transfers.
+	SmallJPGFileName = "small_jpg.zip"
+)
+
+// OfflineFiles are the names of the payloads for offline sharing tests.
+var OfflineFiles = []string{SmallPNGFileName, SmallJPGFileName}
+
+// OnlineFiles are the names of the payloads for online sharing tests.
+var OnlineFiles = []string{BigTextFileName}
