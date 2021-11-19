@@ -36,7 +36,7 @@ func init() {
 			Name:              "thunderbolt",
 			ExtraAttr:         []string{"informational"},
 			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix")),
 		}},
 	})
 }
@@ -146,6 +146,10 @@ func validateThundeboltDevices(devs []busDevice) error {
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
+		}
+
+		if len(devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces) < 1 {
+			return errors.New("failed to get the connected Thunderbolt device")
 		}
 
 		for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
