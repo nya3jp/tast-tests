@@ -113,9 +113,13 @@ func FillFromLSBRelease(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCH
 // UpdateFromGS updates the DUT to an image found in the Google Storage under the builder path folder.
 // It saves the logs (udpdate engine logs and Nebraska logs) to the given outdir.
 func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *testing.RPCHint, builderPath string) (retErr error) {
+	// Limit the timeout for the update.
+	ctx, cancel := context.WithTimeout(ctx, UpdateTimeout)
+	defer cancel()
+
 	// Reserve cleanup time for copying the logs from the DUT.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	ctx, cancel = ctxutil.Shorten(ctx, 1*time.Minute)
 	defer cancel()
 
 	gsPathPrefix := fmt.Sprintf("gs://chromeos-image-archive/%s", builderPath)

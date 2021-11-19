@@ -46,10 +46,7 @@ func BasicNToN(ctx context.Context, s *testing.State) {
 	// Builder path is used in selecting the update image.
 	builderPath := lsbContent[lsbrelease.BuilderPath]
 
-	updateCtx, cancel := context.WithTimeout(ctx, updateutil.UpdateTimeout)
-	defer cancel()
-
-	if err := updateutil.UpdateFromGS(updateCtx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
+	if err := updateutil.UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
 		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
 	}
 
