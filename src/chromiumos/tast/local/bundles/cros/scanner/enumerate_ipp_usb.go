@@ -55,13 +55,13 @@ func isMatchingScanner(scanner *lpb.ScannerInfo, devInfo usbprinter.DevInfo) boo
 func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo) {
 	s.Logf("Checking if %s is listed", info.name)
 
+	if err := cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
+	}
+
 	devInfo, err := usbprinter.LoadPrinterIDs(info.descriptors)
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", info.descriptors, err)
-	}
-
-	if err := cups.RestartPrintingSystem(ctx, devInfo); err != nil {
-		s.Fatal("Failed to restart printing system: ", err)
 	}
 
 	printer, err := usbprinter.StartScanner(ctx, devInfo, info.descriptors, info.attributes, info.esclCapabilities, "", "")
