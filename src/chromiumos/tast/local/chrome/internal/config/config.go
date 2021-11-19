@@ -334,7 +334,7 @@ func NewConfig(opts []Option) (*Config, error) {
 	cfg := &Config{
 		m: MutableConfig{
 			Creds:                           defaultCreds,
-			KeepState:                       false,
+			KeepState:                       true,
 			KeepOwnership:                   false,
 			LoginMode:                       FakeLogin,
 			VKEnabled:                       false,
