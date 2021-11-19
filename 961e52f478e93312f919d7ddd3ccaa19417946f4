@@ -194,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8582fc4_822d2e41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/nearby_share_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2021-11-19T19:48:47Z",
+      "side": 1,
+      "message": "Remote tests (cb \u003c-\u003e cb) cannot do this kind of thing in the body of the test",
+      "parentUuid": "688a5030_19015ed9",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 287,
+        "endChar": 30
+      },
+      "revId": "961e52f478e93312f919d7ddd3ccaa19417946f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f871462d_b44bb8b5",
