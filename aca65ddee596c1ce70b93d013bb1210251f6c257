@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8574fe23_4e8eca8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T02:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e66174d4_49799cb5",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf92431a_1be42d49",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-19T02:03:32Z",
       "side": 1,
       "message": "a",
+      "range": {
+        "startLine": 16,
+        "startChar": 26,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5263677_62899404",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T02:17:49Z",
+      "side": 1,
+      "message": "? It is not a grammar error.",
+      "parentUuid": "bf92431a_1be42d49",
       "range": {
         "startLine": 16,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c1e374_9524cd0a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T02:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91789199_674d2aea",
+      "range": {
+        "startLine": 624,
+        "startChar": 23,
+        "endLine": 624,
+        "endChar": 32
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eab3c336_57b60d70",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "404121a1_e1496b39",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T02:17:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab3c336_57b60d70",
+      "range": {
+        "startLine": 662,
+        "startChar": 5,
+        "endLine": 662,
+        "endChar": 6
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc0f9693_d1e4250c",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-11-19T02:03:32Z",
       "side": 1,
       "message": "why do you need validateResultFunc to be a separate field? An action may not need validation, also, even if it does, you always can add the validateAction to UserAction.action by uiauto.Combine",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57dd083a_0d33bde1",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T02:17:49Z",
+      "side": 1,
+      "message": "Yes. That\u0027s exactly why I made the validation as optional of an user action.\n\nThe validation result needs to reflect the UserAction result, so it needs to be part of the user action definition. \n\nBasically each user action is expected to be self validated, but it can be ignored as well.",
+      "parentUuid": "dc0f9693_d1e4250c",
       "range": {
         "startLine": 43,
         "startChar": 1,
