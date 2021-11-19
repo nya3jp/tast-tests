@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b7e5bd_fd4bc43c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-19T17:25:49Z",
+      "side": 1,
+      "message": "Just for future reference, CQ failure is caused by the flakiness of atlas + tast.pita.CameraMic. I think there is no use of trying CQ this time as the graph shows that it is ongoing. I will try it later after it is stabilized.\n\nhttp://g/cros-guestos-ci-alerts/Th7SM2jAMmU/qgLAm3PQBgAJ\ngo/tast-stability",
+      "revId": "21c552e056bc38fab3ac3e4a59029e44885b56d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
