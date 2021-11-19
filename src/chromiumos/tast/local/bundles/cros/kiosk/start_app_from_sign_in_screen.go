@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -31,13 +32,13 @@ func init() {
 		// https://crbug.com/1207293 is resolved.
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "fakeDMSEnrolled",
+		Fixture:      fixture.FakeDMSEnrolled,
 	})
 }
 
 func StartAppFromSignInScreen(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
-	cr, err := kioskmode.New(
+	kiosk, cr, err := kioskmode.New(
 		ctx,
 		fdms,
 		kioskmode.DefaultLocalAccounts(),
@@ -49,7 +50,7 @@ func StartAppFromSignInScreen(ctx context.Context, s *testing.State) {
 		s.Error("Failed to start Chrome on Signin screen with set Kiosk apps: ", err)
 	}
 
-	defer cr.Close(ctx)
+	defer kiosk.Close(ctx)
 
 	testConn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
