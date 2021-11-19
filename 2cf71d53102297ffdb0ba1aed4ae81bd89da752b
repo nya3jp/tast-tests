@@ -52,6 +52,24 @@
       "parentUuid": "9a8e6027_a3f5e694",
       "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0783985_221b65ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-19T01:48:15Z",
+      "side": 1,
+      "message": "To find the skipped test case, Test team needs to check the \"full.txt\" file under results folder, https://screenshot.googleplex.com/35Umq2sRHJrK4Zb. Please let me know your suggestions.",
+      "parentUuid": "5440f70b_db33a26b",
+      "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
