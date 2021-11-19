@@ -24,6 +24,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{
 			{
 				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchScreenScrollTest),
