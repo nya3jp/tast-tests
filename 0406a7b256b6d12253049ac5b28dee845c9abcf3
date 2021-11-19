@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd05ee91_a0eca083",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:53:31Z",
+      "side": 1,
+      "message": "could you document this and wakeUpTimeout supports only second precisions?",
+      "range": {
+        "startLine": 363,
+        "startChar": 97,
+        "endLine": 363,
+        "endChar": 110
+      },
+      "revId": "0406a7b256b6d12253049ac5b28dee845c9abcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e84097_2877bf82",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:53:31Z",
+      "side": 1,
+      "message": "maybe SuspendAndResume().",
+      "range": {
+        "startLine": 363,
+        "startChar": 17,
+        "endLine": 363,
+        "endChar": 24
+      },
+      "revId": "0406a7b256b6d12253049ac5b28dee845c9abcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03407d8_1eee502a",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:53:31Z",
+      "side": 1,
+      "message": "unused.",
+      "revId": "0406a7b256b6d12253049ac5b28dee845c9abcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa5eff7_8e6b4257",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:53:31Z",
+      "side": 1,
+      "message": "Is this really necessary to make powerd suspend work? Or, is this only for the purpose of the some specific testing scenario?\n\nIf the former, could you clarify the background in the comment in detail, as this is not really trivial.\n\nIf the latter, could you exclude from this function? Callers should have responsibility to do so, in the case.",
+      "revId": "0406a7b256b6d12253049ac5b28dee845c9abcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11e418c_934cd672",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:53:31Z",
+      "side": 1,
+      "message": "could you move this up to L370, (if LockCheckNetworkHook needs to be kept).\nAlso, could you document this restriction explicitly in the method doc?",
+      "revId": "0406a7b256b6d12253049ac5b28dee845c9abcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05bb5ead_fc321236",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-19T04:53:31Z",
+      "side": 1,
+      "message": "Could you remove this variable?\n- If this happens only when suspend didn\u0027t work well, we should raise errors always.\n- If this happens even if suspend succeeds, the callers should have responsibility to check it.",
+      "range": {
+        "startLine": 414,
+        "startChar": 4,
+        "endLine": 414,
+        "endChar": 18
+      },
+      "revId": "0406a7b256b6d12253049ac5b28dee845c9abcf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
