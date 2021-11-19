@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6f48f9_9eb4d0f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal_relog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-19T05:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71a16060_b15821dc",
+      "range": {
+        "startLine": 69,
+        "startChar": 50,
+        "endLine": 69,
+        "endChar": 53
+      },
+      "revId": "c98783059662a1dcf29bba5f124a47d93ed408af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "085dff33_31cde669",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-11-19T04:35:18Z",
       "side": 1,
       "message": "nit: comment here about ARC",
+      "revId": "c98783059662a1dcf29bba5f124a47d93ed408af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24002c9b_80bc2ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal_relog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-19T05:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "085dff33_31cde669",
       "revId": "c98783059662a1dcf29bba5f124a47d93ed408af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "664430ad_7c20b06f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal_relog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-19T05:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bee5bab_e9931523",
+      "revId": "c98783059662a1dcf29bba5f124a47d93ed408af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4de1280_0b16f072",
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8c2056_2445e3a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal_relog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-19T05:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4de1280_0b16f072",
+      "revId": "c98783059662a1dcf29bba5f124a47d93ed408af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0b851e5_51c061ea",
@@ -105,6 +183,30 @@
       "writtenOn": "2021-11-19T04:35:18Z",
       "side": 1,
       "message": "does this not exist for your other tests?",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 23
+      },
+      "revId": "c98783059662a1dcf29bba5f124a47d93ed408af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea72dec_80e72928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_captive_portal_relog.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-11-19T05:14:08Z",
+      "side": 1,
+      "message": "I don\u0027t think I have created a similar func for checking a chain.",
+      "parentUuid": "f0b851e5_51c061ea",
       "range": {
         "startLine": 172,
         "startChar": 5,
