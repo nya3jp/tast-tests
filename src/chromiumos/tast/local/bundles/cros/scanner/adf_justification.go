@@ -102,13 +102,13 @@ func ADFJustification(ctx context.Context, s *testing.State) {
 func runJustificationTest(ctx context.Context, s *testing.State, params scannerParams) {
 	s.Log("Performing scan on ", params.name)
 
+	if err := cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
+	}
+
 	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
 	if err != nil {
 		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	if err := cups.RestartPrintingSystem(ctx, devInfo); err != nil {
-		s.Fatal("Failed to restart printing system: ", err)
 	}
 
 	tmpDir, err := ioutil.TempDir("", "tast.scanner.ADFJustification.")
