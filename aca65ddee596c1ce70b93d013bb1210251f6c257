@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9f544a1_b01d5880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_glide_typing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-19T04:28:07Z",
+      "side": 1,
+      "message": "sorry, I misunderstood it. How is it now?",
+      "parentUuid": "1812d554_23710dcb",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf92431a_1be42d49",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
         "patchSetId": 7
