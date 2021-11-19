@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91ed434_badefe78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T14:52:48Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "9d93e1201f6672afee4c1c6d8b77813d4bb7100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91e136ae_bce88f05",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T14:52:48Z",
+      "side": 1,
+      "message": "You are mixing this with s.Log in one function.",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 22
+      },
+      "revId": "9d93e1201f6672afee4c1c6d8b77813d4bb7100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ee3901_b610f30e",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T14:52:48Z",
+      "side": 1,
+      "message": "nit: Close",
+      "range": {
+        "startLine": 230,
+        "startChar": 50,
+        "endLine": 230,
+        "endChar": 55
+      },
+      "revId": "9d93e1201f6672afee4c1c6d8b77813d4bb7100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e285bc_63057ddd",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-19T14:52:48Z",
+      "side": 1,
+      "message": "should",
+      "range": {
+        "startLine": 230,
+        "startChar": 58,
+        "endLine": 230,
+        "endChar": 62
+      },
+      "revId": "9d93e1201f6672afee4c1c6d8b77813d4bb7100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
