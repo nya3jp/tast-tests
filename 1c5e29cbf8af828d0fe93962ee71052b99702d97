@@ -16,6 +16,23 @@
       "message": "Hi Steven, PTAL at this version, which instead calls powerd_dbus_suspend directly. It seems that this is more aligned to existing tast conventions.",
       "revId": "1c5e29cbf8af828d0fe93962ee71052b99702d97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc1baaa_6494b693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-19T20:42:49Z",
+      "side": 1,
+      "message": "lgtm!",
+      "revId": "1c5e29cbf8af828d0fe93962ee71052b99702d97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

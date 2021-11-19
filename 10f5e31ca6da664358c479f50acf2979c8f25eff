@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e9540c_8622feba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_persist_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-19T20:42:49Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "3d3d069a_cc58a595",
+      "revId": "10f5e31ca6da664358c479f50acf2979c8f25eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b254d34_eea0cf7c",
