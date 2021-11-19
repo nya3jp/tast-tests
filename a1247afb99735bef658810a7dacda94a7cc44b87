@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d8787d_7b3ac21a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-19T00:11:40Z",
+      "side": 1,
+      "message": "I just have a chat for Fleet team. The future cache server will support only a subset of the APIs supported by the current cache server. Therefore, I removed the support of cache server unless it is needed. Please review. Thanks.",
+      "revId": "a1247afb99735bef658810a7dacda94a7cc44b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
