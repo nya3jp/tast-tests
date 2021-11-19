@@ -215,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0074588_9f7a5cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T08:00:31Z",
+      "side": 1,
+      "message": "This was what I planned to use initially instead of a sleep. Thought process: \"Waiting for us to login and open the settings page is probably enough time to sync the fact that we have logged in once with a password after enabling smart lock login\" \n\nBut it wasn\u0027t so I added the sleep on top of that.\n\nWhen we figure out the problem of the test not passing properly I can remove this",
+      "parentUuid": "ed3abf9a_aac7a5ab",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 45
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a1ea45b_2da928a6",
         "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
         "patchSetId": 6
@@ -415,6 +439,30 @@
       "writtenOn": "2021-11-19T07:55:32Z",
       "side": 1,
       "message": "I notice that this isn\u0027t used anywhere. Is this just for future tests?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "11d3ea608281225087fda7572a6762370486ad62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03efc18_847daf78",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/smartlock/smartlock_ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-19T08:00:31Z",
+      "side": 1,
+      "message": "I was going to force disable SmartLock login and then enable it in every test run but the test isn\u0027t working so forgot to put it back.\n\nThoughts on if this is necessary?",
+      "parentUuid": "f65adc11_48bdac73",
       "range": {
         "startLine": 39,
         "startChar": 0,
