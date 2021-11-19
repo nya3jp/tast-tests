@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "263992ac_c3d74686",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "542ed639_0b947701",
+      "range": {
+        "startLine": 66,
+        "startChar": 20,
+        "endLine": 66,
+        "endChar": 43
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18c8dfa1_74f1efdb",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "109f11c7_1bb0b10c",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c8dfa1_74f1efdb",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81298d97_5d3109b8",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-11-18T11:31:55Z",
       "side": 1,
       "message": "Should this be commited?",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e7c9312_e9ddfd40",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "That was intended to indicate that I attempted using uidetector but something is wrong. I will ping Alvin about that and check if he encounter problem with clicking.",
+      "parentUuid": "81298d97_5d3109b8",
       "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b81b94d1_376576ce",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "\u003e\u003e Unless the existence of the search results forces the focus in which case this should be fine.\n\nThat is correct. Line #97 checks if we have results and VDI apps here Citrix keeps focus on the search field.\n\nThough I will add more documenting comments. Thanks Alex.",
+      "parentUuid": "d0ea3310_0e8a7223",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df549370_ac6ba375",
@@ -111,6 +195,24 @@
       "writtenOn": "2021-11-18T11:31:55Z",
       "side": 1,
       "message": "Same as below, is this needed?",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d65cc74e_49961599",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df549370_ac6ba375",
       "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7889b677_fddf7642",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e301268_dc7868bb",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14c34567_1818457f",
@@ -145,6 +265,30 @@
       "writtenOn": "2021-11-18T11:31:55Z",
       "side": 1,
       "message": "swap words",
+      "range": {
+        "startLine": 5,
+        "startChar": 44,
+        "endLine": 5,
+        "endChar": 56
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c46833_724a3d4b",
+        "filename": "src/chromiumos/tast/local/vdi/apps/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14c34567_1818457f",
       "range": {
         "startLine": 5,
         "startChar": 44,
@@ -201,6 +345,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe5866a_d1b87c6a",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vdiconnector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c5eca30_8a878c7e",
+      "range": {
+        "startLine": 23,
+        "startChar": 70,
+        "endLine": 23,
+        "endChar": 76
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdce873a_08b2edb3",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vdiconnector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8c2d2c5_c0370df8",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3711e78_dd35f7e2",
@@ -214,6 +406,24 @@
       "writtenOn": "2021-11-18T11:31:55Z",
       "side": 1,
       "message": "nit: use a singe line.",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cc1e90c_635f72e1",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3711e78_dd35f7e2",
       "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -235,6 +445,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf236b16_fab03deb",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "552f20b8_88fb057f",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3adcad5_b54b16c9",
@@ -248,6 +476,30 @@
       "writtenOn": "2021-11-18T11:31:55Z",
       "side": 1,
       "message": "WaitForMainScreenVisible?\n\nYou are not actually ensuring it\u0027s there.",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 43
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6401a921_6f57c895",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3adcad5_b54b16c9",
       "range": {
         "startLine": 73,
         "startChar": 20,
@@ -281,6 +533,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "658dca45_fa95dca6",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f532df7f_7337fe33",
+      "range": {
+        "startLine": 7,
+        "startChar": 72,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ec1fe83_6a2ad198",
@@ -304,6 +580,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48bf51cf_d303fc8e",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "That is a good point and I should have put the reason in the comment since now I don\u0027t remember why I went with the map.",
+      "parentUuid": "6ec1fe83_6a2ad198",
+      "range": {
+        "startLine": 24,
+        "startChar": 21,
+        "endLine": 24,
+        "endChar": 51
+      },
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "328bee29_d10f5071",
@@ -317,6 +617,24 @@
       "writtenOn": "2021-11-18T11:31:55Z",
       "side": 1,
       "message": "nit: Document what this will can used for, not how it is implemented.",
+      "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd7eb6a_599936ba",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-19T10:58:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328bee29_d10f5071",
       "revId": "0ead043a7b0f02e7b2305137d60b226231bd5435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
