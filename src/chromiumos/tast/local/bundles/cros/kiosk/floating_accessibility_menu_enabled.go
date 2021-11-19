@@ -7,6 +7,7 @@ package kiosk
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/chrome"
@@ -14,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/kioskmode"
-	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
 
@@ -29,7 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "fakeDMSEnrolled",
+		Fixture:      fixture.FakeDMSEnrolled,
 		Params: []testing.Param{
 			{
 				Name: "ash",
@@ -46,7 +46,7 @@ func init() {
 func FloatingAccessibilityMenuEnabled(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 	chromeOptions := s.Param().(chrome.Option)
-	cr, err := kioskmode.New(
+	kiosk, cr, err := kioskmode.New(
 		ctx,
 		fdms,
 		kioskmode.DefaultLocalAccounts(),
@@ -58,8 +58,7 @@ func FloatingAccessibilityMenuEnabled(ctx context.Context, s *testing.State) {
 		s.Error("Failed to start Chrome in Kiosk mode: ", err)
 	}
 
-	defer cr.Close(ctx)
-	defer policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{})
+	defer kiosk.Close(ctx)
 
 	testConn, err := cr.TestAPIConn(ctx)
 	if err != nil {
