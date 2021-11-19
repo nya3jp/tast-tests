@@ -7,12 +7,19 @@ package health
 import (
 	"context"
 	"fmt"
+	"strconv"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 
+	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/usb"
+	"chromiumos/tast/local/bundles/cros/typec/typecutils"
+
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -29,24 +36,76 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
-			Val: false,
+			Val:     false,
+			Fixture: "crosHealthdRunning",
 		}, {
-			Name:              "thunderbolt",
-			ExtraAttr:         []string{"informational"},
-			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			Name:      "thunderbolt",
+			ExtraAttr: []string{"informational"},
+			Val:       true,
+			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
 		}},
 	})
 }
 
 func ProbeBusInfo(ctx context.Context, s *testing.State) {
+	if s.Param().(bool) {
+		// For Thunderbolt TR devices ,first we have to disable the data procetion then plug the device.
+		// This Code will work for all TBT(AR,TR) device.
+		port, err := typecutils.CheckPortsForTBTPartner(ctx)
+		if err != nil {
+			s.Fatal("Failed to determine Thunderbolt device from PD identity: ", err)
+		}
+		s.Logf("Thunderbolt Port is: %d", port)
+		if port == -1 {
+			s.Fatal("Failed no Thunderbolt device connected to DUT")
+		}
+		portStr := strconv.Itoa(port)
+		cr, err := chrome.New(ctx)
+		if err != nil {
+			s.Fatal("Failed to login: ", err)
+		}
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create Test API connection: ", err)
+		}
+		ctxForCleanUp := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		defer cancel()
+
+		if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "suspend", portStr).Run(); err != nil {
+			s.Fatal("Failed to simulate unplug: ", err)
+		}
+
+		defer func() {
+			if err := testexec.CommandContext(ctxForCleanUp, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
+				s.Log("Failed to perform replug: ", err)
+			}
+		}()
+
+		if err := croshealthd.DisableDataAccessProtection(ctx, tconn); err != nil {
+			s.Fatal("Failed to disable data access protection: ", err)
+		}
+
+		if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
+			s.Fatal("Failed to simulate replug: ", err)
+		}
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return typecutils.CheckTBTDevice(true)
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			s.Fatal("Failed to verify Thunderbolt devices after plug: ", err)
+		}
+
+	}
+
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBus}
 	var res busResult
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &res); err != nil {
 		s.Fatal("Failed to get bus telemetry info: ", err)
 	}
+
 	var pciDevs []busDevice
 	var usbDevs []busDevice
 	var tbtDevs []busDevice
@@ -61,12 +120,14 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 			s.Fatal("Unknown types of bus devices: ", d)
 		}
 	}
+
 	if s.Param().(bool) {
 		if err := validateThundeboltDevices(tbtDevs); err != nil {
 			s.Fatal("Failed to validate Thunderbolt devices: ", err)
 		}
 		return
 	}
+
 	if err := validatePCIDevices(ctx, pciDevs); err != nil {
 		s.Fatal("PCI validation failed: ", err)
 	}
@@ -143,12 +204,14 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 }
 
 func validateThundeboltDevices(devs []busDevice) error {
+	checkThunderboltInterfaces := 0
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
 		}
 
 		for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
+			checkThunderboltInterfaces++
 			if !interfaces.Authorized {
 				return errors.New("failed to authorize the Thunderbolt device")
 			}
@@ -184,6 +247,9 @@ func validateThundeboltDevices(devs []busDevice) error {
 		if (devices.VendorName) == "" {
 			return errors.New("failed to get Thunderbolt VendorName")
 		}
+	}
+	if checkThunderboltInterfaces == 0 {
+		return errors.New("failed to get connected Thunderbolt devices, check Thunderbolt device connected or not")
 	}
 	return nil
 }
