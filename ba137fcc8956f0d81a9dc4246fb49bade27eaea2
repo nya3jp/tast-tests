@@ -52,6 +52,24 @@
       "parentUuid": "62fcbc97_f225f217",
       "revId": "ba137fcc8956f0d81a9dc4246fb49bade27eaea2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1542e12f_0f0752ae",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-19T18:54:03Z",
+      "side": 1,
+      "message": "If this turns out to be networking specific, let\u0027s at least share the wifi and cellular implementations, maybe in src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill/ (next to the fixture). While I understand the concern about \"common\" library proliferation and maintenance, the functionality should at least be consistent for shill / networking tests.",
+      "parentUuid": "6e7afc6b_26abfc5a",
+      "revId": "ba137fcc8956f0d81a9dc4246fb49bade27eaea2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
