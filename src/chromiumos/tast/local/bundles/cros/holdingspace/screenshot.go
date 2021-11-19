@@ -8,8 +8,10 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"reflect"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -19,7 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/chrome/uiauto/wmp"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -85,10 +87,9 @@ func Screenshot(ctx context.Context, s *testing.State) {
 		// therefore the holding space tray node should not exist.
 		ui.EnsureGoneFor(holdingspace.FindTray(), 5*time.Second),
 
-		// Capture a fullscreen screenshot using the capture mode feature in quick
-		// settings. Note that this will result in multiple user interactions with
-		// system UI as part of the screen capture user flow.
-		wmp.CaptureScreenshot(tconn, wmp.FullScreen),
+		// Capture a fullscreen screenshot using the virtual keyboard. This should
+		// behave consistently across device form factors.
+		takeScreenshot(),
 	)(ctx); err != nil {
 		s.Fatal("Failed to capture screenshot: ", err)
 	}
@@ -188,4 +189,40 @@ func testScreenshotPinAndUnpin(
 // downloads directory. Screenshot files are assumed to match a specific pattern.
 func getScreenshots() ([]string, error) {
 	return filepath.Glob(filepath.Join(filesapp.DownloadPath, "Screenshot*.png"))
+}
+
+// takeScreenshot returns an action which captures a fullscreen screenshot using
+// the virtual keyboard. This should behave consistently across device form factors.
+func takeScreenshot() uiauto.Action {
+	return func(ctx context.Context) error {
+		// Cache existing screenshots.
+		screenshots, err := getScreenshots()
+		if err != nil {
+			return errors.Wrap(err, "failed to cache existing screenshots")
+		}
+
+		// Create virtual keyboard.
+		keyboard, err := input.VirtualKeyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create virtual keyboard")
+		}
+		defer keyboard.Close()
+
+		// Take a screenshot.
+		if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
+			return errors.Wrap(err, "failed to take a screenshot")
+		}
+
+		// Wait for screenshot.
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			newScreenshots, err := getScreenshots()
+			if err != nil {
+				return testing.PollBreak(errors.Wrap(err, "failed to get screenshots"))
+			}
+			if reflect.DeepEqual(screenshots, newScreenshots) {
+				return errors.New("waiting for new screenshots")
+			}
+			return nil
+		}, nil)
+	}
 }
