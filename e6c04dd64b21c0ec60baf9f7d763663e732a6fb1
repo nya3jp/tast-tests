@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6567874e_3b733845",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-11-19T08:57:25Z",
+      "side": 1,
+      "message": "Should we keep proto.Message here?\n\n\u003e use the proto.Message type instead, which aliases this type. \n\nRef: https://pkg.go.dev/google.golang.org/protobuf@v1.25.0/reflect/protoreflect#ProtoMessage",
+      "range": {
+        "startLine": 36,
+        "startChar": 23,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8977b094_964b2d44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-11-19T08:57:25Z",
+      "side": 1,
+      "message": "componentListDesc.Message() \u003d\u003d nil seems to be more reasonable.",
+      "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71c57481_ce81f766",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-11-19T08:57:25Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cacf10b1_06b61a15",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/cros_hardware_verifier.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1368699
+      },
+      "writtenOn": "2021-11-19T08:57:25Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "e6c04dd64b21c0ec60baf9f7d763663e732a6fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
