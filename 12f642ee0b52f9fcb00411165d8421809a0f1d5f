@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c919102e_b1320fb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-19T04:19:24Z",
+      "side": 1,
+      "message": "(Agree with Kerker\u0027s comments re: Hardware Dep. If guidance is required adding a hardware dep once it is defined what the dep is, I can suggest contacts from the Tast Framework team.)",
+      "parentUuid": "5c331757_b8ec0f62",
+      "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7199138_eaa5ba45",
