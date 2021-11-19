@@ -83,6 +83,11 @@ const (
 	TimeReservedForStop = 500 * time.Millisecond
 	// RotationAnimationDuration is the time to wait for an animation to complete.
 	RotationAnimationDuration = 750 * time.Millisecond
+
+	// SplitScreenDividerThickness is the width of the divider when in tablet mode. This comes from:
+	// http://cs/eureka_internal/chromium/src/ash/wm/splitview/split_view_constants.h;l=32;rcl=62c9f9769fdd621050662f3cde82d5672e75271f
+	// Window widths may be adjusted by up to this amount when in split screen mode.
+	SplitScreenDividerThickness = 8
 )
 
 // CheckFunc represents a function that checks certain criteria for tests.
@@ -672,6 +677,7 @@ func CheckVerticalTabletSplit(ctx context.Context, tconn *chrome.TestConn) error
 		if err != nil {
 			return errors.Wrap(err, "failed to get arc app window info for over activity")
 		}
+
 		underActivityWInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, Pkg24)
 		if err != nil {
 			return errors.Wrap(err, "failed to get arc app window info for under activity")
@@ -683,24 +689,24 @@ func CheckVerticalTabletSplit(ctx context.Context, tconn *chrome.TestConn) error
 		}
 		displayWorkArea := pdInfo.WorkArea
 
-		// Over activity must be snapped to the left.
-		if overActivityWInfo.BoundsInRoot.Left != 0 ||
-			overActivityWInfo.BoundsInRoot.Top != 0 ||
-			overActivityWInfo.BoundsInRoot.Width >= displayWorkArea.Width/2 ||
-			overActivityWInfo.BoundsInRoot.Height != displayWorkArea.Height {
-			return errors.Errorf("invalid snapped to the left activity bounds: got Left = %d, Top = %d, Width = %d, Height = %d; want Left = 0, Top = 0, Width < %d, Height = %d",
-				overActivityWInfo.BoundsInRoot.Left, overActivityWInfo.BoundsInRoot.Top, overActivityWInfo.BoundsInRoot.Width, overActivityWInfo.BoundsInRoot.Height, displayWorkArea.Width/2, displayWorkArea.Height)
+		// Over activity must be snapped to the left. The right position can vary up to divider thickness.
+		lWant := coords.NewRect(0, 0, displayWorkArea.Width/2, displayWorkArea.Height)
+		if !coords.CompareBoundsWithMargins(overActivityWInfo.BoundsInRoot, lWant, 0, 0, SplitScreenDividerThickness, 0) {
+			return errors.Errorf("invalid snapped to the left activity bounds: got %+v; want %+v", overActivityWInfo.BoundsInRoot, lWant)
 		}
-		// Under activity must be snapped to the right.
-		if underActivityWInfo.BoundsInRoot.Left <= displayWorkArea.Width/2 ||
-			underActivityWInfo.BoundsInRoot.Top != 0 ||
-			underActivityWInfo.BoundsInRoot.Width >= displayWorkArea.Width/2 ||
-			underActivityWInfo.BoundsInRoot.Height != displayWorkArea.Height ||
-			underActivityWInfo.BoundsInRoot.Left+underActivityWInfo.BoundsInRoot.Width != displayWorkArea.Width {
-			return errors.Errorf("invalid snapped to the right activity bounds: got Left = %d, Top = %d, Width = %d, Height = %d, Right = %d; want Left > %d, Top = 0, Width < %d, Height = %d, Right = %d",
-				underActivityWInfo.BoundsInRoot.Left, underActivityWInfo.BoundsInRoot.Top, underActivityWInfo.BoundsInRoot.Width, underActivityWInfo.BoundsInRoot.Height,
-				underActivityWInfo.BoundsInRoot.Left+underActivityWInfo.BoundsInRoot.Width, displayWorkArea.Width/2, displayWorkArea.Width/2, displayWorkArea.Height, displayWorkArea.Width)
+
+		// Under activity must be snapped to the right. The left position can vary up to divider thickness.
+		rWant := coords.NewRect(displayWorkArea.Width/2, 0, displayWorkArea.Width/2, displayWorkArea.Height)
+		if !coords.CompareBoundsWithMargins(underActivityWInfo.BoundsInRoot, rWant, SplitScreenDividerThickness, 0, 0, 0) {
+			return errors.Errorf("invalid snapped to the right activity bounds: got %+v; want %+v", underActivityWInfo, rWant)
 		}
+
+		// The right window must extend to the end of the screen.
+		rEnd := underActivityWInfo.BoundsInRoot.Left + underActivityWInfo.BoundsInRoot.Width
+		if rEnd != displayWorkArea.Width {
+			return errors.Errorf("right window doesn't extend to end of the screen: got %d; want %d", rEnd, displayWorkArea.Width)
+		}
+
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 500 * time.Millisecond})
 }

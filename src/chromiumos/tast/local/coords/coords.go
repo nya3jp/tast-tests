@@ -227,10 +227,16 @@ func ConvertBoundsFromPXToDP(bounds Rect, dsf float64) Rect {
 	return convertBounds(bounds, 1.0/dsf)
 }
 
-// CompareBoundsWithMargin returns true if the given two bounds have the same value allowing the given margin.
+// CompareBoundsWithMargin returns true if the given two bounds have the same value allowing the same margin
+// in all directions.
 func CompareBoundsWithMargin(a, b Rect, margin int) bool {
-	return math.Abs(float64(a.Top-b.Top)) <= float64(margin) &&
-		math.Abs(float64(a.Bottom()-b.Bottom())) <= float64(margin) &&
-		math.Abs(float64(a.Left-b.Left)) <= float64(margin) &&
-		math.Abs(float64(a.Right()-b.Right())) <= float64(margin)
+	return CompareBoundsWithMargins(a, b, margin, margin, margin, margin)
+}
+
+// CompareBoundsWithMargins returns true if the given two bounds have the same value allowing the provided margins.
+func CompareBoundsWithMargins(a, b Rect, ml, mt, mr, mb int) bool {
+	return math.Abs(float64(a.Top-b.Top)) <= float64(mt) &&
+		math.Abs(float64(a.Bottom()-b.Bottom())) <= float64(mb) &&
+		math.Abs(float64(a.Left-b.Left)) <= float64(ml) &&
+		math.Abs(float64(a.Right()-b.Right())) <= float64(mr)
 }
