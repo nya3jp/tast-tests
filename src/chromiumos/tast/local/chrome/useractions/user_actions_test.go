@@ -18,7 +18,7 @@ func TestLogCleanActionResult(t *testing.T) {
 		actionName: "actionName",
 		testName:   "testName",
 		attributes: map[string]string{},
-		tags:       []string{},
+		tags:       []ActionTag{},
 		duration:   1 * time.Second,
 		pass:       true,
 		err:        nil,
@@ -37,11 +37,16 @@ func TestLogCleanActionResult(t *testing.T) {
 }
 
 func TestLogActionResultWithAttributesAndTags(t *testing.T) {
+	const (
+		ActionTagTest1 ActionTag = "TestTag1"
+		ActionTagTest2 ActionTag = "TestTag2"
+	)
+
 	result := &actionResult{
 		actionName: "actionName",
 		testName:   "testName",
 		attributes: map[string]string{"TestAttributeName": "TestAttributeValue"},
-		tags:       []string{"TestTag1", "TestTag2"},
+		tags:       []ActionTag{ActionTagTest1, ActionTagTest2},
 		duration:   1 * time.Second,
 		pass:       false,
 		err:        errors.New("Test Error"),
