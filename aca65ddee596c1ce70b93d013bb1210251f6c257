@@ -306,6 +306,30 @@
       },
       "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c92cf2_7f8e076d",
+        "filename": "src/chromiumos/tast/local/chrome/useractions/user_actions.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-19T03:08:03Z",
+      "side": 1,
+      "message": "In that case, maybe you can put the validation in ifSuccessFunc? It is also not clear to me what ifSuccessFunc means. Does it mean the action succeeds? or the validation succeeds?",
+      "parentUuid": "029b73f2_c27b3d05",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "aca65ddee596c1ce70b93d013bb1210251f6c257",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
