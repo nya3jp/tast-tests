@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3fd60b5_94eef51f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T13:53:13Z",
+      "side": 1,
+      "message": "If we are using a constant timeout anyway, you can create the shortened context inside the helper.",
+      "range": {
+        "startLine": 75,
+        "startChar": 22,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "62596c0b5c71f2590088647e49d4a9329a8f34b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

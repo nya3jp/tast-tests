@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f73f786_5763194c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T13:53:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bdd01a5c_93be2e09",
+      "revId": "ab52ac0c63557be440eb0333aeb9a9924c1a2586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cc09154_1af37f57",
@@ -190,6 +208,30 @@
       "side": 1,
       "message": "Yes, it is needed, so the next test can run the original test image.\nI will create a fixture that will keep the version at M-3 between the tests, and only restores the image in TearDown.",
       "parentUuid": "7af45b7c_bdc65c9b",
+      "range": {
+        "startLine": 101,
+        "startChar": 71,
+        "endLine": 101,
+        "endChar": 81
+      },
+      "revId": "ab52ac0c63557be440eb0333aeb9a9924c1a2586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5edceb_8d979b1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-19T13:53:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a3c2f4e8_50c91fa7",
       "range": {
         "startLine": 101,
         "startChar": 71,
