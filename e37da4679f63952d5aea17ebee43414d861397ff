@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c887aa8_794952f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-19T02:15:45Z",
+      "side": 1,
+      "message": "From my previous experience, you might need CR+2 from Tast-owners to cherry-pick this CL.",
+      "revId": "e37da4679f63952d5aea17ebee43414d861397ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
