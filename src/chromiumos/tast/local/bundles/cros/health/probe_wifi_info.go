@@ -36,7 +36,8 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		HardwareDeps: hwdep.D(hwdep.Model("brya")),
+		// TODO 207569436 created partner bug and working on generic solution.
+		HardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
 		Fixture:      "crosHealthdRunning",
 	})
 }
