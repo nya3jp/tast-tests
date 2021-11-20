@@ -61,9 +61,9 @@ func LoadPrinterIDs(path string) (devInfo DevInfo, err error) {
 // and then returns the command.
 // The returned command must be stopped using Kill()/Wait() once testing is
 // complete.
-func runVirtualUsbPrinter(ctx context.Context, descriptors, attributes, record, esclCaps, scanPath, logDir string) (cmd *testexec.Cmd, err error) {
+func runVirtualUsbPrinter(ctx context.Context, descriptors, attributes, record, esclCaps, logDir string) (cmd *testexec.Cmd, err error) {
 	testing.ContextLog(ctx, "Starting virtual printer")
-	launch := testexec.CommandContext(ctx, "stdbuf", "-o0", "virtual-usb-printer", "--descriptors_path="+descriptors, "--attributes_path="+attributes, "--record_doc_path="+record, "--scanner_capabilities_path="+esclCaps, "--scanner_doc_path="+scanPath, "--output_log_dir="+logDir)
+	launch := testexec.CommandContext(ctx, "stdbuf", "-o0", "virtual-usb-printer", "--descriptors_path="+descriptors, "--attributes_path="+attributes, "--record_doc_path="+record, "--scanner_capabilities_path="+esclCaps, "--output_log_dir="+logDir)
 
 	p, err := launch.StdoutPipe()
 	if err != nil {
@@ -140,14 +140,13 @@ func attachUSBIPDevice(ctx context.Context, devInfo DevInfo) error {
 // provide the virtual printer with paths to the USB descriptors and IPP
 // attributes files, which are necessary to setup the eSCL over IPP connection.
 //
-// scanPath is the path to use as the source for scanned documents, while
 // esclCaps is a path to a JSON config file which specifies the supported
 // behavior of the scanner.
 //
 // The returned command is already started and must be stopped (by calling its
 // Kill and Wait methods) when testing is complete.
-func StartScanner(ctx context.Context, devInfo DevInfo, descriptors, attributes, esclCaps, scanPath, logDir string) (cmd *testexec.Cmd, err error) {
-	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, "", esclCaps, scanPath, logDir)
+func StartScanner(ctx context.Context, devInfo DevInfo, descriptors, attributes, esclCaps, logDir string) (cmd *testexec.Cmd, err error) {
+	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, "", esclCaps, logDir)
 	if err != nil {
 		return nil, errors.Wrap(err, "runVirtualUsbPrinter failed")
 	}
@@ -174,7 +173,7 @@ func StartScanner(ctx context.Context, devInfo DevInfo, descriptors, attributes,
 // returned command is already started and must be stopped (by calling its Kill
 // and Wait methods) when testing is complete.
 func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, err error) {
-	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, record, "", "", "")
+	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, record, "", "")
 	if err != nil {
 		return nil, errors.Wrap(err, "runVirtualUsbPrinter failed")
 	}

@@ -100,7 +100,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to load printer IDs from %v: %v", scanning.Descriptors, err)
 	}
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, scanning.Descriptors, scanning.Attributes, scanning.EsclCapabilities, s.DataPath(scanning.SourceImage), "")
+	printer, err := usbprinter.StartScanner(ctx, devInfo, scanning.Descriptors, scanning.Attributes, scanning.EsclCapabilities, "")
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}

@@ -64,7 +64,7 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 		s.Fatalf("Failed to load printer IDs from %v: %v", info.descriptors, err)
 	}
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, info.descriptors, info.attributes, info.esclCapabilities, "", "")
+	printer, err := usbprinter.StartScanner(ctx, devInfo, info.descriptors, info.attributes, info.esclCapabilities, "")
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}

@@ -88,10 +88,9 @@ type TestingStruct struct {
 
 // ScannerStruct contains the necessary parameters for setting up the virtual usb printer.
 type ScannerStruct struct {
-	Descriptors     string
-	Attributes      string
-	EsclCaps        string
-	SourceImagePath string
+	Descriptors string
+	Attributes  string
+	EsclCaps    string
 }
 
 // RunAppSettingsTests takes in the Chrome instance and the specific testing parameters
@@ -115,7 +114,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 		s.Fatalf("Failed to load printer IDs from %v: %v", scannerParams.Descriptors, err)
 	}
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, scannerParams.Descriptors, scannerParams.Attributes, scannerParams.EsclCaps, scannerParams.SourceImagePath, "")
+	printer, err := usbprinter.StartScanner(ctx, devInfo, scannerParams.Descriptors, scannerParams.Attributes, scannerParams.EsclCaps, "")
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
