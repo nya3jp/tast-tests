@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type testFunctionality int
@@ -39,7 +38,6 @@ func init() {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Fixture:           "ccaLaunched",
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
 			ExtraAttr:         []string{"group:camera-postsubmit"},
 			Val:               none,
 		}, {
