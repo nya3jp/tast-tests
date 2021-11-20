@@ -28,6 +28,96 @@ type DevInfo struct {
 	PID string
 }
 
+// Exports a few commonly used data paths as defaults.
+const (
+	DefaultDescriptors      = "ippusb_printer.json"
+	DefaultAttributes       = "ipp_attributes.json"
+	DefaultEsclCapabilities = "escl_capabilities.json"
+)
+
+// PrinterInfo contains all information needed to run the
+// `virtual-usb-printer` process.
+//
+// Config data path fields obey these rules:
+// 1.	Absolute paths are passed verbatim to the invocation of
+//	`virtual-usb-printer`.
+// 2.	Relative paths (and basenames) are joined with the default
+//	install location of `virtual-usb-printer`'s config files.
+// 3.	Empty fields are not passed to `virtual-usb-printer`.
+type PrinterInfo struct {
+	// Required: path to USB device descriptors.
+	Descriptors string
+
+	// Required: path to device attributes (e.g. IPP attributes).
+	Attributes string
+
+	// Optional: path to eSCL capabilities.
+	ESCLCapabilities string
+
+	// Optional: value for `--output_log_directory`.
+	// Not a config data path; i.e., must be an absolute path.
+	OutputLogDirectory string
+
+	// Specifies the path where the print job should be recorded.
+	// Not a config data path; i.e., must be an absolute path.
+	RecordPath string
+
+	// Specifies whether or not `Start()` should block on waiting
+	// for the printer to be configured.
+	WaitUntilConfigured bool
+}
+
+// PrinterController provides an interface to control a
+// `virtual-usb-printer` process.
+type PrinterController interface {
+	GetDevInfo() DevInfo
+
+	// Stops and waits for the `virtual-usb-printer`. Users must
+	// call this when finished with the `virtual-usb-printer`.
+	//
+	// This method is idempotent.
+	Stop() error
+}
+
+// PrinterInstance implements `PrinterController`.
+type PrinterInstance struct {
+	devInfo DevInfo
+	cmd     *testexec.Cmd
+
+	stopAlreadyCalled bool
+}
+
+func loadPrinterIDs(path string) (devInfo DevInfo, err error) {
+	f, err := os.Open(path)
+	if err != nil {
+		return devInfo, errors.Wrapf(err, "failed to open %s", path)
+	}
+	defer f.Close()
+
+	var cfg struct {
+		DevDesc struct {
+			Vendor  int `json:"idVendor"`
+			Product int `json:"idProduct"`
+		} `json:"device_descriptor"`
+	}
+
+	if err := json.NewDecoder(f).Decode(&cfg); err != nil {
+		return devInfo, errors.Wrapf(err, "failed to decode JSON in %s", path)
+	}
+
+	return DevInfo{fmt.Sprintf("%04x", cfg.DevDesc.Vendor), fmt.Sprintf("%04x", cfg.DevDesc.Product)}, nil
+}
+
+// StartXXXkdlee XXX kdlee
+// Start creates a new `PrinterInstance`, starting the underlying
+// `virtual-usb-printer` process.
+func StartXXXkdlee(ctx context.Context, info PrinterInfo) (instance PrinterInstance, err error) {
+	devInfo, err := loadPrinterIDs(info.Descriptors)
+	if err != nil {
+		return instance, err
+	}
+}
+
 func ippUSBPrinterURI(ctx context.Context, devInfo DevInfo) string {
 	return fmt.Sprintf("ippusb://%s_%s/ipp/print", devInfo.VID, devInfo.PID)
 }
@@ -35,6 +125,8 @@ func ippUSBPrinterURI(ctx context.Context, devInfo DevInfo) string {
 // LoadPrinterIDs loads the JSON file located at path and attempts to extract
 // the "vid" and "pid" from the USB device descriptor which should be defined
 // in path.
+//
+// XXX kdlee
 func LoadPrinterIDs(path string) (devInfo DevInfo, err error) {
 	f, err := os.Open(path)
 	if err != nil {
