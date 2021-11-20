@@ -117,7 +117,7 @@ func runJustificationTest(ctx context.Context, s *testing.State, params scannerP
 	}
 	defer os.RemoveAll(tmpDir)
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, params.esclCapabilities, "", tmpDir)
+	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, params.esclCapabilities, tmpDir)
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}

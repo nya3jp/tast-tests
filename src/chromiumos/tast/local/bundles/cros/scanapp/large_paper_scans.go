@@ -122,10 +122,9 @@ func LargePaperScans(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	var scannerParams = scanning.ScannerStruct{
-		Descriptors:     scanning.Descriptors,
-		Attributes:      scanning.Attributes,
-		EsclCaps:        esclCapabilities,
-		SourceImagePath: s.DataPath(scanning.SourceImage),
+		Descriptors: scanning.Descriptors,
+		Attributes:  scanning.Attributes,
+		EsclCaps:    esclCapabilities,
 	}
 
 	scanning.RunAppSettingsTests(ctx, s, cr, testSetups, scannerParams)
