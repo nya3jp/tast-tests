@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -71,6 +72,12 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
+	// Sleep long enough for the screen to turn off
+	testing.Sleep(ctx, 12*time.Minute)
+
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Log("Failed to ensure the display is on: ", err)
+	}
 	if err := act.Start(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the app: ", err)
 	}
