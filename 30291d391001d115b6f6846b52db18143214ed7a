@@ -418,6 +418,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3b6065_7bf525c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_drag_and_drop_pin.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-20T00:20:12Z",
+      "side": 1,
+      "message": "Issue was fixed in https://chromium-review.googlesource.com/c/chromium/src/+/3292296\n\nConfirmed the test is now working.",
+      "parentUuid": "6a681984_cfd28132",
+      "revId": "30291d391001d115b6f6846b52db18143214ed7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4ab532b_420d9e3a",

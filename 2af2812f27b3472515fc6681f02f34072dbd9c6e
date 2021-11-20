@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b118747_49d29714",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-20T00:20:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fa2c0f8_97c62793",
+      "range": {
+        "startLine": 66,
+        "startChar": 89,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "2af2812f27b3472515fc6681f02f34072dbd9c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5400082c_9c9e466c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37d6378d_6b99c058",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-20T00:20:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5400082c_9c9e466c",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 56
+      },
+      "revId": "2af2812f27b3472515fc6681f02f34072dbd9c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ffc1c7a_aef939ac",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-20T00:08:24Z",
       "side": 1,
       "message": "nit: options",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 7
+      },
+      "revId": "2af2812f27b3472515fc6681f02f34072dbd9c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae4e97bd_a31264d2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2021-11-20T00:20:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ffc1c7a_aef939ac",
       "range": {
         "startLine": 70,
         "startChar": 1,
