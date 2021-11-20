@@ -87,10 +87,9 @@ func Scan(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
 	var scannerParams = scanning.ScannerStruct{
-		Descriptors:     scanning.Descriptors,
-		Attributes:      scanning.Attributes,
-		EsclCaps:        scanning.EsclCapabilities,
-		SourceImagePath: s.DataPath(scanning.SourceImage),
+		Descriptors: scanning.Descriptors,
+		Attributes:  scanning.Attributes,
+		EsclCaps:    scanning.EsclCapabilities,
 	}
 
 	scanning.RunAppSettingsTests(ctx, s, cr, tests, scannerParams)
