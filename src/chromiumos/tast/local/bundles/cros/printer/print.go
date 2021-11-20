@@ -44,8 +44,6 @@ func init() {
 
 func Print(ctx context.Context, s *testing.State) {
 	const (
-		attributes    = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-		descriptors   = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 		settingsLabel = "Printers"
 		settingsPage  = "osPrinting"
 	)
@@ -71,19 +69,13 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	printer, _, err := usbprinter.StartIPPUSB(ctx, devInfo, descriptors, attributes, "" /*record*/)
+	virtualPrinter, err := usbprinter.Start(ctx, usbprinter.PrinterInfo{
+		Descriptors: usbprinter.DefaultDescriptors,
+		Attributes:  usbprinter.DefaultAttributes})
+	defer virtualPrinter.Stop(ctx, false)
 	if err != nil {
 		s.Fatal("Failed to start IPP-over-USB printer: ", err)
 	}
-	defer func() {
-		printer.Kill()
-		printer.Wait()
-	}()
 
 	// Open OS Settings and navigate to the Printing page.
 	ui := uiauto.New(tconn)

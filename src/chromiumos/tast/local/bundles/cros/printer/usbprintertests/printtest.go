@@ -39,39 +39,37 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	printer, err := usbprinter.Start(ctx, devInfo, descriptors, attributes, record)
+	printer, err := usbprinter.Start(ctx,
+		usbprinter.PrinterInfo{Descriptors: descriptors,
+			Attributes: attributes,
+			RecordPath: record,
+			// Without a PPD, we assume the device is an
+			// IPP-USB printer that undergoes autoconf.
+			WaitUntilConfigured: len(ppd) == 0})
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
 	defer func() {
-		printer.Kill()
-		printer.Wait()
+		printer.Stop(ctx, false)
 		// Remove the recorded file. Ignore errors if the path doesn't exist.
 		if err := os.Remove(record); err != nil && !os.IsNotExist(err) {
 			s.Error("Failed to remove file: ", err)
 		}
 	}()
 
-	var foundPrinterName string
+	// If no PPD is provided then the printer is an ipp-over-usb device and will
+	// be configured automatically by Chrome. `Start()` waited until it was
+	// configured before returning and gives us the device name.
+	var foundPrinterName = printer.ConfiguredName
 	if ppd != "" {
 		// If a PPD is provided then we configure the printer ourselves.
 		foundPrinterName = "virtual-test"
-		if err := lp.CupsAddPrinter(ctx, foundPrinterName, usbPrinterURI(ctx, devInfo), ppd); err != nil {
+		if err := lp.CupsAddPrinter(
+			ctx,
+			foundPrinterName,
+			usbPrinterURI(ctx, printer.DevInfo),
+			ppd); err != nil {
 			s.Fatal("Failed to configure printer: ", err)
-		}
-	} else {
-		// If no PPD is provided then the printer is an ipp-over-usb device and will
-		// be configured automatically by Chrome. We wait until it is configured in
-		// order to extract the name of the device.
-		s.Log("Waiting for printer to be configured")
-		foundPrinterName, err = usbprinter.WaitPrinterConfigured(ctx, devInfo)
-		if err != nil {
-			s.Fatal("Failed to find printer name: ", err)
 		}
 	}
 	s.Log("Printer configured with name: ", foundPrinterName)

@@ -84,12 +84,6 @@ func findScanner(ctx context.Context, devInfo usbprinter.DevInfo) (bus, device s
 }
 
 func ScanESCLIPP(ctx context.Context, s *testing.State) {
-	const (
-		descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-		attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-		esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
-	)
-
 	testOpt := s.Param().(*params)
 
 	// Use cleanupCtx for any deferred cleanups in case of timeouts or
@@ -102,22 +96,18 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart printing system: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, esclCapabilities, "")
+	virtualPrinter, err := usbprinter.Start(ctx, usbprinter.PrinterInfo{
+		Descriptors:      usbprinter.DefaultDescriptors,
+		Attributes:       usbprinter.DefaultAttributes,
+		ESCLCapabilities: usbprinter.DefaultESCLCapabilities})
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-	defer func() {
-		if printer != nil {
-			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
-		}
-	}()
-	if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
-		s.Fatal("Failed to wait for CUPS configuration: ", err)
+	defer virtualPrinter.Stop(cleanupCtx, true)
+	// Resets the services spawned by auto-configuring the IPP-USB device,
+	// leaving the device and the system in an idle state.
+	if err = cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
 	}
 
 	var deviceName string
@@ -125,7 +115,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		// To simulate a network scanner, we start up ippusb_bridge manually and have it listen on localhost:60000.
 		// Normally udev automatically starts ippusb_bridge when a USB printer is plugged in, so we have to manually
 		// stop the job first.
-		bus, device, err := findScanner(ctx, devInfo)
+		bus, device, err := findScanner(ctx, virtualPrinter.DevInfo)
 		if err != nil {
 			s.Fatal("Failed to find scanner bus device: ", err)
 		}
@@ -142,7 +132,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		if err := ippusbBridge.Start(); err != nil {
 			s.Fatal("Failed to connect to printer with ippusb_bridge: ", err)
 		}
-		defer ippusbbridge.Kill(cleanupCtx, devInfo)
+		defer ippusbbridge.Kill(cleanupCtx, virtualPrinter.DevInfo)
 
 		// Defined in src/platform2/ippusb_bridge/src/main.rs
 		const port = 60000
@@ -174,11 +164,11 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 
 		deviceName = fmt.Sprintf("airscan:escl:TestScanner:http://localhost:%d/eSCL", port)
 	} else {
-		deviceName = fmt.Sprintf("ippusb:escl:TestScanner:%s_%s/eSCL", devInfo.VID, devInfo.PID)
+		deviceName = fmt.Sprintf("ippusb:escl:TestScanner:%s_%s/eSCL", virtualPrinter.DevInfo.VID, virtualPrinter.DevInfo.PID)
 
 		// In the USB case, ippusb_bridge is started indirectly by lorgnette, so we don't
 		// have a process to kill directly.  Instead, search the process tree.
-		defer ippusbbridge.Kill(cleanupCtx, devInfo)
+		defer ippusbbridge.Kill(cleanupCtx, virtualPrinter.DevInfo)
 	}
 
 	tmpDir, err := ioutil.TempDir("", "tast.scanner.ScanEsclIPP.")
@@ -212,6 +202,5 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	// Intentionally stop the printer early to trigger shutdown in ippusb_bridge.
 	// Without this, cleanup may have to wait for other processes to finish using
 	// the printer (e.g. CUPS background probing).
-	usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
-	printer = nil
+	virtualPrinter.Stop(cleanupCtx, true)
 }

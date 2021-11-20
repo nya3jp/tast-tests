@@ -59,23 +59,19 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 		s.Fatal("Failed to restart printing system: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(info.descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", info.descriptors, err)
-	}
-
-	printer, err := usbprinter.StartScanner(ctx, devInfo, info.descriptors, info.attributes, info.esclCapabilities, "")
+	virtualPrinter, err := usbprinter.Start(ctx, usbprinter.PrinterInfo{
+		Descriptors:      info.descriptors,
+		Attributes:       info.attributes,
+		ESCLCapabilities: info.esclCapabilities})
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-	defer func() {
-		usbprinter.StopPrinter(ctx, printer, devInfo)
-	}()
+	defer virtualPrinter.Stop(ctx, false)
 	if info.attributes != "" || info.esclCapabilities != "" {
-		// Only wait for CUPS if we added an IPP-USB device.  It won't attempt to
-		// auto-configure non-IPP devices, so this would never finish.
-		if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
-			s.Fatal("Failed to wait for CUPS configuration: ", err)
+		// Resets the services spawned by auto-configuring the IPP-USB device,
+		// leaving the device and the system in an idle state.
+		if err = cups.RestartPrintingSystem(ctx); err != nil {
+			s.Fatal("Failed to restart printing system: ", err)
 		}
 	}
 
@@ -96,7 +92,7 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 
 	found := false
 	for _, scanner := range scanners {
-		if isMatchingScanner(scanner, devInfo) {
+		if isMatchingScanner(scanner, virtualPrinter.DevInfo) {
 			found = true
 			break
 		}
@@ -109,21 +105,21 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 func EnumerateIPPUSB(ctx context.Context, s *testing.State) {
 	for _, info := range []scannerInfo{{
 		name:             "Non-IPP USB printer",
-		descriptors:      "/usr/local/etc/virtual-usb-printer/usb_printer.json",
+		descriptors:      "usb_printer.json",
 		attributes:       "",
 		esclCapabilities: "",
 		shouldEnumerate:  false,
 	}, {
 		name:             "IPP USB printer without eSCL",
-		descriptors:      "/usr/local/etc/virtual-usb-printer/ippusb_printer.json",
-		attributes:       "/usr/local/etc/virtual-usb-printer/ipp_attributes.json",
+		descriptors:      usbprinter.DefaultDescriptors,
+		attributes:       usbprinter.DefaultAttributes,
 		esclCapabilities: "",
 		shouldEnumerate:  false,
 	}, {
 		name:             "IPP USB printer with eSCL",
-		descriptors:      "/usr/local/etc/virtual-usb-printer/ippusb_printer.json",
-		attributes:       "/usr/local/etc/virtual-usb-printer/ipp_attributes.json",
-		esclCapabilities: "/usr/local/etc/virtual-usb-printer/escl_capabilities.json",
+		descriptors:      usbprinter.DefaultDescriptors,
+		attributes:       usbprinter.DefaultAttributes,
+		esclCapabilities: usbprinter.DefaultESCLCapabilities,
 		shouldEnumerate:  true,
 	}} {
 		runEnumerationTest(ctx, s, info)

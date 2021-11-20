@@ -45,12 +45,6 @@ func init() {
 	})
 }
 
-const (
-	descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-	attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-	esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
-)
-
 // Scan tests the chrome.documentScan API.
 func Scan(ctx context.Context, s *testing.State) {
 	// Use cleanupCtx for any deferred cleanups in case of timeouts or
@@ -83,27 +77,24 @@ func Scan(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, esclCapabilities, "")
+	virtualPrinter, err := usbprinter.Start(ctx, usbprinter.PrinterInfo{
+		Descriptors:         usbprinter.DefaultDescriptors,
+		Attributes:          usbprinter.DefaultAttributes,
+		ESCLCapabilities:    usbprinter.DefaultESCLCapabilities,
+		WaitUntilConfigured: true})
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-	defer func() {
-		if printer != nil {
-			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
-		}
-	}()
-	if err = ippusbbridge.WaitForSocket(ctx, devInfo); err != nil {
+	defer virtualPrinter.Stop(cleanupCtx, true)
+	if err = ippusbbridge.WaitForSocket(ctx, virtualPrinter.DevInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb socket: ", err)
 	}
-	if err = cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
-		s.Fatal("Failed to wait for printer to be idle: ", err)
+	// Resets the services spawned by auto-configuring the IPP-USB device,
+	// leaving the device and the system in an idle state.
+	if err = cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
 	}
-	if err = ippusbbridge.ContactPrinterEndpoint(ctx, devInfo, "/eSCL/ScannerCapabilities"); err != nil {
+	if err = ippusbbridge.ContactPrinterEndpoint(ctx, virtualPrinter.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
 		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
 	}
 

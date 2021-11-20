@@ -125,8 +125,6 @@ func Print(ctx context.Context, s *testing.State) {
 		apkName      = "ArcPrintTest.apk"
 		pkgName      = "org.chromium.arc.testapp.print"
 		activityName = "MainActivity"
-		descriptors  = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-		attributes   = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
@@ -151,18 +149,15 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	printer, _, err := usbprinter.StartIPPUSB(ctx, devInfo, descriptors, attributes, recordPath)
+	virtualPrinter, err := usbprinter.Start(ctx, usbprinter.PrinterInfo{
+		Descriptors: usbprinter.DefaultDescriptors,
+		Attributes:  usbprinter.DefaultAttributes,
+		RecordPath:  recordPath})
 	if err != nil {
 		s.Fatal("Failed to start IPP-over-USB printer: ", err)
 	}
 	defer func() {
-		printer.Kill()
-		printer.Wait()
+		virtualPrinter.Stop(ctx, false)
 		if err := os.Remove(recordPath); err != nil && !os.IsNotExist(err) {
 			s.Error("Failed to remove file: ", err)
 		}

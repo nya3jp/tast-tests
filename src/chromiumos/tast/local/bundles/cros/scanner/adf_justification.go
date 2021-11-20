@@ -33,11 +33,6 @@ func init() {
 	})
 }
 
-const (
-	descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-	attributes  = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-)
-
 type scannerParams struct {
 	name             string
 	justification    string
@@ -106,24 +101,25 @@ func runJustificationTest(ctx context.Context, s *testing.State, params scannerP
 		s.Fatal("Failed to restart printing system: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
 	tmpDir, err := ioutil.TempDir("", "tast.scanner.ADFJustification.")
 	if err != nil {
 		s.Fatal("Failed to create temporary directory: ", err)
 	}
 	defer os.RemoveAll(tmpDir)
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, params.esclCapabilities, tmpDir)
+	virtualPrinter, err := usbprinter.Start(ctx, usbprinter.PrinterInfo{
+		Descriptors:        usbprinter.DefaultDescriptors,
+		Attributes:         usbprinter.DefaultAttributes,
+		ESCLCapabilities:   params.esclCapabilities,
+		OutputLogDirectory: tmpDir})
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-	defer usbprinter.StopPrinter(ctx, printer, devInfo)
-	if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
-		s.Fatal("Failed to wait for CUPS configuration: ", err)
+	defer virtualPrinter.Stop(ctx, true)
+	// Resets the services spawned by auto-configuring the IPP-USB device,
+	// leaving the device and the system in an idle state.
+	if err = cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
 	}
 
 	// Requesting total width is 100 mm
@@ -134,7 +130,10 @@ func runJustificationTest(ctx context.Context, s *testing.State, params scannerP
 		BottomRightY: 100,
 	}
 
-	deviceName := fmt.Sprintf("ippusb:escl:TestScanner:%s_%s/eSCL", devInfo.VID, devInfo.PID)
+	deviceName := fmt.Sprintf(
+		"ippusb:escl:TestScanner:%s_%s/eSCL",
+		virtualPrinter.DevInfo.VID,
+		virtualPrinter.DevInfo.PID)
 	startScanRequest := &lpb.StartScanRequest{
 		DeviceName: deviceName,
 		Settings: &lpb.ScanSettings{
