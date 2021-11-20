@@ -80,6 +80,7 @@ func init() {
 func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 
@@ -105,7 +106,7 @@ func VirtualKeyboardTypingIME(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ValidateInputFieldForMode(inputField, util.InputWithVK, inputData, s.DataPath)(ctx); err != nil {
+			if err := its.ValidateInputFieldForMode(uc, inputField, util.InputWithVK, inputData, s.DataPath).Run(ctx); err != nil {
 				s.Fatal("Failed to validate virtual keyboard input: ", err)
 			}
 		}
