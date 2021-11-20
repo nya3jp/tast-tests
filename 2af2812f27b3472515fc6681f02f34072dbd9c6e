@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fa2c0f8_97c62793",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-20T00:08:24Z",
+      "side": 1,
+      "message": "nit: and resets all holding space prefs.",
+      "range": {
+        "startLine": 66,
+        "startChar": 89,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "2af2812f27b3472515fc6681f02f34072dbd9c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5400082c_9c9e466c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-20T00:08:24Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 56
+      },
+      "revId": "2af2812f27b3472515fc6681f02f34072dbd9c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffc1c7a_aef939ac",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-11-20T00:08:24Z",
+      "side": 1,
+      "message": "nit: options",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 7
+      },
+      "revId": "2af2812f27b3472515fc6681f02f34072dbd9c6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
