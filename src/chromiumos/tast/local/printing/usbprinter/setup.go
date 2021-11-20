@@ -28,6 +28,34 @@ type DevInfo struct {
 	PID string
 }
 
+// Exports a few commonly used data paths as defaults.
+const (
+	DefaultDescriptors      = "ippusb_printer.json"
+	DefaultAttributes       = "ipp_attributes.json"
+	DefaultEsclCapabilities = "escl_capabilities.json"
+)
+
+// VirtualUSBPrinterInfo contains all information needed to run the
+// `virtual-usb-printer` process.
+//
+// Config data path fields obey these rules:
+// 1.	Absolute paths are passed verbatim to the invocation of
+//	`virtual-usb-printer`.
+// 2.	Relative paths (and basenames) are joined with the default
+//	install location of `virtual-usb-printer`'s config files.
+// 3.	Empty fields are not passed to `virtual-usb-printer`.
+type VirtualUSBPrinterInfo struct {
+	// Required: path to USB device descriptors.
+	Descriptors string
+
+	// Required: path to device attributes (e.g. IPP attributes).
+	Attributes string
+
+	// Specifies the path where the print job should be recorded.
+	// Not a config data path, i.e. must be an absolute path.
+	RecordPath string
+}
+
 func ippUSBPrinterURI(ctx context.Context, devInfo DevInfo) string {
 	return fmt.Sprintf("ippusb://%s_%s/ipp/print", devInfo.VID, devInfo.PID)
 }
