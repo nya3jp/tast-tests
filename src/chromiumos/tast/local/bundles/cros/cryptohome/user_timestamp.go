@@ -35,7 +35,7 @@ func init() {
 func UserTimestamp(ctx context.Context, s *testing.State) {
 	const (
 		shadow        = "/home/.shadow"
-		timestampFile = "master.0.timestamp"
+		timestampFile = "timestamp"
 		keysetFile    = "master.0"
 
 		user1    = "user1"
@@ -89,22 +89,6 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	checkDumpKeyset := func(ctx context.Context, user, age string) error {
-		testing.ContextLogf(ctx, "Checking user keyset %q", user)
-		cmd := testexec.CommandContext(
-			ctx, "cryptohome", "--action=dump_keyset", "--user="+user)
-		output, err := cmd.Output()
-		if err != nil {
-			return errors.Wrap(err, "failed to set user old")
-		}
-		re := regexp.MustCompile(`(?m)(.*)Last activity \(days ago\):$\s*(?P<age>\d+)`)
-		match := re.FindStringSubmatch(string(output))
-		if match[2] != age {
-			return errors.Wrap(err, "last activity is not expected value")
-		}
-		return nil
-	}
-
 	checkLastActivity := func(ctx context.Context, user, age string) error {
 		testing.ContextLogf(ctx, "Checking last activity %q", user)
 		cmd := testexec.CommandContext(
@@ -123,7 +107,7 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 		re := regexp.MustCompile(pattern)
 		match := re.FindStringSubmatch(string(output))
 		if match[2] != age {
-			return errors.Wrap(err, "last activity is not expected value")
+			return errors.Wrapf(err, "last activity is not expected value, got: %q, want: %q", age, match[2])
 		}
 		return nil
 	}
@@ -140,23 +124,21 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 	if err := createUser(ctx, user1, password); err != nil {
 		s.Fatal("Failed to create user with content: ", err)
 	}
-	defer cryptohome.RemoveVault(ctx, user1)
+	defer func() {
+		cryptohome.UnmountVault(ctx, user1)
+		cryptohome.RemoveVault(ctx, user1)
+	}()
 
 	if err := createUser(ctx, user2, password); err != nil {
 		s.Fatal("Failed to create user with content: ", err)
 	}
-	defer cryptohome.RemoveVault(ctx, user2)
-
-	if err := checkDumpKeyset(ctx, user1, timestampNew); err != nil {
-		s.Fatal("Unexpected value in keyset: ", err)
-	}
+	defer func() {
+		cryptohome.UnmountVault(ctx, user2)
+		cryptohome.RemoveVault(ctx, user2)
+	}()
 
 	if err := checkLastActivity(ctx, user1, timestampNew); err != nil {
 		s.Fatal("Unexpected value for last activity: ", err)
-	}
-
-	if err := checkDumpKeyset(ctx, user2, timestampNew); err != nil {
-		s.Fatal("Unexpected value in keyset: ", err)
 	}
 
 	if err := checkLastActivity(ctx, user2, timestampNew); err != nil {
@@ -201,16 +183,8 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 		s.Fatal("The keyset file has been modified after changing timestamp")
 	}
 
-	if err := checkDumpKeyset(ctx, user1, timestampNew); err != nil {
-		s.Fatal("Unexpected value in keyset: ", err)
-	}
-
 	if err := checkLastActivity(ctx, user1, timestampNew); err != nil {
 		s.Fatal("Unexpected value for last activity: ", err)
-	}
-
-	if err := checkDumpKeyset(ctx, user2, timestampOld); err != nil {
-		s.Fatal("Unexpected value in keyset: ", err)
 	}
 
 	if err := checkLastActivity(ctx, user2, timestampOld); err != nil {
