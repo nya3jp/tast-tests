@@ -43,7 +43,8 @@ type Manifest struct {
 type ResponseUpdateCheck struct {
 	XMLName struct{} `xml:"updatecheck" json:"-"`
 
-	Status string `xml:"status,attr"`
+	Status   string `xml:"status,attr"`
+	Rollback bool   `xml:"_rollback,attr"`
 
 	Manifest Manifest `xml:"manifest"`
 }
