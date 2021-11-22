@@ -105,6 +105,30 @@
       },
       "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95669f8f_4c9052f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-22T01:32:29Z",
+      "side": 1,
+      "message": "Thanks @Kerker,\nI will discusses with dev team on this.",
+      "parentUuid": "249d3aef_10ff284d",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
