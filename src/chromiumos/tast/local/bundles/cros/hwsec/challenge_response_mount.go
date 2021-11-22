@@ -12,6 +12,7 @@ import (
 	"crypto/x509"
 	"math/rand"
 	"reflect"
+	"time"
 
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
@@ -35,6 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"tpm"},
+		Timeout:      15 * time.Minute,
 	})
 }
 
@@ -177,6 +179,11 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	}
 
 	utility := helper.CryptohomeClient()
+	daemonController := helper.DaemonController()
+
+	if err := daemonController.Restart(ctx, hwsec.CryptohomeDaemon); err != nil {
+		s.Fatal("Failed to restart cryptohomed: ", err)
+	}
 
 	// Make sure the test starts from a missing cryptohome.
 	utility.UnmountAndRemoveVault(ctx, testUser)
@@ -244,4 +251,39 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	if keyDelegate.challengeCallCnt == 0 {
 		s.Fatal("No key challenges made during mount")
 	}
+
+	if _, err := utility.Unmount(ctx, testUser); err != nil {
+		s.Fatal("Failed to unmount cryptohome: ", err)
+	}
+
+	// TODO(yich): Do the magic!
+	// Sleep 5 minutes.
+	// emerge and cros deploy the new code.
+	// restart cryptohome.
+	if err := testing.Sleep(ctx, 5*time.Minute); err != nil {
+		s.Fatal("Failed to sleep: ", err)
+	}
+	if err := daemonController.Restart(ctx, hwsec.CryptohomeDaemon); err != nil {
+		s.Fatal("Failed to restart cryptohomed: ", err)
+	}
+
+	// Authenticate while the cryptohome is still mounted (modeling the case of
+	// the user unlocking the device from the Lock Screen).
+	if _, err := utility.CheckVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg)); err != nil {
+		s.Fatal("Failed to check the key for the mounted cryptohome: ", err)
+	}
+
+	if _, err := utility.Unmount(ctx, testUser); err != nil {
+		s.Fatal("Failed to unmount cryptohome: ", err)
+	}
+
+	// Mount the existing challenge-response protected cryptohome.
+	keyDelegate.challengeCallCnt = 0
+	if err := utility.MountVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.dbusPath, pubKeySPKIDER, keyAlg), false, hwsec.NewVaultConfig()); err != nil {
+		s.Fatal("Failed to mount existing cryptohome: ", err)
+	}
+	if keyDelegate.challengeCallCnt == 0 {
+		s.Fatal("No key challenges made during mount")
+	}
+
 }
