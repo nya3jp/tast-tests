@@ -16,6 +16,24 @@
       "message": "Have you test it on a chromebox and make sure the test status is SKIPPED?",
       "revId": "747b6ddaec1dccee35d6e88800adbbf1d5f7de85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "642af19c_9284fb81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-22T18:11:00Z",
+      "side": 1,
+      "message": "Yes, I leased a chromebox (fizz) via crosfleet and confirmed that behavior.",
+      "parentUuid": "e8481fa8_b7aa148d",
+      "revId": "747b6ddaec1dccee35d6e88800adbbf1d5f7de85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
