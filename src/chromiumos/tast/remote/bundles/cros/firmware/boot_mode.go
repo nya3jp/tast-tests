@@ -77,7 +77,7 @@ func init() {
 				resetAfterBoot: true,
 				resetType:      firmware.ColdReset,
 			},
-			ExtraAttr: []string{"firmware_usb", "firmware_experimental"},
+			ExtraAttr: []string{"firmware_usb", "firmware_unstable"},
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "dev_warm",
@@ -111,7 +111,7 @@ func init() {
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeDev,
 			},
-			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+			ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "dev_gbb_to_rec",
@@ -119,7 +119,7 @@ func init() {
 			Val: bootModeTestParams{
 				bootToMode: fwCommon.BootModeRecovery,
 			},
-			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+			ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}, {
 			Name:    "rec_to_dev_gbb",
@@ -128,7 +128,7 @@ func init() {
 				bootToMode:    fwCommon.BootModeDev,
 				allowGBBForce: true,
 			},
-			ExtraAttr: []string{"firmware_experimental", "firmware_usb"},
+			ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
 			Timeout:   60 * time.Minute,
 		}},
 	})

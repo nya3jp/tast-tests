@@ -19,7 +19,7 @@ func init() {
 		Func:         ECReboot,
 		Desc:         "Checks that device will reboot when EC gets the remote requests via UART",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})

@@ -20,7 +20,7 @@ func init() {
 		Func:         ECWakeOnCharge,
 		Desc:         "Checks that device will charge when EC is in a low-power mode, as a replacement for manual test 1.4.11",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.DevModeGBB,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
