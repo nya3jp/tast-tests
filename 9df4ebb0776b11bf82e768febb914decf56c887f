@@ -22,6 +22,30 @@
       },
       "revId": "9df4ebb0776b11bf82e768febb914decf56c887f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63facd29_46db084d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_timestamp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-11-22T03:06:03Z",
+      "side": 1,
+      "message": "good catch, done.",
+      "parentUuid": "9de8f765_4d298bbf",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 41
+      },
+      "revId": "9df4ebb0776b11bf82e768febb914decf56c887f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
