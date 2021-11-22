@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -22,11 +21,14 @@ import (
 const (
 	chapUser              = "chapuser"
 	chapSecret            = "chapsecret"
-	makeIPSecDir          = "mkdir -p /run/ipsec"
-	ipsecCommand          = "/usr/sbin/ipsec"
-	ipsecLogFile          = "var/log/charon.log"
 	ipsecPresharedKey     = "preshared-key"
-	ipsecConnName         = "L2TP-test"
+	caCertFile            = "etc/swanctl/x509ca/ca.cert"
+	makeIPsecDir          = "mkdir -p /run/ipsec"
+	charonCommand         = "/usr/libexec/ipsec/charon"
+	charonLogFile         = "var/log/charon.log"
+	charonPidFile         = "run/ipsec/charon.pid"
+	viciSocketFile        = "run/ipsec/charon.vici"
+	swanctlCommand        = "/usr/sbin/swanctl"
 	pppdPidFile           = "run/ppp0.pid"
 	xauthUser             = "xauth_user"
 	xauthPassword         = "xauth_password"
@@ -38,17 +40,25 @@ const (
 )
 
 var (
-	xl2tpdRootDirectories = []string{"etc/ipsec.d", "etc/ipsec.d/cacerts",
-		"etc/ipsec.d/certs", "etc/ipsec.d/crls",
-		"etc/ipsec.d/private", "etc/ppp", "etc/xl2tpd"}
+	xl2tpdRootDirectories = []string{
+		"etc/swanctl",
+		"etc/swanctl/x509ca",
+		"etc/swanctl/x509",
+		"etc/swanctl/private",
+		"etc/ppp",
+		"etc/xl2tpd"}
 
-	ipsecCommonConfigs = map[string]string{
+	strongSwanConfigs = map[string]string{
 		"etc/strongswan.conf": "charon {\n" +
 			"  filelog {\n" +
 			"    test_vpn {\n" +
 			"      path = {{.charon_logfile}}\n" +
 			"      default = 3\n" +
 			"      time_format = %b %e %T\n" +
+			"      dmn = 2\n" +
+			"      mgr = 2\n" +
+			"      ike = 2\n" +
+			"      net = 2\n" +
 			"    }\n" +
 			"  }\n" +
 			"  install_routes = no\n" +
@@ -56,11 +66,67 @@ var (
 			"  routing_table = 0\n" +
 			"}\n",
 
+		"etc/swanctl/swanctl.conf": "connections {\n" +
+			"  ikev1-l2tp-test {\n" +
+			"    version = 1\n" +
+			"    {{if .preshared_key}}" +
+			"      local-psk {\n" +
+			"        auth = psk\n" +
+			"      }\n" +
+			"      remote-psk {\n" +
+			"        auth = psk\n" +
+			"      }\n" +
+			"    {{end}}" +
+			"    {{if .xauth_user}}" +
+			"      remote-xauth {\n" +
+			"        auth = xauth\n" +
+			"      }\n" +
+			"    {{end}}" +
+			"    {{if .server_cert_id}}" +
+			"      local-cert {\n" +
+			"        auth = pubkey\n" +
+			"        id = {{.server_cert_id}}\n" +
+			"      }\n" +
+			"    {{end}}" +
+			"    {{if .ca_cert_file}}" +
+			"      remote-cert {\n" +
+			"        auth = pubkey\n" +
+			"        cacerts = /{{.ca_cert_file}}\n" +
+			"      }\n" +
+			"    {{end}}" +
+			"    children {\n" +
+			"      ikev1-psk-xauth-l2tp {\n" +
+			"        local_ts = dynamic[/1701]\n" +
+			"        mode = transport\n" +
+			"      }\n" +
+			"    }\n" +
+			"  }\n" +
+			"}\n" +
+			"secrets {\n" +
+			"  {{if .preshared_key}}" +
+			"  ike-1 {\n" +
+			"    secret = \"{{.preshared_key}}\"\n" +
+			"  }\n" +
+			"  {{end}}" +
+			"  {{if .xauth_user}}" +
+			"  xauth-1 {\n" +
+			"    id = {{.xauth_user}}\n" +
+			"    secret = {{.xauth_password}}\n" +
+			"  }\n" +
+			"  {{end}}" +
+			"}\n",
+
 		"etc/passwd": "root:x:0:0:root:/root:/bin/bash\n" +
 			"vpn:*:20174:20174::/dev/null:/bin/false\n",
 
 		"etc/group": "vpn:x:20174:\n",
 
+		caCertFile:                       certificate.TestCert1().CACred.Cert,
+		"etc/swanctl/x509/server.cert":   certificate.TestCert1().ServerCred.Cert,
+		"etc/swanctl/private/server.key": certificate.TestCert1().ServerCred.PrivateKey,
+	}
+
+	l2tpConfigs = map[string]string{
 		xl2tpdConfigFile: "[global]\n" +
 			"\n" +
 			"[lns default]\n" +
@@ -92,48 +158,6 @@ var (
 			"proxyarp\n" +
 			"ms-dns 8.8.8.8\n" +
 			"ms-dns 8.8.4.4\n",
-	}
-	ipsecTypedConfigs = map[string]map[string]string{
-		"psk": {
-			"etc/ipsec.conf": "config setup\n" +
-				"  charondebug=\"{{.charon_debug_flags}}\"\n" +
-				"conn {{.conn_name}}\n" +
-				"  keyexchange=ikev1\n" +
-				"  ike=aes128-sha1-modp2048!\n" +
-				"  esp=3des-sha1!\n" +
-				"  type=transport\n" +
-				"  authby=psk\n" +
-				"  {{.xauth_stanza}}\n" +
-				"  rekey=no\n" +
-				"  left={{.netns_ip}}\n" +
-				"  leftprotoport=17/1701\n" +
-				"  right=%any\n" +
-				"  rightprotoport=17/%any\n" +
-				"  auto=add\n",
-			"etc/ipsec.secrets": "{{.netns_ip}} %any : PSK \"{{.preshared_key}}\"\n" +
-				"{{.xauth_user}} : XAUTH \"{{.xauth_password}}\"\n"},
-		"cert": {
-			"etc/ipsec.conf": "config setup\n" +
-				"  charondebug=\"{{.charon_debug_flags}}\"\n" +
-				"conn {{.conn_name}}\n" +
-				"  keyexchange=ikev1\n" +
-				"  ike=aes128-sha1-modp2048!\n" +
-				"  esp=3des-sha1!\n" +
-				"  type=transport\n" +
-				"  left={{.netns_ip}}\n" +
-				"  leftcert=server.cert\n" +
-				"  leftid=\"C=US, ST=California, L=Mountain View, " +
-				"CN=chromelab-wifi-testbed-server.mtv.google.com\"\n" +
-				"  leftprotoport=17/1701\n" +
-				"  right=%any\n" +
-				"  rightca=\"C=US, ST=California, L=Mountain View, " +
-				"CN=chromelab-wifi-testbed-root.mtv.google.com\"\n" +
-				"  rightprotoport=17/%any\n" +
-				"  auto=add\n",
-			"etc/ipsec.secrets":              ": RSA server.key \"\"\n",
-			"etc/ipsec.d/cacerts/ca.cert":    certificate.TestCert1().CACred.Cert,
-			"etc/ipsec.d/certs/server.cert":  certificate.TestCert1().ServerCred.Cert,
-			"etc/ipsec.d/private/server.key": certificate.TestCert1().ServerCred.PrivateKey},
 	}
 )
 
@@ -245,45 +269,45 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	chro := chroot.NewNetworkChroot()
 	server := &Server{
 		netChroot:    chro,
-		stopCommands: [][]string{{ipsecCommand, "stop"}},
-		pidFiles:     []string{xl2tpdPidFile, pppdPidFile},
-		logFiles:     []string{ipsecLogFile},
-	}
-
-	if _, ok := ipsecTypedConfigs[authType]; !ok {
-		return nil, errors.Errorf("L2TP/IPSec type %s is not defined", authType)
+		stopCommands: [][]string{},
+		pidFiles:     []string{charonPidFile, xl2tpdPidFile, pppdPidFile},
+		logFiles:     []string{charonLogFile},
 	}
 
 	chro.AddRootDirectories(xl2tpdRootDirectories)
-	chro.AddConfigTemplates(ipsecCommonConfigs)
-	chro.AddConfigTemplates(ipsecTypedConfigs[authType])
+	chro.AddConfigTemplates(strongSwanConfigs)
+	chro.AddConfigTemplates(l2tpConfigs)
 
 	configValues := map[string]interface{}{
 		"chap_user":                chapUser,
 		"chap_secret":              chapSecret,
-		"charon_debug_flags":       "dmn 2, mgr 2, ike 2, net 2",
-		"charon_logfile":           ipsecLogFile,
-		"preshared_key":            ipsecPresharedKey,
-		"conn_name":                ipsecConnName,
-		"xauth_user":               xauthUser,
-		"xauth_password":           xauthPassword,
+		"charon_logfile":           charonLogFile,
 		"xl2tpd_server_ip_address": xl2tpdServerIPAddress,
 		"use_underlay_ip":          underlayIPIsOverlayIP,
 	}
 
+	switch authType {
+	case AuthTypePSK:
+		configValues["preshared_key"] = ipsecPresharedKey
+	case AuthTypeCert:
+		configValues["server_cert_id"] = "\"C=US, ST=California, L=Mountain View, CN=chromelab-wifi-testbed-server.mtv.google.com\""
+		configValues["ca_cert_file"] = caCertFile
+	default:
+		return nil, errors.Errorf("L2TP/IPsec type %s is not defined", authType)
+	}
+
 	if ipsecUseXauth {
-		configValues["xauth_stanza"] = "rightauth2=xauth"
-	} else {
-		configValues["xauth_stanza"] = ""
+		configValues["xauth_user"] = xauthUser
+		configValues["xauth_password"] = xauthPassword
 	}
 
 	// For running strongSwan VPN with flag --with-piddir=/run/ipsec. We
 	// want to use /run/ipsec for strongSwan runtime data dir instead of
 	// /run, and the cmdline flag applies to both client and server
-	chro.AddStartupCommand(makeIPSecDir)
+	chro.AddStartupCommand(makeIPsecDir)
 
 	chro.AddConfigValues(configValues)
-	chro.AddStartupCommand(fmt.Sprintf("%s start", ipsecCommand))
+	chro.AddStartupCommand(fmt.Sprintf("%s &", charonCommand))
 
 	xl2tpdCmdStr := fmt.Sprintf("%s -c /%s -C /tmp/l2tpd.control", xl2tpdCommand, xl2tpdConfigFile)
 	chro.AddStartupCommand(xl2tpdCmdStr)
@@ -293,19 +317,17 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 		return nil, errors.Wrap(err, "failed to start L2TP/IPsec server")
 	}
 
-	// After calling `ipsec start`, it may take some time for charon to load the
-	// connection configurations, and incoming requests will be rejected before
-	// it is done. Once charon is ready, `ipsec statusall` will show all the
-	// connections loaded.
+	// After starting charon, execute `swanctl --load-all` to load the
+	// connection config. The execution may fail until the charon process is
+	// ready, so we use a Poll here.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Ignores the error here, it could fail if charon has not been started.
-		output, _ := chro.RunChroot(ctx, []string{ipsecCommand, "statusall"})
-		if strings.Contains(output, ipsecConnName) {
+		output, err := chro.RunChroot(ctx, []string{swanctlCommand, "--load-all"})
+		if err == nil {
 			return nil
 		}
-		return errors.Errorf("current output is: %s", output)
+		return errors.Wrapf(err, "failed to run swanctl, output: %s", output)
 	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-		return nil, errors.Wrap(err, "failed to wait for charon ready")
+		return nil, errors.Wrap(err, "failed to load swanctl config")
 	}
 
 	server.UnderlayIP = underlayIP
