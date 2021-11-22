@@ -7,6 +7,7 @@ package inputs
 import (
 	"context"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -53,12 +55,19 @@ func init() {
 func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	its, err := testserver.LaunchInMode(ctx, cr, tconn, strings.HasSuffix(s.TestName(), "incognito"))
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
+
+	if strings.HasSuffix(s.TestName(), "incognito") {
+		uc.SetAttribute(useractions.AttributeIncognitoMode, strconv.FormatBool(true))
+		// Remove the incognito attribute after test.
+		defer uc.RemoveAttribute(useractions.AttributeIncognitoMode)
+	}
 
 	inputField := testserver.TextAreaInputField
 	vkbCtx := vkb.NewContext(cr, tconn)
@@ -79,12 +88,12 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ValidateInputFieldForMode(inputField, util.InputWithVK, inputData, s.DataPath)(ctx); err != nil {
+			if err := its.ValidateInputFieldForMode(uc, inputField, util.InputWithVK, inputData, s.DataPath).Run(ctx); err != nil {
 				s.Fatal("Failed to validate virtual keyboard input: ", err)
 			}
 		}
 	}
 
 	// Run defined subtest per input method and message combination.
-	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, typingModeTestIMEs, typingModeTestMessages, subtest)
+	util.RunSubtestsPerInputMethodAndMessage(ctx, uc, s, typingModeTestIMEs, typingModeTestMessages, subtest)
 }

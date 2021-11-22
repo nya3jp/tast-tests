@@ -72,6 +72,7 @@ func init() {
 func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	testIMEs := s.Param().([]ime.InputMethod)
 
@@ -125,5 +126,5 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 		}
 	}
 	// Run defined subtest per input method and message combination.
-	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, testIMEs, voiceTestMessages, subtest)
+	util.RunSubtestsPerInputMethodAndMessage(ctx, uc, s, testIMEs, voiceTestMessages, subtest)
 }
