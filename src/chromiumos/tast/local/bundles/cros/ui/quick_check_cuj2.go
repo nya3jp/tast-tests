@@ -52,6 +52,15 @@ func init() {
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Suspend,
 				},
+			}, {
+				Name:              "basic_wakeup_crosbolt",
+				Timeout:           5 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("volta", "vilboz", "dratini")),
+				Val: quickCheckParam{
+					tier:     cuj.Basic,
+					scenario: quickcheckcuj.Suspend,
+				},
 			},
 		},
 	})
