@@ -289,6 +289,12 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 
 	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath))
 
+	// The What's-New feature automatically redirects the browser to a WebUI page to display the
+	// new feature if this is first time the user opens the browser or the user has upgraded
+	// Chrome to a different milestone. Disables the feature in testing to make the test
+	// expectations more predirectable, and thus make the tests more stable.
+	opts = append(opts, chrome.ExtraArgs("--lacros-chrome-additional-args=--disable-features=ChromeWhatsNewUI"))
+
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()
