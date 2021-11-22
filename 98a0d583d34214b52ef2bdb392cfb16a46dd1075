@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c114308_738e4f6e",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:20:51Z",
+      "side": 1,
+      "message": "This seems like a bug that needs to be fixed. Keep things consistent as Vars for now.\n\nIf the vars are always present there shouldn\u0027t be any problems.",
+      "parentUuid": "927d5abc_a74b0ead",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "98a0d583d34214b52ef2bdb392cfb16a46dd1075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04291d23_06e6f147",
         "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
         "patchSetId": 1
