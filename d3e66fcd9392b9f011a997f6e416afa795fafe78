@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89798c6d_bd59627e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2021-11-22T01:34:20Z",
+      "side": 1,
+      "message": "I have an alternative fix-forward crrev.com/c/3295114.",
+      "revId": "d3e66fcd9392b9f011a997f6e416afa795fafe78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
