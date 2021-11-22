@@ -70,6 +70,30 @@
       },
       "revId": "4b51dd250891cb0e1ed889b5f047802ad2d71087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f754be_dda33d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_user_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-22T04:57:50Z",
+      "side": 0,
+      "message": "Thanks for the comment. Fixed.",
+      "parentUuid": "1de331d9_3403c5e0",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 100
+      },
+      "revId": "4b51dd250891cb0e1ed889b5f047802ad2d71087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
