@@ -99,6 +99,24 @@
       "parentUuid": "1fee6669_29893b3e",
       "revId": "9dbb839919797577e6b3bcfed755becf63fed718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcfbdbee_0ea3e8cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-22T13:49:51Z",
+      "side": 1,
+      "message": "Done, thanks for the snippet!",
+      "parentUuid": "4f2887ff_c1acd5d0",
+      "revId": "9dbb839919797577e6b3bcfed755becf63fed718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
