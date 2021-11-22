@@ -34,6 +34,24 @@
       "parentUuid": "89798c6d_bd59627e",
       "revId": "d3e66fcd9392b9f011a997f6e416afa795fafe78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae17eb9_1d96a785",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2021-11-22T02:38:31Z",
+      "side": 1,
+      "message": "I\u0027ve deleted the CL since this one got submitted.",
+      "parentUuid": "11a55d07_3eb79d1f",
+      "revId": "d3e66fcd9392b9f011a997f6e416afa795fafe78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
