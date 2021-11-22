@@ -6,6 +6,7 @@ package launcher
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -289,6 +290,9 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 
 	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath))
 
+	// Ensures that Lacros listens to a debugging port so that it can be connected to by the tests.
+	opts = append(opts, chrome.ExtraArgs("--lacros-chrome-additional-args=--remote-debugging-port=0"))
+
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()
@@ -313,6 +317,9 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	if f.mode == Rootfs {
 		opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
 			chrome.ExtraArgs("--lacros-selection=rootfs"))
+		// When launched from the rootfs partition, the lacros-chrome will be mounted at /run/lacros,
+		// remove the directory to prevent the side effects of left-over aritfacts from previous runs.
+		os.RemoveAll("/run/lacros")
 	} else if f.mode == Omaha {
 		opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
 			chrome.ExtraArgs("--lacros-selection=stateful"))
