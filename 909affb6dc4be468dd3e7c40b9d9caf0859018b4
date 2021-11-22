@@ -16,6 +16,161 @@
       "message": "Thank you for taking a look at this change! I have made the requested fixes and responded to the comments below, please take a look whenever you have a moment!",
       "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf5a82b_492da490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-22T20:03:25Z",
+      "side": 1,
+      "message": "Looks good, just noticed a few more things. Also +Shijin FYI",
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0123bb65_8cbc03a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/open_bluetooth_settings_from_quick_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-22T20:03:25Z",
+      "side": 1,
+      "message": "I think you\u0027ll want to assign the returned Conn, and defer a call to its Close function afterwards to free up whatever resources it uses\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;l\u003d57-59",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a8883d_06d2d74d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_bluetooth_quick_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-22T20:03:25Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d015fa81_93383da3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_bluetooth_quick_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-22T20:03:25Z",
+      "side": 1,
+      "message": "If this fails at any point, whatever the bluetooth state was at the time of failure will persist for subsequent tests. Will it be a problem if bluetooth is disabled for any of the other tests sharing the chromeLoggedInWithBluetoothRevamp fixture? If so, you\u0027ll want to consider adding a Reset function to your fixture to clean up the bluetooth state if a test fails.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc3766ed_2f21b4f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_quick_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-22T20:03:25Z",
+      "side": 1,
+      "message": "Might want to defer expanding it, so the state doesn\u0027t persist into other tests (chromeLoggedIn\u0027s cleanup doesn\u0027t do anything with quicksettings AFAIK)",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4cde162_5184523a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/bluetooth.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-22T20:03:25Z",
+      "side": 1,
+      "message": "You could probably use ensureVisible here to avoid re-opening it:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go;l\u003d170",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17846fdf_c500d3bb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-22T20:03:25Z",
+      "side": 1,
+      "message": "here too\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/quicksettings/quicksettings.go;l\u003d170",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

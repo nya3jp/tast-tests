@@ -22,6 +22,30 @@
       },
       "revId": "b9121c2e6b5183e08889477c95d0969ef89b402a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb4106f_1890e2f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-22T20:03:25Z",
+      "side": 1,
+      "message": "I think this is fine, I\u0027ve usually seen these FixtureImpl functions be exported anyways. No harm in other packages having visibility into this either (like if they wanted to use it in their own fixtures or something)",
+      "parentUuid": "0a500a56_00ca8b84",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "b9121c2e6b5183e08889477c95d0969ef89b402a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
