@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb60520_a94ab98c",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:17:54Z",
+      "side": 1,
+      "message": "Save the DataPath instead of the entire FixtState.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aff4144_84be02d0",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:17:54Z",
+      "side": 1,
+      "message": "Use a consistent tense. Log into Citrix here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38309904_561bc662",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:17:54Z",
+      "side": 1,
+      "message": "citrix: Opening\n\nSame below",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0ee41d_ccdf3699",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:17:54Z",
+      "side": 1,
+      "message": "Only store the DataPath here, not the entire FixtState",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc369e5_96b416db",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:17:54Z",
+      "side": 1,
+      "message": "Capitalize messages (same below)\n\nAlso use a consistent tense here: log in",
+      "range": {
+        "startLine": 33,
+        "startChar": 34,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
