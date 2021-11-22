@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "98ffde14_92c43249",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T10:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ffb4952_3884e3cf",
+      "range": {
+        "startLine": 9,
+        "startChar": 59,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "94a6a30b_0f6414be",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb4506a7_67657761",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T10:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34884ed1_f2fe19b1",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe1ec9fc_e11a832d",
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd5b796_7a43e0c6",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T10:49:53Z",
+      "side": 1,
+      "message": "Victor pointed that on vmware already. Will change that here too.",
+      "parentUuid": "fe1ec9fc_e11a832d",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b6b6988_375bcbf8",
@@ -100,6 +172,24 @@
       "writtenOn": "2021-11-19T15:00:45Z",
       "side": 1,
       "message": "Can you add a node check to the end? To make sure the app is really open.",
+      "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35531229_05de0b3e",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T10:49:53Z",
+      "side": 1,
+      "message": "You mean to check new window opened?\n\nKiosk does not work the same way as MGS or user session. Kiosk has 3 windows opened to start with and opening actual application via VDI does not change anything. Moreover, all windows are called with the name of the VDI app (Citrix Workspave or VMware Horizon) and there is no way to figure out which one is main VDI app and which one is the app user openend.\n\nFunctions exposed via interface (and implemented through specific VDI apps) provide way to execute common operations. However checks should happen in tests as each application may be opening differently. E.g Salesforce does not open new window whatsoever.\n\nIf a consequence of and action varies depending on parameter - here, application name. The logic of checking if actual effects happen is left for the test.",
+      "parentUuid": "9b6b6988_375bcbf8",
       "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
