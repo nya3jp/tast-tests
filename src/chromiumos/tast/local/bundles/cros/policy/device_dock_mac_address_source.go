@@ -90,32 +90,34 @@ func DeviceDockMacAddressSource(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Designated dock MAC: ", designatedDockMAC)
 
-	dockMAC, err := dockStationMAC(ctx)
+	dockMACs, err := dockStationMACs(ctx)
 	if err != nil {
 		s.Fatal("Failed to get dock MAC: ", err)
 	}
-	s.Log("Dock MAC: ", dockMAC)
+	s.Log("Dock MACs: ", dockMACs)
 
-	if dockMAC == designatedDockMAC {
-		s.Fatal("Current dock MAC is equal to dock_mac VPD field")
+	for _, dockMAC := range dockMACs {
+		if dockMAC == designatedDockMAC {
+			s.Fatalf("Current dock MAC (%s) is equal to dock_mac (%s) VPD field", dockMAC, designatedDockMAC)
+		}
 	}
 
 	type testCase struct {
-		name    string                            // name is the subtest name
-		value   policy.DeviceDockMacAddressSource // value is the policy value
-		wantMAC string                            // expected MAC address
+		name     string                            // name is the subtest name
+		value    policy.DeviceDockMacAddressSource // value is the policy value
+		wantMACs []string                          // expected MAC addresses
 	}
 
 	testCases := []testCase{
 		{
-			name:    "DeviceDockMacAddress",
-			value:   policy.DeviceDockMacAddressSource{Val: 1},
-			wantMAC: designatedDockMAC,
+			name:     "DeviceDockMacAddress",
+			value:    policy.DeviceDockMacAddressSource{Val: 1},
+			wantMACs: []string{designatedDockMAC},
 		},
 		{
-			name:    "DockNicMacAddress",
-			value:   policy.DeviceDockMacAddressSource{Val: 3},
-			wantMAC: dockMAC,
+			name:     "DockNicMacAddress",
+			value:    policy.DeviceDockMacAddressSource{Val: 3},
+			wantMACs: dockMACs,
 		},
 	}
 
@@ -126,37 +128,39 @@ func DeviceDockMacAddressSource(ctx context.Context, s *testing.State) {
 		}
 		s.Log("Ethernet MAC: ", ethernetMAC)
 
-		if dockMAC == ethernetMAC {
-			s.Fatal("Current dock MAC is equal to ethernet_mac0 VPD field")
+		for _, dockMAC := range dockMACs {
+			if dockMAC == ethernetMAC {
+				s.Fatalf("Current dock MAC (%s) is equal to ethernet_mac0 (%s) VPD field", dockMAC, ethernetMAC)
+			}
 		}
 
 		testCases = append(testCases,
 			testCase{
-				name:    "DeviceNicMacAddress",
-				value:   policy.DeviceDockMacAddressSource{Val: 2},
-				wantMAC: ethernetMAC,
+				name:     "DeviceNicMacAddress",
+				value:    policy.DeviceDockMacAddressSource{Val: 2},
+				wantMACs: []string{ethernetMAC},
 			})
 	} else {
 		testCases = append(testCases,
 			testCase{
-				name:    "DeviceNicMacAddress",
-				value:   policy.DeviceDockMacAddressSource{Val: 2},
-				wantMAC: dockMAC,
+				name:     "DeviceNicMacAddress",
+				value:    policy.DeviceDockMacAddressSource{Val: 2},
+				wantMACs: dockMACs,
 			},
 			// Need to repeat this test case to be sure that when policy is unset,
 			// MAC address source will change to the default value.
 			testCase{
-				name:    "DeviceDockMacAddress_2",
-				value:   policy.DeviceDockMacAddressSource{Val: 1},
-				wantMAC: designatedDockMAC,
+				name:     "DeviceDockMacAddress_2",
+				value:    policy.DeviceDockMacAddressSource{Val: 1},
+				wantMACs: []string{designatedDockMAC},
 			})
 	}
 
 	testCases = append(testCases,
 		testCase{
-			name:    "unset",
-			value:   policy.DeviceDockMacAddressSource{Stat: policy.StatusUnset},
-			wantMAC: dockMAC,
+			name:     "unset",
+			value:    policy.DeviceDockMacAddressSource{Stat: policy.StatusUnset},
+			wantMACs: dockMACs,
 		})
 
 	// We lose connectivity along the way here, and if that races with the
@@ -182,12 +186,23 @@ func DeviceDockMacAddressSource(ctx context.Context, s *testing.State) {
 			}
 
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				newDockMAC, err := dockStationMAC(ctx)
+				newDockMACs, err := dockStationMACs(ctx)
 				if err != nil {
-					return testing.PollBreak(errors.Wrap(err, "failed to get dock MAC"))
+					return testing.PollBreak(errors.Wrap(err, "failed to get dock MACs"))
 				}
-				if newDockMAC != tc.wantMAC {
-					return errors.Errorf("unexpected dock MAC address = got %q, want %q", newDockMAC, tc.wantMAC)
+
+				for _, wantMAC := range tc.wantMACs {
+					match := false
+					for _, newDockMAC := range newDockMACs {
+						if newDockMAC == wantMAC {
+							match = true
+							break
+						}
+					}
+
+					if !match {
+						return errors.Errorf("unexpected dock MAC addresses = got %v, want contains %q", newDockMACs, wantMAC)
+					}
 				}
 				return nil
 			}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
@@ -205,19 +220,19 @@ func readMACFromVPD(vpd string) (string, error) {
 	return strings.ToLower(string(bytes)), nil
 }
 
-// dockStationMAC returns MAC address of external USB Ethernet adapter.
-func dockStationMAC(ctx context.Context) (string, error) {
+// dockStationMACs returns MAC addresses of all external USB Ethernet adapter.
+func dockStationMACs(ctx context.Context) ([]string, error) {
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to create shill manager proxy")
+		return nil, errors.Wrap(err, "failed to create shill manager proxy")
 	}
 
 	_, props, err := manager.DevicesByTechnology(ctx, shill.TechnologyEthernet)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get ethernet devices")
+		return nil, errors.Wrap(err, "failed to get ethernet devices")
 	}
 
-	var dockIfaceName string
+	var macs []string
 
 	for _, deviceProps := range props {
 		if !deviceProps.Has(shillconst.DevicePropertyEthernetBusType) {
@@ -225,32 +240,31 @@ func dockStationMAC(ctx context.Context) (string, error) {
 		}
 		busType, err := deviceProps.GetString(shillconst.DevicePropertyEthernetBusType)
 		if err != nil {
-			return "", errors.Wrap(err, "failed to get device bus type")
+			return nil, errors.Wrap(err, "failed to get device bus type")
 		}
 
 		iface, err := deviceProps.GetString(shillconst.DevicePropertyInterface)
 		if err != nil {
-			return "", errors.Wrap(err, "failed to get interface name")
+			return nil, errors.Wrap(err, "failed to get interface name")
 		}
 
-		if busType == "usb" {
-			if dockIfaceName != "" {
-				return "", errors.Errorf("more than 1 USB Ethernet adapters connected to the DUT (interfaces %q, %q)", dockIfaceName, iface)
-			}
-			dockIfaceName = iface
+		if busType != "usb" {
+			continue
 		}
+
+		ifi, err := net.InterfaceByName(iface)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to get interface by %q name", iface)
+		}
+		if ifi.HardwareAddr == nil {
+			return nil, errors.New("interface MAC address is nil")
+		}
+		macs = append(macs, strings.ToLower(ifi.HardwareAddr.String()))
 	}
 
-	if dockIfaceName == "" {
-		return "", errors.New("not found USB Ethernet adapter connected to the DUT")
+	if len(macs) == 0 {
+		return nil, errors.New("not found USB Ethernet adapter connected to the DUT")
 	}
 
-	ifi, err := net.InterfaceByName(dockIfaceName)
-	if err != nil {
-		return "", errors.Wrapf(err, "failed to get interface by %q name", dockIfaceName)
-	}
-	if ifi.HardwareAddr == nil {
-		return "", errors.New("interface MAC address is nil")
-	}
-	return strings.ToLower(ifi.HardwareAddr.String()), nil
+	return macs, nil
 }
