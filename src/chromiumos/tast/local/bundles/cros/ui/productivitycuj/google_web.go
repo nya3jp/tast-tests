@@ -47,16 +47,14 @@ type GoogleDocs struct {
 	ui    *uiauto.Context
 	kb    *input.KeyboardEventWriter
 	uiHdl cuj.UIActionHandler
-	tabs  []*chrome.Conn
 }
 
 // CreateDocument creates a new document from GDocs.
 func (app *GoogleDocs) CreateDocument(ctx context.Context) error {
-	conn, err := app.cr.NewConn(ctx, docsURL)
+	_, err := app.cr.NewConn(ctx, docsURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", docsURL)
 	}
-	app.tabs = append(app.tabs, conn)
 
 	return uiauto.Combine("open a new document",
 		app.openBlankDocument,
@@ -66,11 +64,10 @@ func (app *GoogleDocs) CreateDocument(ctx context.Context) error {
 
 // CreateSlides creates a new presentation from GDocs.
 func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
-	conn, err := app.cr.NewConn(ctx, slidesURL)
+	_, err := app.cr.NewConn(ctx, slidesURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", slidesURL)
 	}
-	app.tabs = append(app.tabs, conn)
 
 	slidesWebArea := nodewith.NameContaining("Google Slides").Role(role.RootWebArea)
 	title := nodewith.Name("title").Role(role.StaticText).Ancestor(slidesWebArea)
@@ -131,11 +128,10 @@ func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context) (string, error) {
 func (app *GoogleDocs) OpenSpreadsheet(ctx context.Context, filename string) error {
 	testing.ContextLog(ctx, "Opening an existing spreadsheet: ", filename)
 
-	conn, err := app.cr.NewConn(ctx, sheetsURL)
+	_, err := app.cr.NewConn(ctx, sheetsURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to open URL: %s", sheetsURL)
 	}
-	app.tabs = append(app.tabs, conn)
 
 	section := nodewith.NameRegex(regexp.MustCompile("^(Today|Yesterday|Previous (7|30) days|Earlier).*")).Role(role.ListBox).First()
 	fileOption := nodewith.NameContaining(sheetName).Role(role.ListBoxOption).Ancestor(section).First()
@@ -338,12 +334,6 @@ func (app *GoogleDocs) Cleanup(ctx context.Context) error {
 		)(ctx); err != nil {
 			return err
 		}
-	}
-
-	// Close all tabs.
-	for _, conn := range app.tabs {
-		conn.CloseTarget(ctx)
-		conn.Close()
 	}
 	return nil
 }
