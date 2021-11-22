@@ -289,6 +289,9 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 
 	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath))
 
+	// Ensures that Lacros listens to a debugging port so that it can be connected to by the tests.
+	opts = append(opts, chrome.ExtraArgs("--lacros-chrome-additional-args=--remote-debugging-port=0"))
+
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()
