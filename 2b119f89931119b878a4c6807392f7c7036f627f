@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc7d820_819a1fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-11-22T01:27:13Z",
+      "side": 1,
+      "message": "LG in principle, but I haven\u0027t looked in details.",
+      "revId": "2b119f89931119b878a4c6807392f7c7036f627f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e83824c6_a500dc70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2021-11-22T01:27:13Z",
+      "side": 1,
+      "message": "sort ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "2b119f89931119b878a4c6807392f7c7036f627f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
