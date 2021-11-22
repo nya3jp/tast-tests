@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a84996_1269eb7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T16:09:50Z",
+      "side": 1,
+      "message": "PTAL. TIA.",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb6d437_b605642a",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T16:09:50Z",
+      "side": 1,
+      "message": "This is the problematic point. How should we clean policies at this point?",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
