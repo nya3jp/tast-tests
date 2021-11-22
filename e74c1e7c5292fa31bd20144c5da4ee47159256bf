@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2190e276_574099ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2021-11-22T04:23:12Z",
+      "side": 1,
+      "message": "Looks like the build is broken:\n```\n tast-remote-tests-cros-0.0.2-r8509: src/chromiumos/tast/local/bundles/cros/arcappgameperf/pre/pre.go:17:47: not enough arguments in call to arc.NewPrecondition\n tast-remote-tests-cros-0.0.2-r8509: \thave (string, *arc.GaiaVars, bool, []string...)\n tast-remote-tests-cros-0.0.2-r8509: \twant (string, *arc.GaiaVars, *arc.GaiaLoginPoolVars, bool, ...string)\n```\n\nSo I\u0027ll rebase",
+      "revId": "e74c1e7c5292fa31bd20144c5da4ee47159256bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
