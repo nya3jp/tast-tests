@@ -70,6 +70,8 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
 
+	defer cuj.CloseBrowserTabs(ctx, tconn)
+
 	// Shorten the context to clean up the files created in the test case.
 	cleanUpResourceCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)

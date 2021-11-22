@@ -398,15 +398,6 @@ func (app *MicrosoftWebOffice) Cleanup(ctx context.Context) error {
 		}
 	}
 
-	tabs := []string{wordTab, powerpointTab, excelTab}
-
-	// Close all tabs.
-	for _, tab := range tabs {
-		if err := app.closeTab(tab)(ctx); err != nil {
-			return err
-		}
-	}
-
 	return nil
 }
 
