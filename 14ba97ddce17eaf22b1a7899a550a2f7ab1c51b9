@@ -16,6 +16,29 @@
       "message": "ptal",
       "revId": "14ba97ddce17eaf22b1a7899a550a2f7ab1c51b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39b8c0b_1223b8e1",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-22T18:06:33Z",
+      "side": 1,
+      "message": "I think this cleanup could be moved to TearDown for this fixture, and unmount it instead of remove. \n\nif f.mode \u003d\u003d Rootfs {\n  testexec.CommandContext(ctx, \"umount\", \"-f\", \"/run/lacros\")\n}\n\n+Jae, can you advise a graceful way to unmount lacros in between tests as we suspect that there might be a race on startup causing test flakes in getting lacros ready before test starts?",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 29
+      },
+      "revId": "14ba97ddce17eaf22b1a7899a550a2f7ab1c51b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
