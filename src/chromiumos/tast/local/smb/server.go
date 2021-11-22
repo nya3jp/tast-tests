@@ -36,7 +36,7 @@ func NewServer(smbConf string) *Server {
 		context.Background(), smbdServerBinaryPath, // NOLINT
 		"--daemon",              // Start smbd as a daemon.
 		"--foreground",          // Foreground the process, ensuring we can signal it via os.Signal.
-		"--log-stdout",          // Send the logs to stdout to ensure we can dump them on failure.
+		"--debug-stdout",        // Send the logs to stdout to ensure we can dump them on failure.
 		"--no-process-group",    // Stop smbd from creating a process group.
 		"--configfile="+smbConf, // Pass our custom smbd.conf file.
 		"--debuglevel=5")        // Up the logging level to provide for better debugging.
