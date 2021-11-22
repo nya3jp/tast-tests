@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d2e6292_7992f3a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1408793
+      },
+      "writtenOn": "2021-11-22T05:50:24Z",
+      "side": 1,
+      "message": "\u003e \"dependecy\" is a possible misspelling of \"dependency\".\n\nPlease fix.",
+      "parentUuid": "145d2e8b_c9cbabb4",
+      "range": {
+        "startLine": 9,
+        "startChar": 57,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "c4cce385038ae3a90a020bc58790436951eeaf01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
