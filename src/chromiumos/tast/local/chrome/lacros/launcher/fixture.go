@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -402,6 +403,12 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 func (f *fixtImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 	ctx, st := timing.Start(ctx, "TearDown")
 	defer st.End()
+
+	// When launched from the rootfs partition, the lacros-chrome will be mounted at /run/lacros,
+	// remove the directory to prevent the side effects of left-over aritfacts from previous runs.
+	if f.mode == Rootfs {
+		upstart.StartJob(ctx, "lacros-unmounter")
+	}
 
 	chrome.Unlock()
 	f.cleanUp(ctx, s)
