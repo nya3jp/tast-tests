@@ -110,6 +110,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a99ee39_e2633677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68f74f9d_f699dbfa",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5ca52af_2aa85bf0",
@@ -123,6 +147,30 @@
       "writtenOn": "2021-11-16T11:53:02Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca1ae9d_0166afa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5ca52af_2aa85bf0",
       "range": {
         "startLine": 117,
         "startChar": 4,
@@ -156,6 +204,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d83984_c9c1db61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/basic_youtube_cuj.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04b211d4_952e361c",
+      "range": {
+        "startLine": 149,
+        "startChar": 43,
+        "endLine": 149,
+        "endChar": 45
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdf986bf_a44cb2b2",
@@ -173,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d93da2ac_66c94806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "Yes, we need them.",
+      "parentUuid": "bdf986bf_a44cb2b2",
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baeabcdb_3cab415c",
@@ -186,6 +276,30 @@
       "writtenOn": "2021-11-16T11:53:02Z",
       "side": 1,
       "message": "We probably will see a lot of errors like that when network in the lab won\u0027t be stable or YouTube will have some problems. Can we identify what is the root cause of frame drops?",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 116
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18d1d2f0_d7846e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "I guess identifying the root cause of frame drops will be out of scope for this test. We can come up with another test that can identify the root cause of frame drops.",
+      "parentUuid": "baeabcdb_3cab415c",
       "range": {
         "startLine": 357,
         "startChar": 0,
@@ -219,6 +333,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ffee617_c2f7e357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c262f909_7b1f7725",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 19
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7bb757b_e1f7dc70",
@@ -232,6 +370,30 @@
       "writtenOn": "2021-11-16T11:53:02Z",
       "side": 1,
       "message": "nit: do we really need these logs?\n\nPTAL on guidance about logging in Tast:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ec99f3_017433f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7bb757b_e1f7dc70",
       "range": {
         "startLine": 368,
         "startChar": 0,
@@ -265,6 +427,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "635c9fe3_114851f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c549cc_42c9836c",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 139
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77bcefa9_87cf8d6b",
@@ -278,6 +464,30 @@
       "writtenOn": "2021-11-16T11:53:02Z",
       "side": 1,
       "message": "nit: what about rephrasing:\n\n\"frame drops rate %.2f (dropped %d, decoded %d) higher that allowed threshold %.2f\"",
+      "range": {
+        "startLine": 378,
+        "startChar": 24,
+        "endLine": 378,
+        "endChar": 128
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d14bde9f_e45a5ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77bcefa9_87cf8d6b",
       "range": {
         "startLine": 378,
         "startChar": 24,
