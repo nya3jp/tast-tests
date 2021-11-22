@@ -84,6 +84,23 @@
       "message": "Hi Shik,\n\nCan you please provide your review comments?",
       "revId": "3eb5bd66576da958872db673e80482c80ce98529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ffef5d2_3b478d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_photo_video_mode_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-22T08:53:54Z",
+      "side": 1,
+      "message": "I would prefer consolidate this into CCAUIStress with instead of having a new test. We can have new actions in CCAUIStress to switch modes and using action_sequence to stress it.",
+      "revId": "3eb5bd66576da958872db673e80482c80ce98529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
