@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d66b4073_5a23c6b7",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T13:25:27Z",
+      "side": 1,
+      "message": "Victor, I need a help here. Do you have any idea how we could clean the policies here? \nWe don\u0027t have Chrome instance and we may not know what is the state of the Chrome process. We could try cr.Reconnect(ctx) but I am not sure how that would work.",
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
