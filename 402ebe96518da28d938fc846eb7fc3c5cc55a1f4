@@ -16,6 +16,133 @@
       "message": "Victor, I need a help here. Do you have any idea how we could clean the policies here? \nWe don\u0027t have Chrome instance and we may not know what is the state of the Chrome process. We could try cr.Reconnect(ctx) but I am not sure how that would work.",
       "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c957b239_980a7f11",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:11:57Z",
+      "side": 1,
+      "message": "Cleanup needs to be done inside kioskmode.New. If Chrome starts and policies were applied once, they can be removed safely.",
+      "parentUuid": "d66b4073_5a23c6b7",
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13e747a_734210e5",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:11:57Z",
+      "side": 1,
+      "message": "At least log the error here",
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1971822d_f8de5cb7",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:11:57Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81726aaa_159f9487",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:11:57Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 100,
+        "startChar": 17,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d99f21_55fa1721",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:11:57Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 64
+      },
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7914f4_10105338",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:11:57Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 5
+      },
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
