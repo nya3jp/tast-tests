@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 )
 
@@ -102,14 +103,15 @@ func GetNthCandidateText(ctx context.Context, tconn *chrome.TestConn, n int) (st
 
 // RunSubtestsPerInputMethodAndMessage runs subtest that uses testName and inputdata on
 // every combination of given input methods and messages.
-func RunSubtestsPerInputMethodAndMessage(ctx context.Context, tconn *chrome.TestConn, s *testing.State,
+func RunSubtestsPerInputMethodAndMessage(ctx context.Context, uc *useractions.UserContext, s *testing.State,
 	inputMethods []ime.InputMethod, messages []data.Message, subtest func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State)) {
 	for _, im := range inputMethods {
 		// Setup input method.
 		s.Logf("Set current input method to: %q", im)
-		if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+		if err := im.InstallAndActivate(uc.TestAPIConn())(ctx); err != nil {
 			s.Fatalf("Failed to set input method to %q: %v: ", im, err)
 		}
+		uc.SetAttribute(useractions.AttributeInputMethod, im.Name)
 
 		for _, message := range messages {
 			inputData, ok := message.GetInputData(im)

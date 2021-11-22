@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/input/voice"
@@ -315,8 +316,8 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 	)
 }
 
-func (its *InputsTestServer) validatePKTypingInField(inputField InputField, inputData data.InputData) uiauto.Action {
-	return func(ctx context.Context) error {
+func (its *InputsTestServer) validatePKTypingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData) *useractions.UserAction {
+	action := func(ctx context.Context) error {
 		// This is either an actual PK device, or a PK simulator for injecting
 		// key codes.
 		keyboard, err := input.Keyboard(ctx)
@@ -335,14 +336,23 @@ func (its *InputsTestServer) validatePKTypingInField(inputField InputField, inpu
 				}
 				return nil
 			},
-			its.ValidateResult(inputField, inputData.ExpectedText),
 		)(ctx)
 	}
+
+	return uc.NewUserAction(
+		"PK typing",
+		action,
+		&useractions.UserActionCfg{
+			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
+			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
+			Tags:           []useractions.ActionTag{useractions.ActionTagPKTyping},
+		},
+	)
 }
 
-func (its *InputsTestServer) validateVKTypingInField(inputField InputField, inputData data.InputData) uiauto.Action {
+func (its *InputsTestServer) validateVKTypingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData) *useractions.UserAction {
 	vkbCtx := vkb.NewContext(its.cr, its.tconn)
-	return uiauto.Combine("validate vk input function on field "+string(inputField),
+	action := uiauto.Combine("validate vk input function on field "+string(inputField),
 		its.cleanFieldAndTriggerVK(inputField),
 		vkbCtx.TapKeysIgnoringCase(inputData.CharacterKeySeq),
 		func(ctx context.Context) error {
@@ -351,12 +361,20 @@ func (its *InputsTestServer) validateVKTypingInField(inputField InputField, inpu
 			}
 			return nil
 		},
-		its.ValidateResult(inputField, inputData.ExpectedText),
+	)
+	return uc.NewUserAction(
+		"VK typing",
+		action,
+		&useractions.UserActionCfg{
+			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
+			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
+			Tags:           []useractions.ActionTag{useractions.ActionTagVKTyping},
+		},
 	)
 }
 
-func (its *InputsTestServer) validateVoiceInField(inputField InputField, inputData data.InputData, dataPath func(string) string) uiauto.Action {
-	return func(ctx context.Context) error {
+func (its *InputsTestServer) validateVoiceInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData, dataPath func(string) string) *useractions.UserAction {
+	action := func(ctx context.Context) error {
 		// Setup CRAS Aloop for audio test.
 		cleanup, err := voice.EnableAloop(ctx, its.tconn)
 		if err != nil {
@@ -371,14 +389,22 @@ func (its *InputsTestServer) validateVoiceInField(inputField InputField, inputDa
 			func(ctx context.Context) error {
 				return voice.AudioFromFile(ctx, dataPath(inputData.VoiceFile))
 			},
-			its.ValidateResult(inputField, inputData.ExpectedText),
 		)(ctx)
 	}
+	return uc.NewUserAction(
+		"VK voice",
+		action,
+		&useractions.UserActionCfg{
+			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
+			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
+			Tags:           []useractions.ActionTag{useractions.ActionTagVKVoiceInput},
+		},
+	)
 }
 
-func (its *InputsTestServer) validateHandwritingInField(inputField InputField, inputData data.InputData, dataPath func(string) string) uiauto.Action {
-	vkbCtx := vkb.NewContext(its.cr, its.tconn)
-	return func(ctx context.Context) error {
+func (its *InputsTestServer) validateHandwritingInField(uc *useractions.UserContext, inputField InputField, inputData data.InputData, dataPath func(string) string) *useractions.UserAction {
+	action := func(ctx context.Context) error {
+		vkbCtx := vkb.NewContext(its.cr, its.tconn)
 		if err := its.cleanFieldAndTriggerVK(inputField)(ctx); err != nil {
 			return err
 		}
@@ -404,34 +430,38 @@ func (its *InputsTestServer) validateHandwritingInField(inputField InputField, i
 		return uiauto.Combine("handwriting input on virtual keyboard",
 			hwCtx.WaitForHandwritingEngineReady(checkEngineReady),
 			hwCtx.DrawStrokesFromFile(dataPath(inputData.HandwritingFile)),
-			its.ValidateResult(inputField, inputData.ExpectedText),
 		)(ctx)
 	}
+	return uc.NewUserAction(
+		"VK handwriting",
+		action,
+		&useractions.UserActionCfg{
+			ValidateResult: its.ValidateResult(inputField, inputData.ExpectedText),
+			Attributes:     map[string]string{useractions.AttributeInputField: string(inputField)},
+			Tags:           []useractions.ActionTag{useractions.ActionTagVKHandWriting},
+		},
+	)
 }
 
-// ValidateInputFieldForMode returns an action to test input in the given field.
+// ValidateInputFieldForMode tests input in the given field.
 // After input action, it checks whether the outcome equals to expected value.
-func (its *InputsTestServer) ValidateInputFieldForMode(inputField InputField, inputModality util.InputModality, inputData data.InputData, dataPath func(string) string) uiauto.Action {
+func (its *InputsTestServer) ValidateInputFieldForMode(uc *useractions.UserContext, inputField InputField, inputModality util.InputModality, inputData data.InputData, dataPath func(string) string) *useractions.UserAction {
 	if !inputField.isSupported(inputModality) {
-		return func(ctx context.Context) error {
-			return errors.Errorf("%s is not supported for %s", inputModality, inputField)
-		}
+		return uc.InvalidUserAction(errors.Errorf("%s is not supported for %s", inputModality, inputField))
 	}
 	// TODO(b/195083581): Enable ValidateInputFieldForMode for physical keyboard and emoji.
 	switch inputModality {
 	case util.InputWithVK:
-		return its.validateVKTypingInField(inputField, inputData)
+		return its.validateVKTypingInField(uc, inputField, inputData)
 	case util.InputWithVoice:
-		return its.validateVoiceInField(inputField, inputData, dataPath)
+		return its.validateVoiceInField(uc, inputField, inputData, dataPath)
 	case util.InputWithHandWriting:
-		return its.validateHandwritingInField(inputField, inputData, dataPath)
+		return its.validateHandwritingInField(uc, inputField, inputData, dataPath)
 	case util.InputWithPK:
-		return its.validatePKTypingInField(inputField, inputData)
+		return its.validatePKTypingInField(uc, inputField, inputData)
 	}
 
-	return func(ctx context.Context) error {
-		return errors.Errorf("input modality not supported: %q", inputModality)
-	}
+	return uc.InvalidUserAction(errors.Errorf("input modality not supported: %q", inputModality))
 }
 
 func (inputField InputField) isSupported(inputModality util.InputModality) bool {
