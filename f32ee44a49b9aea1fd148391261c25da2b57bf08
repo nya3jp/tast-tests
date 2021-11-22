@@ -310,6 +310,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d4bcd6_b8f8ac34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-22T10:50:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18d1d2f0_d7846e7d",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 116
+      },
+      "revId": "f32ee44a49b9aea1fd148391261c25da2b57bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c262f909_7b1f7725",
