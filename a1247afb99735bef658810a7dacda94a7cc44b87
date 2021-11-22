@@ -16,6 +16,46 @@
       "message": "I just have a chat for Fleet team. The future cache server will support only a subset of the APIs supported by the current cache server. Therefore, I removed the support of cache server unless it is needed. Please review. Thanks.",
       "revId": "a1247afb99735bef658810a7dacda94a7cc44b87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19ae55f_706d3eb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-22T00:51:58Z",
+      "side": 1,
+      "message": "LGTM with minor comment.\n",
+      "revId": "a1247afb99735bef658810a7dacda94a7cc44b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87bf145e_a895ccf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/server_vars_local.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-22T00:51:58Z",
+      "side": 1,
+      "message": "err is nil here, so use errors.Errorf here instead.",
+      "range": {
+        "startLine": 54,
+        "startChar": 15,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "a1247afb99735bef658810a7dacda94a7cc44b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
