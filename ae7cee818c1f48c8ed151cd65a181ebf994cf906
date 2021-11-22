@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27274c7c_bc832b8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-22T07:01:26Z",
+      "side": 1,
+      "message": "defer cancel() will be called once the function is ended. Should we call cancel() on the line 74 instead?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b3ebf12_7ac8a508",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
         "patchSetId": 3
@@ -26,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "635d8507_90d7b2c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-22T07:01:26Z",
+      "side": 1,
+      "message": "If there is any error happens when collecting perf events, we might not stop the app properly.",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18caafeb_83a50834",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
         "patchSetId": 3
@@ -42,6 +88,121 @@
         "startChar": 9,
         "endLine": 70,
         "endChar": 12
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea53f03_03eafade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-22T07:01:26Z",
+      "side": 1,
+      "message": "Is it a subtest? If so, we might want to wrap it in s.Run() so that even if it fails the other subtests can still run.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7399541_dd741174",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-22T07:01:26Z",
+      "side": 1,
+      "message": "Hmm, why do we need to specify the metrics we would like to collect instead of collecting all the metrics happen during the flow?",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 87
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868e1cee_122c8dae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-22T07:01:26Z",
+      "side": 1,
+      "message": "Can we write it as:\n```\ndefer cleanUpBenchmark(ctx)\n```",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 7
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "651cfc0f_b555d4c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-22T07:01:26Z",
+      "side": 1,
+      "message": "If we don\u0027t want to wrap any other messages on error, it can be simplified to:\n```\nreturn testBody(ctx)\n```",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 11
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9410bf_9cc9b7a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-22T07:01:26Z",
+      "side": 1,
+      "message": "How do we decide whether to wrap it in RunThroughCameras() or not? Maybe we can add comments about it.",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 52
       },
       "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
