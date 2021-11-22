@@ -6,14 +6,19 @@ package lacros
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -63,6 +68,32 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, visibleLoadTime.Seconds())
+	}
+
+	// Run against lacros-chrome from Shelf
+	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
+		conn, cleanup, err := setupLacrosShelfTestWithPage(ctx, f, url)
+		return conn, cleanup, err
+	}); err != nil {
+		s.Error("Failed to run lacros-chrome benchmark: ", err)
+	} else {
+		pv.Set(perf.Metric{
+			Name:      "docs.load.lacros_shelf",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+		}, loadTime.Seconds())
+
+		pv.Set(perf.Metric{
+			Name:      "docs.load_and_visible.lacros_shelf",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+		}, visibleLoadTime.Seconds())
+	}
+
+	// TODO(crbug.com/1263337): We should use faillog to assist debugging here, but it's broken
+	// currently for Shelf launches. In the meantime, grab the log manually before exiting.
+	if errCopy := fsutil.CopyFile(filepath.Join(launcher.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros-shelf.log")); errCopy != nil {
+		s.Log("Failed to copy lacros.log from LacrosUserDataDir to the OutDir ", errCopy)
 	}
 
 	// Run against lacros-chrome.
@@ -138,4 +169,52 @@ func runDocsPageLoad(
 	visibleLoadTime := time.Since(start)
 
 	return time.Duration(loadTime), time.Duration(visibleLoadTime), nil
+}
+
+// TODO(tvignatti): move cooldownConfig, CleanupCallback and setupLacrosShelfTestWithPage to perftest.go
+// cooldownConfig is the configuration used to wait for the stabilization of CPU
+// shared between ash-chrome test setup and lacros-chrome test setup.
+var cooldownConfig = cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+
+// setupLacrosShelfTestWithPage opens a lacros-chrome page from the Shelf after waiting for a stable environment (CPU temperature, etc).
+func setupLacrosShelfTestWithPage(ctx context.Context, f launcher.FixtValue, url string) (
+	retConn *chrome.Conn, retCleanup lacros.CleanupCallback, retErr error) {
+	cr := f.Chrome()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to the test API connection")
+	}
+
+	l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to launch lacros")
+	}
+
+	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to find new tab")
+	}
+
+	if err := conn.Navigate(ctx, url); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to navigate to the URL")
+	}
+
+	// Move the cursor away from the Shelf to make sure the tooltip won't interfere with the performance.
+	if err := mouse.Move(tconn, coords.NewPoint(0, 0), 0)(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to move the mouse to the top-left corner of the screen")
+	}
+
+	cleanup := func(ctx context.Context) error {
+		conn.CloseTarget(ctx)
+		conn.Close()
+		l.Close(ctx)
+		return nil
+	}
+
+	if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
+		return nil, nil, err
+	}
+
+	return conn, cleanup, nil
 }
