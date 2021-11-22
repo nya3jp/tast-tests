@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8128ee2d_f9b6235e",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T11:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91e136ae_bce88f05",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 175,
+        "endChar": 22
+      },
+      "revId": "9d93e1201f6672afee4c1c6d8b77813d4bb7100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35ee3901_b610f30e",
@@ -77,6 +101,54 @@
       "writtenOn": "2021-11-19T14:52:48Z",
       "side": 1,
       "message": "should",
+      "range": {
+        "startLine": 230,
+        "startChar": 58,
+        "endLine": 230,
+        "endChar": 62
+      },
+      "revId": "9d93e1201f6672afee4c1c6d8b77813d4bb7100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143bd7fa_cc9a335d",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T11:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35ee3901_b610f30e",
+      "range": {
+        "startLine": 230,
+        "startChar": 50,
+        "endLine": 230,
+        "endChar": 55
+      },
+      "revId": "9d93e1201f6672afee4c1c6d8b77813d4bb7100f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c292c18_5547b996",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T11:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13e285bc_63057ddd",
       "range": {
         "startLine": 230,
         "startChar": 58,
