@@ -6,6 +6,7 @@ package launcher
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -313,6 +314,9 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	if f.mode == Rootfs {
 		opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
 			chrome.ExtraArgs("--lacros-selection=rootfs"))
+		// When launched from the rootfs partition, the lacros-chrome will be mounted at /run/lacros,
+		// remove the directory to prevent the side effects of left-over aritfacts from previous runs.
+		os.RemoveAll("/run/lacros")
 	} else if f.mode == Omaha {
 		opts = append(opts, chrome.EnableFeatures("LacrosSupport", "ForceProfileMigrationCompletion"),
 			chrome.ExtraArgs("--lacros-selection=stateful"))
