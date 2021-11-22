@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "531b59ee_19afef22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-11-22T19:49:17Z",
+      "side": 1,
+      "message": "Doesn\u0027t it wait for /run/lacros/chrome to exist?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go;l\u003d377\n\nAlso, why does the flake occur?\nIf the check above is valid, it should mean that the rootfs lacros is mounted + ready for use?\nIs something unmounting it before use causing file not found?\n\n^ Continuing discussion in bug.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "14ba97ddce17eaf22b1a7899a550a2f7ab1c51b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "884c2305_7622ad72",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -55,6 +78,30 @@
       "side": 1,
       "message": "Please run the upstart job `lacros-unmounter` instead.\n```\nimport \"chromiumos/tast/local/upstart\"\n...\nif f.mode \u003d\u003d Rootfs {\n  upstart.StartJob(ctx, \"lacros-unmounter\")\n}\n```",
       "parentUuid": "e39b8c0b_1223b8e1",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 29
+      },
+      "revId": "14ba97ddce17eaf22b1a7899a550a2f7ab1c51b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48778bd2_c5639048",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-11-22T19:49:17Z",
+      "side": 1,
+      "message": "Also, why not put this as part of teardown?\n\nThen you can look at a single test and discover what went wrong instead of looking at the test that ran before in case it fails.",
+      "parentUuid": "c04fa917_153e4d70",
       "range": {
         "startLine": 317,
         "startChar": 0,
