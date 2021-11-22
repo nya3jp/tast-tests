@@ -101,6 +101,23 @@
       "message": "Hi Shik,\n\nCan you please provide your review comments?",
       "revId": "959871543eac701793b7a753271c9b778addc681",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4fccd4_15013b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_take_picture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-22T08:56:45Z",
+      "side": 1,
+      "message": "I would prefer consolidate this into CCAUIStress with action_sequence instead of having a new test.\n\nNote that this test will fail on devices with only front camera and we should not run it by default.",
+      "revId": "959871543eac701793b7a753271c9b778addc681",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
