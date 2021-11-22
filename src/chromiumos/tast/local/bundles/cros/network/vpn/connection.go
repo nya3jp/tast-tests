@@ -146,8 +146,7 @@ func (c *Connection) Start(ctx context.Context) (bool, error) {
 		return false, err
 	}
 
-	connected, err := c.connectService(ctx)
-	if err != nil {
+	if connected, err := c.connectService(ctx); err != nil || !connected {
 		return false, err
 	}
 
@@ -159,7 +158,7 @@ func (c *Connection) Start(ctx context.Context) (bool, error) {
 	// to mitigate this racing case.
 	testing.Sleep(ctx, 500*time.Millisecond)
 	testing.ContextLogf(ctx, "VPN connected, underlay_ip is %s, overlay_ip is %s", c.Server.UnderlayIP, c.Server.OverlayIP)
-	return connected, nil
+	return true, nil
 }
 
 // checkPidExists returns if the process with the pid stored in |pidFile| is
