@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "13c6e6911eb64a436011ca869aa29bc4407647d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eba626a_2976a0e6",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-22T14:22:56Z",
+      "side": 1,
+      "message": "We need another team contact here. Maybe engprod until another one can be found?",
+      "revId": "13c6e6911eb64a436011ca869aa29bc4407647d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
