@@ -22,6 +22,30 @@
       },
       "revId": "4b51dd250891cb0e1ed889b5f047802ad2d71087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d5cb61_75c40d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_user_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-22T00:49:01Z",
+      "side": 0,
+      "message": "Did not get this question, this is the old code.",
+      "parentUuid": "34bfe236_dfe993ab",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 100
+      },
+      "revId": "4b51dd250891cb0e1ed889b5f047802ad2d71087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

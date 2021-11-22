@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab848d4e_d68d474e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-22T00:49:01Z",
+      "side": 1,
+      "message": "Done for all in this file.",
+      "parentUuid": "bf27e165_bc1a1a5a",
+      "range": {
+        "startLine": 319,
+        "startChar": 29,
+        "endLine": 319,
+        "endChar": 52
+      },
+      "revId": "b02a1b7cc489db86cde1ab926f361e5c38c64e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2e84272_de35adc2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-21T22:51:02Z",
       "side": 1,
       "message": "do you need to set the input method attribute?",
+      "range": {
+        "startLine": 98,
+        "startChar": 43,
+        "endLine": 98,
+        "endChar": 45
+      },
+      "revId": "b02a1b7cc489db86cde1ab926f361e5c38c64e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc07da5_c033822c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_input_fields.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-22T00:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e84272_de35adc2",
       "range": {
         "startLine": 98,
         "startChar": 43,
