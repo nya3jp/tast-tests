@@ -119,6 +119,63 @@
       "message": "@Shik, can you please provide your review comments?",
       "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3012f978_2a1a1430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-22T09:05:23Z",
+      "side": 1,
+      "message": "Same for other camera Tast tests, please rebase and use the new camera app fixture. \n\ncc @wtlee for vis.",
+      "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e411b9be_696eb45c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-22T09:05:23Z",
+      "side": 1,
+      "message": "Not all devices have both user and env facing camera. Usually we only use one test for all facings using the RunThroughCameras() helper.\n\nIn this case, I would prefer to consolidate all subtests into one.",
+      "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670142da_bd923af0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-22T09:05:23Z",
+      "side": 1,
+      "message": "10s is a little bit too long for the test. Maybe 1s?",
+      "range": {
+        "startLine": 157,
+        "startChar": 51,
+        "endLine": 157,
+        "endChar": 53
+      },
+      "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
