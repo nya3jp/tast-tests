@@ -93,6 +93,7 @@ func init() {
 func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	testIMEs := s.Param().([]ime.InputMethod)
 
@@ -151,11 +152,11 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := its.ValidateInputFieldForMode(inputField, util.InputWithHandWriting, inputData, s.DataPath)(ctx); err != nil {
+			if err := its.ValidateInputFieldForMode(uc, inputField, util.InputWithHandWriting, inputData, s.DataPath).Run(ctx); err != nil {
 				s.Fatal("Failed to validate handwriting input: ", err)
 			}
 		}
 	}
 	// Run defined subtest per input method and message combination.
-	util.RunSubtestsPerInputMethodAndMessage(ctx, tconn, s, testIMEs, hwTestMessages, subtest)
+	util.RunSubtestsPerInputMethodAndMessage(ctx, uc, s, testIMEs, hwTestMessages, subtest)
 }
