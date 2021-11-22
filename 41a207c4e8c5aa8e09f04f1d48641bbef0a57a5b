@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642fbfb2_407d5b51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-22T08:34:14Z",
+      "side": 1,
+      "message": "nit:\n\u003e holdingspace: Deflake screenshot tests\nYou should use tast-tests, or the package name as a prefix, and there is no need to put a dot at the end of the subject line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "41a207c4e8c5aa8e09f04f1d48641bbef0a57a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b1aa79_9eeefe66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-22T08:34:14Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "41a207c4e8c5aa8e09f04f1d48641bbef0a57a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
