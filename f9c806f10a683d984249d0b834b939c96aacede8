@@ -192,6 +192,24 @@
       "parentUuid": "9b6b6988_375bcbf8",
       "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c9ad608_da717fb3",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-22T11:09:21Z",
+      "side": 1,
+      "message": "There are some UI functions that require a function input (with bool output) which checks the end result.\nWould it make sense to have the same here?",
+      "parentUuid": "35531229_05de0b3e",
+      "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
