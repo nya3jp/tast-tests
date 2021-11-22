@@ -311,6 +311,9 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	// Suppress experimental Lacros infobar and possible others as well.
 	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
 
+	// Ensures that Lacros listens to a debugging port so that it can be connected to by the tests.
+	opts = append(opts, chrome.LacrosExtraArgs("--remote-debugging-port=0"))
+
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()
