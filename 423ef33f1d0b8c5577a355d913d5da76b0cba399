@@ -16,6 +16,23 @@
       "message": "@Shik, can you please review this CL?",
       "revId": "423ef33f1d0b8c5577a355d913d5da76b0cba399",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4bcb2c_fdff0242",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-11-22T08:10:15Z",
+      "side": 1,
+      "message": "Hi Shik,\n\nCan you please provide your review comments?",
+      "revId": "423ef33f1d0b8c5577a355d913d5da76b0cba399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
