@@ -263,14 +263,14 @@ func (n *NetworkChroot) writeConfigs() error {
 }
 
 // RunChroot runs a command in a chroot, within the network namespace associated
-// with this chroot, and returns the output from stdout.
+// with this chroot, and returns the combined output from stdout and stderr.
 func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) (string, error) {
 	minijailArgs := []string{"/sbin/minijail0", "-C", n.netTempDir}
 	ipArgs := []string{"netns", "exec", n.netnsName}
 	ipArgs = append(ipArgs, minijailArgs...)
 	ipArgs = append(ipArgs, n.netJailArgs...)
 	ipArgs = append(ipArgs, args...)
-	output, err := testexec.CommandContext(ctx, "ip", ipArgs...).Output()
+	output, err := testexec.CommandContext(ctx, "ip", ipArgs...).CombinedOutput()
 	o := string(output)
 	if err != nil {
 		return o, errors.Wrapf(err, "failed to run command inside the chroot: %s", o)
