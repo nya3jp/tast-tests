@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acaea13f_678e6329",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c957b239_980a7f11",
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c13e747a_734210e5",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-11-22T14:11:57Z",
       "side": 1,
       "message": "At least log the error here",
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "073c6ee0_bb988b4a",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c13e747a_734210e5",
       "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +135,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e07834_0e3c623d",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81726aaa_159f9487",
+      "range": {
+        "startLine": 100,
+        "startChar": 17,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e912fd2_6bc6a0ed",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1971822d_f8de5cb7",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41d99f21_55fa1721",
@@ -135,6 +219,54 @@
       "writtenOn": "2021-11-22T14:11:57Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 5
+      },
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "353d0ca9_9200787c",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T15:30:56Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "41d99f21_55fa1721",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 64
+      },
+      "revId": "402ebe96518da28d938fc846eb7fc3c5cc55a1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe94096_e177d196",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-22T15:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad7914f4_10105338",
       "range": {
         "startLine": 103,
         "startChar": 4,
