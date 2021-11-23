@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9916e5f_2a91751a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-23T23:47:03Z",
+      "side": 1,
+      "message": "left a couple comments, but nothing particularly urgent especially since this is just a bandaid until we get skylab support",
+      "revId": "a90c481291a2703e5cf764eb5afbd22a37ed7f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540cc5c0_1e2fbe8b",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-23T23:47:03Z",
+      "side": 1,
+      "message": "wondering if it makes sense to retry the whole thing if the last step fails. might be better to split it up by step?",
+      "revId": "a90c481291a2703e5cf764eb5afbd22a37ed7f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9416f4c4_fa16ec7c",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-23T23:47:03Z",
+      "side": 1,
+      "message": "can we surface the last error? unless they\u0027re not particularly useful when these things fail",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "a90c481291a2703e5cf764eb5afbd22a37ed7f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
