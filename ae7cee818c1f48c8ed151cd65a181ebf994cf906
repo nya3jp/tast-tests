@@ -422,6 +422,30 @@
       },
       "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c14397be_80eccddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-11-23T07:21:59Z",
+      "side": 1,
+      "message": "I mean, when we wrap it by RunThroughCameras(), it means that we want to test the performance on all cameras on the device. But without wrapping it, it only measured on the default camera. (Clamshell: front, Tablet: back)\n\nI just curious why we don\u0027t want to measure Gif recording performance on all cameras on the devices just like the others. If there is a reason, I think we can comment it down.",
+      "parentUuid": "54211035_23ba93f5",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
