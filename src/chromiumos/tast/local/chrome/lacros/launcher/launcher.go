@@ -293,8 +293,8 @@ func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, title stri
 			return strings.HasPrefix(w.Title, title)
 		}
 		return true
-	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
-		return errors.Wrap(err, "failed to wait for lacros-chrome window to be visible")
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to wait for lacros-chrome window to be visible with title: %v", title)
 	}
 	return nil
 }
