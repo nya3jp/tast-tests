@@ -146,9 +146,6 @@ func (f *nearbyShareAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to configure Android Nearby Share settings: ", err)
 	}
 
-	if err != nil {
-		s.Fatal("Failed to prepare connected Android device for Nearby Share testing: ", err)
-	}
 	f.androidDevice = androidDevice
 	return &FixtData{
 		AndroidDevice:     androidDevice,
