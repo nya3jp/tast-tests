@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1864c167_72945c98",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-23T03:44:12Z",
+      "side": 1,
+      "message": "\u003e \"Sugestions\" is a possible misspelling of \"Suggestions\".\n\nPlease fix.",
+      "parentUuid": "c3e976df_716ae280",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "98268a11506f70d8f5b73f9e7125a6ec723487ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
