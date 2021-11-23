@@ -20,6 +20,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb39cb77_417c9fb7",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-23T09:43:38Z",
+      "side": 1,
+      "message": "If you have an error in kioskmode.New(), I don\u0027t think you can or should rely on the kiosk value.\nIf there is a need for any cleanup in case of an error, it should be handled inside kioskmode.New().",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12288223_00bb0cbb",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-23T09:43:38Z",
+      "side": 1,
+      "message": "I would suggest to use *Kiosk here, so you can return with nil in case of an error.",
+      "range": {
+        "startLine": 134,
+        "startChar": 70,
+        "endLine": 134,
+        "endChar": 75
+      },
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bebf7e_ea449637",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-23T09:43:38Z",
+      "side": 1,
+      "message": "This part (aside from the NoLogin()) can be moved outside of \"if\", and here you only need to append NoLogin().",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3cb6d437_b605642a",
         "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
         "patchSetId": 4
@@ -31,6 +94,24 @@
       "writtenOn": "2021-11-22T16:09:50Z",
       "side": 1,
       "message": "This is the problematic point. How should we clean policies at this point?",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a55559e_3cf1465b",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-23T09:43:38Z",
+      "side": 1,
+      "message": "Create a restoration function and call it from here. In that one, you can apply increasingly more \"aggressive\" cleanup steps.\n1) start chrome again without autologin\n2) delete locally stored policies\n3) delete local accounts\n(these are just examples, for the correct cleanup ideas, ask Victor).",
+      "parentUuid": "3cb6d437_b605642a",
       "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
