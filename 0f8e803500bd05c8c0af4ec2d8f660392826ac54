@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adbcd4e_683b9960",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/finalize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-23T23:41:13Z",
+      "side": 1,
+      "message": "Can you add a TODO here so we know it will be un-commented once problem solved?\n\nOtherwise remove this line if no plan to bring it back recently.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "0f8e803500bd05c8c0af4ec2d8f660392826ac54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
