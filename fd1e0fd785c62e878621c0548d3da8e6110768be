@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dcca89a_1a28803f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-23T15:20:24Z",
+      "side": 1,
+      "message": "FYI; seewaifu@, yamaguchi@.",
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c9df600_885bc516",
@@ -85,6 +102,30 @@
       "side": 1,
       "message": "For (2), similar discussion and request are discussed in CL:3291192. I think we can take this as short term approach, and Intel partners should migrate it to long term solution to make sure the test coverage. Otherwise, I have to say again, it may affect Intel vPro quality.\n\n@Pathan, if you need further help, meiring@google.com in CL:3291192 said that he can suggest someone from tast team for you.",
       "parentUuid": "8121a4ae_27080ad0",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb0ee38_418eb986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-23T15:20:24Z",
+      "side": 1,
+      "message": "This will have an impact to Tast scheduling in the future.\nCould you file a tracking bug, and add TODO, at least?\nAlso, could you (or someone googler side contact) start to discuss with CrOS infra engs to figure out how this should look like?",
+      "parentUuid": "ac2e6b58_46d932a2",
       "range": {
         "startLine": 32,
         "startChar": 45,
