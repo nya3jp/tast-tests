@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0382a4cb_b8bd25ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-23T19:36:13Z",
+      "side": 1,
+      "message": "Ah, interesting, I guess that makes sense. We\u0027ll get logs for Shill stopping twice this way, but that\u0027s actually fine for this test and it does simplify the code a bit, so lgtm!",
+      "parentUuid": "cb807b52_23c4dce0",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18a3a8b4_1d09c1ca",
