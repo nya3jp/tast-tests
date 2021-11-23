@@ -7,11 +7,12 @@ package lacros
 import (
 	"context"
 	"os"
+	"path/filepath"
 	"time"
 
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros/faillog"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -124,7 +125,10 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	s.Log("Checking that Lacros window is visible")
 	if err := launcher.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
 		// Grab Lacros logs to assist debugging before exiting.
-		faillog.Save(ctx, s.FixtValue().(launcher.FixtValue).LacrosPath())
+		if errCopy := fsutil.CopyFile(filepath.Join(launcher.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
+			s.Log("Failed to copy /home/chronos/user/lacros/lacros.log to the OutDir ", errCopy)
+		}
+
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
