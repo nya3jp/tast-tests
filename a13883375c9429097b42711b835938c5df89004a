@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d3b917_920b3111",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-23T15:26:21Z",
+      "side": 1,
+      "message": "this is already included in ExtensionArgs at L324?",
+      "revId": "a13883375c9429097b42711b835938c5df89004a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
