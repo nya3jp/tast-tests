@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae583b6_8d7bc60c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-23T11:46:10Z",
+      "side": 1,
+      "message": "Hi Kamil,\n\nThis CL is the next in the series of chrome.login API Tast tests, PTAL!\n\nThanks,\nJit",
+      "revId": "5d457b96487b462afe03b5e1331d02cd5ad5f44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
