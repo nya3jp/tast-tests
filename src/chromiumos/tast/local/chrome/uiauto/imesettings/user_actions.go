@@ -13,6 +13,35 @@ import (
 	"chromiumos/tast/local/chrome/useractions"
 )
 
+// EmojiSugestionOption represents the option name of Emoji suggestions toggle option.
+const EmojiSugestionOption = "Emoji suggestions"
+
+// SetEmojiSuggestions returns a user action to change 'Emoji suggestions' setting.
+func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) *useractions.UserAction {
+	actionName := "enable emoji suggestions in OS settings"
+	if !isEnabled {
+		actionName = "disable emoji suggestions in OS settings"
+	}
+
+	action := func(ctx context.Context) error {
+		settings, err := LaunchAtSuggestionSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
+		if err != nil {
+			return errors.Wrap(err, "failed to launch OS settings and land at inputs setting page")
+		}
+		return uiauto.Combine("toggle setting and close page",
+			settings.SetToggleOption(uc.Chrome(), EmojiSugestionOption, isEnabled),
+			settings.Close,
+		)(ctx)
+	}
+
+	return useractions.NewUserAction(actionName, action, uc, &useractions.UserActionCfg{
+		Tags: []useractions.ActionTag{
+			useractions.ActionTagEssentialInputs,
+			useractions.ActionTagIMESettings,
+			useractions.ActionTag(useractions.ActionTagEmojiSuggestion)},
+	})
+}
+
 // SetGlideTyping returns a user action to change 'Glide suggestions' setting.
 func SetGlideTyping(uc *useractions.UserContext, im ime.InputMethod, isEnabled bool) *useractions.UserAction {
 	actionName := "enable glide typing in IME setting"
