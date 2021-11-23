@@ -56,6 +56,9 @@ var DxNetworkList = nodewith.ClassName("diagnostics-network-list-container").Rol
 // DxInput export is used to find the Input navigation item.
 var DxInput = nodewith.Name("Input").Role(role.GenericContainer)
 
+// DxKeyboardList export is used to find the keyboard heading on the input page.
+var DxKeyboardList = nodewith.Attribute("device-type", "keyboard")//.Role(role.GenericContainer)
+
 // DxKeyboardHeading export is used to find the keyboard heading on the input page.
 var DxKeyboardHeading = nodewith.Name("Keyboard").Role(role.StaticText)
 
