@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a929eb_517c0ff4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-23T19:28:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6df6675_c72ba747",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 162,
+        "endChar": 3
+      },
+      "revId": "16b136cbfc200144fae0b4f91e50059578164c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "683e2709_caa9108c",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "The ECLidSwitch test checks that it gets to S0 powerstate using the lid, although this is a good test case for that also, so I added a suspend and wake with lid case to ECLidSwitch, however here, its mainly checking that using the lid to wake from suspend doesn\u0027t change the bootID, so I think it makes sense to keep it here as well.",
       "parentUuid": "683e2709_caa9108c",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "16b136cbfc200144fae0b4f91e50059578164c80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d40ce659_6622295b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-23T19:28:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2b3bf34_721551c5",
       "range": {
         "startLine": 170,
         "startChar": 1,

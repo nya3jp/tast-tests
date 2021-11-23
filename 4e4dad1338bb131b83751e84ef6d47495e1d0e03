@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7439a4d7_3c19590a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-23T19:28:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68410a3b_b586a1cf",
+      "range": {
+        "startLine": 123,
+        "startChar": 78,
+        "endLine": 123,
+        "endChar": 90
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be245d05_8d296904",
@@ -238,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4b7f9a1_f03a1381",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-23T19:28:16Z",
+      "side": 1,
+      "message": "You are calling suspendDUTAndWakeWithKey in both cases, the only difference is if the servo\u0027s usb keyboard is enabled.  What if the user called dut-control usb_keyboard:on before running this test?  We can\u0027t assmume that the usb keyboard was off. \n\nSo I propose that in testWakeWithKeyboard you call Servo.SetOnOff(args.ctx, servo.USBKeyboard, servo.Off)",
+      "parentUuid": "650c9820_f248dfaa",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 284,
+        "endChar": 2
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91555575_35c00057",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
         "patchSetId": 2
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "Refactored this to be different, hopefully its more explicit now.",
       "parentUuid": "91555575_35c00057",
+      "range": {
+        "startLine": 307,
+        "startChar": 11,
+        "endLine": 307,
+        "endChar": 21
+      },
+      "revId": "4e4dad1338bb131b83751e84ef6d47495e1d0e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c74f87c_95c46072",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-23T19:28:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cece551a_15572866",
       "range": {
         "startLine": 307,
         "startChar": 11,

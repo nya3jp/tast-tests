@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d6749b_4e4b0319",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-23T19:28:16Z",
+      "side": 1,
+      "message": "You don\u0027t need to do save the initial state. Just call \"tabletmode reset\" after you are done changing it. That will put it back at whatever the hardware detects.",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 52
+      },
+      "revId": "60fdfa8224351d1bb4d28d1118127142e85510a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
