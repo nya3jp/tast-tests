@@ -802,8 +802,8 @@ func (u *CryptohomeClient) GetKeyData(ctx context.Context, user, keyLabel string
 }
 
 // StartAuthSession starts an AuthSession for a given user.
-func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string) (string, error) {
-	binaryMsg, err := u.binary.startAuthSession(ctx, user)
+func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string, isEphemeral bool) (string, error) {
+	binaryMsg, err := u.binary.startAuthSession(ctx, user, isEphemeral)
 	if err != nil {
 		return "", err
 	}
@@ -826,6 +826,36 @@ func (u *CryptohomeClient) AuthenticateAuthSession(ctx context.Context, password
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
 	_, err := u.binary.addCredentialsWithAuthSession(ctx, user, password, authSessionID, publicMount)
+	return err
+}
+
+// PrepareGuestVault prepares vault for guest session.
+func (u *CryptohomeClient) PrepareGuestVault(ctx context.Context) error {
+	_, err := u.binary.prepareGuestVault(ctx)
+	return err
+}
+
+// PrepareEphemeralVault prepares vault for ephemeral session.
+func (u *CryptohomeClient) PrepareEphemeralVault(ctx context.Context, authSessionID string) error {
+	_, err := u.binary.prepareEphemeralVault(ctx, authSessionID)
+	return err
+}
+
+// PreparePersistentVault prepares vault for persistent user session.
+func (u *CryptohomeClient) PreparePersistentVault(ctx context.Context, authSessionID string, ecryptfs bool) error {
+	_, err := u.binary.preparePersistentVault(ctx, authSessionID, ecryptfs)
+	return err
+}
+
+// PrepareVaultForMigration prepares vault for migration.
+func (u *CryptohomeClient) PrepareVaultForMigration(ctx context.Context, authSessionID string) error {
+	_, err := u.binary.prepareVaultForMigration(ctx, authSessionID)
+	return err
+}
+
+// CreatePersistentUser creates persistent user.
+func (u *CryptohomeClient) CreatePersistentUser(ctx context.Context, authSessionID string) error {
+	_, err := u.binary.createPersistentUser(ctx, authSessionID)
 	return err
 }
 
