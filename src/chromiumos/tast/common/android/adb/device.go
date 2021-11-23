@@ -583,3 +583,8 @@ func (d *Device) StartScreenRecording(ctx context.Context, filename, outDir stri
 		return nil
 	}, nil
 }
+
+// Reboot reboots the adb device. Use WaitForDevice to wait for it to be up again.
+func (d *Device) Reboot(ctx context.Context) error {
+	return d.ShellCommand(ctx, "reboot").Run(testexec.DumpLogOnError)
+}

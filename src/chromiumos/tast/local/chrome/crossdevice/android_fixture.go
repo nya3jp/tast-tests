@@ -38,6 +38,9 @@ const (
 	// Otherwise we will attempt removing all Google accounts and adding a test account to the phone.
 	// Adding/removing accounts requires ADB root access, so this will automatically be set to true if root is not available.
 	skipAndroidLogin = "skipAndroidLogin"
+
+	// Use -var=rebootAndroid=false to skip rebooting the Android device.
+	rebootAndroid = "rebootAndroid"
 )
 
 func init() {
@@ -54,8 +57,9 @@ func init() {
 			defaultCrossDeviceUsername,
 			defaultCrossDevicePassword,
 			skipAndroidLogin,
+			rebootAndroid,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    5 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -74,8 +78,9 @@ func init() {
 			smartLockUsername,
 			smartLockPassword,
 			skipAndroidLogin,
+			rebootAndroid,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    5 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -94,7 +99,15 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	snippetZip := s.DataPath(MultideviceSnippetZipName)
 
 	// Set up adb, connect to the Android phone, and check if ADB root access is available.
-	adbDevice, rooted, err := AdbSetup(ctx)
+	reboot := true
+	if val, ok := s.Var("rebootAndroid"); ok {
+		b, err := strconv.ParseBool(val)
+		if err != nil {
+			s.Fatal("Unable to convert rebootAndroid var to bool: ", err)
+		}
+		reboot = b
+	}
+	adbDevice, rooted, err := AdbSetup(ctx, reboot)
 	if err != nil {
 		s.Fatal("Failed to set up an adb device: ", err)
 	}

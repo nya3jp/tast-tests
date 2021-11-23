@@ -23,7 +23,7 @@ import (
 )
 
 // AdbSetup configures adb and connects to the Android device with adb root if available.
-func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
+func AdbSetup(ctx context.Context, reboot bool) (*adb.Device, bool, error) {
 	// Load the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
 	if err := localadb.LaunchServer(ctx); err != nil {
 		return nil, false, errors.Wrap(err, "failed to launch adb server")
@@ -32,6 +32,20 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 	adbDevice, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
 	if err != nil {
 		return nil, false, errors.Wrap(err, "failed to list adb devices")
+	}
+	// Reboot the phone to ensure a clean state for bluetooth and cross-device features.
+	if reboot {
+		testing.ContextLog(ctx, "Rebooting the connected Android device")
+		if err := adbDevice.Reboot(ctx); err != nil {
+			return nil, false, errors.Wrap(err, "failed to reboot the device")
+		}
+		// Wait up to a minute for it to be up again.
+		adbDevice, err = adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 60*time.Second)
+		if err != nil {
+			return nil, false, errors.Wrap(err, "failed to find the device after reboot")
+		}
+		// Wait a bit for the device to warm up.
+		testing.Sleep(ctx, time.Minute)
 	}
 	// Check if adb root is available.
 	rooted := true
