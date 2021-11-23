@@ -16,6 +16,23 @@
       "message": "ptal",
       "revId": "b16b38acb89ce0942280bb1af50a44b94837a731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc0ce36_404bf9dc",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-23T15:34:34Z",
+      "side": 1,
+      "message": "IIUC, even if /run/lacros mount remains from previously running tests, it should just run, because the above code just waits for the mounted state.\n\nCould you share why do you think this is needed in details?",
+      "revId": "b16b38acb89ce0942280bb1af50a44b94837a731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
