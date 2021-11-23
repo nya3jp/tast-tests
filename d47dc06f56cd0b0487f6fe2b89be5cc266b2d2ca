@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ac4925_78fdc5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-23T22:53:35Z",
+      "side": 1,
+      "message": "Oh, right, nevermind :-)",
+      "parentUuid": "c18748ba_cc457f0c",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18a3a8b4_1d09c1ca",
