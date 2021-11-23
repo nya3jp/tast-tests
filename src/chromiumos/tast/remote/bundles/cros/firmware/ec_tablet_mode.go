@@ -37,7 +37,7 @@ func init() {
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService", "tast.cros.ui.PowerMenuService", "tast.cros.graphics.ScreenshotService"},
 		Fixture:      fixture.DevModeGBB,
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.FormFactor(hwdep.Convertible, hwdep.Chromeslate)),
 	})
 }
 
@@ -153,7 +153,7 @@ func ECTabletMode(ctx context.Context, s *testing.State) {
 					}
 				}
 				return nil
-			}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+			}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second}); err != nil {
 				return errors.Wrap(err, "failed to set display on/off")
 			}
 		}
