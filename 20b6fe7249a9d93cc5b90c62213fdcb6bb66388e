@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8038f7ab_9ce99106",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-23T00:46:33Z",
+      "side": 1,
+      "message": "Not sure about this bit lol, but I think the solution here is the retries that will be added for b/207152986.\n\nThe next steps (removing \u0026 adding accounts) are very flaky if you try them immediately after reboot.",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "20b6fe7249a9d93cc5b90c62213fdcb6bb66388e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
