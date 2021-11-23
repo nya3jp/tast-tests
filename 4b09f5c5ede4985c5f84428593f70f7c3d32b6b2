@@ -1,0 +1,68 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e9aaed_a9cdc9fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-23T03:01:52Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "4b09f5c5ede4985c5f84428593f70f7c3d32b6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a69b2b1_364bc177",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-23T03:01:52Z",
+      "side": 1,
+      "message": "\u003e \"Sugestion\" is a possible misspelling of \"Suggestion\".\n\nPlease fix.",
+      "parentUuid": "b8378995_c5d4e49e",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "4b09f5c5ede4985c5f84428593f70f7c3d32b6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a7ee60_45ee55e8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-23T03:01:52Z",
+      "side": 1,
+      "message": "use multiple lines",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 85
+      },
+      "revId": "4b09f5c5ede4985c5f84428593f70f7c3d32b6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
