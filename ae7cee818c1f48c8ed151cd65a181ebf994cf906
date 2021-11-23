@@ -446,6 +446,30 @@
       },
       "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c49af3b8_318b5557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T11:47:39Z",
+      "side": 1,
+      "message": "Because we didn\u0027t distinguish the gif\u0027s postprocessing event with camera facing. Looping through all cameras will make the perf value be averaged.\nEven if we add facing information, the second recording may be meanless because it will cache the web assembly compliation result which should be far faster then first run (unless we resetChrome before testing each camera facing).",
+      "parentUuid": "c14397be_80eccddc",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
