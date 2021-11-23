@@ -79,6 +79,54 @@ func (d *APIClient) CreateBlankGoogleDoc(ctx context.Context, fileName string, d
 	return service.Files.Create(doc).Do()
 }
 
+// CreateBlankGoogleSheet creates a google sheet with supplied filename in the directory path.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *APIClient) CreateBlankGoogleSheet(ctx context.Context, fileName string, dirPath []string) (*drive.File, error) {
+	service, err := d.createNewDriveService(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	sheet := &drive.File{
+		MimeType: "application/vnd.google-apps.spreadsheet",
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	return service.Files.Create(sheet).Do()
+}
+
+// CreateBlankGoogleSlide creates a google slide with supplied filename in the directory path.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *APIClient) CreateBlankGoogleSlide(ctx context.Context, fileName string, dirPath []string) (*drive.File, error) {
+	service, err := d.createNewDriveService(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	slide := &drive.File{
+		MimeType: "application/vnd.google-apps.presentation",
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	return service.Files.Create(slide).Do()
+}
+
+// Createfolder creates a folder with supplied filename in the directory path.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *APIClient) Createfolder(ctx context.Context, fileName string, dirPath []string) (*drive.File, error) {
+	service, err := d.createNewDriveService(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	folder := &drive.File{
+		MimeType: "application/vnd.google-apps.folder",
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	return service.Files.Create(folder).Do()
+}
+
 // RemoveFileByID removes the file by supplied fileID.
 func (d *APIClient) RemoveFileByID(ctx context.Context, fileID string) error {
 	service, err := d.createNewDriveService(ctx)
@@ -166,4 +214,24 @@ func waitAndClickElement(ctx context.Context, conn *chrome.Conn, jsExpr string) 
 	}
 
 	return nil
+}
+
+// FindFileByName finds all files with provided name.
+// It will only look for existing file, files in trash will be ignored.
+func (d *APIClient) FindFileByName(ctx context.Context, fileName string) (*drive.FileList, error) {
+	service, err := d.createNewDriveService(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	query := fmt.Sprintf("name = '%s' and trashed = false", fileName)
+	fileList, err := service.Files.List().Q(query).Do()
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to list the files with name %s", fileName)
+	}
+	if fileList == nil {
+		return nil, errors.Errorf("failed to list the files with name %s: empty result", fileName)
+	}
+
+	return fileList, nil
 }
