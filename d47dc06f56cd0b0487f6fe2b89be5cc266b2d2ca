@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3cf1c8f_47beede1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-23T19:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95ab55e2_912ff7a9",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5445a9e0_39b69521",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-23T18:16:39Z",
       "side": 1,
       "message": "nit: Use 80 column (or longer) lines. Last sentence is unnecessary.",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beeba218_99d02fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-23T19:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5445a9e0_39b69521",
       "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb807b52_23c4dce0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-23T19:16:36Z",
+      "side": 1,
+      "message": "I cannot do that because a NewReader instance starts reading after it is created [1].\n\nBut I realized that I could exploit that behavior. I make startShillAndWaitForNetworks do not return start and end times, and I use only end time for filtering.\n\n[1] http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/syslog/reader.go?l\u003d296\u0026rcl\u003db6e7b116629b6a4862d87b045b6fdd1cb853de1b",
+      "parentUuid": "84e4ee6d_a2b07de1",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18a3a8b4_1d09c1ca",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-11-23T18:16:39Z",
       "side": 1,
       "message": "We should break if the timestamp \u003e endTime.",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e983f08_f0676d4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-23T19:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18a3a8b4_1d09c1ca",
       "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
