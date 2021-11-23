@@ -31,6 +31,9 @@ func init() {
 		// TODO(crbug.com/1258214): Add a parameterized test for an edge case.
 		Params: []testing.Param{{
 			Val: version.New(0, 0, 1000, 0),
+		}, {
+			Name: "no_skew",
+			Val:  version.New(0, 0, 0, 0), // If rootfs-lacros and stateful-lacros are the same version, rootfs-lacros will be used.
 		}},
 		Timeout: 5 * time.Minute,
 	})
@@ -62,8 +65,8 @@ func UpdateStatefulToRootfs(ctx context.Context, s *testing.State) {
 	s.Logf("Versions: ash=%s rootfs-lacros=%s stateful-lacros=%s", ashVersion.GetString(), rootfsLacrosVersion.GetString(), statefulLacrosVersion.GetString())
 	if !statefulLacrosVersion.IsValid() {
 		s.Fatal("Invalid Stateful Lacros version: ", statefulLacrosVersion)
-	} else if !statefulLacrosVersion.IsOlderThan(rootfsLacrosVersion) {
-		s.Fatalf("Invalid Stateful Lacros version: %v, should be older than Rootfs: %v", statefulLacrosVersion, rootfsLacrosVersion)
+	} else if statefulLacrosVersion.IsNewerThan(rootfsLacrosVersion) {
+		s.Fatalf("Invalid Stateful Lacros version: %v, should be older than or equal to Rootfs: %v", statefulLacrosVersion, rootfsLacrosVersion)
 	} else if !statefulLacrosVersion.IsSkewValid(ashVersion) {
 		// TODO(crbug.com/1258138): Check version skew once implemented in production.
 		s.Fatalf("Invalid Stateful Lacros version: %v, should be compatible with supported version skews for Ash: %v", statefulLacrosVersion, ashVersion)
