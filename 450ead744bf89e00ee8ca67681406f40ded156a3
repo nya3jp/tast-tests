@@ -16,6 +16,24 @@
       "message": "Hey David, my hunch is that the roadblocks you\u0027re hitting her eare not something we\u0027ll manage to resolve in the next day or so. I suspect there is something buggy happening in Smart Lock itself, not something wrong with your test (I recall similar flakiness with my E2E testing attempt in early 2020)\n\nSo, either Curt or myself will need to dedicate time to investigating/fixing these issues in order for this test to pass 100% of the time. \n\nHow do you want to move forward in the short term? We can either: submit the CL as-is (since the test is AFAICT logically correct at the moment) and fix it once Curt or myself have the time to fix the underlying issue, or wait to submit until Curt/me have time to investigate.\n\nI\u0027m fine with either approach!",
       "revId": "450ead744bf89e00ee8ca67681406f40ded156a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb2803a_43a58aaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-23T18:40:06Z",
+      "side": 1,
+      "message": "Thanks for confirming.\nI\u0027ll submit it since you think its logically correct. I\u0027ll add the bug I filed to the green stainless report",
+      "parentUuid": "7e151d61_882289a1",
+      "revId": "450ead744bf89e00ee8ca67681406f40ded156a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
