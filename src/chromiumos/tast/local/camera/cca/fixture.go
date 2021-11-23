@@ -89,6 +89,17 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaTestBridgeReadyWithWasmDynamicTier",
+		Desc:            "Set up test bridge for CCA",
+		Contacts:        []string{"wtlee@chromium.org"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            &fixture{useWasmDynamicTier: true},
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "ccaTestBridgeReadyWithFakeCamera",
 		Desc: `Set up test bridge for CCA with fake camera. Any tests using this
 		       fixture should switch the camera scene before opening camera`,
@@ -197,16 +208,17 @@ type fixture struct {
 	chart       *chart.Chart
 	cameraScene string
 
-	scriptPaths      []string
-	fakeCamera       bool
-	fakeScene        bool
-	arcBooted        bool
-	launchCCA        bool
-	bypassPermission bool
-	forceClamshell   bool
-	guestMode        bool
-	debugParams      DebugParams
-	features         []feature
+	scriptPaths        []string
+	fakeCamera         bool
+	fakeScene          bool
+	arcBooted          bool
+	launchCCA          bool
+	bypassPermission   bool
+	forceClamshell     bool
+	guestMode          bool
+	useWasmDynamicTier bool
+	debugParams        DebugParams
+	features           []feature
 }
 
 func (f *fixture) cameraType() testutil.UseCameraType {
@@ -237,6 +249,9 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 				// The content of the scene can be dynamically changed during tests.
 				"--use-file-for-fake-video-capture="+f.cameraScene))
 		}
+	}
+	if f.useWasmDynamicTier {
+		chromeOpts = append(chromeOpts, chrome.ExtraArgs("--enable-blink-features=WebAssemblyDynamicTiering"))
 	}
 	if f.guestMode {
 		chromeOpts = append(chromeOpts, chrome.GuestLogin())
