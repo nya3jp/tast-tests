@@ -33,6 +33,23 @@
       "message": "You\u0027ll need to add a Tast owner.",
       "revId": "e7841756dc6e3fdeb549116f861293e03a7bd30c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2617f4_62b76cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-23T19:44:33Z",
+      "side": 1,
+      "message": "tast-owners@google.com",
+      "revId": "e7841756dc6e3fdeb549116f861293e03a7bd30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
