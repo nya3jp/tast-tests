@@ -50,7 +50,7 @@ func testAssistantSimpleMathQuery(ctx context.Context, s *testing.State, tconn *
 	s.Log("Sending math query to the Assistant")
 	// As the query result will be parsed from the HTML string, a special number is needed to
 	// be distinguished from other numeric components contained in the HTML.
-	queryStatus, err := assistant.SendTextQuery(ctx, tconn, "-214.5 - 785.4 =")
+	queryStatus, err := assistant.SendTextQuery(ctx, tconn, "open google.com")
 	if err != nil {
 		s.Fatal("Failed to get Assistant math query response: ", err)
 	}

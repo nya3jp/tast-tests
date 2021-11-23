@@ -135,7 +135,7 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 func VerboseLogging() chrome.Option {
 	return chrome.ExtraArgs(
 		"--vmodule=*/assistant/*=3",
-		"--enable-features=AssistantDebugging",
+		"--enable-features=AssistantDebugging,LacrosSupport,LacrosPrimary",
 	)
 }
 
