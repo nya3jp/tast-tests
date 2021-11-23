@@ -16,6 +16,24 @@
       "message": "nit, can use backtick quotes for the regular expressions to avoid double escapes such as \\\\S.  Also, this regular expression for test output boundary can be pre-computed outside of the loop.",
       "revId": "d52d53f4b4fef28e4625ea0cd03d63319f5b969a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7722d04c_3e83ccf1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_system_test_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-11-23T03:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1072bca_b9633663",
+      "revId": "d52d53f4b4fef28e4625ea0cd03d63319f5b969a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
