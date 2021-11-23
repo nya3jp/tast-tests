@@ -37,7 +37,7 @@ func init() {
 }
 
 func StartAppFromSignInScreen(ctx context.Context, s *testing.State) {
-	fdms := s.FixtValue().(*fakedms.FakeDMS)
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	kiosk, cr, err := kioskmode.New(
 		ctx,
 		fdms,
