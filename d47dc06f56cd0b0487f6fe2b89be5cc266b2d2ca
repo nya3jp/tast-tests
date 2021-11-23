@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c18748ba_cc457f0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-11-23T19:42:21Z",
+      "side": 1,
+      "message": "I see. I didn\u0027t mention clearly that I moved the creation of NewRader after calling upstart.StopJob in the ShillNoErrorsInLog function. So it gets logs for Shill stopping only once.",
+      "parentUuid": "0382a4cb_b8bd25ea",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18a3a8b4_1d09c1ca",
