@@ -129,6 +129,30 @@
       },
       "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c541ed_e808c5fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-11-23T01:39:16Z",
+      "side": 1,
+      "message": "Thanks, I\u0027m fine for this as short term approach. But please still consider the long term solution. (I\u0027m worried that if there is no one to maintain this list, or just forgot/ignore, then some models may not have proper test coverage. It may affect Intel vPro quality.)",
+      "parentUuid": "95669f8f_4c9052f8",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
