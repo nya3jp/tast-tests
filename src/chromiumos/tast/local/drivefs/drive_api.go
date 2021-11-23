@@ -48,6 +48,39 @@ func (d *APIClient) CreateBlankGoogleDoc(ctx context.Context, fileName string, d
 	return d.service.Files.Create(doc).Context(ctx).Do()
 }
 
+// CreateBlankGoogleSheet creates a google sheet with supplied filename in the directory path.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *APIClient) CreateBlankGoogleSheet(ctx context.Context, fileName string, dirPath []string) (*drive.File, error) {
+	sheet := &drive.File{
+		MimeType: "application/vnd.google-apps.spreadsheet",
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	return d.service.Files.Create(sheet).Context(ctx).Do()
+}
+
+// CreateBlankGoogleSlide creates a google slide with supplied filename in the directory path.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *APIClient) CreateBlankGoogleSlide(ctx context.Context, fileName string, dirPath []string) (*drive.File, error) {
+	slide := &drive.File{
+		MimeType: "application/vnd.google-apps.presentation",
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	return d.service.Files.Create(slide).Context(ctx).Do()
+}
+
+// Createfolder creates a folder with supplied filename in the directory path.
+// All paths should start with root unless they are team drives, in which case the drive path.
+func (d *APIClient) Createfolder(ctx context.Context, fileName string, dirPath []string) (*drive.File, error) {
+	folder := &drive.File{
+		MimeType: "application/vnd.google-apps.folder",
+		Name:     fileName,
+		Parents:  dirPath,
+	}
+	return d.service.Files.Create(folder).Context(ctx).Do()
+}
+
 // RemoveFileByID removes the file by supplied fileID.
 func (d *APIClient) RemoveFileByID(ctx context.Context, fileID string) error {
 	return d.service.Files.Delete(fileID).Context(ctx).Do()
