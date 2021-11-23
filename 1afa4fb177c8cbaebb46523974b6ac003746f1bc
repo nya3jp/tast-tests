@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc4d09a_cfb1fa32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-23T14:38:02Z",
+      "side": 1,
+      "message": "PTAL. Here are timings when it comes of the execution:\n\nWith the new fixture fixture.KioskAutoLaunchCleanup\nJust 2 tests using autolaunch:\n2021-11-23T14:26:19.019204Z Completed fixture enrolled in 4m23.204s with 0 error(s)\n\nwith fixture.FakeDMSEnrolled:\nJust 2 tests using autolaunch:\n2021-11-23T14:20:09.811149Z Completed fixture enrolled in 3m23.752s with 0 error(s)",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
