@@ -26,7 +26,12 @@ func init() {
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      8 * time.Minute,
-		Fixture:      "ccaTestBridgeReady",
+		Params: []testing.Param{{
+			Fixture: "ccaTestBridgeReady",
+		}, {
+			Name:    "wasm_dynamic_tier",
+			Fixture: "ccaTestBridgeReadyWithWasmDynamicTier",
+		}},
 	})
 }
 
@@ -34,12 +39,12 @@ func init() {
 // performance through some UI operations.
 func CCAUIPerf(ctx context.Context, s *testing.State) {
 	perfData := cca.NewPerfData()
+	resetChrome := s.FixtValue().(cca.FixtureData).ResetChrome
 
 	// App launch tests.
-	resetChrome := s.FixtValue().(cca.FixtureData).ResetChrome
+	const appLaunchTestTimeout = 60 * time.Second
 	startApp := s.FixtValue().(cca.FixtureData).StartApp
 	stopApp := s.FixtValue().(cca.FixtureData).StopApp
-	const appLaunchTestTimeout = 60 * time.Second
 	appLaunchTestCtx, cancel := context.WithTimeout(ctx, appLaunchTestTimeout)
 	s.Run(appLaunchTestCtx, "testAppLaunch", func(ctx context.Context, s *testing.State) {
 		if err := testAppLaunch(ctx, resetChrome, startApp, stopApp, perfData); err != nil {
