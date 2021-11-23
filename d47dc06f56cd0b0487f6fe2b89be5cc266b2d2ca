@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f7ae02e_1b186f90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-23T18:16:39Z",
+      "side": 1,
+      "message": "Generally looks good, just some nits.",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95ab55e2_912ff7a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-23T18:16:39Z",
+      "side": 1,
+      "message": "\"doActions\" is not very descriptive, let\u0027s name this something like \"startShillAndWaitForNetworks\".",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5445a9e0_39b69521",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-23T18:16:39Z",
+      "side": 1,
+      "message": "nit: Use 80 column (or longer) lines. Last sentence is unnecessary.",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e4ee6d_a2b07de1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-23T18:16:39Z",
+      "side": 1,
+      "message": "It might be a little more clear to open netlog just before we read it, rather than before restarting shill and waiting for networks to become available? (In particular, it took me a couple of passes to remember that this is where we filter non ERROR lines).",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a3a8b4_1d09c1ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2021-11-23T18:16:39Z",
+      "side": 1,
+      "message": "We should break if the timestamp \u003e endTime.",
+      "revId": "d47dc06f56cd0b0487f6fe2b89be5cc266b2d2ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
