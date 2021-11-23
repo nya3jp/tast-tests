@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros/faillog"
@@ -97,12 +98,13 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Lacros was not found in the list of shelf items: ", err)
 	}
 
-	// TODO(crbug.com/1260037): Remove a hardcoded sleep used to avoid a flake on VMs in the lacros primary case.
-	// There might be a race condition where lacros primary opening a new window on startup and closing all windows in the following lines would occur together.
-	// This sleep is a workaround to give time to all popup windows showing up on startup before closing them.
+	// TODO(crbug.com/1260037): Wait until a new browser window is open when Lacros is set as a primary browser.
+	// This is a workaround until https://crbug.com/1268252 is resolved to have a flag to control a startup window behavior for Lacros primary.
 	startupWindow := s.Param().(bool)
 	if startupWindow {
-		testing.Sleep(ctx, 3*time.Second)
+		if err := launcher.WaitForLacrosWindow(ctx, tconn, ""); err != nil {
+			s.Log("Test may fail if a lacros browser is popped up on startup past this point, but proceeding anyway to check all open windows again")
+		}
 	}
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
@@ -115,6 +117,14 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Save Lacros logs.
+	ctxForFailLog := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+	defer func(ctx context.Context) {
+		faillog.SaveIf(ctx, f.LacrosPath(), s.HasError)
+	}(ctxForFailLog)
+
 	// Clean up user data dir to ensure a clean start.
 	os.RemoveAll(launcher.LacrosUserDataDir)
 	if err = ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
@@ -123,8 +133,6 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 
 	s.Log("Checking that Lacros window is visible")
 	if err := launcher.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
-		// Grab Lacros logs to assist debugging before exiting.
-		faillog.Save(ctx, s.FixtValue().(launcher.FixtValue).LacrosPath())
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
