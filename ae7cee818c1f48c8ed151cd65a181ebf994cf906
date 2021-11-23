@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3fcbb6_a87619ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27274c7c_bc832b8d",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b3ebf12_7ac8a508",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-19T17:36:40Z",
       "side": 1,
       "message": "I know the test has already failed here, but shouldn\u0027t you at least log if resetChrome fails also?",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5cae90b_2943eb9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b3ebf12_7ac8a508",
       "range": {
         "startLine": 52,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a091360_fbb5719a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "Fix as return error here.\nI would expect the whole chrome\u0027s state is clean after resetChrome() in the prior defer and thus safe for next test to start another App.",
+      "parentUuid": "635d8507_90d7b2c7",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18caafeb_83a50834",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-19T17:36:40Z",
       "side": 1,
       "message": "Shouldn\u0027t this be `return retErr` or `return` ? If there were errors in the for loop, you are going to lose them.",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f0056b_46f0cdf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "Done by simply return the error.",
+      "parentUuid": "18caafeb_83a50834",
       "range": {
         "startLine": 70,
         "startChar": 9,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bddd23bc_4eb1f566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea53f03_03eafade",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7399541_dd741174",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-11-22T07:01:26Z",
       "side": 1,
       "message": "Hmm, why do we need to specify the metrics we would like to collect instead of collecting all the metrics happen during the flow?",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 87
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb135c55_217597f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "Because we used to average the duration from every events collected from single app instance while we would have mutiple app instance in each new chrome. I was afraid of setting duplicate event metrics in perf.Values. I originally try to collect the event from first app instance.\nFixed by wrap perf.Values with customized type |PerfData| for aggregating data from different app instance and do averaging before save with perf.Value.",
+      "parentUuid": "e7399541_dd741174",
       "range": {
         "startLine": 88,
         "startChar": 2,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71f1008_9bd1c8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "868e1cee_122c8dae",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 7
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "651cfc0f_b555d4c7",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e37209_445fc1d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "651cfc0f_b555d4c7",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 11
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f9410bf_9cc9b7a3",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-11-22T07:01:26Z",
       "side": 1,
       "message": "How do we decide whether to wrap it in RunThroughCameras() or not? Maybe we can add comments about it.",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54211035_23ba93f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T06:53:32Z",
+      "side": 1,
+      "message": "IIRC, the stacktrace in the error can clearly show where the error comes from. We only need to wrap when there are multiple similar call in the same stack frame or any extra information need to be attached to the error.",
+      "parentUuid": "2f9410bf_9cc9b7a3",
       "range": {
         "startLine": 186,
         "startChar": 1,
