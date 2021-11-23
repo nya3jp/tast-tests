@@ -314,11 +314,14 @@ func CheckDeps(ctx context.Context) error {
 }
 
 // StartAuthSession starts an AuthSession for a given user.
-func StartAuthSession(ctx context.Context, user string) (string, error) {
+func StartAuthSession(ctx context.Context, user string, isEphemeral bool) (string, error) {
 	testing.ContextLogf(ctx, "Creating AuthSession for user %q", user)
 	cmd := testexec.CommandContext(
 		ctx, "cryptohome", "--action=start_auth_session",
 		"--user="+user)
+	if isEphemeral {
+		cmd.Args = append(cmd.Args, "--ensure_ephemeral")
+	}
 	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to create AuthSession for %q", user)
@@ -404,10 +407,110 @@ func InvalidateAuthSession(ctx context.Context, authSessionID string) error {
 	return nil
 }
 
+// PrepareGuestVault prepares guest vault.
+func PrepareGuestVault(ctx context.Context) error {
+	testing.ContextLog(ctx, "Trying to prepare guest vault")
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=prepare_guest_vault")
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to prepare guest vault")
+	}
+	return nil
+}
+
+// PrepareEphemeralVault prepares ephemeral vault.
+func PrepareEphemeralVault(ctx context.Context, authSessionID string) error {
+	testing.ContextLogf(ctx, "Trying to prepare ephemeral vault with AuthSession id: %q", authSessionID)
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=prepare_ephemeral_vault", "--auth_session_id="+authSessionID)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to prepare ephemeral vault")
+	}
+	return nil
+}
+
+// PreparePersistentVault prepares persistent vault.
+func PreparePersistentVault(ctx context.Context, authSessionID string, ecryptfs bool) error {
+	testing.ContextLogf(ctx, "Trying to prepare persistent vault with AuthSession id: %q", authSessionID)
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=prepare_persistent_vault", "--auth_session_id="+authSessionID)
+	if ecryptfs {
+		cmd.Args = append(cmd.Args, "--ecryptfs")
+	}
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to prepare persistent vault")
+	}
+	return nil
+}
+
+// PrepareVaultForMigration prepares vault for migration.
+func PrepareVaultForMigration(ctx context.Context, authSessionID string) error {
+	testing.ContextLogf(ctx, "Trying to prepare vault for migration with AuthSession id: %q", authSessionID)
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=prepare_vault_for_migration", "--auth_session_id="+authSessionID)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to prepare ephemeral vault")
+	}
+	return nil
+}
+
+// CreatePersistentUser creates persistent user.
+func CreatePersistentUser(ctx context.Context, authSessionID string) error {
+	testing.ContextLogf(ctx, "Trying to create persistent user with AuthSession id: %q", authSessionID)
+	cmd := testexec.CommandContext(ctx, "cryptohome", "--action=create_persistent_user", "--auth_session_id="+authSessionID)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to create persistent user")
+	}
+	return nil
+}
+
+// CreateUserWithAuthSession creates a persistent user via auth session API.
+func CreateUserWithAuthSession(ctx context.Context, username, password string, isKioskUser bool) error {
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := StartAuthSession(ctx, username, false)
+	if err != nil {
+		return errors.Wrap(err, "failed to start Auth session")
+	}
+	// defer cryptohome.InvalidateAuthSession(ctx, auth_session_id)
+	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
+
+	if err := AddCredentialsWithAuthSession(ctx, username, password, authSessionID, isKioskUser); err != nil {
+		return errors.Wrap(err, "failed to add credentials with AuthSession")
+	}
+	testing.ContextLog(ctx, "Added credentials successfully")
+	if err := AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
+		return errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+	testing.ContextLog(ctx, "User authenticated successfully")
+
+	// This is a no-op for now since AddCredentials.. above will already create
+	// the user.
+	if err := CreatePersistentUser(ctx, authSessionID); err != nil {
+		return errors.Wrap(err, "failed to create persistent user")
+	}
+	return nil
+}
+
+// AuthenticateWithAuthSession authenticates an existing user via auth session
+// API.
+func AuthenticateWithAuthSession(ctx context.Context, username, password string, isEphemeral, isKioskUser bool) (string, error) {
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := StartAuthSession(ctx, username, isEphemeral)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start Auth session")
+	}
+	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
+
+	// Authenticate the same AuthSession using authSessionID.
+	// If we cannot authenticate, do not proceed with mount and unmount.
+	if err := AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
+		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+	testing.ContextLog(ctx, "User authenticated successfully")
+
+	return authSessionID, nil
+}
+
 // AuthSessionMountFlow mounts a user with AuthSession.
 func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password string, createUser bool) error {
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := StartAuthSession(ctx, username)
+	authSessionID, err := StartAuthSession(ctx, username, false)
 	if err != nil {
 		return errors.Wrap(err, "failed to start Auth session")
 	}
