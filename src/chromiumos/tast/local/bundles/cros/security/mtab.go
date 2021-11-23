@@ -105,6 +105,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/run/arc/shared_mounts":   {nil, "tmpfs", defaultRW + ",mode=755"},
 		"/run/arc/debugfs/sync":    {nil, "debugfs", defaultRW + ",gid=605,mode=750"},
 		"/run/arc/debugfs/tracing": {nil, "debugfs,tracefs", defaultRW},
+		"/run/chromeos-config/v1":  {nil, "tmpfs", defaultRO},
 		"/run/debugfs_gpu":         {nil, "debugfs", defaultRW + ",gid=605,mode=750"}, // debugfs-access
 		"/run/imageloader":         {nil, "tmpfs", defaultRW + ",mode=755"},
 		"/run/namespaces":          {nil, "tmpfs", defaultRW + ",mode=755"}, // This is a bind mount
