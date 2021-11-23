@@ -24,22 +24,29 @@ import (
 
 // AdbSetup configures adb and connects to the Android device with adb root if available.
 func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
-	// Load the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
-	if err := localadb.LaunchServer(ctx); err != nil {
-		return nil, false, errors.Wrap(err, "failed to launch adb server")
+	// TODO(b/207520262): Remove when we have Android support in skylab for configuring phone.
+	for i := 0; i < 3; i++ {
+		testing.Sleep(ctx, 3*time.Second)
+		// Load the ARC adb vendor key, which must be pre-loaded on the Android device to allow adb over usb without requiring UI interaction.
+		if err := localadb.LaunchServer(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to launch adb server")
+			continue
+		}
+		// Wait for the first available device, since we are assuming only a single Android device is connected to each CrOS device.
+		adbDevice, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to list adb devices")
+			continue
+		}
+		// Check if adb root is available.
+		rooted := true
+		if err := adbDevice.Root(ctx); err != nil {
+			testing.ContextLog(ctx, "ADB root access not available; operations requiring root access will be skipped")
+			rooted = false
+		}
+		return adbDevice, rooted, nil
 	}
-	// Wait for the first available device, since we are assuming only a single Android device is connected to each CrOS device.
-	adbDevice, err := adb.WaitForDevice(ctx, func(device *adb.Device) bool { return !strings.HasPrefix(device.Serial, "emulator-") }, 10*time.Second)
-	if err != nil {
-		return nil, false, errors.Wrap(err, "failed to list adb devices")
-	}
-	// Check if adb root is available.
-	rooted := true
-	if err := adbDevice.Root(ctx); err != nil {
-		testing.ContextLog(ctx, "ADB root access not available; operations requiring root access will be skipped")
-		rooted = false
-	}
-	return adbDevice, rooted, nil
+	return nil, false, errors.New("failed to setup adb after multiple attempts")
 }
 
 // GAIALogin removes existing user accounts from the device and adds the specified one using the tradefed GoogleAccountUtil APK.
@@ -180,8 +187,20 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 		return errors.Wrap(err, "failed to turn off the screen")
 	}
 	// Clear logcat so that logs start from this point on.
-	if err := d.ClearLogcat(ctx); err != nil {
-		return errors.Wrap(err, "failed to clear previous logcat logs")
+	clearLogcat := true
+	// TODO(b/207520262): Remove when we have Android support in skylab for configuring phone.
+	for i := 0; i < 3; i++ {
+		if err := d.ClearLogcat(ctx); err == nil {
+			clearLogcat = true
+			break
+		} else {
+			clearLogcat = false
+			testing.ContextLog(ctx, "Failed to clear previous logcat logs")
+			testing.Sleep(ctx, 3*time.Second)
+		}
+	}
+	if !clearLogcat {
+		return errors.New("failed to clear logcat after multiple attempts")
 	}
 
 	// Prepare the device for Nearby Sharing by waking+unlocking the screen, enabling bluetooth, and extending the screen-off timeout.
