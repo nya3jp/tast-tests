@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ebe3f9_65a5a803",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-23T11:49:25Z",
+      "side": 1,
+      "message": "I want to check that inSessionConn has not been closed and googleKeepConn is closed.\nIs there an idiomatic way to do this (e.g. conn.IsClosed())?",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
