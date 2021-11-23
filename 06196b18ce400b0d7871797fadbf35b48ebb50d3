@@ -16,6 +16,24 @@
       "message": "Good catch. Eliot, could you fix the issue, and reland?",
       "revId": "06196b18ce400b0d7871797fadbf35b48ebb50d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c188c01b_b852828d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-23T19:23:47Z",
+      "side": 1,
+      "message": "+1 to Yuke\u0027s point in the CL description,\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/faillog/faillog.go?l\u003d94\ndoesn\u0027t seem to consider copying /home/chronos/user/lacros/lacros.log when lacros is open from shelf.",
+      "parentUuid": "8689a72e_c3ded753",
+      "revId": "06196b18ce400b0d7871797fadbf35b48ebb50d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
