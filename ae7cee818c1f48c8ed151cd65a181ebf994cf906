@@ -470,6 +470,30 @@
       },
       "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7c12ed_0f9d2df8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-23T11:53:35Z",
+      "side": 1,
+      "message": "Since the correct fix may require the change on chrome side also need to wait for upprev and we\u0027re in hurry of collecting performance data for catching M98 timeline. Add a TODO for fixing this in the future.",
+      "parentUuid": "c49af3b8_318b5557",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 52
+      },
+      "revId": "ae7cee818c1f48c8ed151cd65a181ebf994cf906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
