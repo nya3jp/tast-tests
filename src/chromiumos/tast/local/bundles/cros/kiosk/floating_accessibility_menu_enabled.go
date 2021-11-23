@@ -29,7 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.FakeDMSEnrolled,
+		Fixture:      fixture.KioskAutoLaunchCleanup,
 		Params: []testing.Param{
 			{
 				Name: "ash",
@@ -44,7 +44,7 @@ func init() {
 }
 
 func FloatingAccessibilityMenuEnabled(ctx context.Context, s *testing.State) {
-	fdms := s.FixtValue().(*fakedms.FakeDMS)
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	chromeOptions := s.Param().(chrome.Option)
 	kiosk, cr, err := kioskmode.New(
 		ctx,
