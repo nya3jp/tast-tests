@@ -22,6 +22,30 @@
       },
       "revId": "5cca4442c9b68b668f1207ae7a44295a73aa4601",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88459844_88cbff17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/shelf_launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-23T19:20:04Z",
+      "side": 1,
+      "message": "I found this will conflict with an ongoing revert: https://crrev.com/c/3297351\nI\u0027ll remove this part for now since it\u0027s not directly related to what this CL primarily tries to fix.",
+      "parentUuid": "820cfcc2_5a2e61de",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "5cca4442c9b68b668f1207ae7a44295a73aa4601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
