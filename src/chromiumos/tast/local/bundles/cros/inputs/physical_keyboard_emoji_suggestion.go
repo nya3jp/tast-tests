@@ -6,7 +6,7 @@ package inputs
 
 import (
 	"context"
-	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -19,7 +19,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -58,6 +60,7 @@ func init() {
 func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -73,11 +76,20 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 	if err := inputMethod.Activate(tconn)(ctx); err != nil {
 		s.Fatal("Failed to set IME: ", err)
 	}
+	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
+
 	its, err := testserver.LaunchInMode(ctx, cr, tconn, strings.HasSuffix(s.TestName(), "incognito"))
 	if err != nil {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
+
+	if strings.HasSuffix(s.TestName(), "incognito") {
+		uc.SetAttribute(useractions.AttributeIncognitoMode, strconv.FormatBool(true))
+		// Incognito mode only works on a certain web page.
+		// It should be reverted once server tear down.
+		defer uc.RemoveAttribute(useractions.AttributeIncognitoMode)
+	}
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -92,19 +104,19 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 		emoji = "🤤"
 	)
 
-	ui := uiauto.New(tconn)
-
 	emojiCandidateWindowFinder := nodewith.HasClass("SuggestionWindowView").Role(role.Window)
 	emojiCharFinder := nodewith.Name(emoji).Ancestor(emojiCandidateWindowFinder).HasClass("StyledLabel")
+	learnMoreFinder := nodewith.Name("Learn more").Ancestor(emojiCandidateWindowFinder).HasClass("ImageButton")
+	ui := uiauto.New(tconn)
 
-	validateEmojiSuggestion := func(shouldSuggest bool) uiauto.Action {
-		return uiauto.Combine("validate emoji suggestion",
+	validateInputUserAction := func(testScenario string, isEmojiSuggestionEnabled bool) *useractions.UserAction {
+		action := uiauto.Combine("validate emoji suggestion",
 			its.Clear(inputField),
 			its.ClickFieldAndWaitForActive(inputField),
 			kb.TypeAction(word),
 			kb.AccelAction("SPACE"),
 			func(ctx context.Context) error {
-				if shouldSuggest {
+				if isEmojiSuggestionEnabled {
 					// Select emoji and wait for the candidate window disappear.
 					return uiauto.Combine("select emoji suggestion",
 						ui.LeftClick(emojiCharFinder),
@@ -122,87 +134,63 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 				)(ctx)
 			},
 		)
+		return useractions.NewUserAction(
+			"validate emoji suggestion",
+			action,
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeTestScenario: testScenario,
+					useractions.AttributeInputField:   string(inputField),
+				},
+				Tags: []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiSuggestion},
+			},
+		)
 	}
 
-	testName := "suggestion"
-	s.Run(ctx, testName, func(ctx context.Context, s *testing.State) {
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
-		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, filepath.Join(s.OutDir(), testName), s.HasError, cr, "ui_tree_"+testName)
-
-		if err := validateEmojiSuggestion(true)(ctx); err != nil {
-			s.Fatal("Failed to validate enabled emoji suggestion: ", err)
-		}
-	})
-
-	imeSettings := imesettings.New(tconn)
-
-	// Launch setting by clicking "Learn more" in emoji suggestion window.
-	testName = "learn_more"
-	s.Run(ctx, testName, func(ctx context.Context, s *testing.State) {
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
-		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, filepath.Join(s.OutDir(), testName), s.HasError, cr, "ui_tree_"+testName)
-
-		if err := its.Clear(inputField)(ctx); err != nil {
-			s.Fatalf("Failed to clear input field %s: %v", string(inputField), err)
-		}
-
-		learnMoreFinder := nodewith.Name("Learn more").Ancestor(emojiCandidateWindowFinder).HasClass("ImageButton")
-
-		if err := uiauto.Combine("launch emoji suggestion setting",
+	validateLearnMoreUserAction := useractions.NewUserAction(
+		"learn more of emoji suggestion",
+		uiauto.Combine(`validate "learn more" in emoji suggestion`,
+			its.Clear(inputField),
 			its.ClickFieldAndWaitForActive(inputField),
 			// Use the first data to test "Learn more".
 			kb.TypeAction(word),
 			kb.AccelAction("SPACE"),
 			ui.LeftClick(learnMoreFinder),
 			ui.WaitUntilGone(emojiCandidateWindowFinder),
-			imeSettings.WaitUntilEmojiSuggestion(cr, tconn, true),
-		)(ctx); err != nil {
-			s.Fatal("Failed to validate emoji suggestion: ", err)
-		}
-	})
+			ossettings.New(tconn).WaitUntilToggleOption(cr, imesettings.EmojiSugestionsOption, true),
+		),
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: `click "learn more" in emoji suggestion window to launch setting`,
+				useractions.AttributeInputField:   string(inputField),
+			},
+			Tags: []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiSuggestion},
+		},
+	)
 
-	// Disable emoji suggestion in settings and validate no emoji suggestion in typing.
-	testName = "disable"
-	s.Run(ctx, testName, func(ctx context.Context, s *testing.State) {
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
-		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, filepath.Join(s.OutDir(), testName), s.HasError, cr, "ui_tree_"+testName)
+	if err := validateInputUserAction("Emoji suggestion is enabled by default", true).Run(ctx); err != nil {
+		s.Fatal("Failed to validate emoji suggestion is enabled by default: ", err)
+	}
 
-		if err := uiauto.Combine("toggle off emoji suggestion and validate no emoji suggestion",
-			imeSettings.ToggleEmojiSuggestions(tconn),
-			imeSettings.WaitUntilEmojiSuggestion(cr, tconn, false),
-			imeSettings.Close,
-			validateEmojiSuggestion(false),
-		)(ctx); err != nil {
-			s.Fatal("Failed to toggle off emoji suggestion and validate no emoji suggestion: ", err)
-		}
-	})
+	if err := imesettings.SetEmojiSuggestions(uc, false).Run(ctx); err != nil {
+		s.Fatal("Failed to disable emoji suggestion in OS setting: ", err)
+	}
 
-	// Test re-enabling emoji suggestion.
-	// Launch setting from OS Settings and toggle it on.
-	testName = "re-enable"
-	s.Run(ctx, testName, func(ctx context.Context, s *testing.State) {
-		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-		defer cancel()
-		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, filepath.Join(s.OutDir(), testName), s.HasError, cr, "ui_tree_"+testName)
+	if err := validateInputUserAction("Emoji suggestion disabled in OS setting", false).Run(ctx); err != nil {
+		s.Fatal("Failed to validate input with emoji suggestion disabled: ", err)
+	}
 
-		imeSettings, err := imesettings.LaunchAtSuggestionSettingsPage(ctx, tconn, cr)
-		if err != nil {
-			s.Fatal("Failed to launch OS settings: ", err)
-		}
-		if err := uiauto.Combine("toggle on emoji suggestion and validate emoji suggestion",
-			imeSettings.ToggleEmojiSuggestions(tconn),
-			imeSettings.WaitUntilEmojiSuggestion(cr, tconn, true),
-			imeSettings.Close,
-			validateEmojiSuggestion(true),
-		)(ctx); err != nil {
-			s.Fatal("Failed to toggle on emoji suggestion and validate emoji suggestion: ", err)
-		}
-	})
+	if err := imesettings.SetEmojiSuggestions(uc, true).Run(ctx); err != nil {
+		s.Fatal("Failed to enable emoji suggestion in OS setting: ", err)
+	}
+
+	if err := validateInputUserAction("Emoji suggestion re-enabled in OS setting", true).Run(ctx); err != nil {
+		s.Fatal("Failed to input emoji from suggestion: ", err)
+	}
+
+	if err := validateLearnMoreUserAction.Run(ctx); err != nil {
+		s.Fatal("Failed to validate learn more of emoji suggestion: ", err)
+	}
 }

@@ -245,10 +245,10 @@ func (s *OSSettings) IsToggleOptionEnabled(ctx context.Context, cr *chrome.Chrom
 	expr := fmt.Sprintf(`
 		var optionNode = shadowPiercingQuery(%q);
 		if(optionNode == undefined){
-			throw new Error("Enable glide typing setting item is not found.");
+			throw new Error("%s setting item is not found.");
 		}
 		optionNode.getAttribute("aria-pressed")==="true";
-		`, toggleButtonCSSSelector)
+		`, toggleButtonCSSSelector, optionName)
 
 	var isEnabled bool
 	if err := s.EvalJSWithShadowPiercer(ctx, cr, expr, &isEnabled); err != nil {

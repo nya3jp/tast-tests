@@ -6,15 +6,11 @@ package inputs
 
 import (
 	"context"
-	"time"
 
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -43,6 +39,7 @@ func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -52,26 +49,7 @@ func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	const (
-		inputField = testserver.TextInputField
-		emojiChar  = "😂"
-	)
-
-	emojiMenuFinder := nodewith.NameStartingWith("Emoji")
-	emojiPickerFinder := nodewith.Name("Emoji Picker").Role(role.RootWebArea)
-	emojiCharFinder := nodewith.Name(emojiChar).First().Ancestor(emojiPickerFinder)
-
-	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
-
-	if err := uiauto.Combine("verify quick emoji input",
-		// Right click input to trigger context menu and select Emoji.
-		its.RightClickFieldAndWaitForActive(inputField),
-		ui.LeftClick(emojiMenuFinder),
-		// Select item from emoji picker.
-		ui.LeftClick(emojiCharFinder),
-		// Wait for input value to test emoji.
-		util.WaitForFieldTextToBe(tconn, inputField.Finder(), emojiChar),
-	)(ctx); err != nil {
+	if err := its.InputEmojiWithEmojiPicker(uc, testserver.TextAreaInputField, "😂").Run(ctx); err != nil {
 		s.Fatal("Failed to verify emoji picker: ", err)
 	}
 }

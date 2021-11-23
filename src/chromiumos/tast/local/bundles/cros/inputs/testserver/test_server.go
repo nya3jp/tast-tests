@@ -496,3 +496,31 @@ func (its *InputsTestServer) ValidateResult(inputField InputField, expectedText 
 	}
 	return validateField
 }
+
+// InputEmojiWithEmojiPicker returns a user action to input Emoji with PK emoji picker on E14s test server.
+func (its *InputsTestServer) InputEmojiWithEmojiPicker(uc *useractions.UserContext, inputField InputField, emojiChar string) *useractions.UserAction {
+	emojiMenuFinder := nodewith.NameStartingWith("Emoji")
+	emojiPickerFinder := nodewith.Name("Emoji Picker").Role(role.RootWebArea)
+	emojiCharFinder := nodewith.Name(emojiChar).First().Ancestor(emojiPickerFinder)
+	ui := uiauto.New(uc.TestAPIConn())
+
+	action := uiauto.Combine(fmt.Sprintf("input emoji with emoji picker on field %v", inputField),
+		its.Clear(inputField),
+		// Right click input to trigger context menu and select Emoji.
+		its.RightClickFieldAndWaitForActive(inputField),
+		ui.LeftClick(emojiMenuFinder),
+		// Select item from emoji picker.
+		ui.LeftClick(emojiCharFinder),
+		// Wait for input value to test emoji.
+		util.WaitForFieldTextToBe(uc.TestAPIConn(), inputField.Finder(), emojiChar),
+	)
+
+	return useractions.NewUserAction(
+		"Input Emoji with Emoji Picker",
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
+			Tags:       []useractions.ActionTag{useractions.ActionTagEmoji, useractions.ActionTagEmojiPicker},
+		})
+}
