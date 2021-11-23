@@ -255,8 +255,12 @@ func (c *cryptohomeBinary) getKeyData(ctx context.Context, username, keyLabel st
 }
 
 // startAuthSession calls "cryptohome --action=start_auth_session".
-func (c *cryptohomeBinary) startAuthSession(ctx context.Context, username string) ([]byte, error) {
-	return c.call(ctx, "--action=start_auth_session", "--user="+username)
+func (c *cryptohomeBinary) startAuthSession(ctx context.Context, username string, isEphemeral bool) ([]byte, error) {
+	args := []string{"--action=start_auth_session", "--user=" + username}
+	if isEphemeral {
+		args = append(args, "--ensure_ephemeral")
+	}
+	return c.call(ctx, args...)
 }
 
 // authenticateAuthSession calls "cryptohome --action=authenticate_auth_session".
@@ -281,6 +285,36 @@ func (c *cryptohomeBinary) addCredentialsWithAuthSession(ctx context.Context, us
 		args = append(args, "--password="+password, "--key_label=fake_label")
 	}
 	return c.call(ctx, args...)
+}
+
+// prepareGuestVault calls "cryptohome --action=prepare_guest_vault"
+func (c *cryptohomeBinary) prepareGuestVault(ctx context.Context) ([]byte, error) {
+	return c.call(ctx, "--action=prepare_guest_vault")
+}
+
+// prepareEphemeralVault calls "cryptohome --action=prepare_ephemeral_vault" with "--auth_session_id".
+func (c *cryptohomeBinary) prepareEphemeralVault(ctx context.Context, authSessionID string) ([]byte, error) {
+	return c.call(ctx, "--action=prepare_ephemeral_vault", "--auth_session_id="+authSessionID)
+}
+
+// preparePersistentVault calls "cryptohome --action=prepare_persistent_vault" with "--auth_session_id"
+// and optionally "--ecryptfs".
+func (c *cryptohomeBinary) preparePersistentVault(ctx context.Context, authSessionID string, ecryptfs bool) ([]byte, error) {
+	args := []string{"--action=prepare_persistent_vault", "--auth_session_id=" + authSessionID}
+	if ecryptfs {
+		args = append(args, "--ecryptfs")
+	}
+	return c.call(ctx, args...)
+}
+
+// prepareVaultForMigration calls "cryptohome --action=prepare_vault_for_migration" with "--auth_session_id"
+func (c *cryptohomeBinary) prepareVaultForMigration(ctx context.Context, authSessionID string) ([]byte, error) {
+	return c.call(ctx, "--action=prepare_vault_for_migration", "--auth_session_id="+authSessionID)
+}
+
+// createPersistentUser calls "cryptohome --action=create_persistent_user" with "--auth_session_id"
+func (c *cryptohomeBinary) createPersistentUser(ctx context.Context, authSessionID string) ([]byte, error) {
+	return c.call(ctx, "--action=create_persistent_user", "--auth_session_id="+authSessionID)
 }
 
 // mountWithAuthSession calls "cryptohome --action=mount_ex" with "--auth_session_id".
