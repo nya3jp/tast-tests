@@ -7,7 +7,6 @@ package lacros
 import (
 	"context"
 	"os"
-	"time"
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
@@ -97,12 +96,13 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Lacros was not found in the list of shelf items: ", err)
 	}
 
-	// TODO(crbug.com/1260037): Remove a hardcoded sleep used to avoid a flake on VMs in the lacros primary case.
-	// There might be a race condition where lacros primary opening a new window on startup and closing all windows in the following lines would occur together.
-	// This sleep is a workaround to give time to all popup windows showing up on startup before closing them.
+	// TODO(crbug.com/1260037): Wait until a new browser window is open when Lacros is set as a primary browser.
+	// This is a workaround until https://crbug.com/1268252 is resolved to have a flag to control a startup window behavior for Lacros primary.
 	startupWindow := s.Param().(bool)
 	if startupWindow {
-		testing.Sleep(ctx, 3*time.Second)
+		if err := launcher.WaitForLacrosWindow(ctx, tconn, ""); err != nil {
+			s.Log("Test may fail if a lacros browser is popped up on startup past this point, but proceeding anyway to check all open windows again")
+		}
 	}
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
