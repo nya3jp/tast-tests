@@ -32,7 +32,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
-				Name:    "dataoffline_allcontacts_jpg11kb",
+				Name:    "dataoffline_noone_jpg11kb",
 				Fixture: "nearbyShareDataUsageOfflineNoOne",
 				Val: nearbycommon.TestData{
 					Filename:        "small_jpg.zip",
@@ -44,7 +44,7 @@ func init() {
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
 			},
 			{
-				Name:    "dataoffline_allcontacts_png5kb",
+				Name:    "dataoffline_noone_png5kb",
 				Fixture: "nearbyShareDataUsageOfflineNoOne",
 				Val: nearbycommon.TestData{
 					Filename:        "small_png.zip",
