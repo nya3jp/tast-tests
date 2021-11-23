@@ -22,6 +22,30 @@
       },
       "revId": "6d06b03b6250fca9f450332a66fb2e8335204ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ba9aa4_371f00bb",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-23T01:25:05Z",
+      "side": 1,
+      "message": "looks like it works!",
+      "parentUuid": "bb7ed2e0_8c544921",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "6d06b03b6250fca9f450332a66fb2e8335204ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
