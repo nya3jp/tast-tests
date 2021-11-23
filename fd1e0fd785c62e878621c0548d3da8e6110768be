@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91e85f07_f5d653d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-11-23T01:45:40Z",
+      "side": 1,
+      "message": "typo? \"MonitorThunderboltEvent\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c9df600_885bc516",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
         "patchSetId": 3
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "Hi Hidehiko,\n\n1) could you clarify why redrix is excluded in commit message?\n\u003c We can add redrix in commit message, i will add.\n2) If this is to deal with some HW/SW features, should we encode this into more semantical dependencies?\nThis is special feature it will support for only particular boards.\n\nThanks,\nJilani",
       "parentUuid": "6c9df600_885bc516",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2e6b58_46d932a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-11-23T01:45:40Z",
+      "side": 1,
+      "message": "For (2), similar discussion and request are discussed in CL:3291192. I think we can take this as short term approach, and Intel partners should migrate it to long term solution to make sure the test coverage. Otherwise, I have to say again, it may affect Intel vPro quality.\n\n@Pathan, if you need further help, meiring@google.com in CL:3291192 said that he can suggest someone from tast team for you.",
+      "parentUuid": "8121a4ae_27080ad0",
       "range": {
         "startLine": 32,
         "startChar": 45,
