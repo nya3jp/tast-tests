@@ -8,10 +8,9 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/input"
@@ -24,60 +23,57 @@ func init() {
 		Func:         InputMethodManagement,
 		Desc:         "Verifies that user can manage input methods in OS settings",
 		Contacts:     []string{"shengjun@chromium.org", "myy@google.com", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
-		Params: []testing.Param{{
-			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-			ExtraAttr:         []string{"group:input-tools-upstream"},
-		}, {
-			Name:              "informational",
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
-			ExtraAttr:         []string{"informational"},
-		}},
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+				Pre:               pre.NonVKClamshellReset,
+			}, {
+				Name:              "informational",
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
+				Pre:               pre.NonVKClamshellReset,
+			},
+			{
+				Name:              "guest",
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+				Pre:               pre.NonVKClamshellInGuest,
+			}, {
+				Name:              "guest_informational",
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
+				Pre:               pre.NonVKClamshellInGuest,
+			},
+		},
 	})
 }
 
 func InputMethodManagement(ctx context.Context, s *testing.State) {
 	testInputMethod := ime.JapaneseWithUSKeyboard
 
-	// Use the first 5 letters to search input method.
-	// This will handle Unicode characters correctly.
-	runes := []rune(testInputMethod.Name)
-	searchKeyword := string(runes[0:5])
+	cleanupCtx := ctx
+	ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer shortCancel()
 
-	// This test changes input method, it affects other tests if not cleaned up.
-	// Using new Chrome instance to isolate it from other tests.
-	cr, err := chrome.New(ctx)
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-	keyboard, err := input.Keyboard(ctx)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
 	}
-	defer keyboard.Close()
+	defer kb.Close()
 
-	settings, err := imesettings.LaunchAtInputsSettingsPage(ctx, tconn, cr)
-	if err != nil {
-		s.Fatal("Failed to launch OS settings and land at inputs setting page: ", err)
+	if err := imesettings.AddInputMethodInOSSettings(uc, kb, testInputMethod).Run(ctx); err != nil {
+		s.Fatalf("Failed to add input method %q in OS settings: %v", testInputMethod.Name, err)
 	}
-	if err := uiauto.Combine("test input method management",
-		settings.ClickAddInputMethodButton(),
-		settings.SearchInputMethod(keyboard, searchKeyword, testInputMethod.Name),
-		settings.SelectInputMethod(testInputMethod.Name),
-		settings.ClickAddButtonToConfirm(),
-		testInputMethod.WaitUntilInstalled(tconn),
-		settings.RemoveInputMethod(testInputMethod.Name),
-		testInputMethod.WaitUntilRemoved(tconn),
-	)(ctx); err != nil {
-		s.Fatal("Failed to test input method management: ", err)
+
+	if err := imesettings.RemoveInputMethodInOSSettings(uc, testInputMethod).Run(ctx); err != nil {
+		s.Fatalf("Failed to remove input method %q in OS settings: %v", testInputMethod.Name, err)
 	}
 }
