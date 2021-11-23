@@ -16,6 +16,23 @@
       "message": "not sure if we should submit this one right away since it might mess with the dashboard and green stainless for a while haha",
       "revId": "a9618b15e92f1673029044820421212e6aabe91a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbdf898a_5a66de2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-23T18:20:34Z",
+      "side": 1,
+      "message": "Based on Michael\u0027s reply to the green stainless emails, it seems he just cares about total test runs / total failed.\n\nYou can keep an eye on the green stainless spreadsheet after this lands and copy the bug number from the old test name to the new testname and should be ok",
+      "revId": "a9618b15e92f1673029044820421212e6aabe91a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
