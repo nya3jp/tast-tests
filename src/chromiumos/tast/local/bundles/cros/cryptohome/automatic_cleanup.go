@@ -73,6 +73,8 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create user with content: ", err)
 	}
 	defer cryptohome.RemoveVault(ctx, user2)
+	// Unmount all users before removal.
+	defer cryptohome.UnmountAll(ctx)
 
 	// Unmount just the first user
 	if err := cryptohome.UnmountVault(ctx, user1); err != nil {
