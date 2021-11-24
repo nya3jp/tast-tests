@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2d04c2_84eac4a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-24T23:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730347a6_c80d0231",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 64
+      },
+      "revId": "20b6fe7249a9d93cc5b90c62213fdcb6bb66388e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7db1bbfe_7d1e7466",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-23T19:45:31Z",
       "side": 1,
       "message": "Can you move rebooting stuff to its own function",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 67
+      },
+      "revId": "20b6fe7249a9d93cc5b90c62213fdcb6bb66388e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e9de021_0b24e1b5",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-24T23:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db1bbfe_7d1e7466",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c1dee1_b9911f1e",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-24T23:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "376a38ff_ec0af0d7",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "20b6fe7249a9d93cc5b90c62213fdcb6bb66388e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3bc6f4d_9100712a",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-11-23T19:45:31Z",
       "side": 1,
       "message": "I\u0027m wary of adding something else that could bring down a nearby run. Can you default reboot to False for nearby, and we can do the reboots in just one of the crossdevice fixtures instead",
+      "range": {
+        "startLine": 90,
+        "startChar": 53,
+        "endLine": 90,
+        "endChar": 59
+      },
+      "revId": "20b6fe7249a9d93cc5b90c62213fdcb6bb66388e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac3fb6c_9c809aad",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/android_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-24T23:12:36Z",
+      "side": 1,
+      "message": "changed it to just reboot in a standalone test",
+      "parentUuid": "b3bc6f4d_9100712a",
       "range": {
         "startLine": 90,
         "startChar": 53,
