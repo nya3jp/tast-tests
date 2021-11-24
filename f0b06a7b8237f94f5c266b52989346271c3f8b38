@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abd9a3e0_dff27ef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T11:46:49Z",
+      "side": 1,
+      "message": "Chrome fake login and enrollment also works the same way.",
+      "parentUuid": "77f87bcb_7932b412",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beb97910_327dc25a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
         "patchSetId": 3
