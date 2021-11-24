@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a5412f_1df9ec36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "0a410e33_513b8a21",
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b02c1e6_4cc488bc",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-24T08:24:45Z",
       "side": 1,
       "message": "Is this path tested?",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dba96bd_addaf192",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "Sorry, this message was corrected",
+      "parentUuid": "4b02c1e6_4cc488bc",
       "range": {
         "startLine": 9,
         "startChar": 49,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7edddc0_693878ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "The cws.go related changes have been separated from this CL to: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3299756",
+      "parentUuid": "e63545ff_ca512439",
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69d8e50f_150eb0b2",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-11-24T08:24:45Z",
       "side": 1,
       "message": "an app",
+      "range": {
+        "startLine": 80,
+        "startChar": 29,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "117e1a8f_9e8328ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "69d8e50f_150eb0b2",
       "range": {
         "startLine": 80,
         "startChar": 29,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb528ca_cff29ba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "90b03ba1_df126bc6",
+      "range": {
+        "startLine": 84,
+        "startChar": 32,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2cab3f7_f7dcb0c8",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-11-24T08:24:45Z",
       "side": 1,
       "message": "verify that the app is in Launcher",
+      "range": {
+        "startLine": 89,
+        "startChar": 21,
+        "endLine": 89,
+        "endChar": 34
+      },
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f290210_6e3b839e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "e2cab3f7_f7dcb0c8",
       "range": {
         "startLine": 89,
         "startChar": 21,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25667525_48a0eb61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "1501203b_0fadbc23",
+      "range": {
+        "startLine": 134,
+        "startChar": 27,
+        "endLine": 134,
+        "endChar": 41
+      },
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94b0e804_ddcf9797",
@@ -173,6 +329,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6666f2_7256e89b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "94b0e804_ddcf9797",
+      "range": {
+        "startLine": 153,
+        "startChar": 27,
+        "endLine": 153,
+        "endChar": 43
+      },
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5aae58b_a7e630e3",
@@ -186,6 +366,30 @@
       "writtenOn": "2021-11-24T08:24:45Z",
       "side": 1,
       "message": "You want an exact match, right? Why not just using .Name(\u0027Add to Chrome\u0027) ?",
+      "range": {
+        "startLine": 44,
+        "startChar": 41,
+        "endLine": 44,
+        "endChar": 89
+      },
+      "revId": "ae46c8eb380470d4a7aa8c18a80bc2271d56fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc56bbe_1b5973e4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2021-11-24T10:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5aae58b_a7e630e3",
       "range": {
         "startLine": 44,
         "startChar": 41,
