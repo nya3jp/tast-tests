@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c18c73ec_58e17612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T09:56:39Z",
+      "side": 1,
+      "message": "It does not use kioskmode.AutoLaunch() option. The problem that the new fixture addresses is  caused by policy setting Kiosk app to autostart.\n\nAt the same time I see no problems to use it for all Kiosk tests. Especially if we don\u0027t reset Chrome in Reset() but only at TearDown().",
+      "parentUuid": "6d234a7b_0db88a1e",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7e7d91d_4a1a2d6d",
         "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-24T09:31:44Z",
       "side": 1,
       "message": "Use the chrome constants for the timeouts.\n\n+ SetUp does not require a timeout since it does not need a context.",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30964b28_43c6573d",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T09:56:39Z",
+      "side": 1,
+      "message": "Done. Removed that timeout altogether leaving the comment about context not being needed.",
+      "parentUuid": "c7e7d91d_4a1a2d6d",
       "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b9dbc8_2833b3e2",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T09:56:39Z",
+      "side": 1,
+      "message": "Set to 2 minutes.",
+      "parentUuid": "273e60fe_e64c3e02",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60172bb6_a614b807",
@@ -82,6 +136,30 @@
       "writtenOn": "2021-11-24T09:31:44Z",
       "side": 1,
       "message": "Fatal",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb5e11d8_e98f8cf0",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T09:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60172bb6_a614b807",
       "range": {
         "startLine": 78,
         "startChar": 4,
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b463603_8085c1da",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T09:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6633b5f_340a230e",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 7
+      },
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "294d0a5e_58a68163",
@@ -128,6 +230,24 @@
       "writtenOn": "2021-11-24T09:31:44Z",
       "side": 1,
       "message": "This seems expensive, can we not do this yet. Only enable it if we actually see issues.",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59119f7a_a57b5e25",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T09:56:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "294d0a5e_58a68163",
       "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
