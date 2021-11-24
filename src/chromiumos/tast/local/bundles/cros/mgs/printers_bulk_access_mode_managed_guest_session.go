@@ -48,9 +48,13 @@ func PrintersBulkAccessModeManagedGuestSession(ctx context.Context, s *testing.S
 		}),
 	)
 	if err != nil {
-		s.Error("Failed to start Chrome on Signin screen with default MGS account: ", err)
+		s.Fatal("Failed to start Chrome on Signin screen with default MGS account: ", err)
 	}
-	defer mgs.Close(ctx)
+	defer func() {
+		if err := mgs.Close(ctx); err != nil {
+			s.Fatal("Failed close MGS: ", err)
+		}
+	}()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
