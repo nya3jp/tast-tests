@@ -134,6 +134,30 @@
       },
       "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20eb3a5f_53b039a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-11-24T01:08:56Z",
+      "side": 1,
+      "message": "@Pathan, Please do so, and maybe take this as high priority. If you hit any troubles, please let cros_healthd team know when it\u0027s related to cros_healthd. Otherwise, please let our TPM grace know. Thanks!",
+      "parentUuid": "ccb0ee38_418eb986",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
