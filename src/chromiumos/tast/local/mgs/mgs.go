@@ -45,10 +45,18 @@ type mgs struct {
 }
 
 // Close closes chrome, cleans and refreshes empty policies.
-func (m *mgs) Close(ctx context.Context) {
+func (m *mgs) Close(ctx context.Context) (retErr error) {
 	// Apply empty policies.
-	policyutil.ServeAndRefresh(ctx, m.fdms, m.cr, []policy.Policy{})
-	m.cr.Close(ctx)
+	if err := policyutil.ServeAndRefresh(ctx, m.fdms, m.cr, []policy.Policy{}); err != nil {
+		retErr = errors.Wrap(err, "failed to apply empty policies")
+	}
+	if err := m.cr.Close(ctx); err != nil {
+		if retErr != nil {
+			testing.ContextLog(ctx, "Failed to close chrome: ", retErr)
+		}
+		retErr = errors.Wrap(err, "failed to close chrome")
+	}
+	return retErr
 }
 
 // New starts Chrome, sets passed MGS related options to policies and
@@ -57,18 +65,18 @@ func (m *mgs) Close(ctx context.Context) {
 // passing chrome.LoadSigninProfileExtension(). In that case Chrome is started
 // and stays on Signin screen with mgs accounts loaded.
 // Use defer mgs.Close() to perform clean up including closing Chrome instance.
-func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (mgs, *chrome.Chrome, error) {
+func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*mgs, *chrome.Chrome, error) {
 	cfg, err := NewConfig(opts)
 	if err != nil {
-		return mgs{}, nil, errors.Wrap(err, "failed to process options")
+		return nil, nil, errors.Wrap(err, "failed to process options")
 	}
 
 	if cfg.m.MGSAccounts == nil {
-		return mgs{}, nil, errors.Wrap(err, "mgs accounts were not set")
+		return nil, nil, errors.Wrap(err, "mgs accounts were not set")
 	}
 
 	err = func(ctx context.Context) error {
-		testing.ContextLog(ctx, "mgs_mode - starting Chrome to set MGS policies")
+		testing.ContextLog(ctx, "MGS: starting Chrome to set MGS policies")
 		cr, err := chrome.New(
 			ctx,
 			chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}), // Required as refreshing policies require test API.
@@ -115,39 +123,30 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (mgs, *chro
 		return nil
 	}(ctx)
 	if err != nil {
-		return mgs{}, nil, errors.Wrap(err, "failed preparing Chrome to start with MGS")
+		return nil, nil, errors.Wrap(err, "failed preparing Chrome to start with MGS")
 	}
 
 	var cr *chrome.Chrome
-	if cfg.m.AutoLaunch {
-		opts := []chrome.Option{
-			chrome.NoLogin(),
-			chrome.DMSPolicy(fdms.URL),
-			chrome.KeepEnrollment(),
-		}
-		opts = append(opts, cfg.m.ExtraChromeOptions...)
-
-		testing.ContextLog(ctx, "mgs - starting MGS in auto launch mode")
-		// Restart Chrome. After that MGS auto starts.
-		cr, err = chrome.New(ctx, opts...)
-		if err != nil {
-			return mgs{}, nil, errors.Wrap(err, "Chrome restart failed")
-		}
-	} else {
-		opts := []chrome.Option{
-			chrome.DeferLogin(),
-			chrome.DMSPolicy(fdms.URL),
-			chrome.KeepEnrollment(),
-		}
-		opts = append(opts, cfg.m.ExtraChromeOptions...)
-
-		testing.ContextLog(ctx, "mgs - starting Chrome with MGS accounts loaded")
-		// Restart Chrome. Chrome stays on Sing-in screen
-		cr, err = chrome.New(ctx, opts...)
-		if err != nil {
-			return mgs{}, nil, errors.Wrap(err, "Chrome restart failed")
-		}
+	crOpts := []chrome.Option{
+		chrome.DMSPolicy(fdms.URL),
+		chrome.KeepEnrollment(),
 	}
 
-	return mgs{cr: cr, fdms: fdms}, cr, nil
+	if cfg.m.AutoLaunch {
+		crOpts = append(crOpts, chrome.NoLogin())
+		testing.ContextLog(ctx, "MGS: starting MGS in auto launch mode")
+	} else {
+		crOpts = append(crOpts, chrome.DeferLogin())
+		testing.ContextLog(ctx, "MGS: starting Chrome with MGS accounts loaded")
+	}
+
+	crOpts = append(crOpts, cfg.m.ExtraChromeOptions...)
+
+	// Restart Chrome.
+	cr, err = chrome.New(ctx, crOpts...)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "Chrome restart failed")
+	}
+
+	return &mgs{cr: cr, fdms: fdms}, cr, nil
 }
