@@ -16,6 +16,24 @@
       "message": "this is already included in ExtensionArgs at L324?",
       "revId": "a13883375c9429097b42711b835938c5df89004a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2407a6_d6fb2bc2",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-11-24T02:06:26Z",
+      "side": 1,
+      "message": "You\u0027re right! And they were added a year ago, but why are we still seeing these types of flaky debugging port connection failures, maybe this is some type of known issue?\n\nlast error follows: open /home/chronos/user/lacros/DevToolsActivePort: no such file or directory\n\nhttps://00f74ba44b67e4d9c9f52526ea8baad21f8200eca5-apidata.googleusercontent.com/download/storage/v1/b/chromeos-test-logs/o/test-runner%2Fprod%2F2021-11-24%2Fad545680-af4d-497a-b225-cb6d591ad5dd%2Fautoserv_test%2Ftast%2Fresults%2Ftests%2Flacros.ShelfLaunch%2Flog.txt?jk\u003dAFshE3Vg9PmWa1eJQaCqOcibNlVZ9CPNRgMqMyksj_AQwKf8De7uOS7ZiGgbZaMH9-mpnogEQx7Xk9baKBVjMER165sKpRJ00NImAsB9VPu6FUuftcEpn3u9tuMU5-C6qi7jWSNLr4Xiq5FL_D3u2IMC7HtpzhfBDEE5hSGx3qzXqKk7dOnT5M64kWqnhwfh2Z7zCznDX1UI2ffkGcj1jPYoHrhG_u3ySfnqCY98g-cA_mrj-Re_yIANtcEUoaixY8Mo2BUutW8b63FTIfz9lGk0e8wiJiSpdN4BbV5qRp-gzP1x4bfiMiBrvPdcnqbml5FGBIcvc7gUZ3tX1MQVpkCnY83cjrwy-YSNCU2oUOuyyC6tF4W2kYKlKW-WwLsSnBgE_SVw9LwCLlFOsB9L71O60cBfDV1DeEBZhwNKgo78KySmI4BiYd-ukOWJWN_GpkvL18xYlAGCX-x2ls8CHLTSRlAMLzjTKZIWcpq7LHGkJ0YYv1sxuFJwPfPMSSm-jun0x3My4HoIKiRT2QOD4CVScdvFvcvLVm_xB7LhX20z1oL4e1B5jfqTKwS1CAAiJfFYon1CpfFE9cSLFTyYbsq0EdUjlJwgxSb65I-tK9vKxBfSO3elJYqWeLF9jN_frKnkcEtRBXEUiwajaCBMVJlG74vcbaB4YBKJrVmKelN61FulTsxvH2UpVld-MLAzzbgBD-BZ5Qh1dXt586GpO021yVtJLGfL7N1Ci6_LT9yHmOARoeVkboYVNu1JPLJtefJ8E0raPADgODGltXlj9UPKZGhD9Le4FjCXWrlbrH2hThqA2XWQ5MXqpEJyWhRHDhQHglRoAn8Qhskva-RTgX4kMSgjULYfvSfe6dt9laX7Yv7sHOQSqIG6nfamg1L5h9Qc6o23lP_fflHIYfsON0pHydXxV3GiMmCYFPjE0UHYEOcLGECPVr9lw8nMkYwfc3tnBPnVHHwgvBRsYulWLnsv6QlD2PVGrt7Yo-kAedNv1gjP-2m0UDgsWzfVsumXgEhf032LEIqLpg5mJ8z1pykxKpDDiFL8rtuJV5gZWOD22mW5m-805QLXl-T8K9zdCr0xvl2GluQzGVjR4l2uDp_A5DnejH0UYduVIB-tddXbibDuzXGdb5fG\u0026isca\u003d1",
+      "parentUuid": "b0d3b917_920b3111",
+      "revId": "a13883375c9429097b42711b835938c5df89004a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
