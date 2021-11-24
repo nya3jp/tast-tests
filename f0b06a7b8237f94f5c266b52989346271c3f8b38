@@ -20,6 +20,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c639885_f0dc2314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T11:35:11Z",
+      "side": 1,
+      "message": "typo: cleanup",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5ddec9c_34ec542b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T11:35:11Z",
+      "side": 1,
+      "message": "what is the reason we cannot do it? I am not sure how would that made this test grow but maybe adding a note to G Keep and later checking it is not there would do?\n\nAlso, are those extensions cached and simply reinstalled later or they are removed and later downloaded and installed?",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f87bcb_7932b412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T11:35:11Z",
+      "side": 1,
+      "message": "out of curiosity - is this a way to enter MGS without interacting with the UI?\nI am guessing it is more reliable than relying on UI tree.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb97910_327dc25a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T11:35:11Z",
+      "side": 1,
+      "message": "There is no error check here.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b32cdec0_a6a3ca31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T11:35:11Z",
+      "side": 1,
+      "message": "it is being used twice here - extract to function. WDYT?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9ebe3f9_65a5a803",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
         "patchSetId": 3
