@@ -38,10 +38,11 @@ func init() {
 				Val:               false,
 			},
 			{
-				Name:      "primary",
-				Fixture:   "lacrosPrimary",
-				ExtraAttr: []string{"informational"},
-				Val:       true, // whether a new browser window opens on startup. See crbug.com/1260037.
+				Name:              "primary",
+				Fixture:           "lacrosPrimary",
+				ExtraSoftwareDeps: []string{"lacros_stable"},
+				ExtraAttr:         []string{"informational"},
+				Val:               true, // whether a new browser window opens on startup. See crbug.com/1260037.
 			},
 			{
 				Name:              "omaha",
