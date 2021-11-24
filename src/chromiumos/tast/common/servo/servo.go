@@ -73,6 +73,11 @@ func NewDirect(ctx context.Context, spec string) (*Servo, error) {
 	return New(ctx, host, port)
 }
 
+func (s *Servo) reconnect(ctx context.Context, host string, port int) error {
+	s.xmlrpc = xmlrpc.New(host, port)
+	return s.verifyConnectivity(ctx)
+}
+
 // verifyConnectivity sends and verifies an echo request to make sure
 // everything is set up properly.
 func (s *Servo) verifyConnectivity(ctx context.Context) error {
