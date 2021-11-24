@@ -159,6 +159,24 @@
       "parentUuid": "67a91e68_55e3d73f",
       "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b25a45_bf300e0f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-24T05:13:20Z",
+      "side": 1,
+      "message": "Resolved",
+      "parentUuid": "4a034641_5e80c884",
+      "revId": "735eea39c41d0e68dbe56e04d2d177fb70c52980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
