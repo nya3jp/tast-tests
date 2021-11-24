@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,8 +23,6 @@ func init() {
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		// TODO(b/206442649): Remove after initial testing is complete.
-		HardwareDeps: hwdep.D(hwdep.Model("eve", "hatch", "fizz", "zork")),
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
