@@ -182,6 +182,30 @@
       },
       "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d185840_c6e5c287",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-11-24T01:50:59Z",
+      "side": 1,
+      "message": "No concern from me, please remember to create a dedicated issue, add TODO here and comment with the issue ID.\n\nPlease understand, tast test CLs still need tast team owner to vote +2. So let\u0027s wait hidehiko@.",
+      "parentUuid": "3f193dc6_83e8aceb",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
