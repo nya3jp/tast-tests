@@ -20,6 +20,7 @@ func TestSecureCopyPasteParams(t *testing.T) {
 	params := crostini.MakeTestParamsFromList(t, []crostini.Param{
 		{
 			Name:      "copy_wayland",
+			ExtraAttr: []string{"informational"},
 			ExtraData: []string{"secure_copy.py"},
 			Val: `secureCopyPasteConfig{
 				backend: "wayland",
