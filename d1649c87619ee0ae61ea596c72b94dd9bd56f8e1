@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b4ad9ab_3d87d16b",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T14:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbadb06d_20c3a86e",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21880342_99259f7b",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-11-24T09:28:06Z",
       "side": 1,
       "message": "Return an error here",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f48522_d4a7363d",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T14:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21880342_99259f7b",
       "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a961d79f_3d7f086b",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T14:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b713d75_33549a61",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1e006d6_30dbc20f",
@@ -100,6 +154,24 @@
       "writtenOn": "2021-11-24T09:28:06Z",
       "side": 1,
       "message": "This also returns an error",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f625cc_64b92d44",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T14:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1e006d6_30dbc20f",
       "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e5e0d7_427d2837",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T14:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12288223_00bb0cbb",
+      "range": {
+        "startLine": 134,
+        "startChar": 70,
+        "endLine": 134,
+        "endChar": 75
+      },
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81bebf7e_ea449637",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-11-23T09:43:38Z",
       "side": 1,
       "message": "This part (aside from the NoLogin()) can be moved outside of \"if\", and here you only need to append NoLogin().",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588c11a5_50ba50ee",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T14:00:10Z",
+      "side": 1,
+      "message": "Now, that you mentioned it did cross my mind. But look at that, it would end up with:\n\nopts \u003d {\n    chrome.DMSPolicy(fdms.URL),\n    chrome.KeepEnrollment(),\n}\n\nif (autostart){\n    opts.append(opts, chrome.NoLogin(), cfg.m.ExtraChromeOptions...)\n    // more code\n} else {\n\n    opts.append(opts, chrome.DeferLogin(), cfg.m.ExtraChromeOptions...)\n}\n\nI think readability suffers a bit. WDYT?",
+      "parentUuid": "81bebf7e_ea449637",
       "range": {
         "startLine": 211,
         "startChar": 2,
@@ -199,6 +319,24 @@
       "side": 1,
       "message": "+1, you need to start Chrome again and clear policies. AutoLogin is irrelevant, you just need to clear policies (which works in any logged in session).",
       "parentUuid": "3a55559e_3cf1465b",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0593a8_d340e7c2",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T14:00:10Z",
+      "side": 1,
+      "message": "Added cleanup. Instead of returning errors I only logged them. Error will be returned from the failure of Chrome starting in Kiosk mode.",
+      "parentUuid": "7604927d_e35949ab",
       "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
