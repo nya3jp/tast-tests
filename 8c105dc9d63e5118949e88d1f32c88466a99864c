@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ce0b797_8754aff4",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:22:10Z",
+      "side": 1,
+      "message": "Why are you storing this?",
+      "revId": "8c105dc9d63e5118949e88d1f32c88466a99864c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
