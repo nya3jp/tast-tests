@@ -16,6 +16,23 @@
       "message": "The resizable conversion test is currently failing 100% of the time. I made a few adjustments to account for the split screen divider size when comparing window sizes, and adjusted the calls to rotate/change device mode to be more consistent and sleep to account for the async. nature of those operations.",
       "revId": "110baa0bfc29ae9aba0e4a8e5adbfde27fb4e816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77218605_aefbe2e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-11-24T03:14:30Z",
+      "side": 1,
+      "message": "+Toshiki for review as he\u0027s actively working on fixing this test.\n\nDavid, as the ARC Framework team is also working on stabilizing these WM-related tests, maybe we should discuss how we can collaborate and avoid overlap?",
+      "revId": "110baa0bfc29ae9aba0e4a8e5adbfde27fb4e816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
