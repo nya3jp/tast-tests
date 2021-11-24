@@ -16,6 +16,24 @@
       "message": "Why are you storing this?",
       "revId": "8c105dc9d63e5118949e88d1f32c88466a99864c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801ff94f_0c55f8c5",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T09:27:43Z",
+      "side": 1,
+      "message": "In the Reset there is a check for Chrome still running. If Chrome restarted for whatever reason we return error.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3291752/3/src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go#128",
+      "parentUuid": "6ce0b797_8754aff4",
+      "revId": "8c105dc9d63e5118949e88d1f32c88466a99864c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
