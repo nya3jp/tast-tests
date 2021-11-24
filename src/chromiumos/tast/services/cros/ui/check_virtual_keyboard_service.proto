@@ -1,0 +1,31 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// CheckVirtualKeyboardService checks whether the virtual keyboard is present.
+service CheckVirtualKeyboardService {
+    // NewChromeLoggedIn Logs into a user session.
+    rpc NewChromeLoggedIn (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    // OpenChromePage opens a chrome page.
+    rpc OpenChromePage (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    // ClickChromeAddressBar clicks on the address bar.
+    rpc ClickChromeAddressBar (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    // CheckVirtualKeyboardIsPresent checks whether the virtual keyboard is present.
+    rpc CheckVirtualKeyboardIsPresent (CheckVirtualKeyboardRequest) returns (CheckVirtualKeyboardResponse) {}
+}
+
+message CheckVirtualKeyboardRequest {
+    bool is_dut_tablet_mode = 1;
+}
+
+message CheckVirtualKeyboardResponse {
+    bool is_virtual_keyboard_present = 1;
+}
