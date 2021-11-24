@@ -178,6 +178,30 @@
       },
       "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efbc68d4_0f09738a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-24T11:50:34Z",
+      "side": 1,
+      "message": "What about chrome.IsTargetAvailable(...). I see also that in chrome there is a check for TestAPIConn connection simply evaluating boolean:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d641?q\u003dchrome.Respo\n\nWould those work?",
+      "parentUuid": "d9ebe3f9_65a5a803",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
