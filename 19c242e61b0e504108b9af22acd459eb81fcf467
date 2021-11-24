@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "431fd920_16c6cb94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-24T19:35:35Z",
+      "side": 1,
+      "message": "LGTM - just make sure you\u0027re able to run:\n\ntast run $DUT arcappgameperf.*\ntast run $DUT arc.Standardized*\ntast run $DUT arcappcompat.ABCKids*\n\nall of those packages use the adjusted precondition so it would be good to verify they are able to run.",
+      "revId": "19c242e61b0e504108b9af22acd459eb81fcf467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
