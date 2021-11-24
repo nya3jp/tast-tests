@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba92b51_3b2403a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_rescue.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-11-24T16:15:18Z",
+      "side": 1,
+      "message": "Yes, just run by hand for now.",
+      "parentUuid": "dd9d5cc0_9f25d787",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "f853a5e303332fc513071599cd5de551cbb54b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d36a9fa8_ccd5b68a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5283f9a_df8d6287",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_rescue.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-11-24T16:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d36a9fa8_ccd5b68a",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "f853a5e303332fc513071599cd5de551cbb54b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b91c16d9_179b11a6",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-23T19:36:18Z",
       "side": 1,
       "message": "You may want to dump the log before you fail, since if the cmd failed, the output will be useful.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "f853a5e303332fc513071599cd5de551cbb54b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c632796_baf3f068",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_rescue.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-11-24T16:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b91c16d9_179b11a6",
       "range": {
         "startLine": 85,
         "startChar": 0,
