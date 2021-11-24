@@ -37,13 +37,25 @@ func init() {
 		}, {
 			Name:              "lacros",
 			Fixture:           "lacrosUI",
-			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
+			ExtraAttr:         []string{"informational"},
+			Val:               lacros.ChromeTypeLacros,
+		}, {
+			Name:              "lacros_unstable",
+			Fixture:           "lacrosUI",
+			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
 			Val:               lacros.ChromeTypeLacros,
 		}, {
 			Name:              "lacros_primary",
 			Fixture:           "lacrosPrimary",
-			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
+			ExtraAttr:         []string{"informational"},
+			Val:               lacros.ChromeTypeLacros,
+		}, {
+			Name:              "lacros_primary_unstable",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
 			Val:               lacros.ChromeTypeLacros,
 		}},
