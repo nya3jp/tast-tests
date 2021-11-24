@@ -27,6 +27,12 @@ const (
 	migrateKeyExSucessMessage              = "Key migration succeeded."
 )
 
+var (
+	// userHashRegexp extracts the hash from a cryptohome dir's path.
+	// Example: "/home/.shadow/118c4648065f5cd3660e17a53533ec7bc924d01f"
+	userHashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
+)
+
 func getLastLine(s string) string {
 	lines := strings.Split(strings.TrimSpace(s), "\n")
 	if len(lines) == 0 {
@@ -299,6 +305,23 @@ func (u *CryptohomeClient) MountVault(ctx context.Context, label string, authCon
 
 	if _, err := u.binary.mountEx(ctx, authConfig.Username, create, label, extraFlags); err != nil {
 		return errors.Wrap(err, "failed to mount")
+	}
+	return nil
+}
+
+// MountGuest creates a mount point for a guest user; error is nil if the operation completed successfully.
+func (u *CryptohomeClient) MountGuest(ctx context.Context) error {
+	if _, err := u.binary.mountGuestEx(ctx); err != nil {
+		return errors.Wrap(err, "failed to mount guest")
+	}
+	return nil
+}
+
+// MountKiosk creates a mount point for a kiosk; error is nil if the operation completed successfully.
+func (u *CryptohomeClient) MountKiosk(ctx context.Context) error {
+	extraFlags := []string{"--public_mount"}
+	if _, err := u.binary.mountEx(ctx, "kiosk", true, "public_mount", extraFlags); err != nil {
+		return errors.Wrap(err, "failed to mount kiosk")
 	}
 	return nil
 }
@@ -717,8 +740,8 @@ func (u *CryptohomeClient) GetHomeUserPath(ctx context.Context, username string)
 	binaryMsg, err := u.cryptohomePathBinary.userPath(ctx, username)
 	msg := string(binaryMsg)
 	if err != nil {
-		testing.ContextLogf(ctx, "Failure to call cryptohome-path user, got %q", msg)
-		return "", errors.Wrap(err, "failure to call cryptohome-path user")
+		testing.ContextLogf(ctx, "Failed to call cryptohome-path user, got %q", msg)
+		return "", errors.Wrap(err, "failed to call cryptohome-path user")
 	}
 	return strings.TrimSpace(msg), nil
 }
@@ -728,10 +751,26 @@ func (u *CryptohomeClient) GetRootUserPath(ctx context.Context, username string)
 	binaryMsg, err := u.cryptohomePathBinary.systemPath(ctx, username)
 	msg := string(binaryMsg)
 	if err != nil {
-		testing.ContextLogf(ctx, "Failure to call cryptohome-path user, got %q", msg)
-		return "", errors.Wrap(err, "failure to call cryptohome-path user")
+		testing.ContextLogf(ctx, "Failed to call cryptohome-path system, got %q", msg)
+		return "", errors.Wrap(err, "failed to call cryptohome-path system")
 	}
 	return strings.TrimSpace(msg), nil
+}
+
+// GetUserHash returns user's cryptohome hash.
+func (u *CryptohomeClient) GetUserHash(ctx context.Context, username string) (string, error) {
+	binaryMsg, err := u.cryptohomePathBinary.userPath(ctx, username)
+	msg := string(binaryMsg)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failed to call cryptohome-path user, got %q", msg)
+		return "", errors.Wrap(err, "failed to call cryptohome-path user")
+	}
+	p := strings.TrimSpace(msg)
+	m := userHashRegexp.FindStringSubmatch(p)
+	if m == nil {
+		return "", errors.Errorf("didn't find hash in path %q", p)
+	}
+	return m[1], nil
 }
 
 // SupportsLECredentials calls GetSupportedKeyPolicies and parses the output for low entropy credential support.

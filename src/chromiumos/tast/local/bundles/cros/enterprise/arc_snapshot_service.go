@@ -197,7 +197,7 @@ func (service *ArcSnapshotService) WaitForSnapshot(ctx context.Context, req *pb.
 // waitForCryptohome waits for a system path for the user is mounted.
 func waitForCryptohome(ctx context.Context, user string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		systempath, err := cryptohome.SystemPath(user)
+		systempath, err := cryptohome.SystemPath(ctx, user)
 		if err != nil {
 			return errors.Wrap(err, "failed to get the cryptohome directory for user")
 		}
