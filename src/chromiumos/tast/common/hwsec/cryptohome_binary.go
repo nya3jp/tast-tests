@@ -132,6 +132,12 @@ func (c *cryptohomeBinary) mountEx(ctx context.Context, username string, doesCre
 	return c.call(ctx, args...)
 }
 
+// mountGuestEx calls "cryptohome --action=mount_guest_ex".
+func (c *cryptohomeBinary) mountGuestEx(ctx context.Context) ([]byte, error) {
+	args := []string{"--action=mount_guest_ex"}
+	return c.call(ctx, args...)
+}
+
 // getSanitizedUsername calls "cryptohome --action=obfuscate_user".
 func (c *cryptohomeBinary) getSanitizedUsername(ctx context.Context, username string, useDBus bool) ([]byte, error) {
 	args := []string{"--action=obfuscate_user", "--user=" + username}
@@ -241,6 +247,11 @@ func (c *cryptohomeBinary) getAccountDiskUsage(ctx context.Context, username str
 // getSupportedKeyPolicies calls "cryptohome --action=get_supported_key_policies".
 func (c *cryptohomeBinary) getSupportedKeyPolicies(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=get_supported_key_policies")
+}
+
+// getKeyData calls "cryptohome --action=get_key_data_ex".
+func (c *cryptohomeBinary) getKeyData(ctx context.Context, username, keyLabel string) ([]byte, error) {
+	return c.call(ctx, "--action=get_key_data_ex", "--user="+username, "--key_label="+keyLabel)
 }
 
 // getKeyData calls "cryptohome --action=get_key_data_ex".
