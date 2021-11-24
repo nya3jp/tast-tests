@@ -58,9 +58,13 @@ func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 		),
 	)
 	if err != nil {
-		s.Error("Failed to start Chrome on Signin screen with MGS accounts: ", err)
+		s.Fatal("Failed to start Chrome on Signin screen with MGS accounts: ", err)
 	}
-	defer mgs.Close(ctx)
+	defer func() {
+		if err := mgs.Close(ctx); err != nil {
+			s.Fatal("Failed close MGS: ", err)
+		}
+	}()
 
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {
