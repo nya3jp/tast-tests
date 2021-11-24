@@ -16,6 +16,24 @@
       "message": "Instead of demoting the test, it might be better to create a new informational test while keeping the original test as it is, and then remove the old test when promoting the new test.\n\nThis ensures the test being covered in CQ.",
       "revId": "0ba913e071537a25c4270124bf94a351a381c7e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9334e1e_94c7e0bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-24T04:27:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f6d74a6_6c511108",
+      "revId": "0ba913e071537a25c4270124bf94a351a381c7e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
