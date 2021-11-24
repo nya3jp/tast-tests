@@ -37,6 +37,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbadb06d_20c3a86e",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:28:06Z",
+      "side": 1,
+      "message": "+1, always return nil when returning an err.\n\nEverything should be cleaned up by kioskmode.New if an error occurs.",
+      "parentUuid": "fb39cb77_417c9fb7",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21880342_99259f7b",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:28:06Z",
+      "side": 1,
+      "message": "Return an error here",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b713d75_33549a61",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:28:06Z",
+      "side": 1,
+      "message": "Keep the log, but still return an error.",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e006d6_30dbc20f",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:28:06Z",
+      "side": 1,
+      "message": "This also returns an error",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12288223_00bb0cbb",
         "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
         "patchSetId": 4
@@ -112,6 +181,24 @@
       "side": 1,
       "message": "Create a restoration function and call it from here. In that one, you can apply increasingly more \"aggressive\" cleanup steps.\n1) start chrome again without autologin\n2) delete locally stored policies\n3) delete local accounts\n(these are just examples, for the correct cleanup ideas, ask Victor).",
       "parentUuid": "3cb6d437_b605642a",
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7604927d_e35949ab",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:28:06Z",
+      "side": 1,
+      "message": "+1, you need to start Chrome again and clear policies. AutoLogin is irrelevant, you just need to clear policies (which works in any logged in session).",
+      "parentUuid": "3a55559e_3cf1465b",
       "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
