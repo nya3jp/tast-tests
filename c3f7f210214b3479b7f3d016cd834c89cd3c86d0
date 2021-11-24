@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "981838a9_dd437517",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T16:52:57Z",
+      "side": 1,
+      "message": "No need to document the fixture implementation",
+      "revId": "c3f7f210214b3479b7f3d016cd834c89cd3c86d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c5b48a_3e955b45",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T16:52:57Z",
+      "side": 1,
+      "message": "Why not use ManagedUserLoginTimeout ? It exists exactly for this purpose.",
+      "revId": "c3f7f210214b3479b7f3d016cd834c89cd3c86d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
