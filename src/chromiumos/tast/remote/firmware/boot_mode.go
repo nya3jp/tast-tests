@@ -274,9 +274,6 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 				}
 			}
 		}
-		if fromMode == fwCommon.BootModeDev {
-			transitionToDev = false
-		}
 		if transitionToDev {
 			// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
 			// 2. From the firmware screen that appears, press keys to transition to dev mode.
