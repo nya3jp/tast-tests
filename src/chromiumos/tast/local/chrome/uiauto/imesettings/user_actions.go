@@ -11,10 +11,83 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/useractions"
+	"chromiumos/tast/local/input"
 )
 
 // EmojiSuggestionsOption represents the option name of Emoji suggestions toggle option.
 const EmojiSuggestionsOption = "Emoji suggestions"
+
+// AddInputMethodInOSSettings returns a user action adding certain input method in OS settings.
+func AddInputMethodInOSSettings(uc *useractions.UserContext, kb *input.KeyboardEventWriter, im ime.InputMethod) *useractions.UserAction {
+	action := func(ctx context.Context) error {
+		// Use the first 5 letters to search input method.
+		// This will handle Unicode characters correctly.
+		runes := []rune(im.Name)
+		searchKeyword := string(runes[0:5])
+
+		settings, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
+		if err != nil {
+			return errors.Wrap(err, "failed to launch OS settings and land at inputs setting page")
+		}
+		return uiauto.Combine("add input method",
+			settings.ClickAddInputMethodButton(),
+			settings.SearchInputMethod(kb, searchKeyword, im.Name),
+			settings.SelectInputMethod(im.Name),
+			settings.ClickAddButtonToConfirm(),
+			im.WaitUntilInstalled(uc.TestAPIConn()),
+			settings.Close,
+		)(ctx)
+	}
+
+	return useractions.NewUserAction(
+		"Add input method in OS Settings",
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{"AddedInputMethod": im.Name},
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+				useractions.ActionTagIMEManagement,
+				useractions.ActionTagAddIME,
+			},
+		})
+}
+
+// RemoveInputMethodInOSSettings returns a user action removing certain input method in OS settings.
+func RemoveInputMethodInOSSettings(uc *useractions.UserContext, im ime.InputMethod) *useractions.UserAction {
+	action := func(ctx context.Context) error {
+		settings, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
+		if err != nil {
+			return errors.Wrap(err, "failed to launch OS settings and land at inputs setting page")
+		}
+		return uiauto.Combine("remove input method",
+			settings.RemoveInputMethod(im.Name),
+			im.WaitUntilRemoved(uc.TestAPIConn()),
+			func(ctx context.Context) error {
+				activeInputMethod, err := ime.ActiveInputMethod(ctx, uc.TestAPIConn())
+				if err != nil {
+					return errors.Wrap(err, "failed to get active input method")
+				}
+				uc.SetAttribute(useractions.AttributeInputMethod, activeInputMethod.Name)
+				return nil
+			},
+			settings.Close,
+		)(ctx)
+	}
+
+	return useractions.NewUserAction(
+		"Remove input method in OS Settings",
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{"RemovedInputMethod": im.Name},
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+				useractions.ActionTagIMEManagement,
+				useractions.ActionTagRemoveIME,
+			},
+		})
+}
 
 // SetEmojiSuggestions returns a user action to change 'Emoji suggestions' setting.
 func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) *useractions.UserAction {
@@ -41,7 +114,8 @@ func SetEmojiSuggestions(uc *useractions.UserContext, isEnabled bool) *useractio
 			Tags: []useractions.ActionTag{
 				useractions.ActionTagEssentialInputs,
 				useractions.ActionTagIMESettings,
-				useractions.ActionTag(useractions.ActionTagEmojiSuggestion)},
+				useractions.ActionTagEmojiSuggestion,
+			},
 		})
 }
 
