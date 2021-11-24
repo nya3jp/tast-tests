@@ -289,7 +289,6 @@ func getTimeout(ctx context.Context, cl Call) time.Duration {
 		newTimeout := dl.Sub(time.Now())
 		if newTimeout < timeout {
 			timeout = newTimeout
-			testing.ContextLog(ctx, "Using context timeout ", timeout)
 		}
 	}
 	return timeout
