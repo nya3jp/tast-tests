@@ -51,6 +51,11 @@ func init() {
 			Val: screenshotParams{
 				testfunc: testScreenshotPinAndUnpin,
 			},
+		}, {
+			Name: "remove",
+			Val: screenshotParams{
+				testfunc: testScreenshotRemove,
+			},
 		}},
 	})
 }
@@ -182,6 +187,28 @@ func testScreenshotPinAndUnpin(
 		// Ensure that the screenshot view continues to exist despite the pinned
 		// holding space item associated with the same screenshot file being destroyed.
 		ui.Exists(holdingspace.FindScreenCaptureView().Name(screenshotName)),
+	)
+}
+
+// testScreenshotRemove performs testing of removing a screenshot.
+func testScreenshotRemove(
+	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
+	return uiauto.Combine("remove screenshot",
+		// Left click the tray to open the bubble.
+		ui.LeftClick(holdingspace.FindTray()),
+
+		// Right click the screenshot view. This will wait until the screenshot view
+		// exists and stabilizes before showing the context menu.
+		ui.RightClick(holdingspace.FindScreenCaptureView().Name(screenshotName)),
+
+		// Left click the "Remove" context menu item. Note that this will result in
+		// the holding space item associated with the underlying screenshot being
+		// removed and the context menu being closed.
+		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Remove")),
+
+		// Ensure that the screenshot view is removed.
+		ui.WaitUntilGone(holdingspace.FindScreenCaptureView().Name(screenshotName)),
+		ui.EnsureGoneFor(holdingspace.FindScreenCaptureView().Name(screenshotName), 5*time.Second),
 	)
 }
 
