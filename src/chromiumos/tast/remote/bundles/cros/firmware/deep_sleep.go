@@ -141,7 +141,11 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to sleep: ", err)
 		}
 		if _, err = h.Servo.Echo(ctx, "ping"); err != nil {
-			s.Log("Failed to ping servo: ", err)
+			s.Log("Failed to ping servo, reconnecting: ", err)
+			err = h.ServoProxy.Reconnect(ctx)
+			if err != nil {
+				s.Log("Failed to reconnect to servo: ", err)
+			}
 		}
 	}
 
@@ -154,10 +158,10 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		// When using CCD, the power_key is emulated with an EC command, which won't work when we are in hibernate.
 		// Cold reset works, because it uses CR50 cmd `ecrst`.
 		s.Log("Resetting power state")
-		if err := h.Servo.SetOnOff(ctx, "cold_reset", servo.On); err != nil {
+		if err := h.Servo.SetStringTimeout(ctx, servo.StringControl("cold_reset"), string(servo.On), 20*time.Second); err != nil {
 			s.Fatal("Failed to enable cold reset: ", err)
 		}
-		if err := h.Servo.SetOnOff(ctx, "cold_reset", servo.Off); err != nil {
+		if err := h.Servo.SetStringTimeout(ctx, servo.StringControl("cold_reset"), string(servo.Off), 20*time.Second); err != nil {
 			s.Fatal("Failed to disable cold reset: ", err)
 		}
 	}

@@ -59,6 +59,17 @@ func ServoNetwork(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to ping servo: ", err)
 		}
+
+		err = servoPxy.Reconnect(ctx)
+		if err != nil {
+			s.Fatal("Failed to reconnect servo: ", err)
+		}
+
+		_, err = servoPxy.Servo().Echo(ctx, "any message")
+		if err != nil {
+			s.Fatal("Failed to ping servo: ", err)
+		}
+
 	}
 
 	s.Log("Connecting to servo normally")

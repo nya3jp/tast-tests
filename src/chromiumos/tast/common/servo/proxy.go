@@ -31,16 +31,15 @@ const proxyTimeout = 10 * time.Second // max time for establishing SSH connectio
 // Proxy wraps a Servo object and forwards connections to the servod instance
 // over SSH if needed.
 type Proxy struct {
-	svo  *Servo
-	hst  *ssh.Conn      // nil if servod is running locally
-	fwd  *ssh.Forwarder // nil if servod is running locally or inside a docker container
-	port int
-	dcl  *client.Client // nil if servod is not running inside a docker container
-	sdc  string         // empty if servod is not running inside a docker container
-}
-
-func isDockerHost(host string) bool {
-	return strings.HasSuffix(host, "docker_servod")
+	svo             *Servo
+	hst             *ssh.Conn      // Initialized lazily.
+	fwd             *ssh.Forwarder // nil if servod is running locally or inside a docker container
+	servoHostname   string
+	port            int
+	sshPort         int
+	keyFile, keyDir string
+	dcl             *client.Client // nil if servod is not running inside a docker container
+	sdc             string         // empty if servod is not running inside a docker container
 }
 
 func createDockerClient() (*client.Client, error) {
@@ -64,7 +63,7 @@ func splitHostPort(servoHostPort string) (string, int, int, error) {
 
 	if strings.Contains(servoHostPort, "docker_servod") {
 		hostInfo := strings.Split(servoHostPort, ":")
-		return hostInfo[0], port, sshPort, nil
+		return hostInfo[0], port, 0, nil
 	}
 
 	hostport := servoHostPort
@@ -73,15 +72,8 @@ func splitHostPort(servoHostPort string) (string, int, int, error) {
 		hostport = strings.TrimSuffix(hostport, ":nossh")
 	}
 	sshParts := strings.SplitN(hostport, ":ssh:", 2)
-	if len(sshParts) == 2 {
+	if len(sshParts) > 0 {
 		hostport = sshParts[0]
-		var err error
-		if sshPort, err = strconv.Atoi(sshParts[1]); err != nil {
-			return "", 0, 0, errors.Wrap(err, "parsing servo host ssh port")
-		}
-		if sshPort <= 0 {
-			return "", 0, 0, errors.New("invalid servo host ssh port")
-		}
 	}
 
 	// The port starts after the last colon.
@@ -98,7 +90,7 @@ func splitHostPort(servoHostPort string) (string, int, int, error) {
 				if hostport[1:end] != "" {
 					host = hostport[1:end]
 				}
-				return host, port, sshPort, nil
+				i = -1
 			case i: // ] before :
 				if hostport[1:end] != "" {
 					host = hostport[1:end]
@@ -114,21 +106,36 @@ func splitHostPort(servoHostPort string) (string, int, int, error) {
 				return "", 0, 0, errors.New("unexpected colon in hostname")
 			}
 		}
-		var err error
-		if port, err = strconv.Atoi(hostport[i+1:]); err != nil {
-			return "", 0, 0, errors.Wrap(err, "parsing servo port")
-		}
-		if port <= 0 {
-			return "", 0, 0, errors.New("invalid servo port")
+		if i >= 0 {
+			var err error
+			if port, err = strconv.Atoi(hostport[i+1:]); err != nil {
+				return "", 0, 0, errors.Wrap(err, "parsing servo port")
+			}
+			if port <= 0 {
+				return "", 0, 0, errors.New("invalid servo port")
+			}
 		}
 	} else if hostport != "" {
 		host = hostport
+	}
+	// If localhost, default to no ssh.
+	if host == "localhost" || host == "127.0.0.1" || host == "::1" {
+		sshPort = 0
+	}
+	if len(sshParts) > 1 {
+		var err error
+		if sshPort, err = strconv.Atoi(sshParts[1]); err != nil {
+			return "", 0, 0, errors.Wrap(err, "parsing servo host ssh port")
+		}
+		if sshPort <= 0 {
+			return "", 0, 0, errors.New("invalid servo host ssh port")
+		}
 	}
 	return host, port, sshPort, nil
 }
 
 // NewProxy returns a Proxy object for communicating with the servod instance at spec,
-// which can be blank (defaults to localhost:9999:ssh:22) or a hostname (defaults to hostname:9999:ssh:22)
+// which can be blank (defaults to localhost:9999) or a hostname (defaults to hostname:9999:ssh:22)
 // or a host:port (ssh port defaults to 22) or to fully qualify everything host:port:ssh:sshport.
 //
 // Use hostname:9999:nossh to prevent the use of ssh at all. You probably don't ever want to use this.
@@ -162,49 +169,23 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 		return nil, err
 	}
 	pxy.port = port
-	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
-	if sshPort > 0 && !isDockerHost(host) && ((host != "localhost" && host != "127.0.0.1" && host != "::1") || sshPort != 22) {
-		// First, create an SSH connection to the remote system running servod.
-		sopt := ssh.Options{
-			KeyFile:        keyFile,
-			KeyDir:         keyDir,
-			ConnectTimeout: proxyTimeout,
-			WarnFunc:       func(msg string) { testing.ContextLog(ctx, msg) },
-			Hostname:       net.JoinHostPort(host, fmt.Sprint(sshPort)),
-			User:           "root",
-		}
-		testing.ContextLogf(ctx, "Opening Servo SSH connection to %s", sopt.Hostname)
-		var err error
-		if pxy.hst, err = ssh.New(ctx, &sopt); err != nil {
-			return nil, err
-		}
+	pxy.servoHostname = host
+	pxy.sshPort = sshPort
+	pxy.keyFile = keyFile
+	pxy.keyDir = keyDir
 
-		defer func() {
-			if retErr != nil {
-				logServoStatus(ctx, pxy.hst, port)
-			}
-		}()
-		// Next, forward a local port over the SSH connection to the servod port.
-		testing.ContextLog(ctx, "Creating forwarded connection to port ", port)
-		pxy.fwd, err = pxy.hst.NewForwarder("localhost:0", fmt.Sprintf("localhost:%d", port),
-			func(err error) { testing.ContextLog(ctx, "Got servo forwarding error: ", err) })
+	if err := pxy.connectSSH(ctx); err != nil {
+		return nil, err
+	}
+
+	if pxy.hst == nil {
+		testing.ContextLogf(ctx, "Connecting to servod directly at %s:%d", host, port)
+		pxy.svo, err = New(ctx, host, port)
 		if err != nil {
 			return nil, err
 		}
-		var portstr string
-		if host, portstr, err = net.SplitHostPort(pxy.fwd.ListenAddr().String()); err != nil {
-			return nil, err
-		}
-		if port, err = strconv.Atoi(portstr); err != nil {
-			return nil, errors.Wrap(err, "parsing forwarded servo port")
-		}
 	}
 
-	testing.ContextLogf(ctx, "Connecting to servod at %s:%d", host, port)
-	pxy.svo, err = New(ctx, host, port)
-	if err != nil {
-		return nil, err
-	}
 	if strings.Contains(host, "docker_servod") {
 		pxy.dcl, err = createDockerClient()
 		if err != nil {
@@ -214,6 +195,71 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	}
 	toClose = nil // disarm cleanup
 	return &pxy, nil
+}
+
+func (p *Proxy) connectSSH(ctx context.Context) (retErr error) {
+	// If the servod instance isn't running locally, assume that we need to connect to it via SSH.
+	if p.sshPort <= 0 || p.hst != nil {
+		return nil
+	}
+	// First, create an SSH connection to the remote system running servod.
+	sopt := ssh.Options{
+		KeyFile:        p.keyFile,
+		KeyDir:         p.keyDir,
+		ConnectTimeout: proxyTimeout,
+		WarnFunc:       func(msg string) { testing.ContextLog(ctx, msg) },
+		Hostname:       net.JoinHostPort(p.servoHostname, fmt.Sprint(p.sshPort)),
+		User:           "root",
+	}
+	testing.ContextLogf(ctx, "Opening Servo SSH connection to %s", sopt.Hostname)
+	hst, err := ssh.New(ctx, &sopt)
+	if err != nil {
+		logServoStatus(ctx, hst, p.sshPort)
+		return err
+	}
+	defer func() {
+		if retErr != nil {
+			hst.Close(ctx)
+		}
+	}()
+
+	testing.ContextLog(ctx, "Creating forwarded connection to port ", p.port)
+	p.fwd, err = hst.NewForwarder("localhost:0", fmt.Sprintf("localhost:%d", p.port),
+		func(err error) { testing.ContextLog(ctx, "Got servo forwarding error: ", err) })
+	if err != nil {
+		return err
+	}
+	defer func() {
+		if retErr != nil {
+			p.fwd.Close()
+			p.fwd = nil
+		}
+	}()
+	var portstr, host string
+	var port int
+	if host, portstr, err = net.SplitHostPort(p.fwd.ListenAddr().String()); err != nil {
+		return err
+	}
+	if port, err = strconv.Atoi(portstr); err != nil {
+		return errors.Wrap(err, "parsing forwarded servo port")
+	}
+
+	if p.svo == nil {
+		testing.ContextLogf(ctx, "Connecting to servod via ssh at %s:%d", host, port)
+		p.svo, err = New(ctx, host, port)
+		if err != nil {
+			return err
+		}
+	} else {
+		testing.ContextLogf(ctx, "Reconnecting to servod via ssh at %s:%d", host, port)
+		err = p.svo.reconnect(ctx, host, port)
+		if err != nil {
+			return err
+		}
+	}
+
+	p.hst = hst
+	return nil
 }
 
 // logServoStatus logs the current servo status from the servo host.
@@ -254,12 +300,22 @@ func (p *Proxy) Close(ctx context.Context) {
 	}
 }
 
-func (p *Proxy) isLocal() bool {
-	return p.hst == nil || p.isDockerized()
+// Reconnect closes the ssh connection, and reconnects.
+func (p *Proxy) Reconnect(ctx context.Context) error {
+	testing.ContextLog(ctx, "Closing Servo SSH connection")
+	if p.fwd != nil {
+		p.fwd.Close()
+		p.fwd = nil
+	}
+	if p.hst != nil {
+		p.hst.Close(ctx)
+		p.hst = nil
+	}
+	return p.connectSSH(ctx)
 }
 
-func (p *Proxy) isClosed() bool {
-	return p.svo == nil
+func (p *Proxy) isLocal() bool {
+	return p.sshPort <= 0 || p.isDockerized()
 }
 
 func (p *Proxy) isDockerized() bool {
@@ -270,14 +326,9 @@ func (p *Proxy) isDockerized() bool {
 func (p *Proxy) Servo() *Servo { return p.svo }
 
 func (p *Proxy) runCommandImpl(ctx context.Context, dumpLogOnError, asRoot bool, name string, args ...string) error {
-	var sshOpts []ssh.RunOption
 	var execOpts []testexec.RunOption
 	if dumpLogOnError {
-		sshOpts = append(sshOpts, ssh.DumpLogOnError)
 		execOpts = append(execOpts, testexec.DumpLogOnError)
-	}
-	if p.isClosed() {
-		return errors.New("connection to servo is closed")
 	}
 	if p.isLocal() {
 		if p.isDockerized() {
@@ -291,7 +342,10 @@ func (p *Proxy) runCommandImpl(ctx context.Context, dumpLogOnError, asRoot bool,
 		}
 		return testexec.CommandContext(ctx, name, args...).Run(execOpts...)
 	}
-	return p.hst.CommandContext(ctx, name, args...).Run(sshOpts...)
+	if err := p.connectSSH(ctx); err != nil {
+		return err
+	}
+	return p.hst.CommandContext(ctx, name, args...).Run(execOpts...)
 }
 
 // RunCommand execs a command on the servo host, optionally as root.
@@ -306,9 +360,6 @@ func (p *Proxy) RunCommandQuiet(ctx context.Context, asRoot bool, name string, a
 
 // OutputCommand execs a command as the root user and returns stdout.
 func (p *Proxy) OutputCommand(ctx context.Context, asRoot bool, name string, args ...string) ([]byte, error) {
-	if p.isClosed() {
-		return nil, errors.New("connection to servo is closed")
-	}
 	if p.isLocal() {
 		if p.isDockerized() {
 			return p.dockerExec(ctx, nil, name, args...)
@@ -320,14 +371,14 @@ func (p *Proxy) OutputCommand(ctx context.Context, asRoot bool, name string, arg
 		}
 		return testexec.CommandContext(ctx, name, args...).Output(testexec.DumpLogOnError)
 	}
+	if err := p.connectSSH(ctx); err != nil {
+		return nil, err
+	}
 	return p.hst.CommandContext(ctx, name, args...).Output(ssh.DumpLogOnError)
 }
 
 // InputCommand execs a command and redirects stdin.
 func (p *Proxy) InputCommand(ctx context.Context, asRoot bool, stdin io.Reader, name string, args ...string) error {
-	if p.isClosed() {
-		return errors.New("connection to servo is closed")
-	}
 	if p.isLocal() {
 		if p.isDockerized() {
 			_, err := p.dockerExec(ctx, stdin, name, args...)
@@ -346,6 +397,9 @@ func (p *Proxy) InputCommand(ctx context.Context, asRoot bool, stdin io.Reader, 
 		cmd.Stdin = stdin
 		return cmd.Run(testexec.DumpLogOnError)
 	}
+	if err := p.connectSSH(ctx); err != nil {
+		return err
+	}
 	cmd := p.hst.CommandContext(ctx, name, args...)
 	cmd.Stdin = stdin
 	return cmd.Run(ssh.DumpLogOnError)
@@ -353,9 +407,6 @@ func (p *Proxy) InputCommand(ctx context.Context, asRoot bool, stdin io.Reader, 
 
 // GetFile copies a servo host file to a local file.
 func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile string) error {
-	if p.isClosed() {
-		return errors.New("connection to servo is closed")
-	}
 	if p.isLocal() {
 		if p.isDockerized() {
 			outFile, err := os.OpenFile(localFile, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
@@ -388,14 +439,14 @@ func (p *Proxy) GetFile(ctx context.Context, asRoot bool, remoteFile, localFile 
 		}
 		return testexec.CommandContext(ctx, "cp", remoteFile, localFile).Run(testexec.DumpLogOnError)
 	}
+	if err := p.connectSSH(ctx); err != nil {
+		return err
+	}
 	return linuxssh.GetFile(ctx, p.hst, remoteFile, localFile, linuxssh.DereferenceSymlinks)
 }
 
 // PutFiles copies a local file to a servo host file.
 func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]string) error {
-	if p.isClosed() {
-		return errors.New("connection to servo is closed")
-	}
 	if p.isLocal() {
 		for l, r := range fileMap {
 			if p.isDockerized() {
@@ -418,6 +469,9 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 			}
 		}
 		return nil
+	}
+	if err := p.connectSSH(ctx); err != nil {
+		return err
 	}
 	_, err := linuxssh.PutFiles(ctx, p.hst, fileMap, linuxssh.DereferenceSymlinks)
 	return err
@@ -488,13 +542,16 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 
 // Proxied returns true if the servo host is connected via ssh proxy.
 func (p *Proxy) Proxied() bool {
-	return p.hst != nil
+	return p.sshPort > 0
 }
 
 // NewForwarder forwards a local port to a remote port on the servo host.
 func (p *Proxy) NewForwarder(ctx context.Context, hostPort string) (*ssh.Forwarder, error) {
 	if !p.Proxied() {
-		return nil, errors.New("servo host is not proxied via ssh")
+		return nil, errors.New("servo host is not connected via ssh")
+	}
+	if err := p.connectSSH(ctx); err != nil {
+		return nil, err
 	}
 	fwd, err := p.hst.NewForwarder("localhost:0", hostPort,
 		func(err error) { testing.ContextLog(ctx, "Got forwarding error: ", err) })
