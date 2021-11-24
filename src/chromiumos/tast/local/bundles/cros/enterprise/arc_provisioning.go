@@ -232,7 +232,7 @@ func readPackageRestrictions(ctx context.Context, cr *chrome.Chrome) ([]byte, er
 	const packageRestrictionsPath = "/data/system/users/0/package-restrictions.xml"
 
 	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.SystemPath(cr.User())
+	rootCryptDir, err := cryptohome.SystemPath(ctx, cr.User())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}

@@ -66,7 +66,7 @@ func readFinskyPrefs(ctx context.Context, user string) ([]byte, error) {
 	const finskyPrefsPath = "/data/data/com.android.vending/shared_prefs/finsky.xml"
 
 	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.SystemPath(user)
+	rootCryptDir, err := cryptohome.SystemPath(ctx, user)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}

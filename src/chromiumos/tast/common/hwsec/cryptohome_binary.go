@@ -132,6 +132,12 @@ func (c *cryptohomeBinary) mountEx(ctx context.Context, username string, doesCre
 	return c.call(ctx, args...)
 }
 
+// mountGuestEx calls "cryptohome --action=mount_guest_ex".
+func (c *cryptohomeBinary) mountGuestEx(ctx context.Context) ([]byte, error) {
+	args := []string{"--action=mount_guest_ex"}
+	return c.call(ctx, args...)
+}
+
 // getSanitizedUsername calls "cryptohome --action=obfuscate_user".
 func (c *cryptohomeBinary) getSanitizedUsername(ctx context.Context, username string, useDBus bool) ([]byte, error) {
 	args := []string{"--action=obfuscate_user", "--user=" + username}

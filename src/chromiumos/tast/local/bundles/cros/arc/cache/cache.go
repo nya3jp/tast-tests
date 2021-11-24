@@ -122,7 +122,7 @@ func CopyCaches(ctx context.Context, a *arc.ARC, outputDir string) error {
 	)
 
 	// OpenSession signs in as chrome.DefaultUser.
-	androidDataDir, err := arc.AndroidDataDir(chrome.DefaultUser)
+	androidDataDir, err := arc.AndroidDataDir(ctx, chrome.DefaultUser)
 	if err != nil {
 		return errors.Wrap(err, "failed to get android-data path")
 	}

@@ -123,7 +123,7 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 	}
 	if vmEnabled {
 		s.Log("Getting the dir path for temporary dump files")
-		androidDataDir, err := arc.AndroidDataDir(cr.NormalizedUser())
+		androidDataDir, err := arc.AndroidDataDir(ctx, cr.NormalizedUser())
 		if err != nil {
 			s.Fatal("Failed to get android-data dir: ", err)
 		}

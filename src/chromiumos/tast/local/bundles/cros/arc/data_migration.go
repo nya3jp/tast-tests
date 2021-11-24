@@ -198,7 +198,7 @@ func checkSdkVersionsInPackagesXML(ctx context.Context, username string) (int, e
 
 	testing.ContextLogf(ctx, "Checking SDK versions in %s", packagesXMLPath)
 
-	rootCryptDir, err := cryptohome.SystemPath(username)
+	rootCryptDir, err := cryptohome.SystemPath(ctx, username)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}
