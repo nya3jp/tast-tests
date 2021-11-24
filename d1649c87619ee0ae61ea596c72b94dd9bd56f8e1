@@ -296,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d272c05_4beb6bee",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T16:48:08Z",
+      "side": 1,
+      "message": "I\u0027m ambivalent here. We could move it out, but I like it closer to chrome.New.",
+      "parentUuid": "ce1bd378_e6c4f0d6",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "d1649c87619ee0ae61ea596c72b94dd9bd56f8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3cb6d437_b605642a",
         "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
         "patchSetId": 4
