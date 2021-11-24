@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "013a066d_a9157f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/smartlock/login.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-24T23:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9055ff67_87fbbc8d",
+      "revId": "30563d5ac64169c634cc690c26e8f8afd7ca691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48dbcc4d_6dd24217",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ebde106_1a05ee19",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/constants.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-24T23:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48dbcc4d_6dd24217",
+      "range": {
+        "startLine": 29,
+        "startChar": 61,
+        "endLine": 29,
+        "endChar": 62
+      },
+      "revId": "30563d5ac64169c634cc690c26e8f8afd7ca691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b97ec1f3_0d9e21f2",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-11-24T20:19:49Z",
       "side": 1,
       "message": "Best to export this if it\u0027s going to be returned from the exported AuthToken function. That way the linter won\u0027t complain, and it will be more flexible for other packages to use.",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 24
+      },
+      "revId": "30563d5ac64169c634cc690c26e8f8afd7ca691c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5689b297_b5d5505c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-24T23:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b97ec1f3_0d9e21f2",
       "range": {
         "startLine": 164,
         "startChar": 5,
