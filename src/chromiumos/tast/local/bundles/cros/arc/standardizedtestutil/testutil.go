@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -233,8 +234,31 @@ func runTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 				s.Fatal("Failed to set window state: ", err)
 			}
 
-			// The view may still be updating after the window operation returns so
-			// poll on it one last time to make sure the app is in a steady state.
+			// TODO(b/207691867): Pointer movements aren't consistent when in the 'Normal' window state unless the bounds are changed first.
+			if test.WindowStateType == ash.WindowStateNormal {
+				// Get the ARC window and its corresponding display info.
+				w, err := ash.GetARCAppWindowInfo(workCtx, tconn, appPkgName)
+				if err != nil {
+					s.Fatal("Failed to get ARC window: ", err)
+				}
+
+				wInfo, err := display.FindInfo(ctx, tconn, func(info *display.Info) bool {
+					return info.ID == w.DisplayID
+				})
+
+				if err != nil {
+					s.Fatal("Failed to find the display: ", err)
+				}
+
+				// Adjust the window to fill up most of the screen.
+				newBounds := wInfo.Bounds.WithInset(80, 80)
+				if _, _, err := ash.SetWindowBounds(workCtx, tconn, w.ID, newBounds, w.DisplayID); err != nil {
+					s.Fatal("Failed to set ARC window bounds: ", err)
+				}
+			}
+
+			// The view may still be updating after the above window operations return so
+			// poll on the layout one last time to make sure the app is in a steady state.
 			if err := d.Object(ui.ID(StandardizedTestLayoutID(appPkgName))).WaitForExists(ctx, ShortUITimeout); err != nil {
 				s.Fatal("Failed to wait for the app to render: ", err)
 			}
