@@ -33,9 +33,9 @@ func (a *ARC) PushFileToTmpDir(ctx context.Context, src string) (string, error) 
 }
 
 // AndroidDataDir returns the ChromeOS path from which /data/ can be accessed (/home/root/${USER_HASH}/android-data).
-func AndroidDataDir(user string) (string, error) {
+func AndroidDataDir(ctx context.Context, user string) (string, error) {
 	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.SystemPath(user)
+	rootCryptDir, err := cryptohome.SystemPath(ctx, user)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get the cryptohome directory for user: %s", user)
 	}
@@ -45,8 +45,8 @@ func AndroidDataDir(user string) (string, error) {
 }
 
 // PkgDataDir returns the ChromeOS path of the directory that contains user files of a given Android package (/home/root/${USER_HASH}/android-data/data/media/0/Android/data/${PKG}).
-func PkgDataDir(user, pkg string) (string, error) {
-	andrDataDir, err := AndroidDataDir(user)
+func PkgDataDir(ctx context.Context, user, pkg string) (string, error) {
+	andrDataDir, err := AndroidDataDir(ctx, user)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get android-data path")
 	}
@@ -77,7 +77,7 @@ func (a *ARC) FileSize(ctx context.Context, filename string) (int64, error) {
 
 // PkgFileSize returns the size of a specified file that belongs to a specified Android package in bytes. Returns an error if the file does not exist.
 func PkgFileSize(ctx context.Context, user, pkg, filename string) (int64, error) {
-	pkgDir, err := PkgDataDir(user, pkg)
+	pkgDir, err := PkgDataDir(ctx, user, pkg)
 	if err != nil {
 		return 0, errors.Wrapf(err, "failed to get package directory for %s", pkg)
 	}
