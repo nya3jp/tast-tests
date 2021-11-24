@@ -7,19 +7,29 @@ package hwsec
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/shirou/gopsutil/disk"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const (
 	// GuestUser is the name representing a guest user account.
 	// Defined in libbrillo/brillo/cryptohome.cc.
 	GuestUser = "$guest"
+
+	// KioskUser is the name representing a kiosk user account.
+	KioskUser = "kiosk"
+
+	// WaitForUserTimeout is the maximum time until a user mount is available.
+	WaitForUserTimeout = 80 * time.Second
 
 	// mounterExe is the full executable for the out-of-process cryptohome
 	// mounter.
@@ -32,6 +42,15 @@ const (
 	// normal user mounts as well once the out-of-process cryptohome
 	// mounter is ready for that.
 	cryptohomedExe = "/usr/sbin/cryptohomed"
+
+	// mountPollInterval contains the delay between WaitForUserMount's parses of mtab.
+	mountPollInterval = 10 * time.Millisecond
+
+	// The user session mount namespace path.
+	mountNsPath = "/run/namespaces/mnt_chrome"
+
+	// The root directory of vault.
+	shadowRoot = "/home/.shadow"
 )
 
 var (
@@ -46,6 +65,16 @@ var (
 	// matches a path to /dev/loop\d+.
 	// Example: "/dev/loop0"
 	devLoopRegexp = regexp.MustCompile(`^/dev/loop[0-9]+$`)
+)
+
+// MountType is a type of the user mount.
+type MountType int
+
+const (
+	// Ephemeral is used to specify that the expected user mount type is ephemeral.
+	Ephemeral MountType = iota
+	// Permanent is used to specify that the expected user mount type is permanent.
+	Permanent
 )
 
 // CryptohomeMountInfo is a helper to get cryptohome mount information.
@@ -117,6 +146,102 @@ func (c *CryptohomeMountInfo) CleanUpMount(ctx context.Context, user string) err
 	return nil
 }
 
+// WaitForUserMountAndValidateType waits for user's encrypted home directory to
+// be mounted and validates that it is of correct type.
+func (c *CryptohomeMountInfo) WaitForUserMountAndValidateType(ctx context.Context, user string, mountType MountType) error {
+	ctx, st := timing.Start(ctx, "wait_for_user_mount")
+	defer st.End()
+
+	mounter := cryptohomedExe
+	validatePartition := validatePermanentPartition
+
+	if mountType == Ephemeral {
+		mounter = mounterExe
+		validatePartition = validateGuestPartition
+	}
+
+	userpath, err := c.cryptohome.GetHomeUserPath(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get user home path")
+	}
+	systempath, err := c.cryptohome.GetRootUserPath(ctx, user)
+	if err != nil {
+		return errors.Wrap(err, "failed to get user root path")
+	}
+
+	testing.ContextLogf(ctx, "Waiting for cryptohome for user %q with timeout %v", user, WaitForUserTimeout)
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		partitions, err := c.findMounts(ctx, mounter)
+		if err != nil {
+			return err
+		}
+		up := findPartition(partitions, userpath)
+		if up == nil {
+			return errors.Errorf("%v not found", userpath)
+		}
+		if !validatePartition(up) {
+			return errors.Errorf("%v not a valid partition", up)
+		}
+		sp := findPartition(partitions, systempath)
+		if sp == nil {
+			return errors.Errorf("%v not found", systempath)
+		}
+		if !validatePartition(sp) {
+			return errors.Errorf("%v not a valid partition", sp)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: WaitForUserTimeout, Interval: mountPollInterval})
+
+	if err != nil {
+		return errors.Wrapf(err, "not mounted for %s", user)
+	}
+	return nil
+}
+
+// WaitForUserMount waits for user's encrypted home directory to be mounted and
+// validates that it is of permanent type for all users except guest.
+func (c *CryptohomeMountInfo) WaitForUserMount(ctx context.Context, user string) error {
+	mountType := Permanent
+	if user == GuestUser {
+		mountType = Ephemeral
+	}
+	return c.WaitForUserMountAndValidateType(ctx, user, mountType)
+}
+
+// CheckMountNamespace checks whether the user session mount namespace has been created.
+func (c *CryptohomeMountInfo) CheckMountNamespace(ctx context.Context) error {
+	mounts, err := c.readMountsInfo(ctx, "/proc/mounts")
+	if err != nil {
+		return errors.Wrap(err, "failed to read mount information")
+	}
+	mp := findPartition(mounts, mountNsPath)
+	if mp == nil {
+		return errors.Errorf("%v not found", mountNsPath)
+	}
+	if mp.Fstype != "nsfs" {
+		return errors.Errorf("user session mount namespace has not been created at %s", mountNsPath)
+	}
+	return nil
+}
+
+// UserCryptohomePath returns the path where the cryptohome data for the user is located.
+func (c *CryptohomeMountInfo) UserCryptohomePath(ctx context.Context, user string) (string, error) {
+	hash, err := c.cryptohome.GetUserHash(ctx, user)
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(shadowRoot, hash), nil
+}
+
+// MountedVaultPath returns the path where the decrypted data for the user is located.
+func (c *CryptohomeMountInfo) MountedVaultPath(ctx context.Context, user string) (string, error) {
+	path, err := c.UserCryptohomePath(ctx, user)
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(path, "mount"), nil
+}
+
 // findMounterPID finds the pid of the given mounter process.
 func (c *CryptohomeMountInfo) findMounterPID(ctx context.Context, mounter string) (int32, error) {
 	bs, err := c.runner.Run(ctx, "pidof", "-s", mounter)
@@ -138,12 +263,11 @@ func (c *CryptohomeMountInfo) findMounterPID(ctx context.Context, mounter string
 	return int32(pid), nil
 }
 
-// findMountsForPID returns the list of mounts in pid's mount namespace.
-func (c *CryptohomeMountInfo) findMountsForPID(ctx context.Context, pid int32) ([]disk.PartitionStat, error) {
-	path := fmt.Sprintf("/proc/%d/mounts", pid)
+// readMountsInfo returns the list of mounts from a mount information file.
+func (c *CryptohomeMountInfo) readMountsInfo(ctx context.Context, path string) ([]disk.PartitionStat, error) {
 	bs, err := c.runner.Run(ctx, "cat", "--", path)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to get list of mounts for pid %d", pid)
+		return nil, errors.Wrapf(err, "failed to get list of mounts from %v", path)
 	}
 	output := strings.Trim(string(bs), "\n")
 	mounts := strings.Split(output, "\n")
@@ -163,6 +287,16 @@ func (c *CryptohomeMountInfo) findMountsForPID(ctx context.Context, pid int32) (
 			Opts:       fields[3],
 		}
 		res = append(res, d)
+	}
+	return res, nil
+}
+
+// findMountsForPID returns the list of mounts in pid's mount namespace.
+func (c *CryptohomeMountInfo) findMountsForPID(ctx context.Context, pid int32) ([]disk.PartitionStat, error) {
+	path := fmt.Sprintf("/proc/%d/mounts", pid)
+	res, err := c.readMountsInfo(ctx, path)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get list of mounts for pid %d", pid)
 	}
 	return res, nil
 }
