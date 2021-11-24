@@ -16,6 +16,24 @@
       "message": ".boot_time_calibration and .exit_success tests had failed on volteer and some other boards between 14337 and 14345. Do we have a b/ or crbug that explains it (like being infra failure)?",
       "revId": "91ead1d0cb88811b000347c4aee50dfcd714b4cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72bf1235_c1d30d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-11-24T07:47:18Z",
+      "side": 1,
+      "message": "Tt failed due to glibc 2.33 upgrade breaks the seccomp policy.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/adhd/+/3280378/",
+      "parentUuid": "ed7dd2a0_db40fcf5",
+      "revId": "91ead1d0cb88811b000347c4aee50dfcd714b4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
