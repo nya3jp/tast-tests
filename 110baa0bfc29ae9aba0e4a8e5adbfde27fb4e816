@@ -33,6 +33,24 @@
       "message": "+Toshiki for review as he\u0027s actively working on fixing this test.\n\nDavid, as the ARC Framework team is also working on stabilizing these WM-related tests, maybe we should discuss how we can collaborate and avoid overlap?",
       "revId": "110baa0bfc29ae9aba0e4a8e5adbfde27fb4e816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71156e08_dffb7d68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-24T03:23:52Z",
+      "side": 1,
+      "message": "Thanks for the information - that makes sense. We (ARC EngProd) have an interest in the WM tests as well, as noted in the design doc. Would you, and Toshiki be the two people who should be involved in that meeting or are there others as well?",
+      "parentUuid": "77218605_aefbe2e1",
+      "revId": "110baa0bfc29ae9aba0e4a8e5adbfde27fb4e816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
