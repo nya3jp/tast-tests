@@ -141,7 +141,11 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to sleep: ", err)
 		}
 		if _, err = h.Servo.Echo(ctx, "ping"); err != nil {
-			s.Log("Failed to ping servo: ", err)
+			s.Log("Failed to ping servo, reconnecting: ", err)
+			err = h.ServoProxy.Reconnect(ctx)
+			if err != nil {
+				s.Log("Failed to reconnect to servo: ", err)
+			}
 		}
 	}
 

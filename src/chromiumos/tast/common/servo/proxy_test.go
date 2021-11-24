@@ -16,7 +16,7 @@ func TestSplitHostPort(t *testing.T) {
 		expectedSSHPort int
 		expectErr       bool
 	}{
-		{"", "localhost", 9999, 22, false},
+		{"", "localhost", 9999, 0, false},
 		{":ssh:", "", 0, 0, true},
 		{":ssh:33", "localhost", 9999, 33, false},
 		{"rutabaga", "rutabaga", 9999, 22, false},
@@ -24,7 +24,7 @@ func TestSplitHostPort(t *testing.T) {
 		{"rutabaga:1234", "rutabaga", 1234, 22, false},
 		{"rutabaga:1234:ssh:33", "rutabaga", 1234, 33, false},
 		{"rutabaga:localhost:1234", "", 0, 0, true},
-		{":1234", "localhost", 1234, 22, false},
+		{":1234", "localhost", 1234, 0, false},
 		{":1234:ssh:", "", 0, 0, true},
 		{":1234:ssh:33", "localhost", 1234, 33, false},
 		{"[::2]", "::2", 9999, 22, false},
@@ -34,9 +34,16 @@ func TestSplitHostPort(t *testing.T) {
 		{"[::2]:localhost:1234", "", 0, 0, true},
 		{"::2", "", 0, 0, true},
 		{"::2:1234", "", 0, 0, true},
-		{"dut1-docker_servod", "dut1-docker_servod", 9999, 22, false},
-		{"dut1-docker_servod:9998", "dut1-docker_servod", 9999, 22, false},
-		{"dut1-docker_servod:9998::", "dut1-docker_servod", 9999, 22, false},
+		{"[::1]", "::1", 9999, 0, false},
+		{"[::1]:ssh:33", "::1", 9999, 33, false},
+		{"[::1]:1234", "::1", 1234, 0, false},
+		{"[::1]:1234:ssh:33", "::1", 1234, 33, false},
+		{"[::1]:localhost:1234", "", 0, 0, true},
+		{"::1", "", 0, 0, true},
+		{"::1:1234", "", 0, 0, true},
+		{"dut1-docker_servod", "dut1-docker_servod", 9999, 0, false},
+		{"dut1-docker_servod:9998", "dut1-docker_servod", 9999, 0, false},
+		{"dut1-docker_servod:9998::", "dut1-docker_servod", 9999, 0, false},
 	} {
 		actualHost, actualPort, actualSSHPort, err := splitHostPort(tc.input)
 		if err != nil && !tc.expectErr {
