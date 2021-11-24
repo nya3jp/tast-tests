@@ -32,7 +32,7 @@ func PreflightCheck(ctx context.Context, cfg *config.Config) error {
 	if cfg.LoginMode() != config.NoLogin {
 		if err := cryptohome.CheckService(ctx); err != nil {
 			// Log problems in cryptohomed's dependencies.
-			for _, e := range cryptohome.CheckDeps(ctx) {
+			if e := cryptohome.CheckDeps(ctx); e != nil {
 				testing.ContextLog(ctx, "Potential cryptohome issue: ", e)
 			}
 			return errors.Wrap(err, "failed to check cryptohome service")

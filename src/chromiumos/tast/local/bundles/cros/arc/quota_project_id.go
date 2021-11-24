@@ -80,7 +80,7 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the project ID of the package data directory.
-	pkgDataDir, err := arc.PkgDataDir(cr.NormalizedUser(), pkgName)
+	pkgDataDir, err := arc.PkgDataDir(ctx, cr.NormalizedUser(), pkgName)
 	if err != nil {
 		s.Fatal("Failed to get package data dir: ", err)
 	}
@@ -112,7 +112,7 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the project ID of the file in the primary external volume.
-	androidDataDir, err := arc.AndroidDataDir(cr.NormalizedUser())
+	androidDataDir, err := arc.AndroidDataDir(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get Android data dir: ", err)
 	}
