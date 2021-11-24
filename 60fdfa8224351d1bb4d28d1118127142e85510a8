@@ -22,6 +22,30 @@
       },
       "revId": "60fdfa8224351d1bb4d28d1118127142e85510a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed46153_482d472d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_source.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-11-24T13:12:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16d6749b_4e4b0319",
+      "range": {
+        "startLine": 141,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 52
+      },
+      "revId": "60fdfa8224351d1bb4d28d1118127142e85510a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
