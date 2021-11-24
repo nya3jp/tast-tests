@@ -34,6 +34,24 @@
       "parentUuid": "6ce0b797_8754aff4",
       "revId": "8c105dc9d63e5118949e88d1f32c88466a99864c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "465699fc_1f0deae1",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T10:12:56Z",
+      "side": 1,
+      "message": "Searching an incomplete file is working as expected 😊\n\nCan you also add this to the field description?",
+      "parentUuid": "801ff94f_0c55f8c5",
+      "revId": "8c105dc9d63e5118949e88d1f32c88466a99864c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
