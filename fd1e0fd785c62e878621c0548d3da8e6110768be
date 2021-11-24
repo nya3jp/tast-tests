@@ -158,6 +158,30 @@
       },
       "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f193dc6_83e8aceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1369748
+      },
+      "writtenOn": "2021-11-24T01:46:41Z",
+      "side": 1,
+      "message": "Kerker and all, for short term fix we can list all Vpro platforms in HardwareDeps list (brya, redrix, kano, anahera, primus) to meet the dog-fooding schedule. For long term, Pathan will create a patch that support a scaling solution with HardwareDep based on support features (recommended by Kerker).  Please let us know if you have any concern with that approach.",
+      "parentUuid": "20eb3a5f_53b039a3",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
