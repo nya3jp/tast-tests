@@ -30,12 +30,14 @@ func init() {
 		Vars:         []string{"secondaryTarget"},
 		Params: []testing.Param{
 			{
-				Name:              "dataoffline_hidden_png5kb",
-				Fixture:           "nearbyShareRemoteDataUsageOfflineNoOneBackgroundScanning",
-				Val:               nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
-				ExtraData:         []string{"small_png.zip"},
-				Timeout:           nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("coral")),
+				Name:      "dataoffline_hidden_png5kb",
+				Fixture:   "nearbyShareRemoteDataUsageOfflineNoOneBackgroundScanning",
+				Val:       nearbycommon.TestData{Filename: "small_png.zip", TransferTimeout: nearbycommon.SmallFileTransferTimeout},
+				ExtraData: []string{"small_png.zip"},
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+				// The intention here is to skip Coral platform as receiver. It is only possible to skip the primary DUT (sender), so as a workaround we skip
+				// Sarien as sender which is paired with Coral.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("sarien")),
 			},
 		},
 	})
