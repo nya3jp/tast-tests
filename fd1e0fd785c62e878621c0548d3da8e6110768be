@@ -206,6 +206,30 @@
       },
       "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ffdd4c_b315ee07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1369748
+      },
+      "writtenOn": "2021-11-24T01:59:45Z",
+      "side": 1,
+      "message": "Hidehiko, \nPathan will create a partner issue tracker to discuss the long term solution approach to share with Google TAST and cros-heath teams.  For now, he will add the full vpro list to HardwareDeps.",
+      "parentUuid": "5d185840_c6e5c287",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
