@@ -303,6 +303,23 @@ func (u *CryptohomeClient) MountVault(ctx context.Context, label string, authCon
 	return nil
 }
 
+// MountGuest creates a mount point for a guest user; error is nil if the operation completed successfully.
+func (u *CryptohomeClient) MountGuest(ctx context.Context) error {
+	if _, err := u.binary.mountGuestEx(ctx); err != nil {
+		return errors.Wrap(err, "failed to mount guest")
+	}
+	return nil
+}
+
+// MountKiosk creates a mount point for a kiosk; error is nil if the operation completed successfully.
+func (u *CryptohomeClient) MountKiosk(ctx context.Context) error {
+	extraFlags := []string{"--public_mount"}
+	if _, err := u.binary.mountEx(ctx, "kiosk", true, "public_mount", extraFlags); err != nil {
+		return errors.Wrap(err, "failed to mount kiosk")
+	}
+	return nil
+}
+
 // GetSanitizedUsername computes the sanitized username for the given user.
 // If useDBus is true, the sanitized username will be computed by cryptohome (through dbus). Otherwise, it'll be computed directly by libbrillo (without dbus).
 func (u *CryptohomeClient) GetSanitizedUsername(ctx context.Context, username string, useDBus bool) (string, error) {
