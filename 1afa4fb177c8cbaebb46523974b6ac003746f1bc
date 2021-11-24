@@ -16,6 +16,120 @@
       "message": "PTAL. Here are timings when it comes of the execution:\n\nWith the new fixture fixture.KioskAutoLaunchCleanup\nJust 2 tests using autolaunch:\n2021-11-23T14:26:19.019204Z Completed fixture enrolled in 4m23.204s with 0 error(s)\n\nwith fixture.FakeDMSEnrolled:\nJust 2 tests using autolaunch:\n2021-11-23T14:20:09.811149Z Completed fixture enrolled in 3m23.752s with 0 error(s)",
       "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d234a7b_0db88a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/start_app_from_sign_in_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:31:44Z",
+      "side": 1,
+      "message": "Why not use the new fixture?",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e7d91d_4a1a2d6d",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:31:44Z",
+      "side": 1,
+      "message": "Use the chrome constants for the timeouts.\n\n+ SetUp does not require a timeout since it does not need a context.",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "273e60fe_e64c3e02",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:31:44Z",
+      "side": 1,
+      "message": "Be more generous here",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60172bb6_a614b807",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:31:44Z",
+      "side": 1,
+      "message": "Fatal",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 7
+      },
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6633b5f_340a230e",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:31:44Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 7
+      },
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "294d0a5e_58a68163",
+        "filename": "src/chromiumos/tast/local/kioskmode/fixtures/cleaup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-24T09:31:44Z",
+      "side": 1,
+      "message": "This seems expensive, can we not do this yet. Only enable it if we actually see issues.",
+      "revId": "1afa4fb177c8cbaebb46523974b6ac003746f1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
