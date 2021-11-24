@@ -60,15 +60,16 @@ var bootedPre = &preImpl{
 }
 
 // NewPrecondition creates a new arc precondition for tests that need different args.
-func NewPrecondition(name string, gaia *GaiaVars, oDirect bool, extraArgs ...string) testing.Precondition {
+func NewPrecondition(name string, gaia *GaiaVars, gaiaPool *GaiaLoginPoolVars, oDirect bool, extraArgs ...string) testing.Precondition {
 	timeout := resetTimeout + chrome.LoginTimeout + BootTimeout
-	if gaia != nil {
+	if gaia != nil || gaiaPool != nil {
 		timeout = resetTimeout + chrome.GAIALoginTimeout + BootTimeout + optin.OptinTimeout
 	}
 	pre := &preImpl{
 		name:      name,
 		timeout:   timeout,
 		gaia:      gaia,
+		gaiaPool:  gaiaPool,
 		extraArgs: extraArgs,
 		oDirect:   oDirect,
 	}
@@ -81,14 +82,20 @@ type GaiaVars struct {
 	PassVar string // the secret variable for the GAIA password
 }
 
+// GaiaLoginPoolVars holds the secret variable for a GAIA POOL.
+type GaiaLoginPoolVars struct {
+	PoolVar string // the secret variable for the GAIA pool
+}
+
 // preImpl implements testing.Precondition.
 type preImpl struct {
 	name    string        // testing.Precondition.String
 	timeout time.Duration // testing.Precondition.Timeout
 
-	extraArgs []string  // passed to Chrome on initialization
-	gaia      *GaiaVars // a struct containing GAIA secret variables
-	oDirect   bool      // whether crosvm should use O_DIRECT.
+	extraArgs []string           // passed to Chrome on initialization
+	gaia      *GaiaVars          // a struct containing GAIA secret variables
+	gaiaPool  *GaiaLoginPoolVars // a struct containing GAIA login pool variable
+	oDirect   bool               // whether crosvm should use O_DIRECT.
 	cr        *chrome.Chrome
 	arc       *ARC
 
@@ -159,9 +166,13 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 
 		if p.gaia != nil {
+			// Login into the device, using GAIA login.
 			username := s.RequiredVar(p.gaia.UserVar)
 			password := s.RequiredVar(p.gaia.PassVar)
 			p.cr, err = chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
+		} else if p.gaiaPool != nil {
+			// Login into the device, using GAIA login pool.
+			p.cr, err = chrome.New(ctx, chrome.GAIALoginPool(s.RequiredVar(p.gaiaPool.PoolVar)), chrome.ARCSupported(), chrome.ExtraArgs(extraArgs...))
 		} else {
 			p.cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(extraArgs...))
 		}
@@ -170,8 +181,8 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	}()
 
-	// Opt-in if performing a GAIA login.
-	if p.gaia != nil {
+	// Opt-in to playstore using GAIA login or GAIA login pool.
+	if p.gaia != nil || p.gaiaPool != nil {
 		func() {
 			ctx, cancel := context.WithTimeout(ctx, optin.OptinTimeout)
 			defer cancel()
