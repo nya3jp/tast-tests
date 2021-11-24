@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd7a7e8_dccb52aa",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-24T10:42:59Z",
+      "side": 1,
+      "message": "Should we close the file with defer?",
+      "revId": "fd4c108d1c2ebfdb06408d45a42f8bb948eae9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b6171b_bfa14b85",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-24T10:42:59Z",
+      "side": 1,
+      "message": "nit: It\u0027s not a file descriptor. Maybe |f| or |file| here.",
+      "range": {
+        "startLine": 2003,
+        "startChar": 1,
+        "endLine": 2003,
+        "endChar": 3
+      },
+      "revId": "fd4c108d1c2ebfdb06408d45a42f8bb948eae9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "721a425a_4b007af5",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2009,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2021-11-24T10:42:59Z",
+      "side": 1,
+      "message": "nit: init the option directly with declaration?",
+      "revId": "fd4c108d1c2ebfdb06408d45a42f8bb948eae9d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
