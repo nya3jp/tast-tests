@@ -22,6 +22,30 @@
       },
       "revId": "ecb2b28b1d7ca3172efdf8209610c5efe9d9fc25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7d470a_d0fe93e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-24T06:52:37Z",
+      "side": 1,
+      "message": "Yes, that should also be included. I\u0027ve run this test successfully on Kakadu [--board\u003dkukui], which is a detachable device.",
+      "parentUuid": "8e18ce56_ea12cade",
+      "range": {
+        "startLine": 40,
+        "startChar": 59,
+        "endLine": 40,
+        "endChar": 95
+      },
+      "revId": "ecb2b28b1d7ca3172efdf8209610c5efe9d9fc25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
