@@ -14,4 +14,4 @@ var arcappgameperf = &arc.GaiaVars{
 
 // ArcAppGamePerfBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 // that it will GAIA login with the game perf credentials, and opt-in to the Play Store.
-var ArcAppGamePerfBooted = arc.NewPrecondition("arcappgameperf_booted", arcappgameperf, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+var ArcAppGamePerfBooted = arc.NewPrecondition("arcappgameperf_booted", arcappgameperf, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)

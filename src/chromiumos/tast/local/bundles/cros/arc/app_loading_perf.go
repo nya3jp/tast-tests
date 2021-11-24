@@ -34,20 +34,20 @@ var (
 
 	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 
 	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
 	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 
 	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
-	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore")...)
+	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore")...)
 
 	// arcAppLoadingODirectVMBooted enables O_DIRECT for crosvm.
-	arcAppLoadingODirectVMBooted = arc.NewPrecondition("arcapploading_odirect_vmbooted", arcAppLoadingGaia, true /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+	arcAppLoadingODirectVMBooted = arc.NewPrecondition("arcapploading_odirect_vmbooted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, true /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 
 	// arcAppLoadingDalvikMemoryProfileVMBooted enables ArcUseDalvikMemoryProfile chrome feature.
-	arcAppLoadingDalvikMemoryProfileVMBooted = arc.NewPrecondition("arcapploading_dalvik_memory_profile_vmbooted", arcAppLoadingGaia, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcUseDalvikMemoryProfile")...)
+	arcAppLoadingDalvikMemoryProfileVMBooted = arc.NewPrecondition("arcapploading_dalvik_memory_profile_vmbooted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcUseDalvikMemoryProfile")...)
 )
 
 func init() {
