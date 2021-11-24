@@ -33,6 +33,24 @@
       "message": "IIUC, even if /run/lacros mount remains from previously running tests, it should just run, because the above code just waits for the mounted state.\n\nCould you share why do you think this is needed in details?",
       "revId": "b16b38acb89ce0942280bb1af50a44b94837a731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee5effa_06687fb3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2021-11-24T06:16:04Z",
+      "side": 1,
+      "message": "You\u0027re right, I also discussed with Jae yesterday, the racing condition is not possible, so I\u0027ll abandon the CL.",
+      "parentUuid": "bbc0ce36_404bf9dc",
+      "revId": "b16b38acb89ce0942280bb1af50a44b94837a731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
