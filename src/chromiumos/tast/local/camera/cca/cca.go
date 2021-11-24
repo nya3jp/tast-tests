@@ -9,6 +9,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"image/jpeg"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -1592,9 +1593,26 @@ func (a *App) Refresh(ctx context.Context, tb *testutil.TestBridge) error {
 
 // SaveScreenshot saves a screenshot in the outDir.
 func (a *App) SaveScreenshot(ctx context.Context) error {
-	filename := fmt.Sprintf("screenshot_%d.png", time.Now().UnixNano())
+	image, err := screenshot.CaptureChromeImage(ctx, a.cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to capture Chrome image")
+	}
+
+	filename := fmt.Sprintf("screenshot_%d.jpg", time.Now().UnixNano())
 	path := filepath.Join(a.outDir, filename)
-	return screenshot.CaptureChrome(ctx, a.cr, path)
+
+	file, err := os.Create(path)
+	if err != nil {
+		return errors.Wrap(err, "failed to create screenshot")
+	}
+	defer file.Close()
+
+	options := jpeg.Options{Quality: 80}
+	err = jpeg.Encode(file, image, &options)
+	if err != nil {
+		return errors.Wrap(err, "failed to encode screenshot to jpeg")
+	}
+	return nil
 }
 
 // CheckMode checks whether CCA window is in correct capture mode.
