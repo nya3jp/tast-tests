@@ -79,7 +79,7 @@ func init() {
 // /home/root/<hash>/android-data. Then, /data/media/0/Pictures/capybaras will be appended to the directory path
 // to get the final path: /home/root/<hash>/android-data/data/media/0/Pictures.
 func sdCardTargetDir(ctx context.Context, user string) (string, error) {
-	androidDataDir, err := arc.AndroidDataDir(user)
+	androidDataDir, err := arc.AndroidDataDir(ctx, user)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get android-data path for user %s", user)
 	}
