@@ -96,9 +96,15 @@ var FamilyLink = App{
 	Name: "Family Link",
 }
 
-// Files has details about the Files app.
+// Files has details about the Files Chrome app.
 var Files = App{
 	ID:   "hhaomjibdihmijegdhdafkllkbggdgoj",
+	Name: "Files",
+}
+
+// FilesSWA has details about the Files System Web App.
+var FilesSWA = App{
+	ID:   "fkiggjmkendpmbegkagpmagjepfkpmeb",
 	Name: "Files",
 }
 
