@@ -6,12 +6,11 @@ package login
 
 import (
 	"context"
-	"encoding/json"
-	"io/ioutil"
 	"os"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/login/userutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -54,57 +53,13 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 	cleanUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
-	createUser := func(creds chrome.Creds, extraOpts ...chrome.Option) {
-		opts := append([]chrome.Option{chrome.FakeLogin(creds)}, extraOpts...)
-		cr, err := chrome.New(ctx, opts...)
-		if err != nil {
-			s.Fatal("Chrome login failed: ", err)
-		}
-		cr.Close(cleanUpCtx)
-	}
-	createUser(chrome.Creds{User: user1, Pass: password})
-	createUser(chrome.Creds{User: user2, Pass: password}, chrome.KeepState())
-	createUser(chrome.Creds{User: user3, Pass: password}, chrome.KeepState())
 
-	func() {
-		// chrome.NoLogin() and chrome.KeepState() are needed to show the login
-		// screen with a user pod (instead of the OOBE login screen).
-		cr, err := chrome.New(
-			ctx,
-			chrome.NoLogin(),
-			chrome.KeepState(),
-			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
-		)
-		if err != nil {
-			s.Fatal("Failed to start Chrome: ", err)
-		}
-		defer cr.Close(cleanUpCtx)
-		// Connect to login extension.
-		tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
-		if err != nil {
-			s.Fatal("Creating login test API connection failed: ", err)
-		}
-		defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tLoginConn)
-		ui := uiauto.New(tLoginConn)
-		// Wait for user pods to be available.
-		if err := ui.WaitUntilExists(nodewith.Name(user3).Role(role.Button))(ctx); err != nil {
-			s.Fatal("Failed to wait for user pods to be available: ", err)
-		}
-		// Remove user pod by clicking remove button twice.
-		if err := ui.LeftClick(nodewith.Name("Open remove dialog for " + user3).Role(role.Button))(ctx); err != nil {
-			s.Fatal("Failed to open remove dialog: ", err)
-		}
-		if err := ui.LeftClick(nodewith.Name("Remove account").Role(role.Button))(ctx); err != nil {
-			s.Fatal("Failed to click remove account button first time: ", err)
-		}
-		if err := ui.LeftClick(nodewith.Name("Remove account").Role(role.Button))(ctx); err != nil {
-			s.Fatal("Failed to click remove account button second time: ", err)
-		}
-		// Check that user pod was deleted.
-		if err := ui.WaitUntilGone(nodewith.Name(user3).Role(role.Button))(ctx); err != nil {
-			s.Fatal("Removed user pod is still reachable: ", err)
-		}
-	}()
+	userutil.CreateUser(ctx, s, user1, password)
+	userutil.CreateUser(ctx, s, user2, password, chrome.KeepState())
+	userutil.CreateUser(ctx, s, user3, password, chrome.KeepState())
+
+	removeUsersOnLoginScreen(ctx, cleanUpCtx, s, user1, user3)
+
 	cr, err := chrome.New(
 		ctx,
 		chrome.NoLogin(),
@@ -115,24 +70,9 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(cleanUpCtx)
+
 	// Check that there is no user3 in LoggedInUsers list.
-	localStateFile, err := os.Open(localStatePath)
-	if err != nil {
-		s.Fatal("Failed to open Local State file: ", err)
-	}
-	defer localStateFile.Close()
-	var localState LocalState
-	b, err := ioutil.ReadAll(localStateFile)
-	if err != nil {
-		s.Fatal("Failed to read Local State file contents: ", err)
-	}
-	if err := json.Unmarshal(b, &localState); err != nil {
-		s.Fatal("Failed to unmarshal Local State: ", err)
-	}
-	knownEmails := make(map[string]bool)
-	for _, email := range localState.Emails {
-		knownEmails[email] = true
-	}
+	knownEmails := userutil.GetKnowEmailsFromLocalState(s)
 	if knownEmails[user3] {
 		s.Fatal("Removed user is still in LoggedInUsers list")
 	}
@@ -143,6 +83,7 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 	} else if !os.IsNotExist(err) {
 		s.Fatal("Unexpected error: ", err)
 	}
+
 	// Connect to login extension.
 	tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
@@ -160,5 +101,61 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 	// Check that there is no user pod for user3.
 	if err := ui.Gone(nodewith.Name(user3).Role(role.Button))(ctx); err != nil {
 		s.Fatal("Removed user pod for " + user3 + " still exists")
+	}
+}
+
+func removeUsersOnLoginScreen(ctx, cleanUpCtx context.Context, s *testing.State, deviceOwner, user string) {
+	// chrome.NoLogin() and chrome.KeepState() are needed to show the login
+	// screen with a user pod (instead of the OOBE login screen).
+	cr, err := chrome.New(
+		ctx,
+		chrome.NoLogin(),
+		chrome.KeepState(),
+		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+	)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanUpCtx)
+	// Connect to login extension.
+	tLoginConn, err := cr.SigninProfileTestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Creating login test API connection failed: ", err)
+	}
+	defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tLoginConn)
+	ui := uiauto.New(tLoginConn)
+	// Wait for user pods to be available.
+	if err := ui.WaitUntilExists(nodewith.Name(user).Role(role.Button))(ctx); err != nil {
+		s.Fatal("Failed to wait for user pods to be available: ", err)
+	}
+	// Remove user pod by clicking remove button twice.
+	if err := ui.LeftClick(nodewith.Name("Open remove dialog for " + user).Role(role.Button))(ctx); err != nil {
+		s.Fatal("Failed to open remove dialog: ", err)
+	}
+	if err := ui.LeftClick(nodewith.Name("Remove account").Role(role.Button))(ctx); err != nil {
+		s.Fatal("Failed to click remove account button first time: ", err)
+	}
+	if err := ui.LeftClick(nodewith.Name("Remove account").Role(role.Button))(ctx); err != nil {
+		s.Fatal("Failed to click remove account button second time: ", err)
+	}
+	// Check that user pod was deleted.
+	if err := ui.WaitUntilGone(nodewith.Name(user).Role(role.Button))(ctx); err != nil {
+		s.Fatal("Removed user pod is still reachable: ", err)
+	}
+
+	// try to delete device owner - it should not be possible
+	if err := ui.WaitUntilExists(nodewith.Name(deviceOwner).Role(role.Button))(ctx); err != nil {
+		s.Fatal("Failed to wait for user pods to be available: ", err)
+	}
+	if err := ui.LeftClick(nodewith.Name(deviceOwner).Role(role.Button))(ctx); err != nil {
+		s.Fatal("Failed to click on user pod: ", err)
+	}
+
+	removeButtonFound, err := ui.IsNodeFound(ctx, nodewith.Name("Open remove dialog for "+deviceOwner).Role(role.Button))
+	if err != nil {
+		s.Fatal("Failed to lookup remove button: ", err)
+	}
+	if removeButtonFound {
+		s.Fatal("Found remove button for device owner, who should not be removable: ", err)
 	}
 }
