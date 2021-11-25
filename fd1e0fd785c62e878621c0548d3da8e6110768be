@@ -254,6 +254,30 @@
       },
       "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82746c28_e93a9b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-25T08:59:14Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nWe have created the partner bug and we will update, regarding Thunderbolt detection of TR devices we are developing the disable data protection access code. Once done we will push.\n\nThanks,\nJilani",
+      "parentUuid": "002847c2_7b8f2019",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 51
+      },
+      "revId": "fd1e0fd785c62e878621c0548d3da8e6110768be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
