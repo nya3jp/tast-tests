@@ -38,10 +38,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"fwupd"},
 		HardwareDeps: hwdep.D(
-			// TODO(b/187699710): make dependent on device presence, not platform
-			hwdep.Platform("puff"),
-			// Dooly doesn't have an MST
-			hwdep.SkipOnModel("dooly"),
+			hwdep.DisplayPortConverter("RTD2142"),
 		),
 	})
 }
