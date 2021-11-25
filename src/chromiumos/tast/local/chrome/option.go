@@ -420,3 +420,13 @@ func ForceLaunchBrowser() Option {
 		return nil
 	}
 }
+
+// EnableFilesAppSWA returns an Option that enables the Files app SWA variant.
+// Files Chrome app variant is the default enabled version.
+// TODO(b/207576612): Remove this config item once Files app SWA is fully launched.
+func EnableFilesAppSWA() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnableFilesAppSWA = true
+		return nil
+	}
+}

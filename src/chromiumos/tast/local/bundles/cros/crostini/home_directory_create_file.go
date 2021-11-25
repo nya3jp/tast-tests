@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -137,6 +138,6 @@ func testCreateFileFromContainer(ctx context.Context, tconn *chrome.TestConn, fi
 		return errors.Wrap(err, "failed to create test file in the container")
 	}
 
-	refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder)
+	refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder(apps.Files.ID))
 	return uiauto.New(tconn).LeftClickUntil(refresh, filesApp.FileExists(fileName))(ctx)
 }
