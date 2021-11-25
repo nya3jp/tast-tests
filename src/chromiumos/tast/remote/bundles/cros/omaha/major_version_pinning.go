@@ -51,7 +51,7 @@ func MajorVersionPinning(ctx context.Context, s *testing.State) {
 			requestApp.UpdateCheck.TargetVersionPrefix = vpChromeOSVersionStr
 			req.Apps = []request.RequestApp{requestApp}
 
-			res, err := request.Send(ctx, req, "stable")
+			res, err := request.Send(ctx, req, "M"+vpMilestoneStr)
 			if err != nil {
 				s.Fatal("Failed to send request: ", err)
 			}
