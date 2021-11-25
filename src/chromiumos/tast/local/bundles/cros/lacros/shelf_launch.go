@@ -28,35 +28,30 @@ func init() {
 			{
 				Fixture:           "lacrosUI",
 				ExtraSoftwareDeps: []string{"lacros_stable"},
-				Val:               false,
 			},
 			{
 				Name:              "unstable",
 				Fixture:           "lacrosUI",
 				ExtraSoftwareDeps: []string{"lacros_unstable"},
 				ExtraAttr:         []string{"informational"},
-				Val:               false,
 			},
 			{
 				Name:              "primary",
 				Fixture:           "lacrosPrimary",
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraAttr:         []string{"informational"},
-				Val:               true, // whether a new browser window opens on startup. See crbug.com/1260037.
 			},
 			{
 				Name:              "primary_unstable",
 				Fixture:           "lacrosPrimary",
 				ExtraSoftwareDeps: []string{"lacros_unstable"},
 				ExtraAttr:         []string{"informational"},
-				Val:               true, // whether a new browser window opens on startup. See crbug.com/1260037.
 			},
 			{
 				Name:              "omaha",
 				Fixture:           "lacrosOmaha",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("kled", "enguarde", "samus", "sparky")), // Only run on a subset of devices since it downloads from omaha and it will not use our lab's caching mechanisms. We don't want to overload our lab.
 				ExtraAttr:         []string{"informational"},
-				Val:               false,
 			}},
 	})
 }
@@ -103,15 +98,6 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 	if !found {
 		s.Fatal("Lacros was not found in the list of shelf items: ", err)
-	}
-
-	// TODO(crbug.com/1260037): Wait until a new browser window is open when Lacros is set as a primary browser.
-	// This is a workaround until https://crbug.com/1268252 is resolved to have a flag to control a startup window behavior for Lacros primary.
-	startupWindow := s.Param().(bool)
-	if startupWindow {
-		if err := launcher.WaitForLacrosWindow(ctx, tconn, ""); err != nil {
-			s.Log("Test may fail if a lacros browser is popped up on startup past this point, but proceeding anyway to check all open windows again")
-		}
 	}
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
