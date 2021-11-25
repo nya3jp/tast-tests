@@ -14,8 +14,8 @@
 	  "94": 14150,
 	  "96": 14268
 	},
-	"CurrentStableChrome": 93,
-	"NextStableChrome": 94,
+	"CurrentStableChrome": 94,
+	"NextStableChrome": 96,
 	"CurrentChromeOSLTS": 90,
 	"CurrentChromeOSLTSMinor": 91
   }
