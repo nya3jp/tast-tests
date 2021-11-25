@@ -70,6 +70,70 @@
       "parentUuid": "c36f290e_4dc6370c",
       "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25c938d7_a1d8f46c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-25T14:12:45Z",
+      "side": 1,
+      "message": "I also would like to see smaller CLs just because it will be much easier to review and you will be able to submit your changes faster. I think in each CL the piece of code you introduce must be used in some test and we should not submit code that we don\u0027t use. So, we should avoid adding all structs in CL \"A\" and use them in CL \"B\".\n\nInstead, for example, you can migrate just Start() function to the new approach and modify it\u0027s callers. In another CL, you will migrate StartIPPUSB() and so on.\n\nWDYT?",
+      "parentUuid": "2e7ecad2_b3b82dfd",
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edc625b7_3f15d609",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-25T14:12:45Z",
+      "side": 1,
+      "message": "You should design your library in the way that this really will be required.\n\nPlease take a look on options pattern in Go: https://www.sohamkamani.com/golang/options-pattern/",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed642fa9_5fa020cf",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-25T14:12:45Z",
+      "side": 1,
+      "message": "nit: no need to pass context here",
+      "range": {
+        "startLine": 258,
+        "startChar": 22,
+        "endLine": 258,
+        "endChar": 41
+      },
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
