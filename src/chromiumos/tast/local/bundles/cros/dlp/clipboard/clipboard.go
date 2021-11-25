@@ -35,7 +35,7 @@ func CheckClipboardBubble(ctx context.Context, ui *uiauto.Context, url string) e
 	bubbleView := nodewith.ClassName("ClipboardDlpBubble").Role(role.Window)
 	bubbleClass := nodewith.ClassName("ClipboardBlockBubble").Ancestor(bubbleView)
 	bubbleButton := nodewith.Name("Got it").Role(role.Button).Ancestor(bubbleClass)
-	messageBlocked := "Pasting from " + url + " to this location is blocked by administrator policy"
+	messageBlocked := "Pasting from " + url + " to this location is blocked by administrator policy. Learn more"
 	bubble := nodewith.Name(messageBlocked).Role(role.StaticText).Ancestor(bubbleClass)
 
 	if err := uiauto.Combine("Bubble ",
