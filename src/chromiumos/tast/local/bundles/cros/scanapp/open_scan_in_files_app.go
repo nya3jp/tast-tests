@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/scanapp/scanning"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -139,7 +140,7 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 
 	_, file := filepath.Split(scan)
 
-	f, err := filesapp.App(ctx, tconn)
+	f, err := filesapp.App(ctx, tconn, apps.Files.ID)
 	if err != nil {
 		s.Fatal("Failed to get Files app: ", err)
 	}

@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -77,7 +78,7 @@ func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {
 
 		alertDialog := nodewith.NameStartingWith("Restore apps?").Role(role.AlertDialog)
 		restoreButton := nodewith.Name("RESTORE").Role(role.Button).Ancestor(alertDialog)
-		downloads := nodewith.Name(filesapp.Downloads).Role(role.TreeItem).Ancestor(filesapp.WindowFinder)
+		downloads := nodewith.Name(filesapp.Downloads).Role(role.TreeItem).Ancestor(filesapp.WindowFinder(apps.Files.ID))
 
 		ui := uiauto.New(tconn)
 		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
