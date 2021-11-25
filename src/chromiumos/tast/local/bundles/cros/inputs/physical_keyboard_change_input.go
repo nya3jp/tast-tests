@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -15,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -44,6 +46,7 @@ func init() {
 func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -93,7 +96,6 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to find the next input method of %q", currentInputMethod)
 		return ime.DefaultInputMethod
 	}
-
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
@@ -113,25 +115,42 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	switchToNextInputMethod := func(ctx context.Context) error {
 		nextInputMethod := findNextInputMethod()
-		if err := uiauto.Combine("switch to next input method in order",
-			keyboard.AccelAction("Ctrl+Shift+Space"),
-			waitUntilCurrentInputMethod(nextInputMethod),
-		)(ctx); err != nil {
+		if err := useractions.NewUserAction(
+			"Switch input method with shortcut Ctrl+Shift+Space",
+			uiauto.Combine("switch to next input method in order",
+				keyboard.AccelAction("Ctrl+Shift+Space"),
+				waitUntilCurrentInputMethod(nextInputMethod),
+			),
+			uc,
+			&useractions.UserActionCfg{
+				Tags:       []useractions.ActionTag{useractions.ActionTagSwitchIME},
+				Attributes: map[string]string{useractions.AttributeTestScenario: fmt.Sprintf("Switch to next input method: %s", nextInputMethod.Name)},
+			},
+		).Run(ctx); err != nil {
 			return errors.Wrap(err, "failed to switch to next input method")
 		}
 		lastActiveInputMethod = currentInputMethod
 		currentInputMethod = nextInputMethod
+		uc.SetAttribute(useractions.AttributeInputMethod, currentInputMethod.Name)
 		return nil
 	}
 
 	switchToLastActiveInputMethod := func(ctx context.Context) error {
-		if err := uiauto.Combine("switch to recent input method",
-			keyboard.AccelAction("Ctrl+Space"),
-			waitUntilCurrentInputMethod(lastActiveInputMethod),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to switch to recent input method")
+		if err := useractions.NewUserAction("Switch input method with shortcut Ctrl+Space",
+			uiauto.Combine("Switch to last active input method",
+				keyboard.AccelAction("Ctrl+Space"),
+				waitUntilCurrentInputMethod(lastActiveInputMethod),
+			),
+			uc,
+			&useractions.UserActionCfg{
+				Tags:       []useractions.ActionTag{useractions.ActionTagSwitchIME},
+				Attributes: map[string]string{useractions.AttributeTestScenario: fmt.Sprintf("Switch to last active input method: %s", lastActiveInputMethod.Name)},
+			},
+		).Run(ctx); err != nil {
+			return errors.Wrap(err, "failed to switch to last active input method")
 		}
 		currentInputMethod, lastActiveInputMethod = lastActiveInputMethod, currentInputMethod
+		uc.SetAttribute(useractions.AttributeInputMethod, currentInputMethod.Name)
 		return nil
 	}
 
