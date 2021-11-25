@@ -34,6 +34,24 @@
       "parentUuid": "b0d3b917_920b3111",
       "revId": "a13883375c9429097b42711b835938c5df89004a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b5584cb_2dbc53ab",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-25T10:33:32Z",
+      "side": 1,
+      "message": "the link is expired. Could you share another link which won\u0027t be expired?",
+      "parentUuid": "ae2407a6_d6fb2bc2",
+      "revId": "a13883375c9429097b42711b835938c5df89004a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
