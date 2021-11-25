@@ -90,6 +90,14 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 		if err := ui.WaitUntilExists(nodewith.Name(user3).Role(role.Button))(ctx); err != nil {
 			s.Fatal("Failed to wait for user pods to be available: ", err)
 		}
+		// Menu button for user3 may not be available. Wait for it or click on user pod.
+		if err := ui.WaitUntilExists(nodewith.Name("Open remove dialog for " + user3).Role(role.Button))(ctx); err != nil {
+			s.Log("User pod isn't selected: ", err)
+			// Click on user3 pod to make menu button available.
+			if err := ui.LeftClick(nodewith.Name(user3).Role(role.Button))(ctx); err != nil {
+				s.Fatal("Failed to select user pod: ", err)
+			}
+		}
 		// Remove user pod by clicking remove button twice.
 		if err := ui.LeftClick(nodewith.Name("Open remove dialog for " + user3).Role(role.Button))(ctx); err != nil {
 			s.Fatal("Failed to open remove dialog: ", err)
