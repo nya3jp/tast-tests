@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b52cbecf_2b10d38a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-11-25T17:38:32Z",
+      "side": 1,
+      "message": "Just to be sure, when you mention variation you\u0027re talking about adding e.g. lacros.DocsCUJ.shelf in the same docs_cuj.go file? I\u0027ve noticed now that other tests are indeed doing like that, thanks for pointing out. Are there advantages in practice or is just a matter of code structuring? I can follow-up with that next for sure.\n\nAbout cold / warm start effects and their difference depending the type of Lacros launch, I\u0027m very interested in understanding the impacts also. At the moment I copied the idea of perftest.go to wait for the stabilization of CPU and I also took  care about the interference of Shelf tooltip (when the mouse cursor hovers on Lacros icon). So I\u0027m not sure now what other systems could be influencing the cold start of Lacros from the Shelf, that could be different than the launch via command-line. Any information on this regard is very welcome.\n\nThank you for the review!",
+      "parentUuid": "f65bd628_004628bc",
+      "revId": "ea5ae3005d79d52617adb4888a8ab769d9b3cab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "229bec9e_88778e4b",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
         "patchSetId": 1
@@ -83,6 +101,30 @@
       "writtenOn": "2021-11-25T15:29:12Z",
       "side": 1,
       "message": "unused. you can drop them now.",
+      "range": {
+        "startLine": 180,
+        "startChar": 23,
+        "endLine": 180,
+        "endChar": 77
+      },
+      "revId": "ea5ae3005d79d52617adb4888a8ab769d9b3cab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4737cc90_ea6ad8c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-11-25T17:38:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "229bec9e_88778e4b",
       "range": {
         "startLine": 180,
         "startChar": 23,
