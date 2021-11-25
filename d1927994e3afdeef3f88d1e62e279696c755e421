@@ -16,6 +16,23 @@
       "message": "Thank you reviewers, \nthis CL contains cws.go related changes which was introduced in: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3229355\nAs suggested, those changes were separated as an independent CL.\nPlease review.",
       "revId": "d1927994e3afdeef3f88d1e62e279696c755e421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9411f0d_07676760",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-11-25T00:48:03Z",
+      "side": 1,
+      "message": "Thanks for improving the package.",
+      "revId": "d1927994e3afdeef3f88d1e62e279696c755e421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
