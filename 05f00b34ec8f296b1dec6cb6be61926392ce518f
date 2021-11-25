@@ -39,6 +39,30 @@
       },
       "revId": "05f00b34ec8f296b1dec6cb6be61926392ce518f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bb7e92b_478c5f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-11-25T22:54:42Z",
+      "side": 1,
+      "message": "Thanks for the information and suggestion!\nOne question: I just tried DumpLogOnError and realized that this will output the log directly instead of returning it in the error. Since the caller is wrapped in a Poll(), and this command is very likely to fail in the first run, it will spam logs... \nWhat would you suggest for this case?",
+      "parentUuid": "0db612d9_c88ad38e",
+      "range": {
+        "startLine": 273,
+        "startChar": 62,
+        "endLine": 273,
+        "endChar": 76
+      },
+      "revId": "05f00b34ec8f296b1dec6cb6be61926392ce518f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
