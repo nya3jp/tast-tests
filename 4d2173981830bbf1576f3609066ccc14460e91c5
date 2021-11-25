@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5270bd37_cb1bbcfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1426749
+      },
+      "writtenOn": "2021-11-25T17:42:05Z",
+      "side": 1,
+      "message": "This test is sometimes failing (https://tastboard.corp.google.com/test/login.RemoveExistingUser) Seems like the user pod, that we are trying to remove isn\u0027t selected. We can\u0027t click on it everytime, as it will trigger online sign-in window to pop up. \n\nPTAL!  ",
+      "revId": "4d2173981830bbf1576f3609066ccc14460e91c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
