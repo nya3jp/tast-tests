@@ -16,6 +16,24 @@
       "message": "Is there some way we can split this CL into smaller CLs? Looks like there are three components to the CL listed in the description, can it be split up via that?",
       "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf7dcaa_942b5c92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-11-25T04:49:41Z",
+      "side": 1,
+      "message": "Introducing new structs (the first two bullet points) is doable and perhaps shortens the diff on setup.go. However, the _big_ changes here (unifying `Start()`, `StartIPPUSB()`, and `StartScanner()` under one function) will still result in a big diff in setup.go.\n\nI\u0027m not sure how granular you want this, like so?\n1. Add all new structs\n2. Add all new boilerplate (copy-pasting existing implementation wherever it\u0027s reused)\n3. Migrate all callers\n4. Remove all old boilerplate\n\nThis will take some time to rewrite and does not solve the core problem of heavy churn in setup.go. I am happy to do it if you feel strongly that it improves reviewability, but please confirm directly if you want to see it exploded in this much detail.",
+      "parentUuid": "5516e495_1fbee102",
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
