@@ -171,6 +171,9 @@ type StartAppFunc func(context.Context) (*App, error)
 // StopAppFunc stops CCA.
 type StopAppFunc func(context.Context, bool) error
 
+// ResetTestBridgeFunc resets the test bridge.
+type ResetTestBridgeFunc func(context.Context) error
+
 // TestWithAppFunc is the function to run with app.
 type TestWithAppFunc func(context.Context, *App) error
 
@@ -187,6 +190,9 @@ type FixtureData struct {
 	StartApp StartAppFunc
 	// StopApp stops CCA which can be used between subtests.
 	StopApp StopAppFunc
+	// ResetTestBridgeFunc resets the test bridge. Usually we don't need to call
+	// it explicitly unless the sub test launch/tear-down the app itself.
+	ResetTestBridge ResetTestBridgeFunc
 	// SwitchScene switches the camera scene to the given scene. This only works
 	// for fixtures using fake camera stream.
 	SwitchScene func(string) error
@@ -306,15 +312,16 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 
 	success = true
 	return FixtureData{Chrome: f.cr, ARC: f.arc,
-		TestBridge:     f.testBridge,
-		App:            f.cca,
-		ResetChrome:    f.resetChrome,
-		StartApp:       f.startApp,
-		StopApp:        f.stopApp,
-		SwitchScene:    f.switchScene,
-		RunTestWithApp: f.runTestWithApp,
-		PrepareChart:   f.prepareChart,
-		SetDebugParams: f.setDebugParams}
+		TestBridge:      f.testBridge,
+		App:             f.cca,
+		ResetChrome:     f.resetChrome,
+		StartApp:        f.startApp,
+		StopApp:         f.stopApp,
+		ResetTestBridge: f.resetTestBridge,
+		SwitchScene:     f.switchScene,
+		RunTestWithApp:  f.runTestWithApp,
+		PrepareChart:    f.prepareChart,
+		SetDebugParams:  f.setDebugParams}
 }
 
 func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {

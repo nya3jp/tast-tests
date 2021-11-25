@@ -108,7 +108,7 @@ func init() {
 func CCAUIIntent(ctx context.Context, s *testing.State) {
 	a := s.FixtValue().(cca.FixtureData).ARC
 	cr := s.FixtValue().(cca.FixtureData).Chrome
-	tb := s.FixtValue().(cca.FixtureData).TestBridge()
+	resetTestBridge := s.FixtValue().(cca.FixtureData).ResetTestBridge
 
 	// In ARCVM, Downloads integration depends on MyFiles mount.
 	if err := arc.WaitForARCMyFilesVolumeMountIfARCVMEnabled(ctx, a); err != nil {
@@ -236,8 +236,14 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 			},
 		},
 	} {
+		tb := s.FixtValue().(cca.FixtureData).TestBridge()
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tc.Name, func(ctx context.Context, s *testing.State) {
+			cleanupCtx := ctx
+			ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+			defer cancel()
+			defer resetTestBridge(cleanupCtx)
+
 			if err := cca.ClearSavedDir(ctx, cr); err != nil {
 				s.Fatal("Failed to clear saved directory: ", err)
 			}
@@ -249,8 +255,14 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 		cancel()
 	}
 
+	tb := s.FixtValue().(cca.FixtureData).TestBridge()
 	subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 	s.Run(subTestCtx, "instances coexistanece test", func(ctx context.Context, s *testing.State) {
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
+		defer cancel()
+		defer resetTestBridge(cleanupCtx)
+
 		if err := cca.ClearSavedDir(ctx, cr); err != nil {
 			s.Fatal("Failed to clear saved directory: ", err)
 		}
