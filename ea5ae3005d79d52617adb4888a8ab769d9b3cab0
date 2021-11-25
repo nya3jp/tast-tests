@@ -16,6 +16,23 @@
       "message": "Hi Eliot, can you PTAL? I think Hidehiko is OOO. Thank you.",
       "revId": "ea5ae3005d79d52617adb4888a8ab769d9b3cab0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03bf095_fae341bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-25T04:10:16Z",
+      "side": 1,
+      "message": "optional: what about splitting this into two variations, one with lacros via command line and one with shelf? we have similar variations in other tests. Also, I wonder if there might not be some cold/warm startup effects from running lacros via command line and then via shelf, and if this test is affected by that.\n\nit\u0027s optional, not even sure if it\u0027s a good idea but maybe think about it\n\nAdded hidehiko@ who is back from OOO today",
+      "revId": "ea5ae3005d79d52617adb4888a8ab769d9b3cab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
