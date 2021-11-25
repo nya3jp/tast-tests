@@ -16,9 +16,10 @@ import (
 
 	cpb "chromiumos/system_api/vm_cicerone_proto"   // protobufs for container management
 	vmpb "chromiumos/system_api/vm_concierge_proto" // protobufs for VM management
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -44,7 +45,9 @@ type Concierge struct {
 // GetRunningConcierge returns a concierge instance without restarting concierge service.
 // Returns an error if concierge is not available.
 func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
-	h, err := cryptohome.UserHash(ctx, user)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	h, err := cryptohome.GetUserHash(ctx, user)
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +69,9 @@ func GetRunningConcierge(ctx context.Context, user string) (*Concierge, error) {
 
 // NewConcierge restarts the vm_concierge service, which stops all running VMs.
 func NewConcierge(ctx context.Context, user string) (*Concierge, error) {
-	h, err := cryptohome.UserHash(ctx, user)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	h, err := cryptohome.GetUserHash(ctx, user)
 	if err != nil {
 		return nil, err
 	}

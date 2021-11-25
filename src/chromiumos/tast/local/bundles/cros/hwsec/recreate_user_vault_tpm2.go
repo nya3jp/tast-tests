@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -48,13 +47,14 @@ func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
 	}
 
 	utility := helper.CryptohomeClient()
+	daemonController := helper.DaemonController()
 
 	// Resets the TPM, system, and user states before running the tests.
 	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
-	if err = cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
+	if err := daemonController.EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+		s.Fatal("Failed to ensure high-level TPM daemons: ", err)
 	}
 	if err := helper.EnsureTPMIsReadyAndBackupSecrets(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)
@@ -84,8 +84,8 @@ func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
 	if err := helper.DaemonController().RestartTPMDaemons(ctx); err != nil {
 		s.Fatal("Failed to restart TPM-related daemons to simulate reboot: ", err)
 	}
-	if err = cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
+	if err := daemonController.EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+		s.Fatal("Failed to ensure high-level TPM daemons: ", err)
 	}
 	if err := utility.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword), false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user vault: ", err)
@@ -110,8 +110,8 @@ func RecreateUserVaultTPM2(ctx context.Context, s *testing.State) {
 	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
-	if err = cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
+	if err := daemonController.EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+		s.Fatal("Failed to ensure high-level TPM daemons: ", err)
 	}
 	if err := helper.EnsureTPMIsReadyAndBackupSecrets(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)

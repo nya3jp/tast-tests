@@ -7,9 +7,10 @@ package login
 import (
 	"context"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -44,7 +45,11 @@ func logInAsGuest(ctx context.Context, cfg *config.Config, sess *driver.Session)
 		return err
 	}
 
-	if err := cryptohome.WaitForUserMount(ctx, cfg.Creds().User); err != nil {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
+
+	if err := mountInfo.WaitForUserMount(ctx, cfg.Creds().User); err != nil {
 		return err
 	}
 

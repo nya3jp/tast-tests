@@ -7,7 +7,8 @@ package cryptohome
 import (
 	"context"
 
-	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/common/hwsec"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -26,11 +27,14 @@ func init() {
 func GuestSession(ctx context.Context, s *testing.State) {
 	// Guest session is mounted in the user session mount namespace, so first
 	// check whether the namespace is created.
-	if err := cryptohome.CheckMountNamespace(ctx); err != nil {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
+	if err := mountInfo.CheckMountNamespace(ctx); err != nil {
 		s.Log("Mount namespace is not ready: ", err)
 	}
 	if err := cryptohome.MountGuest(ctx); err != nil {
 		s.Fatal("Failed to mount guest: ", err)
 	}
-	defer cryptohome.UnmountVault(ctx, cryptohome.GuestUser)
+	defer cryptohome.Unmount(ctx, hwsec.GuestUser)
 }

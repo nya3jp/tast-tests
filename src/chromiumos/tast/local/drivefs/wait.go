@@ -10,8 +10,9 @@ import (
 	"path"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -33,7 +34,9 @@ func WaitForDriveFs(ctx context.Context, username string) (string, error) {
 	}
 
 	// Check that cache folder was created by cryptohome.
-	homePath, err := cryptohome.UserPath(ctx, normUser)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	homePath, err := cryptohome.GetHomeUserPath(ctx, normUser)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get home path")
 	}

@@ -15,12 +15,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -79,18 +80,20 @@ func init() {
 // /home/root/<hash>/android-data. Then, /data/media/0/Pictures/capybaras will be appended to the directory path
 // to get the final path: /home/root/<hash>/android-data/data/media/0/Pictures.
 func sdCardTargetDir(ctx context.Context, user string) (string, error) {
-	androidDataDir, err := arc.AndroidDataDir(user)
+	androidDataDir, err := arc.AndroidDataDir(ctx, user)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get android-data path for user %s", user)
 	}
 	return filepath.Join(androidDataDir, "data", "media", "0", "Pictures", "capybaras"), nil
 }
 
-// myFilesTargetDir gets the path to MyFiles directory by cryptohome.UserPath(), which will return a path in the format:
+// myFilesTargetDir gets the path to MyFiles directory by cryptohome.GetHomeUserPath(), which will return a path in the format:
 // /home/user/<hash>. Then, /MyFiles/capybaras will be appended to the directory path
 // to get the final path: /home/root/<hash>/MyFiles/capybaras.
 func myFilesTargetDir(ctx context.Context, user string) (string, error) {
-	cryptohomeUserPath, err := cryptohome.UserPath(ctx, user)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	cryptohomeUserPath, err := cryptohome.GetHomeUserPath(ctx, user)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get cryptohome user path for user %s", user)
 	}

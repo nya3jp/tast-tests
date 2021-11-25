@@ -15,12 +15,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -232,7 +233,9 @@ func readPackageRestrictions(ctx context.Context, cr *chrome.Chrome) ([]byte, er
 	const packageRestrictionsPath = "/data/system/users/0/package-restrictions.xml"
 
 	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.SystemPath(cr.User())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	rootCryptDir, err := cryptohome.GetRootUserPath(ctx, cr.User())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}

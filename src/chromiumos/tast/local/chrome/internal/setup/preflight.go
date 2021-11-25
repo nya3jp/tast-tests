@@ -10,9 +10,10 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -27,14 +28,18 @@ func PreflightCheck(ctx context.Context, cfg *config.Config) error {
 		return err
 	}
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		return errors.Wrap(err, "failed to create hwsec local helper")
+	}
+	daemonController := helper.DaemonController()
+
 	// Perform an early high-level check of cryptohomed to avoid
 	// less-descriptive errors later if it's broken.
 	if cfg.LoginMode() != config.NoLogin {
-		if err := cryptohome.CheckService(ctx); err != nil {
-			// Log problems in cryptohomed's dependencies.
-			for _, e := range cryptohome.CheckDeps(ctx) {
-				testing.ContextLog(ctx, "Potential cryptohome issue: ", e)
-			}
+		// Ensure cryptohome started correctly.
+		if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
 			return errors.Wrap(err, "failed to check cryptohome service")
 		}
 	}

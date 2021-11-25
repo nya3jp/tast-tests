@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/cryptohome/cleanup"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -40,12 +39,14 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 		password      = "1234"
 	)
 
-	cmdRunner := hwseclocal.NewCmdRunner()
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	daemonController := helper.DaemonController()
+	cryptohome := helper.CryptohomeClient()
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
 
 	// Start cryptohomed and wait for it to be available
 	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
@@ -75,16 +76,16 @@ func AutomaticCleanup(ctx context.Context, s *testing.State) {
 	defer cryptohome.RemoveVault(ctx, user2)
 
 	// Unmount just the first user
-	if err := cryptohome.UnmountVault(ctx, user1); err != nil {
+	if _, err := cryptohome.Unmount(ctx, user1); err != nil {
 		s.Fatal("Failed to unmount user vault: ", err)
 	}
 
 	// Remount the second user
-	if err := cryptohome.CreateVault(ctx, user2, password); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user2, password), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to remount user vault: ", err)
 	}
 
-	if err := cryptohome.WaitForUserMount(ctx, user2); err != nil {
+	if err := mountInfo.WaitForUserMount(ctx, user2); err != nil {
 		s.Fatal("Failed to remount user vault: ", err)
 	}
 

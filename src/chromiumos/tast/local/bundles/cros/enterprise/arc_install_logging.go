@@ -15,12 +15,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -285,7 +286,9 @@ func readChromeLogFile(ctx context.Context, cr *chrome.Chrome) ([]byte, error) {
 	const logFilePath = "/app_push_install_log"
 
 	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	rootCryptDir, err := cryptohome.GetHomeUserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}

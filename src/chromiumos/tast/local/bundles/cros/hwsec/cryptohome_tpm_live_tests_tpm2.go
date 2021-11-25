@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -35,6 +34,7 @@ func init() {
 func CryptohomeTPMLiveTestsTPM2(ctx context.Context, s *testing.State) {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
+	daemonController := helper.DaemonController()
 	if err != nil {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
@@ -42,8 +42,9 @@ func CryptohomeTPMLiveTestsTPM2(ctx context.Context, s *testing.State) {
 	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
-	if err := cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("cryptohome D-Bus service didn't come back: ", err)
+
+	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
+		s.Fatal("Failed to ensure cryptohomed: ", err)
 	}
 
 	// Waits for TPM to be owned.

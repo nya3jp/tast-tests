@@ -10,8 +10,9 @@ import (
 	"io/ioutil"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -109,6 +110,8 @@ func OwnershipNotRetaken(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to log in %s with Chrome: %v", testUser, err)
 	}
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 	defer cryptohome.RemoveVault(ctx, testUser)
 	// Ignore error on Close(), because anyways restart "ui" just below
 	// logs out.

@@ -11,13 +11,14 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -137,7 +138,9 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 		s.Fatal("Removed user is still in LoggedInUsers list")
 	}
 	// Check that cryptohome for user3 was deleted.
-	path, err := cryptohome.UserPath(ctx, user3)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	path, err := cryptohome.GetHomeUserPath(ctx, user3)
 	if _, err := os.Stat(path); err == nil {
 		s.Fatal("Cryptohome directory still exists under ", path)
 	} else if !os.IsNotExist(err) {

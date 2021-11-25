@@ -17,10 +17,11 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/dbusutil"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
@@ -30,7 +31,7 @@ import (
 // The FakeUser/GuestUser are used to simulate a regular/guest user login.
 const (
 	FakeUser                   = chrome.DefaultUser
-	GuestUser                  = cryptohome.GuestUser
+	GuestUser                  = hwsec.GuestUser
 	CryptohomePathCommand      = "/usr/sbin/cryptohome-path"
 	DaemonStoreBase            = "/run/daemon-store/shill"
 	ShillUserProfilesDir       = "/run/shill/user_profiles"
@@ -87,14 +88,16 @@ func setUp(ctx context.Context, env *TestEnv, isGuest bool) error {
 
 	var user, userType string
 	if isGuest {
-		user = cryptohome.GuestUser
+		user = hwsec.GuestUser
 		userType = "guest"
 	} else {
 		user = FakeUser
 		userType = "fake"
 	}
 
-	userHash, err := cryptohome.UserHash(ctx, user)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	userHash, err := cryptohome.GetUserHash(ctx, user)
 	if err != nil {
 		return errors.Wrapf(err, "failed getting the user hash for the %s user", userType)
 	}

@@ -11,6 +11,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
@@ -21,7 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -99,7 +100,9 @@ func Fsp(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome app installation failed: ", err)
 	}
 
-	userPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	userPath, err := cryptohome.GetHomeUserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.NormalizedUser(), err)
 	}

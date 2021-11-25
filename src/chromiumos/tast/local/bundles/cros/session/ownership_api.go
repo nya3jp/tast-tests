@@ -18,9 +18,10 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
 	"chromiumos/tast/local/upstart"
@@ -61,10 +62,14 @@ func deviceSetUp(ctx context.Context, user, pass, p12Path string, key *rsa.Publi
 		// Ignore error.
 		upstart.EnsureJobRunning(ctx, "ui")
 	}()
+
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	if err = session.ClearDeviceOwnership(sctx); err != nil {
 		return err
 	}
-	if err = cryptohome.CreateVault(sctx, user, pass); err != nil {
+	if err := cryptohome.MountVault(sctx, "bar", hwsec.NewPassAuthConfig(user, pass), true, hwsec.NewVaultConfig()); err != nil {
 		return err
 	}
 	if err = createOwnerKey(sctx, user, p12Path, key); err != nil {
@@ -99,7 +104,9 @@ func createOwnerKey(ctx context.Context, user, p12Path string, pubkey *rsa.Publi
 
 // pushToNSS installs PKCS #12 certification data into nssdb for the given user.
 func pushToNSS(ctx context.Context, user, p12Path string) error {
-	upath, err := cryptohome.UserPath(ctx, user)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	upath, err := cryptohome.GetHomeUserPath(ctx, user)
 	if err != nil {
 		return err
 	}

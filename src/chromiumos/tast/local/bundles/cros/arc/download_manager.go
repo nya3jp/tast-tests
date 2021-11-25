@@ -17,11 +17,12 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	androidui "chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -97,7 +98,9 @@ func DownloadManager(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to read %s: %v", sourcePath, err)
 	}
 
-	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.User())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	cryptohomeUserPath, err := cryptohome.GetHomeUserPath(ctx, cr.User())
 	if err != nil {
 		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.User(), err)
 	}

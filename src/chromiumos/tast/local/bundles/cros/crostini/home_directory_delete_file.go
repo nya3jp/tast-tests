@@ -9,13 +9,14 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -84,7 +85,9 @@ func HomeDirectoryDeleteFile(ctx context.Context, s *testing.State) {
 	defer filesApp.Close(cleanupCtx)
 
 	const fileName = "testfile.txt"
-	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	ownerID, err := cryptohome.GetUserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

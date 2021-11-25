@@ -12,12 +12,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/storage"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -51,7 +52,9 @@ func MyFiles(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
 	}
 
-	cryptohomeUserPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	cryptohomeUserPath, err := cryptohome.GetHomeUserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatalf("Failed to get the cryptohome user path for %s: %v", cr.NormalizedUser(), err)
 	}

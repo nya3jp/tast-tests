@@ -12,9 +12,10 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -75,7 +76,9 @@ func SSHFSMount(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))
 
-	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	ownerID, err := cryptohome.GetUserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

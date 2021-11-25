@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -43,6 +42,7 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	tpmManager := helper.TPMManagerClient()
+	daemonController := helper.DaemonController()
 
 	// In this test, we want to check if DA counter increases, and then reset it to see if everything is correct.
 	// Reset/Clear TPM => Check DA Counter => Create NVRAM Index => Write NVRAM Index => Check DA Counter => Reset DA Lockout => Check DA Counter
@@ -52,8 +52,8 @@ func DictionaryAttackLockoutResetTPM2(ctx context.Context, s *testing.State) {
 	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
-	if err := cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
+	if err := daemonController.EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+		s.Fatal("Failed to ensure high-level TPM daemons: ", err)
 	}
 	if err := helper.EnsureTPMIsReadyAndBackupSecrets(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
 		s.Fatal("Failed to wait for TPM to be owned: ", err)

@@ -14,8 +14,9 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
 	"chromiumos/tast/testing"
@@ -49,7 +50,9 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 
-	if err = cryptohome.RemoveVault(ctx, testUser); err != nil {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	if _, err = cryptohome.RemoveVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to remove vault: ", err)
 	}
 
@@ -98,7 +101,7 @@ func OwnershipRetaken(ctx context.Context, s *testing.State) {
 	}
 	defer ws.Close(ctx)
 
-	if err = cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(testUser, testPass), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create vault: ", err)
 	}
 	if err = sm.StartSession(ctx, testUser, ""); err != nil {

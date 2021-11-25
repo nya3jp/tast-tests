@@ -7,7 +7,9 @@ package cryptohome
 import (
 	"context"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -24,19 +26,23 @@ func init() {
 }
 
 func KioskSession(ctx context.Context, s *testing.State) {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohomeClient := hwsec.NewCryptohomeClient(cmdRunner)
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohomeClient)
+
 	// Unmount all user vaults before we start.
-	if err := cryptohome.UnmountAll(ctx); err != nil {
+	if err := cryptohomeClient.UnmountAll(ctx); err != nil {
 		s.Log("Failed to unmount all before test starts: ", err)
 	}
 
-	if err := cryptohome.MountKiosk(ctx); err != nil {
+	if err := cryptohomeClient.MountKiosk(ctx); err != nil {
 		s.Fatal("Failed to mount kiosk: ", err)
 	}
 	// Unmount Vault.
-	cryptohome.UnmountVault(ctx, cryptohome.KioskUser)
+	cryptohomeClient.Unmount(ctx, hwsec.KioskUser)
 
 	// Test if existing kiosk vault can be signed in with AuthSession.
-	if err := cryptohome.AuthSessionMountFlow(ctx, true /*Kiosk User*/, cryptohome.KioskUser, "" /* Empty passkey*/, false /*Create User*/); err != nil {
+	if err := cryptohome.AuthSessionMountFlow(ctx, cryptohomeClient, mountInfo, true /*Kiosk User*/, hwsec.KioskUser, "" /* Empty passkey*/, false /*Create User*/); err != nil {
 		s.Fatal("Failed to Mount with AuthSession -: ", err)
 	}
 }

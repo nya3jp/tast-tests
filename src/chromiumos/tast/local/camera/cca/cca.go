@@ -19,6 +19,7 @@ import (
 
 	"github.com/mafredri/cdp/protocol/target"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -26,7 +27,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -989,7 +990,9 @@ func (a *App) RecordGif(ctx context.Context, save bool) (os.FileInfo, error) {
 
 // savedDir returns the path to the folder where captured files might be saved.
 func savedDir(ctx context.Context, cr *chrome.Chrome) (string, error) {
-	path, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	path, err := cryptohome.GetHomeUserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		return "", err
 	}

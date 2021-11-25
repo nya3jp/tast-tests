@@ -9,7 +9,8 @@ import (
 
 	"github.com/godbus/dbus"
 
-	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/common/hwsec"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -35,11 +36,14 @@ func RejectDuplicate(ctx context.Context, s *testing.State) {
 
 	const user = "first_user@nowhere.com"
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	// Create clean vault.
-	if err := cryptohome.RemoveVault(ctx, user); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, user); err != nil {
 		s.Fatalf("Failed to remove the vault for %s: %v", user, err)
 	}
-	if err := cryptohome.CreateVault(ctx, user, ""); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user, ""), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatalf("Failed to create a vault for %s: %v", user, err)
 	}
 	defer cryptohome.RemoveVault(ctx, user)

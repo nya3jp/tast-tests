@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -56,9 +55,11 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	daemonController := helper.DaemonController()
+	cryptohome := helper.CryptohomeClient()
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
 
 	createUser := func(ctx context.Context, user, pass string) error {
-		if err := cryptohome.CreateVault(ctx, user, pass); err != nil {
+		if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user, password), true, hwsec.NewVaultConfig()); err != nil {
 			return errors.Wrap(err, "failed to create user vault")
 		}
 		success := false
@@ -68,7 +69,7 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 			}
 		}()
 
-		hash, err := cryptohome.UserHash(ctx, user)
+		hash, err := cryptohome.GetUserHash(ctx, user)
 		if err != nil {
 			return errors.Wrap(err, "failed to get user hash")
 		}
@@ -98,7 +99,7 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to set user old")
 		}
 
-		hash, err := cryptohome.UserHash(ctx, user)
+		hash, err := cryptohome.GetUserHash(ctx, user)
 		if err != nil {
 			return errors.Wrap(err, "failed to get user hash")
 		}
@@ -117,15 +118,11 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start cryptohomed: ", err)
 	}
 
-	if err := cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Failed to start cryptohomed: ", err)
-	}
-
 	if err := createUser(ctx, user1, password); err != nil {
 		s.Fatal("Failed to create user with content: ", err)
 	}
 	defer func() {
-		cryptohome.UnmountVault(ctx, user1)
+		cryptohome.Unmount(ctx, user1)
 		cryptohome.RemoveVault(ctx, user1)
 	}()
 
@@ -133,7 +130,7 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create user with content: ", err)
 	}
 	defer func() {
-		cryptohome.UnmountVault(ctx, user2)
+		cryptohome.Unmount(ctx, user2)
 		cryptohome.RemoveVault(ctx, user2)
 	}()
 
@@ -145,20 +142,20 @@ func UserTimestamp(ctx context.Context, s *testing.State) {
 		s.Fatal("Unexpected value for last activity: ", err)
 	}
 
-	if err := cryptohome.UnmountVault(ctx, user1); err != nil {
+	if _, err := cryptohome.Unmount(ctx, user1); err != nil {
 		s.Fatal("Failed to unmount user vault: ", err)
 	}
 
-	if err := cryptohome.CreateVault(ctx, user2, password); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user2, password), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to remount user vault: ", err)
 	}
 
-	if err := cryptohome.WaitForUserMount(ctx, user2); err != nil {
+	if err := mountInfo.WaitForUserMount(ctx, user2); err != nil {
 		s.Fatal("Failed to remount user vault: ", err)
 	}
-	defer cryptohome.UnmountVault(ctx, user2)
+	defer cryptohome.Unmount(ctx, user2)
 
-	hash, err := cryptohome.UserHash(ctx, user2)
+	hash, err := cryptohome.GetUserHash(ctx, user2)
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

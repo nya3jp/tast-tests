@@ -10,8 +10,9 @@ import (
 	"io/ioutil"
 	"path/filepath"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -28,7 +29,9 @@ type VMTask struct {
 
 // Run executes the list of VMCommands defined in VMTask in the existing VM from the TestEnvironment.
 func (vt *VMTask) Run(ctx context.Context, testEnv *TestEnv) error {
-	ownerID, err := cryptohome.UserHash(ctx, testEnv.cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	ownerID, err := cryptohome.GetUserHash(ctx, testEnv.cr.NormalizedUser())
 	if err != nil {
 		return errors.Wrap(err, "failed to get user hash")
 	}

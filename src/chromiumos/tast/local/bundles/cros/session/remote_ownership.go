@@ -14,7 +14,8 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 
-	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/common/hwsec"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
 	"chromiumos/tast/testing"
@@ -90,10 +91,12 @@ func RemoteOwnership(ctx context.Context, s *testing.State) {
 		testPass = "test_password"
 	)
 	// Create clean vault for the test user.
-	if err = cryptohome.RemoveVault(ctx, testUser); err != nil {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	if _, err = cryptohome.RemoveVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to remove vault: ", err)
 	}
-	if err = cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(testUser, testPass), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create vault: ", err)
 	}
 	newPrivKey, err := rsa.GenerateKey(rand.Reader, 2048)

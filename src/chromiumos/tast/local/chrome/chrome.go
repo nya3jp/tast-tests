@@ -18,6 +18,7 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/caller"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/chrome/browser"
@@ -28,7 +29,7 @@ import (
 	"chromiumos/tast/local/chrome/internal/login"
 	"chromiumos/tast/local/chrome/internal/setup"
 	"chromiumos/tast/local/chrome/jslog"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/local/minidump"
 	"chromiumos/tast/testing"
@@ -39,7 +40,7 @@ const (
 	// LoginTimeout is the maximum amount of time that Chrome is expected to take to perform login.
 	// Tests that call New with the default fake login mode should declare a timeout that's at least this long.
 	// Tast waits for login by checking when all partitions are mounted and ready. For normal login this takes up most of the time.
-	LoginTimeout = cryptohome.WaitForUserTimeout
+	LoginTimeout = hwsec.WaitForUserTimeout
 
 	// GAIALoginTimeout is the maximum amount of the time that Chrome is expected
 	// to take to perform actual gaia login. As far as I checked a few samples of
@@ -304,7 +305,9 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	}()
 
 	if cfg.LoginMode() != config.NoLogin && !cfg.KeepState() {
-		if err := cryptohome.RemoveUserDir(ctx, cfg.NormalizedUser()); err != nil {
+		cmdRunner := hwseclocal.NewLoglessCmdRunner()
+		cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+		if _, err := cryptohome.RemoveVault(ctx, cfg.NormalizedUser()); err != nil {
 			return nil, errors.Wrapf(err, "failed to remove cryptohome user directory for %s", cfg.NormalizedUser())
 		}
 	}

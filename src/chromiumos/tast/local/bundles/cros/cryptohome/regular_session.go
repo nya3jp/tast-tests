@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -38,6 +37,7 @@ func RegularSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	daemonController := helper.DaemonController()
+	cryptohome := helper.CryptohomeClient()
 
 	// Ensure cryptohomed is started and wait for it to be available
 	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
@@ -49,11 +49,11 @@ func RegularSession(ctx context.Context, s *testing.State) {
 		s.Log("Failed to unmount all before test starts: ", err)
 	}
 	// Mount user cryptohome for test user.
-	if err := cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(testUser, testPass), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount user vault: ", err)
 	}
 	// Unmount user vault directory and daemon-store directories.
-	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
+	if _, err := cryptohome.Unmount(ctx, testUser); err != nil {
 		s.Error("Failed to unmount user vault: ", err)
 	}
 }

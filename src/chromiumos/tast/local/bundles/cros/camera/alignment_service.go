@@ -14,12 +14,13 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/crd"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	pb "chromiumos/tast/services/cros/camerabox"
 	"chromiumos/tast/testing"
 )
@@ -81,7 +82,9 @@ func (a *AlignmentService) ManualAlign(ctx context.Context, req *pb.ManualAlignR
 
 // copyPreviewFrame copies the last preview frame image from download folder for debugging.
 func (a *AlignmentService) copyPreviewFrame(ctx context.Context, cr *chrome.Chrome) error {
-	userPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	userPath, err := cryptohome.GetHomeUserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		return errors.Wrap(err, "failed to get the cryptohome user path")
 	}

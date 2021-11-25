@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -22,7 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -388,7 +389,9 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	defer sender.Close(ctx)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	ownerID, err := cryptohome.GetUserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

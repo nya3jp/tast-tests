@@ -11,11 +11,12 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -231,8 +232,11 @@ func WebUIJSErrors(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	user := cr.NormalizedUser()
-	path, err := cryptohome.UserPath(ctx, user)
+	path, err := cryptohome.GetHomeUserPath(ctx, user)
 	if err != nil {
 		s.Fatal("Couldn't get user path: ", err)
 	}

@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -19,7 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -185,8 +186,12 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 
 // setUpUserPIN sets up a test user with a specific PIN.
 func setUpUserPIN(ctx context.Context, cr *chrome.Chrome, PIN, password string, autosubmit bool) (*chrome.TestConn, error) {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
+
 	user := cr.NormalizedUser()
-	if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
+	if mounted, err := mountInfo.IsMounted(ctx, user); err != nil {
 		return nil, errors.Wrapf(err, "failed to check mounted vault for %q", user)
 	} else if !mounted {
 		return nil, errors.Wrapf(err, "no mounted vault for %q", user)

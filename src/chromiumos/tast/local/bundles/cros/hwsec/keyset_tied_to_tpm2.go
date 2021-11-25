@@ -9,7 +9,6 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -35,13 +34,13 @@ func init() {
 // It'll reset the TPM, login and logout to create a vault. Then, it'll optionally
 // reboot. After that, it'll take ownership, login again, and check that the keyset
 // is tied to the TPM.
-func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.State, utility *hwsec.CryptohomeClient, helper *hwseclocal.CmdHelperLocal, reboot bool) {
+func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.State, daemonController *hwsec.DaemonController, utility *hwsec.CryptohomeClient, helper *hwseclocal.CmdHelperLocal, reboot bool) {
 	// Reset TPM.
 	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to reset TPM or system states: ", err)
 	}
-	if err := cryptohome.CheckService(ctx); err != nil {
-		s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
+	if err := daemonController.EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+		s.Fatal("Failed to ensure high-level TPM daemons: ", err)
 	}
 
 	// Login+Logout.
@@ -66,8 +65,8 @@ func loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx context.Context, s *testing.S
 		if err := helper.DaemonController().RestartTPMDaemons(ctx); err != nil {
 			s.Fatal("Failed to restart TPM-related daemons to simulate reboot: ", err)
 		}
-		if err := cryptohome.CheckService(ctx); err != nil {
-			s.Fatal("Cryptohome D-Bus service didn't come back: ", err)
+		if err := daemonController.EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
+			s.Fatal("Failed to ensure high-level TPM daemons: ", err)
 		}
 	}
 
@@ -96,12 +95,13 @@ func KeysetTiedToTPM2(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	utility := helper.CryptohomeClient()
+	daemonController := helper.DaemonController()
 
 	// First we test the case without reboot, that is:
 	// Reset TPM -> Login+Logout -> TakeOwnership -> Login -> Check TPM Bound.
-	loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx, s, utility, helper, false)
+	loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx, s, daemonController, utility, helper, false)
 
 	// Next we test the case with reboot, that is:
 	// Reset TPM -> Login+Logout -> Reboot -> TakeOwnership -> Login -> Check TPM Bound.
-	loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx, s, utility, helper, true)
+	loginTakeOwnershipAndCheckKeysetTiedToTPM(ctx, s, daemonController, utility, helper, true)
 }

@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
@@ -21,7 +22,7 @@ import (
 	"chromiumos/tast/local/camera/cca"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -135,13 +136,15 @@ func CCAUIIntent(ctx context.Context, s *testing.State) {
 	scripts := []string{s.DataPath("cca_ui.js")}
 	outDir := s.OutDir()
 
-	androidDataDir, err := arc.AndroidDataDir(cr.NormalizedUser())
+	androidDataDir, err := arc.AndroidDataDir(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get Android data dir: ", err)
 	}
 	arcCameraFolderPathOnChromeOS := filepath.Join(androidDataDir, arcCameraFolderPath)
 
-	userPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	userPath, err := cryptohome.GetHomeUserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user path: ", err)
 	}

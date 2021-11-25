@@ -13,9 +13,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/disk"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -100,6 +101,13 @@ func RunOnExistingUsers(ctx context.Context) error {
 		"Freeing disk space by deleting user",
 	}
 
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		return errors.Wrap(err, "failed to create hwsec local helper")
+	}
+	cryptohome := helper.CryptohomeClient()
+
 	testing.ContextLog(ctx, "Cleaning up existing users")
 
 	// Unmount all users.
@@ -162,9 +170,13 @@ func RunOnExistingUsers(ctx context.Context) error {
 
 // CreateFilledUserHomedir creates a user taking up size space by filling dir.
 func CreateFilledUserHomedir(ctx context.Context, user, pass, dir string, size uint64) (string, error) {
-	if err := cryptohome.CreateVault(ctx, user, pass); err != nil {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user, pass), true, hwsec.NewVaultConfig()); err != nil {
 		return "", errors.Wrap(err, "failed to create user vault")
 	}
+
 	ok := false
 	defer func() {
 		if !ok {
@@ -172,7 +184,7 @@ func CreateFilledUserHomedir(ctx context.Context, user, pass, dir string, size u
 		}
 	}()
 
-	hash, err := cryptohome.UserHash(ctx, user)
+	hash, err := cryptohome.GetUserHash(ctx, user)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get user hash")
 	}

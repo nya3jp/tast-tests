@@ -10,7 +10,8 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/policy/enterprise_management"
-	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/common/hwsec"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
 	"chromiumos/tast/testing"
@@ -53,19 +54,22 @@ func MultiUserPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	// Clear the users' vault to make sure the test starts without any
 	// policy or key lingering around. At this stage, the session isn't
 	// started and there's no user signed in.
-	if err := cryptohome.RemoveVault(ctx, user1); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, user1); err != nil {
 		s.Fatalf("Failed to remove vault for %s: %v", user1, err)
 	}
-	if err := cryptohome.CreateVault(ctx, user1, ""); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user1, ""), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatalf("Failed to create vault for %s: %v", user1, err)
 	}
-	if err := cryptohome.RemoveVault(ctx, user2); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, user2); err != nil {
 		s.Fatalf("Failed to remove vault for %s: %v", user2, err)
 	}
-	if err := cryptohome.CreateVault(ctx, user2, ""); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user2, ""), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatalf("Failed to create vault for %s: %v", user2, err)
 	}
 

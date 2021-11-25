@@ -16,10 +16,11 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -164,8 +165,11 @@ func SELinuxFilesDataDir(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	// Verify SELinux context for all files and directories except those in the skipDirMap.
-	ownerID, err := cryptohome.UserHash(ctx, cr.NormalizedUser())
+	ownerID, err := cryptohome.GetUserHash(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/cryptohome/cleanup"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
@@ -54,6 +53,7 @@ func AutomaticCleanupManyUsers(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	daemonController := helper.DaemonController()
+	cryptohome := helper.CryptohomeClient()
 
 	userCount := s.Param().(int)
 

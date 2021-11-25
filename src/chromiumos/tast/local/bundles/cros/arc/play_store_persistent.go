@@ -12,12 +12,13 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cpu"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -66,7 +67,9 @@ func readFinskyPrefs(ctx context.Context, user string) ([]byte, error) {
 	const finskyPrefsPath = "/data/data/com.android.vending/shared_prefs/finsky.xml"
 
 	// Cryptohome dir for the current user.
-	rootCryptDir, err := cryptohome.SystemPath(user)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	rootCryptDir, err := cryptohome.GetRootUserPath(ctx, user)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}

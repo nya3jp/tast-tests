@@ -14,13 +14,14 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -99,12 +100,15 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	// Unarchive the home data under vault before signing in.
 	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, username, password); err != nil {
 		s.Fatal("Failed to mount home with archived data: ", err)
 	}
 	defer func() {
-		cryptohome.UnmountVault(cleanupCtx, username)
+		cryptohome.Unmount(cleanupCtx, username)
 		cryptohome.RemoveVault(cleanupCtx, username)
 	}()
 
@@ -148,25 +152,30 @@ func DataMigration(ctx context.Context, s *testing.State) {
 }
 
 func mountVaultWithArchivedHomeData(ctx context.Context, homeDataPath, username, password string) error {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
+
 	// Unmount and mount vault for the user.
-	if err := cryptohome.UnmountVault(ctx, username); err != nil {
+	if _, err := cryptohome.Unmount(ctx, username); err != nil {
 		return err
 	}
-	if err := cryptohome.RemoveVault(ctx, username); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, username); err != nil {
 		return err
 	}
-	if err := cryptohome.CreateVault(ctx, username, password); err != nil {
-		return err
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(username, password), true, hwsec.NewVaultConfig()); err != nil {
+		return errors.Wrap(err, "failed to create user vault")
 	}
+
 	success := false
 	defer func() {
 		if !success {
-			cryptohome.UnmountVault(ctx, username)
+			cryptohome.Unmount(ctx, username)
 			cryptohome.RemoveVault(ctx, username)
 		}
 	}()
 
-	vaultPath, err := cryptohome.MountedVaultPath(ctx, username)
+	vaultPath, err := mountInfo.MountedVaultPath(ctx, username)
 	if err != nil {
 		return err
 	}
@@ -198,7 +207,10 @@ func checkSdkVersionsInPackagesXML(ctx context.Context, username string) (int, e
 
 	testing.ContextLogf(ctx, "Checking SDK versions in %s", packagesXMLPath)
 
-	rootCryptDir, err := cryptohome.SystemPath(username)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	rootCryptDir, err := cryptohome.GetRootUserPath(ctx, username)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get the cryptohome directory for the user")
 	}

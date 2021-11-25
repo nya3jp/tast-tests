@@ -7,7 +7,8 @@ package session
 import (
 	"context"
 
-	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/common/hwsec"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -47,18 +48,21 @@ func RetrieveActiveSessions(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	// Create clean vault.
-	if err := cryptohome.RemoveVault(ctx, user1); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, user1); err != nil {
 		s.Fatalf("Failed to clear user dir for %s: %v", user1, err)
 	}
-	if err := cryptohome.RemoveVault(ctx, user2); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, user2); err != nil {
 		s.Fatalf("Failed to clear user dir for %s: %v", user2, err)
 	}
-	if err := cryptohome.CreateVault(ctx, user1, ""); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user1, ""), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatalf("Failed to create user dir for %s: %v", user1, err)
 	}
 	defer cryptohome.RemoveVault(ctx, user1)
-	if err := cryptohome.CreateVault(ctx, user2, ""); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user2, ""), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatalf("Failed to create user dir for %s: %v", user2, err)
 	}
 	defer cryptohome.RemoveVault(ctx, user2)

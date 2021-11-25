@@ -7,8 +7,9 @@ package hwsec
 import (
 	"context"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -27,6 +28,10 @@ func init() {
 }
 
 func LoginGuest(ctx context.Context, s *testing.State) {
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
+
 	func() {
 		cr, err := chrome.New(ctx, chrome.GuestLogin())
 		if err != nil {
@@ -34,7 +39,7 @@ func LoginGuest(ctx context.Context, s *testing.State) {
 		}
 		defer cr.Close(ctx)
 
-		if mounted, err := cryptohome.IsMounted(ctx, cryptohome.GuestUser); err != nil {
+		if mounted, err := mountInfo.IsMounted(ctx, hwsec.GuestUser); err != nil {
 			s.Error("Failed to check mounted vault for guest user: ", err)
 		} else if !mounted {
 			s.Error("No mounted vault for guest user")
@@ -47,7 +52,7 @@ func LoginGuest(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to log out: ", err)
 	}
 
-	if mounted, err := cryptohome.IsMounted(ctx, cryptohome.GuestUser); err != nil {
+	if mounted, err := mountInfo.IsMounted(ctx, hwsec.GuestUser); err != nil {
 		s.Error("Failed to check mounted vault for guest user: ", err)
 	} else if mounted {
 		s.Error("Mounted vault for guest user is still found after logout")

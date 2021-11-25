@@ -7,6 +7,7 @@ package hwsec
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -20,6 +21,9 @@ import (
 )
 
 const (
+	// WaitForUserTimeout is the maximum time until a user mount is available.
+	WaitForUserTimeout = 80 * time.Second
+
 	// GuestUser is the name representing a guest user account.
 	// Defined in libbrillo/brillo/cryptohome.cc.
 	GuestUser = "$guest"
@@ -47,6 +51,9 @@ const (
 
 	// The user session mount namespace path.
 	mountNsPath = "/run/namespaces/mnt_chrome"
+
+	// The root directory of vault.
+	shadowRoot = "/home/.shadow"
 )
 
 var (
@@ -218,6 +225,15 @@ func (c *CryptohomeMountInfo) CheckMountNamespace(ctx context.Context) error {
 		return errors.Errorf("user session mount namespace has not been created at %s", mountNsPath)
 	}
 	return nil
+}
+
+// MountedVaultPath returns the path where the decrypted data for the user is located.
+func (c *CryptohomeMountInfo) MountedVaultPath(ctx context.Context, user string) (string, error) {
+	hash, err := c.cryptohome.GetUserHash(ctx, user)
+	if err != nil {
+		return "", err
+	}
+	return filepath.Join(shadowRoot, hash, "mount"), nil
 }
 
 // findMounterPID finds the pid of the given mounter process.

@@ -27,6 +27,12 @@ const (
 	migrateKeyExSucessMessage              = "Key migration succeeded."
 )
 
+var (
+	// userHashRegexp extracts the hash from a cryptohome dir's path.
+	// Example: "/home/.shadow/118c4648065f5cd3660e17a53533ec7bc924d01f
+	userHashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
+)
+
 func getLastLine(s string) string {
 	lines := strings.Split(strings.TrimSpace(s), "\n")
 	if len(lines) == 0 {
@@ -749,6 +755,22 @@ func (u *CryptohomeClient) GetRootUserPath(ctx context.Context, username string)
 		return "", errors.Wrap(err, "failure to call cryptohome-path user")
 	}
 	return strings.TrimSpace(msg), nil
+}
+
+// GetUserHash returns user's cryptohome hash.
+func (u *CryptohomeClient) GetUserHash(ctx context.Context, username string) (string, error) {
+	binaryMsg, err := u.cryptohomePathBinary.userPath(ctx, username)
+	msg := string(binaryMsg)
+	if err != nil {
+		testing.ContextLogf(ctx, "Failure to call cryptohome-path user, got %q", msg)
+		return "", errors.Wrap(err, "failure to call cryptohome-path user")
+	}
+	p := strings.TrimSpace(msg)
+	m := userHashRegexp.FindStringSubmatch(p)
+	if m == nil {
+		return "", errors.Errorf("didn't find hash in path %q", p)
+	}
+	return m[1], nil
 }
 
 // SupportsLECredentials calls GetSupportedKeyPolicies and parses the output for low entropy credential support.

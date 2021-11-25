@@ -10,7 +10,8 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/policy/enterprise_management"
-	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/common/hwsec"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
@@ -30,11 +31,14 @@ func init() {
 func GuestAndActualSession(ctx context.Context, s *testing.State) {
 	const testUser = "first_user@nowhere.com"
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
 	}
 
-	if err := cryptohome.RemoveVault(ctx, testUser); err != nil {
+	if _, err := cryptohome.RemoveVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to remove vault: ", err)
 	}
 
@@ -50,14 +54,14 @@ func GuestAndActualSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to mount guest: ", err)
 	}
 
-	if err := sm.StartSession(ctx, cryptohome.GuestUser, ""); err != nil {
+	if err := sm.StartSession(ctx, hwsec.GuestUser, ""); err != nil {
 		s.Fatal("Failed to start guest session: ", err)
 	}
 
 	// Note: presumably the guest session would actually stop and the
 	// guest dir would be unmounted before a regular user would sign in.
 	// This should be revisited later.
-	if err := cryptohome.CreateVault(ctx, testUser, ""); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(testUser, ""), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatalf("Failed to create a vault for %s: %v", testUser, err)
 	}
 

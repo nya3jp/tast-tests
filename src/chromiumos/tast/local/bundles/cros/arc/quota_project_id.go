@@ -12,9 +12,10 @@ import (
 	"strings"
 	"syscall"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -80,7 +81,7 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the project ID of the package data directory.
-	pkgDataDir, err := arc.PkgDataDir(cr.NormalizedUser(), pkgName)
+	pkgDataDir, err := arc.PkgDataDir(ctx, cr.NormalizedUser(), pkgName)
 	if err != nil {
 		s.Fatal("Failed to get package data dir: ", err)
 	}
@@ -112,7 +113,7 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the project ID of the file in the primary external volume.
-	androidDataDir, err := arc.AndroidDataDir(cr.NormalizedUser())
+	androidDataDir, err := arc.AndroidDataDir(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get Android data dir: ", err)
 	}
@@ -127,7 +128,9 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the project ID of the file in the Downloads directory.
-	userPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	userPath, err := cryptohome.GetHomeUserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get the cryptohome user directory: ", err)
 	}

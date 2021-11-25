@@ -14,12 +14,13 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -235,7 +236,9 @@ func ClickShutterButton(ctx context.Context, d *ui.Device) error {
 // VerifyFile examines the Downloads directory for any new files (modification time after specified timestamp) that match the specified pattern.
 func VerifyFile(ctx context.Context, cr *chrome.Chrome, pat *regexp.Regexp, ts time.Time) error {
 	// Get the Downloads directory where we save our media files.
-	path, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	path, err := cryptohome.GetHomeUserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		return errors.Wrap(err, "failed to get user path")
 	}

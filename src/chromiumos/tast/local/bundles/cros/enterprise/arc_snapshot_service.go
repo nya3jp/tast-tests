@@ -13,6 +13,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
@@ -20,7 +21,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash/ashproc"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/session"
 	pb "chromiumos/tast/services/cros/enterprise"
@@ -197,7 +198,9 @@ func (service *ArcSnapshotService) WaitForSnapshot(ctx context.Context, req *pb.
 // waitForCryptohome waits for a system path for the user is mounted.
 func waitForCryptohome(ctx context.Context, user string) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		systempath, err := cryptohome.SystemPath(user)
+		cmdRunner := hwseclocal.NewLoglessCmdRunner()
+		cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+		systempath, err := cryptohome.GetRootUserPath(ctx, user)
 		if err != nil {
 			return errors.Wrap(err, "failed to get the cryptohome directory for user")
 		}

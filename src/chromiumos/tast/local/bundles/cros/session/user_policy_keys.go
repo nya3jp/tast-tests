@@ -14,9 +14,10 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	"chromiumos/policy/enterprise_management"
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
@@ -50,7 +51,9 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	}
 
 	testDesc := ownership.UserPolicyDescriptor(testUser)
-	userHash, err := cryptohome.UserHash(ctx, testUser)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	userHash, err := cryptohome.GetUserHash(ctx, testUser)
 	if err != nil {
 		s.Fatalf("Failed to find user hash for %s: %v", testUser, err)
 	}
@@ -139,10 +142,10 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	}
 
 	// Create clean vault for the test user, and start the session.
-	if err = cryptohome.RemoveVault(ctx, testUser); err != nil {
+	if _, err = cryptohome.RemoveVault(ctx, testUser); err != nil {
 		s.Fatal("Failed to remove vault: ", err)
 	}
-	if err = cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(testUser, testPass), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create vault: ", err)
 	}
 	if err := sm.StartSession(ctx, testUser, ""); err != nil {
@@ -172,7 +175,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	}
 
 	// Restart the ui, which should delete the key.
-	if err := cryptohome.UnmountVault(ctx, testUser); err != nil {
+	if _, err := cryptohome.Unmount(ctx, testUser); err != nil {
 		s.Fatal("Failed to unmount user vault: ", err)
 	}
 
@@ -203,7 +206,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	// Starting a new session will restore the key that was previously
 	// stored. Reconnect to the session_manager, because the restart
 	// killed it.
-	if err := cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(testUser, testUser), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount vault: ", err)
 	}
 	if err := sm.StartSession(ctx, testUser, ""); err != nil {

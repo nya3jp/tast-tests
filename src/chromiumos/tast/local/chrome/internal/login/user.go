@@ -7,9 +7,10 @@ package login
 import (
 	"context"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -45,11 +46,16 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		}
 	}
 
-	mountType := cryptohome.Permanent
+	mountType := hwsec.Permanent
 	if cfg.EphemeralUser() {
-		mountType = cryptohome.Ephemeral
+		mountType = hwsec.Ephemeral
 	}
-	if err = cryptohome.WaitForUserMountAndValidateType(ctx, cfg.NormalizedUser(), mountType); err != nil {
+
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
+
+	if err = mountInfo.WaitForUserMountAndValidateType(ctx, cfg.NormalizedUser(), mountType); err != nil {
 		return err
 	}
 

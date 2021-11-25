@@ -11,8 +11,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -28,7 +29,9 @@ type LogReader struct {
 // NewLogReaderForVM creates a new LogReader which can be used to save the
 // daemon-store logs from a running VM.
 func NewLogReaderForVM(ctx context.Context, vmName, user string) (*LogReader, error) {
-	ownerID, err := cryptohome.UserHash(ctx, user)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	ownerID, err := cryptohome.GetUserHash(ctx, user)
 	if err != nil {
 		return nil, err
 	}

@@ -9,8 +9,9 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/hwsec"
 	chk "chromiumos/tast/local/bundles/cros/security/filecheck"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -24,7 +25,9 @@ const (
 // This is a helper function called by security.UserFiles* tests.
 // Errors are reported via s.
 func Check(ctx context.Context, s *testing.State, user string) {
-	userDir, err := cryptohome.UserPath(ctx, user)
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	userDir, err := cryptohome.GetHomeUserPath(ctx, user)
 	if err != nil {
 		s.Fatalf("Failed to get cryptohome dir for user %v: %v", user, err)
 	}

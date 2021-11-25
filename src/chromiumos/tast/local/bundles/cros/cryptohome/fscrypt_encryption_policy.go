@@ -12,7 +12,6 @@ import (
 	"github.com/google/fscrypt/metadata"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
@@ -55,6 +54,7 @@ func FscryptEncryptionPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	daemonController := helper.DaemonController()
+	cryptohome := helper.CryptohomeClient()
 
 	// Make sure cryptohomed is running.
 	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
@@ -62,20 +62,20 @@ func FscryptEncryptionPolicy(ctx context.Context, s *testing.State) {
 	}
 
 	// Create user vault.
-	if err := cryptohome.CreateVault(ctx, user, password); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user, password), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create user vault: ", err)
 	}
 
 	defer func() {
-		if err := cryptohome.UnmountVault(ctx, user); err != nil {
+		if _, err := cryptohome.Unmount(ctx, user); err != nil {
 			s.Error("Failed to unmount cryptohome vault: ", err)
 		}
-		if err := cryptohome.RemoveVault(ctx, user); err != nil {
+		if _, err := cryptohome.RemoveVault(ctx, user); err != nil {
 			s.Error("Failed to remove cryptohome vault: ", err)
 		}
 	}()
 
-	hash, err := cryptohome.UserHash(ctx, user)
+	hash, err := cryptohome.GetUserHash(ctx, user)
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}

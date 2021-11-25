@@ -10,8 +10,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -42,17 +43,26 @@ func Login(ctx context.Context, s *testing.State) {
 		testPass = "testme"
 	)
 
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		s.Fatal("Failed to create hwsec local helper: ", err)
+	}
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
+	daemonController := helper.DaemonController()
+
 	// Set up a vault for testUser, which is not the login user, and
 	// create a file in it. The file should be hidden from the login user.
-	if err := cryptohome.CreateVault(ctx, testUser, testPass); err != nil {
+	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(testUser, testPass), true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create a vault for the test user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctx, testUser)
 
 	var testFile string
 	func() {
-		defer cryptohome.UnmountVault(ctx, testUser)
-		userPath, err := cryptohome.UserPath(ctx, testUser)
+		defer cryptohome.Unmount(ctx, testUser)
+		userPath, err := cryptohome.GetHomeUserPath(ctx, testUser)
 		if err != nil {
 			s.Fatal("Failed to get user path: ", err)
 		}
@@ -72,7 +82,7 @@ func Login(ctx context.Context, s *testing.State) {
 		defer cr.Close(ctx)
 
 		user = cr.NormalizedUser()
-		if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
+		if mounted, err := mountInfo.IsMounted(ctx, user); err != nil {
 			s.Errorf("Failed to check mounted vault for %q: %v", user, err)
 		} else if !mounted {
 			s.Errorf("No mounted vault for %q", user)
@@ -86,7 +96,8 @@ func Login(ctx context.Context, s *testing.State) {
 
 	// Emulate logout. chrome.Chrome.Close() does not log out. So, here,
 	// manually restart "ui" job for the emulation.
-	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+
+	if err := daemonController.Restart(ctx, hwsec.UIDaemon); err != nil {
 		s.Fatal("Failed to log out: ", err)
 	}
 
@@ -95,7 +106,7 @@ func Login(ctx context.Context, s *testing.State) {
 	// the user logs in. So, this is the timing to declare.
 	defer cryptohome.RemoveVault(ctx, user)
 
-	if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
+	if mounted, err := mountInfo.IsMounted(ctx, user); err != nil {
 		s.Errorf("Failed to check mounted vault for %q: %v", user, err)
 	} else if mounted {
 		s.Errorf("Mounted vault for %q is still found after logout", user)

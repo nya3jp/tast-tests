@@ -16,11 +16,12 @@ import (
 
 	"github.com/shirou/gopsutil/process"
 
+	"chromiumos/tast/common/hwsec"
 	ups "chromiumos/tast/common/upstart"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/security/sandboxing"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/local/moblab"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
@@ -81,11 +82,14 @@ func SharedFilesystemState(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create session_manager binding: ", err)
 	}
 
+	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
 	if err := cryptohome.MountGuest(ctx); err != nil {
 		s.Fatal("Failed to mount guest: ", err)
 	}
 
-	if err := sm.StartSession(ctx, cryptohome.GuestUser, ""); err != nil {
+	if err := sm.StartSession(ctx, hwsec.GuestUser, ""); err != nil {
 		s.Fatal("Failed to start guest session: ", err)
 	}
 

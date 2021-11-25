@@ -46,7 +46,7 @@ func init() {
 		}, {
 			Name: "kiosk_mount",
 			Val: authSessionMountParam{
-				testUser:    cryptohome.KioskUser,
+				testUser:    hwsec.KioskUser,
 				testPass:    "", // Password is derived from username
 				isKioskUser: true,
 				createUser:  true,
@@ -71,6 +71,8 @@ func AuthSessionMount(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec local helper: ", err)
 	}
 	daemonController := helper.DaemonController()
+	cryptohomeClient := helper.CryptohomeClient()
+	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohomeClient)
 
 	// Ensure cryptohomed is started and wait for it to be available.
 	if err := daemonController.Ensure(ctx, hwsec.CryptohomeDaemon); err != nil {
@@ -78,21 +80,21 @@ func AuthSessionMount(ctx context.Context, s *testing.State) {
 	}
 
 	// Unmount all user vaults before we start.
-	if err := cryptohome.UnmountAll(ctx); err != nil {
+	if err := cryptohomeClient.UnmountAll(ctx); err != nil {
 		s.Log("Failed to unmount all before test starts: ", err)
 	}
 
 	// Run AuthSession Mount Flow for creating user.
-	if err := cryptohome.AuthSessionMountFlow(ctx, userParam.isKioskUser, userParam.testUser, userParam.testPass, userParam.createUser); err != nil {
+	if err := cryptohome.AuthSessionMountFlow(ctx, cryptohomeClient, mountInfo, userParam.isKioskUser, userParam.testUser, userParam.testPass, userParam.createUser); err != nil {
 		s.Fatal("Failed to Mount with AuthSession -: ", err)
 	}
 
 	// Tests to ensure the kiosk users work with the old API.
 	if userParam.isKioskUser {
-		if err := cryptohome.MountKiosk(ctx); err != nil {
+		if err := cryptohomeClient.MountKiosk(ctx); err != nil {
 			s.Fatal("Failed to mount kiosk: ", err)
 		}
 		// Unmount Vault.
-		defer cryptohome.UnmountVault(ctx, cryptohome.KioskUser)
+		defer cryptohomeClient.Unmount(ctx, hwsec.KioskUser)
 	}
 }
