@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89326dc_cd71dc35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T02:39:27Z",
+      "side": 1,
+      "message": "Do you want to run this action in the same test PhysicalKeyboardEmoji?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b0d208_b6ce4714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T02:39:27Z",
+      "side": 1,
+      "message": "These variable can be pulled out as below. Then it can be reused with above function.\n\nvar emojiMenuFinder \u003d nodewith.NameStartingWith(\"Emoji\")",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 95
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1012eb7_6cd290a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T02:39:27Z",
+      "side": 1,
+      "message": "nit: Not used.",
+      "range": {
+        "startLine": 535,
+        "startChar": 2,
+        "endLine": 535,
+        "endChar": 4
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc5f389_03c7b2bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T02:39:27Z",
+      "side": 1,
+      "message": "nit: it is better to initiate keyboard outside the function, then it becomes \n\nInputEmojiWithEmojiPickerSearch(uc *useractions.UserContext, kb *input.KeyboardEventWriter, inputField InputField, searchString, emojiChar string) *useractions.UserAction{\n    action :\u003d uiauto.Combine(fmt.Sprintf(\"input emoji with emoji picker on field %v\", inputField),\n\t\t\tits.Clear(inputField),\n\t\t\t// Right click input to trigger context menu and select Emoji.\n\t\t\tits.RightClickFieldAndWaitForActive(inputField),\n\t\t\tui.LeftClick(emojiMenuFinder),\n\t\t\tui.LeftClick(emojiSearchFinder),\n\t\t\tkeyboard.TypeAction(\"melting\"),\n\t\t\tui.LeftClick(emojiResultFinder),\n\t\t\t// Wait for input value to test emoji.\n\t\t\tutil.WaitForFieldTextToBe(uc.TestAPIConn(), inputField.Finder(), emojiChar),\n\t\t)\n}",
+      "range": {
+        "startLine": 536,
+        "startChar": 2,
+        "endLine": 540,
+        "endChar": 24
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8803cbeb_90e4405a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T02:39:27Z",
+      "side": 1,
+      "message": "nit: searchString?",
+      "range": {
+        "startLine": 548,
+        "startChar": 24,
+        "endLine": 548,
+        "endChar": 31
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8144ab39_562e2da8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T02:39:27Z",
+      "side": 1,
+      "message": "nit: Use Emoji for consistency.",
+      "range": {
+        "startLine": 550,
+        "startChar": 35,
+        "endLine": 550,
+        "endChar": 40
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92dc5cd_72112bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T02:39:27Z",
+      "side": 1,
+      "message": "FYI, the whole idea of wrapping user action is to tag the test with environment information. A sample dashboard: go/tast-action-dash",
+      "range": {
+        "startLine": 555,
+        "startChar": 20,
+        "endLine": 555,
+        "endChar": 33
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b480f7_1302925b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T02:39:27Z",
+      "side": 1,
+      "message": "Add one more attribute on the test scenario:\n\nuseractions.AttributeTestScenario: \"Input emoji by searching in emoji picker\".",
+      "range": {
+        "startLine": 560,
+        "startChar": 3,
+        "endLine": 560,
+        "endChar": 13
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
