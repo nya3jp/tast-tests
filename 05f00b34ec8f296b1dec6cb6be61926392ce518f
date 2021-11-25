@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db612d9_c88ad38e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-11-25T05:25:50Z",
+      "side": 1,
+      "message": "Tests parsing CombinedOutput() is a frequent source of errors because there is no guaranteed way in which stdout and stderr is combined.\n\nIn this case you seem to be using it purely for logging, which is fine, but for this purpose Tast has defined tastexec.DumpLogOnError. What about using .Run(tastexec.DumpLogOnError) instead?  (or .Output(tastexec.DumpLogOnError)?)\n\nThis method seems fairly generic, so this would avoid the temptation for future callers to incorrectly use CombinedOutput().\n\nSee:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;l\u003d25?q\u003dDumpLogOnError\u0026type\u003dcs",
+      "range": {
+        "startLine": 273,
+        "startChar": 62,
+        "endLine": 273,
+        "endChar": 76
+      },
+      "revId": "05f00b34ec8f296b1dec6cb6be61926392ce518f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
