@@ -137,6 +137,6 @@ func testCreateFileFromContainer(ctx context.Context, tconn *chrome.TestConn, fi
 		return errors.Wrap(err, "failed to create test file in the container")
 	}
 
-	refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder)
+	refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder(filesapp.ChromeApp))
 	return uiauto.New(tconn).LeftClickUntil(refresh, filesApp.FileExists(fileName))(ctx)
 }

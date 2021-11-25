@@ -33,7 +33,7 @@ func init() {
 
 func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {
 	func() {
-		cr, err := chrome.New(ctx, chrome.EnableFeatures("FullRestore"))
+		cr, err := chrome.New(ctx, chrome.EnableFeatures("FullRestore", "FilesSWA"))
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
@@ -46,7 +46,7 @@ func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {
 
 		// Open the Files app.
 		// The opened Files app is not closed before reboot so that it could be restored after reboot.
-		_, err = filesapp.Launch(ctx, tconn)
+		_, err = filesapp.LaunchSWA(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to launch Files app: ", err)
 		}
@@ -63,7 +63,7 @@ func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {
 			// By default, On startup is set to ask every time after reboot
 			// and there is an alertdialog asking the user to select whether to restore or not.
 			chrome.RemoveNotification(false),
-			chrome.EnableFeatures("FullRestore"),
+			chrome.EnableFeatures("FullRestore", "FilesSWA"),
 			chrome.KeepState())
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
@@ -77,7 +77,7 @@ func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {
 
 		alertDialog := nodewith.NameStartingWith("Restore apps?").Role(role.AlertDialog)
 		restoreButton := nodewith.Name("RESTORE").Role(role.Button).Ancestor(alertDialog)
-		downloads := nodewith.Name(filesapp.Downloads).Role(role.TreeItem).Ancestor(filesapp.WindowFinder)
+		downloads := nodewith.Name(filesapp.Downloads).Role(role.TreeItem).Ancestor(filesapp.WindowFinder(filesapp.SystemWebApp))
 
 		ui := uiauto.New(tconn)
 		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)

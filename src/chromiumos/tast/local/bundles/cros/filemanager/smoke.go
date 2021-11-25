@@ -28,12 +28,12 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedInFilesSWA",
 	})
 }
 
 func Smoke(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	// Setup the test file.
 	const textFile = "test.txt"
@@ -51,7 +51,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Open the Files App.
-	files, err := filesapp.Launch(ctx, tconn)
+	files, err := filesapp.LaunchSWA(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}

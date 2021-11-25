@@ -30,7 +30,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "chromeLoggedInFilesSWA",
 	})
 }
 
@@ -71,6 +71,7 @@ func LaunchFromShelfContextMenu(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(newWindowContextMenuItem),
 		ui.LeftClick(newWindowContextMenuItem),
 	)(ctx); err != nil {
+		s.Log(uiauto.RootDebugInfo(ctx, tconn))
 		s.Fatal("Failed to click New Window on Files app shelf icon: ", err)
 	}
 
