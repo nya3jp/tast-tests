@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "96dc6489_9499761a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-25T00:04:12Z",
+      "side": 1,
+      "message": "Yes, I\u0027m adding a new test. We need both perf test w/o WasmDynamicTiering enabled in chrome to compare if this feature can help improvement our feature performance.",
+      "parentUuid": "2a6347dc_bc364e27",
+      "revId": "4f1d150a86ff22e781e02dc9c6635d55c96a9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a63c656_d99d5fa5",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-24T09:09:33Z",
       "side": 1,
       "message": "nit: \"wasm_dynamic_tiering\" for consistency",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "4f1d150a86ff22e781e02dc9c6635d55c96a9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0342979b_42721f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-25T00:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a63c656_d99d5fa5",
       "range": {
         "startLine": 32,
         "startChar": 13,
@@ -87,6 +129,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4438404f_45486689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-25T00:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1667e20_da8277f5",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 52
+      },
+      "revId": "4f1d150a86ff22e781e02dc9c6635d55c96a9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1df70c_d99328e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-25T00:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e7df7f2_e557cedb",
+      "range": {
+        "startLine": 33,
+        "startChar": 13,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "4f1d150a86ff22e781e02dc9c6635d55c96a9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53a70da7_d2ebc5e6",
@@ -100,6 +190,54 @@
       "writtenOn": "2021-11-24T09:09:33Z",
       "side": 1,
       "message": "\"Set up test bridge for CCA with Web assembly dynamic tiering feature enabled\"?",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "4f1d150a86ff22e781e02dc9c6635d55c96a9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e445e858_cc30fbe3",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-25T00:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53a70da7_d2ebc5e6",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "4f1d150a86ff22e781e02dc9c6635d55c96a9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d939610d_b6c293fd",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-25T00:04:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53a70da7_d2ebc5e6",
       "range": {
         "startLine": 93,
         "startChar": 20,
