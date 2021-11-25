@@ -19,86 +19,80 @@ import (
 // WithTimeout returns a new FilesApp with the specified timeout.
 // This does not launch the Files App again.
 func (f *FilesApp) WithTimeout(timeout time.Duration) *FilesApp {
-	return &FilesApp{
-		ui:    f.ui.WithTimeout(timeout),
-		tconn: f.tconn,
-	}
+	f.ui = f.ui.WithTimeout(timeout)
+	return f
 }
 
 // WithInterval returns a new FilesApp with the specified polling interval.
 // This does not launch the Files App again.
 func (f *FilesApp) WithInterval(interval time.Duration) *FilesApp {
-	return &FilesApp{
-		ui:    f.ui.WithInterval(interval),
-		tconn: f.tconn,
-	}
+	f.ui = f.ui.WithInterval(interval)
+	return f
 }
 
 // WithPollOpts returns a new FilesApp with the specified polling options.
 // This does not launch the Files App again.
 func (f *FilesApp) WithPollOpts(pollOpts testing.PollOptions) *FilesApp {
-	return &FilesApp{
-		ui:    f.ui.WithPollOpts(pollOpts),
-		tconn: f.tconn,
-	}
+	f.ui = f.ui.WithPollOpts(pollOpts)
+	return f
 }
 
 // Info calls ui.Info scoping the finder to the Files App.
 func (f *FilesApp) Info(ctx context.Context, finder *nodewith.Finder) (*uiauto.NodeInfo, error) {
-	return f.ui.Info(ctx, finder.FinalAncestor(WindowFinder))
+	return f.ui.Info(ctx, finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // NodesInfo calls ui.NodesInfo scoping the finder to the Files App.
 func (f *FilesApp) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]uiauto.NodeInfo, error) {
-	return f.ui.NodesInfo(ctx, finder.FinalAncestor(WindowFinder))
+	return f.ui.NodesInfo(ctx, finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // Exists calls ui.Exists scoping the finder to the Files App.
 func (f *FilesApp) Exists(finder *nodewith.Finder) uiauto.Action {
-	return f.ui.Exists(finder.FinalAncestor(WindowFinder))
+	return f.ui.Exists(finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // IsNodeFound calls ui.IsNodeFound scoping the finder to the Files App.
 func (f *FilesApp) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bool, error) {
-	return f.ui.IsNodeFound(ctx, finder.FinalAncestor(WindowFinder))
+	return f.ui.IsNodeFound(ctx, finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // WaitUntilExists calls ui.WaitUntilExists scoping the finder to the Files App.
 func (f *FilesApp) WaitUntilExists(finder *nodewith.Finder) uiauto.Action {
-	return f.ui.WaitUntilExists(finder.FinalAncestor(WindowFinder))
+	return f.ui.WaitUntilExists(finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // Gone calls ui.Gone scoping the finder to the Files App.
 func (f *FilesApp) Gone(finder *nodewith.Finder) uiauto.Action {
-	return f.ui.Gone(finder.FinalAncestor(WindowFinder))
+	return f.ui.Gone(finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // WaitUntilGone calls ui.WaitUntilGone scoping the finder to the Files App.
 func (f *FilesApp) WaitUntilGone(finder *nodewith.Finder) uiauto.Action {
-	return f.ui.WaitUntilGone(finder.FinalAncestor(WindowFinder))
+	return f.ui.WaitUntilGone(finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // LeftClick calls ui.LeftClick scoping the finder to the Files App.
 func (f *FilesApp) LeftClick(finder *nodewith.Finder) uiauto.Action {
-	return f.ui.LeftClick(finder.FinalAncestor(WindowFinder))
+	return f.ui.LeftClick(finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // RightClick calls ui.RightClick scoping the finder to the Files App.
 func (f *FilesApp) RightClick(finder *nodewith.Finder) uiauto.Action {
-	return f.ui.RightClick(finder.FinalAncestor(WindowFinder))
+	return f.ui.RightClick(finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // DoubleClick calls ui.DoubleClick scoping the finder to the Files App.
 func (f *FilesApp) DoubleClick(finder *nodewith.Finder) uiauto.Action {
-	return f.ui.DoubleClick(finder.FinalAncestor(WindowFinder))
+	return f.ui.DoubleClick(finder.FinalAncestor(WindowFinder(f.appID)))
 }
 
 // LeftClickUntil calls ui.LeftClickUntil scoping the finder to the Files App.
 func (f *FilesApp) LeftClickUntil(finder *nodewith.Finder, condition func(context.Context) error) uiauto.Action {
-	return f.ui.LeftClickUntil(finder.FinalAncestor(WindowFinder), condition)
+	return f.ui.LeftClickUntil(finder.FinalAncestor(WindowFinder(f.appID)), condition)
 }
 
 // FocusAndWait calls ui.FocusAndWait scoping the finder to the Files App.
 func (f *FilesApp) FocusAndWait(finder *nodewith.Finder) uiauto.Action {
-	return f.ui.FocusAndWait(finder.FinalAncestor(WindowFinder))
+	return f.ui.FocusAndWait(finder.FinalAncestor(WindowFinder(f.appID)))
 }
