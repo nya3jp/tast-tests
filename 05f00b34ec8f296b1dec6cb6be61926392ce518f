@@ -63,6 +63,30 @@
       },
       "revId": "05f00b34ec8f296b1dec6cb6be61926392ce518f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35bd89f_8bcdac71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/chroot/network_chroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-11-25T23:45:44Z",
+      "side": 1,
+      "message": "I changed to wrapping the combined output in the error (actually already doing that...) and do not return any output now that no one is using this output...",
+      "parentUuid": "2bb7e92b_478c5f9d",
+      "range": {
+        "startLine": 273,
+        "startChar": 62,
+        "endLine": 273,
+        "endChar": 76
+      },
+      "revId": "05f00b34ec8f296b1dec6cb6be61926392ce518f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
