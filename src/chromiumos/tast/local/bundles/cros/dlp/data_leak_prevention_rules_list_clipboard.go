@@ -107,7 +107,7 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 				s.Fatal("Failed to get clipboard content: ", err)
 			}
 
-			googleConn, err := cr.NewConn(ctx, "https://www.google.com/")
+			googleConn, err := cr.NewConn(ctx, "https://www.google.com/?hl=en")
 			if err != nil {
 				s.Error("Failed to open page: ", err)
 			}
