@@ -106,14 +106,14 @@ func DeviceTargetVersionSelector(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to trigger update check: ", err)
 			}
 
-			dat, err := ioutil.ReadFile("/var/log/update_engine.log")
-			if err != nil {
-				s.Fatal("Failed to read update_engine logs: ", err)
-			}
-
 			waitTime := 10 * time.Second
 			if param.value.Val != "" {
 				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					dat, err := ioutil.ReadFile("/var/log/update_engine.log")
+					if err != nil {
+						return testing.PollBreak(errors.Wrap(err, "failed to read update_engine logs"))
+					}
+
 					if !strings.Contains(string(dat), testVal) {
 						return errors.Errorf("%q not in the update_engine logs", testVal)
 					}
@@ -128,6 +128,11 @@ func DeviceTargetVersionSelector(ctx context.Context, s *testing.State) {
 				// Give update_engine time to log things.
 				if err := testing.Sleep(ctx, waitTime); err != nil {
 					s.Fatal("Failed to wait for messages: ", err)
+				}
+
+				dat, err := ioutil.ReadFile("/var/log/update_engine.log")
+				if err != nil {
+					s.Fatal("Failed to read update_engine logs: ", err)
 				}
 
 				if strings.Contains(string(dat), testVal) {
