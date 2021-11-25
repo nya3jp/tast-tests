@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -128,7 +129,7 @@ func copyFilesToLinuxfiles(ctx context.Context, tconn *chrome.TestConn, filesApp
 		steps = append(steps, filesApp.SelectFile(file))
 	}
 
-	copyMsg := nodewith.Name(fmt.Sprintf("Copying %d items to %s", len(testFiles), "Linux files")).Role(role.StaticText).Ancestor(filesapp.WindowFinder)
+	copyMsg := nodewith.Name(fmt.Sprintf("Copying %d items to %s", len(testFiles), "Linux files")).Role(role.StaticText).Ancestor(filesapp.WindowFinder(apps.Files.ID))
 	ui := uiauto.New(tconn)
 	steps = append(steps,
 		// Select all files.
