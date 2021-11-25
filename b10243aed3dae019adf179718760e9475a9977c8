@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25b3c4af_1d2f5042",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T03:24:14Z",
+      "side": 1,
+      "message": "emojiMenuFinder and emojiPickerFinder are used in function InputEmojiWithEmojiPicker as well. \n\nSo these locators can be defined outside function.",
+      "parentUuid": "a259ad66_ef154847",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 95
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f1012eb7_6cd290a1",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "ui.leftClick below?",
       "parentUuid": "f1012eb7_6cd290a1",
+      "range": {
+        "startLine": 535,
+        "startChar": 2,
+        "endLine": 535,
+        "endChar": 4
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e67f1213_774bd6d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T03:24:14Z",
+      "side": 1,
+      "message": "Oh, right. Sorry for have not noticed that.",
+      "parentUuid": "e2bc8e67_e016d431",
       "range": {
         "startLine": 535,
         "startChar": 2,
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "I think I need it to be inside because I need ctx to make the keyboard?",
       "parentUuid": "cdc5f389_03c7b2bc",
+      "range": {
+        "startLine": 536,
+        "startChar": 2,
+        "endLine": 540,
+        "endChar": 24
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df201cf6_bcbbaa36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T03:24:14Z",
+      "side": 1,
+      "message": "I added a comment in the caller position. This test has a dependency to PK. It should not fail this function if PK initialization fails.",
+      "parentUuid": "7e46ad97_08bfc754",
       "range": {
         "startLine": 536,
         "startChar": 2,

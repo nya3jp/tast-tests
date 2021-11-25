@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c2ebb9_93b19f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_search.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T03:24:14Z",
+      "side": 1,
+      "message": "keyboard, err :\u003d input.Keyboard(ctx)\nif err !\u003d nil {\n    return err\n}\ndefer keyboard.Close()\n\nif err :\u003d its.InputEmojiWithEmojiPickerSearch(uc, kb, testserver.TextAreaInputField, \"melting face\", \"🫠\").Run(ctx)",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "4ba9a17cacbb00c60bdd08cd506ca5c5e309417e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
