@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5346eb8b_2c998f28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_search.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T03:49:51Z",
+      "side": 1,
+      "message": "Do you want to run this on mainline? You can start with \"group:mainline\", \"informational\"",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "4ba9a17cacbb00c60bdd08cd506ca5c5e309417e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bb4d16_88b9a473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_search.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-25T03:49:51Z",
+      "side": 1,
+      "message": "Do you have plan to parameterize the test? Otherwise remove the params.\n\nExtraAttr can be merged into Attr.\nExtraHardwareDeps can be changed to HardwareDeps",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 96
+      },
+      "revId": "4ba9a17cacbb00c60bdd08cd506ca5c5e309417e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48c2ebb9_93b19f5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_search.go",
         "patchSetId": 3
