@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc665a1_519b604f",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-25T08:55:19Z",
+      "side": 1,
+      "message": "When it fails to serve policies, I think it should be considered to try to close Chrome. WDYT?",
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
