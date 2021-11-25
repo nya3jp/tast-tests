@@ -58,16 +58,22 @@ const (
 	Playfiles   = "Play files"
 )
 
-// WindowFinder is the finder for the FilesApp window.
-var WindowFinder *nodewith.Finder = nodewith.NameStartingWith("Files").ClassName("RootView").Role(role.Window)
-
 // FilesApp represents an instance of the Files App.
 type FilesApp struct {
 	ui    *uiauto.Context
 	tconn *chrome.TestConn
+	appID string
 }
 
-// Launch launches the Files App and returns it.
+// WindowFinder finds the window based on the Files app type running.
+func WindowFinder(appID string) *nodewith.Finder {
+	if appID == apps.FilesSWA.ID {
+		return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("BrowserFrame")
+	}
+	return nodewith.NameStartingWith("Files").Role(role.Window).ClassName("RootView")
+}
+
+// Launch launches the Files Chrome app and returns it.
 // An error is returned if the app fails to launch.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// Launch the Files App.
@@ -75,12 +81,23 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 		return nil, err
 	}
 
-	return App(ctx, tconn)
+	return App(ctx, tconn, apps.Files.ID)
+}
+
+// LaunchSWA launches the Files app SWA variant and returns it.
+// An error is returned if the app fails to launch.
+func LaunchSWA(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
+	// Launch the Files App.
+	if err := apps.LaunchSystemWebApp(ctx, tconn, "File Manager", "chrome://file-manager"); err != nil {
+		return nil, err
+	}
+
+	return App(ctx, tconn, apps.FilesSWA.ID)
 }
 
 // App returns an existing instance of the Files app.
 // An error is returned if the app cannot be found.
-func App(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
+func App(ctx context.Context, tconn *chrome.TestConn, appID string) (*FilesApp, error) {
 	// Create a uiauto.Context with default timeout.
 	ui := uiauto.New(tconn)
 
@@ -89,33 +106,37 @@ func App(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// may encounter race issues. As Downloads is a fixed child folder of
 	// MyFiles, and these folders appear at the same time, wait for the
 	// Downloads folder to load to indicate that the tree's ui has settled.
-	downloads := nodewith.Name(Downloads).Role(role.TreeItem).Ancestor(WindowFinder)
+	downloads := nodewith.Name(Downloads).Role(role.TreeItem).Ancestor(WindowFinder(appID))
 	if err := ui.WithTimeout(time.Minute).WaitUntilExists(downloads)(ctx); err != nil {
 		return nil, err
 	}
 
-	return &FilesApp{tconn: tconn, ui: ui}, nil
+	return &FilesApp{tconn: tconn, ui: ui, appID: appID}, nil
 }
 
 // Close closes the Files App.
 // This is automatically done when chrome resets and is not necessary to call.
 func (f *FilesApp) Close(ctx context.Context) error {
 	// Close the Files App.
-	if err := apps.Close(ctx, f.tconn, apps.Files.ID); err != nil {
+	if err := apps.Close(ctx, f.tconn, f.appID); err != nil {
 		return err
 	}
 
 	// Wait for window to close.
-	return f.ui.WithTimeout(time.Minute).WaitUntilGone(WindowFinder)(ctx)
+	return f.ui.WithTimeout(time.Minute).WaitUntilGone(WindowFinder(f.appID))(ctx)
 }
 
 // OpenDir returns a function that opens one of the directories shown in the navigation tree.
 // An error is returned if dir is not found or does not open.
 func (f *FilesApp) OpenDir(dirName, expectedTitle string) uiauto.Action {
 	dir := nodewith.Name(dirName).Role(role.TreeItem)
+	roleType := role.RootWebArea
+	if f.appID == apps.FilesSWA.ID {
+		roleType = role.Window
+	}
 	return uiauto.Combine("OpenDir",
 		f.LeftClick(nodewith.Name(dirName).Role(role.StaticText).Ancestor(dir)),
-		f.WaitUntilExists(nodewith.Name(expectedTitle).Role(role.RootWebArea)),
+		f.WaitUntilExists(nodewith.Name(expectedTitle).Role(roleType).First()),
 	)
 }
 

@@ -99,6 +99,18 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInFilesChromeApp",
+		Desc:     "Logged into a user session with FilesSWA flag disabled",
+		Contacts: []string{"benreich@chromium.org", "majewski@chromium.org", "chromeos-files-syd@google.com"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{DisableFeatures("FilesSWA")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeApps",
 		Desc:     "Logged into a user session with 100 fake apps",
 		Contacts: []string{"mukai@chromium.org"},
