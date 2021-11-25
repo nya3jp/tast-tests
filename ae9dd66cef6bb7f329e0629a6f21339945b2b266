@@ -52,6 +52,24 @@
       "parentUuid": "5bf7dcaa_942b5c92",
       "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7ecad2_b3b82dfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-11-25T05:18:26Z",
+      "side": 1,
+      "message": "Yeah, performing the constant migration in a separate CL seems much more doable. I\u0027m happy to rework that into its own CL once I\u0027m back in office (unless Oleh opines that a larger-scale rewrite is desirable).",
+      "parentUuid": "c36f290e_4dc6370c",
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
