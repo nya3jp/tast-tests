@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4582d45_c0366bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-25T14:01:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c639885_f0dc2314",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5ddec9c_34ec542b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-24T11:35:11Z",
       "side": 1,
       "message": "what is the reason we cannot do it? I am not sure how would that made this test grow but maybe adding a note to G Keep and later checking it is not there would do?\n\nAlso, are those extensions cached and simply reinstalled later or they are removed and later downloaded and installed?",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ff05668_fbc0ba27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-25T14:01:43Z",
+      "side": 1,
+      "message": "The extensions are uninstalled and then installed again (which may or may not use the extension cache depending on whether the extensions is already in there).\n\nThat\u0027s a good point, I\u0027ve added a check that the localStorage of the extension is cleared after reinstalling.\n\nIIUC, it\u0027s not possible to guarantee the extension was truly re-installed without observing the ExtensionRegistry in Chrome, so I\u0027ll keep the comment here.",
+      "parentUuid": "f5ddec9c_34ec542b",
       "range": {
         "startLine": 47,
         "startChar": 5,
@@ -113,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0f1062d_313b7d50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-25T14:01:43Z",
+      "side": 1,
+      "message": "The chrome.login.launchManagedGuestSession (this CL uses launchSharedManagedGuestSession) would work here.\n\nNote that this needs the DeviceLoginScreenExtensions policy with this particular extension.",
+      "parentUuid": "abd9a3e0_dff27ef5",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "beb97910_327dc25a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
         "patchSetId": 3
@@ -124,6 +196,30 @@
       "writtenOn": "2021-11-24T11:35:11Z",
       "side": 1,
       "message": "There is no error check here.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 45
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35501fce_88f465e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-25T14:01:43Z",
+      "side": 1,
+      "message": "Thanks! Fixed.",
+      "parentUuid": "beb97910_327dc25a",
       "range": {
         "startLine": 147,
         "startChar": 0,
@@ -147,6 +243,30 @@
       "writtenOn": "2021-11-24T11:35:11Z",
       "side": 1,
       "message": "it is being used twice here - extract to function. WDYT?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631baa10_56f67a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-25T14:01:43Z",
+      "side": 1,
+      "message": "It\u0027s a different method here (enterSharedSession vs launchSharedManagedGuestSession).\n\nThe flow of the test is launchManagedGuestSession -\u003e this creates a special \"shared\" MGS, and enters the session.\nunlock/lockSharedSession locks/unlocks the session (this is tested in launch_shared_managed_guest_session.go).\nendSharedSession -\u003e this ends the current session but the \"shared\" MGS still persists.\nenterSharedSession -\u003e this enters the same \"shared\" MGS.\n\nIn particular, we want to test that the cleanup operations of endSharedSession are done correctly.",
+      "parentUuid": "b32cdec0_a6a3ca31",
       "range": {
         "startLine": 214,
         "startChar": 0,
@@ -194,6 +314,30 @@
       "side": 1,
       "message": "What about chrome.IsTargetAvailable(...). I see also that in chrome there is a check for TestAPIConn connection simply evaluating boolean:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d641?q\u003dchrome.Respo\n\nWould those work?",
       "parentUuid": "d9ebe3f9_65a5a803",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3765cf09_c2d9d2e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2021-11-25T14:01:43Z",
+      "side": 1,
+      "message": "Ah, checking for \"true\" seems safer. Thanks!",
+      "parentUuid": "efbc68d4_0f09738a",
       "range": {
         "startLine": 236,
         "startChar": 0,
