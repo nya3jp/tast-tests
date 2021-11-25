@@ -146,9 +146,19 @@ func (w *wilcoDTCFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to wait for DTC VM to be ready: ", err)
 	}
 
+	// Verify that wilco_dtc_supportd daemon was started by policy.
+	if _, err := wilco.SupportdPID(ctx); err != nil {
+		s.Fatal("Failed to get Wilco DTC Support Daemon PID: ", err)
+	}
+
+	// Restart wilco_dtc_supportd daemon in a test mode to collect more verbose logs.
+	if err := wilco.StartSupportd(ctx); err != nil {
+		s.Fatal("Failed to restart Wilco DTC Support Daemon: ", err)
+	}
+
 	w.wilcoDTCSupportdPID, err = wilco.SupportdPID(ctx)
 	if err != nil {
-		s.Fatal("Failed to get Wilco DTC Support Daemon PID: ", err)
+		s.Fatal("Failed to get Wilco DTC Support Daemon PID after daemon restart: ", err)
 	}
 
 	// If wilco VM needs to be in test mode. Restarting wilco DTC vm with updated config.
