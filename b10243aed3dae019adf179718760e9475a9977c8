@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "088a4ab2_90754108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-11-25T03:44:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b3c4af_1d2f5042",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 95
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1012eb7_6cd290a1",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "I added a comment in the caller position. This test has a dependency to PK. It should not fail this function if PK initialization fails.",
       "parentUuid": "7e46ad97_08bfc754",
+      "range": {
+        "startLine": 536,
+        "startChar": 2,
+        "endLine": 540,
+        "endChar": 24
+      },
+      "revId": "b10243aed3dae019adf179718760e9475a9977c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090ea4f5_a989c4f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-11-25T03:44:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df201cf6_bcbbaa36",
       "range": {
         "startLine": 536,
         "startChar": 2,

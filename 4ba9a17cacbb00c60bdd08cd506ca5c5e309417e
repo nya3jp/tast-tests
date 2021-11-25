@@ -22,6 +22,30 @@
       },
       "revId": "4ba9a17cacbb00c60bdd08cd506ca5c5e309417e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b80e2d8_4933df81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji_search.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2021-11-25T03:44:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c2ebb9_93b19f5d",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "4ba9a17cacbb00c60bdd08cd506ca5c5e309417e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
