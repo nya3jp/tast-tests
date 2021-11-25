@@ -34,6 +34,24 @@
       "parentUuid": "5516e495_1fbee102",
       "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36f290e_4dc6370c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-25T05:05:08Z",
+      "side": 1,
+      "message": "Yeah fair enough, imo splitting up the adding, migration, and removing is probably not worth it. Had a bit more of a look and it seems like the pulling out constants could be done in a separate CL. WDYT?\n\nAnyway, I am the shadow reviewer so happy to wait to hear from Oleh about this.",
+      "parentUuid": "5bf7dcaa_942b5c92",
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
