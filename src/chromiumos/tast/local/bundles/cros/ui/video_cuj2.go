@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -37,33 +38,65 @@ func init() {
 		},
 		Params: []testing.Param{
 			{
-				Name:      "basic_youtube_web",
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
+				Name:    "basic_youtube_web",
+				Timeout: 10 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeWeb,
 				},
 			}, {
-				Name:      "plus_youtube_web",
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
+				Name:              "basic_youtube_web_crosbolt",
+				Timeout:           10 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
+				Val: videoCUJParam{
+					tier: cuj.Basic,
+					app:  videocuj.YoutubeWeb,
+				},
+			}, {
+				Name:    "plus_youtube_web",
+				Timeout: 10 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Plus,
 					app:  videocuj.YoutubeWeb,
 				},
 			}, {
-				Name:      "basic_youtube_app",
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
+				Name:              "plus_youtube_web_crosbolt",
+				Timeout:           10 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
+				Val: videoCUJParam{
+					tier: cuj.Plus,
+					app:  videocuj.YoutubeWeb,
+				},
+			}, {
+				Name:    "basic_youtube_app",
+				Timeout: 10 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeApp,
 				},
 			}, {
-				Name:      "plus_youtube_app",
-				Timeout:   10 * time.Minute,
-				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
+				Name:              "basic_youtube_app_crosbolt",
+				Timeout:           10 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
+				Val: videoCUJParam{
+					tier: cuj.Basic,
+					app:  videocuj.YoutubeApp,
+				},
+			}, {
+				Name:    "plus_youtube_app",
+				Timeout: 10 * time.Minute,
+				Val: videoCUJParam{
+					tier: cuj.Plus,
+					app:  videocuj.YoutubeApp,
+				},
+			}, {
+				Name:              "plus_youtube_app_crosbolt",
+				Timeout:           10 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Plus,
 					app:  videocuj.YoutubeApp,

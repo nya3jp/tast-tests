@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/quickcheckcuj"
+	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/ime"
@@ -45,8 +46,8 @@ func init() {
 					scenario: quickcheckcuj.Lock,
 				},
 			}, {
-				Name:      "basic_wakeup",
-				Timeout:   5 * time.Minute,
+				Name:    "basic_wakeup",
+				Timeout: 5 * time.Minute,
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Suspend,
@@ -54,8 +55,8 @@ func init() {
 			}, {
 				Name:              "basic_wakeup_crosbolt",
 				Timeout:           5 * time.Minute,
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("volta", "vilboz", "dratini")),
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Suspend,
