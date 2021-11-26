@@ -97,8 +97,8 @@ func ExistingUser(ctx context.Context, s *testing.State) {
 	}
 
 	// Check if the login was successful using the API and also by looking for the shelf in the UI.
-	if st, err := lockscreen.WaitState(ctx, tLoginConn, func(st lockscreen.State) bool { return st.LoggedIn }, 30*time.Second); err != nil {
-		s.Fatalf("Failed waiting to log in: %v, last state: %+v", err, st)
+	if err := lockscreen.WaitForLoggedIn(ctx, tLoginConn, chrome.LoginTimeout); err != nil {
+		s.Fatal("Failed to login: ", err)
 	}
 
 	if err := ash.WaitForShelf(ctx, tLoginConn, 30*time.Second); err != nil {
