@@ -179,6 +179,14 @@ func DontSkipOOBEAfterLogin() Option {
 	}
 }
 
+// DontWaitForCryptohome returns an Option that can be passed to skip cryptohome mount wait after user login.
+func DontWaitForCryptohome() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.WaitForCryptohome = false
+		return nil
+	}
+}
+
 // CustomLoginTimeout allows setting a custom timeout for login.
 func CustomLoginTimeout(timeout time.Duration) Option {
 	return func(cfg *config.MutableConfig) error {

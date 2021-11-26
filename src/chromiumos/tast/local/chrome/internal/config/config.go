@@ -168,6 +168,9 @@ func (c *Config) VKEnabled() bool { return c.m.VKEnabled }
 // SkipOOBEAfterLogin returns whether to skip OOBE after login.
 func (c *Config) SkipOOBEAfterLogin() bool { return c.m.SkipOOBEAfterLogin }
 
+// WaitForCryptohome returns whether to wait for the cryptohome mount after login.
+func (c *Config) WaitForCryptohome() bool { return c.m.WaitForCryptohome }
+
 // CustomLoginTimeout returns a custom timeout for login. If 0, use chrome.LoginTimeout.
 func (c *Config) CustomLoginTimeout() time.Duration {
 	return time.Duration(c.m.CustomLoginTimeout) * time.Nanosecond
@@ -272,6 +275,7 @@ type MutableConfig struct {
 	EnableLoginVerboseLogs          bool       `reuse_match:"true"`
 	VKEnabled                       bool       `reuse_match:"true"`
 	SkipOOBEAfterLogin              bool       `reuse_match:"false"`
+	WaitForCryptohome               bool       `reuse_match:"false"`
 	CustomLoginTimeout              int64      `reuse_match:"false"` // time.Duration can not be serialized to JSON. Store duration in nanoseconds.
 	InstallWebApp                   bool       `reuse_match:"true"`
 	Region                          string     `reuse_match:"true"`
@@ -314,6 +318,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			LoginMode:                       FakeLogin,
 			VKEnabled:                       false,
 			SkipOOBEAfterLogin:              true,
+			WaitForCryptohome:               true,
 			CustomLoginTimeout:              0,
 			EnableLoginVerboseLogs:          false,
 			InstallWebApp:                   false,

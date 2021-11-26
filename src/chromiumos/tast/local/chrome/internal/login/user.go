@@ -45,12 +45,14 @@ func loginUser(ctx context.Context, cfg *config.Config, sess *driver.Session) er
 		}
 	}
 
-	mountType := cryptohome.Permanent
-	if cfg.EphemeralUser() {
-		mountType = cryptohome.Ephemeral
-	}
-	if err = cryptohome.WaitForUserMountAndValidateType(ctx, cfg.NormalizedUser(), mountType); err != nil {
-		return err
+	if cfg.WaitForCryptohome() {
+		mountType := cryptohome.Permanent
+		if cfg.EphemeralUser() {
+			mountType = cryptohome.Ephemeral
+		}
+		if err = cryptohome.WaitForUserMountAndValidateType(ctx, cfg.NormalizedUser(), mountType); err != nil {
+			return err
+		}
 	}
 
 	if cfg.SkipOOBEAfterLogin() {
