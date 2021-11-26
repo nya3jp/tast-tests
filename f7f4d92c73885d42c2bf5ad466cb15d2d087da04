@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82cae480_8e3a44e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/update_engine_policies.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-26T09:55:51Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 31,
+        "startChar": 47,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "f7f4d92c73885d42c2bf5ad466cb15d2d087da04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee7a597_920dc33c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/update_engine_policies.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-26T09:55:51Z",
+      "side": 1,
+      "message": "If there is no specific reason to be defined inside the function, I would rather have it outside of it.",
+      "revId": "f7f4d92c73885d42c2bf5ad466cb15d2d087da04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27dd5d61_5046a9b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/update_engine_policies.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-26T09:55:51Z",
+      "side": 1,
+      "message": "Use poll break instead.",
+      "revId": "f7f4d92c73885d42c2bf5ad466cb15d2d087da04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
