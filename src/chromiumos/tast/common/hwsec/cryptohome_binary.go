@@ -122,7 +122,7 @@ func (c *cryptohomeBinary) isMounted(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=is_mounted")
 }
 
-// mountEx calls "cryptohome --action=mount_ex".
+// mountEx calls "cryptohome --action=mount_ex" .
 func (c *cryptohomeBinary) mountEx(ctx context.Context, username string, doesCreate bool, label string, extraFlags []string) ([]byte, error) {
 	args := []string{"--action=mount_ex", "--user=" + username, "--key_label=" + label}
 	if doesCreate {
@@ -252,4 +252,50 @@ func (c *cryptohomeBinary) getSupportedKeyPolicies(ctx context.Context) ([]byte,
 // getKeyData calls "cryptohome --action=get_key_data_ex".
 func (c *cryptohomeBinary) getKeyData(ctx context.Context, username, keyLabel string) ([]byte, error) {
 	return c.call(ctx, "--action=get_key_data_ex", "--user="+username, "--key_label="+keyLabel)
+}
+
+// startAuthSession calls "cryptohome --action=start_auth_session".
+func (c *cryptohomeBinary) startAuthSession(ctx context.Context, username string) ([]byte, error) {
+	return c.call(ctx, "--action=start_auth_session", "--user="+username)
+}
+
+// authenticateAuthSession calls "cryptohome --action=authenticate_auth_session".
+// password is ignored if publicMount is set to true.
+func (c *cryptohomeBinary) authenticateAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) ([]byte, error) {
+	args := []string{"--action=authenticate_auth_session", "--auth_session_id=" + authSessionID}
+	if publicMount {
+		args = append(args, "--public_mount")
+	} else {
+		args = append(args, "--password="+password)
+	}
+	return c.call(ctx, args...)
+}
+
+// addCredentialsWithAuthSession calls "cryptohome --action=add_credentials".
+// password is ignored if publicMount is set to true.
+func (c *cryptohomeBinary) addCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) ([]byte, error) {
+	args := []string{"--action=add_credentials", "--auth_session_id=" + authSessionID}
+	if publicMount {
+		args = append(args, "--public_mount", "--key_label=public_mount")
+	} else {
+		args = append(args, "--password="+password, "--key_label=fake_label")
+	}
+	return c.call(ctx, args...)
+}
+
+// mountWithAuthSession calls "cryptohome --action=mount_ex" with "--auth_session_id".
+// password is ignored if publicMount is set to true.
+func (c *cryptohomeBinary) mountWithAuthSession(ctx context.Context, authSessionID string, publicMount bool) ([]byte, error) {
+	args := []string{"--action=mount_ex", "--auth_session_id=" + authSessionID}
+	if publicMount {
+		args = append(args, "--public_mount", "--key_label=public_mount")
+	}
+	return c.call(ctx, args...)
+}
+
+// invalidateAuthSession calls "cryptohome --action=invalidate_auth_session".
+// password is ignored if publicMount is set to true.
+func (c *cryptohomeBinary) invalidateAuthSession(ctx context.Context, authSessionID string) ([]byte, error) {
+	args := []string{"--action=invalidate_auth_session", "--auth_session_id=" + authSessionID}
+	return c.call(ctx, args...)
 }
