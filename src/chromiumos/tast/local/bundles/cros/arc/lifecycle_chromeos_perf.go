@@ -67,7 +67,7 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	server := memoryuser.NewMemoryStressServer(s.DataFileSystem())
 	defer server.Close()
 	for i := 0; i < numTabs; i++ {
-		task := server.NewMemoryStressTask(tabAllocMiB, 0.67, limit)
+		task := server.NewMemoryStressTask(tabAllocMiB, 0.67, limit, 0)
 		tasks = append(tasks, task)
 		tabsAliveTasks = append(tabsAliveTasks, task)
 	}
