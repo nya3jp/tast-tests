@@ -13,20 +13,19 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/memory"
 	"chromiumos/tast/testing"
 )
 
 // MemoryStressUnit creates a Chrome tab that allocates memory like the
 // platform.MemoryStressBasic test.
 type MemoryStressUnit struct {
-	url   string
-	conn  *chrome.Conn
-	limit memory.Limit
+	url      string
+	conn     *chrome.Conn
+	cooldown time.Duration
 }
 
-// Run creates a Chrome tab that allocates memory. If a memory.Limit has been
-// provided, we wait until we are no longer limited.
+// Run creates a Chrome tab that allocates memory, then waits for the provided
+// cooldown.
 func (st *MemoryStressUnit) Run(ctx context.Context, cr *chrome.Chrome) error {
 	conn, err := cr.NewConn(ctx, st.url)
 	if err != nil {
@@ -39,12 +38,10 @@ func (st *MemoryStressUnit) Run(ctx context.Context, cr *chrome.Chrome) error {
 	if err := conn.WaitForExprFailOnErr(ctx, expr); err != nil {
 		return errors.Wrap(err, "unexpected error waiting for allocation")
 	}
-	if st.limit == nil {
-		return nil
-	}
-	// Limit has been provided, wait until we are not limited.
-	if err := testing.Poll(ctx, st.limit.AssertNotReached, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
-		return errors.Wrap(err, "failed to wait for ChromeOS memory to not be above limit")
+	if st.cooldown > 0 {
+		if err := testing.Sleep(ctx, st.cooldown); err != nil {
+			return errors.Wrap(err, "failed to sleep for cooldown")
+		}
 	}
 	return nil
 }
@@ -98,7 +95,8 @@ func FillChromeOSMemory(ctx context.Context, dataFileSystem http.FileSystem, cr 
 		return res
 	}
 	for i := 0; ; i++ {
-		unit := server.NewMemoryStressUnit(unitMiB, ratio, nil)
+		const tabOpenCooldown = 2 * time.Second
+		unit := server.NewMemoryStressUnit(unitMiB, ratio, tabOpenCooldown)
 		units = append(units, unit)
 		if err := unit.Run(ctx, cr); err != nil {
 			return cleanup, errors.Wrapf(err, "failed to run MemoryStressUnit %q", unit.url)
@@ -132,8 +130,8 @@ func (st *MemoryStressTask) NeedVM() bool {
 	return false
 }
 
-// Run creates a Chrome tab that allocates memory. If a memory.Limit has been
-// provided, we wait until we are no longer limited.
+// Run creates a Chrome tab that allocates memory, then waits for the provided
+// cooldown.
 func (st *MemoryStressTask) Run(ctx context.Context, testEnv *TestEnv) error {
 	return st.MemoryStressUnit.Run(ctx, testEnv.cr)
 }
@@ -172,23 +170,23 @@ func NewMemoryStressServer(dataFileSystem http.FileSystem) *MemoryStressServer {
 // NewMemoryStressUnit creates a new MemoryStressUnit.
 // allocMiB - The amount of memory the tab will allocate.
 // ratio    - How compressible the allocated memory will be.
-// limit    - (optional) wait until memory is not low after creating the tab.
-func (s *MemoryStressServer) NewMemoryStressUnit(allocMiB int, ratio float32, limit memory.Limit) *MemoryStressUnit {
+// cooldown - How long to wait after allocating before returning.
+func (s *MemoryStressServer) NewMemoryStressUnit(allocMiB int, ratio float32, cooldown time.Duration) *MemoryStressUnit {
 	url := fmt.Sprintf("%s/%s?alloc=%d&ratio=%.3f&id=%d", s.server.URL, AllocPageFilename, allocMiB, ratio, s.nextID)
 	s.nextID++
 	return &MemoryStressUnit{
-		url:   url,
-		conn:  nil,
-		limit: limit,
+		url:      url,
+		conn:     nil,
+		cooldown: cooldown,
 	}
 }
 
 // NewMemoryStressTask creates a new MemoryStressTask.
 // allocMiB - The amount of memory the tab will allocate.
 // ratio    - How compressible the allocated memory will be.
-// limit    - (optional) wait until memory is not low after creating the tab.
-func (s *MemoryStressServer) NewMemoryStressTask(allocMiB int, ratio float32, limit memory.Limit) *MemoryStressTask {
-	return &MemoryStressTask{*s.NewMemoryStressUnit(allocMiB, ratio, limit)}
+// cooldown - How long to wait after allocating before returning.
+func (s *MemoryStressServer) NewMemoryStressTask(allocMiB int, ratio float32, cooldown time.Duration) *MemoryStressTask {
+	return &MemoryStressTask{*s.NewMemoryStressUnit(allocMiB, ratio, cooldown)}
 }
 
 // Close shuts down the http server.

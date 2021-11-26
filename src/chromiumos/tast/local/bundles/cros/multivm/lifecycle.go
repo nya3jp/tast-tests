@@ -101,10 +101,6 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to retrieve base memory stats: ", err)
 	}
 
-	// Use a PageReclaimLimit to avoid OOMing in the host. Will be composed with
-	// VM limits so that we don't OOM in the host or any VM.
-	hostLimit := memory.NewPageReclaimLimit()
-
 	var server *memoryuser.MemoryStressServer
 	numTypes := 0
 	if param.inHost {
@@ -134,17 +130,18 @@ func Lifecycle(ctx context.Context, s *testing.State) {
 	var procsAliveTasks []memoryuser.KillableTask
 	for i := 0; i < numTasks/numTypes; i++ {
 		if param.inHost {
-			task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, hostLimit)
+			const tabOpenCooldown = 2 * time.Second
+			task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, tabOpenCooldown)
 			tabsAliveTasks = append(tabsAliveTasks, task)
 			tasks = append(tasks, task)
 		}
 		if param.inARC {
-			task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), int64(taskAllocMiB)*memory.MiB, compressRatio, hostLimit, minimizeArc)
+			task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), int64(taskAllocMiB)*memory.MiB, compressRatio, nil, minimizeArc)
 			appsAliveTasks = append(appsAliveTasks, task)
 			tasks = append(tasks, task)
 		}
 		if param.inCrostini {
-			task := memoryuser.NewCrostiniLifecycleTask(preCrostini, len(procsAliveTasks), taskAllocMiB, compressRatio, hostLimit)
+			task := memoryuser.NewCrostiniLifecycleTask(preCrostini, len(procsAliveTasks), taskAllocMiB, compressRatio, nil)
 			procsAliveTasks = append(procsAliveTasks, task)
 			tasks = append(tasks, task)
 		}
