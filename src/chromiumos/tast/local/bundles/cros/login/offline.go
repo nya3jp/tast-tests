@@ -84,8 +84,8 @@ func Offline(ctx context.Context, s *testing.State) {
 		if err = lockscreen.EnterPassword(ctx, tconn, creds.User, creds.Pass, keyboard); err != nil {
 			return errors.Wrap(err, "failed to enter password")
 		}
-		if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.LoggedIn }, chrome.LoginTimeout); err != nil {
-			return errors.Wrapf(err, "waiting for logged in state failed: (last status %+v)", st)
+		if err := lockscreen.WaitForLoggedIn(ctx, tconn, chrome.LoginTimeout); err != nil {
+			s.Fatal("Failed to login: ", err)
 		}
 
 		hasErrorVar = false
