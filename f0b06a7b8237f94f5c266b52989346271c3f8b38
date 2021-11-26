@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1385cff1_730a3242",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-26T08:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ff05668_fbc0ba27",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f87bcb_7932b412",
@@ -173,6 +197,30 @@
       "side": 1,
       "message": "The chrome.login.launchManagedGuestSession (this CL uses launchSharedManagedGuestSession) would work here.\n\nNote that this needs the DeviceLoginScreenExtensions policy with this particular extension.",
       "parentUuid": "abd9a3e0_dff27ef5",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68dafd0a_a237cea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-26T08:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0f1062d_313b7d50",
       "range": {
         "startLine": 121,
         "startChar": 0,
@@ -267,6 +315,30 @@
       "side": 1,
       "message": "It\u0027s a different method here (enterSharedSession vs launchSharedManagedGuestSession).\n\nThe flow of the test is launchManagedGuestSession -\u003e this creates a special \"shared\" MGS, and enters the session.\nunlock/lockSharedSession locks/unlocks the session (this is tested in launch_shared_managed_guest_session.go).\nendSharedSession -\u003e this ends the current session but the \"shared\" MGS still persists.\nenterSharedSession -\u003e this enters the same \"shared\" MGS.\n\nIn particular, we want to test that the cleanup operations of endSharedSession are done correctly.",
       "parentUuid": "b32cdec0_a6a3ca31",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "f0b06a7b8237f94f5c266b52989346271c3f8b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c6ecc4f_34b8d058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/shared_managed_guest_session_cleanup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-26T08:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "631baa10_56f67a0e",
       "range": {
         "startLine": 214,
         "startChar": 0,
