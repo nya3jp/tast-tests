@@ -183,6 +183,13 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		args = append(args, "--lacros-chrome-additional-args="+strings.Join(as, "####"))
 	}
 
+	// TODO(b/207576612): Remove this explicit override once all tests have migrated.
+	if cfg.EnableFilesAppSWA() {
+		args = append(args, "--enable-features=FilesSWA")
+	} else {
+		args = append(args, "--disable-features=FilesSWA")
+	}
+
 	args = append(args, cfg.ExtraArgs()...)
 	var envVars []string
 	if cfg.BreakpadTestMode() {
