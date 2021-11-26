@@ -39,14 +39,14 @@ func init() {
 // CCAUIPerf measure cold/warm start time of CCA and also measure its
 // performance through some UI operations.
 func CCAUIPerf(ctx context.Context, s *testing.State) {
+	const defaultTimeout = 90 * time.Second
 	perfData := cca.NewPerfData()
 	resetChrome := s.FixtValue().(cca.FixtureData).ResetChrome
 
 	// App launch tests.
-	const appLaunchTestTimeout = 60 * time.Second
 	startApp := s.FixtValue().(cca.FixtureData).StartApp
 	stopApp := s.FixtValue().(cca.FixtureData).StopApp
-	appLaunchTestCtx, cancel := context.WithTimeout(ctx, appLaunchTestTimeout)
+	appLaunchTestCtx, cancel := context.WithTimeout(ctx, defaultTimeout)
 	s.Run(appLaunchTestCtx, "testAppLaunch", func(ctx context.Context, s *testing.State) {
 		if err := testAppLaunch(ctx, resetChrome, startApp, stopApp, perfData); err != nil {
 			s.Error("Failed to pass testAppLaunch subtest: ", err)
@@ -55,7 +55,6 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 	cancel()
 
 	// UI tests.
-	const defaultTimeout = 90 * time.Second
 	const previewTestTimeout = 3 * time.Minute
 	runTestWithApp := s.FixtValue().(cca.FixtureData).RunTestWithApp
 
@@ -116,16 +115,6 @@ func CCAUIPerf(ctx context.Context, s *testing.State) {
 func testAppLaunch(ctx context.Context, resetChrome cca.ResetChromeFunc,
 	startApp cca.StartAppFunc, stopApp cca.StopAppFunc, perfData *cca.PerfData) error {
 	return preparePerfTest(ctx, resetChrome, func(ctx context.Context) (retErr error) {
-		defer func(ctx context.Context) {
-			if retErr != nil {
-				if err := resetChrome(ctx); err != nil {
-					testing.ContextLog(ctx, "Failed to resetChrome for subtest testLaunchApp: ", err)
-				}
-			}
-		}(ctx)
-		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-		defer cancel()
-
 		// Open/close app twice to collect app launched from cold/warm start.
 		for i := 0; i < 2; i++ {
 			app, err := startApp(ctx)
