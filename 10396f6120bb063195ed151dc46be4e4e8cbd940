@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60b4e43_8ffca1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-26T01:11:34Z",
+      "side": 1,
+      "message": "this structure is complicated and reduces understandability, as it is mixing action and useraction (you are defining an action that calls a useraction, and the useraction is based on another action). Could you refactor it to what you did for the previous tests? like:\n\naction :\u003d ...\nuseraction :\u003d ...(action)\n\nThen use useraction.Run in uiauto.Combine.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "10396f6120bb063195ed151dc46be4e4e8cbd940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea0b953_0b87ecda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-11-26T01:11:34Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 30
+      },
+      "revId": "10396f6120bb063195ed151dc46be4e4e8cbd940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
