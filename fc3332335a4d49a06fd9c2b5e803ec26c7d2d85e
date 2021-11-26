@@ -16,6 +16,24 @@
       "message": "You should only return with an error here.\nOr break the poll.",
       "revId": "fc3332335a4d49a06fd9c2b5e803ec26c7d2d85e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67749dc4_e3de095b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_selector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T10:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7503b8fe_f9abadd7",
+      "revId": "fc3332335a4d49a06fd9c2b5e803ec26c7d2d85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
