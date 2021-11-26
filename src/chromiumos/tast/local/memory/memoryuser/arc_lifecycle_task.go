@@ -171,8 +171,8 @@ func FillArcMemory(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, unit
 		return res
 	}
 	for i := 0; i < ArcLifecycleUnitCount; i++ {
-		if err := a.Install(ctx, androidLifecycleTestAPKPath(i)); err != nil {
-			return cleanup, errors.Wrapf(err, "failed to install %q", androidLifecycleTestAPKPath(i))
+		if err := installAndroidLifecycleTestAPK(ctx, a, i); err != nil {
+			return cleanup, err
 		}
 		unit := NewArcLifecycleUnit(i, unitBytes, ratio, nil, false)
 		units = append(units, unit)
@@ -242,6 +242,21 @@ func androidLifecycleTestAPKPath(id int) string {
 	return fmt.Sprintf("/usr/local/libexec/tast/apks/local/cros/ArcLifecycleTest%02d.apk", id)
 }
 
+func installAndroidLifecycleTestAPK(ctx context.Context, a *arc.ARC, id int) error {
+	const installRetries = 3
+	var err error
+	for i := 0; ; i++ {
+		err = a.Install(ctx, androidLifecycleTestAPKPath(id))
+		if err == nil {
+			return nil
+		}
+		if i >= installRetries {
+			return errors.Wrapf(err, "failed to install ArcLifecycleTest%02d", id)
+		}
+		testing.ContextLogf(ctx, "Failed to install ArcLifecycleTest%02d on try %d: %s", id, i, err)
+	}
+}
+
 // InstallArcLifecycleTestApps installs 'howMany' copies of ArcLifecycleTest.
 // The maximum number of apps that can be installed is ArcLifecycleUnitCount.
 func InstallArcLifecycleTestApps(ctx context.Context, a *arc.ARC, num int) error {
@@ -250,8 +265,8 @@ func InstallArcLifecycleTestApps(ctx context.Context, a *arc.ARC, num int) error
 	}
 	testing.ContextLogf(ctx, "Installing %d copies of AndroidLifecycleTest app", num)
 	for i := 0; i < num; i++ {
-		if err := a.Install(ctx, androidLifecycleTestAPKPath(i)); err != nil {
-			return errors.Wrapf(err, "failed to install %q", androidLifecycleTestAPKPath(i))
+		if err := installAndroidLifecycleTestAPK(ctx, a, i); err != nil {
+			return err
 		}
 	}
 	testing.ContextLog(ctx, "Done")
