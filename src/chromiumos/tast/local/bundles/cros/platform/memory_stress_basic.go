@@ -78,7 +78,7 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 		}
 		minFilelistKB = val
 	}
-	s.Log(ctx, "minFilelistKB: ", minFilelistKB)
+	s.Log("minFilelistKB: ", minFilelistKB)
 
 	// The memory pressure is higher when ARC is enabled (without launching Android apps).
 	// Checks the ARC enabled case by default.
@@ -90,7 +90,7 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 		}
 		enableARC = boolVal
 	}
-	s.Log(ctx, "enableARC: ", enableARC)
+	s.Log("enableARC: ", enableARC)
 
 	useHugePages := false
 	if val, ok := s.Var("platform.MemoryStressBasic.useHugePages"); ok {
@@ -100,7 +100,7 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 		}
 		useHugePages = boolVal
 	}
-	s.Log(ctx, "useHugePages: ", useHugePages)
+	s.Log("useHugePages: ", useHugePages)
 
 	seed := time.Now().UTC().UnixNano()
 	if val, ok := s.Var("platform.MemoryStressBasic.seed"); ok {
@@ -110,7 +110,7 @@ func MemoryStressBasic(ctx context.Context, s *testing.State) {
 		}
 		seed = intVal
 	}
-	s.Log(ctx, "Seed: ", seed)
+	s.Log("Seed: ", seed)
 	localRand := rand.New(rand.NewSource(seed))
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))

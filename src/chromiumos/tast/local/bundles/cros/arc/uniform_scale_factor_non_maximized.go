@@ -72,7 +72,7 @@ func baselinePixelCount(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Te
 func UniformScaleFactorNonMaximized(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
-	s.Log(ctx, "Running app, without uniform scaling")
+	s.Log("Running app, without uniform scaling")
 	if err := perappdensity.SetUpApk(ctx, a, perappdensity.Apk); err != nil {
 		s.Fatal("Failed to set up perappdensity.apk: ", err)
 	}

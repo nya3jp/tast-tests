@@ -81,7 +81,7 @@ func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
 		s.Fatal("Failed to start printer: ", err)
 	}
 
-	s.Log(ctx, " Waiting for ", job, " to complete")
+	s.Logf("Waiting for %s to complete", job)
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
 		if done, err := lp.JobCompleted(ctx, foundPrinterName, job); err != nil {
 			return err
