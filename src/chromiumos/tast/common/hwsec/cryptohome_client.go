@@ -31,6 +31,10 @@ var (
 	// userHashRegexp extracts the hash from a cryptohome dir's path.
 	// Example: "/home/.shadow/118c4648065f5cd3660e17a53533ec7bc924d01f"
 	userHashRegexp = regexp.MustCompile("^/home/user/([[:xdigit:]]+)$")
+
+	// authSessionIDRegexp matches the auth session ID.
+	// It would matche "auth_session_id:*"
+	authSessionIDRegexp = regexp.MustCompile(`(auth_session_id:)(.+)(\n)`)
 )
 
 func getLastLine(s string) string {
@@ -794,4 +798,56 @@ func (u *CryptohomeClient) GetKeyData(ctx context.Context, user, keyLabel string
 		return "", errors.Wrap(err, "GetKeyData failed")
 	}
 	return string(binaryMsg), nil
+}
+
+// StartAuthSession starts an AuthSession for a given user.
+func (u *CryptohomeClient) StartAuthSession(ctx context.Context, user string) (string, error) {
+	binaryMsg, err := u.binary.startAuthSession(ctx, user)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start auth session")
+	}
+
+	m := authSessionIDRegexp.FindSubmatch(binaryMsg)
+	if m == nil {
+		return "", errors.Errorf("didn't find auth session in output %q", string(binaryMsg))
+	}
+	return string(m[2]), nil
+}
+
+// AuthenticateAuthSession authenticates an AuthSession with a given authSessionID.
+// password is ignored if publicMount is set to true.
+func (u *CryptohomeClient) AuthenticateAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) error {
+	_, err := u.binary.authenticateAuthSession(ctx, password, authSessionID, publicMount)
+	if err != nil {
+		return errors.Wrap(err, "failed to authenticate auth session")
+	}
+	return nil
+}
+
+// AddCredentialsWithAuthSession creates the credentials for the user with given password.
+// password is ignored if publicMount is set to true.
+func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
+	_, err := u.binary.addCredentialsWithAuthSession(ctx, user, password, authSessionID, publicMount)
+	if err != nil {
+		return errors.Wrap(err, "failed to add credentials with auth session")
+	}
+	return nil
+}
+
+// MountWithAuthSession mounts a user with AuthSessionID.
+func (u *CryptohomeClient) MountWithAuthSession(ctx context.Context, authSessionID string, publicMount bool) error {
+	_, err := u.binary.mountWithAuthSession(ctx, authSessionID, publicMount)
+	if err != nil {
+		return errors.Wrap(err, "failed to mount with auth session")
+	}
+	return nil
+}
+
+// InvalidateAuthSession invalidates a user with AuthSessionID.
+func (u *CryptohomeClient) InvalidateAuthSession(ctx context.Context, authSessionID string) error {
+	_, err := u.binary.invalidateAuthSession(ctx, authSessionID)
+	if err != nil {
+		return errors.Wrap(err, "failed to invalidate auth session")
+	}
+	return nil
 }
