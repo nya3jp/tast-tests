@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8dd82d_7703e2a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T08:47:39Z",
+      "side": 1,
+      "message": "This is already being done in multiple tests. Can you add a helper to handle it and simplify the tests?",
+      "revId": "4112075509f9e3bd8444e6c37972acbada141127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a625dd_caa3d3e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T08:47:39Z",
+      "side": 1,
+      "message": "nit: Move this function inline, it\u0027s less readable this way.",
+      "revId": "4112075509f9e3bd8444e6c37972acbada141127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb4be3e_3749086f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T08:47:39Z",
+      "side": 1,
+      "message": "Use ioutil.ReadFile",
+      "revId": "4112075509f9e3bd8444e6c37972acbada141127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
