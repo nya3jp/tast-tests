@@ -146,7 +146,7 @@ func Wait(ctx context.Context) error {
 	return nil
 }
 
-// killMatchingProcesses Sends SIGKILL to matching processes and their
+// killMatchingProcesses sends SIGKILL to matching processes and their
 // subprocesses. Current process is not killed.
 func killMatchingProcesses(ctx context.Context, match func(ctx context.Context, p *process.Process) bool) {
 	ps, err := process.Processes()
