@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31dcaf51_80ca68de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-11-26T14:01:33Z",
+      "side": 1,
+      "message": "I will recheck more precisely the flow of the test a bit later",
+      "revId": "7424e7d14ee3181a4affffa82a0afda9dd886cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62dd0e1a_d58c6fa2",
@@ -106,6 +123,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfd7d3bc_3d3793a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-11-26T14:01:33Z",
+      "side": 1,
+      "message": "Things could take time. We need to wait for something after openning settings call. I have seen this example:\n\n\n        if err :\u003d settings.WaitForSearchBox()(ctx); err !\u003d nil {\n\t\ts.Fatal(\"Failed waiting for Settings to load: \", err)\n\t}",
+      "revId": "7424e7d14ee3181a4affffa82a0afda9dd886cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53d64e12_e7d162e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
         "patchSetId": 3
@@ -129,6 +163,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1817c9f9_9be1c9cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-11-26T14:01:33Z",
+      "side": 1,
+      "message": "Same here, didn\u0027t get what we are waiting for..",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 53
+      },
+      "revId": "7424e7d14ee3181a4affffa82a0afda9dd886cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50717695_64672770",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
         "patchSetId": 3
@@ -145,6 +202,29 @@
         "startChar": 2,
         "endLine": 111,
         "endChar": 73
+      },
+      "revId": "7424e7d14ee3181a4affffa82a0afda9dd886cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243e5a82_722d9462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-11-26T14:01:33Z",
+      "side": 1,
+      "message": "Wait unit exists \"Restrict .. \" button? I have checked it exists all the time even after click. Let\u0027s wait for button with status?",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 72
       },
       "revId": "7424e7d14ee3181a4affffa82a0afda9dd886cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
