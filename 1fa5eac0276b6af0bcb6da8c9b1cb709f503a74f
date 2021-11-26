@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc63442_76077b60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-26T08:58:37Z",
+      "side": 1,
+      "message": "FYI\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3303239\nis an example of a test that is detected by this test for its violation.",
+      "revId": "1fa5eac0276b6af0bcb6da8c9b1cb709f503a74f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
