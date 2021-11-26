@@ -78,7 +78,7 @@ func DisableArc(ctx context.Context, s *testing.State) {
 	defer func() {
 		screenRecorder.Stop(ctx)
 		if s.HasError() {
-			s.Log(ctx, "Saving screen record to %s", s.OutDir())
+			s.Logf("Saving screen record to %s", s.OutDir())
 			if err := screenRecorder.SaveInString(ctx, filepath.Join(s.OutDir(), "screen_record.txt")); err != nil {
 				s.Fatal("Failed to save screen record in string: ", err)
 			}

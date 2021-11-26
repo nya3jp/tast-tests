@@ -89,7 +89,7 @@ func SystemProxyForSystemServices(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}, &testing.PollOptions{Interval: 500 * time.Millisecond, Timeout: 15 * time.Second}); err != nil {
-		s.Fatal(ctx, "Not all targets finished closing: ", err)
+		s.Fatal("Not all targets finished closing: ", err)
 	}
 }
 
