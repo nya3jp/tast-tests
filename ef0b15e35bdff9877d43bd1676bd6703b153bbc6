@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de30ea28_a6becc7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T07:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00fbb3e6_9bf1604b",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30737fa7_50899006",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-18T03:40:21Z",
       "side": 1,
       "message": "ctxForCleanUp",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f7de025_99906549",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T07:17:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30737fa7_50899006",
       "range": {
         "startLine": 84,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2661766_f07fea1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T07:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3001f7da_4698419b",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e8b99c5_867b9501",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-18T03:40:21Z",
       "side": 1,
       "message": "If the first WaitConnect failed due to a timeout (i.e. the context expired), then this one will immediately timeout as well.",
+      "range": {
+        "startLine": 99,
+        "startChar": 13,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd981a4d_c3fac949",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T07:17:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e8b99c5_867b9501",
       "range": {
         "startLine": 99,
         "startChar": 13,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af850da4_5f4ad991",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T07:17:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5f5021e_ebbba5d5",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 11
+      },
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ec6400a_dd1aaa61",
@@ -133,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e6101c_5d4cd2a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T07:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ec6400a_dd1aaa61",
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0065d774_9bcefeee",
@@ -146,6 +284,24 @@
       "writtenOn": "2021-11-18T02:15:58Z",
       "side": 1,
       "message": "Use a regexp instead to extract the info you want instead. It makes it a lot clearer to understand exactly what you\u0027re doing.",
+      "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cd7686_26032104",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T07:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0065d774_9bcefeee",
       "revId": "ef0b15e35bdff9877d43bd1676bd6703b153bbc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
