@@ -131,7 +131,7 @@ func RobloxUncompressOBBPerf(ctx context.Context, s *testing.State) {
 
 	logcatRegexp := regexp.MustCompile(`unzipContainer took \(ms\) (\d+)`)
 
-	s.Log(ctx, "Scanning logcat output")
+	s.Log("Scanning logcat output")
 	scanner := bufio.NewScanner(pipe)
 	obbTimeMS := -1
 	for scanner.Scan() {
