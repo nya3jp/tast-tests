@@ -109,14 +109,26 @@ var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 // logs in chrome.New, as well as available via Chrome.Creds.
 func GAIALoginPool(creds string) Option {
 	return func(cfg *config.MutableConfig) error {
-		cs, err := config.ParseCreds(creds)
+		creds, err := PickRandomCreds(creds)
 		if err != nil {
 			return err
 		}
 		cfg.LoginMode = config.GAIALogin
-		cfg.Creds = cs[random.Intn(len(cs))]
+		cfg.Creds = creds
 		return nil
 	}
+}
+
+// PickRandomCreds randomly picks one credentials from the passed string. For
+// the format details refer to the GAIALoginPool option documentation.
+func PickRandomCreds(creds string) (Creds, error) {
+	var result Creds
+	cs, err := config.ParseCreds(creds)
+	if err != nil {
+		return result, err
+	}
+	result = cs[random.Intn(len(cs))]
+	return result, nil
 }
 
 // FakeLogin returns an Option that can be passed to New to perform a fake
@@ -175,6 +187,14 @@ func EphemeralUser() Option {
 func DontSkipOOBEAfterLogin() Option {
 	return func(cfg *config.MutableConfig) error {
 		cfg.SkipOOBEAfterLogin = false
+		return nil
+	}
+}
+
+// DontWaitForCryptohome returns an Option that can be passed to skip cryptohome mount wait after user login.
+func DontWaitForCryptohome() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.WaitForCryptohome = false
 		return nil
 	}
 }

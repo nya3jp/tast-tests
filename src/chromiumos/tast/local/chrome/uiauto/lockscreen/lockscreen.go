@@ -71,6 +71,14 @@ func WaitState(ctx context.Context, tconn *chrome.TestConn, check func(st State)
 	return st, err
 }
 
+// WaitForLoggedIn is a wrapper around WaitState to wait for the user to be logged in.
+func WaitForLoggedIn(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
+	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.LoggedIn }, timeout); err != nil {
+		return errors.Wrapf(err, "waiting for logged in state failed: (last status %+v)", st)
+	}
+	return nil
+}
+
 // PasswordFieldFinder generates Finder for the password field.
 // The password field node can be uniquely identified by its name attribute, which includes the username,
 // such as "Password for username@gmail.com". The Finder will find the node whose name matches the regex
