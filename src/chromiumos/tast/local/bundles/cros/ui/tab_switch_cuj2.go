@@ -10,12 +10,14 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type tabSwitchParam struct {
@@ -56,23 +58,45 @@ func init() {
 				Name:              "basic_noproxy",
 				Timeout:           35 * time.Minute,
 				Val:               tabSwitchParam{level: tabswitchcuj.Basic, wprProxy: false},
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
+			}, {
+				Name:              "basic_noproxy_crosbolt",
+				Timeout:           35 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Basic, wprProxy: false},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				Fixture:           "loggedInAndKeepState",
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
 			}, {
 				Name:              "plus_noproxy",
 				Timeout:           40 * time.Minute,
 				Val:               tabSwitchParam{level: tabswitchcuj.Plus, wprProxy: false},
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
 			}, {
-				Name:              "premium_noproxy",
-				Timeout:           45 * time.Minute,
-				Val:               tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false},
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				Name:              "plus_noproxy_crosbolt",
+				Timeout:           40 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Plus, wprProxy: false},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
+			}, {
+				Name:    "premium_noproxy",
+				Timeout: 45 * time.Minute,
+				Val:     tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false},
+
+				Fixture:           "loggedInAndKeepState",
+				ExtraSoftwareDeps: []string{"arc"},
+			}, {
+				Name:              "premium_noproxy_crosbolt",
+				Timeout:           45 * time.Minute,
+				Val:               tabSwitchParam{level: tabswitchcuj.Premium, wprProxy: false},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				Fixture:           "loggedInAndKeepState",
+				ExtraSoftwareDeps: []string{"arc"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPremiumDevices()),
 			},
 		},
 	})

@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/bluetooth"
 	et "chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj"
+	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
@@ -42,9 +43,18 @@ func init() {
 		Data:    []string{"cca_ui.js"},
 		Params: []testing.Param{
 			{
-				Name:      "basic_ytmusic",
-				Timeout:   20 * time.Minute,
-				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
+				Name:    "basic_ytmusic",
+				Timeout: 20 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Basic,
+					appName:  et.YoutubeMusicAppName,
+					enableBT: false,
+				},
+			}, {
+				Name:              "basic_ytmusic_crosbolt",
+				Timeout:           20 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
 					appName:  et.YoutubeMusicAppName,
@@ -67,9 +77,19 @@ func init() {
 					enableBT: true,
 				},
 			}, {
-				Name:      "plus_ytmusic",
-				Timeout:   30 * time.Minute,
-				ExtraAttr: []string{"group:crosbolt", "crosbolt_nightly"},
+				Name:    "plus_ytmusic",
+				Timeout: 30 * time.Minute,
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.YoutubeMusicAppName,
+					enableBT: false,
+				},
+			},
+			{
+				Name:              "plus_ytmusic_crosbolt",
+				Timeout:           30 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusicAppName,
