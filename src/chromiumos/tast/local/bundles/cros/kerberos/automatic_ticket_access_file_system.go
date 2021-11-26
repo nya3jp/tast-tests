@@ -94,7 +94,7 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Kerberos tickets section: ", err)
 	}
 
-	s.Log(ctx, "Waiting for Kerberos ticket to appear")
+	s.Log("Waiting for Kerberos ticket to appear")
 	if err := ui.WaitUntilExists(nodewith.NameStartingWith(username).Role(role.StaticText))(ctx); err != nil {
 		s.Fatal("Failed to find Kerberos ticket: ", err)
 	}
@@ -120,7 +120,7 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	s.Log(ctx, "Mounting SMB share")
+	s.Log("Mounting SMB share")
 	fileShareURLTextBox := nodewith.Name("File share URL").Role(role.TextField)
 	if err := uiauto.Combine("Add SMB file share",
 		files.ClickMoreMenuItem("Services", "SMB file share"),

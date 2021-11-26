@@ -108,7 +108,7 @@ func AutomaticTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	}
 
 	// Wait for ticket to appear.
-	s.Log(ctx, "Waiting for Kerberos ticket to appear")
+	s.Log("Waiting for Kerberos ticket to appear")
 	// Fetching ticket using KerberosAccount policy displays domain in capital
 	// letters. Hence using NameStartingWith(name) rather Name(name@domain).
 	if err := ui.WaitUntilExists(nodewith.NameStartingWith(username).Role(role.StaticText))(ctx); err != nil {
