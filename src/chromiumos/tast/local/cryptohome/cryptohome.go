@@ -11,11 +11,9 @@ package cryptohome
 import (
 	"context"
 	"os"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	hwseclocal "chromiumos/tast/local/hwsec"
@@ -35,12 +33,6 @@ const (
 
 	// userCleanupWaitTime is the time we wait to cleanup a user post user creation.
 	userCleanupWaitTime = 5 * time.Second
-)
-
-var (
-	// authSessionIDRegexp matches the auth session ID.
-	// It would matche "auth_session_id:*"
-	authSessionIDRegexp = regexp.MustCompile(`(auth_session_id:)(.+)(\n)`)
 )
 
 // UserHash returns user's cryptohome hash.
@@ -313,101 +305,14 @@ func CheckDeps(ctx context.Context) error {
 	return nil
 }
 
-// StartAuthSession starts an AuthSession for a given user.
-func StartAuthSession(ctx context.Context, user string) (string, error) {
-	testing.ContextLogf(ctx, "Creating AuthSession for user %q", user)
-	cmd := testexec.CommandContext(
-		ctx, "cryptohome", "--action=start_auth_session",
-		"--user="+user)
-	out, err := cmd.Output(testexec.DumpLogOnError)
-	if err != nil {
-		return "", errors.Wrapf(err, "failed to create AuthSession for %q", user)
-	}
-	authSessionID := authSessionIDRegexp.FindSubmatch(out)[2]
-	return string(authSessionID), nil
-}
-
-// AuthenticateAuthSession authenticates an AuthSession with a given authSessionID.
-// password is ignored if publicMount is set to true.
-func AuthenticateAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) error {
-	testing.ContextLog(ctx, "Authenticating AuthSession")
-	cmd := testexec.CommandContext(
-		ctx, "cryptohome", "--action=authenticate_auth_session",
-		"--auth_session_id="+authSessionID)
-	if publicMount {
-		cmd.Args = append(cmd.Args, "--public_mount")
-	} else {
-		cmd.Args = append(cmd.Args, "--password="+password)
-	}
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to authenticate AuthSession")
-	}
-	return nil
-}
-
-// AddCredentialsWithAuthSession creates the credentials for the user with given password.
-// password is ignored if publicMount is set to true.
-func AddCredentialsWithAuthSession(ctx context.Context, user, password, authSessionID string, publicMount bool) error {
-	testing.ContextLogf(ctx, "Creating new credentials for with AuthSession id: %q", authSessionID)
-
-	cmd := testexec.CommandContext(
-		ctx, "cryptohome", "--action=add_credentials",
-		"--auth_session_id="+authSessionID)
-	if publicMount {
-		cmd.Args = append(cmd.Args, "--public_mount", "--key_label=public_mount")
-	} else {
-		cmd.Args = append(cmd.Args, "--password="+password, "--key_label=fake_label")
-	}
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrapf(err, "failed to create new credentials for %s", user)
-	}
-
-	cmdRunner := hwseclocal.NewLoglessCmdRunner()
+// AuthSessionMountFlow mounts a user with AuthSession.
+func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password string, createUser bool) error {
+	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
 
-	path, err := mountInfo.UserCryptohomePath(ctx, user)
-	if err != nil {
-		return errors.Wrap(err, "failed to locate user crypthome path")
-	}
-
-	if _, err := os.Stat(path); err != nil {
-		return errors.Wrap(err, "failed to get user cryptohome directory")
-	}
-	return nil
-}
-
-// MountWithAuthSession mounts a user with AuthSessionID.
-func MountWithAuthSession(ctx context.Context, authSessionID string, publicMount bool) error {
-	testing.ContextLogf(ctx, "Trying to mount user vault with AuthSession id: %q", authSessionID)
-	cmd := testexec.CommandContext(
-		ctx, "cryptohome", "--action=mount_ex",
-		"--auth_session_id="+authSessionID)
-	if publicMount {
-		cmd.Args = append(cmd.Args, "--public_mount")
-	}
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to mount vault")
-	}
-	return nil
-}
-
-// InvalidateAuthSession invalidates a user with AuthSessionID.
-func InvalidateAuthSession(ctx context.Context, authSessionID string) error {
-	testing.ContextLogf(ctx, "Trying to invalidate AuthSession with id: %q", authSessionID)
-	cmd := testexec.CommandContext(
-		ctx, "cryptohome", "--action=invalidate_auth_session",
-		"--auth_session_id="+authSessionID)
-	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to invalidate AuthSession")
-	}
-	return nil
-}
-
-// AuthSessionMountFlow mounts a user with AuthSession.
-func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password string, createUser bool) error {
 	// Start an Auth session and get an authSessionID.
-	authSessionID, err := StartAuthSession(ctx, username)
+	authSessionID, err := cryptohome.StartAuthSession(ctx, username)
 	if err != nil {
 		return errors.Wrap(err, "failed to start Auth session")
 	}
@@ -419,42 +324,67 @@ func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, passw
 	defer cancel()
 
 	if createUser {
-		if err := AddCredentialsWithAuthSession(ctx, username, password, authSessionID, isKioskUser); err != nil {
+		if err := cryptohome.AddCredentialsWithAuthSession(ctx, username, password, authSessionID, isKioskUser); err != nil {
 			return errors.Wrap(err, "failed to add credentials with AuthSession")
 		}
+
+		path, err := mountInfo.UserCryptohomePath(ctx, username)
+		if err != nil {
+			return errors.Wrap(err, "failed to locate user cryptohome path")
+		}
+
+		if _, err := os.Stat(path); err != nil {
+			return errors.Wrap(err, "failed to get user cryptohome directory")
+		}
+		return nil
 	}
 
 	defer func(ctx context.Context, testUser string) error {
 		// Removing the user now despite if we could authenticate or not.
-		if err := RemoveVault(ctx, testUser); err != nil {
+		if _, err := cryptohome.RemoveVault(ctx, testUser); err != nil {
 			return errors.Wrap(err, "failed to remove user -")
 		}
+
+		path, err := mountInfo.UserCryptohomePath(ctx, testUser)
+		if err != nil {
+			return errors.Wrap(err, "failed to locate user cryptohome path")
+		}
+
+		// Ensure that the vault does not exist.
+		if _, err := os.Stat(path); !os.IsNotExist(err) {
+			return errors.Wrapf(err, "cryptohome could not remove vault for user %q", testUser)
+		}
+
 		testing.ContextLog(ctx, "User removed")
 		return nil
 	}(cleanupCtx, username)
 
 	// Authenticate the same AuthSession using authSessionID.
 	// If we cannot authenticate, do not proceed with mount and unmount.
-	if err := AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AuthenticateAuthSession(ctx, password, authSessionID, isKioskUser); err != nil {
 		return errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 	testing.ContextLog(ctx, "User authenticated successfully")
 
 	// Mounting with AuthSession now.
-	if err := MountWithAuthSession(ctx, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.MountWithAuthSession(ctx, authSessionID, isKioskUser); err != nil {
 		return errors.Wrap(err, "failed to mount user -")
 	}
 	testing.ContextLog(ctx, "User mounted successfully")
 
 	//Invalidate AuthSession after use.
-	if err := InvalidateAuthSession(ctx, authSessionID); err != nil {
+	if err := cryptohome.InvalidateAuthSession(ctx, authSessionID); err != nil {
 		return errors.Wrap(err, "failed to invalidate AuthSession")
 	}
 	testing.ContextLog(ctx, "AuthSession invalidated successfully")
 
 	// Unmounting user vault.
-	if err := UnmountVault(ctx, username); err != nil {
+	if _, err := cryptohome.Unmount(ctx, username); err != nil {
 		return errors.Wrap(err, "failed to unmount vault user -")
+	}
+
+	if mounted, err := mountInfo.IsMounted(ctx, username); err == nil && mounted {
+		return errors.Errorf("cryptohome did not unmount user %q", username)
 	}
 	return nil
 }
