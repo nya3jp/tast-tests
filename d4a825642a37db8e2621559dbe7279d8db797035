@@ -33,6 +33,24 @@
       "message": "If the Polling ended with a poll break, and dat is empty, do you still want to log it?",
       "revId": "d4a825642a37db8e2621559dbe7279d8db797035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "927433bf_5057014c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/update_engine_policies.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T12:57:27Z",
+      "side": 1,
+      "message": "I really don\u0027t expect this to happen, would rather create an empty file than handle it.",
+      "parentUuid": "fe6d37ab_bec8a6d0",
+      "revId": "d4a825642a37db8e2621559dbe7279d8db797035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
