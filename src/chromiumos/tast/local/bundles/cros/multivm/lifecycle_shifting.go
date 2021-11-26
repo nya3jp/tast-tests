@@ -82,10 +82,6 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to retrieve base memory stats: ", err)
 	}
 
-	// Use a PageReclaimLimit to avoid OOMing in the host. Will be composed with
-	// VM limits so that we don't OOM in the host or any VM.
-	hostLimit := memory.NewPageReclaimLimit()
-
 	var server *memoryuser.MemoryStressServer
 	numTypes := 0
 	if param.inHost {
@@ -119,7 +115,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		const numTasks = 50
 		if param.inHost {
 			for j := 0; j < numTasks/numTypes; j++ {
-				task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, hostLimit)
+				task := server.NewMemoryStressTask(int(taskAllocMiB), compressRatio, nil, 2*time.Second)
 				tabsAliveTasks = append(tabsAliveTasks, task)
 				tasks = append(tasks, task)
 			}
@@ -132,7 +128,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		}
 		if param.inARC {
 			for j := 0; j < numTasks/numTypes; j++ {
-				task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), taskAllocMiB*memory.MiB, compressRatio, hostLimit, minimizeArc)
+				task := memoryuser.NewArcLifecycleTask(len(appsAliveTasks), taskAllocMiB*memory.MiB, compressRatio, nil, minimizeArc)
 				appsAliveTasks = append(appsAliveTasks, task)
 				tasks = append(tasks, task)
 			}
@@ -145,7 +141,7 @@ func LifecycleShifting(ctx context.Context, s *testing.State) {
 		}
 		if param.inCrostini {
 			for j := 0; j < numTasks/numTypes; j++ {
-				task := memoryuser.NewCrostiniLifecycleTask(preCrostini, len(procsAliveTasks), taskAllocMiB, compressRatio, hostLimit)
+				task := memoryuser.NewCrostiniLifecycleTask(preCrostini, len(procsAliveTasks), taskAllocMiB, compressRatio, nil)
 				procsAliveTasks = append(procsAliveTasks, task)
 				tasks = append(tasks, task)
 			}
