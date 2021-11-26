@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002f736a_a74c6e07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-26T10:30:30Z",
+      "side": 1,
+      "message": "LGTM from tast owner perspective % nits.",
+      "revId": "ffe354b67c86d09d66a47b7595de58b84ea025f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b1a183e_8f50045e",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-26T10:30:30Z",
+      "side": 1,
+      "message": "nit: miss a double quote in the end of the example?",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "ffe354b67c86d09d66a47b7595de58b84ea025f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d5ffed9_db8dafcf",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-26T10:30:30Z",
+      "side": 1,
+      "message": "nit: nice to fix this log as well as below if you are happy to.",
+      "range": {
+        "startLine": 754,
+        "startChar": 28,
+        "endLine": 754,
+        "endChar": 38
+      },
+      "revId": "ffe354b67c86d09d66a47b7595de58b84ea025f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971da088_d14e4674",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-26T10:30:30Z",
+      "side": 1,
+      "message": "nit: keep \"Failed to do sth\" for consistency.\n\nbtw, this log seems redundant.",
+      "range": {
+        "startLine": 765,
+        "startChar": 28,
+        "endLine": 765,
+        "endChar": 35
+      },
+      "revId": "ffe354b67c86d09d66a47b7595de58b84ea025f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ca4c1d_7b784e4f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-26T10:30:30Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 766,
+        "startChar": 31,
+        "endLine": 766,
+        "endChar": 38
+      },
+      "revId": "ffe354b67c86d09d66a47b7595de58b84ea025f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2f2697_ce624a33",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-26T10:30:30Z",
+      "side": 1,
+      "message": "Huge nit: This is duplicate with the public constant WaitForUserTimeout",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "ffe354b67c86d09d66a47b7595de58b84ea025f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
