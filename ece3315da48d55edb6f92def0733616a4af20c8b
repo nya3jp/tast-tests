@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e18cfa47_a62f7a7f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_tablet_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-11-26T07:35:08Z",
+      "side": 1,
+      "message": "nit: this comment is no longer accurate",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 69
+      },
+      "revId": "ece3315da48d55edb6f92def0733616a4af20c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
