@@ -90,7 +90,7 @@ func ManualTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
 
-	s.Log(ctx, "Mounting SMB share")
+	s.Log("Mounting SMB share")
 	fileShareURLTextBox := nodewith.Name("File share URL").Role(role.TextField)
 	if err := uiauto.Combine("Add SMB file share",
 		files.ClickMoreMenuItem("Services", "SMB file share"),
