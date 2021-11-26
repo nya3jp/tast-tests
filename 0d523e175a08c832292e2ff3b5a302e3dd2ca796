@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edb3b79_c4feed8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/update_engine_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T12:12:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4edbf47f_5675afde",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 10
+      },
+      "revId": "0d523e175a08c832292e2ff3b5a302e3dd2ca796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c182a87c_c9e11f0b",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-11-26T10:29:11Z",
       "side": 1,
       "message": "If the string you look for is not here, this be executed hundreds of times. Do you need to do this here?",
+      "revId": "0d523e175a08c832292e2ff3b5a302e3dd2ca796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "659b4785_a10af1f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/update_engine_policies.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T12:12:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c182a87c_c9e11f0b",
       "revId": "0d523e175a08c832292e2ff3b5a302e3dd2ca796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
