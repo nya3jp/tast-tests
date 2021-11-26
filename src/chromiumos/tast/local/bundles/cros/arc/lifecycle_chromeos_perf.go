@@ -45,14 +45,6 @@ func init() {
 }
 
 func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
-	// Construct memory.Limit that will throttle tab creation.
-	nearOOM := memory.NewPageReclaimLimit()
-	crosCrit, err := memory.NewAvailableCriticalLimit()
-	if err != nil {
-		s.Fatal("Failed to make ChromeOS available Limit: ", err)
-	}
-	limit := memory.NewCompositeLimit(nearOOM, crosCrit)
-
 	// Define the list of tabs to load.
 	const numTabs = 100
 	info, err := kernelmeter.MemInfo()
@@ -67,7 +59,8 @@ func LifecycleChromeOSPerf(ctx context.Context, s *testing.State) {
 	server := memoryuser.NewMemoryStressServer(s.DataFileSystem())
 	defer server.Close()
 	for i := 0; i < numTabs; i++ {
-		task := server.NewMemoryStressTask(tabAllocMiB, 0.67, limit)
+		const tabOpenCooldown = 2 * time.Second
+		task := server.NewMemoryStressTask(tabAllocMiB, 0.67, tabOpenCooldown)
 		tasks = append(tasks, task)
 		tabsAliveTasks = append(tabsAliveTasks, task)
 	}
