@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -44,6 +45,7 @@ func init() {
 func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -124,6 +126,15 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	switchToNextInputMethodUserAction := useractions.NewUserAction(
+		"Switch input method with shortcut Ctrl+Shift+Space",
+		switchToNextInputMethod,
+		uc,
+		&useractions.UserActionCfg{
+			Tags: []useractions.ActionTag{useractions.ActionTagSwitchIME},
+		},
+	)
+
 	switchToLastActiveInputMethod := func(ctx context.Context) error {
 		if err := uiauto.Combine("switch to recent input method",
 			keyboard.AccelAction("Ctrl+Space"),
@@ -135,13 +146,22 @@ func PhysicalKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	switchToLastActiveInputMethodUserAction := useractions.NewUserAction(
+		"Switch input method with shortcut Ctrl+Space",
+		switchToLastActiveInputMethod,
+		uc,
+		&useractions.UserActionCfg{
+			Tags: []useractions.ActionTag{useractions.ActionTagSwitchIME},
+		},
+	)
+
 	// TODO(b/196771467) Validate typing after switching IME.
 	if err := uiauto.Combine("switch IME in different ways",
-		switchToNextInputMethod,
-		switchToLastActiveInputMethod,
-		switchToNextInputMethod,
-		switchToNextInputMethod,
-		switchToLastActiveInputMethod,
+		switchToNextInputMethodUserAction.Run,
+		switchToLastActiveInputMethodUserAction.Run,
+		switchToNextInputMethodUserAction.Run,
+		switchToNextInputMethodUserAction.Run,
+		switchToLastActiveInputMethodUserAction.Run,
 	)(ctx); err != nil {
 		s.Fatal("Failed to switch input method: ", err)
 	}
