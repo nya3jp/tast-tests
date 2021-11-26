@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f098854e_cbface52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-26T12:33:36Z",
+      "side": 1,
+      "message": "Jesse, WHYT about a lint rule to catch these lines?\nIf somebody really wants to print ctx, they could still do it like:\n\u003e  s.Logf(\"context %v\", ctx)",
+      "revId": "4d2b7cd5131c140eb788389a23e2a65c1cb192e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
