@@ -19,15 +19,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Exec execs the tast command using supplied arguments.
+// NewCommand creates a command to run tast.
 // subcmd contains the subcommand to use, e.g. "list" or "run".
 // flags contains subcommand-specific flags.
 // patterns contains a list of patterns matching tests.
-// stdout.txt and stderr.txt output files are written unconditionally.
-func Exec(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (stdout, stderr []byte, err error) {
+func NewCommand(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (*exec.Cmd, error) {
 	meta := s.Meta()
 	if meta == nil {
-		return nil, nil, errors.New("failed to get meta info from context")
+		return nil, errors.New("failed to get meta info from context")
 	}
 
 	args := append([]string{subcmd}, flags...)
@@ -35,6 +34,19 @@ func Exec(ctx context.Context, s *testing.State, subcmd string, flags, patterns 
 	args = append(args, meta.Target)
 	args = append(args, patterns...)
 	cmd := exec.CommandContext(ctx, meta.TastPath, args...)
+	return cmd, nil
+}
+
+// Exec execs the tast command using supplied arguments.
+// subcmd contains the subcommand to use, e.g. "list" or "run".
+// flags contains subcommand-specific flags.
+// patterns contains a list of patterns matching tests.
+// stdout.txt and stderr.txt output files are written unconditionally.
+func Exec(ctx context.Context, s *testing.State, subcmd string, flags, patterns []string) (stdout, stderr []byte, err error) {
+	cmd, err := NewCommand(ctx, s, subcmd, flags, patterns)
+	if err != nil {
+		return nil, nil, err
+	}
 
 	var stdoutBuf, stderrBuf bytes.Buffer
 	cmd.Stdout = &stdoutBuf
