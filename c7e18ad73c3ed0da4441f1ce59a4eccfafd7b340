@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91066c49_2c32ce84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-26T09:44:35Z",
+      "side": 1,
+      "message": "What is vp in the var name? Can you add a comment before for, from which it can be deducted? Doesn\u0027t have to be explicitly stated.",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 7
+      },
+      "revId": "c7e18ad73c3ed0da4441f1ce59a4eccfafd7b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ad51c7_7a972b49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-26T09:44:35Z",
+      "side": 1,
+      "message": "Also is not needed here. It makes it confusing what was checked before.",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "c7e18ad73c3ed0da4441f1ce59a4eccfafd7b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b500fcf_081a55dc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-26T09:44:35Z",
+      "side": 1,
+      "message": "Can this handle the missing M95, or it should be skipped as well?\nOr you just didn\u0027t put it into the testing input?",
+      "revId": "c7e18ad73c3ed0da4441f1ce59a4eccfafd7b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
