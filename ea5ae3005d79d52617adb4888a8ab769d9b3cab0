@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a639eda_17edbf2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-26T01:36:42Z",
+      "side": 1,
+      "message": "I\u0027m fine with introducing the variation in a follow up CL. By the way, I am working on fixing the cgroups issue.\n\n\u003eJust to be sure, when you mention variation you\u0027re talking about adding e.g. lacros.DocsCUJ.shelf in the same docs_cuj.go file?\n\nYee\n\n\u003e So I\u0027m not sure now what other systems could be influencing the cold start of Lacros from the Shelf, that could be different than the launch via command-line. Any information on this regard is very welcome.\n\nMy thought was that if the shelf and command line launches both use the same lacros files (possible since they both use rootfs iiuc), then the second launch is gonna be more different to a cold start than the first launch. At least by putting them in different variations it introduces some randomness to the state before launching lacros the second time. Not sure if this is an important effect though.",
+      "parentUuid": "b52cbecf_2b10d38a",
+      "revId": "ea5ae3005d79d52617adb4888a8ab769d9b3cab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "229bec9e_88778e4b",

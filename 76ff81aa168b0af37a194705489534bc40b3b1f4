@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a6435a_6dbaa371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-26T01:36:42Z",
+      "side": 1,
+      "message": "lgtm modulo comments",
+      "revId": "76ff81aa168b0af37a194705489534bc40b3b1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b64421_f05704f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-26T01:36:42Z",
+      "side": 1,
+      "message": "We should use faillog here, but it\u0027s broken currency for shelf launches. Could you add a TODO and link to the bug https://crbug.com/1263337 ?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 61
+      },
+      "revId": "76ff81aa168b0af37a194705489534bc40b3b1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
