@@ -76,7 +76,9 @@ func SmapsRollups(ctx context.Context, processes []*process.Process, sharedSwapP
 			}
 			command, err := p.Cmdline()
 			if err != nil {
-				return errors.Wrapf(err, "failed to get command line for process %d", p.Pid)
+				// Process may have died between reading smapsData and now, so
+				// just ignore errors here.
+				return nil
 			}
 			rollup, err := NewSmapsRollup(smapsData)
 			if err != nil {
