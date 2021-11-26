@@ -63,7 +63,7 @@ func Pin(ctx context.Context, s *testing.State) {
 		var tconn *chrome.TestConn
 		if oobeEnroll {
 			cr, err = chrome.New(ctx,
-				chrome.ExtraArgs("--force-tablet-mode=touch_view"),
+				chrome.ExtraArgs("--force-tablet-mode=touch_view", "--vmodule=wizard_controller=1"),
 				chrome.DontSkipOOBEAfterLogin())
 
 			if err != nil {
@@ -84,14 +84,7 @@ func Pin(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait for the pin screen: ", err)
 			}
 
-			for i := 0; i < 2; i++ {
-				var step string
-				if i == 0 {
-					step = "start"
-				} else {
-					step = "confirm"
-				}
-
+			for _, step := range []string{"start", "confirm"} {
 				if err := oobeConn.WaitForExprFailOnErr(ctx, fmt.Sprintf("document.querySelector('#pin-setup').uiStep === '%s'", step)); err != nil {
 					s.Fatalf("Failed to wait for %s step: %v", step, err)
 				}
@@ -177,11 +170,17 @@ func Pin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get supported policies: ", err)
 	}
 
-	cr, err := chrome.New(ctx,
+	options := []chrome.Option{
 		chrome.ExtraArgs("--skip-force-online-signin-for-testing"),
 		chrome.NoLogin(),
 		chrome.KeepState(),
-		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")))
+		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+	}
+	if supportsLE {
+		// Disable VK so it does not get in the way of the pin pad.
+		options = append(options, chrome.ExtraArgs("--disable-virtual-keyboard"))
+	}
+	cr, err := chrome.New(ctx, options...)
 
 	if err != nil {
 		s.Fatal("Chrome start failed: ", err)
