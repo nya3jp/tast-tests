@@ -16,6 +16,23 @@
       "message": "This test is sometimes failing (https://tastboard.corp.google.com/test/login.RemoveExistingUser) Seems like the user pod, that we are trying to remove isn\u0027t selected. We can\u0027t click on it everytime, as it will trigger online sign-in window to pop up. \n\nPTAL!  ",
       "revId": "4d2173981830bbf1576f3609066ccc14460e91c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223913e8_8ce208af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T08:38:38Z",
+      "side": 1,
+      "message": "Set a shorter timeout here.",
+      "revId": "4d2173981830bbf1576f3609066ccc14460e91c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
