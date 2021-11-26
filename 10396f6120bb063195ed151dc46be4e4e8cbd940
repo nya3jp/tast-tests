@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "039a230e_6b2e019f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-26T03:42:57Z",
+      "side": 1,
+      "message": "Refined the test with advice. Besides remove the scenario attribute since it is not important for the action.",
+      "parentUuid": "a60b4e43_8ffca1cf",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 2
+      },
+      "revId": "10396f6120bb063195ed151dc46be4e4e8cbd940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bea0b953_0b87ecda",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-26T01:11:34Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 30
+      },
+      "revId": "10396f6120bb063195ed151dc46be4e4e8cbd940",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f7be7d5_e15baacf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_change_input.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-26T03:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea0b953_0b87ecda",
       "range": {
         "startLine": 138,
         "startChar": 1,
