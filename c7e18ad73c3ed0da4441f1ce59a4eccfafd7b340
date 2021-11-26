@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c2a396_4d4c4975",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T10:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91066c49_2c32ce84",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 7
+      },
+      "revId": "c7e18ad73c3ed0da4441f1ce59a4eccfafd7b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1ad51c7_7a972b49",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de1bbf40_078b4e4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T10:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1ad51c7_7a972b49",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "c7e18ad73c3ed0da4441f1ce59a4eccfafd7b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b500fcf_081a55dc",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-11-26T09:44:35Z",
       "side": 1,
       "message": "Can this handle the missing M95, or it should be skipped as well?\nOr you just didn\u0027t put it into the testing input?",
+      "revId": "c7e18ad73c3ed0da4441f1ce59a4eccfafd7b340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b28b416f_0ad117b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/omaha/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-26T10:06:56Z",
+      "side": 1,
+      "message": "95 is not released in GoldenEye, and will never be part of the config. The -4 might be a bit wrong here for a while, but it\u0027s not a big deal (and not worth complicating things).",
+      "parentUuid": "2b500fcf_081a55dc",
       "revId": "c7e18ad73c3ed0da4441f1ce59a4eccfafd7b340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
