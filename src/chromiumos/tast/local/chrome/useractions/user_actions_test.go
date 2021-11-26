@@ -14,12 +14,16 @@ import (
 )
 
 func TestLogCleanActionResult(t *testing.T) {
+	startTime := time.Now()
+	endTime := startTime.Add(3 * time.Second)
+
 	result := &actionResult{
 		actionName: "actionName",
 		testName:   "testName",
 		attributes: map[string]string{},
 		tags:       []ActionTag{},
-		duration:   1 * time.Second,
+		startTime:  startTime,
+		endTime:    endTime,
 		pass:       true,
 		err:        nil,
 	}
@@ -29,7 +33,7 @@ func TestLogCleanActionResult(t *testing.T) {
 		t.Fatal("Failed to parse action result: ", err)
 	}
 
-	want := []string{"actionName", "testName", "{}", "", "1000", "true", ""}
+	want := []string{"actionName", "testName", "{}", "", startTime.Format(actionTimeFormat), endTime.Format(actionTimeFormat), "true", ""}
 
 	if !cmp.Equal(got, want) {
 		t.Errorf("failed to format action result; got %+v, want %+v", got, want)
@@ -42,12 +46,16 @@ func TestLogActionResultWithAttributesAndTags(t *testing.T) {
 		ActionTagTest2 ActionTag = "TestTag2"
 	)
 
+	startTime := time.Now()
+	endTime := startTime.Add(3 * time.Second)
+
 	result := &actionResult{
 		actionName: "actionName",
 		testName:   "testName",
 		attributes: map[string]string{"TestAttributeName": "TestAttributeValue"},
 		tags:       []ActionTag{ActionTagTest1, ActionTagTest2},
-		duration:   1 * time.Second,
+		startTime:  startTime,
+		endTime:    endTime,
 		pass:       false,
 		err:        errors.New("Test Error"),
 	}
@@ -57,7 +65,7 @@ func TestLogActionResultWithAttributesAndTags(t *testing.T) {
 		t.Fatal("Failed to parse action result: ", err)
 	}
 
-	want := []string{"actionName", "testName", "{\"TestAttributeName\":\"TestAttributeValue\"}", "TestTag1, TestTag2", "1000", "false", "Test Error"}
+	want := []string{"actionName", "testName", "{\"TestAttributeName\":\"TestAttributeValue\"}", "TestTag1, TestTag2", startTime.Format(actionTimeFormat), endTime.Format(actionTimeFormat), "false", "Test Error"}
 
 	if !cmp.Equal(got, want) {
 		t.Errorf("failed to format action result; got %+v, want %+v", got, want)

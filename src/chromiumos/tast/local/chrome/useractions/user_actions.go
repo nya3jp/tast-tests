@@ -200,7 +200,8 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 		result := &actionResult{
 			actionName: ua.name,
 			testName:   ua.userContext.testName,
-			duration:   endTime.Sub(startTime),
+			startTime:  startTime,
+			endTime:    endTime,
 			attributes: combinedAttributes,
 			tags:       combinedTags,
 			pass:       err == nil,
@@ -251,10 +252,13 @@ type actionResult struct {
 	testName   string
 	attributes map[string]string
 	tags       []ActionTag
-	duration   time.Duration
+	startTime  time.Time
+	endTime    time.Time
 	pass       bool
 	err        error
 }
+
+const actionTimeFormat = "2006-01-02 15:04:05.000"
 
 func (ar *actionResult) stringArray() ([]string, error) {
 	attrStr, err := json.Marshal(ar.attributes)
@@ -277,7 +281,8 @@ func (ar *actionResult) stringArray() ([]string, error) {
 		ar.testName,
 		fmt.Sprintf("%s", attrStr),
 		fmt.Sprintf("%s", strings.Join(tags, ", ")),
-		fmt.Sprintf("%d", int64(ar.duration/time.Millisecond)),
+		fmt.Sprintf("%s", ar.startTime.Format(actionTimeFormat)),
+		fmt.Sprintf("%s", ar.endTime.Format(actionTimeFormat)),
 		fmt.Sprintf("%s", strconv.FormatBool(ar.pass)),
 		fmt.Sprintf("%s", errMessage),
 	}, nil
