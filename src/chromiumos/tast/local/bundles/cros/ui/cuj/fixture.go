@@ -287,7 +287,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 
 		if f.origRunningPkgs, err = runningPackages(ctx, a); err != nil {
 			if err := a.Close(ctx); err != nil {
-				s.Error(ctx, "Failed to close ARC connection: ", err)
+				s.Error("Failed to close ARC connection: ", err)
 			}
 			s.Fatal("Failed to list running packages: ", err)
 		}

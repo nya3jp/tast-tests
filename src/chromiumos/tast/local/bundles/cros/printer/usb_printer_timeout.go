@@ -59,7 +59,7 @@ func USBPrinterTimeout(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start printer: ", err)
 	}
 
-	s.Log(ctx, " Waiting for ", job, " to complete")
+	s.Logf("Waiting for %s to complete", job)
 	var logEntry *syslog.Entry
 	re := regexp.MustCompile(`\[Job \d+\] PID \d+ \(/usr/libexec/cups/backend/usb\) .*`)
 	// The USB backend can take up to 20 seconds to timeout so wait for up to 30.

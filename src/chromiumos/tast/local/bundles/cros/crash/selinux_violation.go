@@ -148,7 +148,7 @@ func SelinuxViolation(ctx context.Context, s *testing.State) {
 		metaFile := strings.TrimSuffix(matchingFile, ".log") + ".meta"
 		for _, f := range []string{matchingFile, metaFile} {
 			if err := os.Remove(f); err != nil && !os.IsNotExist(err) {
-				s.Error(ctx, "Couldn't clean up %s: %v", f, err)
+				s.Errorf("Couldn't clean up %s: %v", f, err)
 			}
 		}
 	} else {
