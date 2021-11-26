@@ -249,6 +249,10 @@ func (c *Config) ForceLaunchBrowser() bool { return c.m.ForceLaunchBrowser }
 // EphemeralUser returns true if user mount should be validated to be ephemeral, e.g. for guest user.
 func (c *Config) EphemeralUser() bool { return c.m.EphemeralUser }
 
+// EnableFilesAppSWA returns true if the Files app is running the SWA variant.
+// TODO(b/207576612): Remove this config item once Files app SWA is fully launched.
+func (c *Config) EnableFilesAppSWA() bool { return c.m.EnableFilesAppSWA }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -297,6 +301,7 @@ type MutableConfig struct {
 	HideCrashRestoreBubble          bool       `reuse_match:"true"`
 	ForceLaunchBrowser              bool       `reuse_match:"true"`
 	EphemeralUser                   bool       `reuse_match:"true"`
+	EnableFilesAppSWA               bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -329,6 +334,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			HideCrashRestoreBubble:          false,
 			ForceLaunchBrowser:              false,
 			EphemeralUser:                   false,
+			EnableFilesAppSWA:               false,
 		},
 	}
 	for _, opt := range opts {
