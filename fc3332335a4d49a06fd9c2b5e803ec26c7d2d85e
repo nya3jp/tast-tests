@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7503b8fe_f9abadd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_target_version_selector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-26T09:48:32Z",
+      "side": 1,
+      "message": "You should only return with an error here.\nOr break the poll.",
+      "revId": "fc3332335a4d49a06fd9c2b5e803ec26c7d2d85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
