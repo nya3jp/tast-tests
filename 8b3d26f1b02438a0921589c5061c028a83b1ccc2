@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de22460_f77062e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T06:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2439d0b_516b214b",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 11
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74bea87d_086e5810",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-18T05:56:37Z",
       "side": 1,
       "message": "style: displayInfoFile (since it\u0027s a local variable)",
+      "range": {
+        "startLine": 180,
+        "startChar": 7,
+        "endLine": 180,
+        "endChar": 22
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b33b53_1e652fdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T06:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74bea87d_086e5810",
       "range": {
         "startLine": 180,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07517bc8_f95aa1de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T06:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c334fa7_46842798",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ebce8f_9f630647",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcedc2d_f48a253d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T06:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ebce8f_9f630647",
+      "range": {
+        "startLine": 192,
+        "startChar": 10,
+        "endLine": 192,
+        "endChar": 65
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae889334_f60fc95f",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-11-18T05:56:37Z",
       "side": 1,
       "message": "Does this test require external displays? Then it\u0027s not suitable for group:mainline since we run mainline tests with DUTs lacking any peripherals.\n\nCould you discuss in your team or Google counterparts about the execution plan of this test?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 72
+      },
+      "revId": "8b3d26f1b02438a0921589c5061c028a83b1ccc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33f1113_8b0ef60d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_hdmi_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-26T06:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae889334_f60fc95f",
       "range": {
         "startLine": 198,
         "startChar": 2,
