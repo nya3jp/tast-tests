@@ -218,7 +218,7 @@ func Pin(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
-		s.Fatalf("Waiting for screen to be unlocked failed: %v (last status %+v)", err, st)
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.LoggedIn }, chrome.LoginTimeout); err != nil {
+		s.Fatalf("Waiting for login failed: %v (last status %+v)", err, st)
 	}
 }
