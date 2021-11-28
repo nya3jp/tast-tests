@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac8eb81_a85d181f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-28T23:11:40Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "202c590a58e4cd126c7e72c4a19fee07db70af83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd42750_5df5bb85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/setup/perf_cuj_device_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-28T23:11:40Z",
+      "side": 1,
+      "message": "nit: PerfCUJBasicDevices?\n\n1. Is Pef a misspell of Perf? \n2. For initialisms, it should follow the naming rule as go/go-style/decisions#initialisms.\n\nPlease fix others as well.",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "202c590a58e4cd126c7e72c4a19fee07db70af83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
