@@ -51,7 +51,25 @@ func Wait(ctx context.Context) error {
 		}
 	}()
 
-	killOrphanAutotestd(ctx)
+	ourExe, err := os.Executable()
+	if err != nil {
+		return errors.Wrap(err, "failed to get executable name")
+	}
+	killMatchingProcesses(ctx, func(ctx context.Context, p *process.Process) bool {
+		// Kill orphan autotestd processes and their subprocesses.
+		// This works around the known issue that autotestd from timed out
+		// jobs interferes with Tast tests (crbug.com/874333, crbug.com/977035).
+		if isAutotestd(p) {
+			return true
+		}
+		// Kill any existing test bundle processes. This can help prevent
+		// confusing failures if multiple test jobs are incorrectly scheduled
+		// on the same DUT (b/187787103).
+		if isBundle(ctx, p, ourExe) {
+			return true
+		}
+		return false
+	})
 	clearPolicies(ctx)
 
 	// Delete all core dumps to free up spaces.
@@ -128,6 +146,52 @@ func Wait(ctx context.Context) error {
 	return nil
 }
 
+// killMatchingProcesses Sends SIGKILL to matching processes and their
+// subprocesses. Current process is not killed.
+func killMatchingProcesses(ctx context.Context, match func(ctx context.Context, p *process.Process) bool) {
+	ps, err := process.Processes()
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to enumerate processes: ", err)
+		return
+	}
+
+	ourPID := os.Getpid()
+	for _, p := range ps {
+		if int(p.Pid) == ourPID {
+			continue
+		}
+		if !match(ctx, p) {
+			continue
+		}
+
+		// Extract the process group ID from ps output.
+		// Unfortunately gopsutil does not support getting it.
+		out, err := exec.Command("ps", "-o", "pgid=", strconv.Itoa(int(p.Pid))).Output()
+		if err != nil {
+			testing.ContextLog(ctx, "ps command failed: ", err)
+		}
+		pgid, err := strconv.Atoi(strings.TrimSpace(string(out)))
+		if err != nil {
+			testing.ContextLog(ctx, "Failed to parse ps command output: ", err)
+		}
+
+		testing.ContextLogf(ctx, "Killing orphan process (pid=%d, pgid=%d)", p.Pid, pgid)
+		if err := syscall.Kill(-pgid, syscall.SIGKILL); err != nil {
+			testing.ContextLog(ctx, "Failed to kill process: ", err)
+		}
+	}
+}
+
+// isBundle returns whether p is a bundle process. ourExe should be current
+// bundle executable's path.
+func isBundle(ctx context.Context, p *process.Process, ourExe string) bool {
+	exeDir := filepath.Dir(ourExe)
+	if exe, err := p.Exe(); err == nil && filepath.Dir(exe) == exeDir {
+		return true
+	}
+	return false
+}
+
 // isAutotestd returns whether p is an autotestd process.
 func isAutotestd(p *process.Process) bool {
 	cmd, err := p.CmdlineSlice()
@@ -148,39 +212,6 @@ func isAutotestd(p *process.Process) bool {
 		}
 	}
 	return false
-}
-
-// killOrphanAutotestd sends SIGKILL to running autotestd processes and their
-// subprocesses. This works around the known issue that autotestd from timed out
-// jobs interferes with Tast tests (crbug.com/874333, crbug.com/977035).
-func killOrphanAutotestd(ctx context.Context) {
-	ps, err := process.Processes()
-	if err != nil {
-		testing.ContextLog(ctx, "Failed to enumerate processes: ", err)
-		return
-	}
-
-	for _, p := range ps {
-		if !isAutotestd(p) {
-			continue
-		}
-
-		// Extract the process group ID of autotestd from ps output.
-		// Unfortunately gopsutil does not support getting it.
-		out, err := exec.Command("ps", "-o", "pgid=", strconv.Itoa(int(p.Pid))).Output()
-		if err != nil {
-			testing.ContextLog(ctx, "ps command failed: ", err)
-		}
-		pgid, err := strconv.Atoi(strings.TrimSpace(string(out)))
-		if err != nil {
-			testing.ContextLog(ctx, "Failed to parse ps command output: ", err)
-		}
-
-		testing.ContextLogf(ctx, "Killing orphan autotestd (pid=%d, pgid=%d)", p.Pid, pgid)
-		if err := syscall.Kill(-pgid, syscall.SIGKILL); err != nil {
-			testing.ContextLog(ctx, "Failed to kill autotestd: ", err)
-		}
-	}
 }
 
 // hasTPM checks whether the DUT has a TPM.
