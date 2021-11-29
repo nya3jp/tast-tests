@@ -110,7 +110,7 @@ func UnicornPaidAppParentPermission(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click on KEYCODE_ENTER button: ", err)
 	}
 
-	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.Text("$3.99"), ui.Enabled(true))
+	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextContains("$"), ui.Enabled(true))
 	if err := installButton.WaitForExists(ctx, 10*time.Second); err != nil {
 		s.Fatal("Install Button doesn't exisit: ", err)
 	}
