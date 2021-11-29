@@ -81,7 +81,7 @@ func FaceDetection(ctx context.Context, s *testing.State) {
 		altAddr = chartAddr
 	}
 
-	c, err := chart.New(ctx, s.DUT(), altAddr, s.DataPath("its_scene2_c_20210708.png"), s.OutDir())
+	c, err := chart.New(ctx, s.DUT(), altAddr, s.DataPath("its_scene2_c_20210708.png"), s.OutDir(), chart.DisplayDefaultLevel)
 	if err != nil {
 		s.Fatal("Failed to prepare chart tablet: ", err)
 	}
