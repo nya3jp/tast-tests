@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -21,10 +21,10 @@ func init() {
 		Name:     fixture.LacrosPolicyLoggedIn,
 		Desc:     "Fixture for a running FakeDMS with lacros",
 		Contacts: []string{"mohamedaomar@google.com", "wtlee@chromium.org", "chromeos-commercial-remote-management@google.com"},
-		Impl: launcher.NewComposedFixture(launcher.Rootfs, func(v launcher.FixtValue, pv interface{}) interface{} {
+		Impl: lacrosfixt.NewComposedFixture(lacrosfixt.Rootfs, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
 			return &struct {
 				fakedms.HasFakeDMS
-				launcher.FixtValue
+				lacrosfixt.FixtValue
 			}{
 				pv.(fakedms.HasFakeDMS),
 				v,
@@ -43,6 +43,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          fixture.PersistentLacros,
-		Vars:            []string{launcher.LacrosDeployedBinary},
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 }

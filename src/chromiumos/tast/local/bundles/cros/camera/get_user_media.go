@@ -12,7 +12,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/testing"
@@ -76,7 +77,7 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 	var cr getusermedia.ChromeInterface
 	if s.Param().(browser.Type) == browser.TypeLacros {
 		var err error
-		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
+		cr, err = lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
