@@ -7,4 +7,5 @@
     <!-- DO NOT TRANSLATE -->
     <string name="main_activity_name">Main Activity</string>
     <string name="edit_text_activity_name">Edit Text Activity</string>
+    <string name="live_region_activity_name">Live Region Activity</string>
 </resources>

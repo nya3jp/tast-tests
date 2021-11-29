@@ -154,6 +154,7 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 			},
 		},
 	}
+
 	EditTextActivityTree := &axTreeNode{
 		Name: arca11y.EditTextActivity.Title,
 		Role: role.Application,
@@ -182,13 +183,58 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	trees := make(map[string]*axTreeNode)
-	trees[arca11y.MainActivity.Name] = MainActivityTree
-	trees[arca11y.EditTextActivity.Name] = EditTextActivityTree
-	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.EditTextActivity}
+	LiveRegionActivityTree := &axTreeNode{
+		Name: "Live Region Activity",
+		Role: role.Application,
+		Children: []*axTreeNode{
+			{
+				Role: role.GenericContainer,
+				Children: []*axTreeNode{
+					{
+						Name: "Live Region Activity",
+						Role: role.StaticText,
+					},
+					{
+						Name: "CHANGE POLITE LIVE REGION",
+						Role: role.Button,
+					},
+					{
+						Name: "CHANGE ASSERTIVE LIVE REGION",
+						Role: role.Button,
+					},
+					{
+						Name: "Initial text",
+						Role: role.StaticText,
+						Attributes: map[string]interface{}{
+							"containerLiveStatus": "polite",
+							"liveStatus":          "polite",
+						},
+					},
+					{
+						Name: "Initial text",
+						Role: role.StaticText,
+						Attributes: map[string]interface{}{
+							"containerLiveStatus": "assertive",
+							"liveStatus":          "assertive",
+						},
+					},
+				},
+			},
+		},
+	}
+
+	trees := map[arca11y.TestActivity]*axTreeNode{
+		arca11y.MainActivity:       MainActivityTree,
+		arca11y.EditTextActivity:   EditTextActivityTree,
+		arca11y.LiveRegionActivity: LiveRegionActivityTree,
+	}
+
+	testActivities := []arca11y.TestActivity{
+		arca11y.MainActivity, arca11y.EditTextActivity, arca11y.LiveRegionActivity,
+	}
 
 	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
-		expectedTree := trees[currentActivity.Name]
+		expectedTree := trees[currentActivity]
 		var appRoot *a11y.Node
 		var err error
 		// Find the root node of Android application.
