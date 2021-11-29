@@ -40,7 +40,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilityTree,
 		Desc:         "Checks that Chrome accessibility tree for ARC application is correct",
-		Contacts:     []string{"dtseng@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
+		Contacts:     []string{"hirokisato@chromium.org", "dtseng@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedWithoutUIAutomator",
