@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Test multipaste virtual keyboard functionality",
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools, informational"},
 		Pre:          pre.VKEnabledTablet,
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
