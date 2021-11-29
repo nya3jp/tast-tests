@@ -63,6 +63,9 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
+	if true{
+		s.Fatal("Failed to create new Chrome connection: ", err)
+	}
 	// Open page with an address on it.
 	if _, err := cr.NewConn(ctx, "https://google.com/search?q=1600+amphitheatre+parkway"); err != nil {
 		s.Fatal("Failed to create new Chrome connection: ", err)
