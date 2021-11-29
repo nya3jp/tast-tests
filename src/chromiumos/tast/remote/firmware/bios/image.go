@@ -30,7 +30,7 @@ type ServoHostCommandRunner interface {
 }
 
 // NewRemoteImage creates an Image object representing the currently loaded BIOS image. If you pass in a section, only that section will be read.
-func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programmer string, section commonbios.ImageSection) (*commonbios.Image, error) {
+func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programmer string, section commonbios.ImageSection, extraFlashromArgs []string) (*commonbios.Image, error) {
 	localTempFile, err := ioutil.TempFile("", "")
 	if err != nil {
 		return nil, errors.Wrap(err, "creating tmpfile for image contents")
@@ -56,6 +56,7 @@ func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programm
 	} else {
 		frArgs = append(frArgs, remoteTempFileName)
 	}
+	frArgs = append(frArgs, extraFlashromArgs...)
 	if err := runner.RunCommand(ctx, true, "flashrom", frArgs...); err != nil {
 		// TODO(b/185271203): Some debugging that should be removed later
 		output, err := runner.OutputCommand(ctx, true, "ls", "-l", remoteTempFileName)
@@ -101,7 +102,7 @@ func NewRemoteImage(ctx context.Context, runner ServoHostCommandRunner, programm
 }
 
 // WriteRemoteFlashrom writes the current data in the specified section into flashrom.
-func WriteRemoteFlashrom(ctx context.Context, runner ServoHostCommandRunner, programmer string, i *commonbios.Image, sec commonbios.ImageSection) error {
+func WriteRemoteFlashrom(ctx context.Context, runner ServoHostCommandRunner, programmer string, i *commonbios.Image, sec commonbios.ImageSection, extraFlashromArgs []string) error {
 	dataRange, ok := i.Sections[sec]
 	if !ok {
 		return errors.Errorf("section %q is not recognized", string(sec))
@@ -140,7 +141,9 @@ func WriteRemoteFlashrom(ctx context.Context, runner ServoHostCommandRunner, pro
 	}
 
 	// -N == no verify all. It takes a long time to read the entire flashrom over CCD.
-	if err = runner.RunCommand(ctx, true, "flashrom", "-N", "-p", programmer, "-i", fmt.Sprintf("%s:%s", sec, remoteImageFileName), "-w"); err != nil {
+	args := []string{"-N", "-p", programmer, "-i", fmt.Sprintf("%s:%s", sec, remoteImageFileName), "-w"}
+	args = append(args, extraFlashromArgs...)
+	if err = runner.RunCommand(ctx, true, "flashrom", args...); err != nil {
 		return errors.Wrap(err, "could not write host image")
 	}
 
