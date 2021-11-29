@@ -6,9 +6,12 @@
 package tastrun
 
 import (
+	"bufio"
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -49,8 +52,17 @@ func Exec(ctx context.Context, s *testing.State, subcmd string, flags, patterns 
 	}
 
 	var stdoutBuf, stderrBuf bytes.Buffer
-	cmd.Stdout = &stdoutBuf
+	r, w := io.Pipe()
+	cmd.Stdout = w
 	cmd.Stderr = &stderrBuf
+
+	go func() {
+		sc := bufio.NewScanner(r)
+		for sc.Scan() {
+			s.Log(sc.Text())
+			fmt.Fprintln(&stdoutBuf, sc.Text())
+		}
+	}()
 
 	s.Log("Running ", strings.Join(cmd.Args, " "))
 	runErr := cmd.Run()
