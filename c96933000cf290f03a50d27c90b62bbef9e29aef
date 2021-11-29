@@ -16,6 +16,69 @@
       "message": "Greetings Tast Owners, please review this CL!",
       "revId": "c96933000cf290f03a50d27c90b62bbef9e29aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eac48109_1ea0ca79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-29T21:26:37Z",
+      "side": 1,
+      "message": "LGTM with nit and question.",
+      "revId": "c96933000cf290f03a50d27c90b62bbef9e29aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6a8aba_eefe5912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-29T21:26:37Z",
+      "side": 1,
+      "message": "Curious: Given this is no longer fatal, the whole sequence will continue but the overall test will fail. Does that overall failure provide any signal to the system under test?\n\nTotal conjecture here, correct me if I\u0027m wrong but it sounds like skipPostLoginScreens failing and given you are continuing the test even if it fails seems to suggest it\u0027s not useful and maybe a s.Log would be more suitable?",
+      "range": {
+        "startLine": 111,
+        "startChar": 19,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "c96933000cf290f03a50d27c90b62bbef9e29aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f799e895_a8674d0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-29T21:26:37Z",
+      "side": 1,
+      "message": "nit: Full stop / period.",
+      "range": {
+        "startLine": 111,
+        "startChar": 120,
+        "endLine": 111,
+        "endChar": 121
+      },
+      "revId": "c96933000cf290f03a50d27c90b62bbef9e29aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
