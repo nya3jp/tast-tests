@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -53,6 +54,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Test acts different in clamshell or tablet mode.
 	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
@@ -151,6 +153,7 @@ func OpenCloseSwitchApps(ctx context.Context, s *testing.State) {
 			}
 		}
 	}
+	s.Fatal("Check")
 
 	// Close the apps via shelf context menu
 	for _, app := range checkApps {
