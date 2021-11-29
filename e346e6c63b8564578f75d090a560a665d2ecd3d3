@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d153b582_f92e3839",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-29T22:34:04Z",
+      "side": 1,
+      "message": "This didn\u0027t work, maybe I need crrev/c/3307583 as a Cq-Depend on this change\n\n tast-tests-remote-data-0.0.1-r1248: 14:19:40 \u003e\u003e\u003e Install chromeos-base/tast-tests-remote-data-0.0.1-r1248 into /var/tmp/portage/chromeos-base/tast-tests-remote-data-0.0.1-r1248/image\n tast-tests-remote-data-0.0.1-r1248: cp: cannot stat \u0027chromiumos/tast/remote/bundles/cros/firmware/data/fw-config.json\u0027: No such file or directory\n tast-tests-remote-data-0.0.1-r1248:  * ERROR: chromeos-base/tast-tests-remote-data-0.0.1-r1248::chromiumos failed (install phase):\n tast-tests-remote-data-0.0.1-r1248:  *   Failed to copy chromiumos/tast/remote/bundles/cros/firmware/data to /var/tmp/portage/chromeos-base/tast-tests-remote-data-0.0.1-r1248/image/usr/share/tast/data/chromiumos/tast/remote/bundles/cros/firmware\n tast-tests-remote-data-0.0.1-r1248:  * \n tast-tests-remote-data-0.0.1-r1248:  * Call stack:\n tast-tests-remote-data-0.0.1-r1248:  *               ebuild.sh, line  127:  Called src_install\n tast-tests-remote-data-0.0.1-r1248:  *             environment, line 3156:  Called tast-bundle-data_src_install\n tast-tests-remote-data-0.0.1-r1248:  *             environment, line 3286:  Called die\n tast-tests-remote-data-0.0.1-r1248:  * The specific snippet of code:\n tast-tests-remote-data-0.0.1-r1248:  *           cp --preserve\u003dmode --dereference -R \"${datadir}\" \"${dest}\" || die \"Failed to copy ${datadir} to ${dest}\";\n",
+      "revId": "e346e6c63b8564578f75d090a560a665d2ecd3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
