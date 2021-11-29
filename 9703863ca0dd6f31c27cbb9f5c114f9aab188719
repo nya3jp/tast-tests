@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd63ece_34f8b440",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-29T16:19:34Z",
+      "side": 1,
+      "message": "Still LGTM % comment changes so we don\u0027t forget about it in the future 😊",
+      "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9a78f2_5ff8aa93",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-29T16:19:34Z",
+      "side": 1,
+      "message": "clears policies",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 37
+      },
+      "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d12cd4e_652fe5ed",
@@ -14,6 +54,58 @@
       "writtenOn": "2021-11-29T16:06:50Z",
       "side": 1,
       "message": "@Victor, I need a third pair of eyes to check this, please.",
+      "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f8e25bf_56f09081",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-29T16:19:34Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "3d12cd4e_652fe5ed",
+      "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f7205c_612d5842",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-29T16:19:34Z",
+      "side": 1,
+      "message": "nit: add a comment on why defer is used here. Maybe:\n\n// Using defer to make sure Chrome is always closed.",
+      "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d4e44f_52d9ee3d",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-29T16:19:34Z",
+      "side": 1,
+      "message": "nit: add a comment on why this is used.",
       "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
