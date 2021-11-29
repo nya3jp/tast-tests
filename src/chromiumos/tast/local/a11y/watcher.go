@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package a11y
 
 import (
 	"context"
@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/testing"
 )
 
@@ -18,10 +19,10 @@ import (
 // Do not forget to release the Target node.
 type Event struct {
 	Target    *Node
-	Type      EventType `json:"type"`
-	EventFrom string    `json:"eventFrom"`
-	MouseX    int       `json:"mouseX"`
-	MouseY    int       `json:"mouseY"`
+	Type      event.Event `json:"type"`
+	EventFrom string      `json:"eventFrom"`
+	MouseX    int         `json:"mouseX"`
+	MouseY    int         `json:"mouseY"`
 }
 
 // EventSlice is a slice of Events. It is used for releaseing nodes in a group of events.
@@ -44,7 +45,7 @@ type EventWatcher struct {
 
 // NewWatcher creates a new event watcher on a node for the specified event
 // type.
-func NewWatcher(ctx context.Context, n *Node, eventType EventType) (*EventWatcher, error) {
+func NewWatcher(ctx context.Context, n *Node, eventType event.Event) (*EventWatcher, error) {
 	object := &chrome.JSObject{}
 	expr := `function(eventType) {
 		let watcher = {
@@ -68,7 +69,7 @@ func NewWatcher(ctx context.Context, n *Node, eventType EventType) (*EventWatche
 
 // NewRootWatcher creates a new event watcher on the root node for the specified
 // event type.
-func NewRootWatcher(ctx context.Context, tconn *chrome.TestConn, eventType EventType) (*EventWatcher, error) {
+func NewRootWatcher(ctx context.Context, tconn *chrome.TestConn, eventType event.Event) (*EventWatcher, error) {
 	root, err := Root(ctx, tconn)
 	if err != nil {
 		return nil, err
@@ -145,68 +146,10 @@ func (ew *EventWatcher) WaitForEvent(ctx context.Context, timeout time.Duration)
 	return events, nil
 }
 
-// EnsureNoEvents waits the duration and returns nil if no events have
-// occurred in the wait.
-func (ew *EventWatcher) EnsureNoEvents(ctx context.Context, duration time.Duration) error {
-	// First, clears the list of events beforehand.
-	es, err := ew.events(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to clear the event list")
-	}
-	es.Release(ctx)
-	// wait, and check the events in the wait.
-	if err := testing.Sleep(ctx, duration); err != nil {
-		return errors.Wrap(err, "failed to wait")
-	}
-	events, err := ew.events(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to access to the event list")
-	}
-	defer events.Release(ctx)
-	if len(events) > 0 {
-		return errors.Errorf("there are %d events", len(events))
-	}
-	return nil
-}
-
 // Release frees the resources and the reference to Javascript for this watcher.
 func (ew *EventWatcher) Release(ctx context.Context) error {
 	if err := ew.object.Call(ctx, nil, `function () { this.release(); }`); err != nil {
 		testing.ContextLog(ctx, "Failed to remove the event listener: ", err)
 	}
 	return ew.object.Release(ctx)
-}
-
-// WaitForLocationChangeCompletedOnNode waits for any location-change events on
-// the given node to be propagated to the automation API. Because
-// automation API is asynchronous and eventually consistent with the desktop
-// bounds, sometimes the automation API may report the intermediate bounds for
-// an already completed animation. This function waits for such changes to be
-// propagated fully to the automation API.
-func WaitForLocationChangeCompletedOnNode(ctx context.Context, tconn *chrome.TestConn, node *Node) error {
-	const (
-		entireTimeout = 30 * time.Second
-		timeout       = 2 * time.Second
-	)
-
-	ew, err := NewWatcher(ctx, node, EventTypeLocationChanged)
-	if err != nil {
-		return errors.Wrap(err, "failed to create an event watcher")
-	}
-	defer ew.Release(ctx)
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		return ew.EnsureNoEvents(ctx, timeout)
-	}, &testing.PollOptions{Timeout: entireTimeout})
-}
-
-// WaitForLocationChangeCompleted calls WaitForLocationChangeCompletedOnNode
-// on the entire desktop.
-func WaitForLocationChangeCompleted(ctx context.Context, tconn *chrome.TestConn) error {
-	root, err := Root(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to access root")
-	}
-	defer root.Release(ctx)
-
-	return WaitForLocationChangeCompletedOnNode(ctx, tconn, root)
 }

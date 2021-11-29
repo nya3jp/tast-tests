@@ -345,30 +345,6 @@ func StableFindAndRightClick(ctx context.Context, tconn *chrome.TestConn, params
 	return node.RightClick(ctx)
 }
 
-// FocusAndWait calls the focus() Javascript method of the AutomationNode.
-// This can be used to scroll to nodes which aren't currently visible, enabling them to be clicked.
-// The focus event is not instant, so an EventWatcher (watcher.go) is used to check its status.
-// The EventWatcher waits the duration of timeout for the event to occur.
-func (n *Node) FocusAndWait(ctx context.Context, timeout time.Duration) error {
-	ew, err := NewRootWatcher(ctx, n.tconn, EventTypeFocus)
-	if err != nil {
-		return errors.Wrap(err, "failed to create focus event watcher")
-	}
-	defer ew.Release(ctx)
-
-	if err := n.object.Call(ctx, nil, "function(){this.focus()}"); err != nil {
-		return errors.Wrap(err, "failed to call focus() on the specified node")
-	}
-
-	es, err := ew.WaitForEvent(ctx, timeout)
-	if err != nil {
-		return errors.Wrap(err, "failed to wait for the focus event on the specified node")
-	}
-	es.Release(ctx)
-
-	return nil
-}
-
 // MakeVisible calls makeVisible() Javascript method of the AutomationNode to make
 // target node visible.
 func (n *Node) MakeVisible(ctx context.Context) error {

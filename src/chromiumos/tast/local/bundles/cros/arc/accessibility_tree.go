@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/local/a11y"
 	arca11y "chromiumos/tast/local/bundles/cros/arc/a11y"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -21,7 +21,7 @@ import (
 // and to avoid defining unused properties when we write an expected tree.
 type axTreeNode struct {
 	Name       string
-	Role       ui.RoleType
+	Role       role.Role
 	Attributes map[string]interface{}
 	Children   []*axTreeNode
 }
@@ -31,9 +31,9 @@ type expectedNode struct {
 	SeekBarAttributes  map[string]interface{}
 }
 
-// findParams constructs ui.FindParams from the given axTreeNode.
-func (n *axTreeNode) findParams() ui.FindParams {
-	return ui.FindParams{Name: n.Name, Role: n.Role, Attributes: n.Attributes}
+// findParams constructs a11y.FindParams from the given axTreeNode.
+func (n *axTreeNode) findParams() a11y.FindParams {
+	return a11y.FindParams{Name: n.Name, Role: n.Role, Attributes: n.Attributes}
 }
 
 func init() {
@@ -66,7 +66,7 @@ func init() {
 // matched to the expectedRoot. This is then matched against the children and performed recursively.
 // A boolean is returned, indicating whether or not gotRoot matches wantRoot.
 // Error indicates an internal failure, such as connecting to Chrome or invoking the JavaScript.
-func matchTree(ctx context.Context, actualRoot *ui.Node, expectedRoot *axTreeNode) (bool, error) {
+func matchTree(ctx context.Context, actualRoot *a11y.Node, expectedRoot *axTreeNode) (bool, error) {
 	// Check the root node.
 	if found, err := actualRoot.Matches(ctx, expectedRoot.findParams()); err != nil {
 		return false, err
@@ -106,75 +106,75 @@ func matchTree(ctx context.Context, actualRoot *ui.Node, expectedRoot *axTreeNod
 
 func AccessibilityTree(ctx context.Context, s *testing.State) {
 	MainActivityTree := &axTreeNode{
-		Name: "Main Activity",
-		Role: ui.RoleTypeApplication,
+		Name: arca11y.MainActivity.Title,
+		Role: role.Application,
 		Children: []*axTreeNode{
 			{
-				Role: ui.RoleTypeGenericContainer,
+				Role: role.GenericContainer,
 				Children: []*axTreeNode{
 					{
 						Name: "Main Activity",
-						Role: ui.RoleTypeStaticText,
+						Role: role.StaticText,
 					},
 					{
 						Name:       "OFF",
-						Role:       ui.RoleTypeToggleButton,
+						Role:       role.ToggleButton,
 						Attributes: map[string]interface{}{"tooltip": "button tooltip"},
 					},
 					{
 						Name:       "CheckBox",
-						Role:       ui.RoleTypeCheckBox,
+						Role:       role.CheckBox,
 						Attributes: map[string]interface{}{"tooltip": "checkbox tooltip"},
 					},
 					{
 						Name:       "CheckBoxWithStateDescription",
-						Role:       ui.RoleTypeCheckBox,
+						Role:       role.CheckBox,
 						Attributes: s.Param().(expectedNode).CheckBoxAttributes,
 					},
 					{
 						Name:       "seekBar",
-						Role:       ui.RoleTypeSlider,
+						Role:       role.Slider,
 						Attributes: s.Param().(expectedNode).SeekBarAttributes,
 					},
 					{
-						Role: ui.RoleTypeSlider,
+						Role: role.Slider,
 					},
 					{
 						Name: "ANNOUNCE",
-						Role: ui.RoleTypeButton,
+						Role: role.Button,
 					},
 					{
 						Name: "CLICK TO SHOW TOAST",
-						Role: ui.RoleTypeButton,
+						Role: role.Button,
 					},
 					{
-						Role: ui.RoleTypeGenericContainer,
+						Role: role.GenericContainer,
 					},
 				},
 			},
 		},
 	}
 	EditTextActivityTree := &axTreeNode{
-		Name: "Edit Text Activity",
-		Role: ui.RoleTypeApplication,
+		Name: arca11y.EditTextActivity.Title,
+		Role: role.Application,
 		Children: []*axTreeNode{
 			{
-				Role: ui.RoleTypeGenericContainer,
+				Role: role.GenericContainer,
 				Children: []*axTreeNode{
 					{
 						Name: "Edit Text Activity",
-						Role: ui.RoleTypeStaticText,
+						Role: role.StaticText,
 					},
 					{
 						Name: "contentDescription",
-						Role: ui.RoleTypeTextField,
+						Role: role.TextField,
 					},
 					{
 						Name: "hint",
-						Role: ui.RoleTypeTextField,
+						Role: role.TextField,
 					},
 					{
-						Role:       ui.RoleTypeTextField,
+						Role:       role.TextField,
 						Attributes: map[string]interface{}{"value": "text"},
 					},
 				},
@@ -188,15 +188,16 @@ func AccessibilityTree(ctx context.Context, s *testing.State) {
 	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.EditTextActivity}
 
 	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
-		var appRoot *ui.Node
+		var expectedTree = trees[currentActivity.Name]
+		var appRoot *a11y.Node
 		var err error
 		// Find the root node of Android application.
-		if appRoot, err = ui.FindWithTimeout(ctx, tconn, ui.FindParams{Name: currentActivity.Title, Role: ui.RoleTypeApplication}, 10*time.Second); err != nil {
+		if appRoot, err = a11y.FindWithTimeout(ctx, tconn, expectedTree.findParams(), 10*time.Second); err != nil {
 			return errors.Wrap(err, "failed to get Android root from accessibility tree")
 		}
 		defer appRoot.Release(ctx)
 
-		if matched, err := matchTree(ctx, appRoot, trees[currentActivity.Name]); err != nil || !matched {
+		if matched, err := matchTree(ctx, appRoot, expectedTree); err != nil || !matched {
 			return errors.Wrap(err, "accessibility tree did not match")
 		}
 		return nil
