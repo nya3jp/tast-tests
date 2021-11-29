@@ -157,10 +157,10 @@ func ippUSBPrinterURI(devInfo DevInfo) string {
 	return fmt.Sprintf("ippusb://%s_%s/ipp/print", devInfo.VID, devInfo.PID)
 }
 
-// LoadPrinterIDs loads the JSON file located at path and attempts to extract
+// loadPrinterIDs loads the JSON file located at path and attempts to extract
 // the "vid" and "pid" from the USB device descriptor which should be defined
 // in path.
-func LoadPrinterIDs(path string) (devInfo DevInfo, err error) {
+func loadPrinterIDs(path string) (devInfo DevInfo, err error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return devInfo, errors.Wrapf(err, "failed to open %s", path)
@@ -236,7 +236,7 @@ func Start(ctx context.Context, fields ...Option) (*Printer, error) {
 		return nil, errors.New("Descriptors are required")
 	}
 
-	devInfo, err := LoadPrinterIDs(op.descriptors)
+	devInfo, err := loadPrinterIDs(op.descriptors)
 	if err != nil {
 		return nil, err
 	}
@@ -323,45 +323,6 @@ func (p *Printer) Stop(ctx context.Context) error {
 	return nil
 }
 
-// runVirtualUsbPrinter starts an instance of virtual-usb-printer with the
-// given arguments.  Waits until the printer has been launched successfully,
-// and then returns the command.
-// The returned command must be stopped using Kill()/Wait() once testing is
-// complete.
-func runVirtualUsbPrinter(ctx context.Context, descriptors, attributes, record, esclCaps, logDir string) (cmd *testexec.Cmd, err error) {
-	testing.ContextLog(ctx, "Starting virtual printer")
-	launch := testexec.CommandContext(ctx, "stdbuf", "-o0", "virtual-usb-printer", "--descriptors_path="+descriptors, "--attributes_path="+attributes, "--record_doc_path="+record, "--scanner_capabilities_path="+esclCaps, "--output_log_dir="+logDir)
-
-	p, err := launch.StdoutPipe()
-	if err != nil {
-		return nil, err
-	}
-
-	if err := launch.Start(); err != nil {
-		return nil, errors.Wrapf(err, "failed to start %v", launch.Args)
-	}
-	cmdToKill := launch
-	defer func() {
-		if cmdToKill != nil {
-			launch.Kill()
-			launch.Wait()
-		}
-	}()
-
-	// Ensure that virtual-usb-printer has launched successfully.
-	if err := waitLaunch(p); err != nil {
-		return nil, errors.Wrap(err, "failed to launch virtual printer")
-	}
-	testing.ContextLog(ctx, "Started virtual printer")
-
-	// Need to read from the pipe so that the virtual printer doesn't block on
-	// writing to stdout
-	go io.Copy(ioutil.Discard, p)
-
-	cmdToKill = nil
-	return launch, nil
-}
-
 // attachUSBIPDevice attaches the UsbIp device specified by devInfo to the
 // system. Returns nil if the device was attached successfully.
 func attachUSBIPDevice(ctx context.Context, devInfo DevInfo) error {
@@ -402,37 +363,6 @@ func attachUSBIPDevice(ctx context.Context, devInfo DevInfo) error {
 	return nil
 }
 
-// StartScanner sets up and runs a new virtual printer with scanner support and
-// attaches it to the system using USBIP. The given descriptors and attributes
-// provide the virtual printer with paths to the USB descriptors and IPP
-// attributes files, which are necessary to setup the eSCL over IPP connection.
-//
-// esclCaps is a path to a JSON config file which specifies the supported
-// behavior of the scanner.
-//
-// The returned command is already started and must be stopped (by calling its
-// Kill and Wait methods) when testing is complete.
-func StartScanner(ctx context.Context, devInfo DevInfo, descriptors, attributes, esclCaps, logDir string) (cmd *testexec.Cmd, err error) {
-	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, "", esclCaps, logDir)
-	if err != nil {
-		return nil, errors.Wrap(err, "runVirtualUsbPrinter failed")
-	}
-	cmdToKill := virtualUsbPrinter
-	defer func() {
-		if cmdToKill != nil {
-			virtualUsbPrinter.Kill()
-			virtualUsbPrinter.Wait()
-		}
-	}()
-
-	err = attachUSBIPDevice(ctx, devInfo)
-	if err != nil {
-		return nil, errors.Wrap(err, "attaching usbip device failed")
-	}
-	cmdToKill = nil
-	return virtualUsbPrinter, nil
-}
-
 // WaitPrinterConfigured waits for a printer which has the same VID/PID as
 // devInfo to be configured on the system. If a match is found then the name of
 // the configured device will be returned.
@@ -450,32 +380,4 @@ func WaitPrinterConfigured(ctx context.Context, devInfo DevInfo) (string, error)
 		return "", err
 	}
 	return foundName, nil
-}
-
-// StopPrinter terminates the virtual-usb-printer process, then waits for a
-// udev event indicating that its associated USB device has been removed.
-func StopPrinter(ctx context.Context, cmd *testexec.Cmd, devInfo DevInfo) error {
-	// Begin waiting for udev event.
-	udevCh := make(chan error, 1)
-	go func() {
-		udevCh <- waitEvent(ctx, "remove", devInfo)
-	}()
-
-	cmd.Kill()
-	cmd.Wait()
-
-	// Wait for a signal from udevadm to say the device was successfully
-	// detached.
-	testing.ContextLog(ctx, "Waiting for udev event")
-	select {
-	case err := <-udevCh:
-		if err != nil {
-			return err
-		}
-		testing.ContextLog(ctx, "Found remove event")
-	case <-ctx.Done():
-		return errors.Wrap(ctx.Err(), "didn't get udev event")
-	}
-
-	return nil
 }

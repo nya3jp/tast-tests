@@ -83,27 +83,21 @@ func Scan(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, esclCapabilities, "")
+	printer, err := usbprinter.Start(ctx,
+		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithAttributes(attributes),
+		usbprinter.WithESCLCapabilities(esclCapabilities))
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-	defer func() {
-		if printer != nil {
-			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
-		}
-	}()
-	if err = ippusbbridge.WaitForSocket(ctx, devInfo); err != nil {
+	defer printer.Stop(cleanupCtx, usbprinter.RequireUdevEvent)
+	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb socket: ", err)
 	}
-	if err = cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+	if err = cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for printer to be idle: ", err)
 	}
-	if err = ippusbbridge.ContactPrinterEndpoint(ctx, devInfo, "/eSCL/ScannerCapabilities"); err != nil {
+	if err = ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
 		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
 	}
 
