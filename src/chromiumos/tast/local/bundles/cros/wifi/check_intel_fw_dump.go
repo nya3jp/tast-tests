@@ -49,6 +49,8 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 		iwlwifiDir       = "/sys/kernel/debug/iwlwifi"
 		crashDir         = "/var/spool/crash"
 		devCoreDumpName  = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore.gz`
+		metaDumpName     = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.meta`
+		logDumpName      = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.log`
 		fwDbgCollectPath = "/iwlmvm/fw_dbg_collect"
 	)
 
@@ -99,9 +101,9 @@ func CheckIntelFWDump(ctx context.Context, s *testing.State) {
 	ctxForRemovingAllFiles := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
-	s.Log("Waiting for .devcore.gz file to be added to crash directory")
+	s.Log("Waiting for {.devcore.gz, .meta, .log} files to be added to crash directory")
 	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
-		[]string{devCoreDumpName})
+		[]string{devCoreDumpName, metaDumpName, logDumpName})
 	if err != nil {
 		s.Fatal("Failed while polling crash directory: ", err)
 	}
