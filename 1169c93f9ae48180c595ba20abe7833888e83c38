@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2bfe51_bc61d6ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-11-29T13:50:27Z",
+      "side": 1,
+      "message": "Because DUT\u0027s power state remained at G3 from closing the lid at the end of test, other tests run immediately after might get stuck with the failed connections error when trying to talk to DUT.\n\nI\u0027m thinking that resuming DUT\u0027s lid to open might be a quick fix, but I\u0027m yet to find out more whether this is the root cause.",
+      "revId": "1169c93f9ae48180c595ba20abe7833888e83c38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
