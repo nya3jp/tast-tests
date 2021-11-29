@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f23039ee_c9788d4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/developer_tools_availability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-29T06:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6031f68a_358b786d",
+      "revId": "f8df7fddca10d9b4da9e03b84a56a169348afc9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "165d2713_b22cf2da",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-26T14:32:51Z",
       "side": 1,
       "message": "nit: is this related...?",
+      "revId": "f8df7fddca10d9b4da9e03b84a56a169348afc9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9121204f_993c7478",
+        "filename": "src/chromiumos/tast/local/kerberos/configuration.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-29T06:08:56Z",
+      "side": 1,
+      "message": "this is a result of running gofmt I think",
+      "parentUuid": "165d2713_b22cf2da",
       "revId": "f8df7fddca10d9b4da9e03b84a56a169348afc9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
