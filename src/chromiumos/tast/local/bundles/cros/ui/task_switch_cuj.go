@@ -29,10 +29,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type taskSWitchCUJTestParam struct {
-	tablet    bool
-	useLacros bool
-	tracing   bool
+type taskSwitchCUJTestParam struct {
+	tablet     bool
+	useLacros  bool
+	tracing    bool // If true, collect and store trace data during recording.
+	validation bool // If true, add extra cpu loads before recording.
 }
 
 func init() {
@@ -49,28 +50,35 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
-				Val:               taskSWitchCUJTestParam{},
+				Val:               taskSwitchCUJTestParam{},
+			},
+			{
+				Name:              "validation",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture:           "loggedInToCUJUser",
+				Val:               taskSwitchCUJTestParam{validation: true},
 			},
 			{
 				Name:              "trace",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
-				Val:               taskSWitchCUJTestParam{tracing: true},
+				Val:               taskSwitchCUJTestParam{tracing: true},
 			},
 			{
 				Name:              "vm",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "loggedInToCUJUser",
-				Val:               taskSWitchCUJTestParam{},
+				Val:               taskSwitchCUJTestParam{},
 			},
 			{
 				Name:              "tablet_mode",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
-				Val: taskSWitchCUJTestParam{
+				Val: taskSwitchCUJTestParam{
 					tablet: true,
 				},
 			},
@@ -79,7 +87,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "loggedInToCUJUser",
-				Val: taskSWitchCUJTestParam{
+				Val: taskSwitchCUJTestParam{
 					tablet: true,
 				},
 			},
@@ -88,7 +96,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
-				Val: taskSWitchCUJTestParam{
+				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 				},
 			},
@@ -97,7 +105,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
-				Val: taskSWitchCUJTestParam{
+				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 				},
 			},
@@ -106,7 +114,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
-				Val: taskSWitchCUJTestParam{
+				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 					tablet:    true,
 				},
@@ -116,7 +124,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
-				Val: taskSWitchCUJTestParam{
+				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 					tablet:    true,
 				},
@@ -127,7 +135,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Model("noibat")),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "loggedInToCUJUser",
-				Val:               taskSWitchCUJTestParam{},
+				Val:               taskSwitchCUJTestParam{},
 			},
 		},
 	})
@@ -145,7 +153,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	testParam := s.Param().(taskSWitchCUJTestParam)
+	testParam := s.Param().(taskSwitchCUJTestParam)
 
 	a := s.FixtValue().(cuj.FixtureData).ARC
 
@@ -425,6 +433,18 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		recorder.EnableTracing(s.OutDir())
 	}
 	defer recorder.Close(closeCtx)
+
+	if testParam.validation {
+		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
+		if err := validationHelper.Stress(); err != nil {
+			s.Fatal("Failed to stress: ", err)
+		}
+		defer func() {
+			if err := validationHelper.Release(); err != nil {
+				s.Fatal("Failed to release validationHelper: ", err)
+			}
+		}()
+	}
 
 	// Launch arc apps from the app launcher; first open the app-launcher, type
 	// the query and select the first search result, and wait for the app window
