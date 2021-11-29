@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d207edb_89569923",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-11-29T04:16:59Z",
+      "side": 1,
+      "message": "This test is only to check that the UI alert shows for an oldstable version of the Linux container OS.",
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
