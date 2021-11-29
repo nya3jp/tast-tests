@@ -11,7 +11,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"

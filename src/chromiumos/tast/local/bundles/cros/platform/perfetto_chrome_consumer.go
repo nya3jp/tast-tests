@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )

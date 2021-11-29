@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package launcher
+package lacrosfixt
 
 import (
 	"context"
@@ -19,25 +19,6 @@ import (
 // LacrosDeployedBinary contains the Fixture Var necessary to run lacros.
 // This should be used by any lacros fixtures defined outside this file.
 const LacrosDeployedBinary = "lacrosDeployedBinary"
-
-// NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and
-// Chrome options.
-func NewFixture(mode SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
-	return NewComposedFixture(mode, func(v FixtValue, pv interface{}) interface{} {
-		return v
-	}, fOpt)
-}
-
-// NewComposedFixture is similar to NewFixture but allows tests to customise the FixtValue
-// used. This lets tests compose fixtures via struct embedding.
-func NewComposedFixture(mode SetupMode, makeValue func(v FixtValue, pv interface{}) interface{},
-	fOpt chrome.OptionsCallback) testing.FixtureImpl {
-	return &fixtImpl{
-		mode:      mode,
-		fOpt:      fOpt,
-		makeValue: makeValue,
-	}
-}
 
 func init() {
 	// lacros uses rootfs lacros, which is the recommend way to use lacros
@@ -188,10 +169,10 @@ func init() {
 }
 
 const (
-	// mojoSocketPath indicates the path of the unix socket that ash-chrome creates.
+	// MojoSocketPath indicates the path of the unix socket that ash-chrome creates.
 	// This unix socket is used for getting the file descriptor needed to connect mojo
 	// from ash-chrome to lacros.
-	mojoSocketPath = "/tmp/lacros.socket"
+	MojoSocketPath = "/tmp/lacros.socket"
 
 	// dataArtifact holds the name of the tarball which contains the lacros-chrome
 	// binary.
@@ -206,19 +187,6 @@ const (
 	// lacrosRootPath is the root directory for lacros-chrome related binaries.
 	lacrosRootPath = lacrosTestPath + "/lacros_binary"
 )
-
-// The FixtValue object is made available to users of this fixture via:
-//
-//	func DoSomething(ctx context.Context, s *testing.State) {
-//		d := s.FixtValue().(lacros.FixtValue)
-//		...
-//	}
-type FixtValue interface {
-	Chrome() *chrome.Chrome        // The CrOS-chrome instance.
-	TestAPIConn() *chrome.TestConn // The CrOS-chrome test connection.
-	Mode() SetupMode               // Mode used to get the lacros binary.
-	LacrosPath() string            // Root directory for lacros-chrome.
-}
 
 // fixtValueImpl holds values related to the lacros instance and connection.
 // Tests should not use this directly, unless they are composing fixtures
@@ -262,23 +230,6 @@ type fixtImpl struct {
 	makeValue  func(v FixtValue, pv interface{}) interface{} // Closure to create FixtValue to return from SetUp. Used for composable fixtures.
 }
 
-// SetupMode describes how lacros-chrome should be set-up during the test.
-// See the SetupMode constants for more explanation. Use Rootfs as a default.
-// Note that if the lacrosDeployedBinary var is specified, the lacros binary
-// located at the path specified by that var will be used in all cases.
-type SetupMode int
-
-const (
-	// External denotes a lacros-chrome downloaded per the external data dependency.
-	// This may be overridden by a pre-deployed binary by specifying the lacrosDeployedBinary Var.
-	External SetupMode = iota
-	// Omaha is used to get the lacros binary.
-	Omaha
-	// Rootfs is used to force the rootfs version of lacros-chrome. No external data dependency is needed.
-	// For tests that don't care which lacros they are using, use this as a default.
-	Rootfs
-)
-
 // SetUp is called by tast before each test is run. We use this method to initialize
 // the fixture data, or return early if the fixture is already active.
 func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -308,7 +259,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 		s.Fatal("Failed to obtain fixture options: ", err)
 	}
 
-	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+mojoSocketPath))
+	opts = append(opts, chrome.ExtraArgs("--lacros-mojo-socket-for-testing="+MojoSocketPath))
 
 	// Suppress experimental Lacros infobar and possible others as well.
 	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))

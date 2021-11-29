@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package faillog provides a way to record logs on test failure.
-package faillog
+// Package lacrosfaillog provides a way to record logs on test failure.
+package lacrosfaillog
 
 import (
 	"context"
@@ -13,15 +13,19 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
-const lacrosFaillogDir = "lacros_faillog"
+const (
+	lacrosFaillogDir = "lacros_faillog"
+	lacrosUILogPath  = "/home/chronos/user/lacros/lacros.log"
+)
 
-// LogFile returns a path to a file containing Lacros's log.
+// LogFile returns the location for where the lacros log file ought to be.
 func LogFile(ctx context.Context) string {
 	out, ok := testing.ContextOutDir(ctx)
 	if !ok {
@@ -31,11 +35,27 @@ func LogFile(ctx context.Context) string {
 	return filepath.Join(out, "lacros.log")
 }
 
+// FaillogData lets lacrosfaillog get the required information to take a faillog
+// without having to pass it all in. Anything that is a lacrosfixt.FixtValue
+// can be used as this type.
+type FaillogData interface {
+	Mode() lacrosfixt.SetupMode // Mode used to get the lacros binary.
+	LacrosPath() string         // Root directory for lacros-chrome.
+}
+
 // SaveIf saves a lacros specific faillog if the hasError closure returns true.
 // The intended use for this is to pass testing.State's HasError to this.
-func SaveIf(ctx context.Context, lacrosPath string, hasError func() bool) {
+func SaveIf(ctx context.Context, f FaillogData, hasError func() bool) {
 	if hasError() {
-		Save(ctx, lacrosPath)
+		Save(ctx, f)
+	}
+}
+
+// SaveWithIf saves a lacros specific faillog if the hasError closure returns true.
+// The intended use for this is to pass testing.State's HasError to this.
+func SaveWithIf(ctx context.Context, lacrosPath string, hasError func() bool) {
+	if hasError() {
+		SaveWith(ctx, lacrosPath)
 	}
 }
 
@@ -43,7 +63,15 @@ func SaveIf(ctx context.Context, lacrosPath string, hasError func() bool) {
 // then it does nothing. This is to support the use case of adding multiple
 // calls to Save over a test, and only getting the faillog for the first
 // failure.
-func Save(ctx context.Context, lacrosPath string) {
+func Save(ctx context.Context, f FaillogData) {
+	SaveWith(ctx, f.LacrosPath())
+}
+
+// SaveWith saves a lacros specific faillog. If the faillog directory already exists
+// then it does nothing. This is to support the use case of adding multiple
+// calls to Save over a test, and only getting the faillog for the first
+// failure.
+func SaveWith(ctx context.Context, lacrosPath string) {
 	// Runs the given command with redirecting its stdout to outpath.
 	// On error, logging it then ignored.
 	run := func(outpath string, cmds ...string) {

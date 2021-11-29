@@ -30,8 +30,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -114,7 +113,7 @@ func Run(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get TestAPIConn: ", err)
 		}
 	} else {
-		var l *launcher.LacrosChrome
+		var l *lacros.LacrosChrome
 		var err error
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), param.BrowserType)
 		if err != nil {

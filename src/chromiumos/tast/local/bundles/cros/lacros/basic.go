@@ -9,8 +9,9 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/chrome/lacros/faillog"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -34,8 +35,8 @@ func init() {
 }
 
 func Basic(ctx context.Context, s *testing.State) {
-	l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
-	defer faillog.SaveIf(ctx, s.FixtValue().(launcher.FixtValue).LacrosPath(), s.HasError)
+	l, err := lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+	defer lacrosfaillog.SaveIf(ctx, s.FixtValue().(lacrosfixt.FixtValue), s.HasError)
 
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)

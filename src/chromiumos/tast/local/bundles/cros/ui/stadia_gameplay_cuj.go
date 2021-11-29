@@ -17,8 +17,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -68,7 +68,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 	var bTconn *chrome.TestConn
 
 	if useLacros {
-		cr = s.FixtValue().(launcher.FixtValue).Chrome()
+		cr = s.FixtValue().(lacrosfixt.FixtValue).Chrome()
 	} else {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
@@ -86,7 +86,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 
 	if useLacros {
 		// Launch lacros via shelf.
-		f := s.FixtValue().(launcher.FixtValue)
+		f := s.FixtValue().(lacrosfixt.FixtValue)
 
 		l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
 		if err != nil {
