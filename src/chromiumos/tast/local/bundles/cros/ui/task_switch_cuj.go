@@ -30,9 +30,10 @@ import (
 )
 
 type taskSWitchCUJTestParam struct {
-	tablet    bool
-	useLacros bool
-	tracing   bool
+	tablet     bool
+	useLacros  bool
+	tracing    bool
+	validation bool
 }
 
 func init() {
@@ -50,6 +51,13 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSWitchCUJTestParam{},
+			},
+			{
+				Name:              "validation",
+				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				ExtraSoftwareDeps: []string{"android_p"},
+				Fixture:           "loggedInToCUJUser",
+				Val:               taskSWitchCUJTestParam{validation: true},
 			},
 			{
 				Name:              "trace",
@@ -425,6 +433,18 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		recorder.EnableTracing(s.OutDir())
 	}
 	defer recorder.Close(closeCtx)
+
+	if testParam.validation {
+		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
+		if err := validationHelper.Stress(); err != nil {
+			s.Fatal("Failed to stress: ", err)
+		}
+		defer func() {
+			if err := validationHelper.Release(); err != nil {
+				s.Fatal("Failed to release validationHelper: ", err)
+			}
+		}()
+	}
 
 	// Launch arc apps from the app launcher; first open the app-launcher, type
 	// the query and select the first search result, and wait for the app window
