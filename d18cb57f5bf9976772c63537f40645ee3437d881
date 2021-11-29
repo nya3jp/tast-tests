@@ -16,6 +16,24 @@
       "message": "May be have a TODO and remove it later.",
       "revId": "d18cb57f5bf9976772c63537f40645ee3437d881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4447ef6f_db9607cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-29T20:47:54Z",
+      "side": 1,
+      "message": "Added a bug info.",
+      "parentUuid": "e6ec4aa0_eba1f561",
+      "revId": "d18cb57f5bf9976772c63537f40645ee3437d881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
