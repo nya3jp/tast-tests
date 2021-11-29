@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6bca847_d286990a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-11-29T13:00:22Z",
+      "side": 1,
+      "message": "lgtm % suggestion",
+      "revId": "6c3cb6317da2a33a8bd570ba9f133ba56e41230d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92d8803a_a5726e04",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17358,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-11-29T13:00:22Z",
+      "side": 1,
+      "message": "And here",
+      "range": {
+        "startLine": 17358,
+        "startChar": 22,
+        "endLine": 17358,
+        "endChar": 26
+      },
+      "revId": "6c3cb6317da2a33a8bd570ba9f133ba56e41230d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2dbf0fb_b1fbd6d3",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17363,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2021-11-29T13:00:22Z",
+      "side": 1,
+      "message": "Let\u0027s add omitempty here as well for the future?",
+      "range": {
+        "startLine": 17363,
+        "startChar": 28,
+        "endLine": 17363,
+        "endChar": 32
+      },
+      "revId": "6c3cb6317da2a33a8bd570ba9f133ba56e41230d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
