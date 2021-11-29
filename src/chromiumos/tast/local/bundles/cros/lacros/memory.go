@@ -14,7 +14,8 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -80,7 +81,7 @@ func findMatch(input []byte, stat string) (int, error) {
 //  2. It queries /proc/{pid}/{endpoint} for each process.
 //  3. It filters and sums across all statistics that match stat.
 func procSum(ctx context.Context, path, endpoint, stat string) (int, error) {
-	pids, err := launcher.PidsFromPath(ctx, path)
+	pids, err := lacros.PidsFromPath(ctx, path)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get pids for "+path)
 	}
@@ -133,7 +134,7 @@ func measureBothChrome(ctx context.Context, s *testing.State) (int, int) {
 	// processes, but most will go away after 60 seconds.
 	testing.Sleep(ctx, 60*time.Second)
 
-	pmf, pss, err := measureProcesses(ctx, s.FixtValue().(launcher.FixtValue).LacrosPath())
+	pmf, pss, err := measureProcesses(ctx, s.FixtValue().(lacrosfixt.FixtValue).LacrosPath())
 	if err != nil {
 		s.Fatal("Failed to measure memory of lacros-chrome: ", err)
 	}
@@ -162,7 +163,7 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		// We currently rely on the assumption that the launcher
 		// creates a windows that is 800x600 in size.
-		l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
+		l, err := lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
@@ -189,13 +190,13 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		var conns []*chrome.Conn
 		if params.mode == openTabMode {
-			conns, err = openTabsChromeOS(ctx, s.FixtValue().(launcher.FixtValue).Chrome(), params.numTabs)
+			conns, err = openTabsChromeOS(ctx, s.FixtValue().(lacrosfixt.FixtValue).Chrome(), params.numTabs)
 			if err != nil {
 				s.Fatal("Failed to open ash-chrome tabs: ", err)
 			}
 		} else {
 			// Open a new tab to url.
-			conn, err := s.FixtValue().(launcher.FixtValue).Chrome().NewConn(ctx, url)
+			conn, err := s.FixtValue().(lacrosfixt.FixtValue).Chrome().NewConn(ctx, url)
 			if err != nil {
 				s.Fatal("Failed to open ash-chrome tab: ", err)
 			}
@@ -206,7 +207,7 @@ func Memory(ctx context.Context, s *testing.State) {
 		}
 
 		// Set the window to 800x600 in size.
-		if err := s.FixtValue().(launcher.FixtValue).TestAPIConn().Call(ctx, nil, `async () => {
+		if err := s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn().Call(ctx, nil, `async () => {
 			const win = await tast.promisify(chrome.windows.getLastFocused)();
 			await tast.promisify(chrome.windows.update)(win.id, {width: 800, height:600, state:"normal"});
 		}`); err != nil {
@@ -227,7 +228,7 @@ func Memory(ctx context.Context, s *testing.State) {
 // navigateSingleTabToURLLacros assumes that there's a freshly launched instance
 // of lacros-chrome, with a single tab open to about:blank, then, navigates the
 // blank tab to the given url.
-func navigateSingleTabToURLLacros(ctx context.Context, url string, l *launcher.LacrosChrome) error {
+func navigateSingleTabToURLLacros(ctx context.Context, url string, l *lacros.LacrosChrome) error {
 	// Open a new tab and navigate to url.
 	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL("about:blank"))
 	if err != nil {
@@ -242,7 +243,7 @@ func navigateSingleTabToURLLacros(ctx context.Context, url string, l *launcher.L
 
 // openTabsLacros assumes that lacros-chrome has been freshly launched,
 // with a single tab opened to about:blank.
-func openTabsLacros(ctx context.Context, l *launcher.LacrosChrome, numTabs int) error {
+func openTabsLacros(ctx context.Context, l *lacros.LacrosChrome, numTabs int) error {
 	for i := 0; i < numTabs-1; i++ {
 		// Open a new tab and navigate to about blank
 		conn, err := l.NewConn(ctx, "about:blank")

@@ -9,7 +9,8 @@ import (
 	"os"
 
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	applauncher "chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -34,14 +35,14 @@ func init() {
 }
 
 func AppLauncherLaunch(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(launcher.FixtValue)
+	f := s.FixtValue().(lacrosfixt.FixtValue)
 	tconn, err := f.Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
 	// Clean up user data dir to ensure a clean start.
-	os.RemoveAll(launcher.LacrosUserDataDir)
+	os.RemoveAll(lacros.LacrosUserDataDir)
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -52,11 +53,11 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking that Lacros window is visible")
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
+	if err := lacros.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
-	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath(), launcher.LacrosUserDataDir)
+	l, err := lacros.ConnectToLacrosChrome(ctx, f.LacrosPath(), lacros.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}

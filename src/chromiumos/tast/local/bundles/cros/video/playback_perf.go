@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/video/playback"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/testing"
 )
 

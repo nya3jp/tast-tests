@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package faillog provides a way to record logs on test failure.
-package faillog
+// Package lacrosfaillog provides a way to record logs on test failure.
+package lacrosfaillog
 
 import (
 	"context"
@@ -21,7 +21,7 @@ import (
 
 const lacrosFaillogDir = "lacros_faillog"
 
-// LogFile returns a path to a file containing Lacros's log.
+// LogFile returns the location for where the lacros log file ought to be.
 func LogFile(ctx context.Context) string {
 	out, ok := testing.ContextOutDir(ctx)
 	if !ok {
