@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22bc3e63_3629b68c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-11-29T20:06:48Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll start reworking this into a chain of CLs.",
+      "parentUuid": "25c938d7_a1d8f46c",
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edc625b7_3f15d609",
         "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
         "patchSetId": 4
@@ -103,6 +121,30 @@
       "writtenOn": "2021-11-25T14:12:45Z",
       "side": 1,
       "message": "You should design your library in the way that this really will be required.\n\nPlease take a look on options pattern in Go: https://www.sohamkamani.com/golang/options-pattern/",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81605df7_33c58dc4",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-11-29T20:06:48Z",
+      "side": 1,
+      "message": "Would it suffice to modify `Start()` to return an error if `Descriptors` is not given? I don\u0027t see clear guidance from the page you linked about how to require a value.\n\nAlso, this appears to describe the builder pattern, which our internal docs appear to discourage: go/go/dev/forjava/builders (though I personally quite like it). Is there a tast / Chromium-OS-specific override?",
+      "parentUuid": "edc625b7_3f15d609",
       "range": {
         "startLine": 51,
         "startChar": 4,
