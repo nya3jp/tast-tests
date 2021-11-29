@@ -135,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4956e560_b68e5c3e",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-29T16:31:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90f7205c_612d5842",
+      "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4d4e44f_52d9ee3d",
@@ -148,6 +166,24 @@
       "writtenOn": "2021-11-29T16:19:34Z",
       "side": 1,
       "message": "nit: add a comment on why this is used.",
+      "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750b1881_c5752ac9",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-29T16:31:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d4e44f_52d9ee3d",
       "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
