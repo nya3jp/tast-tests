@@ -27,7 +27,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilitySpeech,
 		Desc:         "Checks ChromeVox reads Android elements as expected",
-		Contacts:     []string{"dtseng@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
+		Contacts:     []string{"hirokisato@chromium.org", "dtseng@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedWithoutUIAutomator",
