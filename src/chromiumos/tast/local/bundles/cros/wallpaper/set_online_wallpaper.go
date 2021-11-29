@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/testing"
 )
@@ -65,6 +66,12 @@ func SetOnlineWallpaper(ctx context.Context, s *testing.State) {
 	// The test has a dependency of network speed, so we give uiauto.Context ample
 	// time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
+
+	// A workaroud to make sure we can open wallpaper picker.
+	_, err = screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to grab screenshot: ", err)
+	}
 
 	if err := uiauto.Combine(fmt.Sprintf("Change the wallpaper to %s %s", firstCollection, firstImage),
 		wallpaper.OpenWallpaperPicker(ui),

@@ -74,6 +74,12 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 	// time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
+	// A workaroud to make sure we can open wallpaper picker.
+	_, err = screenshot.GrabScreenshot(ctx, cr)
+	if err != nil {
+		s.Fatal("Failed to grab screenshot: ", err)
+	}
+
 	if err := uiauto.Combine("Set a new custom wallpaper and minimize wallpaper picker",
 		wallpaper.OpenWallpaperPicker(ui),
 		wallpaper.SelectCollection(ui, collection),
