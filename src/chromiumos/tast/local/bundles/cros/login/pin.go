@@ -108,7 +108,8 @@ func Pin(ctx context.Context, s *testing.State) {
 			}
 
 			if err := oobeConn.Eval(ctx, "OobeAPI.skipPostLoginScreens()", nil); err != nil {
-				s.Fatal("Failed to call skip post login screens: ", err)
+				// This is not fatal because sometimes it fails because Oobe shutdowns too fast after the call - which produces error
+				s.Error("Failed to call skip post login screens: ", err)
 			}
 
 			if err := cr.WaitForOOBEConnectionToBeDismissed(ctx); err != nil {
