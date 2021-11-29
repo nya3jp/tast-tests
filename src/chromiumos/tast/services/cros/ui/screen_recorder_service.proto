@@ -1,0 +1,29 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// ScreenRecorderService allows basic remote operations of the Nearby Share feature.
+service ScreenRecorderService {
+  // NewChromeLogin logs into a Chrome session. 
+  // Close must be called later to clean up the associated resources.
+  rpc NewChromeLogin (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// // NewChromeLoginRequest to login to Chrome with configurable GAIA credentials.
+// message NewChromeLoginRequest {
+//   string username = 1;
+//   string password = 2;
+//   // bool keep_state = 3;
+//   // repeated string enabled_flags = 4;
+// }
