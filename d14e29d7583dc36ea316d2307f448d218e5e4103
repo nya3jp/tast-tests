@@ -16,6 +16,24 @@
       "message": "When it fails to serve policies, I think it should be considered to try to close Chrome. WDYT?",
       "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee764a7f_0c8dd79d",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-29T15:19:55Z",
+      "side": 1,
+      "message": "Gabor, how do you see it? Something like that?\n\n\tvar errPolicies *errors.E\n\tif err :\u003d policyutil.ServeAndRefresh(...); err !\u003d nil {\n\t\terrPolicies \u003d errors.Wrap(err, \"failed to apply empty policies\")\n\t}\n\tif err :\u003d k.cr.Close(ctx); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"could not close Chrome\")\n\t}\n\treturn errPolicies",
+      "parentUuid": "5dc665a1_519b604f",
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
