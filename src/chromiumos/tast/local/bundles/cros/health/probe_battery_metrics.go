@@ -38,7 +38,7 @@ type batteryInfo struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ProbeBatteryMetrics,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that we can probe cros_healthd for battery metrics",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		// TODO(b/209014812): Test is unstable

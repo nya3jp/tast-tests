@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardOOBE,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks that the virtual keyboard works in OOBE Gaia Login",
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		Contacts:     []string{"essential-inputs-team@google.com"},

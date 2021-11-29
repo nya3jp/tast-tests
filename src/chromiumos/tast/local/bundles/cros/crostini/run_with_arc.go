@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         RunWithARC,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that ARC(VM) runs in parallel with Crostini",
 		Contacts:     []string{"niwa@chromium.org", "arcvm-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

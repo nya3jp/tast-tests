@@ -33,7 +33,7 @@ type findResponse struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SearchInHelpApp,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Help app local search service works",
 		Contacts: []string{
 			"callistus@chromium.org", // test author.

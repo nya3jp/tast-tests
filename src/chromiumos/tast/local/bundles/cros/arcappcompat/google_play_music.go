@@ -30,7 +30,7 @@ var touchviewLaunchForGooglePlayMusic = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GooglePlayMusic,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for GooglePlayMusic that install, launch the app and check that the main page is open, also checks GooglePlayMusic correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		// Disabled this test as Google Play Music is no longer available and migrated to Youtube Music.

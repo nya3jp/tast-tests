@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchHelpAppFromLauncher,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Help app can be found and launched from the launcher",
 		Contacts: []string{
 			"carpenterr@chromium.org", // test author.

@@ -29,7 +29,7 @@ type toolkitConfig struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Toolkit,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies the behaviour of GUI apps based on various toolkits",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},

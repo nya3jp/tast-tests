@@ -25,7 +25,7 @@ var shelfAppButton = "ash/ShelfAppButton"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PinAppToShelf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Using Launcher To Pin Application to Shelf",
 		Contacts: []string{
 			"seewaifu@chromium.org",

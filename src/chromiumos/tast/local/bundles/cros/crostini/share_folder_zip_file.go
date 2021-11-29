@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShareFolderZipFile,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sharing a folder containing a zip file",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

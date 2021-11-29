@@ -31,7 +31,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShareDrive,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sharing Google Drive with Crostini",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

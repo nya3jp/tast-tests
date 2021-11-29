@@ -31,7 +31,7 @@ var touchviewLaunchForPostIt = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PostIt,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for PostIt that installs the app also verifies it is logged in and that the main page is open, checks PostIt correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

@@ -44,7 +44,7 @@ var touchviewAppSpecificTestsForNetflix = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Netflix,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Netflix that installs the app also verifies it is logged in and that the main page is open, checks Netflix correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		// TODO(b/186611037): Add Netflix to "appcompat_smoke" suite once the issue mentioned in the comment #5 is resolved.

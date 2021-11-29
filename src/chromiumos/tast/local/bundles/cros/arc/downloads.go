@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Downloads,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks Downloads integration is working",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com", "cros-arc-te@google.com"},
 		SoftwareDeps: []string{"chrome"},

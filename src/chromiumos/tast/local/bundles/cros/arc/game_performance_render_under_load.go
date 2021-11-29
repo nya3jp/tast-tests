@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GamePerformanceRenderUnderLoad,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Captures set of performance metrics for the render under the load and upload it to the server. This test takes long time so use it for manual run only. See also GamePerformanceRender",
 		Contacts:     []string{"khmel@chromium.org", "skuhne@chromium.org", "arc-performance@google.com"},
 		SoftwareDeps: []string{"chrome"},

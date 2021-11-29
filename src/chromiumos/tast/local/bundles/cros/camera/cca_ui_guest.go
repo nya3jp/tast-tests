@@ -14,7 +14,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUIGuest,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks camera app can be launched in guest mode",
 		Contacts:     []string{"pihsun@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},

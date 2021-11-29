@@ -14,7 +14,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Smoke,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Smoke test that clicks through OOBE",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",

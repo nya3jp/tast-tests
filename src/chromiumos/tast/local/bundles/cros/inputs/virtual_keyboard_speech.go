@@ -42,7 +42,7 @@ var voiceTestIMEsNewData = []ime.InputMethod{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboardSpeech,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test voice input functionality on virtual keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},

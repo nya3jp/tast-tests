@@ -32,7 +32,7 @@ var touchviewLaunchForAutocad = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Autocad,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Autocad that installs the app also verifies it is logged in and that the main page is open, checks Autocad correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

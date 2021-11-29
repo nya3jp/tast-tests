@@ -31,7 +31,7 @@ var touchviewLaunchForWevideo = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Wevideo,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Wevideo that installs the app also verifies that the main page is open, checks Wevideo correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		// Disabled this test as wevideo is migrated to PWA app.

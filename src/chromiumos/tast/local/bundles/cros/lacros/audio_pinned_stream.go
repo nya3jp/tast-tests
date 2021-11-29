@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioPinnedStream,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests pinned stream on lacros",
 		Contacts:     []string{"yuhsuan@chromium.org", "lacros-team@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

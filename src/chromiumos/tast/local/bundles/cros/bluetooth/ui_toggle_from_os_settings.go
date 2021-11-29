@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UIToggleFromOSSettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Enable and disable Bluetooth from ChromeOS Settings UI",
 		Contacts: []string{
 			"chromeos-bluetooth-champs@google.com", // b/new?component=167317&template=1370210.

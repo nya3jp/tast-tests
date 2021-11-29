@@ -27,7 +27,7 @@ func newRoutineParams(routine string) croshealthd.RoutineParams {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DiagnosticsRun,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that the cros_healthd diagnostic routines can be run without errors",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},

@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MicGainSlider,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the Quick Settings mic gain slider can be adjusted",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",

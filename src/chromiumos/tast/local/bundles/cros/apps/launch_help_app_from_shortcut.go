@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchHelpAppFromShortcut,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Help app can be launched using shortcut Ctrl+Shift+/",
 		Contacts: []string{
 			"showoff-eng@google.com",

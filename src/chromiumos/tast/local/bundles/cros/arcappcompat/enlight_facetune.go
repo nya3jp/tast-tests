@@ -31,7 +31,7 @@ var touchviewLaunchForEnlightFacetune = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EnlightFacetune,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for EnlightFacetune that installs the app also verifies that the main page is open, checks EnlightFacetune correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

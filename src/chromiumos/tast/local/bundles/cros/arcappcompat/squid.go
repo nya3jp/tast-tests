@@ -31,7 +31,7 @@ var touchviewLaunchForSquid = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Squid,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Squid that install, launch the app and check that the main page is open, also checks Squid correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         StartAppFromSignInScreen,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Adds 2 Kiosk accounts, checks if both are available then starts one of them",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author

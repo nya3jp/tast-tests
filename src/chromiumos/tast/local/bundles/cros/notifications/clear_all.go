@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ClearAll,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the 'Clear all' button dismisses all notifications",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",

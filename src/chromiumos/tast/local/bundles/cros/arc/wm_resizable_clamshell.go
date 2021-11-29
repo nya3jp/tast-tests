@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WMResizableClamshell,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that Window Manager resizable clamshell use-cases behave as described in go/arc-wm-r",
 		Contacts:     []string{"xutan@google.com", "takise@google.com", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

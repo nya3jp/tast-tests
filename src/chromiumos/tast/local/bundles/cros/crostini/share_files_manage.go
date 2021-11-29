@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShareFilesManage,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sharing My files with Crostini and manage it by selecting contenxt menu 'Manage Linux Sharing'",
 		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

@@ -31,7 +31,7 @@ var touchviewLaunchForMathKids = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MathKids,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for MathKids that installs the app also verifies that the main page is open, checks MathKids correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

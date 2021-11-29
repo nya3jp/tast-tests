@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppInfoFiles,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test Files app info from the context menu on shelf and app list",
 		Contacts: []string{
 			"jinrongwu@google.com",

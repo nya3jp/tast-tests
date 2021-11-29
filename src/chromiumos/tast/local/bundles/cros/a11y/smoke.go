@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Smoke,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that a11y nodes on various browsers are accessible in Tast using the test extension from Ash",
 		Contacts: []string{
 			"hyungtaekim@chromium.org",

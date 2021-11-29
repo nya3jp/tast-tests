@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayDRM,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks HW protected DRM video playback in Chrome is working",
 		Contacts: []string{
 			"jkardatzke@google.com",

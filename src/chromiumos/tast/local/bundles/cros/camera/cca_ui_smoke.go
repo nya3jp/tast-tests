@@ -24,7 +24,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUISmoke,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Smoke test for Chrome Camera App",
 		Contacts:     []string{"inker@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},

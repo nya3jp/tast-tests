@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Backup,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "This test ensure that we can backup and restore Android Apps",
 		Contacts:     []string{"rohitbm@google.com", "arc-core@google.com"},
 		SoftwareDeps: []string{"chrome"},

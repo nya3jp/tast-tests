@@ -65,7 +65,7 @@ var testParams = []failureParams{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ServiceFailure,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify service failures are logged as expected",
 		Contacts:     []string{"mutexlox@google.com", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},

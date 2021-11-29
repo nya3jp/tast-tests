@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Notification,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Launches a testing APK to generate notification and verifies its state",
 		Contacts: []string{
 			"yhanada@chromium.org",

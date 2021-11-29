@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ReporterCrash,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies crash_reporter itself crashing is captured through anomaly detector",
 		Contacts: []string{
 			"joonbug@chromium.org",

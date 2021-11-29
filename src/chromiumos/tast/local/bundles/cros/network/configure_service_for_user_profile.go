@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ConfigureServiceForUserProfile,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that we can configure a WiFi network for a user profile (guest or normal)",
 		Contacts: []string{
 			"stevenjb@chromium.org",

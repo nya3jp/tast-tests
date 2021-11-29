@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VimCompile,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Crostini performance test which compiles vim",
 		Contacts:     []string{"sushma.venkatesh.reddy@intel.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

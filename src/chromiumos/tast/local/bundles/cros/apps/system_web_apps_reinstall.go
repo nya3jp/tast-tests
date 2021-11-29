@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SystemWebAppsReinstall,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that system web apps can be reinstalled",
 		Contacts: []string{
 			"qjw@chromium.org", // Test author

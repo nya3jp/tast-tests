@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchTerminal,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Executes the x-terminal-emulator alternative in the container which should then cause Chrome to open the Terminal extension",
 		Contacts:     []string{"davidmunro@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},

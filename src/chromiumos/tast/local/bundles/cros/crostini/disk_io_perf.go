@@ -33,7 +33,7 @@ func fioFiles() []string {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DiskIOPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests Crostini Disk IO Performance",
 		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
 		// TODO(crbug.com/1124920): Test is disabled until it can be fixed

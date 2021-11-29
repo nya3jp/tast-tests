@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NetworkEventLog,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that the network_event_log section of the system logs has no ERROR entries",
 		Contacts: []string{
 			"cros-networking@chromium.org", // Team alias

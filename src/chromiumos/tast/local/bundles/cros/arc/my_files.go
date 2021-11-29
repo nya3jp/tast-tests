@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MyFiles,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks whether the MyFiles directory is properly shared from Chrome OS to ARC",
 		Contacts: []string{
 			"youkichihosoi@chromium.org", "arc-storage@google.com",

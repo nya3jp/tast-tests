@@ -30,7 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EncodeAccelJPEGPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures jpeg_encode_accelerator_unittest performance",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

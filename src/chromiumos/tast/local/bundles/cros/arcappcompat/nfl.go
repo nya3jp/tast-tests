@@ -31,7 +31,7 @@ var touchviewLaunchForNFL = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NFL,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for NFL that installs the app also verifies it is logged in and that the main page is open, checks NFL correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		// TODO(b/195792234): Disable the test until NFL crash is fixed.

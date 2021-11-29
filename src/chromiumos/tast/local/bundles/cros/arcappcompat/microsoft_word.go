@@ -32,7 +32,7 @@ var touchviewLaunchForMicrosoftWord = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MicrosoftWord,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for MicrosoftWord that installs the app also verifies it is logged in and that the main page is open, checks MicrosoftWord correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		// b/205855698: Disabled the test as Microsoft has ended it's support for android version of Microsoft word.

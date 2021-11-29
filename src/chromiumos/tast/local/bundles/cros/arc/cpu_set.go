@@ -34,7 +34,7 @@ type cpuSetConfig struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CPUSet,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies cpuset",
 		Contacts: []string{
 			"yusukes@chromium.org",

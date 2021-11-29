@@ -80,7 +80,7 @@ func init() {
 	// <username> and <password> are the credentials of the test GAIA account.
 	testing.AddTest(&testing.Test{
 		Func:         Manual,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Login device and setup environment for manual testing purpose",
 		Contacts:     []string{"shengjun@google.com", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "arc"},

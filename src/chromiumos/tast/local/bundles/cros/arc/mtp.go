@@ -29,7 +29,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MTP,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "ARC++/ARCVM Android app can read files on external Android device (with MTP) via FilesApp",
 		Contacts: []string{
 			"cherieccy@google.com",

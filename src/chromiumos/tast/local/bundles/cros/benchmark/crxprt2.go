@@ -37,7 +37,7 @@ const crxprtRunningTime = 45 * time.Minute
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CRXPRT2,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Execute Chrome extension CrXPRT 2 to do benchmark and acquire test score",
 		Contacts:     []string{"alfredyu@cienet.com", "xliu@cienet.com"},
 		// Purposely leave the empty Attr here. Public benchmark tests are not included in crosbolt group for now.

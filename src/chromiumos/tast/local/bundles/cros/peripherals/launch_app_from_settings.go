@@ -31,7 +31,7 @@ type settingsTestParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchAppFromSettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Peripherals app can be found and launched from the settings",
 		Contacts: []string{
 			"joonbug@chromium.org",
