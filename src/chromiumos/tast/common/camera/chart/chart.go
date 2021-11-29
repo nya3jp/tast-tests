@@ -29,6 +29,9 @@ const displayScript = "/usr/local/autotest/bin/display_chart.py"
 // displayOutputLog is path on chart tablet placing logs from stdout/stderr of display chart script.
 const displayOutputLog = "/tmp/chart_service.log"
 
+// DisplayDefaultLevel presents the default display level
+const DisplayDefaultLevel = -1
+
 // Chart displays chart files on the chart tablet in a camerabox setup.
 type Chart struct {
 	// conn is the SSH connection to the chart tablet.
@@ -121,7 +124,8 @@ func connectChart(ctx context.Context, d *dut.DUT, hostname string) (*ssh.Conn, 
 
 // New displays |chartPath| chart on either |altHostname| or |d|'s
 // corresponding chart tablet and returns a new |Chart| instance.
-func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string) (_ *Chart, retErr error) {
+// It uses |displayLevel| to set the brightness, the range is in [0.0, 100.0].
+func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string, displayLevel float32) (_ *Chart, retErr error) {
 	var conn *ssh.Conn
 
 	// Connect to chart tablet.
@@ -139,11 +143,12 @@ func New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string)
 		conn = c
 	}
 
-	return SetUp(ctx, conn, chartPath, outDir)
+	return SetUp(ctx, conn, chartPath, outDir, displayLevel)
 }
 
 // SetUp sets up the chart with the given ssh connection and returns a new |Chart| instance.
-func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string) (_ *Chart, retErr error) {
+// It uses |displayLevel| to set the brightness, the range is in [0.0, 100.0].
+func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string, displayLevel float32) (_ *Chart, retErr error) {
 	var dir, pid string
 	defer func() {
 		if retErr != nil {
@@ -167,9 +172,16 @@ func SetUp(ctx context.Context, conn *ssh.Conn, chartPath, outDir string) (_ *Ch
 		return nil, errors.Wrapf(err, "failed to send chart file in path %v to chart tablet", chartPath)
 	}
 
-	displayCmd := fmt.Sprintf(
-		"(python2 %s %s > %s 2>&1) & echo -n $!",
-		shutil.Escape(displayScript), shutil.Escape(chartHostPath), shutil.Escape(displayOutputLog))
+	var displayCmd string
+	if displayLevel == DisplayDefaultLevel {
+		displayCmd = fmt.Sprintf(
+			"(python2 %s %s > %s 2>&1) & echo -n $!",
+			shutil.Escape(displayScript), shutil.Escape(chartHostPath), shutil.Escape(displayOutputLog))
+	} else {
+		displayCmd = fmt.Sprintf(
+			"(python2 %s %s --display_level=%f> %s 2>&1) & echo -n $!",
+			shutil.Escape(displayScript), shutil.Escape(chartHostPath), displayLevel, shutil.Escape(displayOutputLog))
+	}
 	testing.ContextLog(ctx, "Start display chart process: ", displayCmd)
 	out, err = conn.CommandContext(ctx, "sh", "-c", displayCmd).Output()
 	if err != nil {
