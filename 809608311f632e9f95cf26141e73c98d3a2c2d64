@@ -16,6 +16,23 @@
       "message": "PTAL as a team review. Thank you!",
       "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a2ba28f_a6aa4dc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-11-29T07:07:15Z",
+      "side": 1,
+      "message": "+Aki, we\u0027re planning to copy the old \"chrome/ui\" packge into our local package, so that we can continuously use the library to touch chrome automation nodes directly. (See b/190773660)\n\nIf this helps chrome os a11y wide, I can move the packge under \"chromiumos/tast/local/a11y\" package. What do you think?",
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
