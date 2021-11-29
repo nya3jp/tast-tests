@@ -135,5 +135,10 @@ func verifyAndLaunchSystemWebAppFromURL(ctx context.Context, cr *chrome.Chrome, 
 		return errors.Wrap(err, "failed closing the window")
 	}
 
+	// Don't check for `err`, window.close() cause `connTarget` to disconnect
+	// (because its tab is closed) before Eval() returns, resulting in an "the
+	// connection is closing" error when the window closes successfully.
+	_ = connTarget.Eval(ctxWithTimeout, "window.close()", nil)
+
 	return nil
 }
