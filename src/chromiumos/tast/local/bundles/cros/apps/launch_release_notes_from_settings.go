@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchReleaseNotesFromSettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Help app release notes can be launched from Settings",
 		Contacts: []string{
 			"carpenterr@chromium.org", // test author.

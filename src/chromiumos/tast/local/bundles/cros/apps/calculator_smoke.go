@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CalculatorSmoke,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Calculator smoke test app launching and basic calculation",
 		Contacts: []string{
 			"shengjun@chromium.org",

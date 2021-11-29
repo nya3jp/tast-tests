@@ -13,7 +13,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Autostart,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Kiosk configuration starts when set to autologin",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author

@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GamepadPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test ARC gamepad system performance",
 		Contacts:     []string{"arc-performance@google.com", "ruanc@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

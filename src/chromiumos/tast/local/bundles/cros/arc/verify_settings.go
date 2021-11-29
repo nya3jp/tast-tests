@@ -26,7 +26,7 @@ const timeoutUI = 30 * time.Second
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VerifySettings,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies ARC++ settings work as intended",
 		Contacts:     []string{"rnanjappan@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},

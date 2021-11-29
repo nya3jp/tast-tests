@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SystemTimezoneAutomaticDetection,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check of SystemTimezoneAutomaticDetection policy by checking the settings page",
 		Contacts: []string{
 			"vsavu@google.com", // Test author

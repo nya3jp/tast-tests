@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ManagedBookmarks,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of ManagedBookmarks policy",
 		Contacts: []string{
 			"ayaelattar@google.com", // Test author

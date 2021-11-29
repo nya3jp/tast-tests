@@ -26,7 +26,7 @@ type testParameters struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchHelpApp,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Help app should be launched after OOBE",
 		Contacts: []string{
 			"showoff-eng@google.com",

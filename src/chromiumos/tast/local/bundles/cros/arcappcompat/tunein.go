@@ -41,7 +41,7 @@ var touchviewAppSpecificTestsForTuneIn = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Tunein,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for TuneIn that installs the app also verifies it is logged in and that the main page is open, checks TuneIn  correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

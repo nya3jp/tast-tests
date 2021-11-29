@@ -43,7 +43,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataMigration,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Boots ARC with /data created on the previous version of ARC and verifies Play Store can install an app",
 		Contacts:     []string{"niwa@google.com", "arc-storage@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

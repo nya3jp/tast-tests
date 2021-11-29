@@ -31,7 +31,7 @@ type blocklistTestTable struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         URLCheck,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks the behavior of URL allow/deny-listing policies",
 		Contacts: []string{
 			"vsavu@google.com", // Test author

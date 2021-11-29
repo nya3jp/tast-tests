@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LibJEA,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Runs cros-camera-libjea_test to make sure jea works on Chrome OS side",
 		Contacts: []string{
 			"wtlee@chromium.org",

@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeFixture,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Demonstrates Chrome fixture",
 		Contacts:     []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:         []string{"group:mainline"},

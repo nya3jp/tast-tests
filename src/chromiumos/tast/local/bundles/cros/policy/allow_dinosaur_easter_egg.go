@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AllowDinosaurEasterEgg,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of AllowDinosaurEasterEgg policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author

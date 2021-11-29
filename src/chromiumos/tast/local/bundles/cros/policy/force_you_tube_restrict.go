@@ -41,7 +41,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ForceYouTubeRestrict,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check if YouTube content restrictions work as specified by the ForceYouTubeRestrict policy",
 		Contacts: []string{
 			"sinhak@google.com",

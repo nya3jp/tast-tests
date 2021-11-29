@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SelectToSpeak,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "A test that invokes Select-to-Speak and verifies the correct speech is given by the Google TTS engine",
 		Contacts: []string{
 			"akihiroota@chromium.org",      // Test author

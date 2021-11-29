@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebHandwritingRecognition,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks Web Handwriting Recognition API works correctly with ml_service",
 		Contacts: []string{
 			"qjw@chromium.org",               // Test author

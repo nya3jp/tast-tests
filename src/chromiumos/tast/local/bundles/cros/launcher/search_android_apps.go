@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SearchAndroidApps,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Launches an Android app through the launcher",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",

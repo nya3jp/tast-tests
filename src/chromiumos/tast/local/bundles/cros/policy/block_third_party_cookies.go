@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BlockThirdPartyCookies,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test the behavior of BlockThirdPartyCookies policy: check if third party cookies are allowed based on policy value",
 		Contacts: []string{
 			"snijhara@google.com", // Test author

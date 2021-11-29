@@ -42,7 +42,7 @@ type dragTest struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewDragWindowPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Measures the presentation time of window dragging in overview in tablet mode",
 		Contacts:     []string{"xiyuan@chromium.org", "mukai@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PrintersBulkAccessMode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify behavior of PrintersBulkAccessMode user policy",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author

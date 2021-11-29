@@ -30,7 +30,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SysInfoPII,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Verify that known-sensitive data doesn't show up in feedback reports",
 		Contacts:     []string{"xiangdongkong@google.com", "cros-feedback-app@google.com"},
 		Attr:         []string{"group:mainline"},

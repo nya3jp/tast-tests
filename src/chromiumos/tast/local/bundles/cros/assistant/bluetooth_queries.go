@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BluetoothQueries,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests toggling Bluetooth using Assistant queries",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "assistive-eng@google.com", "meilinw@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},

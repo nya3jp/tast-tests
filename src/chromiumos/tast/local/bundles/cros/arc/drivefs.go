@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Drivefs,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Android app can read files on Drive FS (Google Drive) via FilesApp",
 		Contacts: []string{
 			"cherieccy@google.com",

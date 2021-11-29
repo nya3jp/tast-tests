@@ -38,7 +38,7 @@ type secureCopyPasteConfig struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SecureCopyPaste,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that background crostini apps can not access the clipboard",
 		Contacts:     []string{"hollingum@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline"},

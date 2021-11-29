@@ -37,7 +37,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UIInput,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that the input is controllable by UI API",
 		Contacts:     []string{"johnylin@chromium.org", "cychiang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},

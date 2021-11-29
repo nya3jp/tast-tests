@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PerfBoot,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Signs in to DUT and measures Android boot performance metrics",
 		Contacts: []string{
 			"cywang@chromium.org", // Original author.

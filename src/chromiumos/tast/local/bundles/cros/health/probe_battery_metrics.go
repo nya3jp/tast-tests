@@ -34,7 +34,7 @@ type batteryInfo struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ProbeBatteryMetrics,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that we can probe cros_healthd for battery metrics",
 		Contacts: []string{
 			"pmoy@google.com",

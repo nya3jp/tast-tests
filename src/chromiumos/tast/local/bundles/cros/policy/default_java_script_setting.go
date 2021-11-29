@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DefaultJavaScriptSetting,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check that the DefaultJavaScript policy blocks or allows JavaScript",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author

@@ -34,7 +34,7 @@ type vkTestCase struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualKeyboard,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of VirtualKeyboardEnabled and TouchVirtualKeyboardEnabled policies and their mixing by checking that the virtual keyboard (is/is not) displayed as requested by the policy",
 		Contacts: []string{
 			"kamilszarek@google.com",    // Test author of the merge.

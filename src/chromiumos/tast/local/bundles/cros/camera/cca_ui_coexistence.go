@@ -28,7 +28,7 @@ type cameraWebPage struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CCAUICoexistence,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies CCA can coexist with web page with camera open",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},

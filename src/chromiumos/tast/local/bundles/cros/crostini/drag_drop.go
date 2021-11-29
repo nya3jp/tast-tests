@@ -39,7 +39,7 @@ func init() {
 
 	testing.AddTest(&testing.Test{
 		Func:         DragDrop,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Drag and drop a file and folder in both directions between FilesApp and crostini",
 		Contacts:     []string{"joelhockey@google.com", "cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

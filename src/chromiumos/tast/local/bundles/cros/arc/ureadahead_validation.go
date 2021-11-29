@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UreadaheadValidation,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Validates that ARC ureadahead pack exists and looks valid",
 		Contacts: []string{"khmel@google.com",
 			"alanding@google.com",

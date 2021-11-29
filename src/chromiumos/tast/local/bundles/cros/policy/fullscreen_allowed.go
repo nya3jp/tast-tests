@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         FullscreenAllowed,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of FullscreenAllowed policy: checking if fullscreen is allowed or not",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author

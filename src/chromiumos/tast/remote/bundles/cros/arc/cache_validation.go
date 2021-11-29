@@ -50,7 +50,7 @@ var regExpLayoutEntry = regexp.MustCompile(`^(.+):([0-7]{3}):(\d+)$`)
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CacheValidation,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Validates that caches match for both modes when pre-generated packages cache is enabled and disabled",
 		Contacts: []string{
 			"khmel@google.com",

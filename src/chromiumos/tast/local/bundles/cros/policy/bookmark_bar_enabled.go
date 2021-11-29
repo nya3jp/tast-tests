@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BookmarkBarEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test the behavior of BookmarkBarEnabled policy: check if bookmark bar is shown based on the value of the policy",
 		Contacts: []string{
 			"snijhara@google.com", // Test author

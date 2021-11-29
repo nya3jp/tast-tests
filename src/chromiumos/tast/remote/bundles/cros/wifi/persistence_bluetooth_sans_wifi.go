@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PersistenceBluetoothSansWifi,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that Bluetooth remains operational when Wifi is disabled on reboot",
 		Contacts: []string{
 			"billyzhao@google.com",            // Test author

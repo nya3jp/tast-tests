@@ -28,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AllowWakeLocks,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of AllowWakeLocks policy check whether it shows idle window or not for pages with wake locks requests",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author

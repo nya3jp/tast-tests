@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LoginScreenUIAPI,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test chrome.loginScreenUi Extension API",
 		Contacts: []string{
 			"jityao@google.com", // Test author

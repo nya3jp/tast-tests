@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccelUsedJPEG,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks HW decoding is used for MJPEG in GetUserMedia()",
 		Contacts: []string{
 			"mojahsu@chromium.org",

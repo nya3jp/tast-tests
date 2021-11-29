@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuickUnlockModeWhitelist,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the deprecated policy still works",
 		Contacts: []string{
 			"janagrill@google.com", // Test author

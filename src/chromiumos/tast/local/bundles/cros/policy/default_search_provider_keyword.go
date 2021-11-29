@@ -28,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DefaultSearchProviderKeyword,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of DefaultSearchProviderKeyword policy: check if specified keyword triggers the search for search provider",
 		Contacts: []string{
 			"anastasiian@chromium.org", // Test author

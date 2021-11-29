@@ -31,7 +31,7 @@ var touchviewLaunchForInfinitePainter = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         InfinitePainter,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for InfinitePainter that installs the app also verifies it is logged in and that the main page is open, checks InfinitePainter correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"cros-appcompat-test-team@google.com"},
 		// Blocked this app test as Infinite Painter is failing due to automatic integrity protections.

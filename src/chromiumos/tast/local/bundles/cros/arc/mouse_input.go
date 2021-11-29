@@ -26,7 +26,7 @@ type mouseInputParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MouseInput,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies mouse input in various window states on Android",
 		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

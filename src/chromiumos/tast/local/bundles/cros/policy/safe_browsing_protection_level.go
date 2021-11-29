@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SafeBrowsingProtectionLevel,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks if Google Chrome's Safe Browsing feature is enabled and the mode it operates in",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author

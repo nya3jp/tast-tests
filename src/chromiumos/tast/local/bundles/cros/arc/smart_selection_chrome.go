@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SmartSelectionChrome,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test ARC's smart selections show up in Chrome's right click menu",
 		Contacts:     []string{"djacobo@chromium.org", "jorgegil@google.com", "chromeos-sw-engprod@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

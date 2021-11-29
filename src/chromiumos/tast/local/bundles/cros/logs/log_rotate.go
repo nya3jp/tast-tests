@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LogRotate,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests to run log_rotator",
 		Contacts:     []string{"yoshiki@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
