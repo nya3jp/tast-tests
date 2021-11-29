@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21563124_14d08d42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-11-29T14:47:57Z",
+      "side": 1,
+      "message": "For Tast readability review, please add the Tast Owners list instead of just assigning owners directly in the future as it helps us load balance the reviews.",
+      "revId": "71c7c444757cbc9b687ce6f4282a9c8cdea4a871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
