@@ -6,7 +6,9 @@ package firmware
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -33,49 +35,93 @@ func init() {
 		SoftwareDeps: []string{"flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
 		Fixture:      fixture.NormalMode,
+		Data:         []string{"fw-config.json"},
 	})
 }
 
-func dutControl(ctx context.Context, s *testing.State, svo *servo.Servo, commands []string) {
-	for _, cmd := range commands {
-		s.Logf("dut-control %q", cmd)
-		parts := strings.SplitN(cmd, ":", 2)
-		if len(parts) == 1 {
-			if _, err := svo.GetString(ctx, servo.StringControl(cmd)); err != nil {
-				s.Errorf("Could not read servo string %s: %v", cmd, err)
-			}
-		} else {
-			if err := svo.SetString(ctx, servo.StringControl(parts[0]), parts[1]); err != nil {
-				s.Errorf("Could not set servo string %s: %v", cmd, err)
+func dutControl(ctx context.Context, s *testing.State, svo *servo.Servo, commands [][]string) {
+	for _, section := range commands {
+		for _, cmd := range section {
+			s.Logf("dut-control %q", cmd)
+			parts := strings.SplitN(cmd, ":", 2)
+			if len(parts) == 1 {
+				if _, err := svo.GetString(ctx, servo.StringControl(cmd)); err != nil {
+					s.Errorf("Could not read servo string %s: %v", cmd, err)
+				}
+			} else {
+				if err := svo.SetString(ctx, servo.StringControl(parts[0]), parts[1]); err != nil {
+					s.Errorf("Could not set servo string %s: %v", cmd, err)
+				}
 			}
 		}
 	}
+}
+
+type fwConfig struct {
+	DUTControlOff           [][]string `json:"dut_control_off"`
+	DUTControlOn            [][]string `json:"dut_control_on"`
+	FlashExtraFlagsFlashrom []string   `json:"flash_extra_flags_flashrom"`
+	Programmer              string     `json:"programmer"`
 }
 
 // ServoGBBFlags has been tested to pass with Suzy-Q, Servo V4, Servo V4 + ServoMicro in dual V4 mode.
 // Verified fail on Servo V4 + ServoMicro w/o dual v4 mode.
 // Has not been tested with CCD closed (assumed to fail), nor with C2D2 (assumed to pass).
 func ServoGBBFlags(ctx context.Context, s *testing.State) {
+
+	var flashCmds map[string]map[string]fwConfig
+
+	fwConfigRaw, err := s.DataFileSystem().Open("fw-config.json")
+	if err != nil {
+		s.Fatal("Failed to open fw-config.json")
+	}
+	dec := json.NewDecoder(fwConfigRaw)
+	err = dec.Decode(&flashCmds)
+	if err != nil {
+		s.Fatal("Failed to Unmarshall fw-config.json: ", err)
+	}
+
 	h := s.FixtValue().(*fixture.Value).Helper
 
-	if err := h.RequireConfig(ctx); err != nil {
-		s.Fatal("Failed to create firmware config: ", err)
+	if err := h.RequirePlatform(ctx); err != nil {
+		s.Fatal("Failed to require platform: ", err)
+	}
+	boardFlashCmds, ok := flashCmds[h.Board]
+	if !ok {
+		s.Logf("Board %q does not have fw-config, using generic", h.Board)
+		boardFlashCmds = flashCmds["generic"]
 	}
 
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	programmer := h.Config.APFlashCCDProgrammer
-	if programmer == "" {
-		s.Log("DUT does not have APFlashCCDProgrammer configured, using default")
-		programmer = "raiden_debug_spi:target=AP,serial=%s"
-	}
-	s.Logf("Programmer is %s", programmer)
-
 	if err := h.Servo.RequireCCD(ctx); err != nil {
 		s.Fatal("Servo does not have CCD: ", err)
 	}
+
+	servoType, err := h.Servo.GetServoType(ctx)
+	if err != nil {
+		s.Fatal("Failed to get servo type: ", err)
+	}
+
+	dualModePattern := regexp.MustCompile(`^(.*_with)_.*_and(_ccd.*)$`)
+	if parts := dualModePattern.FindStringSubmatch(servoType); parts != nil {
+		// This is a dual mode servo, but we want the ccd flash config
+		servoType = parts[1] + parts[2]
+	}
+
+	servoFlashCmds, ok := boardFlashCmds[servoType]
+	if !ok {
+		s.Logf("Servo %q does not have fw-config, using ccd_cr50", servoType)
+		servoFlashCmds = boardFlashCmds["ccd_cr50"]
+	}
+
+	programmer := servoFlashCmds.Programmer
+	if programmer == "" {
+		s.Fatalf("servoFlashCmds does not have programmer configured: %+v", servoFlashCmds)
+	}
+	s.Logf("Programmer is %s", programmer)
 
 	ccdSerial, err := h.Servo.GetCCDSerial(ctx)
 	if err != nil {
@@ -99,13 +145,13 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 
 	s.Log("Reading fw image over CCD")
 	h.DisconnectDUT(ctx) // Some of the dutControl commands will reboot
-	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPreCommands)
+	dutControl(ctx, s, h.Servo, servoFlashCmds.DUTControlOn)
 	programmer = fmt.Sprintf(programmer, ccdSerial)
-	img, err := bios.NewRemoteImage(ctx, h.ServoProxy, programmer, commonbios.GBBImageSection)
+	img, err := bios.NewRemoteImage(ctx, h.ServoProxy, programmer, commonbios.GBBImageSection, servoFlashCmds.FlashExtraFlagsFlashrom)
 	if err != nil {
 		s.Error("Could not read firmware: ", err)
 	}
-	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPostCommands)
+	dutControl(ctx, s, h.Servo, servoFlashCmds.DUTControlOff)
 	if s.HasError() {
 		return
 	}
@@ -141,11 +187,11 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 
 	s.Log("Writing fw image over CCD")
 	h.DisconnectDUT(ctx) // Some of the dutControl commands will reboot
-	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPreCommands)
-	if err = bios.WriteRemoteFlashrom(ctx, h.ServoProxy, programmer, img, commonbios.GBBImageSection); err != nil {
+	dutControl(ctx, s, h.Servo, servoFlashCmds.DUTControlOn)
+	if err = bios.WriteRemoteFlashrom(ctx, h.ServoProxy, programmer, img, commonbios.GBBImageSection, servoFlashCmds.FlashExtraFlagsFlashrom); err != nil {
 		s.Error("count not write flashrom: ", err)
 	}
-	dutControl(ctx, s, h.Servo, h.Config.APFlashCCDPostCommands)
+	dutControl(ctx, s, h.Servo, servoFlashCmds.DUTControlOff)
 	if s.HasError() {
 		return
 	}
