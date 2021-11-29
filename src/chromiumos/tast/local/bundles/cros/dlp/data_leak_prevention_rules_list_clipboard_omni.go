@@ -39,16 +39,9 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// DLP policy with all clipboard blocked restriction.
-	policyDLP := policy.RestrictiveDLPPolicyForClipboard()
-
-	// Update the policy blob.
-	pb := fakedms.NewPolicyBlob()
-	pb.AddPolicies(policyDLP)
-
-	// Update policy.
-	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
-		s.Fatal("Failed to serve and refresh: ", err)
+	// Set DLP policy with all clipboard blocked restriction.
+	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.RestrictiveDLPPolicyForClipboard()); err != nil {
+		s.Fatal("Failed to serve and verify: ", err)
 	}
 
 	// Connect to Test API.
