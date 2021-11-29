@@ -10,7 +10,7 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )

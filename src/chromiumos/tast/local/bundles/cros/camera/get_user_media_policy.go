@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )

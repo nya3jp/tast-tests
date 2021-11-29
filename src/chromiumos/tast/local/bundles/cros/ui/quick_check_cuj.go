@@ -15,8 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -70,7 +69,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		cs = cr
 	} else {
 		var err error
-		var l *launcher.LacrosChrome
+		var l *lacros.LacrosChrome
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), bt)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
