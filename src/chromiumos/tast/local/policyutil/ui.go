@@ -6,11 +6,16 @@ package policyutil
 
 import (
 	"context"
+	"regexp"
+	"strings"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
 )
 
 // VerifyNotExists checks if the element does not appear during timeout.
@@ -52,4 +57,36 @@ func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, finder *nodewi
 	}
 
 	return VerifyNotExists(ctx, tconn, finder, timeout)
+}
+
+// ConsentCookiesIfExists checks if there are cookies consent page, then it clicks on agree button.
+func ConsentCookiesIfExists(ctx context.Context, tconn *chrome.TestConn) error {
+	uia := uiauto.New(tconn)
+	agreeButton := nodewith.Role(role.Button).NameRegex(regexp.MustCompile(`(I agree|Agree to the use of cookies and other data for the purposes described|Ich stimme zu)`)).First()
+	cookiesConsent := false
+	errCookies := errors.New("cookies consent not found")
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if consent, err := uia.IsNodeFound(ctx, agreeButton); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to check agree button"))
+		} else if consent {
+			cookiesConsent = true
+			return nil
+		}
+
+		return errCookies
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil && !strings.HasSuffix(err.Error(), errCookies.Error()) {
+		return err
+	}
+
+	if cookiesConsent {
+		if err := uiauto.Combine("Focus and Left Click on Agree button",
+			uia.FocusAndWait(agreeButton),
+			uia.LeftClick(agreeButton),
+			uia.WaitUntilGone(agreeButton),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Agree button")
+		}
+	}
+	return nil
 }

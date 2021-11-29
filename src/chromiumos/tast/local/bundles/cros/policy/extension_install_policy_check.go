@@ -159,6 +159,11 @@ func isInstallationAllowed(ctx context.Context, tconn *chrome.TestConn, cr *chro
 	}
 	defer conn.Close()
 
+	// Consent for cookies first if it exists.
+	if err := policyutil.ConsentCookiesIfExists(ctx, tconn); err != nil {
+		return false, errors.Wrap(err, "failed to consent for cookies")
+	}
+
 	var allowInstall bool
 	ui := uiauto.New(tconn)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
