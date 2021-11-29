@@ -16,6 +16,24 @@
       "message": "👍 👍 👍 \n\nAre all the vectors passing on any platform? IOW did\nwe cull out those that we don\u0027t want to even try (e.g.\nprogressive)?",
       "revId": "53408ba08cccf81234d560d09b55e273e979550f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3a8283c_65a04f8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2021-11-29T22:06:48Z",
+      "side": 1,
+      "message": "Not that I know of, but I only tested octopus and zork. Octopus fails all of the ones I found to fail the VA-API test, and then a few extra somehow. Zork does better, but still has some failures.",
+      "parentUuid": "0c802315_ae478704",
+      "revId": "53408ba08cccf81234d560d09b55e273e979550f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
