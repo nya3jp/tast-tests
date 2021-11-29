@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b11ba03_7657f3b6",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-29T16:48:06Z",
+      "side": 1,
+      "message": "clears policies, but keeps serving device local accounts...?",
+      "parentUuid": "8def78f7_ecc3a9d6",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 37
+      },
+      "revId": "9703863ca0dd6f31c27cbb9f5c114f9aab188719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d12cd4e_652fe5ed",
         "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
         "patchSetId": 7
