@@ -46,6 +46,30 @@
       },
       "revId": "b8c952a3d080e8cfce8b72e7e5e2737e033df1c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a40187_8d22db91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2021-11-29T23:59:39Z",
+      "side": 1,
+      "message": "can we have `wallpaper.OpenWallpaperPicker(ui)` check if the UI is shown and repeated retry?",
+      "parentUuid": "26717ca7_c32d2bda",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "b8c952a3d080e8cfce8b72e7e5e2737e033df1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
