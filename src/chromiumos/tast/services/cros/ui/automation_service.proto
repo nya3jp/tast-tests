@@ -1,0 +1,409 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// AutomationService allows basic remote operations of the Nearby Share feature.
+service AutomationService {
+  // Info logs into a Chrome session.
+  rpc Info(InfoRequest) returns (InfoResponse) {}
+
+  // Close releases the resources obtained by New.
+  rpc LeftClick(LeftClickRequest) returns (google.protobuf.Empty) {}
+
+  rpc RightClick(RightClickRequest) returns (google.protobuf.Empty) {}
+
+  rpc DoubleClick(DoubleClickRequest) returns (google.protobuf.Empty) {}
+
+  rpc IsNodeFound(IsNodeFoundRequest) returns (IsNodeFoundResponse) {}
+
+  rpc MouseClickAtLocation(MouseClickAtLocationRequest)
+      returns (google.protobuf.Empty) {}
+
+  rpc WaitUntilExists(WaitUntilExistsRequest) returns (google.protobuf.Empty) {}
+}
+
+message LeftClickRequest {
+  Finder finder = 1;
+}
+message RightClickRequest {
+  Finder finder = 1;
+}
+message DoubleClickRequest {
+  Finder finder = 1;
+}
+message IsNodeFoundRequest {
+  Finder finder = 1;
+}
+message IsNodeFoundResponse {
+  bool found = 1;
+}
+message MouseClickAtLocationRequest {
+  ClickType.ClickType click_type = 1;
+  Point point = 2;
+}
+
+message WaitUntilExistsRequest {
+  Finder finder = 1;
+}
+
+message InfoRequest {
+  Finder finder = 1;
+}
+
+message InfoResponse {
+  NodeInfo node_info = 1;
+}
+
+message NodeInfo {
+  Checked.Checked checked = 1;
+  string class_name = 2;
+  map<string, string> html_attributes = 3;
+  Rect location = 4;
+  string name = 5;
+  Restriction.Restriction restriction = 6;
+  Role.Role role = 7;
+  map<string, bool> state = 8;
+  string value = 9;
+}
+
+message Finder {
+  repeated NodeWith node_withs = 1;
+}
+
+message NodeWith {
+  oneof value {
+    // HasClass creates a Finder with a class name containing the specified
+    // class name.
+    string has_class = 1;
+    // Name creates a Finder with the specified name.
+    string name = 2;
+    // Role creates a Finder with the specified role.
+    Role.Role role = 3;
+    // Nth creates a Finder that will find the n-th node in the matched nodes of
+    // the Finder, instead of requiring uniqueness.
+    int32 nth = 4;
+
+    // State describes characteristics of a chrome.automation AutomationNode.
+    // As defined in
+    // https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
+
+    bool autofill_available = 5;
+    bool collapsed = 6;
+    bool default = 7;
+    bool editable = 8;
+    bool expanded = 9;
+    bool focusable = 10;
+    bool focused = 11;
+    bool horizontal = 12;
+    bool hovered = 13;
+    bool ignored = 14;
+    bool invisible = 15;
+    bool linked = 16;
+    bool multiline = 17;
+    bool multiselectable = 18;
+    bool offscreen = 19;
+    bool protected = 20;
+    bool required = 21;
+    bool richly_editable = 22;
+    bool vertical = 23;
+    bool visited = 24;
+    bool visible = 25;
+    bool onscreen = 26;
+    bool first = 27;
+    bool root = 28;
+    // NameRegex creates a Finder with a name containing the specified regexp.
+    string name_regex = 29;
+    // NameStartingWith creates a Finder with a name starting with the specified
+    // string.
+    string name_starting_with = 30;
+    // NameContaining creates a Finder with a name containing the specified
+    // string.
+    string name_containing = 31;
+    // StateValue creates a Finder with the specified state.
+    StateValue state = 32;
+    // Ancestor creates a copy of the input Finder with the specified ancestor.
+    Finder ancestor = 33;
+  }
+  message StateValue {
+    State.State state = 1;
+    bool value = 2;
+  }
+}
+
+message Rect {
+  int32 left = 1;
+  int32 top = 2;
+  int32 width = 3;
+  int32 height = 4;
+}
+
+message Point {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message ClickType{
+  enum ClickType{
+    UNSPECIFIED = 0;
+    LEFT_CLICK = 1;
+    RIGHT_CLICK = 2;
+    DOUBLE_CLICK = 3;
+  }
+}
+
+message Checked {
+  // Checked describes tri-state values of a checkbox or radio button.
+  // As defined in
+  // https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
+  enum Checked {
+    UNSPECIFIED = 0;
+    TRUE = 1;
+    FALSE = 2;
+    MIXED = 3;
+  }
+}
+
+message Restriction {
+  // Restriction describes the restriction state of a chrome.automation AutomationNode.
+  // As defined in
+  // https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
+  enum Restriction {
+    UNSPECIFIED = 0;
+    DISABLED = 1;
+    READ_ONLY = 2;
+    NONE = 3;
+  }
+}
+
+// As defined in
+// https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
+message State {
+  enum State {
+    UNSPECIFIED = 0;
+    AUTOFILL_AVAILABLE = 1;
+    COLLAPSED = 2;
+    DEFAULT = 3;
+    EDITABLE = 4;
+    EXPANDED = 5;
+    FOCUSABLE = 6;
+    FOCUSED = 7;
+    HORIZONTAL = 8;
+    HOVERED = 9;
+    IGNORED = 10;
+    INVISIBLE = 11;
+    LINKED = 12;
+    MULTILINE = 13;
+    MULTISELECTABLE = 14;
+    OFFSCREEN = 15;
+    PROTECTED = 16;
+    REQUIRED = 17;
+    RICHLY_EDITABLE = 18;
+    VERTICAL = 19;
+    VISITED = 20;
+  }
+}
+
+// As defined in
+// https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
+message Role {
+  enum Role {
+    UNSPECIFIED = 0;
+    ABBR = 1;
+    ALERT = 2;
+    ALERT_DIALOG = 3;
+    ANCHOR = 4;
+    APPLICATION = 5;
+    ARTICLE = 6;
+    AUDIO = 7;
+    BANNER = 8;
+    BLOCKQUOTE = 9;
+    BUTTON = 10;
+    CANVAS = 11;
+    CAPTION = 12;
+    CARET = 13;
+    CELL = 14;
+    CHECK_BOX = 15;
+    CLIENT = 16;
+    CODE = 17;
+    COLOR_WELL = 18;
+    COLUMN = 19;
+    COLUMN_HEADER = 20;
+    COMBO_BOX_GROUPING = 21;
+    COMBO_BOX_MENU_BUTTON = 22;
+    COMMENT = 23;
+    COMPLEMENTARY = 24;
+    CONTENT_DELETION = 25;
+    CONTENT_INSERTION = 26;
+    CONTENT_INFO = 27;
+    DATE = 28;
+    DATE_TIME = 29;
+    DEFINITION = 30;
+    DESCRIPTION_LIST = 31;
+    DESCRIPTION_LIST_DETAIL = 32;
+    DESCRIPTION_LIST_TERM = 33;
+    DESKTOP = 34;
+    DETAILS = 35;
+    DIALOG = 36;
+    DIRECTORY = 37;
+    DISCLOSURE_TRIANGLE = 38;
+    DOC_ABSTRACT = 39;
+    DOC_ACKNOWLEDGMENTS = 40;
+    DOC_AFTERWORD = 41;
+    DOC_APPENDIX = 42;
+    DOC_BACK_LINK = 43;
+    DOC_BIBLIO_ENTRY = 44;
+    DOC_BIBLIOGRAPHY = 45;
+    DOC_BIBLIO_REF = 46;
+    DOC_CHAPTER = 47;
+    DOC_COLOPHON = 48;
+    DOC_CONCLUSION = 49;
+    DOC_COVER = 50;
+    DOC_CREDIT = 51;
+    DOC_CREDITS = 52;
+    DOC_DEDICATION = 53;
+    DOC_ENDNOTE = 54;
+    DOC_ENDNOTES = 55;
+    DOC_EPIGRAPH = 56;
+    DOC_EPILOGUE = 57;
+    DOC_ERRATA = 58;
+    DOC_EXAMPLE = 59;
+    DOC_FOOTNOTE = 60;
+    DOC_FOREWORD = 61;
+    DOC_GLOSSARY = 62;
+    DOC_GLOSS_REF = 63;
+    DOC_INDEX = 64;
+    DOC_INTRODUCTION = 65;
+    DOC_NOTE_REF = 66;
+    DOC_NOTICE = 67;
+    DOC_PAGE_BREAK = 68;
+    DOC_PAGE_FOOTER = 69;
+    DOC_PAGE_HEADER = 70;
+    DOC_PAGE_LIST = 71;
+    DOC_PART = 72;
+    DOC_PREFACE = 73;
+    DOC_PROLOGUE = 74;
+    DOC_PULLQUOTE = 75;
+    DOC_QNA = 76;
+    DOC_SUBTITLE = 77;
+    DOC_TIP = 78;
+    DOC_TOC = 79;
+    DOCUMENT = 80;
+    EMBEDDED_OBJECT = 81;
+    EMPHASIS = 82;
+    FEED = 83;
+    FIGCAPTION = 84;
+    FIGURE = 85;
+    FOOTER = 86;
+    FOOTER_AS_NON_LANDMARK = 87;
+    FORM = 88;
+    GENERIC_CONTAINER = 89;
+    GRAPHICS_DOCUMENT = 90;
+    GRAPHICS_OBJECT = 91;
+    GRAPHICS_SYMBOL = 92;
+    GRID = 93;
+    GROUP = 94;
+    HEADER = 95;
+    HEADER_AS_NON_LANDMARK = 96;
+    HEADING = 97;
+    IFRAME = 98;
+    IFRAME_PRESENTATIONAL = 99;
+    IGNORED = 100;
+    IMAGE = 101;
+    IMAGE_MAP = 102;
+    IME_CANDIDATE = 103;
+    INLINE_TEXT_BOX = 104;
+    INPUT_TIME = 105;
+    KEYBOARD = 106;
+    LABEL_TEXT = 107;
+    LAYOUT_TABLE = 108;
+    LAYOUT_TABLE_CELL = 109;
+    LAYOUT_TABLE_ROW = 110;
+    LEGEND = 111;
+    LINE_BREAK = 112;
+    LINK = 113;
+    LIST = 114;
+    LIST_BOX = 115;
+    LIST_BOX_OPTION = 116;
+    LIST_GRID = 117;
+    LIST_ITEM = 118;
+    LIST_MARKER = 119;
+    LOG = 120;
+    MAIN = 121;
+    MARK = 122;
+    MARQUEE = 123;
+    MATH = 124;
+    MENU = 125;
+    MENU_BAR = 126;
+    MENU_ITEM = 127;
+    MENU_ITEM_CHECK_BOX = 128;
+    MENU_ITEM_RADIO = 129;
+    MENU_LIST_OPTION = 130;
+    MENU_LIST_POPUP = 131;
+    METER = 132;
+    NAVIGATION = 133;
+    NOTE = 134;
+    PANE = 135;
+    PARAGRAPH = 136;
+    PDF_ACTIONABLE_HIGHLIGHT = 137;
+    PLUGIN_OBJECT = 138;
+    POP_UP_BUTTON = 139;
+    PORTAL = 140;
+    PRE = 141;
+    PRESENTATIONAL = 142;
+    PROGRESS_INDICATOR = 143;
+    RADIO_BUTTON = 144;
+    RADIO_GROUP = 145;
+    REGION = 146;
+    ROOT_WEB_AREA = 147;
+    ROW = 148;
+    ROW_GROUP = 149;
+    ROW_HEADER = 150;
+    RUBY = 151;
+    RUBY_ANNOTATION = 152;
+    SCROLL_BAR = 153;
+    SCROLL_VIEW = 154;
+    SEARCH = 155;
+    SEARCH_BOX = 156;
+    SECTION = 157;
+    SLIDER = 158;
+    SLIDER_THUMB = 159;
+    SPIN_BUTTON = 160;
+    SPLITTER = 161;
+    STATIC_TEXT = 162;
+    STATUS = 163;
+    STRONG = 164;
+    SUGGESTION = 165;
+    SVG_ROOT = 166;
+    SWITCH = 167;
+    TAB = 168;
+    TAB_LIST = 169;
+    TAB_PANEL = 170;
+    TABLE = 171;
+    TABLE_HEADER_CONTAINER = 172;
+    TERM = 173;
+    TEXT_FIELD = 174;
+    TEXT_FIELD_WITH_COMBO_BOX = 175;
+    TIME = 176;
+    TIMER = 177;
+    TITLE_BAR = 178;
+    TOGGLE_BUTTON = 179;
+    TOOLBAR = 180;
+    TOOLTIP = 181;
+    TREE = 182;
+    TREE_GRID = 183;
+    TREE_ITEM = 184;
+    UNKNOWN = 185;
+    VIDEO = 186;
+    WEB_AREA = 187;
+    WEB_VIEW = 188;
+    WINDOW = 189;
+  }
+}

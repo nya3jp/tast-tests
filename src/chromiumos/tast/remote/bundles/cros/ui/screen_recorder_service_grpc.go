@@ -1,0 +1,111 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package ui
+
+import (
+	"context"
+	"fmt"
+	"path/filepath"
+	"strconv"
+	"strings"
+	"time"
+
+	"github.com/golang/protobuf/ptypes/empty"
+	"google.golang.org/grpc"
+
+	"chromiumos/tast/remote/crosserverutil"
+	chromepb "chromiumos/tast/services/cros/browser"
+	uipb "chromiumos/tast/services/cros/ui"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         ScreenRecorderServiceGRPC,
+		Desc:         "Check basic functionality of UI Automation Service",
+		Contacts:     []string{"chromeos-sw-engprod@google.com"},
+		SoftwareDeps: []string{"chrome"},
+		Vars:         []string{"grpcServerPort"},
+	})
+}
+
+// ScreenRecorderServiceGRPC tests that we can enable Nearby Share on two DUTs in a single test.
+func ScreenRecorderServiceGRPC(ctx context.Context, s *testing.State) {
+	//Connect to gRPC Server on DUT.
+	port := 4444
+	if portStr, ok := s.Var("grpcServerPort"); ok {
+		if portInt, err := strconv.Atoi(portStr); err == nil {
+			port = portInt
+		}
+	}
+	uri := s.DUT().HostName()
+	hostname := strings.Split(uri, ":")[0]
+	cl, err := crosserverutil.Dial(ctx, s.DUT(), hostname, port)
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctx)
+
+	// Make a screen recording
+	fileName := filepath.Join(s.OutDir(), "record.webm")
+	makeScreenRecording(ctx, cl.Conn, fileName, s)
+
+	//Verify that screen recording is on the file system
+	if _, err := s.DUT().Conn().CommandContext(ctx, "[", "-e", fileName, "]").CombinedOutput(); err != nil {
+		s.Fatal(fmt.Sprintf("Failed to find recording: %v", fileName), err)
+	}
+}
+
+func makeScreenRecording(ctx context.Context, conn *grpc.ClientConn, fileName string, s *testing.State) {
+	// Start Chrome on the DUT.
+	cs := chromepb.NewChromeServiceClient(conn)
+	loginReq := &chromepb.NewRequest{}
+	if _, err := cs.New(ctx, loginReq, grpc.WaitForReady(true)); err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cs.Close(ctx, &empty.Empty{})
+
+	// Start Recording
+	recorderSvc := uipb.NewScreenRecorderServiceClient(conn)
+	if _, err := recorderSvc.Start(ctx, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to start screen recording: ", err)
+	}
+	// Verify that Start correctly return an error when there is already a recording in progress
+	if _, err := recorderSvc.Start(ctx, &empty.Empty{}); err == nil {
+		s.Fatal("should return an error calling Start() when there is a recording in process: ", err)
+	}
+
+	defer func() {
+		testing.ContextLogf(ctx, "Saving video to : %s", fileName)
+		req := &uipb.StopSaveReleaseRequest{FileName: fileName}
+		if _, err := recorderSvc.StopSaveRelease(ctx, req); err != nil {
+			s.Fatal("Failed to stop and save recording: ", err)
+		}
+		// Verify that StopSaveRelease returns an error when this is no recording in progress
+		if _, err := recorderSvc.StopSaveRelease(ctx, req); err == nil {
+			s.Fatal("should return an error when there is no recording in process")
+		}
+	}()
+
+	uiautoSvc := uipb.NewAutomationServiceClient(conn)
+
+	filesAppShelfButtonFinder := &uipb.Finder{
+		NodeWiths: []*uipb.NodeWith{
+			{Value: &uipb.NodeWith_HasClass{HasClass: "ash/ShelfAppButton"}},
+			{Value: &uipb.NodeWith_Name{Name: "Files"}},
+		},
+	}
+
+	if _, err := uiautoSvc.WaitUntilExists(ctx, &uipb.WaitUntilExistsRequest{Finder: filesAppShelfButtonFinder}); err != nil {
+		s.Fatal("Failed to find Files shelf button: ", err)
+	}
+
+	// Open Files App and close it by clicking the cross on the window
+	if _, err := uiautoSvc.LeftClick(ctx, &uipb.LeftClickRequest{Finder: filesAppShelfButtonFinder}); err != nil {
+		s.Fatal("Failed to click on Files app: ", err)
+	}
+
+	testing.Sleep(ctx, time.Second)
+}

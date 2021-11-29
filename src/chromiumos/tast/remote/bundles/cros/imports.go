@@ -8,6 +8,7 @@ import (
 	// These packages register their tests via init functions.
 	_ "chromiumos/tast/remote/bundles/cros/arc"
 	_ "chromiumos/tast/remote/bundles/cros/autoupdate"
+	_ "chromiumos/tast/remote/bundles/cros/browser"
 	_ "chromiumos/tast/remote/bundles/cros/camera"
 	_ "chromiumos/tast/remote/bundles/cros/crash"
 	_ "chromiumos/tast/remote/bundles/cros/enterprise"
@@ -17,6 +18,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/firmware"
 	_ "chromiumos/tast/remote/bundles/cros/hardware"
 	_ "chromiumos/tast/remote/bundles/cros/hwsec"
+	_ "chromiumos/tast/remote/bundles/cros/inputs"
 	_ "chromiumos/tast/remote/bundles/cros/kernel"
 	_ "chromiumos/tast/remote/bundles/cros/lacros"
 	_ "chromiumos/tast/remote/bundles/cros/meta"
