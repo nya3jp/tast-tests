@@ -8,14 +8,14 @@ import (
 	"context"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
 // NewLacrosFixture creates a new fixture that can launch Lacros chrome with the given setup mode,
 // Chrome options, and WPR archive. This should be the child of a WPR fixture.
-func NewLacrosFixture(mode launcher.SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
-	return launcher.NewComposedFixture(mode, func(v launcher.FixtValue, pv interface{}) interface{} {
+func NewLacrosFixture(mode lacrosfixt.SetupMode, fOpt chrome.OptionsCallback) testing.FixtureImpl {
+	return lacrosfixt.NewComposedFixture(mode, func(v lacrosfixt.FixtValue, pv interface{}) interface{} {
 		return v
 	}, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 		opts, err := s.ParentValue().(FixtValue).FOpt()(ctx, s)

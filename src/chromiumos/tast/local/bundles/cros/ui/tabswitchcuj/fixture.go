@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/wpr"
 	"chromiumos/tast/testing"
 )
@@ -37,7 +37,7 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl: wpr.NewLacrosFixture(
-			launcher.Rootfs,
+			lacrosfixt.Rootfs,
 			func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 				return []chrome.Option{chrome.ExtraArgs("--disable_lacros_keep_alive")}, nil
 			}),
@@ -45,6 +45,6 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 		Parent:          "tabSwitchCUJWPR",
-		Vars:            []string{launcher.LacrosDeployedBinary},
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 }
