@@ -27,6 +27,7 @@ var testFiles = []string{
 	"command_vim.go",
 	"copy_files_to_linux_files.go",
 	"crash_reporter.go",
+	"debian_upgrade_alert.go",
 	"drag_drop.go",
 	"files_app_watch.go",
 	"home_directory_create_file.go",
