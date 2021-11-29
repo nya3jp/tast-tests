@@ -160,7 +160,7 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start IPP-over-USB printer: ", err)
 	}
 	defer func() {
-		printer.Stop(ctx, false)
+		printer.Stop(ctx, true)
 		if err := os.Remove(recordPath); err != nil && !os.IsNotExist(err) {
 			s.Error("Failed to remove file: ", err)
 		}

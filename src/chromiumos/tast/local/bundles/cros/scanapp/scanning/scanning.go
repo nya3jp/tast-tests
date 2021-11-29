@@ -109,30 +109,24 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	devInfo, err := usbprinter.LoadPrinterIDs(scannerParams.Descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", scannerParams.Descriptors, err)
-	}
-
-	printer, err := usbprinter.StartScanner(ctx, devInfo, scannerParams.Descriptors, scannerParams.Attributes, scannerParams.EsclCaps, "")
+	printer, err := usbprinter.Start(ctx,
+		usbprinter.WithDescriptors(scannerParams.Descriptors),
+		usbprinter.WithAttributes(scannerParams.Attributes),
+		usbprinter.WithESCLCapabilities(scannerParams.EsclCaps))
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-	defer func() {
-		if printer != nil {
-			usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
-		}
-	}()
-	if err = ippusbbridge.WaitForSocket(ctx, devInfo); err != nil {
+	defer printer.Stop(cleanupCtx, true)
+	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
 	}
-	if err = cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+	if err = cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for printer to be idle: ", err)
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(ScannerName)); err != nil {
 		s.Fatal("Failed to wait for printer notification: ", err)
 	}
-	if err = ippusbbridge.ContactPrinterEndpoint(ctx, devInfo, "/eSCL/ScannerCapabilities"); err != nil {
+	if err = ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
 		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
 	}
 
@@ -183,6 +177,5 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	// Intentionally stop the printer early to trigger shutdown in
 	// ippusb_bridge. Without this, cleanup may have to wait for other processes
 	// to finish using the printer (e.g. CUPS background probing).
-	usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
-	printer = nil
+	printer.Stop(cleanupCtx, true)
 }

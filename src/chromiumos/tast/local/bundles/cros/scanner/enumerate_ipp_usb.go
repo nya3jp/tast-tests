@@ -59,22 +59,18 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 		s.Fatal("Failed to restart printing system: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(info.descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", info.descriptors, err)
-	}
-
-	printer, err := usbprinter.StartScanner(ctx, devInfo, info.descriptors, info.attributes, info.esclCapabilities, "")
+	printer, err := usbprinter.Start(ctx,
+		usbprinter.WithDescriptors(info.descriptors),
+		usbprinter.WithAttributes(info.attributes),
+		usbprinter.WithESCLCapabilities(info.esclCapabilities))
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-	defer func() {
-		usbprinter.StopPrinter(ctx, printer, devInfo)
-	}()
+	defer printer.Stop(ctx, true)
 	if info.attributes != "" || info.esclCapabilities != "" {
 		// Only wait for CUPS if we added an IPP-USB device.  It won't attempt to
 		// auto-configure non-IPP devices, so this would never finish.
-		if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+		if err := cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
 			s.Fatal("Failed to wait for CUPS configuration: ", err)
 		}
 	}
@@ -96,7 +92,7 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 
 	found := false
 	for _, scanner := range scanners {
-		if isMatchingScanner(scanner, devInfo) {
+		if isMatchingScanner(scanner, printer.DevInfo) {
 			found = true
 			break
 		}
