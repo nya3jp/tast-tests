@@ -21,7 +21,7 @@ import (
 
 type axEventTestStep struct {
 	keys      string             // a sequence of keys to invoke.
-	focus     arca11y.FindParams // expected params of focused node after the event.
+	target    arca11y.FindParams // expected params of the event target.
 	eventType event.Event        // an expected event type from the focused node.
 }
 
@@ -66,7 +66,7 @@ func runTestStep(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.
 			if e.Target == nil {
 				continue
 			}
-			if ok, err := e.Target.Matches(ctx, step.focus); err != nil {
+			if ok, err := e.Target.Matches(ctx, step.target); err != nil {
 				return err
 			} else if ok {
 				return nil
@@ -210,11 +210,59 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 			event.ValueInTextFieldChanged,
 		},
 	}
-	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.EditTextActivity}
+	LiveRegionActivityTestSteps := []axEventTestStep{
+		{
+			"Tab",
+			arca11y.FindParams{
+				Name: "CHANGE POLITE LIVE REGION",
+				Role: role.Button,
+				Attributes: map[string]interface{}{
+					"className": arca11y.Button,
+				},
+			},
+			event.Focus,
+		},
+		{
+			"Enter",
+			arca11y.FindParams{
+				Name: "Updated Polite Text",
+				Role: role.StaticText,
+				Attributes: map[string]interface{}{
+					"className": arca11y.TextView,
+				},
+			},
+			event.LiveRegionChanged,
+		}, {
+			"Tab",
+			arca11y.FindParams{
+				Name: "CHANGE ASSERTIVE LIVE REGION",
+				Role: role.Button,
+				Attributes: map[string]interface{}{
+					"className": arca11y.Button,
+				},
+			},
+			event.Focus,
+		},
+		{
+			"Enter",
+			arca11y.FindParams{
+				Name: "Updated Assertive Text",
+				Role: role.StaticText,
+				Attributes: map[string]interface{}{
+					"className": arca11y.TextView,
+				},
+			},
+			event.LiveRegionChanged,
+		},
+	}
+	testActivities := []arca11y.TestActivity{
+		arca11y.MainActivity, arca11y.EditTextActivity, arca11y.LiveRegionActivity,
+	}
 
 	testSteps := map[arca11y.TestActivity][]axEventTestStep{
-		arca11y.MainActivity:     MainActivityTestSteps,
-		arca11y.EditTextActivity: EditTextActivityTestSteps,
+		arca11y.MainActivity:       MainActivityTestSteps,
+		arca11y.EditTextActivity:   EditTextActivityTestSteps,
+		arca11y.LiveRegionActivity: LiveRegionActivityTestSteps,
 	}
 
 	ew, err := input.Keyboard(ctx)
