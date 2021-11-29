@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/lacros/gpucuj"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -146,7 +146,7 @@ func GpuCUJ(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	pv, cleanup, err := gpucuj.RunGpuCUJ(ctx, s.FixtValue().(launcher.FixtValue),
+	pv, cleanup, err := gpucuj.RunGpuCUJ(ctx, s.FixtValue().(lacrosfixt.FixtValue),
 		s.Param().(gpucuj.TestParams), server.URL, s.OutDir())
 	if err != nil {
 		s.Fatal("Could not run GpuCUJ test: ", err)

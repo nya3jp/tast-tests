@@ -17,7 +17,8 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
@@ -164,7 +165,7 @@ type testInvocation struct {
 
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
-func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValue, tracer traceable, invoc *testInvocation) error {
+func runTest(ctx context.Context, tconn *chrome.TestConn, f lacrosfixt.FixtValue, tracer traceable, invoc *testInvocation) error {
 	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
 	if err != nil {
 		return err
@@ -278,8 +279,8 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValue, 
 	return runHistogram(ctx, tconn, tracer, invoc, perfFn)
 }
 
-func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocation) error {
-	_, ltconn, l, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, invoc.page.url, lacros.StabilizeBeforeOpeningURL)
+func runLacrosTest(ctx context.Context, f lacrosfixt.FixtValue, invoc *testInvocation) error {
+	_, ltconn, l, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, invoc.page.url, lacrosperf.StabilizeBeforeOpeningURL)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
@@ -306,8 +307,8 @@ func runLacrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocat
 	return runTest(ctx, ltconn, f, l, invoc)
 }
 
-func runCrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocation) error {
-	_, cleanup, err := lacros.SetupCrosTestWithPage(ctx, f, invoc.page.url, lacros.StabilizeBeforeOpeningURL)
+func runCrosTest(ctx context.Context, f lacrosfixt.FixtValue, invoc *testInvocation) error {
+	_, cleanup, err := lacrosperf.SetupCrosTestWithPage(ctx, f, invoc.page.url, lacrosperf.StabilizeBeforeOpeningURL)
 	if err != nil {
 		return errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
@@ -327,9 +328,9 @@ func runCrosTest(ctx context.Context, f launcher.FixtValue, invoc *testInvocatio
 }
 
 // RunGpuCUJ runs a GpuCUJ test according to the given parameters.
-func RunGpuCUJ(ctx context.Context, f launcher.FixtValue, params TestParams, serverURL, traceDir string) (
-	retPV *perf.Values, retCleanup lacros.CleanupCallback, retErr error) {
-	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.GpuCUJ")
+func RunGpuCUJ(ctx context.Context, f lacrosfixt.FixtValue, params TestParams, serverURL, traceDir string) (
+	retPV *perf.Values, retCleanup lacrosperf.CleanupCallback, retErr error) {
+	cleanup, err := lacrosperf.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.GpuCUJ")
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to setup GpuCUJ test")
 	}
@@ -354,7 +355,7 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtValue, params TestParams, ser
 			return nil, nil, errors.Wrap(err, "failed to rotate display")
 		}
 		// Restore the initial rotation.
-		cleanup = lacros.CombineCleanup(ctx, cleanup, func(ctx context.Context) error {
+		cleanup = lacrosperf.CombineCleanup(ctx, cleanup, func(ctx context.Context) error {
 			return display.SetDisplayProperties(ctx, f.TestAPIConn(), infos[0].ID, display.DisplayProperties{Rotation: &infos[0].Rotation})
 		}, "failed to restore the initial display rotation")
 	}

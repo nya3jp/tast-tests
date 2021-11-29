@@ -15,7 +15,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
@@ -41,9 +42,9 @@ const (
 )
 
 func DocsCUJ(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(launcher.FixtValue)
+	f := s.FixtValue().(lacrosfixt.FixtValue)
 
-	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.DocsCUJ")
+	cleanup, err := lacrosperf.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.DocsCUJ")
 	if err != nil {
 		s.Fatal("Failed to set up lacros perf test: ", err)
 	}
@@ -52,8 +53,8 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 
 	// Run against ash-chrome.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		return lacros.SetupCrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
+	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		return lacrosperf.SetupCrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -71,7 +72,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Run against lacros-chrome from Shelf
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
+	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
 		conn, cleanup, err := setupLacrosShelfTestWithPage(ctx, f, url)
 		return conn, cleanup, err
 	}); err != nil {
@@ -92,13 +93,13 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 
 	// TODO(crbug.com/1263337): We should use faillog to assist debugging here, but it's broken
 	// currently for Shelf launches. In the meantime, grab the log manually before exiting.
-	if errCopy := fsutil.CopyFile(filepath.Join(launcher.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros-shelf.log")); errCopy != nil {
+	if errCopy := fsutil.CopyFile(filepath.Join(lacros.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros-shelf.log")); errCopy != nil {
 		s.Log("Failed to copy lacros.log from LacrosUserDataDir to the OutDir ", errCopy)
 	}
 
 	// Run against lacros-chrome.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
+	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchmark: ", err)
@@ -130,7 +131,7 @@ func runDocsPageLoad(
 	ctx context.Context,
 	tconn *chrome.TestConn,
 	url string,
-	setup func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error)) (time.Duration, time.Duration, error) {
+	setup func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error)) (time.Duration, time.Duration, error) {
 	conn, cleanup, err := setup(ctx, chrome.BlankURL)
 	if err != nil {
 		return 0.0, 0.0, errors.Wrap(err, "failed to open a new tab")
@@ -177,8 +178,8 @@ func runDocsPageLoad(
 var cooldownConfig = cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
 
 // setupLacrosShelfTestWithPage opens a lacros-chrome page from the Shelf after waiting for a stable environment (CPU temperature, etc).
-func setupLacrosShelfTestWithPage(ctx context.Context, f launcher.FixtValue, url string) (
-	retConn *chrome.Conn, retCleanup lacros.CleanupCallback, retErr error) {
+func setupLacrosShelfTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url string) (
+	retConn *chrome.Conn, retCleanup lacrosperf.CleanupCallback, retErr error) {
 	cr := f.Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)

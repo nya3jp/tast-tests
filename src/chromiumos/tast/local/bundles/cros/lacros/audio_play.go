@@ -12,8 +12,9 @@ import (
 
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/chrome/lacros/faillog"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -38,12 +39,12 @@ func init() {
 }
 
 func AudioPlay(ctx context.Context, s *testing.State) {
-	l, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
+	l, err := lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}
 	defer func() {
-		faillog.SaveIf(ctx, s.FixtValue().(launcher.FixtValue).LacrosPath(), s.HasError)
+		lacrosfaillog.SaveIf(ctx, s.FixtValue().(lacrosfixt.FixtValue).LacrosPath(), s.HasError)
 		l.Close(ctx)
 	}()
 

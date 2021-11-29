@@ -12,7 +12,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -20,15 +21,15 @@ import (
 // It also returns a closure to be called in order to close the browser instance,
 // after which the instance should not be used any further.
 // If browser type is TypeAsh, the fixture value must implement the HasChrome interface.
-// If browser type is TypeLacros, the fixture value must be of launcher.FixtValue type.
+// If browser type is TypeLacros, the fixture value must be of lacrosfixt.FixtValue type.
 func SetUp(ctx context.Context, f interface{}, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
 	switch bt {
 	case browser.TypeAsh:
 		cr := f.(chrome.HasChrome).Chrome()
 		return cr.Browser(), func(context.Context) {}, nil
 	case browser.TypeLacros:
-		f := f.(launcher.FixtValue)
-		l, err := launcher.LaunchLacrosChrome(ctx, f)
+		f := f.(lacrosfixt.FixtValue)
+		l, err := lacros.LaunchLacrosChrome(ctx, f)
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -56,8 +57,8 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 		return conn, cr.Browser(), func(context.Context) {}, nil
 
 	case browser.TypeLacros:
-		f := f.(launcher.FixtValue)
-		l, err := launcher.LaunchLacrosChromeWithURL(ctx, f, url)
+		f := f.(lacrosfixt.FixtValue)
+		l, err := lacros.LaunchLacrosChromeWithURL(ctx, f, url)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
