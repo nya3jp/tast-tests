@@ -34,6 +34,24 @@
       "parentUuid": "5dc665a1_519b604f",
       "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34748d03_892f8921",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-29T15:47:15Z",
+      "side": 1,
+      "message": "How about something similar to this?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/updateutil/updateutil.go;l\u003d147\ndefer chrome closing, as it is the important part. If there was already an error, log one (the less important one), and return with the other error.",
+      "parentUuid": "ee764a7f_0c8dd79d",
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
