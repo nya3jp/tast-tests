@@ -25,11 +25,10 @@ import (
 // OpenWallpaperPicker returns an action to open the wallpaper app.
 func OpenWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
-	return uiauto.Combine("open wallpaper picker",
+	return ui.RetryUntil(uiauto.Combine("open wallpaper picker",
 		ui.RightClick(nodewith.HasClass("WallpaperView")),
-		ui.WithInterval(1*time.Second).LeftClickUntil(setWallpaperMenu, ui.Gone(setWallpaperMenu)),
-		ui.WaitUntilExists(nodewith.NameContaining("Wallpaper").Role(role.Window).First()),
-	)
+		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setWallpaperMenu, ui.Gone(setWallpaperMenu))),
+		ui.Exists(nodewith.NameContaining("Wallpaper").Role(role.Window).First()))
 }
 
 // SelectCollection returns an action to select the collection with the given collection name.
