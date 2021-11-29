@@ -157,6 +157,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb0037ed_17dd85aa",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-29T21:09:38Z",
+      "side": 1,
+      "message": "Sorry, that link does not have info about required parameters. You can have next Start function:\n```\nfunc Start(ctx context.Context, descriptors string, options Option...) error\n```\n\n\nLooks like that guide is OK about functional options pattern if you handler errors correctly:\ngo/go/dev/forjava/builders#functional-options\n\n\nYou also can have multiple \"public\" constructors are you have right now, but internally use Options structure or functional options pattern.\n\n\nfunctional options pattern heavily used in chrome and uiauto packages, but I am not aware of some guideline about this pattern in Tast.",
+      "parentUuid": "81605df7_33c58dc4",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed642fa9_5fa020cf",
         "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
         "patchSetId": 4
