@@ -106,23 +106,23 @@ func runJustificationTest(ctx context.Context, s *testing.State, params scannerP
 		s.Fatal("Failed to restart printing system: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
 	tmpDir, err := ioutil.TempDir("", "tast.scanner.ADFJustification.")
 	if err != nil {
 		s.Fatal("Failed to create temporary directory: ", err)
 	}
 	defer os.RemoveAll(tmpDir)
 
-	printer, err := usbprinter.StartScanner(ctx, devInfo, descriptors, attributes, params.esclCapabilities, tmpDir)
+	printer, err := usbprinter.Start(ctx,
+		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithAttributes(attributes),
+		usbprinter.WithESCLCapabilities(params.esclCapabilities),
+		usbprinter.WithOutputLogDirectory(tmpDir),
+		usbprinter.ExpectUdevEventOnStop())
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-	defer usbprinter.StopPrinter(ctx, printer, devInfo)
-	if err := cups.EnsurePrinterIdle(ctx, devInfo); err != nil {
+	defer printer.Stop(ctx)
+	if err := cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for CUPS configuration: ", err)
 	}
 
@@ -134,7 +134,7 @@ func runJustificationTest(ctx context.Context, s *testing.State, params scannerP
 		BottomRightY: 100,
 	}
 
-	deviceName := fmt.Sprintf("ippusb:escl:TestScanner:%s_%s/eSCL", devInfo.VID, devInfo.PID)
+	deviceName := fmt.Sprintf("ippusb:escl:TestScanner:%s_%s/eSCL", printer.DevInfo.VID, printer.DevInfo.PID)
 	startScanRequest := &lpb.StartScanRequest{
 		DeviceName: deviceName,
 		Settings: &lpb.ScanSettings{
