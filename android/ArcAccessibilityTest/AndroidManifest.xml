@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".EditTextActivity" android:exported="true" android:label="@string/edit_text_activity_name">
         </activity>
+        <activity android:name=".LiveRegionActivity" android:exported="true" android:label="@string/live_region_activity_name">
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

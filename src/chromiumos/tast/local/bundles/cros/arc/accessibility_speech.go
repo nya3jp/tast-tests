@@ -136,10 +136,42 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	testActivities := []arca11y.TestActivity{arca11y.MainActivity}
+	LiveRegionActivityTestSteps := []axSpeechTestStep{
+		{
+			"Search+Right",
+			[]a11y.SpeechExpectation{a11y.NewStringExpectation("Live Region Activity")},
+		}, {
+			"Search+Right",
+			[]a11y.SpeechExpectation{
+				a11y.NewStringExpectation("CHANGE POLITE LIVE REGION"),
+				a11y.NewStringExpectation("Button"),
+				a11y.NewStringExpectation("Press Search plus Space to activate"),
+			},
+		}, {
+			"Search+Space",
+			[]a11y.SpeechExpectation{
+				a11y.NewStringExpectation("Updated polite text"),
+			},
+		}, {
+			"Search+Right",
+			[]a11y.SpeechExpectation{
+				a11y.NewStringExpectation("CHANGE ASSERTIVE LIVE REGION"),
+				a11y.NewStringExpectation("Button"),
+				a11y.NewStringExpectation("Press Search plus Space to activate"),
+			},
+		}, {
+			"Search+Space",
+			[]a11y.SpeechExpectation{
+				a11y.NewStringExpectation("Updated assertive text"),
+			},
+		},
+	}
 
-	speechTestSteps := map[string][]axSpeechTestStep{
-		arca11y.MainActivity.Name: MainActivityTestSteps,
+	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.LiveRegionActivity}
+
+	speechTestSteps := map[arca11y.TestActivity][]axSpeechTestStep{
+		arca11y.MainActivity:       MainActivityTestSteps,
+		arca11y.LiveRegionActivity: LiveRegionActivityTestSteps,
 	}
 
 	testFunc := func(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, currentActivity arca11y.TestActivity) error {
@@ -161,7 +193,7 @@ func AccessibilitySpeech(ctx context.Context, s *testing.State) {
 		}
 		defer sm.Close()
 
-		testSteps := speechTestSteps[currentActivity.Name]
+		testSteps := speechTestSteps[currentActivity]
 		for _, testStep := range testSteps {
 			if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, []string{testStep.keys}, testStep.expectations); err != nil {
 				return errors.Wrapf(err, "failure on the step %+v", testStep)

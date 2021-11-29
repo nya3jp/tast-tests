@@ -36,6 +36,8 @@ const (
 
 	// CheckBox class name.
 	CheckBox = "android.widget.CheckBox"
+	// Button class name.
+	Button = "android.widget.Button"
 	// EditText class name.
 	EditText = "android.widget.EditText"
 	// SeekBar class name.
@@ -57,6 +59,9 @@ var MainActivity = TestActivity{".MainActivity", "Main Activity"}
 
 // EditTextActivity is the struct for the edit text activity used in test cases.
 var EditTextActivity = TestActivity{".EditTextActivity", "Edit Text Activity"}
+
+// LiveRegionActivity is the struct for the live region text activity used in test cases.
+var LiveRegionActivity = TestActivity{".LiveRegionActivity", "Live Region Activity"}
 
 // IsEnabledAndroid checks if accessibility is enabled in Android.
 func IsEnabledAndroid(ctx context.Context, a *arc.ARC) (bool, error) {
