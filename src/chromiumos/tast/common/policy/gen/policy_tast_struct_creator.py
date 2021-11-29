@@ -160,7 +160,7 @@ VALUE_TEMPLATE = """
 type {name} struct {{{members}
 }}
 """
-PROPERTY_TEMPLATE = """\n\t{go_name} {go_type} `json:"{json_name}"`"""
+PROPERTY_TEMPLATE = """\n\t{go_name} {go_type} `json:"{json_name}{json_options}"`"""
 STRING_PROPERTY_TEMPLATE = (
     """\n\t{go_name} {go_type} `json:"{json_name},string"`""")
 EMBEDDED_TEMPLATE = """\n\t{go_type}"""
@@ -178,8 +178,14 @@ def new_property(name, go_type):
 
   See members input in new_struct().
   """
+  json_options = ''
+  if go_type.startswith('[]'):
+    # Omit a property if its value is the nil slice, instead of converting it to
+    # null. (Note that this also applies to an empty slice.)
+    json_options = ',omitempty'
   return PROPERTY_TEMPLATE.format(
-      go_type=go_type, json_name=name, go_name=go_var_format(name))
+      go_type=go_type, json_name=name, go_name=go_var_format(name),
+      json_options=json_options)
 
 def new_embedded(go_type):
   """Return Go code for an embedded (unnamed) new property of a struct.
