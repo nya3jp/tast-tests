@@ -33,6 +33,23 @@
       "message": "LGTM, but please wait Miguel approval.",
       "revId": "55d2f1f4ed61adeceeffbd8ae8557c54cc67720c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bded9e8b_b0d2bbcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-29T19:34:34Z",
+      "side": 1,
+      "message": "Remove LGTM to don\u0027t submit CL before other folks will LGTM. Miguel can you please take another look?",
+      "revId": "55d2f1f4ed61adeceeffbd8ae8557c54cc67720c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
