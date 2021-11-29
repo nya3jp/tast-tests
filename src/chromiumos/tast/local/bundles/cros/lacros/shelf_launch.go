@@ -12,7 +12,8 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -57,7 +58,7 @@ func init() {
 }
 
 func ShelfLaunch(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(launcher.FixtValue)
+	f := s.FixtValue().(lacrosfixt.FixtValue)
 	tconn, err := f.Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -111,15 +112,15 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	// Clean up user data dir to ensure a clean start.
-	os.RemoveAll(launcher.LacrosUserDataDir)
+	os.RemoveAll(lacros.LacrosUserDataDir)
 	if err = ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		s.Fatal("Failed to launch Lacros: ", err)
 	}
 
 	s.Log("Checking that Lacros window is visible")
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
+	if err := lacros.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
 		// Grab Lacros logs to assist debugging before exiting.
-		if errCopy := fsutil.CopyFile(filepath.Join(launcher.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
+		if errCopy := fsutil.CopyFile(filepath.Join(lacros.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
 			s.Log("Failed to copy /home/chronos/user/lacros/lacros.log to the OutDir ", errCopy)
 		}
 
@@ -127,7 +128,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
-	l, err := launcher.ConnectToLacrosChrome(ctx, f.LacrosPath(), launcher.LacrosUserDataDir)
+	l, err := lacros.ConnectToLacrosChrome(ctx, f.LacrosPath(), lacros.LacrosUserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
@@ -144,7 +145,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
-	if err := launcher.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
+	if err := lacros.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
 		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
 	}
 
