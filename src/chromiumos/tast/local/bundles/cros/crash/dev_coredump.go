@@ -34,6 +34,12 @@ func init() {
 }
 
 func DevCoredump(ctx context.Context, s *testing.State) {
+	const (
+		devCoreDumpName = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore.gz`
+		metaDumpName    = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.meta`
+		logDumpName     = `devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.log`
+	)
+
 	// Verify that DUT has Intel WiFi.
 	if _, err := os.Stat(iwlwifiDir); os.IsNotExist(err) {
 		s.Fatal("iwlwifi directory does not exist on DUT, skipping test")
@@ -65,7 +71,7 @@ func DevCoredump(ctx context.Context, s *testing.State) {
 
 	// Check that expected device coredump is copied to crash directory.
 	devCoreFiles, err := crash.WaitForCrashFiles(ctx, []string{crashDir},
-		[]string{`devcoredump_iwlwifi\.\d{8}\.\d{6}\.\d+\.\d+\.devcore.gz`})
+		[]string{devCoreDumpName, metaDumpName, logDumpName})
 	if err != nil {
 		s.Fatal("Failed while polling crash directory: ", err)
 	}
