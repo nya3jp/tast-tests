@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9234e2c_8db0da9e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-29T01:54:53Z",
+      "side": 1,
+      "message": "To avoid leaving a zombie process:\n\n defer func() {\n   cmd.Kill()\n   cmd.Wait()\n }()",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "c60f7158192a587bd5e8c7c051fc5f22ba7bbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f29a8c_4ad62af6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-29T01:54:53Z",
+      "side": 1,
+      "message": "Optional: Would be nice to add some prefix to the log so that we can distinguish them.",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "c60f7158192a587bd5e8c7c051fc5f22ba7bbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9e62b9_dbb1ee9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-29T01:54:53Z",
+      "side": 1,
+      "message": "Even if the first runner is not killed by the second runner, it will be killed eventually by context deadline of this test. So I\u0027m afraid this test passes regardless.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "c60f7158192a587bd5e8c7c051fc5f22ba7bbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
