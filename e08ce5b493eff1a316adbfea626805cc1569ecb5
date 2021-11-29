@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79cbbc25_38a33633",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-29T17:27:12Z",
+      "side": 1,
+      "message": "I have two comments. Please take a look. Thanks.",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebdb5fc7_6dfdcb9b",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-29T17:27:12Z",
+      "side": 1,
+      "message": "\u003d\u003d is not reliable for floating point number? Please either change the way to compare or the type of displayLevel. What range and common vaues for display level? Other than \"default\". Can it be negative? If it cannot be negative except for default, I think \u003c 0 will be better. Please let me know. Thanks.",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb6c93b3_482445df",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-29T17:27:12Z",
+      "side": 1,
+      "message": "python2 is end of life soon. Please remove all reference to python 2. Thanks.",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
