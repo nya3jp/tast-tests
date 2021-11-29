@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/logsaver"
@@ -87,7 +87,7 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				loginOption(s),
 				chrome.ARCSupported(),
@@ -101,7 +101,7 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.cujAccountPool",
-			launcher.LacrosDeployedBinary,
+			lacrosfixt.LacrosDeployedBinary,
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -179,7 +179,7 @@ func (f *prepareCUJFixture) PostTest(ctx context.Context, s *testing.FixtTestSta
 type FixtureData struct {
 	Chrome     *chrome.Chrome
 	ARC        *arc.ARC
-	LacrosFixt launcher.FixtValue
+	LacrosFixt lacrosfixt.FixtValue
 }
 
 type loggedInToCUJUserFixture struct {
@@ -197,10 +197,10 @@ type loggedInToCUJUserFixture struct {
 
 func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	var cr *chrome.Chrome
-	var lacrosFixt launcher.FixtValue
+	var lacrosFixt lacrosfixt.FixtValue
 
 	if s.ParentValue() != nil {
-		lacrosFixt = s.ParentValue().(launcher.FixtValue)
+		lacrosFixt = s.ParentValue().(lacrosfixt.FixtValue)
 		cr = lacrosFixt.Chrome()
 		f.useParentChrome = true
 	} else {

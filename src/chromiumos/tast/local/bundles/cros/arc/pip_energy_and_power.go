@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
@@ -103,7 +102,7 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		cs = cr
 		browserWindowType = ash.WindowTypeBrowser
 	case browser.TypeLacros:
-		var l *launcher.LacrosChrome
+		var l *lacros.LacrosChrome
 		var err error
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
 		if err != nil {
