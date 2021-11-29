@@ -57,17 +57,16 @@ func RunIPPUSBPPDTest(ctx context.Context, s *testing.State, descriptors, attrib
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	_, name, err := usbprinter.StartIPPUSB(ctx, devInfo, descriptors, attributes, "" /*record*/)
+	printer, err := usbprinter.Start(ctx,
+		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithAttributes(attributes),
+		usbprinter.WaitUntilConfigured())
+	defer printer.Stop(ctx)
 	if err != nil {
 		s.Fatal("Failed to start IPP-over-USB printer: ", err)
 	}
 
-	ppdMap, err := getPPDMap(ctx, name)
+	ppdMap, err := getPPDMap(ctx, printer.ConfiguredName)
 	if err != nil {
 		s.Fatal("Failed to load PPD file: ", err)
 	}
