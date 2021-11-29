@@ -14,8 +14,8 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/testing"
 )
 
@@ -49,9 +49,9 @@ const jsMicrobenchCode = `
   ` + "`" + `);`
 
 func JSMicrobench(ctx context.Context, s *testing.State) {
-	f := s.FixtValue().(launcher.FixtValue)
+	f := s.FixtValue().(lacrosfixt.FixtValue)
 
-	cleanup, err := lacros.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.JSMicrobench")
+	cleanup, err := lacrosperf.SetupPerfTest(ctx, f.TestAPIConn(), "lacros.JSMicrobench")
 	if err != nil {
 		s.Fatal("Failed to set up lacros perf test: ", err)
 	}
@@ -81,8 +81,8 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 	pv := perf.NewValues()
 
 	// Run JS benchmark against ash-chrome.
-	if elapsed, err := runJSMicrobench(ctx, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		return lacros.SetupCrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
+	if elapsed, err := runJSMicrobench(ctx, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		return lacrosperf.SetupCrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -94,8 +94,8 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 	}
 
 	// Run JS benchmark against lacros-chrome.
-	if elapsed, err := runJSMicrobench(ctx, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
+	if elapsed, err := runJSMicrobench(ctx, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchrmark: ", err)
@@ -108,8 +108,8 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 	}
 
 	// Run JS benchmark against ash-chrome.
-	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		return lacros.SetupCrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
+	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		return lacrosperf.SetupCrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
 	} else {
@@ -121,8 +121,8 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 	}
 
 	// Run JS benchmark against lacros-chrome.
-	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacros.SetupLacrosTestWithPage(ctx, f, url, lacros.StabilizeAfterOpeningURL)
+	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
 		s.Error("Failed to run lacros-chrome benchrmark: ", err)
@@ -144,7 +144,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 // and returns the connection to it.
 func runJSMicrobench(
 	ctx context.Context,
-	setup func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error)) (time.Duration, error) {
+	setup func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error)) (time.Duration, error) {
 	conn, cleanup, err := setup(ctx, chrome.BlankURL)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to open a new tab")
@@ -170,7 +170,7 @@ func runJSMicrobench(
 func runJSMicrobenchFromHTML(
 	ctx context.Context,
 	path string,
-	setup func(ctx context.Context, url string) (*chrome.Conn, lacros.CleanupCallback, error)) (time.Duration, error) {
+	setup func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error)) (time.Duration, error) {
 	conn, cleanup, err := setup(ctx, chrome.BlankURL)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to open a new tab")

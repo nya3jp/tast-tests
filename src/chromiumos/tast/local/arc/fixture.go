@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -263,10 +263,10 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 	success := false
 
 	var cr *chrome.Chrome
-	var lacrosFixt launcher.FixtValue
+	var lacrosFixt lacrosfixt.FixtValue
 
 	if f.useParentChrome {
-		lacrosFixt = s.ParentValue().(launcher.FixtValue)
+		lacrosFixt = s.ParentValue().(lacrosfixt.FixtValue)
 		cr = lacrosFixt.Chrome()
 	} else {
 		opts, err := f.fOpt(ctx, s)

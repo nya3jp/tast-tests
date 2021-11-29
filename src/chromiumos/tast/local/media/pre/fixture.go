@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -35,7 +35,7 @@ func init() {
 		Name:     "chromeVideoLacros",
 		Desc:     "Logged into a user session with logging enabled (lacros)",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
@@ -48,14 +48,14 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{launcher.LacrosDeployedBinary},
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeCameraPerfLacros",
 		Desc:     "Logged into a user session on Lacros without verbose logging that can affect the performance",
 		Contacts: []string{"chromeos-camera-eng@google.com"},
-		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
@@ -68,7 +68,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{launcher.LacrosDeployedBinary},
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	// Chrome has two said implementations: a "legacy" one and a Direct, VD-based on. Selecting one ore the other depends on the hardware and is ultimately determined by the overlays/ flags. Tests should be centered on what the users see, hence most of the testing should use chromeVideo, with a few test cases using this fixture.
@@ -141,7 +141,7 @@ func init() {
 		Name:     "chromeAshCompositedVideoLacros",
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in ash-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
@@ -153,14 +153,14 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{launcher.LacrosDeployedBinary},
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLacrosCompositedVideoLacros",
 		Desc:     "Similar to chromeVideoLacros fixture but disabling hardware overlays in lacros-chrome entirely to force video to be composited",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
@@ -172,7 +172,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		Vars:            []string{launcher.LacrosDeployedBinary},
+		Vars:            []string{lacrosfixt.LacrosDeployedBinary},
 	})
 
 	testing.AddFixture(&testing.Fixture{

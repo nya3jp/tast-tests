@@ -25,7 +25,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -255,7 +255,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	var bTconn *chrome.TestConn
 
 	if meet.useLacros {
-		cr = s.FixtValue().(launcher.FixtValue).Chrome()
+		cr = s.FixtValue().(lacrosfixt.FixtValue).Chrome()
 	} else {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
@@ -273,7 +273,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	if meet.useLacros {
 		// Launch lacros via shelf.
-		f := s.FixtValue().(launcher.FixtValue)
+		f := s.FixtValue().(lacrosfixt.FixtValue)
 
 		l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
 		if err != nil {
