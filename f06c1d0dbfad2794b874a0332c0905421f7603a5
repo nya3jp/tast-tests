@@ -16,6 +16,24 @@
       "message": "I like to avoid introducing a directory under cros... Since all other directories there are test category packages, I\u0027m afraid introducing a special directory is confusing, as we see from exceptions we need to add to tast-lint.\n\nThis is a bit hacky idea, but what do you think about using symlinks to essentially pull in underscore imports of two packages? Here\u0027s a demo: crrev.com/c/3306085",
       "revId": "f06c1d0dbfad2794b874a0332c0905421f7603a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e543ce24_2870da0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/allcategories/all_categories.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-29T10:55:50Z",
+      "side": 1,
+      "message": "That sounds more reasonable. I\u0027ve updated the patches in that way.",
+      "parentUuid": "b234d06c_6a4d99e3",
+      "revId": "f06c1d0dbfad2794b874a0332c0905421f7603a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
