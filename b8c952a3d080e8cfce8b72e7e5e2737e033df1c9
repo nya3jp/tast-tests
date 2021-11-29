@@ -22,6 +22,30 @@
       },
       "revId": "b8c952a3d080e8cfce8b72e7e5e2737e033df1c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26717ca7_c32d2bda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_local_wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-11-29T22:06:32Z",
+      "side": 1,
+      "message": "yes, my guess is that the app is not initialized when we try to open. I can reproduce it some times: right click, click on `set a wallpaper` and nothing happens.",
+      "parentUuid": "b13070aa_e53f0760",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "b8c952a3d080e8cfce8b72e7e5e2737e033df1c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
