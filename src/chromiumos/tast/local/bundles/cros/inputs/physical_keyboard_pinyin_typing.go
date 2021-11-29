@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -37,23 +38,22 @@ func init() {
 
 func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	imeCode := ime.ChromeIMEPrefix + ime.ChinesePinyin.ID
+	im := s.Param().(ime.InputMethod)
 
-	s.Logf("Set current input method to: %s", imeCode)
-	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
-		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
+	s.Log("Set current input method to: ", im)
+	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+		s.Fatalf("Failed to set input method to %v: %v: ", im, err)
 	}
+	uc.SetAttribute(useractions.AttributeInputMethod, im.Name)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -68,6 +68,10 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 	defer its.Close()
 
 	inputField := testserver.TextAreaInputField
+	// The UserContext might be shared across tests.
+	// So Remove input field after this test.
+	uc.SetAttribute(useractions.AttributeInputField, string(inputField))
+	defer uc.RemoveAttribute(useractions.AttributeInputField)
 
 	ui := uiauto.New(tconn)
 
@@ -158,7 +162,14 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 		s.Run(ctx, subtest.Name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.Name))
 
-			if err := subtest.Action(ctx); err != nil {
+			if err := useractions.NewUserAction(
+				"Chinese Pinyin PK input",
+				subtest.Action,
+				uc, &useractions.UserActionCfg{
+					Attributes: map[string]string{useractions.AttributeTestScenario: subtest.Name},
+					Tags:       []useractions.ActionTag{useractions.ActionTagPKTyping},
+				},
+			).Run(ctx); err != nil {
 				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
 			}
 		})
