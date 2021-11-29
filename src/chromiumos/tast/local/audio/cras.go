@@ -12,6 +12,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
@@ -59,6 +60,23 @@ func NewCras(ctx context.Context) (*Cras, error) {
 		return nil, err
 	}
 	return &Cras{obj}, nil
+}
+
+// RestartCras restarts CRAS and wait for it to be online
+func RestartCras(ctx context.Context) (*Cras, error) {
+	testing.ContextLog(ctx, "Restarting CRAS")
+	cmd := testexec.CommandContext(ctx, "restart", "cras")
+	err := cmd.Run()
+	if err != nil {
+		return nil, err
+	}
+
+	// Wait for CRAS to be online
+	cras, err := NewCras(ctx)
+	if err == nil {
+		testing.ContextLog(ctx, "CRAS restarted")
+	}
+	return cras, err
 }
 
 // CrasNode contains the metadata of Node in Cras.
@@ -249,16 +267,23 @@ func WaitForDevice(ctx context.Context, streamType StreamType) error {
 
 // SelectedOutputDevice returns the active output device name and type.
 func (c *Cras) SelectedOutputDevice(ctx context.Context) (deviceName, deviceType string, err error) {
-	nodes, err := c.GetNodes(ctx)
+	node, err := c.SelectedOutputNode(ctx)
 	if err != nil {
 		return
 	}
+	return node.DeviceName, node.Type, nil
+}
+
+// SelectedOutputNode returns the active output node
+func (c *Cras) SelectedOutputNode(ctx context.Context) (*CrasNode, error) {
+	nodes, err := c.GetNodes(ctx)
+	if err != nil {
+		return nil, err
+	}
 	for _, node := range nodes {
 		if node.Active && !node.IsInput {
-			deviceName = node.DeviceName
-			deviceType = node.Type
-			break
+			return &node, nil
 		}
 	}
-	return
+	return nil, errors.New("no output node found")
 }
