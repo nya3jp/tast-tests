@@ -17359,7 +17359,7 @@ type DataLeakPreventionRulesListValueSources struct {
 }
 
 type DataLeakPreventionRulesListValueDestinations struct {
-	Components []string `json:"components"`
+	Components []string `json:"components,omitempty"`
 	Urls       []string `json:"urls"`
 }
 
