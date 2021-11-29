@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11f79061_fc0057a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-29T23:34:05Z",
+      "side": 1,
+      "message": "Instead of resetting it, could we make sure that we always copy the UC from the precondition, instead of modifying it? Seems like this could result in AttributeInputField being set in non-input tests which also use this precondition?",
+      "parentUuid": "f0bfce27_b888f0ff",
+      "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a342084_97395e3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
         "patchSetId": 1
