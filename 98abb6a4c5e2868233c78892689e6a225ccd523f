@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce95f3f_3256e96c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-29T22:32:06Z",
+      "side": 1,
+      "message": "FYI rebase will be necessary before submission since shelf_launcher.go needs a conflict (https://crrev.com/c/3302154) to be checked in first.",
+      "revId": "98abb6a4c5e2868233c78892689e6a225ccd523f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
