@@ -31,7 +31,7 @@ var touchviewLaunchForEnlightPixaloop = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EnlightPixaloop,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for EnlightPixaloop that installs the app also verifies that the main page is open, checks EnlightPixaloop correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

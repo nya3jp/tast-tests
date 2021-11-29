@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SystemWebAppsInstallGuest,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that system web apps are installed in guest mode",
 		Contacts: []string{
 			"chrome-apps-platform-rationalization@google.com",

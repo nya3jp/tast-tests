@@ -26,7 +26,7 @@ type testKeyStroke struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PreIMEKeyEvent,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks View.onKeyPreIme() works on Android apps",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
 		SoftwareDeps: []string{"chrome"},

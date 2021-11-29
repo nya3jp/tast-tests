@@ -26,7 +26,7 @@ type chromeCrashLoopParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeCrashLoop,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that if Chrome crashes repeatedly when logged in, it does an immediate crash upload",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},

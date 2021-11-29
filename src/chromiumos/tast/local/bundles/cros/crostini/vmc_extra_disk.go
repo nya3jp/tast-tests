@@ -25,7 +25,7 @@ const testScript string = "test-extra-disk.sh"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VmcExtraDisk,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Starts Crostini with an extra disk image",
 		Contacts:     []string{"keiichiw@chromium.org", "cros-containers-dev@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host", "untrusted_vm"},

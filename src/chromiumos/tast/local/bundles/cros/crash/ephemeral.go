@@ -28,7 +28,7 @@ type ephemeralCollectionParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Ephemeral,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify ephemeral crash collection worked as expected",
 		Contacts: []string{
 			"sarthakkukreti@google.com",

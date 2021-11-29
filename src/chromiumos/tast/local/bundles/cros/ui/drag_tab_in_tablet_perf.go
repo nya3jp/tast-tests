@@ -35,7 +35,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DragTabInTabletPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Measures the presentation time of dragging a tab in tablet mode",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

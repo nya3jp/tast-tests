@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayStoreOmnibox,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Installs a TWA and WebAPK app via Omnibox in Play Store",
 		Contacts:     []string{"jshikaram@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},

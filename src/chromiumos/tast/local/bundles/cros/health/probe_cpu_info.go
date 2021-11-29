@@ -52,7 +52,7 @@ type cpuInfo struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ProbeCPUInfo,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that we can probe cros_healthd for CPU info",
 		Contacts: []string{
 			"cros-tdm-tpe-eng@google.com",

@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SearchBuiltInApps,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Launches a built-in app through the launcher",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",

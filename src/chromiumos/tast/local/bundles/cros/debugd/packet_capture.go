@@ -29,7 +29,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PacketCapture,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies network packet capture works and can be controlled by policy",
 		Contacts: []string{
 			"iremuguz@google.com", // Test author

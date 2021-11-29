@@ -31,7 +31,7 @@ type videoDecodeAccelTestParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DecodeAccel,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies hardware decode acceleration by running the video_decode_accelerator_tests binary",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},

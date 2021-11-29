@@ -40,7 +40,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SplitViewResizePerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Measures smoothness of resizing split view windows",
 		Contacts:     []string{"mukai@chromium.org", "sammiequon@chromium.org", "amusbach@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

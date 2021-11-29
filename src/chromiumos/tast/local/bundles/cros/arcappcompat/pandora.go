@@ -42,7 +42,7 @@ var touchviewAppSpecificTestsForPandora = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Pandora,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Pandora that installs the app also verifies it is logged in and that the main page is open, checks Pandora correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

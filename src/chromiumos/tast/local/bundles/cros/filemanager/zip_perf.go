@@ -35,7 +35,7 @@ const zipPerfDismissButtonLabel = "Dismiss"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ZipPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures performance for ZIP file operations",
 		Contacts: []string{
 			"jboulic@google.com",

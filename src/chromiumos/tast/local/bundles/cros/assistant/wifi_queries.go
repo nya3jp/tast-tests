@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WifiQueries,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests toggling WiFi using Assistant queries",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "meilinw@chromium.org", "assistive-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

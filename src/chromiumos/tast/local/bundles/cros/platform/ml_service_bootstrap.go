@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MLServiceBootstrap,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that Chrome can establish a Mojo connection to ML Service",
 		Contacts:     []string{"amoylan@chromium.org"},
 		Attr:         []string{"group:mainline"},

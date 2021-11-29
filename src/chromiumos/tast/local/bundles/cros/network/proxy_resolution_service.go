@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ProxyResolutionService,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that the ProxyResolutionService in Chrome works as expected",
 		Contacts:     []string{"acostinas@google.com", "chromeos-commercial-networking@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

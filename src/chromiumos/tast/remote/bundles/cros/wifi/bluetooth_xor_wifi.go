@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BluetoothXorWifi,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that Bluetooth and Wifi can function when the other phy is disabled",
 		Contacts: []string{
 			"billyzhao@google.com",            // Test author

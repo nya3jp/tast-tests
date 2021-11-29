@@ -33,7 +33,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GeekbenchPublicAndroidApp,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Execute Geekbench public Android App to do benchmark testing and retrieve the results",
 		Contacts:     []string{"phuang@cienet.com", "cienet-development@googlegroups.com"},
 		// Purposely leave the empty Attr here. Public benchmark tests are not included in crosbolt group for now.

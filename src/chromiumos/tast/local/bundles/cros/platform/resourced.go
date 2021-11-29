@@ -20,7 +20,7 @@ type resourcedTestParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Resourced,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that resourced works",
 		Contacts:     []string{"vovoy@chromium.org"},
 		Attr:         []string{"group:mainline"},

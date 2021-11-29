@@ -41,7 +41,7 @@ var touchviewAppSpecificTestsForPbsKidsVideo = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PbsKidsVideo,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Pbs Kids Video that install, launch the app and check that the main page is open, also checks Pbs Kids Video correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

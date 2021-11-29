@@ -32,7 +32,7 @@ var touchviewLaunchForMicrosoftPowerpoint = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MicrosoftPowerpoint,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for MicrosoftPowerpoint that installs the app also verifies it is logged in and that the main page is open, checks MicrosoftPowerpoint correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		// b/205860710: Disabled the test as Microsoft has ended it's support for android version of Microsoft powerpoint.

@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchSystemWebAppsFromURL,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that System Web Apps can launch through their URL",
 		Contacts: []string{
 			"chrome-apps-platform-rationalization@google.com",

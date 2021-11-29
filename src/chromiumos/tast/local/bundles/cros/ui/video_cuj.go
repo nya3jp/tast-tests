@@ -40,7 +40,7 @@ type videoCUJTestParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the smoothess of switch between full screen video and a tab/app",
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},

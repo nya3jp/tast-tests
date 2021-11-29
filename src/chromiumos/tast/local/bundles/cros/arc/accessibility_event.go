@@ -28,7 +28,7 @@ type axEventTestStep struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AccessibilityEvent,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks accessibility events in Chrome are as expected with ARC enabled",
 		Contacts:     []string{"hirokisato@chromium.org", "dtseng@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},

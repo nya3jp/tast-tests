@@ -54,7 +54,7 @@ func (r *rule) match(line string) (bool, error) {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ITS,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies camera HAL3 interface function on remote DUT",
 		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},

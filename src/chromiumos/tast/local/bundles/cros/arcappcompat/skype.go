@@ -43,7 +43,7 @@ var touchviewAppSpecificTestsForSkype = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Skype,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for Skype that installs the app also verifies it is logged in and that the main page is open, checks Skype correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat", "appcompat_release"},

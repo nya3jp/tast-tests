@@ -35,7 +35,7 @@ type testParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataCollector,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Signs in to DUT and performs ARC++ boot with various paramters. Captures required data and uploads it to Chrome binary server. This data is used by various tools. Normally, this test should be run during the Android PFQ, once per build/arch",
 		Contacts: []string{
 			"khmel@chromium.org", // Original author.

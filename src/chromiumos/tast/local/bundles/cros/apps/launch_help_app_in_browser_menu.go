@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchHelpAppInBrowserMenu,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Help app can be launched in browser menu",
 		Contacts: []string{
 			"showoff-eng@google.com",

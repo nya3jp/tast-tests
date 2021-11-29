@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Preopt,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that ARC++ is fully pre-optimized and there is no pre-opt happening during the boot",
 		Contacts: []string{
 			"khmel@chromium.org", // author.

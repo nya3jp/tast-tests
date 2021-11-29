@@ -34,7 +34,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TelemetryExtension,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Launches TelemetryExtension and requests telemetry data",
 		Contacts: []string{
 			"lamzin@google.com", // Test and TelemetryExtension author

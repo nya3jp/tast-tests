@@ -19,7 +19,7 @@ type manyParamsParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ManyParams,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Example to generate many test parameters automatically",
 		Contacts:     []string{"tast-owners@google.com"},
 		Params: []testing.Param{

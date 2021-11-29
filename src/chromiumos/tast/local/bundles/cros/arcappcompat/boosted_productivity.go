@@ -31,7 +31,7 @@ var touchviewLaunchForBoostedProductivity = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BoostedProductivity,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for BoostedProductivity that installs the app also verifies it is logged in and that the main page is open, checks BoostedProductivity correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"archanasing@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},

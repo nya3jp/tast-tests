@@ -23,7 +23,7 @@ type guestModeTest struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchAppFromGuestSession,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Peripherals app can be found and launched from guest mode",
 		Contacts: []string{
 			"joonbug@chromium.org",

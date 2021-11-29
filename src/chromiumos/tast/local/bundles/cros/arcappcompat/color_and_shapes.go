@@ -31,7 +31,7 @@ var touchviewLaunchForColorAndShapes = []testutil.TestCase{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ColorAndShapes,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Functional test for ColorAndShapes that installs the app also verifies that the main page is open, checks ColorAndShapes correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
 		Attr:         []string{"group:appcompat"},
