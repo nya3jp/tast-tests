@@ -16,6 +16,29 @@
       "message": "FYI\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3303239\nis an example of a test that is detected by this test for its violation.",
       "revId": "1fa5eac0276b6af0bcb6da8c9b1cb709f503a74f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b40b9e_72012f1b",
+        "filename": "src/chromiumos/tast/restrictions/cros/fixture_tree_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-29T08:50:25Z",
+      "side": 1,
+      "message": "I recommend having separate tests for two rules:\n\n- group:mainline interferes with use_fragile_ui_matcher\n- use_fragile_ui_matcher must be inherited by children",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "1fa5eac0276b6af0bcb6da8c9b1cb709f503a74f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
