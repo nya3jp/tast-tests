@@ -27,7 +27,6 @@ func init() {
 }
 
 func ECWakeOnCharge(ctx context.Context, s *testing.State) {
-
 	// g3PollOptions sets the time to wait for DUT's power state to reach G3.
 	g3PollOptions := testing.PollOptions{
 		Timeout:  30 * time.Second,
@@ -107,7 +106,6 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to check for charger after connecting power")
 			}
 			s.Log("DUT is charging")
-
 		} else {
 			// Disconnect power supply.
 			if err := h.SetDUTPower(ctx, false); err != nil {
@@ -128,11 +126,11 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				return errors.Wrap(err, "failed to check for charger after disconnecting power")
 			}
 			s.Log("Power supply was disconnected")
-
 		}
 		return nil
 	}
 
+	defer h.Servo.SetStringAndCheck(ctx, servo.LidOpen, string(servo.LidOpenYes))
 	for _, tc := range []struct {
 		lidOpen string
 	}{
