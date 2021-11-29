@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -38,7 +38,7 @@ func init() {
 		Contacts: []string{
 			"anastasiian@chromium.org", "team-dent@google.com",
 		},
-		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 				chrome.ARCSupported(),
@@ -50,7 +50,7 @@ func init() {
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.gaiaPoolDefault",
-			launcher.LacrosDeployedBinary,
+			lacrosfixt.LacrosDeployedBinary,
 		},
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -74,29 +74,29 @@ func init() {
 type FixtureData struct {
 	cr         *chrome.Chrome
 	ARC        *arc.ARC
-	LacrosFixt launcher.FixtValue
+	LacrosFixt lacrosfixt.FixtValue
 }
 
 // Chrome gets the CrOS-chrome instance.
-// Implement chrome.HasChrome and launcher.FixtValue interface.
+// Implement chrome.HasChrome and lacrosfixt.FixtValue interface.
 func (f FixtureData) Chrome() *chrome.Chrome {
 	return f.cr
 }
 
 // TestAPIConn gets the CrOS-chrome test connection.
-// Implement launcher.FixtValue interface.
+// Implement lacrosfixt.FixtValue interface.
 func (f FixtureData) TestAPIConn() *chrome.TestConn {
 	return f.LacrosFixt.TestAPIConn()
 }
 
 // Mode gets the mode used to get the lacros binary.
-// Implement launcher.FixtValue interface.
-func (f FixtureData) Mode() launcher.SetupMode {
+// Implement lacrosfixt.FixtValue interface.
+func (f FixtureData) Mode() lacrosfixt.SetupMode {
 	return f.LacrosFixt.Mode()
 }
 
 // LacrosPath gets the root directory for lacros-chrome.
-// Implement launcher.FixtValue interface.
+// Implement lacrosfixt.FixtValue interface.
 func (f FixtureData) LacrosPath() string {
 	return f.LacrosFixt.LacrosPath()
 }
@@ -110,10 +110,10 @@ type accountManagerTestFixture struct {
 
 func (f *accountManagerTestFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	var cr *chrome.Chrome
-	var lacrosFixt launcher.FixtValue
+	var lacrosFixt lacrosfixt.FixtValue
 
 	if s.ParentValue() != nil {
-		lacrosFixt = s.ParentValue().(launcher.FixtValue)
+		lacrosFixt = s.ParentValue().(lacrosfixt.FixtValue)
 		cr = lacrosFixt.Chrome()
 		f.useParentChrome = true
 	} else {
