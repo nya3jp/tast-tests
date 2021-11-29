@@ -214,3 +214,62 @@ func openARCSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 	return nil
 }
+
+// RemoveAccountFromOSSettings removes a secondary account from OS Settings. The "More actions" menu should be already open for that account.
+func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, br browser.Type) error {
+	testing.ContextLog(ctx, "Removing account")
+
+	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+	removeAccountButton := nodewith.Name("Remove this account").Role(role.MenuItem)
+	if err := uiauto.Combine("Click Remove account",
+		ui.WaitUntilExists(removeAccountButton),
+		ui.LeftClick(removeAccountButton),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to to click Remove account")
+	}
+
+	if err := ui.WaitUntilExists(nodewith.Name("Remove this account?").First())(ctx); err != nil {
+		if br == browser.TypeLacros {
+			return errors.Wrap(err, "failed to find confirmation dialog on Lacros")
+		}
+	} else {
+		confirmRemoveButton := nodewith.Name("Remove").Role(role.Button)
+		if err := uiauto.Combine("Confirm account removal",
+			ui.WaitUntilExists(confirmRemoveButton),
+			ui.LeftClick(confirmRemoveButton),
+			ui.WaitUntilGone(confirmRemoveButton),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Remove account")
+		}
+	}
+	return nil
+}
+
+// TestCleanup removes all secondary accounts in-session. Should be called at the beginning of the test, so that results of the previous test don't interfere with the current test.
+func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, br browser.Type) error {
+	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+
+	// Open Account Manager page in OS Settings.
+	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton)); err != nil {
+		return errors.Wrap(err, "failed to launch Account Manager page")
+	}
+
+	for {
+		// Find and click "More actions, *" button.
+		moreActionsButton := nodewith.NameStartingWith("More actions,").Role(role.Button).First()
+		if err := uiauto.Combine("Click More actions",
+			ui.WaitUntilExists(moreActionsButton),
+			ui.LeftClick(moreActionsButton),
+		)(ctx); err != nil {
+			// There are no "More actions, *" buttons left. It means all secondary accounts are removed.
+			break
+		}
+
+		if err := RemoveAccountFromOSSettings(ctx, tconn, br); err != nil {
+			return errors.Wrap(err, "failed to remove account from OS Setting")
+		}
+	}
+
+	return nil
+}
