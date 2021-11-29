@@ -16,6 +16,75 @@
       "message": "Thank you for the reviews.",
       "revId": "55a8030088899a4a166d043da35afae59166f1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a805d383_4622ff75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-29T22:35:55Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "55a8030088899a4a166d043da35afae59166f1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a6b78f_afcc56ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-29T22:35:55Z",
+      "side": 1,
+      "message": "we should probably preserve whitespace around *",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "55a8030088899a4a166d043da35afae59166f1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bc30a1_661ad343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_arrangement_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2021-11-29T22:35:55Z",
+      "side": 1,
+      "message": "whitespace around *",
+      "range": {
+        "startLine": 43,
+        "startChar": 18,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "55a8030088899a4a166d043da35afae59166f1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
