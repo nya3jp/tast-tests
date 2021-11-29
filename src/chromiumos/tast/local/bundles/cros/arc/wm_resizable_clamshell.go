@@ -685,6 +685,9 @@ func wmRC22(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	if err := wm.WaitUntilActivityIsReady(ctx, tconn, leftAct, d); err != nil {
 		return errors.Wrap(err, "failed to wait until left activity is ready")
 	}
+	if _, err := d.WaitForWindowUpdate(ctx, wm.Pkg24, time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for activity window updated")
+	}
 
 	// Snap the activity to the left.
 	if err := leftClickDragCaptionButton(ctx, tconn, "Maximize", true); err != nil {
@@ -793,6 +796,10 @@ func snapToHalfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 
 	if err := wm.WaitUntilActivityIsReady(ctx, tconn, act, d); err != nil {
 		return errors.Wrap(err, "failed to wait until activity is ready")
+	}
+
+	if _, err := d.WaitForWindowUpdate(ctx, wm.Pkg24, time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait for activity window updated")
 	}
 
 	dInfo, err := display.GetPrimaryInfo(ctx, tconn)
