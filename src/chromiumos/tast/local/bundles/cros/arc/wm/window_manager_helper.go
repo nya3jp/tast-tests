@@ -25,6 +25,25 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// arcApp maps ArcAppDict definition
+// https://cs.chromium.org/chromium/src/chrome/common/extensions/api/autotest_private.idl
+type arcApp struct {
+	Name                 string  `json:"name"`
+	PackageName          string  `json:"packageName"`
+	Activity             string  `json:"activity"`
+	IntentURI            string  `json:"intentUri"`
+	IconResourceID       string  `json:"iconResourceId"`
+	LastLaunchTime       float64 `json:"lastLaunchTime"`
+	InstallTime          float64 `json:"installTime"`
+	Sticky               bool    `json:"sticky"`
+	NotificationsEnabled bool    `json:"notificationsEnabled"`
+	Ready                bool    `json:"ready"`
+	Suspended            bool    `json:"suspended"`
+	ShowInLauncher       bool    `json:"showInLauncher"`
+	Shortcut             bool    `json:"shortcut"`
+	Launchable           bool    `json:"launchable"`
+}
+
 const (
 	// Pkg23 Apk compiled against target SDK 23 (Pre-N)
 	Pkg23 = "org.chromium.arc.testapp.windowmanager23"
@@ -71,6 +90,8 @@ const (
 	UnspecifiedActivity = "org.chromium.arc.testapp.windowmanager.UnspecifiedActivity"
 	// PortraitActivity used by the subtests.
 	PortraitActivity = "org.chromium.arc.testapp.windowmanager.PortraitActivity"
+	// WMTestAppID used by subtests.
+	WMTestAppID = "ceogkihfpmjnccmkfnhogfhoiaoolepo"
 
 	// Landscape and Portrait constraints come from:
 	// http://cs/android/vendor/google_arc/packages/development/ArcWMTestApp/src/org/chromium/arc/testapp/windowmanager/BaseActivity.java?l=411
@@ -526,6 +547,18 @@ func UIWaitForRestartDialogAndRestart(ctx context.Context, act *arc.Activity, d 
 // act must be a "org.chromium.arc.testapp.windowmanager" activity, otherwise the "Refresh" button check
 // will fail.
 func WaitUntilActivityIsReady(ctx context.Context, tconn *chrome.TestConn, act *arc.Activity, d *ui.Device) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		var app arcApp
+		if err := tconn.Call(ctx, &app, `tast.promisify(chrome.autotestPrivate.getArcApp)`, WMTestAppID); err != nil {
+			return testing.PollBreak(err)
+		}
+		if !app.Ready {
+			return errors.New("WM test app is not yet ready")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for WM test app to become ready")
+	}
 	if err := ash.WaitForVisible(ctx, tconn, act.PackageName()); err != nil {
 		return err
 	}
