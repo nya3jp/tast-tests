@@ -16,6 +16,46 @@
       "message": "PTAL, thanks.",
       "revId": "d43fced74bdfee1d9d54049c8b6cd34a9e0f9826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "954a7532_4283ad9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-11-29T07:21:16Z",
+      "side": 1,
+      "message": "+takise FYI.\n",
+      "revId": "d43fced74bdfee1d9d54049c8b6cd34a9e0f9826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b720d238_aacfed04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/window_manager_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-11-29T07:21:16Z",
+      "side": 1,
+      "message": "qq: How is it calculated?",
+      "range": {
+        "startLine": 94,
+        "startChar": 16,
+        "endLine": 94,
+        "endChar": 48
+      },
+      "revId": "d43fced74bdfee1d9d54049c8b6cd34a9e0f9826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
