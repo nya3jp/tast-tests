@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83118527_a4aaaab6",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-29T16:21:45Z",
+      "side": 1,
+      "message": "The usage is:\n- find the account that should be deleted\n- click \"more actions\" button for this account to open the actions menu\n- call RemoveAccountFromOSSettings which will find \"Remove\" button in the actions menu that is currently open and go through account removal flow.",
+      "parentUuid": "855c0d46_54ebd36f",
+      "revId": "d82eec5e4078ff5f3c30d686a14a7aaac92f9e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8bad420f_25fb1649",
         "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2021-11-29T14:53:12Z",
       "side": 1,
       "message": "At other places `br` is used to store the browser instance. Can you use `type` here instead?",
+      "range": {
+        "startLine": 219,
+        "startChar": 78,
+        "endLine": 219,
+        "endChar": 80
+      },
+      "revId": "d82eec5e4078ff5f3c30d686a14a7aaac92f9e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f28822b_1045d9ad",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-29T16:21:45Z",
+      "side": 1,
+      "message": "It looks like `type` is reserved keyword. Changed to `brType`.",
+      "parentUuid": "8bad420f_25fb1649",
       "range": {
         "startLine": 219,
         "startChar": 78,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "513db8b8_6f77a1f1",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-29T16:21:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a18b0e_b4448b91",
+      "revId": "d82eec5e4078ff5f3c30d686a14a7aaac92f9e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6464cdc5_ee53367a",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-11-29T14:53:12Z",
       "side": 1,
       "message": "It is possible that you have an error because of different reasons.\nYou should do an `Exists()` check before clicking, and if it returns with false, you can break the for loop.\nIf you have to wait for the page to load, you can use WaitUntilExists with a node that is always there in the Add Google Account page.",
+      "revId": "d82eec5e4078ff5f3c30d686a14a7aaac92f9e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7738b384_927d262a",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-11-29T16:21:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6464cdc5_ee53367a",
       "revId": "d82eec5e4078ff5f3c30d686a14a7aaac92f9e9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
