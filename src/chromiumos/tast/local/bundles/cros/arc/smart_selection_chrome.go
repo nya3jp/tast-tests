@@ -9,13 +9,13 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -39,22 +39,23 @@ func init() {
 }
 
 func SmartSelectionChrome(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("arc.SmartSelectionChrome.username")
-	password := s.RequiredVar("arc.SmartSelectionChrome.password")
+	// username := s.RequiredVar("arc.SmartSelectionChrome.username")
+	// password := s.RequiredVar("arc.SmartSelectionChrome.password")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported())
+	// cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
-	a, err := arc.New(ctx, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to start ARC by user policy: ", err)
-	}
-	defer a.Close(ctx)
-	if err := a.WaitIntentHelper(ctx); err != nil {
-		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
-	}
+	// a, err := arc.New(ctx, s.OutDir())
+	// if err != nil {
+	// 	s.Fatal("Failed to start ARC by user policy: ", err)
+	// }
+	// defer a.Close(ctx)
+	// if err := a.WaitIntentHelper(ctx); err != nil {
+	// 	s.Fatal("Failed to wait for ARC Intent Helper: ", err)
+	// }
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
@@ -63,6 +64,35 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
+	kb, err := input.Keyboard(ctx)
+
+	kb.Accel(ctx, "Search")
+	testing.Sleep(ctx, 500*time.Millisecond)
+	kb.Type(ctx, "Chrome")
+	testing.Sleep(ctx, 1000*time.Millisecond)
+
+	ui.WithTimeout(5 * time.Second).LeftClick(nodewith.ClassName("SearchResultTileItemView").First())(ctx)
+
+	kb.Accel(ctx, "Tab")
+	testing.Sleep(ctx, 1000*time.Millisecond)
+	kb.Accel(ctx, "Tab")
+	testing.Sleep(ctx, 1000*time.Millisecond)
+
+	kb.Accel(ctx, "Search")
+	testing.Sleep(ctx, 500*time.Millisecond)
+	kb.Type(ctx, "Files")
+	testing.Sleep(ctx, 1000*time.Millisecond)
+
+	ui.WithTimeout(5 * time.Second).LeftClick(nodewith.ClassName("SearchResultTileItemView").First())(ctx)
+
+	kb.Accel(ctx, "Tab")
+	testing.Sleep(ctx, 1000*time.Millisecond)
+	kb.Accel(ctx, "Tab")
+	testing.Sleep(ctx, 1000*time.Millisecond)
+
+	if true {
+		s.Fatal("Failed to create new Chrome connection: ", err)
+	}
 	// Open page with an address on it.
 	if _, err := cr.NewConn(ctx, "https://google.com/search?q=1600+amphitheatre+parkway"); err != nil {
 		s.Fatal("Failed to create new Chrome connection: ", err)

@@ -56,6 +56,7 @@ type NearbyService struct {
 
 // NewChromeLogin logs into Chrome with Nearby Share flags enabled.
 func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.CrOSLoginRequest) (*empty.Empty, error) {
+	testing.ContextLog(ctx, "NewChromeLogin LOG 1")
 	if n.cr != nil {
 		return nil, errors.New("Chrome already available")
 	}
@@ -72,7 +73,7 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 	if req.KeepState {
 		nearbyOpts = append(nearbyOpts, chrome.KeepState())
 	}
-
+	testing.ContextLog(ctx, "NewChromeLogin LOG 2")
 	testing.ContextLog(ctx, req.EnabledFlags)
 	for _, flag := range req.EnabledFlags {
 		nearbyOpts = append(nearbyOpts, chrome.EnableFeatures(flag))
@@ -90,6 +91,7 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 		return nil, err
 	}
 	n.tconn = tconn
+	testing.ContextLog(ctx, "NewChromeLogin LOG 3")
 	return &empty.Empty{}, nil
 }
 
@@ -175,12 +177,14 @@ func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.
 
 // CrOSSetup performs Nearby Share setup on a ChromeOS device.
 func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyservice.CrOSSetupRequest) (*empty.Empty, error) {
+	testing.ContextLog(ctx, "CrOSSetup LOG 1")
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
 	n.deviceName = req.DeviceName
 	n.dataUsage = nearbycommon.DataUsage(req.DataUsage)
 	n.visibility = nearbycommon.Visibility(req.Visibility)
+	testing.ContextLog(ctx, "CrOSSetup LOG 2")
 	if err := nearbyshare.CrOSSetup(ctx, n.tconn, n.cr, n.dataUsage, n.visibility, n.deviceName); err != nil {
 		return nil, errors.Wrap(err, "failed to perform CrOS setup")
 	}
@@ -195,11 +199,13 @@ func (n *NearbyService) CrOSSetup(ctx context.Context, req *nearbyservice.CrOSSe
 			return nil, errors.Wrap(err, "failed to set allowed contacts")
 		}
 	}
+	testing.ContextLog(ctx, "CrOSSetup LOG 3")
 	return &empty.Empty{}, nil
 }
 
 // StartHighVisibilityMode starts high vis mode using the UI library.
 func (n *NearbyService) StartHighVisibilityMode(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	testing.ContextLog(ctx, "StartHighVisibilityMode LOG 1")
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
