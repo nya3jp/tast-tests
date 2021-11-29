@@ -16,6 +16,23 @@
       "message": "thanks for your reviews",
       "revId": "e3adeab6d9390c3f169ebc76cd6fbe903ee6b89e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab4c9bf_825c45b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-11-29T15:30:11Z",
+      "side": 1,
+      "message": "Flow - Looks good to me!\n\nMy general suggestion is to split these into two tests. \n\nIt feels like:\nOne test should add one user, remove it in settings and check user pods. \nAnother test should add one user, remove it on the login screen (user pod way) and check that user doesn\u0027t exist in settings after it (mirrored test). \n\nwdyt?",
+      "revId": "e3adeab6d9390c3f169ebc76cd6fbe903ee6b89e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
