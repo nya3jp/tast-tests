@@ -16,6 +16,29 @@
       "message": "PTAL.\n\nTryjob cannot run yet. We have to wait for the chrome roll including the CL linked from the commit message, which is also under review.",
       "revId": "3e5539cdee3216a557a34b36f81942ac54fe35b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86692427_5fb4f7e3",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-29T19:31:03Z",
+      "side": 1,
+      "message": "This is not directly related to this CL, but should this be \"--disable-lacros-keep-alive\" (hyphens, not underscores)?",
+      "range": {
+        "startLine": 181,
+        "startChar": 24,
+        "endLine": 181,
+        "endChar": 49
+      },
+      "revId": "3e5539cdee3216a557a34b36f81942ac54fe35b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
