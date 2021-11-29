@@ -107,7 +107,7 @@ func ITS(ctx context.Context, s *testing.State) {
 		if hostname, ok := s.Var("chart"); ok {
 			altHostname = hostname
 		}
-		c, err := chart.New(ctx, s.DUT(), altHostname, param.ChartPath, s.OutDir())
+		c, err := chart.New(ctx, s.DUT(), altHostname, param.ChartPath, s.OutDir(), chart.DisplayDefaultLevel)
 		if err != nil {
 			s.Fatal("Failed to prepare chart tablet: ", err)
 		}

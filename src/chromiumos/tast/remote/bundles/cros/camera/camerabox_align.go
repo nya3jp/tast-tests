@@ -109,7 +109,7 @@ func CameraboxAlign(ctx context.Context, s *testing.State) {
 	if altAddr, ok := s.Var("chart"); ok {
 		chartAddr = altAddr
 	}
-	c, err := chart.New(ctx, s.DUT(), chartAddr, s.DataPath("camerabox_align.svg"), s.OutDir())
+	c, err := chart.New(ctx, s.DUT(), chartAddr, s.DataPath("camerabox_align.svg"), s.OutDir(), chart.DisplayDefaultLevel)
 	if err != nil {
 		s.Fatal("Failed to prepare chart tablet: ", err)
 	}
