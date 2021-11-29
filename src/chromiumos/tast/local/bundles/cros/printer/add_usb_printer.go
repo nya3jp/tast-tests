@@ -28,24 +28,14 @@ func init() {
 }
 
 func AddUSBPrinter(ctx context.Context, s *testing.State) {
-	// Path to JSON descriptors file
-	const descriptors = "/usr/local/etc/virtual-usb-printer/usb_printer.json"
-
 	if err := printer.ResetCups(ctx); err != nil {
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	printer, err := usbprinter.Start(ctx, devInfo, descriptors, "", "")
+	pr, err := usbprinter.Start(ctx,
+		usbprinter.WithDescriptors("usb_printer.json"))
+	defer pr.Stop(ctx)
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
-
-	// Test cleanup.
-	printer.Kill()
-	printer.Wait()
 }

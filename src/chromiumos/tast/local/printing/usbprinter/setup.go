@@ -13,12 +13,15 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"path"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/printing/lp"
 	"chromiumos/tast/testing"
 )
+
+const defaultConfigInstallDirectory = "/usr/local/etc/virtual-usb-printer/"
 
 // DevInfo contains information used to identify a USB device.
 type DevInfo struct {
@@ -28,7 +31,129 @@ type DevInfo struct {
 	PID string
 }
 
-func ippUSBPrinterURI(ctx context.Context, devInfo DevInfo) string {
+// options contains all information needed to run the
+// virtual-usb-printer process.
+type options struct {
+	// The actual arguments fed to (and not including) stdbuf.
+	//
+	// Config data path fields obey these rules:
+	// 1. Absolute paths are passed verbatim to the invocation of
+	//    virtual-usb-printer.
+	// 2. Relative paths (and basenames) are joined with the default
+	//    install location of virtual-usb-printer's config files.
+	args []string
+
+	// Populated with path from WithDescriptors().
+	descriptors string
+
+	// Whether or not Start() blocks on printer autoconfiguration.
+	blockOnAutoconf bool
+
+	// Whether or not Printer.Stop() should propagate an error if
+	// no udev event is observed on stoppage.
+	expectUdevEventOnStop bool
+}
+
+// Option provides the type for functional options used
+// to build a Printer via Start(). This type must be exported to allow
+// package-external users to build Option slices.
+type Option func(*options) error
+
+// WithDescriptors sets the required descriptors.
+func WithDescriptors(path string) Option {
+	return func(o *options) error {
+		if len(path) == 0 {
+			return errors.New("descriptors are required")
+		}
+		o.args = append(o.args, "--descriptors_path="+absoluteConfigPath(path))
+		o.descriptors = absoluteConfigPath(path)
+		return nil
+	}
+}
+
+// WithAttributes sets attributes.
+func WithAttributes(path string) Option {
+	return func(o *options) error {
+		if len(path) == 0 {
+			return errors.New("invalid argument: empty attributes path")
+		}
+		o.args = append(o.args, "--attributes_path="+absoluteConfigPath(path))
+		return nil
+	}
+}
+
+// WithESCLCapabilities sets eSCL capabilities.
+func WithESCLCapabilities(path string) Option {
+	return func(o *options) error {
+		if len(path) == 0 {
+			return errors.New("invalid argument: empty eSCL capabilities path")
+		}
+		o.args = append(o.args, "--scanner_capabilities_path="+absoluteConfigPath(path))
+		return nil
+	}
+}
+
+// WithOutputLogDirectory sets the output log directory.
+func WithOutputLogDirectory(directory string) Option {
+	return func(o *options) error {
+		if !path.IsAbs(directory) {
+			return errors.Errorf("not an absolute path: %s", directory)
+		}
+		o.args = append(o.args, "--output_log_dir="+directory)
+		return nil
+	}
+}
+
+// WithRecordPath sets the document output path.
+func WithRecordPath(record string) Option {
+	return func(o *options) error {
+		if !path.IsAbs(record) {
+			return errors.Errorf("not an absolute path: %s", record)
+		}
+		o.args = append(o.args, "--record_doc_path="+record)
+		return nil
+	}
+}
+
+// WaitUntilConfigured controls whether or not Start() blocks on printer
+// autoconfiguration.
+func WaitUntilConfigured() Option {
+	return func(o *options) error {
+		o.blockOnAutoconf = true
+		return nil
+	}
+}
+
+// ExpectUdevEventOnStop causes Printer.Stop() to propagate errors if
+// a udev event is not seen.
+func ExpectUdevEventOnStop() Option {
+	return func(o *options) error {
+		o.expectUdevEventOnStop = true
+		return nil
+	}
+}
+
+// Printer provides an interface to interact with the running
+// virtual-usb-printer instance.
+type Printer struct {
+	// The printer name as detected by autoconfiguration.
+	// Empty if Start() was called with info.WaitUntilConfigured
+	// set false.
+	ConfiguredName string
+
+	// The printer's device information parsed from its USB
+	// descriptors config.
+	DevInfo DevInfo
+
+	// The running virtual-usb-printer instance.
+	cmd *testexec.Cmd
+
+	// Whether or not Printer.Stop() should propagate an error if
+	// no udev event is observed on stoppage.
+	expectUdevEventOnStop bool
+}
+
+func ippUSBPrinterURI(devInfo DevInfo) string {
 	return fmt.Sprintf("ippusb://%s_%s/ipp/print", devInfo.VID, devInfo.PID)
 }
 
@@ -54,6 +179,148 @@ func LoadPrinterIDs(path string) (devInfo DevInfo, err error) {
 	}
 
 	return DevInfo{fmt.Sprintf("%04x", cfg.DevDesc.Vendor), fmt.Sprintf("%04x", cfg.DevDesc.Product)}, nil
+}
+
+// absoluteConfigPath returns configPath untouched if it is absolute.
+// Otherwise, it returns configPath prefixed with the default install
+// directory of virtual-usb-printer.
+func absoluteConfigPath(configPath string) string {
+	if path.IsAbs(configPath) {
+		return configPath
+	}
+	return path.Join(defaultConfigInstallDirectory, configPath)
+}
+
+func launchPrinter(ctx context.Context, op options) (cmd *testexec.Cmd, err error) {
+	testing.ContextLog(ctx, "Starting virtual printer: ", op.args)
+
+	// Cleanup is centralized in Start(), so long as cmd is
+	// returned as a non-nil.
+	launch := testexec.CommandContext(ctx, "stdbuf", op.args...)
+
+	p, err := launch.StdoutPipe()
+	if err != nil {
+		return nil, err
+	}
+
+	if err := launch.Start(); err != nil {
+		return nil, errors.Wrapf(err, "failed to start %v", launch.Args)
+	}
+
+	if err := waitLaunch(p); err != nil {
+		return cmd, errors.Wrap(err, "failed to launch virtual printer")
+	}
+
+	testing.ContextLog(ctx, "Started virtual printer")
+
+	// We pull everything out from the pipe so that
+	// virtual-usb-printer doesn't block on writing to stdout.
+	go io.Copy(ioutil.Discard, p)
+
+	return launch, nil
+}
+
+// Start creates a new Printer and starts the underlying
+// virtual-usb-printer process.
+func Start(ctx context.Context, fields ...Option) (*Printer, error) {
+	op := options{
+		args: []string{"-o0", "virtual-usb-printer"},
+	}
+	for _, field := range fields {
+		if err := field(&op); err != nil {
+			return nil, err
+		}
+	}
+
+	if len(op.descriptors) == 0 {
+		return nil, errors.New("Descriptors are required")
+	}
+
+	devInfo, err := LoadPrinterIDs(op.descriptors)
+	if err != nil {
+		return nil, err
+	}
+	cmd, err := launchPrinter(ctx, op)
+	earlyCleanupCommand := cmd
+	defer func() {
+		if earlyCleanupCommand != nil {
+			earlyCleanupCommand.Kill()
+			earlyCleanupCommand.Wait()
+		}
+	}()
+	if err != nil {
+		return nil, err
+	}
+
+	err = attachUSBIPDevice(ctx, devInfo)
+	if err != nil {
+		return nil, err
+	}
+
+	printerName := ""
+	if op.blockOnAutoconf {
+		printerName, err = WaitPrinterConfigured(ctx, devInfo)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	earlyCleanupCommand = nil
+	return &Printer{
+		ConfiguredName:        printerName,
+		DevInfo:               devInfo,
+		cmd:                   cmd,
+		expectUdevEventOnStop: op.expectUdevEventOnStop,
+	}, nil
+}
+
+// Stop terminates and waits for the virtual-usb-printer. Users must
+// call this when finished with the virtual-usb-printer.
+//
+// Returns an error if we fail to terminate or wait for the
+// virtual-usb-printer, or if we don't see an expected udev event
+// upon stoppage.
+//
+// This method is idempotent.
+func (p *Printer) Stop(ctx context.Context) error {
+	if p.cmd == nil {
+		return nil
+	}
+	defer func() {
+		p.cmd = nil
+	}()
+
+	var udevCh chan error
+	if p.expectUdevEventOnStop {
+		udevCh = make(chan error, 1)
+		go func() {
+			udevCh <- waitEvent(ctx, "remove", p.DevInfo)
+		}()
+	}
+
+	if err := p.cmd.Kill(); err == nil {
+		return err
+	}
+	if err := p.cmd.Wait(); err == nil {
+		return err
+	}
+
+	if p.expectUdevEventOnStop {
+		// Wait for a signal from udevadm to say the device was successfully
+		// detached.
+		testing.ContextLog(ctx, "Waiting for udev event")
+		select {
+		case err := <-udevCh:
+			if err != nil {
+				return err
+			}
+			testing.ContextLog(ctx, "Found remove event")
+		case <-ctx.Done():
+			return errors.Wrap(ctx.Err(), "didn't get udev event")
+		}
+	}
+
+	return nil
 }
 
 // runVirtualUsbPrinter starts an instance of virtual-usb-printer with the
@@ -166,13 +433,13 @@ func StartScanner(ctx context.Context, devInfo DevInfo, descriptors, attributes,
 	return virtualUsbPrinter, nil
 }
 
-// Start sets up and runs a new virtual printer and attaches it to the system
+// startDeprecated sets up and runs a new virtual printer and attaches it to the system
 // using USBIP. The given descriptors and attributes provide the virtual printer
 // with paths to the USB descriptors and IPP attributes files respectively. The
 // path to the file to write received documents is specified by record. The
 // returned command is already started and must be stopped (by calling its Kill
 // and Wait methods) when testing is complete.
-func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, err error) {
+func startDeprecated(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, err error) {
 	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, record, "", "")
 	if err != nil {
 		return nil, errors.Wrap(err, "runVirtualUsbPrinter failed")
@@ -199,7 +466,7 @@ func Start(ctx context.Context, devInfo DevInfo, descriptors, attributes, record
 // automatically configure the printer and return the given name of the
 // configured printer.
 func StartIPPUSB(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, name string, err error) {
-	printer, err := Start(ctx, devInfo, descriptors, attributes, record)
+	printer, err := startDeprecated(ctx, devInfo, descriptors, attributes, record)
 	if err != nil {
 		return nil, "", errors.Wrap(err, "failed to attach virtual printer")
 	}
@@ -222,7 +489,7 @@ func StartIPPUSB(ctx context.Context, devInfo DevInfo, descriptors, attributes, 
 // the configured device will be returned.
 func WaitPrinterConfigured(ctx context.Context, devInfo DevInfo) (string, error) {
 	var foundName string
-	uri := ippUSBPrinterURI(ctx, devInfo)
+	uri := ippUSBPrinterURI(devInfo)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		name, err := lp.PrinterNameByURI(ctx, uri)
 		if err != nil {
