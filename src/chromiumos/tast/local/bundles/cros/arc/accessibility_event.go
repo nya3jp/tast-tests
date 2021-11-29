@@ -12,16 +12,17 @@ import (
 	"chromiumos/tast/local/a11y"
 	arca11y "chromiumos/tast/local/bundles/cros/arc/a11y"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto/checked"
+	"chromiumos/tast/local/chrome/uiauto/event"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
-// TODO(b/190773660): Migrate this file from chrome/ui to chrome/uiauto.
 type axEventTestStep struct {
-	keys      string        // a sequence of keys to invoke.
-	focus     ui.FindParams // expected params of focused node after the event.
-	eventType ui.EventType  // an expected event type from the focused node.
+	keys      string          // a sequence of keys to invoke.
+	focus     a11y.FindParams // expected params of focused node after the event.
+	eventType event.Event     // an expected event type from the focused node.
 }
 
 func init() {
@@ -43,7 +44,7 @@ func init() {
 }
 
 func runTestStep(ctx context.Context, cvconn *a11y.ChromeVoxConn, tconn *chrome.TestConn, ew *input.KeyboardEventWriter, step axEventTestStep, isFirstStep bool) error {
-	watcher, err := ui.NewRootWatcher(ctx, tconn, step.eventType)
+	watcher, err := a11y.NewRootWatcher(ctx, tconn, step.eventType)
 	if err != nil {
 		return errors.Wrap(err, "failed to create EventWatcher")
 	}
@@ -79,132 +80,134 @@ func AccessibilityEvent(ctx context.Context, s *testing.State) {
 	MainActivityTestSteps := []axEventTestStep{
 		{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.ToggleButton,
-				Name:      "OFF",
-				Role:      ui.RoleTypeToggleButton,
+			a11y.FindParams{
+				Name: "OFF",
+				Role: role.ToggleButton,
 				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateFalse,
+					"className": arca11y.ToggleButton,
+					"checked":   checked.False,
 				},
 			},
-			ui.EventTypeFocus,
+			event.Focus,
 		},
 		{
 			"Search+Space",
-			ui.FindParams{
-				ClassName: arca11y.ToggleButton,
-				Name:      "ON",
-				Role:      ui.RoleTypeToggleButton,
+			a11y.FindParams{
+				Name: "ON",
+				Role: role.ToggleButton,
 				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateTrue,
+					"className": arca11y.ToggleButton,
+					"checked":   checked.True,
 				},
 			},
-			ui.EventTypeCheckedStateChanged,
+			event.CheckedStateChanged,
 		},
 		{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.CheckBox,
-				Name:      "CheckBox",
-				Role:      ui.RoleTypeCheckBox,
+			a11y.FindParams{
+				Name: "CheckBox",
+				Role: role.CheckBox,
 				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateFalse,
+					"className": arca11y.CheckBox,
+					"checked":   checked.False,
 				},
 			},
-			ui.EventTypeFocus,
+			event.Focus,
 		},
 		{
 			"Search+Space",
-			ui.FindParams{
-				ClassName: arca11y.CheckBox,
-				Name:      "CheckBox",
-				Role:      ui.RoleTypeCheckBox,
+			a11y.FindParams{
+				Name: "CheckBox",
+				Role: role.CheckBox,
 				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateTrue,
+					"className": arca11y.CheckBox,
+					"checked":   checked.True,
 				},
 			},
-			ui.EventTypeCheckedStateChanged,
+			event.CheckedStateChanged,
 		},
 		{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.CheckBox,
-				Name:      "CheckBoxWithStateDescription",
-				Role:      ui.RoleTypeCheckBox,
+			a11y.FindParams{
+				Name: "CheckBoxWithStateDescription",
+				Role: role.CheckBox,
 				Attributes: map[string]interface{}{
-					"checked": ui.CheckedStateFalse,
+					"className": arca11y.CheckBox,
+					"checked":   checked.False,
 				},
 			},
-			ui.EventTypeFocus,
+			event.Focus,
 		},
 		{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.SeekBar,
-				Name:      "seekBar",
-				Role:      ui.RoleTypeSlider,
+			a11y.FindParams{
+				Name: "seekBar",
+				Role: role.Slider,
 				Attributes: map[string]interface{}{
+					"className":     arca11y.SeekBar,
 					"valueForRange": 25,
 				},
 			},
-			ui.EventTypeFocus,
+			event.Focus,
 		},
 		{
 			"=",
-			ui.FindParams{
-				ClassName: arca11y.SeekBar,
-				Name:      "seekBar",
-				Role:      ui.RoleTypeSlider,
+			a11y.FindParams{
+				Name: "seekBar",
+				Role: role.Slider,
 				Attributes: map[string]interface{}{
+					"className":     arca11y.SeekBar,
 					"valueForRange": 26,
 				},
 			},
-			ui.EventTypeRangeValueChanged,
+			event.RangeValueChanged,
 		},
 		{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.SeekBar,
-				Role:      ui.RoleTypeSlider,
+			a11y.FindParams{
+				Role: role.Slider,
 				Attributes: map[string]interface{}{
+					"className":     arca11y.SeekBar,
 					"valueForRange": 3,
 				},
 			},
-			ui.EventTypeFocus,
+			event.Focus,
 		},
 		{
 			"-",
-			ui.FindParams{
-				ClassName: arca11y.SeekBar,
-				Role:      ui.RoleTypeSlider,
+			a11y.FindParams{
+				Role: role.Slider,
 				Attributes: map[string]interface{}{
+					"className":     arca11y.SeekBar,
 					"valueForRange": 2,
 				},
 			},
-			ui.EventTypeRangeValueChanged,
+			event.RangeValueChanged,
 		},
 	}
 	EditTextActivityTestSteps := []axEventTestStep{
 		{
 			"Tab",
-			ui.FindParams{
-				ClassName: arca11y.EditText,
-				Name:      "contentDescription",
-				Role:      ui.RoleTypeTextField,
+			a11y.FindParams{
+				Name: "contentDescription",
+				Role: role.TextField,
+				Attributes: map[string]interface{}{
+					"className": arca11y.EditText,
+				},
 			},
-			ui.EventTypeFocus,
+			event.Focus,
 		},
 		{
 			"a",
-			ui.FindParams{
-				ClassName: arca11y.EditText,
-				Name:      "contentDescription",
-				Role:      ui.RoleTypeTextField,
+			a11y.FindParams{
+				Name: "contentDescription",
+				Role: role.TextField,
 				Attributes: map[string]interface{}{
-					"value": "a",
+					"className": arca11y.EditText,
+					"value":     "a",
 				},
 			},
-			ui.EventTypeValueInTextFieldChanged,
+			event.ValueInTextFieldChanged,
 		},
 	}
 	testActivities := []arca11y.TestActivity{arca11y.MainActivity, arca11y.EditTextActivity}
