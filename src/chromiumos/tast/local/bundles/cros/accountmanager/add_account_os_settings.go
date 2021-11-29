@@ -71,6 +71,11 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	s.Log("Runing test cleanup")
+	if err := accountmanager.TestCleanup(ctx, tconn, cr, s.Param().(browser.Type)); err != nil {
+		s.Fatal("Failed to do cleanup: ", err)
+	}
+
 	// Setup the browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
@@ -134,29 +139,8 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click More actions button: ", err)
 	}
 
-	s.Log("Removing account")
-	removeAccountButton := nodewith.Name("Remove this account").Role(role.MenuItem)
-	if err := uiauto.Combine("Click Remove account",
-		ui.WaitUntilExists(removeAccountButton),
-		ui.LeftClick(removeAccountButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to click Remove account: ", err)
-	}
-
-	if err := ui.WaitUntilExists(nodewith.Name("Remove this account?").First())(ctx); err != nil {
-		if s.Param().(browser.Type) == browser.TypeLacros {
-			s.Fatal("Failed to find confirmation dialog on Lacros: ", err)
-		}
-	} else {
-		s.Log("Confirming account removal")
-		confirmRemoveButton := nodewith.Name("Remove").Role(role.Button)
-		if err := uiauto.Combine("Confirm account removal",
-			ui.WaitUntilExists(confirmRemoveButton),
-			ui.LeftClick(confirmRemoveButton),
-			ui.WaitUntilGone(confirmRemoveButton),
-		)(ctx); err != nil {
-			s.Fatal("Failed to click Remove account: ", err)
-		}
+	if err := accountmanager.RemoveAccountFromOSSettings(ctx, tconn, s.Param().(browser.Type)); err != nil {
+		s.Fatal("Failed to remove account from OS Settings: ", err)
 	}
 
 	if err := ui.WaitUntilGone(moreActionsButton)(ctx); err != nil {
