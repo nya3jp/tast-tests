@@ -181,6 +181,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65bae829_7b7d812f",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-11-29T21:10:23Z",
+      "side": 1,
+      "message": "*constructors AS you have right now",
+      "parentUuid": "bb0037ed_17dd85aa",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed642fa9_5fa020cf",
         "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
         "patchSetId": 4
