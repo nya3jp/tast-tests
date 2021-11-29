@@ -58,7 +58,10 @@ def main(args):
     ]
     subprocess.check_call(cmd, cwd=str(its_root))
     base_msg = 'Base ITS source'
-    subprocess.check_call(['git', 'commit', '-m', base_msg], cwd=str(its_root))
+    fake_author = 'testuser <testuser@gmail.com>'
+    subprocess.check_call(
+        ['git', 'commit', '--author', fake_author, '-m', base_msg],
+        cwd=str(its_root))
     subprocess.check_call(['git', 'tag', '-a', 'base', '-m', base_msg],
                           cwd=str(its_root))
 
