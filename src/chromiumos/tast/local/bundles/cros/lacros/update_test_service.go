@@ -23,9 +23,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/faillog"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfaillog"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	lacrosservice "chromiumos/tast/services/cros/lacros"
 	"chromiumos/tast/testing"
 )
@@ -83,7 +83,7 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 
 	// Start a screen record before launching Lacros for troubleshooting a failure in launching Lacros.
 	hasRecordStarted := true
-	if err := faillog.StartRecord(ctx, tconn); err != nil {
+	if err := lacrosfaillog.StartRecord(ctx, tconn); err != nil {
 		hasRecordStarted = false
 	}
 	hasError := true
@@ -92,8 +92,8 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	defer cancel()
 	defer func(ctx context.Context) {
 		// Save faillogs and screen record only when it fails or returns with an error.
-		faillog.SaveIf(ctx, expectedLacrosDir, func() bool { return hasError })
-		faillog.SaveRecordIf(ctx, tconn, hasRecordStarted, func() bool { return hasError })
+		lacrosfaillog.SaveIf(ctx, expectedLacrosDir, func() bool { return hasError })
+		lacrosfaillog.SaveRecordIf(ctx, tconn, hasRecordStarted, func() bool { return hasError })
 	}(ctxForFailLog)
 
 	l, err := lacros.LaunchFromShelf(ctx, tconn, expectedLacrosDir)
@@ -130,7 +130,7 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 	} else {
 		// Verify without UI that the lacros process is running from the expected versioned path.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			pids, err := launcher.PidsFromPath(ctx, expectedLacrosPath)
+			pids, err := lacros.PidsFromPath(ctx, expectedLacrosPath)
 			if err != nil {
 				return err
 			}
@@ -262,7 +262,7 @@ func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string)
 		return nil, nil, errors.Wrap(err, "failed to prepare extensions")
 	}
 	extList := strings.Join(extDirs, ",")
-	opts = append(opts, chrome.LacrosExtraArgs(launcher.ExtensionArgs(chrome.TestExtensionID, extList)...))
+	opts = append(opts, chrome.LacrosExtraArgs(lacrosfixt.ExtensionArgs(chrome.TestExtensionID, extList)...))
 	// KeepEnrollment should be enabled to retain user data including provisioned Lacros image
 	// after restarting ui to make new Chrome options take effect.
 	opts = append(opts, chrome.KeepEnrollment())
@@ -280,7 +280,7 @@ func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string)
 
 // versionInfoFromUI opens chrome://version/ from UI and returns the version info that matches the given JS expression.
 // eg, Executable Path = /run/imageloader/lacros-dogfood-dev/X.X.X.X/chrome
-func (uts *UpdateTestService) versionInfoFromUI(ctx context.Context, l *launcher.LacrosChrome, expr string) (string, error) {
+func (uts *UpdateTestService) versionInfoFromUI(ctx context.Context, l *lacros.LacrosChrome, expr string) (string, error) {
 	lconn, err := l.NewConn(ctx, lacroscommon.VersionURL)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to open: %v", lacroscommon.VersionURL)

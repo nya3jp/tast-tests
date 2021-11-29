@@ -17,8 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -108,7 +107,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
 	} else {
-		var l *launcher.LacrosChrome
+		var l *lacros.LacrosChrome
 		var err error
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.bt)
 		if err != nil {

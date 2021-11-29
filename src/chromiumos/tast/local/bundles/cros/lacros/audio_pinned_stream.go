@@ -12,7 +12,8 @@ import (
 
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -43,7 +44,7 @@ func AudioPinnedStream(ctx context.Context, s *testing.State) {
 	}
 	defer unload(ctx)
 
-	lc, err := launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
+	lc, err := lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}

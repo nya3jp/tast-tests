@@ -13,8 +13,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/lacros/lacros"
 	"chromiumos/tast/testing"
 )
 
@@ -39,7 +38,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
-	var l *launcher.LacrosChrome
+	var l *lacros.LacrosChrome
 	var bTconn *chrome.TestConn
 
 	cleanup := func(ctx context.Context) error { return nil }
