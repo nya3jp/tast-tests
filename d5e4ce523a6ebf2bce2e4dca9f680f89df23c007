@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "702f1749_08edd453",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-29T23:57:26Z",
+      "side": 1,
+      "message": "Thanks for the comment, Matt.\n\nOnce precondition / fixture enabled, it is used across tests. precondition status is not maintained in Tast infra so far. \n\nFor example:\n1. Start precondition (e.g. PreTablet) in tablet mode\n2. in the first test, it manually switch device to Clamshell mode but do not revert it back after test.\n3. in the second test using `PreTablet`, it will assume the device mode is still Tablet as claimed.\n\nSo there are 2 ways to maintain test state:\n1. In precondition implementation: check real-time device information and expectation, reset Chrome instance if it is out-of-sync.\n\n2. Using precondition wide variable (UserContext) to record the latest state if a major change is made. This is not ideal, but can avoid extra step to query the real device state. Secondly, each test can maintain its own interest fact of the device without touch precondition. \n\nLast, AttributeInputField attribute is removed in the next line defer function. Why do you think it can remain to the next non-input tests?",
+      "parentUuid": "11f79061_fc0057a6",
+      "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a342084_97395e3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
         "patchSetId": 1
