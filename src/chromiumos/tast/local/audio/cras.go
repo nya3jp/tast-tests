@@ -12,6 +12,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
@@ -59,6 +60,23 @@ func NewCras(ctx context.Context) (*Cras, error) {
 		return nil, err
 	}
 	return &Cras{obj}, nil
+}
+
+// RestartCras restarts CRAS and wait for it to be online
+func RestartCras(ctx context.Context) error {
+	testing.ContextLog(ctx, "Restarting CRAS")
+	cmd := testexec.CommandContext(ctx, "restart", "cras")
+	err := cmd.Run()
+	if err != nil {
+		return err
+	}
+
+	// Wait for CRAS to be online
+	_, err = NewCras(ctx)
+	if err == nil {
+		testing.ContextLog(ctx, "CRAS restarted")
+	}
+	return err
 }
 
 // CrasNode contains the metadata of Node in Cras.
