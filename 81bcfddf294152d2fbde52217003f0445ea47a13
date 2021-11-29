@@ -16,6 +16,29 @@
       "message": "Added additional params and updated script name.",
       "revId": "81bcfddf294152d2fbde52217003f0445ea47a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "927b2dda_d38a96aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_composition_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-29T02:01:48Z",
+      "side": 1,
+      "message": "nit: You don\u0027t need this check since nil is a valid empty slice.",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 28
+      },
+      "revId": "81bcfddf294152d2fbde52217003f0445ea47a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
