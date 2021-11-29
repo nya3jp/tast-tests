@@ -795,6 +795,10 @@ func snapToHalfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 		return errors.Wrap(err, "failed to wait until activity is ready")
 	}
 
+	if _, err := d.WaitForWindowUpdate(ctx, wm.Pkg24, time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait activity window updated")
+	}
+
 	dInfo, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get primary display info")
