@@ -151,18 +151,16 @@ func Print(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	devInfo, err := usbprinter.LoadPrinterIDs(descriptors)
-	if err != nil {
-		s.Fatalf("Failed to load printer IDs from %v: %v", descriptors, err)
-	}
-
-	printer, _, err := usbprinter.StartIPPUSB(ctx, devInfo, descriptors, attributes, recordPath)
+	printer, err := usbprinter.Start(ctx,
+		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithAttributes(attributes),
+		usbprinter.WithRecordPath(recordPath),
+		usbprinter.WaitUntilConfigured())
 	if err != nil {
 		s.Fatal("Failed to start IPP-over-USB printer: ", err)
 	}
 	defer func() {
-		printer.Kill()
-		printer.Wait()
+		printer.Stop(ctx, usbprinter.IgnoreUdev)
 		if err := os.Remove(recordPath); err != nil && !os.IsNotExist(err) {
 			s.Error("Failed to remove file: ", err)
 		}

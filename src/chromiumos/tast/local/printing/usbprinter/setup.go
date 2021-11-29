@@ -433,57 +433,6 @@ func StartScanner(ctx context.Context, devInfo DevInfo, descriptors, attributes,
 	return virtualUsbPrinter, nil
 }
 
-// startDeprecated sets up and runs a new virtual printer and attaches it to the system
-// using USBIP. The given descriptors and attributes provide the virtual printer
-// with paths to the USB descriptors and IPP attributes files respectively. The
-// path to the file to write received documents is specified by record. The
-// returned command is already started and must be stopped (by calling its Kill
-// and Wait methods) when testing is complete.
-func startDeprecated(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, err error) {
-	virtualUsbPrinter, err := runVirtualUsbPrinter(ctx, descriptors, attributes, record, "", "")
-	if err != nil {
-		return nil, errors.Wrap(err, "runVirtualUsbPrinter failed")
-	}
-	cmdToKill := virtualUsbPrinter
-	defer func() {
-		if cmdToKill != nil {
-			virtualUsbPrinter.Kill()
-			virtualUsbPrinter.Wait()
-		}
-	}()
-
-	err = attachUSBIPDevice(ctx, devInfo)
-	if err != nil {
-		return nil, errors.Wrap(err, "attaching usbip device failed")
-	}
-	cmdToKill = nil
-	return virtualUsbPrinter, nil
-}
-
-// StartIPPUSB performs the same configuration as Start(), with the additional
-// expectation that the given printer configuration defines an IPP-over-USB
-// capable printer. For this reason, StartIPPUSB will wait for CUPS to
-// automatically configure the printer and return the given name of the
-// configured printer.
-func StartIPPUSB(ctx context.Context, devInfo DevInfo, descriptors, attributes, record string) (cmd *testexec.Cmd, name string, err error) {
-	printer, err := startDeprecated(ctx, devInfo, descriptors, attributes, record)
-	if err != nil {
-		return nil, "", errors.Wrap(err, "failed to attach virtual printer")
-	}
-	// Since the given printer should describe use IPP-over-USB, we wait for it to
-	// be automatically configured by Chrome in order to extract the name of the
-	// device.
-	testing.ContextLog(ctx, "Waiting for printer to be configured")
-	name, err = WaitPrinterConfigured(ctx, devInfo)
-	if err != nil {
-		printer.Kill()
-		printer.Wait()
-		return nil, "", errors.Wrap(err, "failed to find configured printer name")
-	}
-	testing.ContextLog(ctx, "Printer configured with name: ", name)
-	return printer, name, nil
-}
-
 // WaitPrinterConfigured waits for a printer which has the same VID/PID as
 // devInfo to be configured on the system. If a match is found then the name of
 // the configured device will be returned.
