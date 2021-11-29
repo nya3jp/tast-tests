@@ -1,0 +1,71 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// ChromeStartupService allows basic remote operations of the Nearby Share feature.
+service ChromeStartupService {
+  // NewChromeLogin logs into a Chrome session. 
+  // Close must be called later to clean up the associated resources.
+  rpc NewChromeLogin (NewChromeLoginRequest) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// NewChromeLoginRequest to login to Chrome with configurable GAIA credentials.
+message NewChromeLoginRequest {
+  string username = 1;
+  string password = 2;
+  bool keep_state = 3;
+  bool try_reuse_session = 4;
+  NewChromeLoginRequest.LoginMode login_mode = 5;
+  repeated string enable_features = 6;
+  repeated string disable_features = 7;
+  repeated string extra_args = 8;
+  Credentials credentials = 9;
+
+  enum LoginMode {
+    LOGIN_MODE_UNSPECIFIED = 0;
+    LOGIN_MODE_NO_LOGIN = 1;
+    LOGIN_MODE_FAKE_LOGIN = 2;
+    LOGIN_MODE_GAIA_LOGIN = 3;
+    LOGIN_MODE_GUEST_LOGIN = 4;
+  }
+
+  message Credentials {
+    // User is the user name of a user account. It is typically an email
+    // address (e.g. example@gmail.com).
+    string username = 1;
+    // Pass is the password of a user account.
+    string password = 2;
+
+    // GAIAID is a GAIA ID used on fake logins. If it is empty, an ID is
+    // generated from the user name. The field is ignored on other type of
+    // logins.
+    string gaia_id = 3;
+
+    // Contact is an email address of a user who owns a test account.
+    // When logging in with a test account, its contact user may be
+    // notified of a login attempt and asked for approval.
+    string contact = 4;
+
+    // ParentUser is the user name of a parent account. It is used to
+    // approve a login attempt when a child account is supervised by a
+    // parent account.
+    string parent_username = 5;
+
+    // ParentPass is the pass of a parent account. It is used to approve
+    // a login attempt when a child account is supervised by a parent
+    // account.
+    string parent_password = 6;
+
+  }
+}
