@@ -160,7 +160,7 @@ VALUE_TEMPLATE = """
 type {name} struct {{{members}
 }}
 """
-PROPERTY_TEMPLATE = """\n\t{go_name} {go_type} `json:"{json_name}"`"""
+PROPERTY_TEMPLATE = """\n\t{go_name} {go_type} `json:"{json_name}{options}"`"""
 STRING_PROPERTY_TEMPLATE = (
     """\n\t{go_name} {go_type} `json:"{json_name},string"`""")
 EMBEDDED_TEMPLATE = """\n\t{go_type}"""
@@ -178,8 +178,11 @@ def new_property(name, go_type):
 
   See members input in new_struct().
   """
+  options = ''
+  if go_type.startswith('[]'):
+    options = ',omitempty'
   return PROPERTY_TEMPLATE.format(
-      go_type=go_type, json_name=name, go_name=go_var_format(name))
+      go_type=go_type, json_name=name, go_name=go_var_format(name), options=options)
 
 def new_embedded(go_type):
   """Return Go code for an embedded (unnamed) new property of a struct.
