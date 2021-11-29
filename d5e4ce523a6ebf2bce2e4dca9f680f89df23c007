@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0bfce27_b888f0ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-29T21:30:48Z",
+      "side": 1,
+      "message": "UserContext is designed to work along the chrome instance. A precondition can work for multiple tests with the same Chrome instance reused. It is the design.\n\nbtw, UserContext and UserAction both have attributes and tags.\n\nUC attributes and tags will be permanent available in the Chrome instance whilst UA attributes and tags only valid in the single action.\n\nIn this test, since all validations are using one single input field, so I use uc.attribute instead of ua.attribute.",
+      "parentUuid": "73fbca67_c511b157",
+      "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a342084_97395e3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-29T01:30:29Z",
       "side": 1,
       "message": "does inputfield need to be converted to string? (also in other files)",
+      "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9182dfb_5f72ddcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-29T21:30:48Z",
+      "side": 1,
+      "message": "Yes, it is required otherwise compiler complains.",
+      "parentUuid": "5a342084_97395e3b",
       "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
