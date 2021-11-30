@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2bd195_9ff5d6ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528768
+      },
+      "writtenOn": "2021-11-30T10:13:47Z",
+      "side": 1,
+      "message": "We’ve run this test successfully on Kindred[--board\u003dhatch], Sparky360[--board\u003doctopus], Hayato[--board\u003dasurada], Delbin[--board\u003dvolteer], Storo360[--board\u003ddedede] and Vilboz[--board\u003dzork].",
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
