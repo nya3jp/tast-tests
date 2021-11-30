@@ -21,8 +21,8 @@ import (
 // after which the instance should not be used any further.
 // If browser type is TypeAsh, the fixture value must implement the HasChrome interface.
 // If browser type is TypeLacros, the fixture value must be of launcher.FixtValue type.
-func SetUp(ctx context.Context, f interface{}, typ browser.Type) (*browser.Browser, func(ctx context.Context), error) {
-	switch typ {
+func SetUp(ctx context.Context, f interface{}, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
+	switch bt {
 	case browser.TypeAsh:
 		cr := f.(chrome.HasChrome).Chrome()
 		return cr.Browser(), func(context.Context) {}, nil
@@ -37,7 +37,7 @@ func SetUp(ctx context.Context, f interface{}, typ browser.Type) (*browser.Brows
 		}
 		return l.Browser(), closeLacros, nil
 	default:
-		return nil, nil, errors.Errorf("unrecognized browser type %s", string(typ))
+		return nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
 	}
 }
 
@@ -45,8 +45,8 @@ func SetUp(ctx context.Context, f interface{}, typ browser.Type) (*browser.Brows
 // blank tab in the case of Lacros. The caller is responsible for closing the
 // returned connection via its Close() method prior to calling the returned
 // closure.
-func SetUpWithURL(ctx context.Context, f interface{}, typ browser.Type, url string) (*chrome.Conn, *browser.Browser, func(ctx context.Context), error) {
-	switch typ {
+func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url string) (*chrome.Conn, *browser.Browser, func(ctx context.Context), error) {
+	switch bt {
 	case browser.TypeAsh:
 		cr := f.(chrome.HasChrome).Chrome()
 		conn, err := cr.NewConn(ctx, url)
@@ -76,6 +76,6 @@ func SetUpWithURL(ctx context.Context, f interface{}, typ browser.Type, url stri
 		return conn, l.Browser(), closeLacros, nil
 
 	default:
-		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(typ))
+		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
 	}
 }

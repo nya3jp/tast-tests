@@ -10,6 +10,7 @@ import (
 
 	"github.com/godbus/dbus"
 
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/dbusutil"
@@ -25,11 +26,11 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "ml_service", "smartdim"},
 		Params: []testing.Param{{
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedIn",
 		}, {
 			Name:              "lacros",
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -46,7 +47,7 @@ func SmartDim(ctx context.Context, s *testing.State) {
 		sourceHistogramName = "PowerML.SmartDimFeature.WebPageInfoSource"
 		timeout             = 60 * time.Second
 	)
-	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+	cr, l, _, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -103,7 +104,7 @@ func SmartDim(ctx context.Context, s *testing.State) {
 	}
 
 	var expectedSourceBucket metrics.HistogramBucket
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+	if s.Param().(browser.Type) == browser.TypeLacros {
 		expectedSourceBucket = metrics.HistogramBucket{Min: 1, Max: 2, Count: 1}
 	} else {
 		expectedSourceBucket = metrics.HistogramBucket{Min: 0, Max: 1, Count: 1}

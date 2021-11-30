@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/input"
@@ -30,15 +31,15 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedIn",
 		}, {
 			Name:    "skia_renderer",
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
 		}, {
 			Name:              "lacros",
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -65,7 +66,7 @@ func UnlockPerf(ctx context.Context, s *testing.State) {
 
 	defer kb.Close()
 
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -99,7 +100,7 @@ func UnlockPerf(ctx context.Context, s *testing.State) {
 		}
 
 		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
-		if i == 0 && s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
 			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
 			}

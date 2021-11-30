@@ -29,6 +29,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/webutil"
@@ -45,8 +46,8 @@ const (
 
 // TabSwitchParam holds parameters of tab switch cuj test variations.
 type TabSwitchParam struct {
-	ChromeType lacros.ChromeType // Chrome type.
-	Tracing    bool              // Whether to turn on tracing.
+	BrowserType browser.Type // Chrome type.
+	Tracing     bool         // Whether to turn on tracing.
 }
 
 // findAnchorURLs returns the unique URLs of the anchors, which matches the pattern.
@@ -104,7 +105,7 @@ func Run(ctx context.Context, s *testing.State) {
 	var bTconn *chrome.TestConn
 
 	param := s.Param().(TabSwitchParam)
-	if param.ChromeType == lacros.ChromeTypeChromeOS {
+	if param.BrowserType == browser.TypeAsh {
 		cr = s.PreValue().(*chrome.Chrome)
 		cs = cr
 
@@ -115,7 +116,7 @@ func Run(ctx context.Context, s *testing.State) {
 	} else {
 		var l *launcher.LacrosChrome
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), param.ChromeType)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), param.BrowserType)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}

@@ -33,7 +33,7 @@ import (
 )
 
 type videoCUJTestParam struct {
-	ct      lacros.ChromeType
+	bt      browser.Type
 	tablet  bool
 	tracing bool
 }
@@ -57,34 +57,34 @@ func init() {
 			Name:    "clamshell",
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
-				ct: lacros.ChromeTypeChromeOS,
+				bt: browser.TypeAsh,
 			},
 		}, {
 			Name:    "clamshell_trace",
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
-				ct:      lacros.ChromeTypeChromeOS,
+				bt:      browser.TypeAsh,
 				tracing: true,
 			},
 		}, {
 			Name:    "tablet",
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
-				ct:     lacros.ChromeTypeChromeOS,
+				bt:     browser.TypeAsh,
 				tablet: true,
 			},
 		}, {
 			Name:    "lacros",
 			Fixture: "loggedInToCUJUserLacros",
 			Val: videoCUJTestParam{
-				ct: lacros.ChromeTypeLacros,
+				bt: browser.TypeLacros,
 			},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			Name:    "lacros_tablet",
 			Fixture: "loggedInToCUJUserLacros",
 			Val: videoCUJTestParam{
-				ct:     lacros.ChromeTypeLacros,
+				bt:     browser.TypeLacros,
 				tablet: true,
 			},
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -104,13 +104,13 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
 
-	if testParam.ct == lacros.ChromeTypeChromeOS {
+	if testParam.bt == browser.TypeAsh {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
 	} else {
 		var l *launcher.LacrosChrome
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.ct)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.bt)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
