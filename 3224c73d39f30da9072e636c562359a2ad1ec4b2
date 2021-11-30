@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39de207e_d9932862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-30T09:27:14Z",
+      "side": 1,
+      "message": "LGTM % Tast reviews with a few comments.",
+      "revId": "3224c73d39f30da9072e636c562359a2ad1ec4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9a910a_f1d6e2a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-30T09:27:14Z",
+      "side": 1,
+      "message": "Optional: I don\u0027t think bytes.Buffer is guaranteed to be copyable as a value. If you want to clone it I would suggest calling a constructor, e.g. bytes.NewBuffer(fwDumpBuffer.Bytes()).",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 26
+      },
+      "revId": "3224c73d39f30da9072e636c562359a2ad1ec4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3272cd3a_b8b66c35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-30T09:27:14Z",
+      "side": 1,
+      "message": "I believe you want to iterate through values of the slice, not its indices?\n\n for _, e :\u003d range ...",
+      "range": {
+        "startLine": 206,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 43
+      },
+      "revId": "3224c73d39f30da9072e636c562359a2ad1ec4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fcb027e_838e0b16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-30T09:27:14Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 11
+      },
+      "revId": "3224c73d39f30da9072e636c562359a2ad1ec4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb5c9b7a_7ba65f77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-30T09:27:14Z",
+      "side": 1,
+      "message": "style: \"one of ...\"\nhttps://github.com/golang/go/wiki/CodeReviewComments#error-strings",
+      "range": {
+        "startLine": 304,
+        "startChar": 24,
+        "endLine": 304,
+        "endChar": 27
+      },
+      "revId": "3224c73d39f30da9072e636c562359a2ad1ec4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
