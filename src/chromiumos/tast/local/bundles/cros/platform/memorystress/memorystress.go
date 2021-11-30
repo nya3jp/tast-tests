@@ -27,7 +27,7 @@ const (
 	JavascriptFilename = "memory_stress.js"
 )
 
-// ChromeCommon is the common interface of chrome.Chrome and lacros.LacrosChrome.
+// ChromeCommon is the common interface of chrome.Chrome and lacros.Lacros.
 type ChromeCommon interface {
 	// TestAPIConn returns a new chrome.TestConn instance for the Chrome browser.
 	TestAPIConn(ctx context.Context) (*chrome.TestConn, error)

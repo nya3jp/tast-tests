@@ -163,7 +163,7 @@ func Memory(ctx context.Context, s *testing.State) {
 
 		// We currently rely on the assumption that the launcher
 		// creates a windows that is 800x600 in size.
-		l, err := lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+		l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 		if err != nil {
 			s.Fatal("Failed to launch lacros-chrome: ", err)
 		}
@@ -228,7 +228,7 @@ func Memory(ctx context.Context, s *testing.State) {
 // navigateSingleTabToURLLacros assumes that there's a freshly launched instance
 // of lacros-chrome, with a single tab open to about:blank, then, navigates the
 // blank tab to the given url.
-func navigateSingleTabToURLLacros(ctx context.Context, url string, l *lacros.LacrosChrome) error {
+func navigateSingleTabToURLLacros(ctx context.Context, url string, l *lacros.Lacros) error {
 	// Open a new tab and navigate to url.
 	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL("about:blank"))
 	if err != nil {
@@ -243,7 +243,7 @@ func navigateSingleTabToURLLacros(ctx context.Context, url string, l *lacros.Lac
 
 // openTabsLacros assumes that lacros-chrome has been freshly launched,
 // with a single tab opened to about:blank.
-func openTabsLacros(ctx context.Context, l *lacros.LacrosChrome, numTabs int) error {
+func openTabsLacros(ctx context.Context, l *lacros.Lacros, numTabs int) error {
 	for i := 0; i < numTabs-1; i++ {
 		// Open a new tab and navigate to about blank
 		conn, err := l.NewConn(ctx, "about:blank")

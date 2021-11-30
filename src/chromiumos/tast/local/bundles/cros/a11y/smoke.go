@@ -67,7 +67,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 	s.Log("Initializing ash-chrome and/or lacros-chrome based on the target browser: ", bt)
 	if bt == browser.TypeLacros {
 		// Clean up user data dir to ensure a clean start.
-		os.RemoveAll(lacros.LacrosUserDataDir)
+		os.RemoveAll(lacros.UserDataDir)
 	}
 	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), bt)
 	if err != nil {
