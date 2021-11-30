@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "176fc2ec_94f4cd00",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17357,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-30T11:20:59Z",
+      "side": 1,
+      "message": "I see. I\u0027d rather not add a special parsing method just for this policy. Then I see two options:\n\n1) Change the policy definitions in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go such that they explicitly list an empty Components slice.\n\n2) Change policy_tast_struct_generator such that parsing of any array property produces the omitempty annotation.\n\nWhich do you prefer?",
+      "parentUuid": "4788f249_a9274365",
+      "revId": "6c3cb6317da2a33a8bd570ba9f133ba56e41230d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92d8803a_a5726e04",
         "filename": "src/chromiumos/tast/common/policy/defs.go",
         "patchSetId": 2
