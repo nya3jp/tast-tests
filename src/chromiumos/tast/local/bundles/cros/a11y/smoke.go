@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -33,27 +34,27 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			Fixture:           "lacrosUI",
 			ExtraSoftwareDeps: []string{"lacros"},
 			ExtraAttr:         []string{"informational"},
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "lacros_primary",
 			Fixture:           "lacrosPrimary",
 			ExtraSoftwareDeps: []string{"lacros"},
 			ExtraAttr:         []string{"informational"},
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
 
 func Smoke(ctx context.Context, s *testing.State) {
-	ct := s.Param().(lacros.ChromeType)
+	ct := s.Param().(browser.Type)
 	s.Log("Initializing ash-chrome and/or lacros-chrome based on the target browser: ", ct)
-	if ct == lacros.ChromeTypeLacros {
+	if ct == browser.TypeLacros {
 		// Clean up user data dir to ensure a clean start.
 		os.RemoveAll(launcher.LacrosUserDataDir)
 	}
@@ -80,13 +81,13 @@ func Smoke(ctx context.Context, s *testing.State) {
 	var app apps.App
 	var topWindowName string
 	switch ct {
-	case lacros.ChromeTypeChromeOS:
+	case browser.TypeAsh:
 		app, err = apps.ChromeOrChromium(ctx, tconn)
 		if err != nil {
 			s.Fatal("Could not determine the correct Chrome app to use: ", err)
 		}
 		topWindowName = "BrowserFrame"
-	case lacros.ChromeTypeLacros:
+	case browser.TypeLacros:
 		app = apps.Lacros
 		topWindowName = "ExoShellSurface"
 	default:

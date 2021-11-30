@@ -157,7 +157,7 @@ type testInvocation struct {
 	pv       *perf.Values
 	scenario TestType
 	page     page
-	crt      lacros.ChromeType
+	crt      browser.Type
 	metrics  *metricsRecorder
 	traceDir string
 }
@@ -257,7 +257,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f launcher.FixtValue, 
 	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for lacros chrome, which causes this code to fail.
 	if invoc.scenario == TestTypeThreeDot {
 		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
-		if invoc.crt == lacros.ChromeTypeLacros {
+		if invoc.crt == browser.TypeLacros {
 			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, f.TestAPIConn(), w.ID, n) }
 		}
 		if err := toggleThreeDotMenu(ctx, tconn, clickFn); err != nil {
@@ -370,7 +370,7 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtValue, params TestParams, ser
 			pv:       pv,
 			scenario: params.TestType,
 			page:     page,
-			crt:      lacros.ChromeTypeLacros,
+			crt:      browser.TypeLacros,
 			metrics:  &m,
 			traceDir: traceDir,
 		}); err != nil {
@@ -381,7 +381,7 @@ func RunGpuCUJ(ctx context.Context, f launcher.FixtValue, params TestParams, ser
 			pv:       pv,
 			scenario: params.TestType,
 			page:     page,
-			crt:      lacros.ChromeTypeChromeOS,
+			crt:      browser.TypeAsh,
 			metrics:  &m,
 			traceDir: traceDir,
 		}); err != nil {

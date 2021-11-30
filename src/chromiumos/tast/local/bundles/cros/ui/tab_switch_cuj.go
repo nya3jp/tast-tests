@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/wpr"
@@ -28,13 +28,13 @@ func init() {
 		Params: []testing.Param{{
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
 			Val: tabswitchcuj.TabSwitchParam{
-				ChromeType: lacros.ChromeTypeChromeOS,
+				ChromeType: browser.TypeAsh,
 			},
 			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 		}, {
 			Name: "lacros",
 			Val: tabswitchcuj.TabSwitchParam{
-				ChromeType: lacros.ChromeTypeLacros,
+				ChromeType: browser.TypeLacros,
 			},
 			Fixture:           "tabSwitchCUJWPRLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -42,7 +42,7 @@ func init() {
 			Name:      "trace",
 			ExtraData: []string{tabswitchcuj.WPRArchiveName},
 			Val: tabswitchcuj.TabSwitchParam{
-				ChromeType: lacros.ChromeTypeChromeOS,
+				ChromeType: browser.TypeAsh,
 				Tracing:    true,
 			},
 			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),

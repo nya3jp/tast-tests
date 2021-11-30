@@ -14,18 +14,9 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
-)
-
-// ChromeType indicates which type of Chrome browser to be used.
-type ChromeType string
-
-const (
-	// ChromeTypeChromeOS indicates we are using the ChromeOS system's Chrome browser.
-	ChromeTypeChromeOS ChromeType = "chromeos"
-	// ChromeTypeLacros indicates we are using lacros-chrome.
-	ChromeTypeLacros ChromeType = "lacros"
 )
 
 var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
@@ -33,16 +24,16 @@ var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 // Setup runs lacros-chrome if indicated by the given ChromeType and returns some objects and interfaces
 // useful in tests. If the ChromeType is ChromeTypeLacros, it will return a non-nil LacrosChrome instance or an error.
 // If the ChromeType is ChromeTypeChromeOS it will return a nil LacrosChrome instance.
-func Setup(ctx context.Context, f interface{}, crt ChromeType) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
+func Setup(ctx context.Context, f interface{}, crt browser.Type) (*chrome.Chrome, *launcher.LacrosChrome, ash.ConnSource, error) {
 	if _, ok := f.(chrome.HasChrome); !ok {
 		return nil, nil, nil, errors.Errorf("unrecognized FixtValue type: %v", f)
 	}
 	cr := f.(chrome.HasChrome).Chrome()
 
 	switch crt {
-	case ChromeTypeChromeOS:
+	case browser.TypeAsh:
 		return cr, nil, cr, nil
-	case ChromeTypeLacros:
+	case browser.TypeLacros:
 		f := f.(launcher.FixtValue)
 		l, err := launcher.LaunchLacrosChrome(ctx, f)
 		if err != nil {

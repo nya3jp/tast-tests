@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/testing"
@@ -19,7 +20,7 @@ import (
 
 // TestParam holds parameters of window arrangement cuj test variations.
 type TestParam struct {
-	ChromeType lacros.ChromeType
+	ChromeType browser.Type
 	Tablet     bool
 	Tracing    bool
 	Validation bool
@@ -44,7 +45,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 	cleanup := func(ctx context.Context) error { return nil }
 	closeAboutBlank := func(ctx context.Context) error { return nil }
 
-	if testParam.ChromeType == lacros.ChromeTypeChromeOS {
+	if testParam.ChromeType == browser.TypeAsh {
 		if testParam.Tablet {
 			var err error
 			if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
@@ -84,7 +85,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 		return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to conect to test api")
 	}
 
-	if testParam.ChromeType == lacros.ChromeTypeLacros {
+	if testParam.ChromeType == browser.TypeLacros {
 		closeAboutBlank = func(ctx context.Context) error {
 			return l.CloseAboutBlank(ctx, tconn, 0)
 		}

@@ -33,7 +33,7 @@ import (
 )
 
 type videoCUJTestParam struct {
-	ct      lacros.ChromeType
+	ct      browser.Type
 	tablet  bool
 	tracing bool
 }
@@ -57,34 +57,34 @@ func init() {
 			Name:    "clamshell",
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
-				ct: lacros.ChromeTypeChromeOS,
+				ct: browser.TypeAsh,
 			},
 		}, {
 			Name:    "clamshell_trace",
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
-				ct:      lacros.ChromeTypeChromeOS,
+				ct:      browser.TypeAsh,
 				tracing: true,
 			},
 		}, {
 			Name:    "tablet",
 			Fixture: "loggedInToCUJUser",
 			Val: videoCUJTestParam{
-				ct:     lacros.ChromeTypeChromeOS,
+				ct:     browser.TypeAsh,
 				tablet: true,
 			},
 		}, {
 			Name:    "lacros",
 			Fixture: "loggedInToCUJUserLacros",
 			Val: videoCUJTestParam{
-				ct: lacros.ChromeTypeLacros,
+				ct: browser.TypeLacros,
 			},
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			Name:    "lacros_tablet",
 			Fixture: "loggedInToCUJUserLacros",
 			Val: videoCUJTestParam{
-				ct:     lacros.ChromeTypeLacros,
+				ct:     browser.TypeLacros,
 				tablet: true,
 			},
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -104,7 +104,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
 
-	if testParam.ct == lacros.ChromeTypeChromeOS {
+	if testParam.ct == browser.TypeAsh {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
 	} else {

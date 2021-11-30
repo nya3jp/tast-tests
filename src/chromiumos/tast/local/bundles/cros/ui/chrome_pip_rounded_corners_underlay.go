@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -45,12 +46,12 @@ func init() {
 		Data:         []string{"bear-320x240.h264.mp4", "pip_video.html"},
 		Params: []testing.Param{{
 			Fixture: "chromeGraphics",
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "chromeGraphicsLacros",
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
@@ -61,7 +62,7 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	chromeType := s.Param().(lacros.ChromeType)
+	chromeType := s.Param().(browser.Type)
 	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), chromeType)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
@@ -107,9 +108,9 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 
 	var pipClassName string
 	switch chromeType {
-	case lacros.ChromeTypeChromeOS:
+	case browser.TypeAsh:
 		pipClassName = "PictureInPictureWindow"
-	case lacros.ChromeTypeLacros:
+	case browser.TypeLacros:
 		pipClassName = "Widget"
 	}
 	pipWindow := nodewith.Name("Picture in picture").ClassName(pipClassName).Onscreen().First()

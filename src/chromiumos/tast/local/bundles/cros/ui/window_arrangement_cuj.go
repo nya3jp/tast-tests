@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -46,21 +46,21 @@ func init() {
 			{
 				Name: "clamshell_mode",
 				Val: windowarrangementcuj.TestParam{
-					ChromeType: lacros.ChromeTypeChromeOS,
+					ChromeType: browser.TypeAsh,
 				},
 				Fixture: "chromeLoggedIn",
 			},
 			{
 				Name: "tablet_mode",
 				Val: windowarrangementcuj.TestParam{
-					ChromeType: lacros.ChromeTypeChromeOS,
+					ChromeType: browser.TypeAsh,
 					Tablet:     true,
 				},
 			},
 			{
 				Name: "tablet_mode_trace",
 				Val: windowarrangementcuj.TestParam{
-					ChromeType: lacros.ChromeTypeChromeOS,
+					ChromeType: browser.TypeAsh,
 					Tablet:     true,
 					Tracing:    true,
 				},
@@ -68,7 +68,7 @@ func init() {
 			{
 				Name: "tablet_mode_validation",
 				Val: windowarrangementcuj.TestParam{
-					ChromeType: lacros.ChromeTypeChromeOS,
+					ChromeType: browser.TypeAsh,
 					Tablet:     true,
 					Validation: true,
 				},
@@ -76,7 +76,7 @@ func init() {
 			{
 				Name: "lacros",
 				Val: windowarrangementcuj.TestParam{
-					ChromeType: lacros.ChromeTypeLacros,
+					ChromeType: browser.TypeLacros,
 				},
 				Fixture:           "lacrosUI",
 				ExtraSoftwareDeps: []string{"lacros"},
@@ -213,7 +213,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 
 	// Only show pip window for ash-chrome.
 	// TODO(crbug/1232492): Remove this after fix.
-	if testParam.ChromeType == lacros.ChromeTypeChromeOS {
+	if testParam.ChromeType == browser.TypeAsh {
 		// The second tab enters the system PiP mode.
 		webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)
 		pipButton := nodewith.Name("Enter Picture-in-Picture").Role(role.Button).Ancestor(webview)
@@ -226,7 +226,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Lacros specific setup.
-	if testParam.ChromeType == lacros.ChromeTypeLacros {
+	if testParam.ChromeType == browser.TypeLacros {
 		// Close about:blank created at startup after creating other tabs.
 		if err := closeAboutBlank(ctx); err != nil {
 			s.Fatal("Failed to close about:blank: ", err)

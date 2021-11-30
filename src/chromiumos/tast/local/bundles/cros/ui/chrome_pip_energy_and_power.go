@@ -34,7 +34,7 @@ import (
 
 type chromePIPEnergyAndPowerTestParams struct {
 	bigPIP     bool
-	chromeType lacros.ChromeType
+	chromeType browser.Type
 }
 
 func init() {
@@ -49,21 +49,21 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "small",
 			Fixture: "chromeLoggedIn",
-			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
+			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: false, chromeType: browser.TypeAsh},
 		}, {
 			Name:    "big",
 			Fixture: "chromeLoggedIn",
-			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
+			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: true, chromeType: browser.TypeAsh},
 		}, {
 			Name:              "small_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "lacros",
-			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: false, chromeType: browser.TypeLacros},
 		}, {
 			Name:              "big_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "lacros",
-			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: true, chromeType: browser.TypeLacros},
 		}},
 	})
 }
@@ -72,10 +72,10 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromePIPEnergyAndPowerTestParams)
 	var pipClassName, settingsTitle string
 	switch params.chromeType {
-	case lacros.ChromeTypeChromeOS:
+	case browser.TypeAsh:
 		pipClassName = "PictureInPictureWindow"
 		settingsTitle = "Chrome - Settings"
-	case lacros.ChromeTypeLacros:
+	case browser.TypeLacros:
 		pipClassName = "Widget"
 		settingsTitle = "Settings - Google Chrome"
 	}

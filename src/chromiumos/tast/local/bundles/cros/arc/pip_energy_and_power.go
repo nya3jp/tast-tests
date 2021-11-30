@@ -32,7 +32,7 @@ import (
 
 type arcPIPEnergyAndPowerTestParams struct {
 	bigPIP     bool
-	chromeType lacros.ChromeType
+	chromeType browser.Type
 }
 
 func init() {
@@ -45,42 +45,42 @@ func init() {
 		Timeout:      6 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "small",
-			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "big",
-			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "small_lacros",
-			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: browser.TypeLacros},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			Fixture:           "lacrosWithArcBooted",
 		}, {
 			Name:              "big_lacros",
-			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: browser.TypeLacros},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			Fixture:           "lacrosWithArcBooted",
 		}, {
 			Name:              "small_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "big_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: browser.TypeAsh},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "arcBooted",
 		}, {
 			Name:              "small_lacros_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: false, chromeType: browser.TypeLacros},
 			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 			Fixture:           "lacrosWithArcBooted",
 		}, {
 			Name:              "big_lacros_vm",
-			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			Val:               arcPIPEnergyAndPowerTestParams{bigPIP: true, chromeType: browser.TypeLacros},
 			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 			Fixture:           "lacrosWithArcBooted",
 		}},
@@ -98,14 +98,14 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	var cs ash.ConnSource
 	var browserWindowType ash.WindowType
 	switch params.chromeType {
-	case lacros.ChromeTypeChromeOS:
+	case browser.TypeAsh:
 		cr = s.FixtValue().(*arc.PreData).Chrome
 		cs = cr
 		browserWindowType = ash.WindowTypeBrowser
-	case lacros.ChromeTypeLacros:
+	case browser.TypeLacros:
 		var l *launcher.LacrosChrome
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, lacros.ChromeTypeLacros)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}

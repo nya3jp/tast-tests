@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -312,7 +311,7 @@ const (
 type statBucketKey struct {
 	metric string
 	stat   statType
-	crt    lacros.ChromeType
+	crt    browser.Type
 }
 
 type metricsRecorder struct {

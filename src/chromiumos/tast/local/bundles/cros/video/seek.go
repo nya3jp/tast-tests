@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
@@ -19,7 +20,7 @@ import (
 type seekTest struct {
 	filename   string // File name to play back.
 	numSeeks   int    // Amount of times to seek into the <video>.
-	chromeType lacros.ChromeType
+	chromeType browser.Type
 }
 
 func init() {
@@ -39,7 +40,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_av1.mp4",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_av1.mp4"},
@@ -50,7 +51,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_h264.mp4",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_h264.mp4"},
@@ -61,7 +62,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_h264.mp4",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeLacros,
+				chromeType: browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_h264.mp4"},
@@ -72,7 +73,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_hevc.mp4",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_hevc.mp4"},
@@ -83,7 +84,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp8.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp8.webm"},
@@ -94,7 +95,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp9.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp9.webm"},
@@ -105,7 +106,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp9.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeLacros,
+				chromeType: browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp9.webm"},
@@ -116,7 +117,7 @@ func init() {
 			Val: seekTest{
 				filename:   "smpte_bars_resolution_ladder.av1.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.av1.webm"},
@@ -127,7 +128,7 @@ func init() {
 			Val: seekTest{
 				filename:   "smpte_bars_resolution_ladder.h264.mp4",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
@@ -138,7 +139,7 @@ func init() {
 			Val: seekTest{
 				filename:   "smpte_bars_resolution_ladder.hevc.mp4",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.hevc.mp4"},
@@ -149,7 +150,7 @@ func init() {
 			Val: seekTest{
 				filename:   "smpte_bars_resolution_ladder.vp8.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm"},
@@ -160,7 +161,7 @@ func init() {
 			Val: seekTest{
 				filename:   "smpte_bars_resolution_ladder.vp9.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
@@ -171,7 +172,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_av1.mp4",
 				numSeeks:   1000,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_av1.mp4"},
@@ -183,7 +184,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp8.webm",
 				numSeeks:   1000,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_vp8.webm"},
@@ -195,7 +196,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp9.webm",
 				numSeeks:   1000,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_vp9.webm"},
@@ -207,7 +208,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_h264.mp4",
 				numSeeks:   1000,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_h264.mp4"},
@@ -219,7 +220,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_hevc.mp4",
 				numSeeks:   1000,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_hevc.mp4"},
@@ -231,7 +232,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_h264.mp4",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_h264.mp4"},
@@ -242,7 +243,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp8.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp8.webm"},
@@ -253,7 +254,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp9.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"720_vp9.webm"},
@@ -264,7 +265,7 @@ func init() {
 			Val: seekTest{
 				filename:   "smpte_bars_resolution_ladder.h264.mp4",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.h264.mp4"},
@@ -275,7 +276,7 @@ func init() {
 			Val: seekTest{
 				filename:   "smpte_bars_resolution_ladder.vp8.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp8.webm"},
@@ -286,7 +287,7 @@ func init() {
 			Val: seekTest{
 				filename:   "smpte_bars_resolution_ladder.vp9.webm",
 				numSeeks:   25,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"smpte_bars_resolution_ladder.vp9.webm"},
@@ -297,7 +298,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp8.webm",
 				numSeeks:   1000,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_vp8.webm"},
@@ -309,7 +310,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_vp9.webm",
 				numSeeks:   1000,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_vp9.webm"},
@@ -321,7 +322,7 @@ func init() {
 			Val: seekTest{
 				filename:   "720_h264.mp4",
 				numSeeks:   1000,
-				chromeType: lacros.ChromeTypeChromeOS,
+				chromeType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
 			ExtraData:         []string{"720_h264.mp4"},

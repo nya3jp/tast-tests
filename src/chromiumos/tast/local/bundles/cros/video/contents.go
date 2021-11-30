@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -17,7 +18,7 @@ import (
 type contentsParams struct {
 	fileName    string
 	refFileName string
-	chromeType  lacros.ChromeType
+	chromeType  browser.Type
 }
 
 func init() {
@@ -36,7 +37,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-360p.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-360p.h264.mp4", "still-colors-360p.ref.png"},
@@ -49,7 +50,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
@@ -62,7 +63,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
-				chromeType:  lacros.ChromeTypeLacros,
+				chromeType:  browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
@@ -74,7 +75,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-480p.h264.mp4",
 				refFileName: "still-colors-480p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4", "still-colors-480p.ref.png"},
@@ -86,7 +87,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720p.h264.mp4",
 				refFileName: "still-colors-720p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720p.h264.mp4", "still-colors-720p.ref.png"},
@@ -98,7 +99,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-1080p.h264.mp4",
 				refFileName: "still-colors-1080p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-1080p.h264.mp4", "still-colors-1080p.ref.png"},
@@ -110,7 +111,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-360p.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-360p.h264.mp4", "still-colors-360p.ref.png"},
@@ -122,7 +123,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
@@ -134,7 +135,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
-				chromeType:  lacros.ChromeTypeLacros,
+				chromeType:  browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
@@ -146,7 +147,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720x480-cropped-to-640x360.h264.mp4",
 				refFileName: "still-colors-360p.ref.png",
-				chromeType:  lacros.ChromeTypeLacros,
+				chromeType:  browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720x480-cropped-to-640x360.h264.mp4", "still-colors-360p.ref.png"},
@@ -157,7 +158,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-480p.h264.mp4",
 				refFileName: "still-colors-480p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-480p.h264.mp4", "still-colors-480p.ref.png"},
@@ -168,7 +169,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-720p.h264.mp4",
 				refFileName: "still-colors-720p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-720p.h264.mp4", "still-colors-720p.ref.png"},
@@ -179,7 +180,7 @@ func init() {
 			Val: contentsParams{
 				fileName:    "still-colors-1080p.h264.mp4",
 				refFileName: "still-colors-1080p.ref.png",
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "still-colors-1080p.h264.mp4", "still-colors-1080p.ref.png"},

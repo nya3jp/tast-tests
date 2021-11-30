@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/playback"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
@@ -18,7 +19,7 @@ import (
 type playbackPerfParams struct {
 	fileName    string
 	decoderType playback.DecoderType
-	chromeType  lacros.ChromeType
+	chromeType  browser.Type
 }
 
 func init() {
@@ -35,7 +36,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -46,7 +47,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "240p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -57,7 +58,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "360p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -68,7 +69,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -79,7 +80,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -90,7 +91,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeLacros,
+				chromeType:  browser.TypeLacros,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs", "lacros"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -101,7 +102,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"video.html", "1080p_30fps_300frames.h264.mp4"},
@@ -111,7 +112,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "proprietary_codecs"},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.h264.mp4"},
@@ -121,7 +122,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "proprietary_codecs"},
 			ExtraData:         []string{"video.html", "2160p_30fps_300frames.h264.mp4"},
@@ -131,7 +132,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K60, "proprietary_codecs"},
 			ExtraData:         []string{"video.html", "2160p_60fps_600frames.h264.mp4"},
@@ -141,7 +142,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "144p_30fps_300frames.vp8.webm"},
@@ -152,7 +153,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "240p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "240p_30fps_300frames.vp8.webm"},
@@ -163,7 +164,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "360p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "360p_30fps_300frames.vp8.webm"},
@@ -174,7 +175,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "480p_30fps_300frames.vp8.webm"},
@@ -185,7 +186,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720p_30fps_300frames.vp8.webm"},
@@ -196,7 +197,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "1080p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
@@ -206,7 +207,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60},
@@ -216,7 +217,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "2160p_30fps_300frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K},
@@ -226,7 +227,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "2160p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_4K60},
@@ -236,7 +237,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "144p_30fps_300frames.vp9.webm"},
@@ -247,7 +248,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "240p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "240p_30fps_300frames.vp9.webm"},
@@ -258,7 +259,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "360p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "360p_30fps_300frames.vp9.webm"},
@@ -269,7 +270,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "480p_30fps_300frames.vp9.webm"},
@@ -280,7 +281,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720p_30fps_300frames.vp9.webm"},
@@ -291,7 +292,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeLacros,
+				chromeType:  browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"video.html", "720p_30fps_300frames.vp9.webm"},
@@ -302,7 +303,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "1080p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
@@ -312,7 +313,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60},
@@ -322,7 +323,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "2160p_30fps_300frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K},
@@ -332,7 +333,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60},
@@ -342,7 +343,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.av1.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "480p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
@@ -352,7 +353,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.av1.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "720p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
@@ -362,7 +363,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_60fps_600frames.av1.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "720p_60fps_600frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60},
@@ -372,7 +373,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.av1.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "1080p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
@@ -382,7 +383,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.av1.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_60},
@@ -392,7 +393,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.av1.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "2160p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_4K},
@@ -402,7 +403,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.av1.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "2160p_60fps_600frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1_4K60},
@@ -412,7 +413,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "144p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -423,7 +424,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "240p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -434,7 +435,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "360p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -445,7 +446,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -456,7 +457,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -467,7 +468,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"video.html", "1080p_30fps_300frames.hevc.mp4"},
@@ -477,7 +478,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC60, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.hevc.mp4"},
@@ -487,7 +488,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"video.html", "2160p_30fps_300frames.hevc.mp4"},
@@ -497,7 +498,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.hevc.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"video.html", "2160p_60fps_600frames.hevc.mp4"},
@@ -507,7 +508,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.hevc10.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K10BPP, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"video.html", "2160p_30fps_300frames.hevc10.mp4"},
@@ -517,7 +518,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.hevc10.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC4K60_10BPP, "proprietary_codecs", "protected_content"},
 			ExtraData:         []string{"video.html", "2160p_60fps_600frames.hevc10.mp4"},
@@ -527,7 +528,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -538,7 +539,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
@@ -549,7 +550,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.h264.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraData:         []string{"video.html", "1080p_30fps_300frames.h264.mp4"},
@@ -559,7 +560,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.h264.mp4"},
@@ -569,7 +570,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.vp8.webm",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "480p_30fps_300frames.vp8.webm"},
@@ -579,7 +580,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp8.webm",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "720p_30fps_300frames.vp8.webm"},
@@ -589,7 +590,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp8.webm",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "1080p_30fps_300frames.vp8.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -598,7 +599,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp8.webm",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "1080p_60fps_600frames.vp8.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -607,7 +608,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.vp9.webm",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "480p_30fps_300frames.vp9.webm"},
@@ -617,7 +618,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.vp9.webm",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "720p_30fps_300frames.vp9.webm"},
@@ -627,7 +628,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp9.webm",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "1080p_30fps_300frames.vp9.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -636,7 +637,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp9.webm",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "1080p_60fps_600frames.vp9.webm"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -645,7 +646,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.av1.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "480p_30fps_300frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -654,7 +655,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.av1.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "720p_30fps_300frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -663,7 +664,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_60fps_600frames.av1.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "720p_60fps_600frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -672,7 +673,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.av1.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "1080p_30fps_300frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -681,7 +682,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.av1.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "1080p_60fps_600frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -690,7 +691,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_30fps_300frames.av1.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "2160p_30fps_300frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -699,7 +700,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.av1.mp4",
 				decoderType: playback.Software,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData: []string{"video.html", "2160p_60fps_600frames.av1.mp4"},
 			Fixture:   "chromeVideoWithSWDecoding",
@@ -708,7 +709,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "480p_30fps_300frames.av1.mp4",
 				decoderType: playback.LibGAV1,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"video.html", "480p_30fps_300frames.av1.mp4"},
@@ -718,7 +719,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_30fps_300frames.av1.mp4",
 				decoderType: playback.LibGAV1,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"video.html", "720p_30fps_300frames.av1.mp4"},
@@ -728,7 +729,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "720p_60fps_600frames.av1.mp4",
 				decoderType: playback.LibGAV1,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"video.html", "720p_60fps_600frames.av1.mp4"},
@@ -738,7 +739,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.av1.mp4",
 				decoderType: playback.LibGAV1,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"video.html", "1080p_30fps_300frames.av1.mp4"},
@@ -748,7 +749,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.av1.mp4",
 				decoderType: playback.LibGAV1,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{"arm"},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.av1.mp4"},
@@ -758,7 +759,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.h264.mp4",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264_60, "video_decoder_legacy_supported", "proprietary_codecs"},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.h264.mp4"},
@@ -768,7 +769,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp8.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.vp8.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8_60, "video_decoder_legacy_supported"},
@@ -778,7 +779,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "1080p_60fps_600frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "1080p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_60, "video_decoder_legacy_supported"},
@@ -788,7 +789,7 @@ func init() {
 			Val: playbackPerfParams{
 				fileName:    "2160p_60fps_600frames.vp9.webm",
 				decoderType: playback.Hardware,
-				chromeType:  lacros.ChromeTypeChromeOS,
+				chromeType:  browser.TypeAsh,
 			},
 			ExtraData:         []string{"video.html", "2160p_60fps_600frames.vp9.webm"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9_4K60, "video_decoder_legacy_supported"},

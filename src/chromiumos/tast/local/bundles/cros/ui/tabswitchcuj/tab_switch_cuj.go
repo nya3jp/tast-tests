@@ -29,6 +29,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/webutil"
@@ -45,8 +46,8 @@ const (
 
 // TabSwitchParam holds parameters of tab switch cuj test variations.
 type TabSwitchParam struct {
-	ChromeType lacros.ChromeType // Chrome type.
-	Tracing    bool              // Whether to turn on tracing.
+	ChromeType browser.Type // Chrome type.
+	Tracing    bool         // Whether to turn on tracing.
 }
 
 // findAnchorURLs returns the unique URLs of the anchors, which matches the pattern.
@@ -104,7 +105,7 @@ func Run(ctx context.Context, s *testing.State) {
 	var bTconn *chrome.TestConn
 
 	param := s.Param().(TabSwitchParam)
-	if param.ChromeType == lacros.ChromeTypeChromeOS {
+	if param.ChromeType == browser.TypeAsh {
 		cr = s.PreValue().(*chrome.Chrome)
 		cs = cr
 
