@@ -28,6 +28,8 @@ func init() {
 		Contacts: []string{"chenghaoyang@chromium.org", "chinglinyu@chromium.org"},
 		Data:     []string{tracing.TBMTracedProbesConfigFile, tracing.TraceProcessor()},
 		Attr:     []string{"group:mainline"},
+		// TODO(b/208476320): Reenable when reven is fixed.
+		HardwareDeps: hwdep.SkipOnPlatform("reven"),
 	})
 }
 
