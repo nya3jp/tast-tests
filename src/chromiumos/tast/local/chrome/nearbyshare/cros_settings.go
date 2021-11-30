@@ -25,6 +25,7 @@ const (
 		`.querySelector("settings-nearby-share-subpage")`
 	showVisibilityDialogJS = nearbySettingsSubpageJS + `.showVisibilityDialog_ = true`
 	contactVisibilityJS    = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-contact-visibility-dialog").shadowRoot.getElementById("contactVisibility")`
+	onboardingPageJs       = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-receive-dialog").shadowRoot.querySelector("nearby-onboarding-page")`
 	contactsJS             = contactVisibilityJS + `.contacts`
 	setAllowedConactsJS    = contactVisibilityJS + `.contactManager_.setAllowedContacts`
 	settingsURL            = "chrome://os-settings/"
@@ -73,6 +74,18 @@ func LaunchNearbySettings(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 	return &NearbySettings{settingsConn}, nil
 }
 
+// GetNearbySettings connects to an existing OS settings Nearby Share subpage.
+func GetNearbySettings(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*NearbySettings, error) {
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURLPrefix(settingsURL+nearbySettingsURL))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start Chrome session to OS settings")
+	}
+	if err = settingsConn.WaitForExpr(ctx, nearbySettingsSubpageJS); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for nearby subpage to load")
+	}
+	return &NearbySettings{settingsConn}, nil
+}
+
 // ShowVisibilityDialog shows the visibility settings dialog, where we can choose a visibility setting and select which contacts to appear to.
 func (n *NearbySettings) ShowVisibilityDialog(ctx context.Context) error {
 	if err := n.conn.Eval(ctx, showVisibilityDialogJS, nil); err != nil {
@@ -84,6 +97,14 @@ func (n *NearbySettings) ShowVisibilityDialog(ctx context.Context) error {
 	// Wait for the contacts property to load.
 	if err := n.conn.WaitForExpr(ctx, contactsJS); err != nil {
 		return errors.Wrap(err, "failed waiting for contacts to load")
+	}
+	return nil
+}
+
+// WaitForOnboardingFlow waits for the Nearby Share setup page to open.
+func (n *NearbySettings) WaitForOnboardingFlow(ctx context.Context) error {
+	if err := n.conn.WaitForExpr(ctx, nearbySettingsSubpageJS); err != nil {
+		return errors.Wrap(err, "failed waiting for onboarding page to load")
 	}
 	return nil
 }

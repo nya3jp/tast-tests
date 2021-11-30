@@ -68,16 +68,22 @@ func AcceptIncomingShareNotification(ctx context.Context, tconn *chrome.TestConn
 }
 
 // AcceptFastInitiationNotification accepts an incoming fast initiation notification. Fast initiation notifications are shown when a nearby device is trying to discover a share target.
-func AcceptFastInitiationNotification(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
+func AcceptFastInitiationNotification(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration, isSetupComplete bool) error {
+	message := "Set up Nearby Share to receive and send files with people around you"
+	btnName := "SET UP"
+	if isSetupComplete {
+		message = "To receive and accept files with people around you, become visible"
+		btnName = "ENABLE"
+	}
 	if _, err := ash.WaitForNotification(ctx, tconn, timeout,
 		ash.WaitTitleContains("Device nearby is sharing"),
-		ash.WaitMessageContains("To receive and accept files with people around you, become visible"),
+		ash.WaitMessageContains(message),
 	); err != nil {
 		return errors.Wrap(err, "failed to wait for fast init notification")
 	}
 
 	ui := uiauto.New(tconn)
-	btn := nodewith.Role(role.Button).Name("ENABLE").Ancestor(nodewith.Role(role.AlertDialog))
+	btn := nodewith.Role(role.Button).Name(btnName).Ancestor(nodewith.Role(role.AlertDialog))
 	if err := ui.LeftClick(btn)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click sharing notification's receive button")
 	}
