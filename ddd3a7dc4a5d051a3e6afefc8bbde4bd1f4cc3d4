@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c7dc1c_dc7c1dcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-30T09:15:41Z",
+      "side": 1,
+      "message": "LGTM with one comment...\n",
+      "revId": "ddd3a7dc4a5d051a3e6afefc8bbde4bd1f4cc3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da567afd_6a52fbc9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-11-30T09:15:41Z",
+      "side": 1,
+      "message": "defer fsConfigRaw.Close()",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "ddd3a7dc4a5d051a3e6afefc8bbde4bd1f4cc3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
