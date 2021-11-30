@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ff811c5_e6e89abe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-11-30T21:00:33Z",
+      "side": 1,
+      "message": "The test has passed enough times to be promoted: https://tastboard.corp.google.com/test/biod.BioCryptoInitSuccess",
+      "revId": "e0a646e3378efd9562d6e63296bcbde388bbc994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
