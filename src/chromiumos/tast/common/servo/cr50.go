@@ -12,6 +12,8 @@ import (
 
 // These are the Cr50 Servo controls which can be get/set with a string value.
 const (
+	CR50CCDLevel   StringControl = "cr50_ccd_level"
+	CR50Testlab    StringControl = "cr50_testlab"
 	CR50UARTCmd    StringControl = "cr50_uart_cmd"
 	CR50UARTRegexp StringControl = "cr50_uart_regexp"
 	CR50UARTStream StringControl = "cr50_uart_stream"
@@ -20,6 +22,13 @@ const (
 // These controls accept only "on" and "off" as values.
 const (
 	CR50UARTCapture OnOffControl = "cr50_uart_capture"
+)
+
+// CCD levels
+const (
+	Open   string = "open"
+	Lock   string = "lock"
+	Unlock string = "unlock"
 )
 
 // RunCR50Command runs the given command on the Cr50 on the device.
