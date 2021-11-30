@@ -66,5 +66,4 @@ const (
 	ActionTagEmoji           ActionTag = "Emoji"
 	ActionTagEmojiPicker     ActionTag = "EmojiPicker"
 	ActionTagEmojiSuggestion ActionTag = "EmojiSuggestion"
-	ActionTagMultiPaste      ActionTag = "MultiPaste"
 )

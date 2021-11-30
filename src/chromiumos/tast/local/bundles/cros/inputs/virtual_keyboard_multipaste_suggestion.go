@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
-	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -46,7 +45,6 @@ func VirtualKeyboardMultipasteSuggestion(ctx context.Context, s *testing.State) 
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -68,17 +66,11 @@ func VirtualKeyboardMultipasteSuggestion(ctx context.Context, s *testing.State) 
 
 	ash.SetClipboard(ctx, tconn, text)
 
-	if err := uc.RunAction(ctx, "Input from multipaste suggestion bar",
-		uiauto.Combine("paste text through multipaste suggestion bar",
-			its.ClickFieldUntilVKShown(inputField),
-			vkbCtx.TapMultipasteSuggestion(text),
-			util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), text),
-		),
-		&useractions.UserActionCfg{
-			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
-			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
-		},
-	); err != nil {
+	if err := uiauto.Combine("paste text through multipaste suggestion bar",
+		its.ClickFieldUntilVKShown(inputField),
+		vkbCtx.TapMultipasteSuggestion(text),
+		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), text),
+	)(ctx); err != nil {
 		s.Fatal("Fail to paste text through multipaste suggestion: ", err)
 	}
 }

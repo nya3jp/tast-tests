@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
-	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -49,7 +48,6 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	uc := s.PreValue().(pre.PreData).UserContext
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -78,29 +76,17 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 	ash.SetClipboard(ctx, tconn, text1)
 	ash.SetClipboard(ctx, tconn, text2)
 
-	if err := uc.RunAction(ctx, "Input from VK multipaste clipboard",
-		uiauto.Combine("navigate to multipaste virtual keyboard and paste text",
-			its.ClickFieldUntilVKShown(inputField),
-			vkbCtx.SwitchToMultipaste(),
-			vkbCtx.TapMultipasteItem(text1),
-			vkbCtx.TapMultipasteItem(text2),
-			util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
-		),
-		&useractions.UserActionCfg{
-			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
-			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
-		},
-	); err != nil {
+	if err := uiauto.Combine("navigate to multipaste virtual keyboard and paste text",
+		its.ClickFieldUntilVKShown(inputField),
+		vkbCtx.SwitchToMultipaste(),
+		vkbCtx.TapMultipasteItem(text1),
+		vkbCtx.TapMultipasteItem(text2),
+		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
+	)(ctx); err != nil {
 		s.Fatal("Fail to paste text through multipaste virtual keyboard: ", err)
 	}
 
-	if err := uc.RunAction(ctx, "remove item in VK multipaste clipboard",
-		vkbCtx.DeleteMultipasteItem(touchCtx, text1),
-		&useractions.UserActionCfg{
-			Tags:       []useractions.ActionTag{useractions.ActionTagMultiPaste},
-			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
-		},
-	); err != nil {
+	if err := vkbCtx.DeleteMultipasteItem(touchCtx, text1)(ctx); err != nil {
 		s.Fatal("Fail to long press to select and delete item: ", err)
 	}
 }
