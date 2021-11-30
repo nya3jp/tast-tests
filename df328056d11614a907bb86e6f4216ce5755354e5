@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a683a617_08c071de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-30T18:12:43Z",
+      "side": 1,
+      "message": "I reordered the CL chain and put this to the last as the others are relatively trivial than this.",
+      "revId": "df328056d11614a907bb86e6f4216ce5755354e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
