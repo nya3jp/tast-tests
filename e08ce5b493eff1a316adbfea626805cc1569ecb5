@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa059464_5daef153",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-11-30T01:26:55Z",
+      "side": 1,
+      "message": "I implemented this way before, but I found golang can check where we use the New() function, so we don\u0027t need to leave the legacy code here.",
+      "parentUuid": "c63ba5be_4140dce0",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 8
+      },
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebdb5fc7_6dfdcb9b",
         "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
         "patchSetId": 1
@@ -107,6 +131,42 @@
       "writtenOn": "2021-11-30T01:21:52Z",
       "side": 1,
       "message": "Add:\nTODO(b/203608939): Clean up code path without \u0027--display_level\u0027 argument after all chart upgrade to latest version.",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aab3527_0f773a30",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-11-30T01:26:55Z",
+      "side": 1,
+      "message": "we can\u0027t clean it, we don\u0027t know the default display level value of the script.\nIt uses the default value without the argument.\nIf we clean the code, we need to set the default value in golang.",
+      "parentUuid": "a2aa3826_5319055b",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f87a12_bbd49591",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-11-30T01:26:55Z",
+      "side": 1,
+      "message": "hello seewaifu@\nI uploaded a new patchset for the comment.\nCould you please vote again? thanks.",
+      "parentUuid": "49f05dea_8e64055b",
       "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
