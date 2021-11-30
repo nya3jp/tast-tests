@@ -107,13 +107,13 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
 	} else {
-		var l *lacros.LacrosChrome
+		var l *lacros.Lacros
 		var err error
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.bt)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		defer lacros.CloseLacrosChrome(ctx, l)
+		defer lacros.CloseLacros(ctx, l)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)

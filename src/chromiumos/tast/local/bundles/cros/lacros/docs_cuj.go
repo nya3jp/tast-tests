@@ -94,8 +94,8 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 
 	// TODO(crbug.com/1263337): We should use faillog to assist debugging here, but it's broken
 	// currently for Shelf launches. In the meantime, grab the log manually before exiting.
-	if errCopy := fsutil.CopyFile(filepath.Join(lacros.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros-shelf.log")); errCopy != nil {
-		s.Log("Failed to copy lacros.log from LacrosUserDataDir to the OutDir ", errCopy)
+	if errCopy := fsutil.CopyFile(filepath.Join(lacros.UserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros-shelf.log")); errCopy != nil {
+		s.Log("Failed to copy lacros.log from lacros.UserDataDir to the OutDir ", errCopy)
 	}
 
 	// Run against lacros-chrome.
