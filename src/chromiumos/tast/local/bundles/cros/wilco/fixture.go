@@ -147,8 +147,13 @@ func (w *wilcoDTCFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 
 	// Verify that wilco_dtc_supportd daemon started by policy.
-	if _, err := wilco.SupportdPID(ctx); err != nil {
-		s.Fatal("Failed to get Wilco DTC Support Daemon PID: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := wilco.SupportdPID(ctx); err != nil {
+			return errors.Wrap(err, "failed to get Wilco DTC Support daemon PID")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for Wilco DTC Support Daemon to start: ", err)
 	}
 
 	// Restart wilco_dtc_supportd daemon in a test mode to collect more verbose logs.
