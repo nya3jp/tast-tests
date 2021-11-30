@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
@@ -32,19 +33,19 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Val:               lacros.ChromeTypeChromeOS,
+			Val:               browser.TypeAsh,
 			Fixture:           "chromeLoggedIn",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		}, {
 			Name:              "lacros",
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// Pilot test on "noibat" that has HDMI dongle installed.
 			Name:              "noibat",
-			Val:               lacros.ChromeTypeChromeOS,
+			Val:               browser.TypeAsh,
 			Fixture:           "chromeLoggedIn",
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("noibat")),
 		}},
@@ -57,7 +58,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
@@ -90,7 +91,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		}
 
 		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
-		if i == 0 && s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
 			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
 				s.Fatal("Failed to close about:blank: ", err)
 			}

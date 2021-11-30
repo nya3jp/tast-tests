@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/testing"
@@ -29,14 +29,14 @@ func init() {
 		Params: []testing.Param{
 			{
 				Pre: pre.ChromeCameraPerf(),
-				Val: lacros.ChromeTypeChromeOS,
+				Val: browser.TypeAsh,
 			},
 			{
 				Name:              "lacros",
 				Fixture:           "chromeCameraPerfLacros",
 				ExtraSoftwareDeps: []string{"lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
-				Val:               lacros.ChromeTypeLacros,
+				Val:               browser.TypeLacros,
 			},
 		},
 	})
@@ -52,7 +52,7 @@ func init() {
 // used as an external USB camera.
 func GetUserMediaPerf(ctx context.Context, s *testing.State) {
 	var cr getusermedia.ChromeInterface
-	runLacros := s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros
+	runLacros := s.Param().(browser.Type) == browser.TypeLacros
 	if runLacros {
 		var err error
 		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
