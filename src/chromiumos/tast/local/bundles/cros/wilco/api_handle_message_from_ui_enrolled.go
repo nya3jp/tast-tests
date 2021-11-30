@@ -28,7 +28,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"vm_host", "wilco", "chrome"},
-		Fixture:      "wilcoDTCAllowed",
+		Fixture:      "wilcoDTCAllowedVMTestMode",
 	})
 }
 
