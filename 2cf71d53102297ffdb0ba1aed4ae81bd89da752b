@@ -88,6 +88,24 @@
       "parentUuid": "b0783985_221b65ea",
       "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29debd49_9f204f76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-11-30T01:50:27Z",
+      "side": 1,
+      "message": "Got it. To improve the arcappcompat tests stability commented some of the test cases, crrev.com/c/3307196 until the tast framework related issues, b/166637700, b/200214797 are resolved.",
+      "parentUuid": "5de75b1e_2bd12fe4",
+      "revId": "2cf71d53102297ffdb0ba1aed4ae81bd89da752b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
