@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fdebc7_333bc6e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-30T20:59:20Z",
+      "side": 1,
+      "message": "Removing tast owners as you should get approval from local team first :) ",
+      "revId": "e67e1255aaf044a5f473077911b16f645466c5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
