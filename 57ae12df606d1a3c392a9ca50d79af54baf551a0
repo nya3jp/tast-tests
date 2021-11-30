@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19cb1259_18df5faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-11-30T23:33:26Z",
+      "side": 1,
+      "message": "No apology needed, thank you for all of your help and patience with this change! :D",
+      "parentUuid": "a7ce3388_582b87c3",
+      "revId": "57ae12df606d1a3c392a9ca50d79af54baf551a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5bfa91_852205fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-11-30T23:33:26Z",
+      "side": 1,
+      "message": "Hello Shijin, thank you for calling this out! I was wanting to keep these, at least until the Bluetooth revamp is fully launched, since these actually test the surfaces with the flag disabled. I can go ahead and make a change to circle back on these tests once the feature is fully launched in a follow-up change if that is okay?",
+      "parentUuid": "d55925fe_ac31e497",
+      "revId": "57ae12df606d1a3c392a9ca50d79af54baf551a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a812e2e7_616ff3ae",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-11-30T02:11:37Z",
       "side": 1,
       "message": "I\u0027d suggest doing this in Reset as well (TearDown is only called once after all tests run; Reset is called after each test)",
+      "range": {
+        "startLine": 72,
+        "startChar": 43,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "57ae12df606d1a3c392a9ca50d79af54baf551a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075a6583_4f3329f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-11-30T23:33:26Z",
+      "side": 1,
+      "message": "Sounds good to me, done!",
+      "parentUuid": "a812e2e7_616ff3ae",
       "range": {
         "startLine": 72,
         "startChar": 43,
