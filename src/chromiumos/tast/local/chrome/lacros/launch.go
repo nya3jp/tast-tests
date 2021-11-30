@@ -151,7 +151,13 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 		"-s", lacrosfixt.MojoSocketPath, filepath.Join(f.LacrosPath(), "chrome")}, args...)...)
 	cmd.Env = append(os.Environ(), "EGL_PLATFORM=surfaceless", "XDG_RUNTIME_DIR=/run/chrome")
 
-	if logFile, err := os.Create(lacrosfaillog.LogFile(ctx)); err != nil {
+	// Ensure logfile directory is created. If lacros is launched via the shelf,
+	// this is automatically created. But, we are launching via command line.
+	if err := os.MkdirAll(filepath.Dir(lacrosfixt.LacrosLogPath), 0700); err != nil {
+		testing.ContextLog(ctx, "Failed to create lacros.log directory: ", err)
+	}
+
+	if logFile, err := os.Create(lacrosfixt.LacrosLogPath); err != nil {
 		testing.ContextLog(ctx, "Failed to create lacros.log file: ", err)
 	} else {
 		defer logFile.Close()
