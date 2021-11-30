@@ -63,6 +63,30 @@
       },
       "revId": "d2c5ede7896d22ae40749789e51c18430e93f975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c47b5f9_8233cfcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-30T03:07:40Z",
+      "side": 1,
+      "message": "Oh hmm, not directly but what I\u0027ve done is to use `cut`\n(as in `cut -b WxHx1.5` for a YUV frame, which saves the\nresulting slices in individual files) then sending those\nto md5sum.\n\nBut I\u0027d say calculating here the MD5SUMs is not an issue,\nwhat I suggested was to put |gotMD5s| in l.160 in a file\non disk and call /usr/local/graphics/validate with it\nand a golden file. WDYT?",
+      "parentUuid": "f0384bff_78ffdf95",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 12
+      },
+      "revId": "d2c5ede7896d22ae40749789e51c18430e93f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
