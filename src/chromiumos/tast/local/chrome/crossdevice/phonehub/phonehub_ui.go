@@ -6,6 +6,7 @@ package phonehub
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -29,6 +30,10 @@ const (
 		`.querySelector("settings-multidevice-subpage")`
 	phoneHubToggleJS = multideviceSubpageJS +
 		`.shadowRoot.getElementById("phoneHubItem")` +
+		`.shadowRoot.querySelector("settings-multidevice-feature-toggle")` +
+		`.shadowRoot.getElementById("toggle")`
+	recentPhotosToggleJS = multideviceSubpageJS +
+		`.shadowRoot.getElementById("phoneHubCameraRollItem")` +
 		`.shadowRoot.querySelector("settings-multidevice-feature-toggle")` +
 		`.shadowRoot.getElementById("toggle")`
 	featureCheckedJS               = `.checked`
@@ -183,5 +188,69 @@ func ToggleSilencePhonePod(ctx context.Context, tconn *chrome.TestConn, silence 
 	if err := WaitForPhoneSilenced(ctx, tconn, silence, 15*time.Second); err != nil {
 		return errors.Wrap(err, "failed waiting for Silence Phone pod to be toggled after clicking")
 	}
+	return nil
+}
+
+// FindRecentPhotosOptInButton returns a finder which locates the opt-in button for the Recent Photos feature.
+func FindRecentPhotosOptInButton() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName("CameraRollView")).Name("Turn on").Role(role.Button)
+}
+
+// OptInRecentPhotos enables the Recent Photos feature by clicking on the opt-in button displayed in the Phone Hub bubble.
+func OptInRecentPhotos(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	if err := ui.LeftClick(FindRecentPhotosOptInButton())(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on the Recent Photos opt-in button")
+	}
+	return nil
+}
+
+// DownloadMostRecentPhoto downloads the first photo shown in Phone Hub's Recent Photos section to Tote.
+func DownloadMostRecentPhoto(ctx context.Context, tconn *chrome.TestConn) error {
+	mostRecentPhotoThumbnail := nodewith.Ancestor(PhoneHubTray).ClassName("CameraRollThumbnail").First()
+	// It might take some time to receive and display the recent photo thumbnails.
+	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
+	if err := uiauto.Combine("download the first photo displayed in the Recent Photos section",
+		ui.LeftClick(mostRecentPhotoThumbnail),
+		ui.LeftClick(nodewith.Role(role.MenuItem).Name("Download")),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to download recent photo")
+	}
+	return nil
+}
+
+// ToggleRecentPhotosSetting toggles the Recent Photos setting using JS. This assumes that a connected device has already been paired.
+func ToggleRecentPhotosSetting(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, enable bool) error {
+	_, err := ossettings.Launch(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch OS settings")
+	}
+	settingsConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(settingsURL))
+	if err != nil {
+		return errors.Wrap(err, "failed to start Chrome session to OS settings")
+	}
+	defer settingsConn.Close()
+
+	_, err = ossettings.LaunchAtPageURL(ctx, tconn, cr, connectedDevicesSettingsURL, func(context.Context) error { return nil })
+	if err != nil {
+		return errors.Wrap(err, "failed to re-launch OS Settings to the multidevice feature page")
+	}
+
+	if err := settingsConn.WaitForExpr(ctx, recentPhotosToggleJS); err != nil {
+		return errors.Wrap(err, "failed to find the Recent Photos toggle")
+	}
+	var isEnabled bool
+	if err := settingsConn.Eval(ctx, recentPhotosToggleJS+featureCheckedJS, &isEnabled); err != nil {
+		return errors.Wrap(err, "failed to get Recent Photos toggle status")
+	}
+	if isEnabled != enable {
+		if err := settingsConn.Eval(ctx, recentPhotosToggleJS+`.click()`, nil); err != nil {
+			return errors.Wrap(err, "failed to click on Recent Photos toggle")
+		}
+	}
+	if err := settingsConn.WaitForExpr(ctx, recentPhotosToggleJS+featureCheckedJS+`===`+strconv.FormatBool(enable)); err != nil {
+		return errors.Wrapf(err, "failed to toggle Recent Photos to %v using JS", strconv.FormatBool(enable))
+	}
+
 	return nil
 }
