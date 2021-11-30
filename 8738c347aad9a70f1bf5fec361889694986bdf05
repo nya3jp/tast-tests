@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9373a33_d3d3c40a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-11-30T01:06:32Z",
+      "side": 1,
+      "message": "Hi Judy and Mohamed, I am not sure the reason, but seems this cl back to \"Active\" for review, could you please help take another look? Thanks",
+      "revId": "8738c347aad9a70f1bf5fec361889694986bdf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
