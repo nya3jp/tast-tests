@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6f73e4_875a9ca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-30T05:24:37Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "c12095c91f514eb093cec966d5ba2f6d60a90578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50d7837_cf6bd964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm_resizable_clamshell.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-11-30T05:24:37Z",
+      "side": 1,
+      "message": "nit: wait for? ditto below",
+      "range": {
+        "startLine": 689,
+        "startChar": 37,
+        "endLine": 689,
+        "endChar": 42
+      },
+      "revId": "c12095c91f514eb093cec966d5ba2f6d60a90578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
