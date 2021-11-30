@@ -128,6 +128,13 @@ func CryptohomeCrashDataSurvival(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to write files after remount post crash: ", err)
 	}
 
+	// Unmount before restart.
+	// Note that if we unmount here, we'll not test the case of restarting cryptohome when a vault is mounted.
+	// TODO(b/205502383): Add testing of unclean cryptohome shutdown and subsequent mount.
+	if err = utility.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount all: ", err)
+	}
+
 	// Restart all daemons to simulate a reboot.
 	if err := dc.RestartTPMDaemons(ctx); err != nil {
 		s.Fatal("Failed to restart TPM daemons: ", err)
