@@ -22,6 +22,30 @@
       },
       "revId": "f5fa358473ed8e18e293020683fc5c2cf99eed34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80eae4f4_8e4ae90a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-11-30T23:10:25Z",
+      "side": 1,
+      "message": "The test is failing because we recently enabled multipaste-suggestion feature by default, so during the test, if we add clipboard item first, we will see multipaste suggestions in the header bar instead of the multipaste keyboard entry icon.\n\nIn real scenario, if the user just copy something then trigger VK, they can just use multipaste suggestion bar to paste it. On the otherhand, user could trigger VK first, type something, copy something, then later go to clipboard VK to paste something. And it is possible that when the user is at multipaste keyboard and want to copy some existing text then paste it immediately.",
+      "parentUuid": "6fbeb0aa_242e0b6a",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "f5fa358473ed8e18e293020683fc5c2cf99eed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
