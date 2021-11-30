@@ -44,6 +44,7 @@ func NewCrossDeviceOnboarded(allFeatures, saveScreenRecording, lockFixture bool)
 	}
 	defaultOpts := []chrome.Option{
 		chrome.ExtraArgs("--enable-logging", "--vmodule="+strings.Join(tags, ",")),
+		chrome.EnableFeatures("PhoneHubCameraRoll"),
 	}
 	return &crossdeviceFixture{
 		opts:                defaultOpts,
