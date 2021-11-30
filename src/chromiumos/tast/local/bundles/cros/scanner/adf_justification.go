@@ -117,7 +117,8 @@ func runJustificationTest(ctx context.Context, s *testing.State, params scannerP
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WithESCLCapabilities(params.esclCapabilities),
 		usbprinter.WithOutputLogDirectory(tmpDir),
-		usbprinter.ExpectUdevEventOnStop())
+		usbprinter.ExpectUdevEventOnStop(),
+		usbprinter.WaitUntilConfigured())
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
@@ -126,9 +127,6 @@ func runJustificationTest(ctx context.Context, s *testing.State, params scannerP
 			s.Error("Failed to stop printer: ", err)
 		}
 	}()
-	if err := cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
-		s.Fatal("Failed to wait for CUPS configuration: ", err)
-	}
 
 	// Requesting total width is 100 mm
 	region := &lpb.ScanRegion{
