@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bea0772e_572b0f2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-11-30T18:25:06Z",
+      "side": 1,
+      "message": "FYI I\u0027m submitting crrev.com/c/3300400 that this CL would need to be re-based/merged onto before submission.",
+      "revId": "3e5539cdee3216a557a34b36f81942ac54fe35b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86692427_5fb4f7e3",
