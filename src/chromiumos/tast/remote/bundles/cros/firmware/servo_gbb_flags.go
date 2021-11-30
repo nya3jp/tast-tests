@@ -54,7 +54,7 @@ func dutControl(ctx context.Context, s *testing.State, svo *servo.Servo, command
 
 // ServoGBBFlags has been tested to pass with Suzy-Q, Servo V4, Servo V4 + ServoMicro in dual V4 mode.
 // Verified fail on Servo V4 + ServoMicro w/o dual v4 mode.
-// Has not been tested with CCD closed (assumed to fail), nor with C2D2 (assumed to pass).
+// Has not been tested with with C2D2 (assumed to pass).
 func ServoGBBFlags(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
 
@@ -75,6 +75,15 @@ func ServoGBBFlags(ctx context.Context, s *testing.State) {
 
 	if err := h.Servo.RequireCCD(ctx); err != nil {
 		s.Fatal("Servo does not have CCD: ", err)
+	}
+
+	if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
+		s.Fatal("Failed to get cr50_ccd_level")
+	} else if val != servo.Open {
+		s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+		if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+			s.Fatal("Failed to unlock CCD")
+		}
 	}
 
 	ccdSerial, err := h.Servo.GetCCDSerial(ctx)
