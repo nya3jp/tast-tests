@@ -67,7 +67,7 @@ func CCAUIMultiCamera(ctx context.Context, s *testing.State) {
 
 	if numCameras > 1 {
 		// Set grid option.
-		gridEnabled, err := app.ToggleGridOption(ctx)
+		gridEnabled, err := app.ToggleOption(ctx, cca.GridOption)
 		if err != nil {
 			s.Fatal("Toggle grid option failed: ", err)
 		}

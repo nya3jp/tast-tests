@@ -50,7 +50,7 @@ func CCAUIPreviewOptions(ctx context.Context, s *testing.State) {
 	// Check mirror for default camera.
 	firstCameraDefaultMirror := checkMirror()
 
-	if _, err := app.ToggleMirroringOption(ctx); err != nil {
+	if _, err := app.ToggleOption(ctx, cca.MirrorOption); err != nil {
 		s.Fatal("Toggling mirror option failed: ", err)
 	}
 
