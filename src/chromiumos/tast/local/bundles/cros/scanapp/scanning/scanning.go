@@ -112,7 +112,8 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithDescriptors(scannerParams.Descriptors),
 		usbprinter.WithAttributes(scannerParams.Attributes),
-		usbprinter.WithESCLCapabilities(scannerParams.EsclCaps))
+		usbprinter.WithESCLCapabilities(scannerParams.EsclCaps),
+		usbprinter.WaitUntilConfigured())
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
@@ -120,8 +121,8 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
 	}
-	if err = cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
-		s.Fatal("Failed to wait for printer to be idle: ", err)
+	if err = cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(ScannerName)); err != nil {
 		s.Fatal("Failed to wait for printer notification: ", err)

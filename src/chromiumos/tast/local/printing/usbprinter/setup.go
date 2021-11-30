@@ -286,7 +286,7 @@ func Start(ctx context.Context, fields ...PrinterInfoField) (instance PrinterIns
 
 	printerName := ""
 	if info.WaitUntilConfigured {
-		printerName, err = WaitPrinterConfigured(ctx, devInfo)
+		printerName, err = waitPrinterConfigured(ctx, devInfo)
 		if err != nil {
 			return instance, err
 		}
@@ -383,10 +383,10 @@ func attachUSBIPDevice(ctx context.Context, devInfo DevInfo) error {
 	return nil
 }
 
-// WaitPrinterConfigured waits for a printer which has the same VID/PID as
+// waitPrinterConfigured waits for a printer which has the same VID/PID as
 // devInfo to be configured on the system. If a match is found then the name of
 // the configured device will be returned.
-func WaitPrinterConfigured(ctx context.Context, devInfo DevInfo) (string, error) {
+func waitPrinterConfigured(ctx context.Context, devInfo DevInfo) (string, error) {
 	var foundName string
 	uri := ippUSBPrinterURI(devInfo)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
