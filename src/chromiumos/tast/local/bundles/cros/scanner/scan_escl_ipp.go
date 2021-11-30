@@ -107,7 +107,8 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 		usbprinter.WithDescriptors(descriptors),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WithESCLCapabilities(esclCapabilities),
-		usbprinter.ExpectUdevEventOnStop())
+		usbprinter.ExpectUdevEventOnStop(),
+		usbprinter.WaitUntilConfigured())
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
@@ -116,8 +117,8 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop printer: ", err)
 		}
 	}(cleanupCtx)
-	if err := cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
-		s.Fatal("Failed to wait for CUPS configuration: ", err)
+	if err := cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
 	}
 
 	var deviceName string

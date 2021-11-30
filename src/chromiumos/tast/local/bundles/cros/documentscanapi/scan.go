@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
@@ -88,7 +87,8 @@ func Scan(ctx context.Context, s *testing.State) {
 		usbprinter.WithDescriptors(descriptors),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WithESCLCapabilities(esclCapabilities),
-		usbprinter.ExpectUdevEventOnStop())
+		usbprinter.ExpectUdevEventOnStop(),
+		usbprinter.WaitUntilConfigured())
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
@@ -99,9 +99,6 @@ func Scan(ctx context.Context, s *testing.State) {
 	}(cleanupCtx)
 	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb socket: ", err)
-	}
-	if err = cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
-		s.Fatal("Failed to wait for printer to be idle: ", err)
 	}
 	if err = ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
 		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
