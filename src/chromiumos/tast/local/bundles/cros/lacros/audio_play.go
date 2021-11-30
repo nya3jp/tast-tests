@@ -39,7 +39,7 @@ func init() {
 }
 
 func AudioPlay(ctx context.Context, s *testing.State) {
-	l, err := lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+	l, err := lacros.LaunchLacros(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}

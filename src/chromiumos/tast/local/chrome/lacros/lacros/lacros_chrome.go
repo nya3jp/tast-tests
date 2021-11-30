@@ -23,12 +23,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// LacrosUserDataDir is the directory that contains the user data of lacros.
-const LacrosUserDataDir = "/home/chronos/user/lacros/"
+// UserDataDir is the directory that contains the user data of lacros.
+const UserDataDir = "/home/chronos/user/lacros/"
 
-// LacrosChrome contains all state associated with a lacros-chrome instance
+// Lacros contains all state associated with a lacros-chrome instance
 // that has been launched. Must call Close() to release resources.
-type LacrosChrome struct {
+type Lacros struct {
 	lacrosPath  string // Root directory for lacros-chrome.
 	userDataDir string // User data directory
 
@@ -38,7 +38,7 @@ type LacrosChrome struct {
 }
 
 // Browser returns a Browser instance.
-func (l *LacrosChrome) Browser() *browser.Browser {
+func (l *Lacros) Browser() *browser.Browser {
 	return browser.New(l.sess)
 }
 
@@ -46,7 +46,7 @@ func (l *LacrosChrome) Browser() *browser.Browser {
 // categories must be prefixed with "disabled-by-default-android ", e.g. for the
 // gfx category, use "disabled-by-default-android gfx", including the space.
 // This must not be called after Close().
-func (l *LacrosChrome) StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error {
+func (l *Lacros) StartTracing(ctx context.Context, categories []string, opts ...cdputil.TraceOption) error {
 	return l.sess.StartTracing(ctx, categories, opts...)
 }
 
@@ -55,18 +55,18 @@ func (l *LacrosChrome) StartTracing(ctx context.Context, categories []string, op
 // Note: StopTracing should be called even if StartTracing returns an error.
 // Sometimes, the request to start tracing reaches the browser process, but there
 // is a timeout while waiting for the reply.
-func (l *LacrosChrome) StartSystemTracing(ctx context.Context, perfettoConfig []byte) error {
+func (l *Lacros) StartSystemTracing(ctx context.Context, perfettoConfig []byte) error {
 	return l.sess.StartSystemTracing(ctx, perfettoConfig)
 }
 
 // StopTracing stops trace collection and returns the collected trace events.
 // This must not be called after Close().
-func (l *LacrosChrome) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error) {
+func (l *Lacros) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error) {
 	return l.sess.StopTracing(ctx)
 }
 
 // Close kills a launched instance of lacros-chrome.
-func (l *LacrosChrome) Close(ctx context.Context) error {
+func (l *Lacros) Close(ctx context.Context) error {
 	if err := l.sess.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close connection to lacros-chrome: ", err)
 	}
@@ -82,7 +82,7 @@ func (l *LacrosChrome) Close(ctx context.Context) error {
 		l.cmd = nil
 	}
 
-	if err := killLacrosChrome(ctx, l.lacrosPath); err != nil {
+	if err := killLacros(ctx, l.lacrosPath); err != nil {
 		return errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 	return nil
@@ -91,13 +91,13 @@ func (l *LacrosChrome) Close(ctx context.Context) error {
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm.
 // This must not be called after Close().
-func (l *LacrosChrome) NewConnForTarget(ctx context.Context, tm chrome.TargetMatcher) (*chrome.Conn, error) {
+func (l *Lacros) NewConnForTarget(ctx context.Context, tm chrome.TargetMatcher) (*chrome.Conn, error) {
 	return l.sess.NewConnForTarget(ctx, tm)
 }
 
 // FindTargets returns the info about Targets, which satisfies the given cond condition.
 // This must not be called after Close().
-func (l *LacrosChrome) FindTargets(ctx context.Context, tm chrome.TargetMatcher) ([]*chrome.Target, error) {
+func (l *Lacros) FindTargets(ctx context.Context, tm chrome.TargetMatcher) ([]*chrome.Target, error) {
 	return l.sess.FindTargets(ctx, tm)
 }
 
@@ -106,20 +106,20 @@ func (l *LacrosChrome) FindTargets(ctx context.Context, tm chrome.TargetMatcher)
 // from the specified URL is opened. You can assume that the page loading has
 // been finished when this function returns.
 // This must not be called after Close().
-func (l *LacrosChrome) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error) {
+func (l *Lacros) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*chrome.Conn, error) {
 	return l.sess.NewConn(ctx, url, opts...)
 }
 
 // TestAPIConn returns a new chrome.TestConn instance for the lacros browser.
 // This must not be called after Close().
-func (l *LacrosChrome) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
+func (l *Lacros) TestAPIConn(ctx context.Context) (*chrome.TestConn, error) {
 	return l.sess.TestAPIConn(ctx)
 }
 
 // CloseAboutBlank finds all targets that are about:blank, closes them, then waits until they are gone.
 // windowsExpectedClosed indicates how many windows that we expect to be closed from doing this operation.
-// This takes *ash-chrome*'s TestConn as tconn, not the one provided by LacrosChrome.TestAPIConn.
-func (l *LacrosChrome) CloseAboutBlank(ctx context.Context, tconn *chrome.TestConn, windowsExpectedClosed int) error {
+// This takes *ash-chrome*'s TestConn as tconn, not the one provided by Lacros.TestAPIConn.
+func (l *Lacros) CloseAboutBlank(ctx context.Context, tconn *chrome.TestConn, windowsExpectedClosed int) error {
 	prevWindows, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		return err
