@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -312,7 +311,7 @@ const (
 type statBucketKey struct {
 	metric string
 	stat   statType
-	crt    lacros.ChromeType
+	bt     browser.Type
 }
 
 type metricsRecorder struct {
@@ -321,7 +320,7 @@ type metricsRecorder struct {
 }
 
 func (m *metricsRecorder) record(ctx context.Context, invoc *testInvocation, minfo metricInfo, key statBucketKey, value float64) error {
-	name := fmt.Sprintf("%s.%s.%s.%s", invoc.page.name, key.metric, string(key.stat), string(key.crt))
+	name := fmt.Sprintf("%s.%s.%s.%s", invoc.page.name, key.metric, string(key.stat), string(key.bt))
 	testing.ContextLog(ctx, name, ": ", value, " ", minfo.unit)
 
 	invoc.pv.Set(perf.Metric{
@@ -348,7 +347,7 @@ func (m *metricsRecorder) recordHistogram(ctx context.Context, invoc *testInvoca
 	key := statBucketKey{
 		metric: h.Name,
 		stat:   meanStat,
-		crt:    invoc.crt,
+		bt:     invoc.bt,
 	}
 
 	minfo, ok := metricMap[key.metric]
@@ -365,7 +364,7 @@ func (m *metricsRecorder) recordValue(ctx context.Context, invoc *testInvocation
 	key := statBucketKey{
 		metric: name,
 		stat:   valueStat,
-		crt:    invoc.crt,
+		bt:     invoc.bt,
 	}
 
 	minfo, ok := metricMap[key.metric]
@@ -380,7 +379,7 @@ func (m *metricsRecorder) recordMetric(ctx context.Context, invoc *testInvocatio
 	key := statBucketKey{
 		metric: metric.Name,
 		stat:   valueStat,
-		crt:    invoc.crt,
+		bt:     invoc.bt,
 	}
 
 	minfo := metricInfo{
@@ -429,12 +428,12 @@ func (m *metricsRecorder) computeStatistics(ctx context.Context, pv *perf.Values
 		stddev := math.Sqrt(variance)
 
 		m := perf.Metric{
-			Name:      fmt.Sprintf("all.%s.%s.%s", k.metric, "page_mean", string(k.crt)),
+			Name:      fmt.Sprintf("all.%s.%s.%s", k.metric, "page_mean", string(k.bt)),
 			Unit:      minfo.unit,
 			Direction: minfo.direction,
 		}
 		s := perf.Metric{
-			Name:      fmt.Sprintf("all.%s.%s.%s", k.metric, "page_stddev", string(k.crt)),
+			Name:      fmt.Sprintf("all.%s.%s.%s", k.metric, "page_stddev", string(k.bt)),
 			Unit:      minfo.unit,
 			Direction: perf.SmallerIsBetter, // In general, it's better if standard deviation is less.
 		}
@@ -523,7 +522,7 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 		return err
 	}
 
-	filename := fmt.Sprintf("%s-%s-trace.data.gz", string(invoc.crt), invoc.page.name)
+	filename := fmt.Sprintf("%s-%s-trace.data.gz", string(invoc.bt), invoc.page.name)
 	filename = filepath.Join(invoc.traceDir, filename)
 	if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
 		return err

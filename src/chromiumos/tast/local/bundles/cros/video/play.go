@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/video/play"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -18,7 +19,7 @@ type playParams struct {
 	fileName     string
 	videoType    play.VideoType
 	verifyMode   play.VerifyHWAcceleratorMode
-	chromeType   lacros.ChromeType
+	browserType  browser.Type
 	unmutePlayer bool
 }
 
@@ -34,10 +35,10 @@ func init() {
 		Params: []testing.Param{{
 			Name: "av1",
 			Val: playParams{
-				fileName:   "bear-320x240.av1.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.av1.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
@@ -45,10 +46,10 @@ func init() {
 		}, {
 			Name: "h264",
 			Val: playParams{
-				fileName:   "bear-320x240.h264.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.h264.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
@@ -57,10 +58,10 @@ func init() {
 		}, {
 			Name: "vp8",
 			Val: playParams{
-				fileName:   "bear-320x240.vp8.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp8.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
@@ -68,10 +69,10 @@ func init() {
 		}, {
 			Name: "vp9",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
@@ -79,10 +80,10 @@ func init() {
 		}, {
 			Name: "vp9_hdr",
 			Val: playParams{
-				fileName:   "peru.8k.cut.hdr.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "peru.8k.cut.hdr.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
@@ -90,10 +91,10 @@ func init() {
 		}, {
 			Name: "av1_sw",
 			Val: playParams{
-				fileName:   "bear-320x240.av1.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyNoHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.av1.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyNoHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
@@ -101,10 +102,10 @@ func init() {
 		}, {
 			Name: "h264_sw",
 			Val: playParams{
-				fileName:   "bear-320x240.h264.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyNoHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.h264.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyNoHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
@@ -113,10 +114,10 @@ func init() {
 		}, {
 			Name: "vp8_sw",
 			Val: playParams{
-				fileName:   "bear-320x240.vp8.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyNoHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp8.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyNoHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
@@ -124,10 +125,10 @@ func init() {
 		}, {
 			Name: "vp9_sw",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyNoHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyNoHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
@@ -135,10 +136,10 @@ func init() {
 		}, {
 			Name: "vp9_2_sw",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.2.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyNoHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.2.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyNoHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
@@ -146,10 +147,10 @@ func init() {
 		}, {
 			Name: "vp9_sw_hdr",
 			Val: playParams{
-				fileName:   "peru.8k.cut.hdr.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyNoHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "peru.8k.cut.hdr.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyNoHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
@@ -157,10 +158,10 @@ func init() {
 		}, {
 			Name: "av1_hw",
 			Val: playParams{
-				fileName:   "bear-320x240.av1.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.av1.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.av1.mp4"},
@@ -169,10 +170,10 @@ func init() {
 		}, {
 			Name: "av1_hw_odd_dimension",
 			Val: playParams{
-				fileName:   "bear-321x241.av1.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-321x241.av1.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-321x241.av1.mp4"},
@@ -181,10 +182,10 @@ func init() {
 		}, {
 			Name: "h264_hw",
 			Val: playParams{
-				fileName:   "bear-320x240.h264.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.h264.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
@@ -193,10 +194,10 @@ func init() {
 		}, {
 			Name: "h264_hw_lacros",
 			Val: playParams{
-				fileName:   "bear-320x240.h264.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeLacros,
+				fileName:    "bear-320x240.h264.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
@@ -205,10 +206,10 @@ func init() {
 		}, {
 			Name: "vp8_hw",
 			Val: playParams{
-				fileName:   "bear-320x240.vp8.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp8.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp8.webm"},
@@ -217,10 +218,10 @@ func init() {
 		}, {
 			Name: "vp8_hw_odd_dimension",
 			Val: playParams{
-				fileName:   "bear-321x241.vp8.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-321x241.vp8.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-321x241.vp8.webm"},
@@ -229,10 +230,10 @@ func init() {
 		}, {
 			Name: "vp9_hw",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
@@ -241,10 +242,10 @@ func init() {
 		}, {
 			Name: "vp9_hw_odd_dimension",
 			Val: playParams{
-				fileName:   "bear-321x241.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-321x241.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-321x241.vp9.webm"},
@@ -253,10 +254,10 @@ func init() {
 		}, {
 			Name: "vp9_hw_lacros",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeLacros,
+				fileName:    "bear-320x240.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeLacros,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
@@ -265,10 +266,10 @@ func init() {
 		}, {
 			Name: "vp9_2_hw",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.2.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.2.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
@@ -278,10 +279,10 @@ func init() {
 		}, {
 			Name: "vp9_hw_hdr",
 			Val: playParams{
-				fileName:   "peru.8k.cut.hdr.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "peru.8k.cut.hdr.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
@@ -292,10 +293,10 @@ func init() {
 		}, {
 			Name: "hevc_hw",
 			Val: playParams{
-				fileName:   "bear-320x240.hevc.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.hevc.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.hevc.mp4"},
@@ -304,10 +305,10 @@ func init() {
 		}, {
 			Name: "hevc10_hw",
 			Val: playParams{
-				fileName:   "bear-320x240.hevc10.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.hevc10.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.hevc10.mp4"},
@@ -316,10 +317,10 @@ func init() {
 		}, {
 			Name: "h264_hw_mse",
 			Val: playParams{
-				fileName:   "bear-320x240.h264.mpd",
-				videoType:  play.MSEVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.h264.mpd",
+				videoType:   play.MSEVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.h264.mp4", "bear-320x240-audio-only.aac.mp4", "bear-320x240.h264.mpd"),
@@ -328,10 +329,10 @@ func init() {
 		}, {
 			Name: "vp8_hw_mse",
 			Val: playParams{
-				fileName:   "bear-320x240.vp8.mpd",
-				videoType:  play.MSEVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp8.mpd",
+				videoType:   play.MSEVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.vp8.webm", "bear-320x240-audio-only.vorbis.webm", "bear-320x240.vp8.mpd"),
@@ -340,10 +341,10 @@ func init() {
 		}, {
 			Name: "vp9_hw_mse",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.mpd",
-				videoType:  play.MSEVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.mpd",
+				videoType:   play.MSEVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.vp9.webm", "bear-320x240-audio-only.opus.webm", "bear-320x240.vp9.mpd"),
@@ -352,10 +353,10 @@ func init() {
 		}, {
 			Name: "hevc_hw_mse",
 			Val: playParams{
-				fileName:   "bear-320x240.hevc.mpd",
-				videoType:  play.MSEVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.hevc.mpd",
+				videoType:   play.MSEVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         append(play.MSEDataFiles(), "bear-320x240-video-only.hevc.mp4", "bear-320x240-audio-only.aac.mp4", "bear-320x240.hevc.mpd"),
@@ -364,10 +365,10 @@ func init() {
 		}, {
 			Name: "av1_guest",
 			Val: playParams{
-				fileName:   "bear-320x240.av1.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.av1.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.av1.mp4"},
@@ -375,10 +376,10 @@ func init() {
 		}, {
 			Name: "h264_guest",
 			Val: playParams{
-				fileName:   "bear-320x240.h264.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.h264.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
@@ -387,10 +388,10 @@ func init() {
 		}, {
 			Name: "vp8_guest",
 			Val: playParams{
-				fileName:   "bear-320x240.vp8.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp8.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp8.webm"},
@@ -398,10 +399,10 @@ func init() {
 		}, {
 			Name: "vp9_guest",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.NoVerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.NoVerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.webm"},
@@ -412,7 +413,7 @@ func init() {
 				fileName:     "bear-320x240.av1.mp4",
 				videoType:    play.NormalVideo,
 				verifyMode:   play.NoVerifyHWAcceleratorUsed,
-				chromeType:   lacros.ChromeTypeChromeOS,
+				browserType:  browser.TypeAsh,
 				unmutePlayer: true,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -424,7 +425,7 @@ func init() {
 				fileName:     "bear-320x240.h264.mp4",
 				videoType:    play.NormalVideo,
 				verifyMode:   play.NoVerifyHWAcceleratorUsed,
-				chromeType:   lacros.ChromeTypeChromeOS,
+				browserType:  browser.TypeAsh,
 				unmutePlayer: true,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -437,7 +438,7 @@ func init() {
 				fileName:     "bear-320x240.vp8.webm",
 				videoType:    play.NormalVideo,
 				verifyMode:   play.NoVerifyHWAcceleratorUsed,
-				chromeType:   lacros.ChromeTypeChromeOS,
+				browserType:  browser.TypeAsh,
 				unmutePlayer: true,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -449,7 +450,7 @@ func init() {
 				fileName:     "bear-320x240.vp9.webm",
 				videoType:    play.NormalVideo,
 				verifyMode:   play.NoVerifyHWAcceleratorUsed,
-				chromeType:   lacros.ChromeTypeChromeOS,
+				browserType:  browser.TypeAsh,
 				unmutePlayer: true,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
@@ -458,10 +459,10 @@ func init() {
 		}, {
 			Name: "h264_hw_alt",
 			Val: playParams{
-				fileName:   "bear-320x240.h264.mp4",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.h264.mp4",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.h264.mp4"},
@@ -470,10 +471,10 @@ func init() {
 		}, {
 			Name: "vp8_hw_alt",
 			Val: playParams{
-				fileName:   "bear-320x240.vp8.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp8.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp8.webm"},
@@ -482,10 +483,10 @@ func init() {
 		}, {
 			Name: "vp9_hw_alt",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData:         []string{"video.html", "bear-320x240.vp9.webm"},
@@ -494,10 +495,10 @@ func init() {
 		}, {
 			Name: "vp9_2_hw_alt",
 			Val: playParams{
-				fileName:   "bear-320x240.vp9.2.webm",
-				videoType:  play.NormalVideo,
-				verifyMode: play.VerifyHWAcceleratorUsed,
-				chromeType: lacros.ChromeTypeChromeOS,
+				fileName:    "bear-320x240.vp9.2.webm",
+				videoType:   play.NormalVideo,
+				verifyMode:  play.VerifyHWAcceleratorUsed,
+				browserType: browser.TypeAsh,
 			},
 			ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 			ExtraData: []string{"video.html", "bear-320x240.vp9.2.webm"},
@@ -520,7 +521,7 @@ func init() {
 func Play(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(playParams)
 
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), testOpt.chromeType)
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), testOpt.browserType)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
