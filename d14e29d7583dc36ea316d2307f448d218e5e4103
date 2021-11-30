@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4baa546f_b310010a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-30T14:00:22Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc665a1_519b604f",
@@ -50,6 +67,75 @@
       "side": 1,
       "message": "How about something similar to this?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/updateutil/updateutil.go;l\u003d147\ndefer chrome closing, as it is the important part. If there was already an error, log one (the less important one), and return with the other error.",
       "parentUuid": "ee764a7f_0c8dd79d",
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9c2cad_b212f98b",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-30T14:00:22Z",
+      "side": 1,
+      "message": "Logs should start from a capital letter followed by colon and the rest of the message:\nMgs mode: the message",
+      "range": {
+        "startLine": 76,
+        "startChar": 27,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a196c3f_3fd9a40b",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-30T14:00:22Z",
+      "side": 1,
+      "message": "same here about log message",
+      "range": {
+        "startLine": 134,
+        "startChar": 27,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e57edd_1efed541",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-11-30T14:00:22Z",
+      "side": 1,
+      "message": "same here about log message",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 34
+      },
       "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
