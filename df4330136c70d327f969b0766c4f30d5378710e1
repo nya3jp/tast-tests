@@ -16,6 +16,23 @@
       "message": "Fixed unit test.",
       "revId": "df4330136c70d327f969b0766c4f30d5378710e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeaffc47_a74fac21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-11-30T18:39:29Z",
+      "side": 1,
+      "message": "Lost the +2 after fixing the unit test, could you review again please?",
+      "revId": "df4330136c70d327f969b0766c4f30d5378710e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
