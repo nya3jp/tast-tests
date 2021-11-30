@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c56773_f7ee4dd3",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-30T10:28:26Z",
+      "side": 1,
+      "message": "It seems like it does not return with a bool value (it did with the older ui library). Can you use IsNodeFound() instead?\nWith that first check for error, and if there is an error you should return with an error, and then check the bool value to decide if you need to break the for loop.",
+      "range": {
+        "startLine": 262,
+        "startChar": 15,
+        "endLine": 262,
+        "endChar": 21
+      },
+      "revId": "76e40192f9c1694dba0aa0cd27d436475bd7247e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

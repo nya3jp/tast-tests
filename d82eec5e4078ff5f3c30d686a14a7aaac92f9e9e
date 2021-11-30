@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c928b139_0dd37a01",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-11-30T10:28:26Z",
+      "side": 1,
+      "message": "I see now. There can be multiple secondary accounts, but after you select the More action at one of them, it is clear which one you want to remove.",
+      "parentUuid": "83118527_a4aaaab6",
+      "revId": "d82eec5e4078ff5f3c30d686a14a7aaac92f9e9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bad420f_25fb1649",
