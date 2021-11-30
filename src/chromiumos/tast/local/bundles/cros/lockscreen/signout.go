@@ -171,12 +171,7 @@ func Signout(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	st, err := lockscreen.GetState(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get login state: ", err)
-	}
-
-	if !st.ReadyForPassword {
-		s.Fatal("Chrome is not on the login screen: ", err)
+	if _, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.ReadyForPassword }, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for login screen: ", err)
 	}
 }
