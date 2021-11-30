@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1c2a60_2d874e67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-30T02:08:36Z",
+      "side": 1,
+      "message": "As discussed offline, moved input field attribute into action instead of context.",
+      "parentUuid": "773b40b0_2b89eb0c",
+      "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a342084_97395e3b",
