@@ -156,3 +156,16 @@ func (c *AndroidDevice) WaitForDoNotDisturb(ctx context.Context, enabled bool, t
 	}
 	return nil
 }
+
+// TakePhoto opens the camera app on the phone and takes a photo.
+func (c *AndroidDevice) TakePhoto(ctx context.Context) error {
+	if err := c.device.SendIntentCommand(ctx, "android.media.action.STILL_IMAGE_CAMERA", "").Run(); err != nil {
+		return errors.Wrap(err, "failed to open camera")
+	}
+	testing.Sleep(ctx, time.Second)
+	if err := c.device.PressKeyCode(ctx, "KEYCODE_VOLUME_DOWN"); err != nil {
+		return errors.Wrap(err, "failed to take a photo")
+	}
+	testing.Sleep(ctx, 5*time.Second)
+	return nil
+}
