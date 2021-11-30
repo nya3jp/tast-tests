@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d27401e9_5646f1ed",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-30T08:57:55Z",
+      "side": 1,
+      "message": "What\u0027s the legacy code here do you mean? We suppose to have two variant of New() function one is new with default display level and another is new with specific display level.",
+      "parentUuid": "aa059464_5daef153",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 8
+      },
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebdb5fc7_6dfdcb9b",
         "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
         "patchSetId": 1
@@ -185,6 +209,24 @@
       "side": 1,
       "message": "Nit: How about\n\n```\nvar displayLevelOpt string\nif displayLevel \u003e\u003d 0.0 {\n    displayLevelOpt \u003d fmt.Sprintf(\"--display_level\u003d%f\", displayLevel)\n}\ndisplayCmd \u003d fmt.Sprintf(\n    \"(python2 %s %s %s \u003e %s 2\u003e\u00261) \u0026 echo -n $!\",\n\t\tshutil.Escape(displayScript), shutil.Escape(chartHostPath),\n\t\tdisplayLevelOpt, shutil.Escape(displayOutputLog))\n```\n\nI do agree that it will be better to always use --display_level. However it is ok not to use it if you have no way to tell the default.",
       "parentUuid": "1aab3527_0f773a30",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95b7462c_631de865",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-30T08:57:55Z",
+      "side": 1,
+      "message": "Right, I also want to consolidate the ugly \"put process to background and extract pid\" wrapper. SGTM for seewaifu@\u0027s suggestion.",
+      "parentUuid": "6452453f_7fcb2b54",
       "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
