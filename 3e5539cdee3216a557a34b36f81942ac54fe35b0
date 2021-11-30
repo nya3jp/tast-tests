@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f23e84_4a5ccd9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T14:16:30Z",
+      "side": 1,
+      "message": "Thank you for review. I\u0027m still waiting for chrome uprev.",
+      "revId": "3e5539cdee3216a557a34b36f81942ac54fe35b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86692427_5fb4f7e3",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-11-29T19:31:03Z",
       "side": 1,
       "message": "This is not directly related to this CL, but should this be \"--disable-lacros-keep-alive\" (hyphens, not underscores)?",
+      "range": {
+        "startLine": 181,
+        "startChar": 24,
+        "endLine": 181,
+        "endChar": 49
+      },
+      "revId": "3e5539cdee3216a557a34b36f81942ac54fe35b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e9cfe6_a4705fbc",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T14:16:30Z",
+      "side": 1,
+      "message": "ack. good point. We can update it in another CL.",
+      "parentUuid": "86692427_5fb4f7e3",
       "range": {
         "startLine": 181,
         "startChar": 24,
