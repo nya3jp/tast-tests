@@ -206,6 +206,20 @@ func (n *NearbyService) StartHighVisibilityMode(ctx context.Context, req *empty.
 	return &empty.Empty{}, nearbyshare.StartHighVisibilityMode(ctx, n.tconn, n.deviceName)
 }
 
+// WaitForOnboardingFlow waits for the Nearby Share onboarding flow to be open.
+func (n *NearbyService) WaitForOnboardingFlow(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if n.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+
+	nearbySettings, err := nearbyshare.GetNearbySettings(ctx, n.tconn, n.cr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get OS settings")
+	}
+
+	return &empty.Empty{}, nearbySettings.WaitForOnboardingFlow(ctx)
+}
+
 // PrepareFiles extracts test files.
 func (n *NearbyService) PrepareFiles(ctx context.Context, req *nearbyservice.CrOSPrepareFileRequest) (*nearbyservice.CrOSPrepareFileResponse, error) {
 	if n.cr == nil {
@@ -337,11 +351,11 @@ func (n *NearbyService) AcceptIncomingShareNotificationAndWaitForCompletion(ctx 
 }
 
 // AcceptFastInitiationNotification accepts the incoming fast initiation notification. Fast initiation is shown when a nearby device is trying to find a share target. Used by background scanning tests.
-func (n *NearbyService) AcceptFastInitiationNotification(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+func (n *NearbyService) AcceptFastInitiationNotification(ctx context.Context, req *nearbyservice.CrOSAcceptFastInitiationNotificationRequest) (*empty.Empty, error) {
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	if err := nearbyshare.AcceptFastInitiationNotification(ctx, n.tconn, nearbycommon.DetectShareTargetTimeout); err != nil {
+	if err := nearbyshare.AcceptFastInitiationNotification(ctx, n.tconn, nearbycommon.DetectShareTargetTimeout, req.IsSetupComplete); err != nil {
 		return nil, errors.Wrap(err, "CrOS receiver failed to accept fast initiation notification")
 	}
 	testing.ContextLog(ctx, "Accepted the fast initiation notification on the CrOS receiver")
