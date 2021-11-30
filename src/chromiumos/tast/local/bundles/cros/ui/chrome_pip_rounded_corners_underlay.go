@@ -67,7 +67,7 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacros.CloseLacrosChrome(cleanupCtx, l)
+	defer lacros.CloseLacros(cleanupCtx, l)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {

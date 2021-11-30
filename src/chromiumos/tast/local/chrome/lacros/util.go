@@ -61,16 +61,16 @@ func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, title stri
 	return nil
 }
 
-// CloseLacrosChrome closes the given lacros-chrome, if it is non-nil. Otherwise, it does nothing.
-func CloseLacrosChrome(ctx context.Context, l *LacrosChrome) {
+// CloseLacros closes the given lacros-chrome, if it is non-nil. Otherwise, it does nothing.
+func CloseLacros(ctx context.Context, l *Lacros) {
 	if l != nil {
 		l.Close(ctx) // Ignore error.
 	}
 }
 
-// killLacrosChrome kills all binaries whose executable contains the base path
+// killLacros kills all binaries whose executable contains the base path
 // to lacros-chrome.
-func killLacrosChrome(ctx context.Context, lacrosPath string) error {
+func killLacros(ctx context.Context, lacrosPath string) error {
 	if lacrosPath == "" {
 		return errors.New("Path to lacros-chrome cannot be empty")
 	}

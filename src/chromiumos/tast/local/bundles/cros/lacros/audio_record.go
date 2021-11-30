@@ -30,7 +30,7 @@ func init() {
 }
 
 func AudioRecord(ctx context.Context, s *testing.State) {
-	l, err := lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+	l, err := lacros.Launch(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 	if err != nil {
 		s.Fatal("Failed to launch lacros-chrome: ", err)
 	}

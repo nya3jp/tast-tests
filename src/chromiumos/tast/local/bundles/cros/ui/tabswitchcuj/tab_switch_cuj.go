@@ -113,13 +113,13 @@ func Run(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get TestAPIConn: ", err)
 		}
 	} else {
-		var l *lacros.LacrosChrome
+		var l *lacros.Lacros
 		var err error
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), param.BrowserType)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		defer lacros.CloseLacrosChrome(ctx, l)
+		defer lacros.CloseLacros(ctx, l)
 
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
 			s.Fatal("Failed to get lacros TestAPIConn: ", err)
