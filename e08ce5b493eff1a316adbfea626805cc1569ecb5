@@ -162,6 +162,24 @@
       "parentUuid": "20673c98_f5dc9b07",
       "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc23eda0_dc56171f",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-11-30T01:26:11Z",
+      "side": 1,
+      "message": "I know it is not within scope. It is just a question, \"Why don\u0027t we use python instead of python2?\" Thanks.",
+      "parentUuid": "b05ed94f_a5b9ab12",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
