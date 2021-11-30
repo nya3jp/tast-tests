@@ -798,11 +798,20 @@ func (a *App) RecordGif(ctx context.Context, save bool) (os.FileInfo, error) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 	defer cancel()
 
-	// TODO(b:191950622): Remove logic of enabling gif recording from expert mode after it's formally launched.
-	if err := a.setEnableGifRecording(ctx, true); err != nil {
-		return nil, errors.Wrap(err, "failed to enable gif recording")
+	visible, err := a.Visible(ctx, GifRecordingOption)
+	if err != nil {
+		return nil, err
 	}
-	defer a.setEnableGifRecording(cleanupCtx, false)
+
+	if !visible {
+		// TODO(b/191950622): Remove the legacy enabling logic after formally launched.
+		testing.ContextLog(ctx, "No gif recording option present, try enabling from expert mode")
+		if err := a.setEnableGifRecording(ctx, true); err != nil {
+			return nil, errors.Wrap(err, "failed to enable gif recording")
+		}
+		defer a.setEnableGifRecording(cleanupCtx, false)
+	}
+
 	if err := a.Click(ctx, GifRecordingOption); err != nil {
 		return nil, err
 	}
@@ -1018,23 +1027,24 @@ func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) er
 	return nil
 }
 
-func (a *App) toggleOption(ctx context.Context, option, toggleSelector string) (bool, error) {
-	prev, err := a.GetState(ctx, option)
+// ToggleOption toggles on/off of the |option|.
+func (a *App) ToggleOption(ctx context.Context, option Option) (bool, error) {
+	prev, err := a.GetState(ctx, option.state)
 	if err != nil {
 		return false, err
 	}
-	if err := a.ClickWithSelector(ctx, toggleSelector); err != nil {
-		return false, errors.Wrapf(err, "failed to click on toggle button of selector %s", toggleSelector)
+	if err := a.Click(ctx, option.ui); err != nil {
+		return false, err
 	}
-	code := fmt.Sprintf("Tast.getState(%q) !== %t", option, prev)
+	code := fmt.Sprintf("Tast.getState(%q) !== %t", option.state, prev)
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
-		return false, errors.Wrapf(err, "failed to wait for toggling option %s", option)
+		return false, errors.Wrapf(err, "failed to wait for toggling option %s", option.state)
 	}
-	return a.GetState(ctx, option)
+	return a.GetState(ctx, option.state)
 }
 
-func (a *App) setEnableOption(ctx context.Context, option, toggleSelector string, enabled bool) error {
-	prev, err := a.GetState(ctx, option)
+func (a *App) setEnableOption(ctx context.Context, option Option, enabled bool) error {
+	prev, err := a.GetState(ctx, option.state)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get option state %v", option)
 	}
@@ -1042,33 +1052,22 @@ func (a *App) setEnableOption(ctx context.Context, option, toggleSelector string
 		return nil
 	}
 
-	cur, err := a.toggleOption(ctx, option, toggleSelector)
+	cur, err := a.ToggleOption(ctx, option)
 	if err != nil {
-		return errors.Wrapf(err, "failed to toggle option %s with selector %s", option, toggleSelector)
+		return errors.Wrapf(err, "failed to toggle option %v", option)
 	}
 	if cur != enabled {
-		return errors.Errorf("unexpected state after toggled option %s with selector %s", option, toggleSelector)
+		return errors.Errorf("unexpected state after toggled option %v", option)
 	}
 	return nil
 }
 
-// ToggleGridOption toggles the grid option and returns whether it's enabled after toggling.
-func (a *App) ToggleGridOption(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "grid", "#toggle-grid")
-}
-
-// ToggleMirroringOption toggles the mirroring option.
-func (a *App) ToggleMirroringOption(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "mirror", "#toggle-mirror")
-}
-
 // maybeToggleQRCodeOption toggle QR code option if current state is not |target|.
 func (a *App) maybeToggleQRCodeOption(ctx context.Context, target bool) error {
-	scanBarcodeOption := "enable-scan-barcode"
-	if current, err := a.GetState(ctx, scanBarcodeOption); err != nil {
+	if current, err := a.GetState(ctx, scanBarcodeOption.state); err != nil {
 		return errors.Wrap(err, "failed to check scan barcode option state")
 	} else if current != target {
-		if after, err := a.toggleOption(ctx, scanBarcodeOption, "#toggle-barcode"); err != nil {
+		if after, err := a.ToggleOption(ctx, scanBarcodeOption); err != nil {
 			return errors.Wrap(err, "failed to toggle scan barcode option")
 		} else if after != target {
 			return errors.New("failed to toggle scan barcode option to target state")
@@ -1122,7 +1121,7 @@ func (a *App) SetTimerOption(ctx context.Context, state TimerState) error {
 	if cur, err := a.GetState(ctx, "timer"); err != nil {
 		return err
 	} else if cur != active {
-		if _, err := a.toggleOption(ctx, "timer", "#toggle-timer"); err != nil {
+		if _, err := a.ToggleOption(ctx, timerOption); err != nil {
 			return err
 		}
 	}
@@ -1181,26 +1180,6 @@ func (a *App) CheckMetadataVisibility(ctx context.Context, enabled bool) error {
 	return nil
 }
 
-// ToggleShowMetadata toggles show metadata and returns whether it's enabled after toggling.
-func (a *App) ToggleShowMetadata(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "show-metadata", "#expert-show-metadata")
-}
-
-// ToggleSaveMetadata toggles save metadata and returns whether it's enabled after toggling.
-func (a *App) ToggleSaveMetadata(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "save-metadata", "#expert-save-metadata")
-}
-
-// ToggleEnableExpertMode toggles enable expert mode and returns whether it's enabled after toggling.
-func (a *App) ToggleEnableExpertMode(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "expert", "#expert-enable-expert-mode")
-}
-
-// ToggleCustomVideoParameters customize video parameters options and returns whether it's enabled after toggling.
-func (a *App) ToggleCustomVideoParameters(ctx context.Context) (bool, error) {
-	return a.toggleOption(ctx, "custom-video-parameters", "#custom-video-parameters")
-}
-
 // EnableDocumentMode enables the document mode via expert mode.
 func (a *App) EnableDocumentMode(ctx context.Context) error {
 	if err := a.EnableExpertMode(ctx); err != nil {
@@ -1217,7 +1196,7 @@ func (a *App) EnableDocumentMode(ctx context.Context) error {
 	}
 	defer ExpertMenu.Close(ctx, a)
 
-	if err := a.setEnableOption(ctx, "enable-document-mode-on-all-cameras", "#expert-enable-document-mode-on-all-cameras", true); err != nil {
+	if err := a.setEnableOption(ctx, enableDocumentModeOnAllCamerasOption, true); err != nil {
 		return errors.Wrap(err, "failed to enable document mode")
 	}
 
@@ -1244,7 +1223,7 @@ func (a *App) SetEnableMultiStreamRecording(ctx context.Context, enabled bool) e
 	}
 	defer ExpertMenu.Close(ctx, a)
 
-	if err := a.setEnableOption(ctx, "enable-multistream-recording", "#expert-enable-multistream-recording", enabled); err != nil {
+	if err := a.setEnableOption(ctx, enableMultistreamRecordingOption, enabled); err != nil {
 		return errors.Wrap(err, "failed to enable multi-stream recording")
 	}
 
@@ -1271,8 +1250,8 @@ func (a *App) setEnableGifRecording(ctx context.Context, enabled bool) error {
 	}
 	defer ExpertMenu.Close(ctx, a)
 
-	if err := a.setEnableOption(ctx, "show-gif-recording-option", "#expert-enable-gif-recording", enabled); err != nil {
-		return errors.Wrap(err, "failed to enable multi-stream recording")
+	if err := a.setEnableOption(ctx, showGifRecordingOption, enabled); err != nil {
+		return err
 	}
 
 	if err := a.WaitForVideoActive(ctx); err != nil {
