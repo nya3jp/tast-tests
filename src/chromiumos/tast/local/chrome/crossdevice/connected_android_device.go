@@ -18,6 +18,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// AndroidPhotosPath is the directory where photos taken on the device can be located.
+const AndroidPhotosPath = "/sdcard/DCIM/Camera"
+
 // AndroidDevice represents an Android device that's been paired with the Chromebook (i.e. from the "Connected devices" section of OS settings).
 // Android control is achieved by making RPCs to the Multidevice Snippet running on the Android device, or by using ADB commands directly.
 type AndroidDevice struct {
@@ -155,4 +158,63 @@ func (c *AndroidDevice) WaitForDoNotDisturb(ctx context.Context, enabled bool, t
 		return errors.Wrap(err, "failed waiting for desired Do Not Disturb status")
 	}
 	return nil
+}
+
+// TakePhoto takes a photo with Camera app and returns the name of the new photo taken.
+func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
+	if err := c.device.SendIntentCommand(ctx, "android.media.action.STILL_IMAGE_CAMERA", "").Run(); err != nil {
+		return "", errors.Wrap(err, "failed to open camera")
+	}
+	testing.Sleep(ctx, time.Second)
+	if err := c.device.PressKeyCode(ctx, "KEYCODE_VOLUME_DOWN"); err != nil {
+		return "", errors.Wrap(err, "failed to take a photo")
+	}
+
+	// Wait for a new photo to appear.
+	mostRecentPhoto, err := c.GetMostRecentPhoto(ctx)
+	if err != nil {
+		return "", err
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if photo, err := c.GetMostRecentPhoto(ctx); err != nil {
+			return testing.PollBreak(err)
+		} else if photo == mostRecentPhoto {
+			return errors.Errorf("Still waiting for new photo to appear, current most recent photo is %s", mostRecentPhoto)
+		} else {
+			mostRecentPhoto = photo
+			return nil
+		}
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return "", errors.Wrap(err, "no new photo found")
+	}
+
+	// Close the Camera app by pressing the back button.
+	if err := c.device.PressKeyCode(ctx, "KEYCODE_BACK"); err != nil {
+		return "", errors.Wrap(err, "failed to close the Camera app")
+	}
+
+	return mostRecentPhoto, nil
+}
+
+// GetMostRecentPhoto returns the file name of the most recent photo taken on the device.
+func (c *AndroidDevice) GetMostRecentPhoto(ctx context.Context) (string, error) {
+	photos, err := c.device.ListContents(ctx, AndroidPhotosPath)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to list files under %s", AndroidPhotosPath)
+	}
+	mostRecentPhoto := ""
+	if len(photos) > 0 {
+		mostRecentPhoto = photos[len(photos)-1]
+	}
+	return mostRecentPhoto, nil
+}
+
+// FileSize returns the size of the specified file in bytes. Returns an error if the file does not exist.
+func (c *AndroidDevice) FileSize(ctx context.Context, filename string) (int64, error) {
+	return c.device.FileSize(ctx, filename)
+}
+
+// SHA256Sum returns the sha256sum of the specified file as a string.
+func (c *AndroidDevice) SHA256Sum(ctx context.Context, filename string) (string, error) {
+	return c.device.SHA256Sum(ctx, filename)
 }
