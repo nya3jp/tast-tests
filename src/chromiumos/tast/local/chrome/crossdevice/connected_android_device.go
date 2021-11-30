@@ -156,3 +156,43 @@ func (c *AndroidDevice) WaitForDoNotDisturb(ctx context.Context, enabled bool, t
 	}
 	return nil
 }
+
+// TakePhoto opens the camera app on the phone, takes a photo, and returns the name of the new photo taken.
+func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
+	if err := c.device.SendIntentCommand(ctx, "android.media.action.STILL_IMAGE_CAMERA", "").Run(); err != nil {
+		return "", errors.Wrap(err, "failed to open camera")
+	}
+	testing.Sleep(ctx, time.Second)
+	if err := c.device.PressKeyCode(ctx, "KEYCODE_VOLUME_DOWN"); err != nil {
+		return "", errors.Wrap(err, "failed to take a photo")
+	}
+
+	// Wait for a new photo to appear under /sdcard/DCIM/Camera
+	mostRecentPhoto, err := c.GetMostRecentPhoto(ctx)
+	if err != nil {
+		return "", err
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if photo, err := c.GetMostRecentPhoto(ctx); err != nil {
+			return err
+		} else if photo == mostRecentPhoto {
+			return errors.New("Still waiting for new photo to appear")
+		} else {
+			mostRecentPhoto = photo
+			return nil
+		}
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return "", errors.Wrap(err, "no new photo found under /sdcard/DCIM")
+	}
+
+	return mostRecentPhoto, nil
+}
+
+// GetMostRecentPhoto returns the file name of the most recent photo under /sdcard/DCIM/Camera.
+func (c *AndroidDevice) GetMostRecentPhoto(ctx context.Context) (string, error) {
+	photos, err := c.device.ListContents(ctx, "/sdcard/DCIM/Camera")
+	if err != nil {
+		return "", errors.Wrap(err, "failed to list files under /sdcard/DCIM/Camera")
+	}
+	return photos[len(photos)-1], nil
+}
