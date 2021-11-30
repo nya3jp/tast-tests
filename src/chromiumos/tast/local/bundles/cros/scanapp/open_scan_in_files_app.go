@@ -75,7 +75,8 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		usbprinter.WithDescriptors(scanning.Descriptors),
 		usbprinter.WithAttributes(scanning.Attributes),
 		usbprinter.WithESCLCapabilities(scanning.EsclCapabilities),
-		usbprinter.ExpectUdevEventOnStop())
+		usbprinter.ExpectUdevEventOnStop(),
+		usbprinter.WaitUntilConfigured())
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
@@ -83,8 +84,8 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb_bridge socket: ", err)
 	}
-	if err = cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
-		s.Fatal("Failed to wait for printer to be idle: ", err)
+	if err = cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to reset printing system: ", err)
 	}
 	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitMessageContains(scanning.ScannerName)); err != nil {
 		s.Fatal("Failed to wait for printer notification: ", err)
