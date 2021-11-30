@@ -10,6 +10,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// LacrosLogPath is where the lacros log file ought to be.
+// N.B. If lacros is launched multiple times (via command line launch, the current default),
+// then this logfile will be overwritten. Launching means starting a new lacros process entirely,
+// not just creating a new window or tab.
+const LacrosLogPath = "/home/chronos/user/lacros/lacros.log"
+
 // The FixtValue object is made available to users of this fixture via:
 //
 //	func DoSomething(ctx context.Context, s *testing.State) {
