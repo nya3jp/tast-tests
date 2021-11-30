@@ -321,7 +321,7 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	if !deployed {
 		switch f.mode {
 		case External:
-			if err := prepareLacrosChromeBinary(ctx, s); err != nil {
+			if err := prepareLacrosBinary(ctx, s); err != nil {
 				s.Fatal("Failed to prepare lacros-chrome, err")
 			}
 		case Omaha:

@@ -35,7 +35,7 @@ func init() {
 }
 
 func Basic(ctx context.Context, s *testing.State) {
-	l, err := lacros.LaunchLacrosChrome(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+	l, err := lacros.LaunchLacros(ctx, s.FixtValue().(lacrosfixt.FixtValue))
 	defer lacrosfaillog.SaveIf(ctx, s.FixtValue().(lacrosfixt.FixtValue).LacrosPath(), s.HasError)
 
 	if err != nil {

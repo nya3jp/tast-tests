@@ -154,7 +154,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to setup lacrostest: ", err)
 			}
-			defer lacros.CloseLacrosChrome(ctx, l)
+			defer lacros.CloseLacros(ctx, l)
 
 			if err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows); err != nil {
 				s.Fatal("Failed to create browser windows: ", err)
