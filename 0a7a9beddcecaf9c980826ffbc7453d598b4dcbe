@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97942ead_07ab8a11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/intelfwextractor/intel_fw_extractor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-11-30T04:13:00Z",
+      "side": 1,
+      "message": "\u003e \"shoud\" is a possible misspelling of \"should\".\n\nPlease fix.",
+      "parentUuid": "c2b0db1e_6cdde117",
+      "range": {
+        "startLine": 167,
+        "startChar": 45,
+        "endLine": 167,
+        "endChar": 50
+      },
+      "revId": "0a7a9beddcecaf9c980826ffbc7453d598b4dcbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
