@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fbeb0aa_242e0b6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-11-30T02:11:12Z",
+      "side": 1,
+      "message": "I am confused on this change. Why does the old code stop work?\n\nI do not think in the real user scenario, user triggers VK first and copy next.",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "f5fa358473ed8e18e293020683fc5c2cf99eed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
