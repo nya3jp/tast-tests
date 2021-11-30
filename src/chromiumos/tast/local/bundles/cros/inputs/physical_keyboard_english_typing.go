@@ -12,10 +12,10 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -29,31 +29,30 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
-		Fixture:      "chromeLoggedInForInputs",
+		Pre:          pre.NonVKClamshell,
 		Timeout:      5 * time.Minute,
 	})
 }
 
 func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.PreValue().(pre.PreData).Chrome
+	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Add IME for testing.
-	imeCode := ime.ChromeIMEPrefix + ime.EnglishUS.ID
+	im := s.Param().(ime.InputMethod)
 
-	s.Logf("Set current input method to: %s", imeCode)
-	if err := ime.AddAndSetInputMethod(ctx, tconn, imeCode); err != nil {
-		s.Fatalf("Failed to set input method to %s: %v: ", imeCode, err)
+	s.Log("Set current input method to: ", im)
+	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+		s.Fatalf("Failed to set input method to %v: %v: ", im, err)
 	}
+	uc.SetAttribute(useractions.AttributeInputMethod, im.Name)
 
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
@@ -103,6 +102,20 @@ func PhysicalKeyboardEnglishTyping(ctx context.Context, s *testing.State) {
 	for _, subtest := range subtests {
 		s.Run(ctx, subtest.TestName, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subtest.TestName)
+
+			if err := useractions.NewUserAction(
+				"Engish PK input",
+				its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText),
+				uc, &useractions.UserActionCfg{
+					Attributes: map[string]string{
+						useractions.AttributeTestScenario: subtest.TestName,
+						useractions.AttributeInputField:   string(inputField),
+					},
+					Tags: []useractions.ActionTag{useractions.ActionTagPKTyping},
+				},
+			).Run(ctx); err != nil {
+				s.Fatalf("Failed to validate keys input in %s: %v", inputField, err)
+			}
 
 			if err := its.ValidateInputOnField(inputField, subtest.InputFunc, subtest.ExpectedText)(ctx); err != nil {
 				s.Fatalf("Failed to validate %s: %v", subtest.TestName, err)
