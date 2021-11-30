@@ -52,7 +52,7 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForSpotify,
-				CommonTests:      testutil.ClamshellCommonTests,
+				CommonTests:      testutil.ClamshellSmokeTests,
 				AppSpecificTests: clamshellAppSpecificTestsForSpotify,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -64,7 +64,7 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForSpotify,
-				CommonTests:      testutil.TouchviewCommonTests,
+				CommonTests:      testutil.TouchviewSmokeTests,
 				AppSpecificTests: touchviewAppSpecificTestsForSpotify,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -76,7 +76,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForSpotify,
-				CommonTests:      testutil.ClamshellCommonTests,
+				CommonTests:      testutil.ClamshellSmokeTests,
 				AppSpecificTests: clamshellAppSpecificTestsForSpotify,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -88,7 +88,7 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForSpotify,
-				CommonTests:      testutil.TouchviewCommonTests,
+				CommonTests:      testutil.TouchviewSmokeTests,
 				AppSpecificTests: touchviewAppSpecificTestsForSpotify,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
