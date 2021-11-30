@@ -38,7 +38,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
-	var l *lacros.LacrosChrome
+	var l *lacros.Lacros
 	var bTconn *chrome.TestConn
 
 	cleanup := func(ctx context.Context) error { return nil }
@@ -70,7 +70,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to setup lacros")
 		}
 		cleanup = func(ctx context.Context) error {
-			lacros.CloseLacrosChrome(ctx, l)
+			lacros.CloseLacros(ctx, l)
 			return nil
 		}
 
