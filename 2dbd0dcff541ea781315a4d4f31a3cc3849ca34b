@@ -16,6 +16,52 @@
       "message": "I\u0027d like to also work on a change that deduplicates some constants spread throughout our tests. This would take the form of being able to write `.WithDefaultDescriptors()` rather than repeating the hardcoded `.WithDescriptors(\"/usr/local/etc/virtual-usb-printer/ippusb_printer.json\")`. Let me know if this seems acceptable from a tast owners perspective.",
       "revId": "2dbd0dcff541ea781315a4d4f31a3cc3849ca34b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01724cd8_459b51bb",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-30T06:42:31Z",
+      "side": 1,
+      "message": "What about creating an type and constants for this, rather than a boolean?",
+      "range": {
+        "startLine": 293,
+        "startChar": 51,
+        "endLine": 293,
+        "endChar": 72
+      },
+      "revId": "2dbd0dcff541ea781315a4d4f31a3cc3849ca34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4d3550_0b996f07",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-11-30T06:42:31Z",
+      "side": 1,
+      "message": "Is this used by anything outside this package? Can it be private?",
+      "range": {
+        "startLine": 446,
+        "startChar": 5,
+        "endLine": 446,
+        "endChar": 20
+      },
+      "revId": "2dbd0dcff541ea781315a4d4f31a3cc3849ca34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
