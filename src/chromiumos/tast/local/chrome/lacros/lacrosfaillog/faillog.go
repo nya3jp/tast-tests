@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/faillog"
 	"chromiumos/tast/local/input"
@@ -20,16 +21,6 @@ import (
 )
 
 const lacrosFaillogDir = "lacros_faillog"
-
-// LogFile returns the location for where the lacros log file ought to be.
-func LogFile(ctx context.Context) string {
-	out, ok := testing.ContextOutDir(ctx)
-	if !ok {
-		testing.ContextLog(ctx, "OutDir not found")
-		return ""
-	}
-	return filepath.Join(out, "lacros.log")
-}
 
 // SaveIf saves a lacros specific faillog if the hasError closure returns true.
 // The intended use for this is to pass testing.State's HasError to this.
@@ -91,7 +82,7 @@ func Save(ctx context.Context, lacrosPath string) {
 	run(filepath.Join(dir, "lacros-ls.txt"), "ls", "-l", lacrosPath)
 
 	// Copy lacros log at the point of failure.
-	if err := fsutil.CopyFile(LogFile(ctx), filepath.Join(dir, "lacros.log")); err != nil {
+	if err := fsutil.CopyFile(lacrosfixt.LacrosLogPath, filepath.Join(dir, "lacros.log")); err != nil {
 		testing.ContextLog(ctx, "Failed to save lacros logs: ", err)
 	}
 }

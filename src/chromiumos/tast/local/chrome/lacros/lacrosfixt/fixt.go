@@ -10,6 +10,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// LacrosLogPath is where the lacros log file ought to be.
+const LacrosLogPath = "/home/chronos/user/lacros/lacros.log"
+
 // The FixtValue object is made available to users of this fixture via:
 //
 //	func DoSomething(ctx context.Context, s *testing.State) {
