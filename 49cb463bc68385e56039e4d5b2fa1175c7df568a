@@ -16,6 +16,23 @@
       "message": "hiroh@, tast-owners@, PTAL\n\nOthers FYI.",
       "revId": "49cb463bc68385e56039e4d5b2fa1175c7df568a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe3da2e_1ab242a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-11-30T03:36:01Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "49cb463bc68385e56039e4d5b2fa1175c7df568a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
