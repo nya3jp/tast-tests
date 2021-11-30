@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "773b40b0_2b89eb0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_english_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-30T01:36:42Z",
+      "side": 1,
+      "message": "My concern comes not from this test, but from the API design itself. I don\u0027t think we can rely on users of the library to remove attributes once they are done, because it\u0027s heavily ingrained into a user\u0027s mind that variables aren\u0027t maintained between tests. This is made worse by the fact that sometimes, it\u0027s correct to remove attributes after the test, and sometimes you shouldn\u0027t (eg. if you change state of the device).\n\nIMO, we should divide UserAction attributes into device config and test config. The device config would store any state that should not be reset between tests, and the test config should store any state that should be reset between tests, and be automatically cleared at the start of the test. Does this seem reasonable? Am I misunderstanding something?",
+      "parentUuid": "702f1749_08edd453",
+      "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a342084_97395e3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
         "patchSetId": 1
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "Yes, it is required otherwise compiler complains.",
       "parentUuid": "5a342084_97395e3b",
+      "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bc06e3_3aeb443b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-30T01:36:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9182dfb_5f72ddcc",
       "revId": "d5e4ce523a6ebf2bce2e4dca9f680f89df23c007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
