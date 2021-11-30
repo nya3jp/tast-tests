@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
@@ -378,7 +379,15 @@ func (f *fixtImpl) Reset(ctx context.Context) error {
 
 func (f *fixtImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
-func (f *fixtImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fixtImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if out, ok := testing.ContextOutDir(ctx); !ok {
+		testing.ContextLog(ctx, "OutDir not found")
+	} else {
+		if err := fsutil.CopyFile(LacrosLogPath, filepath.Join(out, "lacros.log")); err != nil {
+			testing.ContextLog(ctx, "Failed to save lacros logs: ", err)
+		}
+	}
+}
 
 // cleanUp de-initializes the fixture by closing/cleaning-up the relevant
 // fields and resetting the struct's fields.
