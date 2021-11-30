@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c63ba5be_4140dce0",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-30T01:21:52Z",
+      "side": 1,
+      "message": "How about rename |New()| to |NewWithDisplayLevel()| and add the default New() as:\n```\nfunc New(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string) (_ *Chart, retErr error) {\n  return NewWithDisplayLevel(ctx, d, altHostname, chartPath, outDir, defaultDisplayLevel)\n}\n```",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 8
+      },
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebdb5fc7_6dfdcb9b",
         "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
         "patchSetId": 1
@@ -73,6 +96,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2aa3826_5319055b",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-30T01:21:52Z",
+      "side": 1,
+      "message": "Add:\nTODO(b/203608939): Clean up code path without \u0027--display_level\u0027 argument after all chart upgrade to latest version.",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb6c93b3_482445df",
         "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
         "patchSetId": 1
@@ -102,6 +142,24 @@
       "side": 1,
       "message": "I think remove python2 is not the purpose of this CL",
       "parentUuid": "eb6c93b3_482445df",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05ed94f_a5b9ab12",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-11-30T01:21:52Z",
+      "side": 1,
+      "message": "Since the image version of all chart device where this cmd run on are pinned to a fixed version which python2 are still working and we are block by infra team to support auto provision chart\u0027s version. I think we\u0027re ok to still using python2. But IIRC the script would work or both python2/python3 with chart equipped with latest ChromeOS image.",
+      "parentUuid": "20673c98_f5dc9b07",
       "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
