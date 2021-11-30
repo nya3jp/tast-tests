@@ -16,6 +16,144 @@
       "message": "We’ve run this test successfully on Kindred[--board\u003dhatch], Sparky360[--board\u003doctopus], Hayato[--board\u003dasurada], Delbin[--board\u003dvolteer], Storo360[--board\u003ddedede] and Vilboz[--board\u003dzork].",
       "revId": "c58765c46709b10e14417b300bb137757af36199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05628bb_a32ade14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-30T17:59:07Z",
+      "side": 1,
+      "message": "The manual test steps say to use normal mode. Do you need dev mode?",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "084a81da_a3f755a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-30T17:59:07Z",
+      "side": 1,
+      "message": "This comment seems wrong. You didn\u0027t actually reboot. How about: \"Checking initial state of laptop mode\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 9,
+        "endLine": 114,
+        "endChar": 63
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660c0ad5_5287baf0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-30T17:59:07Z",
+      "side": 1,
+      "message": "ms.PowerOff is faster btw.  And when you use the servo to power off you should really call h.DUT.Conn().CommandContext(ctx, \"sync\") to flush unsaved changes to disk first.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15652791_5cb587b4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-30T17:59:07Z",
+      "side": 1,
+      "message": "Since you are not doing any checks if clamshell, you might as well skip the reboot in that case also. I.e. just one big if !ffIsClamshell {} around everything from line 75-147",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2e4fb1_53fd658e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-30T17:59:07Z",
+      "side": 1,
+      "message": "Use ms.PowerOff or call sync first.",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 2
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8f7f23_8c42357a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-30T17:59:07Z",
+      "side": 1,
+      "message": "Just G3 here.",
+      "range": {
+        "startLine": 332,
+        "startChar": 39,
+        "endLine": 332,
+        "endChar": 47
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
