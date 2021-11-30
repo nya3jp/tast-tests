@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55925fe_ac31e497",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2021-11-30T15:58:45Z",
+      "side": 1,
+      "message": "Hi Chad,\n\nThere are a few existing tests in https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/bluetooth/. Please feel free to delete those if they are duplicates of tests in this CL.\n\nRegards\nShijin ",
+      "revId": "57ae12df606d1a3c392a9ca50d79af54baf551a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a812e2e7_616ff3ae",
