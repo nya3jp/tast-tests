@@ -43,6 +43,7 @@ func init() {
 func PhysicalKeyboardCapsLock(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -60,12 +61,14 @@ func PhysicalKeyboardCapsLock(ctx context.Context, s *testing.State) {
 	capsOnImageFinder := nodewith.Name("CAPS LOCK is on").Role(role.Image)
 
 	// TODO(b/196771467) Validate typing after changing caps lock.
-	if err := uiauto.Combine("caps lock and unlock",
-		keyboard.AccelAction("Alt+Search"),
-		ui.WaitUntilExists(capsOnImageFinder),
-		keyboard.AccelAction("Shift"),
-		ui.WaitUntilGone(capsOnImageFinder),
-	)(ctx); err != nil {
+	actionName := "PK caps lock and unlock"
+	if err := uc.RunAction(ctx, actionName,
+		uiauto.Combine(actionName,
+			keyboard.AccelAction("Alt+Search"),
+			ui.WaitUntilExists(capsOnImageFinder),
+			keyboard.AccelAction("Shift"),
+			ui.WaitUntilGone(capsOnImageFinder),
+		), nil); err != nil {
 		s.Fatal("Failed to validate caps lock: ", err)
 	}
 }
