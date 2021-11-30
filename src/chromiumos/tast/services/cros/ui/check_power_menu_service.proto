@@ -23,6 +23,9 @@ service PowerMenuService {
   // is true. Chrome instance is necessary prior to the deployment. For this reason,
   // NewChrome must be called in prior, but not CloseChrome.
   rpc PowerMenuPresent (google.protobuf.Empty) returns (PowerMenuPresentResponse) {}
+
+  // PowerMenuItem returns a slice which contains names of power menu items.
+  rpc PowerMenuItem (google.protobuf.Empty) returns (PowerMenuItemResponse) {}
 }
 
 message NewChromeRequest {
@@ -37,4 +40,7 @@ message NewChromeRequest {
 
 message PowerMenuPresentResponse {
   bool is_menu_present = 1;
+}
+message PowerMenuItemResponse {
+  repeated string menu_items = 1;
 }
