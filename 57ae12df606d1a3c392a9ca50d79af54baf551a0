@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ce3388_582b87c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-30T02:11:37Z",
+      "side": 1,
+      "message": "apologies for the slow response, LGTM! just one small suggestion to make sure BT is enabled in the fixture\u0027s Reset as well (since it runs after each test).",
+      "revId": "57ae12df606d1a3c392a9ca50d79af54baf551a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a812e2e7_616ff3ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-30T02:11:37Z",
+      "side": 1,
+      "message": "I\u0027d suggest doing this in Reset as well (TearDown is only called once after all tests run; Reset is called after each test)",
+      "range": {
+        "startLine": 72,
+        "startChar": 43,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "57ae12df606d1a3c392a9ca50d79af54baf551a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -176,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d7d2ec_2dba4faa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_bluetooth_quick_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-30T02:11:37Z",
+      "side": 1,
+      "message": "LGTM, just left a suggestion to also manage the BT state in the fixture Reset as well",
+      "parentUuid": "64e9c7a9_e99128b5",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc3766ed_2f21b4f9",
@@ -260,6 +284,30 @@
       "side": 1,
       "message": "This was originally done to make sure that we are on the root page of the Quick Settings since ensureVisible doesn\u0027t guarantee that. I am okay with updating ensureVisible if we want that guaranteed, but I felt that it might be outside that scope of this function. WDYT?",
       "parentUuid": "d4cde162_5184523a",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "909affb6dc4be468dd3e7c40b9d9caf0859018b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16b44e7e_86e3a04e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/bluetooth.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-30T02:11:37Z",
+      "side": 1,
+      "message": "ah gotcha, this is fine then!",
+      "parentUuid": "a909a11f_8d4975f0",
       "range": {
         "startLine": 39,
         "startChar": 1,

@@ -266,6 +266,24 @@
       "parentUuid": "a01ef252_80a2f3de",
       "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "315d8f4b_07c20e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-11-30T02:11:37Z",
+      "side": 1,
+      "message": "lgtm!",
+      "parentUuid": "c8e59476_d64d215d",
+      "revId": "bd284df1e7055d78c47ddf8b49678f0cdc1df5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
