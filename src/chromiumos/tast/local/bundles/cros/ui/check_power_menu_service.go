@@ -103,3 +103,29 @@ func (p *PowerMenuService) PowerMenuPresent(ctx context.Context, req *empty.Empt
 
 	return &pb.PowerMenuPresentResponse{IsMenuPresent: exists}, nil
 }
+
+// PowerMenuItem reads from the power menu.
+// Checking PowerMenuPresent is required prior to calling PowerMenuItem.
+func (p *PowerMenuService) PowerMenuItem(ctx context.Context, req *empty.Empty) (*pb.PowerMenuItemResponse, error) {
+	if p.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+
+	if p.tconn == nil {
+		return nil, errors.New("Test API connection not available")
+	}
+
+	ui := uiauto.New(p.tconn)
+	menu := nodewith.ClassName("PowerButtonMenuItemView")
+	menuItems, err := ui.NodesInfo(ctx, menu)
+	if err != nil {
+		return nil, err
+	}
+
+	var itemsName []string
+	for _, val := range menuItems {
+		itemsName = append(itemsName, val.Name)
+	}
+
+	return &pb.PowerMenuItemResponse{MenuItems: itemsName}, nil
+}
