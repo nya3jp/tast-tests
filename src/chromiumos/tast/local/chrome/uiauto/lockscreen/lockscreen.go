@@ -22,6 +22,12 @@ import (
 
 const uiTimeout = 10 * time.Second
 
+// AuthErrorFinder is the finder for the authentication error shown on the first failure.
+var AuthErrorFinder = nodewith.Role(role.AlertDialog).Name("Your PIN or password couldn't be verified. Try again. Hit Control-Shift-Space to switch keyboard layout.").ClassName("LoginErrorBubble")
+
+// ConsecutiveAuthErrorFinder is the finder for the authentication error shown on the consecutive failures.
+var ConsecutiveAuthErrorFinder = nodewith.Role(role.AlertDialog).Name("Your PIN or password still couldn't be verified. Note: If you recently changed your password, use your old password. Your new password will be applied once you sign out. Hit Control-Shift-Space to switch keyboard layout.").ClassName("LoginErrorBubble")
+
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
 type State struct {
@@ -70,7 +76,7 @@ func WaitState(ctx context.Context, tconn *chrome.TestConn, check func(st State)
 // such as "Password for username@gmail.com". The Finder will find the node whose name matches the regex
 // /Password for <username>/, so the domain can be omitted, or the username argument can be an empty
 // string to find the first password field in the hierarchy.
-func PasswordFieldFinder(ctx context.Context, tconn *chrome.TestConn, username string) (*nodewith.Finder, error) {
+func PasswordFieldFinder(username string) (*nodewith.Finder, error) {
 	r, err := regexp.Compile(fmt.Sprintf("Password for %v", username))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to compile regexp for name attribute")
@@ -80,7 +86,7 @@ func PasswordFieldFinder(ctx context.Context, tconn *chrome.TestConn, username s
 
 // WaitForPasswordField waits for the password text field for a given user pod to appear in the UI.
 func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username string, timeout time.Duration) error {
-	finder, err := PasswordFieldFinder(ctx, tconn, username)
+	finder, err := PasswordFieldFinder(username)
 	if err != nil {
 		return err
 	}
@@ -89,14 +95,13 @@ func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username 
 
 // WaitForAuthError waits for the login error bubble that password or pin was not correct.
 func WaitForAuthError(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
-	finder := nodewith.Role(role.AlertDialog).Name("Your PIN or password couldn't be verified. Try again. Hit Control-Shift-Space to switch keyboard layout.").ClassName("LoginErrorBubble")
-	return uiauto.New(tconn).WithTimeout(timeout).WaitUntilExists(finder)(ctx)
+	return uiauto.New(tconn).WithTimeout(timeout).WaitUntilExists(AuthErrorFinder)(ctx)
 }
 
-// EnterPassword enters and submits the given password. Refer to PasswordFieldFinder for username options.
+// TypePassword enters the given password (without submitting). Refer to PasswordFieldFinder for username options.
 // It doesn't make any assumptions about the password being correct, so callers should verify the login/lock state afterwards.
-func EnterPassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter) error {
-	field, err := PasswordFieldFinder(ctx, tconn, username)
+func TypePassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter) error {
+	field, err := PasswordFieldFinder(username)
 	if err != nil {
 		return err
 	}
@@ -111,10 +116,15 @@ func EnterPassword(ctx context.Context, tconn *chrome.TestConn, username, passwo
 	if err := ui.WaitUntilExists(field.Focused())(ctx); err != nil {
 		return errors.Wrap(err, "password field not focused yet")
 	}
-	if err := kb.Type(ctx, password+"\n"); err != nil {
-		return errors.Wrap(err, "failed to enter and submit password")
+	if err := kb.Type(ctx, password); err != nil {
+		return errors.Wrap(err, "failed to type password")
 	}
 	return nil
+}
+
+// EnterPassword types password with carriage return at the end.
+func EnterPassword(ctx context.Context, tconn *chrome.TestConn, username, password string, kb *input.KeyboardEventWriter) error {
+	return TypePassword(ctx, tconn, username, password+"\n", kb)
 }
 
 // Lock locks the screen.
