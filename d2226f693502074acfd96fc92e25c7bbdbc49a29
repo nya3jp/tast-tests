@@ -16,6 +16,24 @@
       "message": "I ran across a bug which may be related a few months back. The window state reports as Normal even when it\u0027s actually in the Default state, so your issue may be that it doesn\u0027t work while in the Default state.\n\nTry this, it might work:\nash.SetWindowState(ctx, d.tconn, window.ID, ash.WMEventNormal, true /* waitForStateChange */)",
       "revId": "d2226f693502074acfd96fc92e25c7bbdbc49a29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6deab133_caf9ce24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-11-30T17:22:45Z",
+      "side": 1,
+      "message": "SetWindowStateAndWait, called above this change, ends up calling `SetWindowState(ctx, tconn, id, stateToWmTypes[targetState], true /* waitForStateChange */)` and additionally waits for the animation to finish. Additionally, on failure a screenshot is made visible and in those images it appears as though the window is in the correct state. Adjusting the bounds of the window was the only consistent way I found to get the selectors to return the positions correctly when this issue occurs.",
+      "parentUuid": "10656b96_933cf31f",
+      "revId": "d2226f693502074acfd96fc92e25c7bbdbc49a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
