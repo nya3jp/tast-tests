@@ -16,6 +16,23 @@
       "message": "Question! Should this be \"reven\" or something else like \"reven-vmtest\" or \"reven-vmtest-direct-tast-vm\"?",
       "revId": "4aaaaaee3346ffc65c3b1ce7fc81fb9b91080bd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59533bdc_6a41d441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/local_perfetto_tbm_traced_probes.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1481202
+      },
+      "writtenOn": "2021-11-30T23:40:14Z",
+      "side": 1,
+      "message": "I think this should be SkipOnModel rather than SkipOnPlatform",
+      "revId": "4aaaaaee3346ffc65c3b1ce7fc81fb9b91080bd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
