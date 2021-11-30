@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f297de5_4e8e8393",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T15:00:11Z",
+      "side": 1,
+      "message": "WDYT about following for further simplification?",
+      "revId": "8f7fb8630795049824df18e0444c900e31e3348c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66bc24f_32a970c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T15:00:11Z",
+      "side": 1,
+      "message": "maybe lacros.Launch ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 12,
+        "endLine": 80,
+        "endChar": 31
+      },
+      "revId": "8f7fb8630795049824df18e0444c900e31e3348c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9b1b1a_6e2b97e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/app_launcher_launch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T15:00:11Z",
+      "side": 1,
+      "message": "maybe lacros.Connect ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 18,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "8f7fb8630795049824df18e0444c900e31e3348c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99812de2_0c790c56",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T15:00:11Z",
+      "side": 1,
+      "message": "lacros.LaunchWithURL ?",
+      "revId": "8f7fb8630795049824df18e0444c900e31e3348c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
