@@ -79,6 +79,54 @@
       },
       "revId": "c96933000cf290f03a50d27c90b62bbef9e29aef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfadb27c_1903dc70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-30T09:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f799e895_a8674d0e",
+      "range": {
+        "startLine": 111,
+        "startChar": 120,
+        "endLine": 111,
+        "endChar": 121
+      },
+      "revId": "c96933000cf290f03a50d27c90b62bbef9e29aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14a9291b_dd7b135a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-11-30T09:15:11Z",
+      "side": 1,
+      "message": "Good point! I misunderstood the semanitcs of s.Error",
+      "parentUuid": "0a6a8aba_eefe5912",
+      "range": {
+        "startLine": 111,
+        "startChar": 19,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "c96933000cf290f03a50d27c90b62bbef9e29aef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
