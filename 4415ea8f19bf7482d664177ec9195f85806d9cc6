@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f647fbf_aadd9821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-11-30T01:38:22Z",
+      "side": 1,
+      "message": "Multipaste test was broken recently and I created a fix at https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3306757, you may need to wait for my fix and also update your CL accordingly.",
+      "revId": "4415ea8f19bf7482d664177ec9195f85806d9cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
