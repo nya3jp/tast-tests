@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eed8ddcc_9039af00",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-11-30T00:51:54Z",
+      "side": 1,
+      "message": "there is a comment in Line127 of function New(), I will put it in this function too.\nThe DisplayDefaultLevel is defined in line 33. The value is -1.",
+      "parentUuid": "ebdb5fc7_6dfdcb9b",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb6c93b3_482445df",
         "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-29T17:27:12Z",
       "side": 1,
       "message": "python2 is end of life soon. Please remove all reference to python 2. Thanks.",
+      "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20673c98_f5dc9b07",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-11-30T00:51:54Z",
+      "side": 1,
+      "message": "I think remove python2 is not the purpose of this CL",
+      "parentUuid": "eb6c93b3_482445df",
       "revId": "e08ce5b493eff1a316adbfea626805cc1569ecb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
