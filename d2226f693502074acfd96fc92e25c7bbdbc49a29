@@ -51,6 +51,24 @@
       "parentUuid": "10656b96_933cf31f",
       "revId": "d2226f693502074acfd96fc92e25c7bbdbc49a29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c9018dd_c77daa77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-11-30T23:01:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6deab133_caf9ce24",
+      "revId": "d2226f693502074acfd96fc92e25c7bbdbc49a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
