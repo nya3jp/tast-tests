@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dfda7fd_c62a1274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-11-30T02:03:09Z",
+      "side": 1,
+      "message": "Reworked into patchset 5.",
+      "parentUuid": "22bc3e63_3629b68c",
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edc625b7_3f15d609",
@@ -203,6 +221,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1667dff4_ba19b397",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-11-30T02:03:09Z",
+      "side": 1,
+      "message": "Okay, I implemented the functional options pattern in patchset 5. Please correct me if you see anything amiss.",
+      "parentUuid": "65bae829_7b7d812f",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed642fa9_5fa020cf",
@@ -216,6 +258,30 @@
       "writtenOn": "2021-11-25T14:12:45Z",
       "side": 1,
       "message": "nit: no need to pass context here",
+      "range": {
+        "startLine": 258,
+        "startChar": 22,
+        "endLine": 258,
+        "endChar": 41
+      },
+      "revId": "ae9dd66cef6bb7f329e0629a6f21339945b2b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd41472_e41930ed",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-11-30T02:03:09Z",
+      "side": 1,
+      "message": "Done in patchset 5.",
+      "parentUuid": "ed642fa9_5fa020cf",
       "range": {
         "startLine": 258,
         "startChar": 22,

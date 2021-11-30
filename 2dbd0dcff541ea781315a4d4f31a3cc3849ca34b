@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b477c817_923feb72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-11-30T02:03:09Z",
+      "side": 1,
+      "message": "I\u0027d like to also work on a change that deduplicates some constants spread throughout our tests. This would take the form of being able to write `.WithDefaultDescriptors()` rather than repeating the hardcoded `.WithDescriptors(\"/usr/local/etc/virtual-usb-printer/ippusb_printer.json\")`. Let me know if this seems acceptable from a tast owners perspective.",
+      "revId": "2dbd0dcff541ea781315a4d4f31a3cc3849ca34b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
