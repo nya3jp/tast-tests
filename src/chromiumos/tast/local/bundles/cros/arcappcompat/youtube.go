@@ -30,13 +30,13 @@ var touchviewLaunchForYoutube = []testutil.TestCase{
 
 // clamshellAppSpecificTestsForYoutube are placed here.
 var clamshellAppSpecificTestsForYoutube = []testutil.TestCase{
-	{Name: "Clamshell: Stylus click", Fn: testutil.StylusClick},
+	// {Name: "Clamshell: Stylus click", Fn: testutil.StylusClick},
 	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
 }
 
 // touchviewAppSpecificTestsForYoutube are placed here.
 var touchviewAppSpecificTestsForYoutube = []testutil.TestCase{
-	{Name: "Touchview: Stylus click", Fn: testutil.StylusClick},
+	// {Name: "Touchview: Stylus click", Fn: testutil.StylusClick},
 	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
 }
 
@@ -51,7 +51,7 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForYoutube,
-				CommonTests:      testutil.ClamshellCommonTests,
+				CommonTests:      testutil.ClamshellSmokeTests,
 				AppSpecificTests: clamshellAppSpecificTestsForYoutube,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -63,7 +63,7 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForYoutube,
-				CommonTests:      testutil.TouchviewCommonTests,
+				CommonTests:      testutil.TouchviewSmokeTests,
 				AppSpecificTests: touchviewAppSpecificTestsForYoutube,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -75,7 +75,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForYoutube,
-				CommonTests:      testutil.ClamshellCommonTests,
+				CommonTests:      testutil.ClamshellSmokeTests,
 				AppSpecificTests: clamshellAppSpecificTestsForYoutube,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -87,7 +87,7 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForYoutube,
-				CommonTests:      testutil.TouchviewCommonTests,
+				CommonTests:      testutil.TouchviewSmokeTests,
 				AppSpecificTests: touchviewAppSpecificTestsForYoutube,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
