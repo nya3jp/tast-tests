@@ -87,7 +87,8 @@ func Scan(ctx context.Context, s *testing.State) {
 		usbprinter.WithDescriptors(descriptors),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WithESCLCapabilities(esclCapabilities),
-		usbprinter.ExpectUdevEventOnStop())
+		usbprinter.ExpectUdevEventOnStop(),
+		usbprinter.WaitUntilConfigured())
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
@@ -99,8 +100,8 @@ func Scan(ctx context.Context, s *testing.State) {
 	if err = ippusbbridge.WaitForSocket(ctx, printer.DevInfo); err != nil {
 		s.Fatal("Failed to wait for ippusb socket: ", err)
 	}
-	if err = cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
-		s.Fatal("Failed to wait for printer to be idle: ", err)
+	if err = cups.RestartPrintingSystem(ctx); err != nil {
+		s.Fatal("Failed to restart printing system: ", err)
 	}
 	if err = ippusbbridge.ContactPrinterEndpoint(ctx, printer.DevInfo, "/eSCL/ScannerCapabilities"); err != nil {
 		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
