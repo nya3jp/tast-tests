@@ -59,21 +59,22 @@ func runEnumerationTest(ctx context.Context, s *testing.State, info scannerInfo)
 		s.Fatal("Failed to restart printing system: ", err)
 	}
 
-	printer, err := usbprinter.Start(ctx,
+	options := []usbprinter.PrinterInfoField{
 		usbprinter.WithDescriptors(info.descriptors),
 		usbprinter.WithAttributes(info.attributes),
-		usbprinter.WithESCLCapabilities(info.esclCapabilities))
+		usbprinter.WithESCLCapabilities(info.esclCapabilities),
+	}
+	// If the test uses an IPP-over-USB device, we wait for
+	// autoconfiguration to complete.
+	if info.attributes != "" || info.esclCapabilities != "" {
+		options = append(options, usbprinter.WaitUntilConfigured())
+	}
+
+	printer, err := usbprinter.Start(ctx, options...)
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
 	}
 	defer printer.Stop(ctx, true)
-	if info.attributes != "" || info.esclCapabilities != "" {
-		// Only wait for CUPS if we added an IPP-USB device.  It won't attempt to
-		// auto-configure non-IPP devices, so this would never finish.
-		if err := cups.EnsurePrinterIdle(ctx, printer.DevInfo); err != nil {
-			s.Fatal("Failed to wait for CUPS configuration: ", err)
-		}
-	}
 
 	s.Log("Requesting scanner list")
 	l, err := lorgnette.New(ctx)
