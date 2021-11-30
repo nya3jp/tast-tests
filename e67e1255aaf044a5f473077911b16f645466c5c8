@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66abd24b_030a25b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/download_recent_photo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2021-11-30T23:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63606e75_70fb8261",
+      "range": {
+        "startLine": 21,
+        "startChar": 58,
+        "endLine": 21,
+        "endChar": 61
+      },
+      "revId": "e67e1255aaf044a5f473077911b16f645466c5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0c29925_82c13622",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-30T21:10:16Z",
       "side": 1,
       "message": "Can you poll for a new photo in downloads folder instead?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 34
+      },
+      "revId": "e67e1255aaf044a5f473077911b16f645466c5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63be7aa_6eeb48ec",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2021-11-30T23:14:34Z",
+      "side": 1,
+      "message": "Updated to poll for a new photo to appear under /sdcard/DCIM/Camera (where all photos are stored).",
+      "parentUuid": "c0c29925_82c13622",
       "range": {
         "startLine": 169,
         "startChar": 1,
