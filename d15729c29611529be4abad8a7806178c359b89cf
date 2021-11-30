@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d0d293_d3d68772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef616a37_b44af595",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 72
+      },
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "849317cc_77a2df48",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-11-25T18:56:53Z",
       "side": 1,
       "message": "Clarification: what is this for...?",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f3b4ae_09dcae9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "After plug the Thunderbolt device we will validate the output file if thunderbolt device is detected or not ,then we flush the output file so that it should not contain any old data for next iteration.",
+      "parentUuid": "849317cc_77a2df48",
       "revId": "d15729c29611529be4abad8a7806178c359b89cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea459cd_905a13ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd426613_6ac545d6",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a06012b4_a27260d6",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-11-25T18:56:53Z",
       "side": 1,
       "message": "nit: ditto for empty line removal.",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "564f8d81_2c206fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06012b4_a27260d6",
       "revId": "d15729c29611529be4abad8a7806178c359b89cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0a58552_a7894ebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "We are not performing any check and tried all the possibilities to avoid time sleep but no luck.",
+      "parentUuid": "ecf8af74_10e28ef4",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2021-11-25T18:56:53Z",
       "side": 1,
       "message": "nit/optional: we often use \u003d\u003d 0 in this kind of case.",
+      "range": {
+        "startLine": 247,
+        "startChar": 31,
+        "endLine": 247,
+        "endChar": 34
+      },
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69296048_cd0347d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec7feb9_d906c99e",
       "range": {
         "startLine": 247,
         "startChar": 31,
@@ -161,6 +281,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f83dd872_585ec2f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbb13e1_6e032432",
+      "range": {
+        "startLine": 248,
+        "startChar": 66,
+        "endLine": 248,
+        "endChar": 71
+      },
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3bc525_d770fdb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "094c3ab4_e7e323f0",
+      "range": {
+        "startLine": 248,
+        "startChar": 34,
+        "endLine": 248,
+        "endChar": 36
+      },
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aa7d4de_20d9056b",
@@ -184,6 +352,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fc45cc_7577e07a",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0aa7d4de_20d9056b",
+      "range": {
+        "startLine": 136,
+        "startChar": 31,
+        "endLine": 136,
+        "endChar": 55
+      },
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1851681d_37225721",
@@ -197,6 +389,24 @@
       "writtenOn": "2021-11-25T18:56:53Z",
       "side": 1,
       "message": "WaitUntilExits wait for the button. So, what is this polling waiting for?\nCan it be just clicked?",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8994421_1705ca1f",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-11-30T11:34:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1851681d_37225721",
       "revId": "d15729c29611529be4abad8a7806178c359b89cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
