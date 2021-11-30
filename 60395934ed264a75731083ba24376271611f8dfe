@@ -16,6 +16,24 @@
       "message": "KyleH, this is one of the manual tests that I mentioned that Cienet would be writing for settings. PTAL",
       "revId": "60395934ed264a75731083ba24376271611f8dfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4924461_66723d38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2021-11-30T03:30:55Z",
+      "side": 1,
+      "message": "Sorry for the long delay - I was OOO for several weeks!\n\nAdding +xiaohuic who is taking over settings.",
+      "parentUuid": "8d7711aa_f8735af6",
+      "revId": "60395934ed264a75731083ba24376271611f8dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
