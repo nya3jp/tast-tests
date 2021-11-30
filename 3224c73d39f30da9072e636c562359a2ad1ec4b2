@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f308fb6e_c550a99b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-11-30T18:29:14Z",
+      "side": 1,
+      "message": "nit: I wonder if we can just give \"non-yoyo\" a name? In fw-dump-extractor.pl, we get a hint at what might be a useful name:\n\n```\n# Check what memory API\nwhile ($checkMemAPIData ne \u0027\u0027) {\n\tmy ($type, $length) \u003d unpack(\u0027L L\u0027, $checkMemAPIData);\n...\n```\n\nConsider calling the non-yoyo api the \"memory api\" [here and elsewhere] (or something along those lines that matches language used in fw-dump-extractor.pl). For example, validMagic -\u003e memoryAPIMagic, validateNonYoYoMagicFWDump -\u003e validateMemoryAPIMagicFWDump, etc.",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "3224c73d39f30da9072e636c562359a2ad1ec4b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "39de207e_d9932862",
