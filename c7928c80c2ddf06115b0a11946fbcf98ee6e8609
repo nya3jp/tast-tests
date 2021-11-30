@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9427d73e_78b14092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-30T02:58:41Z",
+      "side": 1,
+      "message": "Still LGTM",
+      "revId": "c7928c80c2ddf06115b0a11946fbcf98ee6e8609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "99a2b0b5_32230111",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/web_codecs_decode.go",
         "patchSetId": 7
@@ -76,6 +93,29 @@
         "startChar": 23,
         "endLine": 35,
         "endChar": 31
+      },
+      "revId": "c7928c80c2ddf06115b0a11946fbcf98ee6e8609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8a07b1_b2fc5069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2021-11-30T02:58:41Z",
+      "side": 1,
+      "message": "This variable is created here as a var but only used in l.45-47 (and\n|framerate| is not used?). Maybe just create the const values directly\nin l.45-47?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 24
       },
       "revId": "c7928c80c2ddf06115b0a11946fbcf98ee6e8609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
