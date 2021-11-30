@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f42b69f_1f16e222",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-30T13:40:18Z",
+      "side": 1,
+      "message": "I think we should limit ourselves to just English and somehow make sure that we get the English page. Otherwise what\u0027s the justification for adding only German?",
+      "revId": "64335501a89f5f4801fee64f150b6e5be9308401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "838e21ff_9c4da63a",
         "filename": "src/chromiumos/tast/local/policyutil/ui.go",
         "patchSetId": 1
@@ -54,6 +71,23 @@
       "writtenOn": "2021-11-30T13:26:41Z",
       "side": 1,
       "message": "If you expect to check till the end of the poll, it should be done differently. I will send you some materials on it.",
+      "revId": "64335501a89f5f4801fee64f150b6e5be9308401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d6f1f6_e4f4ccf9",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-11-30T13:40:18Z",
+      "side": 1,
+      "message": "As discussed offline yesterday, I think we should avoid waiting a fixed amount of time in the success case whenever possible. One way would be to provide a function ConsentToCookies that returns an error if no cookie page is visible, and then have the test call that in an additional branch in its existing polling (line 164 in the original test above) such that in the normal case (test passes) either the cookie page is found as soon as possible or the actual interaction starts as soon possible.",
       "revId": "64335501a89f5f4801fee64f150b6e5be9308401",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
