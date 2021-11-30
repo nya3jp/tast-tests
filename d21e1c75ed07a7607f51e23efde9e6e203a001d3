@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "370cf827_8b544e76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-30T10:13:27Z",
+      "side": 1,
+      "message": "Can we use ioutil.TempFile or similar way to generate a unique temporary filename? (or otherwise, reading directly from Cmd as commented in L.35)",
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde72a14_dc40d5db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-30T10:13:27Z",
+      "side": 1,
+      "message": "Is this sudo needed? I thought the test code is run by the root user by default.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/running_tests.md#specifying-where-to-run-tests",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aeb6f68_5f2e3fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-30T10:13:27Z",
+      "side": 1,
+      "message": "Is it possible to run the command directly by Cmd, without using \"sh -c\"?\nI think the redirection could be replaced with reading through Stderr/Stdout in Cmd after Start().",
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "190aa372_e3bed2ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-30T10:13:27Z",
+      "side": 1,
+      "message": "\"Skipped after test start\" is not supported by Tast, and can probably be replaced with hardware/software dependencies. In which condition the usb/devices is absent?",
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7c6922_f0908c55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-11-30T10:13:27Z",
+      "side": 1,
+      "message": "I think this should be s.Error or Fatal, which would help notice the error just in case the process affected the framework and other tests that run after this test.",
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
