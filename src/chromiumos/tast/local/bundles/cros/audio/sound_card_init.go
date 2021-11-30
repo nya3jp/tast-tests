@@ -55,7 +55,7 @@ func init() {
 // TODO(b/171217019): parse sound_card_init yaml to get ampCount.
 const ampCount = 2
 const initctlTimeout = 2 * time.Second
-const soundCardInitTimeout = 5 * time.Second
+const soundCardInitTimeout = 10 * time.Second
 
 // SoundCardInit Verifies sound_card_init boot time calibration logic.
 func SoundCardInit(ctx context.Context, s *testing.State) {
