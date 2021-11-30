@@ -49,6 +49,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd77d6fc_c017aadc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T14:39:30Z",
+      "side": 1,
+      "message": "Could you add detailed message what is this?",
+      "revId": "434b67cd23bb70472add6fbb1ab7aedef41ea6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63620444_2cc21ab8",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 7

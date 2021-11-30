@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72f96b35_f3d96867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T14:39:30Z",
+      "side": 1,
+      "message": "ok, there\u0027s some existing code complexity.\n\n- Could you avoid using hard coded outFile? Instead, you can create a temp file by ioutils.TempFile.\n- Could you avoid using shell at L70? You can instantiate testexec.Cmd and keep it. Then you can call Start(). At the end of the program, you have to terminate the program, and Wait() it.\n- Along with the change, pidCmd and killTbtEvent should be removed, too.",
+      "parentUuid": "38f3b4ae_09dcae9e",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd426613_6ac545d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
@@ -219,6 +237,24 @@
       "writtenOn": "2021-11-30T14:21:30Z",
       "side": 1,
       "message": "Could you share what you have tried? Maybe we can help brainstorming?",
+      "parentUuid": "f0a58552_a7894ebf",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc48fc5_6e0ad36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-11-30T14:39:30Z",
+      "side": 1,
+      "message": "I haven\u0027t get your point yet. If nothing is checked, why do you need to sleep here?",
       "parentUuid": "f0a58552_a7894ebf",
       "revId": "d15729c29611529be4abad8a7806178c359b89cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
