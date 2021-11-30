@@ -14,10 +14,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// prepareLacrosChromeBinary ensures that lacros-chrome binary is available on
+// prepareLacrosBinary ensures that lacros-chrome binary is available on
 // disk and ready to launch. Does not launch the binary.
 // This will extract lacros-chrome to where the lacrosRootPath constant points to.
-func prepareLacrosChromeBinary(ctx context.Context, s *testing.FixtState) error {
+func prepareLacrosBinary(ctx context.Context, s *testing.FixtState) error {
 	testing.ContextLog(ctx, "Preparing the environment to run Lacros")
 	if err := os.RemoveAll(lacrosTestPath); err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to remove old test artifacts directory")

@@ -280,7 +280,7 @@ func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string)
 
 // versionInfoFromUI opens chrome://version/ from UI and returns the version info that matches the given JS expression.
 // eg, Executable Path = /run/imageloader/lacros-dogfood-dev/X.X.X.X/chrome
-func (uts *UpdateTestService) versionInfoFromUI(ctx context.Context, l *lacros.LacrosChrome, expr string) (string, error) {
+func (uts *UpdateTestService) versionInfoFromUI(ctx context.Context, l *lacros.Lacros, expr string) (string, error) {
 	lconn, err := l.NewConn(ctx, lacroscommon.VersionURL)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to open: %v", lacroscommon.VersionURL)

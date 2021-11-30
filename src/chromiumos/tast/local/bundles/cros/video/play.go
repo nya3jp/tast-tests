@@ -525,7 +525,7 @@ func Play(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacros.CloseLacrosChrome(ctx, l)
+	defer lacros.CloseLacros(ctx, l)
 
 	if err := play.TestPlay(ctx, s, cs, cr, testOpt.fileName, testOpt.videoType, testOpt.verifyMode, testOpt.unmutePlayer); err != nil {
 		s.Fatal("TestPlay failed: ", err)
