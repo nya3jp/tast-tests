@@ -61,7 +61,9 @@ func CCAUIGalleryButton(ctx context.Context, s *testing.State) {
 		s.Error("Failed to click the gallery button: ", err)
 	}
 	checkMediaAppPrefix := func(t *target.Info) bool {
-		url := "chrome://media-app"
+		// TODO(b/204528998): Change back to chrome://media-app once the
+		// underlying issue is solved so we won't hit the race condition.
+		url := "chrome-untrusted://media-app"
 		return strings.HasPrefix(t.URL, url)
 	}
 	var mediaAppTargetID target.ID
