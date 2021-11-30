@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9528c67f_0a0f800d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-30T14:21:30Z",
+      "side": 1,
+      "message": "could we use a shorter title like\n\n  health: add ProbeWifiInfo, MonitorThunderboltEvent, ProbeBusInfo tests",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 89
+      },
+      "revId": "434b67cd23bb70472add6fbb1ab7aedef41ea6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc8c659_4c9346f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-30T14:21:30Z",
+      "side": 1,
+      "message": "Is it ok to remove \"crosHealthdRunning\"? I guess you might need both Fixture?",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "434b67cd23bb70472add6fbb1ab7aedef41ea6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63620444_2cc21ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-30T14:21:30Z",
+      "side": 1,
+      "message": "Is it a Fatal() instead of Log()? It seems this is something we are trying to recovering the device state?",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "434b67cd23bb70472add6fbb1ab7aedef41ea6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

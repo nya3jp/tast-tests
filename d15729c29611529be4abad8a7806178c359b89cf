@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f6a9f3d_86e762da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-30T14:21:30Z",
+      "side": 1,
+      "message": "Could we add this as a comment?",
+      "parentUuid": "38f3b4ae_09dcae9e",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd426613_6ac545d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "We are not performing any check and tried all the possibilities to avoid time sleep but no luck.",
       "parentUuid": "ecf8af74_10e28ef4",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9634a11_91c81c2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-11-30T14:21:30Z",
+      "side": 1,
+      "message": "Could you share what you have tried? Maybe we can help brainstorming?",
+      "parentUuid": "f0a58552_a7894ebf",
       "revId": "d15729c29611529be4abad8a7806178c359b89cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
