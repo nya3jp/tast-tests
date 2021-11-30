@@ -20,12 +20,12 @@ import (
 )
 
 const (
-	yoyoMagic    = 0x14789633 // StP2
-	validMagic   = 0x14789632 // HrP2, CcP2, JfP2, ThP2
-	dumpInfoType = 1 << 31
-	csrFile      = "csr"
-	monitorFile  = "monitor"
-	lmacDccmFile = "dccm_lmac"
+	yoyoMagic      = 0x14789633 // HrP2, CcP2, JfP2, ThP2
+	memoryAPIMagic = 0x14789632 // StP2
+	dumpInfoType   = 1 << 31
+	csrFile        = "csr"
+	monitorFile    = "monitor"
+	lmacDccmFile   = "dccm_lmac"
 )
 
 // DevcoreHeader is a struct that contains the fw dump header information.
@@ -54,8 +54,31 @@ type VYoYoMemHeader struct {
 	NameLength  uint32
 }
 
+// VYoYoInfoHeader is a struct for reading the value of a YoYo TLV header.
+type VYoYoInfoHeader struct {
+	Version          uint32
+	TriggerTimepoint uint32
+	TriggerReason    uint32
+	ExternalCfgState uint32
+	VerType          uint32
+	VerSubtype       uint32
+	HwStep           uint32
+	HwType           uint32
+	RfIDFlavor       uint32
+	RfIDDash         uint32
+	RfIDStep         uint32
+	RfIDType         uint32
+	LmacMajor        uint32
+	LmacMinor        uint32
+	UmacMajor        uint32
+	UmacMinor        uint32
+	FwMonMode        uint32
+	RegionsMask      uint64
+}
+
 // MandatoryFWDumpFiles are the mandaotry files that must exists in the fw dump
 // to be valid. Refer to http://b/169152720#comment28 for more information.
+// These files are only mandatory for the Memory API Magic firmware dumps.
 // csr.lst       (mandatory) header type 1
 // monitor.lst   (mandatory) header type 5
 // dccm_lmac.lst (mandatory) header type of 9
@@ -99,35 +122,30 @@ func ValidateFWDump(ctx context.Context, file string) error {
 		return errors.Errorf("unexpected file size: got %d, want %d", len(fwDumpData), fwDumpHeader.FileSize)
 	}
 
-	var mFiles MandatoryFWDumpFiles
-
 	// Check the magic signature of the fw dump.
 	if fwDumpHeader.Magic == yoyoMagic {
-		testing.ContextLog(ctx, "FW magic Signature: YOYO_Magic")
-		if err := validateYoYoMagicFWDump(fwDumpBuffer, &mFiles); err != nil {
+		testing.ContextLog(ctx, "FW magic Signature: YOYO Magic")
+		if err := validateYoYoMagicFWDump(fwDumpBuffer); err != nil {
 			return err
 		}
-	} else if fwDumpHeader.Magic == validMagic {
-		testing.ContextLog(ctx, "FW magic Signature: not YOYO_Magic")
-		if err := validateNonYoYoMagicFWDump(fwDumpBuffer, &mFiles); err != nil {
+	} else if fwDumpHeader.Magic == memoryAPIMagic {
+		testing.ContextLog(ctx, "FW magic Signature: Memory API Magic")
+		var mFiles MandatoryFWDumpFiles
+		if err := validateMemoryAPIMagicFWDump(fwDumpBuffer, &mFiles); err != nil {
 			return err
 		}
 	} else {
-		return errors.Errorf("invalid magic signature: got %x, want  {%x, %x}", fwDumpHeader.Magic, validMagic, yoyoMagic)
-	}
-
-	// Check if the mandatory files exists in the fw dump.
-	if !mFiles.Csr || !mFiles.Monitor || !mFiles.DccmLmac {
-		return errors.Errorf("One of the mandatory files id messing: got {csr: %t, monitor: %t, dccm_lmac: %t}, want {csr: True, monitor: True, dccm_lmac: True}", mFiles.Csr, mFiles.Monitor, mFiles.DccmLmac)
+		return errors.Errorf("invalid magic signature: got %x, want  {%x, %x}", fwDumpHeader.Magic, memoryAPIMagic, yoyoMagic)
 	}
 
 	return nil
 }
 
-func validateYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer, mandatoryFiles *MandatoryFWDumpFiles) error {
+func validateYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer) error {
 	// Parse the fw dump.
 	tlHeader := TLHeader{}
-	vYoYoMemHeader := VYoYoMemHeader{}
+	var yoyoExpectedFileRegionIDs []int
+	var yoyoFoundFileRegionIDs []int
 
 	for fwDumpBuffer.Len() > 0 {
 		// Read a TLV header.
@@ -144,42 +162,63 @@ func validateYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer, mandatoryFiles *Mandato
 
 		if tlHeader.Length > 0 {
 			// Read the TLV header value.
-			if tlHeader.Type != dumpInfoType {
+			if tlHeader.Type == dumpInfoType {
+				// If the header is dumpInfoType then it should have the Region IDs for the
+				// files the should be in the fw dump. For more info refer to http://b/169152720#comment78
+				// The expected region IDs are saved in the slice yoyoExpectedFileRegionIDs that is used
+				// to check if all expected files exists in the fw dump.
 
 				// Extract the value from the buffer using the tlHeader.Length.
-				value := *fwDumpBuffer
+				value := bytes.NewBuffer(fwDumpBuffer.Bytes())
 				value.Truncate(int(tlHeader.Length))
-
-				// Read the VYoYoMemHeader to get the file name length.
-				err = binary.Read(&value, binary.LittleEndian, &vYoYoMemHeader)
+				vYoYoInfoHeader := VYoYoInfoHeader{}
+				// Read the VYoYoInfoHeader to get the file name length.
+				err = binary.Read(value, binary.LittleEndian, &vYoYoInfoHeader)
 				if err != nil {
 					return errors.Wrap(err, "failed to read the header of the fw dump")
 				}
 
-				// Extarct the file name from value using the vYoYoMemHeader.NameLength.
-				fileName := value
-				fileName.Truncate(int(vYoYoMemHeader.NameLength))
-
-				// Trim the leading null values in the file name bytes and converting to string type.
-				fileNameTrimed := string(bytes.TrimRight(fileName.Bytes(), "\x00"))
-
-				// Check if the file name is matching any of the mandatory files.
-				if fileNameTrimed == csrFile {
-					mandatoryFiles.Csr = true
-				} else if fileNameTrimed == monitorFile {
-					mandatoryFiles.Monitor = true
-				} else if fileNameTrimed == lmacDccmFile {
-					mandatoryFiles.DccmLmac = true
+				i := 0
+				for i < 64 {
+					if ((1 << i) & vYoYoInfoHeader.RegionsMask) > 0 {
+						yoyoExpectedFileRegionIDs = append(yoyoExpectedFileRegionIDs, i)
+					}
+					i++
 				}
+			} else {
+				// Extract the value from the buffer using the tlHeader.Length.
+				value := bytes.NewBuffer(fwDumpBuffer.Bytes())
+				value.Truncate(int(tlHeader.Length))
+				vYoYoMemHeader := VYoYoMemHeader{}
+				// Read the VYoYoMemHeader to get the file name length.
+				err = binary.Read(value, binary.LittleEndian, &vYoYoMemHeader)
+				if err != nil {
+					return errors.Wrap(err, "failed to read the header of the fw dump")
+				}
+
+				yoyoFoundFileRegionIDs = append(yoyoFoundFileRegionIDs, int(vYoYoMemHeader.RegionID))
 			}
 		}
 		fwDumpBuffer.Next(int(tlHeader.Length))
 	}
 
+	// Check that all expected files exists in the fw dump.
+	for _, e := range yoyoExpectedFileRegionIDs {
+		found := false
+		for _, f := range yoyoFoundFileRegionIDs {
+			if e == f {
+				found = true
+			}
+		}
+		if !found {
+			return errors.Errorf("failed due to at least one of the expected files is missing: got %v, want %v", yoyoFoundFileRegionIDs, yoyoExpectedFileRegionIDs)
+		}
+	}
+
 	return nil
 }
 
-func validateNonYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer, mandatoryFiles *MandatoryFWDumpFiles) error {
+func validateMemoryAPIMagicFWDump(fwDumpBuffer *bytes.Buffer, mandatoryFiles *MandatoryFWDumpFiles) error {
 	// Check the type of the memory API.
 	newMemAPI, err := checkMemoryAPI(fwDumpBuffer)
 	if err != nil {
@@ -217,7 +256,7 @@ func validateNonYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer, mandatoryFiles *Mand
 		case 4:
 			// Read device name.
 			// Extract the TLV value from the buffer using the tlHeader.Length.
-			hValue := *fwDumpBuffer
+			hValue := bytes.NewBuffer(fwDumpBuffer.Bytes())
 			hValue.Next(72)
 			hValue.Truncate(64)
 			wifiDeviceName = hValue.String()
@@ -225,11 +264,11 @@ func validateNonYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer, mandatoryFiles *Mand
 			mandatoryFiles.Monitor = true
 		case 9:
 			// Extract the TLV value from the buffer using the tlHeader.Length.
-			hValue := *fwDumpBuffer
+			hValue := bytes.NewBuffer(fwDumpBuffer.Bytes())
 			hValue.Truncate(int(tlHeader.Length))
 
 			// Read Memory Type and Address from the TLV value using vHeader.
-			err = binary.Read(&hValue, binary.LittleEndian, &vHeader)
+			err = binary.Read(hValue, binary.LittleEndian, &vHeader)
 			if err != nil {
 				return errors.Wrap(err, "failed to read the header of the fw dump")
 			}
@@ -260,17 +299,22 @@ func validateNonYoYoMagicFWDump(fwDumpBuffer *bytes.Buffer, mandatoryFiles *Mand
 		}
 	}
 
+	// Check if the mandatory files exists in the fw dump.
+	if !mandatoryFiles.Csr || !mandatoryFiles.Monitor || !mandatoryFiles.DccmLmac {
+		return errors.Errorf("one of the mandatory files id messing: got {csr: %t, monitor: %t, dccm_lmac: %t}, want {csr: True, monitor: True, dccm_lmac: True}", mandatoryFiles.Csr, mandatoryFiles.Monitor, mandatoryFiles.DccmLmac)
+	}
+
 	return nil
 }
 
 func checkMemoryAPI(fwDumpBuffer *bytes.Buffer) (int, error) {
-	checkMemAPIData := *fwDumpBuffer
+	checkMemAPIData := bytes.NewBuffer(fwDumpBuffer.Bytes())
 	newMemAPI := 0
 	tlHeader := TLHeader{}
 	vHeader := VHeader{}
 	for checkMemAPIData.Len() > 0 {
 		// Read the TLV header.
-		err := binary.Read(&checkMemAPIData, binary.LittleEndian, &tlHeader)
+		err := binary.Read(checkMemAPIData, binary.LittleEndian, &tlHeader)
 		if err != nil {
 			return 0, errors.Wrap(err, "failed to read the header of the fw dump")
 		}
@@ -287,7 +331,7 @@ func checkMemoryAPI(fwDumpBuffer *bytes.Buffer) (int, error) {
 			value.Truncate(int(tlHeader.Length))
 
 			// Read Memory Type and Address from the TLV value using vHeader.
-			err = binary.Read(&value, binary.LittleEndian, &vHeader)
+			err = binary.Read(value, binary.LittleEndian, &vHeader)
 			if err != nil {
 				return 0, errors.Wrap(err, "failed to read the header of the fw dump")
 			}
