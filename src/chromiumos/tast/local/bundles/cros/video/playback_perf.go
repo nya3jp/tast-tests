@@ -807,7 +807,7 @@ func PlaybackPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacros.CloseLacrosChrome(ctx, l)
+	defer lacros.CloseLacros(ctx, l)
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 

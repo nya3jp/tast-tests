@@ -63,7 +63,7 @@ func GetUserMediaPolicy(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}
-	defer lacros.CloseLacrosChrome(cleanupCtx, l)
+	defer lacros.CloseLacros(cleanupCtx, l)
 
 	// Run actual test.
 	conn, err := br.NewConn(ctx, "chrome://newtab")
