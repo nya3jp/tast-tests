@@ -80,10 +80,10 @@ func toggleExpertModeOptions(ctx context.Context, app *cca.App) error {
 	}
 	defer cca.ExpertMenu.Close(ctx, app)
 
-	if _, err := app.ToggleShowMetadata(ctx); err != nil {
+	if _, err := app.ToggleOption(ctx, cca.ShowMetadataOption); err != nil {
 		return err
 	}
-	if _, err := app.ToggleSaveMetadata(ctx); err != nil {
+	if _, err := app.ToggleOption(ctx, cca.SaveMetadataOption); err != nil {
 		return err
 	}
 	return nil
@@ -104,7 +104,7 @@ func disableExpertModeOnUI(ctx context.Context, app *cca.App) error {
 	}
 	defer cca.ExpertMenu.Close(ctx, app)
 
-	if _, err := app.ToggleEnableExpertMode(ctx); err != nil {
+	if _, err := app.ToggleOption(ctx, cca.ExpertModeOption); err != nil {
 		return err
 	}
 	return nil
