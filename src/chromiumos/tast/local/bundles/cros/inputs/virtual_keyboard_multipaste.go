@@ -73,12 +73,17 @@ func VirtualKeyboardMultipaste(ctx context.Context, s *testing.State) {
 	}
 	defer touchCtx.Close()
 
+	if err := uiauto.Combine("navigate to multipaste virtual keyboard",
+		its.ClickFieldUntilVKShown(inputField),
+		vkbCtx.SwitchToMultipaste(),
+	)(ctx); err != nil {
+		s.Fatal("Fail to navigate to multipaste virtual keyboard: ", err)
+	}
+
 	ash.SetClipboard(ctx, tconn, text1)
 	ash.SetClipboard(ctx, tconn, text2)
 
-	if err := uiauto.Combine("navigate to multipaste virtual keyboard and paste text",
-		its.ClickFieldUntilVKShown(inputField),
-		vkbCtx.SwitchToMultipaste(),
+	if err := uiauto.Combine("paste text",
 		vkbCtx.TapMultipasteItem(text1),
 		vkbCtx.TapMultipasteItem(text2),
 		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),
