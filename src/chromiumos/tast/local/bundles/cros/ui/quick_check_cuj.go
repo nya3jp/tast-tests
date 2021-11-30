@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -36,11 +37,11 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
 		}, {
 			Name:              "lacros",
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -59,18 +60,18 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
 	defer cancel()
 
-	ct := s.Param().(lacros.ChromeType)
+	bt := s.Param().(browser.Type)
 
 	var cs ash.ConnSource
 	var cr *chrome.Chrome
 
-	if ct == lacros.ChromeTypeChromeOS {
+	if bt == browser.TypeAsh {
 		cr = s.FixtValue().(cuj.FixtureData).Chrome
 		cs = cr
 	} else {
 		var err error
 		var l *launcher.LacrosChrome
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), ct)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), bt)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}

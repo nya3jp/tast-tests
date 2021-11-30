@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/media/pre"
 	"chromiumos/tast/local/media/vm"
@@ -32,19 +32,19 @@ func init() {
 				Pre:               pre.ChromeVideo(),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{caps.BuiltinCamera},
-				Val:               lacros.ChromeTypeChromeOS,
+				Val:               browser.TypeAsh,
 			},
 			{
 				Name:              "vivid",
 				Pre:               pre.ChromeVideo(),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{caps.VividCamera},
-				Val:               lacros.ChromeTypeChromeOS,
+				Val:               browser.TypeAsh,
 			},
 			{
 				Name: "fake",
 				Pre:  pre.ChromeVideoWithFakeWebcam(),
-				Val:  lacros.ChromeTypeChromeOS,
+				Val:  browser.TypeAsh,
 			},
 			{
 				Name:              "lacros",
@@ -52,7 +52,7 @@ func init() {
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{caps.BuiltinOrVividCamera, "lacros"},
 				Timeout:           7 * time.Minute, // A lenient limit for launching Lacros Chrome.
-				Val:               lacros.ChromeTypeLacros,
+				Val:               browser.TypeLacros,
 			},
 		},
 	})
@@ -74,7 +74,7 @@ func GetUserMedia(ctx context.Context, s *testing.State) {
 	}
 
 	var cr getusermedia.ChromeInterface
-	if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+	if s.Param().(browser.Type) == browser.TypeLacros {
 		var err error
 		cr, err = launcher.LaunchLacrosChrome(ctx, s.FixtValue().(launcher.FixtValue))
 		if err != nil {
