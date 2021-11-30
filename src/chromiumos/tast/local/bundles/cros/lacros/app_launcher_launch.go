@@ -42,7 +42,7 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	// Clean up user data dir to ensure a clean start.
-	os.RemoveAll(lacros.LacrosUserDataDir)
+	os.RemoveAll(lacros.UserDataDir)
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -57,7 +57,7 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 
-	l, err := lacros.ConnectToLacrosChrome(ctx, f.LacrosPath(), lacros.LacrosUserDataDir)
+	l, err := lacros.Connect(ctx, f.LacrosPath(), lacros.UserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}
