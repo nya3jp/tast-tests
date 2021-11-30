@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb030da_6c002d4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-30T22:34:51Z",
+      "side": 1,
+      "message": "LGTM for tast owners. Make sure it compiles first.",
+      "revId": "bce33fde8d07b7745ead94beb18099aeaf4548ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a07ec28_49d6c676",
