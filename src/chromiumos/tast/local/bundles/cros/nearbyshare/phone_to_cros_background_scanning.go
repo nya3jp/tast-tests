@@ -91,7 +91,7 @@ func PhoneToCrosBackgroundScanning(ctx context.Context, s *testing.State) {
 
 	s.Log("Waiting for fast init notification on CrOS receiver")
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-	if err := nearbyshare.AcceptFastInitiationNotification(ctx, tconn, nearbycommon.DetectShareTargetTimeout); err != nil {
+	if err := nearbyshare.AcceptFastInitiationNotification(ctx, tconn, nearbycommon.DetectShareTargetTimeout /*isSetupComplete=*/, true); err != nil {
 		s.Fatal("CrOS receiver failed to wait for Fast Init notification: ", err)
 	}
 	s.Log("Notification accepted. Waiting to enable High Viz Mode")

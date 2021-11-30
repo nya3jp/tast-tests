@@ -9,8 +9,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/errors"
 	remotenearby "chromiumos/tast/remote/cros/nearbyshare"
@@ -64,7 +62,8 @@ func CrosToCrosBackgroundScanning(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Accepting the fast initiation notification on DUT2 (Receiver)")
-	_, err = receiver.AcceptFastInitiationNotification(ctx, &empty.Empty{})
+	acceptFastInitNotificationReq := &nearbyservice.CrOSAcceptFastInitiationNotificationRequest{IsSetupComplete: true}
+	_, err = receiver.AcceptFastInitiationNotification(ctx, acceptFastInitNotificationReq)
 	if err != nil {
 		s.Fatal("Failed to accept fast initiation notification on DUT2 (Receiver): ", err)
 	}
