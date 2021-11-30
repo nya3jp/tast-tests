@@ -16,6 +16,23 @@
       "message": "Next tryjob: https://ci.chromium.org/b/8829185096668626081",
       "revId": "4a16bd70e88dabc90bca18c71d30af6025987e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51c65457_2482910b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-11-30T07:23:09Z",
+      "side": 1,
+      "message": "Tryjob passed ",
+      "revId": "4a16bd70e88dabc90bca18c71d30af6025987e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
