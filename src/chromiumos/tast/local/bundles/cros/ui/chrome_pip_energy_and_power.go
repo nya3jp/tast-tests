@@ -33,8 +33,8 @@ import (
 )
 
 type chromePIPEnergyAndPowerTestParams struct {
-	bigPIP     bool
-	chromeType lacros.ChromeType
+	bigPIP      bool
+	browserType browser.Type
 }
 
 func init() {
@@ -49,21 +49,21 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "small",
 			Fixture: "chromeLoggedIn",
-			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeChromeOS},
+			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: false, browserType: browser.TypeAsh},
 		}, {
 			Name:    "big",
 			Fixture: "chromeLoggedIn",
-			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeChromeOS},
+			Val:     chromePIPEnergyAndPowerTestParams{bigPIP: true, browserType: browser.TypeAsh},
 		}, {
 			Name:              "small_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "lacros",
-			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: false, chromeType: lacros.ChromeTypeLacros},
+			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: false, browserType: browser.TypeLacros},
 		}, {
 			Name:              "big_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "lacros",
-			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: true, chromeType: lacros.ChromeTypeLacros},
+			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: true, browserType: browser.TypeLacros},
 		}},
 	})
 }
@@ -71,11 +71,11 @@ func init() {
 func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromePIPEnergyAndPowerTestParams)
 	var pipClassName, settingsTitle string
-	switch params.chromeType {
-	case lacros.ChromeTypeChromeOS:
+	switch params.browserType {
+	case browser.TypeAsh:
 		pipClassName = "PictureInPictureWindow"
 		settingsTitle = "Chrome - Settings"
-	case lacros.ChromeTypeLacros:
+	case browser.TypeLacros:
 		pipClassName = "Widget"
 		settingsTitle = "Settings - Google Chrome"
 	}
@@ -85,7 +85,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), params.chromeType)
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), params.browserType)
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}

@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/camera/getusermedia"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -32,13 +33,13 @@ func init() {
 			{
 				Name:    "ash",
 				Fixture: fixture.ChromePolicyLoggedIn,
-				Val:     lacros.ChromeTypeChromeOS,
+				Val:     browser.TypeAsh,
 			},
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros"},
-				Val:               lacros.ChromeTypeLacros,
+				Val:               browser.TypeLacros,
 			},
 		},
 	})
@@ -58,7 +59,7 @@ func GetUserMediaPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to serve policy to ban video capture: ", err)
 	}
 
-	_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(lacros.ChromeType))
+	_, l, br, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}

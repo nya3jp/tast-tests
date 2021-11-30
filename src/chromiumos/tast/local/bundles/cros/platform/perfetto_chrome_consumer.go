@@ -15,6 +15,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
@@ -29,11 +30,11 @@ func init() {
 		Data:         []string{tracing.TraceConfigFile},
 		Attr:         []string{"group:mainline", "informational"}, // TODO(crbug/1194540) remove "informational" after the test is stable.
 		Params: []testing.Param{{
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedIn",
 		}, {
 			Name:              "lacros",
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -61,9 +62,9 @@ func PerfettoChromeConsumer(ctx context.Context, s *testing.State) {
 
 	var tracer systemTracer
 
-	lacrosChromeType := s.Param().(lacros.ChromeType)
-	if lacrosChromeType == lacros.ChromeTypeLacros {
-		_, l, _, err := lacros.Setup(ctx, s.FixtValue(), lacrosChromeType)
+	lacrosBrowserType := s.Param().(browser.Type)
+	if lacrosBrowserType == browser.TypeLacros {
+		_, l, _, err := lacros.Setup(ctx, s.FixtValue(), lacrosBrowserType)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}

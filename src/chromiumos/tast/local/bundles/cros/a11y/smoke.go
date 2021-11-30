@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -33,43 +34,43 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedIn",
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 		}, {
 			Name:              "lacros",
 			Fixture:           "lacrosUI",
 			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
 			ExtraAttr:         []string{"informational"},
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "lacros_unstable",
 			Fixture:           "lacrosUI",
 			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "lacros_primary",
 			Fixture:           "lacrosPrimary",
 			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
 			ExtraAttr:         []string{"informational"},
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}, {
 			Name:              "lacros_primary_unstable",
 			Fixture:           "lacrosPrimary",
 			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
 
 func Smoke(ctx context.Context, s *testing.State) {
-	ct := s.Param().(lacros.ChromeType)
-	s.Log("Initializing ash-chrome and/or lacros-chrome based on the target browser: ", ct)
-	if ct == lacros.ChromeTypeLacros {
+	bt := s.Param().(browser.Type)
+	s.Log("Initializing ash-chrome and/or lacros-chrome based on the target browser: ", bt)
+	if bt == browser.TypeLacros {
 		// Clean up user data dir to ensure a clean start.
 		os.RemoveAll(launcher.LacrosUserDataDir)
 	}
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), ct)
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), bt)
 	if err != nil {
 		s.Fatal("Failed to initialize setup: ", err)
 	}
@@ -91,32 +92,32 @@ func Smoke(ctx context.Context, s *testing.State) {
 
 	var app apps.App
 	var topWindowName string
-	switch ct {
-	case lacros.ChromeTypeChromeOS:
+	switch bt {
+	case browser.TypeAsh:
 		app, err = apps.ChromeOrChromium(ctx, tconn)
 		if err != nil {
 			s.Fatal("Could not determine the correct Chrome app to use: ", err)
 		}
 		topWindowName = "BrowserFrame"
-	case lacros.ChromeTypeLacros:
+	case browser.TypeLacros:
 		app = apps.Lacros
 		topWindowName = "ExoShellSurface"
 	default:
-		s.Fatal("Unrecognized Chrome type: ", ct)
+		s.Fatal("Unrecognized Chrome type: ", bt)
 	}
 	topLevelWindow := nodewith.Role(role.Window).HasClass(topWindowName)
 
-	s.Logf("Opening a new tab in %v browser", ct)
+	s.Logf("Opening a new tab in %v browser", bt)
 	conn, err := cs.NewConn(ctx, "chrome://newtab")
 	if err != nil {
-		s.Fatalf("Failed to open a new tab in %v browser: %v", ct, err)
+		s.Fatalf("Failed to open a new tab in %v browser: %v", bt, err)
 	}
 	defer conn.Close()
 
 	ui := uiauto.New(tconn)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Logf("Asserting that UI elements on browser window frame are accessible in %v browser", ct)
+	s.Logf("Asserting that UI elements on browser window frame are accessible in %v browser", bt)
 	for _, e := range []struct {
 		name   string
 		finder *nodewith.Finder
@@ -127,24 +128,24 @@ func Smoke(ctx context.Context, s *testing.State) {
 		{"Browser: Close", nodewith.HasClass("FrameCaptionButton").Name("Close").Role(role.Button).Ancestor(topLevelWindow)},
 	} {
 		if err = ui.WaitUntilExists(e.finder)(ctx); err != nil {
-			s.Fatalf("Failed to find the UI element (%v) in %v: %v", e.name, ct, err)
+			s.Fatalf("Failed to find the UI element (%v) in %v: %v", e.name, bt, err)
 		}
 	}
 
-	s.Logf("Asserting that the a11y node (rootWebArea) on the webview are accessible inside %v browser", ct)
+	s.Logf("Asserting that the a11y node (rootWebArea) on the webview are accessible inside %v browser", bt)
 	rootWebArea := nodewith.Role("rootWebArea").Ancestor(topLevelWindow).First()
 	if err := ui.WaitUntilExists(rootWebArea)(ctx); err != nil {
-		s.Fatalf("Failed to find the rootWebArea inside %v browser: %v", ct, err)
+		s.Fatalf("Failed to find the rootWebArea inside %v browser: %v", bt, err)
 	}
 
-	s.Logf("Asserting that mouse click works on the close button in %v browser", ct)
+	s.Logf("Asserting that mouse click works on the close button in %v browser", bt)
 	closeButton := nodewith.HasClass("FrameCaptionButton").Name("Close").Role(role.Button).Ancestor(topLevelWindow)
 	if err := uiauto.Combine(
-		fmt.Sprintf("Click the close button in %v browser", ct),
+		fmt.Sprintf("Click the close button in %v browser", bt),
 		ui.WaitUntilExists(closeButton),
 		ui.LeftClick(closeButton),
 	)(ctx); err != nil {
-		s.Fatalf("Failed to find and click the close button in %v: %v", ct, err)
+		s.Fatalf("Failed to find and click the close button in %v: %v", bt, err)
 	}
 
 	if err = ash.WaitForAppClosed(ctx, tconn, app.ID); err != nil {

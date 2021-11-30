@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -37,15 +38,15 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedInWith100FakeApps",
 		}, {
 			Name:    "skia_renderer",
-			Val:     lacros.ChromeTypeChromeOS,
+			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
 		}, {
 			Name:              "lacros",
-			Val:               lacros.ChromeTypeLacros,
+			Val:               browser.TypeLacros,
 			Fixture:           "lacrosWith100FakeApps",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -149,7 +150,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, windows := range []int{0, 2} {
 		func() {
-			_, l, cs, err := lacros.Setup(ctx, f, s.Param().(lacros.ChromeType))
+			_, l, cs, err := lacros.Setup(ctx, f, s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to setup lacrostest: ", err)
 			}
@@ -165,7 +166,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to maximize windows: ", err)
 			}
 
-			if s.Param().(lacros.ChromeType) == lacros.ChromeTypeLacros {
+			if s.Param().(browser.Type) == browser.TypeLacros {
 				if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
 					s.Fatal("Failed to close about:blank: ", err)
 				}
