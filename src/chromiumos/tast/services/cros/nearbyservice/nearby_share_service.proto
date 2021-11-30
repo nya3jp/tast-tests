@@ -38,6 +38,9 @@ service NearbyShareService {
   // quick settings.
   rpc StartHighVisibilityMode (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
+  // WaitForOnboardingFlow waits for the Nearby Share onboarding flow to open.
+  rpc WaitForOnboardingFlow (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
   // StartReceiving will enable high vis receiving from javascript.
   rpc StartReceiving (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
@@ -52,7 +55,7 @@ service NearbyShareService {
 
   // Accepts the notification that appears when a nearby device is trying to
   // discover a share target. This puts the user into high visibility mode.
-  rpc AcceptFastInitiationNotification(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc AcceptFastInitiationNotification(CrOSAcceptFastInitiationNotificationRequest) returns (google.protobuf.Empty) {}
 
   // StartLogging is used to begin logging at the start of a test.
   rpc StartLogging (google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -73,6 +76,13 @@ message CrOSLoginRequest {
   string password = 2;
   bool keep_state = 3;
   repeated string enabled_flags = 4;
+}
+
+// CrOSAcceptFastInitiationNotificationRequest is a request to accept a
+// background scanning notification which differs depending on whether
+// onboarding is complete.
+message CrOSAcceptFastInitiationNotificationRequest {
+  bool is_setup_complete = 1;
 }
 
 // CrOSSetupRequest is a request to setup and configure Nearby Share on a
