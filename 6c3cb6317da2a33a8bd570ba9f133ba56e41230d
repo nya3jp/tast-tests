@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfeb9072_62ad722d",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17357,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-11-30T11:28:43Z",
+      "side": 1,
+      "message": "I suspect 2 is the way to go since we will encounter this issue again with other policies.\n\nCan you try it and let\u0027s see if any of the Cq tests fail? We can handle the rest individually.",
+      "parentUuid": "176fc2ec_94f4cd00",
+      "revId": "6c3cb6317da2a33a8bd570ba9f133ba56e41230d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92d8803a_a5726e04",
         "filename": "src/chromiumos/tast/common/policy/defs.go",
         "patchSetId": 2
