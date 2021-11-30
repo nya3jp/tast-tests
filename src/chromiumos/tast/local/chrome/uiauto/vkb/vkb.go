@@ -489,7 +489,10 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToHandwriting(ctx context.Context) (
 
 // SwitchToMultipaste returns an action changing to multipaste layout.
 func (vkbCtx *VirtualKeyboardContext) SwitchToMultipaste() uiauto.Action {
-	return vkbCtx.ui.LeftClick(KeyFinder.Name("Multipaste clipboard"))
+	return uiauto.Combine("switch to multipaste keyboard",
+		vkbCtx.ShowAccessPoints(),
+		vkbCtx.ui.LeftClick(KeyFinder.Name("Multipaste clipboard")),
+	)
 }
 
 // TapMultipasteItem returns an action tapping the item corresponding to itemName in multipaste virtual keyboard.
