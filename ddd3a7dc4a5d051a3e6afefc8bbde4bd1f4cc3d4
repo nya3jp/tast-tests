@@ -39,6 +39,30 @@
       },
       "revId": "ddd3a7dc4a5d051a3e6afefc8bbde4bd1f4cc3d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751d56a2_21e6875a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/servo_gbb_flags.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-11-30T16:58:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da567afd_6a52fbc9",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "ddd3a7dc4a5d051a3e6afefc8bbde4bd1f4cc3d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
