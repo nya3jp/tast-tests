@@ -69,12 +69,12 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		cs = cr
 	} else {
 		var err error
-		var l *lacros.LacrosChrome
+		var l *lacros.Lacros
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), bt)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		defer lacros.CloseLacrosChrome(ctx, l)
+		defer lacros.CloseLacros(ctx, l)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)

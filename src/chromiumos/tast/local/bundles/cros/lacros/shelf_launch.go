@@ -118,7 +118,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	// Clean up user data dir to ensure a clean start.
-	os.RemoveAll(lacros.LacrosUserDataDir)
+	os.RemoveAll(lacros.UserDataDir)
 	if err = ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		s.Fatal("Failed to launch Lacros: ", err)
 	}
@@ -126,7 +126,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	s.Log("Checking that Lacros window is visible")
 	if err := lacros.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
 		// Grab Lacros logs to assist debugging before exiting.
-		if errCopy := fsutil.CopyFile(filepath.Join(lacros.LacrosUserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
+		if errCopy := fsutil.CopyFile(filepath.Join(lacros.UserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
 			s.Log("Failed to copy /home/chronos/user/lacros/lacros.log to the OutDir ", errCopy)
 		}
 
@@ -134,7 +134,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Connecting to the lacros-chrome browser")
-	l, err := lacros.ConnectToLacrosChrome(ctx, f.LacrosPath(), lacros.LacrosUserDataDir)
+	l, err := lacros.Connect(ctx, f.LacrosPath(), lacros.UserDataDir)
 	if err != nil {
 		s.Fatal("Failed to connect to lacros-chrome: ", err)
 	}

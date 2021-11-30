@@ -126,11 +126,11 @@ func SetupCrosTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url stri
 
 // SetupLacrosTestWithPage opens a lacros-chrome page after waiting for a stable environment (CPU temperature, etc).
 func SetupLacrosTestWithPage(ctx context.Context, f lacrosfixt.FixtValue, url string, stabilize StabilizeCondition) (
-	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *lacros.LacrosChrome, retCleanup CleanupCallback, retErr error) {
+	retConn *chrome.Conn, retTConn *chrome.TestConn, retL *lacros.Lacros, retCleanup CleanupCallback, retErr error) {
 	// Launch lacros-chrome with about:blank loaded first - we don't want to include startup cost.
 	// Since we also want to wait until the CPU is stabilized as much as possible,
 	// we first open with about:blank to remove startup cost as a variable as much as possible.
-	l, err := lacros.LaunchLacrosChromeWithURL(ctx, f, chrome.BlankURL)
+	l, err := lacros.LaunchWithURL(ctx, f, chrome.BlankURL)
 	if err != nil {
 		return nil, nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 	}

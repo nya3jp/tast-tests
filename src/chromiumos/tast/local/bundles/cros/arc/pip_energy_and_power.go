@@ -102,13 +102,13 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		cs = cr
 		browserWindowType = ash.WindowTypeBrowser
 	case browser.TypeLacros:
-		var l *lacros.LacrosChrome
+		var l *lacros.Lacros
 		var err error
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		defer lacros.CloseLacrosChrome(cleanupCtx, l)
+		defer lacros.CloseLacros(cleanupCtx, l)
 
 		browserWindowType = ash.WindowTypeLacros
 	}

@@ -27,9 +27,9 @@ import (
 )
 
 // Setup runs lacros-chrome if indicated by the given browser.Type and returns some objects and interfaces
-// useful in tests. If the browser.Type is Lacros, it will return a non-nil LacrosChrome instance or an error.
-// If the browser.Type is Ash it will return a nil LacrosChrome instance.
-func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome, *LacrosChrome, ash.ConnSource, error) {
+// useful in tests. If the browser.Type is Lacros, it will return a non-nil Lacros instance or an error.
+// If the browser.Type is Ash it will return a nil Lacros instance.
+func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome, *Lacros, ash.ConnSource, error) {
 	if _, ok := f.(chrome.HasChrome); !ok {
 		return nil, nil, nil, errors.Errorf("unrecognized FixtValue type: %v", f)
 	}
@@ -40,7 +40,7 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 		return cr, nil, cr, nil
 	case browser.TypeLacros:
 		f := f.(lacrosfixt.FixtValue)
-		l, err := LaunchLacrosChrome(ctx, f)
+		l, err := Launch(ctx, f)
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
@@ -50,8 +50,8 @@ func Setup(ctx context.Context, f interface{}, bt browser.Type) (*chrome.Chrome,
 	}
 }
 
-// ConnectToLacrosChrome connects to a running lacros instance (e.g launched by the UI) and returns a LacrosChrome object that can be used to interact with it.
-func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) (l *LacrosChrome, retErr error) {
+// Connect connects to a running lacros instance (e.g launched by the UI) and returns a Lacros object that can be used to interact with it.
+func Connect(ctx context.Context, lacrosPath, userDataDir string) (l *Lacros, retErr error) {
 	debuggingPortPath := filepath.Join(userDataDir, "DevToolsActivePort")
 	execPath := filepath.Join(lacrosPath, "chrome")
 
@@ -66,7 +66,7 @@ func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) 
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
-	return &LacrosChrome{
+	return &Lacros{
 		lacrosPath:  lacrosPath,
 		userDataDir: userDataDir,
 		agg:         agg,
@@ -75,7 +75,7 @@ func ConnectToLacrosChrome(ctx context.Context, lacrosPath, userDataDir string) 
 }
 
 // LaunchFromShelf launches lacros-chrome via shelf.
-func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*LacrosChrome, error) {
+func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*Lacros, error) {
 	const newTabTitle = "New Tab"
 
 	testing.ContextLog(ctx, "Launch lacros via Shelf")
@@ -88,24 +88,24 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 		return nil, errors.Wrap(err, "failed to wait for lacros")
 	}
 
-	l, err := ConnectToLacrosChrome(ctx, lacrosPath, LacrosUserDataDir)
+	l, err := Connect(ctx, lacrosPath, UserDataDir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to lacros")
 	}
 	return l, nil
 }
 
-// LaunchLacrosChrome launches a fresh instance of lacros-chrome.
-func LaunchLacrosChrome(ctx context.Context, f lacrosfixt.FixtValue) (*LacrosChrome, error) {
-	return LaunchLacrosChromeWithURL(ctx, f, chrome.BlankURL)
+// Launch launches a fresh instance of lacros-chrome.
+func Launch(ctx context.Context, f lacrosfixt.FixtValue) (*Lacros, error) {
+	return LaunchWithURL(ctx, f, chrome.BlankURL)
 }
 
-// LaunchLacrosChromeWithURL launches a fresh instance of lacros-chrome having the given url.
-func LaunchLacrosChromeWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*LacrosChrome, error) {
+// LaunchWithURL launches a fresh instance of lacros-chrome having the given url.
+func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*Lacros, error) {
 	succeeded := false
 	defer lacrosfaillog.SaveIf(ctx, f.LacrosPath(), func() bool { return !succeeded })
 
-	if err := killLacrosChrome(ctx, f.LacrosPath()); err != nil {
+	if err := killLacros(ctx, f.LacrosPath()); err != nil {
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 
@@ -113,7 +113,7 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f lacrosfixt.FixtValue, url 
 	// clearing it on shutdown, since it's a subdirectory of the binary
 	// path, which is cleared by pre.go. We need to use a new temporary
 	// directory for each invocation so that successive calls to
-	// LaunchLacrosChrome don't interfere with each other.
+	// LaunchLacros don't interfere with each other.
 	userDataDir, err := ioutil.TempDir(f.LacrosPath(), "")
 	if err != nil {
 		// Fall back to create it under /tmp in case rootfs-lacros is used.
@@ -178,7 +178,7 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f lacrosfixt.FixtValue, url 
 	if err := WaitForLacrosWindow(ctx, f.TestAPIConn(), ""); err != nil {
 		return nil, err
 	}
-	l, err := ConnectToLacrosChrome(ctx, f.LacrosPath(), userDataDir)
+	l, err := Connect(ctx, f.LacrosPath(), userDataDir)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to debugging port")
 	}
