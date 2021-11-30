@@ -7,6 +7,7 @@ package cca
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -139,6 +140,67 @@ var (
 	GifReviewRetakeButton = UIComponent{"retake gif button", []string{"#review-retake"}}
 )
 
+// Option is the option for toggling state.
+type Option struct {
+	// ui is the |UIComponent| to toggle the option.
+	ui UIComponent
+	// state is state toggle by this option.
+	state string
+}
+
+func newOption(state, selector string) Option {
+	name := fmt.Sprintf("option to toggle %v state", state)
+	selectors := []string{selector}
+	return Option{ui: UIComponent{Name: name, Selectors: selectors}, state: state}
+}
+
+var (
+	// CustomVideoParametersOption is the option to enable custom video parameters.
+	CustomVideoParametersOption = newOption("custom-video-parameters", "#custom-video-parameters")
+	// ExpertModeOption is the option to enable expert mode.
+	ExpertModeOption = newOption("expert", "#expert-enable-expert-mode")
+	// GridOption is the option to show grid lines on preview.
+	GridOption = newOption("grid", "#toggle-grid")
+	// MirrorOption is the option to flip preview horizontally.
+	MirrorOption = newOption("mirror", "#toggle-mirror")
+	// SaveMetadataOption is the option to save metadata of capture result.
+	SaveMetadataOption = newOption("save-metadata", "#expert-save-metadata")
+	// ShowMetadataOption is the option to show preview metadata.
+	ShowMetadataOption = newOption("show-metadata", "#expert-show-metadata")
+	// enableDocumentModeOnAllCamerasOption is the option to enable document scanning on all cameras.
+	enableDocumentModeOnAllCamerasOption = newOption("enable-document-mode-on-all-cameras", "#expert-enable-document-mode-on-all-cameras")
+	// enableMultistreamRecordingOption is the option to enable document scanning on all cameras.
+	enableMultistreamRecordingOption = newOption("enable-multistream-recording", "#expert-enable-multistream-recording")
+	// scanBarcodeOption is the option to enable barcode scanning.
+	scanBarcodeOption = newOption("enable-scan-barcode", "#toggle-barcode")
+	// showGifRecordingOption is the option to enable gif recording.
+	showGifRecordingOption = newOption("show-gif-recording-option", "#expert-enable-gif-recording")
+	// timerOption is the option to enable countdown timer.
+	timerOption = newOption("timer", "#toggle-timer")
+)
+
+type errorUINotExist struct {
+	ui *UIComponent
+}
+
+func (err errorUINotExist) Error() string {
+	return fmt.Sprintf("failed to resolved ui %v to its correct selector", err.ui.Name)
+}
+
+// isUINotExist returns true if the given error is from |errorUINotExist| error type.
+func isUINotExist(err error) bool {
+	if err == nil {
+		return false
+	}
+	if _, ok := err.(errorUINotExist); ok {
+		return true
+	}
+	if wrappedErr, ok := err.(*errors.E); ok {
+		return isUINotExist(wrappedErr.Unwrap())
+	}
+	return false
+}
+
 // HasClass returns true if the given HTML element has the given class name.
 func (a *App) HasClass(ctx context.Context, ui UIComponent, className string) (bool, error) {
 	selector, err := a.resolveUISelector(ctx, ui)
@@ -161,7 +223,7 @@ func (a *App) resolveUISelector(ctx context.Context, ui UIComponent) (string, er
 			return s, nil
 		}
 	}
-	return "", errors.Errorf("failed to resolved ui %v to its correct selector", ui.Name)
+	return "", errorUINotExist{ui: &ui}
 }
 
 // Style returns the value of an CSS attribute of an UI component.
