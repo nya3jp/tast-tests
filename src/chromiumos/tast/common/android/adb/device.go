@@ -583,3 +583,8 @@ func (d *Device) StartScreenRecording(ctx context.Context, filename, outDir stri
 		return nil
 	}, nil
 }
+
+// StayOnWhilePluggedIn sets the screen to never sleep while charging.
+func (d *Device) StayOnWhilePluggedIn(ctx context.Context) error {
+	return d.ShellCommand(ctx, "settings", "put", "global", "stay_on_while_plugged_in", "3").Run(testexec.DumpLogOnError)
+}

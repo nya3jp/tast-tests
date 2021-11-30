@@ -201,6 +201,11 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 		}
 	}
 
+	// Additionally, set the screen to stay awake while charging. Features such as Nearby Share do not work if the screen is off.
+	if err := d.StayOnWhilePluggedIn(ctx); err != nil {
+		return errors.Wrap(err, "failed to set the screen to stay on while charging")
+	}
+
 	return nil
 }
 
