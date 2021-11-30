@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e90956_5fc1dd9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-11-30T08:09:29Z",
+      "side": 1,
+      "message": "The reconnect refers to \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3308575",
+      "revId": "83ffd643c40864645b2a74954f9cee0c6aa508f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
