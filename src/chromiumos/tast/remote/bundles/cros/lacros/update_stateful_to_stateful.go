@@ -26,7 +26,13 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		ServiceDeps:  []string{"tast.cros.lacros.UpdateTestService"},
 		// lacrosComponent is a runtime var to specify a name of the component which Lacros is provisioned to.
-		Vars:    []string{"lacrosComponent"},
+		Vars: []string{"lacrosComponent"},
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+		}, {
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+		}},
 		Timeout: 5 * time.Minute,
 	})
 }
