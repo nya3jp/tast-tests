@@ -16,6 +16,23 @@
       "message": "This sounds very likely the root cause, thanks for hunting this down Hyung Tae!",
       "revId": "eb499b122e8800c15253c6ba9bb5c7f47ddcf4dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "598031e7_07ebe717",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-01T13:27:49Z",
+      "side": 1,
+      "message": "should this problem be fixed by crrev.com/c/3302154?\nI\u0027m still waiting for the chrome roll containing the CL to add the flag, though, I hope it happens soon.",
+      "revId": "eb499b122e8800c15253c6ba9bb5c7f47ddcf4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
