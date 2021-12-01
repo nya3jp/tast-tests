@@ -64,12 +64,11 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, f
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get build firmware file path")
 		}
+		if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
+			return nil, errors.Wrap(err, "failed to validate build firmware file")
+		}
 	} else {
 		t.buildFwFile = firmwareFile
-	}
-
-	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
-		return nil, errors.Wrap(err, "failed to validate build firmware file")
 	}
 
 	t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
