@@ -51,6 +51,46 @@
       "parentUuid": "4a2ba28f_a6aa4dc9",
       "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22709373_1af9966a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T10:43:20Z",
+      "side": 1,
+      "message": "is it possible to add some unit tests, at least for rawAttribute() and rawByte()?",
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6532b5ca_a257569e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/a11y/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T10:43:20Z",
+      "side": 1,
+      "message": "is there a reason why you use defer here? could you add a comment to justify it?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
