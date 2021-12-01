@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/testing"
 )
 
 // EUICC wraps a Hermes.EUICC DBus object.
@@ -87,4 +88,39 @@ func (e *EUICC) EnabledProfile(ctx context.Context) (*Profile, error) {
 		}
 	}
 	return nil, nil
+}
+
+// GetTestEUICC will return the test EUICC if found.
+func GetTestEUICC(ctx context.Context) (*EUICC, error) {
+	h, err := GetHermesManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not get Hermes Manager DBus object")
+	}
+
+	props, err := dbusutil.NewDBusProperties(ctx, h.DBusObject)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get Hermes manager properties")
+	}
+	euiccPaths, err := props.GetObjectPaths(hermesconst.ManagerPropertyAvailableEuiccs)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to get available euiccs")
+	}
+	for _, euiccPath := range euiccPaths {
+		obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesEuiccInterface, euiccPath)
+		if err != nil {
+			return nil, errors.Wrap(err, "unable to get EUICC object")
+		}
+		response := obj.Call(ctx, "IsTestEuicc")
+		if response.Err != nil || len(response.Body) != 1 {
+			continue
+		}
+		if isTestEuicc, ok := response.Body[0].(bool); !ok || !isTestEuicc {
+			continue
+		}
+
+		testing.ContextLogf(ctx, "Find Test EUICC on path: %s", euiccPath)
+		return &EUICC{obj}, nil
+	}
+
+	return nil, errors.Wrap(err, "no test euicc found")
 }
