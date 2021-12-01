@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4070fc_e5d45681",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:10:59Z",
+      "side": 1,
+      "message": "nit: no need to wrap this one in an anonymous function since nothing is happening between chrome.New and Close. You can just change defer cr.Close(ctx) to call it directly (if err :\u003d cr.Close(ctx); ...)",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "602a2291b1fec6f3af9097c20bada40976e899bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b15bb1_1dda934f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:10:59Z",
+      "side": 1,
+      "message": "first time seeing this, it is super convenient haha",
+      "range": {
+        "startLine": 96,
+        "startChar": 19,
+        "endLine": 96,
+        "endChar": 42
+      },
+      "revId": "602a2291b1fec6f3af9097c20bada40976e899bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ba25eaa_02b49477",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:10:59Z",
+      "side": 1,
+      "message": "Instead of Attribute you can use Name, same below for ClassName. The whole thing would look like `nodewith.Role(_).Name(_).ClassName(_)`",
+      "range": {
+        "startLine": 92,
+        "startChar": 43,
+        "endLine": 92,
+        "endChar": 52
+      },
+      "revId": "602a2291b1fec6f3af9097c20bada40976e899bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
