@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3bb23f6_079a3248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T21:04:01Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "e5fd1729_78beab75",
+      "revId": "31fa0accbb972f1fb5ee07e48eb26e85ba0c6b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fec8c887_97d50b24",
@@ -78,6 +96,29 @@
         "startChar": 1,
         "endLine": 346,
         "endChar": 2
+      },
+      "revId": "31fa0accbb972f1fb5ee07e48eb26e85ba0c6b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a4150b_9b206696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_float.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T21:04:01Z",
+      "side": 1,
+      "message": "I think you mentioned you are gonna deprecate RunAction?",
+      "range": {
+        "startLine": 100,
+        "startChar": 14,
+        "endLine": 100,
+        "endChar": 23
       },
       "revId": "31fa0accbb972f1fb5ee07e48eb26e85ba0c6b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
