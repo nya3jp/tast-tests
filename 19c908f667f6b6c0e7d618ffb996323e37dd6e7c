@@ -39,6 +39,30 @@
       },
       "revId": "19c908f667f6b6c0e7d618ffb996323e37dd6e7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b619ac4c_57000c3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T10:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f961132f_1b9af50f",
+      "range": {
+        "startLine": 149,
+        "startChar": 41,
+        "endLine": 149,
+        "endChar": 42
+      },
+      "revId": "19c908f667f6b6c0e7d618ffb996323e37dd6e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
