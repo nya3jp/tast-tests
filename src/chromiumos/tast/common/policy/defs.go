@@ -20564,14 +20564,27 @@ type ONCIPsec struct {
 	PSK                string `json:"PSK,omitempty"`
 }
 
+type ONCCellular struct {
+	ICCID       string `json:"ICCID"`
+	SMDPAddress string `json:"SMDPAddress"`
+}
+
 type ONCNetworkConfiguration struct {
-	GUID string   `json:"GUID"`
-	Name string   `json:"Name"`
-	Type string   `json:"Type"`
-	VPN  *ONCVPN  `json:"VPN,omitempty"`
-	WiFi *ONCWifi `json:"WiFi,omitempty"`
+	GUID     string       `json:"GUID"`
+	Name     string       `json:"Name"`
+	Type     string       `json:"Type"`
+	Cellular *ONCCellular `json:"Cellular,omitempty"`
+	VPN      *ONCVPN      `json:"VPN,omitempty"`
+	WiFi     *ONCWifi     `json:"WiFi,omitempty"`
+}
+
+type ONCGlobalNetworkConfiguration struct {
+	AllowOnlyPolicyNetworksToAutoconnect bool `json:"AllowOnlyPolicyNetworksToAutoconnect"`
+	AllowOnlyPolicyNetworksToConnect     bool `json:"AllowOnlyPolicyNetworksToConnect"`
+	AllowOnlyPolicyCellularNetworks      bool `json:"AllowOnlyPolicyCellularNetworks"`
 }
 
 type ONC struct {
-	NetworkConfigurations []*ONCNetworkConfiguration `json:"NetworkConfigurations,omitempty"`
+	GlobalNetworkConfiguration *ONCGlobalNetworkConfiguration `json:"GlobalNetworkConfiguration,omitempty"`
+	NetworkConfigurations      []*ONCNetworkConfiguration     `json:"NetworkConfigurations,omitempty"`
 }
