@@ -60,33 +60,44 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, f
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get build firmware file path")
 		}
+		if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
+			return nil, errors.Wrap(err, "failed to validate build firmware file")
+		}
 	} else {
 		t.buildFwFile = firmwareFile
-	}
-
-	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
-		return nil, errors.Wrap(err, "failed to validate build firmware file")
 	}
 
 	t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
 	}
+	// if we're planning to reimage, we need to reboot.
+	if firmwareFile != "" {
+		t.needsRebootAfterFlashing = true
+	}
 
 	// Disable rootfs verification if necessary.
 	if t.needsRebootAfterFlashing {
-		// Since MakeRootfsWritable will reboot the device, we must call
-		// RPCClose/RPCDial before/after calling MakeRootfsWritable.
-		if err := t.d.RPCClose(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to close rpc")
+		rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, t.d.RPC())
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to check if rootfs is writable")
 		}
-		// Rootfs must be writable in order to disable the upstart job.
-		if err := sysutil.MakeRootfsWritable(ctx, t.d.DUT(), t.d.RPCHint()); err != nil {
-			return nil, errors.Wrap(err, "failed to make rootfs writable")
+		if !rootfsIsWritable {
+			testing.ContextLog(ctx, "Making rootfs writable")
+			// Since MakeRootfsWritable will reboot the device, we must call
+			// RPCClose/RPCDial before/after calling MakeRootfsWritable.
+			if err := t.d.RPCClose(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to close rpc")
+			}
+			// Rootfs must be writable in order to disable the upstart job.
+			if err := sysutil.MakeRootfsWritable(ctx, t.d.DUT(), t.d.RPCHint()); err != nil {
+				return nil, errors.Wrap(err, "failed to make rootfs writable")
+			}
+			if err := t.d.RPCDial(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to redial rpc")
+			}
 		}
-		if err := t.d.RPCDial(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to redial rpc")
-		}
+
 	} else {
 		// If we're not on a device that needs to be rebooted, the rootfs should not
 		// be writable.
@@ -98,7 +109,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, f
 			testing.ContextLog(ctx, "WARNING: The rootfs is writable")
 		}
 	}
-
+	testing.ContextLog(ctx, "Josie, stopping deamons next")
 	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
 		biodUpstartJobName,
 		// TODO(b/183123775): Remove when bug is fixed.
@@ -123,6 +134,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, f
 	t.cleanupTime = timeForCleanup
 
 	if t.needsRebootAfterFlashing {
+		testing.ContextLog(ctx, "Josie, stoppinng upstart service next")
 		// Disable biod upstart job so that it doesn't interfere with the test when
 		// we reboot.
 		upstartService := t.UpstartService()
@@ -139,7 +151,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, f
 				}
 			}
 		}()
-
+		testing.ContextLog(ctx, "Josie, stopping fp updater next")
 		// Disable FP updater so that it doesn't interfere with the test when we reboot.
 		if err := DisableFPUpdater(ctx, t.d); err != nil {
 			return nil, errors.Wrap(err, "failed to disable updater")
@@ -157,19 +169,14 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, f
 		// Account for the additional time that rebooting adds.
 		t.cleanupTime += 3 * time.Minute
 	}
-
-	t.dutTempDir, err = t.DutfsClient().TempDir(ctx, "", dutTempPathPattern)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create remote working directory")
-	}
-
+	testing.ContextLog(ctx, "Josie, init known state next")
 	// Check FPMCU state and reflash if needed.
 	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
 	// Double check our work in the previous step.
-	if err := CheckValidFlashState(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
+	if err := CheckValidFlashState(ctx, t.d, t.fpBoard, t.buildFwFile, ".dev"); err != nil {
 		return nil, err
 	}
 

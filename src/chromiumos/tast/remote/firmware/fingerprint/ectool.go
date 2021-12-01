@@ -142,6 +142,12 @@ func RebootFpmcu(ctx context.Context, d *dut.DUT, bootTo FWImageType) error {
 	return nil
 }
 
+// CheckFirmwareIsFunctional checks that the AP can talk to the FPMCU and get the version.
+func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) {
+	testing.ContextLog(ctx, "Checking firmware is functional")
+	return EctoolCommand(ctx, d, "version").Output(ssh.DumpLogOnError)
+}
+
 // RunningFirmwareCopy returns the firmware copy on FPMCU (RO or RW).
 func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
 	out, err := EctoolCommand(ctx, d, "version").Output()
@@ -154,12 +160,6 @@ func RunningFirmwareCopy(ctx context.Context, d *dut.DUT) (FWImageType, error) {
 		return FWImageType(""), errors.New("cannot find firmware copy string")
 	}
 	return FWImageType(firmwareCopy), nil
-}
-
-// CheckFirmwareIsFunctional checks that the AP can talk to the FPMCU and get the version.
-func CheckFirmwareIsFunctional(ctx context.Context, d *dut.DUT) ([]byte, error) {
-	testing.ContextLog(ctx, "Checking firmware is functional")
-	return EctoolCommand(ctx, d, "version").Output(ssh.DumpLogOnError)
 }
 
 // WaitForRunningFirmwareImage waits for the requested image to boot.
