@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe7e3560_ef03f2b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/settings/chromeos_page_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-01T20:48:16Z",
+      "side": 1,
+      "message": "checkOpenSources",
+      "range": {
+        "startLine": 150,
+        "startChar": 14,
+        "endLine": 150,
+        "endChar": 16
+      },
+      "revId": "ffb9fb62d7bd9a7737e8405f15fb3ba43e3ab042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
