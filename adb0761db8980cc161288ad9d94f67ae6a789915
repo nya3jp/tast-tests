@@ -97,6 +97,30 @@
       },
       "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83acd5b8_225eeac4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-01T12:16:50Z",
+      "side": 1,
+      "message": "Okay, I see.",
+      "parentUuid": "3c11118c_c961d2aa",
+      "range": {
+        "startLine": 177,
+        "startChar": 80,
+        "endLine": 177,
+        "endChar": 106
+      },
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
