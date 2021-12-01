@@ -129,15 +129,28 @@ type ONCIPsec struct {
 \tPSK\tstring\t`json:"PSK,omitempty"`
 }
 
+type ONCCellular struct {
+\tICCID\tstring\t`json:"ICCID"`
+\tSMDPAddress\tstring\t`json:"SMDPAddress"`
+}
+
 type ONCNetworkConfiguration struct {
 \tGUID\tstring\t`json:"GUID"`
 \tName\tstring\t`json:"Name"`
 \tType\tstring\t`json:"Type"`
+\tCellular\t*ONCCellular\t`json:"Cellular,omitempty"`
 \tVPN\t*ONCVPN\t`json:"VPN,omitempty"`
 \tWiFi\t*ONCWifi\t`json:"WiFi,omitempty"`
 }
 
+type ONCGlobalNetworkConfiguration struct {
+\tAllowOnlyPolicyNetworksToAutoconnect\tbool\t`json:"AllowOnlyPolicyNetworksToAutoconnect"`
+\tAllowOnlyPolicyNetworksToConnect\tbool\t`json:"AllowOnlyPolicyNetworksToConnect"`
+\tAllowOnlyPolicyCellularNetworks\tbool\t`json:"AllowOnlyPolicyCellularNetworks"`
+}
+
 type ONC struct {
+\tGlobalNetworkConfiguration\t*ONCGlobalNetworkConfiguration\t`json:"GlobalNetworkConfiguration,omitempty"`
 \tNetworkConfigurations\t[]*ONCNetworkConfiguration\t`json:"NetworkConfigurations,omitempty"`
 }
 """

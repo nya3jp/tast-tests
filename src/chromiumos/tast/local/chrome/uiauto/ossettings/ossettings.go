@@ -128,6 +128,28 @@ func LaunchAtAppMgmtPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome
 	return LaunchAtPageURL(ctx, tconn, cr, fmt.Sprintf("app-management/detail?id=%s", appID), condition)
 }
 
+// OpenMobileDataSubpage navigates Settings app to mobile data subpage.
+func OpenMobileDataSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*OSSettings, error) {
+	// networkFinder is the finder for the Network page UI in OS setting.
+	var networkFinder = nodewith.Name("Network").Role(role.Link).Ancestor(WindowFinder)
+	// mobileButton is the finder for the Mobile Data page button UI in network page.
+	var mobileButton = nodewith.Name("Mobile data").Role(role.Button)
+
+	ui := uiauto.New(tconn)
+
+	if _, err := LaunchAtPageURL(ctx, tconn, cr, "Network", ui.Exists(networkFinder)); err != nil {
+		return nil, errors.Wrap(err, "failed to launch settings page")
+	}
+
+	if err := uiauto.Combine("Go to mobile data page",
+		ui.LeftClick(networkFinder),
+		ui.LeftClick(mobileButton),
+	)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to go to mobile data page")
+	}
+	return &OSSettings{tconn: tconn, ui: ui}, nil
+}
+
 // NavigateToPageURL navigates the Settings app to a particular page.
 func (s *OSSettings) NavigateToPageURL(ctx context.Context, cr *chrome.Chrome, pageShortURL string, condition func(context.Context) error) error {
 	settingsConn, err := s.ChromeConn(ctx, cr)
