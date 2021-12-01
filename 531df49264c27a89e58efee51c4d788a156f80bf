@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddbfcf77_0620d45a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-12-01T00:06:32Z",
+      "side": 1,
+      "message": "Needed to actually enable Bluetooth in Reset, and preemptively fix tests like in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3278613/.",
+      "revId": "531df49264c27a89e58efee51c4d788a156f80bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
