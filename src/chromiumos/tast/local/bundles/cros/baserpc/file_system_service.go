@@ -136,7 +136,7 @@ func (fs *FileSystemService) TempDir(ctx context.Context, req *baserpc.TempDirRe
 func (fs *FileSystemService) MkDir(ctx context.Context, req *baserpc.MkDirRequest) (*baserpc.MkDirResponse, error) {
 	var res baserpc.MkDirResponse
 	res.Error = encodeErr(func() error {
-		if err := os.Mkdir(req.Name, req.Mode); err != nil {
+		if err := os.Mkdir(req.Name, os.FileMode(req.Mode)); err != nil {
 			return err
 		}
 		return nil
