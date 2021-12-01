@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -15,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -68,6 +70,7 @@ func PhysicalKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -82,6 +85,10 @@ func PhysicalKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	defer its.Close()
 
 	inputMethod := testCase.inputMethod
+	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+		s.Fatalf("Failed to set input method to %s: %v: ", inputMethod, err)
+	}
+	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -91,12 +98,26 @@ func PhysicalKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	inputField := testserver.TextAreaInputField
 
-	if err := uiauto.Combine("validate dead keys typing",
+	validateAction := uiauto.Combine("validate dead keys typing",
 		inputMethod.InstallAndActivate(tconn),
 		its.ClickFieldAndWaitForActive(inputField),
 		kb.TypeAction(testCase.typingKeys),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.expectedTypingResult),
-	)(ctx); err != nil {
-		s.Fatal("Failed to verify input: ", err)
+	)
+
+	if err := useractions.NewUserAction(
+		"PK dead keys typing",
+		validateAction,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: fmt.Sprintf(`type %q to get %q`, testCase.typingKeys, testCase.expectedTypingResult)},
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+				useractions.ActionTagDeadKey,
+			},
+		},
+	).Run(ctx); err != nil {
+		s.Fatal("Failed to verify dead keys input: ", err)
 	}
 }
