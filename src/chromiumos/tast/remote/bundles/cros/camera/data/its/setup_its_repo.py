@@ -58,12 +58,30 @@ def main(args):
     ]
     subprocess.check_call(cmd, cwd=str(its_root))
     base_msg = 'Base ITS source'
-    fake_author = 'testuser <testuser@gmail.com>'
-    subprocess.check_call(
-        ['git', 'commit', '--author', fake_author, '-m', base_msg],
-        cwd=str(its_root))
-    subprocess.check_call(['git', 'tag', '-a', 'base', '-m', base_msg],
-                          cwd=str(its_root))
+    fake_author_args = [
+        '-c',
+        'user.name="testuser"',
+        '-c',
+        'user.email="testuser@gmail.com"',
+    ]
+    commit_base_args = [
+        'git',
+        *fake_author_args,
+        'commit',
+        '-m',
+        base_msg,
+    ]
+    subprocess.check_call(commit_base_args, cwd=str(its_root))
+    tag_base_args = [
+        'git',
+        *fake_author_args,
+        'tag',
+        '-a',
+        'base',
+        '-m',
+        base_msg,
+    ]
+    subprocess.check_call(tag_base_args, cwd=str(its_root))
 
     # Apply python3 patch.
     subprocess.check_call(
