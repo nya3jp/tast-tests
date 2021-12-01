@@ -52,7 +52,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx)
+	cr, err := chrome.New(ctx, chrome.EnableFilesAppSWA())
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -115,7 +115,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 	defer ew.Close()
 
 	// Open the Files App.
-	files, err := filesapp.Launch(ctx, tconn)
+	files, err := filesapp.LaunchSWA(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
@@ -187,7 +187,7 @@ func testMountingZipFile(ctx context.Context, s *testing.State, files *filesapp.
 	// Start timer for zip file mounting operation.
 	startTime := time.Now()
 
-	if err := files.WithTimeout(zipOperationTimeout).WaitUntilExists(nodewith.Name("Files - " + zipFile).Role(role.RootWebArea))(ctx); err != nil {
+	if err := files.WithTimeout(zipOperationTimeout).WaitUntilExists(nodewith.Name("Files - " + zipFile).Role(role.Window).First())(ctx); err != nil {
 		s.Fatal("Failed to find mounted ZIP file: ", err)
 	}
 
@@ -218,7 +218,7 @@ func testExtractingZipFile(ctx context.Context, s *testing.State, files *filesap
 		// Enter the new directory.
 		files.OpenFile(zipBaseName),
 		// Before pasting, ensure the Files App has switched to the new location.
-		files.WaitUntilExists(nodewith.Name("Files - "+zipBaseName).Role(role.RootWebArea)),
+		files.WaitUntilExists(nodewith.Name("Files - "+zipBaseName).Role(role.Window).First()),
 		ew.AccelAction("ctrl+V"),
 	)(ctx); err != nil {
 		s.Fatal("Failed to start ZIP file extraction: ", err)
