@@ -298,6 +298,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5458e417_9aa87da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1369748
+      },
+      "writtenOn": "2021-12-01T23:51:43Z",
+      "side": 1,
+      "message": "Hi Meng-Huan and Hidehiko,\nThe goal of this code review is to expand the hw-dept list to include all other vPro variants. If you okay with that, Jilani can merge that specific change to unblock vPro activities.  Jilani will keep working to address your concerns on existing test implementation.  Jilani, could you please create a new Gerrit ticket just to expand hw-dept list? Thanks",
+      "parentUuid": "ba540503_7bb0fb0b",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
