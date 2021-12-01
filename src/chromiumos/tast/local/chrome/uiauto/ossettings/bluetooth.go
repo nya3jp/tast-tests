@@ -18,6 +18,19 @@ import (
 // can click to navigate to the Bluetooth Settings.
 var osBluetoothSettingsButton = nodewith.HasClass("subpage-arrow").NameContaining("Bluetooth").Role(role.Button)
 
+// OsSettingsBluetoothToggleButton is the Bluetooth toggle on the OS Settings page.
+var OsSettingsBluetoothToggleButton = nodewith.NameContaining("Bluetooth").Role(role.ToggleButton)
+
+// OsSettingsPairNewDeviceButton is the "pair new device" button within the OS Settings.
+var OsSettingsPairNewDeviceButton = nodewith.NameContaining("Pair new device").Role(role.Button)
+
+// BluetoothSettingsPairNewDeviceButton is the "pair new device" button within the Bluetooth Settings.
+var BluetoothSettingsPairNewDeviceButton = nodewith.NameContaining("Pair new device").Role(role.Button)
+
+// BluetoothPairNewDeviceModal is the modal that is opened when the "pair new
+// device" button within either the OS Settings or Bluetooth Settings is pressed.
+var BluetoothPairNewDeviceModal = nodewith.NameContaining("Pair new device").Role(role.Heading)
+
 // NavigateToBluetoothSettingsPage will navigate to the Bluetooth sub-page
 // within the OS Settings by clicking the sub-page button. This is safe to call
 // when the OS Settings are already open.
