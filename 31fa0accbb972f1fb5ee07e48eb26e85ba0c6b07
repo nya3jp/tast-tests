@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5fd1729_78beab75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-01T11:00:04Z",
+      "side": 1,
+      "message": "Yes. Thanks for the comment.\n\nI understand your point. Action and test should be different. However in my opinion, validation function is also an action with information to attach. \n\nI will complete pending cls and stop further refactoring until we get an agreement how to use UserAction. We can involve more experts into this discussion too(maybe Matt).",
+      "parentUuid": "53e919f9_69c33254",
+      "revId": "31fa0accbb972f1fb5ee07e48eb26e85ba0c6b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fec8c887_97d50b24",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-01T07:45:44Z",
       "side": 1,
       "message": "can we have a unified initializer for setting these attribute in uc? I think this step is better hidden from the test-writer.\n\nideally, the code should as simple as:\nuc :\u003d SomeInitializer(params)\ndefer uc.reset() // if needed.\n\nwe shouldn\u0027t expect the test-writer to be able to set these attributes. Even though we can help them refactor some tests, we cannot handle all of them. Plus, if the test-writers didn\u0027t fully understand it, they could have questions during debugging/modifying the script.",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 346,
+        "endChar": 2
+      },
+      "revId": "31fa0accbb972f1fb5ee07e48eb26e85ba0c6b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73eebe78_6cc23611",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-01T11:00:04Z",
+      "side": 1,
+      "message": "This is a good point. I also considered this idea when starting this cl. Ideally each component should create its own UserContext, such as what I did for Inputs. The dedicated initializer retrieve and record interested device information. \n\nCreated http://b/208592921. Let\u0027s discuss this separately.",
+      "parentUuid": "fec8c887_97d50b24",
       "range": {
         "startLine": 335,
         "startChar": 1,
