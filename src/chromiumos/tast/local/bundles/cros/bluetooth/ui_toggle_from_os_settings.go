@@ -16,6 +16,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// TODO(crbug.com/1252917): Remove this test when the Bluetooth Revamp has
+// fully launched.
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: UIToggleFromOSSettings,
