@@ -39,6 +39,32 @@ type Failure struct {
 	Message string `xml:"message,attr"`
 }
 
+// GetSummary returns a string summarizing the report in the format:
+// "Passed %d tests, failed %d tests ([test_a, test_b])."
+func (r *Report) GetSummary() string {
+	var failedTests []string
+	nbTestsPass := 0
+	nbTestsFail := 0
+	for _, s := range r.Suites {
+		for _, c := range s.Cases {
+			if len(c.Failures) > 0 {
+				failedTests = append(
+					failedTests,
+					fmt.Sprintf("%s.%s", s.Name, c.Name),
+				)
+				nbTestsFail++
+			} else {
+				nbTestsPass++
+			}
+		}
+	}
+	return fmt.Sprintf("Passed %d tests, failed %d tests (%s)",
+		nbTestsPass,
+		nbTestsFail,
+		failedTests,
+	)
+}
+
 // FailedTestNames returns an array of failed test names, in the
 // "TestSuite.TestCase" format. If no error is found, returns nil.
 // This walks through whole the report.
