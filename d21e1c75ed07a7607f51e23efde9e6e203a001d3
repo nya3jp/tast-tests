@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45082ef7_8631bd9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-01T02:47:09Z",
+      "side": 1,
+      "message": "Good idea, I shouldn\u0027t copy the template from thunderbolt test...",
+      "parentUuid": "370cf827_8b544e76",
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fde72a14_dc40d5db",
@@ -58,6 +76,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0090eac_fccc9244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-01T02:47:09Z",
+      "side": 1,
+      "message": "Right, we don\u0027t need it, thanks!",
+      "parentUuid": "fde72a14_dc40d5db",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce373521_8018fa36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-01T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aeb6f68_5f2e3fd2",
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "190aa372_e3bed2ec",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba34e888_9cae2447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-01T02:47:09Z",
+      "side": 1,
+      "message": "Got it. Since this is informational tast test at the beginning, let\u0027s remove it first, and I\u0027ll keep an eye on the tast board to see what kind of case will fail and decide the next steps.\n\nPossible next steps:\n1. Add HW dep.\n2. Might be corner case that should be fixed in cros_healthd service or tast test.",
+      "parentUuid": "190aa372_e3bed2ec",
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f7c6922_f0908c55",
@@ -88,6 +166,24 @@
       "writtenOn": "2021-11-30T10:13:27Z",
       "side": 1,
       "message": "I think this should be s.Error or Fatal, which would help notice the error just in case the process affected the framework and other tests that run after this test.",
+      "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5e3f25a_17a1a7e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-01T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7c6922_f0908c55",
       "revId": "d21e1c75ed07a7607f51e23efde9e6e203a001d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

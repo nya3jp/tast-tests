@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "913c7b5e_31c749dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-01T02:47:09Z",
+      "side": 1,
+      "message": "Thanks for all your suggestion, I think patch#2 is much better!",
+      "revId": "21715105db4b7f605bf7335b18e655916e1785d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
