@@ -484,7 +484,7 @@ func GenerateTestFirmwareImages(ctx context.Context, d *rpcdut.RPCDUT, futilityP
 		images[imageType].Path = dutFileName
 	}
 
-	testing.ContextLog(ctx, "Copying generating firmware images to DUT")
+	testing.ContextLog(ctx, "Copying generated firmware images to DUT")
 	if _, err := linuxssh.PutFiles(ctx, d.Conn(), filesToCopy, linuxssh.PreserveSymlinks); err != nil {
 		return nil, errors.Wrapf(err, "failed to copy files from %q to %q", serverTmpDir, dutTempDir)
 	}

@@ -284,15 +284,22 @@ func readFmapSection(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile, section
 		}
 	}()
 
+	testing.ContextLog(ctx, "Josie checking size of fdump file exists")
+	outt, err := d.Conn().CommandContext(ctx, "ls", "-s", buildFwFile).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "FILE NOT FOUND BRO")
+	}
+	testing.ContextLog(ctx, "Josie filesize is: ", string(outt))
 	outputPath := filepath.Join(tempdirPath, section)
 	if err := d.Conn().CommandContext(ctx, "dump_fmap", "-x", buildFwFile, fmt.Sprintf("%s:%s", section, outputPath)).Run(ssh.DumpLogOnError); err != nil {
 		return "", errors.Wrap(err, "failed to run dump_fmap")
 	}
-
+	testing.ContextLog(ctx, "Josie fdump Command: ", "dump_fmap ", "-x ", buildFwFile, fmt.Sprintf("%s:%s", section, outputPath))
 	out, err := d.Conn().CommandContext(ctx, "cat", outputPath).Output(ssh.DumpLogOnError)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to read dump_fmap output")
 	}
+	testing.ContextLog(ctx, "Josie fdumpmap gave", strings.Trim(string(out), "\x00"))
 	// dump_fmap writes NULL characters at the end.
 	return strings.Trim(string(out), "\x00"), nil
 }
@@ -426,6 +433,11 @@ func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, firmw
 	if err := InitializeEntropy(ctx, d); err != nil {
 		return err
 	}
+	testing.ContextLog(ctx, "Syncing files before reboot")
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "Failed to sync files before reboot")
+	}
+
 	testing.ContextLog(ctx, "Entropy initialized, now rebooting to get seed")
 	if err := d.Reboot(ctx); err != nil {
 		return errors.Wrap(err, "failed to reboot DUT")
@@ -454,9 +466,17 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 		testing.ContextLog(ctx, "Failed to write FP firmware version to file: ", err)
 	}
 
+	testing.ContextLog(ctx, "JOSIE: lets get the RW in InitiatlizeKnownState")
+	// Check RW version.
+	actualRwVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFWFile)
+	if err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, "JOSIE: version is", actualRwVersion)
+
 	// Check all other standard FPMCU state.
 	testing.ContextLog(ctx, "Checking other FPMCU state")
-	if err := CheckValidFlashState(ctx, d, fpBoard, buildFWFile); err != nil {
+	if err := CheckValidFlashState(ctx, d, fpBoard, buildFWFile, keyTypeDev); err != nil {
 		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
 		if err := ReimageFPMCU(ctx, d, pxy, buildFWFile, needsRebootAfterFlashing); err != nil {
 			return err
@@ -468,16 +488,39 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 
 // CheckValidFlashState validates the rollback state and the running firmware versions (RW and RO).
 // It returns an error if any of the values are incorrect.
-func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName, buildFWFile string) error {
+func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName, buildFWFile string, expKeyType keyType) error {
 	// Check that RO and RW versions are what we expect.
+	MPfwFile, err := FirmwarePath(ctx, d, fpBoard)
+	if err != nil {
+		return errors.Wrap(err, "Failed to get MP build firmware file path: ")
+	}
+	testing.ContextLog(ctx, "Josie, MPfwFile is ", MPfwFile)
 	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFWFile)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RW version")
 	}
-	expectedROVersion, err := getExpectedFwInfo(fpBoard, buildFWFile, fwInfoTypeRoVersion)
+	testing.ContextLog(ctx, "Josie, expectedRWVersion is ", expectedRWVersion)
+	expectedROVersion, err := getExpectedFwInfo(fpBoard, MPfwFile, fwInfoTypeRoVersion)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RO version")
 	}
+	testing.ContextLog(ctx, "Josie, expectedROVersion is ", expectedROVersion)
+
+	// if expKeyType == keyTypeDev {
+	// 	rwVersion, err := readFMAPSection(ctx, "", MPfwFile, RWFirmwareID)
+	// 	if err != nil {
+	// 		return nil, errors.Wrap(err, "failed to read RW firmware info")
+	// 	}
+	// 	newVersion, err := createVersionStringWithSuffix(".dev", rwVersion.Bytes)
+	// 	if err != nil {
+	// 		return errors.Wrap(err, "failed to modify version string")
+	// 	}
+	// 	if err := addSuffixToVersionString(devFilePath, ".dev", f.rwVersion); err != nil {
+	// 		return errors.Wrap(err, "failed to modify RW version string")
+	// 	}
+	// 	expectedRWVersion = newVersion
+	// 	testing.ContextLog(ctx, "Josie we ammended to expectedRWVersion=", expectedRWVersion)
+	// }
 	if err := CheckRunningFirmwareVersionMatches(ctx, d, expectedROVersion, expectedRWVersion); err != nil {
 		return err
 	}
@@ -551,6 +594,7 @@ func CheckRunningFirmwareVersionMatches(ctx context.Context, d *rpcdut.RPCDUT, e
 	if err != nil {
 		return errors.Wrap(err, "failed to get RW version")
 	}
+	testing.ContextLog(ctx, "Josie, Running RWVersion:", runningRWVersion)
 
 	runningROVersion, err := RunningROVersion(ctx, d)
 	if err != nil {

@@ -64,12 +64,11 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, f
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get build firmware file path")
 		}
+		if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
+			return nil, errors.Wrap(err, "failed to validate build firmware file")
+		}
 	} else {
 		t.buildFwFile = firmwareFile
-	}
-
-	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
-		return nil, errors.Wrap(err, "failed to validate build firmware file")
 	}
 
 	t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
@@ -137,18 +136,13 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, f
 		}
 	}
 
-	t.dutTempDir, err = t.DutfsClient().TempDir(ctx, "", dutTempPathPattern)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to create remote working directory")
-	}
-
 	// Check FPMCU state and reflash if needed.
 	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
 	// Double check our work in the previous step.
-	if err := CheckValidFlashState(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
+	if err := CheckValidFlashState(ctx, t.d, t.fpBoard, t.buildFwFile, ".dev"); err != nil {
 		return nil, err
 	}
 
