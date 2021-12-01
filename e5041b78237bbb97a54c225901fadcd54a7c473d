@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3956c3d_d4bba013",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-01T19:20:28Z",
+      "side": 1,
+      "message": "Hope the manual team is made aware and they test the removing cases manually.",
+      "revId": "e5041b78237bbb97a54c225901fadcd54a7c473d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
