@@ -39,6 +39,21 @@ type Failure struct {
 	Message string `xml:"message,attr"`
 }
 
+// PassedTestNames returns an array of passed test names, in the
+// "TestSuite.TestCase" format. If no passed tests are found, returns nil.
+// This walks through whole the report.
+func (r *Report) PassedTestNames() []string {
+	var ret []string
+	for _, s := range r.Suites {
+		for _, c := range s.Cases {
+			if len(c.Failures) == 0 {
+				ret = append(ret, fmt.Sprintf("%s.%s", s.Name, c.Name))
+			}
+		}
+	}
+	return ret
+}
+
 // FailedTestNames returns an array of failed test names, in the
 // "TestSuite.TestCase" format. If no error is found, returns nil.
 // This walks through whole the report.
