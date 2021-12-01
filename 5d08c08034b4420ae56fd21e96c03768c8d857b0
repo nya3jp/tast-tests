@@ -39,6 +39,30 @@
       },
       "revId": "5d08c08034b4420ae56fd21e96c03768c8d857b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b682fb24_48133cc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-12-01T23:43:41Z",
+      "side": 1,
+      "message": "no it didnt.  couldnt find a specific style recommendation on it.  But just checked other parts of the codebase and you\u0027re right. will change.",
+      "parentUuid": "4aa2eeb4_7e4d7d63",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 12
+      },
+      "revId": "5d08c08034b4420ae56fd21e96c03768c8d857b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
