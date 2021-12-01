@@ -16,6 +16,75 @@
       "message": "Kyle, PTAL",
       "revId": "412d396d2672447f3f2380859b2952d2fdab3173",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e052ab1a_a30bdb4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/auth_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:17:10Z",
+      "side": 1,
+      "message": "probably can skip the anonymous func here, and just call cr.Close directly instead of deferring it, since nothing happens between chrome.New and Close",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "412d396d2672447f3f2380859b2952d2fdab3173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9043b5c5_d028e254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/auth_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:17:10Z",
+      "side": 1,
+      "message": "how about adding this to the lockscreen package too? seems generally useful",
+      "range": {
+        "startLine": 81,
+        "startChar": 29,
+        "endLine": 81,
+        "endChar": 68
+      },
+      "revId": "412d396d2672447f3f2380859b2952d2fdab3173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461f36ac_12532a24",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:17:10Z",
+      "side": 1,
+      "message": "you can just declare these as variables instead of using a function to return them\n```\nvar AuthErrorFinder \u003d nodewith...\nvar ConsecutiveAuthErrorFinder \u003d nodewith...\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "412d396d2672447f3f2380859b2952d2fdab3173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
