@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7dcbc6a_c81e00bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1528768
+      },
+      "writtenOn": "2021-12-01T08:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e05628bb_a32ade14",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "084a81da_a3f755a8",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-30T17:59:07Z",
       "side": 1,
       "message": "This comment seems wrong. You didn\u0027t actually reboot. How about: \"Checking initial state of laptop mode\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 9,
+        "endLine": 114,
+        "endChar": 63
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8ccdda_7bd117ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1528768
+      },
+      "writtenOn": "2021-12-01T08:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "084a81da_a3f755a8",
       "range": {
         "startLine": 114,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfecbc51_5914c6f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1528768
+      },
+      "writtenOn": "2021-12-01T08:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "660c0ad5_5287baf0",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15652791_5cb587b4",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-30T17:59:07Z",
       "side": 1,
       "message": "Since you are not doing any checks if clamshell, you might as well skip the reboot in that case also. I.e. just one big if !ffIsClamshell {} around everything from line 75-147",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1cd971_51504d5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1528768
+      },
+      "writtenOn": "2021-12-01T08:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15652791_5cb587b4",
       "range": {
         "startLine": 142,
         "startChar": 1,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c0f102_a71e9b40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1528768
+      },
+      "writtenOn": "2021-12-01T08:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb2e4fb1_53fd658e",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 2
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b8f7f23_8c42357a",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-11-30T17:59:07Z",
       "side": 1,
       "message": "Just G3 here.",
+      "range": {
+        "startLine": 332,
+        "startChar": 39,
+        "endLine": 332,
+        "endChar": 47
+      },
+      "revId": "c58765c46709b10e14417b300bb137757af36199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007b028e_26bd4df6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_laptop_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1528768
+      },
+      "writtenOn": "2021-12-01T08:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8f7f23_8c42357a",
       "range": {
         "startLine": 332,
         "startChar": 39,
