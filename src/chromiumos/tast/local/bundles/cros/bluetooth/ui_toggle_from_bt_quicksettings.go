@@ -11,9 +11,13 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
+
+// TODO(crbug.com/1252917): Remove this test when the Bluetooth Revamp has
+// fully launched.
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -26,7 +30,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -44,12 +48,6 @@ func UIToggleFromBTQuicksettings(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 
 	// TODO(b/188767517): Add unique identifiers to UI elements used in these tests
-	// System tray element on the menu bar. Clicking on this will bring up the quick setting button.
-	systemTray := nodewith.ClassName("UnifiedSystemTray").Role(role.Button)
-	// Button to expand the quick setting menu.
-	systemTrayExpandButton := nodewith.ClassName("ExpandButton").Role(role.Button)
-	// Button to collapse the quick setting menu.
-	systemTrayCollapseButton := nodewith.ClassName("CollapseButton").Role(role.Button)
 	// Bluetooth button in the quick setting menu, when Bluetooth is on.
 	bluetoothTurnOffButton := nodewith.NameContaining("Toggle Bluetooth. Bluetooth is on").ClassName("FeaturePodIconButton").Role(role.ToggleButton)
 	// Bluetooth button in the quick setting menu, when Bluetooth is off.
@@ -64,16 +62,13 @@ func UIToggleFromBTQuicksettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to power on Bluetooth adapter: ", err)
 	}
 
-	if err := uiauto.Combine("bring up quick setting menu and expand if needed",
-		ui.LeftClick(systemTray),
-		ui.IfSuccessThen(ui.Gone(systemTrayCollapseButton), ui.LeftClick(systemTrayExpandButton)))(ctx); err != nil {
-		s.Fatal("Failed to bring up and expand the quick settings page: ", err)
+	if err := quicksettings.Expand(ctx, tconn); err != nil {
+		s.Fatal("Failed to open and expand the Quick Settings: ", err)
 	}
 
 	// Click on Bluetooth UI button and wait for button state to toggle.
 	// Enabling Bluetooth from quick setting menu should bring up the bluetooth quick setting screen.
 	if err := uiauto.Combine("disable/enable bluetooth and confirm Bluetooth quick setting menu is present ",
-		ui.WaitUntilExists(systemTrayCollapseButton),
 		ui.LeftClick(bluetoothTurnOffButton),
 		ui.WaitUntilExists(bluetoothTurnOnButton),
 		ui.LeftClick(bluetoothTurnOnButton),
