@@ -16,6 +16,24 @@
       "message": "I think it\u0027s worth avoiding to touch the fixed location like this to avoid conflict of logs. WDYT?",
       "revId": "b9ce152404dfe475cbade8f643eb13047f3c4147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb28c386_e63c8188",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros/launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-12-01T05:14:33Z",
+      "side": 1,
+      "message": "Yeah except without this it doesn\u0027t work because the directory doesn\u0027t exist in the command line case",
+      "parentUuid": "8579e161_6902b236",
+      "revId": "b9ce152404dfe475cbade8f643eb13047f3c4147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
