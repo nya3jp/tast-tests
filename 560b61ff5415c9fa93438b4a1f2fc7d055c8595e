@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "541a3413_63c7d770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-12-01T19:38:45Z",
+      "side": 1,
+      "message": "Hidehiko, PTAL. If the overall idea makes sense for you, I can proceed further working on this.",
+      "revId": "560b61ff5415c9fa93438b4a1f2fc7d055c8595e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
