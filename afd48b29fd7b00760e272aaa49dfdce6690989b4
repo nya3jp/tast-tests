@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "511af6b5_ad69800e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:42:46Z",
+      "side": 1,
+      "message": "LGTM! just a few nits",
+      "revId": "afd48b29fd7b00760e272aaa49dfdce6690989b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ebccb9_95e22d84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning_pre_setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:42:46Z",
+      "side": 1,
+      "message": "update description",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 167
+      },
+      "revId": "afd48b29fd7b00760e272aaa49dfdce6690989b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34d58aef_a1b25024",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning_pre_setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:42:46Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 109
+      },
+      "revId": "afd48b29fd7b00760e272aaa49dfdce6690989b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ddafac_f29af2ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning_pre_setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:42:46Z",
+      "side": 1,
+      "message": "nit: delete if unused",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 85
+      },
+      "revId": "afd48b29fd7b00760e272aaa49dfdce6690989b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5444e782_2699a0d1",
+        "filename": "src/chromiumos/tast/remote/cros/nearbyshare/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T21:42:46Z",
+      "side": 1,
+      "message": "might be nice to mention how onboarding is not skipped in the description",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 6
+      },
+      "revId": "afd48b29fd7b00760e272aaa49dfdce6690989b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
