@@ -23,7 +23,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/faillog"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	lacrosservice "chromiumos/tast/services/cros/lacros"
@@ -96,7 +95,7 @@ func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservi
 		faillog.SaveRecordIf(ctx, tconn, hasRecordStarted, func() bool { return hasError })
 	}(ctxForFailLog)
 
-	l, err := lacros.LaunchFromShelf(ctx, tconn, expectedLacrosDir)
+	l, err := launcher.LaunchFromShelf(ctx, tconn, expectedLacrosDir)
 	if err != nil {
 		// TODO(crbug.com/1258664): Log shelf items in case the Lacros app is neither launched nor shown.
 		items, _ := ash.ShelfItems(ctx, tconn)

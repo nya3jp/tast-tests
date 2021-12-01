@@ -21,6 +21,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -276,6 +277,27 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 	cmd = nil
 
 	succeeded = true
+	return l, nil
+}
+
+// LaunchFromShelf launches lacros-chrome via shelf.
+func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*LacrosChrome, error) {
+	const newTabTitle = "New Tab"
+
+	testing.ContextLog(ctx, "Launch lacros via Shelf")
+	if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
+		return nil, errors.Wrap(err, "failed to launch lacros via shelf")
+	}
+
+	testing.ContextLog(ctx, "Wait for Lacros window")
+	if err := WaitForLacrosWindow(ctx, tconn, newTabTitle); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for lacros")
+	}
+
+	l, err := ConnectToLacrosChrome(ctx, lacrosPath, LacrosUserDataDir)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to lacros")
+	}
 	return l, nil
 }
 

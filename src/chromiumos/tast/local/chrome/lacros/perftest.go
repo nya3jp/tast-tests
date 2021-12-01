@@ -11,7 +11,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros/launcher"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power/setup"
 	"chromiumos/tast/testing"
@@ -184,4 +186,47 @@ func SetupLacrosTestWithPage(ctx context.Context, f launcher.FixtValue, url stri
 	}
 
 	return conn, ltconn, l, cleanup, nil
+}
+
+// SetupLacrosShelfTestWithPage opens a lacros-chrome page from the Shelf after waiting for a stable environment (CPU temperature, etc).
+func SetupLacrosShelfTestWithPage(ctx context.Context, f launcher.FixtValue, url string) (
+	retConn *chrome.Conn, retCleanup CleanupCallback, retErr error) {
+	cr := f.Chrome()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to connect to the test API connection")
+	}
+
+	l, err := launcher.LaunchFromShelf(ctx, tconn, f.LacrosPath())
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to launch lacros")
+	}
+
+	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to find new tab")
+	}
+
+	if err := conn.Navigate(ctx, url); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to navigate to the URL")
+	}
+
+	// Move the cursor away from the Shelf to make sure the tooltip won't interfere with the performance.
+	if err := mouse.Move(tconn, coords.NewPoint(0, 0), 0)(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to move the mouse to the top-left corner of the screen")
+	}
+
+	cleanup := func(ctx context.Context) error {
+		conn.CloseTarget(ctx)
+		conn.Close()
+		l.Close(ctx)
+		return nil
+	}
+
+	if err := cpu.WaitUntilStabilized(ctx, cooldownConfig); err != nil {
+		return nil, nil, err
+	}
+
+	return conn, cleanup, nil
 }

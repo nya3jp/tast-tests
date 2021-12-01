@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/launcher"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -275,7 +274,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		// Launch lacros via shelf.
 		f := s.FixtValue().(launcher.FixtValue)
 
-		l, err := lacros.LaunchFromShelf(ctx, tconn, f.LacrosPath())
+		l, err := launcher.LaunchFromShelf(ctx, tconn, f.LacrosPath())
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}
