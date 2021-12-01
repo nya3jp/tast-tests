@@ -11,9 +11,13 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
+
+// TODO(crbug.com/1252917): Remove this test when the Bluetooth Revamp has
+// fully launched.
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -26,13 +30,14 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
 // UIToggleFromQuicksettings tests enabling/disabling Bluetooth from minimized quick settings UI
 func UIToggleFromQuicksettings(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(*chrome.Chrome)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -40,12 +45,6 @@ func UIToggleFromQuicksettings(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// System tray element on the menu bar. Clicking on this will bring up the quick setting button.
-	systemTray := nodewith.ClassName("UnifiedSystemTray").Role(role.Button)
-	// Button to expand the quick setting menu.
-	systemTrayExpandButton := nodewith.ClassName("ExpandButton").Role(role.Button)
-	// Button to collapse the quick setting menu.
-	systemTrayCollapseButton := nodewith.ClassName("CollapseButton").Role(role.Button)
 	// Bluetooth button in the quick setting menu, when Bluetooth is on.
 	bluetoothTurnOffButton := nodewith.NameContaining("Toggle Bluetooth. Bluetooth is on").Role(role.ToggleButton)
 	// Bluetooth button in the quick setting menu, when Bluetooth is off.
@@ -56,11 +55,13 @@ func UIToggleFromQuicksettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to power on Bluetooth adapter: ", err)
 	}
 
-	if err := uiauto.Combine("bring up quick setting menu and collapse if needed",
-		ui.LeftClick(systemTray),
-		ui.IfSuccessThen(ui.Gone(systemTrayExpandButton), ui.LeftClick(systemTrayCollapseButton)))(ctx); err != nil {
-		s.Fatal("Failed to bring up and collapse the quick settings page: ", err)
+	// The Quick Settings is collapsed to avoid being taken to the detailed
+	// Bluetooth view when we press the Bluetooth feature pod icon button
+	// and it enables Bluetooth.
+	if err := quicksettings.Collapse(ctx, tconn); err != nil {
+		s.Fatal("Failed to collapse the Quick Settings: ", err)
 	}
+	defer quicksettings.Expand(ctx, tconn)
 
 	numIterations := 20
 	for i := 0; i < numIterations; i++ {
