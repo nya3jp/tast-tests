@@ -132,7 +132,7 @@ func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
 			// RO version should remain unchanged.
 			expectedROVersion: testImages[fingerprint.TestImageTypeOriginal].ROVersion,
 			// RW version should match what we requested to be flashed.
-			expectedRWVersion: testImages[fingerprint.TestImageTypeCorruptLastByte].RWVersion,
+			expectedRWVersion: testImages[fingerprint.TestImageTypeCorruptFirstByte].RWVersion,
 			// Signature check will fail, so we should be running RO.
 			expectedRunningFirmwareCopy: fingerprint.ImageTypeRO,
 		}); err != nil {
