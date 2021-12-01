@@ -52,6 +52,24 @@
       "parentUuid": "ae2407a6_d6fb2bc2",
       "revId": "a13883375c9429097b42711b835938c5df89004a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddcb446_b5bd576c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-01T05:02:23Z",
+      "side": 1,
+      "message": "looked into this a bit .. and I have come up with a change https://crrev.com/c/3295311 for a possible fix. Can you take a look?",
+      "parentUuid": "2b5584cb_2dbc53ab",
+      "revId": "a13883375c9429097b42711b835938c5df89004a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
