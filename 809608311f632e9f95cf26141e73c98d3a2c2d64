@@ -33,6 +33,24 @@
       "message": "+Aki, we\u0027re planning to copy the old \"chrome/ui\" packge into our local package, so that we can continuously use the library to touch chrome automation nodes directly. (See b/190773660)\n\nIf this helps chrome os a11y wide, I can move the packge under \"chromiumos/tast/local/a11y\" package. What do you think?",
       "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbf11f21_3cc57d0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-01T01:20:38Z",
+      "side": 1,
+      "message": "Hi Aki, friendly ping on this comment, just in case you missed it.",
+      "parentUuid": "4a2ba28f_a6aa4dc9",
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
