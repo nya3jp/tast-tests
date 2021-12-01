@@ -71,6 +71,15 @@ func startShillAndWaitForNetworks(ctx context.Context, s *testing.State) {
 	}
 }
 
+// correctFilename corrects the given filename to its supposed filename
+// (b/208658574).
+func correctFilename(filename string) string {
+	if matched, _ := regexp.MatchString(".*d_invoker.h", filename); matched {
+		return "dbus_method_invoker.h"
+	}
+	return filename
+}
+
 func ShillNoErrorsInLog(ctx context.Context, s *testing.State) {
 	if err := upstart.StopJob(ctx, shillJob); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
@@ -103,7 +112,7 @@ func ShillNoErrorsInLog(ctx context.Context, s *testing.State) {
 		if e.Timestamp.After(endTime) {
 			break
 		}
-		subEntries = append(subEntries, subEntry{e.Program, syslog.ExtractFileName(*e), e.Content})
+		subEntries = append(subEntries, subEntry{e.Program, correctFilename(syslog.ExtractFileName(*e)), e.Content})
 	}
 
 	allowedEntries := shillconst.InitializeAllowedEntries()
