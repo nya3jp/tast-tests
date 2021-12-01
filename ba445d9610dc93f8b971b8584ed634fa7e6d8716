@@ -1,0 +1,475 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "527e1cf5_3fed5dc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "Sorry for long reply, most comments related to the code style. Are there some other owners of usbprinter who can review your CLs? If so, please add them.",
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a495aa_abd0c2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: this is also a package name, please use another name for variable to avoid issues and confusion",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5474d452_5c8c3af2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "This can be simplified to\n\n\n```\nopts :\u003d []usbprinter.Option{\n  usbprinter.WithDescriptors(descriptors),\n  usbprinter.WithAttributes(attributes),\n  usbprinter.WithRecordPath(record),\n}\nif len(ppd) \u003d\u003d 0 {\n  opts \u003d append(opts, usbprinter.WaitUntilConfigured())\n}\n\npr, err :\u003d usbprinter.Start(ctx, opts...)\n...\n```",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "029ce453_a46d86cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "I am not sure how common is it to wrap smth into ` in Go comments. I\u0027d just drop them here and in other places.",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ec52c6_59b4ae0c",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: i\u0027d use spaces in comments",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ba71ed_a7709629",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: rename it to PrinterOptions",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3610ee_5cf37d9e",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "If you start type name or function name with capital letter, you make type/function public. I am sure you don\u0027t want make everything public in this file. Please revisit what is private and what is public",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "581e4e81_0920cf57",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "you probably can drop these fields and instead store command line arguments and maybe few more fields. Please try to simplify it :)",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b86e2e_259ddcdd",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: rename to PrinterOption?",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eaeed66_97782adc",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: It\u0027s a bit unclear how to set \"info.WaitUntilConfigured\" to false/true. So  maybe rephrase to smth like\n\n```\nNon-empty if WaitUntilConfigured() option was provided to Start function\n``` \n\n?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 14
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb31f078_78a83367",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "This can be moved inside option function logic, e.g.\n\n```\n// WithAttributes sets `PrinterInfo.Attributes`.\nfunc WithAttributes(path string) PrinterInfoField {\n  return func(cmd *[]string) error {\n    *cmd \u003d append(*cmd, \"--attributes_path\u003d\"+absoluteConfigPath)\n    return nil\n  }\n}\n```\n\nor \n\n```\n// WithAttributes sets `PrinterInfo.Attributes`.\nfunc WithAttributes(path string) PrinterInfoField {\n  return func(i *PrinterInfo) error {\n    i.cmd \u003d append(i.cmd, \"--attributes_path\u003d\"+absoluteConfigPath(path)\n    return nil\n  }\n}\n```",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e88d49_9eebebab",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: this is a bit against guideline, do you need this log?\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68499056_5e7caea6",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: starts",
+      "range": {
+        "startLine": 249,
+        "startChar": 42,
+        "endLine": 249,
+        "endChar": 50
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e7f684_3b7a31a2",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: maybe just pass descriptors here if it is required?\n\nor introduce a separate flag in PrinterInfo whether descriptors was provided?",
+      "range": {
+        "startLine": 251,
+        "startChar": 31,
+        "endLine": 251,
+        "endChar": 32
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5819472c_1b66fc99",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "Do you need \"Instance\" in the name? Can\u0027t it be just \"Printer\"?",
+      "range": {
+        "startLine": 251,
+        "startChar": 77,
+        "endLine": 251,
+        "endChar": 85
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc7000c_aeba8d89",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: return pointer here, e.g. (*PrinterInstance, error)",
+      "range": {
+        "startLine": 251,
+        "startChar": 61,
+        "endLine": 251,
+        "endChar": 85
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf20b89_43959c00",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: try to avoid named return values",
+      "range": {
+        "startLine": 251,
+        "startChar": 61,
+        "endLine": 251,
+        "endChar": 69
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2886dbf2_b5f99f58",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "Please follow guideline in your comments (here and in other places):\n\nhttps://go.dev/doc/effective_go#commentary\n\n\"Comments do not need extra formatting such as banners of stars.\"",
+      "range": {
+        "startLine": 304,
+        "startChar": 3,
+        "endLine": 304,
+        "endChar": 5
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c12fc52_1f61273e",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "nit: drop \"_\"",
+      "range": {
+        "startLine": 305,
+        "startChar": 16,
+        "endLine": 305,
+        "endChar": 17
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cea6dfc_95ffdf56",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "this might be option when you create PrinterInstance, i.e.\n\n`WithUdevEventOnStop()`\n\nby default it\u0027s without. Or vice versa",
+      "range": {
+        "startLine": 309,
+        "startChar": 52,
+        "endLine": 309,
+        "endChar": 83
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a24b9418_a3f9a8d4",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T23:24:02Z",
+      "side": 1,
+      "message": "Don\u0027t ignore returned errors",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 13
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
