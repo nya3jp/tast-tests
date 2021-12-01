@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -280,6 +281,63 @@ func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string,
 			return nil
 		}, &testing.PollOptions{Timeout: 3 * time.Second})
 	}
+}
+
+// RestrictSigninToUsers restrcits singin only to provided user.
+func RestrictSigninToUsers(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, allowedUser string) error {
+	// Open Settings, Security and Privacy section, Manage other people subsection.
+	s, err := LaunchAtPageURL(ctx, tconn, cr, "osPrivacy", func(context.Context) error { return nil })
+	if err != nil {
+		return errors.Wrap(err, "failed to launch Settings")
+	}
+	if err := s.WaitForSearchBox()(ctx); err != nil {
+		return errors.Wrap(err, "failed waiting for Settings to load")
+	}
+
+	subsectionName := "Manage other people"
+	optionName := "Restrict sign-in to the following users:"
+	if err := uiauto.Combine("Open Manage other people subsection",
+		s.LeftClick(nodewith.Name(subsectionName)),
+		s.WaitUntilExists(nodewith.Name(optionName)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to open subsection 'Manage other people'")
+	}
+
+	addUserButton := "Add user"
+	if err := uiauto.Combine("Toggle Restrict sign-in to the following users option",
+		s.LeftClick(nodewith.Name(optionName).Role(role.ToggleButton)),
+		s.WaitUntilExists(nodewith.Name(addUserButton).Role(role.Link)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to toggle 'Restrict sign-in to the following users' option")
+	}
+
+	// Add user to restriction list:
+	if err := uiauto.Combine("Click on Add user button",
+		s.LeftClick(nodewith.Name(addUserButton).Role(role.Link)),
+		s.WaitUntilExists(nodewith.Name("Add user").Role(role.StaticText)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click on 'Add user' button")
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get keyboard")
+	}
+	defer kb.Close()
+
+	if err := kb.Type(ctx, allowedUser); err != nil {
+		return errors.Wrap(err, "failed to type in email")
+	}
+
+	addButton := nodewith.Name("Add").Role(role.Button)
+	if err := uiauto.Combine("Add user to restriction list",
+		s.LeftClick(addButton),
+		s.WaitUntilGone(addButton),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to add user to restriction list")
+	}
+
+	return nil
 }
 
 // UninstallApp uninstalls an app from the Settings app.
