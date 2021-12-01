@@ -16,7 +16,6 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/bond"
-	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -85,7 +84,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
-		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"chrome", "arc"},
 		Vars: []string{
 			"mute",
 			"record",
