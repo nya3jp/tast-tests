@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2a55b5_de1d628e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-12-01T17:16:39Z",
+      "side": 1,
+      "message": "HDMI dongles simulate displays, not webcams. Let\u0027s hold this CL for b/196458711 until we have webcam installed on the chromeboxes.\n\nTo follow up HDMI dongle installation b/197891526, let\u0027s revert CL:3092768 to get rid of the \"noibat\" variation for the pilot run and remove \"hwdep.D(hwdep.InternalDisplay())\" for tests that we want to run chromeboxes.",
+      "revId": "01f02e042ded303b26483c06857800a9249dcc27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
