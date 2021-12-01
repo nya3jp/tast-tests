@@ -16,6 +16,23 @@
       "message": "Greetings Tast Owners! PTAL",
       "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8243a9e3_0ee3b2da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:04:06Z",
+      "side": 1,
+      "message": "Please get a +2 from team member before adding tast owners.",
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
