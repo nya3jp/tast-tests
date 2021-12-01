@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e43033c_4931c7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-12-01T15:25:37Z",
+      "side": 1,
+      "message": "Hi Hiroki, sorry for the delay on this. Currently, the Chrome OS tast tests can be written to only use the uiauto library. However, I can imagine much of the functionality in the old chrome/ui package would still be useful (for example, retrieving the root node and doing something with it). \n\nIf it\u0027s not too much trouble, can we move the new package so that it can be shared by arc and chrome OS a11y tests?\n\nThanks!",
+      "parentUuid": "dbf11f21_3cc57d0e",
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6532b5ca_a257569e",
