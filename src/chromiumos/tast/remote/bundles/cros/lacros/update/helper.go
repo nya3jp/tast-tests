@@ -84,6 +84,8 @@ func VerifyLacrosUpdate(ctx context.Context, expectedBrowser lacrosservice.Brows
 		Opts: []string{
 			"--enable-features=LacrosSupport",
 			"--component-updater=url-source=" + lacroscommon.BogusComponentUpdaterURL, // Block Component Updater.
+			"--disable-lacros-keep-alive",                                             // Disable keep-alive for testing. See crbug.com/1268743.
+			"--disable-login-lacros-opening",                                          // Suppress a startup window for testing.
 		},
 	}
 	lacrosCtx := &lacrosservice.BrowserContext{
