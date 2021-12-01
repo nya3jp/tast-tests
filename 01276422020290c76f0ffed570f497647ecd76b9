@@ -16,6 +16,24 @@
       "message": "Isn\u0027t it possible to poll the status and send the CancelRoutine repeatedly?",
       "revId": "01276422020290c76f0ffed570f497647ecd76b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e51508a5_122b8270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_enrolled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-01T12:15:01Z",
+      "side": 1,
+      "message": "I tried to do that, but looks like cancel request is not idempotent. After 2nd cancel request routine status stuck at \"cancelling\" status (even though previous might be \"cancelled\") and never will be \"cancelled\" again.\n\nSo, i\u0027d like to don\u0027t do changes here.",
+      "parentUuid": "ff89c9df_aaf82361",
+      "revId": "01276422020290c76f0ffed570f497647ecd76b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
