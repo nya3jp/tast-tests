@@ -22,6 +22,30 @@
       },
       "revId": "f81da1cd64bd870839086d1da660050cdb2a29df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f471026_f8310a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_dead_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-01T06:35:53Z",
+      "side": 1,
+      "message": "oh, sorry my bad. I intentionally move this out from the validation action. Fixed.",
+      "parentUuid": "872c48dc_7699474a",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "f81da1cd64bd870839086d1da660050cdb2a29df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

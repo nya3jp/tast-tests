@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12071edc_cecbad11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-01T06:35:53Z",
+      "side": 1,
+      "message": "Ye, I hope UserAction supports both common functions and tests to present coverage from different perspectives. Looking at the new dashboard go/tast-action-dash, I want to answer the question of testing coverage. \n\nAnyway, since this is a large topic, let\u0027s discuss it offline. Hope it does not block cl to land.",
+      "parentUuid": "a9e5589f_5625c948",
+      "revId": "2e84bf9271ae8a93f4bb0c71073e340addfddc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e811a7c_779db02e",
