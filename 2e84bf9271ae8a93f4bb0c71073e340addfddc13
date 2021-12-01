@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9e5589f_5625c948",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T06:16:21Z",
+      "side": 1,
+      "message": "That is one of the reasons. The other one is that we prabably don\u0027t need to refactor every test to use useraction. IIUC, one major advantage is resusability, right? A better way is probably to define the useractions together in a helper package (like those typing useractions in testserver), and use them in individual tests. \n\nI don\u0027t feel it is the right way to define useraction in individual tests, which may bring extra workload to the test-writers and reduces the understandability of the test scripts. Plus, if a test itself is a unique useraction, why not just use the test-level tags?\n\nA good example is, as you mentioned, opening os settings or quick settings, which is a highly reusable action. Once it is defined somewhere, every team/dev can use it directly.\n\nLet me know if I missed something here.",
+      "parentUuid": "e586b3d0_d66bb3a0",
+      "revId": "2e84bf9271ae8a93f4bb0c71073e340addfddc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e811a7c_779db02e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_dead_keys.go",
         "patchSetId": 1

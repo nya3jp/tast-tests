@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "872c48dc_7699474a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_dead_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T06:16:21Z",
+      "side": 1,
+      "message": "do you need this? since it is already inside validateAction",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "f81da1cd64bd870839086d1da660050cdb2a29df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
