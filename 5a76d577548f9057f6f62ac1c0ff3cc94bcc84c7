@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "754bf391_40fcc909",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-12-01T02:50:16Z",
+      "side": 1,
+      "message": "If we just ignore the UI not exist error, I think we have chance to miss some real failures. For example, if we misspelled the option name, it might also return such error but it should be fixed instead.\n\nAlternatively, how about we check the UI on the video mode first, and call setEnableGifRecording() only if the GIF recording UI does not appear?",
+      "range": {
+        "startLine": 1244,
+        "startChar": 1,
+        "endLine": 1252,
+        "endChar": 0
+      },
+      "revId": "5a76d577548f9057f6f62ac1c0ff3cc94bcc84c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
