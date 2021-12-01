@@ -34,6 +34,24 @@
       "parentUuid": "ff89c9df_aaf82361",
       "revId": "01276422020290c76f0ffed570f497647ecd76b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12199825_0c12141b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/api_routine_enrolled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-01T12:27:17Z",
+      "side": 1,
+      "message": "Sounds like another bug needs to be filed 😂",
+      "parentUuid": "e51508a5_122b8270",
+      "revId": "01276422020290c76f0ffed570f497647ecd76b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
