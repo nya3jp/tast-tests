@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c363f0f4_66613328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/download_recent_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2021-12-01T22:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ff9aa75_54b89982",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "c05d76ba4d712001bf0ef8ac666f001e02d40a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64c27344_84f7f327",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6065048a_33fcab08",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2021-12-01T22:39:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c27344_84f7f327",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "c05d76ba4d712001bf0ef8ac666f001e02d40a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a906d43_ee1ae285",
@@ -77,6 +125,24 @@
       "writtenOn": "2021-12-01T20:18:08Z",
       "side": 1,
       "message": "if len(photos) \u003d\u003d 0, you will return empty string with nil error. Is that an expected condition?\n\nAre you using empty string to mean no pictures exist?\nShould probably make that case clearer",
+      "revId": "c05d76ba4d712001bf0ef8ac666f001e02d40a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73bd283a_462e8242",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1523003
+      },
+      "writtenOn": "2021-12-01T22:39:03Z",
+      "side": 1,
+      "message": "Yes that\u0027s the expected behavior. Updated the doc string to mention that.",
+      "parentUuid": "2a906d43_ee1ae285",
       "revId": "c05d76ba4d712001bf0ef8ac666f001e02d40a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
