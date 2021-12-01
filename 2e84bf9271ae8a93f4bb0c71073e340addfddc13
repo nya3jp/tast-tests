@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da43eb5_f61ef867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T01:13:14Z",
+      "side": 1,
+      "message": "I have a concern that this change actually makes the test script difficult to understand for the devs, especially the owner of this test.",
+      "revId": "2e84bf9271ae8a93f4bb0c71073e340addfddc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e811a7c_779db02e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T01:13:14Z",
+      "side": 1,
+      "message": "Do you need to log the info?",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "2e84bf9271ae8a93f4bb0c71073e340addfddc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ccf7a4_aa8da06f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_dead_keys.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T01:13:14Z",
+      "side": 1,
+      "message": "it would suggested to create a variable for the action, and just use `action` here",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "2e84bf9271ae8a93f4bb0c71073e340addfddc13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
