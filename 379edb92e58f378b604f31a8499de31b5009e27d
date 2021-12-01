@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "197a9208_430de670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-12-01T03:47:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "341168c3_8c2fc1a8",
+      "range": {
+        "startLine": 249,
+        "startChar": 36,
+        "endLine": 249,
+        "endChar": 39
+      },
+      "revId": "379edb92e58f378b604f31a8499de31b5009e27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fcdbe39_014e777b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-01T01:52:47Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 254,
+        "startChar": 34,
+        "endLine": 254,
+        "endChar": 37
+      },
+      "revId": "379edb92e58f378b604f31a8499de31b5009e27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84659e11_8bb503c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-12-01T03:47:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fcdbe39_014e777b",
       "range": {
         "startLine": 254,
         "startChar": 34,
