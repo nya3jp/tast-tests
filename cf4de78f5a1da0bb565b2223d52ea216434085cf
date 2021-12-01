@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a476395_2c3e0275",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-01T21:37:17Z",
+      "side": 1,
+      "message": "Yes. Btw, \"informational\" has already been set at line 24 so parameterized tests will inherit them. We can configure each test separately when needed later (to promote to critical).",
+      "parentUuid": "a77c83de_e351dc8a",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "cf4de78f5a1da0bb565b2223d52ea216434085cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4e853c3_3dd00444",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-01T20:56:25Z",
       "side": 1,
       "message": "nit: comments after/above to describe value.",
+      "revId": "cf4de78f5a1da0bb565b2223d52ea216434085cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddfe7b7_3e551593",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_rootfs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-01T21:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4e853c3_3dd00444",
       "revId": "cf4de78f5a1da0bb565b2223d52ea216434085cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
