@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "076aa2f1_6c9c8f1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-12-01T05:14:22Z",
+      "side": 1,
+      "message": "Yerp there should be no modifications.",
+      "parentUuid": "59e93930_0b121e9b",
+      "revId": "9970b39226919431d1474b65a4ba24a4856e38aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f6e4550_d764c41f",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb085c5f_c8146e06",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros/launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-12-01T05:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6e4550_d764c41f",
+      "revId": "9970b39226919431d1474b65a4ba24a4856e38aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c89f3dba_315f9042",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-11-30T14:56:28Z",
       "side": 1,
       "message": "should be removed by browser.Type?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 1
+      },
+      "revId": "9970b39226919431d1474b65a4ba24a4856e38aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c5f0fac_1722d5ea",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/setup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-12-01T05:14:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89f3dba_315f9042",
       "range": {
         "startLine": 7,
         "startChar": 0,
