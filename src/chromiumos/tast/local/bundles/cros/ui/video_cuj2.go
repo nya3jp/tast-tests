@@ -95,7 +95,7 @@ func init() {
 			}, {
 				Name:              "plus_youtube_app_crosbolt",
 				Timeout:           10 * time.Minute,
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Plus,

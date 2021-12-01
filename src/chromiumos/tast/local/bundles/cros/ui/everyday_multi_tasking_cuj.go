@@ -53,7 +53,7 @@ func init() {
 			}, {
 				Name:              "basic_ytmusic_crosbolt",
 				Timeout:           20 * time.Minute,
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
@@ -88,7 +88,7 @@ func init() {
 			{
 				Name:              "plus_ytmusic_crosbolt",
 				Timeout:           30 * time.Minute,
-				ExtraAttr:         []string{"group:crosbolt", "crosbolt_nightly"},
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
