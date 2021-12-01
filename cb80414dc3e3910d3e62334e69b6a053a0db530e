@@ -16,6 +16,92 @@
       "message": "Comments addressed. PTAL.",
       "revId": "cb80414dc3e3910d3e62334e69b6a053a0db530e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7b6ada_d5327939",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/download_recent_photo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T02:21:57Z",
+      "side": 1,
+      "message": "Should we add some file integrity check for the photo as well as checking it in Tote? We have some code in the Nearby Share tests to compare file hashes:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/nearbytestutils/nearbytestutils.go;l\u003d99-123\n\nMaybe something similar would be good to have here?",
+      "revId": "cb80414dc3e3910d3e62334e69b6a053a0db530e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd7e901_e0d51c30",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T02:21:57Z",
+      "side": 1,
+      "message": "nit: might be nice to close the camera app at the end just to keep the phone state as clean as we can",
+      "range": {
+        "startLine": 160,
+        "startChar": 13,
+        "endLine": 160,
+        "endChar": 33
+      },
+      "revId": "cb80414dc3e3910d3e62334e69b6a053a0db530e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fba7bbb_05832c91",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T02:21:57Z",
+      "side": 1,
+      "message": "I believe this can be nil if there are no files, so I\u0027d suggest checking that len(photos) \u003e 0 before returning",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 7
+      },
+      "revId": "cb80414dc3e3910d3e62334e69b6a053a0db530e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d900774_5ca950ee",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/phonehub/phonehub_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-01T02:21:57Z",
+      "side": 1,
+      "message": "ui.LeftClick has this built-in, so it\u0027s technically redundant unless you need double the timeout",
+      "range": {
+        "startLine": 205,
+        "startChar": 5,
+        "endLine": 205,
+        "endChar": 20
+      },
+      "revId": "cb80414dc3e3910d3e62334e69b6a053a0db530e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
