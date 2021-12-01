@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19224d2_69f0d0d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-12-01T19:37:09Z",
+      "side": 1,
+      "message": "Hidehiko, PTAL.\n\nIt\u0027s based on a follow-up work suggested by Eliot (who\u0027s OOO and can\u0027t review right now): https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3301083/comments/c03bf095_fae341bd",
+      "revId": "20e17a70b34af1b995919247d631dd1417753bbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
