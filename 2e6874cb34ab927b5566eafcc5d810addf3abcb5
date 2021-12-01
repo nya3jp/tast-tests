@@ -16,6 +16,24 @@
       "message": "I tested locally and I think the line should be like this:\n\nHardwareDeps: hwdep.D(hwdep.SkipOnModel(\"reven\")),",
       "revId": "2e6874cb34ab927b5566eafcc5d810addf3abcb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c270ccfc_7e968f65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/local_perfetto_tbm_traced_probes.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1151689
+      },
+      "writtenOn": "2021-12-01T01:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b7e5d7e_7887ab79",
+      "revId": "2e6874cb34ab927b5566eafcc5d810addf3abcb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
