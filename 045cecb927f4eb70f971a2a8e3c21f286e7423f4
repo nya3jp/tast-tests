@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b73f2f5_9a6e9adf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-01T18:13:10Z",
+      "side": 1,
+      "message": "Please approve this cherry pick to R96",
+      "revId": "045cecb927f4eb70f971a2a8e3c21f286e7423f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
