@@ -16,6 +16,23 @@
       "message": "it looks like this test is now passing on the bots. do we still need this CL or should i abandon it? thanks.",
       "revId": "cb05099a3ed9e4b3d51ff2b7f189f6ca668e1a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "136a6f4b_8768a234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2021-12-01T22:35:38Z",
+      "side": 1,
+      "message": "The CL to break this test has been reverted, so no need to disable this test now.",
+      "revId": "cb05099a3ed9e4b3d51ff2b7f189f6ca668e1a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
