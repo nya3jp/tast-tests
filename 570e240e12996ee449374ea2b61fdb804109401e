@@ -60,6 +60,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75d3614f_fd613406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:02:42Z",
+      "side": 1,
+      "message": "Maybe another more obvious name? like CheckUpgradeUIPrompts",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "395ebf43_c3d15d31",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
         "patchSetId": 1
@@ -94,6 +117,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69d19694_082bed5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:02:42Z",
+      "side": 1,
+      "message": "As we discussed, if these consts and vars will be shared with other tests, move them to a shared folder.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cdc79b8_9be401a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:02:42Z",
+      "side": 1,
+      "message": "Usually this is defined just before it is called for the first time.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 61
+      },
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c13f517f_5511b9d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:02:42Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 77
+      },
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f132b472_6c512412",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
         "patchSetId": 1
@@ -117,6 +209,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2193286e_ed8e0b35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:02:42Z",
+      "side": 1,
+      "message": "which file?",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 13
+      },
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c87b3d1_73c26c33",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
         "patchSetId": 1
@@ -128,6 +243,24 @@
       "writtenOn": "2021-11-29T23:16:19Z",
       "side": 1,
       "message": "This should go before creating the new /etc/os-release. If that fails you still want to restore the old one.",
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518e2fea_d239418d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:02:42Z",
+      "side": 1,
+      "message": "I think this should go immediately after defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData)).",
+      "parentUuid": "1c87b3d1_73c26c33",
       "revId": "570e240e12996ee449374ea2b61fdb804109401e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -162,6 +295,52 @@
       "writtenOn": "2021-11-29T23:16:19Z",
       "side": 1,
       "message": "Crostini\u0027s already running at this point, hence needing to shut down. So you\u0027re not firing up Crostini, just getting a terminal reference so you can shut down Crostini.",
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822271f8_7ef54355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:02:42Z",
+      "side": 1,
+      "message": "Could be if err \u003d testing.Poll(); err !\u003d nil {\n}",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6566c744_c4a1d6dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T01:02:42Z",
+      "side": 1,
+      "message": "The error msg ususaly in this format: Failed to ...\n\nSame for all other error msg.",
+      "range": {
+        "startLine": 148,
+        "startChar": 11,
+        "endLine": 148,
+        "endChar": 65
+      },
       "revId": "570e240e12996ee449374ea2b61fdb804109401e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
