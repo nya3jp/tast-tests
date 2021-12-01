@@ -119,6 +119,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "400975b5_92903051",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-01T15:40:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72f96b35_f3d96867",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd426613_6ac545d6",
@@ -256,6 +274,24 @@
       "side": 1,
       "message": "I haven\u0027t get your point yet. If nothing is checked, why do you need to sleep here?",
       "parentUuid": "f0a58552_a7894ebf",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba540503_7bb0fb0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-01T15:40:36Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nAfter plugging the thunderbolt device to dut ,it is taking ~10seconds to detect.\nOnce thunderbolt devices are detected, device info are fetched and validated.\n\n@Meng-Huan,\n\nWe are trying the below command\nlocalhost ~ # ectool usbpdmuxinfo\nPort 0: USB\u003d1 DP\u003d0 POLARITY\u003dINVERTEDHPD_IRQ\u003d0 HPD_LVL\u003d0 SAFE\u003d0 TBT\u003d0 USB4\u003d0 \nPort 1: USB\u003d0 DP\u003d0 POLARITY\u003dINVERTEDHPD_IRQ\u003d0 HPD_LVL\u003d0 SAFE\u003d0 TBT\u003d1 USB4\u003d0 \n\nIn above output we are validating for TBT\u003d1, it is detecting as TBT\u003d1 within fraction of seconds but taking time to update thunderbolt device info.\n\n\n// Code Snippet is as below.\n\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\t\t\tpdOut, err :\u003d testexec.CommandContext(ctx, \"ectool\", \"usbpdmuxinfo\").Output()\n\t\t\tif err !\u003d nil {\n\t\t\t\treturn errors.Wrap(err, \"failed to execute ectool command\")\n\t\t\t}\n\n\t\t\tpdMuxRe :\u003d regexp.MustCompile(fmt.Sprintf(\"Port %s:.*TBT\u003d1.*\", portStr))\n\t\t\tif !pdMuxRe.MatchString(string(pdOut)) {\n\t\t\t\treturn errors.New(\"failed to detect Thunderbolt device after plug\")\n\t\t\t}\n\t\t\treturn nil\n\t\t}, \u0026testing.PollOptions{\n\t\t\tTimeout: 10 * time.Second,\n\t\t}); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to check Thunderbolt device from PD identity after replug: \", err)\n\t\t}",
+      "parentUuid": "0fc48fc5_6e0ad36b",
       "revId": "d15729c29611529be4abad8a7806178c359b89cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

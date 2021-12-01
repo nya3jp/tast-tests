@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b59eeb7_1c3e530d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-01T15:40:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9528c67f_0a0f800d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 89
+      },
+      "revId": "434b67cd23bb70472add6fbb1ab7aedef41ea6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fc8c659_4c9346f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-30T14:21:30Z",
       "side": 1,
       "message": "Is it ok to remove \"crosHealthdRunning\"? I guess you might need both Fixture?",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "434b67cd23bb70472add6fbb1ab7aedef41ea6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5d478d1_6cab1a0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-01T15:40:36Z",
+      "side": 1,
+      "message": "We tried to add crosHealthdRunning and chrome.New() login, we faced the below error so we removed  crosHealthdRunning.\n\nhealth.MonitorThunderboltEvent  [ FAIL ] cros_healthd PID changed: want 31315, got 31930\n\nPlease suggest is there any other way to handle both crosHealthdRunning and chrome login.",
+      "parentUuid": "3fc8c659_4c9346f8",
       "range": {
         "startLine": 36,
         "startChar": 17,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63fd87d9_61e1ae90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-01T15:40:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd77d6fc_c017aadc",
+      "revId": "434b67cd23bb70472add6fbb1ab7aedef41ea6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63620444_2cc21ab8",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-11-30T14:21:30Z",
       "side": 1,
       "message": "Is it a Fatal() instead of Log()? It seems this is something we are trying to recovering the device state?",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 9
+      },
+      "revId": "434b67cd23bb70472add6fbb1ab7aedef41ea6d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f42f0b_3343b0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-01T15:40:36Z",
+      "side": 1,
+      "message": "We are plugging back thunderbolt device to DUT so we are not failing test case in defer.",
+      "parentUuid": "63620444_2cc21ab8",
       "range": {
         "startLine": 83,
         "startChar": 6,
