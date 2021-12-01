@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36181326_84b2abf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/setup_its_repo.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-12-01T04:56:59Z",
+      "side": 1,
+      "message": "Or should we use \"git config\" so that we don\u0027t need to include this in every commands?",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "0f00e128e267bd16cb6d680a706dc69f619df5e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
