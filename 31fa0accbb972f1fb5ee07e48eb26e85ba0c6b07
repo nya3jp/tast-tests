@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e919f9_69c33254",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T07:45:44Z",
+      "side": 1,
+      "message": "Thanks. This is a good example of useraction that I expected: define a resuable useraction, plug it where it is needed and log how it is used.",
+      "revId": "31fa0accbb972f1fb5ee07e48eb26e85ba0c6b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec8c887_97d50b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/chrome_virtual_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-01T07:45:44Z",
+      "side": 1,
+      "message": "can we have a unified initializer for setting these attribute in uc? I think this step is better hidden from the test-writer.\n\nideally, the code should as simple as:\nuc :\u003d SomeInitializer(params)\ndefer uc.reset() // if needed.\n\nwe shouldn\u0027t expect the test-writer to be able to set these attributes. Even though we can help them refactor some tests, we cannot handle all of them. Plus, if the test-writers didn\u0027t fully understand it, they could have questions during debugging/modifying the script.",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 346,
+        "endChar": 2
+      },
+      "revId": "31fa0accbb972f1fb5ee07e48eb26e85ba0c6b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
