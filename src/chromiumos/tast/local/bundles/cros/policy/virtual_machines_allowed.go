@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -76,18 +77,12 @@ func VirtualMachinesAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			if _, err := settings.OpenLinuxSubpage(ctx, tconn, cr); err != nil {
+				s.Fatal("Failed to open Linux subpage: ", err)
+			}
+
 			// Indicates whether the Crostini installer dialog should appear.
 			dialogExpected := param.value.Stat != policy.StatusUnset && param.value.Val
-
-			// Trigger the Crostini installer.
-			if err := tconn.Eval(ctx, "tast.promisify(chrome.autotestPrivate.runCrostiniInstaller)()", nil); err != nil {
-				// If Crostini is not allowed, then this JS call
-				// triggers an error, which is why we only consider the
-				// error when Crostini is allowed by policy.
-				if dialogExpected {
-					s.Fatal("Failed to execute JS expression: ", err)
-				}
-			}
 
 			ui := uiauto.New(tconn)
 			crostiniDialogTitle := nodewith.Name("Set up Linux development environment").Role(role.StaticText)
