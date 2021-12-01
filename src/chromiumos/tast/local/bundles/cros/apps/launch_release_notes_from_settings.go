@@ -35,8 +35,9 @@ func init() {
 		Fixture:      "chromeLoggedInForEA",
 		Params: []testing.Param{
 			{
-				Name:              "stable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				Name: "stable",
+				// TODO(b/208666108): Test is failing consistently on betty
+				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.SkipOnPlatform("betty")),
 			}, {
 				Name:              "unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
