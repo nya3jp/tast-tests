@@ -630,6 +630,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79610ff0_b8701f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T03:20:17Z",
+      "side": 1,
+      "message": "I think the if err \u003d one is the preferred. Please refer to other code.",
+      "parentUuid": "bfd79bf1_5c48b4c8",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 1
+      },
+      "revId": "570e240e12996ee449374ea2b61fdb804109401e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6566c744_c4a1d6dc",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/container_os_release.go",
         "patchSetId": 1

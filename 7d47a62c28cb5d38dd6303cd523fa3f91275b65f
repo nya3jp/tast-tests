@@ -16,6 +16,167 @@
       "message": "Thanks Dave and Judy. Have processed/responded to comments.",
       "revId": "7d47a62c28cb5d38dd6303cd523fa3f91275b65f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6318e3_46b39d72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T03:20:17Z",
+      "side": 1,
+      "message": "Please move this after defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 1
+      },
+      "revId": "7d47a62c28cb5d38dd6303cd523fa3f91275b65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4817e9d5_c6e2a6a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T03:20:17Z",
+      "side": 1,
+      "message": "Please move this to where it is used.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "7d47a62c28cb5d38dd6303cd523fa3f91275b65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f15ba7f2_cff7983e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T03:20:17Z",
+      "side": 1,
+      "message": "Please move this after defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData))",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "7d47a62c28cb5d38dd6303cd523fa3f91275b65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0f505f6_a7a13083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T03:20:17Z",
+      "side": 1,
+      "message": "Please do not ignore the returnning err.",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 14
+      },
+      "revId": "7d47a62c28cb5d38dd6303cd523fa3f91275b65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d07a0df_3f086e23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T03:20:17Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 12
+      },
+      "revId": "7d47a62c28cb5d38dd6303cd523fa3f91275b65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b4a73f_b7a6cdbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T03:20:17Z",
+      "side": 1,
+      "message": "If err is the only parameter, just s.Fatal(\"...： \", err)",
+      "range": {
+        "startLine": 141,
+        "startChar": 38,
+        "endLine": 141,
+        "endChar": 40
+      },
+      "revId": "7d47a62c28cb5d38dd6303cd523fa3f91275b65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdb43bb0_63a560cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-01T03:20:17Z",
+      "side": 1,
+      "message": "I think this could be:\nui.WithTimeout(20*time.Second).WaitUntilExists(continueButton)(ctx)",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 52
+      },
+      "revId": "7d47a62c28cb5d38dd6303cd523fa3f91275b65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
