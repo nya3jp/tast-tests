@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	"chromiumos/tast/testing"
 )
 
 // WindowFinder is the finder for the ScanApp window.
@@ -114,15 +115,26 @@ type ScanSettings struct {
 // Launch launches the Scan App and returns it.
 // An error is returned if the app fails to launch.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*ScanApp, error) {
+	return LaunchWithPollOpts(
+		ctx,
+		testing.PollOptions{
+			Interval: 300 * time.Millisecond,
+			Timeout:  15 * time.Second},
+		tconn)
+}
+
+// LaunchWithPollOpts is like Launch, above, but allows the user to specify the
+// PollOptions for the uiauto connection.
+func LaunchWithPollOpts(ctx context.Context, opts testing.PollOptions, tconn *chrome.TestConn) (*ScanApp, error) {
 	// Launch the Scan App.
 	if err := apps.Launch(ctx, tconn, apps.Scan.ID); err != nil {
 		return nil, err
 	}
 
-	// Create a uiauto.Context with default timeout.
+	// Create a uiauto.Context.
 	ui := uiauto.New(tconn)
 
-	s := ScanApp{tconn: tconn, ui: ui}
+	s := ScanApp{tconn: tconn, ui: ui.WithPollOpts(opts)}
 
 	// Wait until the scan button is enabled to verify the app is loaded.
 	if err := s.WithTimeout(time.Minute).WaitUntilExists(scanButtonFinder)(ctx); err != nil {
