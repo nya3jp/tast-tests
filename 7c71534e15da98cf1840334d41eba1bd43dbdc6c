@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f367a03d_6405f33a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/filesapp/uiwrapper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-01T05:58:57Z",
+      "side": 1,
+      "message": "We should create another instance otherwise receiver f will be overwritten.",
+      "revId": "7c71534e15da98cf1840334d41eba1bd43dbdc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
