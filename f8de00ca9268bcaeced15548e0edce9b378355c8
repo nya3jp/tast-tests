@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa72130_ea0c606d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-12-01T18:36:03Z",
+      "side": 1,
+      "message": "Interesting, re: another test leaving the DUT in ccd locked state, we may eventually be able to add a module to the repair system to detect and recover from that.",
+      "revId": "f8de00ca9268bcaeced15548e0edce9b378355c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
