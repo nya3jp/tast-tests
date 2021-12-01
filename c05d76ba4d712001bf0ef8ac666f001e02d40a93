@@ -16,6 +16,69 @@
       "message": "Thanks for the comments! PTAL.",
       "revId": "c05d76ba4d712001bf0ef8ac666f001e02d40a93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff9aa75_54b89982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/phonehub/download_recent_photo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-01T20:18:08Z",
+      "side": 1,
+      "message": "how about a function in the phonehub library that does this clicking for you?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 2
+      },
+      "revId": "c05d76ba4d712001bf0ef8ac666f001e02d40a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64c27344_84f7f327",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-01T20:18:08Z",
+      "side": 1,
+      "message": "probably makes sense to defer call this instead so that it gets closed even if we failed to find the photo in the poll",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "c05d76ba4d712001bf0ef8ac666f001e02d40a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a906d43_ee1ae285",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/connected_android_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-01T20:18:08Z",
+      "side": 1,
+      "message": "if len(photos) \u003d\u003d 0, you will return empty string with nil error. Is that an expected condition?\n\nAre you using empty string to mean no pictures exist?\nShould probably make that case clearer",
+      "revId": "c05d76ba4d712001bf0ef8ac666f001e02d40a93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
