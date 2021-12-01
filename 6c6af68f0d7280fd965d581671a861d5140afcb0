@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efcceec2_4a9bd793",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-12-01T13:26:48Z",
+      "side": 1,
+      "message": "It\u0027s a pretty drastic change",
+      "revId": "6c6af68f0d7280fd965d581671a861d5140afcb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
