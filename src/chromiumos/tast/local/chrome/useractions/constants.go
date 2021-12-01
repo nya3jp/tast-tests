@@ -59,6 +59,7 @@ const (
 // Tags to indicate user input actions.
 const (
 	ActionTagPKTyping        ActionTag = "PKTyping"
+	ActionTagDeadKey         ActionTag = "DeadKey"
 	ActionTagVKTyping        ActionTag = "VKTyping"
 	ActionTagVKVoiceInput    ActionTag = "VKVoiceInput"
 	ActionTagVKHandWriting   ActionTag = "VKHandWriting"
