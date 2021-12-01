@@ -30,10 +30,16 @@ func init() {
 		Vars: []string{"lacrosComponent"},
 		// TODO(crbug.com/1258214): Add a parameterized test for an edge case.
 		Params: []testing.Param{{
-			Val: version.New(0, 0, 1000, 0),
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+			Val:               version.New(0, 0, 1000, 0),
 		}, {
-			Name: "no_skew",
-			Val:  version.New(0, 0, 0, 0), // If rootfs-lacros and stateful-lacros are the same version, rootfs-lacros will be used.
+			Name:              "unstable",
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+			Val:               version.New(0, 0, 1000, 0),
+		}, {
+			Name:              "no_skew",
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+			Val:               version.New(0, 0, 0, 0), // If rootfs-lacros and stateful-lacros are the same version, rootfs-lacros will be used.
 		}},
 		Timeout: 5 * time.Minute,
 	})
