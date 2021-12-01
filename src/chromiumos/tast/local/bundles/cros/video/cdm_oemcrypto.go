@@ -40,6 +40,7 @@ func CDMOEMCrypto(ctx context.Context, s *testing.State) {
 	s.Log("Running ", testExec)
 	if _, err := gtest.New(testExec,
 		gtest.Logfile(filepath.Join(logdir, testExec+".log")),
+		gtest.Filter("-*Huge*"),
 	).Run(ctx); err != nil {
 		s.Errorf("%s failed: %v", testExec, err)
 	}
