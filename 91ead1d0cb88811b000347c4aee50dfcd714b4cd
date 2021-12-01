@@ -51,6 +51,24 @@
       "message": "Just found the new failure on volteer (volet) on 14359. Could you take a look? Thanks.",
       "revId": "91ead1d0cb88811b000347c4aee50dfcd714b4cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac1fad4_54479c16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-12-01T00:45:21Z",
+      "side": 1,
+      "message": "Thanks for checking.\nUploaded https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3307856 to address the issue, PATL, thanks!",
+      "parentUuid": "a6e831e8_150fc152",
+      "revId": "91ead1d0cb88811b000347c4aee50dfcd714b4cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
