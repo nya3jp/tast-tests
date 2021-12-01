@@ -15,7 +15,6 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/bond"
-	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -74,7 +73,7 @@ func init() {
 		Desc:         "Measures the performance of critical user journey for Google Meet",
 		Contacts:     []string{"mukai@chromium.org", "tclaiborne@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "arc", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"chrome", "arc"},
 		Vars: []string{
 			"mute",
 			"record",
