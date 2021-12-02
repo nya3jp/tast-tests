@@ -74,3 +74,19 @@ func (bs *BiosService) ClearAndSetGBBFlags(ctx context.Context, req *pb.GBBFlags
 	}
 	return &empty.Empty{}, nil
 }
+
+// CorruptECSection writes garbage over part of the specified firmware section.
+func (bs *BiosService) CorruptECSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
+	img, err := bios.NewImage(ctx, bios.ImageSection(req.Section), bios.ECProgrammer)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not read firmware")
+	}
+	for i, v := range img.Data {
+		img.Data[i] = (v + 1) & 0xff
+	}
+	err = img.WriteFlashrom(ctx, bios.ImageSection(req.Section), bios.ECProgrammer)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not write firmware")
+	}
+	return &empty.Empty{}, nil
+}

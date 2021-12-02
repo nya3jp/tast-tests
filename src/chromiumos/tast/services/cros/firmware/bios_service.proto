@@ -20,6 +20,8 @@ service BiosService {
   rpc BackupECRW (google.protobuf.Empty) returns (ECRWPath) {}
   // RestoreECRW restores the EC_RW region from path.
   rpc RestoreECRW (ECRWPath) returns (google.protobuf.Empty) {}
+  // CorruptECSection writes garbage bytes to the entire EC section specified.
+  rpc CorruptECSection (CorruptSection) returns (google.protobuf.Empty) {}
 }
 
 // GBBFlag bit positions
@@ -49,4 +51,9 @@ message GBBFlagsState {
 // ECRWPath represents the path of EC_RW section backup.
 message ECRWPath {
   string Path = 1;
+}
+
+// CorruptSection selects the section to corrupt.
+message CorruptSection {
+  string Section = 1;
 }
