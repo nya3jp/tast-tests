@@ -16,6 +16,24 @@
       "message": "Why is it related to ampCount? Please specify it in comment. If they are not related, please just increase the timeout const alone.",
       "revId": "4a6a9a853f9a5e65d26942ee0fe74400b8ae91bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d76d0c_fa055b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2021-12-02T06:33:03Z",
+      "side": 1,
+      "message": "Done by just increase the timeout const alone.",
+      "parentUuid": "b8a74cab_8f18ea8b",
+      "revId": "4a6a9a853f9a5e65d26942ee0fe74400b8ae91bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
