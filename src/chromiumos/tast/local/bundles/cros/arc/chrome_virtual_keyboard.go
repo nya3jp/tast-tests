@@ -13,8 +13,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -329,8 +331,21 @@ func chromeVirtualKeyboardFloatingTest(
 		activityName = ".OverscrollTestActivity"
 		fieldID      = virtualKeyboardTestAppPkg + ":id/text"
 	)
-	vkbCtx := vkb.NewContext(cr, tconn)
 
+	uc := useractions.NewUserContext(s.TestName(), cr, tconn, s.OutDir(), nil, []useractions.ActionTag{useractions.ActionTagARC})
+	uc.SetAttribute(useractions.AttributeTestScenario, "Switch float VK on ARC++ app")
+
+	// Save device mode to context attribute.
+	isTabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get device mode: ", err)
+	}
+	uc.SetAttribute(useractions.AttributeDeviceMode, useractions.DeviceModeClamshell)
+	if isTabletMode {
+		uc.SetAttribute(useractions.AttributeDeviceMode, useractions.DeviceModeTablet)
+	}
+
+	vkbCtx := vkb.NewContext(cr, tconn)
 	defer vkbCtx.HideVirtualKeyboard()(ctx)
 
 	act, err := arc.NewActivity(a, virtualKeyboardTestAppPkg, activityName)
@@ -388,7 +403,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	// Switching the VK to floating mode.
-	if err := vkbCtx.SetFloatingMode(true)(ctx); err != nil {
+	if err := vkbCtx.SetFloatingMode(uc, true).Run(ctx); err != nil {
 		s.Fatal("Failed to switch to floating mode: ", err)
 	}
 	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
@@ -402,7 +417,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 
 	// Switching back to the normal mode
-	if err := vkbCtx.SetFloatingMode(false)(ctx); err != nil {
+	if err := vkbCtx.SetFloatingMode(uc, false).Run(ctx); err != nil {
 		s.Fatal("Failed to switch to dock mode: ", err)
 	}
 	if err := vkbCtx.WaitLocationStable()(ctx); err != nil {
