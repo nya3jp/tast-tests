@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e41db55_ff54f713",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2021-12-02T01:00:45Z",
+      "side": 1,
+      "message": "Hi, tast owners and Daisy! Please help me review this cl about the test of reordering desk by drag and drop with touch screen.\n\nThanks so much!",
+      "revId": "462cdcae007e89ae879536a2a97e5fb685e51e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
