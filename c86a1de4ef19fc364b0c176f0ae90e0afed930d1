@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a756d08f_cf4518a8",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:44:23Z",
+      "side": 1,
+      "message": "if there will be an error while checking location we won\u0027t see that error in logs not in failure message.",
+      "range": {
+        "startLine": 111,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 61
+      },
+      "revId": "c86a1de4ef19fc364b0c176f0ae90e0afed930d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a87221c5_dffbb840",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:44:23Z",
+      "side": 1,
+      "message": "I noticed that with 15 seconds timeout I often make 1 request (every now and then there is a latency of 9 seconds).\nWe should either rise the timeout to e.g. 45 seconds or have polling with numbers of attempts with interval between them. WDYT?",
+      "range": {
+        "startLine": 124,
+        "startChar": 42,
+        "endLine": 124,
+        "endChar": 55
+      },
+      "revId": "c86a1de4ef19fc364b0c176f0ae90e0afed930d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
