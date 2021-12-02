@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa407b9f_2548160b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-02T14:15:26Z",
+      "side": 1,
+      "message": "How about using an on-memory Reader like bytes.Buffer, instead of writing to file?",
+      "revId": "2efb1907091dfc58db85bc072d4688cec808a817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
