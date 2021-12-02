@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "876aa994_48c44ff7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-02T13:35:53Z",
+      "side": 1,
+      "message": "typo: shortcut",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "6b04dac6e615418016a86ceaa7f5712677b36f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90f7282_8c9fce4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-02T13:35:53Z",
+      "side": 1,
+      "message": "You can run all these tests with:\n\u003e  tast run $DUT wmp.ReorderDesk.*\nIt is not necessary to add the -verbose part here.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "6b04dac6e615418016a86ceaa7f5712677b36f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cab0f4ff_d367a1fc",
@@ -14,6 +60,46 @@
       "writtenOn": "2021-12-02T01:01:24Z",
       "side": 1,
       "message": "Hi, tast owners and Daisy! Please help me review this cl about the test of reordering desk by drag and drop with keyboard shortcuts.\n\nThanks so much!",
+      "revId": "6b04dac6e615418016a86ceaa7f5712677b36f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6d3c386_51e12e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/reorder_desk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-02T13:35:53Z",
+      "side": 1,
+      "message": "I think it would be better if you change this to shortcut, and call the function like\n\u003e  reorderDeskByKeyboard(ctx, tconn, \"Ctrl+Left\")\nThe other option I can suggest is to put \"Ctrl+Left\" into a constant, if you want to catch possible typos.",
+      "range": {
+        "startLine": 260,
+        "startChar": 72,
+        "endLine": 260,
+        "endChar": 86
+      },
+      "revId": "6b04dac6e615418016a86ceaa7f5712677b36f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd4cca2_e7f3e64c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/reorder_desk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-02T13:35:53Z",
+      "side": 1,
+      "message": "You should defer a keyboard closing here.",
       "revId": "6b04dac6e615418016a86ceaa7f5712677b36f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
