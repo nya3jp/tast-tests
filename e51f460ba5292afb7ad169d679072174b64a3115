@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cffb5fd_24f4a358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:18:13Z",
+      "side": 1,
+      "message": "Do we even need the gaia login in the test?\n\nI think we could just run something along the lines:\n\nvar owner, secondary Creds;\nchrome.New(FakeLogin(owner))\nset restriction - no users allowed\nchrome.New(DeferLogin(), FakeLogin(owner), keepstate())\nverify \"Add user\" button disabled\ncr.ContinueLogin()\nset restriction - secondary allowed\nchrome.New(DeferLogin(), FakeLogin(secondary))\netc..\n\n\n",
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664de560_2ac02294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:18:13Z",
+      "side": 1,
+      "message": "we should rather use gaiaPoolDefault option",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80c3dec_039c854c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:18:13Z",
+      "side": 1,
+      "message": "I wonder why do we require these extra args? Do they help with anything specific?",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 106
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff637b0c_881c7e90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:18:13Z",
+      "side": 1,
+      "message": "Let\u0027s maybe add a function into ossettings.go to make it reusable. Like RestrictSigninToUsers",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27401eb9_598651ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:18:13Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this. just call cr.Close()",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900619fc_f1841d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:18:13Z",
+      "side": 1,
+      "message": "could you point to me where we ignore allowlist without this option?",
+      "range": {
+        "startLine": 131,
+        "startChar": 9,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec2e842_7dbcf418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:18:13Z",
+      "side": 1,
+      "message": "why not just chrome.New(chrome.KeepState(), chrome.GAIALogin(s.RequiredVar(\"ui.oac_username\"))),\n?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 69
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
