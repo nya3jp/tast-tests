@@ -213,11 +213,11 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(acceptCookiesButton),
 			ui.LeftClickUntil(acceptCookiesButton, ui.WithTimeout(time.Second).WaitUntilGone(acceptCookiesButton))),
 		ui.LeftClick(joinFromYourBrowser),
-		ui.WithTimeout(time.Minute).WaitUntilExists(joinButton),
+		ui.WithTimeout(longUITimeout).WaitUntilExists(joinButton),
 		clickJoinButton,
 		// Use 1 minute timeout value because it may take longer to wait for page loading,
 		// especially for some low end DUTs.
-		ui.WithTimeout(time.Minute).WaitUntilExists(webArea),
+		ui.WithTimeout(longUITimeout).WaitUntilExists(webArea),
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
 		ui.WithInterval(time.Second).Retry(10, checkParticipantsNum),
@@ -382,7 +382,8 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Change background to listitem %d and enter full screen", backgroundNumber)
 		return uiauto.Combine("change background",
 			ui.Retry(3, openBackgroundPanel), // Open "Background" panel.
-			ui.LeftClick(backgroundItem.Nth(backgroundNumber)),
+			// Some low end DUTs need more time to load the background settings.
+			ui.WithTimeout(longUITimeout).LeftClick(backgroundItem.Nth(backgroundNumber)),
 			ui.LeftClick(closeButton), // Close "Background" panel.
 			// Double click to enter full screen.
 			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", true),
