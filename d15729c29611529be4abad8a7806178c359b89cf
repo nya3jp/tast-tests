@@ -370,6 +370,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbb0c6de_48462107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1369748
+      },
+      "writtenOn": "2021-12-02T20:09:02Z",
+      "side": 1,
+      "message": "Jilani,\nIf the sleep is the last concern of the code review, and it takes some time to sort out, can you follow Hidehiko\u0027s recommendation and create a separate Gerrit ticket to address that issue. We are blocking HP/Quanta from running these tests on Redrix. Thanks",
+      "parentUuid": "aff68a00_87c78517",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
