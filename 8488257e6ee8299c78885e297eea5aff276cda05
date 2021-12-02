@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "415218a4_331eef10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-02T13:28:14Z",
+      "side": 1,
+      "message": "As this is true for all of the CLs in the relation chain, I make my comment here:\nThe subject line should start with a prefix like \"tast-tests: \" or \"wmp: \" (the package name), and should end without a dot. E.g.:\n\u003e  wmp: Test reordering desk with mouse",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "8488257e6ee8299c78885e297eea5aff276cda05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5285dcda_9fe00bfe",
