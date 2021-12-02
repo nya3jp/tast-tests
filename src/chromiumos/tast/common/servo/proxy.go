@@ -494,11 +494,23 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 		return nil, err
 	}
 
+	if p.dcl == nil {
+		err := errors.New("dockerExec:Docker client object is empty")
+		return nil, err
+	}
+
+	if p.sdc == "" {
+		err := errors.New("dockerExec:Servod is not running inside the docker container")
+		return nil, err
+	}
+
 	// The only user within servod container is root, no sudo needed.
 	execConfig.Cmd = append([]string{name}, args...)
 
+	testing.ContextLog(ctx, "dockerExec: Running command:", execConfig.Cmd)
 	r, err := p.dcl.ContainerExecCreate(ctx, p.sdc, execConfig)
 	if err != nil {
+		testing.ContextLog(ctx, "dockerExec:Could not create exec configuration to run an exec process.")
 		return nil, err
 	}
 
@@ -510,10 +522,12 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 		for {
 			iRes, err := dcl.ContainerExecInspect(ctx, r.ID)
 			if err != nil || !iRes.Running {
+				testing.ContextLog(ctx, "dockerExec: Completed exec process.")
 				break
 			}
 			err = testing.Sleep(ctx, 250*time.Millisecond)
 			if err != nil {
+				testing.ContextLog(ctx, "dockerExec: Error in sleep.")
 				break
 			}
 		}
@@ -526,6 +540,7 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 		defer wg.Done()
 		hRes, err := dcl.ContainerExecAttach(ctx, r.ID, types.ExecStartCheck{})
 		if err != nil {
+			testing.ContextLog(ctx, "dockerExec: Failed to attache a connection to an exec process in the server.")
 			return
 		}
 		defer hRes.Close()
@@ -533,6 +548,11 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 		for scanner.Scan() {
 			out = append(out, scanner.Bytes()...)
 			out = append(out, '\n')
+		}
+
+		if scanErr := scanner.Err(); scanErr != nil {
+			testing.ContextLog(ctx, "dockerExec: Failed to scan command output.")
+			err = scanErr
 		}
 	}(p.dcl)
 
