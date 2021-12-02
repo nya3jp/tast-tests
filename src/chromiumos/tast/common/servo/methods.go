@@ -809,15 +809,24 @@ func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
 			val = WatchdogMain
 		}
 	}
+	testing.ContextLog(ctx, "Removing watchdog: ", val)
 	if err := s.SetString(ctx, WatchdogRemove, string(val)); err != nil {
 		return err
 	}
+	found := false
 	for _, wd := range s.removedWatchdogs {
 		if wd == val {
-			return nil
+			found = true
+			break
 		}
 	}
-	s.removedWatchdogs = append(s.removedWatchdogs, val)
+	if !found {
+		s.removedWatchdogs = append(s.removedWatchdogs, val)
+	}
+	// Removing the watchdog seems to take some time before it works.
+	if err := testing.Sleep(ctx, 3*time.Second); err != nil {
+		return err
+	}
 	return nil
 }
 
