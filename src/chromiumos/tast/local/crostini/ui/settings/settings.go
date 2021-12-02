@@ -54,8 +54,9 @@ const (
 
 // find params for fixed items.
 var (
-	PageLinux             = nodewith.NameStartingWith(PageNameLinux).First()
-	DevelopersButton      = nodewith.NameRegex(regexp.MustCompile("Developers|Linux.*")).Role(role.Button).Ancestor(ossettings.WindowFinder)
+	PageLinux = nodewith.NameStartingWith(PageNameLinux).First()
+	// We may need to update this if more 'Turn on' buttons are added to Settings, but there isn't a good way to make this more specific yet.
+	TurnOnButton          = nodewith.NameRegex(regexp.MustCompile("Developers|Turn on")).Role(role.Button).Ancestor(ossettings.WindowFinder)
 	nextButton            = nodewith.Name("Next").Role(role.Button)
 	settingsHead          = nodewith.Name("Settings").Role(role.Heading)
 	emptySharedFoldersMsg = nodewith.Name("Shared folders will appear here").Role(role.StaticText)
@@ -92,10 +93,10 @@ func OpenLinuxSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Ch
 	}
 
 	ui := uiauto.New(tconn)
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.WaitUntilExists(DevelopersButton)); err != nil {
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "crostini", ui.WaitUntilExists(TurnOnButton)); err != nil {
 		return nil, errors.Wrap(err, "failed to launch settings app")
 	}
-	if err := ui.LeftClick(DevelopersButton)(ctx); err != nil {
+	if err := ui.LeftClick(TurnOnButton)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to go to linux subpage")
 	}
 
@@ -252,7 +253,7 @@ func (s *Settings) Remove() uiauto.Action {
 		s.ClickRemove(),
 		s.ui.WithInterval(time.Second).LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.WaitUntilExists(RemoveLinuxAlert)),
 		s.ui.WithTimeout(time.Minute).WaitUntilGone(RemoveLinuxAlert),
-		s.ui.WaitUntilExists(DevelopersButton))
+		s.ui.WaitUntilExists(TurnOnButton))
 }
 
 type resizeDiskDialogStruct struct {
