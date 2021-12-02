@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d429ce5_1bcb14f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T08:15:20Z",
+      "side": 1,
+      "message": "Hi Victor! Sorry for bypassing tast-owners@ alias - but the change is quite small and I think I messed up the AS yesterday. So picking an owner from my timezone to land it faster :)",
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19c43284_8fd8d9a7",
