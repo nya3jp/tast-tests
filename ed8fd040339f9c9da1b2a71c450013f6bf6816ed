@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1caa7bd_8b0ba247",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-02T18:39:50Z",
+      "side": 1,
+      "message": "but i guess it is working with its child CL?",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "ed8fd040339f9c9da1b2a71c450013f6bf6816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d722f06e_8d8eeee1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-02T18:39:50Z",
+      "side": 1,
+      "message": "LGTM though i just assume it is something working :P. as long as it just works with the child CL i think it should be alright.",
+      "revId": "ed8fd040339f9c9da1b2a71c450013f6bf6816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
