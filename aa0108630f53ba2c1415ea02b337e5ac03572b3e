@@ -117,6 +117,30 @@
       },
       "revId": "aa0108630f53ba2c1415ea02b337e5ac03572b3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d395d1a0_cf1c57d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_pwrbutton_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-02T06:47:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1f5f3c7_f0868632",
+      "range": {
+        "startLine": 110,
+        "startChar": 50,
+        "endLine": 110,
+        "endChar": 66
+      },
+      "revId": "aa0108630f53ba2c1415ea02b337e5ac03572b3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

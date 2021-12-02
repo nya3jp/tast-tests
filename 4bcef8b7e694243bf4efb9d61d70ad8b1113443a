@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f518d8_30729a21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-02T06:47:13Z",
+      "side": 1,
+      "message": "Added logic to handle tablet mode scenario in existing script.",
+      "revId": "4bcef8b7e694243bf4efb9d61d70ad8b1113443a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
