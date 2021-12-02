@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d7db2c0_59b0ed8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-12-02T08:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99c90b14_c1e35b4f",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 34
+      },
+      "revId": "423ef33f1d0b8c5577a355d913d5da76b0cba399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "704b206c_7afaa21b",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e44b0482_749c1671",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-12-02T08:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704b206c_7afaa21b",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "423ef33f1d0b8c5577a355d913d5da76b0cba399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77b15fe7_e4592c53",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-11-22T08:50:47Z",
       "side": 1,
       "message": "nit: Could you help format the code with gofmt? I thought there should be a presubmit check for this?",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 7
+      },
+      "revId": "423ef33f1d0b8c5577a355d913d5da76b0cba399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63df79cd_4c7970fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-12-02T08:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b15fe7_e4592c53",
       "range": {
         "startLine": 199,
         "startChar": 2,
