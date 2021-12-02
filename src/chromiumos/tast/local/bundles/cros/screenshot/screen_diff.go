@@ -27,7 +27,6 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         screenshot.ScreenDiffVars,
-		VarDeps:      screenshot.ScreenDiffVarDeps,
 	})
 }
 
@@ -88,7 +87,6 @@ func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
 		d.Diff(ctx, "recentItem", nodewith.Name("Recent").Role(role.TreeItem)),
 		d.Diff(ctx, "tree", nodewith.Role(role.Tree)),
 		ui.WaitUntilGone(nodewith.Role(role.ProgressIndicator)),
-		d.Diff(ctx, "welcomeMessage", nodewith.ClassName("holding-space-welcome")),
 		d.Diff(ctx, "tableHeader", nodewith.ClassName("table-header")),
 		d.Diff(ctx, "tableRow", nodewith.ClassName("table-row directory")),
 		d.DiffWindow(ctx, "filesApp"))(ctx); err != nil {
