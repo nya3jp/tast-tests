@@ -33,6 +33,24 @@
       "message": "We need another team contact here. Maybe engprod until another one can be found?",
       "revId": "13c6e6911eb64a436011ca869aa29bc4407647d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297cec2a_450c6445",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:48:36Z",
+      "side": 1,
+      "message": "I added EngProd for now. Also added a tracking action item in project status doc.",
+      "parentUuid": "8eba626a_2976a0e6",
+      "revId": "13c6e6911eb64a436011ca869aa29bc4407647d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
