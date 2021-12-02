@@ -16,6 +16,138 @@
       "message": "Hi Pavan, could you help take a look. This is my first Tast test CL, so I am probably doing some things wrong. Sorry in advance!",
       "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3926151e_f2cab4db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-12-02T02:35:17Z",
+      "side": 1,
+      "message": "Thanks for writing this test! This should help with other eSIM tests as well. I\u0027ve taken a first pass look.",
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f252a6_3b10ae46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-12-02T02:35:17Z",
+      "side": 1,
+      "message": "Should we consider existence of multiple test profiles? What if we use Hermes\u0027s reset functionality to remove all profiles at once?",
+      "range": {
+        "startLine": 100,
+        "startChar": 12,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24ef9e34_caac7c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-12-02T02:35:17Z",
+      "side": 1,
+      "message": "Curious about why we close chrome here and reopen in the next line.",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c926e5_79948fa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-12-02T02:35:17Z",
+      "side": 1,
+      "message": "Any reason this was required? I think you can assume that hermes is up and running.",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 33
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b94018b_6da6532d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-12-02T02:35:17Z",
+      "side": 1,
+      "message": "Please use hermes dbus hooks. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cellular/hermes_multi_profile.go;l\u003d1?q\u003dhermes_mu\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2F",
+      "range": {
+        "startLine": 169,
+        "startChar": 24,
+        "endLine": 169,
+        "endChar": 38
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2bc9d9_d19b7086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-12-02T02:35:17Z",
+      "side": 1,
+      "message": "usually, tast reviewers prefer polling to check for success. Please check\nhttps://docs.google.com/presentation/d/1g9QFbY6q8Z8cHBsuRkJoa1YY90LKzVyQ9wT6RgN4Gc4/edit?resourcekey\u003d0-gXDjOBJegiw_mxvc7qLVDw#slide\u003did.gce9b85b387_0_50\n\nDitto for all other usages of sleep.",
+      "range": {
+        "startLine": 225,
+        "startChar": 19,
+        "endLine": 225,
+        "endChar": 24
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
