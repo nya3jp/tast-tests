@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11af7ed1_17390ca5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-02T00:10:24Z",
+      "side": 1,
+      "message": "Can you add more information here? This is not immediately visible what this CL is trying to do (especially when intertwined with all other CLs when landed in the commit log)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "5f648cbbd26bac9d32a35fab0dc1e85f7ca97e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
