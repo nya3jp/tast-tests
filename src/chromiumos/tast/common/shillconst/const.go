@@ -128,6 +128,7 @@ const (
 	ServicePropertyWiFiFrequencyList   = "WiFi.FrequencyList"
 	ServicePropertyWiFiHexSSID         = "WiFi.HexSSID"
 	ServicePropertyWiFiHiddenSSID      = "WiFi.HiddenSSID"
+	ServicePropertyWiFiRandomMACPolicy = "WiFi.RandomMACPolicy"
 	ServicePropertyWiFiPhyMode         = "WiFi.PhyMode"
 	ServicePropertyWiFiRekeyInProgress = "WiFi.RekeyInProgress"
 	ServicePropertyWiFiRoamState       = "WiFi.RoamState"
@@ -196,6 +197,15 @@ const (
 	Security8021x = "802_1x"
 	SecurityPSK   = "psk"
 	SecurityNone  = "none"
+)
+
+// MAC randomization policy constants defined in dbus-constants.h
+const (
+	MacPolicyHardware            = "Hardware"
+	MacPolicyFullRandom          = "FullRandom"
+	MacPolicyOUIRandom           = "OUIRandom"
+	MacPolicyPersistentRandom    = "PersistentRandom"
+	MacPolicyNonPersistentRandom = "NonPersistentRandom"
 )
 
 // ServiceKeyMgmtIEEE8021X is a value of EAPKeyMgmt.
