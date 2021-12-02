@@ -16,6 +16,24 @@
       "message": "Can you pls kindly add the tastboard link in the commit message for reference.\nhttps://tastboard.corp.google.com/test/crostini.AppEmacs\n\nInterestingly, it only ran on 4 boards. Do you want to further restrict the CQ boards since no signal on other boards yet.\n\nNormally if the board is skipped, it would not show up in the test result page. ",
       "revId": "e9a3e8c6a9672cbe9410d8e479b9b791aeb8fd18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4cef515_70ef3030",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-02T07:23:23Z",
+      "side": 1,
+      "message": "It is only run on four boards because it uses a large container which requires more disks. We could guarantee that these boards have enough space.",
+      "parentUuid": "8eb5e203_a74f561a",
+      "revId": "e9a3e8c6a9672cbe9410d8e479b9b791aeb8fd18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
