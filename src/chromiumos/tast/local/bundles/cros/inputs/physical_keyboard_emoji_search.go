@@ -30,7 +30,11 @@ func init() {
 }
 
 func PhysicalKeyboardEmojiSearch(ctx context.Context, s *testing.State) {
-	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	cleanupCtx := ctx
+	ctx, cancel := uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(cleanupCtx, s)
 	defer stopRecording()
 
 	cr := s.PreValue().(pre.PreData).Chrome
