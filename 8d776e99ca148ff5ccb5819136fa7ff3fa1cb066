@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427ebb25_2ea10834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-02T04:50:57Z",
+      "side": 1,
+      "message": "Please provide a short description of this bug, and the format is b/184571798",
+      "range": {
+        "startLine": 222,
+        "startChar": 40,
+        "endLine": 222,
+        "endChar": 51
+      },
+      "revId": "8d776e99ca148ff5ccb5819136fa7ff3fa1cb066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe3e945_5bf3dfa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-02T04:50:57Z",
+      "side": 1,
+      "message": "This could be like this:\nif err \u003d\u003d nil || !tabDiscarded(err) {\n    testing.ContextLog(ctx, \"The connection is alive and therefore no need to reconnect\")\n    return nil\n}\n\ntesting.ContextLog(ctx, \"Tab has been discarded/killed, reconnecting\")",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "8d776e99ca148ff5ccb5819136fa7ff3fa1cb066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b43a5ed_160764fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-02T04:50:57Z",
+      "side": 1,
+      "message": "Maybe just:\nreturn p.MatchString(err.Error())",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 13
+      },
+      "revId": "8d776e99ca148ff5ccb5819136fa7ff3fa1cb066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
