@@ -226,6 +226,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3bc0255_c439363a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-02T22:14:26Z",
+      "side": 1,
+      "message": "Hey Victor,\n\nGetting this automated test in is a Q4 P1 for our team. However, Judy is also working on another Q4 P1 project at the same time. Can we land this and follow up in a TODO to host a PWA? I think youtube.com will stick around for quite a while and this test is working well otherwise.\n\nHappy to give more context.\n\nBest,\nSammie",
+      "parentUuid": "da53ec6d_e972dece",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 78
+      },
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08e81105_415f9127",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 4
