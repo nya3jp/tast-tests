@@ -352,6 +352,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aff68a00_87c78517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-02T14:47:44Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nAgree with you , we have added two changes in this CL.\n1) Added variants that support vPro features.\n2) For accessing thunderbolt device we have to disable the data protection access from UI, then we have to plug the thunderbolt device then only it will detecting as thunderbolt device.\nthe above to changes i have implemented in this CL.\n\n found existing helper to handle the time.sleep. situation and we removed the time.sleep.\n \n requesting you to provide the comments on current CL.\n \n Thanks,\n Jilani",
+      "parentUuid": "e3293826_de25efc9",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
