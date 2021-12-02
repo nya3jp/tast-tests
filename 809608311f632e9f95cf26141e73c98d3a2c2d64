@@ -169,6 +169,30 @@
       },
       "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b48a1a7_2c32c924",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/a11y/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-02T09:26:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0cb12e2c_346b90b5",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
