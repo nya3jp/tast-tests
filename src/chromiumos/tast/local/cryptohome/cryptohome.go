@@ -69,7 +69,7 @@ func UserPath(ctx context.Context, user string) (string, error) {
 func SystemPath(ctx context.Context, user string) (string, error) {
 	cmdRunner := hwseclocal.NewLoglessCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
-	path, err := cryptohome.GetHomeUserPath(ctx, user)
+	path, err := cryptohome.GetRootUserPath(ctx, user)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to get user home path")
 	}
