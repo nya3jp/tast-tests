@@ -41,14 +41,9 @@ const screendiffDryrunVar = "screendiff.dryrun"
 const goldServiceAccountKeyVar = "goldctl.GoldServiceAccountKey"
 const goldServiceAccountKeyFile = "/tmp/gold_service_account_key.json"
 
-// ScreenDiffVarDeps contains a list of all variables used by the screendiff
-// that are required for the test to run.
-var ScreenDiffVarDeps = []string{
-	goldServiceAccountKeyVar,
-}
-
 // ScreenDiffVars contains a list of all variables used by the screendiff library.
 var ScreenDiffVars = []string{
+	goldServiceAccountKeyVar,
 	screendiffDebugVar,
 	screendiffDryrunVar,
 }
@@ -278,8 +273,13 @@ func (d *differ) initialize(ctx context.Context) error {
 			"--git_hash", "f1d65adb1d7cd922f4677d0f9406a4083f5fdcbc"}...)
 	}
 
-	if err := d.authenticateGold(ctx); err != nil {
+	hasServiceAccountKey, err := d.authenticateGold(ctx)
+	if err != nil {
 		return errors.Wrap(err, "failed to authenticate gold")
+	}
+	if !hasServiceAccountKey {
+		testing.ContextLogf(ctx, "Unable to access tast variable %s, so force screendiff to run as dryrun", goldServiceAccountKeyVar)
+		d.config.DryRun = true
 	}
 	return nil
 }
@@ -621,16 +621,19 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 	return testArgs, nil
 }
 
-func (d *differ) authenticateGold(ctx context.Context) error {
+// authenticateGold attempts to authenticate against the gold servers.
+// It returns false if it was unable to access the credentials, or an
+// error if it was unable to authenticate using the credentials.
+func (d *differ) authenticateGold(ctx context.Context) (bool, error) {
 	key, ok := d.state.Var(goldServiceAccountKeyVar)
 	if !ok {
-		return errors.New("couldn't get the gold service account key. Please ensure you have access to tast-tests-private")
+		return false, nil
 	}
 	if err := ioutil.WriteFile(goldServiceAccountKeyFile, []byte(key), 0644); err != nil {
-		return err
+		return true, err
 	}
 
-	return d.runGoldCommand(ctx, "auth", "--service-account", goldServiceAccountKeyFile)
+	return true, d.runGoldCommand(ctx, "auth", "--service-account", goldServiceAccountKeyFile)
 }
 
 func (d *differ) runGoldCommand(ctx context.Context, subcommand string, args ...string) error {
