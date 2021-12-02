@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78af0dc7_5de00f4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-12-02T20:50:15Z",
+      "side": 1,
+      "message": "Looks like this already has significant reviewer attention, and I don\u0027t think I have specific domain knowledge to add. Removing myself from the attention set. Please feel free to add me back if needed. I\u0027ll keep an eye from the CC list.",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfafae66_dd587ea5",
