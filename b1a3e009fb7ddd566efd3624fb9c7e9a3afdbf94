@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9a74af_9b0bdabe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:51:03Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16cb9365_53fccd1f",
@@ -71,6 +88,143 @@
         "endLine": 45,
         "endChar": 33
       },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c131e5d0_b48aa7d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:51:03Z",
+      "side": 1,
+      "message": "could you avoid taking testing.State?\nInstead, could you properly return errors?\n\ncf) go/tast-writing.",
+      "range": {
+        "startLine": 45,
+        "startChar": 54,
+        "endLine": 45,
+        "endChar": 71
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e27132e_4a386bbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:51:03Z",
+      "side": 1,
+      "message": "nit: S (capital).",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d456949_c21ab222",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:51:03Z",
+      "side": 1,
+      "message": "could you dump the data on error?",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e514e41_9cfe4f07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:51:03Z",
+      "side": 1,
+      "message": "could you dump the hwMac/connMac so that it can be compared in case of error?",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a76c00_b286e0fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:51:03Z",
+      "side": 1,
+      "message": "style:\nif err :\u003d tf.DisconnectWifi(ctx); err !\u003d nil {\n  ...\n  \n  ditto for below.",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99f49c2f_727cd814",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:51:03Z",
+      "side": 1,
+      "message": "ditto\n\nif _, err :\u003d tf.ConnectWifiAp(...); err !\u003d nil {\n  ...",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d4e0ad_b9fe4c74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:51:03Z",
+      "side": 1,
+      "message": "ditto for dump log.\n\nDitto for below.",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
