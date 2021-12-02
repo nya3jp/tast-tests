@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e09bc72_7e5da22a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/auth_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:44:39Z",
+      "side": 1,
+      "message": "Good point",
+      "parentUuid": "e052ab1a_a30bdb4d",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "412d396d2672447f3f2380859b2952d2fdab3173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9043b5c5_d028e254",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0031358_31e1ac0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/auth_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:44:39Z",
+      "side": 1,
+      "message": "Hm, I don\u0027t see how to make it parametrizied (i.e. PodFinderForUser(email)) - seems like we\u0027re missing user name from the ui tree. We should probably fix it separately - and then we could have the function in the locksreen package.",
+      "parentUuid": "9043b5c5_d028e254",
+      "range": {
+        "startLine": 81,
+        "startChar": 29,
+        "endLine": 81,
+        "endChar": 68
+      },
+      "revId": "412d396d2672447f3f2380859b2952d2fdab3173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "461f36ac_12532a24",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
         "patchSetId": 1
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-01T21:17:10Z",
       "side": 1,
       "message": "you can just declare these as variables instead of using a function to return them\n```\nvar AuthErrorFinder \u003d nodewith...\nvar ConsecutiveAuthErrorFinder \u003d nodewith...\n```",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "412d396d2672447f3f2380859b2952d2fdab3173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9df8e71_9a7c5cab",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:44:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "461f36ac_12532a24",
       "range": {
         "startLine": 90,
         "startChar": 0,
