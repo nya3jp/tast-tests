@@ -316,6 +316,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc7c797d_224cac50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-02T08:10:24Z",
+      "side": 1,
+      "message": "Hi All,\n\nWe have found existing helper to handle this situation and we removed the time.sleep.",
+      "parentUuid": "5458e417_9aa87da6",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
