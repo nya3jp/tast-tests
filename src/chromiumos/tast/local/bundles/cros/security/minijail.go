@@ -55,9 +55,6 @@ func Minijail(ctx context.Context, s *testing.State) {
 		// This is installed by the chromeos-base/tast-local-helpers-cros package.
 		staticBashPath = "/usr/local/libexec/tast/helpers/local/cros/security.Minijail.staticbashexec"
 	)
-	if _, err := os.Stat(staticBashPath); err != nil {
-		s.Fatalf("Failed to stat %v: %v", staticBashPath, err)
-	}
 
 	// Create a directory that can be written to by test cases running in user namespaces.
 	usernsDir, err := ioutil.TempDir("", "tast.security.Minijail.userns.")
@@ -116,6 +113,9 @@ func Minijail(ctx context.Context, s *testing.State) {
 		shell := bashPath
 		if lm == staticLink {
 			shell = staticBashPath
+			if _, err := os.Stat(staticBashPath); err != nil {
+				s.Fatalf("Failed to stat %v: %v", staticBashPath, err)
+			}
 		}
 
 		s.Log("Running test case ", name)
