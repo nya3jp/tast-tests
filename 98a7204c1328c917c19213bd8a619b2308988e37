@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ff39b7_d6d06e7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-02T06:25:52Z",
+      "side": 1,
+      "message": "Added params to the existing script and updated script name.\nWorked on given comments and are fixed in updated script.",
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
