@@ -69,6 +69,24 @@
       "parentUuid": "e8816508_5e8d6113",
       "revId": "d497bb33e9bed6d78be30b92b70a1da4a9fb25c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0a8171_51840355",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/constants.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-12-02T23:48:20Z",
+      "side": 1,
+      "message": "oshima@ verified, i am going to chump this cl. Thanks",
+      "parentUuid": "7f8b74d5_7f71546e",
+      "revId": "d497bb33e9bed6d78be30b92b70a1da4a9fb25c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
