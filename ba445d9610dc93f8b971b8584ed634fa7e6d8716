@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "771b504d_346c2dea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "I\u0027ve asked my team to see if anybody can do it; I\u0027ll add anybody who replies.\n\nPatchset 7 addresses your comments in this CL, but not in CLs down the chain. I\u0027ll do my best to get those under control and add you to the attention set when I do.",
+      "parentUuid": "527e1cf5_3fed5dc6",
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31a495aa_abd0c2a0",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-01T23:24:02Z",
       "side": 1,
       "message": "nit: this is also a package name, please use another name for variable to avoid issues and confusion",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb017227_5843d1e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done, but please note that this naming pattern is endemic among our tests.",
+      "parentUuid": "31a495aa_abd0c2a0",
       "range": {
         "startLine": 45,
         "startChar": 2,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeebed07_9f530874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5474d452_5c8c3af2",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "029ce453_a46d86cc",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65566b54_01474114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "029ce453_a46d86cc",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23ec52c6_59b4ae0c",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-12-01T23:24:02Z",
       "side": 1,
       "message": "nit: i\u0027d use spaces in comments",
+      "range": {
+        "startLine": 38,
+        "startChar": 5,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07ac410_89fd49c5",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ec52c6_59b4ae0c",
       "range": {
         "startLine": 38,
         "startChar": 5,
@@ -156,6 +270,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd715c4_003cbb3f",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "PrinterInfo is now options, and while options can be unexported, we must keep Option exported to be able to build Option slices.",
+      "parentUuid": "5b3610ee_5cf37d9e",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26d7bb43_6cb0ff95",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Renamed to just options.",
+      "parentUuid": "f0ba71ed_a7709629",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "581e4e81_0920cf57",
@@ -169,6 +331,30 @@
       "writtenOn": "2021-12-01T23:24:02Z",
       "side": 1,
       "message": "you probably can drop these fields and instead store command line arguments and maybe few more fields. Please try to simplify it :)",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a74deaca_f677e9a1",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "581e4e81_0920cf57",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -202,6 +388,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d77231f_9b040dbb",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38b86e2e_259ddcdd",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eaeed66_97782adc",
@@ -215,6 +425,30 @@
       "writtenOn": "2021-12-01T23:24:02Z",
       "side": 1,
       "message": "nit: It\u0027s a bit unclear how to set \"info.WaitUntilConfigured\" to false/true. So  maybe rephrase to smth like\n\n```\nNon-empty if WaitUntilConfigured() option was provided to Start function\n``` \n\n?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 14
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b99b530_28339392",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Obviated by command-line centric refactor",
+      "parentUuid": "1eaeed66_97782adc",
       "range": {
         "startLine": 145,
         "startChar": 0,
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c42b1eb_758b1b36",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb31f078_78a83367",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84e88d49_9eebebab",
@@ -265,6 +523,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b67a1c_8c1a83e9",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "This was something copy-pasted in from startDeprecated(). I\u0027ll remove it in patchset 7.",
+      "parentUuid": "84e88d49_9eebebab",
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68499056_5e7caea6",
@@ -278,6 +554,30 @@
       "writtenOn": "2021-12-01T23:24:02Z",
       "side": 1,
       "message": "nit: starts",
+      "range": {
+        "startLine": 249,
+        "startChar": 42,
+        "endLine": 249,
+        "endChar": 50
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30d74aaf_a642fe0a",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68499056_5e7caea6",
       "range": {
         "startLine": 249,
         "startChar": 42,
@@ -380,6 +680,102 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ee6886_5eca41fb",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48e7f684_3b7a31a2",
+      "range": {
+        "startLine": 251,
+        "startChar": 31,
+        "endLine": 251,
+        "endChar": 32
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d80842_91be3620",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebf20b89_43959c00",
+      "range": {
+        "startLine": 251,
+        "startChar": 61,
+        "endLine": 251,
+        "endChar": 69
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335e6c74_6e200cdd",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5819472c_1b66fc99",
+      "range": {
+        "startLine": 251,
+        "startChar": 77,
+        "endLine": 251,
+        "endChar": 85
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0085128_d11dc05f",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc7000c_aeba8d89",
+      "range": {
+        "startLine": 251,
+        "startChar": 61,
+        "endLine": 251,
+        "endChar": 85
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2886dbf2_b5f99f58",
@@ -393,6 +789,30 @@
       "writtenOn": "2021-12-01T23:24:02Z",
       "side": 1,
       "message": "Please follow guideline in your comments (here and in other places):\n\nhttps://go.dev/doc/effective_go#commentary\n\n\"Comments do not need extra formatting such as banners of stars.\"",
+      "range": {
+        "startLine": 304,
+        "startChar": 3,
+        "endLine": 304,
+        "endChar": 5
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084aa44d_6ccf6581",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2886dbf2_b5f99f58",
       "range": {
         "startLine": 304,
         "startChar": 3,
@@ -426,6 +846,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f402b0_13a52b87",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c12fc52_1f61273e",
+      "range": {
+        "startLine": 305,
+        "startChar": 16,
+        "endLine": 305,
+        "endChar": 17
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cea6dfc_95ffdf56",
@@ -449,6 +893,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5abe2bb3_abd01619",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cea6dfc_95ffdf56",
+      "range": {
+        "startLine": 309,
+        "startChar": 52,
+        "endLine": 309,
+        "endChar": 83
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a24b9418_a3f9a8d4",
@@ -462,6 +930,30 @@
       "writtenOn": "2021-12-01T23:24:02Z",
       "side": 1,
       "message": "Don\u0027t ignore returned errors",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 13
+      },
+      "revId": "ba445d9610dc93f8b971b8584ed634fa7e6d8716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "624ca210_01eb749c",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-02T21:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a24b9418_a3f9a8d4",
       "range": {
         "startLine": 325,
         "startChar": 0,
