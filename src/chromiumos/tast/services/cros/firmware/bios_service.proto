@@ -22,6 +22,8 @@ service BiosService {
   rpc RestoreECRW (ECRWPath) returns (google.protobuf.Empty) {}
   // EnableAPSoftwareWriteProtect enables the AP software write protect.
   rpc EnableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  // CorruptECSection writes garbage bytes to the entire EC section specified.
+  rpc CorruptECSection (CorruptSection) returns (google.protobuf.Empty) {}
 }
 
 // GBBFlag bit positions
@@ -51,4 +53,9 @@ message GBBFlagsState {
 // ECRWPath represents the path of EC_RW section backup.
 message ECRWPath {
   string Path = 1;
+}
+
+// CorruptSection selects the section to corrupt.
+message CorruptSection {
+  string Section = 1;
 }
