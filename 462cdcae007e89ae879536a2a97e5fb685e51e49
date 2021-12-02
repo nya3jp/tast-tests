@@ -16,6 +16,23 @@
       "message": "Hi, tast owners and Daisy! Please help me review this cl about the test of reordering desk by drag and drop with touch screen.\n\nThanks so much!",
       "revId": "462cdcae007e89ae879536a2a97e5fb685e51e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e580c0_ac46e833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/reorder_desk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-02T01:31:24Z",
+      "side": 1,
+      "message": "Would it make sense to rename this function reorderDeskByInputMethod(...), accept an inputMethod parameter, and perform the switch here based on the type? Right now it seems a lot of duplication is done for the sake of how the desks are moved. By moving where the inputMethod is handled, a lot of this code could be reused, and the main function wouldn\u0027t need a switch (it\u0027s error messages would just .fmt the inputMethod) after calling this function.",
+      "revId": "462cdcae007e89ae879536a2a97e5fb685e51e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
