@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a7769ca_e9364762",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:48:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb60520_a94ab98c",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aff4144_84be02d0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-22T14:17:54Z",
       "side": 1,
       "message": "Use a consistent tense. Log into Citrix here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2715c7be_af584111",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:48:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aff4144_84be02d0",
       "range": {
         "startLine": 33,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99cdc68_f05bcfbe",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:48:22Z",
+      "side": 1,
+      "message": "I changed all to:\nCitrix: message\n\nas suggested in Kiosk review to start with capital letter.",
+      "parentUuid": "38309904_561bc662",
+      "range": {
+        "startLine": 77,
+        "startChar": 28,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc0ee41d_ccdf3699",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ccb2826_b1a86dc4",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:48:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0ee41d_ccdf3699",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfc369e5_96b416db",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-11-22T14:17:54Z",
       "side": 1,
       "message": "Capitalize messages (same below)\n\nAlso use a consistent tense here: log in",
+      "range": {
+        "startLine": 33,
+        "startChar": 34,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9d6317_c767b45e",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:48:22Z",
+      "side": 1,
+      "message": "I am a little confused how the logs should look like. \nI see logs like:\n2021-11-30T17:37:30.677082Z Target connection is unhealthy: target connection is broken: EOF; reconnecting\n...\n2021-11-30T17:37:31.298217Z Collecting system information\n\nAnd I adjusted all logs to follow that schema.",
+      "parentUuid": "dfc369e5_96b416db",
       "range": {
         "startLine": 33,
         "startChar": 34,
