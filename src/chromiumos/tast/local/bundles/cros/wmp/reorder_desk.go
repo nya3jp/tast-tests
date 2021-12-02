@@ -17,8 +17,16 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+)
+
+type inputMethod int
+
+const (
+	mouseInput inputMethod = iota
+	touchInput
 )
 
 func init() {
@@ -33,10 +41,20 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{
+			{
+				Name: "mouse",
+				Val:  mouseInput,
+			},
+			{
+				Name: "touch",
+				Val:  touchInput,
+			},
+		},
 	})
 }
 
-// ReorderDesk tests the reordering of desks by using mouse.
+// ReorderDesk tests the reordering of desks by using mouse and touch screen.
 func ReorderDesk(ctx context.Context, s *testing.State) {
 	// Reserve five seconds for various cleanup.
 	cleanupCtx := ctx
@@ -108,15 +126,37 @@ func ReorderDesk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enter the Overview: ", err)
 	}
 
+	ime := s.Param().(inputMethod)
+
 	// Move the 'First Desk' to the second position.
-	if err := reorderDeskByMouse(ctx, tconn, "First Desk", "Second Desk"); err != nil {
-		s.Fatal("Failed to move the first desk to the second position by mouse: ", err)
+	switch ime {
+	case mouseInput:
+		if err := reorderDeskByMouse(ctx, tconn, "First Desk", "Second Desk"); err != nil {
+			s.Fatal("Failed to move the first desk to the second position by mouse: ", err)
+		}
+	case touchInput:
+		if err := reorderDeskByTouch(ctx, tconn, "First Desk", "Second Desk"); err != nil {
+			s.Fatal("Failed to move the first desk to the second position by touch: ", err)
+		}
+	default:
+		err := errors.Errorf("invalid input method: %v", ime)
+		s.Fatal("Failed to move the first desk to the second position: ", err)
 	}
 
 	// Now, the 'First Desk' should be at the second position and the 'Second Desk' should be at the first position.
 	// Move the 'First Desk' back to the first position.
-	if err := reorderDeskByMouse(ctx, tconn, "First Desk", "Second Desk"); err != nil {
-		s.Fatal("Failed to move the first desk to the second position by mouse: ", err)
+	switch ime {
+	case mouseInput:
+		if err := reorderDeskByMouse(ctx, tconn, "First Desk", "Second Desk"); err != nil {
+			s.Fatal("Failed to move the first desk to the second position by mouse: ", err)
+		}
+	case touchInput:
+		if err := reorderDeskByTouch(ctx, tconn, "First Desk", "Second Desk"); err != nil {
+			s.Fatal("Failed to move the first desk to the second position by touch: ", err)
+		}
+	default:
+		err := errors.Errorf("invalid input method: %v", ime)
+		s.Fatal("Failed to move the first desk to the second position: ", err)
 	}
 }
 
@@ -143,6 +183,48 @@ func reorderDeskByMouse(ctx context.Context, tconn *chrome.TestConn, sourceName,
 		sourceDeskMiniViewLoc.CenterPoint(),
 		pc.DragTo(targetDeskMiniViewLoc.CenterPoint(), 3*time.Second))(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag and drop desk by mouse")
+	}
+
+	// The new desk location should be at the target desk position.
+	newSourceDeskMiniViewLoc, err := ui.Location(ctx, sourceDeskMiniView)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the new location of the source desk %s", sourceName)
+	}
+	if *newSourceDeskMiniViewLoc != *targetDeskMiniViewLoc {
+		return errors.New("source desk is not reordered to the target position")
+	}
+
+	return nil
+}
+
+// reorderDeskByTouch simulates reordering desks by drag and drop with finger.
+func reorderDeskByTouch(ctx context.Context, tconn *chrome.TestConn, sourceName, targetName string) error {
+	ui := uiauto.New(tconn)
+
+	sourceDeskMiniView := nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", sourceName))
+	targetDeskMiniView := nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", targetName))
+
+	tc, err := touch.New(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get touch screen")
+	}
+	defer tc.Close()
+
+	// Reorders desks by touch.
+	sourceDeskMiniViewLoc, err := ui.Location(ctx, sourceDeskMiniView)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the location of source desk %s:", sourceName)
+	}
+	targetDeskMiniViewLoc, err := ui.Location(ctx, targetDeskMiniView)
+	if err != nil {
+		return errors.Wrapf(err, "failed to get the location of target desk %s:", targetName)
+	}
+	if err := tc.Swipe(
+		sourceDeskMiniViewLoc.CenterPoint(),
+		// Long press on the desk mini view to activate reordering.
+		tc.Hold(time.Second),
+		tc.SwipeTo(targetDeskMiniViewLoc.CenterPoint(), 3*time.Second))(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag and drop desk by touch")
 	}
 
 	// The new desk location should be at the target desk position.
