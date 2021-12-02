@@ -8,8 +8,12 @@ import (
 	"context"
 	"regexp"
 	"time"
+)
 
-	"chromiumos/tast/testing"
+const (
+	// promptSuccesses is the number of consecutive successful prompts for
+	// the image to be considered fully booted.
+	promptSuccesses = 3
 )
 
 // CommandImage displays a prompt and responds to cli commands.
@@ -60,17 +64,28 @@ func (i *CommandImage) Command(ctx context.Context, cmd string) (string, error) 
 
 // WaitUntilBooted by checking that prompts are consistently displayed.
 func (i *CommandImage) WaitUntilBooted(ctx context.Context, interval time.Duration) error {
-	return testing.Poll(ctx, func(ctx1 context.Context) error {
-		for j := 0; j < 3; j++ {
-			if err := i.GetPrompt(ctx1); err != nil {
+	for {
+		ctxInt, cancel := context.WithTimeout(ctx, interval)
+		defer cancel()
+		j := 0
+		for {
+			if err := ctx.Err(); err != nil {
 				return err
 			}
-			if err := ctx1.Err(); err != nil {
-				return err
+			if err := i.GetPrompt(ctx); err != nil {
+				break
+			}
+			j++
+			if j == promptSuccesses {
+				return nil
 			}
 		}
-		return nil
-	}, &testing.PollOptions{Interval: interval})
+		select {
+		case <-ctxInt.Done():
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+	}
 }
 
 // GetPrompt gets a fresh prompt from the image by  the prompt.

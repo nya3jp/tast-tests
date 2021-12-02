@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/firmware/ti50"
-	remoteTi50 "chromiumos/tast/remote/firmware/ti50"
+	"chromiumos/tast/remote/firmware/ti50/fixture"
 	"chromiumos/tast/testing"
 )
 
@@ -18,30 +18,25 @@ func init() {
 		Func:    Ti50Demo,
 		Desc:    "Demo ti50 in remote environment(Andreiboard connected to labstation)",
 		Timeout: 1 * time.Minute,
-		Vars:    []string{"image", "spiflash", "mode"},
+		Vars:    []string{"image"},
 		Contacts: []string{
 			"aluo@chromium.org",            // Test Author
 			"chromeos-firmware@google.com", // CrOS Firmware Developers
 		},
 		ServiceDeps: []string{"tast.cros.baserpc.FileSystem", "tast.cros.firmware.SerialPortService"},
 		Attr:        []string{"group:firmware"},
+		Fixture:     fixture.DevBoardService,
 	})
 }
 
 func Ti50Demo(ctx context.Context, s *testing.State) {
 
-	mode, _ := s.Var("mode")
-	spiflash, _ := s.Var("spiflash")
+	f := s.FixtValue().(*fixture.Value)
 
-	board, rpcClient, err := remoteTi50.GetTi50TestBoard(ctx, s.DUT(), s.RPCHint(), mode, spiflash, 4096, 100*time.Millisecond)
-
+	board, err := f.DevBoard(ctx, 4096, time.Second)
 	if err != nil {
-		s.Fatal("Could not start Ti50Demo: ", err)
+		s.Fatal("Could not get board: ", err)
 	}
-	if rpcClient != nil {
-		defer rpcClient.Close(ctx)
-	}
-	defer board.Close(ctx)
 
 	image, _ := s.Var("image")
 	s.Log("Using image at: ", image)

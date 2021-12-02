@@ -7,9 +7,14 @@ package ti50
 import (
 	"context"
 	"regexp"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
+)
+
+const (
+	bootTimeout = time.Minute
 )
 
 // Demo uses some of the CrOSImage to control the board.  Image is optional,
@@ -27,7 +32,9 @@ func Demo(ctx context.Context, board DevBoard, image string) error {
 
 	i := NewCrOSImage(board)
 
-	if err := i.WaitUntilBooted(ctx); err != nil {
+	ctxBoot, cancel := context.WithTimeout(ctx, bootTimeout)
+	defer cancel()
+	if err := i.WaitUntilBooted(ctxBoot); err != nil {
 		return errors.Wrap(err, "failed to wait for boot on ti50 image")
 	}
 	testing.ContextLog(ctx, "Board has booted")
@@ -80,11 +87,11 @@ func DemoHelp(ctx context.Context, i *CrOSImage) error {
 // DemoCommand demos the Command method.
 func DemoCommand(ctx context.Context, i *CrOSImage, cmd string) error {
 	if err := i.GetPrompt(ctx); err != nil {
-		return err
+		return errors.Wrap(err, "get prompt")
 	}
 	out, err := i.Command(ctx, cmd)
 	if err != nil {
-		return err
+		return errors.Wrapf(err, "run cmd %q", cmd)
 	}
 	testing.ContextLogf(ctx, "%s Output: %s", cmd, out)
 
