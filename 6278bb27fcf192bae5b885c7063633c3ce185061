@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "779edcbc_c5ec31e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-02T17:41:37Z",
+      "side": 1,
+      "message": "Thanks, Ben.",
+      "revId": "6278bb27fcf192bae5b885c7063633c3ce185061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1fd6341_adfb6c7b",
@@ -48,6 +65,24 @@
       "writtenOn": "2021-12-02T15:23:11Z",
       "side": 1,
       "message": "Where did these values come from?  If they\u0027re just a copy of the defaults, do we have a way to get an object with default values in case they change in the future?",
+      "revId": "6278bb27fcf192bae5b885c7063633c3ce185061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b1d022_749e380b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-02T17:41:37Z",
+      "side": 1,
+      "message": "They are the defaults, yes: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;rcl\u003df3564a93a4de4919b89c08ffc65547f3b78eb9f1;l\u003d54\n\nWould it be better to do something like call uiauto.New(tconn) to get a connection which then just gets used to pass along the default polloptions to LaunchWithPollOpts?",
+      "parentUuid": "a1fd6341_adfb6c7b",
       "revId": "6278bb27fcf192bae5b885c7063633c3ce185061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
