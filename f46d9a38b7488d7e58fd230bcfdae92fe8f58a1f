@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1173d770_da201524",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-02T18:37:14Z",
+      "side": 1,
+      "message": "how about prepare_cross_version_login_data.go?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "f46d9a38b7488d7e58fd230bcfdae92fe8f58a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc68e95a_7eee7096",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-02T18:37:14Z",
+      "side": 1,
+      "message": "question: what is the benefit of making it a bash script instead of go?",
+      "revId": "f46d9a38b7488d7e58fd230bcfdae92fe8f58a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
