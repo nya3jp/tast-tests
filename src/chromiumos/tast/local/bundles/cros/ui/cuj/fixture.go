@@ -72,7 +72,6 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true},
-		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
