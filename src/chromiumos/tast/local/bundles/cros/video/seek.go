@@ -27,7 +27,6 @@ func init() {
 		Func: Seek,
 		Desc: "Verifies that seeking works in Chrome, either with or without resolution changes",
 		Contacts: []string{
-			"acourbot@chromium.org",
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",
 			"chromeos-video-eng@google.com",
