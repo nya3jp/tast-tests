@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "926f2143_5270ab58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-12-02T00:26:20Z",
+      "side": 0,
+      "message": "Updated these to grab the fixture\u0027s Chrome.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "e5a034842da88ad2019bd9b5baf3f01edfe6d66f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
