@@ -15,10 +15,14 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 // ParseModemFirmwareManifest Parses the modem firmware manifest and returns the FirmwareManifestV2 proto object.
 func ParseModemFirmwareManifest(ctx context.Context) (*mfwd.FirmwareManifestV2, error) {
+	ctx, st := timing.Start(ctx, "ParseModemFirmwareManifest")
+	defer st.End()
+
 	modemFirmwareProtoPath := GetModemFirmwareManifestPath()
 	output, err := testexec.CommandContext(ctx, "cat", modemFirmwareProtoPath).Output()
 	if err != nil {
@@ -47,6 +51,9 @@ func GetModemFirmwareManifestPath() string {
 
 // ParseModemHelperManifest Parses the modem helper manifest and returns the HelperManifest proto object.
 func ParseModemHelperManifest(ctx context.Context) (*mfwd.HelperManifest, error) {
+	ctx, st := timing.Start(ctx, "ParseModemHelperManifest")
+	defer st.End()
+
 	modemHelperProtoPath := GetModemHelperManifestPath()
 	output, err := testexec.CommandContext(ctx, "cat", modemHelperProtoPath).Output()
 	if err != nil {

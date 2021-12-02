@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 const defaultTimeout = shillconst.DefaultTimeout
@@ -30,6 +31,9 @@ type Helper struct {
 
 // NewHelper creates a Helper object and ensures that a Cellular Device is present.
 func NewHelper(ctx context.Context) (*Helper, error) {
+	ctx, st := timing.Start(ctx, "Helper.NewHelper")
+	defer st.End()
+
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create Manager object")
@@ -78,6 +82,9 @@ func (h *Helper) WaitForEnabledState(ctx context.Context, expected bool) error {
 
 // Enable calls Manager.EnableTechnology(cellular) and returns true if the enable succeeded, or an error otherwise.
 func (h *Helper) Enable(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "Helper.Enable")
+	defer st.End()
+
 	h.Manager.EnableTechnology(ctx, shill.TechnologyCellular)
 
 	if err := h.WaitForEnabledState(ctx, true); err != nil {
@@ -94,6 +101,9 @@ func (h *Helper) Enable(ctx context.Context) error {
 
 // Disable calls Manager.DisableTechnology(cellular) and returns true if the disable succeeded, or an error otherwise.
 func (h *Helper) Disable(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "Helper.Disable")
+	defer st.End()
+
 	h.Manager.DisableTechnology(ctx, shill.TechnologyCellular)
 
 	if err := h.WaitForEnabledState(ctx, false); err != nil {
@@ -111,6 +121,9 @@ func (h *Helper) Disable(ctx context.Context) error {
 // FindService returns the first connectable Cellular Service.
 // If no such Cellular Service is available, returns a nil service and an error.
 func (h *Helper) FindService(ctx context.Context) (*shill.Service, error) {
+	ctx, st := timing.Start(ctx, "Helper.FindService")
+	defer st.End()
+
 	// Look for any connectable Cellular service.
 	cellularProperties := map[string]interface{}{
 		shillconst.ServicePropertyConnectable: true,
@@ -123,6 +136,9 @@ func (h *Helper) FindService(ctx context.Context) (*shill.Service, error) {
 // If no such Cellular Service is available, returns a nil service and an error.
 // |timeout| specifies how long to wait for a service to appear.
 func (h *Helper) FindServiceForDeviceWithTimeout(ctx context.Context, timeout time.Duration) (*shill.Service, error) {
+	ctx, st := timing.Start(ctx, "Helper.FindServiceForDeviceWithTimeout")
+	defer st.End()
+
 	deviceProperties, err := h.Device.GetProperties(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get Cellular Device properties")
@@ -150,6 +166,9 @@ func (h *Helper) FindServiceForDeviceWithTimeout(ctx context.Context, timeout ti
 // If no such Cellular Service is available, returns a nil service and an error.
 // The default timeout is used for waiting for the service to appear.
 func (h *Helper) FindServiceForDevice(ctx context.Context) (*shill.Service, error) {
+	ctx, st := timing.Start(ctx, "Helper.FindServiceForDevice")
+	defer st.End()
+
 	return h.FindServiceForDeviceWithTimeout(ctx, defaultTimeout)
 }
 
@@ -163,6 +182,9 @@ const AutoConnectCleanupTime = 1 * time.Second
 // Returns true when Service.AutoConnect is set and the operation succeeds.
 // Returns an error if any operation fails.
 func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (bool, error) {
+	ctx, st := timing.Start(ctx, "Helper.SetServiceAutoConnect")
+	defer st.End()
+
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get Cellular Service")
@@ -186,6 +208,9 @@ func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (b
 
 // ConnectToDefault connects to the default Cellular Service.
 func (h *Helper) ConnectToDefault(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "Helper.ConnectToDefault")
+	defer st.End()
+
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
 		return err
@@ -197,6 +222,9 @@ func (h *Helper) ConnectToDefault(ctx context.Context) error {
 // It ensures that the connect attempt succeeds, repeating attempts if necessary.
 // Otherwise an error is returned.
 func (h *Helper) ConnectToServiceWithTimeout(ctx context.Context, service *shill.Service, timeout time.Duration) error {
+	ctx, st := timing.Start(ctx, "Helper.ConnectToServiceWithTimeout")
+	defer st.End()
+
 	props, err := service.GetProperties(ctx)
 	if err != nil {
 		return err
@@ -227,12 +255,18 @@ func (h *Helper) ConnectToServiceWithTimeout(ctx context.Context, service *shill
 // It ensures that the connect attempt succeeds, repeating attempts if necessary.
 // Otherwise an error is returned.
 func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) error {
+	ctx, st := timing.Start(ctx, "Helper.ConnectToService")
+	defer st.End()
+
 	// Connect requires a longer default timeout than other operations.
 	return h.ConnectToServiceWithTimeout(ctx, service, defaultTimeout*6)
 }
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
 func (h *Helper) Disconnect(ctx context.Context) error {
+	ctx, st := timing.Start(ctx, "Helper.Disconnect")
+	defer st.End()
+
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
 		return err
@@ -245,6 +279,9 @@ func (h *Helper) Disconnect(ctx context.Context) error {
 
 // SetDeviceProperty sets a Device property and waits for the property to be set.
 func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value interface{}, timeout time.Duration) error {
+	ctx, st := timing.Start(ctx, "Helper.SetDeviceProperty")
+	defer st.End()
+
 	pw, err := h.Device.CreateWatcher(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create watcher")
@@ -274,11 +311,17 @@ func (h *Helper) SetDeviceProperty(ctx context.Context, prop string, value inter
 
 // InitDeviceProperty sets a device property and returns a function to restore the initial value.
 func (h *Helper) InitDeviceProperty(ctx context.Context, prop string, value interface{}) (func(ctx context.Context), error) {
+	ctx, st := timing.Start(ctx, "Helper.InitDeviceProperty")
+	defer st.End()
+
 	return initProperty(ctx, h.Device.PropertyHolder, prop, value)
 }
 
 // InitServiceProperty sets a service property and returns a function to restore the initial value.
 func (h *Helper) InitServiceProperty(ctx context.Context, prop string, value interface{}) (func(ctx context.Context), error) {
+	ctx, st := timing.Start(ctx, "Helper.InitServiceProperty")
+	defer st.End()
+
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get cellular service")
@@ -291,6 +334,8 @@ const PropertyCleanupTime = 1 * time.Second
 
 // initProperty sets a property and returns a function to restore the initial value.
 func initProperty(ctx context.Context, properties *shill.PropertyHolder, prop string, value interface{}) (func(ctx context.Context), error) {
+	ctx, st := timing.Start(ctx, "Helper.initProperty")
+	defer st.End()
 
 	prevValue, err := properties.GetAndSetProperty(ctx, prop, value)
 	if err != nil {
@@ -308,6 +353,9 @@ func initProperty(ctx context.Context, properties *shill.PropertyHolder, prop st
 // RestartModemManager  - restart modemmanager with debug logs enabled/disabled.
 // Return nil if restart succeeds, else return error.
 func (h *Helper) RestartModemManager(ctx context.Context, enableDebugLogs bool) error {
+	ctx, st := timing.Start(ctx, "Helper.RestartModemManager")
+	defer st.End()
+
 	logLevel := "INFO"
 	if enableDebugLogs {
 		logLevel = "DEBUG"
