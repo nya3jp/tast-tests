@@ -228,6 +228,24 @@
       "parentUuid": "7c9ad608_da717fb3",
       "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ac1126_9604eb91",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T13:34:50Z",
+      "side": 1,
+      "message": "I tried but I see a problem here. If I make signature like:\nSearchAndOpenApplication(ctx context.Context, k *input.KeyboardEventWriter, appName string, verify func(context.Context, uidetection.Context) bool) uiauto.Action\n\nbut it implies the verify function to have a certain parameters that may be at some times not all needed and other not enough. Unless I missed something.",
+      "parentUuid": "1a8d48c0_1adc04fe",
+      "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
