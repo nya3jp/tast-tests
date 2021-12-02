@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -49,6 +50,12 @@ const (
 	ECX86            ECCapability = "x86"
 )
 
+// USBEnablePin represents each object in the list in the config files for the key "custom_usb_enable_pins".
+type USBEnablePin struct {
+	Name string
+	Ioex bool
+}
+
 // cfgDirName is the name of the folder within data/ containing the platform config datafiles.
 const cfgDirName = "fw-testing-configs"
 
@@ -65,13 +72,14 @@ const defaultName = "DEFAULTS"
 // Config contains platform-specific attributes.
 // Fields are documented in autotest/server/cros/faft/configs/DEFAULTS.json.
 type Config struct {
-	Platform             string           `json:"platform"`
-	Parent               string           `json:"parent"`
-	ECCapability         []ECCapability   `json:"ec_capability"`
-	ModeSwitcherType     ModeSwitcherType `json:"mode_switcher_type"`
-	PowerButtonDevSwitch bool             `json:"power_button_dev_switch"`
-	RecButtonDevSwitch   bool             `json:"rec_button_dev_switch"`
-	Hibernate            bool             `json:"hibernate"`
+	Platform             string            `json:"platform"`
+	Parent               string            `json:"parent"`
+	ECCapability         []ECCapability    `json:"ec_capability"`
+	ModeSwitcherType     ModeSwitcherType  `json:"mode_switcher_type"`
+	PowerButtonDevSwitch bool              `json:"power_button_dev_switch"`
+	RecButtonDevSwitch   bool              `json:"rec_button_dev_switch"`
+	Hibernate            bool              `json:"hibernate"`
+	RawUSBEnablePins     []json.RawMessage `json:"custom_usb_enable_pins"`
 
 	// Raw duration fields represent a quantity of seconds.
 	// They are used during NewConfig to populate actual duration fields, which are defined below.
@@ -101,6 +109,9 @@ type Config struct {
 
 	// Models maps DUT model names to overriding config JSON objects.
 	Models map[string]json.RawMessage `json:"models"`
+
+	// Holds a list of objects under the "custom_usb_enable_pins" key in the configs.
+	USBEnablePins []USBEnablePin
 }
 
 // CfgPlatformFromLSBBoard interprets a board name that would come from /etc/lsb-release, and returns the name of the platform whose config should be loaded.
@@ -189,7 +200,25 @@ func NewConfig(cfgFilepath, board, model string) (*Config, error) {
 	cfg.USBPlug = toSeconds(cfg.RawUSBPlug)
 	cfg.HoldPwrButtonPowerOff = toSeconds(cfg.RawHoldPwrButtonPowerOff)
 
+	// Parse list of raw json objects into go structs
+	cfg.USBEnablePins = parseRawUSBEnablePins(cfg.RawUSBEnablePins)
+
 	return &cfg, nil
+}
+
+// parseRawUSBEnablePins takes the list of json objects and converts them to a list of structs.
+func parseRawUSBEnablePins(pinsList []json.RawMessage) []USBEnablePin {
+	// Look for ones with non-empty name.
+	reNonEmptyName := regexp.MustCompile(`\S+`)
+	enablePins := make([]USBEnablePin, 0)
+	for _, pin := range pinsList {
+		pinStruct := USBEnablePin{}
+		json.Unmarshal(pin, &pinStruct)
+		if match := reNonEmptyName.FindStringSubmatch(pinStruct.Name); match != nil {
+			enablePins = append(enablePins, pinStruct)
+		}
+	}
+	return enablePins
 }
 
 // HasECCapability checks whether cfg has a certain ECCapability.
