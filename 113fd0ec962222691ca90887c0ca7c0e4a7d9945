@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961bcc36_a7e53a61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2021-12-02T00:52:17Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s useful to have bullseye and buster for this test. Drop one, halve the runtime? Possibly it\u0027s useful to test both stretch and buster as source versions (once we start rolling out bullseye) but that can be a separate thing.",
+      "revId": "113fd0ec962222691ca90887c0ca7c0e4a7d9945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
