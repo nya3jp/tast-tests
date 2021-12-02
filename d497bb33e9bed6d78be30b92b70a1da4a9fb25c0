@@ -51,6 +51,24 @@
       "message": "UI tree for a failed test has name\u003dShut down className\u003dLoginShelfButton, is IconButton the right class?\n\nChecked in a CrOS uprev: https://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8829006505653402257/overview",
       "revId": "d497bb33e9bed6d78be30b92b70a1da4a9fb25c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f8b74d5_7f71546e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/quicksettings/constants.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-12-02T23:46:49Z",
+      "side": 1,
+      "message": "Yes, IconButton is the correct class name. I tested it locally, quicksettings.SignInScreen.noaudio_nobattery will pass with this cl and also chromium side class name updated. We might need to chump this cl, I will wait for oshima@ to help double confirm it.",
+      "parentUuid": "e8816508_5e8d6113",
+      "revId": "d497bb33e9bed6d78be30b92b70a1da4a9fb25c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
