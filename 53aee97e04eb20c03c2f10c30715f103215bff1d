@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b1fbd74_ffc5a73e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-12-02T18:36:39Z",
+      "side": 1,
+      "message": "I don\u0027t think that this is the correct course of action for this bug. I don\u0027t believe that Herobrine is affected by b/18997256. Rather these failures are caused by the lack of WEP support on ath11k, which *should* be covered by the WiFiWEP dependency, which isn\u0027t working correctly on Hoglin. It\u0027s worth noting that I\u0027ve previously observed the WiFiWEP dependency correctly causing these tests to skip on a Piglin device, but not on Hoglin.",
+      "revId": "53aee97e04eb20c03c2f10c30715f103215bff1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e6470d_0c92fcfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-12-02T18:36:39Z",
+      "side": 1,
+      "message": "I\u0027m not actually sure that Herobrine should be skipped for this test. This test is failing specifically on Trogdor if I understand b/189972561 correctly, and in b/207743051, QCA is not claiming that this test is failing on Herobrine.",
+      "range": {
+        "startLine": 175,
+        "startChar": 52,
+        "endLine": 175,
+        "endChar": 63
+      },
+      "revId": "53aee97e04eb20c03c2f10c30715f103215bff1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7cbfb5_4d016052",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2021-12-02T18:36:39Z",
+      "side": 1,
+      "message": "Herobrine should already be covered by this WEP dependency. As stated above, I don\u0027t think that Herobrine is affected by b/194644867. The reason it fails this test is because ath11k does not support WEP.",
+      "range": {
+        "startLine": 529,
+        "startChar": 136,
+        "endLine": 529,
+        "endChar": 151
+      },
+      "revId": "53aee97e04eb20c03c2f10c30715f103215bff1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
