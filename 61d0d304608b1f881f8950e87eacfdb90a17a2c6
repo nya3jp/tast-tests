@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e65267_cdf94938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-02T10:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317b41c9_7ea6c92b",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "61d0d304608b1f881f8950e87eacfdb90a17a2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34de5651_5663fde5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-01T23:44:27Z",
       "side": 1,
       "message": "Run OpenCL implementation on top of Vulkan using clvk",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "61d0d304608b1f881f8950e87eacfdb90a17a2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbbffc90_96cde3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-02T10:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34de5651_5663fde5",
       "range": {
         "startLine": 18,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e22ff1_f2d2eb09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-02T10:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537a1be8_af3a50be",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "61d0d304608b1f881f8950e87eacfdb90a17a2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1750ec63_52e9166d",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-12-01T23:44:27Z",
       "side": 1,
       "message": "Does this test requires ui job running? Otherwise we should stop ui before the test. \n\nFixture: \"graphicsNoChrome\" should do this trick.",
+      "revId": "61d0d304608b1f881f8950e87eacfdb90a17a2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "410ffd9c_88b4e51d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-02T10:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1750ec63_52e9166d",
       "revId": "61d0d304608b1f881f8950e87eacfdb90a17a2c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e811f2_862b6c9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-02T10:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21aab303_06f100e3",
+      "range": {
+        "startLine": 29,
+        "startChar": 67,
+        "endLine": 29,
+        "endChar": 69
+      },
+      "revId": "61d0d304608b1f881f8950e87eacfdb90a17a2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3deeb5b_37c1e390",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-12-01T23:44:27Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 33,
+        "startChar": 68,
+        "endLine": 33,
+        "endChar": 70
+      },
+      "revId": "61d0d304608b1f881f8950e87eacfdb90a17a2c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce302dc4_e94085b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-02T10:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3deeb5b_37c1e390",
       "range": {
         "startLine": 33,
         "startChar": 68,
