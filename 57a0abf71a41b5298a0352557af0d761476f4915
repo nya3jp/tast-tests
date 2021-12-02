@@ -33,6 +33,23 @@
       "message": "You need to update the comment.\n\nAlso, 4 return values is a bit hard to read, maybe define a struct with the three time intervals named?",
       "revId": "57a0abf71a41b5298a0352557af0d761476f4915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1207405_de34b113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-12-02T05:58:02Z",
+      "side": 1,
+      "message": "please update the metric name",
+      "revId": "57a0abf71a41b5298a0352557af0d761476f4915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
