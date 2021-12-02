@@ -107,7 +107,7 @@ func (a *Andreiboard) ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp)
 		}
 		total += current
 		if err != nil {
-			testing.ContextLog(ctx, "Read error, buffer contents:")
+			testing.ContextLogf(ctx, "Read error: %v, buffer contents", err)
 			testing.ContextLog(ctx, string(buf[:total]))
 			a.targetBufferUnreadLen = copy(a.targetBufferUnread, buf[:total])
 			return nil, errors.Wrapf(err, "port read error (wanted %s)", re)
