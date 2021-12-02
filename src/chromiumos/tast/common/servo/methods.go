@@ -794,6 +794,11 @@ func (s *Servo) WatchdogAdd(ctx context.Context, val WatchdogValue) error {
 // WatchdogRemove removes the specified watchdog from the servod instance.
 // Servo.Close() will restore the watchdog.
 func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
+	for _, wd := range s.removedWatchdogs {
+		if wd == val {
+			return nil
+		}
+	}
 	if val == WatchdogCCD {
 		// SuzyQ reports as ccd_cr50, and doesn't have a watchdog named CCD.
 		servoType, err := s.GetServoType(ctx)
@@ -809,15 +814,15 @@ func (s *Servo) WatchdogRemove(ctx context.Context, val WatchdogValue) error {
 			val = WatchdogMain
 		}
 	}
+	testing.ContextLog(ctx, "Removing watchdog: ", val)
 	if err := s.SetString(ctx, WatchdogRemove, string(val)); err != nil {
 		return err
 	}
-	for _, wd := range s.removedWatchdogs {
-		if wd == val {
-			return nil
-		}
-	}
 	s.removedWatchdogs = append(s.removedWatchdogs, val)
+	// Removing the watchdog seems to take some time before it works.
+	if err := testing.Sleep(ctx, 4*time.Second); err != nil {
+		return err
+	}
 	return nil
 }
 
