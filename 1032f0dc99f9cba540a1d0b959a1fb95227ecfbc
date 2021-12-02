@@ -56,6 +56,30 @@
       },
       "revId": "1032f0dc99f9cba540a1d0b959a1fb95227ecfbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cf990a_6b9b7a57",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-02T12:45:08Z",
+      "side": 1,
+      "message": "Done, but I added longer timeout due to latency I faced - around 9 seconds between calls.",
+      "parentUuid": "f58ae3fa_41b0ad23",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 35
+      },
+      "revId": "1032f0dc99f9cba540a1d0b959a1fb95227ecfbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
