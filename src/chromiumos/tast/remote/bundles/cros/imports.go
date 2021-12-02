@@ -27,6 +27,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/platform"
 	_ "chromiumos/tast/remote/bundles/cros/policy"
 	_ "chromiumos/tast/remote/bundles/cros/power"
+	_ "chromiumos/tast/remote/bundles/cros/sdcard" // new test folder added.
 	_ "chromiumos/tast/remote/bundles/cros/security"
 	_ "chromiumos/tast/remote/bundles/cros/syzcorpus"
 	_ "chromiumos/tast/remote/bundles/cros/syzkaller"
