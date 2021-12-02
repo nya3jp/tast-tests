@@ -394,9 +394,7 @@ func (ac *Context) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bo
 // WaitUntilExists returns a function that waits until the node found by the input finder exists.
 func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			return ac.Exists(finder)(ctx)
-		}, &ac.pollOpts)
+		return testing.Poll(ctx, ac.Exists(finder), &ac.pollOpts)
 	}
 }
 
@@ -463,9 +461,7 @@ func (ac *Context) Gone(finder *nodewith.Finder) Action {
 // WaitUntilGone returns a function that waits until the node found by the input finder is gone.
 func (ac *Context) WaitUntilGone(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			return ac.Gone(finder)(ctx)
-		}, &ac.pollOpts)
+		return testing.Poll(ctx, ac.Gone(finder), &ac.pollOpts)
 	}
 }
 
