@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "596da2ff_4cd1af7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_rootfs_to_stateful.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-12-02T00:53:02Z",
+      "side": 1,
+      "message": "Ack, didn\u0027t see that atm.\nSG when promotion to critical.",
+      "parentUuid": "0a476395_2c3e0275",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "cf4de78f5a1da0bb565b2223d52ea216434085cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4e853c3_3dd00444",
