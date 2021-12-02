@@ -27,6 +27,7 @@ type inputMethod int
 const (
 	mouseInput inputMethod = iota
 	touchInput
+	keyboardInput
 )
 
 func init() {
@@ -50,11 +51,15 @@ func init() {
 				Name: "touch",
 				Val:  touchInput,
 			},
+			{
+				Name: "keyboard",
+				Val:  keyboardInput,
+			},
 		},
 	})
 }
 
-// ReorderDesk tests the reordering of desks by using mouse and touch screen.
+// ReorderDesk tests the reordering of desks by using mouse, touch screen and keyboard.
 func ReorderDesk(ctx context.Context, s *testing.State) {
 	// Reserve five seconds for various cleanup.
 	cleanupCtx := ctx
@@ -138,6 +143,14 @@ func ReorderDesk(ctx context.Context, s *testing.State) {
 		if err := reorderDeskByTouch(ctx, tconn, "First Desk", "Second Desk"); err != nil {
 			s.Fatal("Failed to move the first desk to the second position by touch: ", err)
 		}
+	case keyboardInput:
+		// Move the highlight to the first desk preview.
+		if err := kb.AccelAction("Tab")(ctx); err != nil {
+			s.Fatal("Failed to move the highlight to the first desk: ", err)
+		}
+		if err := reorderDeskByKeyboard(ctx, tconn /*moveRight=*/, true); err != nil {
+			s.Fatal("Failed to move the first desk to the second position by keyboard: ", err)
+		}
 	default:
 		err := errors.Errorf("invalid input method: %v", ime)
 		s.Fatal("Failed to move the first desk to the second position: ", err)
@@ -153,6 +166,10 @@ func ReorderDesk(ctx context.Context, s *testing.State) {
 	case touchInput:
 		if err := reorderDeskByTouch(ctx, tconn, "First Desk", "Second Desk"); err != nil {
 			s.Fatal("Failed to move the first desk to the second position by touch: ", err)
+		}
+	case keyboardInput:
+		if err := reorderDeskByKeyboard(ctx, tconn /*moveRight=*/, false); err != nil {
+			s.Fatal("Failed to move the first desk to the second position by keyboard: ", err)
 		}
 	default:
 		err := errors.Errorf("invalid input method: %v", ime)
@@ -234,6 +251,43 @@ func reorderDeskByTouch(ctx context.Context, tconn *chrome.TestConn, sourceName,
 	}
 	if *newSourceDeskMiniViewLoc != *targetDeskMiniViewLoc {
 		return errors.New("source desk is not reordered to the target position")
+	}
+
+	return nil
+}
+
+// reorderDeskByKeyboard simulates reordering desks by using keyboard shortcuts.
+func reorderDeskByKeyboard(ctx context.Context, tconn *chrome.TestConn, moveRight bool) error {
+	ui := uiauto.New(tconn)
+
+	sourceDeskMiniView := nodewith.ClassName("DeskMiniView").Name("Desk: First Desk")
+	targetDeskMiniView := nodewith.ClassName("DeskMiniView").Name("Desk: Second Desk")
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a keyboard")
+	}
+
+	// Reorders desks by keyboard.
+	targetDeskMiniViewLoc, err := ui.Location(ctx, targetDeskMiniView)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the location of Second Desk")
+	}
+	shortcut := "Ctrl+Left"
+	if moveRight {
+		shortcut = "Ctrl+Right"
+	}
+	if err := kb.AccelAction(shortcut)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to use keyboard shortcut: %s", shortcut)
+	}
+
+	// The new desk location should be at the target desk position.
+	newSourceDeskMiniViewLoc, err := ui.Location(ctx, sourceDeskMiniView)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the new location of the First Desk")
+	}
+	if *newSourceDeskMiniViewLoc != *targetDeskMiniViewLoc {
+		return errors.New("First Desk is not reordered to the target position")
 	}
 
 	return nil
