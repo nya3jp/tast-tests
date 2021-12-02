@@ -33,6 +33,24 @@
       "message": "if you add them, pls wait for the next chrome roll.\nor, you can split this out into another CL if you\u0027d like to submit this CL.",
       "revId": "058d1df36f7dd2107cb09483a23f1fd6dbf835f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "894bdc63_e08a236d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-02T16:25:24Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I\u0027ll go ahead submit it without this option (waiting to add it in a follow-up)",
+      "parentUuid": "245d698d_91e45fa0",
+      "revId": "058d1df36f7dd2107cb09483a23f1fd6dbf835f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
