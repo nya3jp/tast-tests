@@ -43,6 +43,48 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "426f0391_7cbfe6f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:54:00Z",
+      "side": 1,
+      "message": "Done https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3312262",
+      "parentUuid": "3e737d4c_0045ac2d",
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d754ae_a8ba0b79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:54:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f9c9ea1_c43bf074",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1f00febc_f589fba1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -156,6 +198,24 @@
       "writtenOn": "2021-12-02T08:25:15Z",
       "side": 1,
       "message": "nit: add a comment on why this is a separate function",
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cccf240_61074628",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e7b2e7d_b0e03c8c",
       "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
