@@ -104,3 +104,24 @@ func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) 
 	}
 	return s.location()
 }
+
+// Exists returns an action that returns nil if the specified element exists.
+func (uda *Context) Exists(s *Finder) uiauto.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLogf(ctx, "Looking for an element %q", s.desc)
+		if loc, err := uda.Location(ctx, s); err != nil {
+			return err
+		} else if loc == nil {
+			return errors.Errorf("failed to find element: %q", s.desc)
+		} else {
+			return nil
+		}
+	}
+}
+
+// WaitUntilExists returns an action that waits until the specified element exists.
+func (uda *Context) WaitUntilExists(s *Finder) uiauto.Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, uda.Exists(s), &uda.pollOpts)
+	}
+}
