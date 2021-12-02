@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a74eb4a6_af765415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:23:40Z",
+      "side": 1,
+      "message": "Good point",
+      "parentUuid": "8f4070fc_e5d45681",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "602a2291b1fec6f3af9097c20bada40976e899bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "41b15bb1_1dda934f",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/offline.go",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2021-12-01T21:10:59Z",
       "side": 1,
       "message": "Instead of Attribute you can use Name, same below for ClassName. The whole thing would look like `nodewith.Role(_).Name(_).ClassName(_)`",
+      "range": {
+        "startLine": 92,
+        "startChar": 43,
+        "endLine": 92,
+        "endChar": 52
+      },
+      "revId": "602a2291b1fec6f3af9097c20bada40976e899bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e41744c_472d1b96",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-02T09:23:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ba25eaa_02b49477",
       "range": {
         "startLine": 92,
         "startChar": 43,
