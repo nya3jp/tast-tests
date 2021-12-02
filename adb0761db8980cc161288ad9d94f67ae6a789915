@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e737d4c_0045ac2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-02T08:25:15Z",
+      "side": 1,
+      "message": "very minor nit: split into 2 CLs",
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f9c9ea1_c43bf074",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-02T08:25:15Z",
+      "side": 1,
+      "message": "bit.",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1f00febc_f589fba1",
@@ -82,6 +122,40 @@
       "writtenOn": "2021-12-02T08:15:20Z",
       "side": 1,
       "message": "Hi Victor! Sorry for bypassing tast-owners@ alias - but the change is quite small and I think I messed up the AS yesterday. So picking an owner from my timezone to land it faster :)",
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e823969_9109d2a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-02T08:25:15Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7b2e7d_b0e03c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-02T08:25:15Z",
+      "side": 1,
+      "message": "nit: add a comment on why this is a separate function",
       "revId": "adb0761db8980cc161288ad9d94f67ae6a789915",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
