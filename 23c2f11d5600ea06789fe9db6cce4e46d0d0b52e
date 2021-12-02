@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5240ca9_ff713290",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-12-02T00:27:32Z",
+      "side": 1,
+      "message": "If there is no formating, just use ContextLog",
+      "range": {
+        "startLine": 54,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "23c2f11d5600ea06789fe9db6cce4e46d0d0b52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710f083f_c472c5ff",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1346454
+      },
+      "writtenOn": "2021-12-02T00:27:32Z",
+      "side": 1,
+      "message": "This not timeout error. Just err with Sleep function",
+      "range": {
+        "startLine": 531,
+        "startChar": 12,
+        "endLine": 531,
+        "endChar": 22
+      },
+      "revId": "23c2f11d5600ea06789fe9db6cce4e46d0d0b52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
