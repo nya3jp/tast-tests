@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a3a58b_793eec82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-02T19:51:57Z",
+      "side": 1,
+      "message": "nit(Doesn\u0027t need to be resolve in this CL): This would be enabled on amd64-generic \u0026 betty \u0026 reven-vmtest.\nFor the amd64-generic \u0026 betty cases, this tests should work correctly.\nBut there are some slightly different behaviors between reven-vmtest and others.",
+      "range": {
+        "startLine": 31,
+        "startChar": 35,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "6be17a1f58ebff940b2ea365ec94177d8c5493fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75ad3380_da36687d",
