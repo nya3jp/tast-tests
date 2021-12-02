@@ -12,10 +12,16 @@ import (
 
 	vnc "github.com/matts1/vnc2video"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/kmsvnc"
 	"chromiumos/tast/testing"
 )
+
+// The worst case ratio between the amount of time required to encode a video and the video duration.
+// For example, 0.3 would mean it takes at most 0.3 seconds to encode 1 second of video.
+const encodingToVideoRatio = 0.3
+const encodingToTestDurationRatio = encodingToVideoRatio / (encodingToVideoRatio + 1)
 
 type videoConfig struct {
 	fileName        string
@@ -48,6 +54,20 @@ func RecordOnSuccess() func(*videoConfig) {
 	return func(c *videoConfig) {
 		c.recordOnSuccess = true
 	}
+}
+
+// ReserveForVNCRecordingCleanup shortens the context for vnc video encoding.
+// It calculates the amount of time required to clean up, and calls
+// ctxutil.Shorten by that amount.
+func ReserveForVNCRecordingCleanup(ctx context.Context) (context.Context, context.CancelFunc) {
+	dl, ok := ctx.Deadline()
+	if !ok {
+		return context.WithCancel(ctx)
+	}
+	timeLeft := time.Until(dl)
+	encodingTimeRequired := time.Duration(float64(timeLeft.Nanoseconds()) * encodingToTestDurationRatio)
+	// Allow 4 seconds to kill kmsvnc.
+	return ctxutil.Shorten(ctx, encodingTimeRequired+4*time.Second)
 }
 
 // RecordVNCVideo starts recording video from a VNC stream.
