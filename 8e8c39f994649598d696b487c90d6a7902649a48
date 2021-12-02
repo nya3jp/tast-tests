@@ -46,6 +46,30 @@
       },
       "revId": "8e8c39f994649598d696b487c90d6a7902649a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19e53f0b_2570f4e0",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-12-02T03:17:58Z",
+      "side": 1,
+      "message": "Using visible will be like:\n* If button is not shown \u003d\u003e Show button\n* Click\n\nBut using click will be like:\n* Click it anyways \u003d\u003e If fails and is because the button is not found \u003d\u003e Show button \u003d\u003e Click again\n\nAlthough the implementation is similar, readers might not know it until checking the codes. To me, I think the first semantic is simpler and makes more sense.\nBut not meant to block this CL. I am okay if you still prefer the second one.",
+      "parentUuid": "1a8cd676_ddb77c3d",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 804,
+        "endChar": 3
+      },
+      "revId": "8e8c39f994649598d696b487c90d6a7902649a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
