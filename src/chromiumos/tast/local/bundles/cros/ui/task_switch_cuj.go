@@ -440,6 +440,12 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 			return nil
 		}},
 		{"gmail", gmailPackageName, func(ctx context.Context) error {
+			// Dismiss the ARC compatibility mode splash from ash if any.
+			if err := cuj.DismissMobilePrompt(ctx, tconn); err != nil {
+				return errors.Wrap(err, `failed to dismiss `)
+			}
+
+			// Dismiss gmail app splashes.
 			const (
 				dialogID            = "com.google.android.gm:id/customPanel"
 				dismissID           = "com.google.android.gm:id/gm_dismiss_button"
