@@ -7,4 +7,4 @@ package updateutil
 import "time"
 
 // UpdateTimeout is the time needed to download image and install it to DUT.
-const UpdateTimeout = 15 * time.Minute
+const UpdateTimeout = 25 * time.Minute

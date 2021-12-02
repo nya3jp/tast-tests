@@ -20,7 +20,7 @@ func init() {
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 		},
-		Attr:         []string{}, // Manual execution only.
+		Attr:         []string{"group:autoupdate"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps: []string{
 			"tast.cros.autoupdate.NebraskaService",
