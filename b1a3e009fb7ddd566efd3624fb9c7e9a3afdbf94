@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd9c58ae_fc0605f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-12-02T12:29:25Z",
+      "side": 1,
+      "message": "I\u0027d really like to see confirmation of MAC address used in scan results. Something similar to ScanAndCollectPcap(), but doing ping and veryfying packets.",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cb9365_53fccd1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-12-02T12:29:25Z",
+      "side": 1,
+      "message": "For new test, shouldn\u0027t \"wificell_unstable\" be used as well?",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769d83e0_5859b73d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-12-02T12:29:25Z",
+      "side": 1,
+      "message": "You could reuse it in RandomMACAddress test.",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917c4f1f_eede1485",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-12-02T12:29:25Z",
+      "side": 1,
+      "message": "Migrate it to a separate package (wifiutil?)",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b7bf11_aef0a6ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-12-02T12:29:25Z",
+      "side": 1,
+      "message": "You can also verify the address reverts to physical after disconnection.",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
