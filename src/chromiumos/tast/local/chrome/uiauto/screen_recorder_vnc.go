@@ -12,10 +12,16 @@ import (
 
 	vnc "github.com/matts1/vnc2video"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/kmsvnc"
 	"chromiumos/tast/testing"
 )
+
+// The worst case ratio between the amount of time required to encode a video and the video duration.
+// For example, 0.3 would mean it takes at most 0.3 seconds to encode 1 second of video.
+const encodingToVideoRatio = 0.3
+const encodingToTestDurationRatio = encodingToVideoRatio / (encodingToVideoRatio + 1)
 
 type videoConfig struct {
 	fileName        string
@@ -55,13 +61,13 @@ func RecordOnSuccess() func(*videoConfig) {
 // Example usage:
 // stopRecording := RecordVNCVideo(ctx, s, RecordingFramerate(5))
 // defer stopRecording()
-func RecordVNCVideo(ctx context.Context, s testingState, mods ...func(*videoConfig)) (stopRecording func()) {
-	stopRecording, err := RecordVNCVideoCritical(ctx, s, mods...)
+func RecordVNCVideo(ctx context.Context, s testingState, mods ...func(*videoConfig)) (shortCtx context.Context, stopRecording func()) {
+	ctx, stopRecording, err := RecordVNCVideoCritical(ctx, s, mods...)
 	if err != nil {
 		testing.ContextLog(ctx, "Error while starting screen recording: ", err)
-		return func() {}
+		return ctx, func() {}
 	}
-	return stopRecording
+	return ctx, stopRecording
 }
 
 // RecordVNCVideoCritical starts recording video from a VNC stream.
@@ -75,7 +81,7 @@ func RecordVNCVideo(ctx context.Context, s testingState, mods ...func(*videoConf
 // 	handle err
 // }
 // defer stopRecording()
-func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*videoConfig)) (stopRecording func(), err error) {
+func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*videoConfig)) (shortCtx context.Context, stopRecording func(), err error) {
 	cfg := defaultConfig
 	for _, mod := range mods {
 		mod(&cfg)
@@ -83,7 +89,7 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 
 	kms, err := kmsvnc.NewKmsvnc(ctx)
 	if err != nil {
-		return nil, err
+		return ctx, nil, err
 	}
 
 	cleanups := []func(){func() {
@@ -126,7 +132,7 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 	nc, err := net.DialTimeout("tcp", "localhost:5900", 5*time.Second)
 	if err != nil {
 		cleanup()
-		return nil, err
+		return ctx, nil, err
 	}
 	// Don't add nc.Close to cleanup, since it gets owned by the vnc.Connect.
 
@@ -136,7 +142,7 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 			testing.ContextLog(ctx, "Failed to close localhost:5900: ", errCleanup)
 		}
 		cleanup()
-		return nil, errors.Wrap(err, "error connecting to vnc host")
+		return ctx, nil, errors.Wrap(err, "error connecting to vnc host")
 	}
 	cleanups = append(cleanups, func() {
 		if err := cc.Close(); err != nil {
@@ -149,7 +155,7 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 		vnc.EncTight,
 	}); err != nil {
 		cleanup()
-		return nil, err
+		return ctx, nil, err
 	}
 
 	startTime := time.Time{}
@@ -191,12 +197,24 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 	select {
 	case err := <-errorCh:
 		cleanup()
-		return nil, err
+		return ctx, nil, err
 	case <-recordingStart:
 		testing.ContextLog(ctx, "Started screen recording")
 	}
 
-	return func() {
+	dl, ok := ctx.Deadline()
+	if !ok {
+		cleanup()
+		return ctx, nil, err
+	}
+	timeLeft := time.Until(dl)
+	encodingTimeRequired := time.Duration(float64(timeLeft.Nanoseconds()) * encodingToTestDurationRatio)
+	// Allow 4 seconds to kill kmsvnc.
+	shortenedCtx, cancel := ctxutil.Shorten(ctx, encodingTimeRequired+4*time.Second)
+
+	return shortenedCtx, func() {
+		cancel()
+
 		// VNC stream is slightly behind. Allow a second to capture everything that happened since.
 		// Potential room for improvement: start encoding video before this (it's only 1 second though).
 		if err := testing.Sleep(ctx, time.Second*2); err != nil {
@@ -215,12 +233,14 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 			return
 		}
 		end := time.Now()
-		testing.ContextLogf(ctx, "starting to encode a %v video recording. This can take a while", end.Sub(startTime))
+		videoDuration := end.Sub(startTime)
+		testing.ContextLogf(ctx, "starting to encode a %v video recording. This can take a while", videoDuration)
 		canvas := image.NewRGBA(image.Rect(0, 0, int(cc.Width()), int(cc.Height())))
 		if err := createVideo(s, &enc, canvas, startTime, time.Now(), cfg); err != nil {
 			testing.ContextLog(ctx, "Failed to create video recording. Check above in the log to see if there were other video recording errors: ", err)
 		} else {
-			testing.ContextLogf(ctx, "Completed encoding %v of video in %v", end.Sub(startTime), time.Since(end))
+			encodingDuration := time.Since(end)
+			testing.ContextLogf(ctx, "Completed encoding %v of video in %v. Encoding speed ratio: %f", videoDuration, encodingDuration, float64(encodingDuration.Nanoseconds())/float64(videoDuration.Nanoseconds()))
 		}
 	}, nil
 }
