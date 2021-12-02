@@ -88,6 +88,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "856f44ea_a65a2f6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-02T07:38:19Z",
+      "side": 1,
+      "message": "Done in PS2-\u003ePS3.",
+      "parentUuid": "3e43033c_4931c7d7",
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e748871a_4b06aa2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-02T07:38:19Z",
+      "side": 1,
+      "message": "Done.\n\n(Let me know if you think we also need to add the same to old chrome/ui library as well)",
+      "parentUuid": "22709373_1af9966a",
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6532b5ca_a257569e",
@@ -101,6 +137,30 @@
       "writtenOn": "2021-12-01T10:43:20Z",
       "side": 1,
       "message": "is there a reason why you use defer here? could you add a comment to justify it?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "809608311f632e9f95cf26141e73c98d3a2c2d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb12e2c_346b90b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/a11y/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-02T07:38:19Z",
+      "side": 1,
+      "message": "I guess that this ensures that all resources are released even when n.Release encounters a fatal error. Because I\u0027m not the original author of this code, I\u0027m not fully sure...\n\nDefer is used here since this code was added:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2021163/2/src/chromiumos/tast/local/chrome/ui/automation.go#143",
+      "parentUuid": "6532b5ca_a257569e",
       "range": {
         "startLine": 122,
         "startChar": 2,
