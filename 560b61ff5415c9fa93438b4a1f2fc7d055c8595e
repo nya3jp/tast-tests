@@ -16,6 +16,23 @@
       "message": "Hidehiko, PTAL. If the overall idea makes sense for you, I can proceed further working on this.",
       "revId": "560b61ff5415c9fa93438b4a1f2fc7d055c8595e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "113ccb36_f6d4d2d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-12-02T03:11:28Z",
+      "side": 1,
+      "message": "JFYI I am submitting this refactor which likely does what you want w.r.t launcher package: https://crrev.com/c/3308580",
+      "revId": "560b61ff5415c9fa93438b4a1f2fc7d055c8595e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
