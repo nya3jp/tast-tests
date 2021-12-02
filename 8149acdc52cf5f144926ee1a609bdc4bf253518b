@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "339e7a3a_28fc3f8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:25:07Z",
+      "side": 1,
+      "message": "one meta reply before moving forward.\nplease let me know how you\u0027d like to proceed, than I\u0027ll continue to review.",
+      "revId": "8149acdc52cf5f144926ee1a609bdc4bf253518b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

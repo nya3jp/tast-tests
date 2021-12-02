@@ -334,6 +334,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3293826_de25efc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-02T14:25:07Z",
+      "side": 1,
+      "message": "Re: Jason\n\nI\u0027m happy to focus on some specific issue in one CL. And others can be done in another CL, as long as the new code works/is written well.\nI.e., e.g., if there is another blocking issue that is difficult to solve in very short time, and testing.Sleep is technically only way to workaround, I\u0027m ok to add it with TODO. Though, if testing.Sleep is put here just because it looks like short hand, it\u0027s not acceptable.\n\nAll other parts I commented is something like same.\n\nHowever, everytime I take a look this CL, the code updated by this CL looks largely reworked. So, from my perspective, this CL looks not very focused on a specific issue for now.\nIf there\u0027s a priority focused goal, could you make a minimum CL addressing that? I\u0027m happy to help in that path, too.\n\nI\u0027m also ok to continue this style of iterations, but I would expect this would take very long time, then.",
+      "parentUuid": "dc7c797d_224cac50",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
