@@ -1,25 +1,17 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
 package wifi
 
 import (
-	"bytes"
 	"context"
-	"time"
+	"net"
 
-	"github.com/golang/protobuf/ptypes/empty"
-	"github.com/google/gopacket"
-	"github.com/google/gopacket/layers"
-
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/network/ip"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/remote/wificell/pcap"
-	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -75,84 +67,6 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get MAC of WiFi interface: ", err)
 	}
 
-	testOnce := func(ctx context.Context, s *testing.State, name string, enabled bool) {
-		resp, err := tf.WifiClient().SetMACRandomize(ctx, &wifi.SetMACRandomizeRequest{Enable: enabled})
-		if err != nil {
-			s.Fatalf("Failed to set MAC randomization to %t: %v", enabled, err)
-		}
-		// Always restore the setting on leaving.
-		defer func(ctx context.Context, restore bool) {
-			if _, err := tf.WifiClient().SetMACRandomize(ctx, &wifi.SetMACRandomizeRequest{Enable: restore}); err != nil {
-				s.Errorf("Failed to restore MAC randomization setting back to %t: %v", restore, err)
-			}
-		}(ctx, resp.OldSetting)
-		ctx, cancel := ctxutil.Shorten(ctx, time.Second)
-		defer cancel()
-
-		// Wait current scan to be done if available to avoid possible scan started
-		// before our setting.
-		if _, err := tf.WifiClient().WaitScanIdle(ctx, &empty.Empty{}); err != nil {
-			s.Fatal("Failed to wait for current scan to be done: ", err)
-		}
-
-		timeoutCtx, cancel := context.WithTimeout(ctx, 60*time.Second)
-		defer cancel()
-		pcapPath, err := wifiutil.ScanAndCollectPcap(timeoutCtx, tf, name, 5, ap.Config().Channel)
-		if err != nil {
-			s.Fatal("Failed to collect pcap: ", err)
-		}
-
-		s.Log("Start analyzing pcap")
-		filters := []pcap.Filter{
-			pcap.RejectLowSignal(),
-			pcap.Dot11FCSValid(),
-			pcap.TypeFilter(
-				layers.LayerTypeDot11MgmtProbeReq,
-				func(layer gopacket.Layer) bool {
-					ssid, err := pcap.ParseProbeReqSSID(layer.(*layers.Dot11MgmtProbeReq))
-					if err != nil {
-						s.Logf("skip malformed probe request %v: %v", layer, err)
-						return false
-					}
-					// Take the ones with wildcard SSID or SSID of the AP.
-					if ssid == "" || ssid == ap.Config().SSID {
-						return true
-					}
-					return false
-				},
-			),
-		}
-		packets, err := pcap.ReadPackets(pcapPath, filters...)
-		if err != nil {
-			s.Fatal("Failed to read packets: ", err)
-		}
-		if len(packets) == 0 {
-			s.Fatal("No probe request found in pcap")
-		}
-		s.Logf("Total %d probe requests found", len(packets))
-
-		for _, p := range packets {
-			// Get sender address.
-			layer := p.Layer(layers.LayerTypeDot11)
-			if layer == nil {
-				s.Fatalf("ProbeReq packet %v does not have Dot11 layer", p)
-			}
-			dot11, ok := layer.(*layers.Dot11)
-			if !ok {
-				s.Fatalf("Dot11 layer output %v not *layers.Dot11", p)
-			}
-			sender := dot11.Address2
-
-			// Verify sender address.
-			sameAddr := bytes.Equal(sender, mac)
-			if enabled && sameAddr {
-				s.Fatal("Expect randomized MAC but found probe request with hardware MAC")
-			} else if !enabled && !sameAddr {
-				s.Fatal("Expect non-randomized MAC but found probe request with non-hardware MAC. Note that this is expected to fail in open-air environments")
-			}
-		}
-	}
-
 	// Test both enabled and disabled cases.
 	testcases := []struct {
 		name    string
@@ -170,7 +84,10 @@ func RandomMACAddress(ctx context.Context, s *testing.State) {
 
 	for _, tc := range testcases {
 		if !s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc.name, tc.enabled)
+			err := wifiutil.VerifyMACUsedForScan(ctx, tf, ap, tc.name, tc.enabled, []net.HardwareAddr{mac})
+			if err != nil {
+				s.Fatal("Subtest failed: ", err)
+			}
 		}) {
 			// Stop if any of the testcase failed.
 			return
