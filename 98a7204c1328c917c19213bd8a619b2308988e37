@@ -16,6 +16,201 @@
       "message": "Added params to the existing script and updated script name.\nWorked on given comments and are fixed in updated script.",
       "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48aa86ae_3c59618a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "a few more nits",
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f648c9_a797cdc6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "huge nit: if there is just one \"var\", you can remove the ( ).. e.g:\n\n  var c10PkgPatter \u003d ...\n  \nin fact, I think you can just do this:\n\n  c10PkgPatter :\u003d regexp.MustCompile(...)",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600006d2_cc4a4c87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "consistency: compare L70 with L80.\n\n\n   // L70\n   c10PkgPattern :\u003d regexp.MustCompile(...)\n   // L80\n   re :\u003d regexp.MustCompile(...)\n   \nPerhaps they can be called:\n\n   reC10 :\u003d\n   reTableAngle :\u003d\n   \n(or something like that... just be consistent with the nomenclature)",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 15
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e1df9ac_88421e0a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "nit: PowerdConfigCmd -\u003e powerdConfigCmd (lowercase first letter, since this is not a public const)",
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a95e052_a85db6cf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "nit: Run(ssh.DumpLogOnError)",
+      "range": {
+        "startLine": 129,
+        "startChar": 132,
+        "endLine": 129,
+        "endChar": 133
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f182bec_8a38e216",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "nit, ditto: Output(ssh.DumpLogOnError)",
+      "range": {
+        "startLine": 148,
+        "startChar": 89,
+        "endLine": 148,
+        "endChar": 90
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58815350_afaa96d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "nit: does it work if you remove the \"(\" + \")\" from c10PkgPattern",
+      "range": {
+        "startLine": 168,
+        "startChar": 30,
+        "endLine": 168,
+        "endChar": 31
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0718b41e_a5b7decb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "nit: in go, the way to reports errors is:  \"... got: XXX;  want: YYY\".\n\ne.g:\n   \n     \"Unexpected SLP value, got: %d, want: non-zero\"",
+      "range": {
+        "startLine": 229,
+        "startChar": 41,
+        "endLine": 229,
+        "endChar": 63
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed25dd57_213d64d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-02T21:47:00Z",
+      "side": 1,
+      "message": "nit: ssh.DumpLogOnError",
+      "range": {
+        "startLine": 257,
+        "startChar": 67,
+        "endLine": 257,
+        "endChar": 68
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
