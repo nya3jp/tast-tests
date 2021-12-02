@@ -63,7 +63,12 @@ func Pin(ctx context.Context, s *testing.State) {
 		var tconn *chrome.TestConn
 		if oobeEnroll {
 			cr, err = chrome.New(ctx,
-				chrome.ExtraArgs("--force-tablet-mode=touch_view", "--vmodule=wizard_controller=1"),
+				chrome.ExtraArgs(
+					// Force pin screen during OOBE
+					"--force-tablet-mode=touch_view",
+					"--vmodule=wizard_controller=1",
+					// Disable VK so it does not get in the way of the pin pad.
+					"--disable-virtual-keyboard"),
 				chrome.DontSkipOOBEAfterLogin())
 
 			if err != nil {
@@ -116,7 +121,8 @@ func Pin(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 		} else {
 			// Setup pin from the settings.
-			cr, err = chrome.New(ctx)
+			// Disable VK so it does not get in the way of the pin pad.
+			cr, err = chrome.New(ctx, chrome.ExtraArgs("--disable-virtual-keyboard"))
 			if err != nil {
 				s.Fatal("Chrome login failed: ", err)
 			}
