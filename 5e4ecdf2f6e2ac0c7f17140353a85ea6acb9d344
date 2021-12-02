@@ -50,6 +50,52 @@
       "message": "shadow reviewer lgtm",
       "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3089912_8a1e1960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-02T22:59:17Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e8a09d9_a78601c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-02T22:59:17Z",
+      "side": 1,
+      "message": "No matter the device is in clamshell or tablet, virtual keyboard is disabled by default.So I think this is not necessary. Hope I remember it correctly.\n\nBtw, it does not make sense to test in tablet mode without virtual keyboard, it is not a valid scenario I believe.",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
