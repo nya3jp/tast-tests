@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -317,15 +318,18 @@ func (vkbCtx *VirtualKeyboardContext) ShowAccessPoints() uiauto.Action {
 }
 
 // SetFloatingMode returns an action changing the virtual keyboard to floating/dock layout.
-func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enabled bool) uiauto.Action {
+func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(uc *useractions.UserContext, enabled bool) *useractions.UserAction {
 	var switchMode uiauto.Action
+	var actionName string
 	if enabled {
+		actionName = "Switch VK to floating mode"
 		flipButtonFinder := KeyFinder.Name("make virtual keyboard movable")
 		switchMode = vkbCtx.ui.IfSuccessThen(
 			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
 			vkbCtx.ui.LeftClickUntil(flipButtonFinder, vkbCtx.ui.WithTimeout(10*time.Second).WaitUntilExists(DragPointFinder)),
 		)
 	} else {
+		actionName = "Switch VK to dock mode"
 		flipButtonFinder := KeyFinder.Name("dock virtual keyboard")
 		switchMode = vkbCtx.ui.IfSuccessThen(
 			vkbCtx.ui.WithTimeout(5*time.Second).WaitUntilExists(flipButtonFinder),
@@ -333,9 +337,25 @@ func (vkbCtx *VirtualKeyboardContext) SetFloatingMode(enabled bool) uiauto.Actio
 		)
 	}
 
-	return uiauto.Combine("switch VK mode",
-		vkbCtx.ShowAccessPoints(),
-		switchMode,
+	return useractions.NewUserAction(
+		actionName,
+		uiauto.Combine("switch VK mode",
+			vkbCtx.ShowAccessPoints(),
+			switchMode,
+		),
+		uc,
+		&useractions.UserActionCfg{
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagSwitchFloatVK,
+				useractions.ActionTagEssentialInputs,
+			},
+			Callback: func(ctx context.Context, actionError error) error {
+				if actionError == nil {
+					uc.SetAttribute(useractions.AttributeFloatVK, strconv.FormatBool(enabled))
+				}
+				return nil
+			},
+		},
 	)
 }
 

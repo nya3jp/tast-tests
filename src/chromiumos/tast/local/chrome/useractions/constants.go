@@ -40,6 +40,7 @@ type ActionTag string
 // Action tags to indicate interested products / teams.
 const (
 	ActionTagEssentialInputs ActionTag = "EssentialInputs"
+	ActionTagARC             ActionTag = "ARC++"
 )
 
 // Action tags to indicate components of the user action.
@@ -63,6 +64,7 @@ const (
 	ActionTagVKTyping        ActionTag = "VKTyping"
 	ActionTagVKVoiceInput    ActionTag = "VKVoiceInput"
 	ActionTagVKHandWriting   ActionTag = "VKHandWriting"
+	ActionTagSwitchFloatVK   ActionTag = "SwitchFloatVK"
 	ActionTagGlideTyping     ActionTag = "GlideTyping"
 	ActionTagEmoji           ActionTag = "Emoji"
 	ActionTagEmojiPicker     ActionTag = "EmojiPicker"

@@ -10,12 +10,14 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -47,6 +49,7 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, s.TestName())
 
@@ -56,48 +59,51 @@ func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show the virtual keyboard: ", err)
 	}
 
-	if err := vkbCtx.SetFloatingMode(true)(ctx); err != nil {
+	if err := vkbCtx.SetFloatingMode(uc, true).Run(ctx); err != nil {
 		s.Fatal("Failed to set VK to floating mode: ", err)
 	}
 
-	kconn, err := vkbCtx.UIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create connection to virtual keyboard UI: ", err)
+	validateDragVKAction := func(ctx context.Context) error {
+		// Get current center point of drag button.
+		dragLoc, err := uiauto.New(tconn).Location(ctx, vkb.DragPointFinder)
+		if err != nil {
+			return errors.Wrap(err, "failed to find drag point")
+		}
+		dragPoint := dragLoc.CenterPoint()
+
+		// Drag float vk to new position.
+		destinationPoint := coords.NewPoint(dragPoint.X-100, dragPoint.Y-100)
+		if err := mouse.Drag(tconn, dragPoint, destinationPoint, time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag float window")
+		}
+
+		// Get new center point of drag button.
+		newDragLoc, err := uiauto.New(tconn).Location(ctx, vkb.DragPointFinder)
+		if err != nil {
+			return errors.Wrap(err, "failed to find drag point")
+		}
+		newDragPoint := newDragLoc.CenterPoint()
+
+		// When dragging the virtual keyboard to a given location, the actual location it lands on can be slightly different.
+		// e.g. When dragging the virtual keyboard to (1016,762), it can end up at (1015, 762).
+		if math.Abs(float64(newDragPoint.X-destinationPoint.X)) > 3 || math.Abs(float64(newDragPoint.Y-destinationPoint.Y)) > 3 {
+			return errors.Wrapf(err, "failed to drag float VK or it did not land at desired location. got: %v, want: %v", newDragPoint, destinationPoint)
+		}
+
+		// Wait for resize handler to be shown.
+		resizeHandleFinder := vkb.NodeFinder.Name("resize keyboard, double tap then drag to resize the keyboard").Role(role.Button)
+
+		// Resizing float vk on some boards are flaky.
+		// Thus only check the handler is shown.
+		return uiauto.New(tconn).WaitUntilExists(resizeHandleFinder.First())(ctx)
 	}
-	defer kconn.Close()
 
-	// Get current center point of drag button.
-	dragLoc, err := uiauto.New(tconn).Location(ctx, vkb.DragPointFinder)
-	if err != nil {
-		s.Fatal("Failed to find drag point: ", err)
-	}
-	dragPoint := dragLoc.CenterPoint()
-
-	// Drag float vk to new position.
-	destinationPoint := coords.NewPoint(dragPoint.X-100, dragPoint.Y-100)
-	if err := mouse.Drag(tconn, dragPoint, destinationPoint, time.Second)(ctx); err != nil {
-		s.Fatal("Failed to drag float window: ", err)
-	}
-
-	// Get new center point of drag button.
-	newDragLoc, err := uiauto.New(tconn).Location(ctx, vkb.DragPointFinder)
-	if err != nil {
-		s.Fatal("Failed to find drag point: ", err)
-	}
-	newDragPoint := newDragLoc.CenterPoint()
-
-	// When dragging the virtual keyboard to a given location, the actual location it lands on can be slightly different.
-	// e.g. When dragging the virtual keyboard to (1016,762), it can end up at (1015, 762).
-	if math.Abs(float64(newDragPoint.X-destinationPoint.X)) > 3 || math.Abs(float64(newDragPoint.Y-destinationPoint.Y)) > 3 {
-		s.Fatalf("Failed to drag float VK or it did not land at desired location. got: %v, want: %v", newDragPoint, destinationPoint)
-	}
-
-	// Wait for resize handler to be shown.
-	resizeHandleFinder := vkb.NodeFinder.Name("resize keyboard, double tap then drag to resize the keyboard").Role(role.Button)
-
-	// Resizing float vk on some boards are flaky.
-	// Thus only check the handler is shown.
-	if err := uiauto.New(tconn).WaitUntilExists(resizeHandleFinder.First())(ctx); err != nil {
-		s.Fatal("Failed to wait for resize handler to be shown: ", err)
+	if err := useractions.NewUserAction(
+		"Drag floating VK",
+		validateDragVKAction,
+		uc,
+		nil,
+	).Run(ctx); err != nil {
+		s.Fatal("Failed to validate dragging floating VK: ", err)
 	}
 }

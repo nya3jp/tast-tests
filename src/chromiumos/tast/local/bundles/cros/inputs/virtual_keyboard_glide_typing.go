@@ -112,7 +112,7 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 	setFloatVK := func(ctx context.Context) error {
 		if !isFloatLayout && shouldFloatLayout {
 			isFloatLayout = true
-			return vkbCtx.SetFloatingMode(true)(ctx)
+			return vkbCtx.SetFloatingMode(uc, true).Run(ctx)
 		}
 		return nil
 	}
