@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8b70f7_f6b9e5a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-02T21:26:55Z",
+      "side": 1,
+      "message": "will crrev.com/c/3287986 be merged too?",
+      "revId": "f3a273c424a4411934152b800f6179c9b2a0f366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
