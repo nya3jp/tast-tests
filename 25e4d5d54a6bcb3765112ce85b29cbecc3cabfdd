@@ -16,6 +16,23 @@
       "message": "Thank you for the quick fix!",
       "revId": "25e4d5d54a6bcb3765112ce85b29cbecc3cabfdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b016b48_29cfc130",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501332
+      },
+      "writtenOn": "2021-12-02T16:25:59Z",
+      "side": 1,
+      "message": "This fix is needed to address http://b/208662421 as well.",
+      "revId": "25e4d5d54a6bcb3765112ce85b29cbecc3cabfdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
