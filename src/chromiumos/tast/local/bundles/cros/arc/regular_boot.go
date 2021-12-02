@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/bundles/cros/arc/perfboot"
@@ -169,36 +168,37 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to create test connection")
 	}
-
-	testing.ContextLog(ctx, "Starting Play Store window deferred")
-	if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to launch Play Store")
-	}
-
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
-		return 0, 0, errors.Wrap(err, "failed to wait Play Store shown")
-	}
-
-	delay, err := readFirstAppLaunchHistogram(ctx, tconn, "Arc.FirstAppLaunchDelay.TimeDelta")
-	if err != nil {
-		return 0, 0, err
-	}
-
-	request, err := readFirstAppLaunchHistogram(ctx, tconn, "Arc.FirstAppLaunchRequest.TimeDelta")
-	if err != nil {
-		return 0, 0, err
-	}
-
 	a, err := arc.New(ctx, testDir)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to connect to ARC")
 	}
+	/*
+		testing.ContextLog(ctx, "Starting Play Store window deferred")
+		if err := apps.Launch(ctx, tconn, apps.PlayStore.ID); err != nil {
+			return 0, 0, errors.Wrap(err, "failed to launch Play Store")
+		}
+
+		if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
+			return 0, 0, errors.Wrap(err, "failed to wait Play Store shown")
+		}
+
+		delay, err := readFirstAppLaunchHistogram(ctx, tconn, "Arc.FirstAppLaunchDelay.TimeDelta")
+		if err != nil {
+			return 0, 0, err
+		}
+
+		request, err := readFirstAppLaunchHistogram(ctx, tconn, "Arc.FirstAppLaunchRequest.TimeDelta")
+		if err != nil {
+			return 0, 0, err
+		}
+	*/
 	p, err := perfboot.GetPerfValues(ctx, tconn, a)
 	if err != nil {
 		return 0, 0, errors.Wrap(err, "failed to extract ARC boot metrics")
 	}
 
-	return request + delay, p["boot_progress_enable_screen"], nil
+	//return request + delay, p["boot_progress_enable_screen"], nil
+	return 0, p["boot_progress_enable_screen"], nil
 }
 
 //readFirstAppLaunchHistogram reads histogram and converts it to Duration.
