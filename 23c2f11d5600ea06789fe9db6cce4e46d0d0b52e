@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9932feec_7ed5af7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-02T00:54:28Z",
+      "side": 1,
+      "message": "- Doesn\u0027t compile.\n- Doesn\u0027t pass repo upload hooks.\n\nPlease read the Chromium OS contributing guide.\nhttps://chromium.googlesource.com/chromiumos/docs/+/main/contributing.md\n\nThanks.\n",
+      "revId": "23c2f11d5600ea06789fe9db6cce4e46d0d0b52e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5240ca9_ff713290",
         "filename": "src/chromiumos/tast/common/servo/proxy.go",
         "patchSetId": 2
