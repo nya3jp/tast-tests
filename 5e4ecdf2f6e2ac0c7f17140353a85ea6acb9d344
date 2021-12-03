@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2561711c_179035d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-03T11:11:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3089912_8a1e1960",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e8a09d9_a78601c6",
@@ -136,6 +160,30 @@
       "side": 1,
       "message": "Ack. But I believe it should be a bug to fix rather than simply hide in test.",
       "parentUuid": "03ffc9a8_e22b7cdf",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd18df5_a376bb62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-03T11:11:05Z",
+      "side": 1,
+      "message": "Good point. Thomas, fyi - I think this is related to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1235279#c9",
+      "parentUuid": "3876c118_6396a78b",
       "range": {
         "startLine": 70,
         "startChar": 5,
