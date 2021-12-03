@@ -16,6 +16,24 @@
       "message": "I don\u0027t think it\u0027s useful to have bullseye and buster for this test. Drop one, halve the runtime? Possibly it\u0027s useful to test both stretch and buster as source versions (once we start rolling out bullseye) but that can be a separate thing.",
       "revId": "113fd0ec962222691ca90887c0ca7c0e4a7d9945",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e944fef2_4c376d0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-12-03T03:29:12Z",
+      "side": 1,
+      "message": "Thanks David - really good point, and the params are now generated for minimalSet only.",
+      "parentUuid": "961bcc36_a7e53a61",
+      "revId": "113fd0ec962222691ca90887c0ca7c0e4a7d9945",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
