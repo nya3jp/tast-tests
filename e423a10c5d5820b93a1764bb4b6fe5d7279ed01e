@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9c00b8_6f2f9cb6",
+        "filename": "src/chromiumos/tast/remote/firmware/bringup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-03T23:54:59Z",
+      "side": 1,
+      "message": "Nit line length.  I use the \"Rewrap\" VSCode extension to add hard line wraps to markdown docs.  You have to be careful to only highlight the plain text, and not the code snippets.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 143
+      },
+      "revId": "e423a10c5d5820b93a1764bb4b6fe5d7279ed01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a1b169_054db218",
+        "filename": "src/chromiumos/tast/remote/firmware/bringup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-03T23:54:59Z",
+      "side": 1,
+      "message": "\u003e \"useable\" is a possible misspelling of \"usable\".\n\nPlease fix.",
+      "parentUuid": "2ead7eb6_37659b32",
+      "range": {
+        "startLine": 71,
+        "startChar": 60,
+        "endLine": 71,
+        "endChar": 67
+      },
+      "revId": "e423a10c5d5820b93a1764bb4b6fe5d7279ed01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
