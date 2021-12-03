@@ -293,6 +293,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "350b2acb_2cbd1905",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-03T15:51:33Z",
+      "side": 1,
+      "message": "(not resolved yet)",
+      "parentUuid": "39dc1106_6f3f8908",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d456949_c21ab222",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -322,6 +346,24 @@
       "side": 1,
       "message": "Ack.  Which address was used in probes is valuable.",
       "parentUuid": "8d456949_c21ab222",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f36248_97e80ee8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-03T15:51:33Z",
+      "side": 1,
+      "message": "WDY mean? looks not fixed?",
+      "parentUuid": "61d2660c_9c55f763",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -380,6 +422,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9a658cd_8cc70781",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-03T15:51:33Z",
+      "side": 1,
+      "message": "Dump the address here will add the values in error snippets in the system.\nSo, it can help triaging the issues, I think.\n\nI\u0027d reduce the priority of this to (optional), as at least all the necessary data is dumped already.",
+      "parentUuid": "7bb92d7d_69c76699",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5a76c00_b286e0fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -415,6 +475,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "c5a76c00_b286e0fe",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d171d4ee_f491aab8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-03T15:51:33Z",
+      "side": 1,
+      "message": "(not fixed)",
+      "parentUuid": "a729a42b_41eeb846",
       "range": {
         "startLine": 181,
         "startChar": 1,
