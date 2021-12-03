@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14269c37_1867ad2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-03T02:52:52Z",
+      "side": 1,
+      "message": "Right, the code above is what I meant.\n\n1, it is similar to how `shorten` is used:\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\nwhile another subtitute is used to avoid explicitly specifying the duration.\n\nI wouldn\u0027t worry too much about people doing something wrong, as far as I can tell, the test-writers are more and more familiar with how reserving time for cleanup works (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task) in CLs I have reviewed. Pluse, we have tast reviews to help them, also the example usage in the comment.\n\n2, As mentioned, it does exactly the same thing, but breaks down into two parts (but more cohesive).\n\n3, It might be better to give the users a clear signal that recording needs extra time for cleaning up, which can help them better decide the timeout for their test (nowadays, the test writers are encouraged to explicitly specify the test timeout, https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#:~:text\u003dTests%20should%20always%20set%20the%20Timeout%20field).\n\n`ctx, stopRecording :\u003d uiauto.RecordVNCVideo(ctx, s)` doesn\u0027t tell much about this. We should not let them decide how long it takes to clean up, but we should tell them the cleanup time is being reserved.",
+      "parentUuid": "0d4d9efa_4ec850d3",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "10ea9940d3e6b5bf97e47dbc68ec7d20f0aa9145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66fe4b38_d3f5034e",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
         "patchSetId": 1
