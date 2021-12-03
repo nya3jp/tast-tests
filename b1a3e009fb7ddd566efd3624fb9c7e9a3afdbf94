@@ -104,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "212f6abf_7133d055",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T12:23:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "16cb9365_53fccd1f",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "769d83e0_5859b73d",
@@ -167,6 +185,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f516b22_0983f150",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T12:23:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "917c4f1f_eede1485",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf8367d1_047934e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T12:23:29Z",
+      "side": 1,
+      "message": "OK. Will take a look at moving it to utils and reusing in RandomMACAddress and here.",
+      "parentUuid": "769d83e0_5859b73d",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72da8f63_57435a0b",
@@ -207,6 +267,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39dc1106_6f3f8908",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T12:23:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e27132e_4a386bbe",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d456949_c21ab222",
@@ -220,6 +304,24 @@
       "writtenOn": "2021-12-02T14:51:03Z",
       "side": 1,
       "message": "could you dump the data on error?",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d2660c_9c55f763",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T12:23:29Z",
+      "side": 1,
+      "message": "Ack.  Which address was used in probes is valuable.",
+      "parentUuid": "8d456949_c21ab222",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -260,6 +362,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bb92d7d_69c76699",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T12:23:29Z",
+      "side": 1,
+      "message": "All MACs are logged unconditionally now.  Do you want to repeat them here also, or would you prefer to add them here and remove others.",
+      "parentUuid": "0e514e41_9cfe4f07",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5a76c00_b286e0fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -271,6 +391,30 @@
       "writtenOn": "2021-12-02T14:51:03Z",
       "side": 1,
       "message": "style:\nif err :\u003d tf.DisconnectWifi(ctx); err !\u003d nil {\n  ...\n  \n  ditto for below.",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a729a42b_41eeb846",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T12:23:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5a76c00_b286e0fe",
       "range": {
         "startLine": 181,
         "startChar": 1,
@@ -453,6 +597,24 @@
       "writtenOn": "2021-12-02T12:29:25Z",
       "side": 1,
       "message": "You can also verify the address reverts to physical after disconnection.",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d9835a_a54e4b53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T12:23:29Z",
+      "side": 1,
+      "message": "I don\u0027t think this will happen.  There is a change of MAC on connection (so the correct one is used for given service) but there is no reverting to previous state.\n\nWhat can be done is a configuration of another service with Hardware policy and checking that it indeed is reverted.",
+      "parentUuid": "a9b7bf11_aef0a6ae",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
