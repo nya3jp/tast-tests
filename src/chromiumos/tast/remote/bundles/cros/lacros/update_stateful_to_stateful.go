@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	lacroscommon "chromiumos/tast/common/cros/lacros"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bundles/cros/lacros/provision"
 	"chromiumos/tast/remote/bundles/cros/lacros/update"
@@ -17,21 +18,53 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type updatePath struct {
+	channel string
+	skew    version.Version // version skew from rootfs-lacros
+}
+
+// Update path on the same lacros (dev-)channel. Provision will go in order from top to bottom.
+var pathUpdateOnSameChannel = []updatePath{
+	{lacroscommon.LacrosDevComponent, version.New(0, 1, 0, 0)}, // +0 major +1 minor from rootfs-lacros
+	{lacroscommon.LacrosDevComponent, version.New(1, 0, 0, 0)}, // +1 major +0 minor
+	{lacroscommon.LacrosDevComponent, version.New(2, 0, 0, 0)}, // +2 major
+}
+
+// Upgrade path when switching from dev to canary.
+var pathUpgradeChannel = []updatePath{
+	{lacroscommon.LacrosDevComponent, version.New(0, 1, 0, 0)},    // +0 major +1 minor on dev-channel
+	{lacroscommon.LacrosCanaryComponent, version.New(1, 0, 0, 0)}, // +1 major +0 minor on canary-channel
+}
+
+// Downgrade path when switching from canary to dev.
+var pathDowngradeChannel = []updatePath{
+	{lacroscommon.LacrosCanaryComponent, version.New(1, 0, 0, 0)}, // +1 major +0 minor on canary-channel
+	{lacroscommon.LacrosDevComponent, version.New(0, 1, 0, 0)},    // +0 major +1 minor on dev-channel
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UpdateStatefulToStateful,
-		Desc:         "Tests that the newest Stateful Lacros is selected when there are more than one Stateful Lacros installed. This can also test version skew policy in Ash by provisioning any major version skews",
+		Desc:         "Tests that a newer Stateful Lacros is always selected when there are more than one Stateful Lacros installed on the same channel or across multiple channels",
 		Contacts:     []string{"hyungtaekim@chromium.org", "lacros-team@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		ServiceDeps:  []string{"tast.cros.lacros.UpdateTestService"},
-		// lacrosComponent is a runtime var to specify a name of the component which Lacros is provisioned to.
-		Vars: []string{"lacrosComponent"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"lacros_stable"},
+			Val:               pathUpdateOnSameChannel,
 		}, {
 			Name:              "unstable",
 			ExtraSoftwareDeps: []string{"lacros_unstable"},
+			Val:               pathUpdateOnSameChannel,
+		}, {
+			Name:              "channel_upgrade",
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+			Val:               pathUpgradeChannel,
+		}, {
+			Name:              "channel_downgrade",
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+			Val:               pathDowngradeChannel,
 		}},
 		Timeout: 5 * time.Minute,
 	})
@@ -47,8 +80,8 @@ func UpdateStatefulToStateful(ctx context.Context, s *testing.State) {
 	utsClient := lacrosservice.NewUpdateTestServiceClient(conn.Conn)
 
 	// The versions of Stateful Lacros.
-	// Used to verify the update path of Stateful => Stateful in ascending order on the same channel.
-	// Each version should be newer than Rootfs Lacros, but not over the maximum version skew of ({Ash or Rootfs} + 2 major).
+	// Used to verify the update path of Stateful => Stateful (1) on the same channel and (2) when switching channels.
+	// Each version should be newer than Rootfs Lacros, but not over the maximum version skew of (Ash + 2 major).
 	rootfsLacrosVersion, err := update.GetRootfsLacrosVersion(ctx, s.DUT(), utsClient)
 	if err != nil {
 		s.Fatal("Failed to get the Rootfs Lacros version: ", err)
@@ -58,18 +91,6 @@ func UpdateStatefulToStateful(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the Ash version: ", err)
 	}
 	baseVersion := rootfsLacrosVersion
-	// TODO(crbug.com/1258138): Use a supported version skew, instead of +9000 major.
-	statefulLacrosVersions := []version.Version{
-		baseVersion.Increment(0, 1, 0, 0),    // +0 major +1 minor
-		baseVersion.Increment(1, 0, 0, 0),    // +1 major
-		baseVersion.Increment(9000, 0, 0, 0), // +9000 major
-	}
-
-	// Get the component to override from the runtime var. Defaults to Lacros dev channel.
-	overrideComponent, err := update.LacrosComponentVar(s)
-	if err != nil {
-		s.Fatal("Failed to get Lacros component: ", err)
-	}
 
 	// Deferred cleanup to always reset to the previous state with no provisioned files.
 	ctxForCleanup := ctx
@@ -82,24 +103,27 @@ func UpdateStatefulToStateful(ctx context.Context, s *testing.State) {
 		}
 	}(ctxForCleanup)
 
-	// Verify the update from Stateful => Stateful.
-	for _, overrideVersion := range statefulLacrosVersions {
+	// Verify the updates from Stateful => Stateful.
+	for _, updateInfo := range s.Param().([]updatePath) {
+		statefulLacrosVersion := baseVersion.Increment(updateInfo.skew.Major(), updateInfo.skew.Minor(), updateInfo.skew.Build(), updateInfo.skew.Patch())
+		overrideComponent := updateInfo.channel
+
 		// TODO(hyungtaekim): Consider a helper function to check versions for all tests.
-		if !overrideVersion.IsValid() {
-			s.Fatal("Invalid Stateful Lacros version: ", overrideVersion)
-		} else if !overrideVersion.IsNewerThan(rootfsLacrosVersion) {
-			s.Fatalf("Invalid Stateful Lacros version: %v, should not be older than Rootfs: %v", overrideVersion, rootfsLacrosVersion)
-		} else if !overrideVersion.IsSkewValid(ashVersion) {
-			s.Fatalf("Invalid Stateful Lacros version: %v, should be compatible with Ash: %v", overrideVersion, ashVersion)
+		if !statefulLacrosVersion.IsValid() {
+			s.Fatal("Invalid Stateful Lacros version: ", statefulLacrosVersion)
+		} else if !statefulLacrosVersion.IsNewerThan(rootfsLacrosVersion) {
+			s.Fatalf("Invalid Stateful Lacros version: %v, should not be older than Rootfs: %v", statefulLacrosVersion, rootfsLacrosVersion)
+		} else if !statefulLacrosVersion.IsSkewValid(ashVersion) {
+			s.Fatalf("Invalid Stateful Lacros version: %v, should be compatible with Ash: %v", statefulLacrosVersion, ashVersion)
 		}
 
 		// Provision Stateful Lacros from the Rootfs Lacros image file with the simulated version and component.
-		if err := update.ProvisionLacrosFromRootfsLacrosImagePath(ctx, provision.TLSAddrVar.Value(), s.DUT(), overrideVersion.GetString(), overrideComponent); err != nil {
+		if err := update.ProvisionLacrosFromRootfsLacrosImagePath(ctx, provision.TLSAddrVar.Value(), s.DUT(), statefulLacrosVersion.GetString(), overrideComponent); err != nil {
 			s.Fatal("Failed to provision Stateful Lacros from Rootfs image source: ", err)
 		}
 
 		// Verify that the expected Stateful Lacros version/component is selected.
-		if err := update.VerifyLacrosUpdate(ctx, lacrosservice.BrowserType_LACROS_STATEFUL, overrideVersion.GetString(), overrideComponent, utsClient); err != nil {
+		if err := update.VerifyLacrosUpdate(ctx, lacrosservice.BrowserType_LACROS_STATEFUL, statefulLacrosVersion.GetString(), overrideComponent, utsClient); err != nil {
 			s.Fatal("Failed to verify provisioned Lacros version: ", err)
 		}
 	}

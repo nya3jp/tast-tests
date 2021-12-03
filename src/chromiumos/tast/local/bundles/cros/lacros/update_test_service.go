@@ -54,7 +54,7 @@ type UpdateTestService struct {
 // VerifyUpdate checks if the expected version of Lacros is loaded successfully without crash given the browsers provisioned.
 func (uts *UpdateTestService) VerifyUpdate(ctx context.Context, req *lacrosservice.VerifyUpdateRequest) (*lacrosservice.VerifyUpdateResponse, error) {
 	// Setup Ash Chrome with the given context including options and login info.
-	cr, tconn, err := uts.setupChrome(ctx, req.AshContext.GetOpts())
+	cr, tconn, err := uts.setupChrome(ctx, req.AshContext.GetOpts(), req.ExpectedComponent)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to setup Ash Chrome")
 	}
@@ -250,11 +250,41 @@ func (uts *UpdateTestService) lacrosRootfsVersion(ctx context.Context) (string, 
 
 // setupChrome configures Ash Chrome to be able to launch Lacros with given options.
 // Note that it uses fake login credentials and loads test extension for Lacros by default.
-func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string) (*chrome.Chrome, *chrome.TestConn, error) {
+func (uts *UpdateTestService) setupChrome(ctx context.Context, options []string, component string) (*chrome.Chrome, *chrome.TestConn, error) {
 	var opts []chrome.Option
 	for _, opt := range options {
 		opts = append(opts, chrome.Option(chrome.ExtraArgs(opt)))
 	}
+
+	// Enable Lacros.
+	opts = append(opts, chrome.EnableFeatures("LacrosSupport"))
+	// Select Lacros channel.
+	func() {
+		var channel string
+		switch component {
+		case lacroscommon.LacrosCanaryComponent:
+			channel = "canary"
+		case lacroscommon.LacrosDevComponent:
+			channel = "dev"
+		case lacroscommon.LacrosBetaComponent:
+			channel = "beta"
+		case lacroscommon.LacrosStableComponent:
+			channel = "stable"
+		default:
+			// rootfs-lacros is not provisioned from a channel.
+			return
+		}
+		opts = append(opts, chrome.ExtraArgs("--lacros-stability="+channel))
+	}()
+
+	// Block Component Updater.
+	opts = append(opts, chrome.ExtraArgs("--component-updater=url-source="+lacroscommon.BogusComponentUpdaterURL))
+	// Disable keep-alive for testing. See crbug.com/1268743.
+	opts = append(opts, chrome.ExtraArgs("--disable-lacros-keep-alive"))
+	// Suppress experimental Lacros infobar and possible others as well.
+	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
+	// Disable whats-new page. See crbug.com/1271436.
+	opts = append(opts, chrome.LacrosExtraArgs("--disable-features=ChromeWhatsNewUI"))
 
 	// We reuse the custom extension from the chrome package for exposing private interfaces.
 	extDirs, err := chrome.DeprecatedPrepareExtensions()
