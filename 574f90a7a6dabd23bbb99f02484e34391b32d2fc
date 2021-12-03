@@ -16,6 +16,29 @@
       "message": "Hello Daisy and Tast team,\n\nWould you mind help review this CL for adding test for split view in tablet mode? Note: I\u0027ll split split-view divider test into different test file and CL.\n\nBest regards,\nCattalyya",
       "revId": "574f90a7a6dabd23bbb99f02484e34391b32d2fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20baeb30_97e6b979",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/split_view_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-03T22:55:58Z",
+      "side": 1,
+      "message": "Can this be a testing.Poll instead of a 30s sleep?",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 2
+      },
+      "revId": "574f90a7a6dabd23bbb99f02484e34391b32d2fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
