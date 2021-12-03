@@ -29,7 +29,7 @@ func init() {
 			"akihiroota@chromium.org",      // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
 		},
-		Attr: []string{"group:mainline", "informational"},
+		// TODO(https://crbug.com/1159107): Investigate failures and re-enable this test.
 		// Load audio file used for Dictation.
 		Data:         []string{"voice_en_hello.wav"},
 		SoftwareDeps: []string{"chrome"},

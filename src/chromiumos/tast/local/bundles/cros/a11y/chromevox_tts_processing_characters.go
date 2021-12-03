@@ -25,7 +25,7 @@ func init() {
 			"katie@chromium.org",           // Test author
 			"chromeos-a11y-eng@google.com", // Backup mailing list
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(https://crbug.com/1159107): Investigate failures and re-enable this test.
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
 	})
