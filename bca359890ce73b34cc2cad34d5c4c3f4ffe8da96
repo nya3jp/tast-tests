@@ -130,6 +130,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "234387a2_b33ed360",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T23:50:24Z",
+      "side": 1,
+      "message": "i think the system files app is still a chrome app unless the feature \"FilesSWA\" is enabled. If its enabled for tast tests then that is fine, i think SWA and PWA behave similarly enough we don\u0027t need a new test case",
+      "parentUuid": "b9220b15_aa8828e8",
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d24a498_0a1e9964",

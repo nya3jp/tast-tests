@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69b35c1f_9a3554ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T23:50:24Z",
+      "side": 1,
+      "message": "lgtm, thanks!",
+      "revId": "9fdc2140f80fc2391f2f67e8fa49bc2c048f4aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5649af41_ee8a1cf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T23:50:24Z",
+      "side": 1,
+      "message": "nit: I\u0027d give a little more context on why we are doing this.\n\n// Exits and re-enters overview mode, so we can save another desk template.",
+      "revId": "9fdc2140f80fc2391f2f67e8fa49bc2c048f4aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb32d6d8_1aa6cbdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T23:50:24Z",
+      "side": 1,
+      "message": "nit: are two",
+      "range": {
+        "startLine": 139,
+        "startChar": 24,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "revId": "9fdc2140f80fc2391f2f67e8fa49bc2c048f4aa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
