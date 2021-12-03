@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2742af4a_87195c7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-03T02:27:21Z",
+      "side": 1,
+      "message": "which basically does the same thing, but breaks down it into two parts.",
+      "parentUuid": "3ba1c856_a14f7cbc",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "10ea9940d3e6b5bf97e47dbc68ec7d20f0aa9145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66fe4b38_d3f5034e",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
         "patchSetId": 1
