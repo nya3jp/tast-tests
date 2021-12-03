@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7613d92d_8b9a12eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-12-03T13:43:32Z",
+      "side": 1,
+      "message": "Miguel, could you review this trivial fix?\n\neugene@ FYI.",
+      "revId": "59ef700abffc9a56f4bf5ee2a284c044f02596be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
