@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86753ff_18651003",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-03T09:34:18Z",
+      "side": 1,
+      "message": "Does \"the scan app\" in this context mean the library for tast tests (not the real app)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "ed5dbc95d962741e1709a29aa556be93226db4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9b4a73e0_8ad5e0d4",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-12-02T19:01:16Z",
       "side": 1,
       "message": "Thanks, Ben.",
+      "revId": "ed5dbc95d962741e1709a29aa556be93226db4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1601e58f_45f36f5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-03T09:34:18Z",
+      "side": 1,
+      "message": "LGTM with a nit",
       "revId": "ed5dbc95d962741e1709a29aa556be93226db4bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
