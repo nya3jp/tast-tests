@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de81a1ad_b38254b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2021-12-03T23:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b5d4efc_1aa0e590",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7316aa19_5ee217a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-03T17:33:01Z",
       "side": 1,
       "message": "nit: as -\u003e as a",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 24,
+        "endChar": 37
+      },
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "868b3614_d5795d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2021-12-03T23:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7316aa19_5ee217a2",
       "range": {
         "startLine": 24,
         "startChar": 35,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9220b15_aa8828e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2021-12-03T23:15:26Z",
+      "side": 1,
+      "message": "Thanks for the example! I added PlayStore to the app list.\n\nThe system \"Files\" app should be an example of SWA.\n\nWe can add PWA in later CLs.",
+      "parentUuid": "62d03ffb_89d9e7eb",
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d24a498_0a1e9964",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91af706_8b62b473",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2021-12-03T23:15:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d24a498_0a1e9964",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4fd057_1754db68",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-12-03T17:33:01Z",
       "side": 1,
       "message": "This works for now because we only check for one, and this doesn\u0027t show up if there is none, but this will return 1 if there are 2-6 templates, which does not seem to match the usage/description.\n\nPerhaps you wanted DesksTemplatesItemView which there is one for each template?",
+      "range": {
+        "startLine": 86,
+        "startChar": 47,
+        "endLine": 86,
+        "endChar": 69
+      },
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298faedd_f48bffe7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2021-12-03T23:15:26Z",
+      "side": 1,
+      "message": "Great catch! Updated to |DesksTemplatesItemView|. I also updated the test to capture two desk templates verify we have two templates.",
+      "parentUuid": "1a4fd057_1754db68",
       "range": {
         "startLine": 86,
         "startChar": 47,
