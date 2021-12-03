@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/bundles/cros/lacros/provision"
 	"chromiumos/tast/remote/bundles/cros/lacros/update"
+	"chromiumos/tast/remote/bundles/cros/lacros/version"
 	"chromiumos/tast/rpc"
 	lacrosservice "chromiumos/tast/services/cros/lacros"
 	"chromiumos/tast/testing"
@@ -58,7 +59,7 @@ func UpdateRootfsToStateful(ctx context.Context, s *testing.State) {
 	}
 	statefulLacrosVersion := rootfsLacrosVersion
 	// TODO(crbug.com/1258138): Update the supported version skew policy once implemented.
-	statefulLacrosVersion.Increment(9000, 0, 0, 0)
+	statefulLacrosVersion.Increment(version.New(9000, 0, 0, 0))
 	if !statefulLacrosVersion.IsValid() {
 		s.Fatal("Invalid Stateful Lacros version: ", statefulLacrosVersion)
 	} else if !statefulLacrosVersion.IsNewerThan(rootfsLacrosVersion) {

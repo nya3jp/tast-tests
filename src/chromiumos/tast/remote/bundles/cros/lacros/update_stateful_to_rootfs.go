@@ -67,8 +67,8 @@ func UpdateStatefulToRootfs(ctx context.Context, s *testing.State) {
 	}
 
 	statefulLacrosVersion := rootfsLacrosVersion
-	skew := s.Param().(version.Version)
-	statefulLacrosVersion.Decrement(skew.Major(), skew.Minor(), skew.Build(), skew.Patch())
+	skew := s.Param().(*version.Version)
+	statefulLacrosVersion.Decrement(skew)
 	s.Logf("Versions: ash=%s rootfs-lacros=%s stateful-lacros=%s", ashVersion.GetString(), rootfsLacrosVersion.GetString(), statefulLacrosVersion.GetString())
 	if !statefulLacrosVersion.IsValid() {
 		s.Fatal("Invalid Stateful Lacros version: ", statefulLacrosVersion)
