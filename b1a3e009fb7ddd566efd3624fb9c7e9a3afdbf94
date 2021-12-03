@@ -71,6 +71,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8dbfd9b_721f648c",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T18:14:40Z",
+      "side": 1,
+      "message": "Not sure about FullRandom/OUIRandom, but I\u0027d like to test Hardware and NonPersistent (when I\u0027ll figure out how to deal with timing requirements).",
+      "parentUuid": "dfafae66_dd587ea5",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16cb9365_53fccd1f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "16cb9365_53fccd1f",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e29d72_a403d20f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T18:14:40Z",
+      "side": 1,
+      "message": "Marking unresolved - Ack was meant as \"will fix\".",
+      "parentUuid": "212f6abf_7133d055",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -229,6 +265,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff385cf7_1fdadfaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T18:14:40Z",
+      "side": 1,
+      "message": "I\u0027ll push reworked version soon.  Please check if this time it will be better - warning though: these are my first lines of Go, so turn on your \"WARNING noob spotted\" mode ;)",
+      "parentUuid": "c131e5d0_b48aa7d5",
+      "range": {
+        "startLine": 45,
+        "startChar": 54,
+        "endLine": 45,
+        "endChar": 71
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72da8f63_57435a0b",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -240,6 +300,24 @@
       "writtenOn": "2021-12-02T17:58:34Z",
       "side": 1,
       "message": "We don\u0027t need to restore if resp.OldSetting \u003d\u003d true",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d673499_62c93e53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T18:14:40Z",
+      "side": 1,
+      "message": "Agree",
+      "parentUuid": "72da8f63_57435a0b",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -399,6 +477,24 @@
       "writtenOn": "2021-12-02T17:58:34Z",
       "side": 1,
       "message": "you should CleanDisconnect in the case that something fails between here and the Disconnect on line 181",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65fe1435_8bf1ab91",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T18:14:40Z",
+      "side": 1,
+      "message": "Hhhmm, not sure how this supposed to work.  Please check next patch - what am I doing wrong?  I\u0027m getting failures of this deferred CleanDisconnect even though cancel is also deferred.\n\nI\u0027m assuming that only one deferred CleanDisconnect+cancel combo is needed (whenever we fail we will be disconnecting and cleaning config), no need to stack those for each ConnectWiFi.",
+      "parentUuid": "fb3e7370_7c88248c",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -608,6 +704,42 @@
       "writtenOn": "2021-12-02T17:58:34Z",
       "side": 1,
       "message": "Does this actually work? Don\u0027t you need to configure the second AP on a separate router for the two APs to coexist?",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faa0da93_76878e73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T18:14:40Z",
+      "side": 1,
+      "message": "If I do that I get failures when setting up - so maybe, what I get is an alias for the same network.",
+      "parentUuid": "f3077589_8b9e18ae",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f7f603_03bea56b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T18:14:40Z",
+      "side": 1,
+      "message": "Not really sure what happens behind the scene :)\nThis way it seems to be working.",
+      "parentUuid": "307c5167_73ec74eb",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
