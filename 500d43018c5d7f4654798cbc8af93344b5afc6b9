@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "742d85a7_14e8884e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-03T23:33:34Z",
+      "side": 1,
+      "message": "Done.\nJust curious, how to run subtests in parallel in tast? Like this: go/go-test-examples#parallel",
+      "parentUuid": "327792db_db013290",
+      "revId": "500d43018c5d7f4654798cbc8af93344b5afc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65a647c1_48caa65c",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-03T18:56:46Z",
       "side": 1,
       "message": "if `testing.State` is similar to golang\u0027s built-in testing module, we want a `continue` after this. Errorf will not fail tests, whereas Fatal will.\n\nsame for all of the below",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "500d43018c5d7f4654798cbc8af93344b5afc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b2ae32_15fe4ead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-03T23:33:34Z",
+      "side": 1,
+      "message": "Good point. Thanks!\nFixed other places as well.",
+      "parentUuid": "65a647c1_48caa65c",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29084aa9_b91103d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-03T23:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5902cd3_800a0ceb",
+      "revId": "500d43018c5d7f4654798cbc8af93344b5afc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2661e291_026a1f4f",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-12-03T18:56:46Z",
       "side": 1,
       "message": "nit: i\u0027d generally write this as `else if foo :\u003d bar; baz {}`, or just add a `continue` after the end of the `if dso \u003d\u003d \"\"` block \u0026\u0026 remove the else",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "500d43018c5d7f4654798cbc8af93344b5afc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28289a3b_85a7a9c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-03T23:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2661e291_026a1f4f",
       "range": {
         "startLine": 151,
         "startChar": 4,
