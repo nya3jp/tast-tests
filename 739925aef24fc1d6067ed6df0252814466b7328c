@@ -16,6 +16,52 @@
       "message": "FYI this will be the last test scenario that we initially planned to implement based on go/lacros-autoupdate-test-proposal. Rootfs \u003d\u003e Rootfs could be separately tested a part of OS autoupdate (crbug.com/1248623)",
       "revId": "739925aef24fc1d6067ed6df0252814466b7328c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9203aab_75b36f32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-12-03T17:55:00Z",
+      "side": 1,
+      "message": "No need to wrap this in func()?",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 9
+      },
+      "revId": "739925aef24fc1d6067ed6df0252814466b7328c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c57cb11_d22c2adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-12-03T17:55:00Z",
+      "side": 1,
+      "message": "Unless you create a helper function for this called |LacrsoComponentToChannel()|",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 3
+      },
+      "revId": "739925aef24fc1d6067ed6df0252814466b7328c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
