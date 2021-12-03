@@ -234,6 +234,30 @@
       },
       "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "874ee8c4_888ff6fc",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vmware/connector.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-03T08:56:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b9d6317_c767b45e",
+      "range": {
+        "startLine": 33,
+        "startChar": 34,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "991a172def82d8eee643ad05f998c137cbde8d32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
