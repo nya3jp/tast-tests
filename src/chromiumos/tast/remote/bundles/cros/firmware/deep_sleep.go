@@ -20,8 +20,8 @@ func init() {
 		Func:         DeepSleep,
 		Desc:         "Estimate battery life in deep sleep state, as a replacement for manual test 1.10.1",
 		Contacts:     []string{"hc.tsai@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
-		Vars:         []string{"firmware.hibernate_time"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Vars:         []string{"firmware.hibernate_time", "board", "model"},
 		HardwareDeps: hwdep.D(hwdep.Battery(), hwdep.ChromeEC()),
 		Timeout:      260 * time.Minute, // 4hrs 20mins
 		Fixture:      fixture.NormalMode,
@@ -56,6 +56,10 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
 	}
+	board, _ := s.Var("board")
+	model, _ := s.Var("model")
+	h.OverridePlatform(ctx, board, model)
+
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to get config: ", err)
 	}
@@ -171,7 +175,7 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	defer func() {
 		newCtx, cancel := context.WithTimeout(ctx, time.Minute)
 		defer cancel()
-		h.DUT.WaitConnect(newCtx)
+		h.WaitConnect(newCtx)
 	}()
 
 	mahEnd := 0
