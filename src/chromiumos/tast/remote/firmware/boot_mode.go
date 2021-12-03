@@ -798,12 +798,3 @@ func (ms *ModeSwitcher) WaitForPowerStates(ctx context.Context, interval, timeou
 	}
 	return nil
 }
-
-func comparePowerStates(currState string, expectedStates ...string) bool {
-	for _, state := range expectedStates {
-		if currState == state {
-			return true
-		}
-	}
-	return false
-}
