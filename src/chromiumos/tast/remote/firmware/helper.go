@@ -570,6 +570,29 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	return nil
 }
 
+// WaitForPowerStates polls for DUT to get to a specific powerstate
+func (h *Helper) WaitForPowerStates(ctx context.Context, interval, timeout time.Duration, powerStates ...string) error {
+	// Try reading the power state from the EC.
+	err := testing.Poll(ctx, func(c context.Context) error {
+		currPowerState, err := h.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			// This error is temporary.
+			if strings.Contains(err.Error(), "No data was sent from the pty") {
+				return err
+			}
+			return testing.PollBreak(err)
+		}
+		if !comparePowerStates(currPowerState, powerStates...) {
+			return errors.Errorf("Power state = %s", currPowerState)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: timeout, Interval: interval})
+	if err != nil {
+		return errors.Errorf("failed to get one of %v power state: %s", powerStates, err)
+	}
+	return nil
+}
+
 // WaitConnect is similar to DUT.WaitConnect, except that it works with RO EC firmware.
 // Pass a context with a deadline if you don't want to wait forever.
 func (h *Helper) WaitConnect(ctx context.Context) error {
