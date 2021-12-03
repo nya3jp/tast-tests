@@ -30,9 +30,7 @@ func init() {
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 			"cros-telemetry@google.com",
 		},
-		// TODO(b:169152720), Move the test back to stable when the new script for validating the fw dump
-		// and the whole test are stable.
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 		// TODO(b:169152720), Remove "no_kernel_upstream" to enable the test to run on
 		// boards with upstream kernel when upstream iwlwifi is able to produce valid
 		// fw dumps.
