@@ -30,10 +30,6 @@ func ECPowerG3(ctx context.Context, s *testing.State) {
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
-	ms, err := firmware.NewModeSwitcher(ctx, h)
-	if err != nil {
-		s.Fatal("Failed to create mode switcher: ", err)
-	}
 
 	s.Log("Shut down DUT")
 	cmd := h.DUT.Conn().CommandContext(ctx, "/sbin/shutdown", "-P", "now")
@@ -42,7 +38,7 @@ func ECPowerG3(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Check for G3 powerstate")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
 		s.Fatal("Failed to get G3 powerstate: ", err)
 	}
 
