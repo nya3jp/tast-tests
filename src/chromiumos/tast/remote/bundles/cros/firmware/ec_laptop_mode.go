@@ -308,7 +308,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Check that the power state remains S0")
-		if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 			s.Fatal("Failed to get S0 powerstate: ", err)
 		}
 	}
@@ -330,7 +330,7 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 	// On some DUTs, pressing 3~8 seconds would leave them in the off state, while some others would power on.
 	// We are currently in the process of defining DUT categories for the respective behaviors.
 	s.Log("Wait for power state to become G3 or S0")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S0"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S0"); err != nil {
 		s.Fatal("Failed to get G3 or S0 powerstate: ", err)
 	}
 

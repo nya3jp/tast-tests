@@ -220,12 +220,6 @@ func testWPOverReboot(ctx context.Context, h *firmware.Helper, target wpTarget, 
 }
 
 func rebootWithRebootCmd(ctx context.Context, h *firmware.Helper) error {
-	// Create new mode switcher every time to prevent nil pointer errors.
-	ms, err := firmware.NewModeSwitcher(ctx, h)
-	if err != nil {
-		return errors.Wrap(err, "failed to create mode switcher")
-	}
-
 	cmd := h.DUT.Conn().CommandContext(ctx, "reboot")
 	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to reboot DUT")
@@ -237,19 +231,13 @@ func rebootWithRebootCmd(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Check for S0 powerstate")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 	return h.WaitConnect(ctx)
 }
 
 func rebootWithShutdownCmd(ctx context.Context, h *firmware.Helper) error {
-	// Create new mode switcher every time to prevent nil pointer errors.
-	ms, err := firmware.NewModeSwitcher(ctx, h)
-	if err != nil {
-		return errors.Wrap(err, "failed to create mode switcher")
-	}
-
 	cmd := h.DUT.Conn().CommandContext(ctx, "/sbin/shutdown", "-P", "now")
 	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to shut down DUT")
@@ -261,7 +249,7 @@ func rebootWithShutdownCmd(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
 
@@ -271,19 +259,13 @@ func rebootWithShutdownCmd(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Check for S0 powerstate")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 	return h.WaitConnect(ctx)
 }
 
 func rebootWithPowerButton(ctx context.Context, h *firmware.Helper) error {
-	// Create new mode switcher every time to prevent nil pointer errors.
-	ms, err := firmware.NewModeSwitcher(ctx, h)
-	if err != nil {
-		return errors.Wrap(err, "failed to create mode switcher")
-	}
-
 	testing.ContextLog(ctx, "Power DUT off with long press of the power button")
 	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
 		return errors.Wrap(err, "failed to power on DUT with short press of the power button")
@@ -295,7 +277,7 @@ func rebootWithPowerButton(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
 
@@ -305,7 +287,7 @@ func rebootWithPowerButton(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Check for S0 powerstate")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
 	return h.WaitConnect(ctx)
