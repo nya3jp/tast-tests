@@ -51,6 +51,24 @@
       "parentUuid": "8eba626a_2976a0e6",
       "revId": "13c6e6911eb64a436011ca869aa29bc4407647d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4830558d_5836bcf8",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-03T08:56:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "297cec2a_450c6445",
+      "revId": "13c6e6911eb64a436011ca869aa29bc4407647d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
