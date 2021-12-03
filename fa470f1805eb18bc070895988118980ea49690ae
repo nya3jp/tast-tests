@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bebd517_5c65e523",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-12-03T22:50:08Z",
+      "side": 1,
+      "message": "Hi Eric/Daniel,\n\nI have updated the helper functions to return timing info and in ShillCellularEnableAndConnect, I\u0027m writing that info to the results-chart.json file (using perf) and once this runs for a few days ... we can see some trends with the enable/disable time in the dashboard.\n\nThanks\nMadhav ",
+      "revId": "fa470f1805eb18bc070895988118980ea49690ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
