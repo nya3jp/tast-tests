@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50bacef4_1aac8840",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Patchset 8 introduces more error handling. Notably, Kill() is swapped out in favor of Signal(syscall.SIGTERM), and I\u0027ve annotated all the Wait()s to note that receiving SIGTERM always causes Wait() to return an error.",
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

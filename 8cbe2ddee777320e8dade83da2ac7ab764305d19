@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e499c662_4d6a703f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a4f0a9_d5bd84e1",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24ae25cd_7f966fcb",
@@ -88,6 +112,24 @@
       "writtenOn": "2021-12-03T17:18:52Z",
       "side": 1,
       "message": "It appears that the WaitUntilConfigured field is intended to be purely dependent on ppd.  Would there ever be a scenario where a caller could legitimately both pass a non-empty PPD and call WaitUntilConfigured?  If not, how about moving the decision about waiting for auto-setup inside Start so that the caller doesn\u0027t have the opportunity to do it wrong?",
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5957ad7_ce874b46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Acknowledged, but virtual-usb-printer doesn\u0027t do anything with PPDs. PPDs are handed straight to CUPS, so there\u0027s no reason to store anything to do with PPDs in the Printer struct.\n\nPPDs are just one signal of autoconfiguration, apparently - the scanner enumeration tests check if either attributes or eSCL capabilities are given.",
+      "parentUuid": "24ae25cd_7f966fcb",
       "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +151,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74f9a70_b1163ed0",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74c49319_4a2d8c47",
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "220ffff0_4fd513d2",
@@ -126,6 +186,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de046cb_b6187d3d",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220ffff0_4fd513d2",
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ea5c4a1_3ccf46a2",
@@ -139,6 +217,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "nit: either remove Printer. from here, or add it before Start() in line 49",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d4143b7_f7882df6",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ea5c4a1_3ccf46a2",
       "range": {
         "startLine": 52,
         "startChar": 19,
@@ -172,6 +274,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ad823d_f7819999",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad1db60_86e67cd7",
+      "range": {
+        "startLine": 58,
+        "startChar": 35,
+        "endLine": 59,
+        "endChar": 49
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3e6ef6b_a43c374f",
@@ -185,6 +311,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "nit: \"empty descriptors file\" to be more precise?",
+      "range": {
+        "startLine": 66,
+        "startChar": 22,
+        "endLine": 66,
+        "endChar": 46
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d14495_6abba2d2",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "\"empty descriptors path\" so not to be confused with a blank file and to square with WithAttributes()",
+      "parentUuid": "e3e6ef6b_a43c374f",
       "range": {
         "startLine": 66,
         "startChar": 22,
@@ -218,6 +368,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bced252_0dff6df7",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "913fc815_c2dc9b7f",
+      "range": {
+        "startLine": 78,
+        "startChar": 38,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d1235e_1d5ef7e3",
@@ -235,6 +409,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c2d41b_626a0615",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d1235e_1d5ef7e3",
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b49216f_2224a5ee",
@@ -248,6 +440,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "nit:\n\nerrors.Errorf(\"output log directory path (%q) is not absolute path\", directory)",
+      "range": {
+        "startLine": 100,
+        "startChar": 10,
+        "endLine": 100,
+        "endChar": 62
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d34a1b4_158a5041",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b49216f_2224a5ee",
       "range": {
         "startLine": 100,
         "startChar": 10,
@@ -281,6 +497,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bcbd127_aed73746",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Ack, but the functional option is called ExpectUdevEventOnStop. The wait is implicit.",
+      "parentUuid": "33ec5bf5_1a7faa6c",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11aa6581_1ac9cb0f",
@@ -304,6 +544,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "466d553d_e1df5231",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11aa6581_1ac9cb0f",
+      "range": {
+        "startLine": 225,
+        "startChar": 32,
+        "endLine": 225,
+        "endChar": 38
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04a8956d_2877a86f",
@@ -317,6 +581,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "optional: we can rename it to \"config\", similar to chrome package",
+      "range": {
+        "startLine": 226,
+        "startChar": 7,
+        "endLine": 226,
+        "endChar": 14
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f877048_c84eeab1",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a8956d_2877a86f",
       "range": {
         "startLine": 226,
         "startChar": 7,
@@ -373,6 +661,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15817e7a_e47d6441",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3675e3f6_acda9075",
+      "range": {
+        "startLine": 236,
+        "startChar": 26,
+        "endLine": 236,
+        "endChar": 50
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ab72a6_2dedd97d",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f69e6be3_d2e9e112",
+      "range": {
+        "startLine": 236,
+        "startChar": 26,
+        "endLine": 236,
+        "endChar": 27
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87a7c812_60ab3c65",
@@ -386,6 +722,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "don\u0027t ignore errors",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 29
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7818c5d9_3c432a4f",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a7c812_60ab3c65",
       "range": {
         "startLine": 247,
         "startChar": 0,
@@ -419,6 +779,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6763508_6239dc5e",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da3de1a_028e8038",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 2
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e053edf1_649be71e",
@@ -432,6 +816,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "nit: \n\n```\nif err :\u003d attachUSBIPDevice(ctx, devInfo); err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 256,
+        "startChar": 4,
+        "endLine": 256,
+        "endChar": 14
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d0a13f_b360f05d",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e053edf1_649be71e",
       "range": {
         "startLine": 256,
         "startChar": 4,
@@ -465,6 +873,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9f3a9c_309e1ced",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "I want this to be idempotent so that callers can freely defer this (standard whenever calling Start()) and also call it explicitly. This is a pattern used throughout our scanning tests and was previously handled with extra boilerplate at the call site.",
+      "parentUuid": "3c72e7cc_36ece69f",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 4
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07b66701_c0124948",
@@ -478,6 +910,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "idea for a follow-up CL:\n\nI think it makes sense to hide this complexity with Go-routines inside waitEvent function or encapsulate all this logic inside some UdevWatcher struct",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 5
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c520c8_5157d610",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07b66701_c0124948",
       "range": {
         "startLine": 295,
         "startChar": 0,
@@ -511,6 +967,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf627563_2d97d0e5",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54ad1e8_1620efd1",
+      "range": {
+        "startLine": 301,
+        "startChar": 29,
+        "endLine": 301,
+        "endChar": 31
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6907223_a61203e8",
@@ -524,6 +1004,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "nit: please wrap error\n\nCheck guideline:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction\n\n\n```\nIt is recommended to wrap when you cross package boundary, which represents some kind of barrier beneath which everything is an implementation detail. Otherwise it is fine to return an error without wrapping, if you can\u0027t really add much context to make debugging easier. Use your best judgement to decide wrap or not.\n\n```",
+      "range": {
+        "startLine": 302,
+        "startChar": 9,
+        "endLine": 302,
+        "endChar": 12
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bde6e6_9bd787e9",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6907223_a61203e8",
       "range": {
         "startLine": 302,
         "startChar": 9,
@@ -557,6 +1061,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "755e6cbb_bcb15d0f",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a33b1deb_b139d7ef",
+      "range": {
+        "startLine": 317,
+        "startChar": 28,
+        "endLine": 317,
+        "endChar": 33
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a11bd5e9_732fdb4e",
@@ -570,6 +1098,30 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "nit: receive",
+      "range": {
+        "startLine": 319,
+        "startChar": 41,
+        "endLine": 319,
+        "endChar": 44
+      },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ece2186_35937a3b",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-03T23:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a11bd5e9_732fdb4e",
       "range": {
         "startLine": 319,
         "startChar": 41,
