@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f02e09_60964728",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "Refactor graphics.VTSwitch to use perceptualdiff\n\nInstead of counting pixels use the command line tool to determine if images are similar.\n\nBUG\u003db:208691958\nTEST\u003dtest run $IP graphics.VTSwitch.smoke",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc8616d6_48a7f702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "We will do this in a later round. Lets keep it 100 for now.",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39cc4f07_e3cd3353",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "Lets wait with this until a later time. Lets keep it 5s in this round.",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b113932_e290f5e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "Can you move this function out?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a15db3_2393e656",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "Could you move this function out? And maybe call it isPerceptualDifferent()",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 53
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68d6f5b_7ed41d5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "File sizes are a good way. Now we already have a binary comparison tool that will do the job. Try on the DUT the commands below.\n\nHere is the documentation.\nhttp://pdiff.sourceforge.net/\n\nLets add parameters -fov and -threshold instead of differenceSizeThreshold and use them. The defaults are generally good. But because of the ticking clock etc it may need to be adjusted.\n\nlocalhost /usr/local # perceptualdiff -verbose ./deqp/modules/gles31/gles31/data/tessellation/fill_cover_quads_equal_spacing_ref_1.png ./deqp/modules/gles31/gles31/data/tessellation/fill_cover_triangles_fractional_even_spacing_ref_0.png\nField of view is 45.000000 degrees\nThreshold pixels is 100 pixels\nThe Gamma is 2.200000\nThe Display\u0027s luminance is 100.000000 candela per meter squared\nConverting RGB to XYZ\nConstructing Laplacian Pyramids\nPerforming test\nFAIL: Images are visibly different\n10244 pixels are different\n\nlocalhost /usr/local # echo $?\n1\nlocalhost /usr/local # perceptualdiff -verbose ./deqp/modules/gles31/gles31/data/tessellation/fill_cover_quads_equal_spacing_ref_1.png ./deqp/modules/gles31/gles31/data/tessellation/fill_cover_quads_equal_spacing_ref_1.png\nField of view is 45.000000 degrees\nThreshold pixels is 100 pixels\nThe Gamma is 2.200000\nThe Display\u0027s luminance is 100.000000 candela per meter squared\nPASS: Images are binary identical\n\nlocalhost /usr/local # echo $?\n0",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 68
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5148bfc5_79eb6e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "Delete currentVT1/2Screenshot here to clean up images that are fine.",
+      "range": {
+        "startLine": 203,
+        "startChar": 10,
+        "endLine": 204,
+        "endChar": 31
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "998818ab_afad3074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "Lets move this function out.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 2
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9197858a_b1500ac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-03T19:24:25Z",
+      "side": 1,
+      "message": "We will later have to think what to do with those.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 83
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
