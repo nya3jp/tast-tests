@@ -58,9 +58,9 @@ func ShillCellularSuspendResumePersistEnabled(ctx context.Context, s *testing.St
 
 	// Apply required enabled state
 	if params.enabledState {
-		err = helper.Enable(ctx)
+		_, err = helper.Enable(ctx)
 	} else {
-		err = helper.Disable(ctx)
+		_, err = helper.Disable(ctx)
 	}
 
 	if err != nil {
@@ -78,7 +78,7 @@ func ShillCellularSuspendResumePersistEnabled(ctx context.Context, s *testing.St
 	}
 
 	// Return to enabled state and confirm service available
-	if err := helper.Enable(ctx); err != nil {
+	if _, err := helper.Enable(ctx); err != nil {
 		s.Fatal("Failed to re-enable modem after resume: ", err)
 	}
 

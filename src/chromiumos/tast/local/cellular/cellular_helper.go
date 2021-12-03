@@ -52,7 +52,7 @@ func NewHelper(ctx context.Context) (*Helper, error) {
 	if enabled, err := manager.IsEnabled(ctx, shill.TechnologyCellular); err != nil {
 		return nil, errors.Wrap(err, "error requesting enabled state")
 	} else if !enabled {
-		if err := helper.Enable(ctx); err != nil {
+		if _, err := helper.Enable(ctx); err != nil {
 			return nil, errors.Wrap(err, "unable to enable Cellular")
 		}
 	}
@@ -81,41 +81,43 @@ func (h *Helper) WaitForEnabledState(ctx context.Context, expected bool) error {
 }
 
 // Enable calls Manager.EnableTechnology(cellular) and returns true if the enable succeeded, or an error otherwise.
-func (h *Helper) Enable(ctx context.Context) error {
+func (h *Helper) Enable(ctx context.Context) (time.Duration, error) {
 	ctx, st := timing.Start(ctx, "Helper.Enable")
 	defer st.End()
 
+	start := time.Now()
 	h.Manager.EnableTechnology(ctx, shill.TechnologyCellular)
 
 	if err := h.WaitForEnabledState(ctx, true); err != nil {
-		return err
+		return 0, err
 	}
 	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, true, defaultTimeout); err != nil {
-		return errors.Wrap(err, "expected powered to become true, got false")
+		return 0, errors.Wrap(err, "expected powered to become true, got false")
 	}
 	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout); err != nil {
-		return errors.Wrap(err, "expected scanning to become false, got true")
+		return 0, errors.Wrap(err, "expected scanning to become false, got true")
 	}
-	return nil
+	return time.Since(start), nil
 }
 
 // Disable calls Manager.DisableTechnology(cellular) and returns true if the disable succeeded, or an error otherwise.
-func (h *Helper) Disable(ctx context.Context) error {
+func (h *Helper) Disable(ctx context.Context) (time.Duration, error) {
 	ctx, st := timing.Start(ctx, "Helper.Disable")
 	defer st.End()
 
+	start := time.Now()
 	h.Manager.DisableTechnology(ctx, shill.TechnologyCellular)
 
 	if err := h.WaitForEnabledState(ctx, false); err != nil {
-		return err
+		return 0, err
 	}
 	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyPowered, false, defaultTimeout); err != nil {
-		return err
+		return 0, err
 	}
 	if err := h.Device.WaitForProperty(ctx, shillconst.DevicePropertyScanning, false, defaultTimeout); err != nil {
-		return errors.Wrap(err, "expected scanning to become false, got true")
+		return 0, errors.Wrap(err, "expected scanning to become false, got true")
 	}
-	return nil
+	return time.Since(start), nil
 }
 
 // FindService returns the first connectable Cellular Service.
@@ -207,15 +209,20 @@ func (h *Helper) SetServiceAutoConnect(ctx context.Context, autoConnect bool) (b
 }
 
 // ConnectToDefault connects to the default Cellular Service.
-func (h *Helper) ConnectToDefault(ctx context.Context) error {
+func (h *Helper) ConnectToDefault(ctx context.Context) (time.Duration, error) {
 	ctx, st := timing.Start(ctx, "Helper.ConnectToDefault")
 	defer st.End()
 
+	start := time.Now()
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
-		return err
+		return 0, err
 	}
-	return h.ConnectToService(ctx, service)
+	if err := h.ConnectToService(ctx, service); err != nil {
+		return 0, err
+	}
+
+	return time.Since(start), nil
 }
 
 // ConnectToServiceWithTimeout connects to a Cellular Service with a specified timeout.
@@ -263,18 +270,22 @@ func (h *Helper) ConnectToService(ctx context.Context, service *shill.Service) e
 }
 
 // Disconnect from the Cellular Service and ensure that the disconnect succeeded, otherwise return an error.
-func (h *Helper) Disconnect(ctx context.Context) error {
+func (h *Helper) Disconnect(ctx context.Context) (time.Duration, error) {
 	ctx, st := timing.Start(ctx, "Helper.Disconnect")
 	defer st.End()
 
+	start := time.Now()
 	service, err := h.FindServiceForDevice(ctx)
 	if err != nil {
-		return err
+		return 0, err
 	}
 	if err := service.Disconnect(ctx); err != nil {
-		return err
+		return 0, err
 	}
-	return service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, false, defaultTimeout)
+	if err := service.WaitForProperty(ctx, shillconst.ServicePropertyIsConnected, false, defaultTimeout); err != nil {
+		return 0, err
+	}
+	return time.Since(start), nil
 }
 
 // SetDeviceProperty sets a Device property and waits for the property to be set.

@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/cellular"
@@ -51,35 +52,69 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 		}(ctxForAutoConnectCleanUp)
 	}
 
+	perfValues := perf.NewValues()
+
 	// Test Disable / Enable / Connect / Disconnect.
 	// Run the test a second time to test Disable after Connect/Disconnect.
 	// Run the test a third time to help test against flakiness.
 	for i := 0; i < 3; i++ {
 		s.Logf("Disable %d", i)
-		if err := helper.Disable(ctx); err != nil {
+		disableTime, err := helper.Disable(ctx)
+		if err != nil {
 			s.Fatalf("Disable failed on attempt %d: %s", i, err)
 		}
+		perfValues.Append(perf.Metric{
+			Name:      "cellular_disable_time",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, disableTime.Seconds())
 		s.Logf("Enable %d", i)
-		if err := helper.Enable(ctx); err != nil {
+		enableTime, err := helper.Enable(ctx)
+		if err != nil {
 			s.Fatalf("Enable failed on attempt %d: %s", i, err)
 		}
+		perfValues.Append(perf.Metric{
+			Name:      "cellular_enable_time",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, enableTime.Seconds())
 		s.Logf("Connect %d", i)
-		if err := helper.ConnectToDefault(ctx); err != nil {
+		connectTime, err := helper.ConnectToDefault(ctx)
+		if err != nil {
 			s.Fatalf("Connect failed on attempt %d: %s", i, err)
 		}
+		perfValues.Append(perf.Metric{
+			Name:      "cellular_connect_time",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, connectTime.Seconds())
 		s.Logf("Disconnect %d", i)
-		if err := helper.Disconnect(ctx); err != nil {
+		disconnectTime, err := helper.Disconnect(ctx)
+		if err != nil {
 			s.Fatalf("Disconnect failed on attempt %d: %s", i, err)
 		}
+		perfValues.Append(perf.Metric{
+			Name:      "cellular_disconnect_time",
+			Unit:      "seconds",
+			Direction: perf.SmallerIsBetter,
+			Multiple:  true,
+		}, disconnectTime.Seconds())
+	}
+
+	if err := perfValues.Save(s.OutDir()); err != nil {
+		s.Fatal("Failed saving perf data: ", err)
 	}
 
 	// Test that Disconnect fails while not connected.
-	if err := helper.Disconnect(ctx); err == nil {
+	if _, err := helper.Disconnect(ctx); err == nil {
 		s.Fatal("Disconnect succeeded while disconnected: ", err)
 	}
 
 	s.Log("Reconnect")
-	if err := helper.ConnectToDefault(ctx); err != nil {
+	if _, err := helper.ConnectToDefault(ctx); err != nil {
 		s.Fatal("Reconnect failed: ", err)
 	}
 
@@ -108,7 +143,7 @@ func ShillCellularEnableAndConnect(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Final Enable")
-	if err := helper.Enable(ctx); err != nil {
+	if _, err := helper.Enable(ctx); err != nil {
 		s.Fatal("Final Enable failed: ", err)
 	}
 }
