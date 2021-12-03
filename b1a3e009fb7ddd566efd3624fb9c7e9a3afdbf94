@@ -370,6 +370,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74c97704_e944283e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-03T16:49:22Z",
+      "side": 1,
+      "message": "All those \"Ack\"s were meant to be an acknowledgements of the issue - not that it is Done.  I\u0027m working now on the moving of the probe request matching to wifiutils as a generic utility and to be used in both RandomMACAddress and ConnectRandomMAC.\n\nI\u0027ll send this version soon.",
+      "parentUuid": "42f36248_97e80ee8",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb3e7370_7c88248c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
