@@ -19,7 +19,7 @@ func init() {
 		Func:         ECPowerG3,
 		Desc:         "Test that DUT goes to G3 powerstate on shutdown",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
@@ -31,10 +31,17 @@ func ECPowerG3(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	s.Log("Shut down DUT")
-	cmd := h.DUT.Conn().CommandContext(ctx, "/sbin/shutdown", "-P", "now")
-	if err := cmd.Start(); err != nil {
-		s.Fatal("Failed to shut down DUT: ", err)
+	if h.DUT != nil {
+		s.Log("Shut down DUT")
+		cmd := h.DUT.Conn().CommandContext(ctx, "/sbin/shutdown", "-P", "now")
+		if err := cmd.Start(); err != nil {
+			s.Fatal("Failed to shut down DUT: ", err)
+		}
+	} else {
+		s.Log("Long press power button")
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
+			s.Fatal("Failed to power on DUT with short press of the power button: ", err)
+		}
 	}
 
 	s.Log("Check for G3 powerstate")
