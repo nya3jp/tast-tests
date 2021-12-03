@@ -96,9 +96,9 @@ func Save(ctx context.Context, lacrosPath string) {
 	}
 }
 
-// SaveRecordIf saves a screen record under lacros faillog dir if the hasError closure returns true and there is a record started.
-func SaveRecordIf(ctx context.Context, tconn *chrome.TestConn, hasRecordStarted bool, hasError func() bool) {
-	if hasRecordStarted && hasError() {
+// StopRecordAndSaveOnError stops the screen record and saves it under lacros faillog dir if the hasError closure returns true and there is a record started.
+func StopRecordAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasRecordStarted bool, hasError func() bool) {
+	if hasRecordStarted {
 		out, ok := testing.ContextOutDir(ctx)
 		if !ok {
 			testing.ContextLog(ctx, "OutDir not found")
