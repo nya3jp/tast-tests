@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899ca1c7_c5ac4de4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2021-12-03T18:56:46Z",
+      "side": 1,
+      "message": "lgtm % a few nits at a glance. i\u0027m not super familiar with tast APIs, so i can\u0027t speak to whether there are better ways to do some of these things.\n\nthanks!",
+      "revId": "500d43018c5d7f4654798cbc8af93344b5afc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a647c1_48caa65c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2021-12-03T18:56:46Z",
+      "side": 1,
+      "message": "if `testing.State` is similar to golang\u0027s built-in testing module, we want a `continue` after this. Errorf will not fail tests, whereas Fatal will.\n\nsame for all of the below",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "500d43018c5d7f4654798cbc8af93344b5afc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2661e291_026a1f4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1158719
+      },
+      "writtenOn": "2021-12-03T18:56:46Z",
+      "side": 1,
+      "message": "nit: i\u0027d generally write this as `else if foo :\u003d bar; baz {}`, or just add a `continue` after the end of the `if dso \u003d\u003d \"\"` block \u0026\u0026 remove the else",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "500d43018c5d7f4654798cbc8af93344b5afc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
