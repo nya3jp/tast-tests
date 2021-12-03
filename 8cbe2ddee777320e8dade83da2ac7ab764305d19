@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c6956f_ced4bb92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-03T17:18:52Z",
+      "side": 1,
+      "message": "Thanks for the cleanup, Kalvin.  This should be a nice improvement in our virtual-usb-printer interaction when it\u0027s done.",
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36a4f0a9_d5bd84e1",
@@ -60,6 +77,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24ae25cd_7f966fcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-03T17:18:52Z",
+      "side": 1,
+      "message": "It appears that the WaitUntilConfigured field is intended to be purely dependent on ppd.  Would there ever be a scenario where a caller could legitimately both pass a non-empty PPD and call WaitUntilConfigured?  If not, how about moving the decision about waiting for auto-setup inside Start so that the caller doesn\u0027t have the opportunity to do it wrong?",
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "74c49319_4a2d8c47",
         "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
         "patchSetId": 7
@@ -71,6 +105,23 @@
       "writtenOn": "2021-12-03T13:38:07Z",
       "side": 1,
       "message": "this used only in 1 function, so it makes sense to move it there",
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220ffff0_4fd513d2",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-03T17:18:52Z",
+      "side": 1,
+      "message": "The function that sets this is called WaitUntilConfigured.  Could you make them consistent (personally I prefer the WaitUntilConfigured name, but either one is fine objectively)?",
       "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +214,23 @@
         "endLine": 78,
         "endChar": 39
       },
+      "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d1235e_1d5ef7e3",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-03T17:18:52Z",
+      "side": 1,
+      "message": "Same nit as Oleh\u0027s previous comment.",
       "revId": "8cbe2ddee777320e8dade83da2ac7ab764305d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
