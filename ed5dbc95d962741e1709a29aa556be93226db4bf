@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c64de969_62e77c52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-03T17:22:37Z",
+      "side": 1,
+      "message": "Yes, I will clarify that!",
+      "parentUuid": "b86753ff_18651003",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "ed5dbc95d962741e1709a29aa556be93226db4bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9b4a73e0_8ad5e0d4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
