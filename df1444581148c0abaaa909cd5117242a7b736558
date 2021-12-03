@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c170f2_6d1417c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2021-12-03T21:43:20Z",
+      "side": 1,
+      "message": "Thanks Andrew. I agree that this seems more like a live captions test in its current form. With that said, it feels appropriate to put this in an accessibility directory. I\u0027d probably rename the test to something like \u0027live_caption.go\u0027 and move it here [1], which is where all other accessibility tast tests live. \n\nAdditionally, you might be able to remove the audio file, since we already have one uploaded here [2]\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/\n\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/a11y/data/\n\nThanks and hope this helps!",
+      "parentUuid": "97483cd1_514ec492",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5849fc28_28ec1a38",
