@@ -388,6 +388,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ceaf5463_1ca8f8e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-03T00:37:32Z",
+      "side": 1,
+      "message": "Hi Jason,\n\nRemoved the sleep and i have added the polling condition(generic),so it should not be a blocker now,thanks",
+      "parentUuid": "cbb0c6de_48462107",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
