@@ -16,6 +16,29 @@
       "message": "Roman, PTAL",
       "revId": "c49e689a384b350a5ccc53be449736882cc36f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ffa654_7692cff9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/view_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-03T12:43:22Z",
+      "side": 1,
+      "message": "Is it the real timeout? Maybe use a few seconds more than the real one.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "c49e689a384b350a5ccc53be449736882cc36f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
