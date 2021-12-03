@@ -106,7 +106,6 @@ type differ struct {
 	goldArgs    []string
 	failedTests []string
 	testMode    testMode
-	executionID string
 	triage      string
 }
 
@@ -192,10 +191,6 @@ func (d *differ) initialize(ctx context.Context) error {
 		modelName = "unknown"
 	}
 
-	if d.executionID == "" {
-		d.executionID = fmt.Sprintf("%X", rand.Int31())
-	}
-
 	params := map[string]string{
 		"board":               release[lsbrelease.Board],
 		"device_scale_factor": fmt.Sprintf("%.2f", displayMode.DeviceScaleFactor),
@@ -208,7 +203,6 @@ func (d *differ) initialize(ctx context.Context) error {
 		"cpu_arch":                   cpuInfo["Architecture"],
 		"cpu_model":                  modelName,
 		"cpu_vendor":                 cpuInfo["Vendor ID"],
-		"execution_id":               d.executionID,
 		"name_suffix":                nameSuffix,
 		"region":                     region,
 		"resolution":                 fmt.Sprintf("%dx%d", displayMode.WidthInNativePixels, displayMode.HeightInNativePixels),
@@ -246,7 +240,7 @@ func (d *differ) initialize(ctx context.Context) error {
 
 	v := url.Values{}
 	v.Set("corpus", corpus)
-	v.Set("left_filter", fmt.Sprintf("name_suffix=%s&test_group=%s&execution_id=%s", nameSuffix, d.state.TestName(), d.executionID))
+	v.Set("left_filter", fmt.Sprintf("name_suffix=%s&test_group=%s", nameSuffix, d.state.TestName()))
 	v.Set("not_at_head", "true")
 
 	d.triage = fmt.Sprintf("https://%s-gold.skia.org/search?%s", goldInstance, v.Encode())
