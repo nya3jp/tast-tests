@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "97483cd1_514ec492",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2021-12-03T04:23:55Z",
+      "side": 1,
+      "message": "There are two ways to think about this test.\n\n1. \"It\u0027s an ml_service test\":\ni. We need a real on-device test that exercises this part of our daemon\u0027s Mojo API. \nii. Real on-device is needed because expected kinds of regressions (that we have already grappled in the past!) include execution_context_verification that cannot be properly tested in a unit test environment by definition.\niii. The Live Caption feature is a convenient way to do this test.\n\n2. \"It\u0027s a live caption test\":\ni. We need a regression test so the live caption feature doesn\u0027t stop working for users.\n\nI lean towards 2. and I think 2. is also more in the Tast spirit (though I think we have a good reason to use 1. if we wish, i.e. point 1.ii. above.\n\nIn summary, WDYT about putting this test in this directory instead?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/a11y/\n\n+akihiroota who wrote some tests of other accessibility features in there.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5849fc28_28ec1a38",
@@ -48,6 +71,138 @@
       "writtenOn": "2021-12-02T22:41:24Z",
       "side": 1,
       "message": "Hi Andrew, PTAL",
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf2cd98e_220c7ad1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2021-12-03T04:23:55Z",
+      "side": 1,
+      "message": "+aki CC and for comment below on test location\n",
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3d0529_9486072d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/ondevice_speech.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2021-12-03T04:23:55Z",
+      "side": 1,
+      "message": "Looped Audio ...",
+      "range": {
+        "startLine": 3,
+        "startChar": 7,
+        "endLine": 3,
+        "endChar": 12
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310645c2_e09553d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/ondevice_speech.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2021-12-03T04:23:55Z",
+      "side": 1,
+      "message": "\"Live Caption\", if we go with option 2. above",
+      "range": {
+        "startLine": 3,
+        "startChar": 26,
+        "endLine": 3,
+        "endChar": 41
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a480992_c0b18778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/ondevice_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2021-12-03T04:23:55Z",
+      "side": 1,
+      "message": "suggest: \"the looped audio\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 32,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f2895b_5ce99c56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/ondevice_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2021-12-03T04:23:55Z",
+      "side": 1,
+      "message": "I *think* we need to do more than just check it exists. We need to check that it transcribes the correct text.\nThe reason is, if execution context is invalid, the library emits empty strings.\n\nAlthough mayyyyybe we can get away with this, since in case of empty string I think Live Caption may never bring up the bubble ....",
+      "range": {
+        "startLine": 87,
+        "startChar": 43,
+        "endLine": 87,
+        "endChar": 104
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc530ebd_80f2931e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/ondevice_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2021-12-03T04:23:55Z",
+      "side": 1,
+      "message": "Seems pretty short, wouldn\u0027t be surprised if it could take longer than this for the DLC to be ready even though it\u0027s preloaded?",
+      "range": {
+        "startLine": 87,
+        "startChar": 26,
+        "endLine": 87,
+        "endChar": 41
+      },
       "revId": "df1444581148c0abaaa909cd5117242a7b736558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
