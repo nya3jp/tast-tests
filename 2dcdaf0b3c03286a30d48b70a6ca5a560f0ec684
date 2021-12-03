@@ -39,6 +39,30 @@
       },
       "revId": "2dcdaf0b3c03286a30d48b70a6ca5a560f0ec684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac763a3_7639a8ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_usb_ports.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-12-03T08:07:38Z",
+      "side": 1,
+      "message": "Made it such that \nif h.Config.USBEnablePins is empty:\n  if usb_a_port_count \u003c 0:\n    iterates over many USBn_ENABLE values to check if any exist\n  if n \u003d usb_a_port_count \u003e 0:\n    iterates up to n expecting all those ports to exist, else raises an error",
+      "parentUuid": "4dc704e5_1859a7b1",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 26
+      },
+      "revId": "2dcdaf0b3c03286a30d48b70a6ca5a560f0ec684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
