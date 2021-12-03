@@ -35,15 +35,10 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to init servo: ", err)
 	}
 
-	ms, err := firmware.NewModeSwitcher(ctx, h)
-	if err != nil {
-		s.Fatal("Failed to create mode switcher: ", err)
-	}
-
 	// checkPowerInfo checks the power supply information after waking up DUT from suspend.
 	checkPowerInfo := func(ctx context.Context) (string, error) {
 		s.Log("Checking for DUT's powerstate at S0")
-		if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
 			return "", errors.Wrap(err, "failed to get powerstate at S0 after waking DUT")
 		}
 
@@ -84,7 +79,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Checking for DUT in S0ix or S3 powerstates")
-		if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
 			s.Fatal("Failed to get powerstates at S0ix or S3: ", err)
 		}
 

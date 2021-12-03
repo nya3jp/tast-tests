@@ -54,17 +54,12 @@ func ECUSBPorts(ctx context.Context, s *testing.State) {
 }
 
 func testPortsAfterLidClose(ctx context.Context, h *firmware.Helper, expectedState int) error {
-	ms, err := firmware.NewModeSwitcher(ctx, h)
-	if err != nil {
-		return errors.Wrap(err, "failed to create mode switcher")
-	}
-
 	if err := h.Servo.CloseLid(ctx); err != nil {
 		return errors.Wrap(err, "failed to close lid")
 	}
 
 	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
 
@@ -78,7 +73,7 @@ func testPortsAfterLidClose(ctx context.Context, h *firmware.Helper, expectedSta
 	}
 
 	testing.ContextLog(ctx, "Waiting for S0 powerstate")
-	err = ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
+	err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
 	if err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
@@ -91,11 +86,6 @@ func testPortsAfterLidClose(ctx context.Context, h *firmware.Helper, expectedSta
 }
 
 func testPortsAfterShutdown(ctx context.Context, h *firmware.Helper, expectedState int) error {
-	ms, err := firmware.NewModeSwitcher(ctx, h)
-	if err != nil {
-		return errors.Wrap(err, "failed to create mode switcher")
-	}
-
 	testing.ContextLog(ctx, "Shut down DUT")
 	cmd := h.DUT.Conn().CommandContext(ctx, "/sbin/shutdown", "-P", "now")
 	if err := cmd.Start(); err != nil {
@@ -103,7 +93,7 @@ func testPortsAfterShutdown(ctx context.Context, h *firmware.Helper, expectedSta
 	}
 
 	testing.ContextLog(ctx, "Check for G3 powerstate")
-	if err := ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
+	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
 		return errors.Wrap(err, "failed to get G3 powerstate")
 	}
 
@@ -118,7 +108,7 @@ func testPortsAfterShutdown(ctx context.Context, h *firmware.Helper, expectedSta
 	}
 
 	testing.ContextLog(ctx, "Waiting for S0 powerstate")
-	err = ms.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
+	err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
 	if err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
