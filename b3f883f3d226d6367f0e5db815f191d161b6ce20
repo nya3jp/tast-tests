@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702beb24_62bfea8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unpin_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-12-03T00:22:09Z",
+      "side": 1,
+      "message": "Existing holding space tests are located in src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/holdingspace [1]. Seems like much of this test is already covered in holdingspace.FilesAppContextMenuPinAndUnpin [2]?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/holdingspace/\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+      "revId": "b3f883f3d226d6367f0e5db815f191d161b6ce20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
