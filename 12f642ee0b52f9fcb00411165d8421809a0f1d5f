@@ -177,6 +177,30 @@
       },
       "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45faa2a9_5b8e4c4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-03T01:39:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a2cb01bb_ce4d34ba",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 61
+      },
+      "revId": "12f642ee0b52f9fcb00411165d8421809a0f1d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
