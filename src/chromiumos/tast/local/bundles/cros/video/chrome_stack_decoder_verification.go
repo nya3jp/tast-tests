@@ -69,9 +69,12 @@ var h264FilesFromBugs = []string{
 	"test_vectors/h264/files_from_bugs/b_227047778_mtk_8195_artifacts.h264",
 }
 
-// These tests are expected to fail long-term.
+// These are invalid bistreams one way or another that are decoded correctly (no
+// artifacts) with a software decoder but not when using certain hardware decoder
+// implementations. These tests are expected to fail long-term.
 var h264InvalidBistreams = []string{
 	"test_vectors/h264/files_from_bugs/b_234651916_big_buck_bunny_artifacts_rk3399.h264",
+	"test_vectors/h264/files_from_bugs/b_184041918_Webex_out_of_order_h264_frames.h264",
 }
 
 var h264Files = map[string][]string{
