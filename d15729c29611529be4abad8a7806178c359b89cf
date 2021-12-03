@@ -460,6 +460,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee3d87b9_b38368ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-03T21:35:57Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nWe split into two patches.\n1) Extend hw list to all vpro variants\n\n2) Disable data projection access from UI",
+      "parentUuid": "c51615d3_26c08a22",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
