@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6cf7ea9_78c617ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_bluetooth_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-03T18:48:36Z",
+      "side": 1,
+      "message": "nit: it would be a bit more natural to keep these on one line, there is no enforced line length limit in Go :)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "8c7c5f0d6a563b13b219b0d2fa8836a6a8324d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf0294e_0aa94921",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/ossettings/bluetooth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-03T18:48:36Z",
+      "side": 1,
+      "message": "You may want to include a call to FocusAndWait to scroll the button into view before clicking it (I think LeftClick fails for off-screen nodes). It might not be necessary since Bluetooth is at the top of OS Settings, but it could guard against flakes on small-screen devices or if its position ever moves down in the future.",
+      "range": {
+        "startLine": 34,
+        "startChar": 11,
+        "endLine": 34,
+        "endChar": 70
+      },
+      "revId": "8c7c5f0d6a563b13b219b0d2fa8836a6a8324d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
