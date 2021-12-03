@@ -250,6 +250,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a024b292_1e6a957f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-03T08:50:31Z",
+      "side": 1,
+      "message": "The example test is working correctly now: https://cros-health-prod.googleplex.com/test/policy.WebAppInstallForceList\n\nI\u0027d rather implement this test properly.",
+      "parentUuid": "b3bc0255_c439363a",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 78
+      },
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08e81105_415f9127",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
         "patchSetId": 4
