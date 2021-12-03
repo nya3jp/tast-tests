@@ -110,7 +110,7 @@ func suspendAndWake(args *lidSwitchArgs, delay time.Duration) error {
 		return errors.Wrap(err, "failed to suspend DUT")
 	}
 	testing.ContextLog(args.ctx, "Checking for S0ix or S3 powerstate")
-	if err := args.ms.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
+	if err := args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
 		return errors.Wrap(err, "failed to get S0ix or S3 powerstate")
 	}
 
@@ -130,7 +130,7 @@ func suspendAndWake(args *lidSwitchArgs, delay time.Duration) error {
 		return err
 	}
 	testing.ContextLog(args.ctx, "Waiting for S0 powerstate")
-	err := args.ms.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
+	err := args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
 	if err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
@@ -143,7 +143,7 @@ func closeLidAndWake(args *lidSwitchArgs) error {
 		return err
 	}
 	testing.ContextLog(args.ctx, "Check for G3 or S5 powerstate")
-	err := args.ms.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5")
+	err := args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5")
 	if err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
@@ -155,7 +155,7 @@ func closeLidAndWake(args *lidSwitchArgs) error {
 		return err
 	}
 	testing.ContextLog(args.ctx, "Waiting for S0 powerstate")
-	err = args.ms.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
+	err = args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
 	if err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
@@ -170,7 +170,7 @@ func powerOffAndWake(args *lidSwitchArgs, delay time.Duration) error {
 	// The ms.PowerOff method checks for G3 or S5 but might just wait for DUT to be unreachable.
 	// So it checks powerstate to make sure it reaches one of those two desired states.
 	testing.ContextLog(args.ctx, "Check for G3 or S5 powerstate")
-	err := args.ms.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5")
+	err := args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5")
 	if err != nil {
 		return errors.Wrap(err, "failed to get G3 or S5 powerstate")
 	}
@@ -191,7 +191,7 @@ func powerOffAndWake(args *lidSwitchArgs, delay time.Duration) error {
 		return err
 	}
 	testing.ContextLog(args.ctx, "Waiting for S0 powerstate")
-	err = args.ms.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
+	err = args.h.WaitForPowerStates(args.ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0")
 	if err != nil {
 		return errors.Wrap(err, "failed to get S0 powerstate")
 	}
