@@ -40,7 +40,8 @@ func init() {
 			"khegde@google.com",
 			"cros-tdm@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		// TODO(b/209014812): Test is unstable
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 	})
