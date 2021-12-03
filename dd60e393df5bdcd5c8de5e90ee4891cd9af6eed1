@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb05fcc_1a290f71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-03T15:57:40Z",
+      "side": 1,
+      "message": "could you use gopsutil\u0027s cpu package, instead?",
+      "revId": "dd60e393df5bdcd5c8de5e90ee4891cd9af6eed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5fe68a1_1c860dc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-03T15:57:40Z",
+      "side": 1,
+      "message": "s.Fatal() as is does not make sense to continue the testing in this error case.\n\nI think ditto for below.",
+      "revId": "dd60e393df5bdcd5c8de5e90ee4891cd9af6eed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4352ba23_3a0a79ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-03T15:57:40Z",
+      "side": 1,
+      "message": "looks redundant, as ioutil.ReadDir() returns an error on this case anyways?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "dd60e393df5bdcd5c8de5e90ee4891cd9af6eed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
