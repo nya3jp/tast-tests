@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
 		Vars:         []string{"board", "model"},
-		Fixture:      fixture.DevModeGBB,
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
 }
@@ -196,5 +196,8 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		if lidStateFinal != tc.lidOpen {
 			s.Fatalf("DUT's lid_open state has changed from %s to %s", tc.lidOpen, lidStateFinal)
 		}
+	}
+	if err := h.Servo.OpenLid(ctx); err != nil {
+		s.Fatal("Failed to set lid state: ", err)
 	}
 }
