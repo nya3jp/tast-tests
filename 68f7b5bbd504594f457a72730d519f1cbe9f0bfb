@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "441967f6_3a6d6173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-03T02:54:57Z",
+      "side": 1,
+      "message": "Checking the tast board result, there is only one build fully pass. I guess we need to wait for a bit more like 20.\n\nSuggest to post the link to the tast result here.",
+      "revId": "68f7b5bbd504594f457a72730d519f1cbe9f0bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
