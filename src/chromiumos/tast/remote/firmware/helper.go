@@ -169,7 +169,7 @@ func (h *Helper) Close(ctx context.Context) error {
 
 // EnsureDUTBooted checks the power state, and attempts to boot the DUT if it is off.
 func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
-	if h.DUT.Connected(ctx) {
+	if h.DUT != nil && h.DUT.Connected(ctx) {
 		return nil
 	}
 	if err := h.RequireServo(ctx); err != nil {
@@ -284,9 +284,11 @@ func (h *Helper) CloseRPCConnection(ctx context.Context) error {
 func (h *Helper) DisconnectDUT(ctx context.Context) error {
 	rpcerr := h.CloseRPCConnection(ctx)
 	// Disconnect the dut even if the rpc connection failed to close.
-	duterr := h.DUT.Disconnect(ctx)
-	if duterr != nil {
-		return duterr
+	if h.DUT != nil {
+		duterr := h.DUT.Disconnect(ctx)
+		if duterr != nil {
+			return duterr
+		}
 	}
 	return rpcerr
 }
@@ -310,6 +312,16 @@ func (h *Helper) RequirePlatform(ctx context.Context) error {
 		}
 	}
 	return nil
+}
+
+// OverridePlatform sets board and model if the passed in params are not blank.
+func (h *Helper) OverridePlatform(ctx context.Context, board, model string) {
+	if board != "" {
+		h.Board = strings.ToLower(board)
+	}
+	if model != "" {
+		h.Model = strings.ToLower(model)
+	}
 }
 
 // RequireConfig creates a firmware.Config, unless one already exists.
@@ -338,7 +350,13 @@ func (h *Helper) RequireServo(ctx context.Context) error {
 	if h.Servo != nil {
 		return nil
 	}
-	pxy, err := servo.NewProxy(ctx, h.servoHostPort, h.DUT.KeyFile(), h.DUT.KeyDir())
+	keyFile := ""
+	keyDir := ""
+	if h.DUT != nil {
+		keyFile = h.DUT.KeyFile()
+		keyDir = h.DUT.KeyDir()
+	}
+	pxy, err := servo.NewProxy(ctx, h.servoHostPort, keyFile, keyDir)
 	if err != nil {
 		return errors.Wrap(err, "connecting to servo")
 	}
@@ -595,32 +613,44 @@ func (h *Helper) WaitForPowerStates(ctx context.Context, interval, timeout time.
 
 // WaitConnect is similar to DUT.WaitConnect, except that it works with RO EC firmware.
 // Pass a context with a deadline if you don't want to wait forever.
+// If --var noSSH=true is set, this degrades to waiting for S0 + a sleep.
 func (h *Helper) WaitConnect(ctx context.Context) error {
 	const reconnectRetryDelay = time.Second
 
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "failed to connect to servo")
 	}
-	testing.ContextLogf(ctx, "Waiting for %s to connect", h.DUT.HostName())
-	for {
-		if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
-			testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
-		}
-		err := h.DUT.Connect(ctx)
-		if err == nil {
-			return nil
-		}
-
-		select {
-		case <-time.After(reconnectRetryDelay):
-			break
-		case <-ctx.Done():
-			if err.Error() == ctx.Err().Error() {
-				return err
+	if h.DUT != nil {
+		testing.ContextLogf(ctx, "Waiting for %s to connect", h.DUT.HostName())
+		for {
+			if err := h.Servo.SetDUTPDDataRole(ctx, servo.DFP); err != nil {
+				testing.ContextLogf(ctx, "Failed to set pd data role to DFP: %s", err)
 			}
-			return errors.Wrapf(err, "context error = %v", ctx.Err())
+			err := h.DUT.Connect(ctx)
+			if err == nil {
+				return nil
+			}
+
+			select {
+			case <-time.After(reconnectRetryDelay):
+				break
+			case <-ctx.Done():
+				if err.Error() == ctx.Err().Error() {
+					return err
+				}
+				return errors.Wrapf(err, "context error = %v", ctx.Err())
+			}
 		}
 	}
+	testing.ContextLog(ctx, "Waiting DUT to reach S0")
+	if err := h.WaitForPowerStates(ctx, reconnectRetryDelay, 1*time.Minute, "S0"); err != nil {
+		return errors.Wrap(err, "wait for S0")
+	}
+	testing.ContextLog(ctx, "Sleeping 20s for boot to finish")
+	if err := testing.Sleep(ctx, 20*time.Second); err != nil {
+		return errors.Wrap(err, "sleep 20s")
+	}
+	return nil
 }
 
 // RequireRPM creates the RPM client in h.RPM.

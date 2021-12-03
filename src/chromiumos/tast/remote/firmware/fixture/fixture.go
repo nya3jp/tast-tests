@@ -34,7 +34,7 @@ func init() {
 		Desc:            "Reboot into normal mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeNormal, false, true),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -46,7 +46,7 @@ func init() {
 		Desc:            "Reboot into dev mode before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeDev, false, true),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -58,7 +58,7 @@ func init() {
 		Desc:            "Reboot into dev mode using GBB flags before test",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeDev, true, true),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -70,7 +70,7 @@ func init() {
 		Desc:            "Reboot into usb-dev mode before test, ServiceDeps are not supported",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeUSBDev, false, false),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -82,7 +82,7 @@ func init() {
 		Desc:            "Reboot into usb-dev mode using GBB flags before test, ServiceDeps are not supported",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeUSBDev, true, false),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -94,7 +94,7 @@ func init() {
 		Desc:            "Reboot into recovery mode before test, ServiceDeps are not supported",
 		Contacts:        []string{"tast-fw-library-reviewers@google.com", "jbettis@google.com"},
 		Impl:            newFixture(common.BootModeRecovery, false, false),
-		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB"},
+		Vars:            []string{"servo", "dutHostname", "powerunitHostname", "powerunitOutlet", "hydraHostname", "firmware.no_ec_sync", "firmware.skipFlashUSB", "noSSH"},
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
@@ -117,6 +117,7 @@ type impl struct {
 	origBootMode  *common.BootMode
 	origGBBFlags  *pb.GBBFlagsState
 	copyTastFiles bool
+	disallowSSH   bool
 }
 
 // newFixture creates an instance of firmware Fixture.
@@ -146,6 +147,20 @@ func (i *impl) noECSync(s *testing.FixtState) (bool, error) {
 // SetUp is called by the framework to set up the environment with possibly heavy-weight
 // operations.
 func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	noSSHVar, _ := s.Var("noSSH")
+	forbidSSH, err := strconv.ParseBool(noSSHVar)
+	if err != nil {
+		s.Fatalf("Invalid value for var noSSH: got %q, want true/false", noSSHVar)
+	}
+	i.disallowSSH = forbidSSH
+	s.Log("Creating a new firmware Helper instance for fixture: ", i.String())
+	i.initHelper(ctx, s)
+
+	if forbidSSH {
+		s.Log("Skipping GBB and reboot because noSSH var was set")
+		return i.value
+	}
+
 	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
 	if i.value.ForcesDevMode {
 		if i.value.BootMode == common.BootModeUSBDev {
@@ -163,10 +178,6 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		s.Log("User selected to disable EC software sync")
 	}
 	i.value.GBBFlags = flags
-
-	s.Log("Creating a new firmware Helper instance for fixture: ", i.String())
-	i.initHelper(ctx, s)
-
 	// If rebooting to recovery mode, verify the usb key.
 	if i.value.BootMode == common.BootModeRecovery || i.value.BootMode == common.BootModeUSBDev {
 		if err := i.value.Helper.RequireServo(ctx); err != nil {
@@ -209,6 +220,9 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		s.Fatal("DUT is offline before test start: ", err)
 	}
 
+	if i.disallowSSH {
+		return
+	}
 	// The GBB flags might prevent booting into the correct mode, so check the boot mode,
 	// then save the GBB flags, then set the GBB flags, and finally reboot into the right mode.
 	mode, err := i.value.Helper.Reporter.CurrentBootMode(ctx)
@@ -295,6 +309,10 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 		s.Fatal("DUT is offline after test end: ", err)
 	}
 
+	if i.disallowSSH {
+		return
+	}
+
 	rebootRequired := false
 	toMode := common.BootModeUnspecified
 	setGBBFlagsAfterReboot := false
@@ -373,20 +391,26 @@ func (i *impl) String() string {
 func (i *impl) initHelper(ctx context.Context, s *testing.FixtState) {
 	if i.value.Helper == nil {
 		servoSpec, _ := s.Var("servo")
-		dutHostname, _ := s.Var("dutHostname")
-		if dutHostname == "" {
-			host, _, err := net.SplitHostPort(s.DUT().HostName())
-			if err != nil {
-				testing.ContextLogf(ctx, "Failed to extract DUT hostname from %q, use --var=dutHostname to set", s.DUT().HostName())
-			}
-			dutHostname = host
-		}
-		powerunitHostname, _ := s.Var("powerunitHostname")
-		powerunitOutlet, _ := s.Var("powerunitOutlet")
-		hydraHostname, _ := s.Var("hydraHostname")
-		i.value.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname)
-		if !i.copyTastFiles {
+
+		if i.disallowSSH {
+			i.value.Helper = firmware.NewHelper(nil, nil, s.DataPath(firmware.ConfigFile), servoSpec, "", "", "", "")
 			i.value.Helper.DisallowServices()
+		} else {
+			dutHostname, _ := s.Var("dutHostname")
+			if dutHostname == "" {
+				host, _, err := net.SplitHostPort(s.DUT().HostName())
+				if err != nil {
+					testing.ContextLogf(ctx, "Failed to extract DUT hostname from %q, use --var=dutHostname to set", s.DUT().HostName())
+				}
+				dutHostname = host
+			}
+			powerunitHostname, _ := s.Var("powerunitHostname")
+			powerunitOutlet, _ := s.Var("powerunitOutlet")
+			hydraHostname, _ := s.Var("hydraHostname")
+			i.value.Helper = firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname)
+			if !i.copyTastFiles {
+				i.value.Helper.DisallowServices()
+			}
 		}
 	}
 }
