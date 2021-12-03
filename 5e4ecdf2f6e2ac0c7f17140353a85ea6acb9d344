@@ -96,6 +96,30 @@
       },
       "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ffc9a8_e22b7cdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-03T06:38:07Z",
+      "side": 1,
+      "message": "\u003e No matter the device is in clamshell or tablet, virtual keyboard is disabled by default.So I think this is not necessary. Hope I remember it correctly.\n\nI believe VK still shows on the devices w/o keyboard\n\n\u003e Btw, it does not make sense to test in tablet mode without virtual keyboard, it is not a valid scenario I believe.\n\nWe have a special pin pad on the lock screen. VK is hiding it which I want to avoid (see https://storage.cloud.google.com/chromeos-test-logs/test-runner/prod/2021-12-03/b873dcb1-7be5-4f10-bf19-6cf2310bc4b8/autoserv_test/tast/results/tests/login.Pin.settings_enroll_autosubmit/faillog/screenshot_chrome.png)",
+      "parentUuid": "6e8a09d9_a78601c6",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
