@@ -51,6 +51,52 @@ func verifyETMIsEnabled(ctx context.Context, s *testing.State) {
 	}
 }
 
+// verifyAndSetETMStrobingConfiguration checks that strobing configuration is
+// exposed in configfs and modify ETM strobing parameters.
+func verifyAndSetETMStrobingConfiguration(ctx context.Context, s *testing.State) {
+	params := []struct {
+		name  string
+		path  string
+		value string
+	}{
+		{
+			name:  "period",
+			path:  "/sys/kernel/config/cs-syscfg/features/strobing/params/period/value",
+			value: "0x800",
+		},
+		{
+			name:  "window",
+			path:  "/sys/kernel/config/cs-syscfg/features/strobing/params/window/value",
+			value: "0x400",
+		},
+	}
+	s.Log("-------------------------------------")
+	s.Log("Verify and set up ETM strobing")
+	for _, param := range params {
+		// Read the default parameter.
+		defaultParam, err := ioutil.ReadFile(param.path)
+		if err != nil {
+			s.Errorf("Failed to read %v, error %v", param.path, err)
+		}
+		s.Logf("Default strobing %v: %v", param.name, strings.TrimSpace(string(defaultParam)))
+		// Set new strobing parameters.
+		if err = ioutil.WriteFile(param.path, []byte(param.value), 0644); err != nil {
+			s.Errorf("Write to %q failed: %v", param.path, err)
+		}
+		// Verify the new strobing settings.
+		readBackParam, err := ioutil.ReadFile(param.path)
+		if err != nil {
+			s.Errorf("Failed to read %v, error %v", param.path, err)
+		}
+		readBackParamStr := strings.TrimSpace(string(readBackParam))
+		s.Logf("New strobing %v: %v", param.name, readBackParamStr)
+		if strings.Compare(readBackParamStr, param.value) != 0 {
+			s.Errorf("Failed to update strobing parameter %v. Wrote %v, read back %v",
+				param.path, param.value, readBackParamStr)
+		}
+	}
+}
+
 // verifyETMData verifies that the report contains an AUX record with ETM data.
 func verifyETMData(s *testing.State, report string) {
 	etmDataRegexp := regexp.MustCompile(`CoreSight ETM Trace data: size (\d+) bytes`)
@@ -70,10 +116,13 @@ func verifyETMData(s *testing.State, report string) {
 }
 
 // verifyLastBranchSamples verifies that the report contains a last branch sample.
-func verifyLastBranchSamples(s *testing.State, report, tracedCommand string) {
+// If "dso" is non empty verify that there are records belonging to this dso.
+// If "tracedCommand" is non empty verify that the command has branch records.
+func verifyLastBranchSamples(s *testing.State, report, tracedCommand, dso string) {
 	sampleRecordRegexp := regexp.MustCompile("PERF_RECORD_SAMPLE")
 	branchStackSizeRegexp := regexp.MustCompile(`branch stack: nr:(\d+)`)
 	threadRegexp := regexp.MustCompile(`thread: (\S+):\d+`)
+	dsoRegexp := regexp.MustCompile(`dso: (\S+)`)
 	records := strings.Split(report, "\n\n")
 	numberOfRecords := 0
 	for _, record := range records {
@@ -93,10 +142,18 @@ func verifyLastBranchSamples(s *testing.State, report, tracedCommand string) {
 		}
 		threadMatch := threadRegexp.FindStringSubmatch(record)
 
-		if threadMatch != nil && (tracedCommand == "" || tracedCommand == threadMatch[1]) {
-			// We are ok with any last branch record if no tracedCommand is passed.
-			s.Logf("Found a sample with %q, stack size %v", threadMatch[1], size)
-			return
+		if dso == "" {
+			if threadMatch != nil && (tracedCommand == "" || tracedCommand == threadMatch[1]) {
+				// We are ok with any last branch record if no tracedCommand is passed.
+				s.Logf("Found a sample with %q, stack size %v", threadMatch[1], size)
+				return
+			}
+		} else {
+			dsoMatch := dsoRegexp.FindStringSubmatch(record)
+			if dsoMatch != nil && dso == dsoMatch[1] {
+				s.Logf("Found a sample from dso %q, stack size %v", dso, size)
+				return
+			}
 		}
 		// Record is either invalid or belongs to a different command.
 		// Continue the search.
@@ -145,23 +202,18 @@ func perfETMPerThread(ctx context.Context, s *testing.State) {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
 	s.Log("Verifying Last Branch samples in per-thread mode")
-	verifyLastBranchSamples(s, string(out), tracedCommand)
+	verifyLastBranchSamples(s, string(out), tracedCommand, "")
 }
 
 // perfETMSystemWide records ETM trace in system-wide mode and verifies the raw dump.
 func perfETMSystemWide(ctx context.Context, s *testing.State) {
-	const tracedCommand = "ls"
 	perfData := filepath.Join(s.OutDir(), "system-wide-perf.data")
+	perfCommand := []string{"record", "-e", "cs_etm/autofdo/uk", "-N", "-o", perfData, "-a", "--"}
+	tracedCommand := []string{"top", "-b", "-n10", "-d0.1"}
+	fullPerfCommand := append(perfCommand, tracedCommand...)
 
 	// Test ETM profile collection.
-	// /proc/kcore was enabled on Trogdor which in turn enabled kernel trace
-	// decoding, b/204223452.
-	// Until the fix for /proc/kcore (https://lkml.org/lkml/2021/10/21/384)
-	// is merged on the perf side, kernel decoding may potentially break
-	// branch sample synthesis. See b/204822960.
-	// Temporarily disable kernel tracing.
-	// TODO(b/169808085): Enable kernel tracing when the perf patch is merged.
-	cmd := testexec.CommandContext(ctx, "perf", "record", "-e", "cs_etm/@tmc_etr0/u", "-m", ",1M", "-N", "-o", perfData, "-a", tracedCommand)
+	cmd := testexec.CommandContext(ctx, "perf", fullPerfCommand...)
 	err := cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
@@ -179,7 +231,7 @@ func perfETMSystemWide(ctx context.Context, s *testing.State) {
 
 	// Test ETM trace decoding and sample synthesis.
 	perfInjectData := filepath.Join(s.OutDir(), "system-wide-perf-inject.data")
-	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=i1000il", "--strip", "-i", perfData, "-o", perfInjectData)
+	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=i1024il", "--strip", "-i", perfData, "-o", perfInjectData)
 	err = cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
@@ -192,13 +244,10 @@ func perfETMSystemWide(ctx context.Context, s *testing.State) {
 		s.Errorf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
 	s.Log("Verifying Last Branch samples in system-wide mode")
-	// We can't reliably capture the workload command in system-wide mode
-	// because ETM buffer holds only a small sample of ETM trace data where
-	// background processes can dominate.
-	// ETM tracing with strobing makes sample distribution more uniform and
-	// should resolve the issue.
-	// TODO(b/200183162): Add Strobing mode testing with command verification.
-	verifyLastBranchSamples(s, string(out), "")
+	// Verify samples from the traced command.
+	verifyLastBranchSamples(s, string(out), tracedCommand[0], "")
+	// Verify samples from the kernel dso.
+	verifyLastBranchSamples(s, string(out), "", "/proc/kcore")
 }
 
 // PerfETM verifies that cs_etm PMU event is supported and we can collect ETM data and
@@ -207,6 +256,9 @@ func perfETMSystemWide(ctx context.Context, s *testing.State) {
 func PerfETM(ctx context.Context, s *testing.State) {
 	// Verify that perf supports ETM.
 	verifyETMIsEnabled(ctx, s)
+
+	// Verify and set up ETM strobing configuration.
+	verifyAndSetETMStrobingConfiguration(ctx, s)
 
 	// Test ETM in the per-thread mode.
 	perfETMPerThread(ctx, s)
