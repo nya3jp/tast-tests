@@ -19,8 +19,8 @@ type Version struct {
 var versionRegexp = regexp.MustCompile(`(\d+).(\d+).(\d+).(\d+)`)
 
 // New creates a new instance of Version with version components.
-func New(major, minor, build, patch int64) Version {
-	return Version{
+func New(major, minor, build, patch int64) *Version {
+	return &Version{
 		components: [4]int64{major, minor, build, patch},
 	}
 }
@@ -71,20 +71,20 @@ func (v *Version) Patch() int64 {
 }
 
 // Increment increases version by given components, returns a copy of it.
-func (v *Version) Increment(major, minor, build, patch int64) Version {
-	v.components[0] += major
-	v.components[1] += minor
-	v.components[2] += build
-	v.components[3] += patch
+func (v *Version) Increment(o *Version) Version {
+	v.components[0] += o.components[0]
+	v.components[1] += o.components[1]
+	v.components[2] += o.components[2]
+	v.components[3] += o.components[3]
 	return *v
 }
 
 // Decrement decreases version by given components, returns a copy of it.
-func (v *Version) Decrement(major, minor, build, patch int64) Version {
-	v.components[0] -= major
-	v.components[1] -= minor
-	v.components[2] -= build
-	v.components[3] -= patch
+func (v *Version) Decrement(o *Version) Version {
+	v.components[0] -= o.components[0]
+	v.components[1] -= o.components[1]
+	v.components[2] -= o.components[2]
+	v.components[3] -= o.components[3]
 	return *v
 }
 

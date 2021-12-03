@@ -21,8 +21,8 @@ const (
 	VersionURL               = "chrome://version/"
 
 	// Lacros component names.
-	LacrosCanaryChannelName = "lacros-dogfood-canary"
-	LacrosDevChannelName    = "lacros-dogfood-dev"
-	LacrosBetaChannelName   = "lacros-dogfood-beta"
-	LacrosStableChannelName = "lacros-dogfood-stable"
+	LacrosCanaryComponent = "lacros-dogfood-canary"
+	LacrosDevComponent    = "lacros-dogfood-dev"
+	LacrosBetaComponent   = "lacros-dogfood-beta"
+	LacrosStableComponent = "lacros-dogfood-stable"
 )

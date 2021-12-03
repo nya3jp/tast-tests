@@ -81,11 +81,8 @@ func VerifyLacrosUpdate(ctx context.Context, expectedBrowser lacrosservice.Brows
 	// Build browser contexts for a test request.
 	ashCtx := &lacrosservice.BrowserContext{
 		Browser: lacrosservice.BrowserType_ASH,
-		Opts: []string{
-			"--enable-features=LacrosSupport",
-			"--component-updater=url-source=" + lacroscommon.BogusComponentUpdaterURL, // Block Component Updater.
-			"--disable-lacros-keep-alive",                                             // Disable keep-alive for testing. See crbug.com/1268743.
-		},
+		// Add chrome options to be configured per each test. If an option is common for all tests, please add to update_test_service.go.
+		Opts: []string{},
 	}
 	lacrosCtx := &lacrosservice.BrowserContext{
 		Browser: lacrosservice.BrowserType_LACROS_STATEFUL,
@@ -134,15 +131,15 @@ func LacrosComponentVar(s *testing.State) (string, error) {
 	component, ok := s.Var("lacrosComponent")
 	if !ok {
 		// Defaults to Lacros dev channel
-		return lacroscommon.LacrosDevChannelName, nil
+		return lacroscommon.LacrosDevComponent, nil
 	}
 
 	switch component {
 	case
-		lacroscommon.LacrosCanaryChannelName,
-		lacroscommon.LacrosDevChannelName,
-		lacroscommon.LacrosBetaChannelName,
-		lacroscommon.LacrosStableChannelName:
+		lacroscommon.LacrosCanaryComponent,
+		lacroscommon.LacrosDevComponent,
+		lacroscommon.LacrosBetaComponent,
+		lacroscommon.LacrosStableComponent:
 		return component, nil
 	default:
 		return "", errors.New("Not supported component: " + component)
