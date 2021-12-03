@@ -77,6 +77,11 @@ func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*launcher.LacrosChrome, error) {
 	const newTabTitle = "New Tab"
 
+	// Make sure Lacros app is not running before launch.
+	if ok, _ := ash.AppRunning(ctx, tconn, apps.Lacros.ID); ok {
+		return nil, errors.New("failed to launch lacros since app is already running. close before launch")
+	}
+
 	testing.ContextLog(ctx, "Launch lacros via Shelf")
 	if err := ash.LaunchAppFromShelf(ctx, tconn, apps.Lacros.Name, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to launch lacros via shelf")
