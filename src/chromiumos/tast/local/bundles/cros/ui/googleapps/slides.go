@@ -7,6 +7,7 @@ package googleapps
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -101,8 +102,9 @@ func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title st
 func PresentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slideCount int) action.Action {
 	ui := uiauto.New(tconn)
 	presentationOptionsButton := nodewith.Name("Presentation options").First()
-	presentFromBeginningButton := nodewith.Name("Present from beginning").First()
-	present := nodewith.Name("Present").First()
+	// There are two versions of ui to present slide.
+	presentFromBeginningButton := nodewith.NameRegex(regexp.MustCompile("(Present|Start) from beginning")).First()
+	present := nodewith.NameRegex(regexp.MustCompile("(Present|Slideshow)")).First()
 	return uiauto.NamedAction("to present slide",
 		uiauto.Combine("present Slide",
 			ui.WaitUntilExists(presentationOptionsButton),
