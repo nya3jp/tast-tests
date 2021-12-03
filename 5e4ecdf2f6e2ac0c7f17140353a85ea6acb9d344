@@ -192,6 +192,30 @@
       },
       "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefc39d9_28e88e72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1362291
+      },
+      "writtenOn": "2021-12-03T16:17:49Z",
+      "side": 1,
+      "message": "Moved to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1276437 since the other bug was about VK not working.",
+      "parentUuid": "7fd18df5_a376bb62",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "5e4ecdf2f6e2ac0c7f17140353a85ea6acb9d344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
