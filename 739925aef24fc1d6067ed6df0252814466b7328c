@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "667220f0_8e15c4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-03T18:38:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9203aab_75b36f32",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 262,
+        "endChar": 9
+      },
+      "revId": "739925aef24fc1d6067ed6df0252814466b7328c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c57cb11_d22c2adf",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-03T17:55:00Z",
       "side": 1,
       "message": "Unless you create a helper function for this called |LacrsoComponentToChannel()|",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 3
+      },
+      "revId": "739925aef24fc1d6067ed6df0252814466b7328c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b4faaa8_93bfe755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-03T18:38:09Z",
+      "side": 1,
+      "message": "The intention of anonymous function here is that \n(1) it does just one specific thing that is adding chrome option for channel, so I was reluctant to create a helper that is not going to be used anywhere else.\n(2) it helps break the switch statement at line 275, but let go for the rest of the setupChrome function.\nI\u0027m open to any better style in this case. Thanks for the catch!",
+      "parentUuid": "5c57cb11_d22c2adf",
       "range": {
         "startLine": 263,
         "startChar": 2,
