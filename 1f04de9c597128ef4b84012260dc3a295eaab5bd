@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5350ab_a6515bbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-12-03T08:15:25Z",
+      "side": 1,
+      "message": "This test has run successfully on the following DUTs:\n\nSparky360 [—board\u003doctopus]\nHayato [—board\u003dasurada]\nVilboz [—board\u003dzork]\nStoro360 [—board\u003ddedede]\nBoten [—board\u003ddedede]\nKindred [—board\u003dhatch]\nDelbin [—board\u003dvolteer]\n\nAs noted in the ticket, firmware_ECChargingState from Autotest partially covers the steps in this test. If needed, we could maybe create another ticket to enhance this automation script with additional test steps.",
+      "revId": "1f04de9c597128ef4b84012260dc3a295eaab5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
