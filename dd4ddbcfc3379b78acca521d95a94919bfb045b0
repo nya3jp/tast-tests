@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7971efd_98cb1cac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-03T18:56:22Z",
+      "side": 1,
+      "message": "+Eliot, just like https://crrev.com/c/3314697 in case you think it\u0027s worth holding off on this until your large refactor is in to avoid a merge conflict with https://crrev.com/c/3308580",
+      "revId": "dd4ddbcfc3379b78acca521d95a94919bfb045b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
