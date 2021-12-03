@@ -32,11 +32,11 @@ func init() {
 		Func:         ECTabletMode,
 		Desc:         "Checks that power button actions behave as expected in tablet mode, replacing case 1.4.9",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware", "firmware_ec"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService", "tast.cros.ui.PowerMenuService", "tast.cros.graphics.ScreenshotService"},
-		Fixture:      fixture.DevModeGBB,
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.FormFactor(hwdep.Convertible, hwdep.Chromeslate, hwdep.Detachable)),
 	})
 }
