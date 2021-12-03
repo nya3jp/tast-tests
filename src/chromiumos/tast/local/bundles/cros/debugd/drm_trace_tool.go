@@ -13,7 +13,10 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/debugd"
+	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -31,7 +34,7 @@ func init() {
 			"ddavenport@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"drm_trace"},
+		SoftwareDeps: []string{"chrome", "drm_trace"},
 	})
 }
 
@@ -66,6 +69,31 @@ func DRMTraceTool(ctx context.Context, s *testing.State) {
 	s.Log("Verify DRMTraceSetSize method")
 	if err := testSetSize(ctx, dbgd); err != nil {
 		s.Error("Failed to verify DRMTraceSetSize: ", err)
+	}
+
+	s.Log("Verify DRMTraceTool parameters are reset correctly")
+	sm := func() *session.SessionManager {
+		// Set up the test environment. Should be done quickly.
+		const setupTimeout = 30 * time.Second
+		setupCtx, cancel := context.WithTimeout(ctx, setupTimeout)
+		defer cancel()
+
+		// Ensures login screen.
+		if err := upstart.RestartJob(setupCtx, "ui"); err != nil {
+			s.Fatal("Chrome logout failed: ", err)
+		}
+
+		sm, err := session.NewSessionManager(setupCtx)
+		if err != nil {
+			s.Fatal("Failed to connect session_manager: ", err)
+		}
+		return sm
+	}()
+	if err := testLogin(ctx, dbgd, sm); err != nil {
+		s.Error("Failed to verify DRMTraceTool parameter reset on login: ", err)
+	}
+	if err := testLogout(ctx, dbgd, sm); err != nil {
+		s.Error("Failed to verify DRMTraceTool parameter reset on logout: ", err)
 	}
 }
 
@@ -130,6 +158,132 @@ func testSetSize(ctx context.Context, d *debugd.Debugd) error {
 
 	if debugSize <= defaultSize {
 		return errors.Errorf("expected debug size (%d) to be greater than default size (%d)", debugSize, defaultSize)
+	}
+	return nil
+}
+
+// testLogin verifies that drm_trace related configuration is reset correctly on login.
+func testLogin(ctx context.Context, d *debugd.Debugd, sm *session.SessionManager) error {
+	// Record the current (default) values for the mask and size.
+	defaultMask, defaultSize, err := readTraceMaskAndSize()
+	if err != nil {
+		return err
+	}
+
+	// Before login, set the mask and buffer size to some non-default values.
+	const testCategories debugd.DRMTraceCategories = debugd.DRMTraceCategoryCore | debugd.DRMTraceCategoryKMS
+	if err := setTraceCategoriesAndSize(ctx, d, testCategories, debugd.DRMTraceSizeDebug); err != nil {
+		return err
+	}
+
+	// Log in to Chrome, and wait for login to be complete.
+	if err := chromeLogin(ctx, sm); err != nil {
+		return err
+	}
+
+	// Get the mask and size after login is complete.
+	afterLoginMask, afterLoginSize, err := readTraceMaskAndSize()
+	if err != nil {
+		return err
+	}
+
+	// Verify that the mask and buffer are set to default after logging in.
+	if afterLoginSize != defaultSize {
+		return errors.Errorf("expected buffer size (%d) to be reset to default size (%d)", afterLoginSize, defaultSize)
+	}
+
+	if afterLoginMask != defaultMask {
+		return errors.Errorf("expected trace mask (%d) to be reset to default mask (%d)", afterLoginMask, defaultSize)
+	}
+	return nil
+}
+
+// testLogout verifies that drm_trace related configuration is reset correctly on logout.
+func testLogout(ctx context.Context, d *debugd.Debugd, sm *session.SessionManager) error {
+	// Log in to Chrome, and wait for login to be complete.
+	if err := chromeLogin(ctx, sm); err != nil {
+		return err
+	}
+
+	// Record the current (default) values for the mask and size.
+	defaultMask, defaultSize, err := readTraceMaskAndSize()
+	if err != nil {
+		return err
+	}
+
+	// Before logout, set the mask and buffer size to some non-default values.
+	const testCategories debugd.DRMTraceCategories = debugd.DRMTraceCategoryCore | debugd.DRMTraceCategoryKMS
+	if err := setTraceCategoriesAndSize(ctx, d, testCategories, debugd.DRMTraceSizeDebug); err != nil {
+		return err
+	}
+
+	// Emulate a logout by restarting "ui".
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		return errors.Wrap(err, "failed to log out")
+	}
+
+	// Get the mask and size after login is complete.
+	afterLogoutMask, afterLogoutSize, err := readTraceMaskAndSize()
+	if err != nil {
+		return err
+	}
+
+	// Verify that the mask and buffer are set to default.
+	if afterLogoutSize != defaultSize {
+		return errors.Errorf("expected buffer size (%d) to be reset to default size (%d)", afterLogoutSize, defaultSize)
+	}
+
+	if afterLogoutMask != defaultMask {
+		return errors.Errorf("expected trace mask (%d) to be reset to default mask (%d)", afterLogoutMask, defaultSize)
+	}
+	return nil
+}
+
+// chromeLogin will restart the UI and log in to Chrome, waiting for the "started" signal before returning.
+func chromeLogin(ctx context.Context, sm *session.SessionManager) error {
+	// Start listening for a "started" SessionStateChanged D-Bus signal from session_manager.
+	sw, err := sm.WatchSessionStateChanged(ctx, "started")
+	if err != nil {
+		return errors.Wrap(err, "failed to watch for D-Bus signals")
+	}
+	defer sw.Close(ctx)
+
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		return errors.Wrap(err, "Chrome login failed")
+	}
+	defer cr.Close(ctx)
+
+	testing.ContextLog(ctx, "Waiting for SessionStateChanged \"started\" D-Bus signal from session_manager")
+	select {
+	case <-sw.Signals:
+		testing.ContextLog(ctx, "Got SessionStateChanged signal")
+	case <-ctx.Done():
+		return errors.Wrap(ctx.Err(), "didn't get SessionStateChanged signal")
+	}
+	return nil
+}
+
+// readTraceMaskAndSize reads the drm_trace mask and per-cpu buffer size from sysfs.
+func readTraceMaskAndSize() (mask, size int, err error) {
+	mask, err = readFileToInt(traceMaskPath)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to read trace mask")
+	}
+	size, err = readFileToInt(bufferSizePath)
+	if err != nil {
+		return 0, 0, errors.Wrap(err, "failed to read trace buffer size")
+	}
+	return mask, size, nil
+}
+
+// setTraceCategoriesAndSize sets the DRMTrace categories and mask using the DRMTraceSet* D-Bus methods on the org.chromium.debugd interface.
+func setTraceCategoriesAndSize(ctx context.Context, d *debugd.Debugd, categories debugd.DRMTraceCategories, size debugd.DRMTraceSize) error {
+	if err := d.DRMTraceSetCategories(ctx, categories); err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceSetCategories")
+	}
+	if err := d.DRMTraceSetSize(ctx, size); err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceSetSize")
 	}
 	return nil
 }
