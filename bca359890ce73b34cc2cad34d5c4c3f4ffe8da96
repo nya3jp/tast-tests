@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5d4efc_1aa0e590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T17:33:01Z",
+      "side": 1,
+      "message": "super nit: To be consistent with chrome naming here and elswhere\n\nDesksTemplates",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7316aa19_5ee217a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T17:33:01Z",
+      "side": 1,
+      "message": "nit: as -\u003e as a",
+      "range": {
+        "startLine": 24,
+        "startChar": 35,
+        "endLine": 24,
+        "endChar": 37
+      },
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d03ffb_89d9e7eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T17:33:01Z",
+      "side": 1,
+      "message": "since arc apps are part of launch do you want to include one here, i know of one way to include the basic one palystore. If you want to do in a follow up that is fine as well. Also SWA or PWA app (one should be in the default apps), but that can also be added later when we verify launching apps.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wmp/overview_scroll.go;drc\u003d3cc413caf8db5c6a3d54cc1366296232e0e9480d;l\u003d93",
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d24a498_0a1e9964",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T17:33:01Z",
+      "side": 1,
+      "message": "super nit: button.",
+      "range": {
+        "startLine": 74,
+        "startChar": 39,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a4fd057_1754db68",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-03T17:33:01Z",
+      "side": 1,
+      "message": "This works for now because we only check for one, and this doesn\u0027t show up if there is none, but this will return 1 if there are 2-6 templates, which does not seem to match the usage/description.\n\nPerhaps you wanted DesksTemplatesItemView which there is one for each template?",
+      "range": {
+        "startLine": 86,
+        "startChar": 47,
+        "endLine": 86,
+        "endChar": 69
+      },
+      "revId": "bca359890ce73b34cc2cad34d5c4c3f4ffe8da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
