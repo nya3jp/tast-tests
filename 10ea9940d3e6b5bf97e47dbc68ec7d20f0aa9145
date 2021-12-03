@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ba1c856_a14f7cbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-03T02:23:21Z",
+      "side": 1,
+      "message": "I agree that we should not let users to decide the duration for cleanup. How about that we do something like:\n\n// New function to reserve time for recording cleanup.\nctx, cancel :\u003d uiauto.ReserveForRecordingCleanup(ctx)\ndefer cancel()\n\nstopRecording :\u003d uiauto.RecordVNCVideo(ctx, s)\ndefer stopRecording()",
+      "parentUuid": "1d518325_35d50e34",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "10ea9940d3e6b5bf97e47dbc68ec7d20f0aa9145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66fe4b38_d3f5034e",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
         "patchSetId": 1
