@@ -502,6 +502,23 @@ func ScrollShelfAndWaitUntilFinish(ctx context.Context, tconn *chrome.TestConn, 
 	return nil
 }
 
+// AppRunning checks if an app specified by appID is already running.
+func AppRunning(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, error) {
+	items, err := ShelfItems(ctx, tconn)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get shelf items")
+	}
+	for _, item := range items {
+		if item.AppID == appID {
+			if item.Status == ShelfItemRunning {
+				return true, nil
+			}
+			return false, errors.Errorf("app is found but not running. status: %v", item.Status)
+		}
+	}
+	return false, errors.Errorf("app not found: %v", appID)
+}
+
 // AppShown checks if an app specified by appID is shown in the shelf.
 func AppShown(ctx context.Context, tconn *chrome.TestConn, appID string) (bool, error) {
 	var appShown bool
