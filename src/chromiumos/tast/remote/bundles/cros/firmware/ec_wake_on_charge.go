@@ -20,7 +20,8 @@ func init() {
 		Func:         ECWakeOnCharge,
 		Desc:         "Checks that device will charge when EC is in a low-power mode, as a replacement for manual test 1.4.11",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Vars:         []string{"board", "model"},
 		Fixture:      fixture.DevModeGBB,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
@@ -45,9 +46,11 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		Interval: 1 * time.Second,
 	}
 
-	d := s.DUT()
-
 	h := s.FixtValue().(*fixture.Value).Helper
+
+	board, _ := s.Var("board")
+	model, _ := s.Var("model")
+	h.OverridePlatform(ctx, board, model)
 
 	if err := h.RequireConfig(ctx); err != nil {
 		s.Fatal("Failed to get config: ", err)
@@ -76,7 +79,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
 				defer cancelWaitConnect()
 
-				if err := d.WaitConnect(waitConnectCtx); err != nil {
+				if err := h.WaitConnect(waitConnectCtx); err != nil {
 					errors.Wrap(err, "failed to reconnect to DUT")
 				}
 			}
