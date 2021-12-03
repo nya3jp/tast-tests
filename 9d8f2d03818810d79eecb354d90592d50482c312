@@ -16,6 +16,41 @@
       "message": "This test is mainline/informational.\nIs the truncation of filename in the log a intended behavior? If not, how about keeping this test failing until the original issue is fixed?",
       "revId": "9d8f2d03818810d79eecb354d90592d50482c312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e91dd3_d6395828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-12-03T17:47:50Z",
+      "side": 1,
+      "message": "I see your point. This is not an intended behavior. I\u0027m quite sure that it is a bug. I looked into the source code (http://b/208658574#comment1), but I cannot come up with a fix.\n\nThe purpose of this Tast test is not for testing this kind of issues. This test is solely for identifying/confirming the error logs in the net.log file. We will actually delete or downgrade these error logs (http://b/208516275) while keeping this test green. So I think the filename truncation should be addressed separately instead of using this test for monitoring the bug and verifying the fix.",
+      "parentUuid": "3a0af877_bfb7159f",
+      "revId": "9d8f2d03818810d79eecb354d90592d50482c312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4fed8c7_dca64692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-12-03T17:47:50Z",
+      "side": 1,
+      "message": "Tatsuhisa, thank you. PTAL.",
+      "revId": "9d8f2d03818810d79eecb354d90592d50482c312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
