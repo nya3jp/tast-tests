@@ -16,6 +16,75 @@
       "message": "This test has run successfully on the following DUTs:\n\nSparky360 [—board\u003doctopus]\nHayato [—board\u003dasurada]\nVilboz [—board\u003dzork]\nStoro360 [—board\u003ddedede]\nBoten [—board\u003ddedede]\nKindred [—board\u003dhatch]\nDelbin [—board\u003dvolteer]\n\nAs noted in the ticket, firmware_ECChargingState from Autotest partially covers the steps in this test. If needed, we could maybe create another ticket to enhance this automation script with additional test steps.",
       "revId": "1f04de9c597128ef4b84012260dc3a295eaab5bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a53f4d_aee43757",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-03T17:30:40Z",
+      "side": 1,
+      "message": "NormalMode",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "1f04de9c597128ef4b84012260dc3a295eaab5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41872624_b0e84410",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-03T17:30:40Z",
+      "side": 1,
+      "message": "I\u0027m surprised that unplugging AC would wake the DUT.",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "1f04de9c597128ef4b84012260dc3a295eaab5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdfaa84_bb9d4a7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-03T17:30:40Z",
+      "side": 1,
+      "message": "I would use h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab). It seems a little more generic than ECPressKey which always uses the kbpress EC command.",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "1f04de9c597128ef4b84012260dc3a295eaab5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
