@@ -53,7 +53,7 @@ class BitstreamSaver {
   }
 
   save(chunk, metadata) {
-    let temporalLayerId = metadata.temporalLayerId;
+    let temporalLayerId = metadata.svc?.temporalLayerId;
     if (temporalLayerId !== undefined) {
       this.temporalLayerIds.push(temporalLayerId);
     }
