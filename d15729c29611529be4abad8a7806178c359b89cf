@@ -424,6 +424,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc0f475f_90a79e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-03T16:04:14Z",
+      "side": 1,
+      "message": "sleep is not only the discussing point, but there are also other discussing point at the latest PS. Considering the history, I couldn\u0027t be optimistic that can be solved soon.\n\nSo, could you create a few lines CL that edits HWDeps?\nI think that can help to unblock your priority stuff, if your priority is running the test only (and can fix some error cases on some borads later)?",
+      "parentUuid": "17ef1063_96c84047",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
