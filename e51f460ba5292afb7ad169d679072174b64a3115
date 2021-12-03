@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "521d6973_0760a5cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-03T16:39:29Z",
+      "side": 1,
+      "message": "I didn\u0027t find proper example of how to get credentials and emails out of gaia pool.",
+      "parentUuid": "664de560_2ac02294",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e80c3dec_039c854c",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-02T09:18:13Z",
       "side": 1,
       "message": "I wonder why do we require these extra args? Do they help with anything specific?",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 106
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772a2be8_776f8e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-03T16:39:29Z",
+      "side": 1,
+      "message": "I have copypasted it.. \n--force-tablet-mode\u003dclamshell is not needed for sure.\nDon\u0027t know about \"--disable-virtual-keyboard\" since vk could potentially hide some UI elements..\n\nAnyway removed both of them.",
+      "parentUuid": "e80c3dec_039c854c",
       "range": {
         "startLine": 39,
         "startChar": 45,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60139d04_6f4f9e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-03T16:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff637b0c_881c7e90",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27401eb9_598651ae",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-02T09:18:13Z",
       "side": 1,
       "message": "I don\u0027t think you need this. just call cr.Close()",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16377cd2_0c31fc13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-03T16:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27401eb9_598651ae",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f2fe2da_fa885720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-03T16:39:29Z",
+      "side": 1,
+      "message": "Easy: \nhttps://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/settings/cros_settings.cc;l\u003d194-201;drc\u003d1f26fbb239a649f4edb091ea1ad76dd407c837ba",
+      "parentUuid": "900619fc_f1841d17",
+      "range": {
+        "startLine": 131,
+        "startChar": 9,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ec2e842_7dbcf418",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
         "patchSetId": 1
@@ -146,6 +266,30 @@
       "writtenOn": "2021-12-02T09:18:13Z",
       "side": 1,
       "message": "why not just chrome.New(chrome.KeepState(), chrome.GAIALogin(s.RequiredVar(\"ui.oac_username\"))),\n?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 69
+      },
+      "revId": "e51f460ba5292afb7ad169d679072174b64a3115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b990e4_80628fe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/restrict_signin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-03T16:39:29Z",
+      "side": 1,
+      "message": "Basically test enters the email into GAIA signin form clicks next and checks whether error page is shown or not. \nI don\u0027t think it could be done using GAIALogin.",
+      "parentUuid": "6ec2e842_7dbcf418",
       "range": {
         "startLine": 147,
         "startChar": 0,
