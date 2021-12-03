@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1904b4fc_dd220dad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-03T09:03:31Z",
+      "side": 1,
+      "message": "Roman, Kyle, PTAL!",
+      "revId": "f1af4f81bb661e44a5cc1c5e0119eddfa0258201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da9f86e_274e8ee3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-03T09:03:31Z",
+      "side": 1,
+      "message": "I wonder if there is a better way :)",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "f1af4f81bb661e44a5cc1c5e0119eddfa0258201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fbbd03c_737454c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-03T09:03:31Z",
+      "side": 1,
+      "message": "Should we check if the user data restored ?",
+      "revId": "f1af4f81bb661e44a5cc1c5e0119eddfa0258201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
