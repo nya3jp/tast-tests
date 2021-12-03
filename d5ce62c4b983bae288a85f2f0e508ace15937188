@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b92b80_b64353bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-12-03T07:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86d809ac_9c74e2fa",
+      "range": {
+        "startLine": 458,
+        "startChar": 28,
+        "endLine": 458,
+        "endChar": 33
+      },
+      "revId": "d5ce62c4b983bae288a85f2f0e508ace15937188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "924ec837_415d0fa5",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2136796_15cf8f46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-12-03T07:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "924ec837_415d0fa5",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 257,
+        "endChar": 15
+      },
+      "revId": "d5ce62c4b983bae288a85f2f0e508ace15937188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0cba8e4_f880c93b",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-02T23:18:34Z",
       "side": 1,
       "message": "please log this err",
+      "range": {
+        "startLine": 271,
+        "startChar": 44,
+        "endLine": 271,
+        "endChar": 47
+      },
+      "revId": "d5ce62c4b983bae288a85f2f0e508ace15937188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5aff62_193dafbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1520077
+      },
+      "writtenOn": "2021-12-03T07:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0cba8e4_f880c93b",
       "range": {
         "startLine": 271,
         "startChar": 44,
