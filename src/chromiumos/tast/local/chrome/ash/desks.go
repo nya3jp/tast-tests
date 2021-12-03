@@ -80,3 +80,13 @@ func FindDeskMiniViews(ctx context.Context, ac *uiauto.Context) ([]uiauto.NodeIn
 	}
 	return deskMiniViewsInfo, nil
 }
+
+// FindDeskTemplates returns a list of desk template nodes.
+func FindDeskTemplates(ctx context.Context, ac *uiauto.Context) ([]uiauto.NodeInfo, error) {
+	desksTemplatesItemView := nodewith.ClassName("DesksTemplatesItemView")
+	desksTemplatesItemViewInfo, err := ac.NodesInfo(ctx, desksTemplatesItemView)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find DesksTemplatesItemView")
+	}
+	return desksTemplatesItemViewInfo, nil
+}
