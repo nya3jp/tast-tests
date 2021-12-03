@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -91,6 +92,21 @@ func WaitForPasswordField(ctx context.Context, tconn *chrome.TestConn, username 
 		return err
 	}
 	return uiauto.New(tconn).WithTimeout(timeout).WaitUntilExists(finder)(ctx)
+}
+
+// IsPasswordProtected returns whether or not password input is masked.
+func IsPasswordProtected(ctx context.Context, tconn *chrome.TestConn, username string) (bool, error) {
+	passwordFinder, err := PasswordFieldFinder(username)
+	if err != nil {
+		return true, errors.Wrap(err, "failed to get password finder")
+	}
+	ui := uiauto.New(tconn)
+	passwordNodeInfo, err := ui.Info(ctx, passwordFinder)
+	if err != nil {
+		return true, errors.Wrap(err, "failed to get password input info")
+	}
+
+	return passwordNodeInfo.State[state.Protected], nil
 }
 
 // WaitForAuthError waits for the login error bubble that password or pin was not correct.
