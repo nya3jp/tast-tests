@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24af4143_2f5d9db5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-03T00:18:17Z",
+      "side": 1,
+      "message": "I already like this test better than the autotest one, since it doesn\u0027t use ectool to disable usb ports.",
+      "revId": "2dcdaf0b3c03286a30d48b70a6ca5a560f0ec684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc704e5_1859a7b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_usb_ports.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-03T00:18:17Z",
+      "side": 1,
+      "message": "My understanding is that the old test worked this way also, but at some point we added usb_a_port_count to the configs so that we could detect the situation where one of the USBn_ENABLE pins was omitted from the EC binary.\n\nSo you should change this to:\n\n1) Only do this loop if h.Config.USBEnablePins is empty.\n2) If usb_a_port_count \u003c 0, run the code as you have it.\n3) If usb_a_port_count \u003e 0, and USBn_ENABLE doesn\u0027t work, then fail. Because we expected the port to exist, but it does not.",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 26
+      },
+      "revId": "2dcdaf0b3c03286a30d48b70a6ca5a560f0ec684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
