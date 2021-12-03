@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8fafaf7_c1328a39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/remove_items_from_tote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-12-03T00:25:14Z",
+      "side": 1,
+      "message": "Already covered by existing tests in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/holdingspace/?",
+      "revId": "6020105615a3e37e6dec820806eb74a867259e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
