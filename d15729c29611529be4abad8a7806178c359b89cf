@@ -406,6 +406,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17ef1063_96c84047",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1369748
+      },
+      "writtenOn": "2021-12-03T01:33:37Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\nAre you okay with sleep issue fix?  If you are okay, you can approve so Jilani can merge the whole thing.  If you still have a concern with it, Jilani will create another Gerrit just to deal with specific sleep issue.",
+      "parentUuid": "ceaf5463_1ca8f8e3",
+      "revId": "d15729c29611529be4abad8a7806178c359b89cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ec7feb9_d906c99e",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
         "patchSetId": 6
