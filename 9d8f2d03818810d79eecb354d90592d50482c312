@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0af877_bfb7159f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-03T11:08:32Z",
+      "side": 1,
+      "message": "This test is mainline/informational.\nIs the truncation of filename in the log a intended behavior? If not, how about keeping this test failing until the original issue is fixed?",
+      "revId": "9d8f2d03818810d79eecb354d90592d50482c312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
