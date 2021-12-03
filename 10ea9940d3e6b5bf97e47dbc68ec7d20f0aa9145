@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d518325_35d50e34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_emoji.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-03T01:32:23Z",
+      "side": 1,
+      "message": "I agree that it looks a bit wierd, but in this particular case the user should not decide how long it takes to cleanup.\n\nUnlike every other scenario, the cleanup time is proportional to the timeout of the test itself. If someone doubles the timeout of the test from 5m to 10m, they will also need to double the vnc cleanup time, which they will inevitably forget.\n\nAlso, this code works exactly the same way as your example above. If this becomes an issue, I can always add support for `uiauto.RecordVNCVideo(ctx, s, uiauto.VNCVideoCleanupTime(2*time.Second))` or similar.",
+      "parentUuid": "0e5c7322_844cb7fd",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "10ea9940d3e6b5bf97e47dbc68ec7d20f0aa9145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66fe4b38_d3f5034e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-02T11:35:47Z",
       "side": 1,
       "message": "nit: kill",
+      "range": {
+        "startLine": 212,
+        "startChar": 23,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "10ea9940d3e6b5bf97e47dbc68ec7d20f0aa9145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0faa2f30_9c032651",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder_vnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-03T01:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66fe4b38_d3f5034e",
       "range": {
         "startLine": 212,
         "startChar": 23,
