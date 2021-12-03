@@ -16,6 +16,23 @@
       "message": "Miguel, could you review this trivial fix?\n\neugene@ FYI.",
       "revId": "59ef700abffc9a56f4bf5ee2a284c044f02596be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ade4d1_5dda0d0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-12-03T13:45:36Z",
+      "side": 1,
+      "message": "The chrome fix CL, crrev.com/c/3309688, is landed on Chrome 98.0.4742.0.\nWe have to wait until ChromeOS uprevs Chrome to the version.\nIt is worth noting that the chrome CL doesn\u0027t remove the wrong temporalLayerId, so chrome uprev doesn\u0027t cause video.WebCodecsEncode failure.",
+      "revId": "59ef700abffc9a56f4bf5ee2a284c044f02596be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
