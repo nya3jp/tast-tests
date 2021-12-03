@@ -18,7 +18,7 @@ func init() {
 		Func:         ECADC,
 		Desc:         "Basic check for EC ADC temperature",
 		Contacts:     []string{"js@semihalf.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_bringup"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})

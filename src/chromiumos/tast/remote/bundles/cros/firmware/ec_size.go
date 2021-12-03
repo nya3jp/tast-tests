@@ -17,7 +17,7 @@ func init() {
 		Func:         ECSize,
 		Desc:         "Compare ec flash size to expected ec size from a chip-to-size map",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Fixture:      fixture.NormalMode,
 	})
