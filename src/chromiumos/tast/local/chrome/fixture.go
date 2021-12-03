@@ -149,6 +149,18 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithDesksTemplates",
+		Desc:     "Logged into a user session with Desks Templates feature",
+		Contacts: []string{"yzd@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{EnableFeatures("DesksTemplates")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
