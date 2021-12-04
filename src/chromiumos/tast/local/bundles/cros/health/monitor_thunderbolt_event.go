@@ -29,7 +29,8 @@ func init() {
 			"intel-chrome-system-automation-team@intel.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(hwdep.Model("brya")),
+		// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
+		HardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
 		Fixture:      "crosHealthdRunning",
 	})
 }

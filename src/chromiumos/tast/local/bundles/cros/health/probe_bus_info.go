@@ -33,10 +33,11 @@ func init() {
 		Params: []testing.Param{{
 			Val: false,
 		}, {
-			Name:              "thunderbolt",
-			ExtraAttr:         []string{"informational"},
-			Val:               true,
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya")),
+			Name:      "thunderbolt",
+			ExtraAttr: []string{"informational"},
+			Val:       true,
+			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
 		}},
 	})
 }
