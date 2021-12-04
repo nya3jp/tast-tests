@@ -16,6 +16,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/typec/typecutils"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -31,7 +33,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
 		HardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
-		Fixture:      "crosHealthdRunning",
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -45,6 +47,12 @@ func MonitorThunderboltEvent(ctx context.Context, s *testing.State) {
 		killTbtEvent           = "kill -9 $(" + pidCmd + ")"
 		timeOut                = 30 * time.Second
 	)
+
+	cr := s.FixtValue().(*chrome.Chrome)
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	port, err := typecutils.CheckPortsForTBTPartner(ctx)
 	if err != nil {
@@ -84,18 +92,11 @@ func MonitorThunderboltEvent(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if !deviceRemoved.MatchString(getThunderBoltEventOutput()) {
-			return errors.New("failed to detect deviceRemoved TBT Event")
-		}
-		return nil
+	// Disabling of Data access protection for peripherals through UI.
+	if err := croshealthd.DisableDataAccessProtection(ctx, tconn); err != nil {
+		s.Fatal("Failed to disable data access protection: ", err)
+	}
 
-	}, &testing.PollOptions{Timeout: timeOut}); err != nil {
-		s.Fatal("Failed to verify no Thunderbolt devices connected after unplug: ", err)
-	}
-	if err := os.Truncate(outFile, 0); err != nil {
-		s.Fatal("Failed to truncate: ", err)
-	}
 	if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
 		s.Fatal("Failed to simulate replug: ", err)
 	}
@@ -106,6 +107,23 @@ func MonitorThunderboltEvent(ctx context.Context, s *testing.State) {
 		return nil
 	}, &testing.PollOptions{Timeout: timeOut}); err != nil {
 		s.Fatal("Failed to verify Thunderbolt devices connected after plug: ", err)
+	}
+
+	if err := os.Truncate(outFile, 0); err != nil {
+		s.Fatal("Failed to truncate: ", err)
+	}
+
+	if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "suspend", portStr).Run(); err != nil {
+		s.Fatal("Failed to simulate unplug: ", err)
+	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if !deviceRemoved.MatchString(getThunderBoltEventOutput()) {
+			return errors.New("failed to detect deviceRemoved TBT Event")
+		}
+		return nil
+
+	}, &testing.PollOptions{Timeout: timeOut}); err != nil {
+		s.Fatal("Failed to verify no Thunderbolt devices connected after unplug: ", err)
 	}
 
 }
