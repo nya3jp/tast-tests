@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc20efe1_df8acb96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-04T21:13:21Z",
+      "side": 1,
+      "message": "can you add some info about when this channel switch would happen. Is it after user action or can it be invisible to them",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "03bcebcb9a2a7ad9f4775645dbaa5aaeeab1e3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64ad4e15_709d72dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-04T21:13:21Z",
+      "side": 1,
+      "message": "is there no way to have all the known options stored in common/lacros so you don\u0027t need to recreate them in every test?",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 83
+      },
+      "revId": "03bcebcb9a2a7ad9f4775645dbaa5aaeeab1e3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "786570a6_b82377a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-04T21:13:21Z",
+      "side": 1,
+      "message": "drive by comment: No idea what this code is telling me",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "03bcebcb9a2a7ad9f4775645dbaa5aaeeab1e3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
