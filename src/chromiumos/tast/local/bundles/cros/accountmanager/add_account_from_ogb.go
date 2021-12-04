@@ -71,17 +71,17 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Runing test cleanup")
-	if err := accountmanager.TestCleanup(ctx, tconn, cr, s.Param().(browser.Type)); err != nil {
-		s.Fatal("Failed to do cleanup: ", err)
-	}
-
 	// Setup the browser.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
 	defer closeBrowser(cleanupCtx)
+
+	s.Log("Runing test cleanup")
+	if err := accountmanager.TestCleanup(ctx, tconn, cr, s.Param().(browser.Type)); err != nil {
+		s.Fatal("Failed to do cleanup: ", err)
+	}
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC
