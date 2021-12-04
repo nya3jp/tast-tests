@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db9b33a_bdccd62b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-04T01:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f252a6_3b10ae46",
+      "range": {
+        "startLine": 100,
+        "startChar": 12,
+        "endLine": 100,
+        "endChar": 29
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24ef9e34_caac7c01",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-12-02T02:35:17Z",
       "side": 1,
       "message": "Curious about why we close chrome here and reopen in the next line.",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87dbbc6_4a3d6e9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-04T01:15:03Z",
+      "side": 1,
+      "message": "If we use hermes dbus hook, we don\u0027t need to log out and log back.",
+      "parentUuid": "24ef9e34_caac7c01",
       "range": {
         "startLine": 105,
         "startChar": 2,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c28c29ac_b157e315",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-04T01:15:03Z",
+      "side": 1,
+      "message": "Yes, looks like it is unnecessary, so removed.",
+      "parentUuid": "b4c926e5_79948fa7",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 33
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b94018b_6da6532d",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6401b032_8a5c6173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-04T01:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b94018b_6da6532d",
+      "range": {
+        "startLine": 169,
+        "startChar": 24,
+        "endLine": 169,
+        "endChar": 38
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae2bc9d9_d19b7086",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-12-02T02:35:17Z",
       "side": 1,
       "message": "usually, tast reviewers prefer polling to check for success. Please check\nhttps://docs.google.com/presentation/d/1g9QFbY6q8Z8cHBsuRkJoa1YY90LKzVyQ9wT6RgN4Gc4/edit?resourcekey\u003d0-gXDjOBJegiw_mxvc7qLVDw#slide\u003did.gce9b85b387_0_50\n\nDitto for all other usages of sleep.",
+      "range": {
+        "startLine": 225,
+        "startChar": 19,
+        "endLine": 225,
+        "endChar": 24
+      },
+      "revId": "6b4025ad389c2ef19f035341a8589108b0330e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd29d40_708eec6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-04T01:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae2bc9d9_d19b7086",
       "range": {
         "startLine": 225,
         "startChar": 19,
