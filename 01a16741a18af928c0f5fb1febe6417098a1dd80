@@ -272,6 +272,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d319b092_689a8b33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-12-04T00:38:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a024b292_1e6a957f",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 78
+      },
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08e81105_415f9127",
@@ -450,6 +474,30 @@
       "side": 1,
       "message": "The files app is part of Chrome OS. I don\u0027t expect it to change.\n\nPlease use a self hosted PWA to make the test hermetic.",
       "parentUuid": "ad9484d6_cea5ec72",
+      "range": {
+        "startLine": 182,
+        "startChar": 18,
+        "endLine": 182,
+        "endChar": 35
+      },
+      "revId": "01a16741a18af928c0f5fb1febe6417098a1dd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41166925_4665843e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-12-04T00:38:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b90d056_afcdc93a",
       "range": {
         "startLine": 182,
         "startChar": 18,
