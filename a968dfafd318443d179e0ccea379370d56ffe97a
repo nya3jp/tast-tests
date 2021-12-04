@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b179e80_60bd794d",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-12-04T00:23:44Z",
+      "side": 1,
+      "message": "This function is from the boot mode file, pretty much exclusively for the waitForPowerStates function, maybe it should be moved here as well?",
+      "range": {
+        "startLine": 585,
+        "startChar": 6,
+        "endLine": 585,
+        "endChar": 24
+      },
+      "revId": "a968dfafd318443d179e0ccea379370d56ffe97a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
