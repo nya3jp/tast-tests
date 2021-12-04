@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -43,6 +44,7 @@ func init() {
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.ExtraArgs("--disable_lacros_keep_alive"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
@@ -177,6 +179,11 @@ func (f *accountManagerTestFixture) TearDown(ctx context.Context, s *testing.Fix
 }
 
 func (f *accountManagerTestFixture) Reset(ctx context.Context) error {
+	if !f.useParentChrome {
+		if err := f.cr.ResetState(ctx); err != nil {
+			return errors.Wrap(err, "failed to reset chrome")
+		}
+	}
 	return nil
 }
 
