@@ -10,6 +10,7 @@ import (
 
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -157,8 +158,8 @@ func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 	}
 	defer d.Close(ctx)
 
-	if err := openARCSettings(ctx, tconn); err != nil {
-		return false, errors.Wrap(err, "failed to Open ARC Settings")
+	if err := apps.Launch(ctx, tconn, apps.AndroidSettings.ID); err != nil {
+		return false, errors.Wrap(err, "failed to launch AndroidSettings")
 	}
 
 	defer func(ctx context.Context) error {
@@ -195,24 +196,6 @@ func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 		return false, nil
 	}
 	return true, nil
-}
-
-// openARCSettings opens the ARC Settings Page from Chrome Settings.
-func openARCSettings(ctx context.Context, tconn *chrome.TestConn) error {
-	settings, err := ossettings.LaunchAtPage(ctx, tconn,
-		nodewith.Name("Apps").Role(role.Heading))
-	if err != nil {
-		return errors.Wrap(err, "failed to open settings page")
-	}
-	playStoreButton := nodewith.Name("Google Play Store").Role(role.Button)
-	if err := uiauto.Combine("Open Android Settings",
-		settings.FocusAndWait(playStoreButton),
-		settings.LeftClick(playStoreButton),
-		settings.LeftClick(nodewith.Name("Manage Android preferences").Role(role.Link)),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to open ARC settings page")
-	}
-	return nil
 }
 
 // RemoveAccountFromOSSettings removes a secondary account from OS Settings. The "More actions" menu should be already open for that account.
