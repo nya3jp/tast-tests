@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d0b5274b_e3622249",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-05T23:58:59Z",
+      "side": 1,
+      "message": "Thanks both! I\u0027ll move it to a11y path.",
+      "parentUuid": "e7c170f2_6d1417c9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5849fc28_28ec1a38",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -162,6 +186,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1c1f54_2564132b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/ondevice_speech.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-05T23:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "310645c2_e09553d7",
+      "range": {
+        "startLine": 3,
+        "startChar": 26,
+        "endLine": 3,
+        "endChar": 41
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aae57e5_4cce4c3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/data/ondevice_speech.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-05T23:58:59Z",
+      "side": 1,
+      "message": "It\u0027s no loop anymore.",
+      "parentUuid": "ff3d0529_9486072d",
+      "range": {
+        "startLine": 3,
+        "startChar": 7,
+        "endLine": 3,
+        "endChar": 12
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a480992_c0b18778",
@@ -175,6 +247,30 @@
       "writtenOn": "2021-12-03T04:23:55Z",
       "side": 1,
       "message": "suggest: \"the looped audio\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 32,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15c96c4_493ef783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/ondevice_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-05T23:58:59Z",
+      "side": 1,
+      "message": "it\u0027s no loop anymore.",
+      "parentUuid": "7a480992_c0b18778",
       "range": {
         "startLine": 79,
         "startChar": 32,
@@ -226,6 +322,54 @@
         "startChar": 26,
         "endLine": 87,
         "endChar": 41
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f1ba3d_306afe82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/ondevice_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-05T23:58:59Z",
+      "side": 1,
+      "message": "Remove the explicit timeout and use the default 15s.",
+      "parentUuid": "fc530ebd_80f2931e",
+      "range": {
+        "startLine": 87,
+        "startChar": 26,
+        "endLine": 87,
+        "endChar": 41
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9032e258_b847a644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/ondevice_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-05T23:58:59Z",
+      "side": 1,
+      "message": "Also check the content.\nJust it\u0027s a little bit fragile here. The only way to verify the text is \"nodewith.Name(\"Hello\").Role(role.StaticText)\", which passes with exact \"Hello\", not \"Hello.\", not \"hello\", not \"Hello, Hello\" (that\u0027s way I stop loop)...\n\nBut for now it works fine. Let\u0027s go with it, WDYT?\n\nIt now also waits for the bubble to disappear given the audio only plays once.",
+      "parentUuid": "d0f2895b_5ce99c56",
+      "range": {
+        "startLine": 87,
+        "startChar": 43,
+        "endLine": 87,
+        "endChar": 104
       },
       "revId": "df1444581148c0abaaa909cd5117242a7b736558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
