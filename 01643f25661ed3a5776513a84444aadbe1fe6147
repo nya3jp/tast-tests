@@ -16,6 +16,24 @@
       "message": "optional: I guess you may also want to stop hwsec.UIDaemon here(?)",
       "revId": "01643f25661ed3a5776513a84444aadbe1fe6147",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e22a979_7121ecb0",
+        "filename": "src/chromiumos/tast/local/hwsec/cross_version_login_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-06T11:56:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc273d27_502ad7ad",
+      "revId": "01643f25661ed3a5776513a84444aadbe1fe6147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
