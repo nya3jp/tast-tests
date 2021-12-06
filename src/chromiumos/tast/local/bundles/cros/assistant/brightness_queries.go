@@ -19,10 +19,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         BrightnessQueries,
-		Desc:         "Tests changing the screen brightness using Assistant queries",
-		Contacts:     []string{"chromeos-sw-engprod@google.com", "assistive-eng@google.com", "meilinw@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     BrightnessQueries,
+		Desc:     "Tests changing the screen brightness using Assistant queries",
+		Contacts: []string{"chromeos-sw-engprod@google.com", "assistive-eng@google.com"},
+		// TODO(b/204119676): currently broken by Assistant backendend.
+		Attr:         []string{"informational"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome"},
 		Pre:          assistant.VerboseLoggingEnabled(),
