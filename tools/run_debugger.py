@@ -22,8 +22,20 @@ BUNDLE_FORMAT = re.compile("tast-tests/src/chromiumos/tast/(local|remote)/bundle
 parser = argparse.ArgumentParser()
 parser.add_argument("--dut", required=True, help="IP of dut")
 parser.add_argument("--current-file", required=True, help="The file currently open in vscode")
+parser.add_argument("--fast-build-tast", action="store_const", dest="tast_binary",
+                    default="tast", const="~/go/bin/tast",
+                    help="Use the version of tast built by fast_build.sh")
+parser.add_argument("--debug", action="store_const", dest="debug", const=True,
+                    help="Run tast test and wait for a debugger to attach")
+parser.add_argument("--no-debug", action="store_const", dest="debug", const=False,
+                    help="Run tast without waiting for a debugger to attach")
 
 args = parser.parse_args()
+
+# Because I've handed out the instructions for debugging already, debugging has
+# to be true by default (changing this would break existing use cases).
+if args.debug is None:
+  args.debug = True
 
 if not TAST_PKG_CACHE.exists():
   print("Creating a file -> test mapping now. Please be patient (first time setup).")
@@ -110,6 +122,7 @@ if cmd is None:
         "Can't do anything, exiting")
   exit(1)
 
-run = f"tast run -attachdebugger={cmd.bundle}:2345 {args.dut} {cmd.extra_args} {cmd.test}"
+debug_args = f"-attachdebugger={cmd.bundle}:2345 " if args.debug else ""
+run = f"{args.tast_binary} run {debug_args}{args.dut} {cmd.extra_args} {cmd.test}"
 print(f"Running command: {run}")
 os.execlp("sh", "sh", "-c", run)
