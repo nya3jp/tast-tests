@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "113d488d_14a12fc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-06T22:17:35Z",
+      "side": 1,
+      "message": "Hi Sean and Judy,\nThis CL enables platform.MLServiceBootstrap as critical only, which is stable per http://tastboard/test?testname\u003dplatform.MLServiceBootstrap.\n\nPTAL",
+      "revId": "ecf0c28ebf905680ffe53cd7b54aae32f9ab53fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
