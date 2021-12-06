@@ -421,7 +421,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to run command ksstate: ", err)
 	}
-	keyboardStateStr := keyboardStateOut[0].([]interface{})[1].(string)
+	keyboardStateStr := keyboardStateOut[0][1]
 	s.Logf("Keyboard scan disable mask value:%s", keyboardStateStr)
 
 	// Emulate pressing a keyboard key.
