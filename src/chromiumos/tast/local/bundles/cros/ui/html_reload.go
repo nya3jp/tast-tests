@@ -16,6 +16,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/video"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -41,7 +43,17 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{mp4URL, webmURL},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{
+			{
+				Fixture: "chromeLoggedIn",
+				Val:     browser.TypeAsh,
+			}, {
+				Name:              "lacros",
+				Fixture:           "lacros",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val:               browser.TypeLacros,
+			},
+		},
 	})
 }
 
@@ -53,6 +65,16 @@ func HTMLReload(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	cleanupCrCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCrCtx)
 
 	for video, dataPath := range map[string]string{
 		mp4URL:  s.DataPath(mp4URL),
@@ -74,7 +96,7 @@ func HTMLReload(ctx context.Context, s *testing.State) {
 			defer cancel()
 
 			s.Logf("Opening video: %s", video)
-			if err := videoPlayer.Open(ctx, cr); err != nil {
+			if err := videoPlayer.Open(ctx, br); err != nil {
 				s.Fatal("Failed to open video: ", err)
 			}
 			defer func(ctx context.Context) {
@@ -157,7 +179,7 @@ type videoPlayer struct {
 
 func newVideoPlayer(tconn *chrome.TestConn, url string) *videoPlayer {
 	var (
-		browserRoot    = nodewith.NameStartingWith("Chrome").HasClass("BrowserFrame").Role(role.Window)
+		browserRoot    = nodewith.HasClass("BrowserFrame").Role(role.Window)
 		playerFinder   = nodewith.HasClass("phase-ready").Role(role.GenericContainer).FinalAncestor(browserRoot)
 		playerSelector = "document.querySelector('video')"
 	)
