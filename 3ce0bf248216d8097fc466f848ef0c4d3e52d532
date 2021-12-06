@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c2c804_faf14bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T06:29:12Z",
+      "side": 0,
+      "message": "\"crosHealthdRunning\" fixture not only sets up the environment, but is useful to check some corner case pre/post test. For example, it\u0027ll make sure that the cros_healthd PID won\u0027t change after the test.\nI checked some docs, and it seems that it only support one fixture [*]. Not sure if tast owner has other idea on this if we want to have function from two fixtures.\n\n[*] https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/internal/testing#Test.Fixture",
+      "range": {
+        "startLine": 34,
+        "startChar": 16,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "3ce0bf248216d8097fc466f848ef0c4d3e52d532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
