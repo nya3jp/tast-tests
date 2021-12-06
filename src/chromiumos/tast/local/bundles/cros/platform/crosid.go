@@ -20,7 +20,7 @@ func init() {
 			"chromeos-config@google.com",
 		},
 		SoftwareDeps: []string{"cros_config"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
