@@ -20,6 +20,7 @@ func TestLauncherParams(t *testing.T) {
 	params := crostini.MakeTestParamsFromList(t, []crostini.Param{
 		{
 			Name:      "local_wayland",
+			ExtraAttr: []string{"informational"},
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
 			Val: `launcherTestConfig{
 				desktopFile: "wayland_demo_fixed_size.desktop",
@@ -30,6 +31,7 @@ func TestLauncherParams(t *testing.T) {
 			}`,
 		}, {
 			Name:      "local_x11",
+			ExtraAttr: []string{"informational"},
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
 			Val: `launcherTestConfig{
 				desktopFile: "x11_demo_fixed_size.desktop",
@@ -40,6 +42,7 @@ func TestLauncherParams(t *testing.T) {
 			}`,
 		}, {
 			Name:      "system_wayland",
+			ExtraAttr: []string{"informational"},
 			ExtraData: []string{"launcher_wayland_demo_fixed_size.desktop", "launcher_wayland_demo.png"},
 			Val: `launcherTestConfig{
 				desktopFile: "wayland_demo_fixed_size.desktop",
@@ -50,6 +53,7 @@ func TestLauncherParams(t *testing.T) {
 			}`,
 		}, {
 			Name:      "system_x11",
+			ExtraAttr: []string{"informational"},
 			ExtraData: []string{"launcher_x11_demo_fixed_size.desktop", "launcher_x11_demo.png"},
 			Val: `launcherTestConfig{
 				desktopFile: "x11_demo_fixed_size.desktop",
