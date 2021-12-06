@@ -324,7 +324,7 @@ func init() {
 		Func:         ChromeStackDecoding,
 		Desc:         "Verifies video decoding using Chrome's stack (via the video_decode_accelerator_tests binary) and either MD5 or SSIM criteria",
 		Contacts:     []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
-		SoftwareDeps: []string{"chrome", "video_decoder_direct"},
+		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "av1_common",
 			ExtraAttr:         []string{"group:mainline", "informational"},
