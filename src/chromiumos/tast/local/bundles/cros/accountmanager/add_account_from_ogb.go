@@ -64,6 +64,13 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(accountmanager.FixtureData).Chrome()
 
+	// Setup the browser.
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to setup chrome: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -75,13 +82,6 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	if err := accountmanager.TestCleanup(ctx, tconn, cr, s.Param().(browser.Type)); err != nil {
 		s.Fatal("Failed to do cleanup: ", err)
 	}
-
-	// Setup the browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
-	if err != nil {
-		s.Fatal("Failed to setup chrome: ", err)
-	}
-	defer closeBrowser(cleanupCtx)
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC
