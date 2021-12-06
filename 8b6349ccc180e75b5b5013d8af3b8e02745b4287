@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65258526_8224f7ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-06T07:14:55Z",
+      "side": 1,
+      "message": "Please don\u0027t disable screendiff here. If you really don\u0027t want the test to fail, instead of defer d.DieOnFailedDiffs, write (with the same TODO):\n```\ndefer func() {\n  if err :\u003d d.GetFailedDiffs(); err !\u003d nil {\n    s.Log(\"screen diffs failed: \", err)\n  }\n}\n```\n\nThat being said, I don\u0027t agree with stopping the test from failing due to screen diffs. It\u0027s an informational test because it\u0027s not stable - there\u0027s no need to remove the thing that allows us to see how stable it is / isn\u0027t.\n\nI\u0027m happy to take over stabilizing this test with ACUITI if you want - I\u0027d like to try out ACUITI, and I don\u0027t actually have much work for the next day or two.",
+      "revId": "8b6349ccc180e75b5b5013d8af3b8e02745b4287",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
