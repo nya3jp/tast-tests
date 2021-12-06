@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b8da7f_487b0f9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529012
+      },
+      "writtenOn": "2021-12-06T08:32:26Z",
+      "side": 1,
+      "message": "Hi Jeremy, we’ve run this test successfully on Kindred[--board\u003dhatch], Sparky360[--board\u003doctopus], Hayato[--board\u003dasurada], Delbin[--board\u003dvolteer] and Storo360[--board\u003ddedede]. Please review it thanks.",
+      "revId": "fca6252eb82467aa4ad682a22fe4b71430b397e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
