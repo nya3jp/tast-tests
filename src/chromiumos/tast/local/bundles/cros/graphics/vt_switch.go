@@ -34,14 +34,14 @@ func init() {
 		}, {
 			Name:      "stress",
 			ExtraAttr: []string{"group:graphics", "graphics_weekly"},
-			Val:       25,
+			Val:       100,
 			Timeout:   22 * time.Minute,
 		}},
 	})
 }
 
 const (
-	waitTime                = 10 * time.Second
+	waitTime                = 5 * time.Second
 	differenceSizeThreshold = 5
 )
 
@@ -89,6 +89,39 @@ func openVT2(ctx context.Context) error {
 	return nil
 }
 
+func takeVTScreenshot(ctx context.Context, s *testing.State, fileName string) {
+	if err := screenshot.Capture(ctx, fileName); err != nil {
+		s.Error("Failed to take screenshot: ", err)
+	}
+}
+
+func savePerf(number int, name, unit string, pv *perf.Values) {
+	direction := perf.BiggerIsBetter
+	if unit == "percent" {
+		direction = perf.SmallerIsBetter
+	}
+	pv.Set(perf.Metric{
+		Name:      name,
+		Unit:      unit,
+		Direction: direction,
+	}, float64(number))
+}
+
+// checks if the two images are different beyond a % threshold and returns true if it is.
+func isPerceptualDifferent(s *testing.State, file1, file2 string) bool {
+	vtFile1, err := os.Stat(file1)
+	if err != nil {
+		s.Fatalf("Failed to find the image %q: %v", file1, err)
+	}
+	vtFile2, err := os.Stat(file2)
+	if err != nil {
+		s.Fatalf("Failed to find the image %q: %v", file2, err)
+	}
+
+	absoluteDiff := math.Abs(float64(vtFile1.Size() - vtFile2.Size()))
+	return differenceSizeThreshold <= (absoluteDiff / (float64(vtFile1.Size())) * 100)
+}
+
 // VTSwitch will switch between VT-1 and VT-2 for multiple times.
 func VTSwitch(ctx context.Context, s *testing.State) {
 
@@ -109,22 +142,16 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open VT1: ", err)
 	}
 
-	takeVTScreenshot := func(fileName string) {
-		if err := screenshot.Capture(ctx, fileName); err != nil {
-			s.Error("Failed to take screenshot: ", err)
-		}
-	}
-
 	// Take VT1 screenshot
 	vt1Screenshot := filepath.Join(s.OutDir(), "Initial_VTSwitch_VT1.png")
-	takeVTScreenshot(vt1Screenshot)
+	takeVTScreenshot(ctx, s, vt1Screenshot)
 
 	// Go to VT2 and take screenshot
 	if err := openVT2(ctx); err != nil {
 		s.Fatal("Failed to open VT2: ", err)
 	}
 	vt2Screenshot := filepath.Join(s.OutDir(), "Initial_VTSwitch_VT2.png")
-	takeVTScreenshot(vt2Screenshot)
+	takeVTScreenshot(ctx, s, vt2Screenshot)
 
 	max := func(a, b int) int {
 		if a > b {
@@ -133,23 +160,8 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 		return b
 	}
 
-	// checks if the two images are different beyond a % threshold and returns true if it is.
-	checkIfDifferent := func(file1, file2 string) bool {
-		vtFile1, err := os.Stat(file1)
-		if err != nil {
-			s.Fatalf("Failed to find the image %q: %v", file1, err)
-		}
-		vtFile2, err := os.Stat(file2)
-		if err != nil {
-			s.Fatalf("Failed to find the image %q: %v", file2, err)
-		}
-
-		absoluteDiff := math.Abs(float64(vtFile1.Size() - vtFile2.Size()))
-		return differenceSizeThreshold <= (absoluteDiff / (float64(vtFile1.Size())) * 100)
-	}
-
 	// Make sure VT1 and VT2 are sufficiently different.
-	if !checkIfDifferent(vt1Screenshot, vt2Screenshot) {
+	if !isPerceptualDifferent(s, vt1Screenshot, vt2Screenshot) {
 		numErrors++
 		s.Errorf("Initial VT1 and VT2 screenshots differ by less than %d %%", differenceSizeThreshold)
 	}
@@ -174,15 +186,16 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 		}
 		fileName := fmt.Sprintf("VTSwitch_VT1_%d.png", i)
 		currentVT1Screenshot := filepath.Join(s.OutDir(), fileName)
-		takeVTScreenshot(currentVT1Screenshot)
+		takeVTScreenshot(ctx, s, currentVT1Screenshot)
 
 		// Check if the current VT1 screenshot is similar to the original VT1 screenshot.
 
-		if checkIfDifferent(vt1Screenshot, currentVT1Screenshot) {
+		if isPerceptualDifferent(s, vt1Screenshot, currentVT1Screenshot) {
 			s.Errorf("Initial VT1 and current VT1 screenshots differ by more than %d %% in %d iteration", differenceSizeThreshold, i)
 			maxVT1Difference = max(differenceSizeThreshold, maxVT1Difference)
 			numErrors++
 		} else {
+			os.Remove(currentVT1Screenshot)
 			numIdenticalVT1Screenshots++
 		}
 
@@ -192,29 +205,18 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 		}
 		fileName = fmt.Sprintf("VTSwitch_VT2_%d.png", i)
 		currentVT2Screenshot := filepath.Join(s.OutDir(), fileName)
-		takeVTScreenshot(currentVT2Screenshot)
+		takeVTScreenshot(ctx, s, currentVT2Screenshot)
 
 		// Check if the current VT2 screenshot is similar to the original VT2 screenshot.
 
-		if checkIfDifferent(vt2Screenshot, currentVT2Screenshot) {
+		if isPerceptualDifferent(s, vt2Screenshot, currentVT2Screenshot) {
 			s.Errorf("Initial VT2 and current VT2 screenshots differ by %d %% in %d iteration", differenceSizeThreshold, i)
 			maxVT2Difference = max(differenceSizeThreshold, maxVT2Difference)
 			numErrors++
 		} else {
+			os.Remove(currentVT2Screenshot)
 			numIdenticalVT2Screenshots++
 		}
-	}
-
-	savePerf := func(number int, name, unit string, pv *perf.Values) {
-		direction := perf.BiggerIsBetter
-		if unit == "percent" {
-			direction = perf.SmallerIsBetter
-		}
-		pv.Set(perf.Metric{
-			Name:      name,
-			Unit:      unit,
-			Direction: direction,
-		}, float64(number))
 	}
 
 	savePerf(maxVT1Difference, "percent_VT1_screenshot_max_difference", "percent", pv)
