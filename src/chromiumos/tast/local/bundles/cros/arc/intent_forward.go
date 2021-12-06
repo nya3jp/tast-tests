@@ -44,7 +44,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 		setWallpaperAction  = "android.intent.action.SET_WALLPAPER"
 
 		filesAppURL        = `chrome-extension://hhaomjibdihmijegdhdafkllkbggdgoj/main.*\.html`
-		wallpaperPickerURL = "chrome-extension://obklkkbkpaoaejdabbfldmcfplpdgolj/main.html"
+		wallpaperPickerURL = "chrome://personalization/wallpaper"
 	)
 
 	d := s.FixtValue().(*arc.PreData)

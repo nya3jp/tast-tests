@@ -32,6 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -43,11 +44,7 @@ func SetOnlineWallpaper(ctx context.Context, s *testing.State) {
 		secondImage      = "The Savanna's Band Digital Art by Leo Natsume"
 	)
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("WallpaperWebUI"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
