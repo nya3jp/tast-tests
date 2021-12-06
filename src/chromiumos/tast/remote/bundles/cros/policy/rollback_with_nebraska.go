@@ -39,7 +39,7 @@ func init() {
 		Desc: "Example test for the enterprise rollback update using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{}, // Manual execution only.
 		SoftwareDeps: []string{"reboot", "chrome"},

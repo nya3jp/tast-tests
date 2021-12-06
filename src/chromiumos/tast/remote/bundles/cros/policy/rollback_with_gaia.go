@@ -31,7 +31,7 @@ func init() {
 		Desc: "Example test for the enterprise rollback update",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
-			"chromeos-commercial-stability@google.com",
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{}, // Manual execution only.
 		VarDeps:      []string{"policy.RollbackWithGaia.confirm", "policy.RollbackWithGaia.sourceVersion", "policy.RollbackWithGaia.targetVersion"},
