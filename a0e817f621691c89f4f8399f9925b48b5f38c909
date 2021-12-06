@@ -16,6 +16,236 @@
       "message": "Patchset 8 introduces more error handling. Notably, Kill() is swapped out in favor of Signal(syscall.SIGTERM), and I\u0027ve annotated all the Wait()s to note that receiving SIGTERM always causes Wait() to return an error.",
       "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7831c21_7c904021",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "nit: always pass \"ctx\", don\u0027t bind by reference to avoid issue with expired context\n\nhere is problem sample: \n```\n// beginning of the test\ndefer func() {\n  // ctx binded by reference will refer to ctx with timeout 1 sec\n  // from end of the test, probably not what you want :)\n}()\n\n...\n\n// end of the test\nctx, cancel :\u003d context.WithTimeout(ctx,time.Second)\ndefer cancel()\n...\n\n```\n\nsame in other places",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71e62c6_0a42a633",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "nit: \"is\" should be after (%q):\n\noutput log directory (%q) is not an absolute path",
+      "range": {
+        "startLine": 98,
+        "startChar": 46,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8decceb_092a75e7",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "we can simplify this function:\n\nsince we already have names of returned values, earlyCleanupCommand \u003d\u003d nil equivalent to \"err \u003d\u003d nil\".\n\nso,\n1. no need of \"earlyCleanupCommand\"\n2. use \"launch\" instead of \"earlyCleanupCommand\"\n3. \"if err \u003d\u003d nil {}\" branch will never be executed, because \"err\" always not nil if you stop printer in defer function",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16c50ace_23d9df36",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "Please be more specific, it will be super hard to find what code produced this error in log file\n\nFor example:\n```\ntesting.ContextLog(ctx, \"Virtual printer termination failed: \", error)\n```\n\n\nsame for other errors",
+      "range": {
+        "startLine": 214,
+        "startChar": 30,
+        "endLine": 214,
+        "endChar": 53
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca2bdb3_8531629d",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "This might be problematic, can you stop command without producing errors?",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 26
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7fcc59_09e1768b",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "nit: missing ctx",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 4
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9e148e2_f1586f60",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "\"err\" must be name of returned value to use it in defer function correctly.\n\n```\nfunc f() error {\n  err :\u003d nil\n  return errors.New(\"new error\")\n}\n```\n\nerr will be nil, but returned value is not nil",
+      "range": {
+        "startLine": 272,
+        "startChar": 6,
+        "endLine": 272,
+        "endChar": 16
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea3470c_2ca36675",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "this also not correct if err is not name of returned value. This won\u0027t change what function will return",
+      "range": {
+        "startLine": 273,
+        "startChar": 4,
+        "endLine": 273,
+        "endChar": 20
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9946301_ab834f13",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "same here: this if branch will never execute",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 0
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645fe96e_981c1383",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-06T13:23:05Z",
+      "side": 1,
+      "message": "Maybe send another signal or find way to stop printer without producing errors?",
+      "range": {
+        "startLine": 337,
+        "startChar": 25,
+        "endLine": 337,
+        "endChar": 35
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
