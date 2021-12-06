@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4551b5_2b06e9ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-06T09:45:48Z",
+      "side": 1,
+      "message": "I couldn\u0027t find the real reason why it happens yet, but it looks like moving browser setup makes this issue less frequent",
+      "revId": "b217ba9fa972384ed8d99f5fd002e6b4549d2df3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
