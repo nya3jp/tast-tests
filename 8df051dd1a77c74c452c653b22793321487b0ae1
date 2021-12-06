@@ -33,6 +33,24 @@
       "message": "I think this else-if is can be replaced with a separate if statement, because s.Fatal stops the test immediately (like early-return).\nIf we got that way, deviceAddedPattern and stdout can be defined right before it is used.",
       "revId": "8df051dd1a77c74c452c653b22793321487b0ae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff54a51_7014cf71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_usb_event.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T01:43:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22c4acf_fa0fc198",
+      "revId": "8df051dd1a77c74c452c653b22793321487b0ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
