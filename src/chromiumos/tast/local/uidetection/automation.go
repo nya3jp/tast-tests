@@ -34,7 +34,7 @@ func New(t *chrome.TestConn, keyType, key, server string) *Context {
 		},
 		pollOpts: testing.PollOptions{
 			Interval: 300 * time.Millisecond,
-			Timeout:  15 * time.Second,
+			Timeout:  30 * time.Second,
 		},
 	}
 }
