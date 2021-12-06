@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc6a00cf_e6e87405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-06T22:44:36Z",
+      "side": 1,
+      "message": "I encountered a situation where the full name of the window is \"Get Started - Visual Studio Code [Unsupported]\" (https://code.visualstudio.com/docs/supporting/FAQ#:~:text\u003dYou%20may%20also%20see%20the,to%20repair%20the%20missing%20files.) this maybe due to that we directly changed the css file to disable notifications.\n\nIt seems that the [Unsupported] message only shows up after the windown is fully launched (I used `uda.WaitUntilExists(uidetection.Word(\"File\"))` to indicate that), which is why the previous tests didn\u0027t fail because of that.\n\nHowever, if we didn\u0027t wait the window to fully launch, the `Get started` page could appear again next time we opened it. (failure example: https://cros-tast-gold.skia.org/search?corpus\u003dcrostini\u0026left_filter\u003dname_suffix%3Dnone%26test_group%3Dcrostini.AppVscode%26execution_id%3D2FF4FB5D\u0026not_at_head\u003dtrue)",
+      "parentUuid": "6bd38f80_d6dc2485",
+      "range": {
+        "startLine": 127,
+        "startChar": 24,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed18c661_76ddb5bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-06T22:13:55Z",
       "side": 1,
       "message": "It seems that this is the only place s is used? Please pass the vars directly instead of passing s.",
+      "range": {
+        "startLine": 137,
+        "startChar": 31,
+        "endLine": 137,
+        "endChar": 132
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f1d518_376cb820",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-06T22:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed18c661_76ddb5bb",
       "range": {
         "startLine": 137,
         "startChar": 31,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "308b57d7_6ed4d667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-06T22:44:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51d4e468_8f60cfb5",
+      "range": {
+        "startLine": 157,
+        "startChar": 121,
+        "endLine": 157,
+        "endChar": 124
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4752c24a_8cf48ec0",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-06T22:13:55Z",
       "side": 1,
       "message": "Why is this?\n\nThe file is created inside the container in the home directory, defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData)) cleans up the container\u0027s home directory.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 31
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73229642_c741dfd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-06T22:44:36Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "4752c24a_8cf48ec0",
       "range": {
         "startLine": 168,
         "startChar": 1,
