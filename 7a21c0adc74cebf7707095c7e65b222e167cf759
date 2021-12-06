@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b361e032_8608e363",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-06T07:04:31Z",
+      "side": 1,
+      "message": "Other than keigo\u0027s comments, LGTM",
+      "revId": "7a21c0adc74cebf7707095c7e65b222e167cf759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dd3f471_c105b002",
