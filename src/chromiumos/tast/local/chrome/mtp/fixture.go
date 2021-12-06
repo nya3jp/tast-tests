@@ -37,9 +37,10 @@ func NewMTPFixture(User, Password string, opts ...chrome.Option) testing.Fixture
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "mtpWithAndroid",
-		Desc: "User login with ARC enabled and secondary connected Android phone setup in MTP mode",
-		Impl: NewMTPFixture("arc.MTP.user", "arc.MTP.password", chrome.ARCEnabled(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
+		Name:     "mtpWithAndroid",
+		Desc:     "User login with ARC enabled and secondary connected Android phone setup in MTP mode",
+		Contacts: []string{"rnanjappan@google.com", "arc-storage@google.com"},
+		Impl:     NewMTPFixture("arc.MTP.user", "arc.MTP.password", chrome.ARCEnabled(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
 		Vars: []string{
 			"arc.MTP.user",
 			"arc.MTP.password",
