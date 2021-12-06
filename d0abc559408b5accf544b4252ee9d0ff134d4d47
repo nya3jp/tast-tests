@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6cad857_f5d3900c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-12-06T14:41:42Z",
+      "side": 1,
+      "message": "nit: ArcAccessibilityTest?",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "d0abc559408b5accf544b4252ee9d0ff134d4d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99334037_f58b1ff6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-12-06T14:41:42Z",
+      "side": 1,
+      "message": "nit: check?",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "d0abc559408b5accf544b4252ee9d0ff134d4d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0171866_f6a300a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-12-06T14:41:42Z",
+      "side": 1,
+      "message": "android/ lgtm",
+      "revId": "d0abc559408b5accf544b4252ee9d0ff134d4d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
