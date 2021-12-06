@@ -16,6 +16,24 @@
       "message": "Deliberate?",
       "revId": "e96a6e5051d61a0ebce6ecfa7a6cef41381796ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ebb2231_38a99864",
+        "filename": "src/chromiumos/tast/local/crostini/pre.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-06T04:13:05Z",
+      "side": 1,
+      "message": "Yes, I think stratego was a typo.",
+      "parentUuid": "5b23d9a9_7963f822",
+      "revId": "e96a6e5051d61a0ebce6ecfa7a6cef41381796ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
