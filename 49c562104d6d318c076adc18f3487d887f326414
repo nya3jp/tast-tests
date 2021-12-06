@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45c7ec6_b6fe9b72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-12-06T22:43:11Z",
+      "side": 1,
+      "message": "nit:\n```\n{\n  channel: lacroscommon.LacrosDevComponent,\n  skew: version.New(0, 1, 0, 0)\n},\netc \n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "49c562104d6d318c076adc18f3487d887f326414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fa8bf8e_434041ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-12-06T22:43:11Z",
+      "side": 1,
+      "message": "This is super long imo, would benefit from creating\n```\nfunc (v *Version) Increment(o *Version) Version { ... }\n```",
+      "range": {
+        "startLine": 109,
+        "startChar": 27,
+        "endLine": 109,
+        "endChar": 147
+      },
+      "revId": "49c562104d6d318c076adc18f3487d887f326414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
