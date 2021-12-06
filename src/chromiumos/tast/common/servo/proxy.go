@@ -42,17 +42,20 @@ type Proxy struct {
 	sdc             string         // empty if servod is not running inside a docker container
 }
 
-func createDockerClient() (*client.Client, error) {
+func createDockerClient(ctx context.Context) (*client.Client, error) {
 	// Create Docker Client.
 	// If the dockerd socket exists, use the default option.
 	// Otherwise, try to use the tcp connection local host IP 192.168.231.1:2375
 	// for satlab device.
 	if _, err := os.Stat("/var/run/docker.sock"); err != nil {
 		if !errors.Is(err, os.ErrNotExist) {
+			testing.ContextLog(ctx, "createDockerClient: os.Stat /var/run/docker.sock", err)
 			return nil, err
 		}
+		testing.ContextLog(ctx, "createDockerClient:/var/run/docker.sock not found, creating TCP connect")
 		return client.NewClientWithOpts(client.WithHost("tcp://192.168.231.1:2375"), client.WithAPIVersionNegotiation())
 	}
+	testing.ContextLog(ctx, "createDockerClient:/var/run/docker.sock found, creating Sock connect")
 	return client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
 }
 
@@ -187,8 +190,10 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	}
 
 	if strings.Contains(host, "docker_servod") {
-		pxy.dcl, err = createDockerClient()
+		testing.ContextLog(ctx, "NewProxy:Creating Docker Client object")
+		pxy.dcl, err = createDockerClient(ctx)
 		if err != nil {
+			testing.ContextLog(ctx, "NewProxy:Failed to create docker client", err)
 			return nil, err
 		}
 		pxy.sdc = host
@@ -477,6 +482,15 @@ func (p *Proxy) PutFiles(ctx context.Context, asRoot bool, fileMap map[string]st
 	return err
 }
 
+func contains(s []string, str string) bool {
+	for _, v := range s {
+		if strings.Contains(v, str) {
+			return true
+		}
+	}
+	return false
+}
+
 // GetPort returns the port where servod is running on the server.
 func (p *Proxy) GetPort() int { return p.port }
 
@@ -494,11 +508,44 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 		return nil, err
 	}
 
+	if p.dcl == nil {
+		err := errors.New("dockerExec:Docker client object is empty")
+		return nil, err
+	}
+
+	if p.sdc == "" {
+		err := errors.New("dockerExec:Servod is not running inside the docker container")
+		return nil, err
+	}
+	testing.ContextLog(ctx, "dockerExec:before p.dcl:", p.dcl)
+
+	cld, err := createDockerClient(ctx)
+
+	if err != nil {
+		testing.ContextLog(ctx, "dockerExec:Failed to create docker client", err)
+		return nil, err
+	}
+	testing.ContextLog(ctx, "dockerExec:after p.dcl:", p.dcl)
+
+	containers, err := cld.ContainerList(ctx, types.ContainerListOptions{})
+	if err != nil {
+		testing.ContextLog(ctx, "dockerExec: ContainerList Failed")
+		return nil, err
+	}
+	for _, container := range containers {
+		if contains(container.Names, p.sdc) && container.State != "running" {
+			err := errors.New("dockerExec:Container is not running")
+			return nil, err
+		}
+	}
+
 	// The only user within servod container is root, no sudo needed.
 	execConfig.Cmd = append([]string{name}, args...)
 
-	r, err := p.dcl.ContainerExecCreate(ctx, p.sdc, execConfig)
+	testing.ContextLog(ctx, "dockerExec: Running command:", execConfig.Cmd)
+	r, err := cld.ContainerExecCreate(ctx, p.sdc, execConfig)
 	if err != nil {
+		testing.ContextLog(ctx, "dockerExec:Could not create exec configuration to run an exec process.", err)
 		return nil, err
 	}
 
@@ -508,16 +555,18 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 	go func(dcl *client.Client) {
 		defer wg.Done()
 		for {
-			iRes, err := dcl.ContainerExecInspect(ctx, r.ID)
+			iRes, err := cld.ContainerExecInspect(ctx, r.ID)
 			if err != nil || !iRes.Running {
+				testing.ContextLog(ctx, "dockerExec: Completed exec process.")
 				break
 			}
 			err = testing.Sleep(ctx, 250*time.Millisecond)
 			if err != nil {
+				testing.ContextLog(ctx, "dockerExec: Error in sleep.")
 				break
 			}
 		}
-	}(p.dcl)
+	}(cld)
 
 	var out []byte
 	wg.Add(1)
@@ -526,6 +575,7 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 		defer wg.Done()
 		hRes, err := dcl.ContainerExecAttach(ctx, r.ID, types.ExecStartCheck{})
 		if err != nil {
+			testing.ContextLog(ctx, "dockerExec: Failed to attache a connection to an exec process in the server.")
 			return
 		}
 		defer hRes.Close()
@@ -534,7 +584,12 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 			out = append(out, scanner.Bytes()...)
 			out = append(out, '\n')
 		}
-	}(p.dcl)
+
+		if scanErr := scanner.Err(); scanErr != nil {
+			testing.ContextLog(ctx, "dockerExec: Failed to scan command output.")
+			err = scanErr
+		}
+	}(cld)
 
 	wg.Wait()
 	return out, err
