@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4268a931_2d630bc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T06:29:04Z",
+      "side": 1,
+      "message": "lowercase",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "5057997f61f036ce3523d12a9e68e08bf42b1dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71acdf58_808a46f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T06:29:04Z",
+      "side": 1,
+      "message": "lowercase",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "5057997f61f036ce3523d12a9e68e08bf42b1dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca230359_44b995ef",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T06:29:04Z",
+      "side": 1,
+      "message": "lowercase.",
+      "range": {
+        "startLine": 135,
+        "startChar": 53,
+        "endLine": 135,
+        "endChar": 54
+      },
+      "revId": "5057997f61f036ce3523d12a9e68e08bf42b1dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc10219_d6768290",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T06:29:04Z",
+      "side": 1,
+      "message": "BTW, could you explain why we need this? If we don\u0027t have this, what would happen when running the test?\nBesides, what does it actually do? Is there no command line command to achieve this?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 32
+      },
+      "revId": "5057997f61f036ce3523d12a9e68e08bf42b1dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e425397b_01a30c3f",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T06:29:04Z",
+      "side": 1,
+      "message": "I think you shouldn\u0027t put the function here. Maybe\n1. Create a thunderbolt dir in \"tast-tests/src/chromiumos/tast/local/bundles/cros/health\" like \"usb\", \"pci\".\n2. Put this function there.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 85
+      },
+      "revId": "5057997f61f036ce3523d12a9e68e08bf42b1dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe5a08a_2b20edf3",
+        "filename": "src/chromiumos/tast/local/croshealthd/telem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T06:29:04Z",
+      "side": 1,
+      "message": "Don\u0027t we need a corresponding \"restore\" function? I\u0027m not sure, is it okay for us to disable the feature without restoring it?",
+      "revId": "5057997f61f036ce3523d12a9e68e08bf42b1dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
