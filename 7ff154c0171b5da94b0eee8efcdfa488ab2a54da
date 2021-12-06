@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ab175f_c417d238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-06T23:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc6a00cf_e6e87405",
+      "range": {
+        "startLine": 127,
+        "startChar": 24,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed18c661_76ddb5bb",
