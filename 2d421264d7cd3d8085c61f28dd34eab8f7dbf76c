@@ -16,6 +16,24 @@
       "message": "jason@ could you take a look at this? Can you recommend anything in the existing wallpaper tests that should change with this feature?",
       "revId": "2d421264d7cd3d8085c61f28dd34eab8f7dbf76c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8af125_68e0a0d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-12-06T23:22:18Z",
+      "side": 1,
+      "message": "These 2 tests should have the flag set to disabled or deleted:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go?q\u003dchild_wallpaper_sync.go\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wallpaper/change.go",
+      "parentUuid": "4dc1a900_4f016027",
+      "revId": "2d421264d7cd3d8085c61f28dd34eab8f7dbf76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
