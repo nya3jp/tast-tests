@@ -58,7 +58,7 @@ func ECADC(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to read EC internal temperature temperature: ", err)
 		}
-		ecTemperatureStr := ecTemperatureOut[0].([]interface{})[1].(string)
+		ecTemperatureStr := ecTemperatureOut[0][1]
 		ecTemperature, err := strconv.ParseInt(ecTemperatureStr, 10, 64)
 		if err != nil {
 			s.Fatalf("Failed to parse EC internal temperature (%s) as int: %s",

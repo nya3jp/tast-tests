@@ -136,7 +136,7 @@ func checkUSBAPortEnabled(ctx context.Context, h *firmware.Helper, expectedStatu
 			if err != nil {
 				return errors.Wrapf(err, "failed to run cmd %v, got error", cmd)
 			}
-			enableStatus, err := strconv.Atoi(out[0].([]interface{})[1].(string))
+			enableStatus, err := strconv.Atoi(out[0][1])
 			if err != nil {
 				return errors.Wrap(err, "failed to parse usb port state to int value")
 			} else if enableStatus != expectedStatus {
@@ -162,7 +162,8 @@ func checkUSBAPortEnabled(ctx context.Context, h *firmware.Helper, expectedStatu
 			out, err := h.Servo.RunECCommandGetOutput(ctx, cmd, matchList)
 			if err != nil {
 				return errors.Wrap(err, "unexpected output when checking usb ports")
-			} else if match := reFoundPort.FindStringSubmatch(out[0].([]interface{})[0].(string)); match != nil {
+			}
+			if match := reFoundPort.FindStringSubmatch(out[0][0]); match != nil {
 				testing.ContextLogf(ctx, "Found usb: %v at %v", name, match[1])
 				enableStatus, err := strconv.Atoi(match[1])
 				if err != nil {
