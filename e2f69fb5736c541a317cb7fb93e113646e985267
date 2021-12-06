@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d57d7f7_5339df9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2021-12-06T04:11:20Z",
+      "side": 1,
+      "message": "akahuang@ What do you think? I would be monitoring these variants (I don\u0027t expect the ARC team to do so).",
+      "revId": "e2f69fb5736c541a317cb7fb93e113646e985267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
