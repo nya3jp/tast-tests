@@ -22,6 +22,30 @@
       },
       "revId": "f9f09b3437a92b111d2a1455b2f483c3e3c890dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f26f354b_f91e2ee9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-06T03:10:02Z",
+      "side": 1,
+      "message": "No, This test cases is automatic only.\n\nAs part of the setup we connect the TBT device to the DUT.\nIn test cases we unplug the device, and then we disable data access from the UI,\nWe plug in the device again, and then verify the Thunderbolt information.",
+      "parentUuid": "16f2e27d_3842c95f",
+      "range": {
+        "startLine": 9,
+        "startChar": 89,
+        "endLine": 9,
+        "endChar": 123
+      },
+      "revId": "f9f09b3437a92b111d2a1455b2f483c3e3c890dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
