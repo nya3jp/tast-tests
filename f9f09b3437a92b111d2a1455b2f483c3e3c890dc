@@ -69,6 +69,30 @@
       },
       "revId": "f9f09b3437a92b111d2a1455b2f483c3e3c890dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24cb3f8f_f4bf22cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-06T08:16:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af299b3a_ab12f481",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "f9f09b3437a92b111d2a1455b2f483c3e3c890dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
