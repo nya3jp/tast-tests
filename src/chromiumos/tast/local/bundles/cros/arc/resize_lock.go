@@ -290,19 +290,6 @@ func testPIP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devi
 	if _, err := ash.SetWindowState(ctx, tconn, window.ID, ash.WMEventMinimize, false /* waitForStateChange */); err != nil {
 		return errors.Wrapf(err, "failed to minimize %s", activityName)
 	}
-	defer func() error {
-		if _, err := ash.SetARCAppWindowState(ctx, tconn, packageName, ash.WMEventNormal); err != nil {
-			return errors.Wrapf(err, "failed to restore %s", activityName)
-		}
-		// TODO(b/202477296): Remove this once the previous resize lock state is able to be properly restored.
-		if err := wm.ToggleResizeLockMode(ctx, tconn, a, d, cr, activity, wm.ResizableTogglableResizeLockMode, wm.PhoneResizeLockMode, wm.DialogActionNoDialog, wm.InputMethodClick, keyboard); err != nil {
-			return errors.Wrapf(err, "failed to change the resize lock mode of %s from resizable to phone", activityName)
-		}
-		if err := wm.CheckResizeLockState(ctx, tconn, a, d, cr, activity, wm.PhoneResizeLockMode, false /* isSplashVisible */); err != nil {
-			return errors.Wrapf(err, "failed to verify the resize lock state of %s", activityName)
-		}
-		return nil
-	}()
 
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStatePIP); err != nil {
 		return errors.Wrapf(err, "failed to wait for %s to enter PIP", activityName)
@@ -374,7 +361,7 @@ func testTablet(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, packageName, ash.WindowStateNormal); err != nil {
 		return errors.Wrapf(err, "failed to wait for %s to be restored", activityName)
 	}
-	if err := wm.CheckResizeLockState(ctx, tconn, a, d, cr, activity, wm.ResizableTogglableResizeLockMode, false /* isSplashVisible */); err != nil {
+	if err := wm.CheckResizeLockState(ctx, tconn, a, d, cr, activity, wm.PhoneResizeLockMode, false /* isSplashVisible */); err != nil {
 		return errors.Wrapf(err, "failed to verify the resize lock state of %s", activityName)
 	}
 
@@ -421,6 +408,12 @@ func testNonResizeLocked(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC
 		if err := wm.ToggleResizeLockMode(ctx, tconn, a, d, cr, activity, wm.TabletResizeLockMode, wm.ResizableTogglableResizeLockMode, wm.DialogActionNoDialog, wm.InputMethodClick, keyboard); err != nil {
 			return errors.Wrapf(err, "failed to change the resize lock mode of %s from tablet to resizable", apkName)
 		}
+		defer func() error {
+			if err := wm.ToggleResizeLockMode(ctx, tconn, a, d, cr, activity, wm.ResizableTogglableResizeLockMode, wm.PhoneResizeLockMode, wm.DialogActionNoDialog, wm.InputMethodClick, keyboard); err != nil {
+				return errors.Wrapf(err, "failed to change the resize lock mode of %s from resizable to phone", apkName)
+			}
+			return nil
+		}()
 		// Maximize the app and verify the app is not resize-locked.
 		if _, err := ash.SetARCAppWindowState(ctx, tconn, packageName, ash.WMEventMaximize); err != nil {
 			return errors.Wrapf(err, "failed to maximize %s", activityName)
