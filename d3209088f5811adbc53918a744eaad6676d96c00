@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e62e8716_a48faa13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1369748
+      },
+      "writtenOn": "2021-12-06T02:18:01Z",
+      "side": 1,
+      "message": "If you have created multiple CLs to deal with multiple specific issues and use this CL to address general concerns from the last merge, please change the commit msg to something else",
+      "revId": "d3209088f5811adbc53918a744eaad6676d96c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
