@@ -134,6 +134,30 @@
       },
       "revId": "3d66c897f6b72d42803b8ce48db9de1657e4b5d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c6f1f3_510e5be9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-12-06T21:32:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "693851aa_661faf10",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 9
+      },
+      "revId": "3d66c897f6b72d42803b8ce48db9de1657e4b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
