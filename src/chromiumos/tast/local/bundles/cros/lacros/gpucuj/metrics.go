@@ -271,6 +271,11 @@ var metricMap = map[string]metricInfo{
 		direction: perf.SmallerIsBetter,
 		uma:       false,
 	},
+	"rapl_duration": {
+		unit:      "seconds",
+		direction: perf.SmallerIsBetter,
+		uma:       false,
+	},
 	"cpu_power": {
 		unit:      "joules",
 		direction: perf.SmallerIsBetter,
@@ -514,6 +519,7 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 			}
 			return errors.Wrap(err, "failed to compute RAPL diffs")
 		}
+		testing.ContextLog(ctx, "RAPL duration seconds ", rd.Duration().Seconds())
 		raplv = rd
 	}
 
@@ -561,6 +567,10 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 		if err := invoc.metrics.recordValue(ctx, invoc, "gpu_power", raplv.Uncore()); err != nil {
 			return err
 		}
+		if err := invoc.metrics.recordValue(ctx, invoc, "rapl_duration", raplv.Duration().Seconds()); err != nil {
+			return err
+		}
+
 	}
 	return nil
 }
