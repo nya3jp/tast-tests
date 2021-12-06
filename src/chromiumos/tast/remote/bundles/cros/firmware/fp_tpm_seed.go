@@ -41,7 +41,10 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	servoSpec, _ := s.Var("servo")
+	servoSpec, ok := s.Var("servo")
+	if !ok {
+		servoSpec = ""
+	}
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)

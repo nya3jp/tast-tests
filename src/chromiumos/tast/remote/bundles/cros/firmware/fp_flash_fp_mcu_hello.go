@@ -64,7 +64,10 @@ func FpFlashFpMcuHello(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
-	servoSpec, _ := s.Var("servo")
+	servoSpec, ok := s.Var("servo")
+	if !ok {
+		servoSpec = ""
+	}
 	servop, err := servo.NewProxy(ctx, servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)

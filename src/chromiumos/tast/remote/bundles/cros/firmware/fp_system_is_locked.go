@@ -40,7 +40,10 @@ func FpSystemIsLocked(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	servoSpec, _ := s.Var("servo")
+	servoSpec, ok := s.Var("servo")
+	if !ok {
+		servoSpec = ""
+	}
 	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
