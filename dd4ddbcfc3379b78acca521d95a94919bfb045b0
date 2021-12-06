@@ -34,6 +34,24 @@
       "parentUuid": "c7971efd_98cb1cac",
       "revId": "dd4ddbcfc3379b78acca521d95a94919bfb045b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c5b592_61593405",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-06T18:08:50Z",
+      "side": 1,
+      "message": "Yes, this can wait as this is not urgent but a preventive check.",
+      "parentUuid": "8ea66de9_6a6c6527",
+      "revId": "dd4ddbcfc3379b78acca521d95a94919bfb045b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
