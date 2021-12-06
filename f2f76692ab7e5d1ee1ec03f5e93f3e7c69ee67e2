@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4fb9488_f33daf4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:36:12Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "f2f76692ab7e5d1ee1ec03f5e93f3e7c69ee67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b03a5c4_30f78d0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_zoom_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:36:12Z",
+      "side": 1,
+      "message": "This comment is misleading, the hwdep skips all devices without an internal display. Maybe just remove it, the code is clear enough.",
+      "revId": "f2f76692ab7e5d1ee1ec03f5e93f3e7c69ee67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2251f6_8bef86bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/display_zoom_change.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:36:12Z",
+      "side": 1,
+      "message": "Do we also want to check that the setting was actually applied?",
+      "revId": "f2f76692ab7e5d1ee1ec03f5e93f3e7c69ee67e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
