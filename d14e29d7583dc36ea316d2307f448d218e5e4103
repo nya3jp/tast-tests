@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "913b9835_5bbcfd84",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-06T12:39:10Z",
+      "side": 1,
+      "message": "Not quite what I had in mind. Kamil made a really similar change, you should follow that: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/kioskmode/kiosk_mode.go;l\u003d80?Close\u003d",
+      "parentUuid": "88404e15_c3954595",
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea9c2cad_b212f98b",
         "filename": "src/chromiumos/tast/local/mgs/mgs.go",
         "patchSetId": 1
