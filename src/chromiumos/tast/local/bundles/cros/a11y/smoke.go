@@ -7,12 +7,14 @@ package a11y
 import (
 	"context"
 	"fmt"
-	"os"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -64,19 +66,20 @@ func init() {
 }
 
 func Smoke(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	bt := s.Param().(browser.Type)
-	s.Log("Initializing ash-chrome and/or lacros-chrome based on the target browser: ", bt)
-	if bt == browser.TypeLacros {
-		// Clean up user data dir to ensure a clean start.
-		os.RemoveAll(lacros.UserDataDir)
-	}
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), bt)
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
-		s.Fatal("Failed to initialize setup: ", err)
+		s.Fatal("Failed to setup browser: ", err)
 	}
-	if l != nil {
-		defer l.Close(ctx)
-	}
+	defer closeBrowser(cleanupCtx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -103,12 +106,12 @@ func Smoke(ctx context.Context, s *testing.State) {
 		app = apps.Lacros
 		topWindowName = "ExoShellSurface"
 	default:
-		s.Fatal("Unrecognized Chrome type: ", bt)
+		s.Fatal("Unrecognized browser type: ", bt)
 	}
 	topLevelWindow := nodewith.Role(role.Window).HasClass(topWindowName)
 
 	s.Logf("Opening a new tab in %v browser", bt)
-	conn, err := cs.NewConn(ctx, "chrome://newtab")
+	conn, err := br.NewConn(ctx, "chrome://newtab")
 	if err != nil {
 		s.Fatalf("Failed to open a new tab in %v browser: %v", bt, err)
 	}
