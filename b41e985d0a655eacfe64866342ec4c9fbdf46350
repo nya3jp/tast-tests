@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b70a2a4_2a36dd14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-06T03:03:03Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "b41e985d0a655eacfe64866342ec4c9fbdf46350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574f3c07_42aba4dc",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-12-06T00:12:46Z",
       "side": 1,
       "message": "Is there a way we can write this so that we can distinguish between \"content is wrong\" vs \"timeout\"?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "b41e985d0a655eacfe64866342ec4c9fbdf46350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00027bbb_3e3e2c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/live_caption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-06T03:03:03Z",
+      "side": 1,
+      "message": "I can split the Combine, so that it:\n1. check the bubble shows\n2. check the Content\n\nIf 1. is done but 2. fails, it means the content is wrong ( I assume there should not be too much waiting time between the bubble shows and the content shows, i.e. the bubble shows only when live_caption emits something.)\n\nWDYT?",
+      "parentUuid": "574f3c07_42aba4dc",
       "range": {
         "startLine": 86,
         "startChar": 1,
