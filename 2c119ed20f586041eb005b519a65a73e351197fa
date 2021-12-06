@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c58ecc04_ad450e2e",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-06T22:05:05Z",
+      "side": 1,
+      "message": "Might be easier to read if changed to:\n    if h.DUT \u003d\u003d nil {\n        return h.waitDutS0Helper()\n    } else {\n        return h.waitConnectHelper()\n    }\n\nor:\n    if h.DUT \u003d\u003d nil {\n        return h.waitDutS0Helper()\n    }\n    // Existing code...",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 661,
+        "endChar": 0
+      },
+      "revId": "2c119ed20f586041eb005b519a65a73e351197fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
