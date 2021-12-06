@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57fd2116_e978be98",
+        "filename": "src/chromiumos/tast/remote/firmware/bringup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-06T18:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f9c00b8_6f2f9cb6",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 143
+      },
+      "revId": "e423a10c5d5820b93a1764bb4b6fe5d7279ed01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0a1b169_054db218",
@@ -38,6 +62,30 @@
       "side": 1,
       "message": "\u003e \"useable\" is a possible misspelling of \"usable\".\n\nPlease fix.",
       "parentUuid": "2ead7eb6_37659b32",
+      "range": {
+        "startLine": 71,
+        "startChar": 60,
+        "endLine": 71,
+        "endChar": 67
+      },
+      "revId": "e423a10c5d5820b93a1764bb4b6fe5d7279ed01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "820dbe27_cb872122",
+        "filename": "src/chromiumos/tast/remote/firmware/bringup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-06T18:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0a1b169_054db218",
       "range": {
         "startLine": 71,
         "startChar": 60,
