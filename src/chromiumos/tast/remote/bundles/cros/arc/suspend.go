@@ -35,10 +35,15 @@ func init() {
 			"hikalium@chromium.org",
 			"cros-platform-kernel-core@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_vm", "virtual_susupend_time_injection"},
-		ServiceDeps:  []string{"tast.cros.arc.SuspendService"},
-		Timeout:      60 * time.Minute,
+		Attr: []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{
+			"chrome",
+			"android_vm",
+			"virtual_susupend_time_injection",
+			"no_qemu", /* TODO(b/209400676): Remove this once the issue on betty is fixed. */
+		},
+		ServiceDeps: []string{"tast.cros.arc.SuspendService"},
+		Timeout:     60 * time.Minute,
 		Params: []testing.Param{{
 			Name: "s10c100",
 			Val: testArgsForSuspend{
