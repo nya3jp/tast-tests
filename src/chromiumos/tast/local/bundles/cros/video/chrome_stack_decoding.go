@@ -379,6 +379,7 @@ func init() {
 			},
 		}, {
 			Name:              "h264_baseline",
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264Files["baseline"]),
 			Val: chromeStackDecodingTestParam{
@@ -387,6 +388,7 @@ func init() {
 			},
 		}, {
 			Name:              "h264_main",
+			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         appendJSONFiles(h264Files["main"]),
 			Val: chromeStackDecodingTestParam{
