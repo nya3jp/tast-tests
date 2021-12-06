@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4eb7ea_4028d1af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7831c21_7c904021",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71e62c6_0a42a633",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-06T13:23:05Z",
       "side": 1,
       "message": "nit: \"is\" should be after (%q):\n\noutput log directory (%q) is not an absolute path",
+      "range": {
+        "startLine": 98,
+        "startChar": 46,
+        "endLine": 98,
+        "endChar": 48
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0370ccfe_09f7d8d8",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e71e62c6_0a42a633",
       "range": {
         "startLine": 98,
         "startChar": 46,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a347af_c71d3ade",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8decceb_092a75e7",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16c50ace_23d9df36",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-06T13:23:05Z",
       "side": 1,
       "message": "Please be more specific, it will be super hard to find what code produced this error in log file\n\nFor example:\n```\ntesting.ContextLog(ctx, \"Virtual printer termination failed: \", error)\n```\n\n\nsame for other errors",
+      "range": {
+        "startLine": 214,
+        "startChar": 30,
+        "endLine": 214,
+        "endChar": 53
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7dc9933_fc2ad202",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16c50ace_23d9df36",
       "range": {
         "startLine": 214,
         "startChar": 30,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "423ff716_6b39b391",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "No. We don\u0027t have any signal handlers and no \"orderly halt\" commands. There is the potential to manipulate virtual-usb-printer through Upstart (b/186000173), but we are unlikely to address this in the timeframe for this CL.",
+      "parentUuid": "3ca2bdb3_8531629d",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 26
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca7fcc59_09e1768b",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-12-06T13:23:05Z",
       "side": 1,
       "message": "nit: missing ctx",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 4
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77c977e_7a8a52e2",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "DOne",
+      "parentUuid": "ca7fcc59_09e1768b",
       "range": {
         "startLine": 226,
         "startChar": 2,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dea6a5d_7847162d",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9e148e2_f1586f60",
+      "range": {
+        "startLine": 272,
+        "startChar": 6,
+        "endLine": 272,
+        "endChar": 16
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bea3470c_2ca36675",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-12-06T13:23:05Z",
       "side": 1,
       "message": "this also not correct if err is not name of returned value. This won\u0027t change what function will return",
+      "range": {
+        "startLine": 273,
+        "startChar": 4,
+        "endLine": 273,
+        "endChar": 20
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6142bc32_2f67f762",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea3470c_2ca36675",
       "range": {
         "startLine": 273,
         "startChar": 4,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0553b36_87541f71",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9946301_ab834f13",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 0
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "645fe96e_981c1383",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-12-06T13:23:05Z",
       "side": 1,
       "message": "Maybe send another signal or find way to stop printer without producing errors?",
+      "range": {
+        "startLine": 337,
+        "startChar": 25,
+        "endLine": 337,
+        "endChar": 35
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df72d1f_92d22cc5",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-06T20:49:55Z",
+      "side": 1,
+      "message": "As above. Historically, we ignored the return value here, so we have never prioritized an \"orderly halt\" for virtual-usb-printer.",
+      "parentUuid": "645fe96e_981c1383",
       "range": {
         "startLine": 337,
         "startChar": 25,
