@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd3f471_c105b002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_image_exif.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-06T05:25:40Z",
+      "side": 1,
+      "message": "Maybe this comment should go before the line\nif !checkUserfacing() {\n? (L45)",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "7a21c0adc74cebf7707095c7e65b222e167cf759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f240ef1_6cb7e014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_image_exif.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-06T05:25:40Z",
+      "side": 1,
+      "message": "nit: isUserFacing ?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "7a21c0adc74cebf7707095c7e65b222e167cf759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81316ac_4bf9f5ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_image_exif.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-06T05:25:40Z",
+      "side": 1,
+      "message": "Why do we need to call Walk here, while Walk is noop?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 13
+      },
+      "revId": "7a21c0adc74cebf7707095c7e65b222e167cf759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
