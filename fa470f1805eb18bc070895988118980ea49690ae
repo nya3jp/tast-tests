@@ -50,6 +50,24 @@
       "message": "Kinda wondering if we should move the timing stuff to a wrapper, because all consumers of the cellular helper might not care about the timing data and it makes the API a bit more confusing in my opinion. But maybe we do actually want to report this data in basically all tests anyway, so I\u0027m not sure it\u0027s worth refactoring.\n\nWhat do you think?",
       "revId": "fa470f1805eb18bc070895988118980ea49690ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "000260f7_61484ef3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-12-06T17:43:53Z",
+      "side": 1,
+      "message": "I feel that we should be reporting/tracking timing data for\n1. Connect\n2. Disconnect\n3. Enable\n4. Disable\n\non all devices. For other functions in the helper, they are good to have.\nNote: In this cl I\u0027ve only added timing info for the above functions which are then saved to results-chart.jason\n\nIn this https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3311973 - I had added timing info for all helper functions that would automatically go into timing.json file, this I believe will help us identify if our functions are getting slower overtime and find the exact function that is causing this issue. This we can refactor and create a wrapper function -- Let me create a bug to track this.",
+      "parentUuid": "94d21a3b_086dd0a2",
+      "revId": "fa470f1805eb18bc070895988118980ea49690ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
