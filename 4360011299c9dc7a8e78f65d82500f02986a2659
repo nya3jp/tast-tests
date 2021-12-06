@@ -16,6 +16,24 @@
       "message": "i don\u0027t feel comfortable to sign off bash script. chingkang, do you think we need some extra review for this specific file?",
       "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588b7a24_6f5f6928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-06T12:15:20Z",
+      "side": 1,
+      "message": "Well, I think so. Do you have any candidate for reviewing bash script?",
+      "parentUuid": "7264e6bc_2fcad40c",
+      "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -46,6 +46,30 @@
       },
       "revId": "6409b162fa4e1ab349eb65cdb28664ea019ee08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14aa803_8d0ca8a6",
+        "filename": "src/chromiumos/tast/local/hwsec/cross_version_login_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-06T12:15:20Z",
+      "side": 1,
+      "message": "Moved the compress part to previos CL. In addition, now the entire \"/home/.shadow\" except \"/home/.shadow/*/mount\" are compressed.",
+      "parentUuid": "a1d29bcb_415e772b",
+      "range": {
+        "startLine": 41,
+        "startChar": 71,
+        "endLine": 41,
+        "endChar": 87
+      },
+      "revId": "6409b162fa4e1ab349eb65cdb28664ea019ee08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
