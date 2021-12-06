@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e1190d_55b4a5ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-06T15:51:31Z",
+      "side": 1,
+      "message": "Add timeout field.\nprobably something along the lines\nTimeout:     chrome.LoginTimeout + 20*times.Second.\n\nSeems like we only login once during the test. Thus just one chrome.LoginTimeout + some extra time.",
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3500ab0a_cf1c3880",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-06T15:51:31Z",
+      "side": 1,
+      "message": "use Params for that https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e7169e_f954bf56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-06T15:51:31Z",
+      "side": 1,
+      "message": "Do we need shorten here? I thought it is required if there is a specific cleanup.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e740c07_02fe4f3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-06T15:51:31Z",
+      "side": 1,
+      "message": "alternatively you could wait for the ReadyForPassword state.\nsee https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go;l\u003d178-180?q\u003dlockscreen.WaitState%20package:chromeos\u0026type\u003dcs",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 47
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "187a68bd_19e22c5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-06T15:51:31Z",
+      "side": 1,
+      "message": "I wonder if there could be a race condition:\nlike session stops BEFORE we create waiter for the session manager change?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
