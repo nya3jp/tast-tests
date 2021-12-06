@@ -100,7 +100,7 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("Set a new custom wallpaper, choose new layout and minimize wallpaper picker",
 		wallpaper.OpenWallpaperPicker(ui),
 		wallpaper.SelectCollection(ui, collection),
-		ui.LeftClick(nodewith.Name("Center").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Center").Role(role.ToggleButton)),
 		wallpaper.MinimizeWallpaperPicker(ui),
 	)(ctx); err != nil {
 		s.Fatal("Failed to set new wallpaper: ", err)
