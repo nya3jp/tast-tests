@@ -29,7 +29,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		VarDeps:      []string{"unicorn.wallpaperName"},
-		Fixture:      "familyLinkUnicornLoginWallpaper",
+		Fixture:      "familyLinkUnicornLogin",
 	})
 }
 
