@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751a5e2a_c770022e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_console.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-06T22:30:20Z",
+      "side": 1,
+      "message": "It might be useful to also have an H1Version test.\n\nThis could query the latest released prepvt and prod versions from gsutil, and verify that the factory performed an H1 firmware update.",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "79b0d6a0da0ec3c24da44aa25d0ea8a490a6ec27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff3613a_b733c395",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-06T22:30:20Z",
+      "side": 1,
+      "message": "Move to a separate CL.  This doc cleanup is independent of your go changes.",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 106
+      },
+      "revId": "79b0d6a0da0ec3c24da44aa25d0ea8a490a6ec27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
