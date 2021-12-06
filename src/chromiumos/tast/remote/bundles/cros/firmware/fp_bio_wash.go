@@ -42,7 +42,10 @@ func FpBioWash(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	servoSpec, _ := s.Var("servo")
+	servoSpec, ok := s.Var("servo")
+	if !ok {
+		servoSpec = ""
+	}
 	// HW wp must be disabled to flash_fp_mcu.
 	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false, false)
 	if err != nil {

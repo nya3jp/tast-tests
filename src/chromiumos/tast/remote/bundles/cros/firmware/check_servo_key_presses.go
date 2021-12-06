@@ -33,7 +33,10 @@ func CheckServoKeyPresses(ctx context.Context, s *testing.State) {
 
 	dut := s.DUT()
 
-	servoSpec, _ := s.Var("servo")
+	servoSpec, ok := s.Var("servo")
+	if !ok {
+		servoSpec = ""
+	}
 	pxy, err := servo.NewProxy(ctx, servoSpec, dut.KeyFile(), dut.KeyDir())
 	if err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
