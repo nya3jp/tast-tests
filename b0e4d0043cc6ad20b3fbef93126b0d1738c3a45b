@@ -16,6 +16,24 @@
       "message": "Kyle, thanks so much for the review!\n\n+Eliot, is it worth holding off on submitting this until your large refactor (https://crrev.com/c/3308580) that is likely a merge conflict gets in? Looks like your submission got blocked on unrelated vm issue. Maybe consider chumping it before more conflicts come your way? 😊 I can rebase later. Thanks,",
       "revId": "b0e4d0043cc6ad20b3fbef93126b0d1738c3a45b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "968e74bc_60a243c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-12-06T08:32:16Z",
+      "side": 1,
+      "message": "We shouldn\u0027t chump changes just because CQ is being uncooperative. That said, if you could please give me a day or so to see if I can get it in that would be great. If you have time re +2ing these if they fail would be great (it seems that +2ing in tokyo timezone has a much higher chance of failure): https://crrev.com/c/3308580 https://crrev.com/c/3308581 . Thanks for considering!",
+      "parentUuid": "607cdf1c_a11cd03b",
+      "revId": "b0e4d0043cc6ad20b3fbef93126b0d1738c3a45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
