@@ -98,7 +98,7 @@ var UnstableModels = []string{
 	"arcada",
 	// Platform samus
 	"samus", // crbug.com/1072877
-	// Platform stratego
+	// Platform strago
 	"banon",
 	"celes",
 	"cyan",
@@ -106,6 +106,8 @@ var UnstableModels = []string{
 	"terra",
 	"wizpig", // crbug.com/1156411
 	"ultima",
+	"kefka",
+	"reks",
 	// Platform tidus
 	"tidus", // crbug.com/1072877
 	// Platform trogdor
