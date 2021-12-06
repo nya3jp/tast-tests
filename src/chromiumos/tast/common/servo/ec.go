@@ -150,7 +150,7 @@ func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 }
 
 // RunECCommandGetOutput runs the given command on the EC on the device and returns the output matching patterns.
-func (s *Servo) RunECCommandGetOutput(ctx context.Context, cmd string, patterns []string) ([]interface{}, error) {
+func (s *Servo) RunECCommandGetOutput(ctx context.Context, cmd string, patterns []string) ([][]string, error) {
 	err := s.SetStringList(ctx, ECUARTRegexp, patterns)
 	if err != nil {
 		return nil, errors.Wrapf(err, "setting ECUARTRegexp to %s", patterns)
@@ -160,7 +160,11 @@ func (s *Servo) RunECCommandGetOutput(ctx context.Context, cmd string, patterns 
 	if err != nil {
 		return nil, errors.Wrapf(err, "setting ECUARTCmd to %s", cmd)
 	}
-	return s.GetStringList(ctx, ECUARTCmd)
+	iList, err := s.GetStringList(ctx, ECUARTCmd)
+	if err != nil {
+		return nil, errors.Wrap(err, "decoding string list")
+	}
+	return ConvertToStringArrayArray(ctx, iList)
 }
 
 // GetECSystemPowerState returns the power state, like "S0" or "G3"
@@ -254,7 +258,7 @@ func (s *Servo) GetKBBacklight(ctx context.Context) (int, error) {
 	if err != nil {
 		return 0, errors.Wrapf(err, "running %v on DUT", kbLight)
 	}
-	return strconv.Atoi(out[0].([]interface{})[1].(string))
+	return strconv.Atoi(out[0][1])
 }
 
 // HasKBBacklight checks if the DUT keyboards has backlight functionality.
@@ -262,6 +266,6 @@ func (s *Servo) HasKBBacklight(ctx context.Context) bool {
 	testing.ContextLog(ctx, "Checking if DUT keyboard supports backlight")
 	out, _ := s.RunECCommandGetOutput(ctx, kbLight, []string{reCheckKBLight})
 	expMatch := regexp.MustCompile(reKBBacklight)
-	match := expMatch.FindStringSubmatch(out[0].(string))
+	match := expMatch.FindStringSubmatch(out[0][0])
 	return match != nil
 }
