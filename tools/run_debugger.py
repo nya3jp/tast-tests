@@ -22,6 +22,9 @@ BUNDLE_FORMAT = re.compile("tast-tests/src/chromiumos/tast/(local|remote)/bundle
 parser = argparse.ArgumentParser()
 parser.add_argument("--dut", required=True, help="IP of dut")
 parser.add_argument("--current-file", required=True, help="The file currently open in vscode")
+# Because I've handed out the instructions for debugging already, debugging has
+# to be true by default (changing this would break existing use cases).
+parser.add_argument("--no-debug", action="store_false", dest="debug", help="Run tast without waiting for a debugger to attach")
 
 args = parser.parse_args()
 
@@ -110,6 +113,7 @@ if cmd is None:
         "Can't do anything, exiting")
   exit(1)
 
-run = f"tast run -attachdebugger={cmd.bundle}:2345 {args.dut} {cmd.extra_args} {cmd.test}"
+debug_args = f"-attachdebugger={cmd.bundle}:2345 " if args.debug else ""
+run = f"tast run {debug_args}{args.dut} {cmd.extra_args} {cmd.test}"
 print(f"Running command: {run}")
 os.execlp("sh", "sh", "-c", run)
