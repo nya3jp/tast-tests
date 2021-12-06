@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88404e15_c3954595",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-06T11:57:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34748d03_892f8921",
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea9c2cad_b212f98b",
@@ -84,6 +102,30 @@
       "writtenOn": "2021-11-30T14:00:22Z",
       "side": 1,
       "message": "Logs should start from a capital letter followed by colon and the rest of the message:\nMgs mode: the message",
+      "range": {
+        "startLine": 76,
+        "startChar": 27,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f317981_07853b12",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-06T11:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea9c2cad_b212f98b",
       "range": {
         "startLine": 76,
         "startChar": 27,
@@ -117,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b7be1f1_6ce84493",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-06T11:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a196c3f_3fd9a40b",
+      "range": {
+        "startLine": 134,
+        "startChar": 27,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3e57edd_1efed541",
@@ -130,6 +196,30 @@
       "writtenOn": "2021-11-30T14:00:22Z",
       "side": 1,
       "message": "same here about log message",
+      "range": {
+        "startLine": 137,
+        "startChar": 27,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "d14e29d7583dc36ea316d2307f448d218e5e4103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "625eef76_b81b4500",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-06T11:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e57edd_1efed541",
       "range": {
         "startLine": 137,
         "startChar": 27,
