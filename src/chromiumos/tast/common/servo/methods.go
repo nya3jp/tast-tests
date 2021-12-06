@@ -506,6 +506,28 @@ func (s *Servo) GetStringList(ctx context.Context, control StringControl) ([]int
 	return ParseStringList(v)
 }
 
+// ConvertToStringArrayArray takes a stringList from GetStringList and converts it to [][]string
+func ConvertToStringArrayArray(ctx context.Context, stringList []interface{}) ([][]string, error) {
+	var ret [][]string
+	for i, x := range stringList {
+		switch t := x.(type) {
+		case string:
+			ret = append(ret, []string{t})
+		case []string:
+			ret = append(ret, t)
+		case []interface{}:
+			var strings []string
+			for _, y := range t {
+				strings = append(strings, fmt.Sprint(y))
+			}
+			ret = append(ret, strings)
+		default:
+			return nil, errors.Errorf("unexpected type %T at index %d", x, i)
+		}
+	}
+	return ret, nil
+}
+
 // GetQuotedString parses the value of a control as a quoted string
 func (s *Servo) GetQuotedString(ctx context.Context, control StringControl) (string, error) {
 	v, err := s.GetString(ctx, control)
