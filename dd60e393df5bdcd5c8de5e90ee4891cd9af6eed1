@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4590a80c_c2a3836e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-06T06:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcb05fcc_1a290f71",
+      "revId": "dd60e393df5bdcd5c8de5e90ee4891cd9af6eed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5fe68a1_1c860dc0",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2bf077f_93e5abc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-06T06:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5fe68a1_1c860dc0",
+      "revId": "dd60e393df5bdcd5c8de5e90ee4891cd9af6eed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4352ba23_3a0a79ad",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-12-03T15:57:40Z",
       "side": 1,
       "message": "looks redundant, as ioutil.ReadDir() returns an error on this case anyways?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "dd60e393df5bdcd5c8de5e90ee4891cd9af6eed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "456d2769_4253ad7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-06T06:43:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4352ba23_3a0a79ad",
       "range": {
         "startLine": 50,
         "startChar": 1,
