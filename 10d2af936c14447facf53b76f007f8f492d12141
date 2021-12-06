@@ -46,6 +46,30 @@
       },
       "revId": "10d2af936c14447facf53b76f007f8f492d12141",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab0c52aa_a66f96b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-06T12:31:54Z",
+      "side": 1,
+      "message": "Ack. Most probably it is there just to be on the safe side. So adding it here as well should not hurt.",
+      "parentUuid": "a29299cc_924776c7",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "10d2af936c14447facf53b76f007f8f492d12141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
