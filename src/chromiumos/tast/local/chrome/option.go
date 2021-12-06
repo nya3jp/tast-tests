@@ -450,3 +450,12 @@ func EnableFilesAppSWA() Option {
 		return nil
 	}
 }
+
+// EnableWallpaperSWA returns an Option that enables the Wallpaper app SWA variant.
+// TODO(crbug/1276337) Remove this config item once Wallpaper SWA is fully launched.
+func EnableWallpaperSWA(enabled bool) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnableWallpaperSWA = enabled
+		return nil
+	}
+}
