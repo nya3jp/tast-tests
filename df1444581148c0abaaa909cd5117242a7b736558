@@ -373,6 +373,30 @@
       },
       "revId": "df1444581148c0abaaa909cd5117242a7b736558",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73fa71c8_d7064093",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mlservice/ondevice_speech.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1182889
+      },
+      "writtenOn": "2021-12-06T00:12:46Z",
+      "side": 1,
+      "message": "If it passes reliably I\u0027m OK with it. But see other comment in case there might be a way to disentangle \"timeout\" from \"wrong result\".",
+      "parentUuid": "9032e258_b847a644",
+      "range": {
+        "startLine": 87,
+        "startChar": 43,
+        "endLine": 87,
+        "endChar": 104
+      },
+      "revId": "df1444581148c0abaaa909cd5117242a7b736558",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
