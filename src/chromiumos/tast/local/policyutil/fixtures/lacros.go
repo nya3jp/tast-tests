@@ -36,7 +36,7 @@ func init() {
 			}
 			opts := []chrome.Option{chrome.DMSPolicy(fdms.URL),
 				chrome.FakeLogin(chrome.Creds{User: "tast-user@managedchrome.com", Pass: "test0000"}),
-				chrome.ExtraArgs("--disable_lacros_keep_alive")}
+				chrome.ExtraArgs("--disable-lacros-keep-alive")}
 			return opts, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
