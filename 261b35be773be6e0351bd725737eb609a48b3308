@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72fe61ef_ed736b56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-06T20:33:14Z",
+      "side": 1,
+      "message": "Great progress! Just a bit of work on isPerceptualDifferent and then we can land. Also don\u0027t forget to restore for now the constants to the old values. We are going to tweak them later.",
+      "revId": "261b35be773be6e0351bd725737eb609a48b3308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
