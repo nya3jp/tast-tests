@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "288aade6_07ab66de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-06T12:50:28Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "961d36567b5b0d5d779f3d0806d190fdb91466bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297e0cdb_41a289c5",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-06T12:50:28Z",
+      "side": 1,
+      "message": "nit: extra space.",
+      "range": {
+        "startLine": 58,
+        "startChar": 130,
+        "endLine": 58,
+        "endChar": 131
+      },
+      "revId": "961d36567b5b0d5d779f3d0806d190fdb91466bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
