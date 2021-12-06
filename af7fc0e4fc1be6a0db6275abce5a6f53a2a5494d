@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f0b2d6_3032736c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-06T13:21:03Z",
+      "side": 1,
+      "message": "the test has been upadted, and some parts have been moved to another one, as discuss",
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

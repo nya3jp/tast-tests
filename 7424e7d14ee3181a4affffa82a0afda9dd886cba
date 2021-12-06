@@ -164,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0904d85f_75e5c60f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-06T13:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8ea405_be36622b",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "7424e7d14ee3181a4affffa82a0afda9dd886cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d7e6dae_37b6b421",
@@ -528,6 +552,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6abb35c7_75129e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-06T13:21:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b642d54_cf7c40f6",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 48
+      },
+      "revId": "7424e7d14ee3181a4affffa82a0afda9dd886cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fb89bb9_bf4c2232",
@@ -800,6 +848,30 @@
       "side": 1,
       "message": "not sure I understand, are you saying we should always try to remove the user and if it fails check the error message? I think its cleaner to check if the remove button doesn\u0027t exist for users that are not removable, and not generate unnecessary errors. but maybe I misunderstood something?",
       "parentUuid": "22c0592d_a73fd16b",
+      "range": {
+        "startLine": 260,
+        "startChar": 5,
+        "endLine": 260,
+        "endChar": 18
+      },
+      "revId": "7424e7d14ee3181a4affffa82a0afda9dd886cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f97deae5_54b256ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-06T13:21:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb41aa10_dcc1d7d9",
       "range": {
         "startLine": 260,
         "startChar": 5,
