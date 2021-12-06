@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d44e61_f31b7400",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-06T18:00:55Z",
+      "side": 1,
+      "message": "Looping in +Eliot as a heads-up for another conflict with your refactor.\n\nDo we need to get this in urgently (since quite many tests started failing due to this) or wait for Eliot\u0027s large CL to get in first? Any thoughts?",
+      "revId": "0a900efba808d2fd4729bd50d6a719bc73b2f59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
