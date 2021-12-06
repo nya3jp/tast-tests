@@ -161,6 +161,51 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
+	// arcBootedWithOutOfProcessVideoDecoding is a fixture similar to arcBooted. The only difference from arcBooted is that Chrome is launched with out-of-process
+	// video decoding in this fixture.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithOutOfProcessVideoDecoding",
+		Desc: "ARC is booted with out-of-process video decoding",
+		Contacts: []string{
+			"andrescj@chromium.org",
+			"chromeos-gfx-video@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ARCEnabled(),
+				chrome.ExtraArgs("--enable-features=OutOfProcessVideoDecoding"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
+	// arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding is a fixture similar to arcBootedWithVideoLogging, but Chrome is launched with out-of-process video
+	// decoding.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithVideoLoggingAndOutOfProcessVideoDecoding",
+		Desc: "ARC is booted with out-of-process video decoding and additional Chrome video logging",
+		Contacts: []string{
+			"andrescj@chromium.org",
+			"chromeos-gfx-video@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs(
+				"--enable-features=OutOfProcessVideoDecoding",
+				"--vmodule="+strings.Join([]string{
+					"*/media/gpu/chromeos/*=2",
+					"*/media/gpu/vaapi/*=2",
+					"*/media/gpu/v4l2/*=2",
+					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
 	// lacrosWithArcBooted is a fixture that combines the functionality of arcBooted and lacros.
 	testing.AddFixture(&testing.Fixture{
 		Name:            "lacrosWithArcBooted",
