@@ -466,7 +466,7 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
 		return err
 	}, &testing.PollOptions{
-		Timeout:  10 * time.Second,
+		Timeout:  30 * time.Second,
 		Interval: 1 * time.Second,
 	})
 	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
