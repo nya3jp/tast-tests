@@ -28,7 +28,7 @@ func init() {
 		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "group:arc-functional"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p"},
+			// ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -43,7 +43,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 		setWallpaperAction  = "android.intent.action.SET_WALLPAPER"
 
 		filesAppURL        = `chrome-extension://hhaomjibdihmijegdhdafkllkbggdgoj/main.*\.html`
-		wallpaperPickerURL = "chrome-extension://obklkkbkpaoaejdabbfldmcfplpdgolj/main.html"
+		wallpaperPickerURL = "chrome://personalization/wallpaper"
 	)
 
 	d := s.FixtValue().(*arc.PreData)
