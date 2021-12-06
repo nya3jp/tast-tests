@@ -16,6 +16,23 @@
       "message": "Wait for tast owner to +2.",
       "revId": "527b39f2039e5bec135d4e0a0bf7207d486cc1a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e27f3e5_6c3b73ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T01:36:15Z",
+      "side": 1,
+      "message": "Please abandon this one and use CL:3315757 instead.",
+      "revId": "527b39f2039e5bec135d4e0a0bf7207d486cc1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
