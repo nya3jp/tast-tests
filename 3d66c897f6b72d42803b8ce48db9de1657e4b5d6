@@ -1,0 +1,91 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "414c513f_d9f8407f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:40:34Z",
+      "side": 1,
+      "message": "LGTM % final nits",
+      "revId": "3d66c897f6b72d42803b8ce48db9de1657e4b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7222aa9_0e3c14a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/data/web_app_install_force_list_service-worker.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:40:34Z",
+      "side": 1,
+      "message": "\u003e \"recquired\" is a possible misspelling of \"required\".\n\nPlease fix.",
+      "parentUuid": "cb4c15fa_967774a2",
+      "range": {
+        "startLine": 6,
+        "startChar": 47,
+        "endLine": 6,
+        "endChar": 56
+      },
+      "revId": "3d66c897f6b72d42803b8ce48db9de1657e4b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83104279_8d468c8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:40:34Z",
+      "side": 1,
+      "message": "nit: crbug.com",
+      "range": {
+        "startLine": 194,
+        "startChar": 9,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "3d66c897f6b72d42803b8ce48db9de1657e4b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693851aa_661faf10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:40:34Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 9
+      },
+      "revId": "3d66c897f6b72d42803b8ce48db9de1657e4b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
