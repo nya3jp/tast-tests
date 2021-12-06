@@ -29,7 +29,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"unicorn.wallpaperCategory", "unicorn.wallpaperName"},
-		Fixture:      "familyLinkUnicornLoginWallpaper",
+		Fixture:      "familyLinkUnicornLogin",
 		Timeout:      5 * time.Minute,
 	})
 }

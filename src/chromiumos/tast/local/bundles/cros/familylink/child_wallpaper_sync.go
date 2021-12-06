@@ -28,7 +28,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		VarDeps:      []string{"unicorn.wallpaperCategory", "unicorn.wallpaperName"},
-		Fixture:      "familyLinkUnicornLogin",
+		Fixture:      "familyLinkUnicornLoginOldWallpaper",
 	})
 }
 
@@ -43,16 +43,16 @@ func ChildWallpaperSync(outerCtx context.Context, s *testing.State) {
 	if err := testing.Poll(outerCtx, func(innerCtx context.Context) error {
 		s.Logf("Waiting for %s %s wallpaper to sync", wallpaperCategory, wallpaperName)
 		// We need to keep closing and re-opening the wallpaper picker to detect when the text changes.
-		if err := wallpaper.OpenWallpaper(innerCtx, tconn); err != nil {
+		if err := wallpaper.OpenWallpaperDeprecated(innerCtx, tconn); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to open the wallpaper picker"))
 		}
 		defer func() {
-			if err := wallpaper.CloseWallpaper(outerCtx, tconn); err != nil {
+			if err := wallpaper.CloseWallpaperDeprecated(outerCtx, tconn); err != nil {
 				s.Fatal("Failed to close the wallpaper picker: ", err)
 			}
 		}()
 		// Wait until the wallpaper turns to "Imaginary Next Level!" through Chrome sync.
-		if err := wallpaper.CheckWallpaper(innerCtx, tconn, wallpaperName); err != nil {
+		if err := wallpaper.CheckWallpaperDeprecated(innerCtx, tconn, wallpaperName); err != nil {
 			return errors.Wrapf(err, "failed to sync %s %s wallpaper for Unicorn user", wallpaperCategory, wallpaperName)
 		}
 		s.Logf("Successfully synced %s %s wallpaper", wallpaperCategory, wallpaperName)

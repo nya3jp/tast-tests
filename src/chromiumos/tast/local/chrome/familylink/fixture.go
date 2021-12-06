@@ -163,10 +163,10 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "familyLinkUnicornLoginWallpaper",
+		Name:     "familyLinkUnicornLoginOldWallpaper",
 		Desc:     "Supervised Family Link user login with Unicorn account and new wallpaper app enabled",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Impl:     NewFamilyLinkFixture("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", true, chrome.EnableFeatures("WallpaperWebUI")),
+		Impl:     NewFamilyLinkFixture("unicorn.parentUser", "unicorn.parentPassword", "unicorn.childUser", "unicorn.childPassword", true, chrome.EnableWallpaperSWA(false)),
 		Vars: []string{
 			"unicorn.parentUser",
 			"unicorn.parentPassword",
