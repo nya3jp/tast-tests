@@ -56,6 +56,30 @@
       },
       "revId": "08fdf1cf5d3205760a22a22f23eb1d5e3af365fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2c6ecd_48d86cb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-06T03:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6f7347f_e5cb2cd4",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 93
+      },
+      "revId": "08fdf1cf5d3205760a22a22f23eb1d5e3af365fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
