@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7093c1d_9455d8b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-06T14:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73008836_49072aea",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "f1af4f81bb661e44a5cc1c5e0119eddfa0258201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fbbd03c_737454c4",
@@ -95,6 +119,30 @@
       "writtenOn": "2021-12-03T14:48:15Z",
       "side": 1,
       "message": "Looks like a common pattern? Maybe add this as lockscreen.WaitForLogin(ctx, tconn) to lockscreen?",
+      "range": {
+        "startLine": 128,
+        "startChar": 26,
+        "endLine": 128,
+        "endChar": 123
+      },
+      "revId": "f1af4f81bb661e44a5cc1c5e0119eddfa0258201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5040ddd5_c2f03620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-06T14:06:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "273b4a6c_0c33bbc1",
       "range": {
         "startLine": 128,
         "startChar": 26,
