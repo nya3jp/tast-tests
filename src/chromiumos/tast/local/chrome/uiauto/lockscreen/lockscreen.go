@@ -23,10 +23,10 @@ import (
 const uiTimeout = 10 * time.Second
 
 // AuthErrorFinder is the finder for the authentication error shown on the first failure.
-var AuthErrorFinder = nodewith.Role(role.AlertDialog).Name("Your PIN or password couldn't be verified. Try again. Hit Control-Shift-Space to switch keyboard layout.").ClassName("LoginErrorBubble")
+var AuthErrorFinder = nodewith.Role(role.AlertDialog).NameStartingWith("Your PIN or password couldn't be verified. Try again.").ClassName("LoginErrorBubble")
 
 // ConsecutiveAuthErrorFinder is the finder for the authentication error shown on the consecutive failures.
-var ConsecutiveAuthErrorFinder = nodewith.Role(role.AlertDialog).Name("Your PIN or password still couldn't be verified. Note: If you recently changed your password, use your old password. Your new password will be applied once you sign out. Hit Control-Shift-Space to switch keyboard layout.").ClassName("LoginErrorBubble")
+var ConsecutiveAuthErrorFinder = nodewith.Role(role.AlertDialog).NameStartingWith("Your PIN or password still couldn't be verified. Note: If you recently changed your password, use your old password. Your new password will be applied once you sign out.").ClassName("LoginErrorBubble")
 
 // State contains the state returned by chrome.autotestPrivate.loginStatus,
 // corresponding to 'LoginStatusDict' as defined in autotest_private.idl.
