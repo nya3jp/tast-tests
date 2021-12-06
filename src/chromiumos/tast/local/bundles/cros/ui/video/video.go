@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
@@ -37,7 +38,7 @@ func New(tconn *chrome.TestConn, url, playerSelector string, playerFinder *nodew
 }
 
 // Open opens a video page with provided URL.
-func (v *Video) Open(ctx context.Context, cr *chrome.Chrome) (retErr error) {
+func (v *Video) Open(ctx context.Context, br *browser.Browser) (retErr error) {
 	if v.conn != nil {
 		return errors.New("video has been opened already")
 	}
@@ -47,7 +48,7 @@ func (v *Video) Open(ctx context.Context, cr *chrome.Chrome) (retErr error) {
 	defer cancel()
 
 	var err error
-	if v.conn, err = cr.NewConn(ctx, v.url); err != nil {
+	if v.conn, err = br.NewConn(ctx, v.url); err != nil {
 		return errors.Wrapf(err, "failed to open video page with URL %q ", v.url)
 	}
 	defer func(ctx context.Context) {
