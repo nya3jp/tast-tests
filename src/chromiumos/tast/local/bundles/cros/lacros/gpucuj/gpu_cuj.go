@@ -67,6 +67,14 @@ type page struct {
 
 var pageSet = []page{
 	{
+		name: "water", // WebGL water. This page is for testing WebGL only damage.
+		url:  "http://madebyevan.com/webgl-water/",
+	},
+	{
+		name: "enginegif", // Large area ~30fps tile rendering page. Used for testing delegated compositing.
+		url:  "https://upload.wikimedia.org/wikipedia/commons/4/4d/4StrokeEngine_Ortho_3D.gif",
+	},
+	{
 		name: "aquarium", // WebGL Aquarium. This page is for testing WebGL.
 		url:  "https://webglsamples.org/aquarium/aquarium.html",
 	},
