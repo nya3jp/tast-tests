@@ -110,6 +110,30 @@
       },
       "revId": "739925aef24fc1d6067ed6df0252814466b7328c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "909450e6_32a4fdb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-06T21:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b4faaa8_93bfe755",
+      "range": {
+        "startLine": 263,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 3
+      },
+      "revId": "739925aef24fc1d6067ed6df0252814466b7328c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

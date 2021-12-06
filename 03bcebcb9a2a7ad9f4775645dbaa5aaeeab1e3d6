@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe4decb_9c0780e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-06T21:09:40Z",
+      "side": 1,
+      "message": "I\u0027ll be updating the description with the details as below:\n\nFYI the actual user journey steps are like:\n1. User switches to channel X by a chrome flag from UI or falls back to a default channel that matches CrOS channel.\n2. Component Updater downloads/installs a lacros on the channel X\n3. Restart ash with new flag if set by user.\n4. Confirm that a newer lacros on the channel X is selected.\n\nHowever, in tests, the step 1 will be skipped as the way to switch between channels doesn\u0027t necessarily to be in the critical path. The rest of the steps will be simulated for verification.",
+      "parentUuid": "cc20efe1_df8acb96",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "03bcebcb9a2a7ad9f4775645dbaa5aaeeab1e3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64ad4e15_709d72dc",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6417baa9_1a2fbac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/update_test_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-06T21:09:40Z",
+      "side": 1,
+      "message": "Doable. All options except for --component-updater are likely common for all tests (while the first one is update test specific).\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/launcher/fixture.go;l\u003d315-321\n\nBtw, there is a large refactor change in flight that conflicts with this. I\u0027ll be able to leave a TODO to address this in a follow-up.",
+      "parentUuid": "64ad4e15_709d72dc",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 83
+      },
+      "revId": "03bcebcb9a2a7ad9f4775645dbaa5aaeeab1e3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "786570a6_b82377a6",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-04T21:13:21Z",
       "side": 1,
       "message": "drive by comment: No idea what this code is telling me",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "03bcebcb9a2a7ad9f4775645dbaa5aaeeab1e3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4513a0b1_5536ed7f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/lacros/update_stateful_to_stateful.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-06T21:09:40Z",
+      "side": 1,
+      "message": "Added more comments for clarification. Basically they represent different update paths to be tested in the parameterized tests.\n- updates on the same channel\n- upgrade to a channel of a newer milestone (eg, dev -\u003e canary)\n- downgrade to a channel of a older milestone (eg, canary -\u003e dev)",
+      "parentUuid": "786570a6_b82377a6",
       "range": {
         "startLine": 21,
         "startChar": 0,
