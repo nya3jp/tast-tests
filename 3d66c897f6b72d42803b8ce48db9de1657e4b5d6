@@ -42,6 +42,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4ba96c9_fdb30258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/data/web_app_install_force_list_service-worker.js",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-12-06T18:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7222aa9_0e3c14a0",
+      "range": {
+        "startLine": 6,
+        "startChar": 47,
+        "endLine": 6,
+        "endChar": 56
+      },
+      "revId": "3d66c897f6b72d42803b8ce48db9de1657e4b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83104279_8d468c8c",
@@ -55,6 +79,30 @@
       "writtenOn": "2021-12-06T08:40:34Z",
       "side": 1,
       "message": "nit: crbug.com",
+      "range": {
+        "startLine": 194,
+        "startChar": 9,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "3d66c897f6b72d42803b8ce48db9de1657e4b5d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e1fc83c_89c9f95f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_chrome_app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1464467
+      },
+      "writtenOn": "2021-12-06T18:07:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83104279_8d468c8c",
       "range": {
         "startLine": 194,
         "startChar": 9,
