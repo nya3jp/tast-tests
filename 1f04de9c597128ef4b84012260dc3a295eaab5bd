@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fbf1835f_93d1e68b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-12-06T07:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01a53f4d_aee43757",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 34
+      },
+      "revId": "1f04de9c597128ef4b84012260dc3a295eaab5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "41872624_b0e84410",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
         "patchSetId": 2
@@ -77,6 +101,30 @@
       "writtenOn": "2021-12-03T17:30:40Z",
       "side": 1,
       "message": "I would use h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab). It seems a little more generic than ECPressKey which always uses the kbpress EC command.",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "1f04de9c597128ef4b84012260dc3a295eaab5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7e0fe0_1d742b6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/battery_charging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-12-06T07:17:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fdfaa84_bb9d4a7e",
       "range": {
         "startLine": 108,
         "startChar": 3,
