@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6a3ccc_5abe8fd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T01:35:53Z",
+      "side": 1,
+      "message": "health: Add vPro model names into HardwareDeps for some tests\n\n- MonitorThunderboltEvent\n- ProbeBusInfo\n- ProbeWifiInfo",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "5fb282ecba98fe6f32f5bcca825aa7dd2fbefce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8145e391_6e995ed8",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-12-06T01:25:50Z",
       "side": 1,
       "message": "Wait for tast owner to +2.",
+      "revId": "5fb282ecba98fe6f32f5bcca825aa7dd2fbefce3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3107d946_c1c0cf67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T01:35:53Z",
+      "side": 1,
+      "message": "Please merge CL:3315760 into this one.\n\nLet\u0027s use this CL for vPro model name expansion, and use CL:3291215 for refactor because most of the discussion are there.",
       "revId": "5fb282ecba98fe6f32f5bcca825aa7dd2fbefce3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
