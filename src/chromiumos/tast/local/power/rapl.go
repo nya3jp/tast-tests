@@ -120,6 +120,11 @@ func (rapl *RAPLValues) Uncore() float64 {
 	return rapl.joules[uncore]
 }
 
+// Duration returns RAPL measuring time.
+func (rapl *RAPLValues) Duration() time.Duration {
+	return rapl.duration
+}
+
 // RAPLSnapshot represents a snapshot of the RAPL values.
 // It contains the RAPL values plus other variables needed to make the "diff" more efficient.
 type RAPLSnapshot struct {
