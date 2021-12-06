@@ -39,6 +39,30 @@
       },
       "revId": "961d36567b5b0d5d779f3d0806d190fdb91466bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10f5e8f_5e7a8fbd",
+        "filename": "src/chromiumos/tast/local/mgs/mgs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-06T13:07:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "297e0cdb_41a289c5",
+      "range": {
+        "startLine": 58,
+        "startChar": 130,
+        "endLine": 58,
+        "endChar": 131
+      },
+      "revId": "961d36567b5b0d5d779f3d0806d190fdb91466bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
