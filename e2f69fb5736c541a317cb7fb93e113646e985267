@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "743b24b0_0c22c48a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-06T09:19:09Z",
+      "side": 1,
+      "message": "nit: you don\u0027t need the dot at the end of the subject line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 57,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "e2f69fb5736c541a317cb7fb93e113646e985267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6d57d7f7_5339df9e",
@@ -31,6 +54,40 @@
       "writtenOn": "2021-12-06T04:17:38Z",
       "side": 1,
       "message": "LGTM for the code.\nBut due to understaffed, we decided to monitor CTS only and not monitor the functional test at video_decode_accel.go anymore.\nWe leave it just for local debugging/development.",
+      "revId": "e2f69fb5736c541a317cb7fb93e113646e985267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d3b65c_4b5b4e73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-06T09:19:09Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "e2f69fb5736c541a317cb7fb93e113646e985267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7452a10b_16f04b02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-06T09:19:09Z",
+      "side": 1,
+      "message": "As I see it, you manually edited this file, and the Params part is getting quite long. There is an option to generate this part with a script, if you prefer. Do you know about this option, or do you want learn about it?",
       "revId": "e2f69fb5736c541a317cb7fb93e113646e985267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
