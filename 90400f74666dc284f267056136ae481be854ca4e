@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b21db6_ff8f7160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-06T08:44:18Z",
+      "side": 1,
+      "message": "It should yes",
+      "parentUuid": "a3cf7cc8_0d333e06",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "90400f74666dc284f267056136ae481be854ca4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9efc7ac6_df07b341",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-02T11:27:28Z",
       "side": 1,
       "message": "Move path to constant.",
+      "range": {
+        "startLine": 30,
+        "startChar": 38,
+        "endLine": 30,
+        "endChar": 55
+      },
+      "revId": "90400f74666dc284f267056136ae481be854ca4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb9e195_eed1b729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-06T08:44:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9efc7ac6_df07b341",
       "range": {
         "startLine": 30,
         "startChar": 38,
