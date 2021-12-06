@@ -40,7 +40,7 @@ func (s *Servo) RunCR50Command(ctx context.Context, cmd string) error {
 }
 
 // RunCR50CommandGetOutput runs the given command on the Cr50 on the device and returns the output matching patterns.
-func (s *Servo) RunCR50CommandGetOutput(ctx context.Context, cmd string, patterns []string) ([]interface{}, error) {
+func (s *Servo) RunCR50CommandGetOutput(ctx context.Context, cmd string, patterns []string) ([][]string, error) {
 	err := s.SetStringList(ctx, CR50UARTRegexp, patterns)
 	if err != nil {
 		return nil, errors.Wrapf(err, "setting CR50UARTRegexp to %s", patterns)
@@ -50,5 +50,9 @@ func (s *Servo) RunCR50CommandGetOutput(ctx context.Context, cmd string, pattern
 	if err != nil {
 		return nil, errors.Wrapf(err, "setting CR50UARTCmd to %s", cmd)
 	}
-	return s.GetStringList(ctx, CR50UARTCmd)
+	iList, err := s.GetStringList(ctx, CR50UARTCmd)
+	if err != nil {
+		return nil, errors.Wrap(err, "decoding string list")
+	}
+	return ConvertToStringArrayArray(ctx, iList)
 }
