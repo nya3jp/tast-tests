@@ -78,6 +78,18 @@ func Launch(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	return App(ctx, tconn)
 }
 
+// Relaunch closes the existing Files app first then launch the Files app again.
+func Relaunch(ctx context.Context, tconn *chrome.TestConn, filesApp *FilesApp) (*FilesApp, error) {
+	if err := filesApp.Close(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to close Files app")
+	}
+	filesApp, err := Launch(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to launch Files app again")
+	}
+	return filesApp, nil
+}
+
 // App returns an existing instance of the Files app.
 // An error is returned if the app cannot be found.
 func App(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {

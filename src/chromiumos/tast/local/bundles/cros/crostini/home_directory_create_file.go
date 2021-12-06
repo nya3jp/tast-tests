@@ -138,5 +138,17 @@ func testCreateFileFromContainer(ctx context.Context, tconn *chrome.TestConn, fi
 	}
 
 	refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder)
-	return uiauto.New(tconn).LeftClickUntil(refresh, filesApp.FileExists(fileName))(ctx)
+	if err := uiauto.New(tconn).LeftClickUntil(refresh, filesApp.FileExists(fileName))(ctx); err != nil {
+		// Sometimes refresh does not work. Close and reopen Files app instead.
+		testing.ContextLogf(ctx, "Failed to find the new file: %s, try to relaunch Files app", err)
+		filesApp, err := filesapp.Relaunch(ctx, tconn, filesApp)
+		if err != nil {
+			return errors.Wrap(err, "failed to relaunch Files app")
+		}
+		if err := filesApp.OpenLinuxFiles()(ctx); err != nil {
+			return errors.Wrap(err, "failed to open Linux files")
+		}
+		return filesApp.FileExists(fileName)(ctx)
+	}
+	return nil
 }
