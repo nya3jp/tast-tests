@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd38f80_d6dc2485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-06T22:13:55Z",
+      "side": 1,
+      "message": "Why is this change?",
+      "range": {
+        "startLine": 127,
+        "startChar": 24,
+        "endLine": 127,
+        "endChar": 40
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed18c661_76ddb5bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-06T22:13:55Z",
+      "side": 1,
+      "message": "It seems that this is the only place s is used? Please pass the vars directly instead of passing s.",
+      "range": {
+        "startLine": 137,
+        "startChar": 31,
+        "endLine": 137,
+        "endChar": 132
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51d4e468_8f60cfb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-06T22:13:55Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "range": {
+        "startLine": 157,
+        "startChar": 121,
+        "endLine": 157,
+        "endChar": 124
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4752c24a_8cf48ec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-06T22:13:55Z",
+      "side": 1,
+      "message": "Why is this?\n\nThe file is created inside the container in the home directory, defer crostini.RunCrostiniPostTest(cleanupCtx, s.PreValue().(crostini.PreData)) cleans up the container\u0027s home directory.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 31
+      },
+      "revId": "7ff154c0171b5da94b0eee8efcdfa488ab2a54da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
