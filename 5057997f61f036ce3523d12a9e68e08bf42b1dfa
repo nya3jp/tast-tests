@@ -64,6 +64,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70804397_8df0bff9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-06T06:52:53Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nWe have created the relation chain and we are calling this API in below patch.\n3315759: health: MonitorThunderboltEvent, ProbeBusInfo tests",
+      "parentUuid": "4ed71013_e8d6fdc6",
+      "revId": "5057997f61f036ce3523d12a9e68e08bf42b1dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca230359_44b995ef",
