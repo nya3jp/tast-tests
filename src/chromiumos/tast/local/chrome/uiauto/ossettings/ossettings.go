@@ -176,6 +176,12 @@ func (s *OSSettings) AuthToken(ctx context.Context, settingsConn *chrome.Conn, p
 	if err := settingsConn.WaitForExpr(ctx, `chrome.quickUnlockPrivate !== undefined`); err != nil {
 		return nil, errors.Wrap(err, "failed waiting for chrome.quickUnlockPrivate to load")
 	}
+
+	// Wait for tast to be available.
+	if err := settingsConn.WaitForExpr(ctx, `tast !== undefined`); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for tast to load")
+	}
+
 	var token AuthenticationToken
 	if err := settingsConn.Call(ctx, &token,
 		`password => tast.promisify(chrome.quickUnlockPrivate.getAuthToken)(password)`, password,
