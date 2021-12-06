@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ab719a_8d70ebbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-06T09:38:00Z",
+      "side": 1,
+      "message": "I created an issue (b/209385206) and assigned to you, please re-consider the whole design. And check if we really need such modification.",
+      "revId": "5edd95b2486322a89aefdc56729264ae532b06df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
