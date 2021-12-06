@@ -16,11 +16,10 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     MLServiceBootstrap,
-		Desc:     "Checks that Chrome can establish a Mojo connection to ML Service",
-		Contacts: []string{"amoylan@chromium.org"},
-		// TODO(b/204399416): It works again inexplicably, mark it informational.
-		Attr:         []string{"group:mainline", "informational"},
+		Func:         MLServiceBootstrap,
+		Desc:         "Checks that Chrome can establish a Mojo connection to ML Service",
+		Contacts:     []string{"amoylan@chromium.org"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "ml_service"},
 		Pre:          chrome.LoggedIn(),
 	})
