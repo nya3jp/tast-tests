@@ -63,7 +63,7 @@ func init() {
 		Contacts: []string{"lacros-team@google.com"},
 		Parent:   "gpuWatchDog",
 		Impl: launcher.NewFixture(launcher.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{chrome.ExtraArgs("--disable_lacros_keep_alive")}, nil
+			return []chrome.Option{chrome.ExtraArgs("--disable-lacros-keep-alive")}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,

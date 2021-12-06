@@ -41,7 +41,7 @@ func init() {
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
-				chrome.ExtraArgs("--disable_lacros_keep_alive"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
@@ -61,7 +61,7 @@ func init() {
 				chrome.LacrosExtraArgs(chromeBypassPermissionsArgs...),
 				chrome.ExtraArgs(chromeSuppressNotificationsArgs...),
 				chrome.LacrosExtraArgs(chromeSuppressNotificationsArgs...),
-				chrome.ExtraArgs("--disable_lacros_keep_alive"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
@@ -146,7 +146,7 @@ func init() {
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
 				chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
-				chrome.ExtraArgs("--disable_lacros_keep_alive"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
@@ -165,7 +165,7 @@ func init() {
 				chrome.ExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs(chromeVideoArgs...),
 				chrome.LacrosExtraArgs("--enable-hardware-overlays=\"\""),
-				chrome.ExtraArgs("--disable_lacros_keep_alive"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive"),
 			}, nil
 		}),
 		Parent:          "gpuWatchDog",
