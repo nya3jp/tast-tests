@@ -22,6 +22,30 @@
       },
       "revId": "10d2af936c14447facf53b76f007f8f492d12141",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29299cc_924776c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-06T10:55:31Z",
+      "side": 1,
+      "message": "It was also added for fixtures like LacrosPolicyLoggedIn[1] which is used in tests that call br.NewConn(ctx, \"\") [2] the same as accountmanager tests do.\n\n[1] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/fixtures/lacros.go;l\u003d39\n[2] https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg_ash_lacros.go;l\u003d94-99",
+      "parentUuid": "b81b046e_328d3524",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "10d2af936c14447facf53b76f007f8f492d12141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
