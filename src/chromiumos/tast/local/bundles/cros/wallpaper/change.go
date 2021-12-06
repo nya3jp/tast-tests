@@ -25,25 +25,29 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"wallpaper.category", "wallpaper.name"},
-		Fixture:      "chromeLoggedIn",
 	})
 }
 
 func Change(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr, err := chrome.New(ctx, chrome.EnableWallpaperSWA(false))
+	if err != nil {
+		s.Fatal("Failed to connect to Chrome: ", err)
+	}
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := wallpaper.OpenWallpaper(ctx, tconn); err != nil {
+	if err := wallpaper.OpenWallpaperDeprecated(ctx, tconn); err != nil {
 		s.Fatal("Failed to open the wallpaper picker: ", err)
 	}
 
 	category := s.RequiredVar("wallpaper.category")
 	name := s.RequiredVar("wallpaper.name")
-	if err := wallpaper.ChangeWallpaper(ctx, tconn, category, name); err != nil {
+	if err := wallpaper.ChangeWallpaperDeprecated(ctx, tconn, category, name); err != nil {
 		s.Fatalf("Failed to change the wallpaper to %s %s: %v", category, name, err)
 	}
 }

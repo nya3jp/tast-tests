@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package wallpaper is used to test changing the wallpaper.
+// Package wallpaper is used to test changing the wallpaper. This is for the deprecated wallpaper picker extension and not the new wallpaper SWA.
 package wallpaper
 
 import (
@@ -16,8 +16,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
-// OpenWallpaper opens the wallpaper picker.
-func OpenWallpaper(ctx context.Context, tconn *chrome.TestConn) error {
+// OpenWallpaperDeprecated opens the wallpaper picker.
+func OpenWallpaperDeprecated(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn)
 	setWallpaperMenu := nodewith.Name("Set wallpaper").Role(role.MenuItem)
 	if err := uiauto.Combine("open wallpaper",
@@ -30,8 +30,8 @@ func OpenWallpaper(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-// ChangeWallpaper changes the wallpaper to the name under the specified category.
-func ChangeWallpaper(ctx context.Context, tconn *chrome.TestConn, category, name string) error {
+// ChangeWallpaperDeprecated changes the wallpaper to the name under the specified category.
+func ChangeWallpaperDeprecated(ctx context.Context, tconn *chrome.TestConn, category, name string) error {
 	ui := uiauto.New(tconn)
 	categoryMenu := nodewith.Name(category).Role(role.StaticText)
 	if err := uiauto.Combine("change wallpaper",
@@ -41,14 +41,14 @@ func ChangeWallpaper(ctx context.Context, tconn *chrome.TestConn, category, name
 		ui.LeftClick(nodewith.Name(name).Role(role.ListItem)))(ctx); err != nil {
 		return errors.Wrapf(err, "failed to change the wallpaper to %s %s", category, name)
 	}
-	if err := CheckWallpaper(ctx, tconn, name); err != nil {
+	if err := CheckWallpaperDeprecated(ctx, tconn, name); err != nil {
 		return errors.Wrapf(err, "could not verify changing the wallpaper to %s %s", category, name)
 	}
 	return nil
 }
 
-// CheckWallpaper verifies that the wallpaper changed to the name.
-func CheckWallpaper(ctx context.Context, tconn *chrome.TestConn, name string) error {
+// CheckWallpaperDeprecated verifies that the wallpaper changed to the name.
+func CheckWallpaperDeprecated(ctx context.Context, tconn *chrome.TestConn, name string) error {
 	ui := uiauto.New(tconn)
 	// The UI displays the name of the currently set wallpaper.
 	if err := ui.WaitUntilExists(nodewith.Name(name).Role(role.StaticText))(ctx); err != nil {

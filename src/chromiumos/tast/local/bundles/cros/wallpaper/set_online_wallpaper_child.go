@@ -30,15 +30,14 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"unicorn.wallpaperCategory", "unicorn.wallpaperName"},
-		Fixture:      "familyLinkUnicornLoginWallpaper",
+		Fixture:      "familyLinkUnicornLogin",
 		Timeout:      5 * time.Minute,
 	})
 }
 
 func SetOnlineWallpaperChild(ctx context.Context, s *testing.State) {
 	collection := s.RequiredVar("unicorn.wallpaperCategory")
-	// TODO(b/200817707): Update unicorn.yaml with the new image name.
-	image := s.RequiredVar("unicorn.wallpaperName") + " Digital Art by Leo Natsume"
+	image := s.RequiredVar("unicorn.wallpaperName")
 
 	tconn := s.FixtValue().(*familylink.FixtData).TestConn
 
