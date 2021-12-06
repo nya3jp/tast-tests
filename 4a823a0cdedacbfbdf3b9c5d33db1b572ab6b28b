@@ -16,6 +16,172 @@
       "message": "Thanks for review. PTAL",
       "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb12c48_3eb56c96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "I feel like this entire file should be rewritten to use errors instead of passing state to all subfunctions. IMO it makes sense to pass state to the functions that are running actual tests (like testSettingETMStrobingConfiguration), but can be substituted for a context and returning errors in most others.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction\n\nThe cleanup can be done in a later CL.",
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167ed89e_94734123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "Since this function is running actual test, maybe rename to\n\ntestSettingETMStrobingConfiguration",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a42fcf7e_aea4f019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "Fatalf",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 12
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcbd4683_d713db8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "Most likely also Fatalf",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 12
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2905967d_e3f8a868",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "Fatalf",
+      "range": {
+        "startLine": 93,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd2809a_3550789f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "This function should return an error instead and not use s.Fatal.",
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4239a161_a85517be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "Same as above, instead of calling fatal in a function, return an error instead",
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9bf877_cd9cb872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "Also rename this function.",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 19
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

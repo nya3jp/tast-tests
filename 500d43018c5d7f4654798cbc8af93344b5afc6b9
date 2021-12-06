@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e9de059_f0d4050f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-06T08:31:28Z",
+      "side": 1,
+      "message": "That\u0027s not currently supported in tast (but it might just work 😊). File a bug and CC me if you need this features.",
+      "parentUuid": "742d85a7_14e8884e",
+      "revId": "500d43018c5d7f4654798cbc8af93344b5afc6b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65a647c1_48caa65c",
