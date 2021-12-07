@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2154be8c_0d6ce337",
+        "filename": "src/chromiumos/tast/local/chrome/crossdevice/android_setup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-07T18:24:51Z",
+      "side": 1,
+      "message": "might be nice to make this widely available in adb/device.go with an additional parameter for the package name",
+      "range": {
+        "startLine": 302,
+        "startChar": 5,
+        "endLine": 302,
+        "endChar": 26
+      },
+      "revId": "f9b509d15d61acfc085c95fa5675073a99b636bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
