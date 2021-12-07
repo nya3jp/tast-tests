@@ -22,6 +22,30 @@
       },
       "revId": "dc56c36d97b5701cbc7bd289ff6e25b65b72de9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23329d1b_77fc9a3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-07T04:58:25Z",
+      "side": 0,
+      "message": "Ah, that might be the reason i made it mainline :D if it passes in staneless lately, then you can make it non-informational, if it fail, then it probably mean I should take a look why it fail",
+      "parentUuid": "69792dda_ba15c1b8",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "dc56c36d97b5701cbc7bd289ff6e25b65b72de9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
