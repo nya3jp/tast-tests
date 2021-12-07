@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a7d1f6_d653f743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T12:20:14Z",
+      "side": 1,
+      "message": "LGTM with optional comments/clarification.",
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6586ae_8fc9cf44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T12:20:14Z",
+      "side": 1,
+      "message": "Clarification: what do you mean by \"warning\" here? IIUC this is unexpected Chrome OS set up? Or, it can happen and we should deal with the situation?",
+      "range": {
+        "startLine": 25,
+        "startChar": 103,
+        "endLine": 25,
+        "endChar": 176
+      },
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541747c3_61e5017d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T12:20:14Z",
+      "side": 1,
+      "message": "optional: i often see numProcessors. Or in go style, we prefer shorter name specifically for the local variable. e.g. \"np\".",
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a63ca9_c4246b46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T12:20:14Z",
+      "side": 1,
+      "message": "optional: ditto. maybe ni.",
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51705cc0_197539a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T12:20:14Z",
+      "side": 1,
+      "message": "(optional): maybe using common message pattern with got/want.\n\"Unexpected number of tracefs instances: got %d, want \u003c\u003d%d\",",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 104
+      },
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
