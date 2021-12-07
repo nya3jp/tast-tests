@@ -57,6 +57,12 @@ func init() {
 				downloadSize: 1, // 1 B.
 				testfunc:     testDownloadPinAndUnpin,
 			},
+		}, {
+			Name: "remove",
+			Val: downloadParams{
+				downloadSize: 1, // 1 B.
+				testfunc:     testDownloadRemove,
+			},
 		}},
 	})
 }
@@ -195,12 +201,30 @@ func testDownloadPinAndUnpin(ui *uiauto.Context, downloadName string) uiauto.Act
 		// the pinned file chip being removed and the context menu being closed.
 		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Unpin")),
 
-		// Ensure that the pinned file chips is removed.
+		// Ensure that the pinned file chip is removed.
 		ui.WaitUntilGone(holdingspace.FindPinnedFileChip().Name(downloadName)),
 		ui.EnsureGoneFor(holdingspace.FindPinnedFileChip().Name(downloadName), 5*time.Second),
 
 		// Ensure that the download chip continues to exist despite the pinned
 		// holding space item associated with the same download being destroyed.
 		ui.Exists(holdingspace.FindDownloadChip().Name(downloadName)),
+	)
+}
+
+// testDownloadRemove performs testing of removing a download.
+func testDownloadRemove(ui *uiauto.Context, downloadName string) uiauto.Action {
+	return uiauto.Combine("test remove",
+		// Right click the download chip to show the context menu. Note that this
+		// will wait until the underlying download has completed.
+		ui.RightClick(holdingspace.FindDownloadChip().Name(downloadName)),
+
+		// Left click the "Remove" context menu item. Note that this will result in
+		// the holding space item for the underlying download being removed and the
+		// context menu being closed.
+		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Remove")),
+
+		// Ensure the download chip is removed.
+		ui.WaitUntilGone(holdingspace.FindDownloadChip().Name(downloadName)),
+		ui.EnsureGoneFor(holdingspace.FindDownloadChip().Name(downloadName), 5*time.Second),
 	)
 }
