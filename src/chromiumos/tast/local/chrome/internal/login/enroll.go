@@ -172,6 +172,12 @@ func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess 
 	}
 	defer oobeConn.Close()
 
+	// Login window may not be shown yet if for example managed guest session is
+	// enabled.
+	if err := oobeConn.Eval(ctx, "Oobe.showAddUserForTesting()", nil); err != nil {
+		return err
+	}
+
 	if err := oobeConn.WaitForExprWithTimeout(ctx, "OobeAPI.screens.GaiaScreen.isReadyForTesting()", 10*time.Second); err != nil {
 		return errors.Wrap(err, "the signin screen is not ready")
 	}
