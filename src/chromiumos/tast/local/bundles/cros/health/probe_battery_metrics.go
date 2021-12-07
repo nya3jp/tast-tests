@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type batteryInfo struct {
@@ -43,6 +44,7 @@ func init() {
 		// TODO(b/209014812): Test is unstable
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
+		HardwareDeps: hwdep.D(hwdep.Battery()),
 		Fixture:      "crosHealthdRunning",
 	})
 }
@@ -84,17 +86,6 @@ func validateBatteryData(ctx context.Context, battery batteryInfo) error {
 }
 
 func ProbeBatteryMetrics(ctx context.Context, s *testing.State) {
-	psuType, err := crosconfig.Get(ctx, "/hardware-properties", "psu-type")
-	if err != nil && !crosconfig.IsNotFound(err) {
-		s.Fatal("Failed to get psu-type property: ", err)
-	}
-
-	// If psu-type is not set to "AC_only", assume there is a battery.
-	if err == nil && psuType == "AC_only" {
-		// If there is no battery, there is no output to verify.
-		return
-	}
-
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBattery}
 	var battery batteryInfo
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &battery); err != nil {
