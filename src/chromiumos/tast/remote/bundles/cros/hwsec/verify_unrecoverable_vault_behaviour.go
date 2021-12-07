@@ -24,7 +24,7 @@ func init() {
 			"dlunev@chromium.org",
 		},
 		SoftwareDeps: []string{"reboot", "tpm"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:hwsec_destructive_func"},
 		Timeout:      5 * time.Minute,
 	})
 }
