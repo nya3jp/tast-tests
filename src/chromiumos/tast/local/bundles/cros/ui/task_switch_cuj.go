@@ -26,7 +26,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type taskSwitchCUJTestParam struct {
@@ -47,35 +46,30 @@ func init() {
 		Vars:         []string{"mute"},
 		Params: []testing.Param{
 			{
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSwitchCUJTestParam{},
 			},
 			{
 				Name:              "validation",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSwitchCUJTestParam{validation: true},
 			},
 			{
 				Name:              "trace",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSwitchCUJTestParam{tracing: true},
 			},
 			{
 				Name:              "vm",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "loggedInToCUJUser",
 				Val:               taskSwitchCUJTestParam{},
 			},
 			{
 				Name:              "tablet_mode",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p"},
 				Fixture:           "loggedInToCUJUser",
 				Val: taskSwitchCUJTestParam{
@@ -84,7 +78,6 @@ func init() {
 			},
 			{
 				Name:              "tablet_mode_vm",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Fixture:           "loggedInToCUJUser",
 				Val: taskSwitchCUJTestParam{
@@ -93,7 +86,6 @@ func init() {
 			},
 			{
 				Name:              "lacros_clamshell",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
 				Val: taskSwitchCUJTestParam{
@@ -102,7 +94,6 @@ func init() {
 			},
 			{
 				Name:              "lacros_clamshell_vm",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
 				Val: taskSwitchCUJTestParam{
@@ -111,7 +102,6 @@ func init() {
 			},
 			{
 				Name:              "lacros_tablet",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
 				Val: taskSwitchCUJTestParam{
@@ -121,21 +111,12 @@ func init() {
 			},
 			{
 				Name:              "lacros_tablet_vm",
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 				Fixture:           "loggedInToCUJUserLacrosWithARC",
 				Val: taskSwitchCUJTestParam{
 					useLacros: true,
 					tablet:    true,
 				},
-			},
-			{
-				// Pilot test on "noibat" that has HDMI dongle installed.
-				Name:              "noibat",
-				ExtraHardwareDeps: hwdep.D(hwdep.Model("noibat")),
-				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "loggedInToCUJUser",
-				Val:               taskSwitchCUJTestParam{},
 			},
 		},
 	})

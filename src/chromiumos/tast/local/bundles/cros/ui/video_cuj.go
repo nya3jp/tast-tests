@@ -29,7 +29,6 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type videoCUJTestParam struct {
@@ -45,7 +44,6 @@ func init() {
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      4 * time.Minute,
 		Vars: []string{
 			"mute",

@@ -21,7 +21,6 @@ import (
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -33,21 +32,13 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Val:               browser.TypeAsh,
-			Fixture:           "chromeLoggedIn",
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+			Val:     browser.TypeAsh,
+			Fixture: "chromeLoggedIn",
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
-			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			ExtraSoftwareDeps: []string{"lacros"},
-		}, {
-			// Pilot test on "noibat" that has HDMI dongle installed.
-			Name:              "noibat",
-			Val:               browser.TypeAsh,
-			Fixture:           "chromeLoggedIn",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("noibat")),
 		}},
 	})
 }
