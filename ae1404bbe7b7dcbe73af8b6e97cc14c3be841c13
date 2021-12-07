@@ -34,6 +34,24 @@
       "parentUuid": "b6603fdf_d0c7455c",
       "revId": "ae1404bbe7b7dcbe73af8b6e97cc14c3be841c13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd266d1_011d5e42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T12:05:42Z",
+      "side": 1,
+      "message": "Do you mean to land this and abandon crrev.com/c/3291215?\n\nIf so, you\u0027re missing src/chromiumos/tast/local/bundles/cros/health/probe_wifi_info.go",
+      "parentUuid": "4242dc59_ad0fe36d",
+      "revId": "ae1404bbe7b7dcbe73af8b6e97cc14c3be841c13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
