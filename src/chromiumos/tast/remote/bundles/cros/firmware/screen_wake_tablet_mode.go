@@ -62,15 +62,25 @@ var (
 	scannTouchscreen *bufio.Scanner
 )
 
-// The evtestExpects lists out detections expected from running evtest in "tablet mode".
-// Note: this might be replaced by hardware dependencies. At the moment, from obersvations,
-// evtest on Storo360 could pick up keyboard presses, but not on Sparky360.
-// For convenience, bool values are declared here to process the respective scenarios.
+// evtestTabletModeExpects lists out detections expected from running evtests in tablet mode.
+// For the convenience of test, they are assigned bool values for each peripheral of interest.
+// Note: while in tablet mode, some models were observed to still have their keyboards seen
+// by evtests. At the moment, these models are filtered out by hardware dependencies, and defined
+// by keyboardScannedTabletMode. Investigation is still underway.
 type evtestTabletModeExpects struct {
 	detectStylus      bool
 	detectKeyboard    bool
 	detectTouchpad    bool
 	detectTouchscreen bool
+}
+
+var keyboardScannedTabletMode = []string{
+	"akemi",
+	"blooguard",
+	"delbin",
+	"dragonair",
+	"foob",
+	"storo360",
 }
 
 func init() {
@@ -84,8 +94,8 @@ func init() {
 		Fixture:      fixture.DevModeGBB,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{{
-			Name:              "storo360",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("storo360")),
+			Name:              "keyboard_scanned_tablet_mode",
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(keyboardScannedTabletMode...)),
 			Val: &evtestTabletModeExpects{
 				detectStylus:      false,
 				detectKeyboard:    true,
@@ -93,7 +103,10 @@ func init() {
 				detectTouchscreen: true,
 			},
 		}, {
-			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
+			ExtraHardwareDeps: hwdep.D(
+				hwdep.FormFactor(hwdep.Convertible, hwdep.Chromeslate, hwdep.Detachable),
+				hwdep.SkipOnModel(keyboardScannedTabletMode...),
+			),
 			Val: &evtestTabletModeExpects{
 				detectStylus:      false,
 				detectKeyboard:    false,
@@ -296,7 +309,8 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				s.Log("To-do: implement a trigger to eject Stylus")
 				// Nothing is done here yet.
 			} else {
-				s.Log("Skip because DUT doesn't have a Stylus available")
+				s.Log("To-do: read Stylus device information, and skip if DUT doesn't have a Stylus available")
+				// Nothing is done here yet.
 			}
 			return nil
 		case screenWakeByScreenTouch:
@@ -354,7 +368,6 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				if err := verifyScreenState(ctx, expectOn); err != nil {
 					return errors.Wrapf(err, "error in verifying DUT's screen state: %q", expectOn)
 				}
-				s.Logf("Screen has been awakened: %s", option)
 			}
 			return nil
 		}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
@@ -402,6 +415,14 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	}, &powerBtnPollOptions); err != nil {
 		s.Fatal("During setting tabletmode on and a tab on power button: ", err)
 	}
+
+	// Read information from keyboard scan state.
+	keyboardStateOut, err := h.Servo.RunECCommandGetOutput(ctx, "ksstate", []string{`Keyboard scan disable mask:(\s+\w+)`})
+	if err != nil {
+		s.Fatal("Failed to run command ksstate: ", err)
+	}
+	keyboardStateStr := keyboardStateOut[0].([]interface{})[1].(string)
+	s.Logf("Keyboard scan disable mask value:%s", keyboardStateStr)
 
 	// Emulate pressing a keyboard key.
 	if err := h.Servo.ECPressKey(ctx, "<enter>"); err != nil {
