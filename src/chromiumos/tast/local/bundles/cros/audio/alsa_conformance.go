@@ -83,7 +83,8 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 	}
 
 	defer func(ctx context.Context) {
-		// Restart CRAS.
+		// Sleep for 10 seconds to reset drivers and then restart CRAS.
+		testing.Sleep(ctx, 10*time.Second)
 		s.Log("Starting CRAS")
 		if err := upstart.EnsureJobRunning(ctx, "cras"); err != nil {
 			s.Fatal("Failed to start CRAS: ", err)
@@ -91,7 +92,7 @@ func ALSAConformance(ctx context.Context, s *testing.State) {
 	}(ctx)
 
 	// Use a shorter context to save time for cleanup.
-	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel = ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
 	// checkOutput parses and checks out, stdout from alsa_conformance_test.py.
