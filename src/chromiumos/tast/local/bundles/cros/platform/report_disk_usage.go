@@ -76,6 +76,7 @@ func ReportDiskUsage(ctx context.Context, s *testing.State) {
 
 	// Report the size of specific directories that are particularly large.
 	metrics := map[string]string{
+		"/lib/modules/":               "bytes_kernel_modules",
 		"/opt/":                       "bytes_opt",
 		"/opt/google/chrome/":         "bytes_chrome",
 		"/usr/bin":                    "bytes_bin",
