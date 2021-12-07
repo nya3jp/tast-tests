@@ -45,14 +45,21 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click welcome page next button: ", err)
 	}
 
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
-		s.Fatal("Failed to wait for the network screen to be visible: ", err)
+	shouldSkipNetworkScreen := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.NetworkScreen.shouldSkip()", &shouldSkipNetworkScreen); err != nil {
+		s.Fatal("Failed to evaluate whether to skip Network screen: ", err)
 	}
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.nextButton.isEnabled()"); err != nil {
-		s.Fatal("Failed to wait for the network screen next button to be enabled: ", err)
-	}
-	if err := oobeConn.Eval(ctx, "OobeAPI.screens.NetworkScreen.clickNext()", nil); err != nil {
-		s.Fatal("Failed to click network page next button: ", err)
+
+	if !shouldSkipNetworkScreen {
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
+			s.Fatal("Failed to wait for the network screen to be visible: ", err)
+		}
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.nextButton.isEnabled()"); err != nil {
+			s.Fatal("Failed to wait for the network screen next button to be enabled: ", err)
+		}
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.NetworkScreen.clickNext()", nil); err != nil {
+			s.Fatal("Failed to click network page next button: ", err)
+		}
 	}
 
 	shouldSkipEulaScreen := false
