@@ -107,6 +107,13 @@ func GetBrowserTabs(ctx context.Context, tconn *chrome.TestConn) ([]Tab, error) 
 	return tabs, nil
 }
 
+// CloseBrowserTabsByID closes browser tabs by ID through chrome.tabs API.
+func CloseBrowserTabsByID(ctx context.Context, tconn *chrome.TestConn, tabIDs []int) error {
+	return tconn.Eval(ctx, fmt.Sprintf(`(async () => {
+		await tast.promisify(chrome.tabs.remove)(%v);
+	})()`, tabIDs), nil)
+}
+
 // CloseBrowserTabs closes all browser tabs through chrome.tabs API.
 func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
 	return tconn.Eval(ctx, `(async () => {
