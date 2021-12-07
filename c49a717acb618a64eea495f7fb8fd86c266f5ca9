@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "607832cf_4258c21f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-07T21:32:37Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "c49a717acb618a64eea495f7fb8fd86c266f5ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbbda1b_f0518329",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-07T21:32:37Z",
+      "side": 1,
+      "message": "nit: termination wait?",
+      "range": {
+        "startLine": 215,
+        "startChar": 45,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "c49a717acb618a64eea495f7fb8fd86c266f5ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

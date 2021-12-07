@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a743be0_b716c58c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-07T21:32:37Z",
+      "side": 1,
+      "message": "Looks like this comment was ignored",
+      "parentUuid": "bc4eb7ea_4028d1af",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e71e62c6_0a42a633",
         "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
         "patchSetId": 8
