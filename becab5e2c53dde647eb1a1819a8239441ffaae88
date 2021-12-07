@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b1cfa30_605ae0f7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-07T00:27:08Z",
+      "side": 1,
+      "message": "return (item.Status \u003d\u003d ShelfItemRunning), nil\n\notherwise, there\u0027s no case where you return (false, nil), in which case you\u0027re better off just returning an error by itself. AppRunning sounds like it should be able to return true or false without error, though, so would suggest the above.",
+      "range": {
+        "startLine": 513,
+        "startChar": 3,
+        "endLine": 516,
+        "endChar": 87
+      },
+      "revId": "becab5e2c53dde647eb1a1819a8239441ffaae88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a50f27_6c3e5dbc",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-07T00:27:08Z",
+      "side": 1,
+      "message": "ignoring errors is almost always a code smell in Go :)",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "becab5e2c53dde647eb1a1819a8239441ffaae88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
