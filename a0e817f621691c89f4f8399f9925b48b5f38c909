@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e62fa39_d4cd8665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/add_usb_printer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-07T23:41:14Z",
+      "side": 1,
+      "message": "Sorry, got so caught up in setup.go that I forgot about these. Fixed in patchset 11.",
+      "parentUuid": "1a743be0_b716c58c",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "a0e817f621691c89f4f8399f9925b48b5f38c909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e71e62c6_0a42a633",

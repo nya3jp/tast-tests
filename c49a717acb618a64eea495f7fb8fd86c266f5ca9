@@ -39,6 +39,30 @@
       },
       "revId": "c49a717acb618a64eea495f7fb8fd86c266f5ca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef4055ce_93950148",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-07T23:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cbbda1b_f0518329",
+      "range": {
+        "startLine": 215,
+        "startChar": 45,
+        "endLine": 215,
+        "endChar": 49
+      },
+      "revId": "c49a717acb618a64eea495f7fb8fd86c266f5ca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
