@@ -16,6 +16,23 @@
       "message": "Hi menghuan@,\n\nI\u0027d like to get your review first before adding tast-owners.",
       "revId": "0b944d5dfb5798f8968c787291ab606070b4cbfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb462ef7_7d265883",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-12-07T07:23:09Z",
+      "side": 1,
+      "message": "LGTM. Defer to Tast owner.",
+      "revId": "0b944d5dfb5798f8968c787291ab606070b4cbfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
