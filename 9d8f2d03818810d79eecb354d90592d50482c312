@@ -51,6 +51,24 @@
       "message": "Tatsuhisa, thank you. PTAL.",
       "revId": "9d8f2d03818810d79eecb354d90592d50482c312",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15828a0a_49842307",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-07T04:28:07Z",
+      "side": 1,
+      "message": "Thank for explanation. I understand it now.",
+      "parentUuid": "c6e91dd3_d6395828",
+      "revId": "9d8f2d03818810d79eecb354d90592d50482c312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
