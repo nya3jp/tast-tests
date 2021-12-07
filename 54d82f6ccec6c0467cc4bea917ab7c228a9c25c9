@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8abd0f47_e2c17bdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-07T19:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd9fd710_6a8d056d",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc137bbd_97fe254c",
@@ -308,6 +332,30 @@
       "side": 1,
       "message": "I\u0027ve introduced new types as suggested, and along the way discovered the debugd package which wraps a bunch of debugd D-Bus stuff related to printing.\n\nI\u0027ll upload a new patch which defines those types in the debugd package, and use that package here. I\u0027ll rebase this patch on top of that, with the other review comments addressed.",
       "parentUuid": "c946d734_fe58ec2e",
+      "range": {
+        "startLine": 319,
+        "startChar": 66,
+        "endLine": 319,
+        "endChar": 97
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f81c325_0f3351a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-07T19:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9be674_651b1fbd",
       "range": {
         "startLine": 319,
         "startChar": 66,
