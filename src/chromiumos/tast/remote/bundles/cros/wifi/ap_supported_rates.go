@@ -35,6 +35,8 @@ func init() {
 		Fixture:     "wificellFixt",
 		// See b/138406224. ath10k only supports this on CrOS kernels >=4.14
 		SoftwareDeps: []string{"no_ath10k_4_4"},
+		// Low flake rate for Marvell devices that are trending towards AUE. Skip on those platforms.
+		HardwareDeps: hwdep.D(hwdep.WifiNotMarvell()),
 		Params: []testing.Param{
 			{
 				Name: "11g",
