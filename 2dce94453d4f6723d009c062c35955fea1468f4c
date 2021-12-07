@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1fbbb9c_230b8d14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-07T00:43:17Z",
+      "side": 1,
+      "message": "Not familiar with servos / remote tests, but in general I would assume that you want to actually fail the test if it can\u0027t access the servo?\n\nIf that\u0027s the case, then either s.RequiredVar or doing s.Fatal(\"unable to access servospec\") instead of the servospec \u003d \"\" seems more appropriate.",
+      "revId": "2dce94453d4f6723d009c062c35955fea1468f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
