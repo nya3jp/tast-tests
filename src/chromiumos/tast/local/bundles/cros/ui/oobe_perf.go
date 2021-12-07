@@ -29,6 +29,7 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      4 * time.Minute,
 	})
 }
 
@@ -52,7 +53,7 @@ func OobePerf(ctx context.Context, s *testing.State) {
 				return nil, errors.Wrap(err, "creating login test api connection failed")
 			}
 			// Wait for the WebUI load time histogram reported.
-			hist, err := metrics.WaitForHistogram(ctx, tLoginConn, histogramName, time.Minute)
+			hist, err := metrics.WaitForHistogram(ctx, tLoginConn, histogramName, 20*time.Second)
 			return []*metrics.Histogram{hist}, err
 		},
 		perfutil.StoreAllWithHeuristics("Duration"))
