@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1349c867_1aaf8118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T12:24:38Z",
+      "side": 1,
+      "message": "# Removing myself from attention set, too. When ready to review, please feel free to add me back.",
+      "revId": "e3c2673d89a5db3a0ea646dd67b867bd98e75348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
