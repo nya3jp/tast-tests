@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0031397c_af49dddc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-12-07T20:15:09Z",
+      "side": 1,
+      "message": "Apologies for the delay here, was hitting an odd build error locally that has now disappeared with a fresh sync and rebuild of the packages for my DUT. I ran the failing CQ tests and haven\u0027t seen those issues locally so I will rebase this change and re-run CQ and will hopefully be fine to submit the change.",
+      "revId": "5063974ff5f29e3d4773d5c2b2e8177a9d02cdf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
