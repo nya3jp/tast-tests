@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd1ede8_9e05abf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Thank you all for the comments.  Please check my answers and reworked version.",
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b33a8983_a17e9077",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-12-07T12:34:15Z",
       "side": 1,
       "message": "nit \":\u003d\"",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f5085c_8e6ddab7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Out of curiosity why?\nI\u0027m new to Go so could you elaborate why shouldn\u0027t I reuse an old variable from the same scope (especially if this is \u0027err\u0027).",
+      "parentUuid": "b33a8983_a17e9077",
       "range": {
         "startLine": 74,
         "startChar": 9,
@@ -95,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48e63b66_5b71f25e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "7162cdd1_ed37b77b",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 15
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "08e618b2_e69a2198",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 4
@@ -112,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f885aad2_bd46085b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Will add.",
+      "parentUuid": "08e618b2_e69a2198",
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0382346_5740e13f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 4
@@ -123,6 +206,30 @@
       "writtenOn": "2021-12-07T12:34:15Z",
       "side": 1,
       "message": "style: we often use \"got/want\" like this case.\n\n\"MAC used for AP1 changed after switching AP: got %s, want %s\"",
+      "range": {
+        "startLine": 161,
+        "startChar": 57,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10b6bf2_d201daa8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "b0382346_5740e13f",
       "range": {
         "startLine": 161,
         "startChar": 57,

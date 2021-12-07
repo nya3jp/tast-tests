@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4821270d_1dc9c898",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "There is 4h disconnect time required in addition to lease expiry, so to test this we will probably need some way to move the clock forward.",
+      "parentUuid": "0553bb60_1abbcd2c",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16cb9365_53fccd1f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -190,6 +208,24 @@
       "side": 1,
       "message": "Marking unresolved - Ack was meant as \"will fix\".",
       "parentUuid": "212f6abf_7133d055",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c50dc1b_47954935",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8e29d72_a403d20f",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -323,6 +359,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda025f5_eb7979ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8367d1_047934e1",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93d01da2_19c12553",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Marking as done - will follow up with new comments.",
+      "parentUuid": "ff385cf7_1fdadfaa",
+      "range": {
+        "startLine": 45,
+        "startChar": 54,
+        "endLine": 45,
+        "endChar": 71
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72da8f63_57435a0b",
@@ -354,6 +432,24 @@
       "side": 1,
       "message": "Agree",
       "parentUuid": "72da8f63_57435a0b",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af4516b_a5848856",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Should be fixed in new version",
+      "parentUuid": "6d673499_62c93e53",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -419,6 +515,30 @@
       "side": 1,
       "message": "(not resolved yet)",
       "parentUuid": "39dc1106_6f3f8908",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7722d1_056504ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350b2acb_2cbd1905",
       "range": {
         "startLine": 86,
         "startChar": 13,
@@ -500,6 +620,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc15c907_0a52b518",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74c97704_e944283e",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb3e7370_7c88248c",
@@ -531,6 +669,24 @@
       "side": 1,
       "message": "Hhhmm, not sure how this supposed to work.  Please check next patch - what am I doing wrong?  I\u0027m getting failures of this deferred CleanDisconnect even though cancel is also deferred.\n\nI\u0027m assuming that only one deferred CleanDisconnect+cancel combo is needed (whenever we fail we will be disconnecting and cleaning config), no need to stack those for each ConnectWiFi.",
       "parentUuid": "fb3e7370_7c88248c",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a005d6f3_71f2e226",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Reworked this - separated: \"connect + get MAC + disconnect\" to a separate subroutine.  Please check.",
+      "parentUuid": "65fe1435_8bf1ab91",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -584,6 +740,24 @@
       "side": 1,
       "message": "Dump the address here will add the values in error snippets in the system.\nSo, it can help triaging the issues, I think.\n\nI\u0027d reduce the priority of this to (optional), as at least all the necessary data is dumped already.",
       "parentUuid": "7bb92d7d_69c76699",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24150eee_c69dd89e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Will add.",
+      "parentUuid": "a9a658cd_8cc70781",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -659,6 +833,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8bce079_6a3e51f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d171d4ee_f491aab8",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99f49c2f_727cd814",
@@ -689,6 +887,42 @@
       "writtenOn": "2021-12-02T17:58:34Z",
       "side": 1,
       "message": "Same as above",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4246b8f_094f2397",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "All those connects are now in a subroutine so this should be fixed.",
+      "parentUuid": "5202792a_ed70acfd",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6791a41_d7503586",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "All those connects are moved to a subroutine and there I don\u0027t want to use that structure because I need first value on return.  Please check that you are OK with that.",
+      "parentUuid": "99f49c2f_727cd814",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -799,6 +1033,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63f79547_307ba879",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "As above - this is now handled by one subroutine, should be fixed already.  Please check if you are OK with it.",
+      "parentUuid": "cae3b1f4_98e22a86",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cee88826_32890c00",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -810,6 +1062,30 @@
       "writtenOn": "2021-12-02T17:58:34Z",
       "side": 1,
       "message": "nit: maybe rename to prevMac?",
+      "range": {
+        "startLine": 226,
+        "startChar": 8,
+        "endLine": 226,
+        "endChar": 11
+      },
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9fa5ab6_e88973d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee88826_32890c00",
       "range": {
         "startLine": 226,
         "startChar": 8,
@@ -850,6 +1126,24 @@
       "writtenOn": "2021-12-02T17:58:34Z",
       "side": 1,
       "message": "nit: dump the before and after MACs",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6e5ba4_7569c92e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-07T14:54:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de39d9fb_f75318e3",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
