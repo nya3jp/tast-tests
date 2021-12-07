@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45a0361d_4777bf57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-07T18:03:26Z",
+      "side": 1,
+      "message": "Hi vsavu@ I\u0027m removing you as reviewer for now while I decide what to do with other wallpaper tests. Will re-add tast owners when it\u0027s ready.",
+      "revId": "8dcab7b074154d5054035898710c68c485326ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
