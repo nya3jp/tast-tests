@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fed902a_4d8c42a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-07T03:15:20Z",
+      "side": 1,
+      "message": "Hi menghuan@,\n\nI\u0027d like to get your review first before adding tast-owners.",
+      "revId": "0b944d5dfb5798f8968c787291ab606070b4cbfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
