@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d21109_a551a733",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-07T00:49:15Z",
+      "side": 1,
+      "message": "tiny nit: it\u0027s a bit weird that \u0027ok\u0027 is the error case. maybe rename \u0027ok\u0027 to \u0027running\u0027 or something like that to make it a little clearer",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 15
+      },
+      "revId": "a2d5a1e168de2c5e870f956846be30b0d006f9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
