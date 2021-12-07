@@ -16,12 +16,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeDisplayInfo,
-		Desc: "Check that we can probe cros_healthd for display info",
-		Contacts: []string{
-			"cros-tdm@google.com",
-			"cros-tdm-tpe-eng@google.com",
-		},
+		Func:         ProbeDisplayInfo,
+		Desc:         "Check that we can probe cros_healthd for display info",
+		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",

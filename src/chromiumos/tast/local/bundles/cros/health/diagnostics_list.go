@@ -15,14 +15,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: DiagnosticsList,
-		Desc: "Tests getting supported dignostic routines from cros_healthd",
-		Contacts: []string{
-			"pmoy@chromium.org",           // cros_healthd tool author
-			"kerker@google.com",           // test maintainer
-			"cros-tdm@google.com",         // team mailing list
-			"cros-tdm-tpe-eng@google.com", // team mailing list
-		},
+		Func:         DiagnosticsList,
+		Desc:         "Tests getting supported dignostic routines from cros_healthd",
+		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      "crosHealthdRunning",

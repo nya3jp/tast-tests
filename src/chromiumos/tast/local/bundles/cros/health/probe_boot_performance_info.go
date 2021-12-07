@@ -24,13 +24,9 @@ type bootPerformanceInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeBootPerformanceInfo,
-		Desc: "Check that we can probe cros_healthd for boot performance info",
-		Contacts: []string{
-			"kerker@google.com",
-			"cros-tdm@google.com",
-			"cros-tdm-tpe-eng@google.com",
-		},
+		Func:         ProbeBootPerformanceInfo,
+		Desc:         "Check that we can probe cros_healthd for boot performance info",
+		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",

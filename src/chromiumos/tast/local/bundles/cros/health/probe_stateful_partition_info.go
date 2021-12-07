@@ -26,12 +26,9 @@ type statefulPartitionInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeStatefulPartitionInfo,
-		Desc: "Checks that cros_healthd can fetch stateful partition info",
-		Contacts: []string{
-			"pmoy@google.com",
-			"cros-tdm@google.com",
-		},
+		Func:         ProbeStatefulPartitionInfo,
+		Desc:         "Checks that cros_healthd can fetch stateful partition info",
+		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",

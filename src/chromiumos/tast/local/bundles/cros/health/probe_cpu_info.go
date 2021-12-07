@@ -54,8 +54,6 @@ func init() {
 		Func: ProbeCPUInfo,
 		Desc: "Check that we can probe cros_healthd for CPU info",
 		Contacts: []string{
-			"khegde@google.com",
-			"pmoy@google.com",
 			"cros-tdm-tpe-eng@google.com",
 			"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
