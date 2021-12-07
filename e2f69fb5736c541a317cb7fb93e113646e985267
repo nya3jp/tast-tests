@@ -132,6 +132,24 @@
       "parentUuid": "7452a10b_16f04b02",
       "revId": "e2f69fb5736c541a317cb7fb93e113646e985267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ab97bb_6c2f517e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-07T09:30:19Z",
+      "side": 1,
+      "message": "I never used it myself, and it seems like it is not well documented at the moment.\nWhat I could find is an example: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/many_params_test.go\nIt seems like it behaves as a unit test, that fails if the parameter list in the source is different than the generated one, and to overwrite the list instead of testing, you need to set an environment variable, TAST_GENERATE_PARAMS to 1. I found this in https://crbug.com/1065846#c24\n\nThis CL is good as it is, so if you decide to go for the generation, you can either do it in this CL, or in a follow-up.",
+      "parentUuid": "7dd494b7_ffbd9597",
+      "revId": "e2f69fb5736c541a317cb7fb93e113646e985267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
