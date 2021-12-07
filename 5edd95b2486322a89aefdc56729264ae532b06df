@@ -16,6 +16,23 @@
       "message": "I created an issue (b/209385206) and assigned to you, please re-consider the whole design. And check if we really need such modification.",
       "revId": "5edd95b2486322a89aefdc56729264ae532b06df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbc0870_dfc128bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T12:07:07Z",
+      "side": 1,
+      "message": "# Looks like the design is under discussion. I\u0027m unset my attention set now. Feel free to add me back when ready to review.",
+      "revId": "5edd95b2486322a89aefdc56729264ae532b06df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
