@@ -34,8 +34,7 @@ func init() {
 		Func: ProbeMemoryInfo,
 		Desc: "Check that we can probe cros_healthd for memory info",
 		Contacts: []string{
-			"pmoy@google.com",
-			"cros-tdm@google.com",
+			"cros-tdm-tpe-eng@google.com",
 			"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 		},

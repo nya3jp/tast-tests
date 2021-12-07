@@ -30,9 +30,10 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func: ProbeWifiInfo,
 		Desc: "Check that we can probe cros_healthd for WIFI info",
-		Contacts: []string{"pathan.jilani@intel.com",
-			"intel-chrome-system-automation-team@intel.com",
+		Contacts: []string{
 			"cros-tdm-tpe-eng@google.com",
+			"pathan.jilani@intel.com",
+			"intel-chrome-system-automation-team@intel.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
