@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fead2f62_b63fa0af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-07T21:11:02Z",
+      "side": 1,
+      "message": "LGTM from Tast perspective. Thanks for linking the discussion",
+      "revId": "2dce94453d4f6723d009c062c35955fea1468f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1fbbb9c_230b8d14",
