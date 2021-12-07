@@ -16,6 +16,23 @@
       "message": "Jae, can you re+1 on this as I added a new file to address your comment? Much appreciated,",
       "revId": "d6ab48b392ace6cac20f72a49145f7c4487aed9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22d756a4_d8ff6de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2021-12-07T17:40:51Z",
+      "side": 1,
+      "message": "note: maybe you should add yourself to the owner of these files too?",
+      "revId": "d6ab48b392ace6cac20f72a49145f7c4487aed9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
