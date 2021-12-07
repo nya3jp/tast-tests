@@ -39,6 +39,30 @@
       },
       "revId": "1fa5eac0276b6af0bcb6da8c9b1cb709f503a74f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a7788f_f82b3a98",
+        "filename": "src/chromiumos/tast/restrictions/cros/fixture_tree_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-07T05:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b40b9e_72012f1b",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "1fa5eac0276b6af0bcb6da8c9b1cb709f503a74f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

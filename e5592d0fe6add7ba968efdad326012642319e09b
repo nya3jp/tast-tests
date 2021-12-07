@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "304cfad7_7d674328",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-07T05:21:31Z",
+      "side": 1,
+      "message": "Jesse, will you take a look as nya@ is OOO?\nThe design doc is at go/tast-restriction.",
+      "revId": "e5592d0fe6add7ba968efdad326012642319e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
