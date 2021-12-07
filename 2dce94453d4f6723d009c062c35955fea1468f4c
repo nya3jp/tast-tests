@@ -16,6 +16,24 @@
       "message": "Not familiar with servos / remote tests, but in general I would assume that you want to actually fail the test if it can\u0027t access the servo?\n\nIf that\u0027s the case, then either s.RequiredVar or doing s.Fatal(\"unable to access servospec\") instead of the servospec \u003d \"\" seems more appropriate.",
       "revId": "2dce94453d4f6723d009c062c35955fea1468f4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38dc5f00_9d83c368",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_servo_key_presses.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-12-07T16:58:48Z",
+      "side": 1,
+      "message": "We use default value for servo var which makes running tests locally easier.\nSee discussion:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3200170/comments/d73c4339_18023e50\n\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/servo/proxy.go?l\u003d150\u0026rcl\u003dfefa8f1347c6fec3528fbf13f1bd7b4e86071f1c",
+      "parentUuid": "d1fbbb9c_230b8d14",
+      "revId": "2dce94453d4f6723d009c062c35955fea1468f4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
