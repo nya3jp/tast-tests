@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69792dda_ba15c1b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-12-07T04:55:19Z",
+      "side": 0,
+      "message": "Not quite sure about this part but it seems to me \"informational\" can not exist with \"group:hwsec_destructive_func\" together so I also removed this. Please correct me if I was wrong, thanks!",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "dc56c36d97b5701cbc7bd289ff6e25b65b72de9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
