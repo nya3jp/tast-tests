@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd9fd710_6a8d056d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-07T18:14:27Z",
+      "side": 1,
+      "message": "I\u0027ll address this in another CL first, since this style violation is already present in this file. Then I\u0027ll rebase this on top",
+      "parentUuid": "29e032a1_c1ec6cbe",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc137bbd_97fe254c",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
         "patchSetId": 2
@@ -146,6 +170,30 @@
       "writtenOn": "2021-12-07T11:58:39Z",
       "side": 1,
       "message": "to avoid calling mismatch, could you introduce new types?",
+      "range": {
+        "startLine": 319,
+        "startChar": 66,
+        "endLine": 319,
+        "endChar": 97
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9be674_651b1fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-07T18:14:27Z",
+      "side": 1,
+      "message": "I\u0027ve introduced new types as suggested, and along the way discovered the debugd package which wraps a bunch of debugd D-Bus stuff related to printing.\n\nI\u0027ll upload a new patch which defines those types in the debugd package, and use that package here. I\u0027ll rebase this patch on top of that, with the other review comments addressed.",
+      "parentUuid": "c946d734_fe58ec2e",
       "range": {
         "startLine": 319,
         "startChar": 66,
