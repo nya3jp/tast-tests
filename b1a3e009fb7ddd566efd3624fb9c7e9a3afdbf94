@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcb73f84_0f022d78",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-07T18:19:47Z",
+      "side": 1,
+      "message": "Ah, forgot about that.",
+      "parentUuid": "4821270d_1dc9c898",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16cb9365_53fccd1f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -1010,6 +1028,24 @@
       "side": 1,
       "message": "Not really sure what happens behind the scene :)\nThis way it seems to be working.",
       "parentUuid": "307c5167_73ec74eb",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "490268f3_6d03fea5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-07T18:19:47Z",
+      "side": 1,
+      "message": "I suspect there may be something weird going on here. I don\u0027t think you can just ConfigureAP with the same options on the same physical router. I would configure the two APs on different channels with different SSIDs. If you prefer to use 2.4GHz for both APs, that\u0027s fine but I think you need to configure them on separate physical routers.\n\nAlso I\u0027m still confused that this even works in the first place. Do you mind uploading test logs so I can take a look at what\u0027s happening?",
+      "parentUuid": "42f7f603_03bea56b",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

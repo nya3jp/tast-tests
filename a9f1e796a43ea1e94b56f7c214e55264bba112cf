@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c074b7_4365c5de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-07T18:19:47Z",
+      "side": 1,
+      "message": "Test RandomizeMACAddress as well.",
+      "revId": "a9f1e796a43ea1e94b56f7c214e55264bba112cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "256a11ab_26d79759",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-07T18:19:47Z",
+      "side": 1,
+      "message": "nit: let\u0027s check servicePath2 against servicePath1 just to be sure.",
+      "range": {
+        "startLine": 144,
+        "startChar": 11,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "a9f1e796a43ea1e94b56f7c214e55264bba112cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
