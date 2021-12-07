@@ -593,3 +593,22 @@ func (d *Device) Reboot(ctx context.Context) error {
 func (d *Device) StayOnWhilePluggedIn(ctx context.Context) error {
 	return d.ShellCommand(ctx, "settings", "put", "global", "stay_on_while_plugged_in", "3").Run(testexec.DumpLogOnError)
 }
+
+// OverridePhenotypeFlag sets the specified Phenotype flag to the provided value for all accounts on the device.
+func (d *Device) OverridePhenotypeFlag(ctx context.Context, pkg, flag, value, valueType string) error {
+	result, err := d.BroadcastIntent(ctx,
+		"com.google.android.gms.phenotype.FLAG_OVERRIDE",
+		"--es", "package", pkg,
+		"--es", "user", `*`,
+		"--esa", "flags", flag,
+		"--esa", "values", value,
+		"--esa", "types", valueType,
+		"com.google.android.gms")
+	if err != nil {
+		return errors.Wrapf(err, "override phenotype flag %s failed with error", flag)
+	}
+	if result.Result != 0 {
+		return errors.Errorf("Override phenotype flag %s failed with result code %d", flag, result.Result)
+	}
+	return nil
+}

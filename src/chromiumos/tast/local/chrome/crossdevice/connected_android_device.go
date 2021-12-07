@@ -186,7 +186,7 @@ func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
 			mostRecentPhoto = photo
 			return nil
 		}
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		return "", errors.Wrap(err, "no new photo found")
 	}
 
@@ -215,4 +215,20 @@ func (c *AndroidDevice) FileSize(ctx context.Context, filename string) (int64, e
 // SHA256Sum returns the sha256sum of the specified file as a string.
 func (c *AndroidDevice) SHA256Sum(ctx context.Context, filename string) (string, error) {
 	return c.device.SHA256Sum(ctx, filename)
+}
+
+// RemoveMediaFile removes the media file specified by filePath from the Android device's storage and media gallery.
+func (c *AndroidDevice) RemoveMediaFile(ctx context.Context, filePath string) error {
+	if err := c.device.RemoveAll(ctx, filePath); err != nil {
+		return errors.Wrapf(err, "failed to remove file %s from Android device storage", filePath)
+	}
+	// This triggers an update to the MediaStore database so that the file will be removed from the phone's gallery app too.
+	result, err := c.device.BroadcastIntent(ctx, "android.intent.action.MEDIA_SCANNER_SCAN_FILE", "-d", "file:"+filePath)
+	if err != nil {
+		return errors.Wrapf(err, "Removing file %s from MediaStore failed with error", filePath)
+	}
+	if result.Result != 0 {
+		return errors.Errorf("Removing file %s from MediaStore failed with result code %d", filePath, result.Result)
+	}
+	return nil
 }
