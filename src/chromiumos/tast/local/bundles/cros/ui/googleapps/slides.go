@@ -101,10 +101,11 @@ func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title st
 // PresentSlide returns an action that presents google slide.
 func PresentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slideCount int) action.Action {
 	ui := uiauto.New(tconn)
+	slideWebArea := nodewith.NameContaining(slideName).Role(role.RootWebArea)
 	presentationOptionsButton := nodewith.Name("Presentation options").First()
 	// There are two versions of ui to present slide.
-	presentFromBeginningButton := nodewith.NameRegex(regexp.MustCompile("(Present|Start) from beginning")).First()
-	present := nodewith.NameRegex(regexp.MustCompile("(Present|Slideshow)")).First()
+	presentFromBeginningButton := nodewith.NameRegex(regexp.MustCompile("(Present|Start) from beginning.*")).Role(role.MenuItem).First()
+	menuBar := nodewith.Name("Menu bar").Role(role.Banner).Ancestor(slideWebArea).First()
 	return uiauto.NamedAction("to present slide",
 		uiauto.Combine("present Slide",
 			ui.WaitUntilExists(presentationOptionsButton),
@@ -125,7 +126,7 @@ func PresentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slideCo
 			},
 			kb.AccelAction("Esc"), //Press Esc to leave presentation mode
 			// Some of DUT models with poor performance need to wait a long time to leave presentation mode.
-			ui.WithTimeout(50*time.Second).WaitUntilExists(present),
+			ui.WithTimeout(longerUIWaitTime).WaitUntilExists(menuBar),
 		),
 	)
 }
