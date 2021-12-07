@@ -45,15 +45,13 @@ func DRMTraceTool(ctx context.Context, s *testing.State) {
 	s.Log("Verify DRMTraceAnnotateLog method")
 	// Create a log annotation that will not already be in the log by chance, or from a previous run of this test.
 	log := fmt.Sprintf("annotate-%d", time.Now().Unix())
-	err = testAnnotate(ctx, dbgd, log)
-	if err != nil {
+	if err := testAnnotate(ctx, dbgd, log); err != nil {
 		s.Error("Failed to verify DRMTraceAnnotateLog: ", err)
 	}
 
 	s.Log("Verify DRMTraceSetCategories method")
 	const testCategories = debugd.DRMTraceCategoryCore | debugd.DRMTraceCategoryKMS
-	err = testSetCategories(ctx, dbgd, testCategories, testCategories)
-	if err != nil {
+	if err := testSetCategories(ctx, dbgd, testCategories, testCategories); err != nil {
 		s.Error("Failed to verify DRMTraceSetCategories: ", err)
 	}
 
@@ -61,14 +59,12 @@ func DRMTraceTool(ctx context.Context, s *testing.State) {
 		defaultCategories         = 0
 		expectedDefaultCategories = debugd.DRMTraceCategoryDriver | debugd.DRMTraceCategoryKMS | debugd.DRMTraceCategoryDP
 	)
-	err = testSetCategories(ctx, dbgd, defaultCategories, expectedDefaultCategories)
-	if err != nil {
+	if err := testSetCategories(ctx, dbgd, defaultCategories, expectedDefaultCategories); err != nil {
 		s.Error("Failed to verify DRMTraceSetCategories: ", err)
 	}
 
 	s.Log("Verify DRMTraceSetSize method")
-	err = testSetSize(ctx, dbgd)
-	if err != nil {
+	if err := testSetSize(ctx, dbgd); err != nil {
 		s.Error("Failed to verify DRMTraceSetSize: ", err)
 	}
 }
