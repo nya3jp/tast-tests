@@ -8,6 +8,7 @@ package utils
 import (
 	"context"
 	"io/ioutil"
+	"math"
 	"os"
 	"path"
 	"strings"
@@ -74,4 +75,9 @@ func IsCrosConfigTrue(ctx context.Context, cpath string) (bool, error) {
 	}
 	r := v != nil && *v == "true"
 	return r, nil
+}
+
+// AlmostEqual return true if the two input numbers are almost equal.
+func AlmostEqual(a, b float64) bool {
+	return math.Abs(a-b) <= 1e-1
 }
