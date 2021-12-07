@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9afc0d0d_77683ea3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-07T09:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337a9079_d6fb050d",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "6eec53a4173e60f6403da78777ae3fc5efa0be50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "66e6d680_534b63e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
         "patchSetId": 3
@@ -64,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c049c2ff_e71096bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-07T09:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408a0681_686553f8",
+      "revId": "6eec53a4173e60f6403da78777ae3fc5efa0be50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da1306a6_22992761",
@@ -87,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0972bba4_452a5d74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-07T09:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da1306a6_22992761",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "6eec53a4173e60f6403da78777ae3fc5efa0be50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67c6ee7f_5d096087",
@@ -100,6 +166,30 @@
       "writtenOn": "2021-12-07T02:43:46Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "6eec53a4173e60f6403da78777ae3fc5efa0be50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c61a031_daf0bb36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-07T09:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c6ee7f_5d096087",
       "range": {
         "startLine": 46,
         "startChar": 3,
@@ -150,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "008c3ccf_3e913c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-07T09:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a27d763_804d23cf",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "6eec53a4173e60f6403da78777ae3fc5efa0be50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eefcb1d9_e0d251fc",
@@ -167,6 +281,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ee94fe_3162a546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/clvk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-07T09:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eefcb1d9_e0d251fc",
+      "revId": "6eec53a4173e60f6403da78777ae3fc5efa0be50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b6f2056_888bd12f",
@@ -180,6 +312,24 @@
       "writtenOn": "2021-12-07T02:43:46Z",
       "side": 1,
       "message": "gtest library is widely used by many tast tests. As GetSummary is quite tailored to our test, it might fits the need for other tests.\nInstead of have a GetSummary() function, how about introducing PassedTestNames \n to allow individual test format the summary string?",
+      "revId": "6eec53a4173e60f6403da78777ae3fc5efa0be50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58203fbc_d7c428d2",
+        "filename": "src/chromiumos/tast/local/gtest/report.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2021-12-07T09:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b6f2056_888bd12f",
       "revId": "6eec53a4173e60f6403da78777ae3fc5efa0be50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
