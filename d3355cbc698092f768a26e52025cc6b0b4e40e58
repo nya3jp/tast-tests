@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f69e9a_f4accfc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-12-07T07:21:56Z",
+      "side": 1,
+      "message": "Can we add the comment to indicate these are network health team?",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "d3355cbc698092f768a26e52025cc6b0b4e40e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
