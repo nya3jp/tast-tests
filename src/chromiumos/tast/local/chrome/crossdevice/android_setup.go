@@ -297,3 +297,22 @@ func GetAndroidAttributes(ctx context.Context, adbDevice *adb.Device) (*AndroidA
 
 	return &metadata, nil
 }
+
+// OverrideBooleanPhFlag sets the specified boolean Phenotype flag to the given value for all accounts on the Android device.
+func OverrideBooleanPhFlag(ctx context.Context, d *adb.Device, flag string, value bool) error {
+	result, err := d.BroadcastIntent(ctx,
+		"com.google.android.gms.phenotype.FLAG_OVERRIDE",
+		"--es", "package", "com.google.android.gms.auth.proximity",
+		"--es", "user", `*`,
+		"--esa", "flags", flag,
+		"--esa", "values", strconv.FormatBool(value),
+		"--esa", "types", "boolean",
+		"com.google.android.gms")
+	if err != nil {
+		return errors.Wrapf(err, "override phenotype flag %s failed with error", flag)
+	}
+	if result.Result != 0 {
+		return errors.Errorf("Override phenotype flag %s failed with result code %d", flag, result.Result)
+	}
+	return nil
+}
