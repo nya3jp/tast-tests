@@ -50,6 +50,8 @@ func DownloadRecentPhoto(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to take a photo on the Android phone: ", err)
 	}
+	androidFilePath := filepath.Join(crossdevice.AndroidPhotosPath, photoName)
+	defer androidDevice.RemoveMediaFile(ctx, androidFilePath)
 
 	// Open Phone Hub and enable Recent Photos via the opt-in view.
 	if err := phonehub.Show(ctx, tconn); err != nil {
@@ -71,7 +73,6 @@ func DownloadRecentPhoto(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify the downloaded file content.
-	androidFilePath := filepath.Join(crossdevice.AndroidPhotosPath, photoName)
 	sourceFileSizeBytes, err := androidDevice.FileSize(ctx, androidFilePath)
 	if err != nil {
 		s.Fatal("Failed to read source photo size: ", err)
