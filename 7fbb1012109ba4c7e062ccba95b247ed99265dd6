@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75c8431_af483a27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-12-07T10:51:45Z",
+      "side": 1,
+      "message": "Hello Jeremy,\n\nAt the moment, in order to better understand whether keyboard is blocked in tablet mode, I thought it might be useful to also have the keyboard state from EC printed to the logs. \n\nAlso, I\u0027m still trying to find similarities/reasons for those models that had keyboards picked up by evtest in tablet mode. I\u0027ve parameterized this test such that these models are skipped and treated as the corner cases.",
+      "revId": "7fbb1012109ba4c7e062ccba95b247ed99265dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
