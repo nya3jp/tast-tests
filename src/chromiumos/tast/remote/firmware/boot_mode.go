@@ -162,6 +162,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		if err := ms.PowerOff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
+			return errors.Wrap(err, "disable usb for normal")
+		}
 		if err := h.Servo.SetPowerState(ctx, servo.PowerStateOn); err != nil {
 			return err
 		}
