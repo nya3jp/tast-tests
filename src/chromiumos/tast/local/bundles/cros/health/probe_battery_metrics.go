@@ -6,16 +6,21 @@ package health
 
 import (
 	"context"
+	"math"
+	"strconv"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/health/utils"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 type batteryInfo struct {
+	CycleCount       string            `json:"cycle_count"`
 	ModelName        string            `json:"model_name"`
 	SerialNumber     string            `json:"serial_number"`
 	Status           string            `json:"status"`
@@ -28,7 +33,6 @@ type batteryInfo struct {
 	CurrentNow       float64           `json:"current_now"`
 	VoltageMinDesign float64           `json:"voltage_min_design"`
 	VoltageNow       float64           `json:"voltage_now"`
-	CycleCount       jsontypes.Int64   `json:"cycle_count"`
 	Temperature      *jsontypes.Uint64 `json:"temperature"`
 }
 
@@ -45,21 +49,63 @@ func init() {
 	})
 }
 
+func checkBatteryStringProperty(sysfsPath, field, want string) error {
+	v, _ := utils.ReadStringFile(sysfsPath + "/" + field)
+	if v != want {
+		return errors.Errorf("unexpected value for %v: got %v; want %v", field, v, want)
+	}
+	return nil
+}
+
+func checkBatteryFloatProperty(sysfsPath, field string, want float64) error {
+	rawString, _ := utils.ReadStringFile(sysfsPath + "/" + field)
+	rawValue, err := strconv.ParseInt(rawString, 10, 64)
+	if err != nil {
+		return err
+	}
+
+	// Because the value of battery varies continuously, so we only check if it's roughly the same.
+	v := float64(rawValue) / 1e6
+	if math.Abs(v-want) > 1e-1 {
+		return errors.Errorf("unexpected value for %v: got %v; want %v", field, v, want)
+	}
+	return nil
+}
+
 func validateBatteryData(ctx context.Context, battery batteryInfo) error {
-	if battery.ModelName == "" {
-		return errors.New("Missing model_name")
+	sysfsPath, err := power.SysfsBatteryPath(ctx)
+	if err != nil {
+		return err
 	}
-	if battery.SerialNumber == "" {
-		return errors.New("Missing serial_number")
+
+	batteryStringFields := map[string]string{
+		"model_name":    battery.ModelName,
+		"serial_number": battery.SerialNumber,
+		"status":        battery.Status,
+		"technology":    battery.Technology,
+		"manufacturer":  battery.Vendor,
+		"cycle_count":   battery.CycleCount,
 	}
-	if battery.Status == "" {
-		return errors.New("Missing status")
+
+	for field, want := range batteryStringFields {
+		if err := checkBatteryStringProperty(sysfsPath, field, want); err != nil {
+			return err
+		}
 	}
-	if battery.Technology == "" {
-		return errors.New("Missing technology")
+
+	batteryFloatFields := map[string]float64{
+		"charge_full":        battery.ChargeFull,
+		"charge_full_design": battery.ChargeFullDesign,
+		"charge_now":         battery.ChargeNow,
+		"current_now":        battery.CurrentNow,
+		"voltage_min_design": battery.VoltageMinDesign,
+		"voltage_now":        battery.VoltageNow,
 	}
-	if battery.Vendor == "" {
-		return errors.New("Missing vendor")
+
+	for field, want := range batteryFloatFields {
+		if err := checkBatteryFloatProperty(sysfsPath, field, want); err != nil {
+			return err
+		}
 	}
 
 	// Validate Smart Battery metrics.
