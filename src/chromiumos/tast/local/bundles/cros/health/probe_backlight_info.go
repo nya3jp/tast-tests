@@ -27,12 +27,9 @@ type backlightResult struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeBacklightInfo,
-		Desc: "Checks that cros_healthd can fetch backlight info",
-		Contacts: []string{
-			"pmoy@google.com",
-			"cros-tdm@google.com",
-		},
+		Func:         ProbeBacklightInfo,
+		Desc:         "Checks that cros_healthd can fetch backlight info",
+		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		// TODO(http://b/182185718): One kip device does not report having a backlight

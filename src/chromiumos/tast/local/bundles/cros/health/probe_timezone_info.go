@@ -18,12 +18,9 @@ type timezoneInfo struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: ProbeTimezoneInfo,
-		Desc: "Check that we can probe cros_healthd for timezone info",
-		Contacts: []string{
-			"pmoy@google.com",
-			"cros-tdm@google.com",
-		},
+		Func:         ProbeTimezoneInfo,
+		Desc:         "Check that we can probe cros_healthd for timezone info",
+		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
