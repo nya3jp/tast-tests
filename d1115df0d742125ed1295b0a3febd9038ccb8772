@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8315cc0_a1241667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-07T08:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1a4f50_be967625",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "d1115df0d742125ed1295b0a3febd9038ccb8772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c86168_e40a2f99",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-01T03:13:20Z",
       "side": 1,
       "message": "question: does it only apply to betty but not amd64-geenric? how general the test data is? i hope we can reproduce a failed case w/ as many boards as possible.\n\nOkay to land for now, but it\u0027s better to understand how general (and why) the testdata is.",
+      "range": {
+        "startLine": 36,
+        "startChar": 43,
+        "endLine": 36,
+        "endChar": 48
+      },
+      "revId": "d1115df0d742125ed1295b0a3febd9038ccb8772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "741ea96a_416d2240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-07T08:28:14Z",
+      "side": 1,
+      "message": "These data could be used for both betty and amd64-generic, but not reven-vmtest because its TPM is bound to different PCR. Thus, I add amd64-generic to the HardwareDep and add a comment about why not reven-vmtest.",
+      "parentUuid": "01c86168_e40a2f99",
       "range": {
         "startLine": 36,
         "startChar": 43,

@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2eab660_7151349e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-07T08:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75ad3380_da36687d",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "6be17a1f58ebff940b2ea365ec94177d8c5493fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ee43e72_17965a35",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-12-02T18:43:02Z",
       "side": 1,
       "message": "let\u0027s give an example of a \"prefix\" here (and parse it before comparing as my another comment pointed out).",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 8
+      },
+      "revId": "6be17a1f58ebff940b2ea365ec94177d8c5493fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92d75ce_5f44a582",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-07T08:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ee43e72_17965a35",
       "range": {
         "startLine": 149,
         "startChar": 1,
