@@ -139,6 +139,10 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to enable verbose logs: ", err)
 	}
 
+	if err := OverrideFeatureFlags(ctx, adbDevice, f.feature); err != nil {
+		s.Fatal("Failed to override required phenotype flags for feature ", f.feature.Name, ": ", err)
+	}
+
 	// Skip logging in to the test account on the Android device if specified in the runtime vars.
 	// This lets you run the tests on a phone that's already signed in with your own account.
 	loggedIn := false
@@ -172,6 +176,7 @@ func (f *crossdeviceAndroidFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to prepare connected Android device for Multidevice testing: ", err)
 	}
 	f.androidDevice = androidDevice
+
 	return &FixtData{
 		AndroidDevice: androidDevice,
 		Username:      androidUsername,
@@ -213,4 +218,21 @@ func GetLoginCredentials(feature Feature) (string, string, error) {
 	}
 	return username, password, nil
 
+}
+
+// OverrideFeatureFlags overrides the required Phenotype flags for the given cross device feature.
+func OverrideFeatureFlags(ctx context.Context, adbDevice *adb.Device, feature Feature) error {
+	switch feature.Name {
+	case PhoneHub:
+		// These flags need to be overriden before logging into the account so that they can have the desired values during CryptAuth enrollment.
+		if err := OverrideBooleanPhFlag(ctx, adbDevice, "PhoneHub__enable_camera_roll", true); err != nil {
+			return errors.Wrap(err, "failed to override required flag for Phone Hub")
+		}
+		if err := OverrideBooleanPhFlag(ctx, adbDevice, "PhoneHub__set_camera_roll_host_supported", true); err != nil {
+			return errors.Wrap(err, "failed to override required flag for Phone Hub")
+		}
+		return nil
+	default:
+		return nil
+	}
 }
