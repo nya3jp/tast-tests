@@ -186,7 +186,7 @@ func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
 			mostRecentPhoto = photo
 			return nil
 		}
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		return "", errors.Wrap(err, "no new photo found")
 	}
 
