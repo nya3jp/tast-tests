@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1288584_598b8707",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-12-07T09:26:12Z",
+      "side": 1,
+      "message": "defs.go seems to be out of date already. I\u0027m creating this separate CL to keep the diff in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3306381 as small as possible.",
+      "revId": "c98cd832f4e818fe2da6f34bc67217633501f750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
