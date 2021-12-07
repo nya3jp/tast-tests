@@ -39,6 +39,30 @@
       },
       "revId": "87737fa5b71b32fba1ae3c9913f9f4b316cbfe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3516e374_2ffe088c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-12-07T22:04:27Z",
+      "side": 1,
+      "message": "norvez@ added it. It looks like it\u0027s just to make it easy to compare two logs? See CL:2173235 for the usage.",
+      "parentUuid": "b44056ac_60c1d197",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "87737fa5b71b32fba1ae3c9913f9f4b316cbfe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
