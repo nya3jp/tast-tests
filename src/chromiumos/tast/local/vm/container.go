@@ -28,8 +28,6 @@ import (
 const (
 	liveContainerImageServerFormat    = "https://storage.googleapis.com/cros-containers/%d"         // simplestreams image server being served live
 	stagingContainerImageServerFormat = "https://storage.googleapis.com/cros-containers-staging/%d" // simplestreams image server for staging
-	tarballRootfsPath                 = "/mnt/shared/MyFiles/Downloads/crostini/container_rootfs.tar.xz"
-	tarballMetadataPath               = "/mnt/shared/MyFiles/Downloads/crostini/container_metadata.tar.xz"
 
 	ciceroneName      = "org.chromium.VmCicerone"
 	ciceronePath      = dbus.ObjectPath("/org/chromium/VmCicerone")
@@ -44,8 +42,6 @@ const (
 	LiveImageServer ContainerImageType = iota
 	// StagingImageServer indicates that the current staging container image should be downloaded.
 	StagingImageServer
-	// Tarball indicates that the container image is available as tarball shared over 9P.
-	Tarball
 )
 
 // ContainerDebianVersion represents the OS version of the container's image.
@@ -172,9 +168,6 @@ func (c *Container) Create(ctx context.Context, t ContainerType) error {
 	case StagingImageServer:
 		req.ImageServer = stagingContainerImageServerFormat
 		req.ImageAlias = ArchitectureAlias(t.DebianVersion)
-	case Tarball:
-		req.RootfsPath = tarballRootfsPath
-		req.MetadataPath = tarballMetadataPath
 	}
 
 	resp := &cpb.CreateLxdContainerResponse{}
