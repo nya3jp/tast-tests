@@ -19,7 +19,7 @@ import (
 
 const logName = "vpnlogs.txt"
 
-// Constants that used by the L2TP/IPsec server.
+// Constants that used by the L2TP/IPsec and IKEv2 server.
 const (
 	caCertFile            = "etc/swanctl/x509ca/ca.cert"
 	charonCommand         = "/usr/libexec/ipsec/charon"
@@ -27,6 +27,11 @@ const (
 	charonPidFile         = "run/ipsec/charon.pid"
 	chapUser              = "chapuser"
 	chapSecret            = "chapsecret"
+	ikeClientIdentity     = "client-id"
+	ikeServerIdentity     = "C=US, ST=California, L=Mountain View, CN=chromelab-wifi-testbed-server.mtv.google.com"
+	ikev2ClientIP         = "192.168.1.128"
+	ikev2ServerIP         = "192.168.1.99"
+	ikev2InterfaceID      = "2"
 	ipsecPresharedKey     = "preshared-key"
 	makeIPsecDir          = "mkdir -p /run/ipsec"
 	pppdPidFile           = "run/ppp0.pid"
@@ -41,13 +46,16 @@ const (
 )
 
 var (
-	xl2tpdRootDirectories = []string{
+	strongSwanDirectories = []string{
 		"etc/swanctl",
 		"etc/swanctl/x509ca",
 		"etc/swanctl/x509",
 		"etc/swanctl/private",
+	}
+	l2tpDirectories = []string{
 		"etc/ppp",
-		"etc/xl2tpd"}
+		"etc/xl2tpd",
+	}
 
 	strongSwanConfigs = map[string]string{
 		"etc/strongswan.conf": "charon {\n" +
@@ -102,7 +110,54 @@ var (
 			"      }\n" +
 			"    }\n" +
 			"  }\n" +
+			"" +
+			"  ikev2-test {\n" +
+			"    version = 2\n" +
+			"    pools = ikev2-vip-pools\n" +
+			"    {{if .preshared_key}}" +
+			"      local-psk {\n" +
+			"        auth = psk\n" +
+			"        id={{.server_id}}\n" +
+			"      }\n" +
+			"      remote-psk {\n" +
+			"        auth = psk\n" +
+			"        id={{.client_id}}\n" +
+			"      }\n" +
+			"    {{end}}" +
+			"    {{if .eap_user}}" +
+			"      remote-eap {\n" +
+			"        auth = eap-mschapv2\n" +
+			"        eap_id = %any\n" +
+			"      }\n" +
+			"    {{end}}" +
+			"    {{if .server_cert_id}}" +
+			"      local-cert {\n" +
+			"        auth = pubkey\n" +
+			"        id = {{.server_cert_id}}\n" +
+			"      }\n" +
+			"    {{end}}" +
+			"    {{if .ca_cert_file}}" +
+			"      remote-cert {\n" +
+			"        auth = pubkey\n" +
+			"        cacerts = /{{.ca_cert_file}}\n" +
+			"      }\n" +
+			"    {{end}}" +
+			"    children {\n" +
+			"      ikev2 {\n" +
+			"        local_ts = 0.0.0.0/0\n" +
+			"        {{if .client_vip}}" +
+			"        remote_ts = {{.client_vip}}/32\n" +
+			"        {{end}}" +
+			"        {{if .if_id}}" +
+			"        if_id_in = {{.if_id}}\n" +
+			"        if_id_out = {{.if_id}}\n" +
+			"        {{end}}" +
+			"        mode = tunnel\n" +
+			"      }\n" +
+			"    }\n" +
+			"  }\n" +
 			"}\n" +
+			"" +
 			"secrets {\n" +
 			"  {{if .preshared_key}}" +
 			"  ike-1 {\n" +
@@ -113,6 +168,19 @@ var (
 			"  xauth-1 {\n" +
 			"    id = {{.xauth_user}}\n" +
 			"    secret = {{.xauth_password}}\n" +
+			"  }\n" +
+			"  {{end}}" +
+			"  {{if .eap_user}}" +
+			"  eap-1 {\n" +
+			"    id = \"{{.eap_user}}\"\n" +
+			"    secret = \"{{.eap_password}}\"\n" +
+			"  }\n" +
+			"  {{end}}" +
+			"}\n" +
+			"pools {\n" +
+			"  {{if .client_vip}}" +
+			"  ikev2-vip-pools {\n" +
+			"    addrs = {{.client_vip}}/32\n" +
 			"  }\n" +
 			"  {{end}}" +
 			"}\n",
@@ -299,7 +367,8 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 		logFiles:     []string{charonLogFile},
 	}
 
-	chro.AddRootDirectories(xl2tpdRootDirectories)
+	chro.AddRootDirectories(strongSwanDirectories)
+	chro.AddRootDirectories(l2tpDirectories)
 	chro.AddConfigTemplates(strongSwanConfigs)
 	chro.AddConfigTemplates(l2tpConfigs)
 
@@ -315,7 +384,7 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	case AuthTypePSK:
 		configValues["preshared_key"] = ipsecPresharedKey
 	case AuthTypeCert:
-		configValues["server_cert_id"] = "\"C=US, ST=California, L=Mountain View, CN=chromelab-wifi-testbed-server.mtv.google.com\""
+		configValues["server_cert_id"] = ikeServerIdentity
 		configValues["ca_cert_file"] = caCertFile
 	default:
 		return nil, errors.Errorf("L2TP/IPsec type %s is not defined", authType)
@@ -357,6 +426,74 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 	} else {
 		server.OverlayIP = xl2tpdServerIPAddress
 	}
+	return server, nil
+}
+
+// StartIKEv2Server starts an IKEv2 server.
+func StartIKEv2Server(ctx context.Context, authType string) (*Server, error) {
+	chro := chroot.NewNetworkChroot()
+	server := &Server{
+		netChroot:    chro,
+		stopCommands: [][]string{{"/bin/ip", "link", "del", "xfrm1"}},
+		pidFiles:     []string{charonPidFile},
+		logFiles:     []string{charonLogFile},
+	}
+
+	chro.AddRootDirectories(strongSwanDirectories)
+	chro.AddConfigTemplates(strongSwanConfigs)
+
+	configValues := map[string]interface{}{
+		"chap_user":      chapUser,
+		"chap_secret":    chapSecret,
+		"charon_logfile": charonLogFile,
+		"client_vip":     ikev2ClientIP,
+		"if_id":          ikev2InterfaceID,
+	}
+
+	switch authType {
+	case AuthTypePSK:
+		configValues["client_id"] = ikeClientIdentity
+		configValues["preshared_key"] = ipsecPresharedKey
+		configValues["server_id"] = ikeServerIdentity
+	case AuthTypeCert:
+		configValues["ca_cert_file"] = caCertFile
+		configValues["server_cert_id"] = ikeServerIdentity
+	case AuthTypeEAP:
+		configValues["eap_user"] = xauthUser
+		configValues["eap_password"] = xauthPassword
+		configValues["server_cert_id"] = ikeServerIdentity
+	default:
+		return nil, errors.Errorf("IKEv2 type %s is not defined", authType)
+	}
+
+	chro.AddConfigValues(configValues)
+
+	// For running strongSwan VPN with flag --with-piddir=/run/ipsec. We
+	// want to use /run/ipsec for strongSwan runtime data dir instead of
+	// /run, and the cmdline flag applies to both client and server
+	chro.AddStartupCommand(makeIPsecDir)
+	chro.AddStartupCommand(fmt.Sprintf("%s &", charonCommand))
+	chro.AddStartupCommand("ip link add xfrm1 type xfrm dev lo if_id " + ikev2InterfaceID)
+	chro.AddStartupCommand("ip addr add dev xfrm1 " + ikev2ServerIP + "/24")
+	chro.AddStartupCommand("ip link set dev xfrm1 up")
+
+	underlayIP, err := chro.Startup(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start IKEv2 VPN server")
+	}
+
+	// After starting charon, execute `swanctl --load-all` to load the
+	// connection config. The execution may fail until the charon process is
+	// ready, so we use a Poll here.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return chro.RunChroot(ctx, []string{swanctlCommand, "--load-all"})
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return nil, errors.Wrap(err, "failed to load swanctl config")
+	}
+
+	server.UnderlayIP = underlayIP
+	server.OverlayIP = ikev2ServerIP
+
 	return server, nil
 }
 

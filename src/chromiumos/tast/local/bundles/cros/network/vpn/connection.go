@@ -56,6 +56,7 @@ type Config struct {
 
 // VPN types.
 const (
+	TypeIKEv2     = "IKEv2"
 	TypeL2TPIPsec = "L2TP/IPsec"
 	TypeOpenVPN   = "OpenVPN"
 	TypeWireGuard = "WireGuard"
@@ -68,8 +69,9 @@ const (
 
 // Authentication types.
 const (
-	AuthTypePSK  = "psk"
 	AuthTypeCert = "cert"
+	AuthTypeEAP  = "eap"
+	AuthTypePSK  = "psk"
 )
 
 // Connection represents a VPN connection can be used in the test.
@@ -172,7 +174,7 @@ func (c *Connection) Cleanup(ctx context.Context) error {
 
 	// Wait for charon to stop if service was strongswan-based.
 	switch c.config.Type {
-	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
+	case TypeIKEv2, TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
 		if err := waitForCharonStop(ctx); err != nil {
 			lastErr = err
 		}
@@ -223,6 +225,8 @@ func (c *Connection) prepareCertStore(ctx context.Context) error {
 func (c *Connection) startServer(ctx context.Context) error {
 	var err error
 	switch c.config.Type {
+	case TypeIKEv2:
+		c.Server, err = StartIKEv2Server(ctx, c.config.AuthType)
 	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
 		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	case TypeOpenVPN:
@@ -295,6 +299,8 @@ func (c *Connection) generateWireGuardKey(ctx context.Context) (string, error) {
 
 func (c *Connection) createProperties() (map[string]interface{}, error) {
 	switch c.config.Type {
+	case TypeIKEv2:
+		return c.createIKEv2Properties()
 	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
 		return c.createL2TPIPsecProperties()
 	case TypeOpenVPN:
@@ -353,6 +359,39 @@ func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error)
 			properties["L2TPIPsec.XauthUser"] = xauthUser
 			properties["L2TPIPsec.XauthPassword"] = xauthPassword
 		}
+	}
+
+	return properties, nil
+}
+
+func (c *Connection) createIKEv2Properties() (map[string]interface{}, error) {
+	properties := map[string]interface{}{
+		"Name":          "test-ikev2-vpn",
+		"Provider.Host": c.Server.UnderlayIP,
+		"Provider.Type": "ikev2",
+		"Type":          "vpn",
+	}
+
+	switch c.config.AuthType {
+	case AuthTypePSK:
+		properties["IKEv2.AuthenticationType"] = "PSK"
+		properties["IKEv2.LocalIdentity"] = ikeClientIdentity
+		properties["IKEv2.RemoteIdentity"] = ikeServerIdentity
+		properties["IKEv2.PSK"] = ipsecPresharedKey
+	case AuthTypeCert:
+		properties["IKEv2.AuthenticationType"] = "Cert"
+		properties["IKEv2.CACertPEM"] = []string{certificate.TestCert1().CACred.Cert}
+		properties["IKEv2.ClientCertID"] = c.certID
+		properties["IKEv2.ClientCertSlot"] = c.certSlot
+		properties["IKEv2.RemoteIdentity"] = ikeServerIdentity
+	case AuthTypeEAP:
+		properties["IKEv2.AuthenticationType"] = "EAP"
+		properties["IKEv2.CACertPEM"] = []string{certificate.TestCert1().CACred.Cert}
+		properties["EAP.EAP"] = "MSCHAPV2"
+		properties["EAP.Identity"] = xauthUser
+		properties["EAP.Password"] = xauthPassword
+	default:
+		return nil, errors.Errorf("unexpected auth type %s for IKEv2", c.config.AuthType)
 	}
 
 	return properties, nil

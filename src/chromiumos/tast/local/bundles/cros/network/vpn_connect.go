@@ -29,6 +29,33 @@ func init() {
 		Attr:     []string{"group:mainline", "informational"},
 		Fixture:  "shillReset",
 		Params: []testing.Param{{
+			Name: "ikev2_psk",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:     vpn.TypeIKEv2,
+					AuthType: vpn.AuthTypePSK,
+				},
+			},
+			ExtraSoftwareDeps: []string{"ikev2"},
+		}, {
+			Name: "ikev2_cert",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:     vpn.TypeIKEv2,
+					AuthType: vpn.AuthTypeCert,
+				},
+			},
+			ExtraSoftwareDeps: []string{"ikev2"},
+		}, {
+			Name: "ikev2_eap_mschapv2",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:     vpn.TypeIKEv2,
+					AuthType: vpn.AuthTypeEAP,
+				},
+			},
+			ExtraSoftwareDeps: []string{"ikev2"},
+		}, {
 			Name: "l2tp_ipsec_stroke_psk",
 			Val: vpnTestParams{
 				config: vpn.Config{
