@@ -12,37 +12,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/godbus/dbus"
-
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/testing"
-)
-
-const (
-	dbusName      = "org.chromium.debugd"
-	dbusPath      = "/org/chromium/debugd"
-	dbusInterface = "org.chromium.debugd"
-)
-
-// Must match the DRMTraceSize enum defined in org.chromium.debugd.xml.
-const (
-	drmTraceSizeDefault uint32 = 0
-	drmTraceSizeDebug   uint32 = 1
-)
-
-// Must match the DRMTraceCategories flags defined in org.chromium.debugd.xml.
-const (
-	drmTraceCategoryCore   = 0x001
-	drmTraceCategoryDriver = 0x002
-	drmTraceCategoryKMS    = 0x004
-	drmTraceCategoryPrime  = 0x008
-	drmTraceCategoryAtomic = 0x010
-	drmTraceCategoryVBL    = 0x020
-	drmTraceCategoryState  = 0x040
-	drmTraceCategoryLease  = 0x080
-	drmTraceCategoryDP     = 0x100
-	drmTraceCategoryDRMRes = 0x200
 )
 
 const (
@@ -65,45 +37,45 @@ func init() {
 
 // DRMTraceTool tests D-bus methods related to debugd's DRMTraceTool.
 func DRMTraceTool(ctx context.Context, s *testing.State) {
-	_, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
+	dbgd, err := debugd.New(ctx)
 	if err != nil {
-		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
+		s.Fatal("Failed to connect to debugd D-Bus service: ", err)
 	}
 
 	s.Log("Verify DRMTraceAnnotateLog method")
 	// Create a log annotation that will not already be in the log by chance, or from a previous run of this test.
 	log := fmt.Sprintf("annotate-%d", time.Now().Unix())
-	err = testAnnotate(ctx, obj, log)
+	err = testAnnotate(ctx, dbgd, log)
 	if err != nil {
 		s.Error("Failed to verify DRMTraceAnnotateLog: ", err)
 	}
 
 	s.Log("Verify DRMTraceSetCategories method")
-	const testCategories = drmTraceCategoryCore | drmTraceCategoryKMS
-	err = testSetCategories(ctx, obj, testCategories, testCategories)
+	const testCategories = debugd.DRMTraceCategoryCore | debugd.DRMTraceCategoryKMS
+	err = testSetCategories(ctx, dbgd, testCategories, testCategories)
 	if err != nil {
 		s.Error("Failed to verify DRMTraceSetCategories: ", err)
 	}
 
 	const (
 		defaultCategories         = 0
-		expectedDefaultCategories = drmTraceCategoryDriver | drmTraceCategoryKMS | drmTraceCategoryDP
+		expectedDefaultCategories = debugd.DRMTraceCategoryDriver | debugd.DRMTraceCategoryKMS | debugd.DRMTraceCategoryDP
 	)
-	err = testSetCategories(ctx, obj, defaultCategories, expectedDefaultCategories)
+	err = testSetCategories(ctx, dbgd, defaultCategories, expectedDefaultCategories)
 	if err != nil {
 		s.Error("Failed to verify DRMTraceSetCategories: ", err)
 	}
 
 	s.Log("Verify DRMTraceSetSize method")
-	err = testSetSize(ctx, obj)
+	err = testSetSize(ctx, dbgd)
 	if err != nil {
 		s.Error("Failed to verify DRMTraceSetSize: ", err)
 	}
 }
 
 // testAnnotate verifies the DRMTraceAnnotateLog D-Bus method.
-func testAnnotate(ctx context.Context, obj dbus.BusObject, log string) error {
-	if err := obj.CallWithContext(ctx, dbusInterface+".DRMTraceAnnotateLog", 0, log).Err; err != nil {
+func testAnnotate(ctx context.Context, d *debugd.Debugd, log string) error {
+	if err := d.DRMTraceAnnotateLog(ctx, log); err != nil {
 		return errors.Wrap(err, "failed to call DRMTraceAnnotateLog")
 	}
 
@@ -120,8 +92,8 @@ func testAnnotate(ctx context.Context, obj dbus.BusObject, log string) error {
 }
 
 // testSetCategories verifies the DRMTraceSetCategories D-Bus method.
-func testSetCategories(ctx context.Context, obj dbus.BusObject, category, expected uint32) error {
-	if err := obj.CallWithContext(ctx, dbusInterface+".DRMTraceSetCategories", 0, category).Err; err != nil {
+func testSetCategories(ctx context.Context, d *debugd.Debugd, categories, expected debugd.DRMTraceCategories) error {
+	if err := d.DRMTraceSetCategories(ctx, categories); err != nil {
 		return errors.Wrap(err, "failed to call DRMTraceSetCategories")
 	}
 
@@ -138,9 +110,9 @@ func testSetCategories(ctx context.Context, obj dbus.BusObject, category, expect
 }
 
 // testSetSize verifies the DRMTraceSetSize D-Bus method.
-func testSetSize(ctx context.Context, obj dbus.BusObject) error {
+func testSetSize(ctx context.Context, d *debugd.Debugd) error {
 	// Ensure it is set to default.
-	if err := obj.CallWithContext(ctx, dbusInterface+".DRMTraceSetSize", 0, drmTraceSizeDefault).Err; err != nil {
+	if err := d.DRMTraceSetSize(ctx, debugd.DRMTraceSizeDefault); err != nil {
 		return errors.Wrap(err, "failed to call DRMTraceSetSize")
 	}
 
@@ -151,7 +123,7 @@ func testSetSize(ctx context.Context, obj dbus.BusObject) error {
 	}
 
 	// Set to debug.
-	if err := obj.CallWithContext(ctx, dbusInterface+".DRMTraceSetSize", 0, drmTraceSizeDebug).Err; err != nil {
+	if err := d.DRMTraceSetSize(ctx, debugd.DRMTraceSizeDebug); err != nil {
 		return errors.Wrap(err, "failed to call DRMTraceSetSize")
 	}
 

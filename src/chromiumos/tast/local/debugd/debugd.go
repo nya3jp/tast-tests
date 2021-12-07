@@ -105,6 +105,32 @@ func (r CUPSResult) String() string {
 	}
 }
 
+// DRMTraceSize is an enumeration used as an argument to the DRMTraceSetSize method.
+type DRMTraceSize uint32
+
+// This must match the DRMTraceSize enum defined in org.chromium.debugd.xml.
+const (
+	DRMTraceSizeDefault DRMTraceSize = 0
+	DRMTraceSizeDebug                = 1
+)
+
+// DRMTraceCategories is a bitmask used as an argument to the DRMTraceSetCategories method.
+type DRMTraceCategories uint32
+
+// This must match the DRMTraceCategories flags defined in org.chromium.debugd.xml.
+const (
+	DRMTraceCategoryCore   DRMTraceCategories = 0x001
+	DRMTraceCategoryDriver                    = 0x002
+	DRMTraceCategoryKMS                       = 0x004
+	DRMTraceCategoryPrime                     = 0x008
+	DRMTraceCategoryAtomic                    = 0x010
+	DRMTraceCategoryVBL                       = 0x020
+	DRMTraceCategoryState                     = 0x040
+	DRMTraceCategoryLease                     = 0x080
+	DRMTraceCategoryDP                        = 0x100
+	DRMTraceCategoryDRMRes                    = 0x200
+)
+
 // Debugd is used to interact with the debugd process over D-Bus.
 // For detailed spec of each D-Bus method, please find
 // src/platform2/debugd/dbus_bindings/org.chromium.debugd.xml
@@ -191,6 +217,30 @@ func (d *Debugd) PacketCaptureStop(ctx context.Context, handle string) (err erro
 // successful" file instead of uploading crashes.
 func (d *Debugd) SetCrashSenderTestMode(ctx context.Context, testMode bool) (err error) {
 	return d.obj.CallWithContext(ctx, "org.freedesktop.DBus.Properties.Set", 0, dbusInterface, crashSenderTestMode, testMode).Err
+}
+
+// DRMTraceAnnotateLog calls debugd's DRMTraceAnnotateLog D-Bus method.
+func (d *Debugd) DRMTraceAnnotateLog(ctx context.Context, log string) (err error) {
+	if err := d.call(ctx, "DRMTraceAnnotateLog", log).Err; err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceAnnotateLog")
+	}
+	return nil
+}
+
+// DRMTraceSetCategories calls debugd's DRMTraceSetCategories D-Bus method.
+func (d *Debugd) DRMTraceSetCategories(ctx context.Context, categories DRMTraceCategories) (err error) {
+	if err := d.call(ctx, "DRMTraceSetCategories", uint32(categories)).Err; err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceAnnotateLog")
+	}
+	return nil
+}
+
+// DRMTraceSetSize calls debugd's DRMTraceSetSize D-Bus method.
+func (d *Debugd) DRMTraceSetSize(ctx context.Context, size DRMTraceSize) (err error) {
+	if err := d.call(ctx, "DRMTraceSetSize", uint32(size)).Err; err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceSetSize")
+	}
+	return nil
 }
 
 // call is thin wrapper of CallWithContext for convenience.
