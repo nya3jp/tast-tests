@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3750b6_88fb9f25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-12-07T20:47:50Z",
+      "side": 1,
+      "message": "Thank you for reviewing this change!\n\nSimilar to the other change, it is not clear why those Quick Settings tests failed during the CQ dry run and pass locally. Will go ahead and re-run the CQ dry run here before submitting!",
+      "revId": "8904a7e26eb35d88f2811c41a62cbe5ed27c25ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
