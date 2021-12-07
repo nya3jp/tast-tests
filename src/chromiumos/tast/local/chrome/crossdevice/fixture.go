@@ -376,7 +376,7 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 
 		ui := uiauto.New(f.tconn)
 		var crosRecordErr error
-		if err := ui.Exists(uiauto.ScreenRecordStopButton); err != nil {
+		if err := ui.Exists(uiauto.ScreenRecordStopButton)(ctx); err != nil {
 			// Smart Lock tests automatically stop the screen recording when they lock the screen.
 			// The screen recording should still exist though.
 			crosRecordErr = uiauto.SaveRecordFromKBOnError(ctx, f.tconn, s.HasError, s.OutDir())
