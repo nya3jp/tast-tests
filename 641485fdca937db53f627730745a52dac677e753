@@ -22,6 +22,30 @@
       },
       "revId": "641485fdca937db53f627730745a52dac677e753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ca8886_4b00ec4e",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-07T05:45:53Z",
+      "side": 1,
+      "message": "IIUC currently all tests using this are expecting to launch a new lacros process from clean start, not to connect to a running process. In this case, throwing an error would help avoid making mistakes. \n\nBtw, I think it could be an option whether to throw an error or move on with the running process when needed in a follow-up. For now I don\u0027t think we have that need. WDYT?",
+      "parentUuid": "32a16b9a_11d99149",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 101
+      },
+      "revId": "641485fdca937db53f627730745a52dac677e753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
