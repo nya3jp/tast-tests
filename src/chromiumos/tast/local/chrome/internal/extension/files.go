@@ -154,11 +154,11 @@ func (f *Files) ChromeArgs() []string {
 	if f.signin != nil {
 		args = append(args,
 			"--load-signin-profile-test-extension="+f.signin.Dir(),
-			"--whitelisted-extension-id="+f.signin.ID())
+			"--allowlisted-extension-id="+f.signin.ID())
 	} else if f.guest {
 		args = append(args, "--load-guest-mode-test-extension="+f.user.Dir())
 	} else {
-		args = append(args, "--whitelisted-extension-id="+f.user.ID())
+		args = append(args, "--allowlisted-extension-id="+f.user.ID())
 	}
 	return args
 }
