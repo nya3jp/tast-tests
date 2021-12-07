@@ -63,6 +63,30 @@
       },
       "revId": "87737fa5b71b32fba1ae3c9913f9f4b316cbfe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88802ebe_7a5a82f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-12-07T22:05:32Z",
+      "side": 1,
+      "message": "I\u0027m not aware of tools that would break. Mostly it was to help humans do a visual comparison IIRC. Original bug: https://crbug.com/1077125",
+      "parentUuid": "b44056ac_60c1d197",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "87737fa5b71b32fba1ae3c9913f9f4b316cbfe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
