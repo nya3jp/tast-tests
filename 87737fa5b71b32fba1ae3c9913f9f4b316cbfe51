@@ -16,6 +16,29 @@
       "message": "lgtm. Adding the telemetry team FYI",
       "revId": "87737fa5b71b32fba1ae3c9913f9f4b316cbfe51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44056ac_60c1d197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/report_disk_usage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-12-07T21:54:14Z",
+      "side": 1,
+      "message": "It seems like this is intended to produce a stable output format. Are there any downstream tools that will break if we add a new line to the output?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "87737fa5b71b32fba1ae3c9913f9f4b316cbfe51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
