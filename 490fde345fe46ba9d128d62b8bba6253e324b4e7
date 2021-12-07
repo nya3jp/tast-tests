@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dda4d03_73973e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-12-07T05:27:48Z",
+      "side": 1,
+      "message": "sgtm, we might want to progress on webpagereplay, at least for some of these tests, since we had issues with speedometer before\n\nAlso, some of these sites seem like smaller sites that we might not want to point our lab devices at in any case\n\nhidehiko@, wdyt?",
+      "revId": "490fde345fe46ba9d128d62b8bba6253e324b4e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
