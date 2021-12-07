@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"image"
 	"image/color"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -33,11 +34,15 @@ func OpenWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 
 // SelectCollection returns an action to select the collection with the given collection name.
 func SelectCollection(ui *uiauto.Context, collection string) uiauto.Action {
-	collections := nodewith.Role(role.Button).HasClass("photo-inner-container")
+	// Collections that are fully loaded will have a name like "Name 10 Images".
+	loadedCollections := nodewith.Role(role.Button).HasClass("photo-inner-container").NameRegex(regexp.MustCompile(`.*\d+\s[iI]mages`))
+	desiredCollection := loadedCollections.NameStartingWith(collection)
 	return uiauto.Combine(fmt.Sprintf("select collection %q", collection),
 		// We should at least wait for a few collections to be loaded.
-		ui.WaitUntilExists(collections.Nth(5)),
-		ui.LeftClick(nodewith.NameContaining(collection).Role(role.Button)),
+		ui.WaitUntilExists(loadedCollections.Nth(5)),
+		ui.WaitUntilExists(desiredCollection),
+		ui.MakeVisible(desiredCollection),
+		ui.LeftClick(desiredCollection),
 	)
 }
 
