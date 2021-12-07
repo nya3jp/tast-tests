@@ -22,6 +22,30 @@
       },
       "revId": "d3355cbc698092f768a26e52025cc6b0b4e40e58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45339ce1_2a59ecba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_network_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-07T07:40:08Z",
+      "side": 1,
+      "message": "I remove the comment. Because I think \"cros-network-health\" is enough? (At least it doesn\u0027t look like a person\u0027s name)",
+      "parentUuid": "78f69e9a_f4accfc0",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "d3355cbc698092f768a26e52025cc6b0b4e40e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
