@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e032a1_c1ec6cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T11:58:39Z",
+      "side": 1,
+      "message": "style.\n\nif err :\u003d testLogin(...); err !\u003d nil {\n  ...\n}\n\nto minimize the scope of err. Ditto for other places.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc137bbd_97fe254c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T11:58:39Z",
+      "side": 1,
+      "message": "s.Fatal() ?\nI think it does not make sense to run testLogout if testLogin fails.",
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b62352_3d6048cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T11:58:39Z",
+      "side": 1,
+      "message": "could you not taking testing.State as adviced in go/tast-writing?\n\ns.Log can be replaced by testing.ContextLog(f?)(...)\ns.Fatal() should be replaced by error returning and callers should handle it properly.",
+      "range": {
+        "startLine": 200,
+        "startChar": 56,
+        "endLine": 200,
+        "endChar": 72
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5bdad0_0b1508d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T11:58:39Z",
+      "side": 1,
+      "message": "In go, we don\u0027t have common getter prefix, like get, is, has. Could you remove it?\nOr, maybe \n\nreadTraceMaskAndSize()",
+      "range": {
+        "startLine": 306,
+        "startChar": 5,
+        "endLine": 306,
+        "endChar": 24
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035b5f05_79a9d1e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T11:58:39Z",
+      "side": 1,
+      "message": "could you use named return value to indicate which is what?",
+      "range": {
+        "startLine": 306,
+        "startChar": 29,
+        "endLine": 306,
+        "endChar": 36
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3495353e_7a10656e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T11:58:39Z",
+      "side": 1,
+      "message": "Could you align the order of the \"size\" and \"mask\" with the function name?",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 23
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c946d734_fe58ec2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-07T11:58:39Z",
+      "side": 1,
+      "message": "to avoid calling mismatch, could you introduce new types?",
+      "range": {
+        "startLine": 319,
+        "startChar": 66,
+        "endLine": 319,
+        "endChar": 97
+      },
+      "revId": "54d82f6ccec6c0467cc4bea917ab7c228a9c25c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
