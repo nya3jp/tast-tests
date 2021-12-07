@@ -16,6 +16,23 @@
       "message": "pwang@, trivial change PTAL",
       "revId": "d1727d8230fa08339ec2ff34e6cc79a7bece6675",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af64a6b1_c1794671",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-07T02:20:44Z",
+      "side": 1,
+      "message": "LGTM!! Thanks!",
+      "revId": "d1727d8230fa08339ec2ff34e6cc79a7bece6675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
