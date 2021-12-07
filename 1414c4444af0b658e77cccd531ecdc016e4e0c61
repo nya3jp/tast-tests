@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88cd9d2e_1afffe0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-07T03:42:32Z",
+      "side": 1,
+      "message": "don\u0027t use the ui package. Looks like this should go in quicksettings",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63e1190d_55b4a5ad",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
         "patchSetId": 1
