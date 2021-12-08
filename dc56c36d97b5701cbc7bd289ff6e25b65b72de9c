@@ -70,6 +70,30 @@
       },
       "revId": "dc56c36d97b5701cbc7bd289ff6e25b65b72de9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9fc022_89f5f631",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2021-12-08T22:43:42Z",
+      "side": 0,
+      "message": "Thanks for the information and links!\n`tast run` gave me an error when I set \"group:hwsec_destructive_func\" and \"informational\" together...",
+      "parentUuid": "d86d4c2a_3bf01c46",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "dc56c36d97b5701cbc7bd289ff6e25b65b72de9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
