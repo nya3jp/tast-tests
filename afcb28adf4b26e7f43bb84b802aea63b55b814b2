@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da3d23cc_1c9d3674",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-08T08:28:02Z",
+      "side": 1,
+      "message": "hmmm, I didn\u0027t realize this is the ssh identity file when I saw this message.\nShould we using something like \"ssh_identity_file\"?\n\nBTW, it would be convenient if we set\n\"~/trunk/src/scripts/mod_for_test_scripts/ssh_keys/testing_rsa\"\nas the default value.",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "afcb28adf4b26e7f43bb84b802aea63b55b814b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "649400f2_d9501d47",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
         "patchSetId": 7
