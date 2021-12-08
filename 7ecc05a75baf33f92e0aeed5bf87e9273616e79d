@@ -39,6 +39,30 @@
       },
       "revId": "7ecc05a75baf33f92e0aeed5bf87e9273616e79d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f1b436_d602496b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-08T16:57:45Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll make the changes in this commit (to avoid another review round trip).",
+      "parentUuid": "100b8b38_a7276d57",
+      "range": {
+        "startLine": 192,
+        "startChar": 23,
+        "endLine": 192,
+        "endChar": 83
+      },
+      "revId": "7ecc05a75baf33f92e0aeed5bf87e9273616e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
