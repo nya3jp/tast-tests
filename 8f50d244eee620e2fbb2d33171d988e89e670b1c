@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4a41a54_998ed577",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-08T19:25:51Z",
+      "side": 1,
+      "message": "Jie Jiang did more or less the same yesterday :D \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3318889",
+      "revId": "8f50d244eee620e2fbb2d33171d988e89e670b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
