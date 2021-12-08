@@ -47,7 +47,11 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	if !ok {
 		servoSpec = ""
 	}
-	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false, false)
+	firmwareFile, err := fingerprint.NewMPFirmwareFile(ctx, d)
+	if err != nil {
+		s.Fatal("Failed to create MP firmwareFile: ", err)
+	}
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), firmwareFile, false, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -65,7 +69,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	// the original firmware that was flashed and the value that is
 	// read.
 	testing.ContextLog(ctx, "Force flashing original FP firmware")
-	if err := fingerprint.FlashFirmware(ctx, d, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := fingerprint.FlashFirmware(ctx, d, t.FirmwareFile().FilePath, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to flash original FP firmware: ", err)
 	}
 
@@ -98,7 +102,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware without modifying RDP level")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), false, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP0(ctx, d, t.FirmwareFile().FilePath, false, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 without changing RDP level: ", err)
 	}
 
@@ -113,7 +117,7 @@ func FpRDP0(ctx context.Context, s *testing.State) {
 	//   entire firmware out of flash and it should exactly match the
 	//   firmware that we flashed for testing.
 	testing.ContextLog(ctx, "Reading firmware while setting RDP to level 0")
-	if err := testRDP0(ctx, d, t.BuildFwFile(), true, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP0(ctx, d, t.FirmwareFile().FilePath, true, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP0 while setting RDP to level 0: ", err)
 	}
 }
