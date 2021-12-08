@@ -361,17 +361,13 @@ func FirmwarePath(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName) (s
 }
 
 // FlashFirmware flashes the original fingerprint firmware in rootfs.
-func FlashFirmware(ctx context.Context, d *rpcdut.RPCDUT, needsRebootAfterFlashing bool) error {
+func FlashFirmware(ctx context.Context, d *rpcdut.RPCDUT, fpFirmwarePath string, needsRebootAfterFlashing bool) error {
 	fpBoard, err := Board(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
 	}
 	testing.ContextLogf(ctx, "fp board name: %q", fpBoard)
 
-	fpFirmwarePath, err := FirmwarePath(ctx, d, fpBoard)
-	if err != nil {
-		return errors.Wrap(err, "failed to get fp firmware path")
-	}
 	flashCmd := []string{"flash_fp_mcu", "--noservices", fpFirmwarePath}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(flashCmd))
 	cmd := d.Conn().CommandContext(ctx, flashCmd[0], flashCmd[1:]...)
@@ -421,16 +417,20 @@ func InitializeEntropy(ctx context.Context, d *rpcdut.RPCDUT) error {
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
-func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
+func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, firmwareFile string, needsRebootAfterFlashing bool) error {
 	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		return errors.Wrap(err, "failed to disable HW write protect")
 	}
-	if err := FlashFirmware(ctx, d, needsRebootAfterFlashing); err != nil {
+	if err := FlashFirmware(ctx, d, firmwareFile, needsRebootAfterFlashing); err != nil {
 		return errors.Wrap(err, "failed to flash FP firmware")
 	}
 	testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
 	if err := InitializeEntropy(ctx, d); err != nil {
 		return err
+	}
+	testing.ContextLog(ctx, "Syncing files before reboot")
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync files before reboot")
 	}
 	testing.ContextLog(ctx, "Entropy initialized, now rebooting to get seed")
 	if err := d.Reboot(ctx); err != nil {
@@ -449,7 +449,7 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 	out, err := CheckFirmwareIsFunctional(ctx, d.DUT())
 	if err != nil {
 		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Reflashing FP firmware", err)
-		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+		if err := ReimageFPMCU(ctx, d, pxy, buildFWFile, needsRebootAfterFlashing); err != nil {
 			return err
 		}
 	}
@@ -462,9 +462,9 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 
 	// Check all other standard FPMCU state.
 	testing.ContextLog(ctx, "Checking other FPMCU state")
-	if err := CheckValidFlashState(ctx, d, fpBoard, buildFWFile); err != nil {
+	if err := CheckValidFlashState(ctx, d, fpBoard, buildFWFile, keyTypeDev); err != nil {
 		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
-		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+		if err := ReimageFPMCU(ctx, d, pxy, buildFWFile, needsRebootAfterFlashing); err != nil {
 			return err
 		}
 	}
@@ -474,16 +474,45 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 
 // CheckValidFlashState validates the rollback state and the running firmware versions (RW and RO).
 // It returns an error if any of the values are incorrect.
-func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName, buildFWFile string) error {
+func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName, buildFWFile string, expKeyType keyType) error {
 	// Check that RO and RW versions are what we expect.
+	MPfwFile, err := FirmwarePath(ctx, d, fpBoard)
+	if err != nil {
+		return errors.Wrap(err, "failed to get MP build firmware file path")
+	}
+	testing.ContextLog(ctx, "Josie, MPfwFile is ", MPfwFile)
 	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFWFile)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RW version")
 	}
-	expectedROVersion, err := getExpectedFwInfo(fpBoard, buildFWFile, fwInfoTypeRoVersion)
+	testing.ContextLog(ctx, "Josie, expectedRWVersion is ", expectedRWVersion)
+	expectedROVersion, err := getExpectedFwInfo(fpBoard, MPfwFile, fwInfoTypeRoVersion)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected RO version")
 	}
+	testing.ContextLog(ctx, "Josie, expectedROVersion in checkvalidflashstate is ", expectedROVersion)
+
+	// if expKeyType == keyTypeDev {
+	// rwVersion, err := readFMAPSection(ctx, "", MPfwFile, RWFirmwareID)
+	// if err != nil {
+	// 	return errors.Wrap(err, "failed to read RW firmware info")
+	// }
+
+	byteString := make([]byte, versionStringLenBytes)
+	copy(byteString, expectedROVersion)
+	newVersion, err := createVersionStringWithSuffix(".dev", byteString)
+	if err != nil {
+		return errors.Wrap(err, "failed to modify version string")
+	}
+	// get rid of terminator suffix
+	newVersion = newVersion[:len(newVersion)-1]
+	// if err := addSuffixToVersionString(devFilePath, ".dev", f.rwVersion); err != nil {
+	// 	return errors.Wrap(err, "failed to modify RW version string")
+	// }
+	// expectedRWVersion = string(newVersion)
+	expectedROVersion = string(newVersion)
+	testing.ContextLog(ctx, "Josie we ammended to expectedROVersion=", expectedROVersion)
+	// }
 	if err := CheckRunningFirmwareVersionMatches(ctx, d, expectedROVersion, expectedRWVersion); err != nil {
 		return err
 	}
@@ -566,6 +595,7 @@ func CheckRunningFirmwareVersionMatches(ctx context.Context, d *rpcdut.RPCDUT, e
 	if err != nil {
 		return errors.Wrap(err, "failed to get RW version")
 	}
+	testing.ContextLog(ctx, "Josie, Running RWVersion:", runningRWVersion)
 
 	runningROVersion, err := RunningROVersion(ctx, d)
 	if err != nil {
@@ -573,11 +603,11 @@ func CheckRunningFirmwareVersionMatches(ctx context.Context, d *rpcdut.RPCDUT, e
 	}
 
 	if runningRWVersion != expectedRWVersion {
-		return errors.Errorf("failed to validate the RW firmware version: got %q, want %q", expectedRWVersion, runningRWVersion)
+		return errors.Errorf("failed to validate the RW firmware version: running %q, expected %q", runningRWVersion, expectedRWVersion)
 	}
 
 	if runningROVersion != expectedROVersion {
-		return errors.Errorf("failed to validate the RO firmware version: got %q, want %q", expectedROVersion, runningROVersion)
+		return errors.Errorf("failed to validate the RO firmware version: running %q, expected %q", runningROVersion, expectedROVersion)
 	}
 
 	return nil
