@@ -16,6 +16,24 @@
       "message": "These tests seem like duplicates of existing tests (login.ChromeGAIA, familylink.UnicornLogin). Can you explain what the differences are and give some context as to why new tests are needed?",
       "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdcf08ec_c04a10fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514802
+      },
+      "writtenOn": "2021-12-08T03:02:09Z",
+      "side": 1,
+      "message": "There are a few reasons:\n1. I am automating other test cases(except 1.1.2 for 2sv account) in https://testtracker.googleplex.com/efforts/testplans/716604, and will submit those tests to this directory later. \n\n2. These tests will be executed on stable ChromeOS with different locales to cover  staging GAIA. Tests themselves need to be stable, as long as MinuteMaid flows don\u0027t change. So instead of pulling existing tests that share test fixture with other tests from a different directory, creating straight-forward test cases based on the manual tests cases are more reliable and easier for maintaining and future modification\n\n3. Since most of tests cases in TestTracker are login, I considered using existing tests in src/chromiumos/tast/local/bundles/cros/login and adding new tests to that directory as well, but their owner suggested me creating a separate folder for my purpose.",
+      "parentUuid": "fe8492cb_43b71919",
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
