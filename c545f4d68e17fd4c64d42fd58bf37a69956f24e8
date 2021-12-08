@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d004082_9858aa8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-08T02:29:00Z",
+      "side": 1,
+      "message": "I think we need to check it is there.",
+      "parentUuid": "032794ea_ad1d287a",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ab1d054_65169668",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I did consider adding it to cleanup, but the the reference to the settings object (st) is obtained by opening settings.  Moving Close() to cleanup would mean opening up the settings page even before first part f the test, which is not desirable.\n\nInstead of st.Close() here I could do apps.Close() inside of the cleanup function, but that code causes a javascript call to close the target app and would be slower than reusing the existing reference to `st`.",
       "parentUuid": "d3a5e78c_6582287c",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5901fe4_0c170bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-08T02:29:00Z",
+      "side": 1,
+      "message": "I mean just after openning the settings, so it would be after st, err :\u003d settings.OpenLinuxSettings(ctx, tconn, cr)",
+      "parentUuid": "30af8ed2_dc280caf",
       "range": {
         "startLine": 171,
         "startChar": 1,
