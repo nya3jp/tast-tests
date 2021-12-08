@@ -47,7 +47,7 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	im := s.Param().(ime.InputMethod)
+	im := ime.ChinesePinyin
 
 	s.Log("Set current input method to: ", im)
 	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
