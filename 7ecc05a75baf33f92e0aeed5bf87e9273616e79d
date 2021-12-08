@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aaa8afd_f9424ada",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-08T08:57:14Z",
+      "side": 1,
+      "message": "LGTM with comments.",
+      "revId": "7ecc05a75baf33f92e0aeed5bf87e9273616e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100b8b38_a7276d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-08T08:57:14Z",
+      "side": 1,
+      "message": "# Sorry, I overlooked this in the prev iteration.\n\nstyle: Could you follow the common message pattern on unexpected values?\n\n\"unexpected buffersize found: got %d, want %d\"\n\nditto for below. (and existing code to, if you can make changes).",
+      "range": {
+        "startLine": 192,
+        "startChar": 23,
+        "endLine": 192,
+        "endChar": 83
+      },
+      "revId": "7ecc05a75baf33f92e0aeed5bf87e9273616e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
