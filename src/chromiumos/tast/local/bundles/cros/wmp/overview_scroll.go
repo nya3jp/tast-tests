@@ -6,6 +6,7 @@ package wmp
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -116,6 +117,13 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
 		}
+
+		// Wait for the launched app window to become visible.
+		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+			return w.IsVisible && strings.Contains(w.Title, app.Name)
+		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			s.Fatalf("%v app window not visible after launching: %v", app.Name, err)
+		}
 	}
 
 	// Create enough chrome windows so that we have 16 total windows.
@@ -149,20 +157,21 @@ func OverviewScroll(ctx context.Context, s *testing.State) {
 	// Swipe from right edge to the left a couple times to scroll the overview grid.
 	swipeStartPt := coords.NewPoint(info.WorkArea.Right()-1, info.WorkArea.CenterY())
 	swipeEndPt := coords.NewPoint(0, info.WorkArea.CenterY())
-	const delay = 500 * time.Millisecond
+	const swipeSpeed = 10 * time.Millisecond
+	const delay = 1 * time.Second
 	if err := uiauto.Combine(
 		"scroll overview",
 		tc.Swipe(swipeStartPt,
 			tc.SwipeTo(swipeEndPt,
-				delay),
+				swipeSpeed),
 			tc.Hold(delay)),
 		tc.Swipe(swipeStartPt,
 			tc.SwipeTo(swipeEndPt,
-				delay),
+				swipeSpeed),
 			tc.Hold(delay)),
 		tc.Swipe(swipeStartPt,
 			tc.SwipeTo(swipeEndPt,
-				delay),
+				swipeSpeed),
 			tc.Hold(delay)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to go scroll through overview items: ", err)
