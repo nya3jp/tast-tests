@@ -12,7 +12,7 @@ import (
 	"github.com/godbus/dbus"
 	"github.com/golang/protobuf/proto"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	lm "chromiumos/system_api/login_manager_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
@@ -171,13 +171,13 @@ func (m *SessionManager) StartSession(ctx context.Context, accountID, uniqueIden
 }
 
 // StorePolicyEx calls SessionManager.StorePolicyEx D-Bus method.
-func (m *SessionManager) StorePolicyEx(ctx context.Context, descriptor *lm.PolicyDescriptor, policy *enterprise_management.PolicyFetchResponse) error {
+func (m *SessionManager) StorePolicyEx(ctx context.Context, descriptor *lm.PolicyDescriptor, policy *enterprise_management_proto.PolicyFetchResponse) error {
 	return callMultiProtoMethod(ctx, m.obj, dbusInterface+"."+"StorePolicyEx", []proto.Message{descriptor, policy}, nil)
 }
 
 // RetrievePolicyEx calls SessionManager.RetrievePolicyEx D-Bus method.
-func (m *SessionManager) RetrievePolicyEx(ctx context.Context, descriptor *lm.PolicyDescriptor) (*enterprise_management.PolicyFetchResponse, error) {
-	ret := &enterprise_management.PolicyFetchResponse{}
+func (m *SessionManager) RetrievePolicyEx(ctx context.Context, descriptor *lm.PolicyDescriptor) (*enterprise_management_proto.PolicyFetchResponse, error) {
+	ret := &enterprise_management_proto.PolicyFetchResponse{}
 	if err := m.callProtoMethod(ctx, "RetrievePolicyEx", descriptor, ret); err != nil {
 		return nil, err
 	}

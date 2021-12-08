@@ -18,7 +18,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"golang.org/x/crypto/pkcs12"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	lm "chromiumos/system_api/login_manager_proto"
 	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
@@ -131,13 +131,13 @@ func ExtractPrivKey(path string) (*rsa.PrivateKey, error) {
 
 // BuildPolicy creates PolicyFetchResponse used in session_manager from
 // the given parameters.
-func BuildPolicy(user string, key, oldKey *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) (*enterprise_management.PolicyFetchResponse, error) {
+func BuildPolicy(user string, key, oldKey *rsa.PrivateKey, s *enterprise_management_proto.ChromeDeviceSettingsProto) (*enterprise_management_proto.PolicyFetchResponse, error) {
 	sdata, err := proto.Marshal(s)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to serialize settings")
 	}
 	polType := "google/chromeos/device"
-	pol := &enterprise_management.PolicyData{
+	pol := &enterprise_management_proto.PolicyData{
 		PolicyType:  &polType,
 		PolicyValue: sdata,
 	}
@@ -165,7 +165,7 @@ func BuildPolicy(user string, key, oldKey *rsa.PrivateKey, s *enterprise_managem
 		return nil, errors.Wrap(err, "failed to serialize public key")
 	}
 
-	return &enterprise_management.PolicyFetchResponse{
+	return &enterprise_management_proto.PolicyFetchResponse{
 		PolicyData:            polData,
 		PolicyDataSignature:   polSign,
 		NewPublicKey:          pubDer,
@@ -175,7 +175,7 @@ func BuildPolicy(user string, key, oldKey *rsa.PrivateKey, s *enterprise_managem
 
 // StoreSettings requests given SessionManager to store the
 // ChromeDeviceSettingsProto data for the user with key.
-func StoreSettings(ctx context.Context, sm *SessionManager, user string, key, oldKey *rsa.PrivateKey, s *enterprise_management.ChromeDeviceSettingsProto) error {
+func StoreSettings(ctx context.Context, sm *SessionManager, user string, key, oldKey *rsa.PrivateKey, s *enterprise_management_proto.ChromeDeviceSettingsProto) error {
 	response, err := BuildPolicy(user, key, oldKey, s)
 	if err != nil {
 		return err
@@ -209,18 +209,18 @@ func sign(key *rsa.PrivateKey, blob []byte) ([]byte, error) {
 
 // RetrieveSettings requests to given SessionManager to return the currently
 // stored ChromeDeviceSettingsProto.
-func RetrieveSettings(ctx context.Context, sm *SessionManager) (*enterprise_management.ChromeDeviceSettingsProto, error) {
+func RetrieveSettings(ctx context.Context, sm *SessionManager) (*enterprise_management_proto.ChromeDeviceSettingsProto, error) {
 	ret, err := sm.RetrievePolicyEx(ctx, DevicePolicyDescriptor())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to retrieve policy")
 	}
 
-	rPol := &enterprise_management.PolicyData{}
+	rPol := &enterprise_management_proto.PolicyData{}
 	if err = proto.Unmarshal(ret.PolicyData, rPol); err != nil {
 		return nil, errors.Wrap(err, "failed to parse PolicyData")
 	}
 
-	rsettings := &enterprise_management.ChromeDeviceSettingsProto{}
+	rsettings := &enterprise_management_proto.ChromeDeviceSettingsProto{}
 	if err = proto.Unmarshal(rPol.PolicyValue, rsettings); err != nil {
 		return nil, errors.Wrap(err, "failed to parse PolicyValue")
 	}

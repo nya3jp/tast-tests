@@ -13,7 +13,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/cryptohome"
@@ -121,7 +121,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	policy, err := session.BuildPolicy("", privKey, nil, &enterprise_management.ChromeDeviceSettingsProto{})
+	policy, err := session.BuildPolicy("", privKey, nil, &enterprise_management_proto.ChromeDeviceSettingsProto{})
 	if err != nil {
 		s.Fatal("Failed to build test policy data: ", err)
 	}
@@ -152,7 +152,7 @@ func UserPolicyKeys(ctx context.Context, s *testing.State) {
 	// No policy stored yet.
 	if ret, err := sm.RetrievePolicyEx(ctx, testDesc); err != nil {
 		s.Fatalf("Failed to retrieve policy for %s: %v", testUser, err)
-	} else if !proto.Equal(ret, &enterprise_management.PolicyFetchResponse{}) {
+	} else if !proto.Equal(ret, &enterprise_management_proto.PolicyFetchResponse{}) {
 		s.Fatal("Unexpected policy is fetched for ", testUser)
 	}
 	if _, err := os.Stat(keyFile); err == nil {
