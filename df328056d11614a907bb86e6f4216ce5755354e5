@@ -73,6 +73,30 @@
       },
       "revId": "df328056d11614a907bb86e6f4216ce5755354e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c850d18_25b21721",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-12-08T11:11:39Z",
+      "side": 1,
+      "message": "No. \nVA-API hardware decoder produces RGB format frames. I think it is produced by using GPU conversion (YUV-\u003eRGB), so the buffer content is device dependent.\nI haven\u0027t checked V4L2 video decoder.\n\nI add log.",
+      "parentUuid": "70712e8e_ad7581e5",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 13
+      },
+      "revId": "df328056d11614a907bb86e6f4216ce5755354e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
