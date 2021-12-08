@@ -284,6 +284,12 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to dev mode")
 			}
+			newMode, err := h.Reporter.CurrentBootMode(ctx)
+			if err != nil {
+				return errors.Wrap(err, "determining boot mode after reboot to dev")
+			}
+			testing.ContextLogf(ctx, "Reboot to dev finished, DUT in %s", newMode)
+
 		}
 		if transitionToDevUsb {
 			// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
@@ -619,7 +625,7 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, hasSerialAP bool)
 			defer cancel()
 			connectTimeout += time.Second
 			return h.DUT.WaitConnect(ctx)
-		}, &testing.PollOptions{Timeout: 1 * time.Minute}); err != nil {
+		}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
 		}
 	case TabletDetachableSwitcher:
@@ -691,18 +697,11 @@ func (ms *ModeSwitcher) fwScreenToUSBDevMode(ctx context.Context) error {
 			defer cancel()
 			connectTimeout += time.Second
 			return h.DUT.WaitConnect(ctx)
-		}, &testing.PollOptions{Timeout: 1 * time.Minute}); err != nil {
+		}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
 		}
 	default:
 		return errors.Errorf("booting to dev mode: unsupported ModeSwitcherType: %s", h.Config.ModeSwitcherType)
-	}
-
-	// Reconnect to the DUT.
-	connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
-	defer cancel()
-	if err := h.WaitConnect(connectCtx); err != nil {
-		return errors.Wrap(err, "failed to reconnect to DUT")
 	}
 
 	return nil
