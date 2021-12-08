@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9c3596_2e358db5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-08T18:31:41Z",
+      "side": 1,
+      "message": "LGTM % nits, please also wait LGTM from Eliot",
+      "revId": "9e55e68cd2371bf2bfa05699c172e20c9555628e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c47aa6_3fbca740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-08T18:31:41Z",
+      "side": 1,
+      "message": "nit: pass ctx",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 4
+      },
+      "revId": "9e55e68cd2371bf2bfa05699c172e20c9555628e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8adbe94a_22ce1048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/ppdtest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-08T18:31:41Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "9e55e68cd2371bf2bfa05699c172e20c9555628e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
