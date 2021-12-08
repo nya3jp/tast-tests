@@ -33,6 +33,23 @@
       "message": "+tast-owners@ to take a look",
       "revId": "41d90a4c07484f93ce956a7c01c4124c0cb4f9bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c58e41_1c04acbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-08T14:53:45Z",
+      "side": 1,
+      "message": "Renuga, frienly ping",
+      "revId": "41d90a4c07484f93ce956a7c01c4124c0cb4f9bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
