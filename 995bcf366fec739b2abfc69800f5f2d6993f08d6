@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46696d54_0dc94385",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-08T08:53:00Z",
+      "side": 1,
+      "message": "to minimize the scope of variable.\n\nif err :\u003d ...; err !\u003d nil {\n  ...\n\nmeans err here is declared at the if, and available only in the scope of the if.\n\nif err \u003d ...; err !\u003d nil {\n\noverwrites the existing err variable.\nPractically, it\u0027s small diff as we do not expect err is accessed outside of if, but better to minimize the scope if possible.",
+      "parentUuid": "e7f5085c_8e6ddab7",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09d9d464_d670cffc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 4

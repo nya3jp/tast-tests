@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "121ac3ff_932c6b6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-08T08:53:00Z",
+      "side": 1,
+      "message": "Next time, could you update the PS properly with fix everytime, unless there is ambiguous review comments to clarify, instead of just \"ok\" or \"will do\". Without that, it\u0027s difficult for reviewers to make sure what\u0027ll be the change reflecting our recommendation. Thank you for cooperation in advance.",
+      "revId": "a9f1e796a43ea1e94b56f7c214e55264bba112cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "256a11ab_26d79759",
