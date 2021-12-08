@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -33,7 +34,7 @@ func init() {
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Params: []testing.Param{{
 			Name:              "chromeslate",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Chromeslate)),
@@ -119,24 +120,59 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	// Enable hardware write protect first.
-	s.Log("Enabling hardware write protect")
-	if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOn); err != nil {
-		s.Fatal("Failed to ensable hardware write protection: ", err)
+	// This function will enable AP software write protect.
+	enableAPWriteProtect := func(ctx context.Context) error {
+		// Check AP firmware WP range.
+		if err := s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", "host", "-r", "/tmp/bios.bin").Run(ssh.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to read the bios file")
+		}
+
+		out, err := s.DUT().Conn().CommandContext(ctx, "fmap_decode", "/tmp/bios.bin").Output(ssh.DumpLogOnError)
+		if err != nil {
+			return errors.Wrap(err, "failed to decode the bios file")
+		}
+
+		// Parse the output to get the areaOffset and areaSize values for write protection.
+		stringv := strings.Split(string(out), "\n")
+		var areaOffset string
+		var areaSize string
+		for _, line := range stringv {
+			if strings.Contains(line, "WP_RO") {
+				values := strings.Split(line, "\"")
+				areaOffset = values[1]
+				areaSize = values[3]
+				break
+			}
+		}
+
+		// Declare the starting and ending range to run in the flashrom command for write protection.
+		command := fmt.Sprintf("%v,%v", areaOffset, areaSize)
+		if err = s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-enable", "--wp-range", command).Run(ssh.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "failed to enable AP software write protect")
+		}
+		return nil
 	}
 
 	// Enable software write protect.
-	s.Log("Enabling software write protect")
+	s.Log("Enabling EC software write protect")
 	if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "enable").Run(ssh.DumpLogOnError); err != nil {
-		// We are temporarily logging this error.
-		s.Log("Failed to enable software write protect: ", err)
-
-		// Get extra information from the DUT state.
-		out, err := s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", "ec", "--wp-status").Output(ssh.DumpLogOnError)
-		if err != nil {
-			s.Fatal("Failed to run command flashrom to collect the write protection status: ", err)
+		if out, err := s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", "ec", "--wp-status").Output(ssh.DumpLogOnError); err != nil {
+			s.Error("Failed to run command flashrom to collect the write protection status: ", err)
+		} else {
+			s.Log("Flashrom Output: ", string(out))
 		}
-		s.Log("Flashrom Output: ", string(out))
+		s.Fatal("Failed to enable EC software write protect: ", err)
+	}
+
+	s.Log("Enabling AP software write protect")
+	if err := enableAPWriteProtect(ctx); err != nil {
+		s.Fatal("While attempting to enable AP write protection: ", err)
+	}
+
+	// Enable hardware write protect.
+	s.Log("Enabling hardware write protect")
+	if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOn); err != nil {
+		s.Fatal("Failed to enable hardware write protect: ", err)
 	}
 
 	// Send battery cutoff and check EC is unresponsive.
@@ -147,7 +183,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	// Connect charger.
 	s.Log("Starting power supply")
 	if err := h.SetDUTPower(ctx, true); err != nil {
-		s.Fatal("Failed to attache the charger: ", err)
+		s.Fatal("Failed to attach the charger: ", err)
 	}
 
 	// Confirm a successful boot.
