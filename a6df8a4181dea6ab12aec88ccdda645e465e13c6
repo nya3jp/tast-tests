@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dc1b00b_f10e3c3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-08T02:22:14Z",
+      "side": 1,
+      "message": "optional: By the way, I think there is another way of comparing battery with expectation, which is constructing wanted batteryInfo.\n\nIn Go, it\u0027s preferred to use full structure comparison, so I think it\u0027s a better approach if possible.\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead\n\nwant :\u003d batteryInfo {\n  ...\n}\n\nif diff :\u003d cmp.Diff(battery, want); diff !\u003d \"\" {\n}",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20553071_f27ef65a",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
         "patchSetId": 2
