@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1f95d3_1ed2ecaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-12-08T17:42:43Z",
+      "side": 1,
+      "message": "Did you test against device where this test failed?",
+      "revId": "e943d836704604adf38b60cafec816e260fa23a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
