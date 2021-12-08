@@ -20,7 +20,8 @@ func init() {
 			"dats@chromium.org",
 			"fdegros@chromium.org",
 		},
-		Attr: []string{"group:mainline"},
+		// TODO(b/209690470): Test failing on amd64-generic-direct-tast-vm.
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
