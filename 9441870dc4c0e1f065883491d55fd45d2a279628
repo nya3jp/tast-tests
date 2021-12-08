@@ -46,6 +46,30 @@
       },
       "revId": "9441870dc4c0e1f065883491d55fd45d2a279628",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f229d9d2_586a2e9a",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1399259
+      },
+      "writtenOn": "2021-12-08T15:50:58Z",
+      "side": 1,
+      "message": "That package should have been executed (chromeos-base/tast-build-deps) before the tast-remote-tests-cros. I can\u0027t find any logs for it. That\u0027s why it failed. But why when it is listed correctly in the DEPEND.. \n\nWill move that discussion/findings into a good descriptive bug.",
+      "parentUuid": "ce076c1a_35f661f9",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "9441870dc4c0e1f065883491d55fd45d2a279628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
