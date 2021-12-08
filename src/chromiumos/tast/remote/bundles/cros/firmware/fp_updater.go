@@ -120,7 +120,11 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		servoSpec = ""
 	}
 	// Set SW write protect to true to enable RDP1 and HW write protect to true.
-	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true /*HW protect*/, true /*SW protect*/)
+	firmwareFile, err := fingerprint.NewMPFirmwareFile(ctx, d)
+	if err != nil {
+		s.Fatal("failed to create MP firmwareFile: ", err)
+	}
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), firmwareFile, true /*HW protect*/, true /*SW protect*/)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
