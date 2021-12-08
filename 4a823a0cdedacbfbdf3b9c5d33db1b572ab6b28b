@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f130ba9b_d101b9d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-08T09:17:54Z",
+      "side": 1,
+      "message": "That\u0027s the advantage of s.Run 😊\n\nYou can call Fatal here, but the other subtests will continue to run.\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/example/run.go",
+      "parentUuid": "58a1a87e_443290e0",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 12
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bcbd4683_d713db8d",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
         "patchSetId": 3
