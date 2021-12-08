@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b61518_01472619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-08T01:57:17Z",
+      "side": 1,
+      "message": "Please check the dialog disappears after clicking the button. And also the terminal should be there?",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab1d054_65169668",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-08T01:57:17Z",
+      "side": 1,
+      "message": "this is unnecessary.",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a5e78c_6582287c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-08T01:57:17Z",
+      "side": 1,
+      "message": "This should be defer after openning the linux settings.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
