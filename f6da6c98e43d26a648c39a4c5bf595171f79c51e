@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5792f73_24041fd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f840b9e_2b9031ab",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3285691_a2f928b5",
@@ -43,6 +67,64 @@
         "endLine": 48,
         "endChar": 30
       },
+      "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fa15a0_2b55347b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3285691_a2f928b5",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80ba31b_5bb93bb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Also double minded about the testing state. We may want to invoke errors from within this function and perhaps I should also change cmdTest to another meaningful name.",
+      "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ace140_89776e94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "I\u0027m double minded about leaving these variables in (out and errs) I think its useful for debugging purposes",
       "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +165,30 @@
       "writtenOn": "2021-12-08T03:04:36Z",
       "side": 1,
       "message": "Is it possible to move the code in this statement into a helper function? Then it could be called twice above and here.",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 213,
+        "endChar": 60
+      },
+      "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b0b897_ee640b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "I\u0027m sorry I do not understand what you meant by this.",
+      "parentUuid": "579e21e3_c0be6a53",
       "range": {
         "startLine": 213,
         "startChar": 2,

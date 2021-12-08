@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c802a2a_e83d4be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc8616d6_48a7f702",
+      "range": {
+        "startLine": 37,
+        "startChar": 14,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39cc4f07_e3cd3353",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-12-03T19:24:25Z",
       "side": 1,
       "message": "Lets wait with this until a later time. Lets keep it 5s in this round.",
+      "range": {
+        "startLine": 44,
+        "startChar": 27,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d268ef3_81f4a891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39cc4f07_e3cd3353",
       "range": {
         "startLine": 44,
         "startChar": 27,
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "230ef8a5_674000c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b113932_e290f5e1",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7a15db3_2393e656",
@@ -106,6 +178,30 @@
       "writtenOn": "2021-12-03T19:24:25Z",
       "side": 1,
       "message": "Could you move this function out? And maybe call it isPerceptualDifferent()",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 53
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf74bce_b1131385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7a15db3_2393e656",
       "range": {
         "startLine": 136,
         "startChar": 0,
@@ -162,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b42055_8cd12626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5148bfc5_79eb6e2a",
+      "range": {
+        "startLine": 203,
+        "startChar": 10,
+        "endLine": 204,
+        "endChar": 31
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "998818ab_afad3074",
@@ -185,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e79ecaff_d26f0088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "998818ab_afad3074",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 2
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9197858a_b1500ac8",
@@ -198,6 +342,30 @@
       "writtenOn": "2021-12-03T19:24:25Z",
       "side": 1,
       "message": "We will later have to think what to do with those.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 83
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa117810_9aa04dad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-08T07:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9197858a_b1500ac8",
       "range": {
         "startLine": 220,
         "startChar": 0,
