@@ -57,6 +57,42 @@
       "parentUuid": "dc68e95a_7eee7096",
       "revId": "f46d9a38b7488d7e58fd230bcfdae92fe8f58a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e840fc8f_693cf193",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-08T03:08:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98a9379e_4c558e0c",
+      "revId": "f46d9a38b7488d7e58fd230bcfdae92fe8f58a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53abab22_495ebe7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-08T03:08:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "98a9379e_4c558e0c",
+      "revId": "f46d9a38b7488d7e58fd230bcfdae92fe8f58a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
