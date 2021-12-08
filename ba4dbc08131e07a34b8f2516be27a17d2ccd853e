@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9507d6fe_0ca2bfc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-08T08:14:00Z",
+      "side": 1,
+      "message": "How are you going to set locales? Note that chrome.New enforces US region by default: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;l\u003d325",
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe8492cb_43b71919",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -32,6 +49,46 @@
       "side": 1,
       "message": "There are a few reasons:\n1. I am automating other test cases(except 1.1.2 for 2sv account) in https://testtracker.googleplex.com/efforts/testplans/716604, and will submit those tests to this directory later. \n\n2. These tests will be executed on stable ChromeOS with different locales to cover  staging GAIA. Tests themselves need to be stable, as long as MinuteMaid flows don\u0027t change. So instead of pulling existing tests that share test fixture with other tests from a different directory, creating straight-forward test cases based on the manual tests cases are more reliable and easier for maintaining and future modification\n\n3. Since most of tests cases in TestTracker are login, I considered using existing tests in src/chromiumos/tast/local/bundles/cros/login and adding new tests to that directory as well, but their owner suggested me creating a separate folder for my purpose.",
       "parentUuid": "fe8492cb_43b71919",
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "106b3788_fdef1640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/chrome_regular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-08T08:14:00Z",
+      "side": 1,
+      "message": "All tests in the mainline group are supposed to be promoted to CQ eventually. Given that you\u0027re planning to run this test manually, I think you don\u0027t want to make it belong to the mainline group.",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3a1b8c_9cded340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-08T08:14:00Z",
+      "side": 1,
+      "message": "Can you update this comment? I guess it was copied from login package.",
       "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
