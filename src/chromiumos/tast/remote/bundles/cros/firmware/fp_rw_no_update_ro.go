@@ -52,7 +52,7 @@ func FpRWNoUpdateRO(ctx context.Context, s *testing.State) {
 	if !ok {
 		servoSpec = ""
 	}
-	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true, true)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), "", true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
