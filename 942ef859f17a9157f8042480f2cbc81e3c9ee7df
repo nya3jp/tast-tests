@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "647881b3_74f1c687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-08T19:34:12Z",
+      "side": 1,
+      "message": "Eliot, PTAL? Oleh would like you to give it a pass as well.",
+      "revId": "942ef859f17a9157f8042480f2cbc81e3c9ee7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
