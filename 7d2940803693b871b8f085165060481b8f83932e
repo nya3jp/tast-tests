@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5968305_217abd3b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-08T02:15:40Z",
+      "side": 1,
+      "message": "getBootedRegion()",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "7d2940803693b871b8f085165060481b8f83932e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e3142d_a20fa75c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-08T02:15:40Z",
+      "side": 1,
+      "message": "`biosImagePath` not to confuse with `biosImage` which could be assumed to be the actual data.",
+      "range": {
+        "startLine": 71,
+        "startChar": 59,
+        "endLine": 71,
+        "endChar": 68
+      },
+      "revId": "7d2940803693b871b8f085165060481b8f83932e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "082666fa_7852d039",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-08T02:15:40Z",
+      "side": 1,
+      "message": "I can see why this was done but ultimately swap these two statements.\n\nThe readFW() and writeFW() functions should isolate this logic into the one place so later you can do a defer cleanup.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "7d2940803693b871b8f085165060481b8f83932e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5915024_4986fac2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2021-12-08T02:15:40Z",
+      "side": 1,
+      "message": "put this whole hunk into its own function, it will help bring about more the structure your heading towards.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "7d2940803693b871b8f085165060481b8f83932e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
