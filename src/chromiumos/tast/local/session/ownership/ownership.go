@@ -6,29 +6,29 @@
 package ownership
 
 import (
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	lm "chromiumos/system_api/login_manager_proto"
 )
 
 // BuildTestSettings returns the ChromeDeviceSettingsProto instance which
 // can be used for testing settings.
-func BuildTestSettings(user string) *enterprise_management.ChromeDeviceSettingsProto {
+func BuildTestSettings(user string) *enterprise_management_proto.ChromeDeviceSettingsProto {
 	boolTrue := true
 	boolFalse := false
-	return &enterprise_management.ChromeDeviceSettingsProto{
-		GuestModeEnabled: &enterprise_management.GuestModeEnabledProto{
+	return &enterprise_management_proto.ChromeDeviceSettingsProto{
+		GuestModeEnabled: &enterprise_management_proto.GuestModeEnabledProto{
 			GuestModeEnabled: &boolFalse,
 		},
-		ShowUserNames: &enterprise_management.ShowUserNamesOnSigninProto{
+		ShowUserNames: &enterprise_management_proto.ShowUserNamesOnSigninProto{
 			ShowUserNames: &boolTrue,
 		},
-		DataRoamingEnabled: &enterprise_management.DataRoamingEnabledProto{
+		DataRoamingEnabled: &enterprise_management_proto.DataRoamingEnabledProto{
 			DataRoamingEnabled: &boolTrue,
 		},
-		AllowNewUsers: &enterprise_management.AllowNewUsersProto{
+		AllowNewUsers: &enterprise_management_proto.AllowNewUsersProto{
 			AllowNewUsers: &boolFalse,
 		},
-		UserWhitelist: &enterprise_management.UserWhitelistProto{
+		UserWhitelist: &enterprise_management_proto.UserWhitelistProto{
 			UserWhitelist: []string{user, "a@b.c"},
 		},
 	}
