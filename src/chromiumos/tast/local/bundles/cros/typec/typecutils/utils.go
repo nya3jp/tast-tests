@@ -16,7 +16,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -178,13 +178,13 @@ func CheckPortsForTBTPartner(ctx context.Context) (int, error) {
 
 // buildTestSettings is a helper function which returns a ChromeDeviceSettingsProto with the
 // DevicePciPeripheralDataAccessEnabled setting set to true.
-func buildTestSettings() *enterprise_management.ChromeDeviceSettingsProto {
+func buildTestSettings() *enterprise_management_proto.ChromeDeviceSettingsProto {
 	boolTrue := true
-	return &enterprise_management.ChromeDeviceSettingsProto{
-		DevicePciPeripheralDataAccessEnabledV2: &enterprise_management.DevicePciPeripheralDataAccessEnabledProtoV2{
+	return &enterprise_management_proto.ChromeDeviceSettingsProto{
+		DevicePciPeripheralDataAccessEnabledV2: &enterprise_management_proto.DevicePciPeripheralDataAccessEnabledProtoV2{
 			Enabled: &boolTrue,
 		},
-		DevicePciPeripheralDataAccessEnabled: &enterprise_management.DevicePciPeripheralDataAccessEnabledProto{
+		DevicePciPeripheralDataAccessEnabled: &enterprise_management_proto.DevicePciPeripheralDataAccessEnabledProto{
 			Enabled: &boolTrue,
 		},
 	}
