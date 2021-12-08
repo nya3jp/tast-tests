@@ -9,7 +9,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -57,7 +57,7 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 	}
 	defer ws.Close(ctx)
 
-	user, ret := func() (string, *enterprise_management.PolicyFetchResponse) {
+	user, ret := func() (string, *enterprise_management_proto.PolicyFetchResponse) {
 		cr, err := chrome.New(ctx)
 		if err != nil {
 			s.Fatal("Failed to log in with Chrome: ", err)
@@ -82,7 +82,7 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 		s.Fatal("PolicyFetchResponse does not contain PolicyData")
 	}
 
-	pol := &enterprise_management.PolicyData{}
+	pol := &enterprise_management_proto.PolicyData{}
 	if err = proto.Unmarshal(ret.PolicyData, pol); err != nil {
 		s.Fatal("Failed to parse PolicyData: ", err)
 	}
@@ -93,7 +93,7 @@ func OwnershipTaken(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected user: got %s; want %s", polUser, user)
 	}
 
-	settings := &enterprise_management.ChromeDeviceSettingsProto{}
+	settings := &enterprise_management_proto.ChromeDeviceSettingsProto{}
 	if err = proto.Unmarshal(pol.PolicyValue, settings); err != nil {
 		s.Fatal("Failed to parse PolicyValue: ", err)
 	}
