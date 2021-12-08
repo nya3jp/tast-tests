@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fa9180_6b1f1516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-08T02:15:55Z",
+      "side": 1,
+      "message": "It seems we are always conparing the string returned from this function with some expectation. Does it make sense to do the comparison in this function? e.g.\n\nfunc check...Property(path, want string) error {\n  ...\n  if got !\u003d want {\n    return errors.Errorf(\"unexpected value for %v: got %v; want %v, path, got, want)\n  }\n  return nil\n}\n\nSame for float version.",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20553071_f27ef65a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-08T02:15:55Z",
+      "side": 1,
+      "message": "nit: it looks 1e-1 is a big number. If we just want to avoid presision error, can we use smaller value like 1e-6 ? Also, if it\u0027s only used from one function, can we inline it in the function?",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
