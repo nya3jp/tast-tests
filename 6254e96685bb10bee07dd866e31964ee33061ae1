@@ -16,6 +16,23 @@
       "message": "Test is stable\n\nhttps://cros-health-prod.googleplex.com/test/policy.BlockThirdPartyCookies",
       "revId": "6254e96685bb10bee07dd866e31964ee33061ae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b0e3ed_310dc10a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-08T12:28:43Z",
+      "side": 1,
+      "message": "LGTM\nAdding +2 before shadow as the change is trivial.",
+      "revId": "6254e96685bb10bee07dd866e31964ee33061ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
