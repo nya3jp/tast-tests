@@ -46,6 +46,30 @@
       },
       "revId": "dc56c36d97b5701cbc7bd289ff6e25b65b72de9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d86d4c2a_3bf01c46",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/verify_unrecoverable_vault_behaviour.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-08T19:58:49Z",
+      "side": 0,
+      "message": "\"informational\" can coexist with \"group:hwsec_destructive_func\", but that don\u0027t have any meaningful behavior, because everything in \"group:hwsec_destructive_func\" is informational.\n\nCurrently most of the tests that used \"hard TPM clear\" would too flaky to put into the critical test.\nContext: https://b.corp.google.com/issues/172876417\n\nAnd there is a plan to move back the hwsec_destructive_func to mainline, but the blocking issue haven\u0027t been resolved yet.\nContext: https://b.corp.google.com/issues/173070561\nContext: https://b.corp.google.com/issues/187790884",
+      "parentUuid": "23329d1b_77fc9a3b",
+      "range": {
+        "startLine": 27,
+        "startChar": 43,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "dc56c36d97b5701cbc7bd289ff6e25b65b72de9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
