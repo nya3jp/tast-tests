@@ -9,7 +9,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
@@ -88,7 +88,7 @@ func GuestAndActualSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to retrieve policy: ", err)
 	}
 
-	pol := &enterprise_management.PolicyData{}
+	pol := &enterprise_management_proto.PolicyData{}
 	if err = proto.Unmarshal(ret.PolicyData, pol); err != nil {
 		s.Fatal("Failed to parse PolicyData: ", err)
 	}
