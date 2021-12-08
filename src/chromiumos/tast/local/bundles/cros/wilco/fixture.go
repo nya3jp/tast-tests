@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/local/wilco"
 	"chromiumos/tast/testing"
+	dtcpb "chromiumos/wilco_dtc"
 )
 
 func init() {
@@ -182,6 +183,21 @@ func (w *wilcoDTCFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	w.wilcoDTCVMPID, err = wilco.VMPID(ctx)
 	if err != nil {
 		s.Fatal("Failed to get Wilco DTC VM PID: ", err)
+	}
+
+	// Wait until wilco_dtc_supportd bootstrap Mojo connection to Chrome.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		resp := dtcpb.GetStatefulPartitionAvailableCapacityResponse{}
+		if err := wilco.DPSLSendMessage(ctx, "GetStatefulPartitionAvailableCapacity",
+			&dtcpb.GetStatefulPartitionAvailableCapacityRequest{}, &resp); err != nil {
+			return errors.Wrap(err, "failed to get stateful partition available capacity")
+		}
+		if want := dtcpb.GetStatefulPartitionAvailableCapacityResponse_STATUS_OK; resp.Status != want {
+			return errors.Errorf("unexpected status received from vsh rpc method call = got %v, want %v", resp.Status, want)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait wilco_dtc_supportd bootstrap Mojo connection to Chrome: ", err)
 	}
 
 	return fixtures.NewFixtData(w.cr, w.fdms)
