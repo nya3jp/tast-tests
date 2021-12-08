@@ -77,6 +77,16 @@ func ApkNameForArch(ctx context.Context, a *arc.ARC) (string, error) {
 	return ArmApkName, nil
 }
 
+// coolDownConfig returns the config to wait for the machine to cooldown for AppLoading tests.
+// This overrides the default config timeout (5 minutes) and temperature threshold (46 C)
+// settings to reduce test flakes on low-end devices.
+func coolDownConfig() cpu.CoolDownConfig {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.PollTimeout = 7 * time.Minute
+	cdConfig.TemperatureThreshold = 61000
+	return cdConfig
+}
+
 // RunTest executes subset of tests in APK determined by the test class name.
 func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chrome) (retScore float64, retErr error) {
 	const (
@@ -136,7 +146,7 @@ func RunTest(ctx context.Context, config TestConfig, a *arc.ARC, cr *chrome.Chro
 	}
 
 	testing.ContextLog(ctx, "Waiting until CPU is stabilized")
-	if err := cpu.WaitUntilStabilized(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+	if err := cpu.WaitUntilStabilized(ctx, coolDownConfig()); err != nil {
 		return 0, errors.Wrap(err, "failed to wait until CPU is stabilized")
 	}
 
