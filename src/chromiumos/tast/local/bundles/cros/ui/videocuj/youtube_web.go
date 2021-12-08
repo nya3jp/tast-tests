@@ -83,6 +83,12 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to instruct device to stay on YouTube web")
 	}
 
+	// Clear notification prompts if exists. If the notification alert popup isn't clear,
+	// operations that require finding the current active window (i.e., SwitchWindowToDisplay)
+	// will not succeed.
+	prompts := []string{"Allow", "Never", "NO THANKS"}
+	clearNotificationPrompts(ctx, y.ui, y.uiHdl, prompts...)
+
 	// Default expected display is main display.
 	if err := cuj.SwitchWindowToDisplay(ctx, y.tconn, y.kb, y.extendedDisplay)(ctx); err != nil {
 		if y.extendedDisplay {
@@ -158,10 +164,6 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 
 		return nil
 	}
-
-	// Clear notification prompts if exists.
-	prompts := []string{"Allow", "Never", "NO THANKS"}
-	clearNotificationPrompts(ctx, y.ui, y.uiHdl, prompts...)
 
 	if err := switchQuality(y.video.quality); err != nil {
 		return errors.Wrapf(err, "failed to switch resolution to %s", y.video.quality)
