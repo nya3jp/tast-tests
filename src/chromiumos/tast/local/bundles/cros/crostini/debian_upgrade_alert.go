@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
+	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
@@ -76,6 +77,7 @@ func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 	pre := s.PreValue().(crostini.PreData)
 	cont := s.PreValue().(crostini.PreData).Container
 	tconn := s.PreValue().(crostini.PreData).TestAPIConn
+	cr := s.PreValue().(crostini.PreData).Chrome
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, crostini.PostTimeout)
@@ -87,12 +89,6 @@ func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 
 	// Cleanups.
 	defer func(ctx context.Context) {
-		// Click on the alert and dismiss it as
-		// it should still showing from the end of the test.
-		if err := ui.LeftClick(continueButton)(ctx); err != nil {
-			s.Log("Cleanup: failed to find or click the continue button: ", err)
-		}
-
 		// Remove the created os-release file
 		if err := cont.Command(ctx, "sudo", "rm", "-f", releaseFilePath).Run(testexec.DumpLogOnError); err != nil {
 			s.Logf("Cleanup: failed to remove %q on cleanup: %v", releaseFilePath, err)
@@ -153,4 +149,24 @@ func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(continueButton)(ctx); err != nil {
 		s.Fatal("Failed to find the upgrade alert before timeout: ", err)
 	}
+
+	s.Log("Found the Debian upgrade popup alert")
+
+	// Click on the alert and dismiss it before proceeding.
+	if err := ui.LeftClick(continueButton)(ctx); err != nil {
+		s.Log("Failed to find or click the continue button on the alert: ", err)
+	}
+
+	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)
+	if err != nil {
+		s.Fatal("Failed to open Linux Settings: ", err)
+	}
+
+	if err := st.WaitForUI(settings.DebianUpgradeText)(ctx); err != nil {
+		s.Fatal("Failed to see upgrade alert text in Linux settings: ", err)
+	}
+
+	s.Log("Found the upgrade Debian alert in Settings")
+
+	st.Close(ctx)
 }
