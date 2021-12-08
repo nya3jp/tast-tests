@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2ca819c6_f8cf6f79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2021-12-08T22:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8575dcd2_b20f7702",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "efbe455a_b44c3538",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d898db_5643a652",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2021-12-08T22:33:14Z",
+      "side": 1,
+      "message": "It waits until the new desk container has become visible. I added a comment up top to explain the method better.",
+      "parentUuid": "a3081aa2_ec39168f",
+      "range": {
+        "startLine": 104,
+        "startChar": 21,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e8031f1_a894a2d7",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-08T01:30:20Z",
       "side": 1,
       "message": "nit: Can we add more details to the statement then we know the \"Browser\" is current active window and \"desk 2\" is current active desk?",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 32
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb47dda_8d9f3ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2021-12-08T22:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e8031f1_a894a2d7",
       "range": {
         "startLine": 121,
         "startChar": 11,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d53f2ff_6673f3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2021-12-08T22:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46db81b6_bd57bbeb",
+      "range": {
+        "startLine": 131,
+        "startChar": 11,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "396963bd_0e17dc6d",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-12-08T01:30:20Z",
       "side": 1,
       "message": "Seems the desks are using default names, after moving \"Desk 1\" to the right, it will be renamed to \"Desk 2\". Here we are planning to move the previous \"Desk 1\" to the left, which is \"Desk 2\" after operation at L169, can you double confirm? Or maybe rename the desks to make things easier?",
+      "range": {
+        "startLine": 186,
+        "startChar": 41,
+        "endLine": 186,
+        "endChar": 47
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca7460f_0a8c7445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1509712
+      },
+      "writtenOn": "2021-12-08T22:33:14Z",
+      "side": 1,
+      "message": "The wait here is just to let the desk mini view switch animation play out. The windows are moved at the same time, so I figured it didn\u0027t really matter which view to wait on.\n\nI added waits for the second view. They should be a no-ops though. Let me know what you think.",
+      "parentUuid": "396963bd_0e17dc6d",
       "range": {
         "startLine": 186,
         "startChar": 41,
