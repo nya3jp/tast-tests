@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "584c76ee_02d911e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-12-08T03:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d004082_9858aa8e",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ab1d054_65169668",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "I mean just after openning the settings, so it would be after st, err :\u003d settings.OpenLinuxSettings(ctx, tconn, cr)",
       "parentUuid": "30af8ed2_dc280caf",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5538b5bb_8a21c425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-12-08T03:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5901fe4_0c170bb8",
       "range": {
         "startLine": 171,
         "startChar": 1,
