@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eca5e84_0be10fdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-08T10:45:45Z",
+      "side": 1,
+      "message": "Thanks the review, Tatsuhisa! Please take a look at the update.",
+      "revId": "1197f1cb851c60eca9d11def267db5d49bd816cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

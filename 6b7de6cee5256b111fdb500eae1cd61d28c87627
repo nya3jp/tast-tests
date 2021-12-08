@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e52587_fd6ae194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-08T10:45:45Z",
+      "side": 1,
+      "message": "thanks for the tip! I might make a follow-up based on this.",
+      "parentUuid": "40e706fc_4035e2e0",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "6b7de6cee5256b111fdb500eae1cd61d28c87627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29533403_b790499e",
@@ -95,6 +119,24 @@
       "writtenOn": "2021-12-08T04:53:44Z",
       "side": 1,
       "message": "Will you describe why this timeout needs to be shortened? (I could not see it from the commit message and bug).",
+      "revId": "6b7de6cee5256b111fdb500eae1cd61d28c87627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c9b5e9d_694ece1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-08T10:45:45Z",
+      "side": 1,
+      "message": "Thanks for the catch! Done.",
+      "parentUuid": "29533403_b790499e",
       "revId": "6b7de6cee5256b111fdb500eae1cd61d28c87627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
