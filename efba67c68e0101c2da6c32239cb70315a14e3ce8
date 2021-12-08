@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a73e21_73b7f893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2021-12-08T02:10:04Z",
+      "side": 1,
+      "message": "Hi Judy,\nThanks for the review, PTAL the latest PS.",
+      "revId": "efba67c68e0101c2da6c32239cb70315a14e3ce8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
