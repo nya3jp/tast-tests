@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719c647e_29982756",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2021-12-08T01:18:35Z",
+      "side": 1,
+      "message": "Cherry-pick to R97 so CPU cooling down logic won\u0027t impact CUJ test.",
+      "revId": "cbddcc75e2593f8620aaffc5f5680b0a70ddcd1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
