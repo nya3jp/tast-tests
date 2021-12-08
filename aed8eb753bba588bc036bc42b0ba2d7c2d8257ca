@@ -111,6 +111,30 @@
       },
       "revId": "aed8eb753bba588bc036bc42b0ba2d7c2d8257ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2aa07aa_31f4e168",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ap_supported_rates.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-08T23:10:47Z",
+      "side": 1,
+      "message": "I think it makes sense to add TODO at the definition of WifiNotMarvell.\n\nBug creation definitely worth it with P3 priority. On out team we have BugBash week each quarter, it\u0027s time when we take a look on P2/P3 bugs, so probably someone eventually will work on that bug. It might be a good starting bug for a noogler as well.\n\nI am just a bit worried that this dependency might stay much longer than really needed :) \n\nAnyway, it should not block this CL.",
+      "parentUuid": "6dc0e4ae_bf4c0e40",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 95
+      },
+      "revId": "aed8eb753bba588bc036bc42b0ba2d7c2d8257ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
