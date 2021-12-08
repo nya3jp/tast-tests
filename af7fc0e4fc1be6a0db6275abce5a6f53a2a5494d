@@ -16,6 +16,144 @@
       "message": "the test has been upadted, and some parts have been moved to another one, as discuss",
       "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc598ba7_e6cec0e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-12-08T02:04:25Z",
+      "side": 1,
+      "message": "We should avoid splitting test logic into multiple functions. If there are legitimate helper functions, that\u0027s fine. However, partitioning a test in a way where the only benefit is shorter functions should be avoided.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 68
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711606b9_4b0b8a46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-12-08T02:04:25Z",
+      "side": 1,
+      "message": "Time should be reserved for the cleanup context, here and all of the other defer statements:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f57d365e_2ff7b641",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-12-08T02:04:25Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93775cf0_2cb38e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-12-08T02:04:25Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5824cb3b_9080f1c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-12-08T02:04:25Z",
+      "side": 1,
+      "message": "This looks like it\u0027s testing two distinct behaviors. It should probably be two different tests.",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57a8348_ed0258d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-12-08T02:04:25Z",
+      "side": 1,
+      "message": "Know -\u003e Known",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
