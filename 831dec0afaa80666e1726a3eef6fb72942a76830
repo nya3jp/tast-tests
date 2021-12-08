@@ -16,6 +16,24 @@
       "message": "tobyhuang@ could you take a look at the familylink changes? I made the familylink syncing test explicitly use the old wallpaper extension for now. Once we start tearing down the old wallpaper code paths, I will have a followup to delete the test entirely.",
       "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc374d45_1a2525e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-08T19:43:51Z",
+      "side": 1,
+      "message": "I\u0027ll take a look. I\u0027m surprised that the familylink.ChildWallpaperSync doesn\u0027t work with the new wallpaper app. Instead of deleting the test, why can\u0027t we update it to work with the new wallpaper app?",
+      "parentUuid": "bb6b8754_76bff3bf",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
