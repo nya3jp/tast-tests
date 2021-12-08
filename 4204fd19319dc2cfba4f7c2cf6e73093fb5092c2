@@ -16,6 +16,23 @@
       "message": "Merged the split test cases into a single script. Removed \"ShowPassword\" and \"HidePassword\" functions and added a new func \"ShowAndHidePIN\" in showpassword subpackage. Added multiple utility functions in lockscreen.go file.",
       "revId": "4204fd19319dc2cfba4f7c2cf6e73093fb5092c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f76890_34ea4967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-08T23:36:06Z",
+      "side": 1,
+      "message": "There is a merge conflict. Can you rebase and fix the merges ",
+      "revId": "4204fd19319dc2cfba4f7c2cf6e73093fb5092c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
