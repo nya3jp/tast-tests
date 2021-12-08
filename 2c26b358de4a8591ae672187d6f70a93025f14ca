@@ -151,6 +151,30 @@
       },
       "revId": "2c26b358de4a8591ae672187d6f70a93025f14ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5095629_4a644d1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-12-08T05:48:38Z",
+      "side": 1,
+      "message": "Done. Fixed \"dumpsys wifi tools reach\" in ag/16402642.",
+      "parentUuid": "1599edae_b70b9eb2",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 61
+      },
+      "revId": "2c26b358de4a8591ae672187d6f70a93025f14ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

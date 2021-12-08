@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b62dc8f_b3a3580e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2021-12-08T05:48:38Z",
+      "side": 1,
+      "message": "PTAL, thanks! Revived the patch that was not possible because Android ping bind bug.",
+      "revId": "04464567ec7a2322711bde63a35668018260dcf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
