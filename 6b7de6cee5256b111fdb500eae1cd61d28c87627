@@ -56,6 +56,47 @@
       },
       "revId": "6b7de6cee5256b111fdb500eae1cd61d28c87627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40e706fc_4035e2e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-08T04:53:44Z",
+      "side": 1,
+      "message": "If some functions in ui/perfutil library are also going to be used outside the perfutil test category (\u003dpackage), we may consider making it a helper library by placing it under src/platform/tast-tests/src/chromiumos/tast/local/*.",
+      "parentUuid": "7122c3d9_2914e6b5",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "6b7de6cee5256b111fdb500eae1cd61d28c87627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29533403_b790499e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/oobe_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-08T04:53:44Z",
+      "side": 1,
+      "message": "Will you describe why this timeout needs to be shortened? (I could not see it from the commit message and bug).",
+      "revId": "6b7de6cee5256b111fdb500eae1cd61d28c87627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
