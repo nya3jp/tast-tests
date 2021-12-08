@@ -164,9 +164,18 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	}
 	i.value.GBBFlags = flags
 
+	if err := i.value.Helper.DockerClientPing(ctx); err != nil {
+		s.Fatal("Failed Docker Daemon Ping Before InitHelper: ", err)
+	}
+	s.Log("Ping Success Before InitHelper")
+
 	s.Log("Creating a new firmware Helper instance for fixture: ", i.String())
 	i.initHelper(ctx, s)
 
+	if err := i.value.Helper.DockerClientPing(ctx); err != nil {
+		s.Fatal("Failed Docker Daemon Ping After InitHelper: ", err)
+	}
+	s.Log("Ping Success After InitHelper")
 	// If rebooting to recovery mode, verify the usb key.
 	if i.value.BootMode == common.BootModeRecovery || i.value.BootMode == common.BootModeUSBDev {
 		if err := i.value.Helper.RequireServo(ctx); err != nil {
@@ -183,6 +192,11 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		if skipFlashUSB {
 			cs = nil
 		}
+
+		if err := i.value.Helper.DockerClientPing(ctx); err != nil {
+			s.Fatal("Failed Docker Daemon Ping After RequireServo: ", err)
+		}
+		s.Log("Ping Success After RequireServo")
 		if err := i.value.Helper.SetupUSBKey(ctx, cs); err != nil {
 			s.Fatal("Failed to setup USB key: ", err)
 		}
