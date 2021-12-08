@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8dc678d_5d4698fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-08T10:26:03Z",
+      "side": 1,
+      "message": "Test is stable:\n\nhttps://cros-health-prod.googleplex.com/test/policy.ChromeOsLockOnIdleSuspend",
+      "revId": "0ce8f491fca5e08d304ed06457493bd2da24a434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
