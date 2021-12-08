@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "238a1f81_7ce3eb5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-08T19:51:51Z",
+      "side": 1,
+      "message": "Good point. Thanks!",
+      "parentUuid": "f130ba9b_d101b9d9",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 12
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcbd4683_d713db8d",
@@ -236,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed51844_b15174eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-08T19:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d24a28df_c63cea08",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 12
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2905967d_e3f8a868",
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "Errorf is intentional.",
       "parentUuid": "2905967d_e3f8a868",
+      "range": {
+        "startLine": 93,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "4a823a0cdedacbfbdf3b9c5d33db1b572ab6b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ff835a_d207f617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-08T19:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a892c840_874d112f",
       "range": {
         "startLine": 93,
         "startChar": 6,

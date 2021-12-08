@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7e82f6_64c85119",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-08T19:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58016c2b_35fa4acc",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "32719eb64e592c8a146efdb3a8e91a03567d58b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d994670_8f8e7652",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-08T09:22:45Z",
       "side": 1,
       "message": "If you really want all tests to be independent, wrap each in an s.Run.",
+      "revId": "32719eb64e592c8a146efdb3a8e91a03567d58b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd98856_7fdcc691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2021-12-08T19:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d994670_8f8e7652",
       "revId": "32719eb64e592c8a146efdb3a8e91a03567d58b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
