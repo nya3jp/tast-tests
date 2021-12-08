@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "032794ea_ad1d287a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-12-08T02:24:57Z",
+      "side": 1,
+      "message": "Added check that continueButton no longer shows.\n\nRegarding the terminal, yes it will show but, the next step opens up the settings page, and that gets opened on top of everything else so the terminal app is not an issue.\n\nWe also want to the terminal app to be showing at the end of the test because we need to call ShutDownCrostini in the deferred cleanup. Closing the terminal will not cause the changes to /os-release to be pickedup - so we need to shut down crostini, and for that the terminal app needs to be \"found\" during cleanup.",
+      "parentUuid": "99b61518_01472619",
+      "range": {
+        "startLine": 156,
+        "startChar": 14,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ab1d054_65169668",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ac7134_e49bdd4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-12-08T02:24:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ab1d054_65169668",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3a5e78c_6582287c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-08T01:57:17Z",
       "side": 1,
       "message": "This should be defer after openning the linux settings.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 14
+      },
+      "revId": "c545f4d68e17fd4c64d42fd58bf37a69956f24e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30af8ed2_dc280caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-12-08T02:24:57Z",
+      "side": 1,
+      "message": "I did consider adding it to cleanup, but the the reference to the settings object (st) is obtained by opening settings.  Moving Close() to cleanup would mean opening up the settings page even before first part f the test, which is not desirable.\n\nInstead of st.Close() here I could do apps.Close() inside of the cleanup function, but that code causes a javascript call to close the target app and would be slower than reusing the existing reference to `st`.",
+      "parentUuid": "d3a5e78c_6582287c",
       "range": {
         "startLine": 171,
         "startChar": 1,
