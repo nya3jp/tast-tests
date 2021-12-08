@@ -118,6 +118,7 @@ func Mtab(ctx context.Context, s *testing.State) {
 
 		"/usr/share/chromeos-assets/quickoffice/_platform_specific": {loopDev, "squashfs", defaultRO},
 		"/usr/share/chromeos-assets/speech_synthesis/patts":         {loopDev, "squashfs", "nodev,nosuid"},
+		"/usr/share/cros-camera/libfs":                              {loopDev, "squashfs", "ro"},
 
 		"/var/lock": {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run/lock
 		"/var/run":  {nil, "tmpfs", defaultRW + ",mode=755"}, // duplicate of /run
