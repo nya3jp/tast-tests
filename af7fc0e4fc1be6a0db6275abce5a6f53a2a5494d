@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47f13551_975cd455",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-12-08T08:57:56Z",
+      "side": 1,
+      "message": "I think my original comment wasn\u0027t exactly accurate. Testing should generally be done in the test function itself. It\u0027s fine to use helpers to take care of things that aren\u0027t the target of test, things which the test basically assumes will work. But by moving everything into separate functions like this, it\u0027s not clear what specifically is being tested. It may be clear what actions the test is taking, but it\u0027s not clear what specifically the test is trying to validate.\n\nIf I\u0027m understanding this test correctly, the actual body of the test is the second half of tryDeleteUsersInSettings plus checkUserPodsOnSignInPage. Most/all of that should be pulled into the main test function.\n\nIn terms of LOC, that\u0027s generally less of a concern for integration tests than for actual code.",
+      "parentUuid": "c6b65f1d_90cd2016",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 68
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "711606b9_4b0b8a46",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
         "patchSetId": 6
@@ -188,6 +212,30 @@
       "side": 1,
       "message": "this is a trade-off between having some logic in the test, and duplicating things. If we split it, we\u0027ll have to repeat the initial setup, logging in and opening the Settings page. Do you think it\u0027s ok? Or maybe you have some other suggestions?",
       "parentUuid": "5824cb3b_9080f1c4",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9988aa5d_b82fdb4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2021-12-08T08:57:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure how long all the initial setup takes, but it looks like each invocation of tryDeleteUsersInSettings  logs in and opens the settings page. That said, there definitely is some trade-off between reusing setup work and having independent tests. If you think it is worthwhile to reuse some of the setup work, I would shrink this function so that it just does the login and opens the setup page, and then move both of these branches into the test body.",
+      "parentUuid": "d0bcc73b_f71a4819",
       "range": {
         "startLine": 97,
         "startChar": 4,
