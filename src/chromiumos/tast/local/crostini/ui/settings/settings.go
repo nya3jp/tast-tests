@@ -54,7 +54,8 @@ const (
 
 // find params for fixed items.
 var (
-	PageLinux = nodewith.NameStartingWith(PageNameLinux).First()
+	DebianUpgradeText = nodewith.NameStartingWith("An upgrade to Debian").First()
+	PageLinux         = nodewith.NameStartingWith(PageNameLinux).First()
 	// We may need to update this if more 'Turn on' buttons are added to Settings, but there isn't a good way to make this more specific yet.
 	TurnOnButton          = nodewith.NameRegex(regexp.MustCompile("Developers|Turn on")).Role(role.Button).Ancestor(ossettings.WindowFinder)
 	nextButton            = nodewith.Name("Next").Role(role.Button)
