@@ -319,13 +319,13 @@ func readResultProp(ctx context.Context, a *arc.ARC, propName string) (float64, 
 }
 
 // coolDownConfig returns the config to wait for the machine to cooldown for AuthPerf tests.
-// This has higher temperature (46 to 52c) threshold to let pass AMD low-end devices that
+// This has higher temperature (46 to 61c) threshold to let pass AMD low-end devices that
 // frequently fail due to higher temperatures.
 func coolDownConfig() cpu.CoolDownConfig {
 	return cpu.CoolDownConfig{
 		PollTimeout:          300 * time.Second,
 		PollInterval:         2 * time.Second,
-		TemperatureThreshold: 52000,
+		TemperatureThreshold: 61000,
 		CoolDownMode:         cpu.CoolDownPreserveUI,
 	}
 }
@@ -369,8 +369,8 @@ func bootARC(ctx context.Context, s *testing.State, cr *chrome.Chrome, tconn *ch
 		}
 	}
 
-	if _, err := cpu.WaitUntilCoolDown(ctx, coolDownConfig()); err != nil {
-		s.Fatal("Failed to wait until CPU is cooled down: ", err)
+	if err := cpu.WaitUntilStabilized(ctx, coolDownConfig()); err != nil {
+		s.Fatal("Failed to wait until CPU is stabilized")
 	}
 
 	energyBefore, err := power.NewRAPLSnapshot()
