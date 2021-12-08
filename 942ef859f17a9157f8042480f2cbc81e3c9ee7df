@@ -16,6 +16,23 @@
       "message": "Eliot, PTAL? Oleh would like you to give it a pass as well.",
       "revId": "942ef859f17a9157f8042480f2cbc81e3c9ee7df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10384a33_94f785a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-08T23:02:33Z",
+      "side": 1,
+      "message": "Sorry, I was thinking that Eliot is your teammate. Is there someone from your team who can take a look as well?",
+      "revId": "942ef859f17a9157f8042480f2cbc81e3c9ee7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
