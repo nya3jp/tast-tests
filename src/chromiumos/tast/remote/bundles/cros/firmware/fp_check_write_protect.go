@@ -51,7 +51,7 @@ func FpCheckWriteProtect(ctx context.Context, s *testing.State) {
 	if !ok {
 		servoSpec = ""
 	}
-	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false, false)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), "", false, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
