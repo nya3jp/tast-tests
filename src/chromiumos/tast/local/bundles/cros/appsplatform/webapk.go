@@ -77,12 +77,10 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// TODO(crbug.com/1226730): Remove the ArcEnableWebAppShare flag once it is enabled by default.
 	// Due to the UI Automator flakiness, we still can't use the arcBooted fixture as it starts UI Automator automatically.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.ARCEnabled(),
-		chrome.ExtraArgs("--enable-features=ArcEnableWebAppShare"))
+		chrome.ARCEnabled())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -286,10 +284,25 @@ func verifySharedFiles(ctx context.Context, shareChan chan shareResult) error {
 	)
 
 	var receivedShare shareResult
-	select {
-	case receivedShare = <-shareChan:
-	case <-ctx.Done():
-		return errors.New("timeout waiting to receive shared text")
+
+	for i := 0; i < 2; i++ {
+		select {
+		case receivedShare = <-shareChan:
+		case <-ctx.Done():
+			return errors.New("timeout waiting to receive shared text")
+		}
+
+		// Occasionally, a second Intent is fired at ArcWebApkActivity after
+		// clicking the "Share Text" button in the previous stage of the test.
+		// This Intent causes a second text sharing request to be fired, before
+		// progressing to sharing files.
+		// It's not clear where this second Intent comes from, but it does not
+		// seem to happen in non-test environments. Therefore, we allow one
+		// text share to be received and ignored while waiting for a file
+		// share. See crbug.com/1254586 for further details.
+		if len(receivedShare.files) > 0 {
+			break
+		}
 	}
 
 	if receivedShare.err != nil {
