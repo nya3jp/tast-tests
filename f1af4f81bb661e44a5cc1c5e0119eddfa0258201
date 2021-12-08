@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "259b1bfd_6e9ffc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-08T10:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fbbd03c_737454c4",
+      "revId": "f1af4f81bb661e44a5cc1c5e0119eddfa0258201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "273b4a6c_0c33bbc1",
