@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b4875ac_0a9971b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399259
+      },
+      "writtenOn": "2021-12-08T19:07:40Z",
+      "side": 1,
+      "message": "Hi everyone,\n\nPTAL at these changes which are needed to retrieve the go_package protobuf changes. I\u0027ve added more description to the bug, please take a look if there\u0027s any concerns/questions.",
+      "revId": "fad9048b9e677001386ce67b508379d94410c280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
