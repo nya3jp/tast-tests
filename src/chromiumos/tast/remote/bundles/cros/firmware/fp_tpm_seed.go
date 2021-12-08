@@ -56,18 +56,13 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get fingerprint board: ", err)
 	}
 
-	buildFWFile, err := fingerprint.FirmwarePath(ctx, d, fpBoard)
-	if err != nil {
-		s.Fatal("Failed to get build firmware file path: ", err)
-	}
-
 	needsReboot, err := fingerprint.NeedsRebootAfterFlashing(ctx, d)
 	if err != nil {
 		s.Fatal("Failed to determine whether reboot is needed: ", err)
 	}
 
 	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy,
-		fpBoard, buildFWFile, needsReboot); err != nil {
+		fpBoard, fingerprint.NewMPFirmwareFile(ctx, d), needsReboot); err != nil {
 		s.Fatal("Initialization failed: ", err)
 	}
 
