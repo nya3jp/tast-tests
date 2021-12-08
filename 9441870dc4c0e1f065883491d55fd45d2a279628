@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "622e3d2a_6b22f396",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1399259
+      },
+      "writtenOn": "2021-12-08T15:33:06Z",
+      "side": 1,
+      "message": "In patch#1: That\u0027s weird as the error is\n```\ntast-remote-tests-cros-0.0.2-r8720: src/chromiumos/tast/local/session/ownership.go:21:2: cannot find package \"chromiumos/policy/chromium/policy/enterprise_management_proto\" in any of:\ntast-remote-tests-cros-0.0.2-r8720: \t/usr/lib/go/src/chromiumos/policy/chromium/policy/enterprise_management_proto (from $GOROOT)\ntast-remote-tests-cros-0.0.2-r8720: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r8720/work/tast-remote-tests-cros-0.0.2/src/chromiumos/policy/chromium/policy/enterprise_management_proto (from $GOPATH)\ntast-remote-tests-cros-0.0.2-r8720: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r8720/work/tast-remote-tests-cros-0.0.2/tast-base/src/chromiumos/policy/chromium/policy/enterprise_management_proto\ntast-remote-tests-cros-0.0.2-r8720: \t/var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r8720/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/firmware/data/fw-testing-configs/src/chromiumos/policy/chromium/policy/enterprise_management_proto\ntast-remote-tests-cros-0.0.2-r8720: \t/usr/lib/gopath/src/chromiumos/policy/chromium/policy/enterprise_management_proto\n```\nBut the patch exist in the path locally: /usr/lib/gopath/src/chromiumos/policy/chromium/policy/enterprise_management_proto\n\nMaybe missing CQ-Depend on the common-mk change. I will test that (despite it got retrieved when they ran the CQ together)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "9441870dc4c0e1f065883491d55fd45d2a279628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
