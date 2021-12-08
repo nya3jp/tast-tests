@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7202da47_290aa408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2021-12-08T20:19:37Z",
+      "side": 1,
+      "message": "Cherry pick to R96 and R97 because partners want this in earlier releases",
+      "revId": "8c01089bab271756b94c9500838fca93deb1eaf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
