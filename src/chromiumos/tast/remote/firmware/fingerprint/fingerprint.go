@@ -42,14 +42,49 @@ const (
 	fwInfoTypeKeyID
 )
 
-type keyType string
+// KeyType The type of key used to sign the firmware.
+type KeyType string
 
+// Possible key types.
 const (
-	// Types of signing keys.
-	keyTypeDev   keyType = "dev"
-	keyTypePreMp keyType = "premp"
-	keyTypeMp    keyType = "mp"
+	KeyTypeDev   KeyType = "dev"
+	KeyTypePreMp KeyType = "premp"
+	KeyTypeMp    KeyType = "mp"
 )
+
+// FirmwareFile describes the firmware filepath and the signing key type.
+type FirmwareFile struct {
+	filePath  string
+	KeyType   KeyType
+	ROVersion string
+	RWVersion string
+}
+
+// NewFirmwareFile allows for creation of new FirmwareFile struct.
+func NewFirmwareFile(file string, key KeyType, ROVersion, RWVersion string) FirmwareFile {
+	return FirmwareFile{filePath: file, KeyType: key, ROVersion: ROVersion, RWVersion: RWVersion}
+}
+
+// NewMPFirmwareFile creates firmwareFile struct for MP-signed image.
+func NewMPFirmwareFile(ctx context.Context, d *rpcdut.RPCDUT) (FirmwareFile, error) {
+	fpBoard, err := Board(ctx, d)
+	if err != nil {
+		return FirmwareFile{}, errors.Wrap(err, "failed to get fingerprint board")
+	}
+	mpFirmwarePath, err := FirmwarePath(ctx, d, fpBoard)
+	if err != nil {
+		return FirmwareFile{}, errors.Wrap(err, "failed to get build fw filepath")
+	}
+	RWVersion, err := GetBuildRWFirmwareVersion(ctx, d, mpFirmwarePath)
+	if err != nil {
+		return FirmwareFile{}, errors.Wrap(err, "failed to get expected RW version")
+	}
+	ROVersion, err := getExpectedFwInfo(fpBoard, mpFirmwarePath, fwInfoTypeRoVersion)
+	if err != nil {
+		return FirmwareFile{}, errors.Wrap(err, "failed to get expected RO version")
+	}
+	return FirmwareFile{filePath: mpFirmwarePath, KeyType: KeyTypeMp, ROVersion: ROVersion, RWVersion: RWVersion}, nil
+}
 
 // FPBoardName is the board name of the FPMCU.
 type FPBoardName string
@@ -81,23 +116,23 @@ const (
 )
 
 // Map from signing key ID to type of signing key.
-var keyIDMap = map[string]keyType{
+var keyIDMap = map[string]KeyType{
 	// bloonchipper.
-	"61382804da86b4156d666cc9a976088f8b647d44": keyTypeDev,
-	"07b1af57220c196e363e68d73a5966047c77011e": keyTypePreMp,
-	"1c590ef36399f6a2b2ef87079c135b69ef89eb60": keyTypeMp,
+	"61382804da86b4156d666cc9a976088f8b647d44": KeyTypeDev,
+	"07b1af57220c196e363e68d73a5966047c77011e": KeyTypePreMp,
+	"1c590ef36399f6a2b2ef87079c135b69ef89eb60": KeyTypeMp,
 
 	// dartmonkey.
-	"257a0aa3ac9e81aa4bc3aabdb6d3d079117c5799": keyTypeMp,
+	"257a0aa3ac9e81aa4bc3aabdb6d3d079117c5799": KeyTypeMp,
 
 	// nocturne.
-	"8a8fc039a9463271995392f079b83ce33832d07d": keyTypeDev,
-	"6f38c866182bd9bf7a4462c06ac04fa6a0074351": keyTypeMp,
-	"f6f7d96c48bd154dbae7e3fe3a3b4c6268a10934": keyTypePreMp,
+	"8a8fc039a9463271995392f079b83ce33832d07d": KeyTypeDev,
+	"6f38c866182bd9bf7a4462c06ac04fa6a0074351": KeyTypeMp,
+	"f6f7d96c48bd154dbae7e3fe3a3b4c6268a10934": KeyTypePreMp,
 
 	// nami.
-	"754aea623d69975a22998f7b97315dd53115d723": keyTypePreMp,
-	"35486c0090ca390408f1fbbf2a182966084fe2f8": keyTypeMp,
+	"754aea623d69975a22998f7b97315dd53115d723": KeyTypePreMp,
+	"35486c0090ca390408f1fbbf2a182966084fe2f8": KeyTypeMp,
 }
 
 // Map of attributes for a given board's various firmware file releases.
@@ -224,12 +259,12 @@ func ValidateBuildFwFile(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardN
 	}
 
 	// Check the signing key type is allowed.
-	keyType, ok := keyIDMap[actualKeyID]
+	KeyType, ok := keyIDMap[actualKeyID]
 	if !ok {
 		return errors.Errorf("failed to get key type for key id: %s", actualKeyID)
 	}
-	if keyType != keyTypePreMp && keyType != keyTypeMp {
-		return errors.Errorf("key type %s is not allowed", keyType)
+	if KeyType != KeyTypePreMp && KeyType != KeyTypeMp {
+		return errors.Errorf("key type %s is not allowed", KeyType)
 	}
 
 	// Check RO version.
@@ -363,17 +398,13 @@ func FirmwarePath(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName) (s
 }
 
 // FlashFirmware flashes the original fingerprint firmware in rootfs.
-func FlashFirmware(ctx context.Context, d *rpcdut.RPCDUT, needsRebootAfterFlashing bool) error {
+func FlashFirmware(ctx context.Context, d *rpcdut.RPCDUT, fpFirmwarePath string, needsRebootAfterFlashing bool) error {
 	fpBoard, err := Board(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
 	}
 	testing.ContextLogf(ctx, "fp board name: %q", fpBoard)
 
-	fpFirmwarePath, err := FirmwarePath(ctx, d, fpBoard)
-	if err != nil {
-		return errors.Wrap(err, "failed to get fp firmware path")
-	}
 	flashCmd := []string{"flash_fp_mcu", "--noservices", fpFirmwarePath}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(flashCmd))
 	cmd := d.Conn().CommandContext(ctx, flashCmd[0], flashCmd[1:]...)
@@ -423,16 +454,20 @@ func InitializeEntropy(ctx context.Context, d *rpcdut.RPCDUT) error {
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
-func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
+func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, firmwareFile string, needsRebootAfterFlashing bool) error {
 	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		return errors.Wrap(err, "failed to disable HW write protect")
 	}
-	if err := FlashFirmware(ctx, d, needsRebootAfterFlashing); err != nil {
+	if err := FlashFirmware(ctx, d, firmwareFile, needsRebootAfterFlashing); err != nil {
 		return errors.Wrap(err, "failed to flash FP firmware")
 	}
 	testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
 	if err := InitializeEntropy(ctx, d); err != nil {
 		return err
+	}
+	testing.ContextLog(ctx, "Syncing files before reboot")
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync files before reboot")
 	}
 	testing.ContextLog(ctx, "Entropy initialized, now rebooting to get seed")
 	if err := d.Reboot(ctx); err != nil {
@@ -445,13 +480,13 @@ func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, needs
 }
 
 // InitializeKnownState checks that the AP can talk to FPMCU. If not, it flashes the FPMCU.
-func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, buildFWFile string, needsRebootAfterFlashing bool) error {
+func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, pxy *servo.Proxy, fpBoard FPBoardName, firmwareFile FirmwareFile, needsRebootAfterFlashing bool) error {
 	// Check if the FPMCU even responds to a friendly hello (query version).
 	// Save the version string in a file for later.
 	out, err := CheckFirmwareIsFunctional(ctx, d.DUT())
 	if err != nil {
 		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Reflashing FP firmware", err)
-		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+		if err := ReimageFPMCU(ctx, d, pxy, firmwareFile.filePath, needsRebootAfterFlashing); err != nil {
 			return err
 		}
 	}
@@ -464,9 +499,9 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 
 	// Check all other standard FPMCU state.
 	testing.ContextLog(ctx, "Checking other FPMCU state")
-	if err := CheckValidFlashState(ctx, d, fpBoard, buildFWFile); err != nil {
+	if err := CheckValidFlashState(ctx, d, fpBoard, firmwareFile); err != nil {
 		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
-		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+		if err := ReimageFPMCU(ctx, d, pxy, firmwareFile.filePath, needsRebootAfterFlashing); err != nil {
 			return err
 		}
 	}
@@ -476,16 +511,10 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 
 // CheckValidFlashState validates the rollback state and the running firmware versions (RW and RO).
 // It returns an error if any of the values are incorrect.
-func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName, buildFWFile string) error {
+func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName, firmwareFile FirmwareFile) error {
 	// Check that RO and RW versions are what we expect.
-	expectedRWVersion, err := GetBuildRWFirmwareVersion(ctx, d, buildFWFile)
-	if err != nil {
-		return errors.Wrap(err, "failed to get expected RW version")
-	}
-	expectedROVersion, err := getExpectedFwInfo(fpBoard, buildFWFile, fwInfoTypeRoVersion)
-	if err != nil {
-		return errors.Wrap(err, "failed to get expected RO version")
-	}
+	expectedROVersion := firmwareFile.ROVersion
+	expectedRWVersion := firmwareFile.RWVersion
 	if err := CheckRunningFirmwareVersionMatches(ctx, d, expectedROVersion, expectedRWVersion); err != nil {
 		return err
 	}

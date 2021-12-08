@@ -26,7 +26,7 @@ type FirmwareTest struct {
 	d                        *rpcdut.RPCDUT
 	servo                    *servo.Proxy
 	fpBoard                  FPBoardName
-	buildFwFile              string
+	firmwareFile             FirmwareFile
 	daemonState              []daemonState
 	needsRebootAfterFlashing bool
 	cleanupTime              time.Duration
@@ -36,7 +36,7 @@ type FirmwareTest struct {
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
 // enableHWWP indicates whether the test should enable hardware write protect.
 // enableSWWP indicates whether the test should enable software write protect.
-func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir string, enableHWWP, enableSWWP bool) (firmwareTest *FirmwareTest, initError error) {
+func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir string, firmwareFile FirmwareFile, enableHWWP, enableSWWP bool) (firmwareTest *FirmwareTest, initError error) {
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to servo")
@@ -55,18 +55,22 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		return nil, errors.Wrap(err, "failed to get fingerprint board")
 	}
 
-	t.buildFwFile, err = FirmwarePath(ctx, t.d, t.fpBoard)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get build firmware file path")
+	if (firmwareFile == FirmwareFile{}) {
+		return nil, errors.Wrap(err, "firmwareFile empty")
 	}
+	t.firmwareFile = firmwareFile
+	if firmwareFile.KeyType == KeyTypeMp {
+		if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, firmwareFile.filePath); err != nil {
+			return nil, errors.Wrap(err, "failed to validate MP build firmware file")
+		}
 
-	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
-		return nil, errors.Wrap(err, "failed to validate build firmware file")
-	}
-
-	t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
+		t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to determine if reboot is needed")
+		}
+	} else {
+		// If we're planning to reimage and get TPM seed, we'll need to reboot.
+		t.needsRebootAfterFlashing = true
 	}
 
 	// Disable rootfs verification. It's necessary in order to:
@@ -142,7 +146,6 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 				}
 			}
 		}()
-
 		// Disable FP updater so that it doesn't interfere with the test when we reboot.
 		if err := DisableFPUpdater(ctx, t.d); err != nil {
 			return nil, errors.Wrap(err, "failed to disable updater")
@@ -167,12 +170,12 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 	}
 
 	// Check FPMCU state and reflash if needed.
-	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.buildFwFile, t.needsRebootAfterFlashing); err != nil {
+	if err := InitializeKnownState(ctx, t.d, outDir, pxy, t.fpBoard, t.firmwareFile, t.needsRebootAfterFlashing); err != nil {
 		return nil, errors.Wrap(err, "initializing known state failed")
 	}
 
 	// Double check our work in the previous step.
-	if err := CheckValidFlashState(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
+	if err := CheckValidFlashState(ctx, t.d, t.fpBoard, t.firmwareFile); err != nil {
 		return nil, err
 	}
 
@@ -204,7 +207,12 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
+	// Always flash MP firmware during clean up.
+	closingFwFile, err := FirmwarePath(ctx, t.d, t.fpBoard)
+	if err != nil {
+		firstErr = err
+	}
+	if err := ReimageFPMCU(ctx, t.d, t.servo, closingFwFile, t.needsRebootAfterFlashing); err != nil {
 		// ReimageFPMCU reboots the DUT at least once. Sometimes after
 		// reboot, the connection to the DUT is broken. In this case
 		// we should return error now, because further executing will
@@ -294,9 +302,14 @@ func (t *FirmwareTest) UpstartService() platform.UpstartServiceClient {
 	return platform.NewUpstartServiceClient(t.RPCClient().Conn)
 }
 
-// BuildFwFile gets the firmware file.
+// FirmwareFile gets the firmware file.
+func (t *FirmwareTest) FirmwareFile() FirmwareFile {
+	return t.firmwareFile
+}
+
+// BuildFwFile gets the firmware file path.
 func (t *FirmwareTest) BuildFwFile() string {
-	return t.buildFwFile
+	return t.firmwareFile.filePath
 }
 
 // NeedsRebootAfterFlashing describes whether DUT needs to be rebooted after flashing.
