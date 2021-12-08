@@ -47,7 +47,7 @@ func FpBioWash(ctx context.Context, s *testing.State) {
 		servoSpec = ""
 	}
 	// HW wp must be disabled to flash_fp_mcu.
-	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false, false)
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), "", false, false)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -63,7 +63,7 @@ func FpBioWash(ctx context.Context, s *testing.State) {
 	// This test requires a forced flash without entropy
 	// initialization to clear entropy.
 	testing.ContextLog(ctx, "Force flashing original FP firmware")
-	if err := fingerprint.FlashFirmware(ctx, d, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := fingerprint.FlashFirmware(ctx, d, t.BuildFwFile(), t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to flash original FP firmware: ", err)
 	}
 

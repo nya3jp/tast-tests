@@ -347,17 +347,13 @@ func FirmwarePath(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoardName) (s
 }
 
 // FlashFirmware flashes the original fingerprint firmware in rootfs.
-func FlashFirmware(ctx context.Context, d *rpcdut.RPCDUT, needsRebootAfterFlashing bool) error {
+func FlashFirmware(ctx context.Context, d *rpcdut.RPCDUT, fpFirmwarePath string, needsRebootAfterFlashing bool) error {
 	fpBoard, err := Board(ctx, d)
 	if err != nil {
 		return errors.Wrap(err, "failed to get fp board")
 	}
 	testing.ContextLogf(ctx, "fp board name: %q", fpBoard)
 
-	fpFirmwarePath, err := FirmwarePath(ctx, d, fpBoard)
-	if err != nil {
-		return errors.Wrap(err, "failed to get fp firmware path")
-	}
 	flashCmd := []string{"flash_fp_mcu", "--noservices", fpFirmwarePath}
 	testing.ContextLogf(ctx, "Running command: %s", shutil.EscapeSlice(flashCmd))
 	cmd := d.Conn().CommandContext(ctx, flashCmd[0], flashCmd[1:]...)
@@ -407,11 +403,11 @@ func InitializeEntropy(ctx context.Context, d *rpcdut.RPCDUT) error {
 }
 
 // ReimageFPMCU flashes the FPMCU completely and initializes entropy.
-func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, needsRebootAfterFlashing bool) error {
+func ReimageFPMCU(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, firmwareFile string, needsRebootAfterFlashing bool) error {
 	if err := pxy.Servo().SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 		return errors.Wrap(err, "failed to disable HW write protect")
 	}
-	if err := FlashFirmware(ctx, d, needsRebootAfterFlashing); err != nil {
+	if err := FlashFirmware(ctx, d, firmwareFile, needsRebootAfterFlashing); err != nil {
 		return errors.Wrap(err, "failed to flash FP firmware")
 	}
 	testing.ContextLog(ctx, "Flashed FP firmware, now initializing the entropy")
@@ -435,7 +431,7 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 	out, err := CheckFirmwareIsFunctional(ctx, d.DUT())
 	if err != nil {
 		testing.ContextLogf(ctx, "FPMCU firmware is not functional (error: %v). Reflashing FP firmware", err)
-		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+		if err := ReimageFPMCU(ctx, d, pxy, buildFWFile, needsRebootAfterFlashing); err != nil {
 			return err
 		}
 	}
@@ -450,7 +446,7 @@ func InitializeKnownState(ctx context.Context, d *rpcdut.RPCDUT, outdir string, 
 	testing.ContextLog(ctx, "Checking other FPMCU state")
 	if err := CheckValidFlashState(ctx, d, fpBoard, buildFWFile); err != nil {
 		testing.ContextLogf(ctx, "%v. Reflashing FP firmware", err)
-		if err := ReimageFPMCU(ctx, d, pxy, needsRebootAfterFlashing); err != nil {
+		if err := ReimageFPMCU(ctx, d, pxy, buildFWFile, needsRebootAfterFlashing); err != nil {
 			return err
 		}
 	}

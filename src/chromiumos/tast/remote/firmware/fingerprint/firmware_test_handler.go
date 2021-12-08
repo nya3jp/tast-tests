@@ -35,7 +35,7 @@ type FirmwareTest struct {
 // NewFirmwareTest creates and initializes a new fingerprint firmware test.
 // enableHWWP indicates whether the test should enable hardware write protect.
 // enableSWWP indicates whether the test should enable software write protect.
-func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir string, enableHWWP, enableSWWP bool) (firmwareTest *FirmwareTest, initError error) {
+func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir, firmwareFile string, enableHWWP, enableSWWP bool) (firmwareTest *FirmwareTest, initError error) {
 	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to servo")
@@ -59,9 +59,13 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		return nil, errors.Wrap(err, "failed to get fingerprint board")
 	}
 
-	t.buildFwFile, err = FirmwarePath(ctx, t.d, t.fpBoard)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get build firmware file path")
+	if firmwareFile == "" {
+		t.buildFwFile, err = FirmwarePath(ctx, t.d, t.fpBoard)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get build firmware file path")
+		}
+	} else {
+		t.buildFwFile = firmwareFile
 	}
 
 	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
@@ -161,7 +165,12 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
+	// Always flash MP firmware during clean up.
+	closingFwFile, err := FirmwarePath(ctx, t.d, t.fpBoard)
+	if err != nil {
+		firstErr = err
+	}
+	if err := ReimageFPMCU(ctx, t.d, t.servo, closingFwFile, t.needsRebootAfterFlashing); err != nil {
 		firstErr = err
 	}
 

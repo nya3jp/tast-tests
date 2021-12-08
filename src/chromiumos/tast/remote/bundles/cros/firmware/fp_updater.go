@@ -110,12 +110,6 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to determine whether reboot is needed: ", err)
 	}
 
-	defer func() {
-		if err := fingerprint.ReimageFPMCU(ctx, d, pxy, needsReboot); err != nil {
-			s.Error("Failed to flash original firmware: ", err)
-		}
-	}()
-
 	fpBoard, err := fingerprint.Board(ctx, d)
 	if err != nil {
 		s.Fatal("Failed to get fingerprint board: ", err)
@@ -125,6 +119,12 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get build firmware file path: ", err)
 	}
+
+	defer func() {
+		if err := fingerprint.ReimageFPMCU(ctx, d, pxy, buildFWFile, needsReboot); err != nil {
+			s.Error("Failed to flash original firmware: ", err)
+		}
+	}()
 
 	// InitializeKnownState enables HW write protect so that we are testing
 	// the same configuration as the end user.
