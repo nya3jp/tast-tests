@@ -40,7 +40,7 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
-	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that UI Automator is not enabled.
+	// arcBootedWithoutUIAutomator is a fixture similar to arcBooted. The only difference from arcBooted is that UI Automator is not enabled.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithoutUIAutomator",
 		Desc: "ARC is booted without UI Automator",
