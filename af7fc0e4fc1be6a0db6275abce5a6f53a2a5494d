@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "406dede1_3aea6f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-08T08:17:56Z",
+      "side": 1,
+      "message": "Hi David,\nI have some follow-up questions, it would be great if you could provide more details.\nthanks,\nJakub",
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc598ba7_e6cec0e7",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-12-08T02:04:25Z",
       "side": 1,
       "message": "We should avoid splitting test logic into multiple functions. If there are legitimate helper functions, that\u0027s fine. However, partitioning a test in a way where the only benefit is shorter functions should be avoided.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 68
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b65f1d_90cd2016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-08T08:17:56Z",
+      "side": 1,
+      "message": "can you explain a bit more why it\u0027s better to avoid shorter functions? (I\u0027m new to Tast and go) I\u0027d say they make the test more readable - you immediately see what it\u0027s doing, and reduce duplication. For example, here want to check if device owner and a secondary user can remove other users. If we do not split it, the function will be over 150 LOC long",
+      "parentUuid": "dc598ba7_e6cec0e7",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -123,6 +164,30 @@
       "writtenOn": "2021-12-08T02:04:25Z",
       "side": 1,
       "message": "This looks like it\u0027s testing two distinct behaviors. It should probably be two different tests.",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0bcc73b_f71a4819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-08T08:17:56Z",
+      "side": 1,
+      "message": "this is a trade-off between having some logic in the test, and duplicating things. If we split it, we\u0027ll have to repeat the initial setup, logging in and opening the Settings page. Do you think it\u0027s ok? Or maybe you have some other suggestions?",
+      "parentUuid": "5824cb3b_9080f1c4",
       "range": {
         "startLine": 97,
         "startChar": 4,
