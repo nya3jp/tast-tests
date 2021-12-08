@@ -142,12 +142,16 @@ func LockScreen(ctx context.Context, s *testing.State) {
 
 	// Loop through all the Quick Settings nodes of locked screen and verify if they exist.
 	for node, finder := range checkNodes {
-		shown, err := uiauto.New(tconn).IsNodeFound(ctx, finder)
+		ui := uiauto.New(tconn)
+		if err := ui.WaitUntilExists(finder)(ctx); err != nil {
+			s.Fatalf("Failed to wait for %v node to exist: %v", node, err)
+		}
+		shown, err := ui.IsNodeFound(ctx, finder)
 		if err != nil {
-			s.Fatalf("Failed to check existence of %v: %v", node, err)
+			s.Fatalf("Failed to find %v node: %v", node, err)
 		}
 		if !shown {
-			s.Errorf("%v was not found in the UI", node)
+			s.Errorf("%v node was not shown in the UI", node)
 		}
 	}
 }
