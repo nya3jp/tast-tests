@@ -27,27 +27,17 @@ type testParameters struct {
 }
 
 var (
-	arcAppLoadingGaia = &arc.GaiaVars{
-		UserVar: "arc.AppLoadingPerf.username",
-		PassVar: "arc.AppLoadingPerf.password",
-	}
-
-	// arcAppLoadingBooted is a precondition similar to arc.Booted(). The only difference from arc.Booted() is
-	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
-
-	// arcAppLoadingVMBooted is a precondition similar to arc.VMBooted(). The only difference from arc.VMBooted() is
-	// that it disables some heavy post-provisioned Android activities that use system resources.
-	arcAppLoadingVMBooted = arc.NewPrecondition("arcapploading_vmbooted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+	// arcAppLoadingBooted is a precondition similar to arc.Booted() with no opt-in and disables some heavy Android activities that use system resources.
+	arcAppLoadingBooted = arc.NewPrecondition("arcapploading_booted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 
 	// arcAppLoadingRtVcpuVMBooted adds feature to boot ARC with realtime vcpu is enabled.
-	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore")...)
+	arcAppLoadingRtVcpuVMBooted = arc.NewPrecondition("arcapploading_rt_vcpu_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcRtVcpuDualCore,ArcRtVcpuQuadCore")...)
 
 	// arcAppLoadingODirectVMBooted enables O_DIRECT for crosvm.
-	arcAppLoadingODirectVMBooted = arc.NewPrecondition("arcapploading_odirect_vmbooted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, true /* O_DIRECT */, append(arc.DisableSyncFlags())...)
+	arcAppLoadingODirectVMBooted = arc.NewPrecondition("arcapploading_odirect_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, true /* O_DIRECT */, append(arc.DisableSyncFlags())...)
 
 	// arcAppLoadingDalvikMemoryProfileVMBooted enables ArcUseDalvikMemoryProfile chrome feature.
-	arcAppLoadingDalvikMemoryProfileVMBooted = arc.NewPrecondition("arcapploading_dalvik_memory_profile_vmbooted", arcAppLoadingGaia, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcUseDalvikMemoryProfile")...)
+	arcAppLoadingDalvikMemoryProfileVMBooted = arc.NewPrecondition("arcapploading_dalvik_memory_profile_vmbooted", nil /* GAIAVARS */, nil /* GAIALOGINPOOLVARS */, false /* O_DIRECT */, append(arc.DisableSyncFlags(), "--enable-features=ArcUseDalvikMemoryProfile")...)
 )
 
 func init() {
@@ -65,7 +55,7 @@ func init() {
 		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
 			Val: testParameters{
 				binaryTranslation: false,
 			},
@@ -77,7 +67,7 @@ func init() {
 			Val: testParameters{
 				binaryTranslation: false,
 			},
-			Pre: arcAppLoadingVMBooted,
+			Pre: arcAppLoadingBooted,
 		}, {
 			Name:              "rt_vcpu_vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -117,7 +107,7 @@ func init() {
 			Val: testParameters{
 				binaryTranslation: true,
 			},
-			Pre: arcAppLoadingVMBooted,
+			Pre: arcAppLoadingBooted,
 		}},
 		VarDeps: []string{"arc.AppLoadingPerf.username", "arc.AppLoadingPerf.password"},
 	})
@@ -215,7 +205,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}
 	config := apploading.TestConfig{
 		PerfValues:           finalPerfValues,
-		BatteryDischargeMode: setup.ForceBatteryDischarge,
+		BatteryDischargeMode: setup.NoBatteryDischarge,
 		ApkPath:              s.DataPath(apkName),
 		OutDir:               s.OutDir(),
 	}
