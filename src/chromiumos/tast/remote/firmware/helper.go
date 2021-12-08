@@ -461,14 +461,16 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return errors.New("no USB key detected")
 	}
 	var fdiskOutput []byte
-	// Verify that the device really exists on the servo host.
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
-		return err
-	}, &testing.PollOptions{
-		Timeout:  10 * time.Second,
-		Interval: 1 * time.Second,
-	})
+
+	fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
+	// // Verify that the device really exists on the servo host.
+	// err = testing.Poll(ctx, func(ctx context.Context) error {
+	// 	fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
+	// 	return err
+	// }, &testing.PollOptions{
+	// 	Timeout:  60 * time.Second,
+	// 	Interval: 1 * time.Second,
+	// })
 	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
 	if err != nil {
 		return errors.Wrapf(err, "validate usb key at %q", usbdev)
