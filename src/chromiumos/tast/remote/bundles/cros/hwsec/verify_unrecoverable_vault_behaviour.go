@@ -24,7 +24,7 @@ func init() {
 			"dlunev@chromium.org",
 		},
 		SoftwareDeps: []string{"reboot", "tpm"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:hwsec_destructive_func"},
 		Timeout:      5 * time.Minute,
 	})
 }
@@ -40,7 +40,7 @@ func VerifyUnrecoverableVaultBehaviour(ctx context.Context, s *testing.State) {
 	utility := helper.CryptohomeClient()
 
 	// Resets the TPM states before running the tests.
-	if err := helper.EnsureTPMIsReset(ctx); err != nil {
+	if err := helper.EnsureTPMAndSystemStateAreReset(ctx); err != nil {
 		s.Fatal("Failed to ensure resetting TPM: ", err)
 	}
 	if err := helper.EnsureTPMIsReady(ctx, hwsec.DefaultTakingOwnershipTimeout); err != nil {
