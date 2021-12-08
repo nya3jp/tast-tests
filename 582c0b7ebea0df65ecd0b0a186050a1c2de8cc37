@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8575dcd2_b20f7702",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-12-08T01:30:20Z",
+      "side": 1,
+      "message": "nit: Can we list corresponding shortcut of each operation? Feel that will be clearer.",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "efbe455a_b44c3538",
@@ -14,6 +37,98 @@
       "writtenOn": "2021-12-07T23:50:47Z",
       "side": 1,
       "message": "Min, can you take a look at this before I send it off to tast owners? If you don\u0027t have time, I can try to find someone else.",
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3081aa2_ec39168f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-12-08T01:30:20Z",
+      "side": 1,
+      "message": "Does the `desksFinder` includes checking that the desk is current active desk after switching to it?\nAnd would it better to say in the comment that switching to a desk will activate the target desk? Otherwise, it is not super straightforward to know that the target desk is the current active desk.",
+      "range": {
+        "startLine": 104,
+        "startChar": 21,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8031f1_a894a2d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-12-08T01:30:20Z",
+      "side": 1,
+      "message": "nit: Can we add more details to the statement then we know the \"Browser\" is current active window and \"desk 2\" is current active desk?",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 32
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46db81b6_bd57bbeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-12-08T01:30:20Z",
+      "side": 1,
+      "message": "nit: Add more details like, Current active window Browser is on desk 2, expected to be on desk 1?",
+      "range": {
+        "startLine": 131,
+        "startChar": 11,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396963bd_0e17dc6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-12-08T01:30:20Z",
+      "side": 1,
+      "message": "Seems the desks are using default names, after moving \"Desk 1\" to the right, it will be renamed to \"Desk 2\". Here we are planning to move the previous \"Desk 1\" to the left, which is \"Desk 2\" after operation at L169, can you double confirm? Or maybe rename the desks to make things easier?",
+      "range": {
+        "startLine": 186,
+        "startChar": 41,
+        "endLine": 186,
+        "endChar": 47
+      },
       "revId": "582c0b7ebea0df65ecd0b0a186050a1c2de8cc37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
