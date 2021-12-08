@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "870c6539_8642ed25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-08T10:09:29Z",
+      "side": 1,
+      "message": "Labeling tracefs is a slow operation during boot. We\u0027ve found recent boot time regression on the kernelnext build of celeron devices because a drm instance of tracefs is introduced. https://crrev.com/c/3297372 mitigates the impact by parallelizing labeling for different tracefs instances, and we want a test that warns if we introduce even more tracefs instances.\n\nIf we have more tracefs instances than numProcessors, labeling could have more obvious impact to the boot time (we have platform.BootPerf for the general boot timing, but the impact of tracefs labeling is not always that obvious). This test acts as a warning since failing doesn\u0027t necessarily mean boot time regression, but we may need to take a look to see the impact of new tracefs instances.",
+      "parentUuid": "0b6586ae_8fc9cf44",
+      "range": {
+        "startLine": 25,
+        "startChar": 103,
+        "endLine": 25,
+        "endChar": 176
+      },
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "541747c3_61e5017d",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-12-07T12:20:14Z",
       "side": 1,
       "message": "optional: i often see numProcessors. Or in go style, we prefer shorter name specifically for the local variable. e.g. \"np\".",
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbbf54a9_a7f06e26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-08T10:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541747c3_61e5017d",
       "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d5077b_cdef3a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-08T10:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7a63ca9_c4246b46",
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51705cc0_197539a5",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-12-07T12:20:14Z",
       "side": 1,
       "message": "(optional): maybe using common message pattern with got/want.\n\"Unexpected number of tracefs instances: got %d, want \u003c\u003d%d\",",
+      "range": {
+        "startLine": 50,
+        "startChar": 12,
+        "endLine": 50,
+        "endChar": 104
+      },
+      "revId": "5b41bcdff79b09b3eb4942cfa8c651b28ef39fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2686ce16_c5baa37f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/check_tracefs_instances.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-08T10:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51705cc0_197539a5",
       "range": {
         "startLine": 50,
         "startChar": 12,
