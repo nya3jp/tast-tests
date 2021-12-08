@@ -9,7 +9,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	"chromiumos/policy/enterprise_management"
+	"chromiumos/policy/chromium/policy/enterprise_management_proto"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/session/ownership"
@@ -42,12 +42,12 @@ func MultiUserPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse PKCS #12 file: ", err)
 	}
 
-	var settings enterprise_management.ChromeDeviceSettingsProto
+	var settings enterprise_management_proto.ChromeDeviceSettingsProto
 	policy, err := session.BuildPolicy("", privKey, nil, &settings)
 	if err != nil {
 		s.Fatal("Failed to build test policy data: ", err)
 	}
-	empty := &enterprise_management.PolicyFetchResponse{}
+	empty := &enterprise_management_proto.PolicyFetchResponse{}
 
 	if err := session.SetUpDevice(ctx); err != nil {
 		s.Fatal("Failed to reset device ownership: ", err)
