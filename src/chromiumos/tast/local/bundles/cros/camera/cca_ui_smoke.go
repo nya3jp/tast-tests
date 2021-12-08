@@ -39,16 +39,21 @@ func init() {
 			Name:              "vivid",
 			ExtraSoftwareDeps: []string{caps.VividCamera},
 			Fixture:           "ccaLaunched",
-			ExtraAttr:         []string{"group:camera-postsubmit"},
-			Val:               none,
+			// TODO(b/209833758): Removed from CQ due to flake in VM.
+			ExtraAttr: []string{"group:camera-postsubmit", "informational"},
+			Val:       none,
 		}, {
 			Name:    "fake",
 			Fixture: "ccaLaunchedWithFakeCamera",
 			Val:     none,
+			// TODO(b/209833758): Removed from CQ due to flake in VM.
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:    "photo_fake",
 			Fixture: "ccaLaunchedWithFakeCamera",
 			Val:     photoTaking,
+			// TODO(b/209833758): Removed from CQ due to flake in VM.
+			ExtraAttr: []string{"informational"},
 		}, {
 			Name:    "video_fake",
 			Fixture: "ccaLaunchedWithFakeCamera",
