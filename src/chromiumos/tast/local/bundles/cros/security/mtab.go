@@ -90,6 +90,8 @@ func Mtab(ctx context.Context, s *testing.State) {
 		"/dev":     {nil, "devtmpfs", "rw,nosuid,noexec,mode=755"},
 		"/dev/pts": {nil, "devpts", "rw,nosuid,noexec,gid=5,mode=620"},
 
+		"/mnt/camera_libs": {loopDev, "squashfs", "ro"},
+
 		"/opt/google/containers/android/rootfs/root":                        {loopDev, "squashfs", "ro"},
 		"/opt/google/containers/android/rootfs/root/system/lib/arm":         {loopDev, "squashfs", "ro,nosuid,nodev"},
 		"/opt/google/containers/arc-obb-mounter/mountpoints/container-root": {loopDev, "squashfs", "ro,noexec"},

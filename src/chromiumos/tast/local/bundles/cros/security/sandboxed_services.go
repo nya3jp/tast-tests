@@ -111,6 +111,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"biod", "biod", "biod", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
 		{"cros_camera_service", "arc-camera", "arc-camera", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
 		{"cros_camera_algo", "arc-camera", "arc-camera", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"cros_camera_libfs", "root", "root", 0},
 		{"arc_camera_service", "arc-camera", "arc-camera", restrictCaps},
 		{"arc-obb-mounter", "root", "root", pidNS | mntNS},
 		{"cdm-oemcrypto", "cdm-oemcrypto", "cdm-oemcrypto", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
