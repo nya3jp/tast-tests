@@ -153,7 +153,7 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 					return err
 				}
 				return nil
-			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 				return errors.Wrapf(err, "could not toggle %s to %t", feature, enable)
 			}
 		}
