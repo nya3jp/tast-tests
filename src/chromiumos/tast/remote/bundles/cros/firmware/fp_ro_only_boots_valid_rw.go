@@ -83,7 +83,11 @@ func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
 	if !ok {
 		servoSpec = ""
 	}
-	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true, true)
+	firmwareFile, err := fingerprint.NewMPFirmwareFile(ctx, d)
+	if err != nil {
+		s.Fatal("failed to create MP firmwareFile: ", err)
+	}
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), firmwareFile, true, true)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -96,7 +100,7 @@ func FpROOnlyBootsValidRW(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
 	defer cancel()
 
-	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, s.DataPath(fingerprint.Futility), s.DataPath(fingerprint.DevKeyForFPBoard(t.FPBoard())), t.FPBoard(), t.BuildFwFile(), t.DUTTempDir())
+	testImages, err := fingerprint.GenerateTestFirmwareImages(ctx, d, s.DataPath(fingerprint.Futility), s.DataPath(fingerprint.DevKeyForFPBoard(t.FPBoard())), t.FPBoard(), t.FirmwareFile().FilePath, t.DUTTempDir())
 	if err != nil {
 		s.Fatal("Failed to generate test images: ", err)
 	}

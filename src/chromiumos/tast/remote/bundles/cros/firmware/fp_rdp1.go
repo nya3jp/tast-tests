@@ -66,7 +66,11 @@ func FpRDP1(ctx context.Context, s *testing.State) {
 		servoSpec = ""
 	}
 	// Set both HW write protect false and SW write protect true to get RDP1 state.
-	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), false /*HW protect*/, true /*SW protect*/)
+	firmwareFile, err := fingerprint.NewMPFirmwareFile(ctx, d)
+	if err != nil {
+		s.Fatal("failed to create MP firmwareFile: ", err)
+	}
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), firmwareFile, false /*HW protect*/, true /*SW protect*/)
 	if err != nil {
 		s.Fatal("Failed to create new firmware test: ", err)
 	}
@@ -90,7 +94,7 @@ func FpRDP1(ctx context.Context, s *testing.State) {
 	// * Reading from flash without changing the RDP level should fail (and we should not have read any bytes from flash).
 	// * The firmware should still be functional because mass erase is NOT triggered since we are NOT changing the RDP level.
 	testing.ContextLog(ctx, "Reading firmware without modifying RDP level")
-	if err := testRDP1(ctx, s.OutDir(), d, t.BuildFwFile(), false /*preserve RDP level*/, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP1(ctx, s.OutDir(), d, t.FirmwareFile().FilePath, false /*preserve RDP level*/, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP1 without changing RDP level: ", err)
 	}
 
@@ -104,7 +108,7 @@ func FpRDP1(ctx context.Context, s *testing.State) {
 	// * Setting the RDP level to 0 (after being at level 1) should trigger a mass erase.
 	// * A mass erase sets all flash bytes to 0xFF, so all bytes read from flash should have that value.
 	testing.ContextLog(ctx, "Reading firmware while setting RDP to level 0")
-	if err := testRDP1(ctx, s.OutDir(), d, t.BuildFwFile(), true /*remove Flash Read Protect*/, t.NeedsRebootAfterFlashing()); err != nil {
+	if err := testRDP1(ctx, s.OutDir(), d, t.FirmwareFile().FilePath, true /*remove Flash Read Protect*/, t.NeedsRebootAfterFlashing()); err != nil {
 		s.Fatal("Failed to validate RDP1 while setting RDP to level 0: ", err)
 	}
 }
