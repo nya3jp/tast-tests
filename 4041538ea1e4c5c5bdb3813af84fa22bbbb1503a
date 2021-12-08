@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a57cfae2_10b97550",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-12-08T05:55:27Z",
+      "side": 1,
+      "message": "Since crrev.com/c/3300401 since this CL is not yet cherry picked in  M96 and M97. So reverted this CL.",
+      "revId": "4041538ea1e4c5c5bdb3813af84fa22bbbb1503a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
