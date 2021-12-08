@@ -16,6 +16,29 @@
       "message": "Hi Victor,\n\nPTAL :) \n\nThanks!",
       "revId": "f9e86cd8340f2bd7fc78b66ebe6d1d53bc806ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb4e9a4_2ca93496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wilco/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-08T13:14:38Z",
+      "side": 1,
+      "message": "bootstrapped the\n\nSame in CL description.",
+      "range": {
+        "startLine": 188,
+        "startChar": 34,
+        "endLine": 188,
+        "endChar": 43
+      },
+      "revId": "f9e86cd8340f2bd7fc78b66ebe6d1d53bc806ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
