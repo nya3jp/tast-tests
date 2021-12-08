@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "440e201c_d88d9308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2021-12-08T00:58:25Z",
+      "side": 1,
+      "message": "Jun, it seems I have to remove the \"informational\" attr too. PTAL see if it makes sense.",
+      "revId": "03cf09bd1a8a2a244f84d7ce451d4595275d06e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
