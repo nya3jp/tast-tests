@@ -206,6 +206,28 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
+	// arcBootedWithVideoLoggingVD is a fixture similar to arcBootedWithVideoLogging, but with additional Chrome
+	// video logging enabled and the mojo::VideoDecoder stack enabled.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithVideoLoggingVD",
+		Desc: "ARC is booted with VD and additional Chrome video logging",
+		Contacts: []string{
+			"arcvm-eng-team@google.com",
+		},
+		Impl: NewArcBootedWithConfigFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs(
+				"--vmodule=" + strings.Join([]string{
+					"*/media/gpu/chromeos/*=2",
+					"*/media/gpu/vaapi/*=2",
+					"*/media/gpu/v4l2/*=2",
+					"*/components/arc/video_accelerator/*=2"}, ","))}, nil
+		}, "--video-decoder=libvda-vd\n"),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
 	// lacrosWithArcBooted is a fixture that combines the functionality of arcBooted and lacros.
 	testing.AddFixture(&testing.Fixture{
 		Name:            "lacrosWithArcBooted",
@@ -245,8 +267,9 @@ type bootedFixture struct {
 	d    *ui.Device
 	init *Snapshot
 
-	playStoreOptin    bool // Opt into PlayStore.
-	enableUIAutomator bool // Enable UI Automator
+	playStoreOptin    bool   // Opt into PlayStore.
+	enableUIAutomator bool   // Enable UI Automator
+	arcvmConfig       string // Append config to arcvm_dev.conf
 
 	fOpt chrome.OptionsCallback // Function to return chrome options.
 
@@ -256,8 +279,16 @@ type bootedFixture struct {
 // NewArcBootedFixture returns a FixtureImpl with a OptionsCallback function provided.
 // ARCEnabled() will always be added to the Chrome options returned by OptionsCallback.
 func NewArcBootedFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
+	return NewArcBootedWithConfigFixture(fOpts, "")
+}
+
+// NewArcBootedWithConfigFixture returns a FixtureImpl with a OptionsCallback function provided and
+// the specified config appended to arcvm_dev.conf. ARCEnabled() will always be added to the Chrome
+// options returned by OptionsCallback.
+func NewArcBootedWithConfigFixture(fOpts chrome.OptionsCallback, arcvmConfig string) testing.FixtureImpl {
 	return &bootedFixture{
 		enableUIAutomator: true,
+		arcvmConfig:       arcvmConfig,
 		fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			opts, err := fOpts(ctx, s)
 			if err != nil {
@@ -306,6 +337,13 @@ func NewArcBootedWithParentChromeFixture() testing.FixtureImpl {
 
 func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	success := false
+
+	// Append additional config to the ARCVM config file, needs to be done before launching Chrome.
+	if f.arcvmConfig != "" {
+		if err := AppendToArcvmDevConf(ctx, f.arcvmConfig); err != nil {
+			s.Fatal("Failed to write arcvm_dev.conf: ", err)
+		}
+	}
 
 	var cr *chrome.Chrome
 	var lacrosFixt lacrosfixt.FixtValue
@@ -398,6 +436,12 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 }
 
 func (f *bootedFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	if f.arcvmConfig != "" {
+		if err := RestoreArcvmDevConf(ctx); err != nil {
+			s.Fatal("Failed to restore arcvm_dev.conf: ", err)
+		}
+	}
+
 	if f.d != nil {
 		if err := f.d.Close(ctx); err != nil {
 			s.Log("Failed to close UI Automator: ", err)
