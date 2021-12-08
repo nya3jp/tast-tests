@@ -63,6 +63,30 @@
       },
       "revId": "7ecc05a75baf33f92e0aeed5bf87e9273616e79d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41e8d76_292b6825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-08T18:13:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79f1b436_d602496b",
+      "range": {
+        "startLine": 192,
+        "startChar": 23,
+        "endLine": 192,
+        "endChar": 83
+      },
+      "revId": "7ecc05a75baf33f92e0aeed5bf87e9273616e79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
