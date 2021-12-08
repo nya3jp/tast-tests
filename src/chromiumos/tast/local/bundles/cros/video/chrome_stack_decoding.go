@@ -304,6 +304,10 @@ var vp90Group1Sub8x8Sf = []string{
 	"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf",
 }
 
+var vp9SVCFiles = []string{
+	"test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf",
+}
+
 func appendJSONFiles(videoFiles []string) []string {
 	var tf []string
 	for _, file := range videoFiles {
@@ -522,6 +526,15 @@ func init() {
 			ExtraData:         appendJSONFiles(vp90Group1Sub8x8Sf),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    vp90Group1Sub8x8Sf,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "vp9_0_svc",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraData:         appendJSONFiles(vp9SVCFiles),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    vp9SVCFiles,
 				validatorType: decoding.MD5,
 			},
 		}},
