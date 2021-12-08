@@ -59,7 +59,7 @@ func init() {
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+			Pre:               pre.AppCompatBooted,
 		}, {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
@@ -71,7 +71,7 @@ func init() {
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			Pre:               pre.AppCompatBootedInTabletMode,
 		}, {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
@@ -83,7 +83,7 @@ func init() {
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+			Pre:               pre.AppCompatBooted,
 		}, {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
@@ -95,11 +95,10 @@ func init() {
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
-		VarDeps: []string{"arcappcompat.Spotify.email", "arcappcompat.Spotify.password"},
+		VarDeps: []string{"arcappcompat.username", "arcappcompat.password", "arcappcompat.Spotify.email", "arcappcompat.Spotify.password"},
 	})
 }
 
