@@ -38,7 +38,7 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForAsphalt,
-				CommonTests: testutil.ClamshellSmokeTests,
+				CommonTests: testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -49,7 +49,7 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForAsphalt,
-				CommonTests: testutil.TouchviewSmokeTests,
+				CommonTests: testutil.TouchviewCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -60,7 +60,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForAsphalt,
-				CommonTests: testutil.ClamshellSmokeTests,
+				CommonTests: testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -71,7 +71,7 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForAsphalt,
-				CommonTests: testutil.TouchviewSmokeTests,
+				CommonTests: testutil.TouchviewCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.

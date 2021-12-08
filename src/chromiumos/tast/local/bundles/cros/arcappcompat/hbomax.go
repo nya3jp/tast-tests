@@ -50,7 +50,7 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForHbomax,
-				CommonTests:      testutil.ClamshellSmokeTests,
+				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForHbomax,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -62,7 +62,7 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForHbomax,
-				CommonTests:      testutil.TouchviewSmokeTests,
+				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForHbomax,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -74,7 +74,7 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForHbomax,
-				CommonTests:      testutil.ClamshellSmokeTests,
+				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForHbomax,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -86,7 +86,7 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForHbomax,
-				CommonTests:      testutil.TouchviewSmokeTests,
+				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForHbomax,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
