@@ -62,6 +62,29 @@
       },
       "revId": "afcb28adf4b26e7f43bb84b802aea63b55b814b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5eda3df_87e6bd97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-08T08:33:40Z",
+      "side": 1,
+      "message": "How about also adding these to prevent something like\n\"WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!\"\n```\n-o GlobalKnownHostsFile\u003d/dev/null -o UserKnownHostsFile\u003d/dev/null\n```",
+      "range": {
+        "startLine": 88,
+        "startChar": 38,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "afcb28adf4b26e7f43bb84b802aea63b55b814b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
