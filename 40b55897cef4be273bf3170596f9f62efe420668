@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63659807_0ece4f5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c539f8_a51c904e",
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0af712e_f35da673",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d91271f4_c42b9844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0af712e_f35da673",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a96f771a_d18b497d",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-09-20T17:36:25Z",
       "side": 1,
       "message": "this might be flaky if you don\u0027t wait for the password field to be focused (like in lockscreen.EnterPassword). you could address that as a follow-up though after b/189597597",
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26893e8_fe4723de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a96f771a_d18b497d",
       "revId": "40b55897cef4be273bf3170596f9f62efe420668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6a02e0a_2e9b5cc4",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "I will try to fix this function as a follow up in b/189597597.",
+      "parentUuid": "a0dc8ca1_e9ea0619",
+      "range": {
+        "startLine": 213,
+        "startChar": 3,
+        "endLine": 213,
+        "endChar": 9
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d9b168c_ec76c513",
         "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
         "patchSetId": 7
@@ -111,6 +195,30 @@
       "writtenOn": "2021-09-20T17:36:25Z",
       "side": 1,
       "message": "Unlock (no capital L)",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 11
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eef2e302_e23b8d5a",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9b168c_ec76c513",
       "range": {
         "startLine": 214,
         "startChar": 5,
@@ -167,6 +275,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14862d9b_fa1f1c18",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd6aee7_a1e70f62",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 8
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "698246fc_0ec25922",
@@ -190,6 +322,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e53b7d9_ca24d95e",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "!st.Locked may not ensure user has logged in. Hence didn\u0027t modify anything here.",
+      "parentUuid": "698246fc_0ec25922",
+      "range": {
+        "startLine": 219,
+        "startChar": 66,
+        "endLine": 219,
+        "endChar": 77
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "427786c5_5e195e3a",
@@ -203,6 +359,30 @@
       "writtenOn": "2021-09-20T17:36:25Z",
       "side": 1,
       "message": "same here, this needs to be returned",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 8
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe872555_70a76aac",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "427786c5_5e195e3a",
       "range": {
         "startLine": 220,
         "startChar": 2,

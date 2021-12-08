@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6bae853_063bed79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1232881
+      },
+      "writtenOn": "2021-12-08T01:26:26Z",
+      "side": 1,
+      "message": "Merged the split test cases into a single script. Removed \"ShowPassword\" and \"HidePassword\" functions and added a new func \"ShowAndHidePIN\" in showpassword subpackage. Added multiple utility functions in lockscreen.go file.",
+      "revId": "4204fd19319dc2cfba4f7c2cf6e73093fb5092c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
