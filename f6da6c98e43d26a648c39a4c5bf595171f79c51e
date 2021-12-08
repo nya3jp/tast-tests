@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f840b9e_2b9031ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-08T01:32:08Z",
+      "side": 1,
+      "message": "Not needed anymore?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3285691_a2f928b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-08T01:32:08Z",
+      "side": 1,
+      "message": "What is this for?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1fbd10c_ac888983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-08T01:32:08Z",
+      "side": 1,
+      "message": "That works but it is cleaner to look at the ExitCode\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/platform/crosid.go;l\u003d29?q\u003dtast%20ExitCode\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 48
+      },
+      "revId": "f6da6c98e43d26a648c39a4c5bf595171f79c51e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
