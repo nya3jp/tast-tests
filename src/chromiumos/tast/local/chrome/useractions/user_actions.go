@@ -47,8 +47,14 @@ type UserAction struct {
 // NewUserContext returns a new user context.
 func NewUserContext(testName string, cr *chrome.Chrome, tconn *chrome.TestConn, outputDir string, attributes map[string]string, tags []ActionTag) *UserContext {
 	tagsMap := make(map[ActionTag]struct{})
-	for _, tag := range tags {
-		tagsMap[tag] = struct{}{}
+	if tags != nil {
+		for _, tag := range tags {
+			tagsMap[tag] = struct{}{}
+		}
+	}
+
+	if attributes == nil {
+		attributes = make(map[string]string)
 	}
 
 	return &UserContext{
