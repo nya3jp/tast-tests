@@ -50,6 +50,24 @@
       "message": "Seems like they are removing the dongles because of release tests failures b/208845985..should we hold this cl until they fix it?",
       "revId": "d257223542b12411261bc86b5d5442b6ad6cb30d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e899a56_6ed36fcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-12-09T23:02:53Z",
+      "side": 1,
+      "message": "Good point. Let\u0027s hold then. We would probably only remove it for \"puff/kaisa\". So if we want to land this CL, we could add a hw deps to skip on \"kaisa\".",
+      "parentUuid": "4096d984_bb8e685c",
+      "revId": "d257223542b12411261bc86b5d5442b6ad6cb30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
