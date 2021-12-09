@@ -50,6 +50,23 @@
       "message": "Ah, I see. Ben, would you please take a look?",
       "revId": "942ef859f17a9157f8042480f2cbc81e3c9ee7df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4495db71_c7f0ad55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2021-12-09T04:48:47Z",
+      "side": 1,
+      "message": "fwiw lgtm",
+      "revId": "942ef859f17a9157f8042480f2cbc81e3c9ee7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
