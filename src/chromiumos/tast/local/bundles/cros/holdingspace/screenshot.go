@@ -112,6 +112,18 @@ func Screenshot(ctx context.Context, s *testing.State) {
 	// Trim screenshot filename.
 	screenshotName := filepath.Base(screenshotLocation)
 
+	if err := uiauto.Combine("open bubble and confirm initial state",
+		// Left click the tray to open the bubble.
+		ui.LeftClick(holdingspace.FindTray()),
+
+		// The pinned files section should contain an educational prompt and chip
+		// informing the user that they can pin a file from the Files app.
+		ui.WaitUntilExists(holdingspace.FindPinnedFilesSectionFilesAppPrompt()),
+		ui.WaitUntilExists(holdingspace.FindPinnedFilesSectionFilesAppChip()),
+	)(ctx); err != nil {
+		s.Fatal("Failed to open bubble and confirm initial state: ", err)
+	}
+
 	// Perform additional parameterized testing.
 	if err := s.Param().(screenshotParams).testfunc(tconn, ui, screenshotName)(ctx); err != nil {
 		s.Fatal("Failed to perform parameterized testing: ", err)
@@ -136,9 +148,6 @@ func Screenshot(ctx context.Context, s *testing.State) {
 func testScreenshotLaunch(
 	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
 	return uiauto.Combine("launch screenshot",
-		// Left click the tray to open the bubble.
-		ui.LeftClick(holdingspace.FindTray()),
-
 		// Double click the screenshot view. This will wait until the screenshot
 		// view exists and stabilizes before performing the double click.
 		ui.DoubleClick(holdingspace.FindScreenCaptureView().Name(screenshotName)),
@@ -159,9 +168,6 @@ func testScreenshotLaunch(
 func testScreenshotPinAndUnpin(
 	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
 	return uiauto.Combine("pin and unpin screenshot",
-		// Left click the tray to open the bubble.
-		ui.LeftClick(holdingspace.FindTray()),
-
 		// Right click the screenshot view. This will wait until the screenshot view
 		// exists and stabilizes before showing the context menu.
 		ui.RightClick(holdingspace.FindScreenCaptureView().Name(screenshotName)),
@@ -194,9 +200,6 @@ func testScreenshotPinAndUnpin(
 func testScreenshotRemove(
 	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
 	return uiauto.Combine("remove screenshot",
-		// Left click the tray to open the bubble.
-		ui.LeftClick(holdingspace.FindTray()),
-
 		// Right click the screenshot view. This will wait until the screenshot view
 		// exists and stabilizes before showing the context menu.
 		ui.RightClick(holdingspace.FindScreenCaptureView().Name(screenshotName)),
