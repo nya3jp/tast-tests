@@ -138,6 +138,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "911618b0_cb1856d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-12-09T18:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3012f978_2a1a1430",
+      "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e411b9be_696eb45c",
@@ -155,6 +173,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3d371e_f6f39bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-12-09T18:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e411b9be_696eb45c",
+      "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "670142da_bd923af0",
@@ -168,6 +204,30 @@
       "writtenOn": "2021-11-22T09:05:23Z",
       "side": 1,
       "message": "10s is a little bit too long for the test. Maybe 1s?",
+      "range": {
+        "startLine": 157,
+        "startChar": 51,
+        "endLine": 157,
+        "endChar": 53
+      },
+      "revId": "3df91a8d4819f9702c4aef337e5428481eb94156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d427d9da_5cb52967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-12-09T18:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670142da_bd923af0",
       "range": {
         "startLine": 157,
         "startChar": 51,
