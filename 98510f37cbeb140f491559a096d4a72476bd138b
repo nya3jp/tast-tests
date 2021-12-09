@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b883582_ea4784dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-12-09T23:39:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f36af3_824dedd4",
+      "range": {
+        "startLine": 7,
+        "startChar": 61,
+        "endLine": 7,
+        "endChar": 71
+      },
+      "revId": "98510f37cbeb140f491559a096d4a72476bd138b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e575f4f5_7adae99d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-09T23:28:46Z",
       "side": 1,
       "message": "The new entries in netlog_known_errors is far more than 3. I\u0027m confused?",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 13,
+        "endChar": 53
+      },
+      "revId": "98510f37cbeb140f491559a096d4a72476bd138b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0553c3d1_30801578",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2021-12-09T23:39:23Z",
+      "side": 1,
+      "message": "Done.\nSorry about this and thank you for pointing out this. I copied and pasted from https://crrev.com/c/3311834. I\u0027ve just updated it.",
+      "parentUuid": "e575f4f5_7adae99d",
       "range": {
         "startLine": 13,
         "startChar": 48,
