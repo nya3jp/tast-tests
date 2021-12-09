@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9cb213_180841b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_console.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-09T21:42:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "45bf0162_7f3d653d",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "79b0d6a0da0ec3c24da44aa25d0ea8a490a6ec27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aff3613a_b733c395",
