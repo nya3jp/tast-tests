@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "20184c4d_260594e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-09T15:58:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f9e0358_43d421a8",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 14
+      },
+      "revId": "067416358230250a1e5ae6b45e615798b4afa6f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "34f3d8b1_665e4563",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-07T14:25:58Z",
       "side": 1,
       "message": "lgtm with a nit, but we should have a follow-up to go back from the eula screen.",
+      "revId": "067416358230250a1e5ae6b45e615798b4afa6f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aeb3bee_72df3e85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308222
+      },
+      "writtenOn": "2021-12-09T15:58:11Z",
+      "side": 1,
+      "message": "Yes, I took a look on this. We need to change test_api.cc for this too.",
+      "parentUuid": "34f3d8b1_665e4563",
       "revId": "067416358230250a1e5ae6b45e615798b4afa6f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
