@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc4bfeeb_96e7d000",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-09T02:24:17Z",
+      "side": 1,
+      "message": "Hi Tast owners, it seems I have to write the ARCVM config when a fixture is created, rather than when Setup() is called. Is this acceptable or do you have a better suggestion? Thanks!",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659afba5_1cace703",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-09T02:24:17Z",
+      "side": 1,
+      "message": "ARCVM flags need to be written upon creating the fixture.",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25306550_bf6a110e",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-09T02:24:17Z",
+      "side": 1,
+      "message": "Writing the config in SetUp() doesn\u0027t work unfortunately, as the flag needs to be set before ARCVM has booted.",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
