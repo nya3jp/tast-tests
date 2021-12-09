@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeafc823_45600458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-12-09T02:43:16Z",
+      "side": 1,
+      "message": "Thanks for reviewing!  Please find my comments.",
+      "revId": "3919cf7b3c43640b84a954fa3437efe2a2b95160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c2cee26_7d097fa2",
@@ -59,6 +76,54 @@
         "startChar": 33,
         "endLine": 81,
         "endChar": 47
+      },
+      "revId": "3919cf7b3c43640b84a954fa3437efe2a2b95160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4329ec87_65dcae90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-12-09T02:43:16Z",
+      "side": 1,
+      "message": "Sorry for the confusion.  I meant 5 minutes is the default config value and we are overriding it to 7 minutes to reduce test flakes.  Maybe I can change the wording to:\n\n```\nThis overrides the default config timeout (5 minutes) and temperature threshold  (46 C) settings to reduce test flakes on low-end devices.\n```",
+      "parentUuid": "4fc89fd9_a3d5cb98",
+      "range": {
+        "startLine": 81,
+        "startChar": 33,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "3919cf7b3c43640b84a954fa3437efe2a2b95160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d1ba43_56605913",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/apploading/apploading.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2021-12-09T02:43:16Z",
+      "side": 1,
+      "message": "\u003e\u003e Is this 46 degree threshold still used anywhere?\nYes, it\u0027s the default Temperature Threshold from cooldown.go lib.  I mainly added it in the comment for reference to mention the change from default value based on stainless data.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/cpu/cooldown.go;drc\u003dd543dfa4f4d92112406180d647978732b501723e;l\u003d45",
+      "parentUuid": "9c2cee26_7d097fa2",
+      "range": {
+        "startLine": 81,
+        "startChar": 74,
+        "endLine": 81,
+        "endChar": 77
       },
       "revId": "3919cf7b3c43640b84a954fa3437efe2a2b95160",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
