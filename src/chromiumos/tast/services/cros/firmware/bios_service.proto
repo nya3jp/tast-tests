@@ -16,12 +16,12 @@ service BiosService {
   rpc GetGBBFlags (google.protobuf.Empty) returns (GBBFlagsState) {}
   // ClearAndSetGBBFlags modifies the specified flags, leaving the rest unchanged.
   rpc ClearAndSetGBBFlags (GBBFlagsState) returns (google.protobuf.Empty) {}
-  // BackupECRW backs up the current EC_RW region locally and returns its path.
-  rpc BackupECRW (google.protobuf.Empty) returns (ECRWPath) {}
-  // RestoreECRW restores the EC_RW region from path.
-  rpc RestoreECRW (ECRWPath) returns (google.protobuf.Empty) {}
   // EnableAPSoftwareWriteProtect enables the AP software write protect.
   rpc EnableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  // BackupImageSection backs up the current fw region locally and returns its path.
+  rpc BackupImageSection (FWBackUpSection) returns (FWBackUpInfo) {}
+  // RestoreImageSection restores the fw region from path.
+  rpc RestoreImageSection (FWBackUpInfo) returns (google.protobuf.Empty) {}
 }
 
 // GBBFlag bit positions
@@ -42,13 +42,35 @@ enum GBBFlag {
   FORCE_DEV_BOOT_FASTBOOT_FULL_CAP = 13;
 }
 
+// Programmers enum for flashrom programmers
+enum Programmers {
+  BIOSProgrammer = 0;
+  ECProgrammer = 1;
+}
+
+// ImageSections enum for fw ImageSections
+enum ImageSections {
+  GBBImageSection = 0;
+  ECRWImageSection = 1;
+  ECRWBImageSection = 2;
+  EmptyImageSection = 3;
+}
+
 // GBBFlagsState represents the a known state of GBB flags.  Set flags have precedence over cleared ones.
 message GBBFlagsState {
   repeated GBBFlag Clear = 1;
   repeated GBBFlag Set = 2;
 }
 
-// ECRWPath represents the path of EC_RW section backup.
-message ECRWPath {
+// FWBackUpInfo represents the path, programmer, and section of image backup.
+message FWBackUpInfo {
   string Path = 1;
+  ImageSections Section = 2;
+  Programmers Programmer = 3;
+}
+
+// FWBackUpSection represents the string containing the image section to back up and the programmer to use.
+message FWBackUpSection {
+  ImageSections Section = 1;
+  Programmers Programmer = 2;
 }
