@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11950fd3_59638c12",
+        "filename": "src/chromiumos/tast/restrictions/cros/fixture_tree_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-09T08:31:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87bb37a5_8ef7d212",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "e5592d0fe6add7ba968efdad326012642319e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af02cb59_f3cb7d41",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e699d588_bc6bf30f",
+        "filename": "src/chromiumos/tast/restrictions/cros/fixture_tree_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-09T08:31:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af02cb59_f3cb7d41",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 8
+      },
+      "revId": "e5592d0fe6add7ba968efdad326012642319e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c8db0a4_bff35653",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-09T00:05:59Z",
       "side": 1,
       "message": "nit: not needed",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "e5592d0fe6add7ba968efdad326012642319e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa122d5_50b327cf",
+        "filename": "src/chromiumos/tast/restrictions/cros/fixture_tree_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-09T08:31:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c8db0a4_bff35653",
       "range": {
         "startLine": 45,
         "startChar": 3,
