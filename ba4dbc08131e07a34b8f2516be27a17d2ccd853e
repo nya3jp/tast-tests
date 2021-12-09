@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e48284_3e3fed48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1514802
+      },
+      "writtenOn": "2021-12-09T01:09:13Z",
+      "side": 1,
+      "message": "I have updated the CL description to explain how I would modify the tests later to use different locale",
+      "parentUuid": "9507d6fe_0ca2bfc5",
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe8492cb_43b71919",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e55dca_7ca1f527",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514802
+      },
+      "writtenOn": "2021-12-09T01:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdcf08ec_c04a10fb",
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "791e73eb_cac95113",
@@ -66,6 +102,30 @@
       "writtenOn": "2021-12-08T10:25:20Z",
       "side": 1,
       "message": "Do not see any special in this test. Why not directly call login.ChromeGAIA\n\nBtw, you can also add a login.ChromeUnicorn in the same package which avoid duplicate tests in different packages.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c06d01f_3aaf2d77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/chrome_regular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1514802
+      },
+      "writtenOn": "2021-12-09T01:09:13Z",
+      "side": 1,
+      "message": "I have updated the CL description to add more context. The tests would be different from login.ChromeGAIA, because I need to pass runtime variable to it to change the locale.\n\nI communicated with contacts of login bundle and they suggest me creating a separate bundle to add all these tests instead of changing their tests or adding new tests to their bundle.",
+      "parentUuid": "791e73eb_cac95113",
       "range": {
         "startLine": 17,
         "startChar": 8,
@@ -99,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c206a75_983c79c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/chrome_regular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1514802
+      },
+      "writtenOn": "2021-12-09T01:09:13Z",
+      "side": 1,
+      "message": "leaving it blank since I am not scheduling it in the lab for now",
+      "parentUuid": "106b3788_fdef1640",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f3a1b8c_9cded340",
@@ -112,6 +196,24 @@
       "writtenOn": "2021-12-08T08:14:00Z",
       "side": 1,
       "message": "Can you update this comment? I guess it was copied from login package.",
+      "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea6213c_5b929949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1514802
+      },
+      "writtenOn": "2021-12-09T01:09:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f3a1b8c_9cded340",
       "revId": "ba4dbc08131e07a34b8f2516be27a17d2ccd853e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
