@@ -33,6 +33,24 @@
       "message": "Maybe add a comment here that from this point we should return with an error in any case.",
       "revId": "bd8a6e9426eaec1605e0fee6fae587fa9cb22a6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa5ffe5_45f6f1f3",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-09T10:53:23Z",
+      "side": 1,
+      "message": "Moved the comment up to make it clearer.",
+      "parentUuid": "4bea4f2e_00904df1",
+      "revId": "bd8a6e9426eaec1605e0fee6fae587fa9cb22a6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
