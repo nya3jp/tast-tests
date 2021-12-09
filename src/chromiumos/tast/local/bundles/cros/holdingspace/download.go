@@ -42,13 +42,13 @@ func init() {
 		Params: []testing.Param{{
 			Name: "cancel",
 			Val: downloadParams{
-				downloadSize: 500 * 1024 * 1024, // 500 MB to give time to cancel.
+				downloadSize: 1024 * 1024 * 1024, // 1 GB to give time to cancel.
 				testfunc:     testDownloadCancel,
 			},
 		}, {
 			Name: "pause_and_resume",
 			Val: downloadParams{
-				downloadSize: 500 * 1024 * 1024, // 500 MB to give time to pause/resume.
+				downloadSize: 1024 * 1024 * 1024, // 1 GB to give time to pause/resume.
 				testfunc:     testDownloadPauseAndResume,
 			},
 		}, {
@@ -115,9 +115,16 @@ func Download(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	// Left click the tray to open the bubble.
-	if err := ui.LeftClick(holdingspace.FindTray())(ctx); err != nil {
-		s.Fatal("Failed to left click tray: ", err)
+	if err := uiauto.Combine("open bubble and confirm initial state",
+		// Left click the tray to open the bubble.
+		ui.LeftClick(holdingspace.FindTray()),
+
+		// The pinned files section should contain an educational prompt and chip
+		// informing the user that they can pin a file from the Files app.
+		ui.WaitUntilExists(holdingspace.FindPinnedFilesSectionFilesAppPrompt()),
+		ui.WaitUntilExists(holdingspace.FindPinnedFilesSectionFilesAppChip()),
+	)(ctx); err != nil {
+		s.Fatal("Failed to open bubble and confirm initial state: ", err)
 	}
 
 	// Perform additional parameterized testing.
