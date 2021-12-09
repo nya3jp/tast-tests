@@ -13,6 +13,7 @@ import (
 )
 
 // Class names.
+const buttonClassName = "Button"
 const downloadsSectionClassName = "DownloadsSection"
 const holdingSpaceItemChipViewClassName = "HoldingSpaceItemChipView"
 const holdingSpaceItemScreenCaptureViewClassName = "HoldingSpaceItemScreenCaptureView"
@@ -44,6 +45,20 @@ func FindDownloadChip() *nodewith.Finder {
 func FindPinnedFileChip() *nodewith.Finder {
 	return nodewith.Ancestor(nodewith.ClassName(pinnedFilesSectionClassName)).
 		ClassName(holdingSpaceItemChipViewClassName)
+}
+
+// FindPinnedFilesSectionFilesAppChip returns a finder which locates the holding
+// space pinned files section Files app chip node.
+func FindPinnedFilesSectionFilesAppChip() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName(buttonClassName).Ancestor(
+		nodewith.ClassName(pinnedFilesSectionClassName))).Name("Open Files")
+}
+
+// FindPinnedFilesSectionFilesAppPrompt returns a finder which locates the
+// holding space pinned files section Files app prompt node.
+func FindPinnedFilesSectionFilesAppPrompt() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName(pinnedFilesSectionClassName)).
+		Name("You can pin your important files here. Open Files app to get started.")
 }
 
 // FindScreenCaptureView returns a finder which locates a holding space screen
