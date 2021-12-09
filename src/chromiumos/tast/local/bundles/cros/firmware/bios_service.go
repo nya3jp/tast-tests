@@ -29,18 +29,19 @@ type BiosService struct {
 	s *testing.ServiceState
 }
 
-// BackupECRW dumps the EC RW region into temporary file locally and returns its path
-func (*BiosService) BackupECRW(ctx context.Context, req *empty.Empty) (*pb.ECRWPath, error) {
-	path, err := bios.NewImageToFile(ctx, bios.ECRWImageSection, bios.ECProgrammer)
+// BackupImageSection dumps the image region into temporary file locally and returns its path.
+func (*BiosService) BackupImageSection(ctx context.Context, req *pb.FWBackUpSection) (*pb.FWBackUpInfo, error) {
+	path, err := bios.NewImageToFile(ctx, bios.ImageSection(req.Section), bios.FlashromProgrammer(req.Programmer))
 	if err != nil {
-		return nil, errors.Wrap(err, "could not backup EC_RW region")
+		return nil, errors.Wrapf(err, "could not backup %s region with programmer %s", req.Section, req.Programmer)
 	}
-	return &pb.ECRWPath{Path: path}, nil
+	return &pb.FWBackUpInfo{Path: path, Section: req.Section, Programmer: req.Programmer}, nil
 }
 
-func (bs *BiosService) RestoreECRW(ctx context.Context, path *pb.ECRWPath) (*empty.Empty, error) {
-	if err := bios.WriteImageFromFile(ctx, path.Path, bios.ECRWImageSection, bios.ECProgrammer); err != nil {
-		return nil, errors.Wrap(err, "could not restore EC_RW region")
+// RestoreImageSection restores image region from temporary file locally and restores fw with it.
+func (bs *BiosService) RestoreImageSection(ctx context.Context, req *pb.FWBackUpInfo) (*empty.Empty, error) {
+	if err := bios.WriteImageFromFile(ctx, req.Path, bios.ImageSection(req.Section), bios.FlashromProgrammer(req.Programmer)); err != nil {
+		return nil, errors.Wrapf(err, "could not restore %s region with programmer %s from path %s", req.Section, req.Programmer, req.Path)
 	}
 	return &empty.Empty{}, nil
 }
