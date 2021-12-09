@@ -17,7 +17,7 @@ def parse_args(args):
         epilog='''
 Example:
   $ wget https://dl.google.com/dl/android/cts/android-cts-verifier-9.0_r15-linux_x86-x86.zip
-  $ python3 %(prog)s android-cts-verifier-9.0_r15-linux_x86-x86.zip
+  $ python %(prog)s android-cts-verifier-9.0_r15-linux_x86-x86.zip
 ''')
     parser.add_argument(
         'bundle_path',
