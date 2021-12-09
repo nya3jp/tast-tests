@@ -46,6 +46,30 @@
       },
       "revId": "5d3e11c35f3b0b00d7c791b5aaac66381a751822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56a7208_d464f79b",
+        "filename": "src/chromiumos/tast/remote/policyutil/enrolled_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-09T11:07:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ea4839_6b36c144",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "5d3e11c35f3b0b00d7c791b5aaac66381a751822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
