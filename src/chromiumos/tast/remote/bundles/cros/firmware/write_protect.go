@@ -12,13 +12,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/remote/firmware/reporters"
+	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -106,11 +105,11 @@ func WriteProtect(ctx context.Context, s *testing.State) {
 		s.Fatal("Requiring BiosServiceClient: ", err)
 	}
 	s.Log("Back up current EC_RW region")
-	ecPath, err := h.BiosServiceClient.BackupECRW(ctx, &empty.Empty{})
+	ecrwPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSections(1), Programmer: pb.Programmers(1)})
 	if err != nil {
 		s.Fatal("Failed to backup current EC_RW region: ", err)
 	}
-	s.Log("EC_RW region backup is stored at: ", ecPath.Path)
+	s.Log("EC_RW region backup is stored at: ", ecrwPath.Path)
 
 	// Restore EC_RW.
 	defer func() {
@@ -119,13 +118,13 @@ func WriteProtect(ctx context.Context, s *testing.State) {
 			s.Fatal("Requiring BiosServiceClient: ", err)
 		}
 
-		s.Log("Restore EC_RW region with backup from: ", ecPath.Path)
-		if _, err := h.BiosServiceClient.RestoreECRW(ctx, ecPath); err != nil {
-			s.Fatal("Failed to restore EC image: ", err)
+		s.Log("Restore EC_RW region with backup from: ", ecrwPath.Path)
+		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, ecrwPath); err != nil {
+			s.Fatal("Failed to restore EC_RW image: ", err)
 		}
 
 		s.Log("Delete EC backup")
-		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", ecPath.Path).Output(ssh.DumpLogOnError); err != nil {
+		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", ecrwPath.Path).Output(ssh.DumpLogOnError); err != nil {
 			s.Fatal("Failed to delete ec backup: ", err)
 		}
 	}()
@@ -142,13 +141,13 @@ func WriteProtect(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// This call takes ~= 2 mins to complete.
+	// This call takes ~= 10 mins to complete.
 	s.Log("Test wp state over reboot on target EC")
 	if err := testWPOverReboot(ctx, h, targetEC, bootMode); err != nil {
 		s.Fatal("Failed to preserve wp state over reboots: ", err)
 	}
 
-	// This call takes ~= 2 mins to complete.
+	// This call takes ~= 10 mins to complete.
 	s.Log("Test wp state over reboot on target BIOS")
 	if err := testWPOverReboot(ctx, h, targetBIOS, bootMode); err != nil {
 		s.Fatal("Failed to preserve wp state over reboots: ", err)
