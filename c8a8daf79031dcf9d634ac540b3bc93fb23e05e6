@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "c8a8daf79031dcf9d634ac540b3bc93fb23e05e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb19343f_bf969282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-12-09T09:42:59Z",
+      "side": 1,
+      "message": "Thanks Gabor!\n\nThis is an identical clone of https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3316832 which has passed all tests but keeps getting a Gerrit error -- \"CV failed to submit your CL because of unexpected error from Gerrit\".",
+      "revId": "c8a8daf79031dcf9d634ac540b3bc93fb23e05e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
