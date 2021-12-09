@@ -60,12 +60,6 @@ func startShillAndWaitForNetworks(ctx context.Context, s *testing.State) {
 		s.Fatal("Ethernet not available")
 	}
 
-	if wifiAvailable, err := manager.IsAvailable(ctx, shill.TechnologyWifi); err != nil {
-		s.Fatal("Error calling IsAvailable: ", err)
-	} else if !wifiAvailable {
-		s.Fatal("WiFi not available")
-	}
-
 	if err := upstart.StopJob(ctx, shillJob); err != nil {
 		s.Fatal("Failed stopping shill: ", err)
 	}
