@@ -120,6 +120,30 @@
       },
       "revId": "fad9048b9e677001386ce67b508379d94410c280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec2aaa8_29d5dc0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/guest_and_actual_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1399259
+      },
+      "writtenOn": "2021-12-09T16:29:58Z",
+      "side": 1,
+      "message": "Yeah interesting question!\n\nSo if you looked here [1] in policy-go-proto. You will find that\u0027s the prefix that will be needed to look up to for finding the related go files. That\u0027s crucially needed to install them for the correct locations to be able to retrieve from these locations the protos by using different packages. See definition of the variable [2].\n\nIf you think we should change the naming or similar, we can do that as follow-up too. I don\u0027t mind. But not related to that huge chain of CLs that need to be merged together :-)\n\n\n[1] policy-go-proto chromiumos/policy.. prefix: http://cs/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/policy-go-proto/policy-go-proto-9999.ebuild;l\u003d6-8;rcl\u003d3ea6025d2e83369a4ddfd1066dde1e1971d8aed1\n\n[2] definition of the variable CROS_GO_PACKAGES: http://cs/chromeos_public/src/third_party/chromiumos-overlay/eclass/cros-go.eclass;l\u003d117-131;rcl\u003d3ea6025d2e83369a4ddfd1066dde1e1971d8aed1",
+      "parentUuid": "b935eb47_ed0bd214",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 63
+      },
+      "revId": "fad9048b9e677001386ce67b508379d94410c280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
