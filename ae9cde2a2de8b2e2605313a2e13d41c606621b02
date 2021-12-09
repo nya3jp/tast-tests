@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1730fff_32d3a951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2021-12-09T09:45:43Z",
+      "side": 1,
+      "message": "Chumped because the original CL (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3316832) passed all tests and was just running into a Gerrit error. Also, per b/209853266, sheriff had tried to chump (CCing sheriff).",
+      "revId": "ae9cde2a2de8b2e2605313a2e13d41c606621b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
