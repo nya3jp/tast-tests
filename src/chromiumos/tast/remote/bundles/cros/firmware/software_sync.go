@@ -78,7 +78,7 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 		// TODO(b/194910957): old test does warm reset, seems unneeded
 	}
 
-	backup, err := bs.BackupECRW(ctx, &empty.Empty{})
+	backup, err := bs.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
 	if err != nil {
 		s.Fatal("Could not backup EC firmware: ", err)
 	}
@@ -117,14 +117,14 @@ func SoftwareSync(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get ec hash: ", err)
 	}
-	ecSection := "EC_RW"
+	ecSection := pb.ImageSection_ECRWImageSection
 	if activeCopy == "RW_B" {
-		ecSection = "EC_RW_B"
+		ecSection = pb.ImageSection_ECRWBImageSection
 	}
 	s.Log("Corrupt the EC section: ", ecSection)
 	defer func(ctx context.Context) {
 		s.Log("Restoring EC firmware backup")
-		if _, err := bs.RestoreECRW(ctx, backup); err != nil {
+		if _, err := bs.RestoreImageSection(ctx, backup); err != nil {
 			s.Fatal("Failed to restore EC firmware: ", err)
 		}
 	}(cleanupContext)
