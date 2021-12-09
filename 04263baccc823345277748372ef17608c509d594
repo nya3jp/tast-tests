@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87917e8b_e00db45c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-09T02:20:07Z",
+      "side": 1,
+      "message": "So far ShillCellularSimPinlock test passed on trogdor latest build: R98-14387.0.0.\nAs of now stuck with \u0027LockType\u0027 getting empty from shill service(Device) properties, once issue resolved will test other tests.\n\nBasic review would help.",
+      "revId": "04263baccc823345277748372ef17608c509d594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
