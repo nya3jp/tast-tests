@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5b8eb8_e94f188a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-09T23:29:19Z",
+      "side": 1,
+      "message": "Just rewriting to make sure I understand your problem correctly:\narcvm_dev.conf needs to have flags written PRIOR to arcvm booting but you\u0027re finding when putting the code in the fixture it is happening too late?\nOne potential solution here is to take in a chrome.Option that takes arbitrary arcvm_dev configuration options and writes them out to a file. Much like chrome.EnableFeatures\n\nI\u0027m wondering if the configuration options that you\u0027re writing to arcvm_dev.conf are also exposable by flags, are you able to use chrome.ExtraArgs?",
+      "parentUuid": "cc4bfeeb_96e7d000",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "659afba5_1cace703",
