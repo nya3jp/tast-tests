@@ -34,6 +34,24 @@
       "parentUuid": "72fe61ef_ed736b56",
       "revId": "261b35be773be6e0351bd725737eb609a48b3308",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9828c5_269aca2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-09T00:23:57Z",
+      "side": 1,
+      "message": "Ah, I got confused!",
+      "parentUuid": "14622edd_f3d8bb1d",
+      "revId": "261b35be773be6e0351bd725737eb609a48b3308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
