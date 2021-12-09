@@ -16,6 +16,23 @@
       "message": "This is essentially what we discussed in the other CL. Mike asked me to look at it this morning and I hope you are fine with it.\n\nInteresting that TabSwitchCUJ already works (it does not depends on hwdep.InternalDisplay()). And I would do a follow up for MeetCUJ. Basically this CL + making \"camera\" optional so that we could run without webcam.\n\nLet me know what you think. Thanks.",
       "revId": "d257223542b12411261bc86b5d5442b6ad6cb30d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e710442_a4c7935f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2021-12-09T22:50:29Z",
+      "side": 1,
+      "message": "Add yichenz@ for realz.",
+      "revId": "d257223542b12411261bc86b5d5442b6ad6cb30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
