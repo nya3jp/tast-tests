@@ -22,6 +22,30 @@
       },
       "revId": "0ed2d5d3515e437bf900f3591c780c3913e4ac1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d76c924_356571d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_g3.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-09T00:00:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbd13c09_22c24266",
+      "range": {
+        "startLine": 43,
+        "startChar": 22,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "0ed2d5d3515e437bf900f3591c780c3913e4ac1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
