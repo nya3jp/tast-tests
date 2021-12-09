@@ -13,6 +13,7 @@ import (
 )
 
 // Class names.
+const buttonClassName = "Button"
 const downloadsSectionClassName = "DownloadsSection"
 const holdingSpaceItemChipViewClassName = "HoldingSpaceItemChipView"
 const holdingSpaceItemScreenCaptureViewClassName = "HoldingSpaceItemScreenCaptureView"
@@ -46,6 +47,20 @@ func FindPinnedFileChip() *nodewith.Finder {
 		ClassName(holdingSpaceItemChipViewClassName)
 }
 
+// FindPinnedFilesSectionFilesAppChip returns a finder which locates the holding
+// space pinned files section Files app chip node.
+func FindPinnedFilesSectionFilesAppChip() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName(buttonClassName).Ancestor(
+		nodewith.ClassName(pinnedFilesSectionClassName))).Name("Open Files")
+}
+
+// FindPinnedFilesSectionFilesAppPrompt returns a finder which locates the
+// holding space pinned files section Files app prompt node.
+func FindPinnedFilesSectionFilesAppPrompt() *nodewith.Finder {
+	return nodewith.Ancestor(nodewith.ClassName(pinnedFilesSectionClassName)).
+		Name("You can pin your important files here. Open Files app to get started.")
+}
+
 // FindScreenCaptureView returns a finder which locates a holding space screen
 // capture view node.
 func FindScreenCaptureView() *nodewith.Finder {
@@ -63,8 +78,8 @@ type ResetHoldingSpaceOptions struct {
 	MarkTimeOfFirstAdd bool `json:"markTimeOfFirstAdd"`
 }
 
-// ResetHoldingSpace calls autotestPrivate to remove all items in the holding space model
-// and resets all holding space prefs.
+// ResetHoldingSpace calls autotestPrivate to remove all items in the holding
+// space model and resets all holding space prefs.
 func ResetHoldingSpace(ctx context.Context, tconn *chrome.TestConn,
 	options ResetHoldingSpaceOptions) error {
 	if err := tconn.Call(ctx, nil,
