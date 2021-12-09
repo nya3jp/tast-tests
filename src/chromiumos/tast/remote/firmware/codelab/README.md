@@ -470,7 +470,7 @@ At the start of your test body, initialize a `firmware.Helper`. The [`NewHelper`
 ```go
 func Codelab(ctx context.Context, s *testing.State) {
 	servoSpec, _ := s.Var("servo")
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, "", "", "", "")
 	defer h.Close(ctx)
 	...
 }
@@ -691,7 +691,7 @@ The `Fixture` has a built-in `Helper`, so we don't need to create our own. Let's
 ```go
 	// OLD
 	servoSpec, _ := s.Var("servo")
-	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec)
+	h := firmware.NewHelper(s.DUT(), s.RPCHint(), s.DataPath(firmware.ConfigFile), servoSpec, "", "", "", "")
 	defer h.Close(ctx)
 
 	// NEW
