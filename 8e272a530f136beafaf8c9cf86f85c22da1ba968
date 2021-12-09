@@ -16,6 +16,23 @@
       "message": "Trivial change, could you take a look? Thanks!",
       "revId": "8e272a530f136beafaf8c9cf86f85c22da1ba968",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1379c3a3_86074133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-09T02:39:50Z",
+      "side": 1,
+      "message": "Thanks for the quick review!",
+      "revId": "8e272a530f136beafaf8c9cf86f85c22da1ba968",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
