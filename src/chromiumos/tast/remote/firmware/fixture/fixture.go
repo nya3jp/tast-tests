@@ -38,6 +38,7 @@ func init() {
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
+		PostTestTimeout: 5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
@@ -50,6 +51,7 @@ func init() {
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
+		PostTestTimeout: 5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
@@ -62,6 +64,7 @@ func init() {
 		SetUpTimeout:    10 * time.Second,
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
+		PostTestTimeout: 5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
@@ -74,6 +77,7 @@ func init() {
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
+		PostTestTimeout: 5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
@@ -86,6 +90,7 @@ func init() {
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
+		PostTestTimeout: 5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
@@ -98,6 +103,7 @@ func init() {
 		SetUpTimeout:    60 * time.Minute, // Setting up USB key is slow
 		ResetTimeout:    10 * time.Second,
 		PreTestTimeout:  5 * time.Minute,
+		PostTestTimeout: 5 * time.Minute,
 		TearDownTimeout: 5 * time.Minute,
 		Data:            []string{firmware.ConfigFile},
 	})
@@ -216,13 +222,6 @@ func (i *impl) Reset(ctx context.Context) error {
 
 // PreTest is called by the framework before each test to do a light-weight set up for the test.
 func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	if err := i.value.Helper.RequireServo(ctx); err != nil {
-		s.Fatal("Failed to connect to servod: ", err)
-	}
-	if err := i.value.Helper.EnsureDUTBooted(ctx); err != nil {
-		s.Fatal("DUT is offline before test start: ", err)
-	}
-
 	if i.disallowSSH {
 		return
 	}
@@ -293,7 +292,14 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 }
 
 // PostTest is called by the framework after each test to tear down changes PreTest made.
-func (i *impl) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (i *impl) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := i.value.Helper.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servod: ", err)
+	}
+	if err := i.value.Helper.EnsureDUTBooted(ctx); err != nil {
+		s.Fatal("DUT is offline after test end: ", err)
+	}
+}
 
 // TearDown is called by the framework to tear down the environment SetUp set up.
 func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
