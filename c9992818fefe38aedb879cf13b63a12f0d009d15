@@ -33,6 +33,24 @@
       "message": "lgtm.\n\nI guess it can cause other issues on the other ARC tast tests. Is it possible to add a wait for mojo connection in the fixture?",
       "revId": "c9992818fefe38aedb879cf13b63a12f0d009d15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18befd7c_c6a393bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-09T00:19:47Z",
+      "side": 1,
+      "message": "sgtm, do you know if and how we can know that the connections are ready?",
+      "parentUuid": "06fc2a02_30c112de",
+      "revId": "c9992818fefe38aedb879cf13b63a12f0d009d15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
