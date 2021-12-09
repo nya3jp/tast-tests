@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45bf0162_7f3d653d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_console.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-09T00:17:54Z",
+      "side": 1,
+      "message": "That is a great idea. What are the gs:// urls for that information?",
+      "parentUuid": "751a5e2a_c770022e",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "79b0d6a0da0ec3c24da44aa25d0ea8a490a6ec27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aff3613a_b733c395",
         "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-06T22:30:20Z",
       "side": 1,
       "message": "Move to a separate CL.  This doc cleanup is independent of your go changes.",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 473,
+        "endChar": 106
+      },
+      "revId": "79b0d6a0da0ec3c24da44aa25d0ea8a490a6ec27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e95d0466_246c897d",
+        "filename": "src/chromiumos/tast/remote/firmware/codelab/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-09T00:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aff3613a_b733c395",
       "range": {
         "startLine": 473,
         "startChar": 0,
