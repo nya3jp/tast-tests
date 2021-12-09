@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f3746c_cb2e70b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-09T14:03:14Z",
+      "side": 1,
+      "message": "Because battery property may change continuously (main reason), and some fields are optional, so comparing by this way may not be okay for some float numbers.",
+      "parentUuid": "1dc1b00b_f10e3c3d",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20553071_f27ef65a",
@@ -83,6 +107,30 @@
       "writtenOn": "2021-12-09T13:46:56Z",
       "side": 1,
       "message": "+1 for 1e-6.\n\nJust curious that is there any standard library handle this? I just found out there is something in \"cmp/cmpopts\" but not sure if they\u0027re available in Tast.\nhttps://godoc.corp.google.com/pkg/google3/third_party/golang/cmp/cmpopts/cmpopts#EquateApprox",
+      "parentUuid": "20553071_f27ef65a",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5119e9bc_c1535050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-09T14:03:14Z",
+      "side": 1,
+      "message": "Actually it\u0027s not okay by using 1e-6 to compare at this case. (I know it\u0027s standard for normal float point.) Because for these battery fields, we have divided them by 1e6 in cros_healthd and export as float number. But when running tast, we read raw data and divide 1e6 again. If there is minor change for these fields, the comparison will fail with high possibility.\n\nTake a real example, when we check the battery voltage, e.g. 3.7 volt vs 3.6 volt. Because the voltage varies from time to time, I think 3.7 and 3.6 are acceptable in our comparison when using 1e-1. But if we use 1e-6, it\u0027s too strict.\n\nBTW, I have moved it to battery test in next patch (but still 1e-1), will upload later.\nPlease let me know if you still think that we should use 1e-6 for battery related fields~",
       "parentUuid": "20553071_f27ef65a",
       "range": {
         "startLine": 82,
