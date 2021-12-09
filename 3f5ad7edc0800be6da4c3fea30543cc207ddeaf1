@@ -39,6 +39,30 @@
       },
       "revId": "3f5ad7edc0800be6da4c3fea30543cc207ddeaf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f5b3a6_a664d369",
+        "filename": "src/chromiumos/tast/common/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-12-09T23:39:32Z",
+      "side": 1,
+      "message": "I left the second sentence even though it\u0027s a bit redundant, since this was a point of confusion with a developer I was helping.",
+      "parentUuid": "de100c22_011b93d3",
+      "range": {
+        "startLine": 407,
+        "startChar": 30,
+        "endLine": 407,
+        "endChar": 40
+      },
+      "revId": "3f5ad7edc0800be6da4c3fea30543cc207ddeaf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
