@@ -146,6 +146,16 @@ func (i *impl) noECSync(s *testing.FixtState) (bool, error) {
 // SetUp is called by the framework to set up the environment with possibly heavy-weight
 // operations.
 func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	host := "192.168.231.1"
+	port := "2375"
+	timeout := time.Duration(1 * time.Second)
+	_, err := net.DialTimeout("tcp", host+":"+port, timeout)
+	if err != nil {
+		s.Log("not responding", err.Error())
+	} else {
+		s.Log("Responding")
+	}
+
 	flags := pb.GBBFlagsState{Clear: common.AllGBBFlags(), Set: common.FAFTGBBFlags()}
 	if i.value.ForcesDevMode {
 		if i.value.BootMode == common.BootModeUSBDev {
@@ -164,9 +174,18 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	}
 	i.value.GBBFlags = flags
 
+	if err := firmware.DockerClientPing(ctx); err != nil {
+		s.Fatal("Failed Docker Daemon Ping Before InitHelper: ", err)
+	}
+	s.Log("Ping Success Before InitHelper")
+
 	s.Log("Creating a new firmware Helper instance for fixture: ", i.String())
 	i.initHelper(ctx, s)
 
+	if err := firmware.DockerClientPing(ctx); err != nil {
+		s.Fatal("Failed Docker Daemon Ping After InitHelper: ", err)
+	}
+	s.Log("Ping Success After InitHelper")
 	// If rebooting to recovery mode, verify the usb key.
 	if i.value.BootMode == common.BootModeRecovery || i.value.BootMode == common.BootModeUSBDev {
 		if err := i.value.Helper.RequireServo(ctx); err != nil {
@@ -183,6 +202,11 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		if skipFlashUSB {
 			cs = nil
 		}
+
+		if err := firmware.DockerClientPing(ctx); err != nil {
+			s.Fatal("Failed Docker Daemon Ping After RequireServo: ", err)
+		}
+		s.Log("Ping Success After RequireServo")
 		if err := i.value.Helper.SetupUSBKey(ctx, cs); err != nil {
 			s.Fatal("Failed to setup USB key: ", err)
 		}
