@@ -68,6 +68,30 @@
       },
       "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "901df3cc_191b8e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-12-09T13:46:56Z",
+      "side": 1,
+      "message": "+1 for 1e-6.\n\nJust curious that is there any standard library handle this? I just found out there is something in \"cmp/cmpopts\" but not sure if they\u0027re available in Tast.\nhttps://godoc.corp.google.com/pkg/google3/third_party/golang/cmp/cmpopts/cmpopts#EquateApprox",
+      "parentUuid": "20553071_f27ef65a",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
