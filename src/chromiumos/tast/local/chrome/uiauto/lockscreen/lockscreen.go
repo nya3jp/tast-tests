@@ -160,9 +160,7 @@ func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
 
 // SubmitPIN submits the entered PIN.
 func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
-	ui := uiauto.New(tconn)
-	submitButton := nodewith.Name("Submit").Role(role.Button)
-	return ui.WithTimeout(uiTimeout).LeftClick(submitButton)(ctx)
+	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(SubmitButton)(ctx)
 }
 
 // ClickUserImage clicks the users image to login with Smart Lock.
@@ -188,6 +186,56 @@ func WaitForSmartLockPasswordPrompt(ctx context.Context, tconn *chrome.TestConn)
 	ui := uiauto.New(tconn)
 	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for Smart Lock UI to show password will help you with smart lock")
+	}
+	return nil
+}
+
+// ShowPassword clicks the "Show password" button.
+func ShowPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(ShowPasswordButton)(ctx)
+}
+
+// HidePassword clicks the "Hide password" button.
+func HidePassword(ctx context.Context, tconn *chrome.TestConn) error {
+	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(HidePasswordButton)(ctx)
+}
+
+// SwitchToPassword clicks the "Switch to password" button which appears only when PIN autosubmit is enabled.
+func SwitchToPassword(ctx context.Context, tconn *chrome.TestConn) error {
+	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(SwitchToPasswordButton)(ctx)
+}
+
+// PINFieldFinder generates Finder for the "PIN or password" field.
+func PINFieldFinder(username string) (*nodewith.Finder, error) {
+	r := regexp.MustCompile(fmt.Sprintf("Password for %v", username))
+	return nodewith.Role(role.TextField).Attribute("name", r).Attribute("placeholder", "PIN or password"), nil
+}
+
+// UserPassword searches the Password field for a given user pod and returns the Password node.
+func UserPassword(ctx context.Context, tconn *chrome.TestConn, username string) (*uiauto.NodeInfo, error) {
+	field, err := PasswordFieldFinder(username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the Password node")
+	}
+	return uiauto.New(tconn).Info(ctx, field)
+}
+
+// UserPIN searches the "PIN or password" field for a given user pod and returns the corresponding node.
+func UserPIN(ctx context.Context, tconn *chrome.TestConn, username string) (*uiauto.NodeInfo, error) {
+	field, err := PINFieldFinder(username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find the node for \"PIN or password\" field")
+	}
+	return uiauto.New(tconn).Info(ctx, field)
+}
+
+// Unlock unlocks the screen, assuming that PIN / Password has already been entered by the user.
+func Unlock(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := SubmitPIN(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to click the Submit button")
+	}
+	if st, err := WaitState(ctx, tconn, func(st State) bool { return st.LoggedIn }, 3*uiTimeout); err != nil {
+		return errors.Wrapf(err, "failed waiting to log in: %v, last state: %+v", err, st)
 	}
 	return nil
 }
