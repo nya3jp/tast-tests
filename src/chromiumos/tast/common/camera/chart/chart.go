@@ -220,3 +220,48 @@ func (c *Chart) Close(ctx context.Context, outDir string) error {
 	}
 	return nil
 }
+
+// Helper is a helper class to control display level and change chart easily.
+type Helper struct {
+	chart        *Chart
+	ctx          context.Context
+	d            *dut.DUT
+	altHostname  string
+	chartPath    string
+	outDir       string
+	displayLevel float32
+}
+
+// NewHelper creates |Helper|.
+func NewHelper(ctx context.Context, d *dut.DUT, altHostname, chartPath, outDir string, displayLevel float32) (*Helper, error) {
+	c, err := NewWithDisplayLevel(ctx, d, altHostname, chartPath, outDir, displayLevel)
+	if err != nil {
+		return nil, err
+	}
+	return &Helper{c, ctx, d, altHostname, chartPath, outDir, displayLevel}, nil
+}
+
+// SetDisplayLevel sets the display level.
+func (h *Helper) SetDisplayLevel(displayLevel float32) error {
+	if h.chart != nil {
+		if err := h.chart.Close(h.ctx, h.outDir); err != nil {
+			return err
+		}
+		h.chart = nil
+	}
+	c, err := NewWithDisplayLevel(h.ctx, h.d, h.altHostname, h.chartPath, h.outDir, displayLevel)
+	if err != nil {
+		return err
+	}
+	h.chart = c
+	h.displayLevel = displayLevel
+	return nil
+}
+
+// Close closes the helper.
+func (h *Helper) Close() error {
+	if h.chart != nil {
+		return h.chart.Close(h.ctx, h.outDir)
+	}
+	return nil
+}
