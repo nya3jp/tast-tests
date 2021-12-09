@@ -24,10 +24,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CaptureUnittests,
-		Desc:         "Runs Chrome capture_unittests to exercise Chrome's video capture stack",
-		Contacts:     []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:camera-postsubmit", "group:camera-libcamera"},
+		Func:     CaptureUnittests,
+		Desc:     "Runs Chrome capture_unittests to exercise Chrome's video capture stack",
+		Contacts: []string{"shik@chromium.org", "chromeos-camera-eng@google.com"},
+		// TODO(b/187020361): removed from group:camera-postsubmit.
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"bear.mjpeg"},
 	})
