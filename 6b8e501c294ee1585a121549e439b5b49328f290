@@ -16,6 +16,23 @@
       "message": "hello seewaifu@ can you help to vote again?",
       "revId": "6b8e501c294ee1585a121549e439b5b49328f290",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8c40566_b3f568f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-09T02:32:50Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "6b8e501c294ee1585a121549e439b5b49328f290",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
