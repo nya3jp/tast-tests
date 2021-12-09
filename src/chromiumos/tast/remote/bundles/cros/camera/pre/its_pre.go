@@ -5,11 +5,14 @@
 package pre
 
 import (
+	"archive/zip"
 	"context"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -76,6 +79,7 @@ type itsPreImpl struct {
 	hostname   string
 	adbDevice  *adb.Device
 	prepared   bool
+	usePython3 bool
 }
 
 // ITSHelper provides helper functions accessing ITS package and mandating ARC.
@@ -98,6 +102,39 @@ func copyFile(src, dst string, perm os.FileMode) error {
 		return err
 	}
 	return ioutil.WriteFile(dst, content, perm)
+}
+
+func itsUnzip(ctx context.Context, zipPath, outDir string) error {
+	r, err := zip.OpenReader(zipPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to open ITS zip file")
+	}
+	defer r.Close()
+
+	for _, f := range r.File {
+		if f.FileInfo().IsDir() {
+			continue
+		}
+		src, err := f.Open()
+		if err != nil {
+			return errors.Wrapf(err, "failed to open file %v in ITS zip", f.Name)
+		}
+		defer src.Close()
+		dstPath := path.Join(outDir, f.Name)
+		if err := os.MkdirAll(filepath.Dir(dstPath), 0755); err != nil {
+			return errors.Wrapf(err, "failed to create directory for unzipped ITS file %v", f.Name)
+		}
+		dst, err := os.Create(dstPath)
+		if err != nil {
+			return errors.Wrapf(err, "failed to create file for copying ITS file %v", f.Name)
+		}
+		defer dst.Close()
+
+		if _, err := io.Copy(dst, src); err != nil {
+			return errors.Wrapf(err, "failed to copy ITS file %v", f.Name)
+		}
+	}
+	return nil
 }
 
 func (p *itsPreImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} {
@@ -149,15 +186,31 @@ func (p *itsPreImpl) Prepare(ctx context.Context, s *testing.PreState) interface
 	}
 	p.adbDevice = adbDevice
 
+	output, err := testexec.CommandContext(ctx, "python3", "-c", "print(__import__('importlib').util.find_spec('cv2') is not None)").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to check python3 dependencies: ", err)
+	}
+	p.usePython3 = strings.TrimSpace(string(output)) == "True"
+
 	// Unpack ITS bundle.
 	bundlePath, err := p.abi.bundlePath()
 	if err != nil {
 		s.Fatal("Failed to get bundle path: ", err)
 	}
-	if err := testexec.CommandContext(
-		ctx, "python3", s.DataPath(SetupITSRepoScript), s.DataPath(bundlePath),
-		"--patch_path", s.DataPath(ITSPy3Patch), "--output", p.dir).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("Failed to setup its repo from bundle path: ", err)
+	if p.usePython3 {
+		testing.ContextLog(ctx, "Use python3 to run ITS")
+		if err := testexec.CommandContext(
+			ctx, "python3", s.DataPath(SetupITSRepoScript), s.DataPath(bundlePath),
+			"--patch_path", s.DataPath(ITSPy3Patch), "--output", p.dir).Run(testexec.DumpLogOnError); err != nil {
+			s.Fatal("Failed to setup its repo from bundle path: ", err)
+		}
+	} else {
+		testing.ContextLog(ctx, "Use python2 to run ITS")
+		if err := itsUnzip(ctx, s.DataPath(bundlePath), p.dir); err != nil {
+			s.Fatal("Failed to unzip its bundle: ", err)
+		}
+		// The script is written in python2, no need to apply python2 -> python3 patches.
+		// TODO(b/195621235): Remove python2 code path here after fully migrate to python3.
 	}
 
 	// Install CTSVerifier apk.
@@ -201,10 +254,14 @@ func (p *itsPreImpl) Close(ctx context.Context, s *testing.PreState) {
 func (h *ITSHelper) TestCmd(ctx context.Context, scene, camera int) *testexec.Cmd {
 	setupPath := path.Join("build", "envsetup.sh")
 	scriptPath := path.Join("tools", "run_all_tests.py")
+	pyVer := 2
+	if h.p.usePython3 {
+		pyVer = 3
+	}
 	cmdStr := fmt.Sprintf(`cd %s
 	source %s
-	python3 %s device=%s scenes=%d camera=%d skip_scene_validation`,
-		h.p.itsRoot(), setupPath, scriptPath, h.p.hostname, scene, camera)
+	python%d %s device=%s scenes=%d camera=%d skip_scene_validation`,
+		h.p.itsRoot(), setupPath, pyVer, scriptPath, h.p.hostname, scene, camera)
 	cmd := testexec.CommandContext(ctx, "bash", "-c", cmdStr)
 	cmd.Env = append(os.Environ(), "PYTHONUNBUFFERED=y")
 	return cmd
