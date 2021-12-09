@@ -72,6 +72,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d64b77d_0ceadf7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-09T10:56:10Z",
+      "side": 1,
+      "message": "nit: this should be ctx",
+      "range": {
+        "startLine": 95,
+        "startChar": 25,
+        "endLine": 95,
+        "endChar": 35
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38707672_1eb662ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-09T10:56:10Z",
+      "side": 1,
+      "message": "nit: i think you want to pass cleanupCtx here",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 6
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dec9203_979879c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
         "patchSetId": 12
@@ -101,6 +147,98 @@
       "side": 1,
       "message": "Acknowledged, will definitely do.\n\nTo summarize what Ben \u0026 I decided offline:\n* We\u0027ll maintain the status quo for this change, focusing on the migration from StartScanner() to Start().\n* In a follow-up CL, we\u0027ll build out the logic for WaitForScanner(), incorporating these checks.\n* In a follow-up CL, we\u0027ll investigate if we can improve the underlying implementation of WaitUntilConfigured(). Today, WaitUntilConfigured() uses a CUPS-specific backdoor to see if a printer is configured. We suspect it is better to watch the top of the print stack (i.e. await an ash notification).",
       "parentUuid": "6dec9203_979879c7",
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53938dfd_4eca4054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-09T10:56:10Z",
+      "side": 1,
+      "message": "Why do you need to Stop printer twice: here and in line 107. Stop printer in line 107 should be sufficient. Stop printer in 2 place is not consistent with other tests and people might be confused whether you need to do that.\n\nI also remember there was a thread that you want Stop() method to be idempotent. Could you please explain why it might be useful? If it does not makes sense to be idempotent, please remove idempotent support in Stop() method because I think it\u0027s an error if someone try to call Stop() method twice.\n\nedit: I see many other defer statements in open_scan_in_files_app.go file, is there a bug that you have to stop it before some defer statement? is it still valid for this file? In the current Stop() implementation you just send kill signal, so is this comment still valid?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d6d5e8_59aeabd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-09T10:56:10Z",
+      "side": 1,
+      "message": "nit: rename to ctx for consistency. This function implementation should not be aware whether context if cleanup or shorten or whatever else.",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 22
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e13a9e_fe764b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-09T10:56:10Z",
+      "side": 1,
+      "message": "nit: ctx",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c632b3f3_9b358e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-09T10:56:10Z",
+      "side": 1,
+      "message": "nit: don\u0027t ignore errors",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 25
+      },
       "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
