@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dec9682_6a60dbcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/shelf_overflow_menu.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-09T04:14:02Z",
+      "side": 1,
+      "message": "move to shelf package",
+      "revId": "edf24d533991f7e4bf30de3ec09d539a684d6625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
