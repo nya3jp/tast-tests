@@ -33,6 +33,40 @@
       "message": "Adding Ben for team-level review.",
       "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b211dca2_5b32d768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-09T00:13:15Z",
+      "side": 1,
+      "message": "Should these also wait for the printer to be configured?  In general we want to avoid having the test start trying to scan while Chrome is still setting up the printer.",
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dec9203_979879c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-09T00:13:15Z",
+      "side": 1,
+      "message": "Most of these have these same 4 checks to wait for the printer to be ready for scanning.  Other than the non-ipp enumeration test case, the ones that don\u0027t are more likely to be a mistake than an intentional omission.  What do you think about adding a WaitForScanner option and migrating these into the new Start() as well?",
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
