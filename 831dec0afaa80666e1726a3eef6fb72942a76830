@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1da89816_78c206df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "We can update familylink.ChildWallpaperSync to run with the new wallpaper app.",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bb6b8754_76bff3bf",
@@ -32,6 +49,236 @@
       "side": 1,
       "message": "I\u0027ll take a look. I\u0027m surprised that the familylink.ChildWallpaperSync doesn\u0027t work with the new wallpaper app. Instead of deleting the test, why can\u0027t we update it to work with the new wallpaper app?",
       "parentUuid": "bb6b8754_76bff3bf",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f1080e_c10cbae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "I confirmed that we can update the familylink.ChildWallpaperSync test to work with the new wallpaper app instead of deleting it. My other comments explain how to update the test.",
+      "parentUuid": "cc374d45_1a2525e9",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e190ff_4bc991b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "Not needed",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "424fe3b8_d29ae21e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "Revert to familyLinkUnicornLogin to use the new wallpaper app.",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919cc765_53dbb6f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "Not needed",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0298714_197fdee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "This variable needs to be renamed to \"Next Level! Digital Art by Leo Natsume\". I already uploaded a CL [1] to do that.\n\n[1] https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4318916",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654fd67d_bbfabac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "OpenWallpaperPicker for the new wallpaper app.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "724c0fe2_1bc4b1c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "MinimizeWallpaperPicker",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 47
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "243afe48_ad202a4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "Replace with a check for the desired wallpaper.\n\nif err :\u003d ui.WaitUntilExists(nodewith.Name(fmt.Sprintf(\"Currently set %v\", image)).Role(role.Heading))(innerCtx); err !\u003d nil {\n+                       return errors.Wrapf(err, \"failed to validate selected wallpaper %q: %v\", image, err)\n                }",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a57ca6f_ce1bdfea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "Remove this after [1] lands.\n\n[1] https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4318916",
+      "range": {
+        "startLine": 40,
+        "startChar": 49,
+        "endLine": 40,
+        "endChar": 80
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c4f3409_ed079db9",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "You may remove this fixture. All familylink.* tests can run with the new wallpaper app.",
+      "range": {
+        "startLine": 166,
+        "startChar": 13,
+        "endLine": 166,
+        "endChar": 47
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549ebbe0_30da8503",
+        "filename": "src/chromiumos/tast/local/chrome/wallpaper/wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "We can delete these two functions.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
       "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

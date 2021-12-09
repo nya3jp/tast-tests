@@ -70,6 +70,24 @@
       "parentUuid": "d0148eb8_42bb903a",
       "revId": "2d421264d7cd3d8085c61f28dd34eab8f7dbf76c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a62ac86_5686ccb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-09T05:24:14Z",
+      "side": 1,
+      "message": "familylink.ChildWallpaperSync should not be deleted. It should be updated to work with the new wallpaper app.\n\nAs for wallpaper.change, I thought we were waiting for this Tast code lab [1] to update before deleting it. This code lab is one of the most helpful ones for learning how to write Tast tests, and it still uses the old wallpaper app as an illustrative example.\n\n[1] go/tast-codelab-3",
+      "parentUuid": "5aa82b5d_061358fb",
+      "revId": "2d421264d7cd3d8085c61f28dd34eab8f7dbf76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
