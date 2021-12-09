@@ -7,6 +7,7 @@ package policyutil
 import (
 	"context"
 	"encoding/json"
+	"io/ioutil"
 	"path/filepath"
 	"strings"
 	"time"
@@ -41,14 +42,45 @@ type enrolledFixt struct {
 	fdmsDir string
 }
 
+func dumpVPDContent(ctx context.Context, d *dut.DUT) ([]byte, error) {
+	out, err := d.Conn().CommandContext(ctx, "vpd", "-i", "RW_VPD", "-l").Output(ssh.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run the vpd command")
+	}
+
+	return out, nil
+}
+
 func checkVPDState(ctx context.Context, d *dut.DUT) error {
 	// https://chromeos.google.com/partner/dlm/docs/factory/vpd.html#required-rw-fields
 	const requiredField = "gbind_attribute"
 
-	if out, err := d.Conn().CommandContext(ctx, "vpd", "-i", "RW_VPD", "-l").Output(ssh.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to run the vpd command")
+	outDir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("no output directory")
+	}
+
+	if out, err := dumpVPDContent(ctx, d); err != nil {
+		return err
 	} else if !strings.Contains(string(out), requiredField) {
-		testing.ContextLog(ctx, "VPD RW_VPD content: ", string(out))
+		// VPD does is nor unning well, returning an error. Second run will
+		// confirm whether the error is transitory.
+
+		if err := ioutil.WriteFile(filepath.Join(outDir, "vpd-dump.txt"), out, 0644); err != nil {
+			return errors.New("failed to dump VPD content")
+		}
+
+		out, err := dumpVPDContent(ctx, d)
+		if err != nil {
+			return errors.Wrap(err, "failed the second dump of the VPD")
+		}
+		if err := ioutil.WriteFile(filepath.Join(outDir, "vpd-dump-2.txt"), out, 0644); err != nil {
+			return errors.New("failed to dump VPD content")
+		}
+		if strings.Contains(string(out), requiredField) {
+			return errors.Errorf("VPD error, first run did not find %q, second run did", requiredField)
+		}
+
 		return errors.Errorf("VPD error, did not find the required field %q", requiredField)
 	}
 
