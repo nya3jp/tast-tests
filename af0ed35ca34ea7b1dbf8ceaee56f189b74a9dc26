@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a162c9_37f8849d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-09T16:41:23Z",
+      "side": 1,
+      "message": "# No comment from shadow reviewer for one day, so skipping it now.",
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d9bcbd_c23edea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_decode.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-09T16:41:23Z",
+      "side": 1,
+      "message": "Could you return from the DecodeFrames, instead?\nGetFrame can take it as an argument.",
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16fab924_fbd501bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-09T16:41:23Z",
+      "side": 1,
+      "message": "you can extract this part into another function, so that close handling can be simplified.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9609fa_d7e4abe8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-09T16:41:23Z",
+      "side": 1,
+      "message": "\"--args\u003d\"+md5File.Name().",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 43
+      },
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed873e6_1e0afef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-09T16:41:23Z",
+      "side": 1,
+      "message": "\"--metadata\u003d\" + jsonFilePath",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c435b8_01849d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-09T16:41:23Z",
+      "side": 1,
+      "message": "can this be multiple lines? If so, could you dump into a file?",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
