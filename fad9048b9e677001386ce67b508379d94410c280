@@ -73,6 +73,29 @@
       "message": "LGTM with a nit.",
       "revId": "fad9048b9e677001386ce67b508379d94410c280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b935eb47_ed0bd214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/session/guest_and_actual_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2021-12-09T01:00:16Z",
+      "side": 1,
+      "message": "Just double-checking: is the \"chromiumos/policy/\" prefix correct? I\u0027m asking because the protos in the Chromium repo don\u0027t have it, e.g.:\n\nhttps://source.chromium.org/chromium/chromium/src/+/main:components/policy/proto/chrome_device_policy.proto;l\u003d13;drc\u003d1dd12307ae3c9ed5ec4054bb024be9a536df7834",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 63
+      },
+      "revId": "fad9048b9e677001386ce67b508379d94410c280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
