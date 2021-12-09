@@ -93,6 +93,30 @@
       },
       "revId": "c86a1de4ef19fc364b0c176f0ae90e0afed930d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60008e29_e4cda79b",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-09T13:29:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a211d3c_6f55f94f",
+      "range": {
+        "startLine": 124,
+        "startChar": 42,
+        "endLine": 124,
+        "endChar": 55
+      },
+      "revId": "c86a1de4ef19fc364b0c176f0ae90e0afed930d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
