@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc157e4d_0c7ff6a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-09T04:13:09Z",
+      "side": 1,
+      "message": "It\u0027s not visible in this change, but the subsequent call to EnsurePrinterIdle() does actually wait for the printer to be configured. This is addressed more fully in the subsequent CL in the chain.",
+      "parentUuid": "b211dca2_5b32d768",
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dec9203_979879c7",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-12-09T00:13:15Z",
       "side": 1,
       "message": "Most of these have these same 4 checks to wait for the printer to be ready for scanning.  Other than the non-ipp enumeration test case, the ones that don\u0027t are more likely to be a mistake than an intentional omission.  What do you think about adding a WaitForScanner option and migrating these into the new Start() as well?",
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "715937c7_2dd9dbd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-09T04:13:09Z",
+      "side": 1,
+      "message": "Acknowledged, will definitely do.\n\nTo summarize what Ben \u0026 I decided offline:\n* We\u0027ll maintain the status quo for this change, focusing on the migration from StartScanner() to Start().\n* In a follow-up CL, we\u0027ll build out the logic for WaitForScanner(), incorporating these checks.\n* In a follow-up CL, we\u0027ll investigate if we can improve the underlying implementation of WaitUntilConfigured(). Today, WaitUntilConfigured() uses a CUPS-specific backdoor to see if a printer is configured. We suspect it is better to watch the top of the print stack (i.e. await an ash notification).",
+      "parentUuid": "6dec9203_979879c7",
       "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
