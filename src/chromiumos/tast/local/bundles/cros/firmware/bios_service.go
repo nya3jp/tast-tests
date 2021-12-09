@@ -29,18 +29,32 @@ type BiosService struct {
 	s *testing.ServiceState
 }
 
-// BackupECRW dumps the EC RW region into temporary file locally and returns its path
-func (*BiosService) BackupECRW(ctx context.Context, req *empty.Empty) (*pb.ECRWPath, error) {
-	path, err := bios.NewImageToFile(ctx, bios.ECRWImageSection, bios.ECProgrammer)
-	if err != nil {
-		return nil, errors.Wrap(err, "could not backup EC_RW region")
-	}
-	return &pb.ECRWPath{Path: path}, nil
+// programmerEnumToProgrammer maps the enum from FWBackUpSection to a bios FlashromProgramer.
+var programmerEnumToProgrammer = map[pb.Programmer]bios.FlashromProgrammer{
+	pb.Programmer_BIOSProgrammer: bios.HostProgrammer,
+	pb.Programmer_ECProgrammer:   bios.ECProgrammer,
 }
 
-func (bs *BiosService) RestoreECRW(ctx context.Context, path *pb.ECRWPath) (*empty.Empty, error) {
-	if err := bios.WriteImageFromFile(ctx, path.Path, bios.ECRWImageSection, bios.ECProgrammer); err != nil {
-		return nil, errors.Wrap(err, "could not restore EC_RW region")
+// sectionEnumToSection maps the enum from FWBackUpSection to a bios ImageSection.
+var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
+	pb.ImageSection_GBBImageSection:   bios.GBBImageSection,
+	pb.ImageSection_ECRWImageSection:  bios.ECRWImageSection,
+	pb.ImageSection_ECRWBImageSection: bios.ECRWBImageSection,
+}
+
+// BackupImageSection dumps the image region into temporary file locally and returns its path.
+func (*BiosService) BackupImageSection(ctx context.Context, req *pb.FWBackUpSection) (*pb.FWBackUpInfo, error) {
+	path, err := bios.NewImageToFile(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
+	if err != nil {
+		return nil, errors.Wrapf(err, "could not backup %s region with programmer %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
+	}
+	return &pb.FWBackUpInfo{Path: path, Section: req.Section, Programmer: req.Programmer}, nil
+}
+
+// RestoreImageSection restores image region from temporary file locally and restores fw with it.
+func (bs *BiosService) RestoreImageSection(ctx context.Context, req *pb.FWBackUpInfo) (*empty.Empty, error) {
+	if err := bios.WriteImageFromFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
+		return nil, errors.Wrapf(err, "could not restore %s region with programmer %s from path %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
 	}
 	return &empty.Empty{}, nil
 }
@@ -85,14 +99,14 @@ func (bs *BiosService) EnableAPSoftwareWriteProtect(ctx context.Context, req *em
 
 // CorruptECSection writes garbage over part of the specified firmware section.
 func (bs *BiosService) CorruptECSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
-	img, err := bios.NewImage(ctx, bios.ImageSection(req.Section), bios.ECProgrammer)
+	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), bios.ECProgrammer)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware")
 	}
 	for i, v := range img.Data {
 		img.Data[i] = (v + 1) & 0xff
 	}
-	err = img.WriteFlashrom(ctx, bios.ImageSection(req.Section), bios.ECProgrammer)
+	err = img.WriteFlashrom(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), bios.ECProgrammer)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not write firmware")
 	}

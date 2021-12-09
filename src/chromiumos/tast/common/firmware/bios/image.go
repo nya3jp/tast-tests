@@ -40,6 +40,9 @@ const (
 	// ECRWImageSection is the named section for EC writable data as output from dump_fmap.
 	ECRWImageSection ImageSection = "EC_RW"
 
+	// ECRWBImageSection is the named section for a secondary EC writable data for EFS.
+	ECRWBImageSection ImageSection = "EC_RW_B"
+
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
 )
