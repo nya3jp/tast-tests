@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db64a7a1_8c8dce12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "I mean it. Because when there is an error, it\u0027ll return \"\" string by the util function, and I\u0027d like to use empty string for the following comparison.\n\nBesides, we want to align the behavior of powerd. When they fail to read sysfs file, they report empty string to us.",
+      "parentUuid": "1d61af2f_36f833ef",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f51dd8fc_f7b42c6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-10T06:01:47Z",
       "side": 1,
       "message": "nit: I\u0027d rename v to got.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79308db8_d11b7886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f51dd8fc_f7b42c6c",
       "range": {
         "startLine": 54,
         "startChar": 4,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-10T06:01:47Z",
       "side": 1,
       "message": "nit: ,\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead",
+      "range": {
+        "startLine": 55,
+        "startChar": 55,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a985943_502d41e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e9bd278_0ebf30f4",
       "range": {
         "startLine": 55,
         "startChar": 55,
@@ -118,6 +190,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e380ebee_7ebbecd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Same reason, and I decide to let it report error when ParseInt.",
+      "parentUuid": "6f913e91_7171c455",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "769c1844_c3fdb4dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "034cfc40_9842e190",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 10
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e037b56_b8b3738a",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
         "patchSetId": 3
@@ -129,6 +249,30 @@
       "writtenOn": "2021-12-10T06:01:47Z",
       "side": 1,
       "message": "Assuming the value is represented in micros, how about naming it micros ?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23d5036_2896f3ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e037b56_b8b3738a",
       "range": {
         "startLine": 62,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c4ff93_66d37591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e379435_5c6adede",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12275e7c_223ee28c",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-12-10T06:01:47Z",
       "side": 1,
       "message": "nit: ,",
+      "range": {
+        "startLine": 70,
+        "startChar": 55,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a12d6a8_c91daa63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12275e7c_223ee28c",
       "range": {
         "startLine": 70,
         "startChar": 55,
@@ -210,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76557b05_7875213d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll check all other test in this directory, thanks!",
+      "parentUuid": "4aae0b3a_10f231fc",
+      "range": {
+        "startLine": 75,
+        "startChar": 54,
+        "endLine": 75,
+        "endChar": 65
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1e47a6d_1c148260",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
         "patchSetId": 3
@@ -221,6 +437,30 @@
       "writtenOn": "2021-12-10T06:01:47Z",
       "side": 1,
       "message": "nit: sort?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 38
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4d8943_d0b39bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-10T07:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1e47a6d_1c148260",
       "range": {
         "startLine": 82,
         "startChar": 0,
