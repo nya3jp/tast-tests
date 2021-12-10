@@ -65,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b368b8_91774d66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-12-10T01:36:51Z",
+      "side": 1,
+      "message": "OK, it makes sense to me.",
+      "parentUuid": "8a38b8cf_17b138ee",
+      "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7b9fa3e_d4ab160f",
@@ -102,6 +120,30 @@
       "side": 1,
       "message": "Done.\n\nIt also seems like vp9_2 is currently inactive and it fails on clean runs for me. Should I just add it but leave it disabled?",
       "parentUuid": "e7b9fa3e_d4ab160f",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 5
+      },
+      "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c275a8d4_961b35f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-12-10T01:36:51Z",
+      "side": 1,
+      "message": "I think we could skip vp9_2 since we don\u0027t enable it at ARC++.",
+      "parentUuid": "51fa196a_c6f6248d",
       "range": {
         "startLine": 112,
         "startChar": 2,
