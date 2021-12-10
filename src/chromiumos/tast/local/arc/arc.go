@@ -697,6 +697,16 @@ func WriteArcvmDevConf(ctx context.Context, text string) error {
 	if !isVMEnabled {
 		return nil
 	}
+
+	// It's possible a previous test run didn't successfully clean up the backup. Restoring it here
+	// should be safe as a test should only write or append to the config once.
+	if _, err := os.Stat(arcvmDevConfFileBackup); err == nil {
+		testing.ContextLogf(ctx,
+			"%s already exists, restoring config from backup as the previous test might have failed to clean up",
+			arcvmDevConfFileBackup)
+		RestoreArcvmDevConf(ctx)
+	}
+
 	if err := os.Rename(arcvmDevConfFile, arcvmDevConfFileBackup); err != nil {
 		if errors.Is(err, os.ErrNotExist) {
 			testing.ContextLog(ctx, "Original arcvm_dev.conf did not exist. Proceeding without backup")
@@ -719,6 +729,15 @@ func AppendToArcvmDevConf(ctx context.Context, text string) error {
 	}
 	if !isVMEnabled {
 		return nil
+	}
+
+	// It's possible a previous test run didn't successfully clean up the backup. Restoring it here
+	// should be safe as a test should only write or append to the config once.
+	if _, err := os.Stat(arcvmDevConfFileBackup); err == nil {
+		testing.ContextLogf(ctx,
+			"%s already exists, restoring config from backup as the previous test might have failed to clean up",
+			arcvmDevConfFileBackup)
+		RestoreArcvmDevConf(ctx)
 	}
 
 	// Copy arcvm_dev.conf to backup file.
