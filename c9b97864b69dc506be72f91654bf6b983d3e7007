@@ -34,6 +34,24 @@
       "parentUuid": "57bbd948_6df8bf62",
       "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36586332_beeb3f69",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-10T05:42:38Z",
+      "side": 1,
+      "message": "In that case, instead of checking if the default is python2, could we check if python3 exists? Just check the output of \"which python3\" or something?",
+      "parentUuid": "1c67d546_706d3747",
+      "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
