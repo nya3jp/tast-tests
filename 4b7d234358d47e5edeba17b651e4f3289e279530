@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c3b3d07_c85554fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-10T02:22:24Z",
+      "side": 1,
+      "message": "There will be several smaller patches. We add that in the next round.",
+      "parentUuid": "04c4461e_08712780",
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f499d656_5c45f8bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 5
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-09T23:22:56Z",
       "side": 1,
       "message": "Normally it is decouraged to pass testing.State around function in tast. \nThat said, this function should return an error and let callee FAIL the test if error occured.\n\nThat said, it\u0027s not clear to me what\u0027s the benefit of introducing a function here. For readability perceptive, screenshot.Capture is kind of self-explainable to me.",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485ba327_fccca055",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-10T02:22:24Z",
+      "side": 1,
+      "message": "Good catch. Notice we don\u0027t want to fail/end the test but just count the failures to get similarish screenshots..",
+      "parentUuid": "f499d656_5c45f8bc",
       "range": {
         "startLine": 91,
         "startChar": 5,
@@ -117,6 +159,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ea12460_907f7e69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-10T02:22:24Z",
+      "side": 1,
+      "message": "Good suggestion. In the next change.",
+      "parentUuid": "c0c7103d_e0343625",
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c724865_d0e94fb6",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 5
@@ -128,6 +188,30 @@
       "writtenOn": "2021-12-09T23:22:56Z",
       "side": 1,
       "message": "This would be 0. Is it intended?\n\nI played a little bit of perceptualdiff on crostini. \n\n$ perceptualdiff t.jpeg t2.jpeg --verbose\nField of view is 45 degrees\nThreshold pixels is 100 pixels\nThe Gamma is 2.2\nThe Display\u0027s luminance is 100 candela per meter squared\nConverting RGB to XYZ\nConstructing Laplacian Pyramids\nPerforming test\nFAIL: Images are visibly different\n1113269 pixels are different",
+      "range": {
+        "startLine": 205,
+        "startChar": 10,
+        "endLine": 205,
+        "endChar": 26
+      },
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266193bd_77550c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-10T02:22:24Z",
+      "side": 1,
+      "message": "Good catch. Sounds like isPerceptualDiff() should return the number of different pixels as well.",
+      "parentUuid": "2c724865_d0e94fb6",
       "range": {
         "startLine": 205,
         "startChar": 10,
