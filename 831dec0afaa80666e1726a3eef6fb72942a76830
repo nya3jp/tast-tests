@@ -497,6 +497,30 @@
       },
       "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "090ee911_ff35f867",
+        "filename": "src/chromiumos/tast/local/chrome/wallpaper/wallpaper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T18:53:46Z",
+      "side": 1,
+      "message": "I deleted CloseWallpaperDeprecated but CheckWallpaperDeprecated is still used by wallpaper.Change",
+      "parentUuid": "549ebbe0_30da8503",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
