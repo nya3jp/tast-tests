@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc39497_3d856b03",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-12-10T03:27:22Z",
+      "side": 1,
+      "message": "nit: Now we have 2 methods for modifying the file.\nShould we check if the backup file exists or not before copying?\nIf the backup file exists, that means we already modify the file but not restored yet.",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 2
+      },
+      "revId": "6713efbf0c86359edf2dcd2402f72effaa0823bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
