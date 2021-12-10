@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efad753e_c12cdcac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-10T00:48:08Z",
+      "side": 1,
+      "message": "Hi Ben, thanks for the quick reply!\n\nI need to have some flags written to arcvm_dev.conf before crosvm starts. It\u0027s too late if I write the config in the fixture\u0027s Setup() function, it works fine when I write the config upon creating the fixture in NewArcBootedWithConfigFixture(). I\u0027m trying to figure out if that\u0027s an acceptable thing to do.\n\nchrome.ExtraArgs doesn\u0027t seem to work here as these flags are specific to arcvm and need to end up in arcvm_dev.conf.\n\nThe closest example I found is: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/boot.go;l\u003d116\n\nThis test doesn\u0027t use any fixture and boots Chrome manually. But I want to avoid having to manually reconstruct the entire process used to bring up Chrome and ARCVM in the \"arcBootedWithVideoLogging\" fixture. I just want to write an additional flag to arcvm_dev.conf and use a similar fixture. Given that the flag should be temporary until the roll-out is completed I prefer to keep things simple.",
+      "parentUuid": "de5b8eb8_e94f188a",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "659afba5_1cace703",
