@@ -32,7 +32,13 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      60 * time.Minute,
-		Fixture:      "speedometerWPRLacros",
+		Params: []testing.Param{{
+			Name:    "",
+			Fixture: "speedometerWPRLacros",
+		}, {
+			Name:    "waylanddecreasedpriority",
+			Fixture: "lacrosWaylandDecreasedPriority",
+		}},
 	})
 }
 

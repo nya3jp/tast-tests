@@ -31,14 +31,27 @@ func init() {
 		Contacts:     []string{"hidehiko@chromium.org", "tvignatti@igalia.com", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Fixture:      "lacros",
 		Timeout:      6 * time.Minute,
 		Params: []testing.Param{{
-			Name: "maximized",
-			Val:  false,
+			Name:    "cmdlinelaunch",
+			Val:     false,
+			Fixture: "lacros",
 		}, {
-			Name: "maximized_shelf",
-			Val:  true,
+			Name:    "",
+			Val:     true,
+			Fixture: "lacros",
+		}, {
+			Name:    "waylanddecreasedpriority",
+			Val:     true,
+			Fixture: "lacrosWaylandDecreasedPriority",
+		}, {
+			Name:    "ashlikethreadspriority",
+			Val:     true,
+			Fixture: "lacrosAshLikeThreadsPriority",
+		}, {
+			Name:    "waylanddecreased_and_ashlikethreadspriority",
+			Val:     true,
+			Fixture: "lacrosWaylandDecreasedAndAshLikeThreadsPriority",
 		}},
 	})
 }
