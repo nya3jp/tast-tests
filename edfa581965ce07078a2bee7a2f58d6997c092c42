@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca95e4f_1f72b363",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-10T00:51:39Z",
+      "side": 1,
+      "message": "Got it. Should be fine to move the code in SetUp to prior to chrome.New to achieve the same as boot.go, give that a crack.",
+      "parentUuid": "efad753e_c12cdcac",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "659afba5_1cace703",
@@ -84,6 +102,24 @@
       "writtenOn": "2021-12-09T02:24:17Z",
       "side": 1,
       "message": "Writing the config in SetUp() doesn\u0027t work unfortunately, as the flag needs to be set before ARCVM has booted.",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b3aa1d_582a9b88",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-10T00:51:39Z",
+      "side": 1,
+      "message": "If you move this line back up to  ~312 that will be prior to chrome starting, I wonder if that\u0027s appropriate",
+      "parentUuid": "25306550_bf6a110e",
       "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
