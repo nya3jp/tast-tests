@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 
@@ -132,6 +133,9 @@ var expectedWLANDriver = map[string]map[string]string{
 		"5.4":  "wireless/mediatek/mt76/mt7921/mt7921e.ko",
 		"5.10": "wireless/mediatek/mt76/mt7921/mt7921e.ko",
 	},
+	wlan.MediaTekMT7921SDIO: {
+		"5.10": "wireless/mediatek/mt76/mt7921/mt7921s.ko",
+	},
 }
 
 func Driver(ctx context.Context, s *testing.State) {
@@ -183,12 +187,51 @@ func Driver(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	modulePath := filepath.Join("/sys/class/net", netIf, "device/driver/module")
-	rel, err := os.Readlink(modulePath)
-	if err != nil {
-		s.Fatal("Failed to readlink module path: ", err)
+	// readDir is based on ReadDir from go 1.17.
+	// see: https://cs.opensource.google/go/go/+/refs/tags/go1.17.4:src/os/dir.go;l=115
+	// It was slightly modified to get rid of other 1.17 features.
+	readDir := func(name string) ([]os.FileInfo, error) {
+		f, err := os.Open(name)
+		if err != nil {
+			return nil, err
+		}
+		defer f.Close()
+
+		dirs, err := f.Readdir(-1)
+		sort.Slice(dirs, func(i, j int) bool { return dirs[i].Name() < dirs[j].Name() })
+		return dirs, err
 	}
-	moduleName := filepath.Base(rel)
+
+	moduleDir := filepath.Join("/sys/class/net", netIf, "device/driver/")
+	dirs, err := readDir(moduleDir)
+	if err != nil {
+		s.Fatal("Failed to list module path: ", err)
+	}
+	var path string
+	for _, dir := range dirs {
+		// Most of the devices link module under device/driver/module.
+		if dir.Name() == "module" {
+			modulePath := filepath.Join(moduleDir, "module")
+			path, err = os.Readlink(modulePath)
+			if err != nil {
+				s.Fatal("Failed to readlink module path: ", err)
+			}
+			break
+		}
+		// Some SDIO devices may keep module link in device/driver/mmc?:????:?/driver.
+		if match, _ := filepath.Match("mmc*", dir.Name()); match {
+			modulePath := filepath.Join(moduleDir, dir.Name(), "driver")
+			path, err = os.Readlink(modulePath)
+			if err != nil {
+				s.Fatal("Failed to readlink module path: ", err)
+			}
+			break
+		}
+	}
+	if path == "" {
+		s.Fatal("Failed to locate module path: ", err)
+	}
+	moduleName := filepath.Base(path)
 
 	if got, want := moduleName+".ko", filepath.Base(expectedPath); got != want {
 		s.Errorf("Module name is %s, want %s", got, want)
