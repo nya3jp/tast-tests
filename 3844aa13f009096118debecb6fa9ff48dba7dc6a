@@ -16,6 +16,24 @@
       "message": "+harpreet@ - Is there a way to exclude volteer-manatee/voxel from a Tast test? (Apparantly it does not have a WiFi adaptor?)\n",
       "revId": "3844aa13f009096118debecb6fa9ff48dba7dc6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa2178d_1c116cfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2021-12-10T03:36:42Z",
+      "side": 1,
+      "message": "You can use SkipOnPlatform. Eg. \nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/regulatory.go;l\u003d36\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/graphics/drm.go;l\u003d170\n\nAlso, the test is failing on reks as well http://shortn/_90gAhnUjiS",
+      "parentUuid": "b8a786f5_9c2c19b8",
+      "revId": "3844aa13f009096118debecb6fa9ff48dba7dc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
