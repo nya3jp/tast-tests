@@ -152,6 +152,30 @@
       },
       "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d05ff21d_171c53a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-10T20:26:48Z",
+      "side": 1,
+      "message": "Remove the vp9_2_linear_output test.",
+      "parentUuid": "c275a8d4_961b35f3",
+      "range": {
+        "startLine": 112,
+        "startChar": 2,
+        "endLine": 112,
+        "endChar": 5
+      },
+      "revId": "465494226912178cb0a3972cd24c60741f7e72ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
