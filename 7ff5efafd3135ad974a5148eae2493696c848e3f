@@ -16,6 +16,23 @@
       "message": "Answered Maksim question. PTAL again and if everything is alright, resolve the comment, and happy +2 :-) ",
       "revId": "7ff5efafd3135ad974a5148eae2493696c848e3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa547882_63fe3a6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399259
+      },
+      "writtenOn": "2021-12-10T11:19:45Z",
+      "side": 1,
+      "message": "Thanks everyone for reviewing!! :) ",
+      "revId": "7ff5efafd3135ad974a5148eae2493696c848e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
