@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a36e9b8a_c1d693f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2021-12-10T18:14:04Z",
+      "side": 1,
+      "message": "IIRC the CQ failure on VM seems to be related to b/209833758 timeout in chrome fixture setup.\nEliot, can you (or Hidehiko if you\u0027re ooo) help get this in again since this change looks like one of the sequential follow-ups of the refactor? WDYT?\n",
+      "revId": "bf7d45ac50ac1ae25cc19e8b20ee28b99c15536c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
