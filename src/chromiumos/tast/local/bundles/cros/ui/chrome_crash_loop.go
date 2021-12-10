@@ -17,11 +17,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// testModeSuccessfulFile is the special file that crash_sender creates if it
-// successfully got the crash report. MUST MATCH kTestModeSuccessfulFile in
-// crash_sender_util.cc
-const testModeSuccessfulFile = "/var/spool/crash/crash_sender_test_mode_successful"
-
 // chromeCrashLoopParams contains the test parameters which are different between the various tests.
 type chromeCrashLoopParams struct {
 	handler chromecrash.CrashHandler
@@ -109,8 +104,8 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer d.SetCrashSenderTestMode(ctx, false)
 
-	// Clean up success file at the end
-	defer os.Remove(testModeSuccessfulFile)
+	// Clean up success file at the end.
+	defer os.Remove(chromecrash.TestModeSuccessfulFile)
 
 	// Ensure success file isn't left over from previous test. By default, we
 	// don't print out the error here, nor do we fail the test because of errors
@@ -123,11 +118,11 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	// the first place. However, we do save the error object -- if the file still
 	// exists, we want to add it into the error message saying that the remove
 	// failed.
-	removeErr := os.Remove(testModeSuccessfulFile)
-	if _, err := os.Stat(testModeSuccessfulFile); err == nil {
-		s.Fatal(testModeSuccessfulFile, " still exists. Remove failed with: ", removeErr)
+	removeErr := os.Remove(chromecrash.TestModeSuccessfulFile)
+	if _, err := os.Stat(chromecrash.TestModeSuccessfulFile); err == nil {
+		s.Fatal(chromecrash.TestModeSuccessfulFile, " still exists. Remove failed with: ", removeErr)
 	} else if !errors.Is(err, os.ErrNotExist) {
-		s.Fatal("Could not stat ", testModeSuccessfulFile, ": ", err)
+		s.Fatal("Could not stat ", chromecrash.TestModeSuccessfulFile, ": ", err)
 	}
 
 	// restartTries should match BrowserJob::kRestartTries in browser_job.cc.
@@ -161,7 +156,7 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 		testing.ContextLog(ctx, "No Chrome dumps found; this should be the crash-loop upload. Polling for success file")
 		crashLoopModeUsed = true
 		if err := testing.Poll(ctx, func(c context.Context) error {
-			_, err := os.Stat(testModeSuccessfulFile)
+			_, err := os.Stat(chromecrash.TestModeSuccessfulFile)
 			return err
 		}, nil); err != nil {
 			s.Error("Test-successful file not found: ", err)
