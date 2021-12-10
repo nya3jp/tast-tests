@@ -70,6 +70,24 @@
       "parentUuid": "36586332_beeb3f69",
       "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8e4a71_5587ae63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2021-12-10T19:15:08Z",
+      "side": 1,
+      "message": "I am a bit confused over the logic here. If you want to force this test to remain in python2 until we get the new env up and running, I would do something like this:\n\n```\n    \u003ccheck if python2 is on system at all\u003e\n    if so; use it // bug: todo swap to python3 when frameworks team says new environment is online\n    else:\n        \u003cuse python3\u003e // since there is no python2, might as well try to use 3 as",
+      "parentUuid": "55308d3f_cdd28e65",
+      "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
