@@ -262,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3995719d_cf493e83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-10T07:22:18Z",
+      "side": 1,
+      "message": "I think returning error from ReadStringFile is more straightforward in this case. It\u0027s cryptic if the function fails in ParseInt because the file does not exist.",
+      "parentUuid": "e380ebee_7ebbecd4",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e037b56_b8b3738a",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
         "patchSetId": 3
