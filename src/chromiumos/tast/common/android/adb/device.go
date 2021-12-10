@@ -577,7 +577,7 @@ func (d *Device) StartScreenRecording(ctx context.Context, filename, outDir stri
 				return errors.Wrap(err, "failed to pull screen recording from the device")
 			}
 		}
-		if err := d.RemoveAll(ctx, path); err != nil {
+		if err := d.RemoveMediaFile(ctx, path); err != nil {
 			return errors.Wrap(err, "failed to delete screen recording from the device")
 		}
 		return nil
@@ -609,6 +609,22 @@ func (d *Device) OverridePhenotypeFlag(ctx context.Context, pkg, flag, value, va
 	}
 	if result.Result != 0 {
 		return errors.Errorf("Override phenotype flag %s failed with result code %d", flag, result.Result)
+	}
+	return nil
+}
+
+// RemoveMediaFile removes the media file specified by filePath from the Android device's storage and media gallery.
+func (d *Device) RemoveMediaFile(ctx context.Context, filePath string) error {
+	if err := d.RemoveAll(ctx, filePath); err != nil {
+		return errors.Wrapf(err, "failed to remove file %s from Android device storage", filePath)
+	}
+	// This triggers an update to the MediaStore database so that the file will be removed from the phone's gallery app too.
+	result, err := d.BroadcastIntent(ctx, "android.intent.action.MEDIA_SCANNER_SCAN_FILE", "-d", "file:"+filePath)
+	if err != nil {
+		return errors.Wrapf(err, "Removing file %s from MediaStore failed with error", filePath)
+	}
+	if result.Result != 0 {
+		return errors.Errorf("Removing file %s from MediaStore failed with result code %d", filePath, result.Result)
 	}
 	return nil
 }
