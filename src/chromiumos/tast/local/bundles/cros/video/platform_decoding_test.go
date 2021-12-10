@@ -742,6 +742,18 @@ func TestPlatformDecodingParams(t *testing.T) {
 		}
 	}
 
+	params = append(params, paramData{
+		Name:         fmt.Sprintf("v4l2_vp9_0_svc"),
+		Decoder:      "v4l2_stateful_decoder",
+		CmdBuilder:   "v4l2DecodeArgs",
+		Files:        []string{vp9SVCFile},
+		Timeout:      defaultTimeout,
+		SoftwareDeps: []string{"v4l2_codec", caps.HWDecodeVP9},
+		HardwareDeps: "hwdep.SupportsV4L2StatefulVideoDecoding()",
+		Metadata:     genExtraData([]string{vp9SVCFile}),
+		Attr:         []string{"graphics_video_vp9"},
+	})
+
 	// Generate V4L2 VP8 tests.
 	for _, testGroup := range []string{"inter", "inter_multi_coeff", "inter_segment", "intra", "intra_multi_coeff", "intra_segment", "comprehensive"} {
 		files := vp8Files[testGroup]
