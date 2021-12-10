@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c355d4_fd59424b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2021-12-10T02:21:43Z",
+      "side": 1,
+      "message": "just an fyi, if this is running in cros, or on DUT, it will be 3\n\n\nAdditionally, even if a system has python2 and python3 is the default, then the \"haspython2\" isnt going to be true?",
+      "range": {
+        "startLine": 188,
+        "startChar": 46,
+        "endLine": 188,
+        "endChar": 52
+      },
+      "revId": "3fae2923ab4b4198f600b73258c41f909f1dd5ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
