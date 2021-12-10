@@ -63,6 +63,21 @@ func MinimizeWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 	return ui.LeftClickUntil(minimizeBtn, ui.Gone(minimizeBtn))
 }
 
+// CloseWallpaperPicker returns an action to close the wallpaper picker.
+func CloseWallpaperPicker(ui *uiauto.Context) uiauto.Action {
+	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	closeBtn := nodewith.Name("Close").Role(role.Button).Ancestor(windowNode)
+	return ui.LeftClickUntil(closeBtn, ui.Gone(closeBtn))
+}
+
+// WaitForWallpaperWithName checks that a text node exists inside the wallpaper app with the given name.
+// Requires the wallpaper app to be open.
+func WaitForWallpaperWithName(ui *uiauto.Context, name string) uiauto.Action {
+	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	wallpaperNameNode := nodewith.Name(fmt.Sprintf("Currently set %v", name)).Role(role.Heading).Ancestor(windowNode)
+	return ui.WaitUntilExists(wallpaperNameNode)
+}
+
 // ValidateBackground takes a screenshot and check the percentage of the clr in the image,
 // returns error if it's less than expectedPercent%.
 func ValidateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color, expectedPercent int) error {
