@@ -165,7 +165,6 @@ type preImpl struct {
 	vkEnabled bool            // Whether virtual keyboard is force enabled
 	opts      []chrome.Option // Options that should be passed to chrome.New
 	tconn     *chrome.TestConn
-	uc        *useractions.UserContext
 }
 
 func (p *preImpl) String() string         { return p.name }
@@ -210,9 +209,11 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 			}()
 			if err == nil {
 				s.Log("Reusing existing Chrome session")
-				// User Context output directory needs to reset when switching tests.
-				p.uc.Refresh(s.TestName(), s.OutDir())
-				return PreData{p.cr, p.tconn, p.uc}
+				uc, err := inputactions.NewInputsUserContext(ctx, s, p.cr, p.tconn, nil)
+				if err != nil {
+					return errors.Wrap(err, "failed to create new inputs user context")
+				}
+				return PreData{p.cr, p.tconn, uc}
 			}
 			s.Log("Failed to reuse existing Chrome session: ", err)
 		}
@@ -256,14 +257,14 @@ func (p *preImpl) Prepare(ctx context.Context, s *testing.PreState) interface{} 
 		}
 	}
 
-	p.uc, err = inputactions.NewInputsUserContext(ctx, s, p.cr, p.tconn, nil)
+	uc, err := inputactions.NewInputsUserContext(ctx, s, p.cr, p.tconn, nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to create new inputs user context")
 	}
 
 	chrome.Lock()
 
-	return PreData{p.cr, p.tconn, p.uc}
+	return PreData{p.cr, p.tconn, uc}
 }
 
 // ResetIMEStatus resets IME input method and settings.
@@ -301,5 +302,4 @@ func (p *preImpl) closeInternal(ctx context.Context, s *testing.PreState) {
 	}
 	p.cr = nil
 	p.tconn = nil
-	p.uc = nil
 }

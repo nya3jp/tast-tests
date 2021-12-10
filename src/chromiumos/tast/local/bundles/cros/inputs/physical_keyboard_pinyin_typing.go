@@ -68,10 +68,7 @@ func PhysicalKeyboardPinyinTyping(ctx context.Context, s *testing.State) {
 	defer its.Close()
 
 	inputField := testserver.TextAreaInputField
-	// The UserContext might be shared across tests.
-	// So Remove input field after this test.
 	uc.SetAttribute(useractions.AttributeInputField, string(inputField))
-	defer uc.RemoveAttribute(useractions.AttributeInputField)
 
 	ui := uiauto.New(tconn)
 

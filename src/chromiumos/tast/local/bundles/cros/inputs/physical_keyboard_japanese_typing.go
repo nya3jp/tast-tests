@@ -85,11 +85,7 @@ func PhysicalKeyboardJapaneseTyping(ctx context.Context, s *testing.State) {
 	defer its.Close()
 
 	inputField := testserver.TextAreaInputField
-
-	// The UserContext might be shared across tests.
-	// So Remove input field after this test.
 	uc.SetAttribute(useractions.AttributeInputField, string(inputField))
-	defer uc.RemoveAttribute(useractions.AttributeInputField)
 
 	// Focus on the input field and wait for a small duration.
 	// This is needed as the Japanese IME has a bug where typing immediately after
