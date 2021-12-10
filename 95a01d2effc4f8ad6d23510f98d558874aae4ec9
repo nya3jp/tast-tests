@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "430d4165_b31b2862",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-10T18:32:46Z",
+      "side": 1,
+      "message": "This is typically moved outside as a global to clarify it is constant/compiled only once.",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 57
+      },
+      "revId": "95a01d2effc4f8ad6d23510f98d558874aae4ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4936b9d_c4a225a8",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 7
