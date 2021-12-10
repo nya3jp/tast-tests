@@ -22,6 +22,30 @@
       },
       "revId": "77b40d203669ffd6419f2440b94c518bf9dfd286",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d933b70_559ba7b3",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-12-10T11:28:55Z",
+      "side": 1,
+      "message": "Made Programmers and ImageSections enums",
+      "parentUuid": "5b41ad9f_60daf231",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "77b40d203669ffd6419f2440b94c518bf9dfd286",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
