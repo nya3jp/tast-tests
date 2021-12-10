@@ -36,6 +36,10 @@ const (
 	// inside any user's cryptohome.
 	CryptohomeCrashPattern = "/home/chronos/u-*/crash"
 
+	// CrashSenderTestModeSuccessful is the special message that crash_sender logs if it
+	// successfully got the crash report. MUST MATCH kTestModeSuccessful in crash_sender_util.cc
+	CrashSenderTestModeSuccessful = "Test Mode: Logging success and exiting instead of actually uploading"
+
 	// vModuleFlag is passed to Chrome when testing Chrome crashes. It allows us
 	// to debug certain failures, particularly cases where consent didn't get set
 	// up correctly, as well as any problems with the upcoming crashpad changeover.

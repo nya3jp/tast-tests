@@ -17,10 +17,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// testModeSuccessful is the special message that crash_sender logs if it
-// successfully got the crash report. MUST MATCH kTestModeSuccessful in crash_sender_util.cc
-const testModeSuccessful = "Test Mode: Logging success and exiting instead of actually uploading"
-
 // chromeCrashLoopParams contains the test parameters which are different between the various tests.
 type chromeCrashLoopParams struct {
 	handler chromecrash.CrashHandler
@@ -143,7 +139,7 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 		testing.ContextLog(ctx, "No Chrome dumps found; this should be the crash-loop upload. Polling for success message")
 		crashLoopModeUsed = true
 		if _, err := r.Wait(ctx, time.Minute, func(e *syslog.Entry) bool {
-			return strings.Contains(e.Content, testModeSuccessful)
+			return strings.Contains(e.Content, chromecrash.CrashSenderTestModeSuccessful)
 		}); err != nil {
 			s.Error("Test-successful message not found: ", err)
 		} else {
