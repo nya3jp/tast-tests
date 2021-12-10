@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d8f7f8_57da47c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-10T01:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d64b77d_0ceadf7b",
+      "range": {
+        "startLine": 95,
+        "startChar": 25,
+        "endLine": 95,
+        "endChar": 35
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38707672_1eb662ff",
@@ -106,6 +130,30 @@
       "writtenOn": "2021-12-09T10:56:10Z",
       "side": 1,
       "message": "nit: i think you want to pass cleanupCtx here",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 6
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4682c7a3_82c86ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-10T01:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38707672_1eb662ff",
       "range": {
         "startLine": 98,
         "startChar": 3,
@@ -174,6 +222,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "714c1715_09d8b995",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-10T01:16:47Z",
+      "side": 1,
+      "message": "The genesis of this pattern is in crrev/c/2522471. The scanning stack was a bit more race-prone than the print stack at the time, and the team discovered that stopping the printer early would allow all dependent processes (including ippusb_bridge) to stop cleanly as well. I think this is indeed getting around the other defer statements on the stack.\n\nWe are not confident that this race is gone yet and would prefer to maintain the existing behavior until we have the resources to investigate. That\u0027s why this chain of CLs focuses on a simple refactor and avoids introducing behavioral changes.\n\nMaking Stop() idempotent was done explicitly to support this pattern.",
+      "parentUuid": "53938dfd_4eca4054",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45d6d5e8_59aeabd9",
@@ -187,6 +259,30 @@
       "writtenOn": "2021-12-09T10:56:10Z",
       "side": 1,
       "message": "nit: rename to ctx for consistency. This function implementation should not be aware whether context if cleanup or shorten or whatever else.",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 22
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7704643_fba0dac8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-10T01:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45d6d5e8_59aeabd9",
       "range": {
         "startLine": 120,
         "startChar": 12,
@@ -220,6 +316,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34770283_44b657c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-10T01:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e13a9e_fe764b6e",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c632b3f3_9b358e7e",
@@ -233,6 +353,30 @@
       "writtenOn": "2021-12-09T10:56:10Z",
       "side": 1,
       "message": "nit: don\u0027t ignore errors",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 25
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c2c9ec4_f837f2be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-10T01:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c632b3f3_9b358e7e",
       "range": {
         "startLine": 214,
         "startChar": 1,
