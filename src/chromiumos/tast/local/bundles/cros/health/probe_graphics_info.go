@@ -55,7 +55,7 @@ type eglInfo struct {
 	Extensions []string `json:"extensions"`
 }
 
-func verifyGLESInfo(gles glesInfo) error {
+func verifyGLESInfo(gles *glesInfo) error {
 	if gles.Version == "" {
 		return errors.New("Failed. gles.Version is empty")
 	}
@@ -72,7 +72,7 @@ func verifyGLESInfo(gles glesInfo) error {
 	return nil
 }
 
-func verifyEGLInfo(egl eglInfo) error {
+func verifyEGLInfo(egl *eglInfo) error {
 	if egl.Version == "" {
 		return errors.New("Failed. egl.Version is empty")
 	}
@@ -87,11 +87,11 @@ func verifyEGLInfo(egl eglInfo) error {
 }
 
 func verifyGraphicsData(graphics graphicsInfo) error {
-	if err := verifyGLESInfo(graphics.GLESInfo); err != nil {
+	if err := verifyGLESInfo(&graphics.GLESInfo); err != nil {
 		return err
 	}
 
-	if err := verifyEGLInfo(graphics.EGLInfo); err != nil {
+	if err := verifyEGLInfo(&graphics.EGLInfo); err != nil {
 		return err
 	}
 

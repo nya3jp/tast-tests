@@ -53,7 +53,7 @@ func init() {
 	})
 }
 
-func validateMemoryData(memory memoryInfo) error {
+func validateMemoryData(memory *memoryInfo) error {
 	// Each memory metric should be a positive integer. This assumes that all
 	// machines will always have at least 1 free KiB of memory, and all machines
 	// will have page faulted at least once between boot and the time this test
@@ -77,7 +77,7 @@ func validateMemoryData(memory memoryInfo) error {
 	return nil
 }
 
-func validateMemoryEncryptionData(memoryEncryption memoryEncryptionInfo) error {
+func validateMemoryEncryptionData(memoryEncryption *memoryEncryptionInfo) error {
 	if memoryEncryption.EncryptionState == "" {
 		return errors.New("failed to verify EncryptionState")
 	}
@@ -100,12 +100,12 @@ func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get memory telemetry info: ", err)
 	}
 
-	if err := validateMemoryData(memory); err != nil {
+	if err := validateMemoryData(&memory); err != nil {
 		s.Fatalf("Failed to validate memory data, err [%v]", err)
 	}
 
 	if s.Param().(bool) {
-		if err := validateMemoryEncryptionData(memory.MemoryEncryptionInfo); err != nil {
+		if err := validateMemoryEncryptionData(&memory.MemoryEncryptionInfo); err != nil {
 			s.Fatal("Failed to validate Memory Encryption data: ", err)
 		}
 	}

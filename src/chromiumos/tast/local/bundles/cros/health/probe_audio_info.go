@@ -34,7 +34,7 @@ func init() {
 	})
 }
 
-func validateAudioData(audio audioInfo) error {
+func validateAudioData(audio *audioInfo) error {
 	// Check "input_device_name" is not empty.
 	if audio.InputDeviceName == "" {
 		return errors.New("Failed. input_device_name field is empty")
@@ -75,7 +75,7 @@ func ProbeAudioInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get audio telemetry info: ", err)
 	}
 
-	if err := validateAudioData(audio); err != nil {
+	if err := validateAudioData(&audio); err != nil {
 		s.Fatalf("Failed to validate audio data, err [%v]", err)
 	}
 }

@@ -32,7 +32,7 @@ func ProbeDisplayInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get display telemetry info: ", err)
 	}
 
-	if err := verifyDisplayData(ctx, display); err != nil {
+	if err := verifyDisplayData(ctx, &display); err != nil {
 		s.Fatal("Failed to validate display data, err: ", err)
 	}
 }
@@ -89,7 +89,7 @@ func verifyEmbeddedDisplayInfo(ctx context.Context, EDP embeddedDisplayInfo) err
 	return nil
 }
 
-func verifyDisplayData(ctx context.Context, display displayInfo) error {
+func verifyDisplayData(ctx context.Context, display *displayInfo) error {
 	if err := verifyEmbeddedDisplayInfo(ctx, display.EDP); err != nil {
 		return err
 	}
