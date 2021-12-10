@@ -6,20 +6,16 @@ package u2fd
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/u2fd/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -34,7 +30,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that WebAuthn using PIN succeeds",
 		Contacts: []string{
-			"yichengli@chromium.org", // Test author
+			"hcyang@google.com",
+			"cros-hwsec@chromium.org",
 			"martinkr@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
@@ -90,7 +87,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to update policies: ", err)
 	}
 
-	tconn, err := setUpUserPIN(ctx, cr, PIN, password, autosubmit)
+	tconn, err := util.SetUpUserPIN(ctx, cr, PIN, password, autosubmit)
 	if err != nil {
 		s.Fatal("Failed to set up PIN: ", err)
 	}
@@ -108,7 +105,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 	}
 	defer keyboard.Close()
 
-	// Open test website in a new tab.
+	// TODO(b/210418148): Use an internal site for testing to prevent flakiness.
 	conn, err := cr.NewConn(ctx, "https://securitykeys.info/qa.html")
 	if err != nil {
 		s.Fatal("Failed to navigate to test website: ", err)
@@ -157,7 +154,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to type PIN into ChromeOS auth dialog: ", err)
 	}
 
-	if err := assertMakeCredentialSuccess(ctx, logReader); err != nil {
+	if err := util.AssertMakeCredentialSuccess(ctx, logReader); err != nil {
 		s.Fatal("MakeCredential did not succeed: ", err)
 	}
 
@@ -179,103 +176,7 @@ func WebauthnUsingPIN(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to type PIN into ChromeOS auth dialog: ", err)
 	}
 
-	if err := assertGetAssertionSuccess(ctx, logReader); err != nil {
+	if err := util.AssertGetAssertionSuccess(ctx, logReader); err != nil {
 		s.Fatal("GetAssertion did not succeed: ", err)
 	}
-}
-
-// setUpUserPIN sets up a test user with a specific PIN.
-func setUpUserPIN(ctx context.Context, cr *chrome.Chrome, PIN, password string, autosubmit bool) (*chrome.TestConn, error) {
-	user := cr.NormalizedUser()
-	if mounted, err := cryptohome.IsMounted(ctx, user); err != nil {
-		return nil, errors.Wrapf(err, "failed to check mounted vault for %q", user)
-	} else if !mounted {
-		return nil, errors.Wrapf(err, "no mounted vault for %q", user)
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "getting test API connection failed")
-	}
-
-	// Set up PIN through a connection to the Settings page.
-	settings, err := ossettings.Launch(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to launch Settings app")
-	}
-
-	if err := settings.EnablePINUnlock(cr, password, PIN, autosubmit)(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to enable PIN unlock")
-	}
-
-	if err := verifyPINUnlock(ctx, tconn, PIN, autosubmit); err != nil {
-		return nil, errors.Wrap(err, "PIN unlock doesn't work so IsUvpaa will be false")
-	}
-
-	return tconn, nil
-}
-
-func verifyPINUnlock(ctx context.Context, tconn *chrome.TestConn, PIN string, autosubmit bool) error {
-	// Lock the screen.
-	if err := lockscreen.Lock(ctx, tconn); err != nil {
-		return errors.Wrap(err, "failed to lock the screen")
-	}
-
-	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
-		return errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
-	}
-
-	// Enter and submit the PIN to unlock the DUT.
-	if err := lockscreen.EnterPIN(ctx, tconn, PIN); err != nil {
-		return errors.Wrap(err, "failed to enter in PIN")
-	}
-
-	if !autosubmit {
-		if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to submit PIN")
-		}
-	}
-
-	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return !st.Locked }, 30*time.Second); err != nil {
-		return errors.Wrapf(err, "waiting for screen to be unlocked failed (last status %+v)", st)
-	}
-	return nil
-}
-
-// assertMakeCredentialSuccess asserts MakeCredential succeeded by looking at Chrome log.
-func assertMakeCredentialSuccess(ctx context.Context, logReader *syslog.ChromeReader) error {
-	const makeCredentialSuccessLine = "Make credential status: 1"
-
-	if pollErr := testing.Poll(ctx, func(ctx context.Context) error {
-		entry, err := logReader.Read()
-		if err != nil {
-			return err
-		}
-		if strings.Contains(entry.Content, makeCredentialSuccessLine) {
-			return nil
-		}
-		return errors.New("result not found yet")
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); pollErr != nil {
-		return errors.Wrap(pollErr, "MakeCredential did not succeed")
-	}
-	return nil
-}
-
-// assertGetAssertionSuccess asserts GetAssertion succeeded by looking at Chrome log.
-func assertGetAssertionSuccess(ctx context.Context, logReader *syslog.ChromeReader) error {
-	const getAssertionSuccessLine = "GetAssertion status: 1"
-
-	if pollErr := testing.Poll(ctx, func(ctx context.Context) error {
-		entry, err := logReader.Read()
-		if err != nil {
-			return err
-		}
-		if strings.Contains(entry.Content, getAssertionSuccessLine) {
-			return nil
-		}
-		return errors.New("result not found yet")
-	}, &testing.PollOptions{Timeout: 30 * time.Second}); pollErr != nil {
-		return pollErr
-	}
-	return nil
 }

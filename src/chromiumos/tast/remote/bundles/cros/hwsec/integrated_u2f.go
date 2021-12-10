@@ -52,7 +52,7 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 	cmdRunner := hwsecremote.NewCmdRunner(s.DUT())
 	helper, err := hwsecremote.NewFullHelper(cmdRunner, s.DUT(), s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to create hwsec local helper: ", err)
+		s.Fatal("Failed to create hwsec remote helper: ", err)
 	}
 
 	// Ensure TPM is ready before running the tests.
