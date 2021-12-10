@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd6af180_5eea7222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T18:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a64f1f1_f3e66d39",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "113d032f324d2a4bc0b2733f5247a859b6a01194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccdfeea7_802f47ef",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I\u0027d recommend 9 minutes here.",
       "parentUuid": "ccdfeea7_802f47ef",
+      "range": {
+        "startLine": 62,
+        "startChar": 34,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "113d032f324d2a4bc0b2733f5247a859b6a01194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7e0b9f_0ab2e828",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T18:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8b98291_1753bf1a",
       "range": {
         "startLine": 62,
         "startChar": 34,
