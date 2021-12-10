@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01a68a3b_9b821b2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-12-10T18:08:50Z",
+      "side": 1,
+      "message": "Should we also do ui.ChromeCrashReporterMetrics* (in a future CL)?",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "45d558b9b0a329bf0debfa7af662ad178a1fa744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61408781_2de2dfb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-12-10T18:08:50Z",
+      "side": 1,
+      "message": "(a) good doc, nicely summarizes the issues\n(b) amazing go-link",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 44
+      },
+      "revId": "45d558b9b0a329bf0debfa7af662ad178a1fa744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3910384c_bc25b0cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-12-10T18:08:50Z",
+      "side": 1,
+      "message": "Thanks, Ian!",
+      "revId": "45d558b9b0a329bf0debfa7af662ad178a1fa744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd028d1_f0a2a696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-12-10T18:08:50Z",
+      "side": 1,
+      "message": "Do we still need to run this test on breakpad? IIRC breakpad is very close to deprecated, right?",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 4
+      },
+      "revId": "45d558b9b0a329bf0debfa7af662ad178a1fa744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1efd5b54_ce158e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-12-10T18:08:50Z",
+      "side": 1,
+      "message": "FYI: I\u0027m not sure if this is better now, but historically I believe we\u0027ve had major issues with flakiness in reading the syslogs. It might be more reliable to `touch` a file and check for that file to exist / have a recent timestamp.\n\nOn the other hand, it\u0027s possible log-based tests are more reliable now that we\u0027re off of journald; I\u0027m not sure what the source of flakiness was earlier.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "45d558b9b0a329bf0debfa7af662ad178a1fa744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7307930_01dacd50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-12-10T18:08:50Z",
+      "side": 1,
+      "message": "It\u0027s not obvious from reading the available documentation that this is intended to restart Chrome if it crashes. Can you please add a comment explaining why we expect that to reliably happen?",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 36
+      },
+      "revId": "45d558b9b0a329bf0debfa7af662ad178a1fa744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
