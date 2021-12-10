@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0708cb30_2521ceeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_u2f_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-10T16:42:49Z",
+      "side": 1,
+      "message": "You should add a team here as well so there\u0027s still contacts in case you e.g. transfer teams, or something.",
+      "revId": "c1ea2e21a6c2831b97737339607f53d6af94bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351e318b_a6f7818d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_u2f_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-10T16:42:49Z",
+      "side": 1,
+      "message": "Would it be better to Error rather than Fatal here so that one sub-test failure doesn\u0027t prevent the rest of the sub-tests from running, or will a sub-test failure leave the DUT in a bad state such that future sub-tests aren\u0027t expected to pass anyway?",
+      "revId": "c1ea2e21a6c2831b97737339607f53d6af94bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
