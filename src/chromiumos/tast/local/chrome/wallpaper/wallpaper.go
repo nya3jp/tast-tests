@@ -56,16 +56,3 @@ func CheckWallpaper(ctx context.Context, tconn *chrome.TestConn, name string) er
 	}
 	return nil
 }
-
-// CloseWallpaper closes the wallpaper picker.
-func CloseWallpaper(ctx context.Context, tconn *chrome.TestConn) error {
-	ui := uiauto.New(tconn)
-	closeButton := nodewith.Name("Close").Role(role.MenuItem)
-	if err := uiauto.Combine("close wallpaper",
-		ui.RightClick(nodewith.Name("Wallpaper Picker").Role(role.Button)),
-		ui.WaitUntilExists(closeButton),
-		ui.LeftClick(closeButton))(ctx); err != nil {
-		return errors.Wrap(err, "failed to close wallpaper picker")
-	}
-	return nil
-}
