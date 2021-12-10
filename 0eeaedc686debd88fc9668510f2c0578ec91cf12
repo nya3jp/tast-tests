@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a698af_4bb4e7dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2021-12-10T23:07:15Z",
+      "side": 1,
+      "message": "Just curious to understand the CLs - the previous CL references uploading the data Google Cloud Storage, but this is checking it into the repo?",
+      "revId": "0eeaedc686debd88fc9668510f2c0578ec91cf12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
