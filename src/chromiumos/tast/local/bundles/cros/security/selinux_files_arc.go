@@ -151,8 +151,8 @@ func SELinuxFilesARC(ctx context.Context, s *testing.State) {
 		{path: "/mnt/stateful_partition/unencrypted/apkcache", context: "apkcache_file"},
 		{path: "/opt/google/chrome/chrome", context: "chrome_browser_exec"},
 		{path: "/run/arcvm", context: "cros_run_arcvm", ignoreErrors: true},
-		{path: "/run/arcvm/android-data", context: "system_data_root_file", ignoreErrors: true}, // Android label
-		{path: "/run/camera", context: "(camera_dir|camera_socket)", ignoreErrors: true},        // N or below is camera_socket
+		{path: "/run/arcvm/android-data", context: "(system_data_file|system_data_root_file)", ignoreErrors: true}, // Android label
+		{path: "/run/camera", context: "(camera_dir|camera_socket)", ignoreErrors: true},                           // N or below is camera_socket
 		{path: "/run/camera/camera.sock", context: "camera_socket", ignoreErrors: true},
 		{path: "/run/camera/camera3.sock", context: "camera_socket", ignoreErrors: true},
 		{path: "/run/chrome/wayland-0", context: "wayland_socket"},
