@@ -40,17 +40,19 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 
 	ui := uiauto.New(tconn).WithTimeout(LongUITimeout)
 
+	root := nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
+
 	// Click OK and Enter User Name.
 	if err := uiauto.Combine("Click on OK and proceed",
-		ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
+		ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button).Ancestor(root)),
+		ui.LeftClick(nodewith.Name("OK").Role(role.Button).Ancestor(root)),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click OK. Is Account addition dialog open?")
 	}
 
 	if err := uiauto.Combine("Click on Username",
-		ui.WaitUntilExists(nodewith.Name("Email or phone").Role(role.TextField)),
-		ui.LeftClick(nodewith.Name("Email or phone").Role(role.TextField)),
+		ui.WaitUntilExists(nodewith.Name("Email or phone").Role(role.TextField).Ancestor(root)),
+		ui.LeftClick(nodewith.Name("Email or phone").Role(role.TextField).Ancestor(root)),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on user name")
 	}
@@ -61,8 +63,8 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 
 	// Enter Password.
 	if err := uiauto.Combine("Click on Password",
-		ui.WaitUntilExists(nodewith.Name("Enter your password").Role(role.TextField)),
-		ui.LeftClick(nodewith.Name("Enter your password").Role(role.TextField)),
+		ui.WaitUntilExists(nodewith.Name("Enter your password").Role(role.TextField).Ancestor(root)),
+		ui.LeftClick(nodewith.Name("Enter your password").Role(role.TextField).Ancestor(root)),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on password")
 	}
@@ -72,11 +74,11 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	}
 
 	if err := uiauto.Combine("Agree and Finish Adding Account",
-		ui.LeftClick(nodewith.Name("Next").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Next").Role(role.Button).Ancestor(root)),
 		// We need to focus the button first to click at right location
 		// as it returns wrong coordinates when button is offscreen.
-		ui.FocusAndWait(nodewith.Name("I agree").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("I agree").Role(role.Button)),
+		ui.FocusAndWait(nodewith.Name("I agree").Role(role.Button).Ancestor(root)),
+		ui.LeftClick(nodewith.Name("I agree").Role(role.Button).Ancestor(root)),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to add account")
 	}
