@@ -1,0 +1,62 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0723550e_15faad3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-12-10T07:56:18Z",
+      "side": 1,
+      "message": "\u003e \"requried\" is a possible misspelling of \"required\".\n\nPlease fix.",
+      "parentUuid": "31caa3c2_2803e437",
+      "range": {
+        "startLine": 57,
+        "startChar": 46,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "f3768797ee1a860b42c1a84721601e0635313718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2b01a0_9af1c031",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-12-10T07:56:18Z",
+      "side": 1,
+      "message": "did you mean to leave this here?",
+      "revId": "f3768797ee1a860b42c1a84721601e0635313718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ebfc53_83db4ec2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2021-12-10T07:56:18Z",
+      "side": 1,
+      "message": "same..i dont think this belongs here. \n\nalso once we Prepare we should invalidate",
+      "revId": "f3768797ee1a860b42c1a84721601e0635313718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
