@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b5e81f_77b21617",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-10T18:31:03Z",
+      "side": 1,
+      "message": "It looks really nice. I think the logic could be simplified a little bit more which will help with reading and maintaining it. ",
+      "revId": "95a01d2effc4f8ad6d23510f98d558874aae4ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4936b9d_c4a225a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-10T18:31:03Z",
+      "side": 1,
+      "message": "Notice what you are doing here and below is basically accessing an array by name. Do you think you could change all the VT1/VT2 variables into arrays and index them via vt?",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 4
+      },
+      "revId": "95a01d2effc4f8ad6d23510f98d558874aae4ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b643073_b7c60e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-10T18:31:03Z",
+      "side": 1,
+      "message": "For if statement we have 2 ideals:\n1) start with the good case.\n2) keep them as flat as possible.\n\nDo you think you can simplify this nested if-statement based on these ideas?",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 10
+      },
+      "revId": "95a01d2effc4f8ad6d23510f98d558874aae4ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
