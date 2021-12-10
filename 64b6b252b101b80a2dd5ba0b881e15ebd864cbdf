@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20af4b67_0041e809",
+        "filename": "src/chromiumos/tast/common/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-12-10T22:24:39Z",
+      "side": 0,
+      "message": "Can this loop be moved up before SetString to avoid removing the watchdog if it\u0027s already removed?",
+      "revId": "64b6b252b101b80a2dd5ba0b881e15ebd864cbdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
