@@ -27,7 +27,7 @@ func init() {
 		Func:         SignInScreen,
 		Desc:         "Checks the Quick Settings from SignIn screen",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-system-ui-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{
