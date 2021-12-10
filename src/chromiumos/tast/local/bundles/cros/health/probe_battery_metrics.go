@@ -71,7 +71,7 @@ func checkBatteryFloatProperty(sysfsPath, field string, want float64) error {
 	return nil
 }
 
-func validateBatteryData(ctx context.Context, battery batteryInfo) error {
+func validateBatteryData(ctx context.Context, battery *batteryInfo) error {
 	sysfsPath, err := power.SysfsBatteryPath(ctx)
 	if err != nil {
 		return err
@@ -133,7 +133,7 @@ func ProbeBatteryMetrics(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get battery telemetry info: ", err)
 	}
 
-	if err := validateBatteryData(ctx, battery); err != nil {
+	if err := validateBatteryData(ctx, &battery); err != nil {
 		s.Fatal("Failed to validate battery data: ", err)
 	}
 }

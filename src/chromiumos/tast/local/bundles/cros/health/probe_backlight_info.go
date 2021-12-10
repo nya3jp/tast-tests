@@ -38,7 +38,7 @@ func init() {
 	})
 }
 
-func validateBacklightData(result backlightResult) error {
+func validateBacklightData(result *backlightResult) error {
 	for _, backlight := range result.Backlights {
 		if backlight.Path == "" {
 			return errors.New("failed, empty path")
@@ -68,7 +68,7 @@ func ProbeBacklightInfo(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	if err := validateBacklightData(result); err != nil {
+	if err := validateBacklightData(&result); err != nil {
 		s.Fatalf("Failed to validate backlight data, err [%v]", err)
 	}
 }

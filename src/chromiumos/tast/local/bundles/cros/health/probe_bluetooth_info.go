@@ -36,7 +36,7 @@ func init() {
 	})
 }
 
-func validateBluetoothData(ctx context.Context, info bluetoothInfo) error {
+func validateBluetoothData(ctx context.Context, info *bluetoothInfo) error {
 	// Get Bluetooth adapter values to compare to the output of cros_healthd.
 	adapters, err := bluetooth.Adapters(ctx)
 	if err != nil {
@@ -81,7 +81,7 @@ func ProbeBluetoothInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Bluetooth telemetry info: ", err)
 	}
 
-	if err := validateBluetoothData(ctx, info); err != nil {
+	if err := validateBluetoothData(ctx, &info); err != nil {
 		s.Fatalf("Failed to validate bluetooth data, err [%v]", err)
 	}
 }
