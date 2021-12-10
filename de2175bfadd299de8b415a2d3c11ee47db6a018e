@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "950d0258_80c1c871",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-10T22:02:06Z",
+      "side": 1,
+      "message": "Nit: also tag b:200817707 to update that bug thread with this CL.",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "de2175bfadd299de8b415a2d3c11ee47db6a018e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4aa9950_763214ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-10T22:02:06Z",
+      "side": 1,
+      "message": "Still LGTM.",
+      "revId": "de2175bfadd299de8b415a2d3c11ee47db6a018e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4c76494_5afaeeaa",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
         "patchSetId": 2
@@ -14,6 +54,24 @@
       "writtenOn": "2021-12-10T18:50:07Z",
       "side": 1,
       "message": "This could be condensed with uiauto to remove the inner poll loop\n\n```\nwallpaper.ValidateWallpaperName(ui.withPollOpts, wallpaperName)(ctx)\n```\n\nbut then it wouldn\u0027t give the periodic log message that it\u0027s waiting.",
+      "revId": "de2175bfadd299de8b415a2d3c11ee47db6a018e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38db9821_f904b730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-10T22:02:06Z",
+      "side": 1,
+      "message": "Up to you, but I like the periodic log messages. It helps with debugging in case of timeout failures and indicates progress.",
+      "parentUuid": "e4c76494_5afaeeaa",
       "revId": "de2175bfadd299de8b415a2d3c11ee47db6a018e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
