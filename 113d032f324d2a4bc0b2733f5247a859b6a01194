@@ -205,6 +205,30 @@
       },
       "revId": "113d032f324d2a4bc0b2733f5247a859b6a01194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8df57279_5fe6b363",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T18:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28e15008_aaae1e68",
+      "range": {
+        "startLine": 77,
+        "startChar": 31,
+        "endLine": 77,
+        "endChar": 47
+      },
+      "revId": "113d032f324d2a4bc0b2733f5247a859b6a01194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
