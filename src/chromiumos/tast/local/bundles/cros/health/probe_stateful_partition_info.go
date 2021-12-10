@@ -43,7 +43,7 @@ func absDiff(a, b uint64) uint64 {
 	return b - a
 }
 
-func validateStatefulPartitionData(statefulPartition statefulPartitionInfo) error {
+func validateStatefulPartitionData(statefulPartition *statefulPartitionInfo) error {
 	var stat syscall.Statfs_t
 	if err := syscall.Statfs("/mnt/stateful_partition", &stat); err != nil {
 		return errors.Wrap(err, "failed to get disk stats for /mnt/stateful_partition")
@@ -103,7 +103,7 @@ func ProbeStatefulPartitionInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get stateful partition telemetry info: ", err)
 	}
 
-	if err := validateStatefulPartitionData(statefulPartition); err != nil {
+	if err := validateStatefulPartitionData(&statefulPartition); err != nil {
 		s.Fatalf("Failed to validate stateful partition data, err [%v]", err)
 	}
 }

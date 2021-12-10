@@ -58,7 +58,7 @@ func getNumFans(ctx context.Context) (int, error) {
 	return numFans, nil
 }
 
-func validateFanData(result fanResult, numFans int) error {
+func validateFanData(result *fanResult, numFans int) error {
 	if len(result.Fans) != numFans {
 		return errors.Errorf("Incorrect number of fans: got %d; want %d", len(result.Fans), numFans)
 	}
@@ -79,7 +79,7 @@ func ProbeFanInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get number of fans: ", err)
 	}
 
-	if err := validateFanData(result, numFans); err != nil {
+	if err := validateFanData(&result, numFans); err != nil {
 		s.Fatalf("Failed to validate fan data, err [%v]", err)
 	}
 }
