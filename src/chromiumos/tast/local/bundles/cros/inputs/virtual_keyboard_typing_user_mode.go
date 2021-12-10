@@ -65,8 +65,6 @@ func VirtualKeyboardTypingUserMode(ctx context.Context, s *testing.State) {
 
 	if strings.HasSuffix(s.TestName(), "incognito") {
 		uc.SetAttribute(useractions.AttributeIncognitoMode, strconv.FormatBool(true))
-		// Remove the incognito attribute after test.
-		defer uc.RemoveAttribute(useractions.AttributeIncognitoMode)
 	}
 
 	inputField := testserver.TextAreaInputField

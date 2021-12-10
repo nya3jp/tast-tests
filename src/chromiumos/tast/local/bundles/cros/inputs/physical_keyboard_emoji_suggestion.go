@@ -86,9 +86,6 @@ func PhysicalKeyboardEmojiSuggestion(ctx context.Context, s *testing.State) {
 
 	if strings.HasSuffix(s.TestName(), "incognito") {
 		uc.SetAttribute(useractions.AttributeIncognitoMode, strconv.FormatBool(true))
-		// Incognito mode only works on a certain web page.
-		// It should be reverted once server tear down.
-		defer uc.RemoveAttribute(useractions.AttributeIncognitoMode)
 	}
 
 	kb, err := input.Keyboard(ctx)

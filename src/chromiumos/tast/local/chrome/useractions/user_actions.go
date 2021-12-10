@@ -84,13 +84,6 @@ func (uc *UserContext) InvalidUserAction(err error) *UserAction {
 	}, uc, nil)
 }
 
-// Refresh refreshes test name and output dir when sharing user context across tests.
-// e.g. once UserContext is defined in precondition and fixture, the UserContext persistes across tests.
-func (uc *UserContext) Refresh(testName, outputDir string) {
-	uc.testName = testName
-	uc.outputDir = outputDir
-}
-
 // SetAttribute set the value of an attribute of the user context.
 func (uc *UserContext) SetAttribute(name, value string) {
 	uc.attributes[name] = value
