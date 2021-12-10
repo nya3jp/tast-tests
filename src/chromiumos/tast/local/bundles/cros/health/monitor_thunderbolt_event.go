@@ -5,26 +5,24 @@
 package health
 
 import (
+	"bytes"
 	"context"
-	"io/ioutil"
-	"os"
 	"regexp"
-	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
+
+	"github.com/pkg/errors"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MonitorThunderboltEvent,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Monitors the Thunderbolt event detected proper or not after plug/unplug Thunderbolt devices",
+		Desc:         "Monitors the Thunderbolt event detected properly or not",
 		Contacts: []string{"pathan.jilani@intel.com",
 			"cros-tdm-tpe-eng@google.com",
 			"intel-chrome-system-automation-team@intel.com"},
@@ -37,76 +35,48 @@ func init() {
 }
 
 func MonitorThunderboltEvent(ctx context.Context, s *testing.State) {
-	var (
-		deviceRemoved          = regexp.MustCompile(`Device removed`)
-		deviceAdded            = regexp.MustCompile(`Device added`)
-		outFile                = "/tmp/tbt_logs.txt"
-		thundeBoltMonitorEvent = "sudo nohup cros-health-tool event --category=thunderbolt --length_seconds=600 > " + outFile + " 2>&1 &"
-		pidCmd                 = "ps -aux | grep -i nohup | awk -F' ' '{print $2}' | head -1"
-		killTbtEvent           = "kill -9 $(" + pidCmd + ")"
-		timeOut                = 30 * time.Second
-	)
+	// Run monitor command in background.
+	var stdoutBuf, stderrBuf bytes.Buffer
+	monitorCmd := testexec.CommandContext(ctx, "cros-health-tool", "event", "--category=thunderbolt", "--length_seconds=10")
+	monitorCmd.Stdout = &stdoutBuf
+	monitorCmd.Stderr = &stderrBuf
 
-	port, err := typecutils.CheckPortsForTBTPartner(ctx)
+	if err := monitorCmd.Start(); err != nil {
+		s.Fatal("Failed to run healthd monitor command: ", err)
+	}
+
+	// Trigger Thunderbolt event.
+	udevadmToggle := func(udevAction string) (string, error) {
+		var stdout string
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := testexec.CommandContext(ctx, "udevadm", "trigger", "-s", "thunderbolt", "-c", udevAction).Run(); err != nil {
+				return errors.Wrap(err, "Failed to trigger thunderbolt add event")
+			}
+			stderr := string(stderrBuf.Bytes())
+			if stderr != "" {
+				return errors.New("failed to detect thunderbolt event, stderr")
+			}
+
+			stdout = string(stdoutBuf.Bytes())
+			if !strings.Contains(stdout, udevAction) {
+				return errors.New("Failed to get command output")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return "", errors.Wrapf(err, "failed to verify thunderbolt devices after %s", udevAction)
+		}
+		return stdout, nil
+	}
+
+	stdOut, err := udevadmToggle("add")
 	if err != nil {
-		s.Fatal("Failed to determine Thunderbolt device from PD identity: ", err)
-	}
-	s.Logf("Thunderbolt Port is: %d", port)
-	if port == -1 {
-		s.Fatal("Failed no Thunderbolt device connected to DUT")
-	}
-	portStr := strconv.Itoa(port)
-	ctxForCleanUp := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-	// Run Cmd in background.
-	if err := testexec.CommandContext(ctx, "sh", "-c", thundeBoltMonitorEvent).Run(); err != nil {
-		s.Fatal("Failed to run monitor event: ", err)
-	}
-	getThunderBoltEventOutput := func() string {
-		output, err := ioutil.ReadFile(outFile)
-		if err != nil {
-			s.Fatal("Failed to read data: ", err)
-		}
-		return string(output)
+		s.Fatal("Failed to add device: ", err)
 	}
 
-	if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "suspend", portStr).Run(); err != nil {
-		s.Fatal("Failed to simulate unplug: ", err)
-	}
-	defer func() {
-		// Delete tmp file.
-		os.RemoveAll(outFile)
-		if err := testexec.CommandContext(ctxForCleanUp, "sh", "-c", killTbtEvent).Run(); err != nil {
-			s.Log("Failed to kill command thundeBoltMonitorEvent execution: ", err)
-		}
-		if err := testexec.CommandContext(ctxForCleanUp, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
-			s.Log("Failed to perform replug: ", err)
-		}
-	}()
-
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if !deviceRemoved.MatchString(getThunderBoltEventOutput()) {
-			return errors.New("failed to detect deviceRemoved TBT Event")
-		}
-		return nil
-
-	}, &testing.PollOptions{Timeout: timeOut}); err != nil {
-		s.Fatal("Failed to verify no Thunderbolt devices connected after unplug: ", err)
-	}
-	if err := os.Truncate(outFile, 0); err != nil {
-		s.Fatal("Failed to truncate: ", err)
-	}
-	if err := testexec.CommandContext(ctx, "ectool", "pdcontrol", "resume", portStr).Run(); err != nil {
-		s.Fatal("Failed to simulate replug: ", err)
-	}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if !(deviceAdded.MatchString(getThunderBoltEventOutput())) {
-			return errors.New("failed to detect deviceAdded TBT Event")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: timeOut}); err != nil {
-		s.Fatal("Failed to verify Thunderbolt devices connected after plug: ", err)
+	deviceAddedPattern := regexp.MustCompile("Device added")
+	if !deviceAddedPattern.MatchString(stdOut) {
+		s.Fatal("Failed to detect thunderbolt event, event output: ")
 	}
 
+	monitorCmd.Wait()
 }
