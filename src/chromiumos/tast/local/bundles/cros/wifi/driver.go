@@ -6,6 +6,7 @@ package wifi
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -132,6 +133,9 @@ var expectedWLANDriver = map[string]map[string]string{
 		"5.4":  "wireless/mediatek/mt76/mt7921/mt7921e.ko",
 		"5.10": "wireless/mediatek/mt76/mt7921/mt7921e.ko",
 	},
+	wlan.MediaTekMT7921SDIO: {
+		"5.10": "wireless/mediatek/mt76/mt7921/mt7921s.ko",
+	},
 }
 
 func Driver(ctx context.Context, s *testing.State) {
@@ -183,12 +187,36 @@ func Driver(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	modulePath := filepath.Join("/sys/class/net", netIf, "device/driver/module")
-	rel, err := os.Readlink(modulePath)
+	moduleDir := filepath.Join("/sys/class/net", netIf, "device/driver/")
+	dirs, err := ioutil.ReadDir(moduleDir)
 	if err != nil {
-		s.Fatal("Failed to readlink module path: ", err)
+		s.Fatal("Failed to list module path: ", err)
 	}
-	moduleName := filepath.Base(rel)
+	var path string
+	for _, dir := range dirs {
+		// Most of the devices link module under device/driver/module.
+		if dir.Name() == "module" {
+			modulePath := filepath.Join(moduleDir, "module")
+			path, err = os.Readlink(modulePath)
+			if err != nil {
+				s.Fatal("Failed to readlink module path: ", err)
+			}
+			break
+		}
+		// Some SDIO devices may keep module link in device/driver/mmc?:????:?/driver.
+		if match, _ := filepath.Match("mmc*", dir.Name()); match {
+			modulePath := filepath.Join(moduleDir, dir.Name(), "driver")
+			path, err = os.Readlink(modulePath)
+			if err != nil {
+				s.Fatal("Failed to readlink module path: ", err)
+			}
+			break
+		}
+	}
+	if path == "" {
+		s.Fatal("Failed to locate module path: ", err)
+	}
+	moduleName := filepath.Base(path)
 
 	if got, want := moduleName+".ko", filepath.Base(expectedPath); got != want {
 		s.Errorf("Module name is %s, want %s", got, want)
