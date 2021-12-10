@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a14f309_0a2172d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-10T13:02:07Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "052fb97c8cc3c082ed3ca44f9b5e3b05a7086040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc16fa45_fb1dc18f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-10T13:02:07Z",
+      "side": 1,
+      "message": "Same as below.",
+      "revId": "052fb97c8cc3c082ed3ca44f9b5e3b05a7086040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ddbfe4_bf43ed4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-10T13:02:07Z",
+      "side": 1,
+      "message": "s.Fatalf(\"Failed to verify ureadahead pack file dump, please check %q: %v\", ureadaheadVMLogName, err) might be better, as checkPackFileDump() seems to return with a useful err message.",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 95
+      },
+      "revId": "052fb97c8cc3c082ed3ca44f9b5e3b05a7086040",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
