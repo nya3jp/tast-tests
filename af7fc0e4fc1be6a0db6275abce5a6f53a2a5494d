@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9246e3f_bcdfba2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-10T11:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47f13551_975cd455",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 68
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "711606b9_4b0b8a46",
@@ -119,6 +143,30 @@
       "writtenOn": "2021-12-08T02:04:25Z",
       "side": 1,
       "message": "Time should be reserved for the cleanup context, here and all of the other defer statements:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab07963_987583c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-10T11:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "711606b9_4b0b8a46",
       "range": {
         "startLine": 67,
         "startChar": 16,
@@ -152,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1e3b347_929c872e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-10T11:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f57d365e_2ff7b641",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93775cf0_2cb38e44",
@@ -165,6 +237,30 @@
       "writtenOn": "2021-12-08T02:04:25Z",
       "side": 1,
       "message": "nit: const",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe132e0_80612dc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-10T11:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93775cf0_2cb38e44",
       "range": {
         "startLine": 91,
         "startChar": 1,
@@ -246,6 +342,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde6e0d6_6f980116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-10T11:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9988aa5d_b82fdb4d",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b57a8348_ed0258d1",
@@ -259,6 +379,30 @@
       "writtenOn": "2021-12-08T02:04:25Z",
       "side": 1,
       "message": "Know -\u003e Known",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "af7fc0e4fc1be6a0db6275abce5a6f53a2a5494d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4731de1d_23c6bc7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2021-12-10T11:36:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b57a8348_ed0258d1",
       "range": {
         "startLine": 44,
         "startChar": 5,
