@@ -219,16 +219,5 @@ func (c *AndroidDevice) SHA256Sum(ctx context.Context, filename string) (string,
 
 // RemoveMediaFile removes the media file specified by filePath from the Android device's storage and media gallery.
 func (c *AndroidDevice) RemoveMediaFile(ctx context.Context, filePath string) error {
-	if err := c.device.RemoveAll(ctx, filePath); err != nil {
-		return errors.Wrapf(err, "failed to remove file %s from Android device storage", filePath)
-	}
-	// This triggers an update to the MediaStore database so that the file will be removed from the phone's gallery app too.
-	result, err := c.device.BroadcastIntent(ctx, "android.intent.action.MEDIA_SCANNER_SCAN_FILE", "-d", "file:"+filePath)
-	if err != nil {
-		return errors.Wrapf(err, "Removing file %s from MediaStore failed with error", filePath)
-	}
-	if result.Result != 0 {
-		return errors.Errorf("Removing file %s from MediaStore failed with result code %d", filePath, result.Result)
-	}
-	return nil
+	return c.device.RemoveMediaFile(ctx, filePath)
 }
