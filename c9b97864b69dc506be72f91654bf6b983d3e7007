@@ -16,6 +16,24 @@
       "message": "Why use the system default? The right solution seems to be to run the python3 patch, then call \"python3 \u003cfile\u003e\", though I may be missing something.",
       "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c67d546_706d3747",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-10T04:23:11Z",
+      "side": 1,
+      "message": "Some background from:\nhttps://b.corp.google.com/issues/195247953#comment22\n\nThe SSP(the environment lab running tast-test) still not support python3.\nSo we need to add back the code path of running it in python2.",
+      "parentUuid": "57bbd948_6df8bf62",
+      "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
