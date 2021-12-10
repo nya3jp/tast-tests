@@ -181,9 +181,9 @@ func videoTrackResolution(path string) (*cca.Resolution, error) {
 
 			// All possible rotation matrices(values in matrices are 32-bit fixed-point) in mp4 thkd produced from CCA.
 			rotate0 := [9]int32{65536, 0, 0, 0, 65536, 0, 0, 0, 1073741824}
-			rotate90 := [9]int32{0, 65536, 0, -2147418112, 0, 0, 0, 0, 1073741824}
-			rotate180 := [9]int32{-2147418112, 0, 0, 0, -2147418112, 0, 0, 0, 1073741824}
-			rotate270 := [9]int32{0, -2147418112, 0, 65536, 0, 0, 0, 0, 1073741824}
+			rotate90 := [9]int32{0, 65536, 0, -65536, 0, 0, 0, 0, 1073741824}
+			rotate180 := [9]int32{-65536, 0, 0, 0, -65536, 0, 0, 0, 1073741824}
+			rotate270 := [9]int32{0, -65536, 0, 65536, 0, 0, 0, 0, 1073741824}
 			switch thkd.Matrix {
 			case rotate0:
 			case rotate180:
