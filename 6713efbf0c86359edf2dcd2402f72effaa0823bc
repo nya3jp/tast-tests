@@ -70,6 +70,30 @@
       },
       "revId": "6713efbf0c86359edf2dcd2402f72effaa0823bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1155c310_079a2c39",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-10T06:05:46Z",
+      "side": 1,
+      "message": "It can indeed introduce flakiness, but failing tests because of a potential issue in the previous tests is going to introduce even more flakiness unfortunately.\n\nProblems like this can be quite hard to handle. I propose we do the following:\n- Clearly document that a test should only call append or write once. This should be pretty simple, and if a test fails to enforce this it will only affect that test.\n- Always restore the backup config at the beginning of write/append if it exists. Even if a test accidentally calls this function multiple times we will always end up with the original config file after restoring.\n\nI created a separate CL to address this as it\u0027s fixing a problem that\u0027s unrelated to this CL.",
+      "parentUuid": "7c51c402_6c4f1d7d",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 2
+      },
+      "revId": "6713efbf0c86359edf2dcd2402f72effaa0823bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
