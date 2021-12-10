@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bfb0f24_1c79cd7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-10T06:22:10Z",
+      "side": 1,
+      "message": "2 tests passed , 2 tests failing as simlockstatus -\u003e locktype not reflecting and simlockstatus-\u003elockstatus is not reflected at times on RequirePin calls.",
+      "revId": "e0f8a0086f7050e5ef7a75a6a7469607a04b6d59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
