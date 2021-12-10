@@ -46,6 +46,30 @@
       },
       "revId": "6713efbf0c86359edf2dcd2402f72effaa0823bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c51c402_6c4f1d7d",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2021-12-10T04:57:05Z",
+      "side": 1,
+      "message": "If the previous test doesn\u0027t restore the config file, it can also introduce flakiness and hard to find.\nI think to error-out the test when backup file exists with clear log should be better, something like:\n\n\"The backup file /usr/local/vms/etc/arcvm_dev.conf.tast-backup already exists. The previous test forgot to restore the config?\"\n\nAlso, we could add comment that we should add \"defer arc.RestoreArcvmDevConf(ctx);\" once these 2 functions are successfull.",
+      "parentUuid": "15e68fa4_59ec8484",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 2
+      },
+      "revId": "6713efbf0c86359edf2dcd2402f72effaa0823bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
