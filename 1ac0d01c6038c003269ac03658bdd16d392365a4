@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4ee7f4_319b9785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_pinlock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-12-10T16:59:06Z",
+      "side": 1,
+      "message": "Not needed, is being done in fixture.go/setup",
+      "revId": "1ac0d01c6038c003269ac03658bdd16d392365a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7b7041_eb51c086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_pinlock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-12-10T16:59:06Z",
+      "side": 1,
+      "message": "Use RequiredVar to get the PIN and PUK info",
+      "revId": "1ac0d01c6038c003269ac03658bdd16d392365a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb073d48_b34e85db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_cellular_sim_pinlock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-12-10T16:59:06Z",
+      "side": 1,
+      "message": "This is not needed. Will be handled by fixture.",
+      "revId": "1ac0d01c6038c003269ac03658bdd16d392365a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
