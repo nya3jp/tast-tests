@@ -75,9 +75,8 @@ var targetModelList = []string{
 var allAllowlistedOEMModels = []string{
 	// HP devices:
 
-	// "dalboz" board:
-	"dirinboz",
-	"gumboz",
+	// "chell" board:
+	"chell",
 
 	// "dedede" board:
 	"drawcia",
@@ -88,9 +87,6 @@ var allAllowlistedOEMModels = []string{
 
 	// "fizz" board:
 	"kench",
-
-	// "glados" board:
-	"chell",
 
 	// "grunt" board:
 	"barla",
@@ -110,6 +106,10 @@ var allAllowlistedOEMModels = []string{
 	"giygas",
 	"kappa",
 
+	// "keeby" board:
+	"habokay",
+	"haboki",
+
 	// "nami" board:
 	"sona",
 	"sylas",
@@ -123,31 +123,35 @@ var allAllowlistedOEMModels = []string{
 	"dorp",
 	"meep",
 
-	// "poppy" board:
-	"soraka",
+	// "relm" board:
+	"locke",
 
 	// "puff" board:
 	"dooly",
 	"noibat",
 
-	// "reef" board:
+	// "setzer" board:
+	"setzer",
+
+	// "snappy" board:
 	"alan",
 	"bigdaddy",
 	"snappy",
 
-	// "strago" board:
-	"locke",
-	"setzer",
+	// "soraka" board:
+	"soraka",
 
 	// "strongbad" board:
 	"coachz",
 
-	// "trembyle" board:
-	"berknip",
-
 	// "volteer" board:
 	"eldrid",
 	"elemi",
+
+	// "zork" board:
+	"berknip",
+	"dirinboz",
+	"gumboz",
 }
 
 // TargetModels returns hardwareDeps condition with list of models aiming to pass Telemetry Extension tests.
