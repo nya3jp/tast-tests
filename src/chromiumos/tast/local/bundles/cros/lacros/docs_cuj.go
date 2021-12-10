@@ -33,6 +33,13 @@ func init() {
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacros",
 		Timeout:      6 * time.Minute,
+		Params: []testing.Param{{
+			Name: "maximized",
+			Val:  false,
+		}, {
+			Name: "maximized_shelf",
+			Val:  true,
+		}},
 	})
 }
 
@@ -72,34 +79,12 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 		}, visibleLoadTime.Seconds())
 	}
 
-	// Run against lacros-chrome from Shelf
+	// Run against lacros.
+	lacrosLaunchedFromShelf := s.Param().(bool)
 	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
-		conn, cleanup, err := setupLacrosShelfTestWithPage(ctx, f, url)
-		return conn, cleanup, err
-	}); err != nil {
-		s.Error("Failed to run lacros-chrome benchmark: ", err)
-	} else {
-		pv.Set(perf.Metric{
-			Name:      "docs.load.lacros_shelf",
-			Unit:      "seconds",
-			Direction: perf.SmallerIsBetter,
-		}, loadTime.Seconds())
-
-		pv.Set(perf.Metric{
-			Name:      "docs.load_and_visible.lacros_shelf",
-			Unit:      "seconds",
-			Direction: perf.SmallerIsBetter,
-		}, visibleLoadTime.Seconds())
-	}
-
-	// TODO(crbug.com/1263337): We should use faillog to assist debugging here, but it's broken
-	// currently for Shelf launches. In the meantime, grab the log manually before exiting.
-	if errCopy := fsutil.CopyFile(filepath.Join(lacros.UserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros-shelf.log")); errCopy != nil {
-		s.Log("Failed to copy lacros.log from lacros.UserDataDir to the OutDir ", errCopy)
-	}
-
-	// Run against lacros-chrome.
-	if loadTime, visibleLoadTime, err := runDocsPageLoad(ctx, f.TestAPIConn(), docsURLToComment, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+		if lacrosLaunchedFromShelf {
+			return setupLacrosShelfTestWithPage(ctx, f, url)
+		}
 		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
@@ -116,6 +101,14 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, visibleLoadTime.Seconds())
+	}
+
+	// TODO(crbug.com/1263337): We should use faillog to assist debugging here, but it's broken
+	// currently for Shelf launches. In the meantime, grab the log manually before exiting.
+	if lacrosLaunchedFromShelf {
+		if errCopy := fsutil.CopyFile(filepath.Join(lacros.UserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
+			s.Log("Failed to copy lacros.log from UserDataDir to the OutDir ", errCopy)
+		}
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
