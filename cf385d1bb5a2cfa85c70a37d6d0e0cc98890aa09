@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab91a637_4027166c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_battery_cutoff.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-10T19:23:45Z",
+      "side": 1,
+      "message": "fizz \u0026 jecht are chromebox, so this seems redundant.",
+      "range": {
+        "startLine": 37,
+        "startChar": 64,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "cf385d1bb5a2cfa85c70a37d6d0e0cc98890aa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32417151_a7b360b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_battery_cutoff.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-10T19:23:45Z",
+      "side": 1,
+      "message": "Can we move this to bios_service.go? It seems generally useful, and other tests may need it also.",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 12
+      },
+      "revId": "cf385d1bb5a2cfa85c70a37d6d0e0cc98890aa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
