@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad14708_dcf9fe4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-10T06:01:47Z",
+      "side": 1,
+      "message": "FYI, floating point numbers can be compared using option https://pkg.go.dev/github.com/google/go-cmp/cmp/cmpopts#EquateApprox\n, and you can specify ignored field.\nhttps://pkg.go.dev/github.com/google/go-cmp/cmp/cmpopts#IgnoreFields",
+      "parentUuid": "b9f3746c_cb2e70b0",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20553071_f27ef65a",
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Actually it\u0027s not okay by using 1e-6 to compare at this case. (I know it\u0027s standard for normal float point.) Because for these battery fields, we have divided them by 1e6 in cros_healthd and export as float number. But when running tast, we read raw data and divide 1e6 again. If there is minor change for these fields, the comparison will fail with high possibility.\n\nTake a real example, when we check the battery voltage, e.g. 3.7 volt vs 3.6 volt. Because the voltage varies from time to time, I think 3.7 and 3.6 are acceptable in our comparison when using 1e-1. But if we use 1e-6, it\u0027s too strict.\n\nBTW, I have moved it to battery test in next patch (but still 1e-1), will upload later.\nPlease let me know if you still think that we should use 1e-6 for battery related fields~",
       "parentUuid": "20553071_f27ef65a",
+      "range": {
+        "startLine": 82,
+        "startChar": 25,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "a6df8a4181dea6ab12aec88ccdda645e465e13c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef48fc6_c6447105",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/utils/utils.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-10T06:01:47Z",
+      "side": 1,
+      "message": "Thank you. I got the context.",
+      "parentUuid": "5119e9bc_c1535050",
       "range": {
         "startLine": 82,
         "startChar": 25,
