@@ -41,7 +41,7 @@ func getBootPerformanceData(ctx context.Context, outDir string) (bootPerformance
 	return bootPerf, err
 }
 
-func validateBootPerformanceData(bootPerf bootPerformanceInfo) error {
+func validateBootPerformanceData(bootPerf *bootPerformanceInfo) error {
 	if bootPerf.BootUpSeconds < 0.5 {
 		return errors.New("Failed. It is impossible that boot_up_seconds is less than 0.5")
 	}
@@ -62,7 +62,7 @@ func ProbeBootPerformanceInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get boot performance telemetry info: ", err)
 	}
 
-	if err = validateBootPerformanceData(bootPerf); err != nil {
+	if err = validateBootPerformanceData(&bootPerf); err != nil {
 		s.Fatal("Failed to validate boot performance data: ", err)
 	}
 
@@ -76,7 +76,7 @@ func ProbeBootPerformanceInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get boot performance telemetry info: ", err)
 	}
 
-	if err = validateBootPerformanceData(bootPerfNew); err != nil {
+	if err = validateBootPerformanceData(&bootPerfNew); err != nil {
 		s.Fatal("Failed to validate boot performance data: ", err)
 	}
 

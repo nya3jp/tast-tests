@@ -72,13 +72,13 @@ func init() {
 	})
 }
 
-func verifyPhysicalCPU(physicalCPU physicalCPUInfo) error {
+func verifyPhysicalCPU(physicalCPU *physicalCPUInfo) error {
 	if len(physicalCPU.LogicalCPUs) < 1 {
 		return errors.Errorf("invalid LogicalCPUs, got %d; want 1+", len(physicalCPU.LogicalCPUs))
 	}
 
 	for _, logicalCPU := range physicalCPU.LogicalCPUs {
-		if err := verifyLogicalCPU(logicalCPU); err != nil {
+		if err := verifyLogicalCPU(&logicalCPU); err != nil {
 			return errors.Wrap(err, "failed to verify logical CPU")
 		}
 	}
@@ -90,7 +90,7 @@ func verifyPhysicalCPU(physicalCPU physicalCPUInfo) error {
 	return nil
 }
 
-func verifyLogicalCPU(logicalCPU logicalCPUInfo) error {
+func verifyLogicalCPU(logicalCPU *logicalCPUInfo) error {
 	for _, cState := range logicalCPU.CStates {
 		if err := verifyCState(cState); err != nil {
 			return errors.Wrap(err, "failed to verify c_state")
@@ -108,7 +108,7 @@ func verifyCState(cState cStateInfo) error {
 	return nil
 }
 
-func validateCPUData(info cpuInfo) error {
+func validateCPUData(info *cpuInfo) error {
 	// Every board should have at least one physical CPU
 	if len(info.PhysicalCPUs) < 1 {
 		return errors.Errorf("invalid PhysicalCPUs, got %d; want 1+", len(info.PhysicalCPUs))
@@ -122,7 +122,7 @@ func validateCPUData(info cpuInfo) error {
 	}
 
 	for _, physicalCPU := range info.PhysicalCPUs {
-		if err := verifyPhysicalCPU(physicalCPU); err != nil {
+		if err := verifyPhysicalCPU(&physicalCPU); err != nil {
 			return errors.Wrap(err, "failed to verify physical CPU")
 		}
 	}
@@ -130,7 +130,7 @@ func validateCPUData(info cpuInfo) error {
 	return nil
 }
 
-func validateKeyLocker(keylocker keylockerinfo) error {
+func validateKeyLocker(keylocker *keylockerinfo) error {
 	if !keylocker.KeylockerConfigured {
 		return errors.Errorf("failed to configure keylocker: %t", keylocker)
 	}
@@ -144,12 +144,12 @@ func ProbeCPUInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run telem command: ", err)
 	}
 
-	if err := validateCPUData(info); err != nil {
+	if err := validateCPUData(&info); err != nil {
 		s.Fatalf("Failed to validate cpu data, err [%v]", err)
 	}
 
 	if s.Param().(bool) {
-		if err := validateKeyLocker(info.KeylockerInfo); err != nil {
+		if err := validateKeyLocker(&info.KeylockerInfo); err != nil {
 			s.Fatal("Failed to validate KeyLocker: ", err)
 		}
 	}
