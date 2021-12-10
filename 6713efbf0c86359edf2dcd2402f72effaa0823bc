@@ -22,6 +22,30 @@
       },
       "revId": "6713efbf0c86359edf2dcd2402f72effaa0823bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e68fa4_59ec8484",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-10T03:42:16Z",
+      "side": 1,
+      "message": "I considered this, but it might be that the previous backup file from another test run was not cleaned up. If we check this before continuing here we could introduce flakiness.\n\nIt\u0027s up to the test owners to make sure the fixture or test doesn\u0027t append or overwrite the config file multiple times in the same test run (which was already the case before adding this method). This should be pretty straightforward. Only a few tests currently modify the config file, and none of them use this fixture.\n\nTo make this more explicit I added a comment explaining this.",
+      "parentUuid": "bbc39497_3d856b03",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 733,
+        "endChar": 2
+      },
+      "revId": "6713efbf0c86359edf2dcd2402f72effaa0823bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
