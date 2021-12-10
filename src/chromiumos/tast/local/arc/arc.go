@@ -685,7 +685,7 @@ const (
 )
 
 // WriteArcvmDevConf writes string to arcvm_dev.conf on ARCVM devices. Useful for modifying flags
-// for crosvm start up. Backs up original content to arcvm_dev.conf which can
+// for crosvm start up. Backs up original content to arcvm_dev.conf.tast-backup which can
 // later be restored with RestoreArcvmDevConf.
 func WriteArcvmDevConf(ctx context.Context, text string) error {
 	isVMEnabled, err := VMEnabled()
@@ -703,6 +703,41 @@ func WriteArcvmDevConf(ctx context.Context, text string) error {
 		}
 	}
 	return ioutil.WriteFile(arcvmDevConfFile, []byte(text), 0644)
+}
+
+// AppendToArcvmDevConf appends the string to the arcvm_dev.conf on ARCVM devices. Useful for
+// modifying crosvm flags. Backs up the original content to arcvm_dev.conf.tast-backup which can
+// later be restored with RestoreArcvmDevConf.
+func AppendToArcvmDevConf(ctx context.Context, text string) error {
+	isVMEnabled, err := VMEnabled()
+	if err != nil {
+		return err
+	}
+	if !isVMEnabled {
+		return nil
+	}
+
+	// Copy arcvm_dev.conf to backup file.
+	f, err := os.OpenFile(arcvmDevConfFile, os.O_CREATE|os.O_RDWR|os.O_APPEND, 0644)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	backup, err := os.OpenFile(arcvmDevConfFileBackup, os.O_CREATE|os.O_RDWR, 0644)
+	if err != nil {
+		return err
+	}
+	defer backup.Close()
+	if _, err = io.Copy(backup, f); err != nil {
+		return err
+	}
+	if err = backup.Sync(); err != nil {
+		return err
+	}
+
+	// Append config to arcvm_dev.conf.
+	_, err = f.WriteString(text)
+	return err
 }
 
 // RestoreArcvmDevConf restores the original arcvm_dev.conf from the backup copy set
