@@ -272,6 +272,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3c397db_4923a67b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-10T08:39:46Z",
+      "side": 1,
+      "message": "Got it, thanks for explaining. May I ask to add a TODO with a bug to this comment?",
+      "parentUuid": "b0a451a8_1bd942b3",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45d6d5e8_59aeabd9",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
         "patchSetId": 12
@@ -354,6 +378,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "e1e13a9e_fe764b6e",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e783c11b_8755ed44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanner/scan_escl_ipp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-10T08:39:46Z",
+      "side": 1,
+      "message": "looks like you forgot to rename cleanupCtx here",
+      "parentUuid": "34770283_44b657c2",
       "range": {
         "startLine": 113,
         "startChar": 12,
