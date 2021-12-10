@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1a571f4_70d37643",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46696d54_0dc94385",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 10
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09d9d464_d670cffc",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae78f6e_c39a442c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d9d464_d670cffc",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bae9e01d_f1e5a6da",
@@ -125,6 +173,30 @@
       "writtenOn": "2021-12-07T12:34:15Z",
       "side": 1,
       "message": "nit \":\u003d\"",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcef0ab_42bc5213",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bae9e01d_f1e5a6da",
       "range": {
         "startLine": 87,
         "startChar": 9,
@@ -182,6 +254,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09bd3b30_059cb1b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48e63b66_5b71f25e",
+      "range": {
+        "startLine": 106,
+        "startChar": 14,
+        "endLine": 106,
+        "endChar": 15
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08e618b2_e69a2198",
@@ -213,6 +309,24 @@
       "side": 1,
       "message": "Will add.",
       "parentUuid": "08e618b2_e69a2198",
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e874a0f_146ee61b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f885aad2_bd46085b",
       "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -264,6 +378,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "786677ad_948bbfa7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10b6bf2_d201daa8",
+      "range": {
+        "startLine": 161,
+        "startChar": 57,
+        "endLine": 161,
+        "endChar": 65
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "148ce00b_80e02a8b",
@@ -277,6 +415,24 @@
       "writtenOn": "2021-12-07T12:34:15Z",
       "side": 1,
       "message": "no need to update copyright year.",
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dddb631_11f2c0a1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "I have modified this file (not in this patchset), are you sure I should revert this.",
+      "parentUuid": "148ce00b_80e02a8b",
       "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -304,6 +460,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73da323_86fa3f86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c32a14_39e004a8",
+      "range": {
+        "startLine": 33,
+        "startChar": 56,
+        "endLine": 33,
+        "endChar": 57
+      },
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4c026c0_04091105",
@@ -321,6 +501,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3055a884_b591d865",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c026c0_04091105",
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4ed24dd_3989575e",
@@ -334,6 +532,24 @@
       "writtenOn": "2021-12-07T12:34:15Z",
       "side": 1,
       "message": "Could you add macs[0] for the record?",
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71dab9f_ccf46fc0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4ed24dd_3989575e",
       "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

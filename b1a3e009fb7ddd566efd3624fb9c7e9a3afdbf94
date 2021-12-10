@@ -780,6 +780,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f16f6037_1e4d06e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24150eee_c69dd89e",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5a76c00_b286e0fe",
@@ -945,6 +963,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b90509c_a9bf984f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6791a41_d7503586",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1406426e_fbb72f41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4246b8f_094f2397",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d4e0ad_b9fe4c74",
@@ -958,6 +1012,24 @@
       "writtenOn": "2021-12-02T14:51:03Z",
       "side": 1,
       "message": "ditto for dump log.\n\nDitto for below.",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ae7b4d_964ffbbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d4e0ad_b9fe4c74",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1052,6 +1124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3815b07_81be2f20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded recent logs here: https://drive.google.com/file/d/1JZk5l9UcDsOESQi69ZoSHfsJjDeh1T82/view?usp\u003dsharing",
+      "parentUuid": "490268f3_6d03fea5",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cae3b1f4_98e22a86",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1
@@ -1081,6 +1171,24 @@
       "side": 1,
       "message": "As above - this is now handled by one subroutine, should be fixed already.  Please check if you are OK with it.",
       "parentUuid": "cae3b1f4_98e22a86",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2defaf94_95c0736f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f79547_307ba879",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1145,6 +1253,24 @@
       "writtenOn": "2021-12-02T17:58:34Z",
       "side": 1,
       "message": "same as above",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7eef529_3fe47d9c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-10T18:07:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4794853_bf118f1b",
       "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
