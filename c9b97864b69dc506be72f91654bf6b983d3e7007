@@ -52,6 +52,24 @@
       "parentUuid": "1c67d546_706d3747",
       "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55308d3f_cdd28e65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-10T07:20:13Z",
+      "side": 1,
+      "message": "It actually not only need python2 or python3, but also require all ITS dependencies library installed in that python version. I\u0027m looking for a simple way of judging which python installed with correct dependency instead of running test script in both version and parsing the error log like \"Missing opencv...\".\n\nHi @dbeckett,\nCan you advise if the current CL can catch cases for both correct dependencies are installed with python2 or python3? What I assumed in this CL is that as long as default python switch from 2 to 3. The corresponding dependencies should also be installed on that version.",
+      "parentUuid": "36586332_beeb3f69",
+      "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
