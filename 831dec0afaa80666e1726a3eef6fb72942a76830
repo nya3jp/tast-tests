@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8c5bef85_d8fe450d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Done, see CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3329221",
+      "parentUuid": "1da89816_78c206df",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bb6b8754_76bff3bf",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -94,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd6077b_db24c386",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0e190ff_4bc991b3",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 51
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "424fe3b8_d29ae21e",
@@ -107,6 +149,30 @@
       "writtenOn": "2021-12-09T05:24:14Z",
       "side": 1,
       "message": "Revert to familyLinkUnicornLogin to use the new wallpaper app.",
+      "range": {
+        "startLine": 31,
+        "startChar": 17,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "340620a0_3bbc2584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "424fe3b8_d29ae21e",
       "range": {
         "startLine": 31,
         "startChar": 17,
@@ -134,6 +200,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2dc1d36_5dcfdc7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "919cc765_53dbb6f7",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0298714_197fdee1",
@@ -151,6 +235,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac81269_71656191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0298714_197fdee1",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "654fd67d_bbfabac7",
@@ -164,6 +266,30 @@
       "writtenOn": "2021-12-09T05:24:14Z",
       "side": 1,
       "message": "OpenWallpaperPicker for the new wallpaper app.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d260e23_34fba401",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "654fd67d_bbfabac7",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -197,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67ef699_afe5e15c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "724c0fe2_1bc4b1c5",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 47
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "243afe48_ad202a4f",
@@ -210,6 +360,24 @@
       "writtenOn": "2021-12-09T05:24:14Z",
       "side": 1,
       "message": "Replace with a check for the desired wallpaper.\n\nif err :\u003d ui.WaitUntilExists(nodewith.Name(fmt.Sprintf(\"Currently set %v\", image)).Role(role.Heading))(innerCtx); err !\u003d nil {\n+                       return errors.Wrapf(err, \"failed to validate selected wallpaper %q: %v\", image, err)\n                }",
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da6aa50_ba60de6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "243afe48_ad202a4f",
       "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -237,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb850e2b_04f742a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Leaving a comment on the other CL to follow up with this.",
+      "parentUuid": "7a57ca6f_ce1bdfea",
+      "range": {
+        "startLine": 40,
+        "startChar": 49,
+        "endLine": 40,
+        "endChar": 80
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c4f3409_ed079db9",
@@ -250,6 +442,30 @@
       "writtenOn": "2021-12-09T05:24:14Z",
       "side": 1,
       "message": "You may remove this fixture. All familylink.* tests can run with the new wallpaper app.",
+      "range": {
+        "startLine": 166,
+        "startChar": 13,
+        "endLine": 166,
+        "endChar": 47
+      },
+      "revId": "831dec0afaa80666e1726a3eef6fb72942a76830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c18a75db_81bd3917",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c4f3409_ed079db9",
       "range": {
         "startLine": 166,
         "startChar": 13,

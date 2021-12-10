@@ -88,6 +88,24 @@
       "parentUuid": "5aa82b5d_061358fb",
       "revId": "2d421264d7cd3d8085c61f28dd34eab8f7dbf76c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3859f699_eced4082",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-10T01:45:47Z",
+      "side": 1,
+      "message": "Ok, I went with this approach:\n\nupdate familylink.ChildWallpaperSync to use new wallpaper app. I split that out into a CL that precedes this one:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3329221\n\nI made wallpaper.Change use the old wallpaper extension for now.",
+      "parentUuid": "7a62ac86_5686ccb3",
+      "revId": "2d421264d7cd3d8085c61f28dd34eab8f7dbf76c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
