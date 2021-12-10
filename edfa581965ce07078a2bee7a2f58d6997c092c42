@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3161697_63e3f310",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-10T02:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "659afba5_1cace703",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25306550_bf6a110e",
@@ -120,6 +138,24 @@
       "side": 1,
       "message": "If you move this line back up to  ~312 that will be prior to chrome starting, I wonder if that\u0027s appropriate",
       "parentUuid": "25306550_bf6a110e",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb503ce_e1d49139",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1288602
+      },
+      "writtenOn": "2021-12-10T02:56:09Z",
+      "side": 1,
+      "message": "That does the trick, thanks a lot Ben! Completely missed that chrome.New is called at the start of Setup(). I\u0027ll get this through the normal review process and I\u0027ll ask you to do an owner review when that\u0027s finished, thanks!",
+      "parentUuid": "d2b3aa1d_582a9b88",
       "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
