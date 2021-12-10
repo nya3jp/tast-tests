@@ -246,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a451a8_1bd942b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/multi_page_scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-10T02:57:23Z",
+      "side": 1,
+      "message": "Agreed, this extra Stop was added to deliberately shut down the virtual printer without waiting for everything to unwind in reverse order.  Without it, other processes that probe USB devices may occasionally have the printer open when this test is finishing (such as permission_broker), which causes flaky failures that aren\u0027t related to what this test is actually testing.\n\nWe\u0027ve rewritten some of our IPP-USB stack to make it less prone to problems with races, and we have a project planned for Q1 to fully revisit all of these tests.  But for the purposes of this refactor, it would be good to preserve the existing behavior rather than trying to fix everything at once.",
+      "parentUuid": "714c1715_09d8b995",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 2
+      },
+      "revId": "13c2d03f387f60bfa9cbf77a73b884da43116a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45d6d5e8_59aeabd9",
