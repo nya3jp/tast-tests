@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba9f741d_5e5434dc",
+        "filename": "src/chromiumos/tast/common/policy/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17357,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-10T09:43:27Z",
+      "side": 1,
+      "message": "New approach LGTM",
+      "parentUuid": "673a88b7_af84ef7b",
+      "revId": "6c3cb6317da2a33a8bd570ba9f133ba56e41230d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92d8803a_a5726e04",

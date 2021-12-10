@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "548ecaa2_fb954a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-10T09:43:27Z",
+      "side": 0,
+      "message": "Move these changes to a separate CL. I\u0027d like the generator changes to be as self-contained as possible.",
+      "revId": "f48dd2134550362f265e2c4d3726596494a45d00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
