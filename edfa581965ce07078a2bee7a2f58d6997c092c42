@@ -158,6 +158,24 @@
       "parentUuid": "d2b3aa1d_582a9b88",
       "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a42601_dab023f1",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-10T02:59:04Z",
+      "side": 1,
+      "message": "No problems, glad it worked! Add me back to the attention set when ready for Tast Owners review 😊",
+      "parentUuid": "7cb503ce_e1d49139",
+      "revId": "edfa581965ce07078a2bee7a2f58d6997c092c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
