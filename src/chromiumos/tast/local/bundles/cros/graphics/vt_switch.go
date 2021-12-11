@@ -21,15 +21,18 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VTSwitch,
-		Desc:         "Switch between VT-2 shell and GUI multiple times",
-		Contacts:     []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeGraphics",
+		Func:              VTSwitch,
+		Desc:              "Switch between VT-2 shell and GUI multiple times",
+		Contacts:          []string{"ambalavanan.m.m@intel.com", "intel-chrome-system-automation-team@intel.com"},
+		SoftwareDeps:      []string{"chrome"},
+		ExtraHardwareDeps: hwdep.D(hwdep.InternalDIsplay()),
+
+		Fixture: "chromeGraphics",
 		Params: []testing.Param{{
 			Name:      "smoke",
 			ExtraAttr: []string{"group:mainline", "informational", "group:graphics", "graphics_nightly"},
