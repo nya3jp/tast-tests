@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "222a28b9_35576cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/lock_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-12-11T01:28:46Z",
+      "side": 1,
+      "message": "Ah, good catch! Fixed :)",
+      "parentUuid": "1544082e_e9eda8fc",
+      "range": {
+        "startLine": 144,
+        "startChar": 12,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "ca7050df0fb0bbf49aa003e9a6c32e145d609582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fb84680_c05b863e",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-12-10T18:37:28Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 29
+      },
+      "revId": "ca7050df0fb0bbf49aa003e9a6c32e145d609582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967aa676_1bf084af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/sign_in_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-12-11T01:28:46Z",
+      "side": 1,
+      "message": "Fixed!",
+      "parentUuid": "7fb84680_c05b863e",
       "range": {
         "startLine": 107,
         "startChar": 12,
