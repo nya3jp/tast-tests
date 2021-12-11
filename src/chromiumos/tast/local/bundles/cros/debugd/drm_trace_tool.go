@@ -8,6 +8,8 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -69,6 +71,11 @@ func DRMTraceTool(ctx context.Context, s *testing.State) {
 	s.Log("Verify DRMTraceSetSize method")
 	if err := testSetSize(ctx, dbgd); err != nil {
 		s.Error("Failed to verify DRMTraceSetSize: ", err)
+	}
+
+	s.Log("Verify DRMTraceSnapshot method")
+	if err := testSnapshot(ctx, dbgd); err != nil {
+		s.Error("Failed to verify DRMTraceSnapshot: ", err)
 	}
 
 	s.Log("Verify DRMTraceTool parameters are reset correctly")
@@ -159,6 +166,61 @@ func testSetSize(ctx context.Context, d *debugd.Debugd) error {
 	if debugSize <= defaultSize {
 		return errors.Errorf("expected debug size (%d) to be greater than default size (%d)", debugSize, defaultSize)
 	}
+	return nil
+}
+
+// testSnapshot verifies the DRMTraceSnapshot D-Bus method.
+func testSnapshot(ctx context.Context, d *debugd.Debugd) error {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("couldn't get output dir")
+	}
+
+	// Clear any snapshots from previous runs.
+	if err := removeDirContents("/var/log/display_debug"); err != nil {
+		return errors.Wrap(err, "failed to clear /var/log/display_debug directory")
+	}
+
+	// Turn off trace categories to control the log contents during the test case.
+	if err := writeStringToFile(traceMaskPath, "0"); err != nil {
+		return errors.Wrap(err, "failed to disable trace mask")
+	}
+
+	// Do the snapshot.
+	if err := d.DRMTraceSnapshot(ctx, debugd.DRMTraceSnapshotTypeTrace); err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceSnapshot")
+	}
+
+	// Read the trace log.
+	trace, err := readFileToString(traceContentsPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read trace contents")
+	}
+
+	// Read the snapshot.
+	matches, err := filepath.Glob("/var/log/display_debug/drm_trace.*")
+	if err != nil {
+		return errors.Wrapf(err, "failed to glob directory: %s", "/var/log/display_debug/drm_trace.*")
+	}
+	if len(matches) != 1 {
+		return errors.Errorf("unexpected number of glob matches: got %d want 1", len(matches))
+	}
+
+	snapshot, err := readFileToString(matches[0])
+	if err != nil {
+		return errors.Wrap(err, "failed to read snapshot contents")
+	}
+
+	if trace != snapshot {
+		if err := ioutil.WriteFile(filepath.Join(dir, "snapshot"), []byte(snapshot), 0644); err != nil {
+			testing.ContextLog(ctx, "Failed to write snapshot file to output dir")
+		}
+		if err := ioutil.WriteFile(filepath.Join(dir, "trace"), []byte(trace), 0644); err != nil {
+			testing.ContextLog(ctx, "Failed to write snapshot file to output dir")
+		}
+		return errors.New("trace and snapshot contents do not match")
+	}
+
 	return nil
 }
 
@@ -305,4 +367,36 @@ func readFileToInt(path string) (int, error) {
 		return 0, err
 	}
 	return strconv.Atoi(sizeStr)
+}
+
+// writeStringToFile will write |contents| to the file at |path|.
+// If |path| does not exist or can't be opened for writing, this will return error.
+func writeStringToFile(path, contents string) error {
+	f, err := os.OpenFile(path, os.O_WRONLY, 0)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	_, err = f.WriteString(contents)
+	return err
+}
+
+// removeDirContents will remove all files and directories in the directory at |path|.
+// The directory at |path| itself will not be removed. If the directory doesn't exist,
+// this function succeeds trivially.
+func removeDirContents(path string) error {
+	dir, err := ioutil.ReadDir(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil
+		}
+		return err
+	}
+
+	for _, d := range dir {
+		if err := os.RemoveAll(filepath.Join(path, d.Name())); err != nil {
+			return err
+		}
+	}
+	return nil
 }
