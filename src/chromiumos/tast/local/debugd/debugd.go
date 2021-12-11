@@ -243,6 +243,14 @@ func (d *Debugd) DRMTraceSetSize(ctx context.Context, size DRMTraceSize) (err er
 	return nil
 }
 
+// DRMTraceSnapshot calls debugd's DRMTraceSnapshot D-Bus method.
+func (d *Debugd) DRMTraceSnapshot(ctx context.Context) (err error) {
+	if err := d.call(ctx, "DRMTraceSnapshot").Err; err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceSnapshot")
+	}
+	return nil
+}
+
 // call is thin wrapper of CallWithContext for convenience.
 func (d *Debugd) call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
 	return d.obj.CallWithContext(ctx, dbusInterface+"."+method, 0, args...)
