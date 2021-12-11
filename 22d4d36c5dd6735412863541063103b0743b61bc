@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c822a0_9f41f8a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-11T21:57:18Z",
+      "side": 1,
+      "message": "LGTM - just nits",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e4858fa_9f6db14b",
@@ -31,6 +48,57 @@
       "writtenOn": "2021-12-11T19:40:35Z",
       "side": 1,
       "message": "Should we add a TODO(b/210155681) to augment this with ARCVM support at a later date?",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472a7cd7_ca2a79e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-11T21:57:18Z",
+      "side": 1,
+      "message": "nit: \"unexpected histogram count for %s, got: %d, want: 1\".",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5b5803_5b862db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-11T21:57:18Z",
+      "side": 1,
+      "message": "nit: same here format here i.e.: \"got: %d, want: %d\".",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2017ee71_4bdd3059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-11T21:57:18Z",
+      "side": 1,
+      "message": "nit: extra space between %s and histogram.",
       "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
