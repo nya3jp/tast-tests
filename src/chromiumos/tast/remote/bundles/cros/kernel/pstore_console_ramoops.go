@@ -23,7 +23,7 @@ func init() {
 			"chromeos-kernel-test@google.com",
 		},
 		SoftwareDeps: []string{"pstore", "reboot"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
