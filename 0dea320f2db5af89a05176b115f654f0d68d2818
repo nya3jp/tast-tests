@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2194435_cea56e5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T02:13:22Z",
+      "side": 1,
+      "message": "Can you add the following link to the comment\nhttps://cros-health-prod.googleplex.com/test/quicksettings.LockScreen\nhttps://cros-health-prod.googleplex.com/test/quicksettings.OpenSettings\n\nAlso do you have the bug why these tests fail at 14377?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "0dea320f2db5af89a05176b115f654f0d68d2818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8acf1d0_b62e6f8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T02:13:22Z",
+      "side": 1,
+      "message": "The outage occurred at 14377 seems fixed.",
+      "revId": "0dea320f2db5af89a05176b115f654f0d68d2818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
