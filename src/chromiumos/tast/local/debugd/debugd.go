@@ -114,6 +114,14 @@ const (
 	DRMTraceSizeDebug                = 1
 )
 
+// DRMTraceSnapshotType is an enumeration used as an argument to the DRMTraceSnapshot method.
+type DRMTraceSnapshotType uint32
+
+// This must match the DRMTraceSnapshotType enum defined in org.chromium.debugd.xml.
+const (
+	DRMTraceSnapshotTypeTrace DRMTraceSnapshotType = 0
+)
+
 // DRMTraceCategories is a bitmask used as an argument to the DRMTraceSetCategories method.
 type DRMTraceCategories uint32
 
@@ -239,6 +247,14 @@ func (d *Debugd) DRMTraceSetCategories(ctx context.Context, categories DRMTraceC
 func (d *Debugd) DRMTraceSetSize(ctx context.Context, size DRMTraceSize) (err error) {
 	if err := d.call(ctx, "DRMTraceSetSize", uint32(size)).Err; err != nil {
 		return errors.Wrap(err, "failed to call DRMTraceSetSize")
+	}
+	return nil
+}
+
+// DRMTraceSnapshot calls debugd's DRMTraceSnapshot D-Bus method.
+func (d *Debugd) DRMTraceSnapshot(ctx context.Context, snapshotType DRMTraceSnapshotType) (err error) {
+	if err := d.call(ctx, "DRMTraceSnapshot", uint32(snapshotType)).Err; err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceSnapshot")
 	}
 	return nil
 }
