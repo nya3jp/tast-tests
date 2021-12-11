@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb0f84b_711984d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:54:47Z",
+      "side": 1,
+      "message": "Looks like these are exitCode, error, PixcelDifference.\n\nI\u0027m not sure we care\u0027s about exitCode specifically here. It should be sufficient to return an error if perceptualdiff fails to run or No target string is found.\n\nlet\u0027s change this to (int, errors) \nby convention, tast normally put errors at the end of return values.",
+      "range": {
+        "startLine": 109,
+        "startChar": 65,
+        "endLine": 109,
+        "endChar": 79
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f0259e_0b56afa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:54:47Z",
+      "side": 1,
+      "message": "You can use either ComebinedOutput or SeparatedOutput to achieve this.\nAs you will parse the output, i\u0027d suggest using SeparatedOutput to avoid stdout/stderr interleaving.\n\n1)\nstdout, err :\u003d cmd.ComebinedOutput(...)\n\n2)\nstdout, stderr, err :\u003d cmd.SeparatedOutput(...)",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f684d446_10724155",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:54:47Z",
+      "side": 1,
+      "message": "This is not cmdOut but errors.\n\nAlso let\u0027s check if err exist or not.\n\nstdout, stderr, err :\u003d cmd.SeparatedOutput(...)\nif err !\u003d nil {\n    return 0, errors.Wrap(err, \"failed to run perceptualdiff\")\n}\n// Parse stdout, stderr\nif failed to parse {\n    return 0, errors.Errorf(\"failed to parse perceptualdiff output due to xxx\")\n}\nreturn pixelDifference, nil",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85958927_ac153c49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:54:47Z",
+      "side": 1,
+      "message": "Shouldn\u0027t omit the error. If failed to convert string to int, we should handle it properly.",
+      "range": {
+        "startLine": 123,
+        "startChar": 10,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ed1e86f_6f9e5fbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:54:47Z",
+      "side": 1,
+      "message": "I perfer maxVT1DifferencePercent over maxVT1Difference as it takes resolution into account. \nIs this intentional?",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 17
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d71aa0_2cf57b5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:54:47Z",
+      "side": 1,
+      "message": "This is misleading. VT switch is actually done in openVT1 and openVT2.\n\nHow about CaptureAndCompare?",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 17
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5999c71b_1436399f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:54:47Z",
+      "side": 1,
+      "message": "delete.",
+      "range": {
+        "startLine": 208,
+        "startChar": 49,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
