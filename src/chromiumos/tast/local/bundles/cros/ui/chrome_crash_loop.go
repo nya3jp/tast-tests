@@ -6,20 +6,21 @@ package ui
 
 import (
 	"context"
+	"os"
 	"strings"
-	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/debugd"
-	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
-// testModeSuccessful is the special message that crash_sender logs if it
-// successfully got the crash report. MUST MATCH kTestModeSuccessful in crash_sender_util.cc
-const testModeSuccessful = "Test Mode: Logging success and exiting instead of actually uploading"
+// testModeSuccessfulFile is the special file that crash_sender creates if it
+// successfully got the crash report. MUST MATCH kTestModeSuccessfulFile in
+// crash_sender_util.cc
+const testModeSuccessfulFile = "/var/spool/crash/crash_sender_test_mode_successful"
 
 // chromeCrashLoopParams contains the test parameters which are different between the various tests.
 type chromeCrashLoopParams struct {
@@ -74,11 +75,6 @@ func init() {
 // the crash report.
 func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromeCrashLoopParams)
-	r, err := syslog.NewReader(ctx, syslog.Program(syslog.CrashSender))
-	if err != nil {
-		s.Fatal("Could not start watching system message file: ", err)
-	}
-	defer r.Close()
 
 	// Only Browser processes cause logouts and thus invoke the crash loop handler.
 	ct, err := chromecrash.NewCrashTester(ctx, chromecrash.Browser, chromecrash.MetaFile)
@@ -113,6 +109,27 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	}
 	defer d.SetCrashSenderTestMode(ctx, false)
 
+	// Clean up success file at the end
+	defer os.Remove(testModeSuccessfulFile)
+
+	// Ensure success file isn't left over from previous test. By default, we
+	// don't print out the error here, nor do we fail the test because of errors
+	// from os.Remove. In the vast majority of cases, the success file won't exist
+	// and we'll get an error about trying to remove an non-existant file. (It's
+	// fine that the success file doesn't exist; that's what we expect.) Instead
+	// of checking the error on this line, we just check on the next line that the
+	// file doesn't exist. As long as the file doesn't exist after this line,
+	// we're OK with it either being deleted here *or* it not having existed in
+	// the first place. However, we do save the error object -- if the file still
+	// exists, we want to add it into the error message saying that the remove
+	// failed.
+	removeErr := os.Remove(testModeSuccessfulFile)
+	if _, err := os.Stat(testModeSuccessfulFile); err == nil {
+		s.Fatal(testModeSuccessfulFile, " still exists. Remove failed with: ", removeErr)
+	} else if !errors.Is(err, os.ErrNotExist) {
+		s.Fatal("Could not stat ", testModeSuccessfulFile, ": ", err)
+	}
+
 	// restartTries should match BrowserJob::kRestartTries in browser_job.cc.
 	const restartTries = 5
 	crashLoopModeUsed := false
@@ -141,12 +158,13 @@ func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 			continue
 		}
 
-		testing.ContextLog(ctx, "No Chrome dumps found; this should be the crash-loop upload. Polling for success message")
+		testing.ContextLog(ctx, "No Chrome dumps found; this should be the crash-loop upload. Polling for success file")
 		crashLoopModeUsed = true
-		if _, err := r.Wait(ctx, time.Minute, func(e *syslog.Entry) bool {
-			return strings.Contains(e.Content, testModeSuccessful)
-		}); err != nil {
-			s.Error("Test-successful message not found: ", err)
+		if err := testing.Poll(ctx, func(c context.Context) error {
+			_, err := os.Stat(testModeSuccessfulFile)
+			return err
+		}, nil); err != nil {
+			s.Error("Test-successful file not found: ", err)
 		} else {
 			// Success! Don't keep trying to crash Chrome; session_manager restarts
 			// after a crash loop, so we'll have lost all our test arguments (in
