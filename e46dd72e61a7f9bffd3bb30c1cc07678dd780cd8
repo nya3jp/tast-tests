@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf57d39_b3f666bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-12-11T00:45:14Z",
+      "side": 1,
+      "message": "Also LGTM % the better review that @jchinlee should be able to provide.",
+      "revId": "e46dd72e61a7f9bffd3bb30c1cc07678dd780cd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
