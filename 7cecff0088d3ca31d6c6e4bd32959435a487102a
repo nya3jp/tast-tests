@@ -72,6 +72,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7c803c0_ed24154a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:59:41Z",
+      "side": 1,
+      "message": "Also, we should output the stdout, stderr if it fails to parse the number.",
+      "parentUuid": "f684d446_10724155",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3993287_8150d1f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-11T01:59:41Z",
+      "side": 1,
+      "message": "BTW, it is encourage to reduce nesting if possible in golang.\nSo this is better to be written as \nif exitCode \u003d\u003d 0 {\n    return 0, ok, numPix\n}\npixels :\u003d re.FindStringSubmatch(out.String())[1]\nnumPix, _ \u003d strconv.Atoi(pixels)\nreturn exitCode, ok, numPix\n\n\nhttps://github.com/uber-go/guide/blob/master/style.md#reduce-nesting",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85958927_ac153c49",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 11
