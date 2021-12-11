@@ -16,6 +16,29 @@
       "message": "Looks great!",
       "revId": "6a07d1bd33822364d5aa9019ba4d5b5404aa6aaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70028efe_e06928c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-11T00:48:22Z",
+      "side": 1,
+      "message": "Remove Extra.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 7
+      },
+      "revId": "6a07d1bd33822364d5aa9019ba4d5b5404aa6aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
