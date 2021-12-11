@@ -33,6 +33,24 @@
       "message": "PTAL when you get a chance.\n\nFYI, this is failing on pretty much every platform. Filed as b/210167476. It is fine to check it in failing, though.",
       "revId": "974e5f624473aa9a76ff0cdaf4ba3350ab644170",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e11a77_217a8e13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1498402
+      },
+      "writtenOn": "2021-12-11T01:15:21Z",
+      "side": 1,
+      "message": "Good point.\n\ntast.video.PlatformDecoding.vaapi_vp9_0_svc is still passing on coral after the JSON change.",
+      "parentUuid": "ccd9afa7_6d08484e",
+      "revId": "974e5f624473aa9a76ff0cdaf4ba3350ab644170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
