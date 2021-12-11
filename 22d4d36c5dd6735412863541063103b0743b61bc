@@ -16,6 +16,40 @@
       "message": "PTAL\nTY",
       "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e4858fa_9f6db14b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2021-12-11T19:40:35Z",
+      "side": 1,
+      "message": "Should we add a TODO(b/210155681) to augment this with ARCVM support at a later date?",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1828b6b6_59e53107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000532
+      },
+      "writtenOn": "2021-12-11T19:40:35Z",
+      "side": 1,
+      "message": "Should we validate the metric is a positive number, and possibly less time than between when we last started ARC and now?",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
