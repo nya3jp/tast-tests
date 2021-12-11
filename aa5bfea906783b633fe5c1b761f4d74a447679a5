@@ -50,6 +50,24 @@
       "message": "This was added to correct for a race between cups and lorgnette both trying to start ippusb_manager.  It\u0027s possible that this is no longer needed now that we\u0027ve replaced ippusb_manager with ippusb_bridge.  Could you run a few cycles of tests without it to see if the WaitUntilConfigured is enough to avoid flakes?",
       "revId": "aa5bfea906783b633fe5c1b761f4d74a447679a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b69c3f1_34b55992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/documentscanapi/scan.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-11T02:51:47Z",
+      "side": 1,
+      "message": "I ran it for 260 cycles and it worked for me; I\u0027ve removed this stanza in patchest 15.",
+      "parentUuid": "e6d467ae_bcdb644f",
+      "revId": "aa5bfea906783b633fe5c1b761f4d74a447679a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
