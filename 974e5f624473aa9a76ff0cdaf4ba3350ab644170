@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd9afa7_6d08484e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2021-12-11T00:43:27Z",
+      "side": 1,
+      "message": "This LGTM!\n\nSince the JSON file is also used on PlatformDecoding +jchinlee@ PTAL",
+      "revId": "974e5f624473aa9a76ff0cdaf4ba3350ab644170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
