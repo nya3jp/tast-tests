@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81593dbd_88630fec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-11T23:38:35Z",
+      "side": 1,
+      "message": "@takise and @toshikikikuchi - The split screen test is still failing even though https://chromium-review.googlesource.com/c/chromium/src/+/3272213/ was pushed. This CL: (1) makes the rotate/mode switch a little more reliable, and (2) gives some leeway to the screen size check to account for the divider width. ",
+      "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
