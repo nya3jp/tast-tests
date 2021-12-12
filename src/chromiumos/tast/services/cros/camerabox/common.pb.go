@@ -85,6 +85,7 @@ func init() {
 	proto.RegisterEnum("tast.cros.camerabox.TestResult", TestResult_name, TestResult_value)
 }
 
+
 func init() { proto.RegisterFile("common.proto", fileDescriptor_555bd8c177793206) }
 
 var fileDescriptor_555bd8c177793206 = []byte{
