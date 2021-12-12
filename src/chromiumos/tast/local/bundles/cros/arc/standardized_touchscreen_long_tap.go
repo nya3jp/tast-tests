@@ -24,7 +24,8 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		// TODO(b/210260303): Remove models after tap issue is resolved for kukui devices.
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel("kakadu", "katsu", "kodama")),
 		Params: []testing.Param{{
 			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
