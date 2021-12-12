@@ -88,6 +88,24 @@
       "parentUuid": "55308d3f_cdd28e65",
       "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48bc1080_a7f84ef4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-12T23:45:35Z",
+      "side": 1,
+      "message": "If you\u0027re checking for installed with dependencies, it sounds like you shouldn\u0027t be checking what the system default is, but instead running \"python3 -c \u0027import dependencies\u0027\" to check if python 3 is supported.",
+      "parentUuid": "4f8e4a71_5587ae63",
+      "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
