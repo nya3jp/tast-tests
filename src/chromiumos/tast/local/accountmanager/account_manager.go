@@ -111,9 +111,9 @@ func CheckOneGoogleBar(ctx context.Context, tconn *chrome.TestConn, br *browser.
 
 // OpenOneGoogleBar opens google.com page in the browser and clicks on the One Google Bar.
 func OpenOneGoogleBar(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser) error {
-	conn, err := br.NewConn(ctx, "https://www.google.com")
+	conn, err := br.NewConn(ctx, "chrome://newtab")
 	if err != nil {
-		return errors.Wrap(err, "failed to create connection to google.com")
+		return errors.Wrap(err, "failed to create connection to chrome://newtab")
 	}
 	defer conn.Close()
 
@@ -149,8 +149,7 @@ func openOGB(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration)
 	addAccount := nodewith.Name("Add another account").Role(role.Link)
 	if err := uiauto.Combine("Click OGB",
 		ui.WaitUntilExists(ogb),
-		ui.LeftClick(ogb),
-		ui.WaitUntilExists(addAccount),
+		ui.WithInterval(time.Second).LeftClickUntil(ogb, ui.Exists(addAccount)),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find and click OGB")
 	}
