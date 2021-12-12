@@ -1,0 +1,148 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package accountmanager provides functions to manage accounts in-session.
+package accountmanager
+
+import (
+	"context"
+	"time"
+
+	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/accountmanager"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
+)
+
+func init() {
+	testing.AddTest(&testing.Test{
+		Func:         AddProfileAccountPicker,
+		Desc:         "Addition of a secondary profile with account from a profile picker",
+		Contacts:     []string{"anastasiian@chromium.org", "team-dent@google.com"},
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome", "lacros"},
+		Fixture:      "loggedInToLacros",
+		VarDeps:      []string{"accountmanager.username1", "accountmanager.password1"},
+		Timeout:      6 * time.Minute,
+	})
+}
+
+func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
+	username := s.RequiredVar("accountmanager.username1")
+	password := s.RequiredVar("accountmanager.password1")
+
+	// Reserve one minute for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
+	// Setup the browser.
+	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
+	if err != nil {
+		s.Fatal("Failed to initialize test: ", err)
+	}
+	defer lacros.CloseLacrosChrome(cleanupCtx, l)
+
+	// Connect to Test API to use it with the UI library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	s.Log("Runing test cleanup")
+	if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeLacros); err != nil {
+		s.Fatal("Failed to do cleanup: ", err)
+	}
+
+	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
+
+	// Open Account Manager page in OS Settings and find Add Google Account button.
+	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
+	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton)); err != nil {
+		s.Fatal("Failed to launch Account Manager page: ", err)
+	}
+
+	// Click the button to open account addition dialog.
+	if err := ui.LeftClick(addAccountButton)(ctx); err != nil {
+		s.Fatal("Failed to click Add Google Account button: ", err)
+	}
+
+	s.Log("Adding a secondary Account")
+	if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
+		s.Fatal("Failed to add a secondary Account: ", err)
+	}
+
+	// Make sure that the settings page is focused again.
+	if err := ui.WaitUntilExists(addAccountButton)(ctx); err != nil {
+		s.Fatal("Failed to find Add Google Account button: ", err)
+	}
+	// Find "More actions, <email>" button to make sure that account was added.
+	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
+	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
+		s.Fatal("Failed to find More actions button: ", err)
+	}
+
+	// Open a new tab
+	conn, err := cs.NewConn(ctx, "chrome://newtab")
+	if err != nil {
+		s.Fatal("Failed to open a new tab in Lacros browser: ", err)
+	}
+	defer conn.Close()
+
+	// Browser controls to open a profile:
+	profileToolbarButton := nodewith.ClassName("AvatarToolbarButton").Role(role.Button).Focusable()
+	profileMenu := nodewith.NameStartingWith("Accounts and sync").Role(role.Menu)
+	addProfileButton := nodewith.Name("Add").Role(role.Button).Focusable().Ancestor(profileMenu)
+
+	// Nodes in the profile addition dialog:
+	accountPicker := nodewith.Name("Choose an account").Role(role.RootWebArea)
+	addProfileRoot := nodewith.Name("Set up your new Chrome profile").Role(role.RootWebArea)
+	nextButton := nodewith.Name("Next").Role(role.Button).Focusable().Ancestor(addProfileRoot)
+	accountEntry := nodewith.NameContaining(username).Role(role.Button).Focusable().Ancestor(accountPicker)
+
+	// Nodes on the last screen of the profile addition dialog:
+	finishAddProfileRoot := nodewith.Name("Chrome browser sync is on").Role(role.RootWebArea)
+	finishAddProfileHeading := nodewith.Name("Chrome browser sync is on").Role(role.Heading).Ancestor(finishAddProfileRoot)
+	doneButton := nodewith.Name("Done").Role(role.Button).Focusable().Ancestor(finishAddProfileRoot)
+
+	// Nodes that belong to the new profile:
+	newProfileWindow := nodewith.NameContaining("Google Chrome").Role(role.Window).Focused()
+	// The menu should contain the username of the secondary account.
+	newProfileMenu := nodewith.NameStartingWith("Accounts and sync").NameContaining(username).Role(role.Menu)
+
+	if err := uiauto.Combine("Adding a profile",
+		uiauto.Combine("Click a button to add a profile",
+			ui.WaitUntilExists(profileToolbarButton),
+			ui.LeftClick(profileToolbarButton),
+			ui.WaitUntilExists(addProfileButton),
+			ui.LeftClick(addProfileButton),
+		),
+		uiauto.Combine("Click next and pick an account",
+			ui.WaitUntilExists(nextButton),
+			ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(accountPicker)),
+			ui.WaitUntilExists(accountEntry),
+			ui.LeftClick(accountEntry),
+		),
+		uiauto.Combine("Check that the final screen is open and click done",
+			ui.WaitUntilExists(finishAddProfileHeading),
+			ui.WaitUntilExists(doneButton),
+			ui.LeftClick(doneButton),
+		),
+		uiauto.Combine("Check that the new profile was created and belongs to the correct account",
+			ui.WaitUntilExists(newProfileWindow),
+			ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
+			ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),
+			ui.WaitUntilExists(newProfileMenu),
+		),
+	)(ctx); err != nil {
+		s.Fatal("Failed to create a new profile for secondary account: ", err)
+	}
+}
