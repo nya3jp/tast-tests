@@ -29,6 +29,11 @@ const DefaultUITimeout = 20 * time.Second
 // LongUITimeout is for interaction with webpages to make sure that page is loaded.
 const LongUITimeout = time.Minute
 
+// GetAddAccountDialog returns a root node of the system account addition dialog.
+func GetAddAccountDialog() *nodewith.Finder {
+	return nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
+}
+
 // AddAccount adds an account in-session. Account addition dialog should be already open.
 func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password string) error {
 	// Set up keyboard.
@@ -40,17 +45,22 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 
 	ui := uiauto.New(tconn).WithTimeout(LongUITimeout)
 
+	// All nodes in the dialog should be inside the `root`.
+	root := GetAddAccountDialog()
+
 	// Click OK and Enter User Name.
+	okButton := nodewith.Name("OK").Role(role.Button).Ancestor(root)
 	if err := uiauto.Combine("Click on OK and proceed",
-		ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
+		ui.WaitUntilExists(okButton),
+		ui.LeftClick(okButton),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click OK. Is Account addition dialog open?")
 	}
 
+	emailField := nodewith.Name("Email or phone").Role(role.TextField).Ancestor(root)
 	if err := uiauto.Combine("Click on Username",
-		ui.WaitUntilExists(nodewith.Name("Email or phone").Role(role.TextField)),
-		ui.LeftClick(nodewith.Name("Email or phone").Role(role.TextField)),
+		ui.WaitUntilExists(emailField),
+		ui.LeftClick(emailField),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on user name")
 	}
@@ -60,9 +70,10 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	}
 
 	// Enter Password.
+	passwordField := nodewith.Name("Enter your password").Role(role.TextField).Ancestor(root)
 	if err := uiauto.Combine("Click on Password",
-		ui.WaitUntilExists(nodewith.Name("Enter your password").Role(role.TextField)),
-		ui.LeftClick(nodewith.Name("Enter your password").Role(role.TextField)),
+		ui.WaitUntilExists(passwordField),
+		ui.LeftClick(passwordField),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on password")
 	}
@@ -71,12 +82,14 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 		return errors.Wrap(err, "failed to type password")
 	}
 
+	nextButton := nodewith.Name("Next").Role(role.Button).Ancestor(root)
+	iAgreeButton := nodewith.Name("I agree").Role(role.Button).Ancestor(root)
 	if err := uiauto.Combine("Agree and Finish Adding Account",
-		ui.LeftClick(nodewith.Name("Next").Role(role.Button)),
+		ui.LeftClick(nextButton),
 		// We need to focus the button first to click at right location
 		// as it returns wrong coordinates when button is offscreen.
-		ui.FocusAndWait(nodewith.Name("I agree").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("I agree").Role(role.Button)),
+		ui.FocusAndWait(iAgreeButton),
+		ui.LeftClick(iAgreeButton),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to add account")
 	}
