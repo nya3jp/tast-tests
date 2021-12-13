@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09d91c25_1b9a6b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T01:51:08Z",
+      "side": 1,
+      "message": "Sorry, let me explain more clearly.\n\n1. For answers, we can get it from sysfs. So, tast test can read from this to verify.\n2. In cros_healthd (the thing that we want to test in this tast test), we get battery info from \"powerd\" instead of sysfs.\n3. In powerd, they get info from sysfs.\n\nSo, if a file in sysfs disappears, powerd will report empty string or other default value. So, cros_healthd will report empty string or other default value. Hence in tast test, if there is any error when reading sysfs, we just use empty string to compare with the cros_healthd output. We want to be consistent with the output from powerd.\n\n-\u003e That\u0027s the reason that I don\u0027t check error when reading sysfs, I just use default value such as \"\" empty string for later comparison.\n\nBTW, an error in sysfs is not the scope of our tast, I think it should be caught in powerd test because they are the info provider.",
+      "parentUuid": "e5e57440_224937ea",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f51dd8fc_f7b42c6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
         "patchSetId": 3
