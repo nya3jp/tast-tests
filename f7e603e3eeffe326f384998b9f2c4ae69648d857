@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0617dad4_a1c9c019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T01:42:30Z",
+      "side": 1,
+      "message": "I think we can skip the \"remove\" event test. Reasons:\n1. All events are similar, I think testing \"add\" is the minimum requirement for other events like \"remove\", \"authorize\", \"unauthorize\".\n2. (Main reason) It\u0027ll trigger real event, so I think triggering real \"remove\" events may affect others. So we don\u0027t test this for USB case.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "f7e603e3eeffe326f384998b9f2c4ae69648d857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
