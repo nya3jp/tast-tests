@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8d96c7b_a3731695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T02:46:07Z",
+      "side": 1,
+      "message": "\u003e So, if a file in sysfs disappears, powerd will report empty string or other default value. So, cros_healthd will report empty string or other default value.\n\nI think I\u0027m getting your point. So in this test, you want to confirm that cros_healthd outputs something that powerd would output, i.e. cros_healthd passes through powerd\u0027s output?\n\n(I pinged you. Let\u0027s discuss it offline.)",
+      "parentUuid": "09d91c25_1b9a6b31",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f51dd8fc_f7b42c6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
         "patchSetId": 3
