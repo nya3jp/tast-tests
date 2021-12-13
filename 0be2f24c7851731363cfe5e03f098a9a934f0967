@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a8ce6a_6c93fab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T09:26:35Z",
+      "side": 1,
+      "message": "We don\u0027t need such long time to detect an event.",
+      "range": {
+        "startLine": 40,
+        "startChar": 117,
+        "endLine": 40,
+        "endChar": 120
+      },
+      "revId": "0be2f24c7851731363cfe5e03f098a9a934f0967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
