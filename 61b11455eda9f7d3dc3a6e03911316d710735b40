@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf96d73_98bf5043",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-13T01:03:07Z",
+      "side": 1,
+      "message": "I was thinking if we can add some wait in the fixture arcBooted, because other ARC tast tests can be affected. Refer to the comment thread from yhanada@ for this.\n\nOn the other hand, I think we can add a wait for this specific case if we add a new autotestPrivateAPI. Filed b/210355848.",
+      "parentUuid": "c445d8eb_c1ab6202",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "61b11455eda9f7d3dc3a6e03911316d710735b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b02adbbe_80ca67f3",
@@ -37,6 +61,23 @@
       "writtenOn": "2021-12-09T10:37:59Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "61b11455eda9f7d3dc3a6e03911316d710735b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ec27d2_f0627ff2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-13T01:03:07Z",
+      "side": 1,
+      "message": "Thanks for the review!",
       "revId": "61b11455eda9f7d3dc3a6e03911316d710735b40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5618edf7_6209bb07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-13T01:03:07Z",
+      "side": 1,
+      "message": "Will make a followup CL.",
+      "parentUuid": "f9153694_73d6033e",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "61b11455eda9f7d3dc3a6e03911316d710735b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2783d751_f94f31bd",
@@ -77,6 +142,30 @@
       "writtenOn": "2021-12-09T10:37:59Z",
       "side": 1,
       "message": "not related: always pass ctx by value, don\u0027t bind by reference.",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 4
+      },
+      "revId": "61b11455eda9f7d3dc3a6e03911316d710735b40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bee069_c4304cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/settings_bridge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2021-12-13T01:03:07Z",
+      "side": 1,
+      "message": "Will make a followup CL.",
+      "parentUuid": "2783d751_f94f31bd",
       "range": {
         "startLine": 132,
         "startChar": 2,
