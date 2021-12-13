@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa0b25e_6ce93fea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_code_ab.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-13T17:32:40Z",
+      "side": 1,
+      "message": "I don\u0027t know what it is either.",
+      "parentUuid": "c33e08ac_10ab2280",
+      "range": {
+        "startLine": 21,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 56
+      },
+      "revId": "f44c84e49f018a684b65e1894eedee40cdeb0682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0dcfe2d_06c55742",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-08T21:02:56Z",
       "side": 1,
       "message": "On a failure, can you also print all the Port 80 codes received, or at least the last code received.  This can potentially help troubleshoot a failing test.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "f44c84e49f018a684b65e1894eedee40cdeb0682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96fbdf58_77f2d3f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_code_ab.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-13T17:32:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0dcfe2d_06c55742",
       "range": {
         "startLine": 80,
         "startChar": 0,
