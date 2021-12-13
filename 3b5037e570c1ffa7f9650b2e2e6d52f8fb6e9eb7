@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14546b1_c08f7164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-13T21:56:46Z",
+      "side": 1,
+      "message": "Seems fine to me. Kyle can give final decision",
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f97e5c_2c8fca86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/show_password.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-13T21:56:46Z",
+      "side": 1,
+      "message": "Performing",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2286d814_cd1413a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/show_password.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-13T21:56:46Z",
+      "side": 1,
+      "message": "I don\u0027t get this part. Why would you switch to password if autosubmit is wanted?",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 14
+      },
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b2f527_40df28fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2021-12-13T21:56:46Z",
+      "side": 1,
+      "message": "Since there is just one test you could add these functions in the test file",
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
