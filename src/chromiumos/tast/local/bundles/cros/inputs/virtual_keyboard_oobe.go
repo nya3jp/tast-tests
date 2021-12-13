@@ -11,6 +11,7 @@ import (
 
 	"github.com/mafredri/cdp/protocol/target"
 
+	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -47,6 +49,11 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating test API connection failed: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	uc, err := inputactions.NewInputsUserContext(ctx, s, cr, tconn, nil)
+	if err != nil {
+		s.Fatal("Failed to initiate inputs user context: ", err)
+	}
 
 	oobeConn, err := cr.WaitForOOBEConnection(ctx)
 	if err != nil {
@@ -78,12 +85,22 @@ func VirtualKeyboardOOBE(ctx context.Context, s *testing.State) {
 	vkbCtx := vkb.NewContext(cr, tconn)
 
 	userInputFinder := nodewith.Name("Email or phone")
-	if err := uiauto.Combine("validate virtual keyboard input on OOBE",
+	validateAction := uiauto.Combine("validate virtual keyboard input on OOBE",
 		vkbCtx.ClickUntilVKShown(userInputFinder),
 		vkbCtx.TapKeys(strings.Split(testEmail, "")),
 		// Validate output after tapkeys
 		util.WaitForFieldTextToBe(tconn, userInputFinder, testEmail),
-	)(ctx); err != nil {
+	)
+
+	if err := useractions.NewUserAction("VK input",
+		validateAction,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: "OOBE field",
+			},
+		},
+	).Run(ctx); err != nil {
 		s.Fatal("Failed to input on OOBE page: ", err)
 	}
 }
