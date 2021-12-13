@@ -45,15 +45,30 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"100000_files_in_one_folder.zip", "500_small_files.zip", "various_documents.zip"},
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{{
+			Val: false,
+		}, {
+			Name: "swa",
+			Val:  true,
+		}},
 	})
 }
 
 func ZipPerf(ctx context.Context, s *testing.State) {
+	swaEnabled := s.Param().(bool)
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx)
+	var chromeOpts []chrome.Option
+	launchFilesApp := filesapp.Launch
+	if swaEnabled {
+		chromeOpts = append(chromeOpts, chrome.EnableFilesAppSWA())
+		launchFilesApp = filesapp.LaunchSWA
+	}
+
+	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
@@ -116,7 +131,7 @@ func ZipPerf(ctx context.Context, s *testing.State) {
 	defer ew.Close()
 
 	// Open the Files App.
-	files, err := filesapp.Launch(ctx, tconn)
+	files, err := launchFilesApp(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
