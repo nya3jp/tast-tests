@@ -105,6 +105,24 @@
       "parentUuid": "43c3047b_b3181e87",
       "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d60503_bddf245d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_copy_paste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-13T00:59:16Z",
+      "side": 1,
+      "message": "Oh, sorry, I appear to had a serious brainfart - I thought android_vm was the name of a subtest for some reason.",
+      "parentUuid": "86c75013_6ca000d6",
+      "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
