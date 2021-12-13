@@ -34,6 +34,24 @@
       "parentUuid": "a912cb35_c8107095",
       "revId": "a39342366ccded1dfdefb4423a723317dc8fc1c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d336093_02b3ecf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2021-12-13T23:00:01Z",
+      "side": 1,
+      "message": "Thanks, I suspected so, but I just wanted to confirm.\n\nI added Wei to the review so he is aware of the CL.\n\nWe are planning to fix the test, because it is helpful to find regressions in our codebase.\n\nThanks!",
+      "parentUuid": "ef8ec824_4ba01df0",
+      "revId": "a39342366ccded1dfdefb4423a723317dc8fc1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
