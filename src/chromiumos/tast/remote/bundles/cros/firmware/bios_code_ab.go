@@ -13,22 +13,24 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     BIOSCodeAB,
-		Desc:     "Verifies the AP can reach Port 80 code 0xab",
-		Contacts: []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
-		Attr:     []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
-		Vars:     []string{"servo"},
+		Func:         BIOSCodeAB,
+		Desc:         "Verifies the AP can reach Port 80 code 0xab",
+		Contacts:     []string{"jbettis@chromium.org", "cros-fw-engprod@google.com"},
+		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Vars:         []string{"servo"},
+		HardwareDeps: hwdep.D(hwdep.X86()),
 	})
 }
 
 // BIOSCodeAB reboots the EC, and looks for Port 80 code 0xab.
 func BIOSCodeAB(ctx context.Context, s *testing.State) {
 	servoSpec, _ := s.Var("servo")
-	h := firmware.NewHelper(nil, nil, "", servoSpec, "", "", "", "")
+	h := firmware.NewHelperWithoutDUT("", servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
 	defer h.Close(ctx)
 
 	if err := h.RequireServo(ctx); err != nil {

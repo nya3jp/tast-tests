@@ -103,6 +103,8 @@ type Helper struct {
 
 	// servoHostPort is the address and port of the machine acting as the servo host, normally provided via the "servo" command-line variable.
 	servoHostPort string
+	keyFile       string
+	keyDir        string
 
 	// ServoProxy wraps the Servo object, and communicates with the servod instance.
 	ServoProxy *servo.Proxy
@@ -123,6 +125,8 @@ func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort,
 	return &Helper{
 		cfgFilepath:       cfgFilepath,
 		DUT:               d,
+		keyFile:           d.KeyFile(),
+		keyDir:            d.KeyDir(),
 		Reporter:          reporters.New(d),
 		rpcHint:           rpcHint,
 		servoHostPort:     servoHostPort,
@@ -130,6 +134,16 @@ func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort,
 		powerunitHostname: powerunitHostname,
 		powerunitOutlet:   powerunitOutlet,
 		hydraHostname:     hydraHostname,
+	}
+}
+
+// NewHelperWithoutDUT creates a new Helper object with info from testing.State. The resulting Helper will be unable to ssh to the DUT.
+func NewHelperWithoutDUT(cfgFilepath, servoHostPort, keyFile, keyDir string) *Helper {
+	return &Helper{
+		cfgFilepath:   cfgFilepath,
+		keyFile:       keyFile,
+		keyDir:        keyDir,
+		servoHostPort: servoHostPort,
 	}
 }
 
@@ -350,13 +364,7 @@ func (h *Helper) RequireServo(ctx context.Context) error {
 	if h.Servo != nil {
 		return nil
 	}
-	keyFile := ""
-	keyDir := ""
-	if h.DUT != nil {
-		keyFile = h.DUT.KeyFile()
-		keyDir = h.DUT.KeyDir()
-	}
-	pxy, err := servo.NewProxy(ctx, h.servoHostPort, keyFile, keyDir)
+	pxy, err := servo.NewProxy(ctx, h.servoHostPort, h.keyFile, h.keyDir)
 	if err != nil {
 		return errors.Wrap(err, "connecting to servo")
 	}
