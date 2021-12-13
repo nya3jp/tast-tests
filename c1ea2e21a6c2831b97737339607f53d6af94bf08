@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b79e92d4_d965410b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_u2f_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-13T12:12:42Z",
+      "side": 1,
+      "message": "I revisited what we did in the hwsec tasts, so I think I\u0027ll change both this tast and the original WebauthnUsingPIN one\u0027s authors to me and cros-hwsec@chromium.org.",
+      "parentUuid": "e2f41cd8_12e41e69",
+      "revId": "c1ea2e21a6c2831b97737339607f53d6af94bf08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "351e318b_a6f7818d",
         "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_u2f_mode.go",
         "patchSetId": 1
