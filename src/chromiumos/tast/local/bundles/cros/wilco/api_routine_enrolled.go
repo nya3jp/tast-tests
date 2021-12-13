@@ -211,18 +211,8 @@ func APIRoutineEnrolled(ctx context.Context, s *testing.State) {
 			},
 			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED,
 		},
-		{
-			name: "nvme_wear_level",
-			request: &dtcpb.RunRoutineRequest{
-				Routine: dtcpb.DiagnosticRoutine_ROUTINE_NVME_WEAR_LEVEL,
-				Parameters: &dtcpb.RunRoutineRequest_NvmeWearLevelParams{
-					NvmeWearLevelParams: &dtcpb.NvmeWearLevelRoutineParameters{
-						WearLevelThreshold: 99,
-					},
-				},
-			},
-			wantRoutineStatus: dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_PASSED,
-		},
+		// Success is not tested because there are many DUTs in the lab that
+		// have SSD with wear level >99%.
 		{
 			name: "nvme_wear_level_failed",
 			request: &dtcpb.RunRoutineRequest{
