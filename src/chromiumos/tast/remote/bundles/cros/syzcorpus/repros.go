@@ -38,6 +38,7 @@ type testParam struct {
 	subsystem   string
 	binariesZip string
 	reprosList  string
+	windowSize  int
 }
 
 func init() {
@@ -57,6 +58,7 @@ func init() {
 					subsystem:   "kvm",
 					binariesZip: binKVMX64Zip,
 					reprosList:  kvmEnabledRepros,
+					windowSize:  5,
 				},
 				ExtraData: []string{binKVMX64Zip, kvmEnabledRepros},
 			},
@@ -66,6 +68,7 @@ func init() {
 					subsystem:   "block",
 					binariesZip: binBlockX64Zip,
 					reprosList:  blockEnabledRepros,
+					windowSize:  5,
 				},
 				ExtraData: []string{binBlockX64Zip, blockEnabledRepros},
 			},
@@ -75,6 +78,7 @@ func init() {
 					subsystem:   "jbd2",
 					binariesZip: binJbd2X64Zip,
 					reprosList:  jbd2EnabledRepros,
+					windowSize:  5,
 				},
 				ExtraData: []string{binJbd2X64Zip, jbd2EnabledRepros},
 			},
@@ -84,6 +88,7 @@ func init() {
 					subsystem:   "fuse",
 					binariesZip: binFuseX64Zip,
 					reprosList:  fuseEnabledRepros,
+					windowSize:  5,
 				},
 				ExtraData: []string{binFuseX64Zip, fuseEnabledRepros},
 			},
@@ -149,7 +154,7 @@ func Repros(ctx context.Context, s *testing.State) {
 	}
 
 	count := 1
-	windowSize := 5
+	windowSize := param.windowSize
 	for start := 0; start < len(repros); start += windowSize {
 		// Take windowSize number of repros at a time.
 		end := start + windowSize
