@@ -121,7 +121,7 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 		return errors.New("accessibility is unexpectedly enabled on boot")
 	}
 
-	defer func() {
+	defer func(ctx context.Context) {
 		if err := disableAccessibilityFeatures(ctx, tconn, features); err != nil {
 			if retErr == nil {
 				retErr = err
@@ -129,7 +129,7 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 				testing.ContextLog(ctx, "Failed to disable accessibliity features: ", err)
 			}
 		}
-	}()
+	}(fullCtx)
 
 	for _, feature := range features {
 		testing.ContextLog(ctx, "Testing ", feature)
