@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f4de83_954ac07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-13T03:30:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54132b3e_0aee8067",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 22
+      },
+      "revId": "b0f9fd1a16f1be8d4d2884fef04f7163331b6a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26298e1d_b5489f1b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-13T03:23:25Z",
       "side": 1,
       "message": "no need to create this var, directly use it below since it is only used once.",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 41
+      },
+      "revId": "b0f9fd1a16f1be8d4d2884fef04f7163331b6a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c7b14f9_2872865f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-13T03:30:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26298e1d_b5489f1b",
       "range": {
         "startLine": 174,
         "startChar": 1,
