@@ -37,7 +37,7 @@ var Borealis = App{
 // Chat App has details about the Google Chat app.
 var Chat = App{
 	ID:   "mhihbbhgcjldimhaopinoigbbglkihll",
-	Name: "Chat",
+	Name: "Google Chat",
 }
 
 // Chrome has details about the Chrome app.
