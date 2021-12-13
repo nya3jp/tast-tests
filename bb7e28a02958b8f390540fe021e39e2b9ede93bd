@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "279092e3_da37245b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-13T10:28:27Z",
+      "side": 1,
+      "message": "LGTM, please wait LGTM from Jeremie before submitting this CL.",
+      "revId": "bb7e28a02958b8f390540fe021e39e2b9ede93bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
