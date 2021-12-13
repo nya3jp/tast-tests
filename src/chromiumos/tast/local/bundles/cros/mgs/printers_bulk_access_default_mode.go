@@ -19,7 +19,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PrintersBulkAccessModeManagedGuestSession,
+		Func:         PrintersBulkAccessDefaultMode,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verify behavior of default PrintersBulkAccessMode policy on Managed Guest Session",
 		Contacts: []string{
@@ -32,7 +32,7 @@ func init() {
 	})
 }
 
-func PrintersBulkAccessModeManagedGuestSession(ctx context.Context, s *testing.State) {
+func PrintersBulkAccessDefaultMode(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	// Launch a new MGS with default account.

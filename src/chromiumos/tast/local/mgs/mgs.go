@@ -38,14 +38,14 @@ var (
 	}
 )
 
-// mgs holds chrome and fakedms instances.
-type mgs struct {
+// MGS holds chrome and fakedms instances.
+type MGS struct {
 	cr   *chrome.Chrome
 	fdms *fakedms.FakeDMS
 }
 
 // Close closes chrome, cleans and refreshes empty policies.
-func (m *mgs) Close(ctx context.Context) (retErr error) {
+func (m *MGS) Close(ctx context.Context) (retErr error) {
 	// Using defer to make sure Chrome is always closed.
 	defer func(ctx context.Context) {
 		if err := m.cr.Close(ctx); err != nil {
@@ -67,7 +67,7 @@ func (m *mgs) Close(ctx context.Context) (retErr error) {
 // passing chrome.LoadSigninProfileExtension(). In that case Chrome is started
 // and stays on Signin screen with mgs accounts loaded.
 // Use defer mgs.Close() to perform clean up including closing Chrome instance.
-func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*mgs, *chrome.Chrome, error) {
+func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*MGS, *chrome.Chrome, error) {
 	cfg, err := NewConfig(opts)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to process options")
@@ -150,5 +150,5 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*mgs, *chr
 		return nil, nil, errors.Wrap(err, "Chrome restart failed")
 	}
 
-	return &mgs{cr: cr, fdms: fdms}, cr, nil
+	return &MGS{cr: cr, fdms: fdms}, cr, nil
 }
