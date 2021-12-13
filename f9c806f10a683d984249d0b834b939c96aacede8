@@ -246,6 +246,24 @@
       "parentUuid": "1a8d48c0_1adc04fe",
       "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8943a63d_4d803aa8",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-13T17:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0ac1126_9604eb91",
+      "revId": "f9c806f10a683d984249d0b834b939c96aacede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
