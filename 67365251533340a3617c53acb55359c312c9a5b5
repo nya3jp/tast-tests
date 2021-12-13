@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641bb9d9_cd74a1cc",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-12-13T16:20:57Z",
+      "side": 1,
+      "message": "I think you can directly call the dbus method in the test. Please see\n\n https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cellular/hermes_multi_profile.go;rcl\u003d87e3685e22fe6159b60f645bea3ba447efef1d99;l\u003d101",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "67365251533340a3617c53acb55359c312c9a5b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29ab34d_cbd65184",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2021-12-13T16:20:57Z",
+      "side": 1,
+      "message": "Please see above comment about calling the dbus method directly from the test.",
+      "range": {
+        "startLine": 137,
+        "startChar": 16,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "67365251533340a3617c53acb55359c312c9a5b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
