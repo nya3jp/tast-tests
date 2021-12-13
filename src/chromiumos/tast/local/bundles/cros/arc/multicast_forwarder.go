@@ -31,8 +31,14 @@ func init() {
 		Desc:         "Checks if multicast forwarder works on ARC++",
 		Contacts:     []string{"jasongustaman@chromium.org", "cros-networking@google.com", "arc-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_p"},
+		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
@@ -189,7 +195,7 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 			continue
 		}
 		g.Go(func() error {
-			tcpdump := arc.BootstrapCommand(ctx, "/system/xbin/tcpdump", "-Alni", ifname, "port", "5353", "or", "port", "1900", "-Q", "in", "--immediate-mode")
+			tcpdump := testexec.CommandContext(ctx, "/usr/local/sbin/tcpdump", "-Alni", "arc_"+ifname, "port", "5353", "or", "port", "1900", "-Q", "out", "--immediate-mode")
 			if err := streamCmd(ctx, tcpdump, expectIn); err != nil {
 				return errors.Wrap(err, "inbound test failed")
 			}
