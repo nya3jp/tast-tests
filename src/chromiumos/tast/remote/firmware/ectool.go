@@ -44,6 +44,7 @@ var (
 	reFirmwareCopy = regexp.MustCompile(`Firmware copy:\s*(RO|RW)`)
 	reROVersion    = regexp.MustCompile(`RO version:\s*(\S+)\s`)
 	reRWVersion    = regexp.MustCompile(`RW version:\s*(\S+)\s`)
+	reECHash       = regexp.MustCompile(`hash:\s*(\S+)\s*`)
 )
 
 // Command return the prebuilt ssh Command with options and args applied.
@@ -79,5 +80,22 @@ func (ec *ECTool) Version(ctx context.Context) (string, error) {
 	if len(match) == 0 {
 		return "", errors.Errorf("failed to match regexp %s in ectool version output: %s", reActiveFWVersion, output)
 	}
+	return string(match[1]), nil
+}
+
+// Hash returns the EC hash of the active firmware.
+func (ec *ECTool) Hash(ctx context.Context) (string, error) {
+	out, err := ec.Command(ctx, "echash").Output(ssh.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "running 'ectool echash' on DUT")
+	}
+	// return string(out), nil
+
+	// Parse output to determine whether RO or RW is the active firmware.
+	match := reECHash.FindSubmatch(out)
+	if len(match) == 0 {
+		return "", errors.Errorf("did not find ec hash 'ectool hash' output: %s", out)
+	}
+
 	return string(match[1]), nil
 }
