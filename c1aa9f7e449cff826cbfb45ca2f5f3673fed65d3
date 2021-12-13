@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1186c1e9_64306c7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/pair_new_device_from_os_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-12-13T16:21:16Z",
+      "side": 1,
+      "message": "Yeah, they are the same finder but target different elements--originally had them separated because of this, but I guess as long as finding them happens in the same way it is okay to combine them. Done :)",
+      "parentUuid": "7da26895_ae358a2b",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 96
+      },
+      "revId": "c1aa9f7e449cff826cbfb45ca2f5f3673fed65d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53670e70_278b3699",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-10T18:20:45Z",
       "side": 1,
       "message": "this could also be nice to have in the ossettings package",
+      "revId": "c1aa9f7e449cff826cbfb45ca2f5f3673fed65d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2702b83f_e02ebaf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_from_os_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2021-12-13T16:21:16Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "53670e70_278b3699",
       "revId": "c1aa9f7e449cff826cbfb45ca2f5f3673fed65d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
