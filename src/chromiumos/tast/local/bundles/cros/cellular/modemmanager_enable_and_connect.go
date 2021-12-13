@@ -6,6 +6,7 @@ package cellular
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -61,9 +62,11 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	if enableFunc, err := helper.Manager.DisableTechnologyForTesting(ctx, shill.TechnologyCellular); err != nil {
 		s.Fatal("Unable to disable Cellular: ", err)
 	} else if enableFunc != nil {
-		newCtx, cancel := ctxutil.Shorten(ctx, shill.EnableWaitTime)
+		newCtx, cancel := ctxutil.Shorten(ctx, shill.EnableWaitTime+5*time.Second)
 		defer cancel()
 		defer enableFunc(ctx)
+		// Restart ModemManager after test
+		defer helper.RestartModemManager(ctx, true)
 		ctx = newCtx
 	}
 
@@ -104,7 +107,10 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	s.Log("Connect")
 	// Connect and poll for modem state.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		simpleModem.Call(ctx, mmconst.ModemConnect, simpleConnectProps)
+		errConn := simpleModem.Call(ctx, mmconst.ModemConnect, simpleConnectProps).Err
+		if (errConn != nil) && (strings.Contains(errConn.Error(), "no-service")) {
+			return errors.Wrap(errConn, "failed to connect can be network issue")
+		}
 		if isConnected, err := simpleModem.IsConnected(ctx); err != nil {
 			return errors.Wrap(err, "failed to fetch connected state")
 		} else if !isConnected {
@@ -115,10 +121,24 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 		Timeout:  60 * time.Second,
 		Interval: 2 * time.Second,
 	}); err != nil {
+		// Restart ModemManager after test failure
+		if errmm := helper.RestartModemManager(ctx, true); errmm != nil {
+			s.Log("Failed to restart ModemManager: ", errmm)
+		}
+		// Do graceful exit for known issue. TODO: b/211015303, fix empty apn
+		// connect on speicific carrier
+		if strings.Contains(err.Error(), "no-service") {
+			s.Error("Could not connect: ", err)
+			return
+		}
 		s.Fatal("Modem connect failed with: ", err)
 	}
 
 	if err := modemmanager.EnsureConnectState(ctx, modem, simpleModem, true); err != nil {
+		// Restart ModemManager after test failure
+		if errmm := helper.RestartModemManager(ctx, true); errmm != nil {
+			s.Log("Failed to restart ModemManager: ", errmm)
+		}
 		s.Fatal("Modem not connected: ", err)
 	}
 
