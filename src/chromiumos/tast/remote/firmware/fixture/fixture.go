@@ -7,11 +7,17 @@ package fixture
 
 import (
 	"context"
+	"fmt"
 	"net"
+	"os"
 	"strconv"
+	"strings"
 	"time"
 
+	"github.com/docker/docker/client"
+
 	common "chromiumos/tast/common/firmware"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	pb "chromiumos/tast/services/cros/firmware"
@@ -126,6 +132,61 @@ type impl struct {
 	disallowSSH   bool
 }
 
+func networkInterfaceDetails(ctx context.Context) {
+	var count int
+
+	ifaces, err := net.Interfaces()
+	if err != nil {
+		testing.ContextLog(ctx, "localAddresses:", err.Error())
+		return
+	}
+
+	for _, i := range ifaces {
+		addrs, err := i.Addrs()
+		if err != nil {
+			testing.ContextLog(ctx, "localAddresses:", err.Error())
+			continue
+		}
+
+		for _, a := range addrs {
+			testing.ContextLogf(ctx, "Index:%d Name:%v addr:%v, mac:%v\n", i.Index, i.Name, a, i.HardwareAddr)
+			if strings.Contains(i.Flags.String(), "up") {
+				fmt.Println("Status : UP")
+			} else {
+				fmt.Println("Status : DOWN")
+			}
+		}
+		count++
+	}
+	testing.ContextLog(ctx, "Total interfaces : ", count)
+}
+
+func dockerClientLocal(ctx context.Context) (*client.Client, error) {
+	// Create Docker Client.
+	// If the dockerd socket exists, use the default option.
+	// Otherwise, try to use the tcp connection local host IP 192.168.231.1:2375
+	// for satlab device.
+
+	testing.ContextLog(ctx, "DOCKER_HOST:", os.Getenv("DOCKER_HOST"))
+	testing.ContextLog(ctx, "DOCKER_API_VERSION: ", os.Getenv("DOCKER_API_VERSION"))
+	os.Setenv("DOCKER_HOST", "tcp://192.168.231.1:2375")
+
+	testing.ContextLog(ctx, "DOCKER_API_VERSION: ", os.Getenv("DOCKER_API_VERSION"))
+	if _, err := os.Stat("/var/run/docker.sock"); err != nil {
+		if !errors.Is(err, os.ErrNotExist) {
+			testing.ContextLog(ctx, "dockerClientLocal: os.Stat /var/run/docker.sock", err)
+			return nil, err
+		}
+		testing.ContextLog(ctx, "dockerClientLocal:/var/run/docker.sock not found, creating TCP connect")
+		testing.ContextLog(ctx, "DOCKER_HOST:", os.Getenv("DOCKER_HOST"))
+		testing.ContextLog(ctx, "DOCKER_API_VERSION: ", os.Getenv("DOCKER_API_VERSION"))
+		os.Setenv("DOCKER_HOST", "tcp://192.168.231.1:2375")
+
+		// return client.NewClientWithOpts(client.WithHost("tcp://192.168.231.1:2375"), client.WithAPIVersionNegotiation())
+	}
+	return client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
+}
+
 // newFixture creates an instance of firmware Fixture.
 func newFixture(mode common.BootMode, forceDev, copyTastFiles bool) testing.FixtureImpl {
 	return &impl{
@@ -150,9 +211,18 @@ func (i *impl) noECSync(s *testing.FixtState) (bool, error) {
 	return noECSync, nil
 }
 
+func runCmd(ctx context.Context, cmd_value string, arg ...string) {
+	out, err := testexec.CommandContext(ctx, cmd_value, arg...).Output()
+	if err != nil {
+		testing.ContextLog(ctx, "Error runCmd output", cmd_value, err)
+	}
+	testing.ContextLog(ctx, "runCmd output", cmd_value, string(out))
+}
+
 // SetUp is called by the framework to set up the environment with possibly heavy-weight
 // operations.
 func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+
 	noSSHVar, ok := s.Var("noSSH")
 	i.disallowSSH = false
 	if ok {
@@ -162,7 +232,49 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		}
 		i.disallowSSH = forbidSSH
 	}
+
+	host := "192.168.231.1"
+	port := "2375"
+	timeout := time.Duration(1 * time.Second)
+
+	c, err := net.DialTimeout("tcp", host+":"+port, timeout)
+	if err != nil {
+		s.Log("not responding", err.Error())
+	} else {
+		s.Log("Responding", c)
+	}
+	networkInterfaceDetails(ctx)
+	runCmd(ctx, "pwd")
+	runCmd(ctx, "ls", "-alt")
+	runCmd(ctx, "ps", "-elf")
+	runCmd(ctx, "netstat")
+	runCmd(ctx, "printenv")
+	cli, err := dockerClientLocal(ctx)
+	if err != nil {
+		s.Log("dockerClientLocal", err.Error())
+	} else {
+		s.Log("dockerClientLocal call pass")
+	}
+
+	testing.ContextLog(ctx, "dockerClientLocal:CLD:", cli)
+	s.Log(cli.ClientVersion())
+	s.Log(cli.DaemonHost())
+	s.Log(cli.HTTPClient())
+
+	ping, err := cli.Ping(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "dockerClientLocal:Failed to Ping", err)
+		s.Fatal("Ping Failed: ", err)
+	}
+	testing.ContextLog(ctx, "dockerClientLocal: Sucess Ping .......", ping)
+
+	info, err := cli.Info(ctx)
+	if err != nil {
+		s.Fatal("failed to get docker info: ", err)
+	}
+	s.Log(info)
 	s.Log("Creating a new firmware Helper instance for fixture: ", i.String())
+
 	i.initHelper(ctx, s)
 
 	if i.disallowSSH {
@@ -187,6 +299,19 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		s.Log("User selected to disable EC software sync")
 	}
 	i.value.GBBFlags = flags
+
+	if err := firmware.DockerClientPing(ctx); err != nil {
+		s.Fatal("Failed Docker Daemon Ping Before InitHelper: ", err)
+	}
+	s.Log("Ping Success Before InitHelper")
+
+	s.Log("Creating a new firmware Helper instance for fixture: ", i.String())
+	i.initHelper(ctx, s)
+
+	if err := firmware.DockerClientPing(ctx); err != nil {
+		s.Fatal("Failed Docker Daemon Ping After InitHelper: ", err)
+	}
+	s.Log("Ping Success After InitHelper")
 	// If rebooting to recovery mode, verify the usb key.
 	if i.value.BootMode == common.BootModeRecovery || i.value.BootMode == common.BootModeUSBDev {
 		if err := i.value.Helper.RequireServo(ctx); err != nil {
@@ -203,6 +328,11 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		if skipFlashUSB {
 			cs = nil
 		}
+
+		if err := firmware.DockerClientPing(ctx); err != nil {
+			s.Fatal("Failed Docker Daemon Ping After RequireServo: ", err)
+		}
+		s.Log("Ping Success After RequireServo")
 		if err := i.value.Helper.SetupUSBKey(ctx, cs); err != nil {
 			s.Fatal("Failed to setup USB key: ", err)
 		}
