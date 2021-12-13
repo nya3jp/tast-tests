@@ -106,6 +106,24 @@
       "parentUuid": "4f8e4a71_5587ae63",
       "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0589e8d_a4639468",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-13T06:18:07Z",
+      "side": 1,
+      "message": "Yes, thanks for the suggestion. That should also work. Fixed in latest PS.",
+      "parentUuid": "48bc1080_a7f84ef4",
+      "revId": "c9b97864b69dc506be72f91654bf6b983d3e7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
