@@ -16,6 +16,24 @@
       "message": "Hi Maggie, I just saw this change by coincidence and I don\u0027t quite understand it. launcher.LaunchLacrosChrome uses a fresh user data directory for each launch:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go;l\u003d194;drc\u003de343519a64dc019b0b8bf54471b17eee3786dc91\n\nSo for example in a11y/smoke.go, which uses lacros.Setup and therefore launcher.LaunchLacrosChrome, the deletion of LacrosUserDataDir doesn\u0027t make sense as far as I can see, and can be simply removed without any other necessary changes.\n\nI\u0027m wondering if putting deletion of LacrosUserDataDir into the fixture\u0027s SetUp code could have unexpected consequences when running tests that don\u0027t use that directory at all.",
       "revId": "4d0f1cd91ffe65af7a96c98d4d3502ed9800b90d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c644f3_ecefbc1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314247
+      },
+      "writtenOn": "2021-12-13T05:07:09Z",
+      "side": 1,
+      "message": "Thanks for point this out, I have had a discussion with hidehiko@ and agreed on writing new fixture and new test for keep alive, and keep the existing tests with keep alive disabled.",
+      "parentUuid": "fd06c8eb_a7c47fe1",
+      "revId": "4d0f1cd91ffe65af7a96c98d4d3502ed9800b90d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
