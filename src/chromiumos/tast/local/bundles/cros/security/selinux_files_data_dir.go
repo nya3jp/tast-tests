@@ -179,6 +179,8 @@ func SELinuxFilesDataDir(ctx context.Context, s *testing.State) {
 		"data":    {},
 		"media":   {},
 		"user_de": {},
+		// TODO(sstan): Remove this temporary skipping after selinux change landed. b/208933312
+		"misc": {},
 	}
 
 	for _, dir := range dirList {
