@@ -37,6 +37,7 @@ const (
 	AutoCapitalization      settingOption = "Auto-capitalization"
 	ShowInputOptionsInShelf settingOption = "Show input options in the shelf"
 	KoreanKeyboardLayout    settingOption = "Korean keyboard layout"
+	VKAutoCorrection        settingOption = "Auto-correction"
 )
 
 // IMESettings is a wrapper around the settings app used to control the inputs settings page.
@@ -125,7 +126,19 @@ func (i *IMESettings) ToggleAutoCap(cr *chrome.Chrome, expected bool) uiauto.Act
 	return i.SetToggleOption(cr, string(AutoCapitalization), expected)
 }
 
-// ChangeKoreanInputMode sets the Korean IME to a specific value
+// ChangeKoreanInputMode sets the Korean IME to a specific value.
 func (i *IMESettings) ChangeKoreanInputMode(cr *chrome.Chrome, expected string) uiauto.Action {
 	return i.SetDropDownOption(cr, string(KoreanKeyboardLayout), expected)
+}
+
+// SetVKAutoCorrection sets the 'On-screen keyboard Auto-correction' setting to a specific value.
+func (i *IMESettings) SetVKAutoCorrection(cr *chrome.Chrome, expected string) uiauto.Action {
+	// VK and PK setting use exactly the same name.
+	// Use index to find the option since impossible to unique identify VK setting.
+	optionFinder := nodewith.Name(string(VKAutoCorrection)).Role(role.PopUpButton).Nth(1)
+	settingFinder := nodewith.Name(expected).Role(role.ListBoxOption)
+	return uiauto.Combine("set drop down option",
+		i.LeftClick(optionFinder),
+		i.LeftClick(settingFinder),
+	)
 }
