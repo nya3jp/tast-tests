@@ -190,6 +190,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2495eb45_8d0f185d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-12-13T23:36:11Z",
+      "side": 1,
+      "message": "OK, then, how about corrupting /data/app/\u003cone-of-app-dirs\u003e instead? I\u0027d test the most complicated recovery logic which is https://googleplex-android-review.git.corp.google.com/c/platform/vendor/google_arc/+/16456838/1/services/arcbootcontinue/main.cpp#384 ?",
+      "parentUuid": "2f1458e1_b63ebee4",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4749257e_599b66d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
         "patchSetId": 3
