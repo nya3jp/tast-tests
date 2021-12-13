@@ -16,6 +16,24 @@
       "message": "@takise and @toshikikikuchi - The split screen test is still failing even though https://chromium-review.googlesource.com/c/chromium/src/+/3272213/ was pushed. This CL: (1) makes the rotate/mode switch a little more reliable, and (2) gives some leeway to the screen size check to account for the divider width. ",
       "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe73ad7_e5f1104e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2021-12-13T00:48:56Z",
+      "side": 1,
+      "message": "Thank you for working on this!\nAs I mentioned, my patch doesn\u0027t fix all the cases. The extreme cases defined at L587 (#line after the change) and following are not covered by my fix.\n\n\u003e (1) makes the rotate/mode switch a little more reliable,\nIn the extreme cases, as you know, it triggers the rotation and the tablet conversion at the same time and that makes it very unstable. So, your approach basically makes it sense.\nOnly thing that we should address is that your CL uses Sleep() to wait for the animation completion, which in general we should avoid because it will easily causes another flakiness. I guess in our cases, we can wait for the bounds change instead because both rotation and conversion always result in changing bounds.\n\n\u003e (2) gives some leeway to the screen size check to account for the divider width.\nLGTM.",
+      "parentUuid": "81593dbd_88630fec",
+      "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
