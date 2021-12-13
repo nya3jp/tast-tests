@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -115,10 +116,16 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 		Timeout:  60 * time.Second,
 		Interval: 2 * time.Second,
 	}); err != nil {
+		if errmm := upstart.RestartJob(ctx, "modemmanager"); errmm != nil {
+			s.Log("Failed to restart modemmanager: ", errmm)
+		}
 		s.Fatal("Modem connect failed with: ", err)
 	}
 
 	if err := modemmanager.EnsureConnectState(ctx, modem, simpleModem, true); err != nil {
+		if errmm := upstart.RestartJob(ctx, "modemmanager"); errmm != nil {
+			s.Log("Failed to restart modemmanager: ", errmm)
+		}
 		s.Fatal("Modem not connected: ", err)
 	}
 
