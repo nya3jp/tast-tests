@@ -51,6 +51,24 @@
       "message": "This bit of code seems to be copied all over the place, add a helper.",
       "revId": "ca2a2d4bc9f2c20264c2678c8c04154475dc2278",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb9ad15d_c8089255",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_kiosk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-13T17:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "176cdc8a_de784991",
+      "revId": "ca2a2d4bc9f2c20264c2678c8c04154475dc2278",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
