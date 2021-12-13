@@ -87,6 +87,24 @@
       "parentUuid": "c2c7eed3_336c5091",
       "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c75013_6ca000d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_copy_paste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T00:54:04Z",
+      "side": 1,
+      "message": "My understanding was that each entry (defined by {..} blocks in []testing.Param) defined a separate test. In this case, the two blocks with `ExtraSoftwareDeps: []string{\"android_vm\"}` (indicating they use the vm) are also affected by the new `ExtraAttr: []string{\"informational\"} flag (since it is in the same block) making them not run as critical. Am I misunderstanding that?",
+      "parentUuid": "43c3047b_b3181e87",
+      "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
