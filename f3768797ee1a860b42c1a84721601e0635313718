@@ -25,6 +25,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b71ac3_1676d07b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-13T23:47:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0723550e_15faad3a",
+      "range": {
+        "startLine": 57,
+        "startChar": 46,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "f3768797ee1a860b42c1a84721601e0635313718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c2b01a0_9af1c031",
@@ -42,6 +66,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7594909_47f31b77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-13T23:47:12Z",
+      "side": 1,
+      "message": "uncommented. the same bellow and in persiistent.",
+      "parentUuid": "0c2b01a0_9af1c031",
+      "revId": "f3768797ee1a860b42c1a84721601e0635313718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41ebfc53_83db4ec2",
@@ -55,6 +97,24 @@
       "writtenOn": "2021-12-10T07:56:18Z",
       "side": 1,
       "message": "same..i dont think this belongs here. \n\nalso once we Prepare we should invalidate",
+      "revId": "f3768797ee1a860b42c1a84721601e0635313718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cde9aedd_8dce1452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-13T23:47:12Z",
+      "side": 1,
+      "message": "I just create another session, and leave things with defer to cleanup after ourselves. What is the plan with invalidation anyway? It is timed now, but is there a need/plan for more finesse control on the session lifetime? Currently it will leave for 5 min onward after being authed even after mount and things unless explicitly invalidated.",
+      "parentUuid": "41ebfc53_83db4ec2",
       "revId": "f3768797ee1a860b42c1a84721601e0635313718",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
