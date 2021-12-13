@@ -6,6 +6,7 @@ package imesettings
 
 import (
 	"context"
+	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ime"
@@ -147,6 +148,78 @@ func SetGlideTyping(uc *useractions.UserContext, im ime.InputMethod, isEnabled b
 				useractions.ActionTagEssentialInputs,
 				useractions.ActionTagIMESettings,
 				useractions.ActionTagGlideTyping,
+			},
+		})
+}
+
+// AutoCorrectionLevel describes the auto correction level of an input method.
+// The value exactly should exactly match the string displayed in IME setting page.
+type AutoCorrectionLevel string
+
+// Available auto correction levels.
+const (
+	AutoCorrectionOff         AutoCorrectionLevel = "Off"
+	AutoCorrectionModest                          = "Modest"
+	AutoCorrectionProgressive                     = "Progressive"
+)
+
+// SetVKAutoCorrection returns a user action to change 'On-screen keyboard Auto-correction' setting.
+func SetVKAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, acLevel AutoCorrectionLevel) *useractions.UserAction {
+	actionName := fmt.Sprintf("Set VK auto-correction level to %q", acLevel)
+
+	action := func(ctx context.Context) error {
+		setting, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
+		if err != nil {
+			return errors.Wrap(err, "failed to launch input settings")
+		}
+		return uiauto.Combine(fmt.Sprintf("Set VK auto-correction level to %q", acLevel),
+			setting.OpenInputMethodSetting(uc.TestAPIConn(), im),
+			setting.SetVKAutoCorrection(uc.Chrome(), string(acLevel)),
+			setting.Close,
+		)(ctx)
+	}
+
+	return useractions.NewUserAction(
+		actionName,
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+				useractions.ActionTagIMESettings,
+				useractions.ActionTagAutoCorrection,
+			},
+		})
+}
+
+// SetVKAutoCapitalization returns a user action to change 'On-screen keyboard Auto-capitalization' setting.
+func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, isEnabled bool) *useractions.UserAction {
+	actionName := "enable VK auto capitalization in IME setting"
+	if !isEnabled {
+		actionName = "disable VK auto capitalization in IME setting"
+	}
+
+	action := func(ctx context.Context) error {
+		setting, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
+		if err != nil {
+			return errors.Wrap(err, "failed to launch input settings")
+		}
+		return uiauto.Combine("change glide typing setting",
+			setting.OpenInputMethodSetting(uc.TestAPIConn(), im),
+			setting.ToggleAutoCap(uc.Chrome(), isEnabled),
+			setting.Close,
+		)(ctx)
+	}
+
+	return useractions.NewUserAction(
+		actionName,
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+				useractions.ActionTagIMESettings,
+				useractions.ActionTagAutoCapitalization,
 			},
 		})
 }

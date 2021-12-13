@@ -59,15 +59,17 @@ const (
 
 // Tags to indicate user input actions.
 const (
-	ActionTagPKTyping        ActionTag = "PKTyping"
-	ActionTagDeadKey         ActionTag = "DeadKey"
-	ActionTagVKTyping        ActionTag = "VKTyping"
-	ActionTagVKVoiceInput    ActionTag = "VKVoiceInput"
-	ActionTagVKHandWriting   ActionTag = "VKHandWriting"
-	ActionTagSwitchFloatVK   ActionTag = "SwitchFloatVK"
-	ActionTagGlideTyping     ActionTag = "GlideTyping"
-	ActionTagEmoji           ActionTag = "Emoji"
-	ActionTagEmojiPicker     ActionTag = "EmojiPicker"
-	ActionTagEmojiSuggestion ActionTag = "EmojiSuggestion"
-	ActionTagMultiPaste      ActionTag = "MultiPaste"
+	ActionTagPKTyping           ActionTag = "PKTyping"
+	ActionTagDeadKey            ActionTag = "DeadKey"
+	ActionTagVKTyping           ActionTag = "VKTyping"
+	ActionTagVKVoiceInput       ActionTag = "VKVoiceInput"
+	ActionTagVKHandWriting      ActionTag = "VKHandWriting"
+	ActionTagSwitchFloatVK      ActionTag = "SwitchFloatVK"
+	ActionTagGlideTyping        ActionTag = "GlideTyping"
+	ActionTagEmoji              ActionTag = "Emoji"
+	ActionTagEmojiPicker        ActionTag = "EmojiPicker"
+	ActionTagEmojiSuggestion    ActionTag = "EmojiSuggestion"
+	ActionTagMultiPaste         ActionTag = "MultiPaste"
+	ActionTagAutoCorrection     ActionTag = "AutoCorrection"
+	ActionTagAutoCapitalization ActionTag = "AutoCapitalization"
 )

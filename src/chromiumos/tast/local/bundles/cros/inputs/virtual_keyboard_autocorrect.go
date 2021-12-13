@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -17,10 +18,12 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -100,9 +103,15 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(autocorrect.TestCase)
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
 	defer cancel()
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
@@ -121,12 +130,8 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	// Enable VK auto correction and disable auto capitalization.
-	if err := uiauto.Combine("enable VK auto correction while disable auto shift",
-		inputMethod.SetVKAutoCorrection(tconn, ime.AutoCorrectionModest),
-		inputMethod.SetVKEnableCapitalization(tconn, false),
-	)(ctx); err != nil {
-		s.Fatal("Failed to change IME settings: ", err)
+	if err := imesettings.SetVKAutoCapitalization(uc, inputMethod, false).Run(ctx); err != nil {
+		s.Fatal("Failed to disable auto-capitalization in IME settings: ", err)
 	}
 
 	defer func() {
@@ -149,12 +154,23 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for decoder running: ", err)
 	}
 
-	if err := uiauto.Combine("validate VK autocorrect",
+	triggerACAction := uiauto.Combine("validate VK autocorrect",
 		vkbCtx.TapKeys(strings.Split(testCase.MisspeltWord, "")),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord),
 		vkbCtx.TapKey("space"),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord+" "),
-	)(ctx); err != nil {
+	)
+
+	if err := useractions.NewUserAction("Trigger VK auto correction",
+		triggerACAction,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: fmt.Sprintf("Auto correct %q to %q", testCase.MisspeltWord, testCase.CorrectWord),
+			},
+			Tags: []useractions.ActionTag{useractions.ActionTagAutoCorrection},
+		},
+	).Run(ctx); err != nil {
 		s.Fatal("Failed to validate VK autocorrect: ", err)
 	}
 
@@ -189,19 +205,26 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		clickTarget := coords.NewPoint(
 			boundingBox.Left+(boundingBox.Width/3),
 			boundingBox.Top+(boundingBox.Height/2))
-		mouse.Click(tconn, clickTarget, mouse.LeftButton)(ctx)
 
 		undoWindowFinder := nodewith.ClassName("UndoWindow").Role(role.Window)
 		undoButtonFinder := nodewith.Name("Undo").Role(role.Button).Ancestor(undoWindowFinder)
 
-		if err := ui.WaitUntilExists(undoButtonFinder)(ctx); err != nil {
-			s.Fatal("Cannot find Undo button: ", err)
-		}
-
-		if err := uiauto.Combine("validate VK autocorrect undo via popup using mouse",
+		validateUndoAction := uiauto.Combine("validate VK autocorrect undo via popup using mouse",
+			mouse.Click(tconn, clickTarget, mouse.LeftButton),
+			ui.WaitUntilExists(undoButtonFinder),
 			ui.LeftClick(undoButtonFinder),
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord+" "),
-		)(ctx); err != nil {
+		)
+
+		if err := useractions.NewUserAction("Undo VK auto-correction",
+			validateUndoAction,
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeTestScenario: "Undo auto-correction via mouse",
+				},
+			},
+		).Run(ctx); err != nil {
 			s.Fatal("Failed to validate VK autocorrect undo via popup using mouse: ", err)
 		}
 	}
