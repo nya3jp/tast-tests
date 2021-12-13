@@ -24,7 +24,7 @@ func init() {
 // ECConsole opens the EC console and runs the version command.
 func ECConsole(ctx context.Context, s *testing.State) {
 	servoSpec, _ := s.Var("servo")
-	h := firmware.NewHelper(nil, nil, "", servoSpec, "", "", "", "")
+	h := firmware.NewHelperWithoutDUT("", servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
 	defer h.Close(ctx)
 
 	if err := h.RequireServo(ctx); err != nil {
