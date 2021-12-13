@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f89825f9_73d5fb54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-13T18:38:57Z",
+      "side": 1,
+      "message": "Added a line in the commit message.",
+      "parentUuid": "93d3234a_e6c34e87",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6597a2f_6733f618",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-13T11:17:55Z",
       "side": 1,
       "message": "please rename it to \"ctx\" to be consistent with other Tast codebase",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceceeb38_d5fdab39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-13T18:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6597a2f_6733f618",
       "range": {
         "startLine": 36,
         "startChar": 24,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d4f01f0_46b54969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-13T18:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0772c3f8_3bd4ef9c",
+      "range": {
+        "startLine": 48,
+        "startChar": 47,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cb7cb1d_c016e9c7",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "425bd88d_ce2aaae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-13T18:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb7cb1d_c016e9c7",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "caa034af_7253fe5e",
@@ -106,6 +202,24 @@
       "writtenOn": "2021-12-13T11:17:55Z",
       "side": 1,
       "message": "Why do we need this package if we have src/chromiumos/tast/local/wallpaper/ ?\n\nCan (will) you migrate all clients of this package to the new one?",
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1bf6ece_75ffa52f",
+        "filename": "src/chromiumos/tast/local/chrome/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-13T18:38:57Z",
+      "side": 1,
+      "message": "I\u0027m planning to delete this package very soon. There\u0027s one test still using it, which happens to be a tast codelab. Once the wallpaper migration feature is default on in Chrome and the tast codelab is rewritten, I will delete this package.",
+      "parentUuid": "caa034af_7253fe5e",
       "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
