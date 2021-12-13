@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68a27a25_412d6f84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T10:42:39Z",
+      "side": 1,
+      "message": "It doesn\u0027t make sense to me. When polling, you also poll for 10 seconds.\n\nIf 10 secs is too short, did you try 30 secs?",
+      "parentUuid": "dc4a2004_b73ce76d",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "76f362b31fb062731cbdbbfb0d2881a5b7bacf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70dcf3c3_19b02532",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
         "patchSetId": 3
