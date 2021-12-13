@@ -194,6 +194,10 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 			// If WaitConnect didn't work, let it reset.
 		}
 	}
+	testing.ContextLog(ctx, "Connecting power")
+	if err := h.SetDUTPower(ctx, true); err != nil {
+		testing.ContextLog(ctx, "Failed to connect charger: ", err)
+	}
 	testing.ContextLog(ctx, "Resetting DUT")
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
 		testing.ContextLog(ctx, "Failed to reset DUT: ", err)
