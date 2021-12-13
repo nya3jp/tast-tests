@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f0018f_ab4f90bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-12-13T06:22:08Z",
+      "side": 1,
+      "message": "Stainless reported error, \"invalid memory address or nil pointer deference\", at the line checking DUT\u0027s mode-switcher type. It\u0027s probably caused by missing the RequireConfig.",
+      "revId": "840fa046114e495f4ddbb7acbd08570b71bb9158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
