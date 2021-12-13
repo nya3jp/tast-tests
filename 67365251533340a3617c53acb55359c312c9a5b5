@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51061581_02a02fa5",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-13T17:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "641bb9d9_cd74a1cc",
+      "range": {
+        "startLine": 130,
+        "startChar": 24,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "67365251533340a3617c53acb55359c312c9a5b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29ab34d_cbd65184",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-13T16:20:57Z",
       "side": 1,
       "message": "Please see above comment about calling the dbus method directly from the test.",
+      "range": {
+        "startLine": 137,
+        "startChar": 16,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "67365251533340a3617c53acb55359c312c9a5b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfaed7ee_2d639661",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-13T17:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29ab34d_cbd65184",
       "range": {
         "startLine": 137,
         "startChar": 16,
