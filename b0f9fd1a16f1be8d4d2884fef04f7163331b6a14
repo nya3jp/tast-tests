@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54132b3e_0aee8067",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-13T03:23:25Z",
+      "side": 1,
+      "message": "cleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\nstopRecording :\u003d uiauto.RecordVNCVideo(ctx, s)\ndefer stopRecording()\nctx, cancel \u003d uiauto.ReserveForVNCRecordingCleanup(ctx)\ndefer cancel()\n\nyou don\u0027t want to mix up the cleanup time for recording and other cleanup tasks.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 22
+      },
+      "revId": "b0f9fd1a16f1be8d4d2884fef04f7163331b6a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26298e1d_b5489f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_autocorrect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-13T03:23:25Z",
+      "side": 1,
+      "message": "no need to create this var, directly use it below since it is only used once.",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 41
+      },
+      "revId": "b0f9fd1a16f1be8d4d2884fef04f7163331b6a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
