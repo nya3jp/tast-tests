@@ -69,6 +69,24 @@
       "parentUuid": "cabd3245_cb07ee50",
       "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c3047b_b3181e87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_copy_paste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-13T00:44:45Z",
+      "side": 1,
+      "message": "\"Set the non-vm tests to be critical\" - presumably all VM tests should be informational.\nandroid_vm is a VM test, and it isn\u0027t marked as informational. Is this intentional?",
+      "parentUuid": "c2c7eed3_336c5091",
+      "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
