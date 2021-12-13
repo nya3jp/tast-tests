@@ -98,6 +98,24 @@
       "parentUuid": "e4c76494_5afaeeaa",
       "revId": "de2175bfadd299de8b415a2d3c11ee47db6a018e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6886e87f_84fe9d13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-13T11:17:55Z",
+      "side": 1,
+      "message": "Default poll interval is 100ms, which means that you will log the same message 9*60*10\u003d5400 times. This is definitely something we should never do. This is also against Tast guideline about logging:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\n\nWhat you can do instead: add 1 log message before Poll.",
+      "parentUuid": "38db9821_f904b730",
+      "revId": "de2175bfadd299de8b415a2d3c11ee47db6a018e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

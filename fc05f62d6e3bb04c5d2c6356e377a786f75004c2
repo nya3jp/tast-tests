@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d3234a_e6c34e87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-13T11:17:55Z",
+      "side": 1,
+      "message": "Do you really want to increase test timeout? Can you mention it in the commit message?",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6597a2f_6733f618",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-13T11:17:55Z",
+      "side": 1,
+      "message": "please rename it to \"ctx\" to be consistent with other Tast codebase",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0772c3f8_3bd4ef9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-13T11:17:55Z",
+      "side": 1,
+      "message": "Don\u0027t bind context by reference, bind by value:\n\n```\ndefer func(ctx context.Context) {\n  if err :\u003d wallpaper.CloseWallpaperPicker(ui)(ctx); err !\u003d nil {\n    s.Fatal(\"Failed to close the wallpaper picker: \", err)\n  }\n}(ctx)\n\n```",
+      "range": {
+        "startLine": 48,
+        "startChar": 47,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb7cb1d_c016e9c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-13T11:17:55Z",
+      "side": 1,
+      "message": "nit: Maybe %q?",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caa034af_7253fe5e",
+        "filename": "src/chromiumos/tast/local/chrome/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-13T11:17:55Z",
+      "side": 1,
+      "message": "Why do we need this package if we have src/chromiumos/tast/local/wallpaper/ ?\n\nCan (will) you migrate all clients of this package to the new one?",
+      "revId": "fc05f62d6e3bb04c5d2c6356e377a786f75004c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
