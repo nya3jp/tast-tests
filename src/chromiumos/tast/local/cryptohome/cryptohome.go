@@ -31,7 +31,7 @@ const (
 	GuestUser = hwsec.GuestUser
 
 	// KioskUser is the name representing a kiosk user account.
-	KioskUser = hwsec.GuestUser
+	KioskUser = hwsec.KioskUser
 
 	// userCleanupWaitTime is the time we wait to cleanup a user post user creation.
 	userCleanupWaitTime = 5 * time.Second
