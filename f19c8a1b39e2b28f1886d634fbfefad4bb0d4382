@@ -34,6 +34,24 @@
       "parentUuid": "02d228b9_f09f0ad2",
       "revId": "f19c8a1b39e2b28f1886d634fbfefad4bb0d4382",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b889c08a_78150077",
+        "filename": "src/chromiumos/tast/common/servo/methods.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-12-13T17:58:49Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "f5fb41c0_f1be4a75",
+      "revId": "f19c8a1b39e2b28f1886d634fbfefad4bb0d4382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
