@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07be7919_29b35943",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "I added some comments, you should be able to read top down. I think we can just abstract out a \u0027PerformTest\u0027 function, which isn\u0027t relying on launch related tasks, and that will remove your duplication. There\u0027s going to be some crosbolt code that comes out which we can abstract out later but the comments I left should provide a good start. Reach out if you have questions.",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f06ab0_bb936940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "Changes to .PerformTest and all the logic for navigating goes here.",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67aa626_68ee976b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "Create a new: `type PerformTest func(params TestParams) error;`",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3893af70_fe0f6bcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "I think this should be: \n\n`func getCoordinatesFromRelativePosition(act, fromLeftPercent int, fromTopPercent int) coords.Point, err { \n// Obtain screen dimensions.\n\tbounds, err :\u003d act.SurfaceBounds(ctx)\n\tvar ScreenWidth :\u003d bounds.Width\n\tvar ScreenHeight :\u003d bounds.Height\n    // ... \n}\n\nIf your test needs to do specific things first, that\u0027s fine but that makes it more generic for other tests.",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc30203_dda37b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "Let\u0027s rename this `func PerformTest` and replace pollForGameLaunched with: `performTest PerformTest`",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df1ebea4_94fdaaa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "remove isLaunched, call performTest(... ) and save the error.",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f3b2dd7_f6f32fb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "\"// Always take a screenshot after the test is performed for debugging purposes.\"",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b9d9e7_53359992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "At this point if there is an error, the whole test failed. Respond accordingly i.e. `s.Fatal(\"Failed to perform test: \", err)`.",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be3167c_a6a73dfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "Move the remaining lines into the roblox test. Make sure to fail on launch failure, and start a timer/save values accordingly. We can eventually abstract out the perfValues.save.. portion.",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162b9686_9a054ddc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-13T22:21:04Z",
+      "side": 1,
+      "message": "Eliminate this method entirely. Login tests will just call \u0027PerformTest\u0027 and put their specific code in that. Since your test depends on Roblox \u0027launching\u0027, abstract the wait for launch code into a function in roblox_launch, and call it from yours as the first step.",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
