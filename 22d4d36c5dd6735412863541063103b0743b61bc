@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a29f3f_f257753d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e32e63b7_2fd58b3d",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e4858fa_9f6db14b",
@@ -163,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab81c19_6af5c3d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4749257e_599b66d9",
+      "range": {
+        "startLine": 72,
+        "startChar": 67,
+        "endLine": 72,
+        "endChar": 79
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5aa6b4c_99c37310",
@@ -176,6 +224,30 @@
       "writtenOn": "2021-12-13T01:49:23Z",
       "side": 1,
       "message": "nit: place } on the next line.\ngo/go-style/decisions#literal-matching-braces",
+      "range": {
+        "startLine": 76,
+        "startChar": 32,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68c353e_8613d354",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5aa6b4c_99c37310",
       "range": {
         "startLine": 76,
         "startChar": 32,
@@ -200,6 +272,30 @@
       "side": 1,
       "message": "\u003e \"devive\" is a possible misspelling of \"device\".\n\nPlease fix.",
       "parentUuid": "993d65b3_1d3bd081",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f6b1e77_267ee5a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f76b0553_ec164561",
       "range": {
         "startLine": 95,
         "startChar": 8,
@@ -235,6 +331,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "046f1d76_b3d393c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "I would normally do this, however in this case there is clear triggers, many things happen in background some of them server controlled. Note, this run is very close to user run, allowing app sync, have CPU restriction profile and so on. Comment above mentions this.",
+      "parentUuid": "b2370155_13e111f6",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be3f8b5d_6bdecd9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
         "patchSetId": 3
@@ -246,6 +366,30 @@
       "writtenOn": "2021-12-13T01:49:23Z",
       "side": 1,
       "message": "nit: same here",
+      "range": {
+        "startLine": 120,
+        "startChar": 20,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2618448_38b00467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be3f8b5d_6bdecd9d",
       "range": {
         "startLine": 120,
         "startChar": 20,
@@ -273,6 +417,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae090257_6ce36f64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "472a7cd7_ca2a79e5",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19cbad1d_95438d6a",
@@ -286,6 +448,30 @@
       "writtenOn": "2021-12-13T01:49:23Z",
       "side": 1,
       "message": "nit: I\u0027d name it wantSum.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e149efa_fb2daa5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19cbad1d_95438d6a",
       "range": {
         "startLine": 144,
         "startChar": 1,
@@ -330,6 +516,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "720425fa_af17dcdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5b5803_5b862db9",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2017ee71_4bdd3059",
@@ -347,6 +551,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba7facee_c4b9487e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2017ee71_4bdd3059",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f69afe57_fcac442d",
@@ -360,6 +582,30 @@
       "writtenOn": "2021-12-13T01:49:23Z",
       "side": 1,
       "message": "nit: How about using switch case to reduce nesting?\n\nswitch {\n  case !dataRestoreExpected \u0026\u0026 err \u003d\u003d nil:\n    return ...\n  case !dataRestoreExpected:\n    // Not expected ...\n    return ...\n  case err !\u003d nil:\n    return ...\n}",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26de50d4_3d58f166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-13T20:54:32Z",
+      "side": 1,
+      "message": "Add more payload after so this does not apply likely.",
+      "parentUuid": "f69afe57_fcac442d",
       "range": {
         "startLine": 154,
         "startChar": 0,
