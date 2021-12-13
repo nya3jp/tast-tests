@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5954bfaa_f4f98444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-13T00:16:31Z",
+      "side": 1,
+      "message": "Please log this err",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 5
+      },
+      "revId": "fb876d63afaab27d8c4bc9fb2051fd521dc3c119",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
