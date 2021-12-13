@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7a4d2c_b3e91318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2021-12-13T23:53:08Z",
+      "side": 1,
+      "message": "Sounds good. Does this mean passing around the activity and test connection, and putting the responsibility on the test itself to close any outstanding processes, among other things?",
+      "parentUuid": "07be7919_29b35943",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74f06ab0_bb936940",
