@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e925729_9bcd7442",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-13T03:04:40Z",
+      "side": 1,
+      "message": "Hi Alvin, thanks for reviewing Inputs related changes. \ncc Matt in future CLs for visibility. Please feel free to comment.",
+      "revId": "eecda0a5777cf0493f070c338f699a148011db4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
