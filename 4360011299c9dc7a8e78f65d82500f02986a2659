@@ -52,6 +52,24 @@
       "parentUuid": "588b7a24_6f5f6928",
       "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2992e99f_f16c6503",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-13T06:54:33Z",
+      "side": 1,
+      "message": "I saw a similar script \"local/bundles/cros/printer/data/generate_external.sh\", so I \ndecide to put this in \"local/bundles/hwsec/data\".",
+      "parentUuid": "906c66b3_0852b4b2",
+      "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

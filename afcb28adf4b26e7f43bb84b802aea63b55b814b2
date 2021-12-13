@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a91811a_bb38d154",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-13T06:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da3d23cc_1c9d3674",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "afcb28adf4b26e7f43bb84b802aea63b55b814b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "649400f2_d9501d47",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a06a160_874666f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-13T06:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "649400f2_d9501d47",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "afcb28adf4b26e7f43bb84b802aea63b55b814b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5eda3df_87e6bd97",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-08T08:33:40Z",
       "side": 1,
       "message": "How about also adding these to prevent something like\n\"WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!\"\n```\n-o GlobalKnownHostsFile\u003d/dev/null -o UserKnownHostsFile\u003d/dev/null\n```",
+      "range": {
+        "startLine": 88,
+        "startChar": 38,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "afcb28adf4b26e7f43bb84b802aea63b55b814b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8b02bc_36de0def",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-13T06:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5eda3df_87e6bd97",
       "range": {
         "startLine": 88,
         "startChar": 38,
