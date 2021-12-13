@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1ca1c9_d3d3293a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-13T21:23:53Z",
+      "side": 1,
+      "message": "could you potentially use CollectPcapForAction instead?",
+      "revId": "3598eac66aa298c58543d4950d7fdbd87ee527e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
