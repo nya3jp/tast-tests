@@ -27,13 +27,7 @@ func init() {
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
 		Timeout:      8 * time.Minute,
-		Params: []testing.Param{{
-			Fixture: "ccaTestBridgeReady",
-		}, {
-			// TODO(b:201335131): Remove dynamic tiering test after the feature fully landed.
-			Name:    "wasm_dynamic_tiering",
-			Fixture: "ccaTestBridgeReadyWithWasmDynamicTiering",
-		}},
+		Fixture:      "ccaTestBridgeReady",
 	})
 }
 
