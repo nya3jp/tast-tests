@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -47,7 +48,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		Data:         data.ExtractExternalFiles(voiceTestMessages, append(voiceTestIMEs, voiceTestIMEsNewData...)),
-		Pre:          pre.VKEnabledReset,
+		Pre:          pre.VKEnabledTabletReset,
 		Timeout:      time.Duration(len(voiceTestIMEs)+len(voiceTestIMEsNewData)) * time.Duration(len(voiceTestMessages)) * time.Minute,
 		Params: []testing.Param{
 			{
@@ -103,7 +104,6 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 			defer shortCancel()
 
 			defer func(ctx context.Context) {
-
 				outDir := filepath.Join(s.OutDir(), testName)
 				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, s.HasError, cr, "ui_tree_"+testName)
 
@@ -112,7 +112,7 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 				}
 			}(cleanupCtx)
 
-			if err := uiauto.Combine("verify audio input",
+			verifyAudioInputAction := uiauto.Combine("verify audio input",
 				its.Clear(inputField),
 				uiauto.New(tconn).Sleep(time.Second),
 				its.ClickFieldUntilVKShown(inputField),
@@ -121,7 +121,18 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 					return voice.AudioFromFile(ctx, s.DataPath(inputData.VoiceFile))
 				},
 				util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), inputData.ExpectedText),
-			)(ctx); err != nil {
+			)
+
+			if err := useractions.NewUserAction("Voice input",
+				verifyAudioInputAction,
+				uc,
+				&useractions.UserActionCfg{
+					Attributes: map[string]string{
+						useractions.AttributeInputField: string(inputField),
+					},
+					Tags: []useractions.ActionTag{useractions.ActionTagVKVoiceInput},
+				},
+			).Run(ctx); err != nil {
 				s.Fatal("Failed to validate voice input: ", err)
 			}
 		}
