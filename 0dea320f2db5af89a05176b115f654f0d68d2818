@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4033ae6c_491dcec6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2021-12-13T18:03:12Z",
+      "side": 1,
+      "message": "Added the links.\n\nYes, it is because the removal of a class. Has been fixed at chromium:1268959. I added that bug number as well. Thanks",
+      "parentUuid": "c2194435_cea56e5c",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "0dea320f2db5af89a05176b115f654f0d68d2818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d8acf1d0_b62e6f8e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
