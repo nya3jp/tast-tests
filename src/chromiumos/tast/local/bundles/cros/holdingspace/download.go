@@ -6,11 +6,11 @@ package holdingspace
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"os"
 	"path/filepath"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -22,8 +22,7 @@ import (
 )
 
 type downloadParams struct {
-	downloadSize int
-	testfunc     func(*uiauto.Context, string) uiauto.Action
+	testfunc func(*uiauto.Context, string, uiauto.Action) uiauto.Action
 }
 
 func init() {
@@ -38,30 +37,25 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"download.html"},
 		Params: []testing.Param{{
 			Name: "cancel",
 			Val: downloadParams{
-				downloadSize: 1024 * 1024 * 1024, // 1 GB to give time to cancel.
-				testfunc:     testDownloadCancel,
+				testfunc: testDownloadCancel,
 			},
 		}, {
 			Name: "pause_and_resume",
 			Val: downloadParams{
-				downloadSize: 1024 * 1024 * 1024, // 1 GB to give time to pause/resume.
-				testfunc:     testDownloadPauseAndResume,
+				testfunc: testDownloadPauseAndResume,
 			},
 		}, {
 			Name: "pin_and_unpin",
 			Val: downloadParams{
-				downloadSize: 1, // 1 B.
-				testfunc:     testDownloadPinAndUnpin,
+				testfunc: testDownloadPinAndUnpin,
 			},
 		}, {
 			Name: "remove",
 			Val: downloadParams{
-				downloadSize: 1, // 1 B.
-				testfunc:     testDownloadRemove,
+				testfunc: testDownloadRemove,
 			},
 		}},
 	})
@@ -96,20 +90,37 @@ func Download(ctx context.Context, s *testing.State) {
 		s.Fatal("Tray exists: ", err)
 	}
 
-	// Cache the name, size, and location of the download.
+	// Cache the name and location of the download.
 	downloadName := "download.txt"
-	downloadSize := strconv.Itoa(params.downloadSize)
 	downloadLocation := filepath.Join(filesapp.DownloadPath, downloadName)
 	defer os.Remove(downloadLocation)
 
-	// Create a local server.
-	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	// Create a local server. If a request indicates `redirect=true`, the response
+	// HTML will cause automatic redirection back to the root URL after a short
+	// delay. Otherwise, the response will result in a download being started that
+	// will block completion until the `unblockDownloadChannel` is signaled.
+	unblockDownloadChannel := make(chan struct{})
+	server := httptest.NewServer(http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Content-Type", "text/html")
+			if redirect := r.URL.Query().Get("redirect"); redirect == "true" {
+				fmt.Fprintf(w, "<meta http-equiv='refresh' content='1;url=/' />")
+				return
+			}
+			w.Header().Add("Content-Disposition", "attachment; filename="+downloadName)
+			fmt.Fprintf(w, "Download started\n")
+			f := w.(http.Flusher)
+			f.Flush()
+			<-unblockDownloadChannel
+			fmt.Fprintf(w, "Download finished\n")
+		}))
 	defer server.Close()
 
-	// Connect to the local server and navigate to `url`. Note that this will
-	// cause the download to be started automatically.
-	url := "download.html?filename=" + downloadName + "&filesize=" + downloadSize
-	conn, err := cr.NewConn(ctx, filepath.Join(server.URL, url))
+	// Connect to the local server. Note that this method will block until the
+	// browser has finished navigating to the desired URL. Since we actually want
+	// to start a download and not navigate the browser we'll use a redirect
+	// workaround to satisfy the requirement to navigate.
+	conn, err := cr.NewConn(ctx, server.URL+"?redirect=true")
 	if err != nil {
 		s.Fatal("Failed to connect to local server: ", err)
 	}
@@ -128,7 +139,10 @@ func Download(ctx context.Context, s *testing.State) {
 	}
 
 	// Perform additional parameterized testing.
-	if err := params.testfunc(ui, downloadName)(ctx); err != nil {
+	if err := params.testfunc(ui, downloadName, func(ctx context.Context) error {
+		close(unblockDownloadChannel)
+		return nil
+	})(ctx); err != nil {
 		s.Fatal("Fail to perform parameterized testing: ", err)
 	}
 
@@ -146,7 +160,8 @@ func Download(ctx context.Context, s *testing.State) {
 }
 
 // testDownloadCancel performs testing of cancelling a download.
-func testDownloadCancel(ui *uiauto.Context, downloadName string) uiauto.Action {
+func testDownloadCancel(
+	ui *uiauto.Context, downloadName string, unblockDownload uiauto.Action) uiauto.Action {
 	return uiauto.Combine("test cancel",
 		// Right click the download chip to show the context menu. Note that the
 		// download chip is currently bound to an in-progress download.
@@ -157,13 +172,19 @@ func testDownloadCancel(ui *uiauto.Context, downloadName string) uiauto.Action {
 		// closed.
 		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Cancel")),
 
+		// Unblock the download so that the local server can complete the download
+		// request. This is necessary even though the download has been cancelled to
+		// keep the local server from hanging.
+		unblockDownload,
+
 		// Ensure the download chip is removed with its backing file.
 		ui.WaitUntilGone(holdingspace.FindDownloadChip().Name(downloadName)),
 	)
 }
 
 // testDownloadPauseAndResume performs testing of pausing and resuming a download.
-func testDownloadPauseAndResume(ui *uiauto.Context, downloadName string) uiauto.Action {
+func testDownloadPauseAndResume(
+	ui *uiauto.Context, downloadName string, unblockDownload uiauto.Action) uiauto.Action {
 	return uiauto.Combine("test pause and resume",
 		// Right click the download chip to show the context menu. Note that the
 		// download chip is currently bound to an in-progress download.
@@ -181,14 +202,23 @@ func testDownloadPauseAndResume(ui *uiauto.Context, downloadName string) uiauto.
 		// the underlying download being resumed and the context menu being closed.
 		ui.LeftClick(holdingspace.FindContextMenuItem().Name("Resume")),
 
+		// Unblock the download so that the local server can complete the download
+		// request. Until the download is unblocked, the local server will hang.
+		unblockDownload,
+
 		// Wait for the download to complete.
 		ui.WaitUntilExists(holdingspace.FindDownloadChip().Name(downloadName)),
 	)
 }
 
 // testDownloadPinAndUnpin performs testing of pinning and unpinning a download.
-func testDownloadPinAndUnpin(ui *uiauto.Context, downloadName string) uiauto.Action {
+func testDownloadPinAndUnpin(
+	ui *uiauto.Context, downloadName string, unblockDownload uiauto.Action) uiauto.Action {
 	return uiauto.Combine("test pin and unpin",
+		// Unblock the download so that the local server can complete the download
+		// request. Until the download is unblocked, the local server will hang.
+		unblockDownload,
+
 		// Right click the download chip to show the context menu. Note that this
 		// will wait until the underlying download has completed.
 		ui.RightClick(holdingspace.FindDownloadChip().Name(downloadName)),
@@ -219,8 +249,13 @@ func testDownloadPinAndUnpin(ui *uiauto.Context, downloadName string) uiauto.Act
 }
 
 // testDownloadRemove performs testing of removing a download.
-func testDownloadRemove(ui *uiauto.Context, downloadName string) uiauto.Action {
+func testDownloadRemove(
+	ui *uiauto.Context, downloadName string, unblockDownload uiauto.Action) uiauto.Action {
 	return uiauto.Combine("test remove",
+		// Unblock the download so that the local server can complete the download
+		// request. Until the download is unblocked, the local server will hang.
+		unblockDownload,
+
 		// Right click the download chip to show the context menu. Note that this
 		// will wait until the underlying download has completed.
 		ui.RightClick(holdingspace.FindDownloadChip().Name(downloadName)),
