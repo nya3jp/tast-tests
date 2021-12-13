@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc4a2004_b73ce76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-13T09:47:47Z",
+      "side": 1,
+      "message": "I have follow the same here,but no luck, so added the polling condition.",
+      "parentUuid": "9bda0677_08c48a8c",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "76f362b31fb062731cbdbbfb0d2881a5b7bacf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70dcf3c3_19b02532",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
         "patchSetId": 3
