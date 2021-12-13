@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ee93b2_273ff8d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T02:10:21Z",
+      "side": 1,
+      "message": "Let me remove +2 until the discussion is settled to avoid confusion.",
+      "revId": "2d13c27b9469d86e94f0cd164509846949c3e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
