@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8847547_9a90c903",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-13T07:49:02Z",
+      "side": 1,
+      "message": "Do we really need this extra parameter? Maybe the error handling in this function is too fancy. Lets discuss it tomorrow.",
+      "range": {
+        "startLine": 113,
+        "startChar": 64,
+        "endLine": 113,
+        "endChar": 79
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df320cb_10f8c761",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-13T07:49:02Z",
+      "side": 1,
+      "message": "Comments should be full sentence. So this should be capitalized.\n\nAlso comments should explain only things that are not too obvious. I think there could be less in this function.",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 7
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "772adfc0_87fb8fd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-13T07:49:02Z",
+      "side": 1,
+      "message": "This code is a bit disconnected from everything else.\n\nMaybe this should move into the perceptual difference function and it should return a percentage already?",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 54
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae68db6_9457d51c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-13T07:49:02Z",
+      "side": 1,
+      "message": "Please remove the Arr in the names. There is no need to add describe types etc. verbally.\n\nAlso just make it [3] and ignore the [0]. It cleans up the code below as you can index just with [vt].",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 35
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ad7098_a00cf65f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-13T07:49:02Z",
+      "side": 1,
+      "message": "It is difficult to read this. What does \"ok\" mean?\nHow about\ndifferent, numPixels :\u003d",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 32
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45a9e5b_0584e0a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-13T07:49:02Z",
+      "side": 1,
+      "message": "This computation could also move into the perceptual diff function.",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 76
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
