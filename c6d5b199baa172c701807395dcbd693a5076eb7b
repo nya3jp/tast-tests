@@ -168,6 +168,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a417ceff_9459618a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T04:34:58Z",
+      "side": 1,
+      "message": "Per discussion offline:\n\nI\u0027d like to deal with all the error in this CL. And if in the future, we really need to ignore it, I\u0027ll file another issue and discuss it~ Thanks!",
+      "parentUuid": "a8d96c7b_a3731695",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 54
+      },
+      "revId": "c6d5b199baa172c701807395dcbd693a5076eb7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f51dd8fc_f7b42c6c",

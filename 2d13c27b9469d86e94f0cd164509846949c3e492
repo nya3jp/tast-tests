@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d2bcb3_0e0dc4a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T04:34:58Z",
+      "side": 1,
+      "message": "For empty case, let\u0027s modify it if needed in the future~",
+      "parentUuid": "4bf18199_e44a2b25",
+      "range": {
+        "startLine": 52,
+        "startChar": 50,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "2d13c27b9469d86e94f0cd164509846949c3e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26b964b1_98a15375",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-13T02:46:07Z",
       "side": 1,
       "message": "This should be want. Sorry I misunderstood the logic.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 4
+      },
+      "revId": "2d13c27b9469d86e94f0cd164509846949c3e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ca30b09_e3d16abe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T04:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26b964b1_98a15375",
       "range": {
         "startLine": 57,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "991f1b4e_72a39ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T04:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49f53c49_9800a400",
+      "range": {
+        "startLine": 98,
+        "startChar": 57,
+        "endLine": 98,
+        "endChar": 61
+      },
+      "revId": "2d13c27b9469d86e94f0cd164509846949c3e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ba71b29_fba3e0dd",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-13T02:46:07Z",
       "side": 1,
       "message": "nit: got",
+      "range": {
+        "startLine": 113,
+        "startChar": 56,
+        "endLine": 113,
+        "endChar": 60
+      },
+      "revId": "2d13c27b9469d86e94f0cd164509846949c3e492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26ca87fe_01bf91f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T04:34:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ba71b29_fba3e0dd",
       "range": {
         "startLine": 113,
         "startChar": 56,
