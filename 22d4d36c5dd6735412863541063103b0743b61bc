@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e32e63b7_2fd58b3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T01:49:23Z",
+      "side": 1,
+      "message": "nit: // original author\n\ngo/go-style/decisions#comment-sentences",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e4858fa_9f6db14b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
         "patchSetId": 3
@@ -54,6 +77,122 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4749257e_599b66d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T01:49:23Z",
+      "side": 1,
+      "message": "How about returning pointer *chrome.Creds ?\nThen we can just return nil on error.",
+      "range": {
+        "startLine": 72,
+        "startChar": 67,
+        "endLine": 72,
+        "endChar": 79
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5aa6b4c_99c37310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T01:49:23Z",
+      "side": 1,
+      "message": "nit: place } on the next line.\ngo/go-style/decisions#literal-matching-braces",
+      "range": {
+        "startLine": 76,
+        "startChar": 32,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76b0553_ec164561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T01:49:23Z",
+      "side": 1,
+      "message": "\u003e \"devive\" is a possible misspelling of \"device\".\n\nPlease fix.",
+      "parentUuid": "993d65b3_1d3bd081",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2370155_13e111f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T01:49:23Z",
+      "side": 1,
+      "message": "Can we avoid sleeping, by using testing.Poll to periodically check if device is set up?\nhttps://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git@v0.0.0-20210508105651-2c994edba0a4/src/chromiumos/tast/testing#Poll",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be3f8b5d_6bdecd9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T01:49:23Z",
+      "side": 1,
+      "message": "nit: same here",
+      "range": {
+        "startLine": 120,
+        "startChar": 20,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472a7cd7_ca2a79e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
         "patchSetId": 3
@@ -65,6 +204,29 @@
       "writtenOn": "2021-12-11T21:57:18Z",
       "side": 1,
       "message": "nit: \"unexpected histogram count for %s, got: %d, want: 1\".",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19cbad1d_95438d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T01:49:23Z",
+      "side": 1,
+      "message": "nit: I\u0027d name it wantSum.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 12
+      },
       "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +261,29 @@
       "writtenOn": "2021-12-11T21:57:18Z",
       "side": 1,
       "message": "nit: extra space between %s and histogram.",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69afe57_fcac442d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-13T01:49:23Z",
+      "side": 1,
+      "message": "nit: How about using switch case to reduce nesting?\n\nswitch {\n  case !dataRestoreExpected \u0026\u0026 err \u003d\u003d nil:\n    return ...\n  case !dataRestoreExpected:\n    // Not expected ...\n    return ...\n  case err !\u003d nil:\n    return ...\n}",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 2
+      },
       "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
