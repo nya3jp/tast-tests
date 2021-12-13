@@ -16,6 +16,23 @@
       "message": "Yay!",
       "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee89fc8f_1ddaf848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_copy_paste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-13T00:27:52Z",
+      "side": 1,
+      "message": "Guessing this should be informational as well?",
+      "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
