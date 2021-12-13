@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2663bf62_d5a7a8ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-13T15:37:13Z",
+      "side": 1,
+      "message": "Dependency (crrev/c/3256071) just got uprevved, so this should be safe to review/submit now. PTAL.",
+      "revId": "e6cf75e892ae3035b5b220716be9f5b881e7ad0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
