@@ -402,7 +402,7 @@ func (i *impl) initHelper(ctx context.Context, s *testing.FixtState) {
 		servoSpec, _ := s.Var("servo")
 
 		if i.disallowSSH {
-			i.value.Helper = firmware.NewHelper(nil, nil, s.DataPath(firmware.ConfigFile), servoSpec, "", "", "", "")
+			i.value.Helper = firmware.NewHelperWithoutDUT(s.DataPath(firmware.ConfigFile), servoSpec, s.DUT().KeyFile(), s.DUT().KeyDir())
 			i.value.Helper.DisallowServices()
 		} else {
 			dutHostname, _ := s.Var("dutHostname")
