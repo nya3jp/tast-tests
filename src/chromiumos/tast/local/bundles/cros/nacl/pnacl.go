@@ -30,7 +30,7 @@ func init() {
 		Contacts:     []string{"emaxx@chromium.org", "nacl-eng@google.com"},
 		Data:         extensionFiles,
 		SoftwareDeps: []string{"chrome", "nacl"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
