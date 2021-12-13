@@ -16,6 +16,52 @@
       "message": "Hi Tatsuhisa,\n\nSince you helped to review my USB CL before. This one is similar, could you help to review it? Thanks :)",
       "revId": "76f362b31fb062731cbdbbfb0d2881a5b7bacf92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd6a74f_075b8ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T06:09:25Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to poll it?",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "76f362b31fb062731cbdbbfb0d2881a5b7bacf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70dcf3c3_19b02532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-13T06:09:25Z",
+      "side": 1,
+      "message": "\"stdout\" since we only test add event.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "76f362b31fb062731cbdbbfb0d2881a5b7bacf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
