@@ -16,6 +16,24 @@
       "message": "LGTM. \n\nThe only other consideration I could think of was potentially adding sheriffs to this allowlist, but I don\u0027t think documentation should generally need to be immediately changed by sheriffs. Restricting to WiFi team seems reasonable.",
       "revId": "cff9c133ffdfa92a61f92a70ecc23ed2631f3eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b008c81f_c64d1a97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-12-13T22:00:28Z",
+      "side": 1,
+      "message": "sheriffs have owners-override powers they can use when necessary\n\nanyway, this is not a restrictive owners list -- just an additive one, to make docs updates a bit easier",
+      "parentUuid": "388e73ab_733edc83",
+      "revId": "cff9c133ffdfa92a61f92a70ecc23ed2631f3eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
