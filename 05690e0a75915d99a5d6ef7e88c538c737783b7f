@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7c5a21_047f8cda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-12-13T18:37:51Z",
+      "side": 1,
+      "message": "Temporarily, ignore verification for SELinux for \"misc\" dir.",
+      "revId": "05690e0a75915d99a5d6ef7e88c538c737783b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d201d1dc_aae40c4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-12-13T18:37:51Z",
+      "side": 1,
+      "message": "blocked by the current tast-test as it adds a new file context. After the CL is landed, the plan is to add the appropriate SELinux context in the source for correct verification by this tast-test. Post that, the current CL will be reverted.",
+      "revId": "05690e0a75915d99a5d6ef7e88c538c737783b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4e0d9f73_d3b18bd0",
@@ -49,6 +83,23 @@
       "side": 1,
       "message": "Thanks for your review.",
       "parentUuid": "e4ae3b0b_30fc8cf5",
+      "revId": "05690e0a75915d99a5d6ef7e88c538c737783b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e44f6500_d9f73711",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-12-13T18:37:51Z",
+      "side": 1,
+      "message": "Could you please open a bug and link it here as well. Thanks.",
       "revId": "05690e0a75915d99a5d6ef7e88c538c737783b7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
