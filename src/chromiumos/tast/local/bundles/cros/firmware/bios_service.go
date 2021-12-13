@@ -40,6 +40,7 @@ var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
 	pb.ImageSection_GBBImageSection:   bios.GBBImageSection,
 	pb.ImageSection_ECRWImageSection:  bios.ECRWImageSection,
 	pb.ImageSection_ECRWBImageSection: bios.ECRWBImageSection,
+	pb.ImageSection_EmptyImageSection: bios.EmptyImageSection,
 }
 
 // BackupImageSection dumps the image region into temporary file locally and returns its path.
