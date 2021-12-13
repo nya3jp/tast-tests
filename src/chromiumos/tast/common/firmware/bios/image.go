@@ -43,6 +43,9 @@ const (
 	// ECRWBImageSection is the named section for a secondary EC writable data for EFS.
 	ECRWBImageSection ImageSection = "EC_RW_B"
 
+	// EmptyImageSection is the empty string which will result in the whole AP/EC fw backup.
+	EmptyImageSection ImageSection = ""
+
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
 )
