@@ -35,6 +35,10 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to init servo: ", err)
 	}
 
+	if err := h.RequireConfig(ctx); err != nil {
+		s.Fatal("Failed to create config: ", err)
+	}
+
 	// checkPowerInfo checks the power supply information after waking up DUT from suspend.
 	checkPowerInfo := func(ctx context.Context) (string, error) {
 		s.Log("Checking for DUT's powerstate at S0")
@@ -102,7 +106,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			// Instead, we replace by pressing a keyboard key.
 			s.Log("Waking DUT from suspend by pressing ENTER key")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
-				s.Fatal("Failed to press enter key: ", err)
+				s.Fatal("Failed to press ENTER key: ", err)
 			}
 		}
 
