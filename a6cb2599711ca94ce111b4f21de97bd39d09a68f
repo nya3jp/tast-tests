@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdce8283_d4b17f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_u2f_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-13T12:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f2b588_ab695e0b",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 258,
+        "endChar": 53
+      },
+      "revId": "a6cb2599711ca94ce111b4f21de97bd39d09a68f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "123b8019_83585267",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-13T11:18:29Z",
       "side": 1,
       "message": "I guess we would want to use a truly random seed for this random?",
+      "range": {
+        "startLine": 377,
+        "startChar": 19,
+        "endLine": 377,
+        "endChar": 24
+      },
+      "revId": "a6cb2599711ca94ce111b4f21de97bd39d09a68f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "127d4a1c_ecbd64a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_u2f_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-13T12:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "123b8019_83585267",
       "range": {
         "startLine": 377,
         "startChar": 19,
