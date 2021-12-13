@@ -42,7 +42,7 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 	}
 	// postWakePollOptions is the time to wait for the battery after waking up from hibernate.
 	postWakePollOptions := testing.PollOptions{
-		Timeout:  20 * time.Second,
+		Timeout:  60 * time.Second,
 		Interval: 250 * time.Millisecond,
 	}
 	// getChargerPollOptions is the time to retry the GetChargerAttached command. Unexpected EC uart logging can make it fail.
@@ -74,105 +74,102 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	hasMicroOrC2D2, err := h.Servo.PreferDebugHeader(ctx)
+	_, err := h.Servo.PreferDebugHeader(ctx)
 	if err != nil {
 		s.Fatal("PreferDebugHeader: ", err)
 	}
 
-	s.Log("Stopping power supply")
-	if err := h.SetDUTPower(ctx, false); err != nil {
-		s.Fatal("Failed to remove charger: ", err)
-	}
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if attached, err := h.Servo.GetChargerAttached(ctx); err != nil {
-			return err
-		} else if attached {
-			return errors.New("charger is still attached - use Servo V4 Type-C or supply RPM vars")
+	// Run this code in a func to make sure the power is on at the end.
+	var start time.Time
+	var mahStart, max int
+	func(ctx context.Context) {
+		s.Log("Stopping power supply")
+		if err := h.SetDUTPower(ctx, false); err != nil {
+			s.Fatal("Failed to remove charger: ", err)
 		}
-		return nil
-	}, &getChargerPollOptions); err != nil {
-		s.Fatal("Check for charger failed: ", err)
-	}
-
-	s.Log("Pressing power button to make DUT into deep sleep mode")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
-		s.Fatal("Failed to set a KeypressControl by servo: ", err)
-	}
-	h.DisconnectDUT(ctx)
-
-	s.Log("Waiting until power state is G3")
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		state, err := h.Servo.GetECSystemPowerState(ctx)
-		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get power state"))
+		defer func(ctx context.Context) {
+			s.Log("Connecting power supply")
+			if err := h.SetDUTPower(ctx, true); err != nil {
+				s.Fatal("Failed to attach charger: ", err)
+			}
+		}(ctx)
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if attached, err := h.Servo.GetChargerAttached(ctx); err != nil {
+				return err
+			} else if attached {
+				return errors.New("charger is still attached - use Servo V4 Type-C or supply RPM vars")
+			}
+			return nil
+		}, &getChargerPollOptions); err != nil {
+			s.Fatal("Check for charger failed: ", err)
 		}
-		if state != "G3" {
-			return errors.New("power state is " + state)
+
+		s.Log("Pressing power button to make DUT into deep sleep mode")
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
+			s.Fatal("Failed to set a KeypressControl by servo: ", err)
 		}
-		return nil
-	}, &g3PollOptions); err != nil {
-		s.Fatal("Failed to wait power state to be G3: ", err)
-	}
+		h.DisconnectDUT(ctx)
 
-	max, err := h.Servo.GetBatteryFullChargeMAH(ctx)
-	if err != nil {
-		s.Fatal("Failed to get full charge mAh: ", err)
-	}
-	s.Logf("Battery max capacity: %dmAh", max)
-
-	mahStart, err := h.Servo.GetBatteryChargeMAH(ctx)
-	if err != nil {
-		s.Fatal("Failed to get charge mAh: ", err)
-	}
-	start := time.Now()
-	s.Logf("Battery charge: %dmAh", mahStart)
-
-	s.Log("Hibernating")
-	if err = h.Servo.ECHibernate(ctx); err != nil {
-		s.Fatal("Failed to run EC command: ", err)
-	}
-
-	h.DisconnectDUT(ctx)
-
-	sleepUntil := time.Now().Add(sleep)
-	s.Logf("Sleeping for %s until %s", sleep, sleepUntil)
-	for time.Now().Before(sleepUntil) {
-		sleepDuration := time.Until(sleepUntil)
-		if sleepDuration > time.Minute {
-			sleepDuration = time.Minute
-		}
-		if err = testing.Sleep(ctx, sleepDuration); err != nil {
-			s.Fatal("Failed to sleep: ", err)
-		}
-		if _, err = h.Servo.Echo(ctx, "ping"); err != nil {
-			s.Log("Failed to ping servo, reconnecting: ", err)
-			err = h.ServoProxy.Reconnect(ctx)
+		s.Log("Waiting until power state is G3")
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			state, err := h.Servo.GetECSystemPowerState(ctx)
 			if err != nil {
-				s.Log("Failed to reconnect to servo: ", err)
+				return testing.PollBreak(errors.Wrap(err, "failed to get power state"))
+			}
+			if state != "G3" {
+				return errors.New("power state is " + state)
+			}
+			return nil
+		}, &g3PollOptions); err != nil {
+			s.Fatal("Failed to wait power state to be G3: ", err)
+		}
+
+		max, err = h.Servo.GetBatteryFullChargeMAH(ctx)
+		if err != nil {
+			s.Fatal("Failed to get full charge mAh: ", err)
+		}
+		s.Logf("Battery max capacity: %dmAh", max)
+
+		mahStart, err = h.Servo.GetBatteryChargeMAH(ctx)
+		if err != nil {
+			s.Fatal("Failed to get charge mAh: ", err)
+		}
+		start = time.Now()
+		s.Logf("Battery charge: %dmAh", mahStart)
+
+		s.Log("Hibernating")
+		if err = h.Servo.ECHibernate(ctx); err != nil {
+			s.Fatal("Failed to run EC command: ", err)
+		}
+
+		h.DisconnectDUT(ctx)
+
+		sleepUntil := time.Now().Add(sleep)
+		s.Logf("Sleeping for %s until %s", sleep, sleepUntil)
+		for time.Now().Before(sleepUntil) {
+			sleepDuration := time.Until(sleepUntil)
+			if sleepDuration > time.Minute {
+				sleepDuration = time.Minute
+			}
+			if err = testing.Sleep(ctx, sleepDuration); err != nil {
+				s.Fatal("Failed to sleep: ", err)
+			}
+			if _, err = h.Servo.Echo(ctx, "ping"); err != nil {
+				s.Log("Failed to ping servo, reconnecting: ", err)
+				err = h.ServoProxy.Reconnect(ctx)
+				if err != nil {
+					s.Log("Failed to reconnect to servo: ", err)
+				}
 			}
 		}
-	}
-
-	if hasMicroOrC2D2 {
-		s.Log("Waking up DUT with short power key press")
-		if err = h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-			s.Fatal("Failed to press power key: ", err)
-		}
-	} else {
-		// When using CCD, the power_key is emulated with an EC command, which won't work when we are in hibernate.
-		// Cold reset works, because it uses CR50 cmd `ecrst`.
-		s.Log("Resetting power state")
-		if err := h.Servo.SetOnOff(ctx, "cold_reset", servo.On); err != nil {
-			s.Fatal("Failed to enable cold reset: ", err)
-		}
-		if err := h.Servo.SetOnOff(ctx, "cold_reset", servo.Off); err != nil {
-			s.Fatal("Failed to disable cold reset: ", err)
-		}
-	}
+	}(ctx)
 
 	// DUT will probably still booting at end of test.
 	// pre.NormalMode().Close() will cause an extra reboot here if we don't wait.
 	defer func() {
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			s.Fatal("Failed to set a KeypressControl by servo: ", err)
+		}
 		newCtx, cancel := context.WithTimeout(ctx, time.Minute)
 		defer cancel()
 		h.WaitConnect(newCtx)
