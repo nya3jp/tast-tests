@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ab9e88_efe6fc69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_omnibox_user_action.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-13T22:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c363cc_dce652e4",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "8cbfea9c2ca64d1eeb0e207a5b165c1b16cfa896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e95ff251_9fd03a4e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-13T21:16:01Z",
       "side": 1,
       "message": "similar to another cl, is this the action name or a tag? it looks like a tag to me, but the syntax here should be the name.",
+      "range": {
+        "startLine": 119,
+        "startChar": 40,
+        "endLine": 119,
+        "endChar": 49
+      },
+      "revId": "8cbfea9c2ca64d1eeb0e207a5b165c1b16cfa896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d5fad69_ac49fd54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_typing_omnibox_user_action.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-13T22:31:39Z",
+      "side": 1,
+      "message": "This is the action name. As you commented in another cl, it should be the same as the action name in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go?l\u003d365.\n\nWe can consider to make this constant or something once we have action name better defined.",
+      "parentUuid": "e95ff251_9fd03a4e",
       "range": {
         "startLine": 119,
         "startChar": 40,
