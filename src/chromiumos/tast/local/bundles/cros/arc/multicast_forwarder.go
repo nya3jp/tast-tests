@@ -228,73 +228,65 @@ func MulticastForwarder(ctx context.Context, s *testing.State) {
 
 	s.Log("Sending IPv4 multicast packets")
 	toggleIPv6(false)
-	// Try to send multicast packet multiple times.
-	for i := 0; i < 3; i++ {
-		// Send outbound multicast packets from ARC.
+	// Send outbound multicast packets from ARC.
+	// Run mDNS query.
+	setTexts(mdnsHostnameOut, mdnsPort)
+	if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
+		s.Error("Failed starting outbound mDNS test: ", err)
+	}
+	// Run legacy mDNS query.
+	setTexts(legacyMDNSHostnameOut, legacyMDNSPort)
+	if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
+		s.Error("Failed starting outbound legacy mDNS test: ", err)
+	}
+	// Run SSDP query
+	setTexts(ssdpUserAgentOut, ssdpPort)
+	if err := d.Object(ui.ID(ssdpButtonID)).Click(ctx); err != nil {
+		s.Error("Failed starting outbound SSDP test: ", err)
+	}
+
+	// Set up multicast destination addresses for IPv4 multicast.
+	mdnsDst := &net.UDPAddr{IP: net.IPv4(224, 0, 0, 251), Port: 5353}
+	ssdpDst := &net.UDPAddr{IP: net.IPv4(239, 255, 255, 250), Port: 1900}
+
+	// Send inbound multicast packets by sending multicast packet that loops back.
+	for _, ifname := range ifnames {
 		// Run mDNS query.
-		setTexts(mdnsHostnameOut, mdnsPort)
-		if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
-			s.Error("Failed starting outbound mDNS test: ", err)
+		if err := sendMDNS(mdnsHostnameIn, mdnsPort, ifname, mdnsDst); err != nil {
+			s.Error("Failed starting inbound mDNS test: ", err)
 		}
 		// Run legacy mDNS query.
-		setTexts(legacyMDNSHostnameOut, legacyMDNSPort)
-		if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
-			s.Error("Failed starting outbound legacy mDNS test: ", err)
+		if err := sendMDNS(legacyMDNSHostnameIn, legacyMDNSPort, ifname, mdnsDst); err != nil {
+			s.Error("Failed starting inbound legacy mDNS test: ", err)
 		}
 		// Run SSDP query
-		setTexts(ssdpUserAgentOut, ssdpPort)
-		if err := d.Object(ui.ID(ssdpButtonID)).Click(ctx); err != nil {
-			s.Error("Failed starting outbound SSDP test: ", err)
-		}
-
-		// Set up multicast destination addresses for IPv4 multicast.
-		mdnsDst := &net.UDPAddr{IP: net.IPv4(224, 0, 0, 251), Port: 5353}
-		ssdpDst := &net.UDPAddr{IP: net.IPv4(239, 255, 255, 250), Port: 1900}
-
-		// Send inbound multicast packets by sending multicast packet that loops back.
-		for _, ifname := range ifnames {
-			// Run mDNS query.
-			if err := sendMDNS(mdnsHostnameIn, mdnsPort, ifname, mdnsDst); err != nil {
-				s.Error("Failed starting inbound mDNS test: ", err)
-			}
-			// Run legacy mDNS query.
-			if err := sendMDNS(legacyMDNSHostnameIn, legacyMDNSPort, ifname, mdnsDst); err != nil {
-				s.Error("Failed starting inbound legacy mDNS test: ", err)
-			}
-			// Run SSDP query
-			if err := sendSSDP(ssdpUserAgentIn, ssdpPort, ifname, ssdpDst); err != nil {
-				s.Error("Failed starting inbound SSDP test: ", err)
-			}
+		if err := sendSSDP(ssdpUserAgentIn, ssdpPort, ifname, ssdpDst); err != nil {
+			s.Error("Failed starting inbound SSDP test: ", err)
 		}
 	}
 
 	s.Log("Sending IPv6 multicast packets")
 	toggleIPv6(true)
-	// Try to send multicast packet multiple times.
-	for i := 0; i < 3; i++ {
-		// Send outbound multicast packets from ARC.
-		// Outbound IPv6 multicast should always be tested because there is a kernel provisioned address.
-		// Run IPv6 mDNS query.
-		setTexts(mdnsHostnameOutIPv6, mdnsPort)
-		if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
-			s.Error("Failed starting outbound IPv6 mDNS test: ", err)
-		}
-		// Run IPv6 legacy mDNS query.
-		setTexts(legacyMDNSHostnameOutIPv6, legacyMDNSPort)
-		if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
-			s.Error("Failed starting outbound IPv6 legacy mDNS test: ", err)
-		}
-		// Run IPv6 SSDP query
-		setTexts(ssdpUserAgentOutIPv6, ssdpPort)
-		if err := d.Object(ui.ID(ssdpButtonID)).Click(ctx); err != nil {
-			s.Error("Failed starting outbound IPv6 SSDP test: ", err)
-		}
+	// Send outbound multicast packets from ARC.
+	// Outbound IPv6 multicast should always be tested because there is a kernel provisioned address.
+	// Run IPv6 mDNS query.
+	setTexts(mdnsHostnameOutIPv6, mdnsPort)
+	if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
+		s.Error("Failed starting outbound IPv6 mDNS test: ", err)
+	}
+	// Run IPv6 legacy mDNS query.
+	setTexts(legacyMDNSHostnameOutIPv6, legacyMDNSPort)
+	if err := d.Object(ui.ID(mdnsButtonID)).Click(ctx); err != nil {
+		s.Error("Failed starting outbound IPv6 legacy mDNS test: ", err)
+	}
+	// Run IPv6 SSDP query
+	setTexts(ssdpUserAgentOutIPv6, ssdpPort)
+	if err := d.Object(ui.ID(ssdpButtonID)).Click(ctx); err != nil {
+		s.Error("Failed starting outbound IPv6 SSDP test: ", err)
+	}
 
-		// Skip IPv6 inboud multicast test if there is no connectivity.
-		if !ipv6Multicast {
-			continue
-		}
-
+	// Skip IPv6 inboud multicast test if there is no connectivity.
+	if ipv6Multicast {
 		// Set up multicast destination addresses for IPv6 multicast.
 		mdnsDst := &net.UDPAddr{IP: net.ParseIP("ff02::fb"), Port: 5353}
 		ssdpDst := &net.UDPAddr{IP: net.ParseIP("ff02::c"), Port: 1900}
