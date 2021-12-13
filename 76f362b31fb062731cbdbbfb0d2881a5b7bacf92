@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5653c6e_516757be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-13T10:48:30Z",
+      "side": 1,
+      "message": "I have tried for more then 30seconds also.\n\nBut i observed  after below line it expecting delay.\n\tif err :\u003d monitorCmd.Start(); err !\u003d nil {\n\t\ts.Fatal(\"Failed to run healthd monitor command: \", err)\n\t}",
+      "parentUuid": "68a27a25_412d6f84",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "76f362b31fb062731cbdbbfb0d2881a5b7bacf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70dcf3c3_19b02532",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
         "patchSetId": 3
