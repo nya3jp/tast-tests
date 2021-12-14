@@ -237,6 +237,8 @@ func expectedSwResponse(ctx context.Context) (swResponse, error) {
 			"battery_health",
 			"cpu_cache",
 			"cpu_stress",
+			"cpu_floating_point_accuracy",
+			"cpu_prime_search",
 			"battery_discharge",
 			"battery_charge",
 			"memory",
