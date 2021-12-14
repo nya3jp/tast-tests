@@ -491,11 +491,10 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		Timeout:  10 * time.Second,
 		Interval: 1 * time.Second,
 	})
-	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
 	if err != nil {
 		return errors.Wrapf(err, "validate usb key at %q", usbdev)
 	}
-
+	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
 	testing.ContextLog(ctx, "Checking ChromeOS image name on usbkey")
 	mountPath := fmt.Sprintf("/media/servo_usb/%d", h.ServoProxy.GetPort())
 	// Unmount whatever might be mounted.
