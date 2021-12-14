@@ -101,6 +101,24 @@
       "message": "Do nott need else here because s.Fatal will end the test.",
       "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28e09a1_4bc9e399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-14T20:39:49Z",
+      "side": 1,
+      "message": "I think this will remove some \"else\" while maintaining the same logic:\n\n```\n        // Check the newly downloaded app in Launcher.\n        if translateinstalled {\n                if err :\u003d launcher.LaunchAndWaitForAppOpen(tconn, apps.Translate)(ctx); err !\u003d nil {\n                        s.Fatal(\"Failed to launch Translate app: \", err)\n                }\n                return\n        } \n        if err :\u003d launcher.LaunchApp(tconn, apps.Chat.Name)(ctx); err !\u003d nil {\n                s.Fatal(\"Failed to launch: \", err) \n        }       \n        ui :\u003d uiauto.New(tconn)\n        chatButton :\u003d nodewith.Name(apps.Chat.Name).ClassName(\"ash/ShelfAppButton\")\n        if err :\u003d ui.WaitUntilExists(chatButton)(ctx); err !\u003d nil {\n                s.Fatal(\"Failed to find Google Chat in Shelf: \", err) \n        } \n```\nPlease let me know if you see issue. Thanks.",
+      "parentUuid": "3e34c5f7_c8f9216b",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
