@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17178fb9_ffc0f1e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-14T14:16:16Z",
+      "side": 1,
+      "message": "AddAccount isn\u0027t an Action, can you use uiauto.Combine with it?",
+      "parentUuid": "70106436_0e6a6839",
+      "revId": "e5844a7952b6dc24713ad7fb30135361434381b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aeb7747_5116c021",
         "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
         "patchSetId": 1
