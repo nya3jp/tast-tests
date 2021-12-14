@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d4ddb5d_86b47252",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T13:37:45Z",
+      "side": 1,
+      "message": "Just a meta comments only in this iteration. No code comment yet.",
+      "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e251fb6_8219f6ca",
@@ -43,6 +60,23 @@
         "endLine": 143,
         "endChar": 57
       },
+      "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b593d2bd_e4d893e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T13:37:45Z",
+      "side": 1,
+      "message": "could you elaborate more what is exercised by this test?\nIf this is just a tool, I think we\u0027d like to maintain it as not a part of tests for future maintenance.",
       "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
