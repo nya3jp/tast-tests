@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Adds 2 Kiosk accounts, checks if both are available then starts one of them",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
-			"alt-modalities-stability@google.com",
+			"chromeos-kiosk-eng+TAST@google.com",
 		},
 		Vars: []string{"ui.signinProfileTestExtensionManifestKey"},
 		// Informational attribute can only be removed when
