@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41c83a8_23da9607",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a21c43b_5e572829",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "445c1cb0_70d7e2c1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-09T07:15:04Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 20,
+        "startChar": 42,
+        "endLine": 20,
+        "endChar": 64
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60fe4f7b_808300ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "445c1cb0_70d7e2c1",
       "range": {
         "startLine": 20,
         "startChar": 42,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5351d59a_b766c449",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8332d86_5f7f8ca8",
+      "range": {
+        "startLine": 51,
+        "startChar": 43,
+        "endLine": 51,
+        "endChar": 59
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ecec87a_0ce803ce",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-09T07:15:04Z",
       "side": 1,
       "message": "Move to L73 Right after sceneLog generated as:\n```\ndefer d.Conn().CommandContext(ctx, \"rm\", sceneLog).Run();\n```",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 2
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf5e5be8_c638a200",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ecec87a_0ce803ce",
       "range": {
         "startLine": 78,
         "startChar": 1,
@@ -139,6 +235,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d0aefe_4caf6e07",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af97e378_daa21039",
+      "range": {
+        "startLine": 43,
+        "startChar": 48,
+        "endLine": 43,
+        "endChar": 64
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef90191_25aca3ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50f0e789_b7cb9ff1",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69f03fd3_ef314416",
@@ -185,6 +329,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "706c638a_bcd940ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "use chart helper to close the chart",
+      "parentUuid": "69f03fd3_ef314416",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6aaf493_db49eec9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Add 10 minutes in test parameter.",
+      "parentUuid": "fa8751f1_5518d852",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9031ff30_3735c687",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-12-09T07:15:04Z",
       "side": 1,
       "message": "return displayLevel",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "135a30cc_f549a39a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9031ff30_3735c687",
       "range": {
         "startLine": 57,
         "startChar": 3,
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb05a64_f40e6e4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e74e8db1_3b356a23",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e0ad7a0_d3a9e48b",
@@ -244,6 +484,30 @@
       "writtenOn": "2021-12-09T07:15:04Z",
       "side": 1,
       "message": "This should happen before next chart.New() instead of in the end of the function.\nI would suggest to wrap with another struct type like |chartDisplayer| having a flag handling when we should detroy chart.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 31
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e97ae50_5e9c30d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e0ad7a0_d3a9e48b",
       "range": {
         "startLine": 92,
         "startChar": 1,
@@ -277,6 +541,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc6e4bb_8c0f3659",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32254569_83760778",
+      "range": {
+        "startLine": 100,
+        "startChar": 34,
+        "endLine": 100,
+        "endChar": 39
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bfe4ffe_0fec284f",
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd66882a_e784c6a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bfe4ffe_0fec284f",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 31
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "251ff632_e1b701a3",
@@ -313,6 +625,30 @@
       "writtenOn": "2021-12-09T07:15:04Z",
       "side": 1,
       "message": "Don\u0027t pass in self generated tmp filename here. Instead, call |ioutil.TempDir| in |GetFaceLumaValue| to allocate a temp file/dir for saving sceneLog.",
+      "range": {
+        "startLine": 106,
+        "startChar": 65,
+        "endLine": 106,
+        "endChar": 101
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f94d33ea_7563a73c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-14T09:12:16Z",
+      "side": 1,
+      "message": "The filepath generated by |ioutil.TempDir| can\u0027t be used on the DUT.\nI think we can use /tmp/ paths on DUT.",
+      "parentUuid": "251ff632_e1b701a3",
       "range": {
         "startLine": 106,
         "startChar": 65,
