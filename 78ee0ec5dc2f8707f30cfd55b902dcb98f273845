@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43942fb7_2adc3c71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-12-14T05:30:43Z",
+      "side": 1,
+      "message": "Changes under camerabox/ LGTM.",
+      "revId": "78ee0ec5dc2f8707f30cfd55b902dcb98f273845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
