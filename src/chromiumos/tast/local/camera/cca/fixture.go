@@ -26,7 +26,7 @@ import (
 const (
 	ccaSetUpTimeout        = 25 * time.Second
 	ccaTearDownTimeout     = 5 * time.Second
-	testBridgeSetUpTimeout = 5 * time.Second
+	testBridgeSetUpTimeout = 20 * time.Second
 	setUpTimeout           = chrome.LoginTimeout + testBridgeSetUpTimeout
 	tearDownTimeout        = chrome.ResetTimeout
 )
