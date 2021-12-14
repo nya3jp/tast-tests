@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -70,13 +71,13 @@ func init() {
 				{
 					searchTerm:        "Screen lock PIN",
 					searchResult:      "Screen lock PIN, Lock screen and sign-in",
-					wantValue:         "Lock screen and sign-in",
+					wantValue:         "Lock screen",
 					passwordProtected: true,
 				},
 				{
 					searchTerm:        "Lock screen",
 					searchResult:      "Lock screen and sign-in, Security and Privacy",
-					wantValue:         "Lock screen and sign-in",
+					wantValue:         "Lock screen",
 					passwordProtected: true,
 				},
 				{
@@ -162,7 +163,8 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			expectedNode := nodewith.Name(tc.wantValue).First()
+			settings := nodewith.NameStartingWith("Settings").Role(role.Window).First()
+			expectedNode := nodewith.Name(tc.wantValue).Ancestor(settings).First()
 			if err := ui.WaitUntilExists(expectedNode)(ctx); err != nil {
 				s.Fatalf("Failed to find the node with name %q: %v", tc.wantValue, err)
 			}
