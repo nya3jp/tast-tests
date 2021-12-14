@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c237fb5b_343829e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-14T14:12:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13931388_df56d07a",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 9
+      },
+      "revId": "b10277c020dfc6c55ca845c6a86e04534a9542e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88a8853b_064fe178",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-14T04:11:13Z",
       "side": 1,
       "message": "Running",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 14
+      },
+      "revId": "b10277c020dfc6c55ca845c6a86e04534a9542e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be4a0a7_096052fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-14T14:12:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88a8853b_064fe178",
       "range": {
         "startLine": 59,
         "startChar": 8,
@@ -83,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e40a9f9_ef687013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-14T14:12:39Z",
+      "side": 1,
+      "message": "\u003e Is it used to prepare the test environment?\nYes, do you think I should rename the method?",
+      "parentUuid": "a0eed8f6_59c675a5",
+      "revId": "b10277c020dfc6c55ca845c6a86e04534a9542e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2c2a0df_5c5bdd6e",
         "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
         "patchSetId": 2
@@ -94,6 +160,30 @@
       "writtenOn": "2021-12-14T04:11:13Z",
       "side": 1,
       "message": "account",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "b10277c020dfc6c55ca845c6a86e04534a9542e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c78521_825913a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-14T14:12:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2c2a0df_5c5bdd6e",
       "range": {
         "startLine": 94,
         "startChar": 27,
