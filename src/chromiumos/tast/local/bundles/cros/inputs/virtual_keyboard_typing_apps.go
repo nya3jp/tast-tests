@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -50,6 +51,7 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
@@ -64,7 +66,8 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 	searchFieldFinder := nodewith.Role(role.SearchBox).Name("Search settings")
-	if err := uiauto.Combine("test virtual keyboard input in settings app",
+
+	validateAction := uiauto.Combine("test virtual keyboard input in settings app",
 		vkbCtx.ClickUntilVKShown(searchFieldFinder),
 		vkbCtx.WaitForDecoderEnabled(true),
 		vkbCtx.TapKeysIgnoringCase(strings.Split(typingKeys, "")),
@@ -72,7 +75,18 @@ func VirtualKeyboardTypingApps(ctx context.Context, s *testing.State) {
 		vkbCtx.HideVirtualKeyboard(),
 		// Validate text.
 		util.WaitForFieldTextToBeIgnoringCase(tconn, searchFieldFinder, typingKeys),
-	)(ctx); err != nil {
+	)
+
+	if err := useractions.NewUserAction("VK typing",
+		validateAction,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeInputField: "OS setting search field",
+			},
+			Tags: []useractions.ActionTag{useractions.ActionTagOSSettings},
+		},
+	).Run(ctx); err != nil {
 		s.Fatal("Failed to verify virtual keyboard input in settings: ", err)
 	}
 }
