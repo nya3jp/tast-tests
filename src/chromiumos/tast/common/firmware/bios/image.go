@@ -297,3 +297,42 @@ func (i *Image) GetLayout() []byte {
 	sort.Strings(data)
 	return []byte(strings.Join(data, "\n") + "\n")
 }
+
+// EnableAPSoftwareWriteProtect enables and specifies the RO region for the AP.
+func EnableAPSoftwareWriteProtect(ctx context.Context) error {
+	tmpFile, err := ioutil.TempFile("/var/tmp", "")
+	if err != nil {
+		return errors.Wrap(err, "creating tmpfile to enable AP write protect")
+	}
+	defer os.Remove(tmpFile.Name())
+
+	// Check AP firmware WP range.
+	if err := testexec.CommandContext(ctx, "flashrom", "-p", "host", "-r", "-i", "FMAP:"+tmpFile.Name()).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to read the bios file")
+	}
+
+	out, err := testexec.CommandContext(ctx, "fmap_decode", tmpFile.Name()).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to decode the bios file")
+	}
+
+	// Parse the output to get the areaOffset and areaSize values for write protection.
+	stringv := strings.Split(string(out), "\n")
+	var areaOffset string
+	var areaSize string
+	for _, line := range stringv {
+		if strings.Contains(line, "WP_RO") {
+			values := strings.Split(line, "\"")
+			areaOffset = values[1]
+			areaSize = values[3]
+			break
+		}
+	}
+
+	// Declare the starting and ending range to run in the flashrom command for write protection.
+	command := fmt.Sprintf("%v,%v", areaOffset, areaSize)
+	if err = testexec.CommandContext(ctx, "flashrom", "-p", "host", "--wp-enable", "--wp-range", command).Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "unable to run the declared write protection range in flashrom")
+	}
+	return nil
+}
