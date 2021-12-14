@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cebecbd7_b73906e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T05:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eac1355_2d9d3465",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c78dc7b7_54e5d52f",
@@ -136,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf539ddf_90bacdbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T05:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78dc7b7_54e5d52f",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3cdb1e2_6144a15d",
@@ -149,6 +197,24 @@
       "writtenOn": "2021-12-14T02:24:03Z",
       "side": 1,
       "message": "Could you left some comments stating that we return 0% if we failed to find the regex?\nAnd some comment describing diffImages boolean?",
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc873db7_ce227534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T05:31:06Z",
+      "side": 1,
+      "message": "This function now returns a bool to let us know if the images are same or different as well, Ilya and I are using it as a means to get rid of the extra bool parameter.",
+      "parentUuid": "b3cdb1e2_6144a15d",
       "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -271,6 +337,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4843deb_f7aa01a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T05:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f26a8d1e_28612783",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 16
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aff3a926_94af25d7",
@@ -294,6 +384,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a388979_36b3c118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T05:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aff3a926_94af25d7",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 15
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b624db8_3952bd74",
@@ -307,6 +421,30 @@
       "writtenOn": "2021-12-14T02:24:03Z",
       "side": 1,
       "message": "vt?",
+      "range": {
+        "startLine": 244,
+        "startChar": 26,
+        "endLine": 244,
+        "endChar": 28
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28240071_f38c9db3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T05:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b624db8_3952bd74",
       "range": {
         "startLine": 244,
         "startChar": 26,
