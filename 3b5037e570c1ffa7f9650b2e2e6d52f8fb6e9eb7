@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05d9994e_56e3e033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-14T14:02:23Z",
+      "side": 1,
+      "message": "Hey! I did not know about this CL and I drafted the tests on my own: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3313073\n\nshould I drop mine? Or should we merge them somehow? The CLs are probably slightly different.\n\n",
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88f97e5c_2c8fca86",
