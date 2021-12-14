@@ -159,26 +159,63 @@ func (s *ScanApp) ClickMoreSettings() uiauto.Action {
 	return s.LeftClick(nodewith.Name("More settings").Role(role.Button))
 }
 
+// selectScanSetting is a helper function for the various SelectXXX functions
+// which follow.
+func (s *ScanApp) selectScanSetting(name DropdownName, value string) uiauto.Action {
+	var steps []uiauto.Action
+	dropdownFinder := nodewith.Name(string(name)).ClassName("md-select")
+	dropdownOptionFinder := nodewith.Name(value).Role(role.ListBoxOption)
+	steps = append(steps, s.LeftClick(dropdownFinder), s.LeftClick(dropdownOptionFinder))
+
+	return uiauto.Combine(fmt.Sprintf("Select%s", string(name)), steps...)
+}
+
+// SelectScanner returns a function that interacts with the Scan app to select
+// `scanner` from the list of detected scanners.
+func (s *ScanApp) SelectScanner(scanner string) uiauto.Action {
+	return s.selectScanSetting(DropdownNameScanner, scanner)
+}
+
+// SelectSource returns a function that interacts with the Scan app to select
+// `source` from the list of supported sources.
+func (s *ScanApp) SelectSource(source Source) uiauto.Action {
+	return s.selectScanSetting(DropdownNameSource, string(source))
+}
+
+// SelectPageSize returns a function that interacts with the Scan app to select
+// `pageSize` from the list of supported page sizes.
+func (s *ScanApp) SelectPageSize(pageSize PageSize) uiauto.Action {
+	return s.selectScanSetting(DropdownNamePageSize, string(pageSize))
+}
+
+// SelectColorMode returns a function that interacts with the Scan app to select
+// `colorMode` from the list of supported color modes.
+func (s *ScanApp) SelectColorMode(colorMode ColorMode) uiauto.Action {
+	return s.selectScanSetting(DropdownNameColorMode, string(colorMode))
+}
+
+// SelectResolution returns a function that interacts with the Scan app to
+// select `resolution` from the list of supported resolutions.
+func (s *ScanApp) SelectResolution(resolution Resolution) uiauto.Action {
+	return s.selectScanSetting(DropdownNameResolution, string(resolution))
+}
+
+// SelectFileType returns a function that interacts with the Scan app to
+// select `fileType` from the list of supported file types.
+func (s *ScanApp) SelectFileType(fileType FileType) uiauto.Action {
+	return s.selectScanSetting(DropdownNameFileType, string(fileType))
+}
+
 // SetScanSettings returns a function that interacts with the Scan app to set
 // the scan settings.
 func (s *ScanApp) SetScanSettings(settings ScanSettings) uiauto.Action {
 	var steps []uiauto.Action
-	for _, dropdown := range []struct {
-		name   DropdownName
-		option string
-	}{
-		{DropdownNameScanner, settings.Scanner},
-		{DropdownNameSource, string(settings.Source)},
-		{DropdownNameFileType, string(settings.FileType)},
-		{DropdownNameColorMode, string(settings.ColorMode)},
-		{DropdownNamePageSize, string(settings.PageSize)},
-		{DropdownNameResolution, string(settings.Resolution)},
-	} {
-		dropdownFinder := nodewith.Name(string(dropdown.name)).ClassName("md-select")
-		dropdownOptionFinder := nodewith.Name(dropdown.option).Role(role.ListBoxOption)
-		steps = append(steps, s.LeftClick(dropdownFinder), s.LeftClick(dropdownOptionFinder))
-	}
-
+	steps = append(steps, s.SelectScanner(settings.Scanner))
+	steps = append(steps, s.SelectSource(settings.Source))
+	steps = append(steps, s.SelectFileType(settings.FileType))
+	steps = append(steps, s.SelectColorMode(settings.ColorMode))
+	steps = append(steps, s.SelectPageSize(settings.PageSize))
+	steps = append(steps, s.SelectResolution(settings.Resolution))
 	return uiauto.Combine("SetScanSettings", steps...)
 }
 
