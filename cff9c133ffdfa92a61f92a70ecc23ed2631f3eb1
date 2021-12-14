@@ -69,6 +69,24 @@
       "parentUuid": "c965e659_d0952aa6",
       "revId": "cff9c133ffdfa92a61f92a70ecc23ed2631f3eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42876b5c_59caf59d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-14T01:44:45Z",
+      "side": 1,
+      "message": "Right, lgtm as it allows .md files to be approved by either the tast owners or the wifi team. The new ownership framework for tast-tests is in design, it is still not clear whether a stringent review is needed at this stage.",
+      "parentUuid": "7eedfe34_91ada881",
+      "revId": "cff9c133ffdfa92a61f92a70ecc23ed2631f3eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
