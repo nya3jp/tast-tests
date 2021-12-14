@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf07016_3fa1065b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-14T16:18:55Z",
+      "side": 1,
+      "message": "Reworked this.  Please check now.",
+      "parentUuid": "2900f42f_20253995",
+      "revId": "3598eac66aa298c58543d4950d7fdbd87ee527e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a1ca1c9_d3d3293a",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-13T21:23:53Z",
       "side": 1,
       "message": "could you potentially use CollectPcapForAction instead?",
+      "revId": "3598eac66aa298c58543d4950d7fdbd87ee527e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186033eb_37e45cfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-14T16:18:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a1ca1c9_d3d3293a",
       "revId": "3598eac66aa298c58543d4950d7fdbd87ee527e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

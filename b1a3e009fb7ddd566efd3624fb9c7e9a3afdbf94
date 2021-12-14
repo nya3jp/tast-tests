@@ -1176,6 +1176,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7bdec0_e6b0246d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-14T16:18:55Z",
+      "side": 1,
+      "message": "OK.  I\u0027ve decided to move AP2 to 5GHz (channel 48).  Hopefully just changing channel is enough.",
+      "parentUuid": "bfca4124_c102a8ee",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6003b41a_273fdc8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-14T16:18:55Z",
+      "side": 1,
+      "message": "Tracked now under different comment.",
+      "parentUuid": "faa0da93_76878e73",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae3b1f4_98e22a86",
