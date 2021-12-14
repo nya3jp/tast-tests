@@ -16,6 +16,23 @@
       "message": "jbettis: PTAL",
       "revId": "72f25f02b3e87bb8e68ef136b8e6f428910391e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d086ca76_405564bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-14T22:33:29Z",
+      "side": 1,
+      "message": "Also, there should be more free space in /var/tmp instead of /tmp.",
+      "revId": "72f25f02b3e87bb8e68ef136b8e6f428910391e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
