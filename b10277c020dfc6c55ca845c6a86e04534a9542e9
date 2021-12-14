@@ -147,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "973bbed6_da209c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_new_account.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2021-12-14T15:38:38Z",
+      "side": 1,
+      "message": "That would be great. Say renaming it as SetUp() or more verbose version, KeepPrimaryAccount() or RemoveOtherAccount().\n\nHowever, the renaming task should be in a separate CL. Let\u0027s commit this one first.",
+      "parentUuid": "8e40a9f9_ef687013",
+      "revId": "b10277c020dfc6c55ca845c6a86e04534a9542e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2c2a0df_5c5bdd6e",
