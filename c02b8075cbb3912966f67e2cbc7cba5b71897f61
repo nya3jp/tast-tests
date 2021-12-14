@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92af39e1_ca264fff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T21:08:51Z",
+      "side": 1,
+      "message": "Almost! Thank you!",
+      "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdc709dd_41964eaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T21:08:51Z",
+      "side": 1,
+      "message": "You missed one scenario, err !\u003d nil \u0026\u0026 !isSame\n\nIt is easier to figure that out if you have two layer of if/else\n\nif err !\u003d nil {\n   if isSame {\n       s.Errorf(....)\n       return\n   } else {\n       // Handle !isSame and return\n   }\n}\n// Handle successful run\nif isSame {\n   identicalScreenshots[vt]++\n   return\n} else {\n   s.Errorf(...)\n   maxDifferencePercent[vt] \u003d ...\n   return\n}",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 25
+      },
+      "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "633b8a9b_cc71db68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T21:08:51Z",
+      "side": 1,
+      "message": "Any reason we check isSame here? From what I can tell, checking err !\u003d nil is sufficient.",
+      "range": {
+        "startLine": 239,
+        "startChar": 15,
+        "endLine": 239,
+        "endChar": 25
+      },
+      "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44bead84_7691e337",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T21:08:51Z",
+      "side": 1,
+      "message": "Could you also output the error for debugging.",
+      "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
