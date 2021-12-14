@@ -98,7 +98,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithIPPUSBDescriptors(),
-		usbprinter.WithAttributes(scanning.Attributes),
+		usbprinter.WithGenericIPPAttributes(),
 		usbprinter.WithESCLCapabilities(scanning.EsclCapabilities),
 		usbprinter.ExpectUdevEventOnStop(),
 		usbprinter.WaitUntilConfigured())

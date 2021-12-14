@@ -43,7 +43,7 @@ func PrintIPPUSB(ctx context.Context, s *testing.State) {
 	usbprintertests.RunPrintTest(ctx, s,
 		[]usbprinter.Option{
 			usbprinter.WithIPPUSBDescriptors(),
-			usbprinter.WithAttributes("/usr/local/etc/virtual-usb-printer/ipp_attributes.json"),
+			usbprinter.WithGenericIPPAttributes(),
 			usbprinter.WithRecordPath(recordPath),
 			usbprinter.WaitUntilConfigured(),
 		},

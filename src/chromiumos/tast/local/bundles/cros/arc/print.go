@@ -127,7 +127,6 @@ func Print(ctx context.Context, s *testing.State) {
 		apkName      = "ArcPrintTest.apk"
 		pkgName      = "org.chromium.arc.testapp.print"
 		activityName = "MainActivity"
-		attributes   = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 		printerName  = "DavieV Virtual USB Printer (USB)"
 	)
 
@@ -155,7 +154,7 @@ func Print(ctx context.Context, s *testing.State) {
 
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithIPPUSBDescriptors(),
-		usbprinter.WithAttributes(attributes),
+		usbprinter.WithGenericIPPAttributes(),
 		usbprinter.WithRecordPath(recordPath),
 		usbprinter.WaitUntilConfigured())
 	if err != nil {
