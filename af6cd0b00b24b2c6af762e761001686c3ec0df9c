@@ -22,6 +22,30 @@
       },
       "revId": "af6cd0b00b24b2c6af762e761001686c3ec0df9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964d76ba_32ee79fb",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-12-14T18:19:47Z",
+      "side": 1,
+      "message": "That the browser is started from the shelf feels more like an implementation detail to me. What matters from the test\u0027s perspective (and the sole purpose of the function is testing) is the persistency aspect. The simpler branch for Ash is not a bad thing, and it\u0027s analogous to SetUp. So I\u0027d prefer to keep it as is. Happy to reconsider if/when more uses come up.",
+      "parentUuid": "b677825c_1e10bd7a",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "af6cd0b00b24b2c6af762e761001686c3ec0df9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
