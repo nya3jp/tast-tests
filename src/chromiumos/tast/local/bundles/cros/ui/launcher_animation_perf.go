@@ -145,34 +145,54 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// prevHists with current data. (crbug.com/1024071)
 
 	runner := perfutil.NewRunner(cr)
-	currentWindows := 0
 	// Run the launcher open/close flow for various situations.
 	// - change the number of browser windows, 0 or 2.
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
-	for _, windows := range []int{0, 2} {
+	for _, numWindows := range []int{0, 2} {
 		func() {
-			_, l, cs, err := lacros.Setup(ctx, f, s.Param().(browser.Type))
+			// Set up environment. Close all windows at first.
+			ws, err := ash.GetAllWindows(ctx, tconn)
 			if err != nil {
-				s.Fatal("Failed to setup lacrostest: ", err)
+				s.Fatal("Failed to close all windows")
 			}
-			defer lacros.CloseLacros(ctx, l)
-
-			if err := ash.CreateWindows(ctx, tconn, cs, url, windows-currentWindows); err != nil {
-				s.Fatal("Failed to create browser windows: ", err)
-			}
-			// Maximize all windows to ensure a consistent state.
-			if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-				return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
-			}); err != nil {
-				s.Fatal("Failed to maximize windows: ", err)
+			for _, w := range ws {
+				w.CloseWindow(ctx, tconn)
 			}
 
-			if s.Param().(browser.Type) == browser.TypeLacros {
-				if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
-					s.Fatal("Failed to close about:blank: ", err)
+			if numWindows != 0 {
+				_, l, cs, err := lacros.Setup(ctx, f, s.Param().(browser.Type))
+				if err != nil {
+					s.Fatal("Failed to setup lacrostest: ", err)
+				}
+				defer lacros.CloseLacros(ctx, l)
+
+				// To stabilize, if lacros is the test target, wait for the about:blank
+				// window opens.
+				if s.Param().(browser.Type) == browser.TypeLacros {
+					if err := lacros.WaitForLacrosWindow(ctx, tconn, chrome.BlankURL); err != nil {
+						s.Fatal("Failed to wait for Lacros's blank window: ", err)
+					}
+				}
+
+				if err := ash.CreateWindows(ctx, tconn, cs, url, numWindows); err != nil {
+					s.Fatal("Failed to create browser windows: ", err)
+				}
+
+				if s.Param().(browser.Type) == browser.TypeLacros {
+					// Close the empty tab after a tab with url is opened.
+					// Otherwise, this may trigger to terminate lacros.
+					if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
+						s.Fatal("Failed to close about:blank: ", err)
+					}
+				}
+
+				// Maximize all windows to ensure a consistent state.
+				if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+					return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
+				}); err != nil {
+					s.Fatal("Failed to maximize windows: ", err)
 				}
 			}
-			currentWindows = windows
 
 			for _, at := range []launcherAnimationType{animationTypePeeking, animationTypeHalf, animationTypeFullscreenSearch, animationTypeFullscreenAllApps} {
 				// Wait for 1 seconds to stabilize the result. Note that this doesn't
@@ -199,10 +219,10 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 					"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
 				}
 
-				runner.RunMultiple(ctx, s, fmt.Sprintf("%s.%dwindows", suffix, currentWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+				runner.RunMultiple(ctx, s, fmt.Sprintf("%s.%dwindows", suffix, numWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 					return runLauncherAnimation(ctx, tconn, kb, at)
 				}, histograms...),
-					perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", currentWindows)))
+					perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", numWindows)))
 			}
 		}()
 	}
