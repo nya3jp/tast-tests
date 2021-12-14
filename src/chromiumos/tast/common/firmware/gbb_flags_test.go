@@ -38,7 +38,7 @@ func TestCanonicalGBBFlagState(t *testing.T) {
 	}
 
 	for _, s := range states {
-		cA := canonicalGBBFlagsState(s.a)
+		cA := canonicalGBBFlagsState(&s.a)
 		if !reflect.DeepEqual(cA.Clear, s.c.Clear) {
 			t.Errorf("Clear incorrect for canonical %v: \ngot\n%v\nwant\n%v\n\n", s.a.Clear, cA.Clear, s.c.Clear)
 		}
@@ -68,7 +68,7 @@ func TestGBBFlagsStatesEqual(t *testing.T) {
 	}
 
 	for _, s := range states {
-		got := GBBFlagsStatesEqual(s.a, s.b)
+		got := GBBFlagsStatesEqual(&s.a, &s.b)
 		if got != s.want {
 			t.Errorf("Comparing\n%+v\nand\n%+v\ngot %v, want %v", s.a, s.b, got, s.want)
 		}
@@ -94,7 +94,7 @@ func TestGBBFlagsChanged(t *testing.T) {
 		{state(flags(0, 1), flags(0, 1, 2)), state(flags(0, 2), flags()), flags(0), true},
 	}
 	for _, s := range states {
-		got := GBBFlagsChanged(s.a, s.b, s.f)
+		got := GBBFlagsChanged(&s.a, &s.b, s.f)
 		if got != s.want {
 			t.Errorf("Flags %v changed from\n%v\nto%v\ngot %v, want %v", s.f, s.a, s.b, got, s.want)
 		}

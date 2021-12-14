@@ -69,7 +69,7 @@ func Fixture(ctx context.Context, s *testing.State) {
 
 	if res, err := common.GetGBBFlags(ctx, h.DUT); err != nil {
 		s.Error("Failed to get GBB flags: ", err)
-	} else if !common.GBBFlagsStatesEqual(v.GBBFlags, *res) {
+	} else if !common.GBBFlagsStatesEqual(v.GBBFlags, res) {
 		s.Errorf("GBB flags: got %v, want %v", res.Set, v.GBBFlags)
 	}
 }

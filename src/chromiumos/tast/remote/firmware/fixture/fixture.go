@@ -112,7 +112,7 @@ func init() {
 // Value contains fields that are useful for tests.
 type Value struct {
 	BootMode      common.BootMode
-	GBBFlags      pb.GBBFlagsState
+	GBBFlags      *pb.GBBFlagsState
 	Helper        *firmware.Helper
 	ForcesDevMode bool
 }
@@ -186,7 +186,7 @@ func (i *impl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		common.GBBAddFlag(&flags, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC)
 		s.Log("User selected to disable EC software sync")
 	}
-	i.value.GBBFlags = flags
+	i.value.GBBFlags = &flags
 	// If rebooting to recovery mode, verify the usb key.
 	if i.value.BootMode == common.BootModeRecovery || i.value.BootMode == common.BootModeUSBDev {
 		if err := i.value.Helper.RequireServo(ctx); err != nil {
@@ -248,7 +248,7 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	// If this is the first PreTest invocation, save the starting GBB flags.
 	// This isn't in SetUp to avoid reading GetGBBFlags twice. (It's very slow)
 	if i.origGBBFlags == nil {
-		i.origGBBFlags = common.CopyGBBFlags(*curr)
+		i.origGBBFlags = common.CopyGBBFlags(curr)
 		// For backwards compatibility with Tauto FAFT tests, firmware.no_ec_sync=true will leave DISABLE_EC_SOFTWARE_SYNC set after the test is over. See b/194807451
 		// TODO(jbettis): Consider revisiting this flag with something better.
 		if common.GBBFlagsContains(i.value.GBBFlags, pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC) {
@@ -258,14 +258,14 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	}
 
 	rebootRequired := false
-	if common.GBBFlagsStatesEqual(i.value.GBBFlags, *curr) {
+	if common.GBBFlagsStatesEqual(i.value.GBBFlags, curr) {
 		s.Log("GBBFlags are already proper")
 	} else {
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
 		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
 			s.Fatal("SetGBBFlags failed: ", err)
 		}
-		if common.GBBFlagsChanged(*curr, i.value.GBBFlags, common.RebootRequiredGBBFlags()) {
+		if common.GBBFlagsChanged(curr, i.value.GBBFlags, common.RebootRequiredGBBFlags()) {
 			s.Log("Resetting DUT due to GBB flag change")
 			rebootRequired = true
 		}
@@ -344,20 +344,20 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 			s.Fatal("Getting current GBB Flags failed: ", err)
 		}
 
-		if !common.GBBFlagsStatesEqual(*i.origGBBFlags, *curr) {
-			tempGBBFlags := common.CopyGBBFlags(*i.origGBBFlags)
+		if !common.GBBFlagsStatesEqual(i.origGBBFlags, curr) {
+			tempGBBFlags := common.CopyGBBFlags(i.origGBBFlags)
 
 			// If we need to reboot the boot mode, we must have common.FAFTGBBFlags() set, but then we might have to restore the GBB flags again.
 			if rebootRequired {
 				common.GBBAddFlag(tempGBBFlags, common.FAFTGBBFlags()...)
-				setGBBFlagsAfterReboot = !common.GBBFlagsStatesEqual(*tempGBBFlags, *i.origGBBFlags)
+				setGBBFlagsAfterReboot = !common.GBBFlagsStatesEqual(tempGBBFlags, i.origGBBFlags)
 			}
 
 			s.Log("Setting GBB flags to ", tempGBBFlags.Set)
-			if err := common.ClearAndSetGBBFlags(ctx, i.value.Helper.DUT, *tempGBBFlags); err != nil {
+			if err := common.ClearAndSetGBBFlags(ctx, i.value.Helper.DUT, tempGBBFlags); err != nil {
 				s.Fatal("Restore GBB flags failed: ", err)
 			}
-			if common.GBBFlagsChanged(*curr, *tempGBBFlags, common.RebootRequiredGBBFlags()) {
+			if common.GBBFlagsChanged(curr, tempGBBFlags, common.RebootRequiredGBBFlags()) {
 				s.Log("Resetting DUT due to GBB flag change")
 				rebootRequired = true
 			}
@@ -367,7 +367,7 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 	if rebootRequired {
 		opts := []firmware.ModeSwitchOption{firmware.AssumeGBBFlagsCorrect}
 		if i.origGBBFlags != nil {
-			if common.GBBFlagsContains(*i.origGBBFlags, pb.GBBFlag_FORCE_DEV_SWITCH_ON) {
+			if common.GBBFlagsContains(i.origGBBFlags, pb.GBBFlag_FORCE_DEV_SWITCH_ON) {
 				opts = append(opts, firmware.AllowGBBForce)
 			}
 		}
@@ -380,7 +380,7 @@ func (i *impl) TearDown(ctx context.Context, s *testing.FixtState) {
 		}
 		if setGBBFlagsAfterReboot {
 			s.Log("Setting GBB flags to ", i.origGBBFlags.Set)
-			if err := common.ClearAndSetGBBFlags(ctx, i.value.Helper.DUT, *i.origGBBFlags); err != nil {
+			if err := common.ClearAndSetGBBFlags(ctx, i.value.Helper.DUT, i.origGBBFlags); err != nil {
 				s.Fatal("Restore GBB flags failed: ", err)
 			}
 		}
