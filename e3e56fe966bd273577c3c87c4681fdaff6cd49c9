@@ -103,6 +103,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a4b408_dc97f9b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-12-14T16:11:30Z",
+      "side": 1,
+      "message": "+1 for src/chromiumos/tast/services/cros/firmware/fp_updater_service.pb.go",
+      "revId": "e3e56fe966bd273577c3c87c4681fdaff6cd49c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b54fc4_796bf7e0",
