@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "UI prompts when crostini OS needs to be upgraded",
 		Contacts:     []string{"zubinpratap@google.com", "jinrongwu@google.com", "cros-containers-dev@google.com"},
-		VarDeps:      []string{"keepState", "ui.gaiaPoolDefault"},
+		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
