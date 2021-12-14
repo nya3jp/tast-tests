@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c38dcaf_2fc7cae0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-14T04:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9234e2c_8db0da9e",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "c60f7158192a587bd5e8c7c051fc5f22ba7bbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f29a8c_4ad62af6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00859875_8d5dce11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-14T04:24:59Z",
+      "side": 1,
+      "message": "Ack\nI think it\u0027s distinguishable because timestamp header is appended twice for this logs.",
+      "parentUuid": "77f29a8c_4ad62af6",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "c60f7158192a587bd5e8c7c051fc5f22ba7bbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c9e62b9_dbb1ee9a",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-29T01:54:53Z",
       "side": 1,
       "message": "Even if the first runner is not killed by the second runner, it will be killed eventually by context deadline of this test. So I\u0027m afraid this test passes regardless.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "c60f7158192a587bd5e8c7c051fc5f22ba7bbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a05cc0b_cde48e7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-14T04:24:59Z",
+      "side": 1,
+      "message": "I think if ctx deadline is reached, the integration test itself fails.",
+      "parentUuid": "0c9e62b9_dbb1ee9a",
       "range": {
         "startLine": 59,
         "startChar": 1,
