@@ -95,17 +95,17 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 		}, &testing.PollOptions{Timeout: configurationPollTimeout})
 
 		// Verify forwarding rule set up correctly.
-		if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT", "-w").
+		if err := testexec.CommandContext(ctx, "/sbin/iptables", "-C", "FORWARD", "-o", brIFName, "-j", "ACCEPT", "-w").
 			Run(testexec.DumpLogOnError); err != nil {
-			s.Fatalf("Cannot verify iptables -A FORWARD -i %s -o %s -j ACCEPT -w rule: %s", ifName, brIFName, err)
+			s.Fatalf("Cannot verify iptables -A FORWARD -o %s -j ACCEPT -w rule: %s", brIFName, err)
 		}
-		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", ifName, "-o", brIFName, "-j", "ACCEPT", "-w").
+		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-o", brIFName, "-j", "ACCEPT", "-w").
 			Run(testexec.DumpLogOnError); err != nil {
-			s.Fatalf("Cannot verify ip6tables -A FORWARD -i %s -o %s -j ACCEPT -w rule: %s", ifName, brIFName, err)
+			s.Fatalf("Cannot verify ip6tables -A FORWARD -o %s -j ACCEPT -w rule: %s", brIFName, err)
 		}
-		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", brIFName, "-o", ifName, "-j", "ACCEPT", "-w").
+		if err := testexec.CommandContext(ctx, "/sbin/ip6tables", "-C", "FORWARD", "-i", brIFName, "-j", "ACCEPT", "-w").
 			Run(testexec.DumpLogOnError); err != nil {
-			s.Fatalf("Cannot verify ip6tables -A FORWARD -i %s -o %s -j ACCEPT -w rule: %s", brIFName, ifName, err)
+			s.Fatalf("Cannot verify ip6tables -A FORWARD -i %s -j ACCEPT -w rule: %s", brIFName, err)
 		}
 	}
 
