@@ -264,12 +264,12 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWithGaiaProductivityLauncher",
-		Desc:     "Logged into a session with Gaia user where productivity launcher is enabled",
-		Contacts: []string{"tbarzic@google.com"},
-		Vars:     []string{"ui.gaiaPoolDefault"},
+		Name:     "chromeLoggedInThunderbolt",
+		Desc:     "Logged into a user session to support thunderbolt devices",
+		Contacts: []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
+		Vars:     []string{"ui.signinProfileTestExtensionManifestKey"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")), EnableFeatures("ProductivityLauncher")}, nil
+			return []Option{DeferLogin(), LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey"))}, nil
 		}),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
