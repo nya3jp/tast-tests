@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8faaa95_6c4c880a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-14T22:36:30Z",
+      "side": 1,
+      "message": "I think this lgtm now",
+      "revId": "ebd6cbb6039f1dbee1fce0d45de2395e2bf51dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "008d210a_95520755",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-14T22:36:30Z",
+      "side": 1,
+      "message": "Just curious, why\u0027d you update this?",
+      "revId": "ebd6cbb6039f1dbee1fce0d45de2395e2bf51dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65788980_a5e74b76",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-14T22:36:30Z",
+      "side": 1,
+      "message": "nit: _",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 44
+      },
+      "revId": "ebd6cbb6039f1dbee1fce0d45de2395e2bf51dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
