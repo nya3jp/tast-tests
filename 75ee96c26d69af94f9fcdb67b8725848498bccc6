@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db6a677_24b05371",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_code_ab.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-14T17:48:53Z",
+      "side": 1,
+      "message": "Finally found the code that sends this:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/depthcharge/src/arch/x86/boot.c;drc\u003d12d4aea0a4c301d1c77a0ea308d7cf9a4ff29695;l\u003d106\n\nSo I suggest add to the comment \"On x86 platforms, depthcharge sends Port 80 code 0xab just before starting the kernel.\"\n\nIt\u0027s frustrating how many port 80/post codes, use magic numbers.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 62
+      },
+      "revId": "75ee96c26d69af94f9fcdb67b8725848498bccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
