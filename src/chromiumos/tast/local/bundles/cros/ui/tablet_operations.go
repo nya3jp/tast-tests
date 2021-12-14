@@ -44,7 +44,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromeLoggedIn",
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		HardwareDeps: hwdep.D(
 			hwdep.InternalDisplay(),
 			// Scarlet devices are failing temporarily, possibly because of the display

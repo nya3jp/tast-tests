@@ -35,7 +35,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		Fixture:      "chromeLoggedIn",
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{
 			{
