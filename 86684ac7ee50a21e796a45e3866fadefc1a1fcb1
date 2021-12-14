@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aedfb8a_d5e084da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a3cdbcf3_522ed116",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 4
+      },
+      "revId": "86684ac7ee50a21e796a45e3866fadefc1a1fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ea3843e_53203f8f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-13T19:02:07Z",
       "side": 0,
       "message": "Why was this deleted?",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "86684ac7ee50a21e796a45e3866fadefc1a1fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d54e6a8b_2e3386f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 0,
+      "message": "Whoops, not sure how that happened. Done.",
+      "parentUuid": "9ea3843e_53203f8f",
       "range": {
         "startLine": 25,
         "startChar": 3,

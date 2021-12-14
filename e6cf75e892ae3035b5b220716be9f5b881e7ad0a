@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f70b329_8d6c9b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 1,
+      "message": "Ah sorry, this should be squashed into the same line as the one above.",
+      "parentUuid": "8212abad_4bf99653",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "e6cf75e892ae3035b5b220716be9f5b881e7ad0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4772616a_9013211e",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-12-13T19:02:07Z",
       "side": 1,
       "message": "Rename to h264_linear_output_1080p_30fps",
+      "range": {
+        "startLine": 86,
+        "startChar": 24,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "e6cf75e892ae3035b5b220716be9f5b881e7ad0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c9d4c1_5fd71e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4772616a_9013211e",
       "range": {
         "startLine": 86,
         "startChar": 24,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf1eacd_0f91dbb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0d551d_39653eec",
+      "range": {
+        "startLine": 92,
+        "startChar": 24,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "e6cf75e892ae3035b5b220716be9f5b881e7ad0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0674869c_d494f346",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-12-13T19:02:07Z",
       "side": 1,
       "message": "Rename to vp9_linear_output_1080p_30fps",
+      "range": {
+        "startLine": 97,
+        "startChar": 24,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "e6cf75e892ae3035b5b220716be9f5b881e7ad0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cb8c7ed_b0f00f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0674869c_d494f346",
       "range": {
         "startLine": 97,
         "startChar": 24,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ccad5ad_15b7cb49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video_decode_accel_vd_vda_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35c035ef_a4403cf5",
+      "range": {
+        "startLine": 85,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "e6cf75e892ae3035b5b220716be9f5b881e7ad0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2387d2c4_a45b6245",
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57276bd3_12410a57",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2387d2c4_a45b6245",
+      "range": {
+        "startLine": 94,
+        "startChar": 15,
+        "endLine": 95,
+        "endChar": 44
+      },
+      "revId": "e6cf75e892ae3035b5b220716be9f5b881e7ad0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8439a91a_1e899300",
@@ -186,6 +330,30 @@
       "writtenOn": "2021-12-13T19:02:07Z",
       "side": 1,
       "message": "Update.",
+      "range": {
+        "startLine": 171,
+        "startChar": 25,
+        "endLine": 172,
+        "endChar": 52
+      },
+      "revId": "e6cf75e892ae3035b5b220716be9f5b881e7ad0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753db070_bc4263ca",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-14T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8439a91a_1e899300",
       "range": {
         "startLine": 171,
         "startChar": 25,
