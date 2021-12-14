@@ -16,6 +16,63 @@
       "message": "Hi Ben, PTAL.",
       "revId": "83895ce4887cc2ce62bfaeb7b0cdf92ba6a66a09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91280a0_351ad2a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hardware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-14T23:02:18Z",
+      "side": 1,
+      "message": "Where do these entries come from?  We\u0027re already loading the name from a yaml file.  Could we load the whole scanner description from there?",
+      "revId": "83895ce4887cc2ce62bfaeb7b0cdf92ba6a66a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40939d2b_69e49087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hardware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-14T23:02:18Z",
+      "side": 1,
+      "message": "Is this a real scanner with a legal-sized platen?",
+      "range": {
+        "startLine": 46,
+        "startChar": 74,
+        "endLine": 46,
+        "endChar": 87
+      },
+      "revId": "83895ce4887cc2ce62bfaeb7b0cdf92ba6a66a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c8dcb3_a57d1a5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hardware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-14T23:02:18Z",
+      "side": 1,
+      "message": "Is 300 dpi the only supported resolution, or is it the only one we\u0027re interested in testting?",
+      "revId": "83895ce4887cc2ce62bfaeb7b0cdf92ba6a66a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
