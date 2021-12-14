@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a98160_b2c481bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-14T18:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a82becf_23af9d52",
+      "range": {
+        "startLine": 201,
+        "startChar": 59,
+        "endLine": 201,
+        "endChar": 76
+      },
+      "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84e9baa9_92d6d0c7",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16b585e1_173c6925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-14T18:17:00Z",
+      "side": 1,
+      "message": "Yes, that would be useful. I\u0027ll go hunt around for the best way to do this.",
+      "parentUuid": "84e9baa9_92d6d0c7",
+      "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd893685_edb935e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
         "patchSetId": 1
@@ -54,6 +96,24 @@
       "writtenOn": "2021-12-14T07:12:28Z",
       "side": 1,
       "message": "Could you use ioutil?\n\nhttps://pkg.go.dev/io/ioutil#WriteFile",
+      "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121f9779_88073ef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-14T18:17:00Z",
+      "side": 1,
+      "message": "WriteFile will create the file if it doesn\u0027t exist, and I don\u0027t want to do that. If the file doesn\u0027t exist, I\u0027d like this to fail (hence I don\u0027t pass O_CREAT to OpenFile either).",
+      "parentUuid": "bd893685_edb935e6",
       "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
