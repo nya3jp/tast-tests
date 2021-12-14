@@ -275,6 +275,19 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInThunderbolt",
+		Desc:     "Logged into a user session to support thunderbolt devices",
+		Contacts: []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
+		Vars:     []string{"ui.signinProfileTestExtensionManifestKey"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{DeferLogin(), LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey"))}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
