@@ -134,6 +134,24 @@
       "parentUuid": "6886e87f_84fe9d13",
       "revId": "de2175bfadd299de8b415a2d3c11ee47db6a018e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc29c23_6028c1e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/child_wallpaper_sync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-14T10:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16adff09_a72742ec",
+      "revId": "de2175bfadd299de8b415a2d3c11ee47db6a018e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
