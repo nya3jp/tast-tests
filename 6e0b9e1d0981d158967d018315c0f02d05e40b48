@@ -16,6 +16,40 @@
       "message": "Hi Ben, PTAL.",
       "revId": "6e0b9e1d0981d158967d018315c0f02d05e40b48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4713205_1a747725",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-14T22:49:04Z",
+      "side": 1,
+      "message": "Since this is selecting a single setting, would this be more useful if it contained `name` in the name?  Otherwise the log is going to show selectScanSetting, selectScanSetting, etc.",
+      "revId": "6e0b9e1d0981d158967d018315c0f02d05e40b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "910d8125_32cd73d6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-14T22:49:04Z",
+      "side": 1,
+      "message": "Is there any advantage to keeping this as a separate implementation?  Otherwise, what about just changing it to 6 calls to the individual settings functions and combining them so the individual implementations don\u0027t get out of sync?",
+      "revId": "6e0b9e1d0981d158967d018315c0f02d05e40b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
