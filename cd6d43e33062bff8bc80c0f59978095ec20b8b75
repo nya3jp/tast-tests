@@ -455,6 +455,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86480a32_fbb092dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T02:27:44Z",
+      "side": 1,
+      "message": "In the case of images are similar, can we identify the case if the perceptualdiff has exitCode 0? If so, we don\u0027t need PASS regex.",
+      "parentUuid": "fd10b588_a313a560",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdd4870e_cde1a3de",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 13
