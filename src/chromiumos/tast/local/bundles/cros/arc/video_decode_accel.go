@@ -24,6 +24,7 @@ func init() {
 			"andrescj@chromium.org", // For the 'oopvd' variants.
 			"chromeos-video-eng@google.com",
 		},
+		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
