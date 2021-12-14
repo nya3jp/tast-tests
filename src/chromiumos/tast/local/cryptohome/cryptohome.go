@@ -392,6 +392,18 @@ func MountWithAuthSession(ctx context.Context, authSessionID string, publicMount
 	return nil
 }
 
+// ExtendAuthSession extends the internal timer & lifetime of a given AuthSession with authSessionID.
+func ExtendAuthSession(ctx context.Context, authSessionID string, extensionDuration int) error {
+	testing.ContextLogf(ctx, "Trying to extend AuthSession with id: %q", authSessionID)
+	cmd := testexec.ContextLogf(
+		ctx, "cryptohome", "--action=extend_auth_session",
+		"--auth_session_id="+authSessionID, "--extension_duration="+extensionDuration)
+	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to extend AuthSession")
+	}
+	return nil
+}
+
 // InvalidateAuthSession invalidates a user with AuthSessionID.
 func InvalidateAuthSession(ctx context.Context, authSessionID string) error {
 	testing.ContextLogf(ctx, "Trying to invalidate AuthSession with id: %q", authSessionID)
@@ -405,7 +417,7 @@ func InvalidateAuthSession(ctx context.Context, authSessionID string) error {
 }
 
 // AuthSessionMountFlow mounts a user with AuthSession.
-func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password string, createUser bool) error {
+func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, password string, createUser bool, extensionDuration int) error {
 	// Start an Auth session and get an authSessionID.
 	authSessionID, err := StartAuthSession(ctx, username)
 	if err != nil {
@@ -445,6 +457,12 @@ func AuthSessionMountFlow(ctx context.Context, isKioskUser bool, username, passw
 		return errors.Wrap(err, "failed to mount user -")
 	}
 	testing.ContextLog(ctx, "User mounted successfully")
+
+	// Extend AuthSession.
+	if err := ExtendAuthSession(ctx, authSessionID, extensionDuration); err != nil {
+		return errors.Wrap(err, "failed to extend AuthSession")
+	}
+	testing.ContextLog(ctx, "AuthSession extended successfully")
 
 	//Invalidate AuthSession after use.
 	if err := InvalidateAuthSession(ctx, authSessionID); err != nil {

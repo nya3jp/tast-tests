@@ -24,6 +24,9 @@ type authSessionMountParam struct {
 	isKioskUser bool
 	// Should AuthSession create user.
 	createUser bool
+	// Requested duration length to extend AuthSession, beyond default of
+	// five minutes, expressed in seconds.
+	extensionDuration int
 }
 
 func init() {
@@ -38,18 +41,20 @@ func init() {
 		Params: []testing.Param{{
 			Name: "regular_mount",
 			Val: authSessionMountParam{
-				testUser:    "cryptohome_test@chromium.org",
-				testPass:    "testPass",
-				isKioskUser: false,
-				createUser:  true,
+				testUser:          "cryptohome_test@chromium.org",
+				testPass:          "testPass",
+				isKioskUser:       false,
+				createUser:        true,
+				extensionDuration: 60, // 1 minute extension
 			},
 		}, {
 			Name: "kiosk_mount",
 			Val: authSessionMountParam{
-				testUser:    cryptohome.KioskUser,
-				testPass:    "", // Password is derived from username
-				isKioskUser: true,
-				createUser:  true,
+				testUser:          cryptohome.KioskUser,
+				testPass:          "", // Password is derived from username
+				isKioskUser:       true,
+				createUser:        true,
+				extensionDuration: 60, // 1 minute extension
 			},
 		}},
 	})
@@ -61,8 +66,9 @@ func init() {
 // 2. Use that authSessionID to create a new user
 // 3. Authenticate the newly created user
 // 4. Perform mount using AuthSession
-// 5. Invalidate the AuthSession in memory
-// 6. Unmount and remove the user
+// 5. Extend the AuthSession beyond default lifetime
+// 6. Invalidate the AuthSession in memory
+// 7. Unmount and remove the user
 func AuthSessionMount(ctx context.Context, s *testing.State) {
 	userParam := s.Param().(authSessionMountParam)
 
@@ -84,7 +90,7 @@ func AuthSessionMount(ctx context.Context, s *testing.State) {
 	}
 
 	// Run AuthSession Mount Flow for creating user.
-	if err := cryptohome.AuthSessionMountFlow(ctx, userParam.isKioskUser, userParam.testUser, userParam.testPass, userParam.createUser); err != nil {
+	if err := cryptohome.AuthSessionMountFlow(ctx, userParam.isKioskUser, userParam.testUser, userParam.testPass, userParam.createUser, userParam.extensionDuration); err != nil {
 		s.Fatal("Failed to Mount with AuthSession -: ", err)
 	}
 
