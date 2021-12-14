@@ -112,7 +112,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 		} else {
 			flags.Clear = append(flags.Clear, fwpb.GBBFlag_FORCE_DEV_SWITCH_ON, fwpb.GBBFlag_DEV_SCREEN_SHORT_DELAY, fwpb.GBBFlag_FORCE_DEV_BOOT_USB)
 		}
-		if err := fwCommon.ClearAndSetGBBFlags(ctx, h.DUT, flags); err != nil {
+		if err := fwCommon.ClearAndSetGBBFlags(ctx, h.DUT, &flags); err != nil {
 			return errors.Wrap(err, "setting GBB flags")
 		}
 	}

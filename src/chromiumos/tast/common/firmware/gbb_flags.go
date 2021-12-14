@@ -45,7 +45,7 @@ func RebootRequiredGBBFlags() []pb.GBBFlag {
 }
 
 // GBBFlagsStatesEqual determines if 2 GBBFlagsState are the same.
-func GBBFlagsStatesEqual(a, b pb.GBBFlagsState) bool {
+func GBBFlagsStatesEqual(a, b *pb.GBBFlagsState) bool {
 	canonicalA := canonicalGBBFlagsState(a)
 	canonicalB := canonicalGBBFlagsState(b)
 
@@ -53,7 +53,7 @@ func GBBFlagsStatesEqual(a, b pb.GBBFlagsState) bool {
 }
 
 // GBBFlagsChanged determines if any of the flags definitely have changed between a and b.
-func GBBFlagsChanged(a, b pb.GBBFlagsState, flags []pb.GBBFlag) bool {
+func GBBFlagsChanged(a, b *pb.GBBFlagsState, flags []pb.GBBFlag) bool {
 	a = canonicalGBBFlagsState(a)
 	b = canonicalGBBFlagsState(b)
 
@@ -109,7 +109,7 @@ func GetGBBFlags(ctx context.Context, dut *dut.DUT) (*pb.GBBFlagsState, error) {
 }
 
 // ClearAndSetGBBFlags clears and sets specified GBB flags, leaving the rest unchanged.
-func ClearAndSetGBBFlags(ctx context.Context, dut *dut.DUT, state pb.GBBFlagsState) error {
+func ClearAndSetGBBFlags(ctx context.Context, dut *dut.DUT, state *pb.GBBFlagsState) error {
 	state = canonicalGBBFlagsState(state)
 	currentGBB, err := getGBBFlagsInt(ctx, dut)
 	if err != nil {
@@ -170,7 +170,7 @@ func makeFlagsMap(f []pb.GBBFlag) map[pb.GBBFlag]bool {
 }
 
 // canonicalGBBFlagsState standardizes the GBBFlagsState so that they can be more readily compared.  In particular, a flag in both Set and Clear will be deleted from Clear.  The flags are also sorted.
-func canonicalGBBFlagsState(s pb.GBBFlagsState) pb.GBBFlagsState {
+func canonicalGBBFlagsState(s *pb.GBBFlagsState) *pb.GBBFlagsState {
 	setMap := makeFlagsMap(s.Set)
 	clearMap := makeFlagsMap(s.Clear)
 
@@ -185,7 +185,7 @@ func canonicalGBBFlagsState(s pb.GBBFlagsState) pb.GBBFlagsState {
 		}
 	}
 
-	return pb.GBBFlagsState{Clear: canonicalClear, Set: canonicalSet}
+	return &pb.GBBFlagsState{Clear: canonicalClear, Set: canonicalSet}
 }
 
 // GBBToggle adds `flag` to `flags` if it is missing, or removes it if it is present. Returns a new list, and does not modify the `flags` slice.
@@ -208,18 +208,20 @@ func GBBToggle(flags []pb.GBBFlag, flag pb.GBBFlag) []pb.GBBFlag {
 // GBBAddFlag modifies `s` to add all flags in `flags`.
 func GBBAddFlag(s *pb.GBBFlagsState, flags ...pb.GBBFlag) {
 	s.Set = append(s.Set, flags...)
-	*s = canonicalGBBFlagsState(*s)
+	newS := canonicalGBBFlagsState(s)
+	s.Set = newS.Set
+	s.Clear = newS.Clear
 }
 
 // CopyGBBFlags returns a new GBBFlagsState that is a copy of `s`.
-func CopyGBBFlags(s pb.GBBFlagsState) *pb.GBBFlagsState {
+func CopyGBBFlags(s *pb.GBBFlagsState) *pb.GBBFlagsState {
 	// Depends on the behavior of canonicalGBBFlagsState to always return a copy with new Set & Clear arrays.
 	ret := canonicalGBBFlagsState(s)
-	return &ret
+	return ret
 }
 
 // GBBFlagsContains returns true if `s` contains the requested GBB flag `flag`.
-func GBBFlagsContains(s pb.GBBFlagsState, flag pb.GBBFlag) bool {
+func GBBFlagsContains(s *pb.GBBFlagsState, flag pb.GBBFlag) bool {
 	for _, f := range s.Set {
 		if f == flag {
 			return true
