@@ -74,3 +74,11 @@ func (bs *BiosService) ClearAndSetGBBFlags(ctx context.Context, req *pb.GBBFlags
 	}
 	return &empty.Empty{}, nil
 }
+
+// EnableAPSoftwareWriteProtect enables the AP software write protect.
+func (bs *BiosService) EnableAPSoftwareWriteProtect(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	if err := bios.EnableAPSoftwareWriteProtect(ctx); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
