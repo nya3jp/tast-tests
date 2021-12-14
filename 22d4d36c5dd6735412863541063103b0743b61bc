@@ -403,6 +403,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a9794bb_0648170c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-14T01:43:17Z",
+      "side": 1,
+      "message": "Just to clarify: the approach of waiting until cr.Creds() returns non-nil value doesn\u0027t work? I wondered so because from the function construct, it looks like sleeping is needed to get a valid cr.Creds() value.\nMaybe adding real reasons for sleeping is helpful. What does setup mean here, and why it\u0027s needed for testing purpose? e.g. mention service/system,etc. names which must be running.",
+      "parentUuid": "046f1d76_b3d393c6",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 44
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "be3f8b5d_6bdecd9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
         "patchSetId": 3
@@ -654,6 +678,30 @@
       "side": 1,
       "message": "Add more payload after so this does not apply likely.",
       "parentUuid": "f69afe57_fcac442d",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "add7cdff_c1e9b4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-14T01:43:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26de50d4_3d58f166",
       "range": {
         "startLine": 154,
         "startChar": 0,
