@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a82becf_23af9d52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T07:12:28Z",
+      "side": 1,
+      "message": "nit/style: \"got %d, want 1\"",
+      "range": {
+        "startLine": 201,
+        "startChar": 59,
+        "endLine": 201,
+        "endChar": 76
+      },
+      "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e9baa9_92d6d0c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T07:12:28Z",
+      "side": 1,
+      "message": "do you want to save these files in out directory on failure, so that you can diagnose them on failure cases?",
+      "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd893685_edb935e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T07:12:28Z",
+      "side": 1,
+      "message": "Could you use ioutil?\n\nhttps://pkg.go.dev/io/ioutil#WriteFile",
+      "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
