@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12c1879_54aded96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-12-14T13:45:20Z",
+      "side": 1,
+      "message": "Please take a look, also at my questions.",
+      "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fed598dc_2464b909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-12-14T13:45:20Z",
+      "side": 1,
+      "message": "Can you help me out here?\nIdeally we would provide a WaitForWindow method on Browser.\nAlternatively we simply don\u0027t do this waiting and hope there won\u0027t be any flakes.",
+      "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0ae44e_fc4b5173",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-12-14T13:45:20Z",
+      "side": 1,
+      "message": "Ideally we\u0027d read the LacrosDeployedBinary tast variable here in this function, but we are not allowed to pass s (*testing.State) around.",
+      "range": {
+        "startLine": 54,
+        "startChar": 74,
+        "endLine": 54,
+        "endChar": 84
+      },
+      "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
