@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d55ea6_e35025b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c3b3d07_c85554fc",
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f499d656_5c45f8bc",
@@ -100,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e5b06b_2885249e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "485ba327_fccca055",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 21
+      },
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10382ff1_d8630a4d",
@@ -123,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9f6b907_7dbf9602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10382ff1_d8630a4d",
+      "range": {
+        "startLine": 110,
+        "startChar": 43,
+        "endLine": 110,
+        "endChar": 59
+      },
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55fa4920_d5dfb7cc",
@@ -136,6 +202,24 @@
       "writtenOn": "2021-12-09T23:22:56Z",
       "side": 1,
       "message": "Let\u0027s check if err is null.\nBesides, no harm to add testexec.DumpLogOnError\n\nerr :\u003d testexec(...).Run(testexec.DumpLogOnError)\nstatus, ok :\u003d testexec.ExitCode(err)\nif !ok {\n    // Return error\n}\n// Return true",
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf9495d_6d1be418",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55fa4920_d5dfb7cc",
       "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -171,6 +255,24 @@
       "side": 1,
       "message": "Good suggestion. In the next change.",
       "parentUuid": "c0c7103d_e0343625",
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d242bff4_34ce9aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ea12460_907f7e69",
       "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +314,30 @@
       "side": 1,
       "message": "Good catch. Sounds like isPerceptualDiff() should return the number of different pixels as well.",
       "parentUuid": "2c724865_d0e94fb6",
+      "range": {
+        "startLine": 205,
+        "startChar": 10,
+        "endLine": 205,
+        "endChar": 26
+      },
+      "revId": "4b7d234358d47e5edeba17b651e4f3289e279530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "052e37ac_2d9a0207",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "266193bd_77550c15",
       "range": {
         "startLine": 205,
         "startChar": 10,

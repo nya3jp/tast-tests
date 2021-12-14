@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83b2f21_90c75691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da077242_ea35d536",
+      "range": {
+        "startLine": 118,
+        "startChar": 112,
+        "endLine": 118,
+        "endChar": 114
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "051657d6_9b0cb69b",
@@ -110,6 +134,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3b9cf3_223ac660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61c7ca60_48b4d52e",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 6
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe07b448_a99174cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051657d6_9b0cb69b",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96c5918f_adff545d",
@@ -123,6 +195,30 @@
       "writtenOn": "2021-12-13T20:15:42Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 120,
+        "startChar": 26,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75073331_206f95a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96c5918f_adff545d",
       "range": {
         "startLine": 120,
         "startChar": 26,
@@ -150,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "234ab92c_87d20ab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397b0eb9_25edaab4",
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1df320cb_10f8c761",
@@ -173,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a910878_38b422b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df320cb_10f8c761",
+      "range": {
+        "startLine": 122,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 7
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfec5743_6efa334c",
@@ -186,6 +324,30 @@
       "writtenOn": "2021-12-13T20:15:42Z",
       "side": 1,
       "message": "nit. This is not pixels but list of your regex matches. \nNormally we named this as m or matched.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 12
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe03cc1_5c64d703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfec5743_6efa334c",
       "range": {
         "startLine": 123,
         "startChar": 1,
@@ -221,6 +383,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3995896_074aac47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "when the images are similar the log actually does not have the phrase being matched and runs as expected, what we can do is also check for a pharse  \"PASS\" in the output using another regex match and use an extra condition to check the case. What do you think?",
+      "parentUuid": "4501884e_ec095060",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdd4870e_cde1a3de",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 13
@@ -232,6 +418,30 @@
       "writtenOn": "2021-12-13T20:15:42Z",
       "side": 1,
       "message": "Let\u0027s put it right after Atoi for readability.",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60ec223_63162152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdd4870e_cde1a3de",
       "range": {
         "startLine": 130,
         "startChar": 1,
@@ -265,6 +475,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c69b7b_8330c3f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f64f7dc_383b448e",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 14
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43144812_9a28b232",
@@ -278,6 +512,30 @@
       "writtenOn": "2021-12-13T20:15:42Z",
       "side": 1,
       "message": "Put this after the function call as well. \n\nstdout, stderr, err :\u003d testexec.CommandContext(ctx, \"perceptualdiff\", \"-verbose\", file1, file2).SeparatedOutput()\nif err !\u003d nil {\n    return 0, errors.Wrap(err, ...)\n}\nif len(string(stderr)) \u003e 0 {\n    return 0, errrors.New(...)\n}\n\n// Now we have successfully run the perceptualdiff command. Process the output and return the diff",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 17
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1f6d5d6_55e6bf31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43144812_9a28b232",
       "range": {
         "startLine": 140,
         "startChar": 4,
@@ -311,6 +569,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae094906_6b187bf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2af396f7_426a610a",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 20
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "772adfc0_87fb8fd4",
@@ -324,6 +606,30 @@
       "writtenOn": "2021-12-13T07:49:02Z",
       "side": 1,
       "message": "This code is a bit disconnected from everything else.\n\nMaybe this should move into the perceptual difference function and it should return a percentage already?",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 54
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad07aba6_d1e13b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "772adfc0_87fb8fd4",
       "range": {
         "startLine": 192,
         "startChar": 0,
@@ -357,6 +663,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e0af03_326a9c94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabd39a1_fb45cbd8",
+      "range": {
+        "startLine": 205,
+        "startChar": 9,
+        "endLine": 205,
+        "endChar": 11
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ae68db6_9457d51c",
@@ -370,6 +700,30 @@
       "writtenOn": "2021-12-13T07:49:02Z",
       "side": 1,
       "message": "Please remove the Arr in the names. There is no need to add describe types etc. verbally.\n\nAlso just make it [3] and ignore the [0]. It cleans up the code below as you can index just with [vt].",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 35
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "386614b1_203a8e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae68db6_9457d51c",
       "range": {
         "startLine": 222,
         "startChar": 0,
@@ -403,6 +757,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a716d4_21613a65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98ad7098_a00cf65f",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 32
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f45a9e5b_0584e0a4",
@@ -416,6 +794,30 @@
       "writtenOn": "2021-12-13T07:49:02Z",
       "side": 1,
       "message": "This computation could also move into the perceptual diff function.",
+      "range": {
+        "startLine": 246,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 76
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e7f2fca_57c72873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f45a9e5b_0584e0a4",
       "range": {
         "startLine": 246,
         "startChar": 3,

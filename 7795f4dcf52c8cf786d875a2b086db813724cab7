@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b4b266_75d85415",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f02e09_60964728",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc8616d6_48a7f702",
@@ -225,6 +249,30 @@
       "writtenOn": "2021-12-03T19:24:25Z",
       "side": 1,
       "message": "File sizes are a good way. Now we already have a binary comparison tool that will do the job. Try on the DUT the commands below.\n\nHere is the documentation.\nhttp://pdiff.sourceforge.net/\n\nLets add parameters -fov and -threshold instead of differenceSizeThreshold and use them. The defaults are generally good. But because of the ticking clock etc it may need to be adjusted.\n\nlocalhost /usr/local # perceptualdiff -verbose ./deqp/modules/gles31/gles31/data/tessellation/fill_cover_quads_equal_spacing_ref_1.png ./deqp/modules/gles31/gles31/data/tessellation/fill_cover_triangles_fractional_even_spacing_ref_0.png\nField of view is 45.000000 degrees\nThreshold pixels is 100 pixels\nThe Gamma is 2.200000\nThe Display\u0027s luminance is 100.000000 candela per meter squared\nConverting RGB to XYZ\nConstructing Laplacian Pyramids\nPerforming test\nFAIL: Images are visibly different\n10244 pixels are different\n\nlocalhost /usr/local # echo $?\n1\nlocalhost /usr/local # perceptualdiff -verbose ./deqp/modules/gles31/gles31/data/tessellation/fill_cover_quads_equal_spacing_ref_1.png ./deqp/modules/gles31/gles31/data/tessellation/fill_cover_quads_equal_spacing_ref_1.png\nField of view is 45.000000 degrees\nThreshold pixels is 100 pixels\nThe Gamma is 2.200000\nThe Display\u0027s luminance is 100.000000 candela per meter squared\nPASS: Images are binary identical\n\nlocalhost /usr/local # echo $?\n0",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 68
+      },
+      "revId": "7795f4dcf52c8cf786d875a2b086db813724cab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2737fd94_068dab72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c68d6f5b_7ed41d5a",
       "range": {
         "startLine": 147,
         "startChar": 0,

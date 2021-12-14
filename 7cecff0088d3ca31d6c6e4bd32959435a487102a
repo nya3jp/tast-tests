@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab28848_6ad0e5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deb0f84b_711984d7",
+      "range": {
+        "startLine": 109,
+        "startChar": 65,
+        "endLine": 109,
+        "endChar": 79
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6f0259e_0b56afa6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-11T01:54:47Z",
       "side": 1,
       "message": "You can use either ComebinedOutput or SeparatedOutput to achieve this.\nAs you will parse the output, i\u0027d suggest using SeparatedOutput to avoid stdout/stderr interleaving.\n\n1)\nstdout, err :\u003d cmd.ComebinedOutput(...)\n\n2)\nstdout, stderr, err :\u003d cmd.SeparatedOutput(...)",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41ac4b4f_8a835c8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6f0259e_0b56afa6",
       "range": {
         "startLine": 113,
         "startChar": 1,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e92fdee_a8da2214",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7c803c0_ed24154a",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 7
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3993287_8150d1f1",
@@ -117,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb2288c_aa8679a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3993287_8150d1f1",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85958927_ac153c49",
@@ -130,6 +226,30 @@
       "writtenOn": "2021-12-11T01:54:47Z",
       "side": 1,
       "message": "Shouldn\u0027t omit the error. If failed to convert string to int, we should handle it properly.",
+      "range": {
+        "startLine": 123,
+        "startChar": 10,
+        "endLine": 123,
+        "endChar": 11
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c70eaa7_a4736bd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85958927_ac153c49",
       "range": {
         "startLine": 123,
         "startChar": 10,
@@ -165,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a994234_e0259413",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Yes because now are not using percentages anymore as perceptual difference takes care of that for us. However I can calculate the percentages if that is better, otherwise Im doing the absolute number of pixels. I can see the usefulness of having percentages.",
+      "parentUuid": "4ed1e86f_6f9e5fbb",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 17
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03d71aa0_2cf57b5c",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 11
@@ -176,6 +320,30 @@
       "writtenOn": "2021-12-11T01:54:47Z",
       "side": 1,
       "message": "This is misleading. VT switch is actually done in openVT1 and openVT2.\n\nHow about CaptureAndCompare?",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 17
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89edd106_db8f2694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03d71aa0_2cf57b5c",
       "range": {
         "startLine": 195,
         "startChar": 1,
@@ -199,6 +367,30 @@
       "writtenOn": "2021-12-11T01:54:47Z",
       "side": 1,
       "message": "delete.",
+      "range": {
+        "startLine": 208,
+        "startChar": 49,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "7cecff0088d3ca31d6c6e4bd32959435a487102a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f5c0764_ea1c3531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T01:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5999c71b_1436399f",
       "range": {
         "startLine": 208,
         "startChar": 49,
