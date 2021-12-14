@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69cd3d39_bb1b5ac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-14T09:39:15Z",
+      "side": 1,
+      "message": "LGTM if modifications are made based on Kerker\u0027s review comments (comment polling reason and lowercase).",
+      "revId": "9237476d2c0a48d16f0f9cbeaba972d4f9d7af12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a07a8fab_8dd110d7",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-12-14T01:48:07Z",
       "side": 1,
       "message": "lowercase.",
+      "range": {
+        "startLine": 66,
+        "startChar": 50,
+        "endLine": 66,
+        "endChar": 51
+      },
+      "revId": "9237476d2c0a48d16f0f9cbeaba972d4f9d7af12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fea7c64f_3b91f358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-14T09:39:15Z",
+      "side": 1,
+      "message": "nit: I thought this might be capitalized as it is a proper noun, but being consistent within the file/package would make more sense.",
+      "parentUuid": "a07a8fab_8dd110d7",
       "range": {
         "startLine": 66,
         "startChar": 50,
