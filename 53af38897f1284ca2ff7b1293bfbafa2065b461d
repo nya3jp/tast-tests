@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81ed1c17_7c4de5eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T03:29:45Z",
+      "side": 1,
+      "message": "I guess you are referring to vt1Screenshot in l119? \nCan\u0027t we just open file1/file2 and check the image size? Ideally, file1 and file2 should have the same file size isn\u0027t it?",
+      "parentUuid": "e326f1af_1714734b",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c78dc7b7_54e5d52f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 18
@@ -142,6 +166,30 @@
       "side": 1,
       "message": "Okay i can do a combo of pixels and error code extracted via regex. Code 1 exit + some pixels would mean different images otherwise it would mean that something else happened.",
       "parentUuid": "f982205a_31454e0b",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb1a1be_9eea2229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T03:29:45Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "068d6201_041d90e7",
       "range": {
         "startLine": 133,
         "startChar": 1,
