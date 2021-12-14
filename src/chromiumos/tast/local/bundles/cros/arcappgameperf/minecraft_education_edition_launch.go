@@ -43,7 +43,7 @@ func MinecraftEducationEditionLaunch(ctx context.Context, s *testing.State) {
 	)
 
 	testutil.PerformLaunchTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) (isLaunched bool, err error) {
-		// Minecraft shows a "Sign in to Minecraft" prompt within a webview when it is fully loaded.
+		// Minecraft shows a: "Sign in to Minecraft" prompt within a webview when it is fully loaded.
 		if err := params.Device.Object(ui.ClassName("android.webkit.WebView"), ui.TextContains("Sign in to Minecraft")).WaitForExists(ctx, time.Minute*5); err != nil {
 			return false, errors.Wrap(err, "sign in webview was not found")
 		}
