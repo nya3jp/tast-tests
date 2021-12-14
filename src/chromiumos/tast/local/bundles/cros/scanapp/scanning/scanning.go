@@ -93,6 +93,21 @@ type ScannerStruct struct {
 	EsclCaps    string
 }
 
+// SupportedSource describes the options supported by a particular scan source.
+type SupportedSource struct {
+	SourceType           scanapp.Source
+	SupportedColorModes  []scanapp.ColorMode
+	SupportedPageSizes   []scanapp.PageSize
+	SupportedResolutions []scanapp.Resolution
+}
+
+// ScannerDescriptor contains the parameters used to test the scan app on real
+// hardware.
+type ScannerDescriptor struct {
+	ScannerName      string
+	SupportedSources []SupportedSource
+}
+
 // RunAppSettingsTests takes in the Chrome instance and the specific testing parameters
 // and performs the test, including attaching the virtual USB printer, launching
 // the scanapp, clicking through the settings, and verifying proper image output.
@@ -185,4 +200,56 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	// to finish using the printer (e.g. CUPS background probing).
 	usbprinter.StopPrinter(cleanupCtx, printer, devInfo)
 	printer = nil
+}
+
+// RunHardwareTests tests that the scan app can select each of the options
+// provided by each scanner in `scanners`. This function is intended to be run
+// on real hardware, not the virtual USB printer.
+func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, scanners []ScannerDescriptor) {
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
+
+	app, err := scanapp.LaunchWithPollOpts(ctx, testing.PollOptions{Interval: 2 * time.Second, Timeout: 1 * time.Minute}, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch app: ", err)
+	}
+
+	if err := app.ClickMoreSettings()(ctx); err != nil {
+		s.Fatal("Failed to expand More settings: ", err)
+	}
+
+	// Loop through all of the supported options. Skip file type for now, since
+	// that is not a property of the scanners themselves and we're not
+	// performing any real scans.
+	for number, scanner := range scanners {
+		if err := app.SelectScanner(scanner.ScannerName)(ctx); err != nil {
+			// Don't log the scanner name or error here because they contain private data.
+			s.Fatal("Failed to select scanner number: ", number)
+		}
+		for _, source := range scanner.SupportedSources {
+			if err := app.SelectSource(source.SourceType)(ctx); err != nil {
+				s.Fatalf("Failed to select source: %s: %v", source.SourceType, err)
+			}
+			for _, colorMode := range source.SupportedColorModes {
+				if err := app.SelectColorMode(colorMode)(ctx); err != nil {
+					s.Fatalf("Failed to select color mode: %s: %v", colorMode, err)
+				}
+				for _, pageSize := range source.SupportedPageSizes {
+					if err := app.SelectPageSize(pageSize)(ctx); err != nil {
+						s.Fatalf("Failed to select page size: %s: %v", pageSize, err)
+					}
+					for _, resolution := range source.SupportedResolutions {
+						if err := app.SelectResolution(resolution)(ctx); err != nil {
+							s.Fatalf("Failed to select resolution: %s, %v", resolution, err)
+						}
+					}
+				}
+			}
+		}
+	}
 }
