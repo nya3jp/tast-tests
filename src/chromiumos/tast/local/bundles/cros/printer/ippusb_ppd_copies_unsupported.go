@@ -33,8 +33,7 @@ func init() {
 // IPP-over-USB printer whose "copies-supported" IPP attribute has an upper
 // limit of 1 (i.e., it does not support copies).
 func IPPUSBPPDCopiesUnsupported(ctx context.Context, s *testing.State) {
-	const descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-	usbprintertests.RunIPPUSBPPDTest(ctx, s, descriptors, s.DataPath("ippusb_copies_unsupported.json"), map[string]string{
+	usbprintertests.RunIPPUSBPPDTest(ctx, s, s.DataPath("ippusb_copies_unsupported.json"), map[string]string{
 		"*cupsManualCopies": "True",
 		"*cupsMaxCopies":    "1",
 	})

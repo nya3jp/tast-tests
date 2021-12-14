@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/local/bundles/cros/printer/usbprintertests"
+	"chromiumos/tast/local/printing/usbprinter"
 	"chromiumos/tast/testing"
 )
 
@@ -32,11 +33,6 @@ func init() {
 }
 
 func PrintIPPUSB(ctx context.Context, s *testing.State) {
-	const (
-		descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-		attributes  = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-	)
-
 	tmpDir, err := ioutil.TempDir("", "tast.printer.PrintIPPUSB.")
 	if err != nil {
 		s.Fatal("Failed to create temporary directory")
@@ -44,5 +40,15 @@ func PrintIPPUSB(ctx context.Context, s *testing.State) {
 	defer os.RemoveAll(tmpDir)
 	recordPath := filepath.Join(tmpDir, "record.pdf")
 
-	usbprintertests.RunPrintTest(ctx, s, descriptors, attributes, recordPath, "", s.DataPath("print_ippusb_to_print.pdf"), s.DataPath("print_ippusb_golden.pdf"))
+	usbprintertests.RunPrintTest(ctx, s,
+		[]usbprinter.Option{
+			usbprinter.WithIPPUSBDescriptors(),
+			usbprinter.WithAttributes("/usr/local/etc/virtual-usb-printer/ipp_attributes.json"),
+			usbprinter.WithRecordPath(recordPath),
+			usbprinter.WaitUntilConfigured(),
+		},
+		recordPath,
+		"",
+		s.DataPath("print_ippusb_to_print.pdf"),
+		s.DataPath("print_ippusb_golden.pdf"))
 }

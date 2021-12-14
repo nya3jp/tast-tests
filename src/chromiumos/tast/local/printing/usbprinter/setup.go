@@ -57,6 +57,11 @@ type config struct {
 // to build a Printer via Start().
 type Option func(*config) error
 
+// WithIPPUSBDescriptors passes the most commonly used USB descriptors.
+func WithIPPUSBDescriptors() Option {
+	return WithDescriptors("ippusb_printer.json")
+}
+
 // WithDescriptors sets the required descriptors.
 func WithDescriptors(path string) Option {
 	return func(o *config) error {

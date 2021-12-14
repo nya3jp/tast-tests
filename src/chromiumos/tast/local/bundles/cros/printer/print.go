@@ -46,7 +46,6 @@ func init() {
 func Print(ctx context.Context, s *testing.State) {
 	const (
 		attributes    = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-		descriptors   = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 		settingsLabel = "Printers"
 		settingsPage  = "osPrinting"
 	)
@@ -73,7 +72,7 @@ func Print(ctx context.Context, s *testing.State) {
 	}
 
 	printer, err := usbprinter.Start(ctx,
-		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithIPPUSBDescriptors(),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WaitUntilConfigured())
 	if err != nil {
