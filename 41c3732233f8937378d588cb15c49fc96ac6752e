@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b957b56a_a698b14f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T14:07:57Z",
+      "side": 1,
+      "message": "could you check an error?",
+      "range": {
+        "startLine": 71,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fed598dc_2464b909",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
         "patchSetId": 1
@@ -37,6 +60,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fd34f7a_ff0567f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T14:07:57Z",
+      "side": 1,
+      "message": "Browser.WaitForWindow SGTM.",
+      "parentUuid": "fed598dc_2464b909",
+      "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f0ae44e_fc4b5173",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
         "patchSetId": 1
@@ -48,6 +89,30 @@
       "writtenOn": "2021-12-14T13:45:20Z",
       "side": 1,
       "message": "Ideally we\u0027d read the LacrosDeployedBinary tast variable here in this function, but we are not allowed to pass s (*testing.State) around.",
+      "range": {
+        "startLine": 54,
+        "startChar": 74,
+        "endLine": 54,
+        "endChar": 84
+      },
+      "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db282c6_fd03c440",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T14:07:57Z",
+      "side": 1,
+      "message": "If lacrosDeployedBinary is set, lacrosfixt.FixtValue.LacrosPath() should point it, so we don\u0027t need it?\nCurrently the passed lacrosPath is an empty or lacrosDeplyedBinary if specified, IIUC.",
+      "parentUuid": "0f0ae44e_fc4b5173",
       "range": {
         "startLine": 54,
         "startChar": 74,
