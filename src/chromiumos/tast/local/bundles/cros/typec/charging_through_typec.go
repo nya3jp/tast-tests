@@ -19,35 +19,51 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type chargeTypecTestParams struct {
+	connector string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ChargingThroughUSB4,
+		Func:         ChargingThroughTypec,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Checking device charging status after USB4 hot plug-unplug",
+		Desc:         "Checking device charging status after USB4/TBT dock hot plug-unplug",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		Attr:         []string{"group:typec"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"test_config.json"},
 		Vars:         []string{"typec.dutTbtPort", "typec.cSwitchPort", "typec.domainIP"},
-		HardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel")),
+		HardwareDeps: hwdep.D(hwdep.Model("volteer", "voxel", "redrix", "brya")),
+		Params: []testing.Param{{
+			Name: "usb4",
+			Val: chargeTypecTestParams{
+				connector: "USB4",
+			},
+		}, {
+			Name: "tbt_dock",
+			Val: chargeTypecTestParams{
+				connector: "TBT",
+			},
+		}},
 	})
 }
 
-// ChargingThroughUSB4 performs the following:
-// - Pre-requisite : Remove the charger from DUT and make sure USB4 is connected.
-// - Hot plug USB4 Device into DUT with help of cswitch.
-// - Performs USB4 Device enumeration check.
+// ChargingThroughTypec performs the following:
+// - Pre-requisite : Remove the charger from DUT and make sure USB4/TBT dock is connected.
+// - Hot plug USB4/TBT Device into DUT with help of cswitch.
+// - Performs USB4/TBT Device enumeration check.
 // - Check DUT charging state.
-// - Unplug USB4 device from DUT and validates USB4 device removal detection.
+// - Unplug USB4/TBT device from DUT and validates USB4/TBT device removal detection.
 // - Check DUT charging state.
 // This test requires the following H/W topology to run.
 //
 //
-//        DUT ------> C-Switch(device that performs hot plug-unplug)---->USB4.
+//        DUT ------> C-Switch(device that performs hot plug-unplug) ----> USB4/TBT dock.
 
-// ChargingThroughUSB4 func validates DUT charging state on USB4 hot plug-unplug.
-func ChargingThroughUSB4(ctx context.Context, s *testing.State) {
-	// Config file which contains expected values of USB4 parameters.
+// ChargingThroughTypec func validates DUT charging state on USB4/TBT hot plug-unplug.
+func ChargingThroughTypec(ctx context.Context, s *testing.State) {
+	testOpt := s.Param().(chargeTypecTestParams)
+	// Config file which contains expected values of USB4/TBT parameters.
 	const testConfig = "test_config.json"
 	// TBT port ID in the DUT.
 	tbtPort := s.RequiredVar("typec.dutTbtPort")
@@ -71,10 +87,10 @@ func ChargingThroughUSB4(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read json: ", err)
 	}
 
-	// Checking for USB4 config data.
-	usb4Val, ok := data["USB4"].(map[string]interface{})
+	// Checking for USB4/TBT config data.
+	connectorVal, ok := data[testOpt.connector].(map[string]interface{})
 	if !ok {
-		s.Fatal("Failed to found USB4 config data in JSON file")
+		s.Fatalf("Failed to find %s config data in JSON file", testOpt.connector)
 	}
 
 	// Create C-Switch session that performs hot plug-unplug on TBT device.
@@ -94,7 +110,7 @@ func ChargingThroughUSB4(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable c-switch port: ", err)
 	}
 
-	if _, err := cswitch.IsDeviceEnumerated(ctx, usb4Val["device_name"].(string), tbtPort); err != nil {
+	if _, err := cswitch.IsDeviceEnumerated(ctx, connectorVal["device_name"].(string), tbtPort); err != nil {
 		s.Fatal("Failed to enumerate the TBT device: ", err)
 	}
 
@@ -102,18 +118,18 @@ func ChargingThroughUSB4(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get the tbtGeneration: ", err)
 	}
-	if strings.TrimSpace(tbtGeneration) != usb4Val["generation"].(string) {
-		s.Fatalf("Failed to verify the generation, got %s, want %s", tbtGeneration, usb4Val["generation"].(string))
+	if strings.TrimSpace(tbtGeneration) != connectorVal["generation"].(string) {
+		s.Fatalf("Failed to verify the generation, got %s, want %s", tbtGeneration, connectorVal["generation"].(string))
 	}
 
-	// Verifying battery charging status after USB4 hot-plug.
+	// Verifying battery charging status after USB4/TBT hot-plug.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		status, err := pow.GetStatus(ctx)
 		if err != nil {
 			s.Fatal("Failed to get power status: ", err)
 		}
 		if status.BatteryDischarging {
-			return errors.New("failed to charge after USB4 hot-plug")
+			return errors.Errorf("failed to charge after %s hot-plug", testOpt.connector)
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 250 * time.Millisecond}); err != nil {
@@ -125,7 +141,7 @@ func ChargingThroughUSB4(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to disable c-switch port: ", err)
 	}
 
-	if _, err := cswitch.IsDeviceEnumerated(ctx, usb4Val["device_name"].(string), tbtPort); err == nil {
+	if _, err := cswitch.IsDeviceEnumerated(ctx, connectorVal["device_name"].(string), tbtPort); err == nil {
 		s.Fatal("Failed to disconnect the TBT device: ", err)
 	}
 
@@ -133,8 +149,8 @@ func ChargingThroughUSB4(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get power status: ", err)
 	}
-	// Verifying battery discharging after USB4 hot-unplug.
+	// Verifying battery discharging after USB4/TBT hot-unplug.
 	if !status.BatteryDischarging {
-		s.Fatal("Battery failed to discharge after USB4 hot-unplug")
+		s.Fatalf("Battery failed to discharge after %s hot-unplug", testOpt.connector)
 	}
 }
