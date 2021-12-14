@@ -393,6 +393,8 @@ type BiosServiceClient interface {
 	BackupECRW(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*ECRWPath, error)
 	// RestoreECRW restores the EC_RW region from path.
 	RestoreECRW(ctx context.Context, in *ECRWPath, opts ...grpc.CallOption) (*empty.Empty, error)
+	// EnableAPSoftwareWriteProtect enables the AP software write protect.
+	EnableAPSoftwareWriteProtect(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type biosServiceClient struct {
@@ -439,6 +441,15 @@ func (c *biosServiceClient) RestoreECRW(ctx context.Context, in *ECRWPath, opts 
 	return out, nil
 }
 
+func (c *biosServiceClient) EnableAPSoftwareWriteProtect(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/tast.cros.firmware.BiosService/EnableAPSoftwareWriteProtect", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BiosServiceServer is the server API for BiosService service.
 type BiosServiceServer interface {
 	// GetGBBFlags gets the flags that are cleared and set.
@@ -449,6 +460,8 @@ type BiosServiceServer interface {
 	BackupECRW(context.Context, *empty.Empty) (*ECRWPath, error)
 	// RestoreECRW restores the EC_RW region from path.
 	RestoreECRW(context.Context, *ECRWPath) (*empty.Empty, error)
+	// EnableAPSoftwareWriteProtect enables the AP software write protect.
+	EnableAPSoftwareWriteProtect(context.Context, *empty.Empty) (*empty.Empty, error)
 }
 
 // UnimplementedBiosServiceServer can be embedded to have forward compatible implementations.
@@ -466,6 +479,9 @@ func (*UnimplementedBiosServiceServer) BackupECRW(context.Context, *empty.Empty)
 }
 func (*UnimplementedBiosServiceServer) RestoreECRW(context.Context, *ECRWPath) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RestoreECRW not implemented")
+}
+func (*UnimplementedBiosServiceServer) EnableAPSoftwareWriteProtect(context.Context, *empty.Empty) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EnableAPSoftwareWriteProtect not implemented")
 }
 
 func RegisterBiosServiceServer(s *grpc.Server, srv BiosServiceServer) {
@@ -544,6 +560,24 @@ func _BiosService_RestoreECRW_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _BiosService_EnableAPSoftwareWriteProtect_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BiosServiceServer).EnableAPSoftwareWriteProtect(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.firmware.BiosService/EnableAPSoftwareWriteProtect",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BiosServiceServer).EnableAPSoftwareWriteProtect(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _BiosService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.firmware.BiosService",
 	HandlerType: (*BiosServiceServer)(nil),
@@ -563,6 +597,10 @@ var _BiosService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RestoreECRW",
 			Handler:    _BiosService_RestoreECRW_Handler,
+		},
+		{
+			MethodName: "EnableAPSoftwareWriteProtect",
+			Handler:    _BiosService_EnableAPSoftwareWriteProtect_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
