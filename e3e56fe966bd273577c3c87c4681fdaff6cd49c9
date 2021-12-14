@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96aa99b3_9ecd670a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2021-12-14T07:17:05Z",
+      "side": 1,
+      "message": "Hi all reviewers,\n\nThis is a giant CL because I uprev the dev-go/protobuf from v1.25.0 to v1.27.1 (https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3252922). The newer go package generate pb.go files in a different way, so I have to update all the pb.go under \"src/platform/tast-tests\". \n\nI simply ran the command \"~/trunk/src/platform/tast/tools/go.sh generate chromiumos/tast/xxx\" on every package, so all the pb.go files are auto generated. I added the editors of each package. Please review the pb.go files that you edited before. Thank you all for your patience!",
+      "revId": "e3e56fe966bd273577c3c87c4681fdaff6cd49c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b54fc4_796bf7e0",
