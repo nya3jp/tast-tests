@@ -255,6 +255,7 @@ func (d *differ) initialize(ctx context.Context) error {
 			"--cis", "buildbucket",
 			"--changelist", "lookup",
 			"--patchset_id", "lookup",
+			"--crs", "gerrit",
 			"--jobid", builderMatch[1]}...)
 
 		// Note: This will falsely pick up local builds that have been flashed with an official build.
