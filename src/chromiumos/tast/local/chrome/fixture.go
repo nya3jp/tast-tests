@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/logsaver"
-	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/testing"
 )
 
@@ -63,7 +62,6 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInGuest",
 		Desc:     "Logged into a guest user session",
@@ -76,7 +74,6 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInGuestForEA",
 		Desc:     "Logged into a guest user session for essential apps",
@@ -89,7 +86,6 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInGuestForInputs",
 		Desc:     "Logged into a guest user session for essential inputs",
@@ -180,26 +176,13 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// TODO(crbug.com/1216245): Remove and replace usage with "chromeLoggedIn"
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWithArchiveMount",
-		Desc:     "Logged into a user session",
-		Contacts: []string{"nya@chromium.org", "oka@chromium.org"},
+		Name:     "chromeLoggedInThunderbolt",
+		Desc:     "Logged into a user session to support thunderbolt devices",
+		Contacts: []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
+		Vars:     []string{"ui.signinProfileTestExtensionManifestKey"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("FilesArchivemount")}, nil
-		}),
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	// TODO(crbug.com/1216245): Remove and replace usage with "chromeLoggedInGuest"
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInGuestWithArchiveMount",
-		Desc:     "Logged into a guest user session",
-		Contacts: []string{"benreich@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{GuestLogin(), EnableFeatures("FilesArchivemount")}, nil
+			return []Option{DeferLogin(), LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey"))}, nil
 		}),
 		SetUpTimeout:    LoginTimeout,
 		ResetTimeout:    ResetTimeout,
@@ -243,31 +226,11 @@ func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	Lock()
 	f.cr = cr
-
-	if cr.LoginMode() == "Guest" {
-		if err := mountns.EnterUserSessionMountNs(ctx); err != nil {
-			s.Fatal("Failed to enter user session namespace: ", err)
-		}
-	} else {
-		// This should not be necessary, but due to the multi-threaded nature
-		// of Go and that fact that mount namespaces are assigned per thread
-		// instead of per process, calling this function makes sure that if
-		// for some reason a guest login fixture's `Setup()` executes in a
-		// different thread than `TearDown()`, the following fixture will
-		// still have a chance to enter the correct mount namespace.
-		mountns.EnterInitMountNs(ctx)
-	}
-
 	return cr
 }
 
 func (f *loggedInFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	Unlock()
-
-	if f.cr.LoginMode() == "Guest" {
-		mountns.EnterInitMountNs(ctx)
-	}
-
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
 	}
