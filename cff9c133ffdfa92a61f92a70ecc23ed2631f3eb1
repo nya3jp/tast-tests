@@ -34,6 +34,23 @@
       "parentUuid": "388e73ab_733edc83",
       "revId": "cff9c133ffdfa92a61f92a70ecc23ed2631f3eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c965e659_d0952aa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-14T00:04:15Z",
+      "side": 1,
+      "message": "Let me check with tast-reviewers regarding OWNERS files in tast-tests, which is different from other dirs, since we have Tast owners for all files inside tast-tests (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#why-are-all-tast-tests-owned-by-tast-team_not-by-my-team).\n\nIf this OWNER file disables the tast reviewer\u0027s ownership, then it is not a good idea. \n\nWill come back when I have more clarifications.",
+      "revId": "cff9c133ffdfa92a61f92a70ecc23ed2631f3eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
