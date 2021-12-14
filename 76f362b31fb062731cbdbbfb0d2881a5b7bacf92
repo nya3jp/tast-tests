@@ -259,6 +259,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7d9c1e7_365e03be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-14T02:49:01Z",
+      "side": 1,
+      "message": "I think polling is the right option in this case. \"sleep 3 seconds\" is dependent on whether the monitoring starts to work after 3 seconds since the monitorCmd process is started, which is not assured but sometimes waits too long.",
+      "parentUuid": "d7dc2f64_5921c083",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "76f362b31fb062731cbdbbfb0d2881a5b7bacf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70dcf3c3_19b02532",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
         "patchSetId": 3
