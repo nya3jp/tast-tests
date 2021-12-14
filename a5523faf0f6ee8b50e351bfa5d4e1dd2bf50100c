@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8f5006_b5c50458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-14T00:02:59Z",
+      "side": 1,
+      "message": "Yeah, the PerformTest(...) func will setup everything it needs (including installing, and starting the game), defer to the caller to run the test and upload to crosbolt (or return an error on failure), and then handle errors, and cleanup accordingly.",
+      "parentUuid": "dd7a4d2c_b3e91318",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74f06ab0_bb936940",
@@ -100,6 +118,23 @@
       "writtenOn": "2021-12-13T22:21:04Z",
       "side": 1,
       "message": "Let\u0027s rename this `func PerformTest` and replace pollForGameLaunched with: `performTest PerformTest`",
+      "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0454f45d_33d06222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-14T00:02:59Z",
+      "side": 1,
+      "message": "I missed this. This still needs to be here but should be sent as a parameter to the new \u0027PerformTest\u0027 func so that it can be used by implementations.",
       "revId": "a5523faf0f6ee8b50e351bfa5d4e1dd2bf50100c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
