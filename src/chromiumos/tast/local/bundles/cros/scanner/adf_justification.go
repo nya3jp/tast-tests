@@ -34,10 +34,7 @@ func init() {
 	})
 }
 
-const (
-	descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-	attributes  = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-)
+const attributes = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 
 type scannerParams struct {
 	name             string
@@ -114,7 +111,7 @@ func runJustificationTest(ctx context.Context, s *testing.State, params scannerP
 	defer os.RemoveAll(tmpDir)
 
 	printer, err := usbprinter.Start(ctx,
-		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithDefaultDescriptors(),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WithESCLCapabilities(params.esclCapabilities),
 		usbprinter.WithOutputLogDirectory(tmpDir),

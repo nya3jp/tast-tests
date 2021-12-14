@@ -46,7 +46,6 @@ func init() {
 }
 
 const (
-	descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 	attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 	esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
 )
@@ -84,7 +83,7 @@ func Scan(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	printer, err := usbprinter.Start(ctx,
-		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithDefaultDescriptors(),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WithESCLCapabilities(esclCapabilities),
 		usbprinter.ExpectUdevEventOnStop(),

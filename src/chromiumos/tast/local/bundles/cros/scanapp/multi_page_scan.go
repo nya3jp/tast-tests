@@ -97,7 +97,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	printer, err := usbprinter.Start(ctx,
-		usbprinter.WithDescriptors(scanning.Descriptors),
+		usbprinter.WithDefaultDescriptors(),
 		usbprinter.WithAttributes(scanning.Attributes),
 		usbprinter.WithESCLCapabilities(scanning.EsclCapabilities),
 		usbprinter.ExpectUdevEventOnStop(),

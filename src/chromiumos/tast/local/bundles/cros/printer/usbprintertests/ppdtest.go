@@ -47,18 +47,18 @@ func getPPDMap(ctx context.Context, printerName string) (map[string]string, erro
 }
 
 // RunIPPUSBPPDTest configures an IPP-over-USB printer using the virtual USB
-// printer configured using the given descriptors and attributes. Once the
-// printer has been automatically configured by CUPS the attributes of the
-// generated PPD file are checked against the provided ppdAttributes map. If
-// there are any differences in values between the generated PPD and
-// ppdAttributes for the same key then the test will fail.
-func RunIPPUSBPPDTest(ctx context.Context, s *testing.State, descriptors, attributes string, ppdAttributes map[string]string) {
+// printer configured using the given attributes and the well-known default
+// descriptors. Once the printer has been automatically configured by CUPS,
+// the attributes of the generated PPD file are checked against the provided
+// ppdAttributes map. If there are any differences in values between the
+// generated PPD and ppdAttributes for the same key, then the test will fail.
+func RunIPPUSBPPDTest(ctx context.Context, s *testing.State, attributes string, ppdAttributes map[string]string) {
 	if err := printer.ResetCups(ctx); err != nil {
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
 	printer, err := usbprinter.Start(ctx,
-		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithDefaultDescriptors(),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WaitUntilConfigured())
 	defer func(ctx context.Context) {

@@ -86,7 +86,6 @@ func findScanner(ctx context.Context, devInfo usbprinter.DevInfo) (bus, device s
 
 func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	const (
-		descriptors      = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
 		attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 		esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
 	)
@@ -104,7 +103,7 @@ func ScanESCLIPP(ctx context.Context, s *testing.State) {
 	}
 
 	printer, err := usbprinter.Start(ctx,
-		usbprinter.WithDescriptors(descriptors),
+		usbprinter.WithDefaultDescriptors(),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WithESCLCapabilities(esclCapabilities),
 		usbprinter.ExpectUdevEventOnStop(),
