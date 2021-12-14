@@ -10,7 +10,6 @@ import (
 	"fmt"
 	"math"
 	"os"
-	"path/filepath"
 	"sort"
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
@@ -523,16 +522,19 @@ func runHistogram(ctx context.Context, tconn *chrome.TestConn, tracer traceable,
 		raplv = rd
 	}
 
-	tr, err := tracer.StopTracing(ctx)
+	// TODO(https://crbug.com/1277606): Restore after fix.
+	// tr, err := tracer.StopTracing(ctx)
+	_, err = tracer.StopTracing(ctx)
 	if err != nil {
 		return err
 	}
 
-	filename := fmt.Sprintf("%s-%s-trace.data.gz", string(invoc.bt), invoc.page.name)
-	filename = filepath.Join(invoc.traceDir, filename)
-	if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
-		return err
-	}
+	// TODO(https://crbug.com/1277606): Re-enable saving traces.
+	// filename := fmt.Sprintf("%s-%s-trace.data.gz", string(invoc.bt), invoc.page.name)
+	// filename = filepath.Join(invoc.traceDir, filename)
+	// if err := chrome.SaveTraceToFile(ctx, tr, filename); err != nil {
+	// 	return err
+	// }
 
 	// Store metrics in the form: Scenario.PageSet.UMA metric name.statistic.{chromeos, lacros}.
 	// For example, maximized.Compositing.Display.DrawToSwapUs.mean.chromeos. In crosbolt, for each
