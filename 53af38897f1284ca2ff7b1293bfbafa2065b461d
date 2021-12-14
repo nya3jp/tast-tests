@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "203549e9_32138f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T02:24:03Z",
+      "side": 1,
+      "message": "This is not neccessary.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78dc7b7_54e5d52f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T02:24:03Z",
+      "side": 1,
+      "message": "nit, optional, how about perceptualDiffRE?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 3
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cdb1e2_6144a15d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T02:24:03Z",
+      "side": 1,
+      "message": "Could you left some comments stating that we return 0% if we failed to find the regex?\nAnd some comment describing diffImages boolean?",
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f982205a_31454e0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T02:24:03Z",
+      "side": 1,
+      "message": "Sorry, wasn\u0027t aware that images are different has different exit Code.\n\nIIUC diffImage correct, \ndiffImage \u003d true \u003c- (Expecting the images are perceptually different?)\ndiffImage \u003d false \u003c- (Expecting the images are the perceptually same?)\n\nAs err can indicate other types of failures such as command not found, pipe is broken, timedout etc? How about doing an extra check to verify it fails because images are perceptually different?",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f26a8d1e_28612783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T02:24:03Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 186,
+        "startChar": 15,
+        "endLine": 186,
+        "endChar": 16
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff3a926_94af25d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T02:24:03Z",
+      "side": 1,
+      "message": "In line 155, err \u003d nil but percentDiffPixels is not. We shouldn\u0027t increase the identicalScreenshots.",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 15
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b624db8_3952bd74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-14T02:24:03Z",
+      "side": 1,
+      "message": "vt?",
+      "range": {
+        "startLine": 244,
+        "startChar": 26,
+        "endLine": 244,
+        "endChar": 28
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
