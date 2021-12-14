@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db3b5e36_e7fcb654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-14T14:17:37Z",
+      "side": 1,
+      "message": "nit: Running",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "b416baad38ef17cd43627bc86d3ef72f1805e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9d4935f_ebebda1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-14T14:17:37Z",
+      "side": 1,
+      "message": "I think this will render the potential error message as \"failed to Adding a profile\" which might be a bit awkward.",
+      "range": {
+        "startLine": 121,
+        "startChar": 27,
+        "endLine": 121,
+        "endChar": 33
+      },
+      "revId": "b416baad38ef17cd43627bc86d3ef72f1805e8ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
