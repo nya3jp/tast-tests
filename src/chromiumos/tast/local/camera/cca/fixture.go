@@ -11,6 +11,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/camera/chart"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -129,7 +130,7 @@ func init() {
 		Contacts:        []string{"wtlee@chromium.org"},
 		Data:            []string{"cca_ui.js"},
 		Impl:            &fixture{arcBooted: true},
-		SetUpTimeout:    setUpTimeout,
+		SetUpTimeout:    setUpTimeout + arc.BootTimeout + ui.StartTimeout,
 		ResetTimeout:    testBridgeSetUpTimeout,
 		TearDownTimeout: tearDownTimeout,
 	})
