@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc581da0_07b8e93e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2021-12-14T00:51:35Z",
+      "side": 1,
+      "message": "Since the helper in L41 already has support for restarting modemmanager, I think we should be using that. Just to be on safer side, we can call RestartModemManager even for success case i.e. we call restart modemmanager using defer {} at the start. @Eric what do you think?",
+      "revId": "22750dc146b4a2643e9b17725e9b7ecc8a80c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
