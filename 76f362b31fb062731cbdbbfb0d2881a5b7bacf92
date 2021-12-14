@@ -235,6 +235,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7dc2f64_5921c083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-14T01:48:07Z",
+      "side": 1,
+      "message": "Please add some comments on it, so future developers can understand why we need polling here.\n\nIf there is some delay, I think we can sleep 3 seconds after the command start, then trigger the events. It may make the code more simple without polling.\n\nNot sure if tast owners have any idea on this.",
+      "parentUuid": "c298ea68_24d14c11",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "76f362b31fb062731cbdbbfb0d2881a5b7bacf92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70dcf3c3_19b02532",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
         "patchSetId": 3
