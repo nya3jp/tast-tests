@@ -120,6 +120,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8738697a_6e7a01da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2021-12-14T17:07:23Z",
+      "side": 1,
+      "message": "Approving src/chromiumos/tast/services/cros/crash/fixture_service.pb.go\n\nHowever, given that this is a large-scale automated change, does it actually make sense for each individual file owner to look at the changes? I don\u0027t understand the generated code well enough to be able to easily evaluate if it\u0027s doing the right thing, and I imagine the same is true of most proto authors...",
+      "revId": "e3e56fe966bd273577c3c87c4681fdaff6cd49c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b54fc4_796bf7e0",
