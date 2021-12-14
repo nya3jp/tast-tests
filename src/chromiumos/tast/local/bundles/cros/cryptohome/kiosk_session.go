@@ -36,7 +36,7 @@ func KioskSession(ctx context.Context, s *testing.State) {
 	cryptohome.UnmountVault(ctx, cryptohome.KioskUser)
 
 	// Test if existing kiosk vault can be signed in with AuthSession.
-	if err := cryptohome.AuthSessionMountFlow(ctx, true /*Kiosk User*/, cryptohome.KioskUser, "" /* Empty passkey*/, false /*Create User*/); err != nil {
+	if err := cryptohome.AuthSessionMountFlow(ctx, true /*Kiosk User*/, cryptohome.KioskUser, "" /* Empty passkey*/, false /*Create User*/, 60 /*extension duration*/); err != nil {
 		s.Fatal("Failed to Mount with AuthSession -: ", err)
 	}
 }
