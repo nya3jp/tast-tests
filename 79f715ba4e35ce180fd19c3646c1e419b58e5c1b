@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98107169_f8a9f3c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-14T05:41:57Z",
+      "side": 1,
+      "message": "Hi hidehiko@, do you have time to review the CLs?",
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
