@@ -16,6 +16,24 @@
       "message": "What about calling this something like WithIPPUSBDescriptors?  That way it\u0027s more obvious at the call sites what kind of printer you\u0027re getting.",
       "revId": "db5bb41706bc6f7ed32d53b18e76e17ab5cc0b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f5ef3c9_0cdef100",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-14T23:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "025ebe1c_bf893416",
+      "revId": "db5bb41706bc6f7ed32d53b18e76e17ab5cc0b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
