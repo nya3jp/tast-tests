@@ -337,8 +337,11 @@ func (cli *WifiClient) TurnOffBgscan(ctx context.Context) (context.Context, func
 	}
 	oldBgConfig := bgscanResp.Config
 
-	turnOffBgConfig := *bgscanResp.Config
-	turnOffBgConfig.Method = shillconst.DeviceBgscanMethodNone
+	turnOffBgConfig := wifi.BgscanConfig{
+		Method:        shillconst.DeviceBgscanMethodNone,
+		LongInterval:  oldBgConfig.LongInterval,
+		ShortInterval: oldBgConfig.ShortInterval,
+	}
 	if _, err := cli.ShillServiceClient.SetBgscanConfig(ctx, &wifi.SetBgscanConfigRequest{Config: &turnOffBgConfig}); err != nil {
 		return ctxForRestoreBgConfig, nil, err
 	}
@@ -376,12 +379,14 @@ func (cli *WifiClient) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOp
 	if err != nil {
 		return ctx, nil, errors.Wrap(err, "failed to get WoWiFi setting")
 	}
-
 	origConfig := resp.Config
-	newConfig := *origConfig // Copy so we won't modify the original one.
 
 	// Allow WakeOnWiFi.
-	newConfig.Allowed = true
+	newConfig := wifi.WakeOnWifiConfig{
+		Allowed:             true,
+		Features:            origConfig.Features,
+		NetDetectScanPeriod: origConfig.NetDetectScanPeriod,
+	}
 	for _, op := range ops {
 		op(&newConfig)
 	}
