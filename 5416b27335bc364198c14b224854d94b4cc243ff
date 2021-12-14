@@ -16,6 +16,57 @@
       "message": "Hi Ben, PTAL.",
       "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a8fb07_0a244436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-14T22:56:39Z",
+      "side": 1,
+      "message": "Does this result in a minimum 2s delay between each UI option?  If yes, is that needed everywhere?  I wonder if we could insert a delay after switching scanners to account for the time needed to get capabilities, and then the rest should be able to use a normal polling delay.",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110f460a_6c6247c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-14T22:56:39Z",
+      "side": 1,
+      "message": "Since these are fatal, the whole test will stop once a single combination fails.  Should this instead continue with the next scanner in the list?  For the loops below, would it make sense to continue with the next iteration of the outer loop or maybe just the next scanner?",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16e7bec4_134b11fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-14T22:56:39Z",
+      "side": 1,
+      "message": "Is page size dependent on color mode or vice versa?  If not, what about promoting this loop to have one fewer nested combination?",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
