@@ -16,6 +16,103 @@
       "message": "Hi hidehiko@, do you have time to review the CLs?",
       "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ebc7dd_1811f6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T13:44:30Z",
+      "side": 1,
+      "message": "Could you define the proper hardware dependency?\nRestriction by Model is in general not recommended. Could you start talking to infra team to figure out what is the actual conditions and what\u0027s the schema for you?",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9bce7e_36ae2447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T13:44:30Z",
+      "side": 1,
+      "message": "where does this hard-coded value come from?",
+      "range": {
+        "startLine": 90,
+        "startChar": 27,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1453c05e_1e87d10e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T13:44:30Z",
+      "side": 1,
+      "message": "nit: const.",
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762def6f_2ad1faef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T13:44:30Z",
+      "side": 1,
+      "message": "could you not use command line, and use go functions always? os.RemoveDir",
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e333b672_0f1b0bdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T13:44:30Z",
+      "side": 1,
+      "message": "nit: you can \"continue\" here to unindent else block.",
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
