@@ -25,7 +25,7 @@ func init() {
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author - Ash.
 			"anqing@google.com",      // Test author - Lacros.
-			"alt-modalities-stability@google.com",
+			"chromeos-kiosk-eng+TAST@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

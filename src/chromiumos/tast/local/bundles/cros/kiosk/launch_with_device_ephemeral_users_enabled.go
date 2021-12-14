@@ -21,7 +21,7 @@ func init() {
 		Desc: "Checks that Kiosk configuration starts correctly with DeviceEphemeralUsersEnabled policy set to true",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
-			"alt-modalities-stability@google.com",
+			"chromeos-kiosk-eng+TAST@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
