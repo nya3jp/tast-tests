@@ -527,6 +527,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "550b4a98_6876e4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T05:35:19Z",
+      "side": 1,
+      "message": "SeparatedOutput* sorry for that mix up.",
+      "parentUuid": "359ce8c7_576305ba",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "cd6d43e33062bff8bc80c0f59978095ec20b8b75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdd4870e_cde1a3de",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 13
