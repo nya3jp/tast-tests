@@ -191,6 +191,24 @@
       "parentUuid": "3e34c5f7_c8f9216b",
       "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c99bd2b_040b9074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-14T20:56:31Z",
+      "side": 1,
+      "message": "Fixed this in patch 3. Thanks.",
+      "parentUuid": "5c3ad61c_a08e7402",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
