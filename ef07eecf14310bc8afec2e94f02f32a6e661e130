@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b13cf55_e6e16a10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-14T20:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a24f94a_66ee97ba",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "392ed787_6dcc5621",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0abde8_912c450f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-14T20:47:04Z",
+      "side": 1,
+      "message": "This else for translateinstalled if its false. Then  it will proceed to check chat app.",
+      "parentUuid": "392ed787_6dcc5621",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "845582fd_fd7eac9f",
@@ -82,6 +118,24 @@
       "writtenOn": "2021-12-14T17:09:55Z",
       "side": 1,
       "message": "Nit: Please file a bug on LaunchAndWaitForAppOpen regarding \"Google Chat\". Then add a \"TODO\" comment with bug id for changing it back to LaunchAndWaitForAppOpen after the bug is fixed.",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa469e52_99937d7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-14T20:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "845582fd_fd7eac9f",
       "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +170,24 @@
       "writtenOn": "2021-12-14T20:39:49Z",
       "side": 1,
       "message": "I think this will remove some \"else\" while maintaining the same logic:\n\n```\n        // Check the newly downloaded app in Launcher.\n        if translateinstalled {\n                if err :\u003d launcher.LaunchAndWaitForAppOpen(tconn, apps.Translate)(ctx); err !\u003d nil {\n                        s.Fatal(\"Failed to launch Translate app: \", err)\n                }\n                return\n        } \n        if err :\u003d launcher.LaunchApp(tconn, apps.Chat.Name)(ctx); err !\u003d nil {\n                s.Fatal(\"Failed to launch: \", err) \n        }       \n        ui :\u003d uiauto.New(tconn)\n        chatButton :\u003d nodewith.Name(apps.Chat.Name).ClassName(\"ash/ShelfAppButton\")\n        if err :\u003d ui.WaitUntilExists(chatButton)(ctx); err !\u003d nil {\n                s.Fatal(\"Failed to find Google Chat in Shelf: \", err) \n        } \n```\nPlease let me know if you see issue. Thanks.",
+      "parentUuid": "3e34c5f7_c8f9216b",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3ad61c_a08e7402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-14T20:47:04Z",
+      "side": 1,
+      "message": "This else is to check if Chat app appears in shelf if LaunchApp doesn\u0027t return error.",
       "parentUuid": "3e34c5f7_c8f9216b",
       "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
