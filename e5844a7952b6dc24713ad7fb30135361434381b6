@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b425b6b_749846b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-14T14:17:51Z",
+      "side": 1,
+      "message": "It looks like we can combine only L84-91",
+      "parentUuid": "70106436_0e6a6839",
+      "revId": "e5844a7952b6dc24713ad7fb30135361434381b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aeb7747_5116c021",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-12-14T00:19:07Z",
       "side": 1,
       "message": "You can combine the rest of the code with uiauto.combine.\n\nIt looks like you want to ensure that it\u0027s seperated, so what you can do is\n\n```\ncombine(\"big action description\", \n   combine(\"click on addprofilebutton\", ...),\n   combine(\"click on nextbutton\", ...),\n   ...)\n```",
+      "revId": "e5844a7952b6dc24713ad7fb30135361434381b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fd32fe0_843633f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-14T14:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aeb7747_5116c021",
       "revId": "e5844a7952b6dc24713ad7fb30135361434381b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
