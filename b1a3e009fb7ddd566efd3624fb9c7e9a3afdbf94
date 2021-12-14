@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fae76b7_e0b2bc31",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-14T22:38:09Z",
+      "side": 1,
+      "message": "Resolving, assuming these other tests are coming in a future CL.",
+      "parentUuid": "fcb73f84_0f022d78",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16cb9365_53fccd1f",
