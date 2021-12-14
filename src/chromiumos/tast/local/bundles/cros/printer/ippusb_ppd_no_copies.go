@@ -32,8 +32,7 @@ func init() {
 // fields will be correctly populated when configuring an IPP-over-USB printer
 // which does not provide a value for the "copies-supported" attribute.
 func IPPUSBPPDNoCopies(ctx context.Context, s *testing.State) {
-	const descriptors = "/usr/local/etc/virtual-usb-printer/ippusb_printer.json"
-	usbprintertests.RunIPPUSBPPDTest(ctx, s, descriptors, s.DataPath("ippusb_no_copies.json"), map[string]string{
+	usbprintertests.RunIPPUSBPPDTest(ctx, s, s.DataPath("ippusb_no_copies.json"), map[string]string{
 		"*cupsManualCopies": "True",
 		"*cupsMaxCopies":    "1",
 	})

@@ -27,30 +27,16 @@ func usbPrinterURI(ctx context.Context, devInfo usbprinter.DevInfo) string {
 
 // RunPrintTest executes a test for the virtual USB printer defined by the
 // given arguments. This tests that the printer is able to be configured, and
-// produces the expected output when a print job is issued. The given
-// descriptors and attributes provide the virtual printer with paths to the USB
-// descriptors and IPP attributes files respectively. record defines the path
-// where the printer output should be written. toPrint and golden specify the
-// paths to the file to be printed and the expected printer output.
-func RunPrintTest(ctx context.Context, s *testing.State, descriptors,
-	attributes, record, ppd, toPrint, golden string) {
+// produces the expected output at record when a print job is issued.
+// toPrint and golden specify the paths to the file to be printed and the
+// expected printer output.
+func RunPrintTest(ctx context.Context, s *testing.State,
+	opts []usbprinter.Option, record, ppd, toPrint, golden string) {
 
 	if err := printer.ResetCups(ctx); err != nil {
 		s.Fatal("Failed to reset cupsd: ", err)
 	}
 
-	opts := []usbprinter.Option{
-		usbprinter.WithDescriptors(descriptors),
-	}
-	if len(attributes) > 0 {
-		opts = append(opts, usbprinter.WithAttributes(attributes))
-	}
-	if len(record) > 0 {
-		opts = append(opts, usbprinter.WithRecordPath(record))
-	}
-	if len(ppd) == 0 {
-		opts = append(opts, usbprinter.WaitUntilConfigured())
-	}
 	pr, err := usbprinter.Start(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to attach virtual printer: ", err)
