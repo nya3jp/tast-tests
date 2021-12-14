@@ -47,7 +47,7 @@ func Ti50Rescue(ctx context.Context, s *testing.State) {
 	}
 	ti50ResetControl := "pch_disable"
 	if strings.Contains(servoType, "c2d2") {
-		ti50ResetControl = "cold_reset"
+		ti50ResetControl = "cr50_reset_odl"
 	}
 
 	image := s.RequiredVar("image")
