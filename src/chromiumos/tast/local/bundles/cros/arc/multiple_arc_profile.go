@@ -118,9 +118,18 @@ func MultipleArcProfile(ctx context.Context, s *testing.State) {
 		if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Translate)(ctx); err != nil {
 			s.Fatal("Failed to launch Translate app: ", err)
 		}
-	} else if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Chat)(ctx); err != nil {
+		return
+	}
+	// TODO(b/210702593): Replace with LaunchAndWaitForAppOpen once fixed.
+	if err := launcher.LaunchApp(tconn, apps.Chat.Name)(ctx); err != nil {
 		s.Fatal("Failed to launch Chat app: ", err)
 	}
+	ui := uiauto.New(tconn)
+	chatButton := nodewith.Name(apps.Chat.Name).ClassName("ash/ShelfAppButton")
+	if err := ui.WaitUntilExists(chatButton)(ctx); err != nil {
+		s.Fatal("Failed to find Google Chat in Shelf: ", err)
+	}
+
 }
 
 // switchPlayStoreAccount switches between the ARC account in PlayStore.

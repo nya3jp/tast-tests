@@ -13,7 +13,9 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
 )
 
@@ -79,8 +81,15 @@ func LauncherApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Check the newly downloaded app in Launcher.
-	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.Chat)(ctx); err != nil {
+	// TODO(b/210702593): Replace with LaunchAndWaitForAppOpen once fixed.
+	if err := launcher.LaunchApp(tconn, apps.Chat.Name)(ctx); err != nil {
 		s.Fatal("Failed to launch: ", err)
+	}
+
+	ui := uiauto.New(tconn)
+	chatButton := nodewith.Name(apps.Chat.Name).ClassName("ash/ShelfAppButton")
+	if err := ui.WaitUntilExists(chatButton)(ctx); err != nil {
+		s.Fatal("Failed to find Google Chat in Shelf: ", err)
 	}
 
 	if err := apps.Close(ctx, tconn, apps.Chat.ID); err != nil {
