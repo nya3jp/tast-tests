@@ -22,6 +22,30 @@
       },
       "revId": "75ee96c26d69af94f9fcdb67b8725848498bccc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8646f796_08e146f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/bios_code_ab.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-14T20:40:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db6a677_24b05371",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 62
+      },
+      "revId": "75ee96c26d69af94f9fcdb67b8725848498bccc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
