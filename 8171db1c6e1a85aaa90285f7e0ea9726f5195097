@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "024f39d5_7fc81f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T08:57:50Z",
+      "side": 1,
+      "message": "No AI so marking LGTM.\nThough, current rootfs may not work with this CL.",
+      "revId": "8171db1c6e1a85aaa90285f7e0ea9726f5195097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f93b8d1_cec977d1",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-14T08:57:50Z",
+      "side": 1,
+      "message": "There\u0027s on-going work updating rootfs lacros. Current rootfs lacros does not have this flag yet, though. I expect it is happening in a few days (but I cannot guarantee as there\u0027s currently some blocking issues).\n\nYou can check chormeos-lacros package\u0027s version to see what version of chrome is used to build lacros.",
+      "revId": "8171db1c6e1a85aaa90285f7e0ea9726f5195097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
