@@ -61,7 +61,7 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 		{"tablet", "fcc", []string{"--tablet", "--domain=fcc"}},
 		{"tablet", "eu", []string{"--tablet", "--domain=eu"}},
 		{"tablet", "rest-of-world", []string{"--tablet", "--domain=rest-of-world"}},
-		{"tablet", "none", []string{"--notablet", "--domain=none"}},
+		{"tablet", "none", []string{"--tablet", "--domain=none"}},
 		{"non-tablet", "fcc", []string{"--notablet", "--domain=fcc"}},
 		{"non-tablet", "eu", []string{"--notablet", "--domain=eu"}},
 		{"non-tablet", "rest-of-world", []string{"--notablet", "--domain=rest-of-world"}},
