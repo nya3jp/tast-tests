@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e326f1af_1714734b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T02:46:14Z",
+      "side": 1,
+      "message": "The issue here is that I need vt1 screenshot in two different places, with different scopes.",
+      "parentUuid": "203549e9_32138f35",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c78dc7b7_54e5d52f",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 18
@@ -94,6 +118,30 @@
       "writtenOn": "2021-12-14T02:24:03Z",
       "side": 1,
       "message": "Sorry, wasn\u0027t aware that images are different has different exit Code.\n\nIIUC diffImage correct, \ndiffImage \u003d true \u003c- (Expecting the images are perceptually different?)\ndiffImage \u003d false \u003c- (Expecting the images are the perceptually same?)\n\nAs err can indicate other types of failures such as command not found, pipe is broken, timedout etc? How about doing an extra check to verify it fails because images are perceptually different?",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 30
+      },
+      "revId": "53af38897f1284ca2ff7b1293bfbafa2065b461d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068d6201_041d90e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-14T02:46:14Z",
+      "side": 1,
+      "message": "Okay i can do a combo of pixels and error code extracted via regex. Code 1 exit + some pixels would mean different images otherwise it would mean that something else happened.",
+      "parentUuid": "f982205a_31454e0b",
       "range": {
         "startLine": 133,
         "startChar": 1,
