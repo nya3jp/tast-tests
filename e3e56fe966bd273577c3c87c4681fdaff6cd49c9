@@ -69,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "607e889e_49bafc59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-14T08:31:33Z",
+      "side": 1,
+      "message": "Policy code LGTM",
+      "revId": "e3e56fe966bd273577c3c87c4681fdaff6cd49c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b54fc4_796bf7e0",
