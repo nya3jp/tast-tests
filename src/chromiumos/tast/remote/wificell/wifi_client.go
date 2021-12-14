@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/network/protoutil"
@@ -337,7 +338,7 @@ func (cli *WifiClient) TurnOffBgscan(ctx context.Context) (context.Context, func
 	}
 	oldBgConfig := bgscanResp.Config
 
-	turnOffBgConfig := *bgscanResp.Config
+	turnOffBgConfig := *proto.Clone(oldBgConfig).(*wifi.BgscanConfig)
 	turnOffBgConfig.Method = shillconst.DeviceBgscanMethodNone
 	if _, err := cli.ShillServiceClient.SetBgscanConfig(ctx, &wifi.SetBgscanConfigRequest{Config: &turnOffBgConfig}); err != nil {
 		return ctxForRestoreBgConfig, nil, err
@@ -376,11 +377,10 @@ func (cli *WifiClient) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOp
 	if err != nil {
 		return ctx, nil, errors.Wrap(err, "failed to get WoWiFi setting")
 	}
-
 	origConfig := resp.Config
-	newConfig := *origConfig // Copy so we won't modify the original one.
 
 	// Allow WakeOnWiFi.
+	newConfig := *proto.Clone(origConfig).(*wifi.WakeOnWifiConfig)
 	newConfig.Allowed = true
 	for _, op := range ops {
 		op(&newConfig)
