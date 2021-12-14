@@ -45,10 +45,7 @@ func init() {
 	})
 }
 
-const (
-	attributes       = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
-	esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
-)
+const esclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
 
 // Scan tests the chrome.documentScan API.
 func Scan(ctx context.Context, s *testing.State) {
@@ -84,7 +81,7 @@ func Scan(ctx context.Context, s *testing.State) {
 
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithDefaultDescriptors(),
-		usbprinter.WithAttributes(attributes),
+		usbprinter.WithDefaultAttributes(),
 		usbprinter.WithESCLCapabilities(esclCapabilities),
 		usbprinter.ExpectUdevEventOnStop(),
 		usbprinter.WaitUntilConfigured())

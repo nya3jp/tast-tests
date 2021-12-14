@@ -75,7 +75,7 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithDefaultDescriptors(),
-		usbprinter.WithAttributes(scanning.Attributes),
+		usbprinter.WithDefaultAttributes(),
 		usbprinter.WithESCLCapabilities(scanning.EsclCapabilities),
 		usbprinter.ExpectUdevEventOnStop(),
 		usbprinter.WaitUntilConfigured())

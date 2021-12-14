@@ -107,7 +107,7 @@ func EnumerateIPPUSB(ctx context.Context, s *testing.State) {
 		name: "IPP USB printer without eSCL",
 		options: []usbprinter.Option{
 			usbprinter.WithDefaultDescriptors(),
-			usbprinter.WithAttributes("/usr/local/etc/virtual-usb-printer/ipp_attributes.json"),
+			usbprinter.WithDefaultAttributes(),
 			usbprinter.WaitUntilConfigured(),
 			usbprinter.ExpectUdevEventOnStop(),
 		},
@@ -116,7 +116,7 @@ func EnumerateIPPUSB(ctx context.Context, s *testing.State) {
 		name: "IPP USB printer with eSCL",
 		options: []usbprinter.Option{
 			usbprinter.WithDefaultDescriptors(),
-			usbprinter.WithAttributes("/usr/local/etc/virtual-usb-printer/ipp_attributes.json"),
+			usbprinter.WithDefaultAttributes(),
 			usbprinter.WithESCLCapabilities("/usr/local/etc/virtual-usb-printer/escl_capabilities.json"),
 			usbprinter.WaitUntilConfigured(),
 			usbprinter.ExpectUdevEventOnStop(),

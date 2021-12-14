@@ -74,6 +74,11 @@ func WithDescriptors(path string) Option {
 	}
 }
 
+// WithDefaultAttributes passes the most commonly used IPP attributes.
+func WithDefaultAttributes() Option {
+	return WithAttributes("ipp_attributes.json")
+}
+
 // WithAttributes sets attributes.
 func WithAttributes(path string) Option {
 	return func(o *config) error {
