@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b677825c_1e10bd7a",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-14T14:56:54Z",
+      "side": 1,
+      "message": "If you start Ash Chrome from the UI as well, you can make the branches more similar.\nAnd if you name it to include that it start the browser from the UI (and skip the persistent part), maybe it can be used more broadly.",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "af6cd0b00b24b2c6af762e761001686c3ec0df9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
