@@ -45,7 +45,6 @@ func init() {
 
 func Print(ctx context.Context, s *testing.State) {
 	const (
-		attributes    = "/usr/local/etc/virtual-usb-printer/ipp_attributes.json"
 		settingsLabel = "Printers"
 		settingsPage  = "osPrinting"
 	)
@@ -73,7 +72,7 @@ func Print(ctx context.Context, s *testing.State) {
 
 	printer, err := usbprinter.Start(ctx,
 		usbprinter.WithIPPUSBDescriptors(),
-		usbprinter.WithAttributes(attributes),
+		usbprinter.WithGenericIPPAttributes(),
 		usbprinter.WaitUntilConfigured())
 	if err != nil {
 		s.Fatal("Failed to start IPP-over-USB printer: ", err)
