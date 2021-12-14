@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe57386_d7c7246d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-14T19:49:40Z",
+      "side": 1,
+      "message": "Looks like testing.ContextOutDir is what I need. PTAL.",
+      "parentUuid": "16b585e1_173c6925",
+      "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd893685_edb935e6",
@@ -114,6 +132,24 @@
       "side": 1,
       "message": "WriteFile will create the file if it doesn\u0027t exist, and I don\u0027t want to do that. If the file doesn\u0027t exist, I\u0027d like this to fail (hence I don\u0027t pass O_CREAT to OpenFile either).",
       "parentUuid": "bd893685_edb935e6",
+      "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "211f0328_e6d0ef7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/drm_trace_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1196554
+      },
+      "writtenOn": "2021-12-14T19:49:40Z",
+      "side": 1,
+      "message": "I\u0027ve also added documentation to the functions to make this clearer, and handled a case where the directory doesn\u0027t exist.",
+      "parentUuid": "121f9779_88073ef5",
       "revId": "135ba88e5f2b8389651f4de951045ace04df077a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
