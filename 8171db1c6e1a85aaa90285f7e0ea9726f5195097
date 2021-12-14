@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2ca41c_c45e9f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-12-14T14:45:16Z",
+      "side": 1,
+      "message": "Thank you for the review!",
+      "revId": "8171db1c6e1a85aaa90285f7e0ea9726f5195097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f93b8d1_cec977d1",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-12-14T08:57:50Z",
       "side": 1,
       "message": "There\u0027s on-going work updating rootfs lacros. Current rootfs lacros does not have this flag yet, though. I expect it is happening in a few days (but I cannot guarantee as there\u0027s currently some blocking issues).\n\nYou can check chormeos-lacros package\u0027s version to see what version of chrome is used to build lacros.",
+      "revId": "8171db1c6e1a85aaa90285f7e0ea9726f5195097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09422871_16b1bec0",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2021-12-14T14:45:16Z",
+      "side": 1,
+      "message": "I was actually looking for a simple way to test for Lacros version in a helper function. Something similar to GetRootfsLacrosVersion().\n\nI\u0027ve checked now that this flag becomes available only in version 98.0.4738.0. Currently CrOS (Octopus at least) is using chromeos-lacros-98.0.4707.0. Quite close but not there yet :| So if it\u0027s okay for you, I\u0027ll leave this comment there until rootfs lacros gets updated.",
+      "parentUuid": "6f93b8d1_cec977d1",
       "revId": "8171db1c6e1a85aaa90285f7e0ea9726f5195097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
