@@ -20,6 +20,8 @@ service BiosService {
   rpc BackupECRW (google.protobuf.Empty) returns (ECRWPath) {}
   // RestoreECRW restores the EC_RW region from path.
   rpc RestoreECRW (ECRWPath) returns (google.protobuf.Empty) {}
+  // EnableAPSoftwareWriteProtect enables the AP software write protect.
+  rpc EnableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 // GBBFlag bit positions
