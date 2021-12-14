@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffde83dc_771a63f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-14T06:04:32Z",
+      "side": 1,
+      "message": "Added logic to handle tablet mode scenario.",
+      "revId": "e3bafca6b1c1aa0e9ddc53ea918427095e98ea73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
