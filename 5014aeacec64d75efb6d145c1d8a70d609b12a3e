@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b32a774_089bb929",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-14T07:46:46Z",
+      "side": 1,
+      "message": "CrosToPhoneInContacts tests still failed locally, but may as well update the snippet and see how things go in the lab.\n\nBased on my local test runs, I suspect the CrosToPhoneInContacts failures are due to a contacts/certificates issue. If I manually toggle the visibility setting from allcontacts-\u003ehidden-\u003eallcontacts, the tests will pass for a while on my local setup. Need to investigate more, I\u0027ll also add a topic about it for the weekly sync on Wednesday.",
+      "revId": "5014aeacec64d75efb6d145c1d8a70d609b12a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
