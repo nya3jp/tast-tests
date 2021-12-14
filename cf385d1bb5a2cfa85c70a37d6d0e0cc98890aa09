@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c81afa2_7a227b28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/boot_battery_cutoff.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2021-12-14T10:04:12Z",
+      "side": 1,
+      "message": "yes, I agree.\nthe change has been made. \nThank you.",
+      "parentUuid": "8c85ad56_1a505a27",
+      "range": {
+        "startLine": 37,
+        "startChar": 64,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "cf385d1bb5a2cfa85c70a37d6d0e0cc98890aa09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32417151_a7b360b8",
