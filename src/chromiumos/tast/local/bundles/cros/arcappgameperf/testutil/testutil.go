@@ -24,25 +24,23 @@ import (
 
 // TestParams stores data common to the tests run in this package.
 type TestParams struct {
-	TestConn        *chrome.TestConn
-	Arc             *arc.ARC
-	Device          *ui.Device
-	AppPkgName      string
-	AppActivityName string
-	Activity        *arc.Activity
+	TestConn          *chrome.TestConn
+	Arc               *arc.ARC
+	Device            *ui.Device
+	AppPkgName        string
+	AppActivityName   string
+	Activity          *arc.Activity
+	ActivityStartTime time.Time
 }
 
-// PollForGameLaunched abstracts away the logic for callers to implement a method
-// of checking whether a game has been launched.
-type PollForGameLaunched func(params TestParams) (isLaunched bool, err error)
+// PerformTestFunc allows callers to run their desired test after a provided activity has been launched.
+type PerformTestFunc func(params TestParams) (err error)
 
 // cleanupOnErrorTime reserves time for cleanup in case of an error.
 const cleanupOnErrorTime = time.Second * 30
 
-// PerformLaunchTest installs a game from the play store, times the launching of a game,
-// and records the metric for crosbolt. Callers must poll for their own launched state
-// by using pollForGameLaunched.
-func PerformLaunchTest(ctx context.Context, s *testing.State, appPkgName, appActivity string, pollForGameLaunched PollForGameLaunched) {
+// PerformTest installs a game from the play store, starts the activity, and defers to the caller to perform a test.
+func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity string, testFunc PerformTestFunc) {
 	// Shorten the test context so that even if the test times out
 	// there will be time to clean up.
 	cleanupCtx := ctx
@@ -105,38 +103,28 @@ func PerformLaunchTest(ctx context.Context, s *testing.State, appPkgName, appAct
 	defer act.Stop(ctx, tconn)
 
 	// Defer to the caller to determine when the game is launched.
-	isLaunched, launchedErr := pollForGameLaunched(TestParams{
-		TestConn:        tconn,
-		Arc:             a,
-		Device:          d,
-		AppPkgName:      appPkgName,
-		AppActivityName: appActivity,
-		Activity:        act,
-	})
-
-	// Always take a screenshot of the launched state for debugging purposes.
-	captureScreenshot(ctx, s, cr, "launched-state.png")
-
-	if launchedErr != nil {
-		s.Fatal("Failed to check launched state: ", launchedErr)
+	if err := testFunc(TestParams{
+		TestConn:          tconn,
+		Arc:               a,
+		Device:            d,
+		AppPkgName:        appPkgName,
+		AppActivityName:   appActivity,
+		Activity:          act,
+		ActivityStartTime: startTime,
+	}); err != nil {
+		s.Fatal("Failed to perform test: ", err)
 	}
 
-	if isLaunched == false {
-		s.Fatal("Activity was not launched")
-	}
+	// Always take a screenshot of the final state for debugging purposes.
+	captureScreenshot(ctx, s, cr, "final-state.png")
+}
 
-	// Save the metrics in crosbolt.
-	loadTime := time.Now().Sub(startTime)
-
-	perfValues := perf.NewValues()
-	perfValues.Set(perf.Metric{
+// LaunchTimePerfMetric returns a standard metric that launch time can be saved in.
+func LaunchTimePerfMetric() perf.Metric {
+	return perf.Metric{
 		Name:      "launchTime",
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
-	}, loadTime.Seconds())
-
-	if perfValues.Save(s.OutDir()); err != nil {
-		s.Fatal("Failed to save perf data: ", err)
 	}
 }
 

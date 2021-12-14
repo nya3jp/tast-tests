@@ -9,6 +9,7 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
@@ -44,12 +45,16 @@ func RobloxLaunch(ctx context.Context, s *testing.State) {
 		appActivity = ".startup.ActivitySplash"
 	)
 
-	testutil.PerformLaunchTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) (isLaunched bool, err error) {
+	testutil.PerformTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) error {
 		// onAppReady: Landing will appear in logcat after the game is fully loaded.
 		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
-			return false, errors.Wrap(err, "onAppReady was not found in LogCat")
+			return errors.Wrap(err, "onAppReady was not found in LogCat")
 		}
 
-		return true, nil
+		// Save the metric in crosbolt.
+		loadTime := time.Now().Sub(params.ActivityStartTime)
+		perfValues := perf.NewValues()
+		perfValues.Set(testutil.LaunchTimePerfMetric(), loadTime.Seconds())
+		return perfValues.Save(s.OutDir())
 	})
 }
