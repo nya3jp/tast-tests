@@ -117,6 +117,34 @@ type Helper struct {
 	powerunitHostname, powerunitOutlet, hydraHostname string
 }
 
+func DockerClientPing(ctx context.Context) error {
+	cld, err := servo.CreateDockerClient(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "DockerClientPing:Failed to create docker client", err)
+		return err
+	}
+	testing.ContextLog(ctx, "DockerClientPing:CLD:", cld)
+
+	testing.ContextLog(ctx, cld.ClientVersion())
+	testing.ContextLog(ctx, cld.DaemonHost())
+	testing.ContextLog(ctx, cld.HTTPClient())
+	info, err := cld.Info(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "failed to get docker info: ", err)
+		return err
+	}
+
+	testing.ContextLog(ctx, info)
+
+	ping, err := cld.Ping(ctx)
+	if err != nil {
+		testing.ContextLog(ctx, "DockerClientPing:Failed to Ping", err)
+		return err
+	}
+	testing.ContextLog(ctx, "DockerClientPing: Sucess Ping .......", ping)
+	return nil
+}
+
 // NewHelper creates a new Helper object with info from testing.State.
 // For tests that do not use a certain Helper aspect (e.g. RPC or Servo), it is OK to pass null-values (nil or "").
 func NewHelper(d *dut.DUT, rpcHint *testing.RPCHint, cfgFilepath, servoHostPort, dutHostname, powerunitHostname, powerunitOutlet, hydraHostname string) *Helper {
@@ -478,15 +506,22 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	if usbdev == "" {
 		return errors.New("no USB key detected")
 	}
+
+	if err := DockerClientPing(ctx); err != nil {
+		testing.ContextLog(ctx, "Before SetupUSBKey Failed", err)
+	}
+
 	var fdiskOutput []byte
-	// Verify that the device really exists on the servo host.
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
-		return err
-	}, &testing.PollOptions{
-		Timeout:  10 * time.Second,
-		Interval: 1 * time.Second,
-	})
+
+	fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
+	// // Verify that the device really exists on the servo host.
+	// err = testing.Poll(ctx, func(ctx context.Context) error {
+	// 	fdiskOutput, err = h.ServoProxy.OutputCommand(ctx, true, "fdisk", "-l", usbdev)
+	// 	return err
+	// }, &testing.PollOptions{
+	// 	Timeout:  60 * time.Second,
+	// 	Interval: 1 * time.Second,
+	// })
 	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
 	if err != nil {
 		return errors.Wrapf(err, "validate usb key at %q", usbdev)
