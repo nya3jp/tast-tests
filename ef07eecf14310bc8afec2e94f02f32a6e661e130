@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9bf5054_f9b79414",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-14T17:09:55Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look.",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a24f94a_66ee97ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/launcher_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-14T17:09:55Z",
+      "side": 1,
+      "message": "Nit: Please file a bug on LaunchAndWaitForAppOpen regarding \"Google Chat\". Then add a \"TODO\" comment with bug id for changing it back to LaunchAndWaitForAppOpen after the bug is fixed.",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "392ed787_6dcc5621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-14T17:09:55Z",
+      "side": 1,
+      "message": "Do not need else here because s.Fatal will end the test.",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845582fd_fd7eac9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-14T17:09:55Z",
+      "side": 1,
+      "message": "Nit: Please file a bug on LaunchAndWaitForAppOpen regarding \"Google Chat\". Then add a \"TODO\" comment with bug id for changing it back to LaunchAndWaitForAppOpen after the bug is fixed.",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e34c5f7_c8f9216b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-14T17:09:55Z",
+      "side": 1,
+      "message": "Do nott need else here because s.Fatal will end the test.",
+      "revId": "ef07eecf14310bc8afec2e94f02f32a6e661e130",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
