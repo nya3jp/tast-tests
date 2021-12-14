@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1039138d_0e7addcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/selinux_files_data_dir.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1391147
+      },
+      "writtenOn": "2021-12-14T02:11:30Z",
+      "side": 1,
+      "message": "Ideally, this should be a separate bug that mentions to add the proper SELinux context at source for verification. That way, if you close the bug linked currently, someone may accidentally delete this line as part of code clean assuming this has already been resolved. \n\nBut, if you were not planning on closing the currently linked bug until everything resolves, it is OK.",
+      "range": {
+        "startLine": 182,
+        "startChar": 78,
+        "endLine": 182,
+        "endChar": 89
+      },
+      "revId": "0bfa71e3bb2bf972907ea2f862b2011eb9141a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
