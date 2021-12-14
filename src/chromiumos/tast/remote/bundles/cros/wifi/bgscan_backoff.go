@@ -8,7 +8,6 @@ import (
 	"context"
 	"time"
 
-	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/network/ping"
@@ -180,8 +179,11 @@ func BgscanBackoff(ctx context.Context, s *testing.State) {
 				ShortInterval: bgscanInterval,
 			}
 		} else {
-			config = *proto.Clone(oldConfig).(*wifi.BgscanConfig)
-			config.Method = shillconst.DeviceBgscanMethodNone
+			config = wifi.BgscanConfig{
+				Method:        shillconst.DeviceBgscanMethodNone,
+				LongInterval:  bgscanResp.Config.LongInterval,
+				ShortInterval: bgscanResp.Config.ShortInterval,
+			}
 		}
 		if _, err := tf.WifiClient().SetBgscanConfig(ctx, &wifi.SetBgscanConfigRequest{Config: &config}); err != nil {
 			return nil, errors.Wrap(err, "failed to set background scan config")
