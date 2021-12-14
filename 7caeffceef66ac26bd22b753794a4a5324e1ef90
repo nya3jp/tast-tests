@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2345f8a5_61ac2e70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-12-14T08:48:44Z",
+      "side": 1,
+      "message": "Fixed. Please review.",
+      "revId": "7caeffceef66ac26bd22b753794a4a5324e1ef90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed9a0367_e15b2f70",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-12-14T02:32:27Z",
       "side": 1,
       "message": "Does it work if you call \"ioutil.ReadDir()\" ?\n\n(if not, could you add a comment saying why you needed to implement your own readDir)",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 63
+      },
+      "revId": "7caeffceef66ac26bd22b753794a4a5324e1ef90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92fece02_86d60584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2021-12-14T08:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9a0367_e15b2f70",
       "range": {
         "startLine": 192,
         "startChar": 1,
