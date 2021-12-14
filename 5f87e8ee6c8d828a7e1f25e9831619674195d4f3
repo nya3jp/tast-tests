@@ -16,6 +16,24 @@
       "message": "Is there a better word than Default?  This one isn\u0027t as clear-cut as the USB descriptors, but it would be nice if there was a slightly less generic word for this.",
       "revId": "5f87e8ee6c8d828a7e1f25e9831619674195d4f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0829a94_6f203e0f",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1323140
+      },
+      "writtenOn": "2021-12-14T23:07:08Z",
+      "side": 1,
+      "message": "How about \"WithGenericIPPAttributes()?\"",
+      "parentUuid": "664a4e85_961c1c20",
+      "revId": "5f87e8ee6c8d828a7e1f25e9831619674195d4f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
