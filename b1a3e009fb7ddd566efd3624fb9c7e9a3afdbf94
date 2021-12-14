@@ -1160,6 +1160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfca4124_c102a8ee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-14T00:07:03Z",
+      "side": 1,
+      "message": "Ah okay, what\u0027s happening is it\u0027s bringing up two APs on the same radio, and that\u0027s why you aren\u0027t able to set it up with another channel. I think there\u0027s a function ConfigureAPForRouterID or something - can you use this and configure the AP on the pcap device (or just use the 5GHz radio) so that you can use a slightly different set of options?",
+      "parentUuid": "d9b8fcf6_d80478ce",
+      "revId": "b1a3e009fb7ddd566efd3624fb9c7e9a3afdbf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cae3b1f4_98e22a86",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 1

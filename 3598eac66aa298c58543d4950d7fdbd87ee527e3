@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2900f42f_20253995",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-14T00:07:03Z",
+      "side": 1,
+      "message": "This function is pretty hard to parse through. It seems like there\u0027s a switch on mode in almost every chunk here. Can you just split this into two separate functions?",
+      "revId": "3598eac66aa298c58543d4950d7fdbd87ee527e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a1ca1c9_d3d3293a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
         "patchSetId": 6
