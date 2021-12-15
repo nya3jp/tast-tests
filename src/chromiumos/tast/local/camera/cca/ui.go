@@ -40,6 +40,8 @@ var (
 	VideoPauseResumeButton = UIComponent{"video pause/resume button", []string{"#pause-recordvideo"}}
 	// GalleryButton is button for entering the Backlight app as a gallery for captured files.
 	GalleryButton = UIComponent{"gallery button", []string{"#gallery-enter"}}
+	// GalleryButtonCover is cover photo of gallery button.
+	GalleryButtonCover = UIComponent{"gallery button cover", []string{"#gallery-enter>img"}}
 
 	// ResolutionSettingButton is button for opening resolution setting menu.
 	ResolutionSettingButton = UIComponent{"resolution setting button", []string{"#settings-resolution"}}
@@ -187,8 +189,8 @@ func (err errorUINotExist) Error() string {
 	return fmt.Sprintf("failed to resolved ui %v to its correct selector", err.ui.Name)
 }
 
-// isUINotExist returns true if the given error is from |errorUINotExist| error type.
-func isUINotExist(err error) bool {
+// IsUINotExist returns true if the given error is from |errorUINotExist| error type.
+func IsUINotExist(err error) bool {
 	if err == nil {
 		return false
 	}
@@ -196,7 +198,7 @@ func isUINotExist(err error) bool {
 		return true
 	}
 	if wrappedErr, ok := err.(*errors.E); ok {
-		return isUINotExist(wrappedErr.Unwrap())
+		return IsUINotExist(wrappedErr.Unwrap())
 	}
 	return false
 }

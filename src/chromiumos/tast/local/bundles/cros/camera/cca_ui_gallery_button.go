@@ -36,9 +36,22 @@ func CCAUIGalleryButton(ctx context.Context, s *testing.State) {
 	backgroundImageAttr := "background-image"
 
 	// 1. Take a photo and the gallery button should be updated.
-	thumbnail, err := app.Style(ctx, cca.GalleryButton, backgroundImageAttr)
+
+	getCoverURL := func() (string, error) {
+		url, err := app.AttributeWithIndex(ctx, cca.GalleryButtonCover, 0, "src")
+		if cca.IsUINotExist(err) {
+			// Fallback to legacy UI before https://crrev.com/c/3340974.
+			url, err = app.Style(ctx, cca.GalleryButton, backgroundImageAttr)
+		}
+		if err != nil {
+			return "", err
+		}
+		return url, nil
+	}
+
+	url, err := getCoverURL()
 	if err != nil {
-		s.Error("Failed to get the thumbnail of the gallery button: ", err)
+		s.Error("Failed to get the url of the gallery button: ", err)
 	}
 	infos, err := app.TakeSinglePhoto(ctx, cca.TimerOff)
 	if err != nil {
@@ -48,14 +61,14 @@ func CCAUIGalleryButton(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Error("Failed to get captured photo path: ", err)
 	}
-	newThumbnail, err := app.Style(ctx, cca.GalleryButton, backgroundImageAttr)
+	newURL, err := getCoverURL()
 	if err != nil {
-		s.Error("Failed to get thumbnail of the gallery button after capture: ", err)
+		s.Error("Failed to get url of the gallery button after capture: ", err)
 	}
-	if thumbnail == newThumbnail {
-		s.Error("Thumbnail is not updated after capture")
+	if url == newURL {
+		s.Error("Cover is not updated after capture")
 	}
-	thumbnail = newThumbnail
+	url = newURL
 
 	// 2. Click the gallery button and the Backlight app should be launched in 10 seconds.
 	if err := app.Click(ctx, cca.GalleryButton); err != nil {
@@ -92,15 +105,15 @@ func CCAUIGalleryButton(ctx context.Context, s *testing.State) {
 		s.Error("Failed to remove captured photo: ", err)
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		newThumbnail, err = app.Style(ctx, cca.GalleryButton, backgroundImageAttr)
+		newURL, err = getCoverURL()
 		if err != nil {
 			return testing.PollBreak(err)
 		}
-		if thumbnail == newThumbnail {
-			return errors.New("Thumbnail is not updated")
+		if url == newURL {
+			return errors.New("Cover is not updated")
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Error("Failed to update thumbnail of the gallery button after the file it points to is deleted: ", err)
+		s.Error("Failed to update cover of the gallery button after the file it points to is deleted: ", err)
 	}
 }
