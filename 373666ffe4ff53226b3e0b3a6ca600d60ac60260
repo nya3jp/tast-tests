@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1efe8a_0530b333",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:58:17Z",
+      "side": 1,
+      "message": "Shadow review LGTM - few nits",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc11629_0a1ff3e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:58:17Z",
+      "side": 1,
+      "message": "nit: is it possible to write this out as `6 * time.Hour + 10 * time.Minute` or leave a comment about adding 10 minutes of cleanup time for this and the items below? It\u0027s strange to read `hour: 6` above this line and then have the timeout not match without some callout to a cleanup time.",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b5730bc_70cb85e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:58:17Z",
+      "side": 1,
+      "message": "nit: `long duration` can say `provided duration` since it\u0027s parameterized based on the test.",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91337cb7_03c3d1d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:58:17Z",
+      "side": 1,
+      "message": "nit: follow the \"\u003cmessage\u003e: got %v, want %v\" format.",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fc0f072_42421392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:58:17Z",
+      "side": 1,
+      "message": "Any way to eliminate the sleep here? Sleeps are generally discouraged due to their flakiness. window_snap_and_rotate.go does a verification on the window after calling ActivateWindow that you may be able to use?",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
