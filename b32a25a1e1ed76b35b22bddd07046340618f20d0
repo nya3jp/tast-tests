@@ -79,6 +79,24 @@
       "message": "could you elaborate more what is exercised by this test?\nIf this is just a tool, I think we\u0027d like to maintain it as not a part of tests for future maintenance.",
       "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98bb296a_982fe06c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-15T06:59:59Z",
+      "side": 1,
+      "message": "IMO failure of creating the login data could also be a very strong signal that we have something unexpected happening in cryptohome. \nchingkang, WDYT?",
+      "parentUuid": "b593d2bd_e4d893e9",
+      "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
