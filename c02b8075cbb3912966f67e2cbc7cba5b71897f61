@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eebc0d99_46c0fbd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-15T00:48:46Z",
+      "side": 1,
+      "message": "Thanks for that! Makes it much easier.",
+      "parentUuid": "bdc709dd_41964eaa",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 25
+      },
+      "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "633b8a9b_cc71db68",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
         "patchSetId": 20
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-14T21:08:51Z",
       "side": 1,
       "message": "Any reason we check isSame here? From what I can tell, checking err !\u003d nil is sufficient.",
+      "range": {
+        "startLine": 239,
+        "startChar": 15,
+        "endLine": 239,
+        "endChar": 25
+      },
+      "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b75ae2_059e0004",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-15T00:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "633b8a9b_cc71db68",
       "range": {
         "startLine": 239,
         "startChar": 15,
@@ -77,6 +125,24 @@
       "writtenOn": "2021-12-14T21:08:51Z",
       "side": 1,
       "message": "Could you also output the error for debugging.",
+      "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9343a73_2efdc261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-15T00:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44bead84_7691e337",
       "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
