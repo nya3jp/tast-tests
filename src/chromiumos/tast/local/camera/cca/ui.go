@@ -23,9 +23,9 @@ type UIComponent struct {
 
 var (
 	// CancelResultButton is button for canceling intent review result.
-	CancelResultButton = UIComponent{"cancel result button", []string{"#cancel-result"}}
+	CancelResultButton = UIComponent{"cancel result button", []string{"#cancel-result", "button[i18n-label=cancel_review_button]"}}
 	// ConfirmResultButton is button for confirming intent review result.
-	ConfirmResultButton = UIComponent{"confirm result button", []string{"#confirm-result"}}
+	ConfirmResultButton = UIComponent{"confirm result button", []string{"#confirm-result", "button[i18n-label=confirm_review_button]"}}
 	// MirrorButton is button used for toggling preview mirroring option.
 	MirrorButton = UIComponent{"mirror button", []string{"#toggle-mirror"}}
 	// ModeSelector is selection bar for different capture modes.
