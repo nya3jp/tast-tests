@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36527164_129c3d5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2021-12-15T16:08:42Z",
+      "side": 1,
+      "message": "This CL is a simpler version of crrev.com/c/3332755 and it only covers camerabox and policy packages. Tried the dry run and it could passed most of CQ tests (https://screenshot.googleplex.com/BQvMy5oHaSjvq9k.png), so I think this CL is sufficient to the main CL (crrev.com/c/3252922).\n\nThus, I will try to merge this CL with the main CL first. If it works, I will merge the larger one (crrev.com/c/3332755) to cover other packages under /tast.",
+      "revId": "9e423a6853b2e66bcaf6289178207feb1c9bf7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
