@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "061bee26_0c74570f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-15T02:17:54Z",
+      "side": 1,
+      "message": "Got it, I moved the OpenMobileDataSubpage and its corresponding finder to ossettings package",
+      "parentUuid": "2696c291_cda7604a",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 68
+      },
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11a18f6c_ff3fe71c",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-14T20:29:21Z",
       "side": 1,
       "message": "add `defer cr.Close(ctx)` here to clean up",
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9085c349_956bdfda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-15T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11a18f6c_ff3fe71c",
       "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb0c2bd_5460654e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-15T02:17:54Z",
+      "side": 1,
+      "message": "Yes, it may take some time to appear the refreshing text, adding this seems make it more robust.",
+      "parentUuid": "afcc3dda_a89a0160",
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83b8ed2a_d5eb8a46",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-12-14T20:29:21Z",
       "side": 1,
       "message": "I\u0027d opt to not pass this in and just create a new one in this function, since you\u0027re using your own timeout values each call anyways. Looks like 3 seconds is the most-used timeout here, so it would be\n\nui :\u003d uiauto.New(tconn).WithTimeout(3*time.Second)",
+      "range": {
+        "startLine": 170,
+        "startChar": 61,
+        "endLine": 170,
+        "endChar": 79
+      },
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a82159f_0a7f1764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-15T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83b8ed2a_d5eb8a46",
       "range": {
         "startLine": 170,
         "startChar": 61,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d554f51_714137f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-15T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8d29c2_0e243ec1",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21210ad7_e13cc677",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-12-14T20:29:21Z",
       "side": 1,
       "message": "this pattern is a bit awkward, I would suggest using ui.EnsureGoneFor instead",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 2
+      },
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f9b9415_fe844a9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-15T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21210ad7_e13cc677",
       "range": {
         "startLine": 188,
         "startChar": 1,
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8f28da5_0609851b",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-15T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d64b25d_8ff8c454",
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a490fe_3e98a07e",
@@ -157,6 +307,24 @@
       "writtenOn": "2021-12-14T20:29:21Z",
       "side": 1,
       "message": "looping over the range might be a bit more concise, especially if you don\u0027t really need the index\n```\nfor _, euiccPath :\u003d range euiccPaths {...}\n```",
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae40e884_81b8ae50",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2021-12-15T02:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07a490fe_3e98a07e",
       "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
