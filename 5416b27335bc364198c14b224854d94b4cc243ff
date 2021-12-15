@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4562736_c1a3e2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-15T02:06:34Z",
+      "side": 1,
+      "message": "It does result in a minimum 2s delay, and it is only needed after selecting the scanner and then again after selecting the source. The delay is a much better idea! We will need to increase the timeout again when we start actually performing scans, but we don\u0027t need anything higher than the default right now.",
+      "parentUuid": "34a8fb07_0a244436",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110f460a_6c6247c9",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "769461da_12f81c7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-15T02:06:34Z",
+      "side": 1,
+      "message": "I put each scanner into its own subtest - now when any combination fails, the test advances to the next scanner.",
+      "parentUuid": "110f460a_6c6247c9",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16e7bec4_134b11fd",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-12-14T22:56:39Z",
       "side": 1,
       "message": "Is page size dependent on color mode or vice versa?  If not, what about promoting this loop to have one fewer nested combination?",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abeb5fd_1e0f75e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-15T02:06:34Z",
+      "side": 1,
+      "message": "It\u0027s not now, but if we want to move towards scanning every combination of attributes for the platen source then we\u0027ll eventually need this structure. WDYT?",
+      "parentUuid": "16e7bec4_134b11fd",
       "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
