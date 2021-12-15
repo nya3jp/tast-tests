@@ -245,13 +245,22 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 // testBackupToggle verifes if backup button can be turned off and on.
 func testBackupToggle(ctx context.Context, arcDevice *androidui.Device) error {
 	const backupID = "android:id/switch_widget"
+	const oldBackupID = "com.google.android.gms:id/switchWidget"
 	backupToggle := arcDevice.Object(androidui.ID(backupID))
 
+	oldBackupUI := false
 	// backupStatus will check for toggle on/off.
 	backupStatus, err := arcDevice.Object(androidui.ID(backupID)).IsChecked(ctx)
 	if err != nil {
-		return err
+		testing.ContextLog(ctx, "Old backup UI")
+		backupToggle = arcDevice.Object(androidui.ID(oldBackupID))
+		backupStatus, err = arcDevice.Object(androidui.ID(oldBackupID)).IsChecked(ctx)
+		if err != nil {
+			return err
+		}
+		oldBackupUI = true
 	}
+
 	if backupStatus == true {
 		// Turn Backup OFF.
 		if err := backupToggle.Click(ctx); err != nil {
@@ -268,12 +277,22 @@ func testBackupToggle(ctx context.Context, arcDevice *androidui.Device) error {
 		}
 	}
 
-	backupToggleOn := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)Turn on"), androidui.Enabled(true))
-	if err := backupToggleOn.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click backup toggle")
+	if oldBackupUI {
+		if err := backupToggle.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click backup toggle in Old UI")
+		}
+	} else {
+		backupToggleOn := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)Turn on"), androidui.Enabled(true))
+		if err := backupToggleOn.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click backup toggle New UI")
+		}
 	}
 
-	backupStatus, err = arcDevice.Object(androidui.ID(backupID)).IsChecked(ctx)
+	if oldBackupUI {
+		backupStatus, err = arcDevice.Object(androidui.ID(oldBackupID)).IsChecked(ctx)
+	} else {
+		backupStatus, err = arcDevice.Object(androidui.ID(backupID)).IsChecked(ctx)
+	}
 	if err != nil {
 		return err
 	}
