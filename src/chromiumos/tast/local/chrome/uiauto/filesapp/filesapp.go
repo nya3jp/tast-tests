@@ -158,6 +158,12 @@ func (f *FilesApp) OpenDownloads() uiauto.Action {
 	return f.OpenDir(Downloads, FilesTitlePrefix+Downloads)
 }
 
+// OpenPlayfiles returns a function that opens the "Play files" folder in the Files App.
+// An error is returned if "Play files"" is not found or does not open.
+func (f *FilesApp) OpenPlayfiles() uiauto.Action {
+	return f.OpenDir(Playfiles, FilesTitlePrefix+Playfiles)
+}
+
 // OpenDrive returns a function that opens the Google Drive folder in the Files App.
 // An error is returned if Drive is not found or does not open.
 func (f *FilesApp) OpenDrive() uiauto.Action {
