@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f60a0fa_d919c6a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-15T18:39:22Z",
+      "side": 1,
+      "message": "If this is meant to only test one scanner, can it just take a single ScannerDescriptor instead of a list?",
+      "parentUuid": "769461da_12f81c7d",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16e7bec4_134b11fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
         "patchSetId": 1
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "It\u0027s not now, but if we want to move towards scanning every combination of attributes for the platen source then we\u0027ll eventually need this structure. WDYT?",
       "parentUuid": "16e7bec4_134b11fd",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58c5696b_e8555aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2021-12-15T18:39:22Z",
+      "side": 1,
+      "message": "I don\u0027t think we get much from trying every combination.  For example, I\u0027ve never seen a scanner fail at 200 dpi if it worked at 75 dpi and 600 dpi.  Or I\u0027ve never seen one fail to scan Letter if it successfully scanned the whole platen and A4.  However, I also don\u0027t have a proposal for how to get \"enough\" coverage without doing every combination.  As long as we can get through them all in some reasonable time, maybe it\u0027s best to just leave the full nesting in place for now.",
+      "parentUuid": "8abeb5fd_1e0f75e1",
       "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
