@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/loginminutemaid/minutemaidutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -43,6 +44,7 @@ func ChromeUnicorn(ctx context.Context, s *testing.State) {
 			ParentUser: s.RequiredVar("unicorn.parentUser"),
 			ParentPass: s.RequiredVar("unicorn.parentPassword"),
 		}),
+		chrome.Region(minutemaidutil.Locale.Value()),
 	)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)

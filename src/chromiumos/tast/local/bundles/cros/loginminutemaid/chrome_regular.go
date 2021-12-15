@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/loginminutemaid/minutemaidutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -35,6 +36,7 @@ func ChromeRegular(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+		chrome.Region(minutemaidutil.Locale.Value()),
 	)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
