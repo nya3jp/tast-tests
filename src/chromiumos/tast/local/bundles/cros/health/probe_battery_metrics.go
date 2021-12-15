@@ -90,7 +90,6 @@ func validateBatteryData(ctx context.Context, battery *batteryInfo) error {
 		"manufacturer":  battery.Vendor,
 		"model_name":    battery.ModelName,
 		"serial_number": battery.SerialNumber,
-		"status":        battery.Status,
 		"technology":    battery.Technology,
 	}
 
@@ -98,6 +97,12 @@ func validateBatteryData(ctx context.Context, battery *batteryInfo) error {
 		if err := checkBatteryStringProperty(sysfsPath, field, got); err != nil {
 			return err
 		}
+	}
+
+	// Battery status changes from time to time, so we only check if the status string is expected or not.
+	_, ok := power.MapStringToBatteryStatus(battery.Status)
+	if !ok {
+		return errors.Errorf("status %v is not expected", battery.Status)
 	}
 
 	batteryFloatFields := map[string]float64{
