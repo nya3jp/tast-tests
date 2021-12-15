@@ -50,6 +50,24 @@
       "message": "does this mean that we will now leak direcotires into /usr/local/tmp ? When do these get cleaned up?",
       "revId": "ec46e4ccebe9bbb1664e8436d95666fda517c57f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b106c9_1d692f41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400778
+      },
+      "writtenOn": "2021-12-15T18:59:30Z",
+      "side": 1,
+      "message": "I was just going to ask the same thing. Can we have a follow-up CL to clean up (or reuse) the data created in this location for each test? If that data consists of a user profile, maybe we can have a fixture to reuse them for tests instead of creating a new one each test.",
+      "parentUuid": "ccd99574_2d7fd74a",
+      "revId": "ec46e4ccebe9bbb1664e8436d95666fda517c57f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
