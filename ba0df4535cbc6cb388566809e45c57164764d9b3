@@ -33,6 +33,24 @@
       "message": "Why do we no longer default to python3 if it\u0027s an option?",
       "revId": "ba0df4535cbc6cb388566809e45c57164764d9b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04fd896_4c71722d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-15T03:31:12Z",
+      "side": 1,
+      "message": "On a second though, I still like to simply use default python to run the test. So that the test don\u0027t need port complex dependency checking logic[1] to golang and simply let the environment to decide to run with which python.\n\nThe test not only need to adapt the environment before/after python2 or 3 ready in lab\u0027s environment but also will be run in normal sdk chroot. So I prefer to simply use default python.\n\n[1]\nhttp://androidxref.com/7.1.2_r36/xref/cts/apps/CameraITS/build/envsetup.sh",
+      "parentUuid": "b270eb70_24680393",
+      "revId": "ba0df4535cbc6cb388566809e45c57164764d9b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
