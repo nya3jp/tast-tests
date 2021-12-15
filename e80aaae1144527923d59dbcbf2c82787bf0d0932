@@ -39,6 +39,24 @@
       "message": "we strongly prefer not to depend on command line in general.\narchive/tar pakcage can be used here?\n\nDitto for below.",
       "revId": "e80aaae1144527923d59dbcbf2c82787bf0d0932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86768fab_ff75bea3",
+        "filename": "src/chromiumos/tast/local/hwsec/cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-15T06:37:46Z",
+      "side": 1,
+      "message": "regardless of quite a few tests using \"tat\" shell commands, still +1 to what Hidehiko said.",
+      "parentUuid": "0e9395f2_ef039071",
+      "revId": "e80aaae1144527923d59dbcbf2c82787bf0d0932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
