@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e483863_0adf8e9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-15T04:43:47Z",
+      "side": 1,
+      "message": "Drive-by...\n\n",
+      "revId": "08a41cc3a08f7dd698ce285e9313ffb6baa826a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ebd491_00a0532a",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-15T04:43:47Z",
+      "side": 1,
+      "message": "I recommend \"\". It will default to somewhere under /usr/local/tmp since the Tast framework sets $TMPDIR before running tests.",
+      "range": {
+        "startLine": 127,
+        "startChar": 39,
+        "endLine": 127,
+        "endChar": 55
+      },
+      "revId": "08a41cc3a08f7dd698ce285e9313ffb6baa826a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
