@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba4601fa_c8eeaf1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000303
+      },
+      "writtenOn": "2021-12-15T00:35:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d79646b7_73937589",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4749257e_599b66d9",
