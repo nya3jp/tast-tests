@@ -6,7 +6,6 @@ package wallpaper
 
 import (
 	"context"
-	"image/color"
 	"path/filepath"
 	"time"
 
@@ -21,10 +20,9 @@ import (
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/wallpaper"
+	"chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
-
-const filename = "set_local_wallpaper_light_pink_20210929.jpg"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -37,7 +35,7 @@ func init() {
 			"assistive-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{filename},
+		Data:         []string{constants.LocalWallpaperFilename},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
 		Fixture:      "chromeLoggedIn",
@@ -45,8 +43,7 @@ func init() {
 }
 
 func SetLocalWallpaper(ctx context.Context, s *testing.State) {
-	const collection = "My Images"
-	filePath := filepath.Join(filesapp.DownloadPath, filename)
+	filePath := filepath.Join(filesapp.DownloadPath, constants.LocalWallpaperFilename)
 
 	cr := s.FixtValue().(*chrome.Chrome)
 
@@ -64,8 +61,8 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	if err := fsutil.CopyFile(s.DataPath(filename), filePath); err != nil {
-		s.Fatalf("Could not copy %s to %s: %v", filename, filePath, err)
+	if err := fsutil.CopyFile(s.DataPath(constants.LocalWallpaperFilename), filePath); err != nil {
+		s.Fatalf("Could not copy %s to %s: %v", constants.LocalWallpaperFilename, filePath, err)
 	}
 
 	// The test has a dependency of network speed, so we give uiauto.Context ample
@@ -74,18 +71,17 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("Set a new custom wallpaper and minimize wallpaper picker",
 		wallpaper.OpenWallpaperPicker(ui),
-		wallpaper.SelectCollection(ui, collection),
-		wallpaper.SelectImage(ui, filename),
+		wallpaper.SelectCollection(ui, constants.LocalWallpaperCollection),
+		wallpaper.SelectImage(ui, constants.LocalWallpaperFilename),
 		wallpaper.MinimizeWallpaperPicker(ui),
 	)(ctx); err != nil {
 		s.Fatal("Failed to set new wallpaper: ", err)
 	}
 
-	pink := color.RGBA{255, 203, 198, 255}
 	// percentage takes into account the center cropped image is similar to the filled
 	// one.
 	const expectedPercent = 70
-	if err := wallpaper.ValidateBackground(ctx, cr, pink, expectedPercent); err != nil {
+	if err := wallpaper.ValidateBackground(cr, constants.LocalWallpaperColor, expectedPercent)(ctx); err != nil {
 		s.Error("Failed to validate wallpaper background: ", err)
 	}
 
@@ -97,7 +93,7 @@ func SetLocalWallpaper(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("Set a new custom wallpaper, choose new layout and minimize wallpaper picker",
 		wallpaper.OpenWallpaperPicker(ui),
-		wallpaper.SelectCollection(ui, collection),
+		wallpaper.SelectCollection(ui, constants.LocalWallpaperCollection),
 		ui.LeftClick(nodewith.Name("Center").Role(role.ToggleButton)),
 		wallpaper.MinimizeWallpaperPicker(ui),
 	)(ctx); err != nil {
