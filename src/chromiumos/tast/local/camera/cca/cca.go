@@ -972,19 +972,36 @@ func (a *App) selectorExist(ctx context.Context, selector string) (bool, error) 
 
 // CheckConfirmUIExists returns whether the confirm UI exists.
 func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
-	var reviewElementID string
-	if mode == Photo {
-		reviewElementID = "#review-photo-result"
-	} else if mode == Video {
-		reviewElementID = "#review-video-result"
-	} else {
-		return errors.Errorf("unrecognized mode: %s", mode)
+	// Legacy UI use 'review-result' state to show the review page while new UI use review view.
+	// TODO(b/209726472): Clean code path of legacy UI after crrev.com/c/3338157 fully landed.
+	isLegacyUI, err := a.GetState(ctx, "review-result")
+	if err != nil {
+		return errors.Wrap(err, "failed to judge legacy/new UI")
 	}
-	var visible bool
-	if err := a.conn.Call(ctx, &visible, "Tast.isVisible", reviewElementID); err != nil {
-		return err
-	} else if !visible {
-		return errors.New("review result is not shown")
+
+	if isLegacyUI {
+		testing.ContextLog(ctx, "Use legacy review UI")
+		var reviewElementID string
+		if mode == Photo {
+			reviewElementID = "#review-photo-result"
+		} else if mode == Video {
+			reviewElementID = "#review-video-result"
+		} else {
+			return errors.Errorf("unrecognized mode: %s", mode)
+		}
+		var visible bool
+		if err := a.conn.Call(ctx, &visible, "Tast.isVisible", reviewElementID); err != nil {
+			return err
+		} else if !visible {
+			return errors.New("review result is not shown")
+		}
+	} else {
+		testing.ContextLog(ctx, "Use new review UI")
+		if visible, err := a.Visible(ctx, ReviewView); err != nil {
+			return err
+		} else if !visible {
+			return errors.New("review result is not shown")
+		}
 	}
 
 	if visible, err := a.Visible(ctx, ConfirmResultButton); err != nil {
@@ -1003,24 +1020,22 @@ func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
 
 // ConfirmResult clicks the confirm button or the cancel button according to the given isConfirmed.
 func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) error {
-	if err := a.WaitForState(ctx, "review-result", true); err != nil {
-		return errors.Wrap(err, "does not enter review result state")
+	if err := a.conn.WaitForExpr(ctx, "Tast.getState('review-result') || Tast.getState('view-review') === true"); err != nil {
+		return errors.Wrap(err, "failed to wait for review ui showing up")
 	}
+
 	if err := a.CheckConfirmUIExists(ctx, mode); err != nil {
 		return errors.Wrap(err, "check confirm UI failed")
 	}
 
-	var expr string
 	if isConfirmed {
-		// TODO(b/144547749): Since CCA will close automatically after clicking the button, sometimes it
-		// will report connection lost error when executing. Removed the setTimeout wrapping once the
-		// flakiness got resolved.
-		expr = "setTimeout(() => Tast.click('#confirm-result'), 0)"
+		if err := a.Click(ctx, ConfirmResultButton); err != nil {
+			return err
+		}
 	} else {
-		expr = "Tast.click('#cancel-result')"
-	}
-	if err := a.conn.Eval(ctx, expr, nil); err != nil {
-		return errors.Wrap(err, "failed to click confirm/cancel button")
+		if err := a.Click(ctx, CancelResultButton); err != nil {
+			return err
+		}
 	}
 	return nil
 }
