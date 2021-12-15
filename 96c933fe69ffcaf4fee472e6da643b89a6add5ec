@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fad81d2_dd86cc61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339975
+      },
+      "writtenOn": "2021-12-15T21:04:30Z",
+      "side": 1,
+      "message": "Thanks Zhihui for the change! :-) ",
+      "revId": "96c933fe69ffcaf4fee472e6da643b89a6add5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
