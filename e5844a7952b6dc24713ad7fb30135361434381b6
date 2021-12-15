@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c714d070_94292c97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-15T00:14:41Z",
+      "side": 1,
+      "message": "Non-actions can easily be turned into actions. An action is just function (context.Context) error.\n\nfunction (ctx context.Context) { return accountmanager.AddAccount(ctx, tconn, username, password) }",
+      "parentUuid": "6b425b6b_749846b8",
+      "revId": "e5844a7952b6dc24713ad7fb30135361434381b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aeb7747_5116c021",
