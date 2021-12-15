@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5490048b_fec487fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-15T08:55:51Z",
+      "side": 1,
+      "message": "It is actually hwsec.ChallengeAuth. Modified the hard-coded value to enum value.",
+      "parentUuid": "0a9bce7e_36ae2447",
+      "range": {
+        "startLine": 90,
+        "startChar": 27,
+        "endLine": 90,
+        "endChar": 28
+      },
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1453c05e_1e87d10e",
@@ -77,6 +101,24 @@
       "writtenOn": "2021-12-14T13:44:30Z",
       "side": 1,
       "message": "nit: const.",
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4acfb01_2feb4fed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-15T08:55:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1453c05e_1e87d10e",
       "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "338f3a43_691e70fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-15T08:55:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "762def6f_2ad1faef",
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e333b672_0f1b0bdc",
@@ -111,6 +171,24 @@
       "writtenOn": "2021-12-14T13:44:30Z",
       "side": 1,
       "message": "nit: you can \"continue\" here to unindent else block.",
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d895fb0a_74bdbf4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-15T08:55:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e333b672_0f1b0bdc",
       "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
