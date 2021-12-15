@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580451ff_ffc07abd",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-15T15:03:49Z",
+      "side": 1,
+      "message": "I\u0027d prefer keeping the timeout, but increasing it to something like 1 minute.",
+      "revId": "f73f11339c4eb55e58bd28bc1aca5e9032b950ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
