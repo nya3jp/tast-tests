@@ -951,3 +951,23 @@ func GetDefaultPinnedAppIDs(ctx context.Context, tconn *chrome.TestConn) ([]stri
 	}
 	return pinnedAppIDs, nil
 }
+
+// AreAppsPinned checks if the apps in appIDs exist in shelf, and returns an array of booleans that indicate whether an app at particular index in appIDs is pinned.
+func AreAppsPinned(ctx context.Context, tconn *chrome.TestConn, appIDs []string) ([]bool, error) {
+	pinnedAppIDs := make([]bool, len(appIDs))
+
+	items, err := ShelfItems(ctx, tconn)
+	if err != nil {
+		return pinnedAppIDs, errors.Wrap(err, "failed to get items")
+	}
+
+	for _, item := range items {
+		for i, appID := range appIDs {
+			if item.AppID == appID && item.Type == ShelfItemTypePinnedApp {
+				pinnedAppIDs[i] = true
+			}
+		}
+	}
+
+	return pinnedAppIDs, nil
+}
