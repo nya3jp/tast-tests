@@ -26,29 +26,26 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
 				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenZoomTest),
 				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "arcBootedInClamshellMode",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			}, {
 				Name:              "tablet_mode",
 				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenZoomTest),
 				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "arcBootedInTabletMode",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 			}, {
 				Name:              "vm",
 				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenZoomTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "arcBootedInClamshellMode",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			}, {
 				Name:              "vm_tablet_mode",
 				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenZoomTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "arcBootedInTabletMode",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 			}},
 	})

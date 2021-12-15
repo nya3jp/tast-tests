@@ -25,16 +25,15 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseLeftClickTest),
 			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "arcBootedInClamshellMode",
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm",
 			Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseLeftClickTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "arcBootedInClamshellMode",
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}},
 	})
