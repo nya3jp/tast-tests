@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/input"
@@ -20,11 +21,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         InputMethodManagementUserAction,
+		Func:         InputMethodManagement,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies that user can manage input methods in OS settings",
 		Contacts:     []string{"shengjun@chromium.org", "myy@google.com", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
@@ -53,17 +54,23 @@ func init() {
 	})
 }
 
-func InputMethodManagementUserAction(ctx context.Context, s *testing.State) {
+func InputMethodManagement(ctx context.Context, s *testing.State) {
 	testInputMethod := ime.JapaneseWithUSKeyboard
-
-	cleanupCtx := ctx
-	ctx, shortCancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer shortCancel()
 
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	uc := s.PreValue().(pre.PreData).UserContext
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
