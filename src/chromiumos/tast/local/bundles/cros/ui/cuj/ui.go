@@ -76,13 +76,21 @@ func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 	}
 	testing.ContextLog(ctx, "Launch Google Chrome (could be Chrome or Chromium) from "+msg)
 
-	startTime, launchErr := launchFunc(ctx, tconn, "Chrome", "Chromium")
-	if launchErr != nil {
-		return -1, errors.Wrap(launchErr, "failed to open Chrome")
+	var startTime time.Time
+	launchChromeApp := func(ctx context.Context) error {
+		startTime, err = launchFunc(ctx, tconn, "Chrome", "Chromium")
+		if err != nil {
+			return errors.Wrap(err, "failed to open Chrome")
+		}
+		// Make sure app is launched.
+		if err := ash.WaitForApp(ctx, tconn, chromeApp.ID, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for the app to be launched")
+		}
+		return nil
 	}
-	// Make sure app is launched.
-	if err := ash.WaitForApp(ctx, tconn, chromeApp.ID, 30*time.Second); err != nil {
-		return -1, errors.Wrap(err, "failed to wait for the app to be launched")
+	ui := uiauto.New(tconn)
+	if err := ui.Retry(3, launchChromeApp)(ctx); err != nil {
+		return -1, errors.Wrap(err, "failed to launch the Chrome app after 3 retries")
 	}
 	browserStartTime := time.Since(startTime)
 
