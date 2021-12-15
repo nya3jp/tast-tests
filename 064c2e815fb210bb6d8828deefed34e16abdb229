@@ -16,6 +16,23 @@
       "message": "LGTM. Thanks!",
       "revId": "064c2e815fb210bb6d8828deefed34e16abdb229",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a524fd07_989499ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-15T16:27:35Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nI think we need your CR+2, because Mahmoud is not a Tast owner.\n\nThanks!",
+      "revId": "064c2e815fb210bb6d8828deefed34e16abdb229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
