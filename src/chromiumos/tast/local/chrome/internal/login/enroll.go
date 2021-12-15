@@ -178,7 +178,7 @@ func waitForEnrollmentLoginScreen(ctx context.Context, cfg *config.Config, sess 
 		return err
 	}
 
-	if err := oobeConn.WaitForExprWithTimeout(ctx, "OobeAPI.screens.GaiaScreen.isReadyForTesting()", 30*time.Second); err != nil {
+	if err := oobeConn.WaitForExpr(ctx, "OobeAPI.screens.GaiaScreen.isReadyForTesting()"); err != nil {
 		return errors.Wrap(err, "the signin screen is not ready")
 	}
 
