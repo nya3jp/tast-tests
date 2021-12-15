@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f638f9_27354967",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-15T08:57:17Z",
+      "side": 1,
+      "message": "I see, makes sense :)",
+      "parentUuid": "00859875_8d5dce11",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "c60f7158192a587bd5e8c7c051fc5f22ba7bbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c9e62b9_dbb1ee9a",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I think if ctx deadline is reached, the integration test itself fails.",
       "parentUuid": "0c9e62b9_dbb1ee9a",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "c60f7158192a587bd5e8c7c051fc5f22ba7bbde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3246dca_dd7a3512",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-15T08:57:17Z",
+      "side": 1,
+      "message": "No, it is not an error that a test does not return immediately on timeout. In fact, the following test always passes:\n\n func Freeze(ctx context.Context, s *testing.State) {\n   \u003c-ctx.Done()\n }\n\nThe test bundle process will crash if the test does not return after grace time though.",
+      "parentUuid": "3a05cc0b_cde48e7b",
       "range": {
         "startLine": 59,
         "startChar": 1,
