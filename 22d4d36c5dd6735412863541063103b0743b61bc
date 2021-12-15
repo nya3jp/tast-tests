@@ -117,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c58aef5a_6c4d4dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-15T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c9eb70a_ad82aa8e",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c6839a0_3289877e",
@@ -702,6 +720,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00ba2bb_a1de7003",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-15T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0366ed67_67fdcd8e",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2017ee71_4bdd3059",
@@ -821,6 +857,24 @@
       "writtenOn": "2021-12-11T19:40:35Z",
       "side": 1,
       "message": "Should we validate the metric is a positive number, and possibly less time than between when we last started ARC and now?",
+      "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae812c8d_4a88a4f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/restore_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-15T19:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1828b6b6_59e53107",
       "revId": "22d4d36c5dd6735412863541063103b0743b61bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
