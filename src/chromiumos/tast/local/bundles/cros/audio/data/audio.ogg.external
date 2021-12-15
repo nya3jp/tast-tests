@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/audio/BonkEnc_test1_5m9s_Vorbis_193kbps_Stereo_44100Hz.ogg",
+  "size": 7470561,
+  "sha256sum": "beeaebb48689ba5d91802427837413413957ab8557222c462926c130a684db4f"
+}

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/audio/BonkEnc_test14_level8_13s_VBR_471kbps_Mono_44100Hz_16bit.flac",
+  "size": 791958,
+  "sha256sum": "d8cd748aad3ec4f777ff701dcb84ff6ed489350eb82cde789ab0f5ac7897293a"
+}
