@@ -68,6 +68,24 @@
       "message": "Any reason not to use Clone instead?\n\nhttps://pkg.go.dev/github.com/golang/protobuf/proto#Clone",
       "revId": "f6431d49c565724289294393bf0d7a0ddf94dabd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0538fc_5e37c4b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-15T18:41:11Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "22af9e5b_0eec05e9",
+      "revId": "f6431d49c565724289294393bf0d7a0ddf94dabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
