@@ -46,6 +46,30 @@
       },
       "revId": "8ed778fcfc9377340cc88e6ceeca82f8640eac9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44673ae5_5f1d3dcb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-15T05:19:49Z",
+      "side": 1,
+      "message": "I do not have local env to repro the issue. Are you able to test if Screen reader still works on the hidden element since it is onscreen?\n\nHappy to approve this anyway.",
+      "parentUuid": "9f599dea_81cdb31d",
+      "range": {
+        "startLine": 64,
+        "startChar": 60,
+        "endLine": 64,
+        "endChar": 69
+      },
+      "revId": "8ed778fcfc9377340cc88e6ceeca82f8640eac9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
