@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "294305f4_ea00929d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-15T16:59:15Z",
+      "side": 1,
+      "message": "Defer to Leo.",
+      "revId": "9eb6b914d175c03f2ba818988e48f075e15c16db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1df9a83_057f207e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/challenge_response.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-15T16:59:15Z",
+      "side": 1,
+      "message": "in general, \"util\" package is not recommended as it can become a kitchen sink easily. Any more organized ways...?",
+      "revId": "9eb6b914d175c03f2ba818988e48f075e15c16db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d83cdf_7c202c81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/challenge_response.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-15T16:59:15Z",
+      "side": 1,
+      "message": "nit: DBus\n\nall below.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "9eb6b914d175c03f2ba818988e48f075e15c16db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
