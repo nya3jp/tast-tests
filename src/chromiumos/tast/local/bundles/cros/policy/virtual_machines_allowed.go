@@ -83,7 +83,7 @@ func VirtualMachinesAllowed(ctx context.Context, s *testing.State) {
 			}
 
 			// Indicates whether the Crostini installer dialog should appear.
-			dialogExpected := param.value.Stat != policy.StatusUnset && param.value.Val
+			dialogExpected := param.value.Stat == policy.StatusUnset || param.value.Val
 
 			ui := uiauto.New(tconn)
 			crostiniDialogTitle := nodewith.Name("Set up Linux development environment").Role(role.StaticText)
