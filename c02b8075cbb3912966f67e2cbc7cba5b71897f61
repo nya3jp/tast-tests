@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e6a1e8f_a3ad7740",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2021-12-15T00:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eebc0d99_46c0fbd6",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 25
+      },
+      "revId": "c02b8075cbb3912966f67e2cbc7cba5b71897f61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "633b8a9b_cc71db68",
