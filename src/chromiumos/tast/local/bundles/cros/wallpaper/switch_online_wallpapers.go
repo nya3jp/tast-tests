@@ -6,7 +6,6 @@ package wallpaper
 
 import (
 	"context"
-	"image/color"
 	"time"
 
 	"chromiumos/tast/local/chrome"
@@ -14,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/wallpaper"
+	"chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -61,14 +61,13 @@ func SwitchOnlineWallpapers(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open wallpaper picker: ", err)
 	}
 
-	const collection = "Solid colors"
-	if err := wallpaper.SelectCollection(ui, collection)(ctx); err != nil {
-		s.Fatalf("Failed to select collection %q: %v", collection, err)
+	if err := wallpaper.SelectCollection(ui, constants.SolidColorsCollection)(ctx); err != nil {
+		s.Fatalf("Failed to select collection %q: %v", constants.SolidColorsCollection, err)
 	}
 
 	// Make sure yellow is last in the slice. We will be comparing the background wallpaper
 	// with the given rgba color.
-	for _, image := range []string{"Light Blue", "Google Green", "Google Yellow", "Yellow"} {
+	for _, image := range []string{"Light Blue", "Google Green", "Google Yellow", constants.YellowWallpaperName} {
 		if err := wallpaper.SelectImage(ui, image)(ctx); err != nil {
 			s.Fatalf("Failed to select image %q: %v", image, err)
 		}
@@ -78,9 +77,8 @@ func SwitchOnlineWallpapers(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to minimize wallpaper picker: ", err)
 	}
 
-	yellow := color.RGBA{255, 235, 60, 255}
 	const expectedPercent = 90
-	if err := wallpaper.ValidateBackground(ctx, cr, yellow, expectedPercent); err != nil {
+	if err := wallpaper.ValidateBackground(cr, constants.YellowWallpaperColor, expectedPercent)(ctx); err != nil {
 		s.Error("Failed to validate wallpaper background: ", err)
 	}
 }
