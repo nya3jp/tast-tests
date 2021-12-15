@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ec0d0f_ad8368f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-15T17:15:58Z",
+      "side": 1,
+      "message": "LGMT % nit, thanks!",
+      "revId": "c38e142142367eedde4d8ec3cf884b31f1a54e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8d6ed4_051bca5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/virtual_machines_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-15T17:15:58Z",
+      "side": 1,
+      "message": "nit: add period at the end. Usually we don\u0027t add period if comment in the same line as code, here it\u0027s more like a separate sentence.",
+      "range": {
+        "startLine": 54,
+        "startChar": 46,
+        "endLine": 54,
+        "endChar": 52
+      },
+      "revId": "c38e142142367eedde4d8ec3cf884b31f1a54e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
