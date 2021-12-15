@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206ff8ae_a85d9f29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-15T08:41:59Z",
+      "side": 1,
+      "message": "LGTM with minor comments.\n",
+      "revId": "aa09e4bbee03cf1e37b35f3134888d0871cf0e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506b9a0e_f7aff7c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-15T08:41:59Z",
+      "side": 1,
+      "message": "nit: chan struct{} is a good choice if you don\u0027t need true/false.",
+      "range": {
+        "startLine": 102,
+        "startChar": 37,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "aa09e4bbee03cf1e37b35f3134888d0871cf0e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f025dcf4_1d7b6d89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-15T08:41:59Z",
+      "side": 1,
+      "message": "This handler won\u0027t wait for unblockDownloadChannel if w doesn\u0027t implement http.Flusher, which can be confusing. How about hard type-assertion and making a panic when w doesn\u0027t implement Flusher?\n\n f :\u003d w.(http.Flusher)\n f.Flush()\n \u003c-unblockDownloadChannel",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 37
+      },
+      "revId": "aa09e4bbee03cf1e37b35f3134888d0871cf0e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f45ea3a_3f4a6332",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-15T08:41:59Z",
+      "side": 1,
+      "message": "You can just close the channel. Receiving from a closed channel always finishes instantly.",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 31
+      },
+      "revId": "aa09e4bbee03cf1e37b35f3134888d0871cf0e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
