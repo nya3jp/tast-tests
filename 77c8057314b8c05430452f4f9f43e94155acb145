@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a7b145_39719e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-15T06:09:55Z",
+      "side": 1,
+      "message": "Thanks Steve for Flyby review, will add more changes including review comments.\n\nThought ready but found some new things on pin/puk behavior, such as reboot is needed to validate locktype values - adding that in each test as needed. Will give headsup once those changes are in.",
+      "parentUuid": "b21d6a79_02dba2de",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6d35d3_3dc30cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-15T06:09:55Z",
+      "side": 1,
+      "message": "Thought ready but found some new things on pin/puk behavior, such as reboot is needed to validate locktype values - adding that in each test as needed. Will give headsup once those changes are in.",
+      "parentUuid": "51c9547a_666aa7e3",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57ab2bd6_55675d92",
