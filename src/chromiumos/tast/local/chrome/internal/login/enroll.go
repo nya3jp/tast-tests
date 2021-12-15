@@ -293,26 +293,35 @@ func performGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, cre
 		// Sometimes enrollment may fail due to one-off issues with the device
 		// management server.
 		// Check if enrollment maybe retried.
-		var isOnErrorStep bool
-		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorStep.isReadyForTesting()", &isOnErrorStep); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to check enrollment step"))
-		}
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+			defer cancel()
 
-		if !isOnErrorStep {
-			return testing.PollBreak(errors.New("unexpected step after enrollment signin failure"))
-		}
-
-		var canRetry bool
-		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorStep.canRetryEnrollment()", &canRetry); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to check enrollment step"))
-		}
-
-		if !canRetry {
-			var enrollmentErrorMsg string
-			if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorStep.getErrorMsg()", &enrollmentErrorMsg); err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to get unretriable enrollment error msg"))
+			var isOnErrorStep bool
+			if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorStep.isReadyForTesting()", &isOnErrorStep); err != nil {
+				return errors.Wrap(err, "failed to check if error step is ready")
 			}
-			return testing.PollBreak(errors.Errorf("enrollment hit an unrecoverable error: %v", enrollmentErrorMsg))
+
+			if !isOnErrorStep {
+				return errors.New("unexpected step after enrollment signin failure")
+			}
+
+			var canRetry bool
+			if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorStep.canRetryEnrollment()", &canRetry); err != nil {
+				return errors.Wrap(err, "failed to check if retry can be attempted")
+			}
+
+			if !canRetry {
+				var enrollmentErrorMsg string
+				if err := oobeConn.Eval(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.errorStep.getErrorMsg()", &enrollmentErrorMsg); err != nil {
+					return errors.Wrap(err, "failed to get unretriable enrollment error msg")
+				}
+				return errors.Errorf("enrollment hit an unrecoverable error: %v", enrollmentErrorMsg)
+			}
+
+			return nil
+		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to check if enrollment can be retried"))
 		}
 
 		retries--
