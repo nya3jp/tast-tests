@@ -33,6 +33,24 @@
       "message": "Is 1 second sufficient?",
       "revId": "60774f7b2d74b1e50a21990877b37e791f93db01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f431d72d_a296262d",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2021-12-15T18:17:46Z",
+      "side": 1,
+      "message": "Yes, I think this sufficient for now, I verified and was able to connect to docker daemon within this time. If required we can increase it later",
+      "parentUuid": "6334a416_b4ccf5c2",
+      "revId": "60774f7b2d74b1e50a21990877b37e791f93db01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
