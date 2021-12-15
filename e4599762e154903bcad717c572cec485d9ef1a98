@@ -70,6 +70,30 @@
       },
       "revId": "e4599762e154903bcad717c572cec485d9ef1a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14dc152_c8e16950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-15T05:19:28Z",
+      "side": 1,
+      "message": "re Hidehiko\u0027s comment:\nI think IRL it is still reasonable to keep only 1 snapshot for vm variants until they are not compactible. when that happens we can do something about that. for now both boards use the same cryptohome flow and the same tpm simulator implementation.\n\nand i am okay with naming them after XXX_betty_XXX or XXX_amd4-geenric_XXX because that\u0027s where the snapshots come from.\n\nmakes sense?",
+      "parentUuid": "3dc51fe3_bdb69aff",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "e4599762e154903bcad717c572cec485d9ef1a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
