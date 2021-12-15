@@ -52,7 +52,7 @@ func CCAUIResolutions(ctx context.Context, s *testing.State) {
 		subTestCtx, cancel := context.WithTimeout(ctx, subTestTimeout)
 		s.Run(subTestCtx, tst.name, func(ctx context.Context, s *testing.State) {
 			if err := runTestWithApp(ctx, func(ctx context.Context, app *cca.App) error {
-				if noMenu, err := app.GetState(ctx, "no-resolution-settings"); err != nil {
+				if noMenu, err := app.State(ctx, "no-resolution-settings"); err != nil {
 					return errors.Wrap(err, `failed to get "no-resolution-settings" state`)
 				} else if noMenu {
 					return errors.New("resolution settings menu is not available on device")

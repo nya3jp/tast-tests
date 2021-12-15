@@ -589,8 +589,8 @@ func (a *App) GetDeviceID(ctx context.Context) (DeviceID, error) {
 	return id, nil
 }
 
-// GetState returns whether a state is active in CCA.
-func (a *App) GetState(ctx context.Context, state string) (bool, error) {
+// State returns whether a state is active in CCA.
+func (a *App) State(ctx context.Context, state string) (bool, error) {
 	var result bool
 	if err := a.conn.Call(ctx, &result, "Tast.getState", state); err != nil {
 		return false, errors.Wrapf(err, "failed to get state: %v", state)
@@ -623,7 +623,7 @@ func (a *App) PortraitModeSupported(ctx context.Context) (bool, error) {
 func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.FileInfo, error) {
 	var patterns []*regexp.Regexp
 
-	isPortrait, err := a.GetState(ctx, string(Portrait))
+	isPortrait, err := a.State(ctx, string(Portrait))
 	if err != nil {
 		return nil, err
 	}
@@ -664,11 +664,11 @@ func (a *App) TakeSinglePhoto(ctx context.Context, timerState TimerState) ([]os.
 		fileInfos = append(fileInfos, info)
 	}
 
-	isExpert, err := a.GetState(ctx, Expert)
+	isExpert, err := a.State(ctx, Expert)
 	if err != nil {
 		return nil, err
 	}
-	isSaveMetadata, err := a.GetState(ctx, SaveMetadata)
+	isSaveMetadata, err := a.State(ctx, SaveMetadata)
 	if err != nil {
 		return nil, err
 	}
@@ -972,19 +972,36 @@ func (a *App) selectorExist(ctx context.Context, selector string) (bool, error) 
 
 // CheckConfirmUIExists returns whether the confirm UI exists.
 func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
-	var reviewElementID string
-	if mode == Photo {
-		reviewElementID = "#review-photo-result"
-	} else if mode == Video {
-		reviewElementID = "#review-video-result"
-	} else {
-		return errors.Errorf("unrecognized mode: %s", mode)
+	// Legacy UI use 'review-result' state to show the review page while new UI use review view.
+	// TODO(b/209726472): Clean code path of legacy UI after crrev.com/c/3338157 fully landed.
+	isLegacyUI, err := a.State(ctx, "review-result")
+	if err != nil {
+		return errors.Wrap(err, "failed to judge legacy/new UI")
 	}
-	var visible bool
-	if err := a.conn.Call(ctx, &visible, "Tast.isVisible", reviewElementID); err != nil {
-		return err
-	} else if !visible {
-		return errors.New("review result is not shown")
+
+	if isLegacyUI {
+		testing.ContextLog(ctx, "Using legacy review UI")
+		var reviewElementID string
+		if mode == Photo {
+			reviewElementID = "#review-photo-result"
+		} else if mode == Video {
+			reviewElementID = "#review-video-result"
+		} else {
+			return errors.Errorf("unrecognized mode: %s", mode)
+		}
+		var visible bool
+		if err := a.conn.Call(ctx, &visible, "Tast.isVisible", reviewElementID); err != nil {
+			return err
+		} else if !visible {
+			return errors.New("review result is not shown")
+		}
+	} else {
+		testing.ContextLog(ctx, "Using new review UI")
+		if visible, err := a.Visible(ctx, ReviewView); err != nil {
+			return err
+		} else if !visible {
+			return errors.New("review result is not shown")
+		}
 	}
 
 	if visible, err := a.Visible(ctx, ConfirmResultButton); err != nil {
@@ -1003,31 +1020,27 @@ func (a *App) CheckConfirmUIExists(ctx context.Context, mode Mode) error {
 
 // ConfirmResult clicks the confirm button or the cancel button according to the given isConfirmed.
 func (a *App) ConfirmResult(ctx context.Context, isConfirmed bool, mode Mode) error {
-	if err := a.WaitForState(ctx, "review-result", true); err != nil {
-		return errors.Wrap(err, "does not enter review result state")
+	if err := a.conn.WaitForExpr(ctx, "Tast.getState('review-result') || Tast.getState('view-review') === true"); err != nil {
+		return errors.Wrap(err, "failed to wait for review ui showing up")
 	}
+
 	if err := a.CheckConfirmUIExists(ctx, mode); err != nil {
 		return errors.Wrap(err, "check confirm UI failed")
 	}
 
-	var expr string
+	button := CancelResultButton
 	if isConfirmed {
-		// TODO(b/144547749): Since CCA will close automatically after clicking the button, sometimes it
-		// will report connection lost error when executing. Removed the setTimeout wrapping once the
-		// flakiness got resolved.
-		expr = "setTimeout(() => Tast.click('#confirm-result'), 0)"
-	} else {
-		expr = "Tast.click('#cancel-result')"
+		button = ConfirmResultButton
 	}
-	if err := a.conn.Eval(ctx, expr, nil); err != nil {
-		return errors.Wrap(err, "failed to click confirm/cancel button")
+	if err := a.Click(ctx, button); err != nil {
+		return err
 	}
 	return nil
 }
 
 // ToggleOption toggles on/off of the |option|.
 func (a *App) ToggleOption(ctx context.Context, option Option) (bool, error) {
-	prev, err := a.GetState(ctx, option.state)
+	prev, err := a.State(ctx, option.state)
 	if err != nil {
 		return false, err
 	}
@@ -1038,11 +1051,11 @@ func (a *App) ToggleOption(ctx context.Context, option Option) (bool, error) {
 	if err := a.conn.WaitForExpr(ctx, code); err != nil {
 		return false, errors.Wrapf(err, "failed to wait for toggling option %s", option.state)
 	}
-	return a.GetState(ctx, option.state)
+	return a.State(ctx, option.state)
 }
 
 func (a *App) setEnableOption(ctx context.Context, option Option, enabled bool) error {
-	prev, err := a.GetState(ctx, option.state)
+	prev, err := a.State(ctx, option.state)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get option state %v", option)
 	}
@@ -1062,7 +1075,7 @@ func (a *App) setEnableOption(ctx context.Context, option Option, enabled bool) 
 
 // maybeToggleQRCodeOption toggle QR code option if current state is not |target|.
 func (a *App) maybeToggleQRCodeOption(ctx context.Context, target bool) error {
-	if current, err := a.GetState(ctx, ScanBarcodeOptionInPhotoMode.state); err != nil {
+	if current, err := a.State(ctx, ScanBarcodeOptionInPhotoMode.state); err != nil {
 		return errors.Wrap(err, "failed to check scan barcode option state")
 	} else if current != target {
 		if after, err := a.ToggleOption(ctx, ScanBarcodeOptionInPhotoMode); err != nil {
@@ -1116,7 +1129,7 @@ func (a *App) DisableQRCodeDetection(ctx context.Context) error {
 // SetTimerOption sets the timer option to on/off.
 func (a *App) SetTimerOption(ctx context.Context, state TimerState) error {
 	active := state == TimerOn
-	if cur, err := a.GetState(ctx, "timer"); err != nil {
+	if cur, err := a.State(ctx, "timer"); err != nil {
 		return err
 	} else if cur != active {
 		if _, err := a.ToggleOption(ctx, TimerOption); err != nil {
@@ -1125,7 +1138,7 @@ func (a *App) SetTimerOption(ctx context.Context, state TimerState) error {
 	}
 	// Fix timer to 3 seconds for saving test time.
 	if active {
-		if delay3, err := a.GetState(ctx, "timer-3s"); err != nil {
+		if delay3, err := a.State(ctx, "timer-3s"); err != nil {
 			return err
 		} else if !delay3 {
 			return errors.New("default timer is not set to 3 seconds")
@@ -1136,7 +1149,7 @@ func (a *App) SetTimerOption(ctx context.Context, state TimerState) error {
 
 // ToggleExpertMode toggles expert mode and returns whether it's enabled after toggling.
 func (a *App) ToggleExpertMode(ctx context.Context) (bool, error) {
-	prev, err := a.GetState(ctx, Expert)
+	prev, err := a.State(ctx, Expert)
 	if err != nil {
 		return false, err
 	}
@@ -1146,12 +1159,12 @@ func (a *App) ToggleExpertMode(ctx context.Context) (bool, error) {
 	if err := a.WaitForState(ctx, "expert", !prev); err != nil {
 		return false, errors.Wrap(err, "failed to wait for toggling expert mode")
 	}
-	return a.GetState(ctx, Expert)
+	return a.State(ctx, Expert)
 }
 
 // EnableExpertMode enables expert mode.
 func (a *App) EnableExpertMode(ctx context.Context) error {
-	prevEnabled, err := a.GetState(ctx, Expert)
+	prevEnabled, err := a.State(ctx, Expert)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expert mode state")
 	}
@@ -1280,7 +1293,7 @@ func (a *App) SwitchCamera(ctx context.Context) error {
 // SwitchMode switches to specified capture mode.
 func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
 	modeName := string(mode)
-	if active, err := a.GetState(ctx, modeName); err != nil {
+	if active, err := a.State(ctx, modeName); err != nil {
 		return err
 	} else if active {
 		return nil
@@ -1296,7 +1309,7 @@ func (a *App) SwitchMode(ctx context.Context, mode Mode) error {
 	}
 	// Owing to the mode retry mechanism in CCA, it may fallback to other mode when failing to
 	// switch to specified mode. Verify the mode value again after switching.
-	if active, err := a.GetState(ctx, modeName); err != nil {
+	if active, err := a.State(ctx, modeName); err != nil {
 		return errors.Wrapf(err, "failed to get mode state after switching to mode %s", mode)
 	} else if !active {
 		return errors.Wrapf(err, "failed to switch to mode %s", mode)
@@ -1593,7 +1606,7 @@ func (a *App) SaveScreenshot(ctx context.Context) error {
 
 // CheckMode checks whether CCA window is in correct capture mode.
 func (a *App) CheckMode(ctx context.Context, mode Mode) error {
-	if result, err := a.GetState(ctx, string(mode)); err != nil {
+	if result, err := a.State(ctx, string(mode)); err != nil {
 		return errors.Wrap(err, "failed to check state")
 	} else if !result {
 		return errors.Errorf("CCA is not in the expected mode: %s", mode)
