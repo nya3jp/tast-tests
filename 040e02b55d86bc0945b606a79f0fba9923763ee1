@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50a8d9de_3d009077",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-15T12:41:11Z",
+      "side": 1,
+      "message": "If the arcBootedInClamshellMode fixture is independent of the arcBooted fixture, it means that ARC is booted a second time. As this process is flaky, doing it a second time would mean adding more instability to the CQ.\nIf you can modify arcBootedInClamshellMode in a way that it is a descendant of the arcBooted fixture, and does not boot up ARC a second time, just add some additional setups (and those steps are stable), there should be no problem promoting this test to CQ.",
+      "parentUuid": "4bdf29d1_38fa9c75",
+      "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee89fc8f_1ddaf848",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardized_keyboard_copy_paste.go",
         "patchSetId": 1
