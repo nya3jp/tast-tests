@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c677f0_0684e6d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-15T23:00:02Z",
+      "side": 1,
+      "message": "how about we abstract the body into a helper and call it here?",
+      "revId": "19b561db08fa31bce4ab9e734696b6f92eaf7ddc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
