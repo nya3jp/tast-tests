@@ -34,10 +34,6 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"patchpaneld", "shill_client.cc", ".*Failed to obtain service.*GetProperties.*signature.*doesn't exist.*", 0},
 		{"patchpaneld", "shill_client.cc", ".*Unable to get manager properties.*", 0},
 		{"patchpaneld", "shill_client.cc", ".*Unknown interface name eth\\d.*", 0},
-		{"shill", "cellular_capability_3gpp.cc", ".*No slot found for.*", 0},
-		{"shill", "cellular.cc", ".*GetSimLockStatus called with null capability.*", 0},
-		{"shill", "cellular.cc", ".*StartModem failed.*", 0},
-		{"shill", "cellular.cc", ".*StopModem returned an error: org.chromium.flimflam.Error.WrongState.*", 0},
 		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0}, // b/210893108
 		// {"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                             // b/208654528
 		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                        // b/211000413
