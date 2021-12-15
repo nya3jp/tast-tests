@@ -235,6 +235,14 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 		if err := d.SetScreenOffTimeout(ctx, 10*time.Minute); err != nil {
 			return errors.Wrap(err, "failed to extend screen-off timeout")
 		}
+		// Disable popups that can show when the Google Camera app starts up. These popups can distrupt tests that uses the phone's camera.
+		if err := d.GrantPermission(ctx, "com.google.android.GoogleCamera", "android.permission.ACCESS_FINE_LOCATION"); err != nil {
+			return errors.Wrap(err, "failed to grant location permission to Google Camera")
+		}
+		if err := d.SetSystemProperty(ctx, "camera.skip_oobe", "true"); err != nil {
+			return errors.Wrap(err, "failed to disable OOBE popups for Google Camera")
+		}
+
 	}
 
 	// Additionally, set the screen to stay awake while charging. Features such as Nearby Share do not work if the screen is off.
