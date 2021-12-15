@@ -16,6 +16,46 @@
       "message": "hidehiko, as discussed I added a TODO regarding waiting for browser window.",
       "revId": "3e84d839daa303d2fec30a35bf06bff833e6419f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a170a4_97d2e964",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-15T15:25:19Z",
+      "side": 1,
+      "message": "I checked the test in more details, and realised that the whole setup part can be skipped, as bookmarks can be added with policy as well. You can see an example in the policy.ManagedBookmarks test.",
+      "revId": "3e84d839daa303d2fec30a35bf06bff833e6419f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b0c66b_6d39950c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-15T15:25:19Z",
+      "side": 1,
+      "message": "In Lacros case, this window stays open while the checks are done in test, while in the Ash case, the browser window is closed by policyutil.ResetChrome().\nIf you want to close the Lacros browser as well, you should place this part into an anonymous function, or inside an s.Run() (the main difference is that s.Run() adds a prefix to the logs).",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "3e84d839daa303d2fec30a35bf06bff833e6419f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
