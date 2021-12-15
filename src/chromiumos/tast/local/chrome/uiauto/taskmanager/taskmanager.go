@@ -23,6 +23,8 @@ import (
 var (
 	// rootFinder is the finder for the Task Manager.
 	rootFinder = nodewith.Name("Task Manager").HasClass("TaskManagerView")
+	// EndProcessFinder is the finder for End Process button.
+	EndProcessFinder = nodewith.Name("End process").Role(role.Button).FinalAncestor(rootFinder)
 )
 
 // TaskManager holds the resources required to operate on the Task Manager.
@@ -88,7 +90,7 @@ func (tm *TaskManager) SelectProcess(p *nodewith.Finder) uiauto.Action {
 func (tm *TaskManager) TerminateProcess(p *nodewith.Finder) uiauto.Action {
 	return uiauto.Combine("end process",
 		tm.SelectProcess(p),
-		tm.ui.LeftClick(nodewith.Name("End process").HasClass("MdTextButton").Role(role.Button)),
+		tm.ui.LeftClick(EndProcessFinder),
 		tm.ui.WaitUntilGone(p),
 	)
 }
