@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00a01f6_c30b8627",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-15T05:07:28Z",
+      "side": 1,
+      "message": "SG!",
+      "parentUuid": "5fb0c2bd_5460654e",
+      "revId": "dc58cc1e6dde9a188def8d464920f4e147bd6677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83b8ed2a_d5eb8a46",
