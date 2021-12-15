@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a661434b_b40e8bba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-12-15T10:26:23Z",
+      "side": 1,
+      "message": "LGTM. Defer +2 to Tast owners.",
+      "revId": "0852cf2a8fc6168f89f2e1c7da69594d2ee2f56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d36a9cc_8ce0a0c8",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2021-12-15T10:26:23Z",
+      "side": 1,
+      "message": "nit: How about further simplify the codes here as:\n```\nbutton \u003d CancelResultButton\nif isConfirmed {\n  button \u003d ConfirmResultButton\n}\nreturn a.Click(ctx, button)\n```",
+      "range": {
+        "startLine": 1031,
+        "startChar": 1,
+        "endLine": 1040,
+        "endChar": 11
+      },
+      "revId": "0852cf2a8fc6168f89f2e1c7da69594d2ee2f56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
