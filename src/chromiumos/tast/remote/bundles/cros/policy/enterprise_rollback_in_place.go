@@ -126,9 +126,13 @@ func saveRollbackData(ctx context.Context, dut *dut.DUT) error {
 		return errors.Wrap(err, "failed to run oobe_config_save")
 	}
 
-	// This would be done by clobber_state during powerwash but the test does not
-	// powerwash.
+	// The following two commands would be done by clobber_state during powerwash
+	// but the test does not powerwash.
 	if err := dut.Conn().CommandContext(ctx, "sh", "-c", `cat /var/lib/oobe_config_save/data_for_pstore > /dev/pmsg0`).Run(); err != nil {
+		return errors.Wrap(err, "failed to read rollback key")
+	}
+	// Adds a newline to pstore.
+	if err := dut.Conn().CommandContext(ctx, "sh", "-c", `echo "" >> /dev/pmsg0`).Run(); err != nil {
 		return errors.Wrap(err, "failed to read rollback key")
 	}
 
