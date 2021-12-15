@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/wallpaper"
+	"chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -65,10 +66,9 @@ func DailyRefresh(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to grab screenshot: ", err)
 	}
 
-	const collection = "Solid colors"
 	if err := uiauto.Combine("Enable daily refresh",
 		wallpaper.OpenWallpaperPicker(ui),
-		wallpaper.SelectCollection(ui, collection),
+		wallpaper.SelectCollection(ui, constants.SolidColorsCollection),
 		ui.LeftClick(nodewith.Name("Change wallpaper image daily").Role(role.ToggleButton)),
 		ui.WaitUntilExists(nodewith.Name("Refresh the current wallpaper image").Role(role.Button)),
 		wallpaper.MinimizeWallpaperPicker(ui),
