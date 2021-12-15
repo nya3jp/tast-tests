@@ -41,12 +41,6 @@ func init() {
 	})
 }
 
-// networkFinder is the finder for the Network page UI in OS setting.
-var networkFinder = nodewith.Name("Network").Role(role.Link).Ancestor(ossettings.WindowFinder)
-
-// mobileButton is the finder for the Mobile Data page button UI in network page.
-var mobileButton = nodewith.Name("Mobile data").Role(role.Button)
-
 // testProfileDetailButton is the finder for the "Test Profile" detail subpage arrow button in the mobile data page UI.
 var testProfileDetailButton = nodewith.NameStartingWith("Test Profile").Role(role.Button)
 
@@ -85,21 +79,23 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome login failed: ", err)
 	}
 
+	defer cr.Close(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	ui, err := openMobileDataSubpage(ctx, tconn, cr)
+	mdp, err := ossettings.OpenMobileDataSubpage(ctx, tconn, cr)
 	if err != nil {
 		s.Fatal("Failed to open mobile data subpage: ", err)
 	}
 
 	refreshProfileText := nodewith.NameStartingWith("Refreshing profile list").Role(role.StaticText)
-	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(refreshProfileText)(ctx); err == nil {
+	if err := mdp.WithTimeout(5 * time.Second).WaitUntilExists(refreshProfileText)(ctx); err == nil {
 		s.Log("Wait until refresh profile finishes")
-		if err := ui.WithTimeout(time.Minute).WaitUntilGone(refreshProfileText)(ctx); err != nil {
+		if err := mdp.WithTimeout(time.Minute).WaitUntilGone(refreshProfileText)(ctx); err != nil {
 			s.Fatal("Failed to wait until refresh profile complete: ", err)
 		}
 	}
@@ -145,29 +141,15 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 	s.Log("Applied device policy with managed cellular network configuration")
 	defer euicc.DBusObject.Call(ctx, "ResetMemory", 1)
 
-	if err := verifyTestESimProfileNotModifiable(ctx, ui); err != nil {
+	if err := verifyTestESimProfileNotModifiable(ctx, tconn); err != nil {
 		s.Fatal("Failed to verify newly installed stork profile: ", err)
 	}
 	s.Log("Cellular policy test completed")
 }
 
-func openMobileDataSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*uiauto.Context, error) {
-	ui := uiauto.New(tconn)
+func verifyTestESimProfileNotModifiable(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn).WithTimeout(3 * time.Second)
 
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "Network", ui.Exists(networkFinder)); err != nil {
-		return nil, errors.Wrap(err, "failed to launch settings page")
-	}
-
-	if err := uiauto.Combine("Go to mobile data page",
-		ui.LeftClick(networkFinder),
-		ui.LeftClick(mobileButton),
-	)(ctx); err != nil {
-		return nil, errors.Wrap(err, "failed to go to mobile data page")
-	}
-	return ui, nil
-}
-
-func verifyTestESimProfileNotModifiable(ctx context.Context, ui *uiauto.Context) error {
 	managedTestProfile := nodewith.NameRegex(regexp.MustCompile("^Network [0-9] of [0-9], Test Profile.*Managed by your Administrator.*")).Role(role.Button)
 	if err := ui.WithTimeout(time.Minute).WaitUntilExists(managedTestProfile)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find the newly installed test profile as a managed profile")
@@ -177,19 +159,15 @@ func verifyTestESimProfileNotModifiable(ctx context.Context, ui *uiauto.Context)
 		return errors.Wrap(err, "failed to left click Test Profile detail button")
 	}
 
-	if err := testing.Sleep(ctx, 3*time.Second); err != nil {
-		return errors.Wrap(err, "failed to sleep for 3 seconds to load tridots")
-	}
-
-	if err := ui.LeftClick(tridots)(ctx); err != nil {
+	if err := ui.WithTimeout(3 * time.Second).LeftClick(tridots)(ctx); err != nil {
 		return errors.Wrap(err, "failed to left click tridots button")
 	}
 
-	if err := ui.WithTimeout(3 * time.Second).WaitUntilExists(removeMenu)(ctx); err == nil {
+	if err := ui.EnsureGoneFor(removeMenu, 3*time.Second)(ctx); err != nil {
 		return errors.Wrap(err, "should not show Remove profile in tridot menu")
 	}
 
-	if err := ui.WithTimeout(3 * time.Second).WaitUntilExists(renameMenu)(ctx); err == nil {
+	if err := ui.EnsureGoneFor(renameMenu, 3*time.Second)(ctx); err != nil {
 		return errors.Wrap(err, "should not show Rename profile in tridot menu")
 	}
 	return nil

@@ -90,7 +90,7 @@ func (e *EUICC) EnabledProfile(ctx context.Context) (*Profile, error) {
 	return nil, nil
 }
 
-// GetTestEUICC will return the test EUICC if found
+// GetTestEUICC will return the test EUICC if found.
 func GetTestEUICC(ctx context.Context) (*EUICC, error) {
 	h, err := GetHermesManager(ctx)
 	if err != nil {
@@ -105,8 +105,8 @@ func GetTestEUICC(ctx context.Context) (*EUICC, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get available euiccs")
 	}
-	for euiccNum := 0; euiccNum < len(euiccPaths); euiccNum++ {
-		obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesEuiccInterface, euiccPaths[euiccNum])
+	for _, euiccPath := range euiccPaths {
+		obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesEuiccInterface, euiccPath)
 		if err != nil {
 			return nil, errors.Wrap(err, "unable to get EUICC object")
 		}
@@ -118,7 +118,7 @@ func GetTestEUICC(ctx context.Context) (*EUICC, error) {
 			continue
 		}
 
-		testing.ContextLogf(ctx, "Find Test EUICC #: %d", euiccNum)
+		testing.ContextLogf(ctx, "Find Test EUICC on path: %s", euiccPath)
 		return &EUICC{obj}, nil
 	}
 
