@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c3d1e7_09e9d1c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-15T23:47:07Z",
+      "side": 1,
+      "message": "-r is recursive. You shouldn\u0027t need it, since the keypath is a file, not a directory.",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d078637f_0dc93df9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-15T23:47:07Z",
+      "side": 1,
+      "message": "Nit: remove space before colon",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1b0544_4d47d706",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-15T23:47:07Z",
+      "side": 1,
+      "message": "Not familiar with this, but \"toggle\" to enable implies it\u0027s disabled initially. Is this guaranteed?",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd91e523_0377267f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-15T23:47:07Z",
+      "side": 1,
+      "message": "Nit: Declare close to point of use (with the pdcablecommand below)",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11e0d98_1b4b9647",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-15T23:47:07Z",
+      "side": 1,
+      "message": "Please remove this line. We only care about the value if it\u0027s not the expected one, in which case we print it below anyway.",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14d1256_4e9f0e92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-15T23:47:07Z",
+      "side": 1,
+      "message": "Is ioutil.ReadFile not possible here because it\u0027s a remote test that doesn\u0027t run on the DUT? Sorry, I\u0027m not very familiar with remote tests.",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9078e783_d31e4362",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-15T23:47:07Z",
+      "side": 1,
+      "message": "This seems like a rather long interval that could slow down the test. Maybe set it to 1 second?",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
