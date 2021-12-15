@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"net/http"
 	"os"
 	"strconv"
 	"strings"
@@ -42,7 +43,7 @@ type Proxy struct {
 	sdc             string         // empty if servod is not running inside a docker container
 }
 
-func createDockerClient() (*client.Client, error) {
+func createDockerClient(ctx context.Context) (*client.Client, error) {
 	// Create Docker Client.
 	// If the dockerd socket exists, use the default option.
 	// Otherwise, try to use the tcp connection local host IP 192.168.231.1:2375
@@ -51,7 +52,20 @@ func createDockerClient() (*client.Client, error) {
 		if !errors.Is(err, os.ErrNotExist) {
 			return nil, err
 		}
-		return client.NewClientWithOpts(client.WithHost("tcp://192.168.231.1:2375"), client.WithAPIVersionNegotiation())
+		testing.ContextLog(ctx, "Connecting Over TCP")
+
+		// b/207133139, default HTTPClient inside the Docker Client object fails to
+		// connects to docker deamon. Create the transport with DialContext and use
+		// this while initializing new docker client object.
+		timeout := time.Duration(1 * time.Second)
+		transport := &http.Transport{
+			DialContext: (&net.Dialer{
+				Timeout: timeout,
+			}).DialContext,
+		}
+		c := http.Client{Transport: transport}
+
+		return client.NewClientWithOpts(client.WithHost("tcp://192.168.231.1:2375"), client.WithHTTPClient(&c), client.WithAPIVersionNegotiation())
 	}
 	return client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
 }
@@ -187,7 +201,7 @@ func NewProxy(ctx context.Context, servoHostPort, keyFile, keyDir string) (newPr
 	}
 
 	if strings.Contains(host, "docker_servod") {
-		pxy.dcl, err = createDockerClient()
+		pxy.dcl, err = createDockerClient(ctx)
 		if err != nil {
 			return nil, err
 		}
@@ -493,6 +507,10 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 		err := errors.New("cannot direct input to docker exec command")
 		return nil, err
 	}
+	if p.dcl == nil {
+		err := errors.New("dockerExec:Docker client object is empty")
+		return nil, err
+	}
 
 	// The only user within servod container is root, no sudo needed.
 	execConfig.Cmd = append([]string{name}, args...)
@@ -537,6 +555,12 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 	}(p.dcl)
 
 	wg.Wait()
+	// Validate the stdout for invalid UTF-8 encoding.
+	if out != nil {
+		validatedOutput := strings.ToValidUTF8(string(out), "")
+		out = []byte(validatedOutput)
+	}
+
 	return out, err
 }
 
