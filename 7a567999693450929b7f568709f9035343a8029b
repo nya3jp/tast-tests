@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36efaf06_0f61eba6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-15T17:03:18Z",
+      "side": 1,
+      "message": "Oh gotcha, thanks for clarification.",
+      "parentUuid": "ef1d2920_1ca37a0e",
+      "range": {
+        "startLine": 20,
+        "startChar": 40,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "7a567999693450929b7f568709f9035343a8029b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6662888f_77ce1af3",
