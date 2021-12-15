@@ -34,6 +34,24 @@
       "parentUuid": "fc581da0_07b8e93e",
       "revId": "22750dc146b4a2643e9b17725e9b7ecc8a80c1a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a409bf6a_49d652cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-15T01:55:08Z",
+      "side": 1,
+      "message": "Added defer with helper.Restartmodemmanger",
+      "parentUuid": "e265f428_d12063d0",
+      "revId": "22750dc146b4a2643e9b17725e9b7ecc8a80c1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
