@@ -628,3 +628,13 @@ func (d *Device) RemoveMediaFile(ctx context.Context, filePath string) error {
 	}
 	return nil
 }
+
+// GrantPermission grants the requested permission to the specified app package.
+func (d *Device) GrantPermission(ctx context.Context, pkg, permission string) error {
+	return d.ShellCommand(ctx, "pm", "grant", pkg, permission).Run()
+}
+
+// SetSystemProperty sets the specified system property to the provided value on the device.
+func (d *Device) SetSystemProperty(ctx context.Context, propertyName, propertyValue string) error {
+	return d.ShellCommand(ctx, "setprop", propertyName, propertyValue).Run()
+}
