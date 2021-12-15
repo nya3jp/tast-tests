@@ -471,14 +471,10 @@ func (vkbCtx *VirtualKeyboardContext) SwitchToVoiceInput() uiauto.Action {
 	}
 	// This node indicates if the voice input is active.
 	voiceActiveNode := NodeFinder.HasClass("voice-mic-img")
-	return uiauto.Combine("tap voice button and close privacy dialogue",
-		// Do nothing if it is already in the voice layout.
-		vkbCtx.ui.IfSuccessThen(
-			vkbCtx.ui.Gone(voiceActiveNode),
-			callSwitchAPI,
-		),
+	return uiauto.Retry(5, uiauto.Combine("tap voice button and close privacy dialogue",
+		callSwitchAPI,
 		vkbCtx.ui.WaitUntilExists(voiceActiveNode),
-	)
+	))
 }
 
 // SwitchToHandwriting changes to handwriting layout and returns a handwriting context.
