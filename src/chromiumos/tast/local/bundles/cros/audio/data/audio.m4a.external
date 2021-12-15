@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/audio/HE-AAC_v4_Stereo_VBR_64kbps_44100Hz.m4a",
+  "size": 3686590,
+  "sha256sum": "58bbca146131d8365135ef3f58acb2a7983fcf6137d563c1d3ecf902369237e5"
+}
