@@ -16,6 +16,23 @@
       "message": "LGTM for the policy part",
       "revId": "210ee54d0716e8368fde0263ef5b5a77bb823d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f066c8_f09fd379",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-15T16:30:45Z",
+      "side": 1,
+      "message": "LGTM for policy code",
+      "revId": "210ee54d0716e8368fde0263ef5b5a77bb823d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
