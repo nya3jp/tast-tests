@@ -88,6 +88,24 @@
       "parentUuid": "2992e99f_f16c6503",
       "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7776189e_2f3de8e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-12-15T06:46:30Z",
+      "side": 1,
+      "message": "chingkang, do we wanna run this shell scrips alone?\n1. yes, we do -- then this shell script belongs our test-only package but not tast-test, so we should move them out.\n2. no, it\u0027s called by some tast-tests -- please do it in go.\n\nmy understanding is that 1 is the case because it\u0027s the automation on top of tast instead of \"being part of\" tast-test. \n\nand it should be just another CL, solely for this test script.",
+      "parentUuid": "28f57b66_2cd2232c",
+      "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
