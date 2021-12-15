@@ -49,11 +49,19 @@ func SelectCollection(ui *uiauto.Context, collection string) uiauto.Action {
 
 // SelectImage returns an action to select the image with the given image title.
 func SelectImage(ui *uiauto.Context, image string) uiauto.Action {
-	images := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container")
+	imageNode := nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container").Name(image)
 	return uiauto.Combine(fmt.Sprintf("select image %q", image),
-		ui.WaitUntilExists(images.First()),
-		ui.LeftClick(nodewith.Name(image).Role(role.ListBoxOption)),
-	)
+		ui.WaitUntilExists(imageNode),
+		ui.MakeVisible(imageNode),
+		ui.LeftClick(imageNode))
+}
+
+// Back presses the back button in the wallpaper app. Used to navigate from an individual collection to the collections list.
+func Back(ui *uiauto.Context) uiauto.Action {
+	back := nodewith.Role(role.Button).Name("Back to Wallpaper").HasClass("icon-arrow-back")
+	return uiauto.Combine("click wallpaper app back button",
+		ui.WaitUntilExists(back),
+		ui.LeftClick(back))
 }
 
 // MinimizeWallpaperPicker returns an action to minimize the wallpaper picker.
@@ -93,27 +101,49 @@ func WaitForWallpaperWithName(ui *uiauto.Context, name string) uiauto.Action {
 	return ui.WaitUntilExists(wallpaperNameNode)
 }
 
+// ConfirmFullscreenPreview presses the "Set as wallpaper" button while in fullscreen preview mode.
+func ConfirmFullscreenPreview(ui *uiauto.Context) uiauto.Action {
+	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	selectButton := nodewith.Name("Set as wallpaper").Ancestor(windowNode).Role(role.Button)
+	return uiauto.Combine("Confirm full screen preview",
+		ui.WaitUntilExists(selectButton),
+		ui.LeftClick(selectButton),
+		ui.WaitUntilGone(selectButton))
+}
+
+// CancelFullscreenPreview presses the "Exit wallpaper preview" button while in fullscreen preview mode.
+func CancelFullscreenPreview(ui *uiauto.Context) uiauto.Action {
+	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
+	cancelButton := nodewith.Name("Exit wallpaper preview").Ancestor(windowNode).Role(role.Button)
+	return uiauto.Combine("Cancel full screen preview",
+		ui.WaitUntilExists(cancelButton),
+		ui.LeftClick(cancelButton),
+		ui.WaitUntilGone(cancelButton))
+}
+
 // ValidateBackground takes a screenshot and check the percentage of the clr in the image,
 // returns error if it's less than expectedPercent%.
-func ValidateBackground(ctx context.Context, cr *chrome.Chrome, clr color.Color, expectedPercent int) error {
-	// Take a screenshot and check the clr pixels percentage.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		img, err := screenshot.GrabScreenshot(ctx, cr)
-		if err != nil {
-			return errors.Wrap(err, "failed to grab screenshot")
-		}
-		rect := img.Bounds()
-		correctPixels := imgcmp.CountPixelsWithDiff(img, clr, 10)
-		totalPixels := rect.Dx() * rect.Dy()
-		percent := correctPixels * 100 / totalPixels
-		if percent < expectedPercent {
-			return errors.Errorf("unexpected pixels percentage: got %d / %d = %d%%; want at least %d%%", correctPixels, totalPixels, percent, expectedPercent)
+func ValidateBackground(cr *chrome.Chrome, clr color.Color, expectedPercent int) uiauto.Action {
+	return func(ctx context.Context) error {
+		// Take a screenshot and check the clr pixels percentage.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			img, err := screenshot.GrabScreenshot(ctx, cr)
+			if err != nil {
+				return errors.Wrap(err, "failed to grab screenshot")
+			}
+			rect := img.Bounds()
+			correctPixels := imgcmp.CountPixelsWithDiff(img, clr, 10)
+			totalPixels := rect.Dx() * rect.Dy()
+			percent := correctPixels * 100 / totalPixels
+			if percent < expectedPercent {
+				return errors.Errorf("unexpected pixels percentage: got %d / %d = %d%%; want at least %d%%", correctPixels, totalPixels, percent, expectedPercent)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
+			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
-		return err
 	}
-	return nil
 }
 
 // ValidateDiff checks the diff percentage between 2 images and returns error if
