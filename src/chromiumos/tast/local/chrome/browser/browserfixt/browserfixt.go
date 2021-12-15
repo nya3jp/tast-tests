@@ -8,6 +8,8 @@ package browserfixt
 
 import (
 	"context"
+	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -114,4 +116,28 @@ func SetUpWithURL(ctx context.Context, f interface{}, bt browser.Type, url strin
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
 	}
+}
+
+func isBrowserWindow(w *ash.Window, bt browser.Type, titlePrefix string) bool {
+	switch bt {
+	case browser.TypeAsh:
+		titlePrefix = "Chrome - " + titlePrefix
+		return w.WindowType == ash.WindowTypeBrowser && strings.HasPrefix(w.Title, titlePrefix)
+	case browser.TypeLacros:
+		return w.WindowType == ash.WindowTypeLacros && strings.HasPrefix(w.Title, titlePrefix)
+	}
+	panic("unreachable")
+}
+
+// WaitForWindow waits for a browser window to be visible whose title equals or
+// extends the given titlePrefix.
+// XXX: Do we really want this to be in browserfixt?
+// XXX: And what to do with lacros.WaitForLacrosWindow?
+func WaitForWindow(ctx context.Context, tconn *chrome.TestConn, bt browser.Type, titlePrefix string) error {
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		return w.IsVisible && isBrowserWindow(w, bt, titlePrefix)
+	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to wait for visible browser window (titlePrefix: %v)", titlePrefix)
+	}
+	return nil
 }
