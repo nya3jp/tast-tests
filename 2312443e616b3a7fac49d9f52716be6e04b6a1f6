@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1275b22_9a34b176",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "LGTM as shadow reviewer, just a few nits.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50eb2a3_b3f1d208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "nit: is timeout related to fileSize i.e. 2GB gets two extra minutes, or is there a different reason the timeouts are different for this test and the other two? Might be worth leaving a comment just to document your thought process there.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11af8549_2b10bf8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "nit: flip the operator to reduce parentheses? len(dirsBeforePlug) \u003e\u003d len(dirsAfterPlug)",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e606be74_7b935966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "nit: It may be beneficial to parse output and get the speed it detected, which would allow you to follow the common:\n\n\"\u003cmessage\u003e; got %v, want %v\" format to help debugging.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6544d9d6_edbeed3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "nit: extra space between `file` and `:`",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695e58a3_0bdae23d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "is it worth including copyErr here so the issue is known?",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ebdfa6_91176f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "Also, did you mean s.Error instead of s.Fatal here? Just wanted to double check.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c31b0a_25f87167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "nit: extra space between `file` and `:`",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30cbbf3f_14955c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "nit: Extra space at beginning plus follow \"\u003cmessage\u003e; got %v, want %v\" format.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6377b388_8b3f37eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-15T18:47:27Z",
+      "side": 1,
+      "message": "errors.Wrap(err, ...) here to make sure all the details are captured.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
