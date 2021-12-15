@@ -69,6 +69,7 @@ type TestCase struct {
 	Fn              TestFunc
 	Timeout         time.Duration
 	WindowStateType ash.WindowStateType
+	InTabletMode    bool
 }
 
 // ZoomType represents the zoom type to perform.
@@ -112,10 +113,10 @@ const (
 // GetClamshellTests returns the test cases required for clamshell devices.
 func GetClamshellTests(fn TestFunc) []TestCase {
 	return []TestCase{
-		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
-		{Name: "Normal", Fn: fn, WindowStateType: ash.WindowStateNormal},
-		{Name: "Snapped left", Fn: fn, WindowStateType: ash.WindowStateLeftSnapped},
-		{Name: "Snapped right", Fn: fn, WindowStateType: ash.WindowStateRightSnapped},
+		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen, InTabletMode: false},
+		{Name: "Normal", Fn: fn, WindowStateType: ash.WindowStateNormal, InTabletMode: false},
+		{Name: "Snapped left", Fn: fn, WindowStateType: ash.WindowStateLeftSnapped, InTabletMode: false},
+		{Name: "Snapped right", Fn: fn, WindowStateType: ash.WindowStateRightSnapped, InTabletMode: false},
 	}
 }
 
@@ -125,8 +126,8 @@ var ClamshellHardwareDep = hwdep.SkipOnModel(TabletOnlyModels...)
 // GetTabletTests returns the test cases required for tablet devices.
 func GetTabletTests(fn TestFunc) []TestCase {
 	return []TestCase{
-		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen},
-		{Name: "Maximized", Fn: fn, WindowStateType: ash.WindowStateMaximized},
+		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen, InTabletMode: true},
+		{Name: "Maximized", Fn: fn, WindowStateType: ash.WindowStateMaximized, InTabletMode: true},
 	}
 }
 
@@ -169,6 +170,13 @@ func runTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 			// Save time for cleanup by working on a shortened context.
 			workCtx, workCtxCancel := ctxutil.Shorten(cleanupCtx, RunTestCasesCleanupTime)
 			defer workCtxCancel()
+
+			// Set the device mode.
+			cleanupTabletMode, err := ash.EnsureTabletModeEnabled(workCtx, tconn, test.InTabletMode)
+			if err != nil {
+				s.Fatal("Failed to set tablet mode to: ", test.InTabletMode)
+			}
+			defer cleanupTabletMode(cleanupCtx)
 
 			// Launch the activity.
 			act, err := arc.NewActivity(a, appPkgName, appActivity)

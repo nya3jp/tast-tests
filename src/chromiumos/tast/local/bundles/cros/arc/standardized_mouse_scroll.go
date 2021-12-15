@@ -38,7 +38,7 @@ func init() {
 					resizeLockEnabled: false,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
-				Fixture:           "arcBootedInClamshellMode",
+				Fixture:           "arcBooted",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 			{
@@ -48,7 +48,7 @@ func init() {
 					resizeLockEnabled: false,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
-				Fixture:           "arcBootedInClamshellMode",
+				Fixture:           "arcBooted",
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 			{

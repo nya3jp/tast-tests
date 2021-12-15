@@ -59,28 +59,25 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
+		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "arcBootedInClamshellMode",
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
 			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_p"},
-			Fixture:           "arcBootedInTabletMode",
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
 			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "arcBootedInClamshellMode",
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
 			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Fixture:           "arcBootedInTabletMode",
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}},
 	})
