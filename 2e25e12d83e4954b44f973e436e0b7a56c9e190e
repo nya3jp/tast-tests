@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98333acc_f842c860",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-12-15T21:21:35Z",
+      "side": 1,
+      "message": "prepvt",
+      "range": {
+        "startLine": 22,
+        "startChar": 60,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f604c8e1_60831139",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
         "patchSetId": 2
