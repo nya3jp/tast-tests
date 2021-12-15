@@ -22,6 +22,30 @@
       },
       "revId": "8ed778fcfc9377340cc88e6ceeca82f8640eac9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f42139d7_566d9aea",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/vkb/vkb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-15T05:17:09Z",
+      "side": 1,
+      "message": "No, that won\u0027t be it. It is basically the same as Onscreen. If only checkes if `invisible:true` is presented.",
+      "parentUuid": "9f599dea_81cdb31d",
+      "range": {
+        "startLine": 64,
+        "startChar": 60,
+        "endLine": 64,
+        "endChar": 69
+      },
+      "revId": "8ed778fcfc9377340cc88e6ceeca82f8640eac9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
