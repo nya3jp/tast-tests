@@ -16,6 +16,29 @@
       "message": "lgtm % tast review",
       "revId": "8b66196afad70d58b82d9e9cac287852c8680520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a122ce4_7484cbe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_battery_metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2021-12-15T08:19:58Z",
+      "side": 1,
+      "message": "What\u0027s current_now means? Why it change so quickly?",
+      "range": {
+        "startLine": 116,
+        "startChar": 6,
+        "endLine": 116,
+        "endChar": 17
+      },
+      "revId": "8b66196afad70d58b82d9e9cac287852c8680520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
