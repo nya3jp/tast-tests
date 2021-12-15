@@ -123,8 +123,8 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 	// LaunchLacros don't interfere with each other.
 	userDataDir, err := ioutil.TempDir(f.LacrosPath(), "")
 	if err != nil {
-		// Fall back to create it under /tmp in case rootfs-lacros is used.
-		if userDataDir, err = ioutil.TempDir("/tmp", "lacros"); err != nil {
+		// Fall back to create it under /usr/local/tmp in case rootfs-lacros is used.
+		if userDataDir, err = ioutil.TempDir("/usr/local/tmp", "lacros"); err != nil {
 			return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", userDataDir)
 		}
 	}
