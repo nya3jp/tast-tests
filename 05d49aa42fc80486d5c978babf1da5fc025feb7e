@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2a2b31_7400b282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-15T00:51:34Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "05d49aa42fc80486d5c978babf1da5fc025feb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2869b65_1a2ccd68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-15T00:51:34Z",
+      "side": 1,
+      "message": "nit. Kind of redundant",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 35
+      },
+      "revId": "05d49aa42fc80486d5c978babf1da5fc025feb7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
