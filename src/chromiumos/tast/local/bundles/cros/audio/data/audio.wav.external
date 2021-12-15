@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/audio/m_96k_16.wav",
+  "size": 5610592,
+  "sha256sum": "ed89467e0fb9e877f4cb6651277eccdf465bbdae51e0e448c0744756c499c7ef"
+}
