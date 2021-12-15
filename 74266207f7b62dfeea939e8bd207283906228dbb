@@ -16,6 +16,24 @@
       "message": "Could you move this under a subdirectory of local/bundles/cros/hwsec?\nLooks like this is used only from tests in the hwsec category, in following CLs.",
       "revId": "74266207f7b62dfeea939e8bd207283906228dbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd46b1ab_cf1d6965",
+        "filename": "src/chromiumos/tast/local/hwsec/challenge_response.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-15T08:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70429078_88e6559a",
+      "revId": "74266207f7b62dfeea939e8bd207283906228dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
