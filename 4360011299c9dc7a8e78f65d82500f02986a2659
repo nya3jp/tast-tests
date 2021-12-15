@@ -106,6 +106,24 @@
       "parentUuid": "28f57b66_2cd2232c",
       "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac4412fa_4e533222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-15T07:50:19Z",
+      "side": 1,
+      "message": "This makes sense. I would move it out to another CL.",
+      "parentUuid": "7776189e_2f3de8e0",
+      "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
