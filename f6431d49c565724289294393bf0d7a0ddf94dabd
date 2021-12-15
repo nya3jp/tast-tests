@@ -16,6 +16,24 @@
       "message": "@zhihuixie this needs Tast owners approval before submitting.",
       "revId": "f6431d49c565724289294393bf0d7a0ddf94dabd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22eadef_728b9c8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2021-12-15T05:44:22Z",
+      "side": 1,
+      "message": "Got it. I was trying to add some owners in a different timezones for help.",
+      "parentUuid": "42bd550f_335a9276",
+      "revId": "f6431d49c565724289294393bf0d7a0ddf94dabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
