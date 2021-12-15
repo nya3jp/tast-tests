@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d297cb_875c9802",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-15T10:11:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75a43d0f_a786f596",
+      "revId": "d02b11d3717584d7f85ff035599636ee5732b911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "345a52ab_ae5a549f",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-12-15T09:26:37Z",
       "side": 1,
       "message": "IIRC, now when we click the confirm button, CCA will not be closed immediately but instead notifying the test that it intends to close itself and let test close it.\n\nTherefore, I think we can remove these lines and simply call Click() on it.",
+      "range": {
+        "startLine": 1029,
+        "startChar": 2,
+        "endLine": 1035,
+        "endChar": 3
+      },
+      "revId": "d02b11d3717584d7f85ff035599636ee5732b911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5128432f_a7cf3e45",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-15T10:11:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "345a52ab_ae5a549f",
       "range": {
         "startLine": 1029,
         "startChar": 2,
