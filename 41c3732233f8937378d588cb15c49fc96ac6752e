@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83fa340b_ee7dc9d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-12-15T10:52:10Z",
+      "side": 1,
+      "message": "This code is gone.",
+      "parentUuid": "b957b56a_a698b14f",
+      "range": {
+        "startLine": 71,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 14
+      },
+      "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fed598dc_2464b909",
@@ -72,6 +96,24 @@
       "side": 1,
       "message": "Browser.WaitForWindow SGTM.",
       "parentUuid": "fed598dc_2464b909",
+      "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0347b56_d9ad9c9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-12-15T10:52:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fd34f7a_ff0567f1",
       "revId": "41c3732233f8937378d588cb15c49fc96ac6752e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
