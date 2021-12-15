@@ -137,6 +137,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c890e968_1285f251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2021-12-15T01:14:48Z",
+      "side": 1,
+      "message": "It\u0027s really a good idea. Sorry for the inconvenience. I should have listed who is expected to review which package in my first comment. Since nearly all of the reviewers have reviewed the CL. I will skip the list this time. Thanks for the suggestion.",
+      "parentUuid": "159470bc_798ae873",
+      "revId": "e3e56fe966bd273577c3c87c4681fdaff6cd49c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed48995_ff1e77b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2021-12-15T01:14:48Z",
+      "side": 1,
+      "message": "Good question. I don\u0027t really know the answer. Most of them are auto generated code except /camarabox and /policy. I am not sure who can represent all the owners to review the rest auto generated code. It\u0027s sort of painful for me to look into each modified package to find out the owners as well. Perhaps I only need to add two or three owners for review?",
+      "parentUuid": "8738697a_6e7a01da",
+      "revId": "e3e56fe966bd273577c3c87c4681fdaff6cd49c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4b54fc4_796bf7e0",
