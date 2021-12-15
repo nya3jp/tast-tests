@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dba3b5d1_4b1e107c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-12-15T08:22:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4bb31d7_236be97c",
+      "range": {
+        "startLine": 15,
+        "startChar": 25,
+        "endLine": 15,
+        "endChar": 38
+      },
+      "revId": "7a567999693450929b7f568709f9035343a8029b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e09c10c7_9eacb0a3",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef1d2920_1ca37a0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-12-15T08:22:12Z",
+      "side": 1,
+      "message": "The function name is BSSIDIgnore before this change, even though the command used is \"blacklist clear\", so the failure message is:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go;rcl\u003db2c6cd2370a74ff66546d70f5ae253186c892440;l\u003d136",
+      "parentUuid": "e09c10c7_9eacb0a3",
+      "range": {
+        "startLine": 20,
+        "startChar": 40,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "7a567999693450929b7f568709f9035343a8029b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6662888f_77ce1af3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-10T00:52:14Z",
       "side": 1,
       "message": "rm",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "7a567999693450929b7f568709f9035343a8029b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf765fba_e0ade5dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-12-15T08:22:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6662888f_77ce1af3",
       "range": {
         "startLine": 22,
         "startChar": 0,
