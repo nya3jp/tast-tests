@@ -51,18 +51,23 @@ func VirtualMachinesAllowed(ctx context.Context, s *testing.State) {
 		name string
 		// value is the policy value.
 		value *policy.VirtualMachinesAllowed
+		// wantDialog expresses whether we expect the Crostini dialog to appear.
+		wantDialog bool
 	}{
 		{
-			name:  "enabled",
-			value: &policy.VirtualMachinesAllowed{Val: true},
+			name:       "enabled",
+			value:      &policy.VirtualMachinesAllowed{Val: true},
+			wantDialog: true,
 		},
 		{
-			name:  "disabled",
-			value: &policy.VirtualMachinesAllowed{Val: false},
+			name:       "disabled",
+			value:      &policy.VirtualMachinesAllowed{Val: false},
+			wantDialog: false,
 		},
 		{
-			name:  "unset",
-			value: &policy.VirtualMachinesAllowed{Stat: policy.StatusUnset},
+			name:       "unset",
+			value:      &policy.VirtualMachinesAllowed{Stat: policy.StatusUnset},
+			wantDialog: true,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -82,12 +87,9 @@ func VirtualMachinesAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open Linux subpage: ", err)
 			}
 
-			// Indicates whether the Crostini installer dialog should appear.
-			dialogExpected := param.value.Stat != policy.StatusUnset && param.value.Val
-
 			ui := uiauto.New(tconn)
 			crostiniDialogTitle := nodewith.Name("Set up Linux development environment").Role(role.StaticText)
-			if dialogExpected {
+			if param.wantDialog {
 				if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(crostiniDialogTitle)(ctx); err != nil {
 					s.Error("Failed to find the Crostini installer title text: ", err)
 				}
