@@ -59,13 +59,22 @@ var batteryStatusMap = map[string]BatteryStatus{
 	"Full":         BatteryStatusFull,
 }
 
+// MapStringToBatteryStatus maps string to BatteryStatus.
+func MapStringToBatteryStatus(statusStr string) (BatteryStatus, bool) {
+	status, ok := batteryStatusMap[statusStr]
+	if !ok {
+		return BatteryStatusUnknown, false
+	}
+	return status, true
+}
+
 // ReadBatteryStatus returns the current battery status.
 func ReadBatteryStatus(devPath string) (BatteryStatus, error) {
 	statusStr, err := readFirstLine(path.Join(devPath, "status"))
 	if err != nil {
 		return BatteryStatusUnknown, errors.Errorf("%v lacks status attribute", devPath)
 	}
-	status, ok := batteryStatusMap[statusStr]
+	status, ok := MapStringToBatteryStatus(statusStr)
 	if !ok {
 		return BatteryStatusUnknown, errors.Errorf("status %v is not expected", statusStr)
 	}
