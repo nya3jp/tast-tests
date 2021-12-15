@@ -51,10 +51,13 @@ func init() {
 }
 
 func checkBatteryStringProperty(sysfsPath, field, got string) error {
-	want, err := utils.ReadStringFile(sysfsPath + "/" + field)
-	if err != nil {
-		return err
-	}
+	// When there is an error to read answer from sysfs file (e.g. IO error, file missing),
+	// it means that powerd will also report empty value to cros_healthd.
+	// So cros_healthd reports empty string in this case.
+	//
+	// What we want to verify in this test is make sure that we align with the powerd behavior.
+	// This kind of error is out of this test's scope.
+	want, _ := utils.ReadStringFile(sysfsPath + "/" + field)
 	if got != want {
 		return errors.Errorf("unexpected value for %v: got %v, want %v", field, got, want)
 	}
