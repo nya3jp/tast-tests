@@ -85,6 +85,13 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 	if err := optin.WaitForPlayStoreShown(ctx, tconn, 2*time.Minute); err != nil {
 		s.Fatal("Failed to wait for Play Store: ", err)
 	}
+	// The PlayStore app restarts itself at the end. We need to wait for this to happen before opening the Files
+	// app, or otherwise PlayStore window may reopen on top of Files app and cause the test to fail.
+	// We may as well close PlayStore at this point as it is no longer required. The PlayStore restarting itself
+	// was measured to take ~1.5 seconds, but the "optin.ClosePlayStore(ctx, tconn)" call waits for PlayStore to
+	// be open anyway, before closing it.
+	testing.Sleep(ctx, 2*time.Second)
+	optin.ClosePlayStore(ctx, tconn)
 
 	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Unshare shared folders in the end.
@@ -103,7 +110,7 @@ func ShareMovies(ctx context.Context, s *testing.State) {
 
 	const Movies = "Movies"
 	if err := uiauto.Combine("open Play files and click Manage with Linux on Movies",
-		filesApp.OpenDir(filesapp.Playfiles, "Files - "+filesapp.Playfiles),
+		filesApp.OpenPlayfiles(),
 		filesApp.ClickContextMenuItem(Movies, sharedfolders.ShareWithLinux),
 		sharedFolders.AddFolder(filesapp.Playfiles+" › "+Movies))(ctx); err != nil {
 		s.Fatal("Failed to share Movies with Crostini: ", err)
