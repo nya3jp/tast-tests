@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42f585b_efe5266a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-15T01:30:49Z",
+      "side": 1,
+      "message": "Thanks, Ben.",
+      "revId": "6e0b9e1d0981d158967d018315c0f02d05e40b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4713205_1a747725",
@@ -35,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c10ef12_2f12db6d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-15T01:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4713205_1a747725",
+      "revId": "6e0b9e1d0981d158967d018315c0f02d05e40b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "910d8125_32cd73d6",
@@ -48,6 +83,24 @@
       "writtenOn": "2021-12-14T22:49:04Z",
       "side": 1,
       "message": "Is there any advantage to keeping this as a separate implementation?  Otherwise, what about just changing it to 6 calls to the individual settings functions and combining them so the individual implementations don\u0027t get out of sync?",
+      "revId": "6e0b9e1d0981d158967d018315c0f02d05e40b48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db908802_eb93b0b2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-15T01:30:49Z",
+      "side": 1,
+      "message": "I hadn\u0027t initially added a SelectFileType function because we didn\u0027t need it for this first iteration of the new hardware test, but we will need it eventually so I don\u0027t think there\u0027s any harm in adding it now and switching over the SetScanSettings() implementation.",
+      "parentUuid": "910d8125_32cd73d6",
       "revId": "6e0b9e1d0981d158967d018315c0f02d05e40b48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
