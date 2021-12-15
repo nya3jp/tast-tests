@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5083d24d_0f9ea59a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-15T17:07:34Z",
+      "side": 1,
+      "message": "LGTM % minor nit",
+      "revId": "92eb075fad790415b1c7a5749a1833b2ba9430c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2762c9b8_d6cf232d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_pair_monoheadset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-15T17:07:34Z",
+      "side": 1,
+      "message": "nit: put . at the end of the comment.",
+      "revId": "92eb075fad790415b1c7a5749a1833b2ba9430c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
