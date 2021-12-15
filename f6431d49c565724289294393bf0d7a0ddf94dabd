@@ -34,6 +34,23 @@
       "parentUuid": "42bd550f_335a9276",
       "revId": "f6431d49c565724289294393bf0d7a0ddf94dabd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22af9e5b_0eec05e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/bgscan_backoff.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-15T08:11:13Z",
+      "side": 1,
+      "message": "Any reason not to use Clone instead?\n\nhttps://pkg.go.dev/github.com/golang/protobuf/proto#Clone",
+      "revId": "f6431d49c565724289294393bf0d7a0ddf94dabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
