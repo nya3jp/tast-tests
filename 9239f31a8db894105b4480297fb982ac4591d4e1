@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a501fadb_efbc9948",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2021-12-15T13:25:42Z",
+      "side": 1,
+      "message": "What do you think?\n- I don\u0027t see how we can make WaitForWindow a method on browser.Browser without cyclic imports.\n- It would be nice to eliminate lacros.WaitForLacrosWindow but I don\u0027t see how (this is somewhat related to the previous point).",
+      "revId": "9239f31a8db894105b4480297fb982ac4591d4e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
