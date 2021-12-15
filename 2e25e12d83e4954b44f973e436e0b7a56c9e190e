@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f604c8e1_60831139",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-12-15T19:02:50Z",
+      "side": 1,
+      "message": "Nit, can use strings.SplitN to get shortVersion in one line.",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17c1da5_85464da2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-12-15T19:02:50Z",
+      "side": 1,
+      "message": "Can move this and line 59 before connecting to servo, and check that the prod and prepvt versions are consistent.",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1680d283_2bf4023d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-12-15T19:02:50Z",
+      "side": 1,
+      "message": "Nit, also log the expected version.",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed9a83a8_f4674c43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-12-15T19:02:50Z",
+      "side": 1,
+      "message": "Nit, also log the filename that wasn\u0027t found.",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d17c87_cdaa8508",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-12-15T19:02:50Z",
+      "side": 1,
+      "message": "Move to package level.",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
