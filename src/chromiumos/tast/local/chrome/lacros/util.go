@@ -42,21 +42,13 @@ func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 	})
 }
 
-// WaitForLacrosWindow waits for a Lacros window to be open and have the title to be visible if it is specified as a param.
-func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, title string) error {
+// WaitForLacrosWindow waits for a Lacros window to be visible whose title
+// equals or extends the given titlePrefix.
+func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, titlePrefix string) error {
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		if !w.IsVisible {
-			return false
-		}
-		if !strings.HasPrefix(w.Name, "ExoShellSurface") {
-			return false
-		}
-		if len(title) > 0 {
-			return strings.HasPrefix(w.Title, title)
-		}
-		return true
+		return w.IsVisible && w.WindowType == ash.WindowTypeLacros && strings.HasPrefix(w.Title, titlePrefix)
 	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to wait for lacros-chrome window to be visible (title: %v)", title)
+		return errors.Wrapf(err, "failed to wait for lacros-chrome window to be visible (titlePrefix: %v)", titlePrefix)
 	}
 	return nil
 }

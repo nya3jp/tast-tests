@@ -68,7 +68,8 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Launch a persistent browser.
-	br, closeBrowser, err := browserfixt.SetUpPersistent(ctx, s.FixtValue(), s.Param().(browser.Type))
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUpPersistent(ctx, s.FixtValue(), bt)
 	if err != nil {
 		s.Fatal("Failed to set up persistent browser: ", err)
 	}
@@ -89,7 +90,11 @@ func BookmarkBarEnabled(ctx context.Context, s *testing.State) {
 	}
 	ui := uiauto.New(tconn)
 
-	// TODO(chromium:1280200) Wait for browser window.
+	// Wait for browser window before sending keyboard interaction.
+	const policiesPageTitle = "Policies"
+	if err := browserfixt.WaitForWindow(ctx, tconn, bt, policiesPageTitle); err != nil {
+		s.Fatal("Failed waiting for browser window: ", err)
+	}
 
 	// Set up keyboard.
 	kb, err := input.Keyboard(ctx)
