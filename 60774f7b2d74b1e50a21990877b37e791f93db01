@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06878dc5_f4ba46c7",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2021-12-15T19:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d386338_82d1c84e",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "60774f7b2d74b1e50a21990877b37e791f93db01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d865942_ec00c9d9",
@@ -71,6 +95,24 @@
       "writtenOn": "2021-12-15T19:33:12Z",
       "side": 1,
       "message": "Log that we are trying to do TCP.",
+      "revId": "60774f7b2d74b1e50a21990877b37e791f93db01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1698c082_51ebde0f",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2021-12-15T19:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d865942_ec00c9d9",
       "revId": "60774f7b2d74b1e50a21990877b37e791f93db01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -145,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae66f0a_e1cda50f",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2021-12-15T19:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5be374ea_70f88704",
+      "revId": "60774f7b2d74b1e50a21990877b37e791f93db01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf7074cf_e36d5469",
@@ -158,6 +218,24 @@
       "writtenOn": "2021-12-15T19:33:12Z",
       "side": 1,
       "message": "We don\u0027t need this part since if p.dcl is nil; the create p.dcl above already trigger error.",
+      "revId": "60774f7b2d74b1e50a21990877b37e791f93db01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0e3f70_12dbe738",
+        "filename": "src/chromiumos/tast/common/servo/proxy.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1116001
+      },
+      "writtenOn": "2021-12-15T19:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf7074cf_e36d5469",
       "revId": "60774f7b2d74b1e50a21990877b37e791f93db01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
