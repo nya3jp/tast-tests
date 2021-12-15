@@ -104,9 +104,13 @@ func validateBatteryData(ctx context.Context, battery *batteryInfo) error {
 		"charge_full":        battery.ChargeFull,
 		"charge_full_design": battery.ChargeFullDesign,
 		"charge_now":         battery.ChargeNow,
-		"current_now":        battery.CurrentNow,
 		"voltage_min_design": battery.VoltageMinDesign,
 		"voltage_now":        battery.VoltageNow,
+		// Skip float64 fields:
+		//
+		// |current_now|
+		// We can't test it, because the value varies quickly.
+		// For example, cros_healthd get 0.639 but when we fetch the value from sysfs, it becomes 0.961.
 	}
 
 	for field, got := range batteryFloatFields {
