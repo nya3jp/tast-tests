@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36577311_58487a13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-12-15T18:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506b9a0e_f7aff7c4",
+      "range": {
+        "startLine": 102,
+        "startChar": 37,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "aa09e4bbee03cf1e37b35f3134888d0871cf0e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f025dcf4_1d7b6d89",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3db5af_7065f3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-12-15T18:04:13Z",
+      "side": 1,
+      "message": "Sure! Done :)",
+      "parentUuid": "f025dcf4_1d7b6d89",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 37
+      },
+      "revId": "aa09e4bbee03cf1e37b35f3134888d0871cf0e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f45ea3a_3f4a6332",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-15T08:41:59Z",
       "side": 1,
       "message": "You can just close the channel. Receiving from a closed channel always finishes instantly.",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 31
+      },
+      "revId": "aa09e4bbee03cf1e37b35f3134888d0871cf0e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4141074_e99104f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2021-12-15T18:04:13Z",
+      "side": 1,
+      "message": "Good to know, thanks! :)",
+      "parentUuid": "3f45ea3a_3f4a6332",
       "range": {
         "startLine": 144,
         "startChar": 2,
