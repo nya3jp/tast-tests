@@ -198,8 +198,8 @@ func LaunchLacrosChromeWithURL(ctx context.Context, f FixtValue, url string) (*L
 	// LaunchLacrosChrome don't interfere with each other.
 	userDataDir, err := ioutil.TempDir(f.LacrosPath(), "")
 	if err != nil {
-		// Fall back to create it under /tmp in case rootfs-lacros is used.
-		if userDataDir, err = ioutil.TempDir("/tmp", "lacros"); err != nil {
+		// Fall back to create it at temporary location in case rootfs-lacros is used.
+		if userDataDir, err = ioutil.TempDir("", "lacros"); err != nil {
 			return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", userDataDir)
 		}
 	}
