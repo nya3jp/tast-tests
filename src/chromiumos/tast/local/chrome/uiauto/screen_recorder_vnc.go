@@ -217,6 +217,11 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 	}
 
 	return func() {
+		if !cfg.recordOnSuccess && !s.HasError() {
+			cleanup()
+			return
+		}
+
 		// VNC stream is slightly behind. Allow a second to capture everything that happened since.
 		// Potential room for improvement: start encoding video before this (it's only 1 second though).
 		if err := testing.Sleep(ctx, time.Second*2); err != nil {
@@ -231,9 +236,6 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 		// Call cleanup before the function ends so that we stop getting more frames.
 		cleanup()
 
-		if !cfg.recordOnSuccess && !s.HasError() {
-			return
-		}
 		end := time.Now()
 		testing.ContextLogf(ctx, "starting to encode a %v video recording. This can take a while", end.Sub(startTime))
 		canvas := image.NewRGBA(image.Rect(0, 0, int(cc.Width()), int(cc.Height())))
