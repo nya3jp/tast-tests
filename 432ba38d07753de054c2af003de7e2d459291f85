@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474c170f_9af3789e",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-16T11:51:15Z",
+      "side": 1,
+      "message": "Why is this just imported here?",
+      "revId": "432ba38d07753de054c2af003de7e2d459291f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb770dec_4fd5559c",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-16T11:51:15Z",
+      "side": 1,
+      "message": "Maybe Error here?",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 9
+      },
+      "revId": "432ba38d07753de054c2af003de7e2d459291f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
