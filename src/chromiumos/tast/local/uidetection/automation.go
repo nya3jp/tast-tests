@@ -16,6 +16,22 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var serverKeyType = testing.RegisterVarString(
+	KeyType,
+	"",
+	"The key type of ChromeOS UI detection server",
+)
+var serverKey = testing.RegisterVarString(
+	Key,
+	"",
+	"The key of ChromeOS UI detection server",
+)
+var serverKeyAddr = testing.RegisterVarString(
+	Server,
+	"",
+	"The address of ChromeOS UI detection server",
+)
+
 // Context provides functionalities for image-based UI automation.
 type Context struct {
 	tconn    *chrome.TestConn
@@ -37,6 +53,11 @@ func New(t *chrome.TestConn, keyType, key, server string) *Context {
 			Timeout:  30 * time.Second,
 		},
 	}
+}
+
+// NewDefault returns a new UI Detection automation instance with default params.
+func NewDefault(t *chrome.TestConn) *Context {
+	return New(t, serverKeyType.Value(), serverKey.Value(), serverKeyAddr.Value())
 }
 
 // WithTimeout returns a new Context with the specified timeout.
@@ -79,6 +100,9 @@ func (uda *Context) click(s *Finder, button mouse.Button, optionList ...Option) 
 		opt(options)
 	}
 	return action.Retry(options.Retries, func(ctx context.Context) error {
+		if err := uda.WaitUntilExists(s)(ctx); err != nil {
+			return errors.Wrapf(err, "%q doesn't exist", s.desc)
+		}
 		loc, err := uda.Location(ctx, s)
 		if err != nil {
 			return errors.Wrapf(err, "failed to find the location of %q", s.desc)
