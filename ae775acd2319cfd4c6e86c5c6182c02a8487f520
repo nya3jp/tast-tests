@@ -16,6 +16,24 @@
       "message": "Hi Keigo,\n\nAfter CL:3319630 merged, we get some IO errors when reading sysfs.\n\nSO I think we still need to ignore the error here and use empty string as answer to compare with our output.\n\nOne of the tast log: https://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2021-12-14/55f94298-40a1-40d0-a964-3fab7108a2e0/autoserv_test/tast/results/tests/health.ProbeBatteryMetrics/\n\nDetails:\n1. ssh to the DUT, I can\u0027t read data from sysfs either.\n2. -\u003e powerd will report empty string in this case. This can be check by `power_supply_info` on DUT.\n3. -\u003e cros_healthd report empty string in this case. From the log, I can see that cros_healthd report data without crash, just one of the field is empty.\n```\n{\n   ...\n   \"technology\": \"\",\n   ...\n}\n```",
       "revId": "ae775acd2319cfd4c6e86c5c6182c02a8487f520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3815616c_657d136a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-16T02:19:06Z",
+      "side": 1,
+      "message": "Thank you. In my understanding, this is a workaround for a bug in powerd that returns an empty string? If there\u0027s a tracking bug on powerd side, it\u0027s nice to add TODO here to remove the workaround after the bug is fixed.\n\n// TODO(b/XXX): remove the workaround after the bug is fixed.",
+      "parentUuid": "448cdece_6e146b3d",
+      "revId": "ae775acd2319cfd4c6e86c5c6182c02a8487f520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
