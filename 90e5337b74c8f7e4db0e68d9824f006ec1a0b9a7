@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca750ff_11618b10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:29:14Z",
+      "side": 1,
+      "message": "in go, we drop getter prefix, such as Get, Is, Has etc.\n\nYtWebConn().",
+      "range": {
+        "startLine": 369,
+        "startChar": 16,
+        "endLine": 369,
+        "endChar": 43
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f8a960e_257e170e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:29:14Z",
+      "side": 1,
+      "message": "is this test intentionally not running anywhere?\nIf so, it\u0027d nice to document somewhere how to use.",
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89111ca3_989199f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:29:14Z",
+      "side": 1,
+      "message": "nit: const\n\nditto for below.",
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007a88d4_9708641e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:29:14Z",
+      "side": 1,
+      "message": "style\n\nuiHandler, err :\u003d cuj.NewClamshellActionHandler(...)\nif err !\u003d nil {\n  ...\n}",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be96a666_446138a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:29:14Z",
+      "side": 1,
+      "message": "conceptually, this should be moved to L135.",
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b27379e_972fb805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:29:14Z",
+      "side": 1,
+      "message": "in go, we often avoid prefixes, like is, get, has. just videoPlaying.",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 6
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f47e2a_ab6a4945",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:29:14Z",
+      "side": 1,
+      "message": "where is this come from? Maybe nice to add constant and document.",
+      "range": {
+        "startLine": 173,
+        "startChar": 20,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6de750a_f93b8f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:29:14Z",
+      "side": 1,
+      "message": "optional: maybe \"elapsed\" ?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 9
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
