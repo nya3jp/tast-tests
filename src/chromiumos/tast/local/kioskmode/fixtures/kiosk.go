@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/ash/ashproc"
 	"chromiumos/tast/local/kioskmode"
 	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -62,6 +61,33 @@ type kioskFixture struct {
 	kiosk *kioskmode.Kiosk
 }
 
+// KioskFixtData is returned by the fixture.
+type KioskFixtData struct {
+	// fakeDMS is an already running DMS server.
+	fakeDMS *fakedms.FakeDMS
+	// chrome is a connection to an already-started Chrome instance that loads policies from FakeDMS.
+	chrome *chrome.Chrome
+}
+
+// Chrome implements the HasChrome interface.
+func (f KioskFixtData) Chrome() *chrome.Chrome {
+	if f.chrome == nil {
+		panic("Chrome is called with nil chrome instance")
+	}
+	return f.chrome
+}
+
+// FakeDMS implements the HasFakeDMS interface.
+func (f KioskFixtData) FakeDMS() *fakedms.FakeDMS {
+	if f.fakeDMS == nil {
+		panic("FakeDMS is called with nil fakeDMS instance")
+	}
+	return f.fakeDMS
+}
+
+// PolicyFileDump is the filename where the state of policies is dumped after the test ends.
+const PolicyFileDump = "policies.json"
+
 func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
 	if !ok {
@@ -92,7 +118,7 @@ func (k *kioskFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	k.cr = cr
 	k.proc = proc
 	k.kiosk = kiosk
-	return fixtures.NewFixtData(k.cr, k.fdms)
+	return &KioskFixtData{k.fdms, k.cr}
 }
 
 func (k *kioskFixture) TearDown(ctx context.Context, s *testing.FixtState) {
@@ -140,7 +166,7 @@ func (k *kioskFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	}
 
 	// Dump all policies as seen by Chrome to the tests OutDir.
-	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), fixtures.PolicyFileDump), b, 0644); err != nil {
+	if err := ioutil.WriteFile(filepath.Join(s.OutDir(), PolicyFileDump), b, 0644); err != nil {
 		s.Error("Failed to dump policies to file: ", err)
 	}
 }
