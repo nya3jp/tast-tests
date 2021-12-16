@@ -40,6 +40,8 @@ type vectors struct {
 	IsSample bool   `json:"isSample,omitempty"`
 }
 
+var acvpIsFirmwareTest = false
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ACVP,
@@ -216,6 +218,17 @@ func init() {
 				"U2F_request_HMAC-SHA2-256_555822.json",
 				"U2F_expected_HMAC-SHA2-256_555822.json",
 			},
+		}, {
+			Name: "u2f_hmac_fw",
+			Val: data{
+				inputFile:    "U2F_request_HMAC-SHA2-256_555822.json",
+				expectedFile: "U2F_expected_HMAC-SHA2-256_555822.json",
+				cmdType:      "firmware",
+			},
+			ExtraData: []string{
+				"U2F_request_HMAC-SHA2-256_555822.json",
+				"U2F_expected_HMAC-SHA2-256_555822.json",
+			},
 		}},
 		Timeout: time.Hour * 10,
 	})
@@ -230,15 +243,17 @@ const (
 	// 0 - start, 1 - cont., 2 - finish, 3 - single
 	// 4 - SW HMAC single shot (TPM code)
 	// 5 - HW HMAC SHA256 single shot (dcrypto code)
-	tpmHashCmdMode = "03"
-	tpmHMACCmdMode = "05"
-	tpmSHA256      = "0B"
+	tpmHashCmdMode   = "03"
+	tpmHMACCmdModeFW = "04"
+	tpmHMACCmdModeHW = "05"
+	tpmSHA256        = "0B"
 )
 
 // Holds test data information for each test type.
 type data struct {
 	inputFile    string
 	expectedFile string
+	cmdType      string
 }
 
 type opType int
@@ -439,7 +454,11 @@ func (hp *hashPrimitive) setCmd(alg, key string) error {
 			return errors.Errorf("unexpected key value in hash algorithm: %q", key)
 		}
 	case "HMAC-SHA-1", "HMAC-SHA2-256", "HMAC-SHA2-384", "HMAC-SHA2-512":
-		hp.cmd = tpmHMACCmdMode
+		if acvpIsFirmwareTest {
+			hp.cmd = tpmHMACCmdModeFW
+		} else {
+			hp.cmd = tpmHMACCmdModeHW
+		}
 		if key == "" {
 			return errors.New("missing key value for HMAC")
 		}
@@ -778,7 +797,7 @@ func getHashCommand(hp *hashPrimitive) string {
 	cmdBody.WriteString("00")
 	cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.msg)/2))
 	cmdBody.WriteString(hp.msg)
-	if hp.cmd == tpmHMACCmdMode {
+	if hp.cmd == tpmHMACCmdModeHW || hp.cmd == tpmHMACCmdModeFW {
 		cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.key)/2))
 		cmdBody.WriteString(hp.key)
 	}
@@ -1085,6 +1104,8 @@ func ACVP(ctx context.Context, s *testing.State) {
 	inout := cr50IO{
 		ctx: ctx,
 	}
+
+	acvpIsFirmwareTest = d.cmdType == "firmware"
 
 	cmd := testexec.CommandContext(ctx, "trunks_send", "--raw")
 
