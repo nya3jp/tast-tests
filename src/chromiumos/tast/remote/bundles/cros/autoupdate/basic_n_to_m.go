@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BasicNToM,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Example test for updating to an older version using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
@@ -71,7 +71,7 @@ func BasicNToM(ctx context.Context, s *testing.State) {
 
 	s.Logf("Starting update from %s to %s", originalVersion, rollbackVersion)
 	if err := updateutil.UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
-		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
+		s.Errorf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
 	}
 
 	// Reboot the DUT.

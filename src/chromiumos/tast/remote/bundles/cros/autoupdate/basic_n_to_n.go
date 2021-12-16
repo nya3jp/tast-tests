@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BasicNToN,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Example test for the N2N update using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
@@ -48,7 +48,7 @@ func BasicNToN(ctx context.Context, s *testing.State) {
 	builderPath := lsbContent[lsbrelease.BuilderPath]
 
 	if err := updateutil.UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
-		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
+		s.Errorf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
 	}
 
 	// Reboot the DUT.
