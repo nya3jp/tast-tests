@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "913566d0_f99c5191",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-16T00:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f60a0fa_d919c6a2",
+      "revId": "5416b27335bc364198c14b224854d94b4cc243ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16e7bec4_134b11fd",
