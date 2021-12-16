@@ -39,6 +39,30 @@
       },
       "revId": "c702061473ec45e4e44f1b81bbcf2fa677a230e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32f093d_bb4610a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-16T21:59:39Z",
+      "side": 1,
+      "message": "Thinking of s.Log and do graceful exit, rather than exiting there with fatal as its verizon known issue.",
+      "parentUuid": "c652d413_b89bd6ed",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 9
+      },
+      "revId": "c702061473ec45e4e44f1b81bbcf2fa677a230e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
