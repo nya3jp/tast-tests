@@ -1137,7 +1137,7 @@ func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	}
 	s.Logf("Orientation of primary window, orientation.Type %+v", orientation.Type)
 	//TODO(b/178401320): Remove this if a proper solution is found to perform split screen on portrait oriented apps.
-	if orientation.Type == display.OrientationPortraitPrimary {
+	if orientation.Type == display.OrientationPortraitPrimary || orientation.Type == display.OrientationPortraitSecondary {
 		s.Log("App is in portrait orientation. Skipping test")
 		return
 	}
@@ -1147,6 +1147,18 @@ func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 		s.Fatal("Failed to access to the touch screen: ", err)
 	}
 	defer tew.Close()
+
+	// Ensure device display is in landscape orientation so that app window snap on
+	// the left and right.
+	orientation, err = display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	s.Logf("orientation.Angle %+v", orientation.Angle)
+	rotation := -orientation.Angle
+	s.Logf("rotation: %+v", rotation)
+	tew.SetRotation(rotation)
+
 	stw, err := tew.NewSingleTouchWriter()
 	if err != nil {
 		s.Fatal("Failed to create a single touch writer: ", err)
@@ -1160,6 +1172,7 @@ func SplitScreen(ctx context.Context, s *testing.State, tconn *chrome.TestConn, 
 	if err := dragToSnapFirstOverviewWindow(ctx, s, tconn, tew, stw, target); err != nil {
 		s.Fatal("Failed to drag window from overview and snap left: ", err)
 	}
+
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, appPkgName, ash.WindowStateLeftSnapped); err != nil {
 		s.Fatal("Failed to wait until window state change to left: ", err)
 	}
