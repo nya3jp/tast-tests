@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8501983e_bb2d2366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/checking_audio_formats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:37:33Z",
+      "side": 1,
+      "message": "could you close?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "359076ab0d08bcce7e1b5790e686035edc5edca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02b3f32_e989e682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/checking_audio_formats.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:37:33Z",
+      "side": 1,
+      "message": "could you move this up before VK instance is created?\nAlso, instead of removing the directory, you\u0027d need to remove the files in the directory?",
+      "revId": "359076ab0d08bcce7e1b5790e686035edc5edca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
