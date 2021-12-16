@@ -43,5 +43,5 @@ func (d *uiDetector) sendDetectionRequest(ctx context.Context, imagePng []byte, 
 
 	client := pb.NewUiDetectionServiceClient(conn)
 
-	return client.Detect(ctx, uiDetectionRequest)
+	return client.ExecuteDetection(ctx, uiDetectionRequest)
 }

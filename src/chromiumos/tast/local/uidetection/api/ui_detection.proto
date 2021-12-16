@@ -6,14 +6,14 @@
 
 syntax = "proto3";
 
-package chromeos.acuiti;
+package google.chromeos.uidetection.v1;
 
 option go_package = "chromiumos/tast/local/uidetection/api";
 
 // Provides image-based UI detection service.
 service UiDetectionService {
   // Runs the detection.
-  rpc Detect(UiDetectionRequest) returns (UiDetectionResponse);
+  rpc ExecuteDetection(UiDetectionRequest) returns (UiDetectionResponse);
 }
 
 // Request message for UI detection.
