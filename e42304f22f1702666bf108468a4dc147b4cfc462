@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "557e5ef3_c549aa1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-16T18:47:04Z",
+      "side": 1,
+      "message": "wallpaper.FullscreenPreviewWallpaper requires https://chromium-review.googlesource.com/c/chromium/src/+/3343926 to land first.",
+      "revId": "e42304f22f1702666bf108468a4dc147b4cfc462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
