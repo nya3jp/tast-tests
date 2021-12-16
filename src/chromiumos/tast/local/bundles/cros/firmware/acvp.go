@@ -211,11 +211,21 @@ func init() {
 		}, {
 			Name: "u2f_hmac",
 			Val: data{
-				inputFile:    "U2F_request_HMAC-SHA2-256_555822.json",
+				inputFile:    "U2F_Hardware_request_HMAC-SHA2-256_555822.json",
 				expectedFile: "U2F_expected_HMAC-SHA2-256_555822.json",
 			},
 			ExtraData: []string{
-				"U2F_request_HMAC-SHA2-256_555822.json",
+				"U2F_Hardware_request_HMAC-SHA2-256_555822.json",
+				"U2F_expected_HMAC-SHA2-256_555822.json",
+			},
+		}, {
+			Name: "u2f_hmac_fw",
+			Val: data{
+				inputFile:    "U2F_Firmware_request_HMAC-SHA2-256_555822.json",
+				expectedFile: "U2F_expected_HMAC-SHA2-256_555822.json",
+			},
+			ExtraData: []string{
+				"U2F_Firmware_request_HMAC-SHA2-256_555822.json",
 				"U2F_expected_HMAC-SHA2-256_555822.json",
 			},
 		}},
