@@ -219,6 +219,27 @@ func init() {
 				"ecdsa-sigver-expected.json",
 			},
 		}, {
+			Name: "u2f_hash",
+			Val: data{
+				inputFile:    "U2F_request_SHA2-256_555821.json",
+				expectedFile: "U2F_expected_SHA2-256_555821.json",
+			},
+			ExtraData: []string{
+				"U2F_request_SHA2-256_555821.json",
+				"U2F_expected_SHA2-256_555821.json",
+			},
+		}, {
+			Name: "u2f_hash_fw",
+			Val: data{
+				inputFile:    "U2F_request_SHA2-256_555821.json",
+				expectedFile: "U2F_expected_SHA2-256_555821.json",
+				cmdType:      "firmware",
+			},
+			ExtraData: []string{
+				"U2F_request_SHA2-256_555821.json",
+				"U2F_expected_SHA2-256_555821.json",
+			},
+		}, {
 			Name: "u2f_hmac",
 			Val: data{
 				inputFile:    "U2F_request_HMAC-SHA2-256_555822.json",
