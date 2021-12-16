@@ -252,6 +252,8 @@ const (
 	// 0 - start, 1 - cont., 2 - finish, 3 - single
 	// 4 - SW HMAC single shot (TPM code)
 	// 5 - HW HMAC SHA256 single shot (dcrypto code)
+	tpmHashStart     = "00"
+	tpmHashFinish    = "02"
 	tpmHashCmdMode   = "03"
 	tpmHMACCmdModeFW = "04"
 	tpmHMACCmdModeHW = "05"
@@ -690,7 +692,7 @@ func getTrunksCmds(b []byte) ([]string, uint8, error) {
 		if err != nil {
 			return nil, 0, err
 		}
-		return []string{getHashCommand(hp)}, 1, nil
+		return getHashCommands(hp), 1, nil
 	case "hmacDRBG":
 		if argLen != 7 {
 			return nil, 0, errors.Errorf("incorrect number of args for DRBG: got %d, want 7", argLen)
@@ -803,8 +805,14 @@ func getHashCommand(hp *hashPrimitive) string {
 	cmdBody.WriteString(hp.cmd)
 	cmdBody.WriteString(hp.alg)
 	cmdBody.WriteString("00")
-	cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.msg)/2))
-	cmdBody.WriteString(hp.msg)
+
+	// Don't send a message with hash start
+	if hp.cmd == tpmHashStart {
+		cmdBody.WriteString("0000")
+	} else {
+		cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.msg)/2))
+		cmdBody.WriteString(hp.msg)
+	}
 	if hp.cmd == tpmHMACCmdModeHW || hp.cmd == tpmHMACCmdModeFW {
 		cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.key)/2))
 		cmdBody.WriteString(hp.key)
@@ -812,6 +820,21 @@ func getHashCommand(hp *hashPrimitive) string {
 	cmdHeader.WriteString(fmt.Sprintf("%08x", cmdBody.Len()/2+cr50HeaderSize))
 	cmdHeader.WriteString("200000000001")
 	return cmdHeader.String() + cmdBody.String()
+}
+
+// getHashCommands constructs the list of hash commands for the hash type.
+func getHashCommands(hp *hashPrimitive) []string {
+	// HMAC and Hardware Hash commands only need one command.
+	if hp.cmd != tpmHashCmdMode || !acvpIsFirmwareTest {
+		return []string{getHashCommand(hp)}
+	}
+	// The firmware hash sequence is tpmHashStart then tpmHashFinish
+	result := make([]string, 2)
+	hp.cmd = tpmHashStart
+	result[0] = getHashCommand(hp)
+	hp.cmd = tpmHashFinish
+	result[1] = getHashCommand(hp)
+	return result
 }
 
 // getAESCommand constructs a trunks AES command
