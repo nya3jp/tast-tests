@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "942fb214_a1a3c906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/regular_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2021-12-16T03:00:52Z",
+      "side": 1,
+      "message": "Good value! However I don\u0027t have a time now. Added TODO to address later.",
+      "parentUuid": "28afa684_a1eccf04",
+      "revId": "57a0abf71a41b5298a0352557af0d761476f4915",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1207405_de34b113",
