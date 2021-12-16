@@ -18,6 +18,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66dbe54_267d428d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-16T16:59:13Z",
+      "side": 1,
+      "message": "+2 %  nits + Wei Lees\u0027s comment",
+      "revId": "0852cf2a8fc6168f89f2e1c7da69594d2ee2f56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e891f0_2690d290",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-16T16:59:13Z",
+      "side": 1,
+      "message": "for future CL: rename GetState() to State()\n\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 977,
+        "startChar": 22,
+        "endLine": 977,
+        "endChar": 30
+      },
+      "revId": "0852cf2a8fc6168f89f2e1c7da69594d2ee2f56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e79f8f8_5a6c45fd",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-16T16:59:13Z",
+      "side": 1,
+      "message": "huge nit: do you mean \"Using legacy...\"?",
+      "range": {
+        "startLine": 983,
+        "startChar": 29,
+        "endLine": 983,
+        "endChar": 30
+      },
+      "revId": "0852cf2a8fc6168f89f2e1c7da69594d2ee2f56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c71121_4e28657d",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-16T16:59:13Z",
+      "side": 1,
+      "message": "ditto above: \"Using new ...\" ?",
+      "range": {
+        "startLine": 999,
+        "startChar": 27,
+        "endLine": 999,
+        "endChar": 30
+      },
+      "revId": "0852cf2a8fc6168f89f2e1c7da69594d2ee2f56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d36a9cc_8ce0a0c8",
@@ -31,6 +117,30 @@
       "writtenOn": "2021-12-15T10:26:23Z",
       "side": 1,
       "message": "nit: How about further simplify the codes here as:\n```\nbutton \u003d CancelResultButton\nif isConfirmed {\n  button \u003d ConfirmResultButton\n}\nreturn a.Click(ctx, button)\n```",
+      "range": {
+        "startLine": 1031,
+        "startChar": 1,
+        "endLine": 1040,
+        "endChar": 11
+      },
+      "revId": "0852cf2a8fc6168f89f2e1c7da69594d2ee2f56e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6ef887_70b62809",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-16T16:59:13Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "1d36a9cc_8ce0a0c8",
       "range": {
         "startLine": 1031,
         "startChar": 1,
