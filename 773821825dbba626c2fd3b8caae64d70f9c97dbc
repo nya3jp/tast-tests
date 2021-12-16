@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89ddf06e_80031e20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-16T13:57:22Z",
+      "side": 1,
+      "message": "LGTM % minor change",
+      "revId": "773821825dbba626c2fd3b8caae64d70f9c97dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3887f98f_98318d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-16T13:57:22Z",
+      "side": 1,
+      "message": "cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()",
+      "revId": "773821825dbba626c2fd3b8caae64d70f9c97dbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
