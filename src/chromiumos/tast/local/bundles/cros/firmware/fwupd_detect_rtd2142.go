@@ -35,7 +35,7 @@ func init() {
 			"pmarheine@chromium.org",    // Test Author
 			"chromeos-fwupd@google.com", // CrOS FWUPD
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"fwupd"},
 		HardwareDeps: hwdep.D(
 			hwdep.DisplayPortConverter("RTD2142"),
