@@ -34,6 +34,24 @@
       "parentUuid": "448cdece_6e146b3d",
       "revId": "ae775acd2319cfd4c6e86c5c6182c02a8487f520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5a6d0a_bcb5e92a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-16T02:43:58Z",
+      "side": 1,
+      "message": "I think that\u0027s their intended behavior.\n\nFor example, in cros_healthd, when we fetch data and encounter errors, we also do the following things for our clients, to save them some time without dealing with the error.\n1. Return null or empty string.\n2. Return error if it\u0027s critical.",
+      "parentUuid": "3815616c_657d136a",
+      "revId": "ae775acd2319cfd4c6e86c5c6182c02a8487f520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
