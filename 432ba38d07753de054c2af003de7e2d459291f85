@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad6a56ca_1da0f8c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-16T12:12:11Z",
+      "side": 1,
+      "message": "LGTM % minor nit",
+      "revId": "432ba38d07753de054c2af003de7e2d459291f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "474c170f_9af3789e",
@@ -14,6 +31,29 @@
       "writtenOn": "2021-12-16T11:51:15Z",
       "side": 1,
       "message": "Why is this just imported here?",
+      "revId": "432ba38d07753de054c2af003de7e2d459291f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e46723_7b62b37f",
+        "filename": "src/chromiumos/tast/local/vdi/doc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2021-12-16T12:12:11Z",
+      "side": 1,
+      "message": "managed?",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 19
+      },
       "revId": "432ba38d07753de054c2af003de7e2d459291f85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
