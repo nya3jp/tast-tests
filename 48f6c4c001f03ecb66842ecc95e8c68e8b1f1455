@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660b3efc_94304ac7",
+        "filename": "src/chromiumos/tast/local/graphics/glbench/glbench.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2021-12-16T23:14:49Z",
+      "side": 1,
+      "message": "Can we get a constant for this?",
+      "range": {
+        "startLine": 60,
+        "startChar": 38,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "48f6c4c001f03ecb66842ecc95e8c68e8b1f1455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
