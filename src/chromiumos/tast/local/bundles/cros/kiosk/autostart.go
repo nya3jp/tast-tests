@@ -7,6 +7,7 @@ package kiosk
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/testing"
 )
 
@@ -20,7 +21,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "kioskLoggedIn",
+		Fixture:      fixture.KioskLoggedIn,
 	})
 }
 
