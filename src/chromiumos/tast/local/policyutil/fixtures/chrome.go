@@ -89,7 +89,7 @@ type FixtData struct {
 }
 
 // NewFixtData returns a FixtData pointer with the given chrome and fdms instances.
-// TODO(b/201422078): Remove NewFixtData once a new composite fixture is created for kiosk.
+// Needed as wilco fixtures use it to create a return value.
 func NewFixtData(cr *chrome.Chrome, fdms *fakedms.FakeDMS) *FixtData {
 	return &FixtData{fakeDMS: fdms, chrome: cr}
 }
