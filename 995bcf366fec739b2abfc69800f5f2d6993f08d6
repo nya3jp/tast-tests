@@ -455,6 +455,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55de458_b3bbbae4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/random_mac_address.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-16T16:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f25edb_c533e9a2",
+      "revId": "995bcf366fec739b2abfc69800f5f2d6993f08d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43c32a14_39e004a8",

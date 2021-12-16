@@ -56,6 +56,30 @@
       },
       "revId": "9563cc392e292400f8d26fc548cb2fef27c001fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d40efb_88ea4119",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-16T16:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f8f0bf2_9abb7126",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "9563cc392e292400f8d26fc548cb2fef27c001fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
