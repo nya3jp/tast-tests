@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c57401_aa114a8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-16T13:28:10Z",
+      "side": 1,
+      "message": "The N2N version seems quite stable: https://tastboard.corp.google.com/test/autoupdate.BasicNToN\nIn some cases this test can leave the DUT in a version 3 milestones older, but as it is a separate test group/suite, it should not cause any problems.\n@Seewai, can you double check if this isolation is enough? The details of the test group/suite creation can be found in the linked bug.",
+      "revId": "a0ff46bbcff38f6e82ae6f6995e455435e325f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
