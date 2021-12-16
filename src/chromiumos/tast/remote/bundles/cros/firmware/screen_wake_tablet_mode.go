@@ -81,6 +81,7 @@ var keyboardScannedTabletMode = []string{
 	"dragonair",
 	"foob",
 	"storo360",
+	"jinlon",
 }
 
 func init() {
@@ -92,7 +93,7 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.graphics.ScreenshotService", "tast.cros.inputs.TouchpadService", "tast.cros.inputs.TouchscreenService"},
-		Fixture:      fixture.DevModeGBB,
+		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Params: []testing.Param{{
 			Name:              "keyboard_scanned_tablet_mode",
