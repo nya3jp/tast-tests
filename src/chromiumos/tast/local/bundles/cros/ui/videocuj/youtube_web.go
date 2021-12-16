@@ -365,3 +365,8 @@ func (y *YtWeb) PerformFrameDropsTest(ctx context.Context) error {
 	}
 	return nil
 }
+
+// GetYtWebConn returns connection of youtube web.
+func (y *YtWeb) GetYtWebConn() *chrome.Conn {
+	return y.ytConn
+}
