@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6391804f_d6107051",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-12-16T04:11:15Z",
+      "side": 1,
+      "message": "+2 for Tast Review % (my + Matt Stark\u0027s nits)\n",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf838dca_0e4c0a1a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-12-16T04:11:15Z",
+      "side": 1,
+      "message": "Somewhere (e.g. in the test description) it might be nice to mention what \"TBT\" means. (Is it Thunderbolt?)",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39881747_c50e7687",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-12-16T04:11:15Z",
+      "side": 1,
+      "message": "...thunderbolt...?",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30c3d1e7_09e9d1c7",
@@ -20,6 +83,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8219cac9_e05f4383",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-12-16T04:11:15Z",
+      "side": 1,
+      "message": "1. This method returns the output of the command, but you ignore its result. Prefer to use .Run() instead:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;l\u003d114?q\u003dCommandContext\n\n2. The error returned by this command (if any) is ignored. Change to something like:\n```\ndefer func() {\n   if err :\u003d dut.Conn().CommandContext(...).Run() {\n       s.Error(...)\n   }\n}\n```\nhttps://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "range": {
+        "startLine": 99,
+        "startChar": 59,
+        "endLine": 99,
+        "endChar": 65
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8112d4d_fda21372",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-12-16T04:11:15Z",
+      "side": 1,
+      "message": "It is difficult to see where the method starts and ends. Prefer to assign the map[string]string to a variable first, and then pass the variable to the function to limit the need for line wrapping.",
+      "range": {
+        "startLine": 100,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 45
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d078637f_0dc93df9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
         "patchSetId": 2
@@ -31,6 +140,52 @@
       "writtenOn": "2021-12-15T23:47:07Z",
       "side": 1,
       "message": "Nit: remove space before colon",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b92ffd_b09fcf68",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-12-16T04:11:15Z",
+      "side": 1,
+      "message": "nit: session",
+      "range": {
+        "startLine": 135,
+        "startChar": 28,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b92714_127b6a1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2021-12-16T04:11:15Z",
+      "side": 1,
+      "message": "nit: session",
+      "range": {
+        "startLine": 141,
+        "startChar": 26,
+        "endLine": 141,
+        "endChar": 35
+      },
       "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
