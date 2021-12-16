@@ -68,7 +68,7 @@ func (di *devInfo) isKeyboard() bool {
 	// https://chromeos.google.com/partner/dlm/docs/hardware-specs/keyboardspec.html
 	return di.path != "" && di.hasBit(evGroup, uint16(EV_KEY)) &&
 		di.hasBit(keyGroup, uint16(KEY_1)) && di.hasBit(keyGroup, uint16(KEY_Q)) &&
-		di.hasBit(keyGroup, uint16(KEY_SPACE)) && di.hasBit(keyGroup, uint16(KEY_VOLUMEDOWN))
+		di.hasBit(keyGroup, uint16(KEY_SPACE)) && di.hasBit(keyGroup, uint16(KEY_ENTER))
 }
 
 // isTouchscreen returns true if this appears to be a touchscreen device.
