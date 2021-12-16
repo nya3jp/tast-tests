@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29fe5d48_5d22cbf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-12-16T08:33:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58adde9b_c69724ea",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 42
+      },
+      "revId": "f2fc702cda04ad65c6119cb804aafb047151c903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ced17a2_4c455cbc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-11T00:28:26Z",
       "side": 1,
       "message": "Once saving screenshot failed, the test will continue. Is this on purpose? https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#errors-and-logging",
+      "range": {
+        "startLine": 108,
+        "startChar": 4,
+        "endLine": 108,
+        "endChar": 11
+      },
+      "revId": "f2fc702cda04ad65c6119cb804aafb047151c903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93663d0a_5c3f321f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_multi_camera_screen_rotate.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2021-12-16T08:33:58Z",
+      "side": 1,
+      "message": "yes, that\u0027s right. We are just saving the screenshot for reference purpose. Failing to save the screenshot should not stop the test, since it is not a functional failure.",
+      "parentUuid": "5ced17a2_4c455cbc",
       "range": {
         "startLine": 108,
         "startChar": 4,
