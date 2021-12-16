@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07628b0_70cf2cff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-16T21:52:49Z",
+      "side": 1,
+      "message": "\"Cold boot\" to me means turning it on from S5/G3. Shouldn\u0027t this be named \"performShutdown\" or something?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 63
+      },
+      "revId": "6ff044f9df4be6825f5586f0143dd5881a5a853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "319fa5c7_17c9c859",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-16T21:52:49Z",
+      "side": 1,
+      "message": "nit: turnOnDut? (since we\u0027re always coming from S5/G3 and not S3)",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 75
+      },
+      "revId": "6ff044f9df4be6825f5586f0143dd5881a5a853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3fa1c4_33e7703f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-16T21:52:49Z",
+      "side": 1,
+      "message": "What\u0027s the timeout on this? If it doesn\u0027t return failure until waitCtx expires, then everything after this is going to be useless as the timeout will already be up.",
+      "revId": "6ff044f9df4be6825f5586f0143dd5881a5a853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd43ca7_22fe3ecf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2021-12-16T21:52:49Z",
+      "side": 1,
+      "message": "maybe it would be better to poll here?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 2
+      },
+      "revId": "6ff044f9df4be6825f5586f0143dd5881a5a853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
