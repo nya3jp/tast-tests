@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa3332b8_47f35f4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:34:36Z",
+      "side": 1,
+      "message": "This is private struct, but the parameters of tests so it is also a part of external interface.\nCould you document for each field?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7292bc_d6835b7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:34:36Z",
+      "side": 1,
+      "message": "In general restriction by model name is discouraged, and instead, some designed hardware feature to be listed here.\nHave you talked to cros infra team already? If not could you reach out to them to be consulted?\nIf you do not have the contact, could you talk to google\u0027s counter part to reach out to the cros infra team?",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b50eb2a3_b3f1d208",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
         "patchSetId": 1
@@ -31,6 +71,46 @@
       "writtenOn": "2021-12-15T18:47:27Z",
       "side": 1,
       "message": "nit: is timeout related to fileSize i.e. 2GB gets two extra minutes, or is there a different reason the timeouts are different for this test and the other two? Might be worth leaving a comment just to document your thought process there.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b09b642_2a8039d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:34:36Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5927140_17ede4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:34:36Z",
+      "side": 1,
+      "message": "login takes relatively longer time. In this case, there are three test cases, so can this be shared by fixture?",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 95
+      },
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +162,29 @@
       "writtenOn": "2021-12-15T18:47:27Z",
       "side": 1,
       "message": "nit: extra space between `file` and `:`",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf0567a_a1bf6a00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:34:36Z",
+      "side": 1,
+      "message": "could you not use external command / shell? Instead, could you use go\u0027s functions?\nAlso style:\n\nif err :\u003d ...; err !\u003d nil {\n  s.Fatal(...)\n}\n\nditto for all below.",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 124
+      },
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +253,69 @@
       "writtenOn": "2021-12-15T18:47:27Z",
       "side": 1,
       "message": "nit: Extra space at beginning plus follow \"\u003cmessage\u003e; got %v, want %v\" format.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730b508e_29548e7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:34:36Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "224a501b_c6bb77f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:34:36Z",
+      "side": 1,
+      "message": "style: prefer not to have \"is\" prefix. just \"connected\" should be better.",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 12
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7488287b_f189ffc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:34:36Z",
+      "side": 1,
+      "message": "optional: can be simply named fileChecksum or something?",
+      "range": {
+        "startLine": 263,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 26
+      },
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
