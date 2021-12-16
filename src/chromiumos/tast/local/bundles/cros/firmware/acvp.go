@@ -28,7 +28,8 @@ import (
 )
 
 type acv struct {
-	Version string `json:"acvVersion"`
+	Version      string `json:"acvVersion"`
+	FirmwareTest bool   `json:"FWTest,omitempty"`
 }
 
 type vectors struct {
@@ -39,6 +40,8 @@ type vectors struct {
 	Mode     string `json:"mode,omitempty"`
 	IsSample bool   `json:"isSample,omitempty"`
 }
+
+var acvpIsFirmwareTest = false
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -229,9 +232,10 @@ const (
 	// 0 - start, 1 - cont., 2 - finish, 3 - single
 	// 4 - SW HMAC single shot (TPM code)
 	// 5 - HW HMAC SHA256 single shot (dcrypto code)
-	tpmHashCmdMode = "03"
-	tpmHMACCmdMode = "05"
-	tpmSHA256      = "0B"
+	tpmHashCmdMode   = "03"
+	tpmHMACCmdModeFW = "04"
+	tpmHMACCmdModeHW = "05"
+	tpmSHA256        = "0B"
 )
 
 // Holds test data information for each test type.
@@ -438,7 +442,11 @@ func (hp *hashPrimitive) setCmd(alg, key string) error {
 			return errors.Errorf("unexpected key value in hash algorithm: %q", key)
 		}
 	case "HMAC-SHA-1", "HMAC-SHA2-256", "HMAC-SHA2-384", "HMAC-SHA2-512":
-		hp.cmd = tpmHMACCmdMode
+		if acvpIsFirmwareTest {
+			hp.cmd = tpmHMACCmdModeFW
+		} else {
+			hp.cmd = tpmHMACCmdModeHW
+		}
 		if key == "" {
 			return errors.New("missing key value for HMAC")
 		}
@@ -777,7 +785,7 @@ func getHashCommand(hp *hashPrimitive) string {
 	cmdBody.WriteString("00")
 	cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.msg)/2))
 	cmdBody.WriteString(hp.msg)
-	if hp.cmd == tpmHMACCmdMode {
+	if hp.cmd == tpmHMACCmdModeHW || hp.cmd == tpmHMACCmdModeFW {
 		cmdBody.WriteString(fmt.Sprintf("%04x", len(hp.key)/2))
 		cmdBody.WriteString(hp.key)
 	}
@@ -1084,6 +1092,8 @@ func ACVP(ctx context.Context, s *testing.State) {
 	inout := cr50IO{
 		ctx: ctx,
 	}
+
+	acvpIsFirmwareTest = a.FirmwareTest
 
 	cmd := testexec.CommandContext(ctx, "trunks_send", "--raw")
 
