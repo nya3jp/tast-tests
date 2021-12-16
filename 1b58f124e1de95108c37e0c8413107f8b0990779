@@ -705,6 +705,30 @@
       },
       "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db58e13c_752d0575",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-16T01:30:57Z",
+      "side": 1,
+      "message": "On a second review, agree to generate remote temp name like this. It\u0027s more convenient when scp back the log file with the same meaningful name as remote.",
+      "parentUuid": "1096bd39_75151340",
+      "range": {
+        "startLine": 106,
+        "startChar": 65,
+        "endLine": 106,
+        "endChar": 101
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
