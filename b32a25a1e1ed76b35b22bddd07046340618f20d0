@@ -199,6 +199,24 @@
       "parentUuid": "a816aced_835f692f",
       "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20cd96e3_b5fd39fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:46:46Z",
+      "side": 1,
+      "message": "from testing point of view, there\u0027s no need to generate the data.\nYou can generate the data in other parts, and check it in / upload the prepared data, then test can consume it.\nOn each update of the data, the test can run, so that the correctness of the data should be able to be verified (even if the data is shared with other tests, this reasons won\u0027t change, I think).\n\nI may not fully understand your intention, so if there\u0027s very special reasons, please let me know.\nIf necessary, I\u0027m happy to discuss over VC.",
+      "parentUuid": "85670c84_eba8f382",
+      "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
