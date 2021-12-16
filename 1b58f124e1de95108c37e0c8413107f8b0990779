@@ -495,6 +495,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8eff5d_cdbdd2f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2021-12-16T08:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36465f17_1ca159ac",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "1b58f124e1de95108c37e0c8413107f8b0990779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e0ad7a0_d3a9e48b",
