@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/usb"
+	"chromiumos/tast/local/bundles/cros/typec/typecutils"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -30,9 +31,9 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
-			Val: false,
+			Val:     false,
+			Fixture: "crosHealthdRunning",
 		}, {
 			Name:      "thunderbolt",
 			ExtraAttr: []string{"informational"},
@@ -44,11 +45,22 @@ func init() {
 }
 
 func ProbeBusInfo(ctx context.Context, s *testing.State) {
+	isDeviceConnected := false
+	if s.Param().(bool) {
+		// Checking whether the thunderbolt device is connected or not.
+		port, _ := typecutils.CheckPortsForTBTPartner(ctx)
+		if port != -1 {
+			//TODO(b/209385206): For accesing the Thunderbolt device we have to disable the data protection acces from UI
+			isDeviceConnected = true
+		}
+	}
+
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategoryBus}
 	var res busResult
 	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &res); err != nil {
 		s.Fatal("Failed to get bus telemetry info: ", err)
 	}
+
 	var pciDevs []busDevice
 	var usbDevs []busDevice
 	var tbtDevs []busDevice
@@ -63,12 +75,14 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 			s.Fatal("Unknown types of bus devices: ", d)
 		}
 	}
+
 	if s.Param().(bool) {
-		if err := validateThundeboltDevices(tbtDevs); err != nil {
+		if err := validateThundeboltDevices(tbtDevs, isDeviceConnected); err != nil {
 			s.Fatal("Failed to validate Thunderbolt devices: ", err)
 		}
 		return
 	}
+
 	if err := validatePCIDevices(ctx, pciDevs); err != nil {
 		s.Fatal("PCI validation failed: ", err)
 	}
@@ -144,37 +158,46 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 	return nil
 }
 
-func validateThundeboltDevices(devs []busDevice) error {
+func validateThundeboltDevices(devs []busDevice, isDeviceConnected bool) error {
 	for _, devices := range devs {
 		if (devices.BusInfo.ThunderboltBusInfo.SecurityLevel) == "" {
 			return errors.New("failed to enable SecurityLevel")
 		}
+		checkInterfacesDetcted := false
+		if isDeviceConnected {
 
-		for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
-			if !interfaces.Authorized {
-				return errors.New("failed to authorize the Thunderbolt device")
+			for _, interfaces := range devices.BusInfo.ThunderboltBusInfo.ThunderboltInterfaces {
+				checkInterfacesDetcted = true
+				if !interfaces.Authorized {
+					return errors.New("failed to authorize the Thunderbolt device")
+				}
+				if interfaces.DeviceFwVersion == "" {
+					return errors.New("failed to get DeviceFwVersion")
+				}
+				if interfaces.DeviceName == "" {
+					return errors.New("failed to get DeviceName")
+				}
+				if interfaces.DeviceType == "" {
+					return errors.New("failed to get DeviceType")
+				}
+				if interfaces.DeviceUUID == "" {
+					return errors.New("failed to get DeviceUUID")
+				}
+				if interfaces.RxSpeedGbs == "" {
+					return errors.New("failed to get RxSpeedGbs")
+				}
+				if interfaces.TxSpeedGbs == "" {
+					return errors.New("failed to get TxSpeedGbs")
+				}
+				if interfaces.VendorName == "" {
+					return errors.New("failed to get VendorName")
+				}
 			}
-			if interfaces.DeviceFwVersion == "" {
-				return errors.New("failed to get DeviceFwVersion")
-			}
-			if interfaces.DeviceName == "" {
-				return errors.New("failed to get DeviceName")
-			}
-			if interfaces.DeviceType == "" {
-				return errors.New("failed to get DeviceType")
-			}
-			if interfaces.DeviceUUID == "" {
-				return errors.New("failed to get DeviceUUID")
-			}
-			if interfaces.RxSpeedGbs == "" {
-				return errors.New("failed to get RxSpeedGbs")
-			}
-			if interfaces.TxSpeedGbs == "" {
-				return errors.New("failed to get TxSpeedGbs")
-			}
-			if interfaces.VendorName == "" {
-				return errors.New("failed to get VendorName")
-			}
+		}
+
+		if isDeviceConnected && !checkInterfacesDetcted {
+			return errors.New("failed to get Thunderbolt device data when the device is connected ")
+
 		}
 
 		if (devices.DeviceClass) == "" {
