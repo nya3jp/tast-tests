@@ -23,7 +23,7 @@ func init() {
 		Func:         ADFJustification,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests that scanners with specified ADF justification values have correct scan regions",
-		Contacts:     []string{"kmoed@google.com", "project-bolton@google.com"},
+		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",

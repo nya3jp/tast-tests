@@ -18,7 +18,7 @@ func init() {
 		Func:         LargePaperScans,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests that the Scan app supports large paper size selection when available from printer",
-		Contacts:     []string{"kmoed@google.com", "project-bolton@google.com"},
+		Contacts:     []string{"bmgordon@chromium.org", "project-bolton@google.com"},
 		Attr: []string{
 			"group:mainline",
 			"informational",
