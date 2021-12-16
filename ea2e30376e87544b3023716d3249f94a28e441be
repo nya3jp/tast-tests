@@ -16,6 +16,63 @@
       "message": "Adding the tablet mode option",
       "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb3334e8_61661ac2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:34:57Z",
+      "side": 1,
+      "message": "the CL looks like very much changed since my last iteration. So unset CR+2 now.\n",
+      "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff609aa_df1c1698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:34:57Z",
+      "side": 1,
+      "message": "is it possible to avoid changing the matching logic?\nInstead, actionFilter and actionSequences can be unified into regexp condition?",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13490233_e843e927",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T15:34:57Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
