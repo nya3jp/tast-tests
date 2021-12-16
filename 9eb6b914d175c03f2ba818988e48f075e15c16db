@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86b1992e_b1a591e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/challenge_response.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-16T05:41:24Z",
+      "side": 1,
+      "message": "Yes, we might need to re-organize the util package before it get too large, but for now I think it\u0027s still okay since there are only 6 files in it. Anyway, I think I would re-organize this in the future.",
+      "parentUuid": "a1df9a83_057f207e",
+      "revId": "9eb6b914d175c03f2ba818988e48f075e15c16db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3d83cdf_7c202c81",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/challenge_response.go",
         "patchSetId": 5
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-15T16:59:15Z",
       "side": 1,
       "message": "nit: DBus\n\nall below.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "9eb6b914d175c03f2ba818988e48f075e15c16db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15babac_b053bb6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/challenge_response.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-16T05:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d83cdf_7c202c81",
       "range": {
         "startLine": 29,
         "startChar": 1,
