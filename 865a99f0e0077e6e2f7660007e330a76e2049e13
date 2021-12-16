@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2bfbbf_c2b9dd3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-16T03:16:28Z",
+      "side": 1,
+      "message": "Use tar package to replace commandline tar. hidehiko@, please take a look.",
+      "revId": "865a99f0e0077e6e2f7660007e330a76e2049e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

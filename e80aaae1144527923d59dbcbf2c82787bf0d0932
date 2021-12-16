@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b693496c_718d9398",
+        "filename": "src/chromiumos/tast/local/hwsec/cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-16T03:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c845470_6b4f8b6e",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "e80aaae1144527923d59dbcbf2c82787bf0d0932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e9395f2_ef039071",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "regardless of quite a few tests using \"tat\" shell commands, still +1 to what Hidehiko said.",
       "parentUuid": "0e9395f2_ef039071",
+      "revId": "e80aaae1144527923d59dbcbf2c82787bf0d0932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a596cdcd_6af3c143",
+        "filename": "src/chromiumos/tast/local/hwsec/cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2021-12-16T03:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86768fab_ff75bea3",
       "revId": "e80aaae1144527923d59dbcbf2c82787bf0d0932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
