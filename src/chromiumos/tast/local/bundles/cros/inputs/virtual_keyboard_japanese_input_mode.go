@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/ime"
@@ -50,7 +51,16 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 	vkbCtx := vkb.NewContext(cr, tconn)
 	ui := uiauto.New(tconn)
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ChromeIMEPrefix+ime.Japanese.ID); err != nil {
 		s.Fatal("Failed to set input method: ", err)

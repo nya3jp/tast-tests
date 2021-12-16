@@ -43,17 +43,20 @@ func init() {
 }
 
 func VirtualKeyboardFloat(ctx context.Context, s *testing.State) {
-	// Give 5 seconds to clean up and dump out UI tree.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
-
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	uc := s.PreValue().(pre.PreData).UserContext
 
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, s.TestName())
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 	vkbCtx := vkb.NewContext(cr, tconn)
 
 	if err := vkbCtx.ShowVirtualKeyboard()(ctx); err != nil {

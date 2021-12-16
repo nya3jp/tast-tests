@@ -51,6 +51,13 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	// Revert settings to default after testing.
 	defer func() {
 		if err := tconn.Eval(cleanupCtx, `chrome.inputMethodPrivate.setSettings(
