@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a5dd95_ba0af938",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-16T10:15:24Z",
+      "side": 1,
+      "message": "Is there any other way to refresh the UI tree?\nContext: https://groups.google.com/a/chromium.org/g/tast-users/c/d0GozWcHbIE",
+      "revId": "722282f84c3ad0e9d2c4b5d9a15ab6069d719176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
