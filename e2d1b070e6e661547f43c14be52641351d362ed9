@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22cfb1b9_aeec6d8a",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-16T01:27:14Z",
+      "side": 1,
+      "message": "Check returned error.",
+      "range": {
+        "startLine": 247,
+        "startChar": 2,
+        "endLine": 247,
+        "endChar": 32
+      },
+      "revId": "e2d1b070e6e661547f43c14be52641351d362ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40eb1e51_93b6b0a2",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-16T01:27:14Z",
+      "side": 1,
+      "message": "Move into previous if block.",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 14
+      },
+      "revId": "e2d1b070e6e661547f43c14be52641351d362ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f4e326_5c57df26",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-16T01:27:14Z",
+      "side": 1,
+      "message": "if err :\u003d ch.SetDisplayLevel(displayLevel); err !\u003d nil {\n...",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "e2d1b070e6e661547f43c14be52641351d362ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e1cb0a0_d151ac2c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-16T01:27:14Z",
+      "side": 1,
+      "message": "Pass |displayLevel| here and move the concate to scene log name logic into |GetFaceLumaValue|.",
+      "range": {
+        "startLine": 58,
+        "startChar": 68,
+        "endLine": 58,
+        "endChar": 111
+      },
+      "revId": "e2d1b070e6e661547f43c14be52641351d362ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74073996_d0071286",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-16T01:27:14Z",
+      "side": 1,
+      "message": "D",
+      "range": {
+        "startLine": 62,
+        "startChar": 28,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "e2d1b070e6e661547f43c14be52641351d362ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a2dfa5_2dcd1b12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2021-12-16T01:27:14Z",
+      "side": 1,
+      "message": "IIUC, the |calibrateDisplayLevel| would already set chart to target displayLevel, why do we need to set it again here?\n\nAlso try\n```\nif err :\u003d ch.SetDisplayLevel(displayLevel); err !\u003d nil {\n...\n```",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 39
+      },
+      "revId": "e2d1b070e6e661547f43c14be52641351d362ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
