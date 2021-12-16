@@ -39,6 +39,30 @@
       },
       "revId": "81bcfddf294152d2fbde52217003f0445ea47a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b752266d_f8bb6f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/extended_display_composition_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-16T05:05:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "927b2dda_d38a96aa",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 28
+      },
+      "revId": "81bcfddf294152d2fbde52217003f0445ea47a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
