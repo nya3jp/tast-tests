@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f87d57_c19c396f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-16T20:28:44Z",
+      "side": 1,
+      "message": "Updated with newly created bug as TODO for Verizon connect failures with empty apn for SimpleModem.",
+      "revId": "f1d53dc8612742ced9734bb6e30ad159c49d3b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
