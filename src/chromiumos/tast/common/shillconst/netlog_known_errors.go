@@ -38,28 +38,31 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"shill", "cellular.cc", ".*GetSimLockStatus called with null capability.*", 0},
 		{"shill", "cellular.cc", ".*StartModem failed.*", 0},
 		{"shill", "cellular.cc", ".*StopModem returned an error: org.chromium.flimflam.Error.WrongState.*", 0},
-		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},
-		{"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},
-		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},
-		{"shill", "eap_listener.cc", ".*Could not bind socket to interface: No such device.*", 0},
-		{"shill", "eap_listener.cc", ".*Could not open EAP listener socket.*", 0},
-		{"shill", "ethernet.cc", ".*cannot disable \\[18\\] tx-tcp-ecn-segmentation.*", 0},
-		{"shill", "ethernet.cc", ".*OnSetInterfaceMacResponse received response with error Cannot assign requested address.*", 0},
-		{"shill", "http_request.cc", ".*Failed to start DNS client.*", 0},
-		{"shill", "netlink_manager.cc", ".*Unexpected auxilliary message type: 0.*", 0},
-		{"shill", "object_proxy.cc", ".*Failed to call method.*", 0},
-		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},
-		{"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},
-		{"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},
-		{"shill", "supplicant_interface_proxy.cc", ".*Failed to scan: fi.w1.wpa_supplicant1.Interface.ScanError Scan request rejected.*", 0},
-		{"shill", "supplicant_process_proxy.cc", ".*Failed to create interface: fi.w1.wpa_supplicant1.UnknownError.*", 0},
-		{"shill", "supplicant_process_proxy.cc", ".*Failed to get interface wlan0: fi.w1.wpa_supplicant1.InterfaceUnknown.*", 0},
-		{"shill", "unknown", ".*", 0},
-		{"shill", "userdb_utils.cc", ".*Unable to find user.*", 0},
-		{"shill", "utils.cc", ".*AddDBusError.*", 0},
-		{"shill", "wifi.cc", ".*ConnectToSupplicant: Failed to create interface with supplicant.*", 0},
-		{"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0},
-		{"shill", "wifi.cc", ".*Unsupported NL80211_ATTR_REG_ALPHA2 attribute: 99.*", 0},
+		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},                                                // b/210893108
+		{"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                                // b/208654528
+		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                        // b/211000413
+		{"shill", "eap_listener.cc", ".*Could not bind socket to interface: No such device.*", 0},                                 // Test lab only
+		{"shill", "eap_listener.cc", ".*Could not open EAP listener socket.*", 0},                                                 // Test lab only
+		{"shill", "ethernet.cc", ".*cannot disable \\[18\\] tx-tcp-ecn-segmentation.*", 0},                                        // Test lab only
+		{"shill", "ethernet.cc", ".*OnSetInterfaceMacResponse received response with error Cannot assign requested address.*", 0}, // Test lab only
+		{"shill", "http_request.cc", ".*Failed to start DNS client.*", 0},                                                         // b/211000413
+		{"shill", "netlink_manager.cc", ".*Unexpected auxilliary message type: 0.*", 0},                                           // b/211004192
+		// Chrome error? need more info:
+		// {"shill", "object_proxy.cc", ".*Failed to call method.*", 0},
+		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},                                                                 // b/213611282
+		{"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},                                                               // b/213612672
+		{"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},                                              // b/213612672
+		{"shill", "supplicant_interface_proxy.cc", ".*Failed to scan: fi.w1.wpa_supplicant1.Interface.ScanError Scan request rejected.*", 0}, // b/213617669
+		{"shill", "supplicant_process_proxy.cc", ".*Failed to create interface: fi.w1.wpa_supplicant1.UnknownError.*", 0},                    // b/213629562
+		{"shill", "supplicant_process_proxy.cc", ".*Failed to get interface wlan0: fi.w1.wpa_supplicant1.InterfaceUnknown.*", 0},             // b/213629562
+		// Need to try to get more info about these:
+		// {"shill", "unknown", ".*", 0},
+		{"shill", "userdb_utils.cc", ".*Unable to find user pluginvm.*", 0}, // b/213922333
+		// Need to try to get more info about these:
+		// {"shill", "utils.cc", ".*AddDBusError.*", 0},
+		{"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0}, // b/208652858
+		// Not showing up in feedback reports, we should investigate this.
+		// {"shill", "wifi.cc", ".*Unsupported NL80211_ATTR_REG_ALPHA2 attribute: 99.*", 0},
 		{"wpa_supplicant", "", ".*Could not set interface wlan0 flags \\(UP\\): Input\\/output error.*", 0},
 		{"wpa_supplicant", "", ".*nl80211: Could not set interface 'wlan0' UP.*", 0},
 		{"wpa_supplicant", "", ".*Permission denied.*", 0},
