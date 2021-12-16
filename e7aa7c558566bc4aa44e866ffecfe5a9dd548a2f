@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d32cfea_2ebc89db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-16T03:05:16Z",
+      "side": 1,
+      "message": "Please follow the format required for chromiumos contributions. e.g. issue tracker link, test command etc.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "e7aa7c558566bc4aa44e866ffecfe5a9dd548a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab11b788_8428cadb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_typec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-16T03:05:16Z",
+      "side": 1,
+      "message": "nit: find",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "e7aa7c558566bc4aa44e866ffecfe5a9dd548a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
