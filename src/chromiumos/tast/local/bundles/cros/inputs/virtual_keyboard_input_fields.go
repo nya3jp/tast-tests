@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
@@ -75,6 +76,17 @@ func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch inputs test server: ", err)
 	}
 	defer its.Close()
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	subtest := func(testName string, inputMethod ime.InputMethod, message data.Message, inputField testserver.InputField) func(ctx context.Context, s *testing.State) {
 		return func(ctx context.Context, s *testing.State) {

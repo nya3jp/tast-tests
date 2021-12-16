@@ -6,10 +6,13 @@ package inputs
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -101,7 +104,16 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Verify default input method
 	currentInputMethodID, err := ime.CurrentInputMethod(ctx, tconn)
