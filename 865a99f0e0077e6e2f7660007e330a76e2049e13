@@ -16,6 +16,46 @@
       "message": "Use tar package to replace commandline tar. hidehiko@, please take a look.",
       "revId": "865a99f0e0077e6e2f7660007e330a76e2049e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cddfa55_4b9d08da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:49:51Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "865a99f0e0077e6e2f7660007e330a76e2049e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaecd56b_5a6f07c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:49:51Z",
+      "side": 1,
+      "message": "nit: s/  / /",
+      "range": {
+        "startLine": 128,
+        "startChar": 16,
+        "endLine": 128,
+        "endChar": 18
+      },
+      "revId": "865a99f0e0077e6e2f7660007e330a76e2049e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
