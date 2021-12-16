@@ -76,6 +76,17 @@ func VirtualKeyboardSpeech(ctx context.Context, s *testing.State) {
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	uc := s.PreValue().(pre.PreData).UserContext
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	testIMEs := s.Param().([]ime.InputMethod)
 
 	// Setup CRAS Aloop for audio test.

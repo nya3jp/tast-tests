@@ -99,9 +99,14 @@ func VirtualKeyboardHandwriting(ctx context.Context, s *testing.State) {
 	testIMEs := s.Param().([]ime.InputMethod)
 
 	cleanupCtx := ctx
-	// Use a shortened context for test operations to reserve time for cleanup.
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Launch inputs test web server.

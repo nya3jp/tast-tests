@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
@@ -50,15 +51,17 @@ func init() {
 }
 
 func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
-	cleanupCtx := ctx
-	ctx, cancel := uiauto.ReserveForVNCRecordingCleanup(ctx)
-	defer cancel()
-
-	stopRecording := uiauto.RecordVNCVideo(cleanupCtx, s)
-	defer stopRecording()
-
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 

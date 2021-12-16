@@ -66,6 +66,17 @@ func VirtualKeyboardTypingOmniboxUserAction(ctx context.Context, s *testing.Stat
 	uc := s.PreValue().(pre.PreData).UserContext
 	vkbCtx := vkb.NewContext(cr, tconn)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	defer stopRecording()
+	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
+	defer cancel()
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
 	testIMEs := s.Param().([]ime.InputMethod)
 
 	subtest := func(testName string, inputData data.InputData) func(ctx context.Context, s *testing.State) {
