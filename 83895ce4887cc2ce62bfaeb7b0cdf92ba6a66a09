@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e456085c_9dbb5dd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hardware.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-16T00:36:27Z",
+      "side": 1,
+      "message": "Reorganized to load the descriptor from a json file per offline discussion.",
+      "parentUuid": "2d6f6fe7_8632b8a1",
+      "revId": "83895ce4887cc2ce62bfaeb7b0cdf92ba6a66a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40939d2b_69e49087",
