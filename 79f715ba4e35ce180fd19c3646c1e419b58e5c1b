@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d78670e_c355b518",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-16T14:54:13Z",
+      "side": 1,
+      "message": "ping?\n\nThank you for comments, but it does not mean hwdep.Model can be the permanent use here.\nCould you start talking with infra team? Also, add TODO of the tracking bug how to deal with it?",
+      "parentUuid": "02ebc7dd_1811f6ec",
+      "range": {
+        "startLine": 37,
+        "startChar": 22,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "79f715ba4e35ce180fd19c3646c1e419b58e5c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0a9bce7e_36ae2447",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
         "patchSetId": 10
