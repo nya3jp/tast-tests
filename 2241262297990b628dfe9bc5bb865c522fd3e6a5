@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f49d55d_0dc9f5a9",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/fixturehelper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-16T12:04:22Z",
+      "side": 1,
+      "message": "nit: maybe dumpPolicies?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "2241262297990b628dfe9bc5bb865c522fd3e6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5140b6fe_ed669124",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/fixturehelper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-16T12:04:22Z",
+      "side": 1,
+      "message": "you can also use ContextOutDir to move even more into this function 😀",
+      "range": {
+        "startLine": 17,
+        "startChar": 64,
+        "endLine": 17,
+        "endChar": 76
+      },
+      "revId": "2241262297990b628dfe9bc5bb865c522fd3e6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9bb0a30_db4e2e1f",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-16T12:04:22Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 9
+      },
+      "revId": "2241262297990b628dfe9bc5bb865c522fd3e6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
