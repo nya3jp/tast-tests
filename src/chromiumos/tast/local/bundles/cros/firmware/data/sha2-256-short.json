@@ -1,3 +1,8 @@
+[
+{
+   "FWTest": true,
+   "acvVersion": "1.0"
+},
 {
   "vsId" : 64986,
   "algorithm" : "SHA2-256",
@@ -64,3 +69,4 @@
       "len" : 16248
     } ]
 } ] }
+]

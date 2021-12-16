@@ -1,5 +1,15 @@
 [
     {
+        "acvVersion": "1.0"
+    },
+    {
+        "vsId": 64986,
+        "algorithm": "SHA2-256",
+        "revision": "1.0",
+        "isSample": true,
+        "testGroups": [
+            {
+        "tgId": 1,
         "tests": [
             {
                 "md": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
@@ -56,8 +66,9 @@
             {
                 "md": "DBC04E6106AD57727775B43F4DF8B42C1FE36E875A47DEA002119CE56AA0691B",
                 "tcId": 1034
-            }
-        ],
-        "tgId": 1
-    }
+               }
+            ]
+         }
+      ]
+   }
 ]
