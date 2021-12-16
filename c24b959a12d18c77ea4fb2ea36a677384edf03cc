@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "185f73e2_9b40c05e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-16T03:01:41Z",
+      "side": 1,
+      "message": "There doesn\u0027t seem to be much information here but why are you moving from automation APIs to clicking through with strings?\n\nOne of the big problems here is these strings exist in chromium/src and the tests live in chromiumos/platform/tast-tests, if a string changes in chromium/src this has previously taken multi day multi week effort to land string changes and update the tests.\n\nIf there\u0027s a broader reason why (or even a bug) can you list that here?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "c24b959a12d18c77ea4fb2ea36a677384edf03cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "445b6a73_c32899f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-16T03:01:41Z",
+      "side": 1,
+      "message": "nit: usually keep the error messages consistent, e.g. \"Failed to create the test API connection\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "c24b959a12d18c77ea4fb2ea36a677384edf03cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
