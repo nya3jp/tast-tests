@@ -34,6 +34,24 @@
       "parentUuid": "81593dbd_88630fec",
       "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f4b9a9b_c571fe47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-16T01:19:06Z",
+      "side": 1,
+      "message": "I was able to eliminate the sleeps on the rotations by waiting for window animation. \n\nThe mode transition (tablet/clamshell) is a little tricker when needing to run multiple times during a test (as noted in the bug: b/187788935). The only thing I could find to poll on was the Window.CaptionButtonVisibleStatus, which contains \"MaximizeAndRestore\" when in clamshell mode. However, I\u0027m not sure if that\u0027s always true/if tablet mode could ever have that value.\n\nIf you\u0027re familiar with that state and can confirm it\u0027s reliable, I can adjust the test to use that value. Otherwise, I think it\u0027s OK to leave the sleep in for now (as other tests do something similar) and get the test running to completion so we can start tracking other failures while b/187788935 is investigated.\n\nWhat are your thoughts on the above?",
+      "parentUuid": "fbe73ad7_e5f1104e",
+      "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
