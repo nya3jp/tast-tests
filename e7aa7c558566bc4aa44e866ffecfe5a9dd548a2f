@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ab38c2_731330be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-16T04:55:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d32cfea_2ebc89db",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "e7aa7c558566bc4aa44e866ffecfe5a9dd548a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab11b788_8428cadb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-16T03:05:16Z",
       "side": 1,
       "message": "nit: find",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "e7aa7c558566bc4aa44e866ffecfe5a9dd548a2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57973d9d_86e54d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/charging_through_typec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-16T04:55:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab11b788_8428cadb",
       "range": {
         "startLine": 93,
         "startChar": 22,
