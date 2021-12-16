@@ -111,6 +111,10 @@ func init() {
 			Fixture:           "chromeVideoWithFakeWebcam",
 			// Trogdor doesn't have enough hardware contexts to pass this test.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor")),
+		}, {
+			Name:    "av1_sw",
+			Val:     peerconnection.MakeSWTestOptions("AV1"),
+			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
