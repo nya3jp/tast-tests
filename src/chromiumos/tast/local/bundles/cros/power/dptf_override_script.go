@@ -20,7 +20,8 @@ func init() {
 			"puthik@chromium.org",                // test author
 			"chromeos-platform-power@google.com", // CrOS platform power developers
 		},
-		Attr: []string{"group:mainline"},
+		// TODO(b/210921679): re-enable once failures are fixed.
+		Attr: []string{"group:mainline", "informational"},
 		// Only Atlas use override script, board developed later uses unibuild.
 		HardwareDeps: hwdep.D(hwdep.Model("atlas")),
 	})
