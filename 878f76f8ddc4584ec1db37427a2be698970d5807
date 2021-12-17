@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b536f8_a1952f85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:48:39Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t think I\u0027ll be able to review this in time (OOO after today). Please add tast-owners@ to reviewers once you\u0027re ready for Tast review. Thanks!",
+      "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a88f6842_3ff5f8e7",
