@@ -148,7 +148,7 @@ func testPINs(ctx context.Context, user1, user2 string, resetUsers bool, r *hwse
 	if err != nil {
 		s.Fatal("Failed to get key data: ", err)
 	}
-	if !strings.Contains(output, "auth_locked: false") {
+	if strings.Contains(output, "auth_locked: true") {
 		s.Fatal("Reset PIN credential is auth locked")
 	}
 	if err := cryptohomeHelper.UnmountAll(ctx); err != nil {

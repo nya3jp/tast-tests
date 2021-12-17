@@ -393,8 +393,8 @@ func (u *CryptohomeClient) AddVaultKey(ctx context.Context, username, password, 
 		return errors.Wrap(err, "failed to call AddKeyEx")
 	}
 
-	output := strings.TrimSuffix(string(binaryOutput), "\n")
-	if output != addKeyExSuccessMessage {
+	output := string(binaryOutput)
+	if !strings.Contains(output, addKeyExSuccessMessage) {
 		testing.ContextLogf(ctx, "Incorrect AddKeyEx message; got %q, want %q", output, addKeyExSuccessMessage)
 		return errors.Errorf("incorrect message from AddKeyEx; got %q, want %q", output, addKeyExSuccessMessage)
 	}
@@ -409,8 +409,8 @@ func (u *CryptohomeClient) RemoveVaultKey(ctx context.Context, username, passwor
 		return errors.Wrap(err, "failed to call RemoveKeyEx")
 	}
 
-	output := strings.TrimSuffix(string(binaryOutput), "\n")
-	if output != removeKeyExSuccessMessage {
+	output := string(binaryOutput)
+	if !strings.Contains(output, removeKeyExSuccessMessage) {
 		testing.ContextLogf(ctx, "Incorrect RemoveKeyEx message; got %q, want %q", output, removeKeyExSuccessMessage)
 		return errors.Errorf("incorrect message from RemoveKeyEx; got %q, want %q", output, removeKeyExSuccessMessage)
 	}
@@ -425,8 +425,8 @@ func (u *CryptohomeClient) ChangeVaultPassword(ctx context.Context, username, pa
 		return errors.Wrap(err, "failed to call MigrateKeyEx")
 	}
 
-	output := strings.TrimSuffix(string(binaryOutput), "\n")
-	if output != migrateKeyExSucessMessage {
+	output := string(binaryOutput)
+	if !strings.Contains(output, migrateKeyExSucessMessage) {
 		testing.ContextLogf(ctx, "Incorrect MigrateKeyEx message; got %q, want %q", output, migrateKeyExSucessMessage)
 		return errors.Errorf("incorrect message from MigrateKeyEx; got %q, want %q", output, migrateKeyExSucessMessage)
 	}
@@ -605,6 +605,7 @@ func (u *CryptohomeClient) GetFirmwareManagementParameters(ctx context.Context) 
 	prefixes := []string{flagsPrefix, hashPrefix, errorPrefix}
 	params := make(map[string]string, len(prefixes))
 	for _, line := range strings.Split(msg, "\n") {
+		line := strings.Trim(line, " ")
 		for _, prefix := range prefixes {
 			if strings.HasPrefix(line, prefix) {
 				if _, existing := params[prefix]; existing {
