@@ -22,6 +22,30 @@
       },
       "revId": "a6f1451501ce9e5f1145f47ec26d020adc603e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "400fb8aa_d87de6c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/audio_play_bt_headset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-17T06:02:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba1637d5_3a8b0ae7",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 2
+      },
+      "revId": "a6f1451501ce9e5f1145f47ec26d020adc603e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
