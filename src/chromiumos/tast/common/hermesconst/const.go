@@ -32,8 +32,10 @@ const (
 
 // Hermes.Profile properties
 const (
-	ProfilePropertyState = "State"
-	ProfilePropertyClass = "ProfileClass"
+	ProfilePropertyState    = "State"
+	ProfilePropertyClass    = "ProfileClass"
+	ProfilePropertyIccid    = "Iccid"
+	ProfilePropertyNickname = "Nickname"
 )
 
 // States that a Hermes profile can be in
