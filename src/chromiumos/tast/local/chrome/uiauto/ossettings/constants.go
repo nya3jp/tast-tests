@@ -99,3 +99,30 @@ var searchMismatched = `No search results found`
 
 // searchResultFinder is a finder of all possible search results.
 var searchResultFinder = nodewith.NameRegex(regexp.MustCompile(fmt.Sprintf(`(Search result \d+ of \d+: .*|%s)`, searchMismatched))).Onscreen()
+
+// networkFinder is the finder for the Network page UI in OS setting.
+var networkFinder = nodewith.Name("Network").Role(role.Link).Ancestor(WindowFinder)
+
+// mobileButton is the finder for the Mobile Data page button UI in network page.
+var mobileButton = nodewith.Name("Mobile data").Role(role.Button)
+
+// AddCellularButton is the finder for the Add Cellular button in cellular network list
+var AddCellularButton = nodewith.NameStartingWith("Add Cellular").Role(role.Button)
+
+// Elements in "Cellular detail page"
+var (
+	// connectedStatus is the finder for the connected status text UI in the cellular detail page.
+	ConnectedStatus = nodewith.Name("Connected").Role(role.StaticText)
+
+	// disconnectedStatus is the finder for the disconnected status text UI in the cellular detail page.
+	DisconnectedStatus = nodewith.Name("Not Connected").Role(role.StaticText)
+
+	// connectButton is the finder for the connect button UI in the cellular detail page.
+	ConnectButton = nodewith.Name("Connect").Role(role.Button)
+
+	// disconnectButton is the finder for the disconnect button UI in the cellular detail page.
+	DisconnectButton = nodewith.Name("Disconnect").Role(role.Button)
+
+	// RoamingToggle is the finder for the roaming toggle UI in the cellular detail page.
+	RoamingToggle = nodewith.Name("Allow mobile data roaming").Role(role.ToggleButton)
+)
