@@ -130,11 +130,6 @@ func LaunchAtAppMgmtPage(ctx context.Context, tconn *chrome.TestConn, cr *chrome
 
 // OpenMobileDataSubpage navigates Settings app to mobile data subpage.
 func OpenMobileDataSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*OSSettings, error) {
-	// networkFinder is the finder for the Network page UI in OS setting.
-	var networkFinder = nodewith.Name("Network").Role(role.Link).Ancestor(WindowFinder)
-	// mobileButton is the finder for the Mobile Data page button UI in network page.
-	var mobileButton = nodewith.Name("Mobile data").Role(role.Button)
-
 	ui := uiauto.New(tconn)
 
 	if _, err := LaunchAtPageURL(ctx, tconn, cr, "Network", ui.Exists(networkFinder)); err != nil {
