@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46022ce6_be38005b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88f97e5c_2c8fca86",
@@ -83,6 +100,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5c5fdcb_86fb8b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/show_password.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "I guess it\u0027s PIN autosubmit, so the PIN field will show by default and you have to switch to password input? Mythri, please clarify before submitting.",
+      "parentUuid": "2286d814_cd1413a6",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 14
+      },
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7b2f527_40df28fc",
         "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
         "patchSetId": 9
@@ -94,6 +135,162 @@
       "writtenOn": "2021-12-13T21:56:46Z",
       "side": 1,
       "message": "Since there is just one test you could add these functions in the test file",
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a24c691_c1fd1ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "c7b2f527_40df28fc",
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206ff99c_927a7355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "can you just replace this with ui.WithTimeout(6 * time.Second).WaitUntilGone(lockscreen.HidePasswordButton)(ctx)?\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d462",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 2
+      },
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b475bd_06b6229c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/showpassword/show_password.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "just replace with ui.Exists(lockscreen.ShowPasswordButton)",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 2
+      },
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "263bf1f9_78b4f5da",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "tiny nit: you can combine these two lines:\n```\nreturn uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(ShowPasswordButton)(ctx)\n```",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 68
+      },
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c08bacc_76cd1f5c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 68
+      },
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c885ac5_2f2c55e3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 72
+      },
+      "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f889308b_f6b6964d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2021-12-17T02:47:20Z",
+      "side": 1,
+      "message": "nit: use regexp.MustCompile instead",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 2
+      },
       "revId": "3b5037e570c1ffa7f9650b2e2e6d52f8fb6e9eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
