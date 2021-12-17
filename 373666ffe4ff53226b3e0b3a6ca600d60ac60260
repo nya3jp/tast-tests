@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8684cd47_52c20fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-17T05:14:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbc11629_0a1ff3e0",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b5730bc_70cb85e8",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-12-15T18:58:17Z",
       "side": 1,
       "message": "nit: `long duration` can say `provided duration` since it\u0027s parameterized based on the test.",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cdae938_75e54b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-17T05:14:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b5730bc_70cb85e8",
       "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b03fa72b_80ae046c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-17T05:14:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91337cb7_03c3d1d3",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fc0f072_42421392",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-12-15T18:58:17Z",
       "side": 1,
       "message": "Any way to eliminate the sleep here? Sleeps are generally discouraged due to their flakiness. window_snap_and_rotate.go does a verification on the window after calling ActivateWindow that you may be able to use?",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a21fbe5_2c10bd89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-17T05:14:59Z",
+      "side": 1,
+      "message": "Tried with given suggestion, but still proper fps value is not getting. Actually when window get activated the fps value starts from zero, so it takes some milliSecond to get proper fps value.",
+      "parentUuid": "1fc0f072_42421392",
       "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
