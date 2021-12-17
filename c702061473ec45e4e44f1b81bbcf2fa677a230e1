@@ -63,6 +63,30 @@
       },
       "revId": "c702061473ec45e4e44f1b81bbcf2fa677a230e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "472c4c32_274bf734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-17T01:29:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e32f093d_bb4610a5",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 9
+      },
+      "revId": "c702061473ec45e4e44f1b81bbcf2fa677a230e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "866528cc_7e61e4d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-17T01:29:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b96b3cb0_dd2ba117",
+      "revId": "63ff184c1b19ab72ff3cfb5ff27961ec60d58a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4e5d0b5_06c92b0e",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-16T23:38:30Z",
       "side": 1,
       "message": "Since RestartModemManager() is already deferred in L69, this is redundant here.",
+      "revId": "63ff184c1b19ab72ff3cfb5ff27961ec60d58a2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60df3e7c_eec2208e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2021-12-17T01:29:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e4e5d0b5_06c92b0e",
       "revId": "63ff184c1b19ab72ff3cfb5ff27961ec60d58a2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
