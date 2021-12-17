@@ -112,7 +112,12 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 		// Chrome OS test images always have "unknown" browser channel since they are on testimage-channel.
 		// Variations configs are typically not served to unknown channels, so we need to specify
 		// --fake-variations-channel to successfully fetch and apply variations configs.
-		cr, err := chrome.New(ctx, chrome.ExtraArgs("--fake-variations-channel=beta"))
+		// Also, specify the variations server explicitly, otherwise variations configs won't be fetched
+		// on builds that are not Chrome-branded.
+		cr, err := chrome.New(ctx, chrome.ExtraArgs(
+			"--fake-variations-channel=beta",
+			"--variations-server-url=https://clients4.google.com/chrome-variations/seed",
+		))
 		if err != nil {
 			s.Fatal("Chrome login failed: ", err)
 		}
@@ -145,7 +150,10 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 	}()
 
 	// Restart Chrome with the test seed injected.
-	cr, err := chrome.New(ctx, chrome.KeepState(), chrome.ExtraArgs("--fake-variations-channel=beta"))
+	cr, err := chrome.New(ctx, chrome.KeepState(), chrome.ExtraArgs(
+		"--fake-variations-channel=beta",
+		"--variations-server-url=https://clients4.google.com/chrome-variations/seed",
+	))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
