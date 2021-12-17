@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff0025cc_07b9b3e0",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2021-12-17T01:15:46Z",
+      "side": 1,
+      "message": "It was not using the correct value in the error.\nI noticed when I cut and pasted the code, so thought I\u0027d fix.",
+      "parentUuid": "a88f6842_3ff5f8e7",
+      "range": {
+        "startLine": 104,
+        "startChar": 40,
+        "endLine": 104,
+        "endChar": 46
+      },
+      "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4efd71af_649681b7",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
         "patchSetId": 10
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-17T00:31:58Z",
       "side": 1,
       "message": "What does including .Visible() add?",
+      "range": {
+        "startLine": 143,
+        "startChar": 26,
+        "endLine": 143,
+        "endChar": 46
+      },
+      "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91d661b_be6d3bf3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2021-12-17T01:15:46Z",
+      "side": 1,
+      "message": "I don\u0027t want it to click invisible buttons, that seems wrong.",
+      "parentUuid": "4efd71af_649681b7",
       "range": {
         "startLine": 143,
         "startChar": 26,
