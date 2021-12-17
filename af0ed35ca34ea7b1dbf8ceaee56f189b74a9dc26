@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "598f62de_5e659884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_decode.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-12-17T04:41:57Z",
+      "side": 1,
+      "message": "The problem is that decodedFrames is so large that it doesn\u0027t fit the websocket size restriction (1MB).\nGetFrame() works because the size of a single 320p video frame is less than 1MB.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3257400/9/src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go#163\n\nI don\u0027t think it is the best way, but I have no idea how to improve with the websocket size restriction..",
+      "parentUuid": "c8d9bcbd_c23edea8",
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16fab924_fbd501bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
         "patchSetId": 9
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-09T16:41:23Z",
       "side": 1,
       "message": "you can extract this part into another function, so that close handling can be simplified.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1563a220_0ec2009b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-12-17T04:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16fab924_fbd501bf",
       "range": {
         "startLine": 91,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f718de_657f845d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-12-17T04:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a9609fa_d7e4abe8",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 43
+      },
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ed873e6_1e0afef8",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26c1e89c_c15bd0ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-12-17T04:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ed873e6_1e0afef8",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 44
+      },
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66c435b8_01849d68",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-12-09T16:41:23Z",
       "side": 1,
       "message": "can this be multiple lines? If so, could you dump into a file?",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 8
+      },
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c9a631_7eb90a6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2021-12-17T04:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66c435b8_01849d68",
       "range": {
         "startLine": 124,
         "startChar": 2,
