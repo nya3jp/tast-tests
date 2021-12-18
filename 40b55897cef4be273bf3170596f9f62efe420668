@@ -182,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fdc644_64d651b9",
+        "filename": "src/chromiumos/tast/local/chrome/ui/lockscreen/lockscreen.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2021-12-18T07:40:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6a02e0a_2e9b5cc4",
+      "range": {
+        "startLine": 213,
+        "startChar": 3,
+        "endLine": 213,
+        "endChar": 9
+      },
+      "revId": "40b55897cef4be273bf3170596f9f62efe420668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d9b168c_ec76c513",
