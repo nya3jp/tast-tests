@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa26d4cd_53a8d282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-19T23:17:29Z",
+      "side": 1,
+      "message": "I feel loginminutemaid will not have too many tests. So do not need to create a sub-package for util.",
+      "revId": "53b62c17730b2c156b6ee9b5a68f9afe76637393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb37b749_5edda0fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/minutemaidutil/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-19T23:17:29Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 6,
+        "startChar": 33,
+        "endLine": 6,
+        "endChar": 40
+      },
+      "revId": "53b62c17730b2c156b6ee9b5a68f9afe76637393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eced598_cab0187a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/minutemaidutil/minutemaidutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-19T23:17:29Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 109
+      },
+      "revId": "53b62c17730b2c156b6ee9b5a68f9afe76637393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
