@@ -34,7 +34,7 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
-		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 180*time.Second,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -59,6 +59,7 @@ func OobeArc(ctx context.Context, s *testing.State) {
 
 	skip := nodewith.Name("Skip").Role(role.StaticText)
 	noThanks := nodewith.Name("No thanks").Role(role.Button)
+	assistantPage := nodewith.ClassName("assistant-optin-flow")
 
 	if err := uiauto.Combine("go through the oobe flow ui",
 		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile(
@@ -68,6 +69,7 @@ func OobeArc(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.Name("Review Google Play options following setup").Role(role.CheckBox)),
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
 		ui.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		ui.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(assistantPage), ui.LeftClick(noThanks)),
 		ui.LeftClick(nodewith.Name("Get started").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to test oobe Arc: ", err)
