@@ -25,13 +25,6 @@ import (
 )
 
 const (
-	// docsURL indicates the homepage URL of Google Docs.
-	docsURL = "https://docs.google.com/document"
-	// slidesURL indicates the homepage URL of Google Slides.
-	slidesURL = "http://docs.google.com/slides"
-	// sheetsURL indicates the homepage URL of Google Sheets.
-	sheetsURL = "http://docs.google.com/spreadsheets"
-
 	// docsTab indicates the tab name of the "Google Docs".
 	docsTab = "Google Docs"
 	// slidesTab indicates the tab name of the "Google Slides".
@@ -51,9 +44,9 @@ type GoogleDocs struct {
 
 // CreateDocument creates a new document from GDocs.
 func (app *GoogleDocs) CreateDocument(ctx context.Context) error {
-	_, err := app.cr.NewConn(ctx, docsURL)
+	_, err := app.cr.NewConn(ctx, cuj.GoogleDocsURL)
 	if err != nil {
-		return errors.Wrapf(err, "failed to open URL: %s", docsURL)
+		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleDocsURL)
 	}
 
 	return uiauto.Combine("open a new document",
@@ -64,9 +57,9 @@ func (app *GoogleDocs) CreateDocument(ctx context.Context) error {
 
 // CreateSlides creates a new presentation from GDocs.
 func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
-	_, err := app.cr.NewConn(ctx, slidesURL)
+	_, err := app.cr.NewConn(ctx, cuj.GoogleSlidesURL)
 	if err != nil {
-		return errors.Wrapf(err, "failed to open URL: %s", slidesURL)
+		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSlidesURL)
 	}
 
 	slidesWebArea := nodewith.NameContaining("Google Slides").Role(role.RootWebArea)
@@ -83,9 +76,9 @@ func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
 
 // CreateSpreadsheet creates a new spreadsheet and fill default data.
 func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context) (string, error) {
-	conn, err := app.cr.NewConn(ctx, sheetsURL)
+	conn, err := app.cr.NewConn(ctx, cuj.GoogleSheetsURL)
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to open URL: %s", sheetsURL)
+		return "", errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSheetsURL)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
@@ -128,9 +121,9 @@ func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context) (string, error) {
 func (app *GoogleDocs) OpenSpreadsheet(ctx context.Context, filename string) error {
 	testing.ContextLog(ctx, "Opening an existing spreadsheet: ", filename)
 
-	_, err := app.cr.NewConn(ctx, sheetsURL)
+	_, err := app.cr.NewConn(ctx, cuj.GoogleSheetsURL)
 	if err != nil {
-		return errors.Wrapf(err, "failed to open URL: %s", sheetsURL)
+		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSheetsURL)
 	}
 
 	section := nodewith.NameRegex(regexp.MustCompile("^(Today|Yesterday|Previous (7|30) days|Earlier).*")).Role(role.ListBox).First()

@@ -241,17 +241,6 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 }
 
 func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, params *RunParams, resources *runResources) error {
-	const (
-		gmailURL        = "https://mail.google.com"
-		calendarURL     = "https://calendar.google.com/"
-		youtubeMusicURL = "https://music.youtube.com/channel/UCPC0L1d253x-KuMNwa05TpA"
-		huluURL         = "https://www.hulu.com/"
-		googleNewsURL   = "https://news.google.com/"
-		cnnNewsURL      = "https://edition.cnn.com/"
-		wikiURL         = "https://www.wikipedia.org/"
-		redditURL       = "https://www.reddit.com/"
-	)
-
 	// Basic tier test scenario: Have 2 browser windows open with 5 tabs each.
 	// 1. The first window URL list including Gmail, Calendar, YouTube Music, Hulu and Google News.
 	// 2. The second window URL list including Google News, CCN news, Wiki.
@@ -259,9 +248,9 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 	// 1. The first and second window URL list are same as basic.
 	// 2. The third window URL list including Google News, CNN news, Wikipedia, Reddit.
 	// 3. The fourth window URL list is same as the third one.
-	firstWindowURLList := []string{gmailURL, calendarURL, youtubeMusicURL, huluURL, googleNewsURL}
-	secondWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, googleNewsURL, cnnNewsURL}
-	thirdWindowURLList := []string{googleNewsURL, cnnNewsURL, wikiURL, redditURL, cnnNewsURL}
+	firstWindowURLList := []string{cuj.GmailURL, cuj.GoogleCalendarURL, cuj.YoutubeMusicURL, cuj.HuluURL, cuj.GoogleNewsURL}
+	secondWindowURLList := []string{cuj.GoogleNewsURL, cuj.CnnURL, cuj.WikipediaURL, cuj.GoogleNewsURL, cuj.CnnURL}
+	thirdWindowURLList := []string{cuj.GoogleNewsURL, cuj.CnnURL, cuj.WikipediaURL, cuj.RedditURL, cuj.CnnURL}
 	fourthWindowURLList := thirdWindowURLList
 
 	// Basic tier URL list that will be opened in two browser windows.
@@ -294,7 +283,7 @@ func openAndSwitchTabs(ctx context.Context, cr *chrome.Chrome, tconn *chrome.Tes
 				return errors.Wrapf(err, "failed to wait for page to finish loading within %v [%s]", timeout, url)
 			}
 
-			if params.appName == YoutubeMusicAppName && url == youtubeMusicURL {
+			if params.appName == YoutubeMusicAppName && url == cuj.YoutubeMusicURL {
 				if err := playYoutubeMusic(ctx, resources); err != nil {
 					return errors.Wrap(err, "failed to play Youtube Music")
 				}

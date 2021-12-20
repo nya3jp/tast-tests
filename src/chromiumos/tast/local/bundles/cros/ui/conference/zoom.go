@@ -40,8 +40,7 @@ type ZoomConference struct {
 func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) error {
 	ui := uiauto.New(conf.tconn)
 	openZoomAndSignIn := func(ctx context.Context) error {
-		const zoomURL = "https://zoom.us/"
-		conn, err := conf.cr.NewConn(ctx, zoomURL)
+		conn, err := conf.cr.NewConn(ctx, cuj.ZoomURL)
 		if err != nil {
 			return errors.Wrap(err, "failed to open the zoom website")
 		}
@@ -67,7 +66,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 
 		if err := ui.WaitUntilExists(nodewith.Name("SIGN IN").Role(role.Link))(ctx); err == nil {
 			testing.ContextLog(ctx, "Start to sign in")
-			if err := conn.Navigate(ctx, "https://zoom.us/google_oauth_signin"); err != nil {
+			if err := conn.Navigate(ctx, cuj.ZoomSignInURL); err != nil {
 				return err
 			}
 			account := nodewith.Name(conf.account).First()
@@ -288,8 +287,7 @@ func (conf *ZoomConference) SwitchTabs(ctx context.Context) error {
 	defer kb.Close()
 
 	testing.ContextLog(ctx, "Open wiki page")
-	const wikiURL = "https://www.wikipedia.org/"
-	wikiConn, err := conf.cr.NewConn(ctx, wikiURL)
+	wikiConn, err := conf.cr.NewConn(ctx, cuj.WikipediaURL)
 	if err != nil {
 		return errors.Wrap(err, "failed to open the wiki url")
 	}
