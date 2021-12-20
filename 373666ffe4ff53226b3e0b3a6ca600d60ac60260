@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ada0f55d_629131c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "IIUC adding a test to group:graphics does not automatically run this test, we need some extra attributes like graphics_nightly.\n\nThat said, this test can run up to 6 hours, so I\u0027m afraid it would overwhelm other tests in the group. pwang@, do you have any recommendation about how to schedule this test?",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbc11629_0a1ff3e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
         "patchSetId": 1
@@ -49,6 +72,29 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "dbc11629_0a1ff3e0",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc5b6ac_d1fe12c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "nit: Since we use the same chromeLoggedIn fixture in all params, you can set testing.Test.Fixture field instead.",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 29
+      },
       "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -90,6 +136,161 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0880be7f_4a28159d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "style: WebGLStress\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9230929_51f2ce09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "This test is not hermetic due to dependency on an external website.\n\nLooks like the website is open-sourced. Can we host a page in a local HTTP server? Then this test will run without Internet connections.\nhttps://github.com/webglsamples/webglsamples.github.io",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 77
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f52a21_b235f187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "nit: const",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 4
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "841e7aa7_66ea0ca7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "I recommend using indices starting from 0 here and elsewhere.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a9d745_4adeb9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "IIUC document.title is set in the middle of a page load, so I\u0027m afraid waiting for it won\u0027t resolve race conditions properly.\n\nWhat event do you need to wait for exactly? For example, you can wait for the document load event by \"document.readyState \u003d\u003d\u003d \u0027complete\u0027\".\nhttps://developer.mozilla.org/en-US/docs/Web/API/Document/readyState",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 72
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d01991_56428241",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "conn will be leaked when we hit this Fatal.",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99edccf6_1142a839",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "ditto (conn leak)",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 9
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91337cb7_03c3d1d3",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
         "patchSetId": 1
@@ -125,6 +326,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61649df7_b7c6275b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "testing.Poll is intended to be used to wait for certain conditions to be met within timeout, but in this usage we want to wait for certain amount of time. I\u0027d recommend avoiding testing.Poll and write your own loop to make things simpler.\n\n for {\n   if timeout-is-met {\n     break\n   }\n   measure-fps...\n   wait-next-iteration...\n }",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e80bd21_dd203a0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "I think it\u0027s better to define \"index\" within this inner scope. I believe index is always either 1 (in the first iteration) or totalWindows (in later iterations)?",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 5
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fc0f072_42421392",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
         "patchSetId": 1
@@ -154,6 +395,104 @@
       "side": 1,
       "message": "Tried with given suggestion, but still proper fps value is not getting. Actually when window get activated the fps value starts from zero, so it takes some milliSecond to get proper fps value.",
       "parentUuid": "1fc0f072_42421392",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9727e4_bfb7ad0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "+1, I\u0027m afraid waiting for a fixed amount of time may introduce skews to measured values.\nc.f. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#Sleep",
+      "parentUuid": "1a21fbe5_2c10bd89",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b3733a4_a80cc5b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "nit: This code is easier to read by not converting to UNIX epoch times.\n\n endTime :\u003d time.Now().Add(time.Duration(testRun.hour) * time.Hour)\n for {\n   ...\n   if time.Now().After(endTime) {\n     break\n   }\n   s.Logf(...)\n }",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 51
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4816fe29_d7b36b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "I\u0027d recommend printing FPS values here so that we can intermediate values without waiting for full test runs.",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d50faf5_c4a6be9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "style: keys\n\nThat said, I believe keys is always 1...totalWindows ?",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4525af4_f26ecdcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:55:41Z",
+      "side": 1,
+      "message": "style: chromeGPU",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 14
+      },
       "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
