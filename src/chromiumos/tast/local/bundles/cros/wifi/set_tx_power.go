@@ -19,8 +19,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
-		SoftwareDeps: []string{"cros_config"},
+		Attr: []string{"group:mainline", "group:wificell", "wificell_func"},
 	})
 }
 
@@ -43,7 +42,7 @@ func SetTXPower(ctx context.Context, s *testing.State) {
 	if crosconfig.IsNotFound(err) {
 		s.Log("Testing dynamic mode")
 	} else if err != nil {
-		s.Fatalf("Failed to execute cros_config: %s", err)
+		s.Logf("Failed to execute cros_config: %s, testing dynamic mode", err)
 	} else {
 		if staticMode != "tablet" && staticMode != "non-tablet" {
 			s.Fatalf("Invalid static mode: %s", staticMode)
