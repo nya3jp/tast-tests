@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb5f4b6_ffccaef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-20T06:04:15Z",
+      "side": 1,
+      "message": "Here there is no check for portrait orientation. Should this change be applicable only to Landscape orientation?\n\nI see the test has similar goal i think. Can we reuse that as the eng has written it. src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/split_view.go",
+      "range": {
+        "startLine": 1150,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 0
+      },
+      "revId": "460589bffdec28bc31a237927ed1fe98561076a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
