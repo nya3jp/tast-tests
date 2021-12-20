@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38418f5_f41dcbd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-12-20T22:25:11Z",
+      "side": 1,
+      "message": "Not sure I agree with ignoring that error. If cros_config is not present on the DUT, it\u0027s a special case that would ideally be cleanly handled by a call to something like |crosconfig.IsNotSupported()|. That way we\u0027ll still be alerted when crosconfig.Get() fails for a different unexpected reason.\n\n\nIf it appears that cros_config works even without unibuild, then we can just keep the call to s.Fatalf(), correct?",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "c2df5310d8b03dff12b93f41c9e96089b8cf412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
