@@ -30,7 +30,7 @@ func init() {
 			"amehfooz@chromium.org",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
