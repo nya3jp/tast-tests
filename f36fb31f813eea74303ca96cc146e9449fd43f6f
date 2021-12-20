@@ -16,6 +16,23 @@
       "message": "Roman, PTAL",
       "revId": "f36fb31f813eea74303ca96cc146e9449fd43f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "becc5a41_9cb13846",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2021-12-20T17:02:14Z",
+      "side": 1,
+      "message": "Thanks, Roman!\n\n+tast-owners@",
+      "revId": "f36fb31f813eea74303ca96cc146e9449fd43f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
