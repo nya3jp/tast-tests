@@ -17,7 +17,6 @@ func init() {
 		Desc: "Verifies CrosDisks mounts a network server over ssh",
 		Contacts: []string{
 			"chromeos-files-syd@google.com",
-			"dats@chromium.org",
 			"joelhockey@chromium.org",
 		},
 		Attr: []string{"group:mainline"},
