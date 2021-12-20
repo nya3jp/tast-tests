@@ -22,6 +22,30 @@
       },
       "revId": "e3ee3c52de1126b1390fdea34416d704ddbed507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaab1491_37385c54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2021-12-20T04:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb7aa838_4e9db8c8",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 7
+      },
+      "revId": "e3ee3c52de1126b1390fdea34416d704ddbed507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
