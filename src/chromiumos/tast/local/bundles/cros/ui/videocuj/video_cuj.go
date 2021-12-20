@@ -75,17 +75,17 @@ type videoSrc struct {
 
 var basicVideoSrc = []videoSrc{
 	{
-		"https://www.youtube.com/watch?v=zWAfyYKCr3o",
+		cuj.YoutubeThailandVideo,
 		"Thailand 4K - Scenic Relaxation Film With Calming Music",
 		"1080p",
 	},
 	{
-		"https://www.youtube.com/watch?v=b3wcQqINmE4",
+		cuj.YoutubeNatureVideo,
 		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
 		"720p60",
 	},
 	{
-		"https://www.youtube.com/watch?v=b3wcQqINmE4",
+		cuj.YoutubeNatureVideo,
 		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
 		"1080p60",
 	},
@@ -93,7 +93,7 @@ var basicVideoSrc = []videoSrc{
 
 var plusVideoSrc = []videoSrc{
 	{
-		"https://www.youtube.com/watch?v=b3wcQqINmE4",
+		cuj.YoutubeNatureVideo,
 		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
 		"2160p60",
 	},
@@ -195,7 +195,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, outDir, hasError)
 
 	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
-		conn, err := uiHandler.NewChromeTab(ctx, cr, "https://mail.google.com", true)
+		conn, err := uiHandler.NewChromeTab(ctx, cr, cuj.Gmail, true)
 		if err != nil {
 			return conn, errors.Wrap(err, "failed to open gmail web page")
 		}

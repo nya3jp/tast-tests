@@ -240,12 +240,12 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 		// Expecting 3 windows, first 2 windows with one tab and last window with 2 tabs.
 		tabsInfo := [][]*tabInfo{{
-			{url: "https://mail.google.com"},
+			{url: cuj.Gmail},
 		}, {
-			{url: "https://calendar.google.com/calendar/u/0/r/month"},
+			{url: cuj.GoogleCalendar},
 		}, {
-			{url: "https://news.google.com"},
-			{url: "https://photos.google.com"},
+			{url: cuj.GoogleNews},
+			{url: cuj.GooglePhotos},
 		}}
 
 		// Open tabs.

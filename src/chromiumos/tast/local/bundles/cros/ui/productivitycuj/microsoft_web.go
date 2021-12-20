@@ -26,9 +26,6 @@ import (
 )
 
 const (
-	// officeURL indicates the link URL of "Microsoft Office Home".
-	officeURL = "https://www.office.com/"
-
 	// myFiles indicates the "My files" item name in the navigation bar.
 	myFiles = "My files"
 	// recent indicates the "Recent" item label in the navigation bar.
@@ -632,9 +629,9 @@ func (app *MicrosoftWebOffice) reload(finder *nodewith.Finder, action func(ctx c
 func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, error) {
 	testing.ContextLog(ctx, "Navigating to OneDrive")
 
-	conn, err := app.cr.NewConn(ctx, officeURL)
+	conn, err := app.cr.NewConn(ctx, cuj.MicrosoftOffice)
 	if err != nil {
-		return nil, errors.Wrapf(err, "failed to open URL: %s", officeURL)
+		return nil, errors.Wrapf(err, "failed to open URL: %s", cuj.MicrosoftOffice)
 	}
 
 	appLauncher := nodewith.Name("App launcher").Role(role.PopUpButton).Collapsed()
