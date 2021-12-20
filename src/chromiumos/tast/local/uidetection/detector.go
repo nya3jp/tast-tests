@@ -22,6 +22,11 @@ type uiDetector struct {
 	server  string
 }
 
+// maxRsvMsgSize specifies the size limit for the grpc received message.
+// The default value is 1024 * 1024 * 4, which results in a ResourceExhausted
+// error when making grpc calls on large-screen devices.
+const maxRsvMsgSize = 2048 * 1024 * 4
+
 func (d *uiDetector) sendDetectionRequest(ctx context.Context, imagePng []byte, request *pb.DetectionRequest) (*pb.UiDetectionResponse, error) {
 	// Create the UI detection request.
 	uiDetectionRequest := &pb.UiDetectionRequest{
@@ -43,5 +48,5 @@ func (d *uiDetector) sendDetectionRequest(ctx context.Context, imagePng []byte, 
 
 	client := pb.NewUiDetectionServiceClient(conn)
 
-	return client.ExecuteDetection(ctx, uiDetectionRequest)
+	return client.ExecuteDetection(ctx, uiDetectionRequest, grpc.MaxCallRecvMsgSize(maxRsvMsgSize))
 }
