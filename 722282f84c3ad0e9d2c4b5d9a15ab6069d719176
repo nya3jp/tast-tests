@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c77ba3_ada5a13f",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-20T14:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e37de14_82b3c4b7",
+      "range": {
+        "startLine": 68,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "722282f84c3ad0e9d2c4b5d9a15ab6069d719176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c920bcd_c66be261",
@@ -82,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6677060_da893bc4",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-20T14:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c920bcd_c66be261",
+      "range": {
+        "startLine": 78,
+        "startChar": 28,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "722282f84c3ad0e9d2c4b5d9a15ab6069d719176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95994c7a_78f2ad50",
@@ -95,6 +143,24 @@
       "writtenOn": "2021-12-16T12:27:08Z",
       "side": 1,
       "message": "If you don\u0027t remove the added account, can it cause problems for other tests?",
+      "revId": "722282f84c3ad0e9d2c4b5d9a15ab6069d719176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "099f15e0_972749a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/system_dialog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-20T14:39:48Z",
+      "side": 1,
+      "message": "Added accountmanager.TestCleanup (which is run at the beginning of each accountmanager test)\n\nBut now I think it would make more sense if I would put that call inside \"defer\" so that it runs after each test instead. I\u0027ll fix that in a separate CL",
+      "parentUuid": "95994c7a_78f2ad50",
       "revId": "722282f84c3ad0e9d2c4b5d9a15ab6069d719176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
