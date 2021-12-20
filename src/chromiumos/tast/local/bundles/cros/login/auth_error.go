@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Tests that auth error disappears when user perform some action",
 		Contacts:     []string{"rsorokin@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Timeout:      chrome.LoginTimeout + 30*time.Second,
 	})
