@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d46d8ebf_ab267651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-12-20T13:25:26Z",
+      "side": 1,
+      "message": "lgtm with a nit.",
+      "revId": "bad4a6aabf0e423cee394744ecfedd74c6d9aa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d4583a9_0110bf7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2021-12-20T13:25:26Z",
+      "side": 1,
+      "message": "If this fixes the flakiness in the tests, how about changing arcBootedInTabletMode to call this function as well for the other tests?",
+      "range": {
+        "startLine": 175,
+        "startChar": 29,
+        "endLine": 175,
+        "endChar": 50
+      },
+      "revId": "bad4a6aabf0e423cee394744ecfedd74c6d9aa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
