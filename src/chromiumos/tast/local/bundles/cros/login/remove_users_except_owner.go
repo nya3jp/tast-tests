@@ -32,7 +32,7 @@ func init() {
 		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 		},
-		Timeout: 3 * time.Minute,
+		Timeout: 5*chrome.LoginTimeout + 30*time.Second,
 	})
 }
 
@@ -45,7 +45,7 @@ const (
 
 func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 	cleanUpCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
 	setupUsers(ctx, cleanUpCtx, s)
