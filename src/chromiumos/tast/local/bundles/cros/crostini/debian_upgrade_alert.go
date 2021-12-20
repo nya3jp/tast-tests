@@ -145,8 +145,9 @@ func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to restart terminal app: ", err)
 	}
 
+	tconn.ResetAutomation(ctx)
 	// Container startup can take time hence the long timeout.
-	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(continueButton)(ctx); err != nil {
+	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(continueButton)(ctx); err != nil {
 		s.Fatal("Failed to find the upgrade alert before timeout: ", err)
 	}
 
