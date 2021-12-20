@@ -33,6 +33,92 @@
       "message": "LGTM",
       "revId": "61e183ce1ef4cee22e95e3f07ef9cdde0171da64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0d6dce_25cbbce8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-20T12:15:41Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "61e183ce1ef4cee22e95e3f07ef9cdde0171da64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4141857e_55c3ff96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-20T12:15:41Z",
+      "side": 1,
+      "message": "please wrap this error.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "range": {
+        "startLine": 58,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "61e183ce1ef4cee22e95e3f07ef9cdde0171da64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fa235b_f71226d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-20T12:15:41Z",
+      "side": 1,
+      "message": "nit: replace with `defer act.Close()`",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "61e183ce1ef4cee22e95e3f07ef9cdde0171da64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc4bb76_1b47d6ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-20T12:15:41Z",
+      "side": 1,
+      "message": "I think it makes sense to put it under defer statement before line 106 and call it with cleanup context.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 49
+      },
+      "revId": "61e183ce1ef4cee22e95e3f07ef9cdde0171da64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
