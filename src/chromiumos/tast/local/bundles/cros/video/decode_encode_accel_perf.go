@@ -40,6 +40,13 @@ func init() {
 		Data: []string{"1080p_30fps_300frames.vp8.ivf", "1080p_30fps_300frames.vp8.ivf.json",
 			"crowd-1920x1080.vp9.webm", "crowd-1920x1080.yuv.json"},
 		// Default timeout (i.e. 2 minutes) is not enough.
+		Params: []testing.Param{{
+			Name: "global_vaapi_lock_enabled",
+			Val:  true,
+		}, {
+			Name: "global_vaapi_lock_disabled",
+			Val:  false,
+		}},
 		Timeout: 5 * time.Minute,
 	})
 }
@@ -99,21 +106,28 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed waiting for CPU to become idle: ", err)
 	}
 
+	encodeTestArgs := []string{
+		"--codec=vp8",
+		yuvPath,
+		yuvJSONPath,
+		"--output_folder=" + s.OutDir(),
+	}
+	decodeTestArgs := []string{
+		s.DataPath(decodeFilename),
+		s.DataPath(decodeFilename + ".json"),
+		"--output_folder=" + s.OutDir(),
+	}
+	vaapiLockEnabled := s.Param().(bool)
+	if !vaapiLockEnabled {
+		encodeTestArgs = append(encodeTestArgs, "--disable_vaapi_lock")
+		decodeTestArgs = append(decodeTestArgs, "--disable_vaapi_lock")
+	}
 	// Create gtest that runs the video encoder performance test.
 	encodeTest := newGTest("video_encode_accelerator_perf_tests", "*MeasureCappedPerformance", s.OutDir(),
-		[]string{
-			"--codec=vp8",
-			yuvPath,
-			yuvJSONPath,
-			"--output_folder=" + s.OutDir(),
-		})
+		encodeTestArgs)
 	// Create gtest that runs the video decoder performance test.
 	decodeTest := newGTest("video_decode_accelerator_perf_tests", "*MeasureCappedPerformance", s.OutDir(),
-		[]string{
-			s.DataPath(decodeFilename),
-			s.DataPath(decodeFilename + ".json"),
-			"--output_folder=" + s.OutDir(),
-		})
+		decodeTestArgs)
 
 	// Measure CPU usage while both the encoder and decoder performance tests are running.
 	measurements, err := mediacpu.MeasureProcessUsage(ctx, measureDuration, mediacpu.KillProcess, encodeTest, decodeTest)
