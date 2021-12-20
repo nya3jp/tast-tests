@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "872cfe28_0abf7ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile_account_picker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2021-12-20T15:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2ff43ae_4b4f485d",
+      "revId": "e5844a7952b6dc24713ad7fb30135361434381b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aeb7747_5116c021",
