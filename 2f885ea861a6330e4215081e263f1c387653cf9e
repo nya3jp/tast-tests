@@ -16,6 +16,40 @@
       "message": "please have a look, thanks!",
       "revId": "2f885ea861a6330e4215081e263f1c387653cf9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d54483f_f464877f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-20T23:44:47Z",
+      "side": 1,
+      "message": "I only have one nit commit. Please take a look. Thanks.",
+      "revId": "2f885ea861a6330e4215081e263f1c387653cf9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39548361_0c4e776c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-20T23:44:47Z",
+      "side": 1,
+      "message": "nit: please put a comment on why this value is chosen. Thanks.",
+      "revId": "2f885ea861a6330e4215081e263f1c387653cf9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
