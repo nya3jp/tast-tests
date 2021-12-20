@@ -12,6 +12,7 @@ import (
 	"time"
 
 	common "chromiumos/tast/common/firmware"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	pb "chromiumos/tast/services/cros/firmware"
@@ -261,6 +262,13 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	if common.GBBFlagsStatesEqual(i.value.GBBFlags, curr) {
 		s.Log("GBBFlags are already proper")
 	} else {
+		s.Log("Disabling write protect to allow GBB flags to be set")
+		if err := i.value.Helper.RequireServo(ctx); err != nil {
+			s.Fatal("Failed to connect to servo: ", err)
+		}
+		if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+			s.Fatal("Failed to disable write protect: ", err)
+		}
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
 		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
 			s.Fatal("SetGBBFlags failed: ", err)
