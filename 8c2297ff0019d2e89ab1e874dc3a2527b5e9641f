@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e03802d_4be39d2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-20T02:01:04Z",
+      "side": 1,
+      "message": "Please split this into two CLs, then we can review (2) and merged it first.\n\nFor (1), we need to make sure that lab cab help it. Could you provide contents for http://b/209385206#comment19 and reply in that issue?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 77
+      },
+      "revId": "8c2297ff0019d2e89ab1e874dc3a2527b5e9641f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
