@@ -43,12 +43,12 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	}
 	defer kb.Close()
 
-	ui := uiauto.New(tconn).WithTimeout(LongUITimeout)
+	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 
 	// All nodes in the dialog should be inside the `root`.
 	root := GetAddAccountDialog()
 
-	// Click OK and Enter User Name.
+	// Click OK.
 	okButton := nodewith.Name("OK").Role(role.Button).Ancestor(root)
 	if err := uiauto.Combine("Click on OK and proceed",
 		ui.WaitUntilExists(okButton),
@@ -57,14 +57,42 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 		return errors.Wrap(err, "failed to click OK. Is Account addition dialog open?")
 	}
 
+	// Use long timeout to wait for the initial Gaia webpage load.
+	if err := ui.WithTimeout(LongUITimeout).WaitUntilExists(nodewith.Role(role.Iframe).Ancestor(root))(ctx); err != nil {
+		return errors.Wrap(err, "failed to find the iframe")
+	}
+
 	emailField := nodewith.Name("Email or phone").Role(role.TextField).Ancestor(root)
-	if err := uiauto.Combine("Click on Username",
-		ui.WaitUntilExists(emailField),
-		ui.LeftClick(emailField),
-	)(ctx); err != nil {
+	backButton := nodewith.Name("Back").Role(role.Button).Ancestor(root)
+	// After the iframe loads, the ui tree may not get updated. In this case only one retry (which hides and then shows the iframe again) is required.
+	// TODO(b/211420351): remove this when the issue is fixed.
+	if err := ui.Retry(2, func(ctx context.Context) error {
+		if err := uiauto.Combine("Click on Username",
+			ui.WaitUntilExists(emailField),
+			ui.LeftClick(emailField),
+		)(ctx); err == nil {
+			// The email field input is found, the test can proceed.
+			return nil
+		}
+
+		testing.ContextLog(ctx, "Couldn't find and click on user name inside the iframe node. Refreshing the ui tree")
+		// Click 'Back' and then 'OK' to refresh the ui tree.
+		// Note: This should be fast because it will just hide and show the webview/iframe node, but will not reload the webpage.
+		if err := uiauto.Combine("Click 'Back' and 'OK' to refresh the iframe",
+			ui.WaitUntilExists(backButton),
+			ui.LeftClick(backButton),
+			ui.WaitUntilExists(okButton),
+			ui.LeftClick(okButton),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click 'Back' and 'OK' to refresh the iframe")
+		}
+
+		return errors.New("failed to find and click on user name inside the iframe")
+	})(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on user name")
 	}
 
+	// Enter the User Name.
 	if err := kb.Type(ctx, email+"\n"); err != nil {
 		return errors.Wrap(err, "failed to type user name")
 	}
