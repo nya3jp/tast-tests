@@ -6,7 +6,7 @@ syntax = "proto3";
 
 package tast.cros.camerabox;
 
-import "common.proto";
+import "common_camerabox.proto";
 
 option go_package = "chromiumos/tast/services/cros/camerabox";
 
