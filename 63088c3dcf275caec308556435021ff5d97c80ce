@@ -16,6 +16,29 @@
       "message": "Hello Jeremy, please have a look to the integration of the EnableAPSoftwareWriteProtect as part of the bios service. ",
       "revId": "63088c3dcf275caec308556435021ff5d97c80ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710729b9_d58d3aa6",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-20T17:52:06Z",
+      "side": 1,
+      "message": "Instead of hardcoding this path, you should use ioutil.TempFile, and you should probably put it in /var/tmp, as /tmp sometimes has very little free space.\n\nAnd use defer to make sure it gets deleted.",
+      "range": {
+        "startLine": 304,
+        "startChar": 74,
+        "endLine": 304,
+        "endChar": 90
+      },
+      "revId": "63088c3dcf275caec308556435021ff5d97c80ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
