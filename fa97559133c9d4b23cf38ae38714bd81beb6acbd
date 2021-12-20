@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71af3b1_b4e1f9c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-12-20T18:27:15Z",
+      "side": 1,
+      "message": "Why do you update specifically policy/gen.go and camerabox/gen.go, but do not make similar change to other packages under src/chromiumos/tast/services/cros? The camerabox package kinda makes sense since it contains common.proto and is causing the namespace conflicts, although I would expect to an update to another package that also contains common.proto. The policy package does not seem to contain such file, so it\u0027s unclear why it\u0027s updated.",
+      "revId": "fa97559133c9d4b23cf38ae38714bd81beb6acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41dca6a_02ae17dc",
+        "filename": "src/chromiumos/tast/services/cros/camerabox/gen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-12-20T18:27:15Z",
+      "side": 0,
+      "message": "Why is this missing in the new version?",
+      "range": {
+        "startLine": 5,
+        "startChar": 137,
+        "endLine": 5,
+        "endChar": 154
+      },
+      "revId": "ef75944064cffd98605e1902009a13498946a3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
