@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c1e6d7_97726f51",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-12-20T23:43:58Z",
+      "side": 1,
+      "message": "\"There are some errors in stainless rebooting from dev-usb to normal mode\nand this is a random attempt to fix that.\", so shouldn\u0027t this only be performed if fromMode \u003d\u003d dev-usb?",
+      "revId": "6731f090dfbba350bf6b48e69a2f6a9e1032906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
