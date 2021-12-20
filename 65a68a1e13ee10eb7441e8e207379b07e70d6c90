@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1fb85c9_32a661e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-20T09:11:39Z",
+      "side": 1,
+      "message": "Add period at the end.",
+      "range": {
+        "startLine": 53,
+        "startChar": 111,
+        "endLine": 53,
+        "endChar": 112
+      },
+      "revId": "65a68a1e13ee10eb7441e8e207379b07e70d6c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a224794_06aca83f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-20T09:11:39Z",
+      "side": 1,
+      "message": "Lowercase. Since you use lowercase in line 50. Just be consistent, I\u0027m okay with both uppercase and lowercase.",
+      "range": {
+        "startLine": 53,
+        "startChar": 41,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "65a68a1e13ee10eb7441e8e207379b07e70d6c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80739bd_03e737d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-20T09:11:39Z",
+      "side": 1,
+      "message": "Remove this empty line.",
+      "revId": "65a68a1e13ee10eb7441e8e207379b07e70d6c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6bcfd01_e3ddf783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2021-12-20T09:11:39Z",
+      "side": 1,
+      "message": "Remove trailing space.",
+      "range": {
+        "startLine": 199,
+        "startChar": 88,
+        "endLine": 199,
+        "endChar": 89
+      },
+      "revId": "65a68a1e13ee10eb7441e8e207379b07e70d6c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
