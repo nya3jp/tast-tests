@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b634e7c9_450dc659",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-20T21:32:16Z",
+      "side": 1,
+      "message": "Instead of graphics_nightly, please use graphics_weekly for longer tests.",
+      "parentUuid": "ada0f55d_629131c4",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbc11629_0a1ff3e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
         "patchSetId": 1
@@ -192,6 +216,30 @@
         "startChar": 1,
         "endLine": 70,
         "endChar": 4
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed52ffb5_7068318e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-20T21:32:16Z",
+      "side": 1,
+      "message": "+1 on using static html file.",
+      "parentUuid": "c9230929_51f2ce09",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 77
       },
       "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -413,6 +461,24 @@
       "side": 1,
       "message": "+1, I\u0027m afraid waiting for a fixed amount of time may introduce skews to measured values.\nc.f. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#Sleep",
       "parentUuid": "1a21fbe5_2c10bd89",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015963d7_a50a2080",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-20T21:32:16Z",
+      "side": 1,
+      "message": "If we host our version of webglaquarium, we can ingest some variable to track average fps and render time via javascript. \n\nThis is also used in our autotest version of graphics_WebGLAquarium.",
+      "parentUuid": "8f9727e4_bfb7ad0d",
       "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
