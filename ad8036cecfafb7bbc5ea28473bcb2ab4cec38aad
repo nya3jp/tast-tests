@@ -16,6 +16,23 @@
       "message": "+pwang@ for input about group:graphics.\n",
       "revId": "ad8036cecfafb7bbc5ea28473bcb2ab4cec38aad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "923f8830_c0038954",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T07:56:21Z",
+      "side": 1,
+      "message": "Deferring to pwang@ for remaining reviews - I\u0027m entering leave soon.\n",
+      "revId": "ad8036cecfafb7bbc5ea28473bcb2ab4cec38aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
