@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5c51d5b_22d0afa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-20T21:07:17Z",
+      "side": 1,
+      "message": "I have one comment. Please take a look. Thanks.\n",
+      "revId": "172cf023a65c41af8465586fb539d5a891855904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a471be14_645642cf",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-20T21:07:17Z",
+      "side": 1,
+      "message": "Will this work for non-tablet mode? If so, why don\u0027t you just change the implementation of CloseWallpaperPicker to use this.",
+      "revId": "172cf023a65c41af8465586fb539d5a891855904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
