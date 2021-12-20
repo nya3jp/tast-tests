@@ -39,6 +39,29 @@
       },
       "revId": "63088c3dcf275caec308556435021ff5d97c80ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b926b2c0_ce8ee76e",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-20T18:07:16Z",
+      "side": 1,
+      "message": "I found you can use `flashrom -p host -r -i FMAP:/var/tmp/testfile.bin` and you get the same results but much faster. Please do that instead.",
+      "range": {
+        "startLine": 304,
+        "startChar": 41,
+        "endLine": 304,
+        "endChar": 90
+      },
+      "revId": "63088c3dcf275caec308556435021ff5d97c80ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
