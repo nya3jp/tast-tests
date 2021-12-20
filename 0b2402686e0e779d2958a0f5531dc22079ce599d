@@ -22,6 +22,30 @@
       },
       "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7f965f_0cdfe0bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-20T22:02:03Z",
+      "side": 1,
+      "message": "Sorry that was unclear. I meant that this test doesn\u0027t seem like it should depend on cros_config support. I changed the fatal exit below to just assume dynamic mode and continue. Also FWIW, I ran cros_config and a few devices with -unibuild in the overlay and they still run the command fine.",
+      "parentUuid": "d77cf4db_3dc9922c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
