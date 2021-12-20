@@ -33,6 +33,24 @@
       "message": "Will this work for non-tablet mode? If so, why don\u0027t you just change the implementation of CloseWallpaperPicker to use this.",
       "revId": "172cf023a65c41af8465586fb539d5a891855904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8d517b4_4b3f1fd4",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2021-12-20T23:02:02Z",
+      "side": 1,
+      "message": "Good suggestion, ctrl+w works for both tablet and clamshell.",
+      "parentUuid": "a471be14_645642cf",
+      "revId": "172cf023a65c41af8465586fb539d5a891855904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
