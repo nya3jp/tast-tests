@@ -94,6 +94,30 @@
       },
       "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4fe6fcb_df0a2be9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-12-20T23:09:41Z",
+      "side": 1,
+      "message": "Given limited availability of people over the holidays, maybe we could try a few things.\n\nIf we only remove the |cros_config| softwaredep from SetTXPower (essentially patchset #1 with a more detailed commit message) and monitor what happens in the next few days for that particular test, it would be an indication that the softwaredep is not really relevant anymore and we can file a bug to get that fixed. If we see breakages, we can add that dependency back. Wdyt?",
+      "parentUuid": "374d7f57_1f319143",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
