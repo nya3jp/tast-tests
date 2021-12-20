@@ -16,8 +16,7 @@ func init() {
 		Func: CrosDisks,
 		Desc: "Verifies CrosDisks' D-Bus API works",
 		Contacts: []string{
-			"dats@chromium.org",
-			"fdegros@chromium.org",
+			"chromeos-files-syd@google.com",
 		},
 		Attr: []string{"group:mainline"},
 	})

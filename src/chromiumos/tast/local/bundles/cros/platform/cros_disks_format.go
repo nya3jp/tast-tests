@@ -17,8 +17,6 @@ func init() {
 		Desc: "Verifies CrosDisks formats removable media",
 		Contacts: []string{
 			"chromeos-files-syd@google.com",
-			"dats@chromium.org",
-			"fdegros@chromium.org",
 		},
 		Attr: []string{"group:mainline"},
 	})
