@@ -62,6 +62,23 @@
       },
       "revId": "53b62c17730b2c156b6ee9b5a68f9afe76637393",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f3922f_e1bfb56a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/minutemaidutil/minutemaidutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T08:17:39Z",
+      "side": 1,
+      "message": "I guess you can define this in loginminutemaid/doc.go ?",
+      "revId": "53b62c17730b2c156b6ee9b5a68f9afe76637393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
