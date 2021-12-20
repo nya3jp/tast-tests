@@ -16,6 +16,46 @@
       "message": "Thanks for reviewing. Addressed comments.",
       "revId": "10870f79c30745f706dbaaf73907c719ae34050e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0dcdb4b_e543f3db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-20T16:32:51Z",
+      "side": 1,
+      "message": "the file should be removed on error?",
+      "revId": "10870f79c30745f706dbaaf73907c719ae34050e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b82a6bd_0de08152",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-20T16:32:51Z",
+      "side": 1,
+      "message": "optional: do you want some separator here for better debuggability?",
+      "range": {
+        "startLine": 137,
+        "startChar": 81,
+        "endLine": 137,
+        "endChar": 83
+      },
+      "revId": "10870f79c30745f706dbaaf73907c719ae34050e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

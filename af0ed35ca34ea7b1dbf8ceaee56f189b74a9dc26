@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74233569_cf8e0c5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_decode.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2021-12-20T16:32:51Z",
+      "side": 1,
+      "message": "Can you return JS object\u0027s reference, instead?\n\ncf) JSObject in src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go",
+      "parentUuid": "598f62de_5e659884",
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16fab924_fbd501bf",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
         "patchSetId": 9
