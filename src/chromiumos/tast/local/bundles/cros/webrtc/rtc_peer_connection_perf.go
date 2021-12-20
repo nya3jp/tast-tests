@@ -111,6 +111,20 @@ func init() {
 			Fixture:           "chromeVideoWithFakeWebcam",
 			// Trogdor doesn't have enough hardware contexts to pass this test.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor")),
+		}, {
+			Name:              "vp8_hw_multi_vp9_3x3_global_vaapi_lock_disabled",
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 3, "tulip2-320x180.vp9.webm"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWDecodeVP8, caps.HWEncodeVP8, "iHD"},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
+		}, {
+			Name:              "vp8_hw_multi_vp9_4x4_global_vaapi_lock_disabled",
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 4, "tulip2-320x180.vp9.webm"),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWDecodeVP8, caps.HWEncodeVP8, "iHD"},
+			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
+			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
+			// Trogdor doesn't have enough hardware contexts to pass this test.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor")),
 		}},
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
