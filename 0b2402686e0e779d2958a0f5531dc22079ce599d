@@ -70,6 +70,30 @@
       },
       "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374d7f57_1f319143",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-20T22:43:13Z",
+      "side": 1,
+      "message": "Not really sure how that works, but it does look like cros_config is installed unconditionally: https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/chromeos-config-tools/chromeos-config-tools-9999.ebuild;rcl\u003dd9fcbbbf141cec87dd6bf910cf81350e361cbffa;l\u003d61\n\njrosenth@, can you comment here? Does the softwaredep not do what we think it does?",
+      "parentUuid": "fd1e0255_745e1c61",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
