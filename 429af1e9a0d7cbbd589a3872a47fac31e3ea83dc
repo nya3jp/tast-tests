@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f2dc06a2_4877ef53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-20T01:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53e5d811_27de36c1",
+      "revId": "429af1e9a0d7cbbd589a3872a47fac31e3ea83dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a72d73d1_f5c0917b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-16T04:03:42Z",
       "side": 1,
       "message": "Curious, do \"guest session\" and \"ephemeral auth\" mean the same thing? If so, the description may be rephrase as:\nTest guest (ephemeral) sessions with auth session API",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "429af1e9a0d7cbbd589a3872a47fac31e3ea83dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5965d4b2_6930c030",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-20T01:07:42Z",
+      "side": 1,
+      "message": "ctrl-c/ctrl-v typo :) fixed.",
+      "parentUuid": "8e96f17f_c9c8cdfa",
       "range": {
         "startLine": 21,
         "startChar": 14,
@@ -104,6 +146,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8211138_c982dbd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-20T01:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1195e604_e0080cb9",
+      "range": {
+        "startLine": 66,
+        "startChar": 30,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "429af1e9a0d7cbbd589a3872a47fac31e3ea83dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3280366a_d0e9b470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-20T01:07:42Z",
+      "side": 1,
+      "message": "it would fail if unmount fails, so not really.",
+      "parentUuid": "ffc64d76_d1b0e938",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 29
+      },
+      "revId": "429af1e9a0d7cbbd589a3872a47fac31e3ea83dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d41f5ca9_c8cfddf6",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-12-16T04:03:42Z",
       "side": 1,
       "message": "Set up",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 9
+      },
+      "revId": "429af1e9a0d7cbbd589a3872a47fac31e3ea83dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0404ce0b_f72edc95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2021-12-20T01:07:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d41f5ca9_c8cfddf6",
       "range": {
         "startLine": 68,
         "startChar": 4,
