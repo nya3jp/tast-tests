@@ -16,6 +16,40 @@
       "message": "wallpaper.FullscreenPreviewWallpaper requires https://chromium-review.googlesource.com/c/chromium/src/+/3343926 to land first.",
       "revId": "e42304f22f1702666bf108468a4dc147b4cfc462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe78eba_3f5ace0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-12-20T17:49:27Z",
+      "side": 1,
+      "message": "LGTM with a comment.",
+      "revId": "e42304f22f1702666bf108468a4dc147b4cfc462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e4dbfc_7eac30f7",
+        "filename": "src/chromiumos/tast/local/wallpaper/constants/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1510098
+      },
+      "writtenOn": "2021-12-20T17:49:27Z",
+      "side": 1,
+      "message": "I see other tests store these configs in an internal yaml file. Should we do the same?",
+      "revId": "e42304f22f1702666bf108468a4dc147b4cfc462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
