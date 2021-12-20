@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d59ef9_c3ff59ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-20T10:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a224794_06aca83f",
+      "range": {
+        "startLine": 53,
+        "startChar": 41,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "65a68a1e13ee10eb7441e8e207379b07e70d6c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8460d18_b5ddf381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-20T10:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1fb85c9_32a661e2",
+      "range": {
+        "startLine": 53,
+        "startChar": 111,
+        "endLine": 53,
+        "endChar": 112
+      },
+      "revId": "65a68a1e13ee10eb7441e8e207379b07e70d6c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e80739bd_03e737d8",
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f5afaec_b076a376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-20T10:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e80739bd_03e737d8",
+      "revId": "65a68a1e13ee10eb7441e8e207379b07e70d6c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6bcfd01_e3ddf783",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-12-20T09:11:39Z",
       "side": 1,
       "message": "Remove trailing space.",
+      "range": {
+        "startLine": 199,
+        "startChar": 88,
+        "endLine": 199,
+        "endChar": 89
+      },
+      "revId": "65a68a1e13ee10eb7441e8e207379b07e70d6c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f054449_6331d406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-20T10:27:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6bcfd01_e3ddf783",
       "range": {
         "startLine": 199,
         "startChar": 88,
