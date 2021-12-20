@@ -20,6 +20,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbf11351_7f6668a7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T08:08:51Z",
+      "side": 1,
+      "message": "I guess we never read EOF from r since os/exec does not close w (cmd.Stdout is io.Writer, not io.WriteCloser)\n\nYou can use cmd.StdoutPipe() instead.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 15
+      },
+      "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f84c8e92_1f75de40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T08:08:51Z",
+      "side": 1,
+      "message": "what does this comment mean?",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c04018_13b98873",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-20T08:08:51Z",
+      "side": 1,
+      "message": "I\u0027m afraid os/exec.Wait is not thread-safe and cannot be called concurrently from two goroutines.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 12
+      },
+      "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62596a0c_90b9b15e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/tastrun/run.go",
         "patchSetId": 5
