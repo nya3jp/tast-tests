@@ -70,6 +70,24 @@
       "parentUuid": "9f4b9a9b_c571fe47",
       "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "facf71ac_d87fab70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-20T20:29:23Z",
+      "side": 1,
+      "message": "I agree - assuming Toshiki-san is OK with the current implementation then we should see the WMResizableConversion test start to pass (it currently does not pass at all), at which point we\u0027ll start to see what other issues arise that we can iterate on.",
+      "parentUuid": "6709f6ae_32f11003",
+      "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
