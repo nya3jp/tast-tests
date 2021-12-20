@@ -405,8 +405,7 @@ func (conf *GoogleMeetConference) SwitchTabs(ctx context.Context) error {
 	defer kb.Close()
 
 	testing.ContextLog(ctx, "Open wiki page")
-	const wikiURL = "https://www.wikipedia.org/"
-	wikiConn, err := conf.cr.NewConn(ctx, wikiURL)
+	wikiConn, err := conf.cr.NewConn(ctx, cuj.WikipediaURL)
 	if err != nil {
 		return errors.Wrap(err, "failed to open the wiki url")
 	}
