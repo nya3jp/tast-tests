@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a1cee9_77f1b145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-20T20:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4141857e_55c3ff96",
+      "range": {
+        "startLine": 58,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "61e183ce1ef4cee22e95e3f07ef9cdde0171da64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92fa235b_f71226d8",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9dc814_26bf925d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-20T20:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92fa235b_f71226d8",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 14
+      },
+      "revId": "61e183ce1ef4cee22e95e3f07ef9cdde0171da64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cc4bb76_1b47d6ed",
@@ -111,6 +159,30 @@
       "writtenOn": "2021-12-20T12:15:41Z",
       "side": 1,
       "message": "I think it makes sense to put it under defer statement before line 106 and call it with cleanup context.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 49
+      },
+      "revId": "61e183ce1ef4cee22e95e3f07ef9cdde0171da64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "395f7a46_d797d25d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-20T20:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2cc4bb76_1b47d6ed",
       "range": {
         "startLine": 118,
         "startChar": 0,
