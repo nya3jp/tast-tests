@@ -8,6 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/familylink"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -44,11 +46,21 @@ func ChildWallpaperSync(ctx context.Context, s *testing.State) {
 	if err := wallpaper.OpenWallpaperPicker(ui)(ctx); err != nil {
 		s.Fatal("Failed to open the wallpaper picker: ", err)
 	}
-	defer func(ctx context.Context) {
-		if err := wallpaper.CloseWallpaperPicker(ui)(ctx); err != nil {
-			s.Fatal("Failed to close the wallpaper picker: ", err)
+	defer func(ctx context.Context, tconn *chrome.TestConn) {
+		tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to retrieve tablet mode enabled: ", err)
 		}
-	}(ctx)
+		if tabletMode {
+			if err := wallpaper.CloseWallpaperPickerTablet(ui)(ctx); err != nil {
+				s.Fatal("Failed to close the tablet mode wallpaper picker: ", err)
+			}
+		} else {
+			if err := wallpaper.CloseWallpaperPicker(ui)(ctx); err != nil {
+				s.Fatal("Failed to close the wallpaper picker: ", err)
+			}
+		}
+	}(ctx, tconn)
 
 	s.Logf("Waiting for wallpaper %q to sync", wallpaperName)
 

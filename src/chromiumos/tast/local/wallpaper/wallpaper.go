@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -64,10 +65,24 @@ func MinimizeWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 }
 
 // CloseWallpaperPicker returns an action to close the wallpaper picker.
+// Does not work in tablet mode.
 func CloseWallpaperPicker(ui *uiauto.Context) uiauto.Action {
 	windowNode := nodewith.NameContaining("Wallpaper").Role(role.Window).First()
 	closeBtn := nodewith.Name("Close").Role(role.Button).Ancestor(windowNode)
 	return ui.LeftClickUntil(closeBtn, ui.Gone(closeBtn))
+}
+
+// CloseWallpaperPickerTablet returns an action to close the wallpaper picker in tablet mode.
+// The normal close button is not visible while in tablet mode, so use the keyboard.
+func CloseWallpaperPickerTablet(ui *uiauto.Context) uiauto.Action {
+	return func(ctx context.Context) error {
+		kb, err := input.VirtualKeyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get virtual keyboard")
+		}
+		defer kb.Close()
+		return kb.Accel(ctx, "Ctrl+W")
+	}
 }
 
 // WaitForWallpaperWithName checks that a text node exists inside the wallpaper app with the given name.
