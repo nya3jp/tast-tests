@@ -52,6 +52,24 @@
       "parentUuid": "fbe73ad7_e5f1104e",
       "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6709f6ae_32f11003",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2021-12-20T02:57:07Z",
+      "side": 1,
+      "message": "I\u0027ll defer to the decision to Toshiki-san for this, but my two cents are:\n\nI\u0027m fine with checking caption button state and even adding sleep if that\u0027s the only way. As we don\u0027t have any reliable way, I think we want to make some iterations fast and find out what will work and what will not?",
+      "parentUuid": "9f4b9a9b_c571fe47",
+      "revId": "2ec47f072a90893c63671d6cb3660185bba270aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
