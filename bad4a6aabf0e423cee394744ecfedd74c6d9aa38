@@ -39,6 +39,30 @@
       },
       "revId": "bad4a6aabf0e423cee394744ecfedd74c6d9aa38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32b0329_ac2bd53a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-20T17:58:31Z",
+      "side": 1,
+      "message": "Agreed! I\u0027ll watch for flakiness after this is released and come back and incorporate the changes for the arcBootedIn\u003ctablet/clamshell\u003eMode fixtures as well if this helps resolve the issue.",
+      "parentUuid": "1d4583a9_0110bf7b",
+      "range": {
+        "startLine": 175,
+        "startChar": 29,
+        "endLine": 175,
+        "endChar": 50
+      },
+      "revId": "bad4a6aabf0e423cee394744ecfedd74c6d9aa38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
