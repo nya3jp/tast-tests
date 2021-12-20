@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2e0d59e_4b8fef57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-20T08:00:07Z",
+      "side": 1,
+      "message": "I have a few questions. Please take a look. Thanks.",
+      "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62596a0c_90b9b15e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/tastrun/run.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-20T08:00:07Z",
+      "side": 1,
+      "message": "Please how is this change related to the killing of stale bundle. Where exactly did Tast kill the bundle? Also, how Tast determine the bundle is stale?",
+      "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
