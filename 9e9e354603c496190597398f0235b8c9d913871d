@@ -16,6 +16,23 @@
       "message": "This test used to fail for Lacros for unclear uiauto-related reasons  (https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1266416). Today I\u0027ve run it again and it\u0027s passing now...",
       "revId": "9e9e354603c496190597398f0235b8c9d913871d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc3260e_42f3af61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-20T10:01:22Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9e9e354603c496190597398f0235b8c9d913871d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
