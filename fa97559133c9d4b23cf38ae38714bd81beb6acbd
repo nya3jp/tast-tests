@@ -16,6 +16,24 @@
       "message": "Why do you update specifically policy/gen.go and camerabox/gen.go, but do not make similar change to other packages under src/chromiumos/tast/services/cros? The camerabox package kinda makes sense since it contains common.proto and is causing the namespace conflicts, although I would expect to an update to another package that also contains common.proto. The policy package does not seem to contain such file, so it\u0027s unclear why it\u0027s updated.",
       "revId": "fa97559133c9d4b23cf38ae38714bd81beb6acbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64749579_ee733f2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-12-20T18:30:33Z",
+      "side": 1,
+      "message": "Ideally, we\u0027d have all packages under src/chromiumos/tast/services/cros generate their pb.go in a subpackage named after the containing directory. However, if this change is too large for this CL, it is also fine to do so later and focus on fixing an immediate problem first.\n\nI have also noticed that common.proto is only present in src/chromiumos/tast/services/cros/camerabox in this repository, so wherever the other conflicting file is, it is probably going to be updated in a separate CL.",
+      "parentUuid": "d71af3b1_b4e1f9c8",
+      "revId": "fa97559133c9d4b23cf38ae38714bd81beb6acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
