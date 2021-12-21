@@ -56,6 +56,30 @@
       },
       "revId": "3cffac09bd6780ff99b2aa93908f762763dbbcc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a961844_83462485",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T14:32:40Z",
+      "side": 1,
+      "message": "I prefer to have these stricter values. At least we get notifies when there is a UI change again :)\nThe UI not always compatible with this policy, for example I filed a bug about the delete button today. And I noticed it when I looked into the test failure.",
+      "parentUuid": "c231c89a_bd5b16bd",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "3cffac09bd6780ff99b2aa93908f762763dbbcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
