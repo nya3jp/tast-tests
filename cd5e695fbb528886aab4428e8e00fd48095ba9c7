@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51946047_e83ca51b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-21T04:06:41Z",
+      "side": 1,
+      "message": "Use the chromeLoggedIn fixture instead?",
+      "revId": "cd5e695fbb528886aab4428e8e00fd48095ba9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "456d18bc_5cbadc45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-21T04:06:41Z",
+      "side": 1,
+      "message": "DumpUITreeWithScreenshotOnError?",
+      "revId": "cd5e695fbb528886aab4428e8e00fd48095ba9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9a86d1_58a22104",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-21T04:06:41Z",
+      "side": 1,
+      "message": "You\u0027re not verifying the last one correctly (if it no-op-ed, this test case would pass), and only verifying positive cases.\n\nI suggest calling ud.LeftClick(uidetection.Word(\"Cancel\")) a second time, and checking that it throws an error as expected.",
+      "revId": "cd5e695fbb528886aab4428e8e00fd48095ba9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
