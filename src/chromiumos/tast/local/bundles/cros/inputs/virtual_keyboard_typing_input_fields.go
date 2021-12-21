@@ -43,7 +43,7 @@ var inputFieldToMessage = map[testserver.InputField]data.Message{
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardInputFields,
+		Func:         VirtualKeyboardTypingInputFields,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that virtual keyboard works on different input fields",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
@@ -64,7 +64,7 @@ func init() {
 	})
 }
 
-func VirtualKeyboardInputFields(ctx context.Context, s *testing.State) {
+func VirtualKeyboardTypingInputFields(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	uc := s.PreValue().(pre.PreData).UserContext
