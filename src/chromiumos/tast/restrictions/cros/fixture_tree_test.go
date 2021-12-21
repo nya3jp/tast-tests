@@ -37,9 +37,18 @@ func TestEntityLabelInheritance(t *gotesting.T) {
 
 func TestMainlineTestsHaveNoFragileUIMatcher(t *gotesting.T) {
 	nodes := testcheck.Entities()
+	hasNoneOf := func(entity testcheck.Entity, labels []string) bool {
+		for _, l := range labels {
+			if entity.HasLabel(l) {
+				return false
+			}
+		}
+		return true
+	}
 	for _, v := range nodes {
 		if v.HasLabel(restrictions.FragileUIMatcherLabel) &&
-			v.HasAttr(mainlineAttributeName) {
+			v.HasAttr(mainlineAttributeName) &&
+			hasNoneOf(v, restrictions.ExceptionReasonLabels) {
 			t.Errorf("test %s, has \"%s\" label, but is a mainline test",
 				v.Name, restrictions.FragileUIMatcherLabel)
 		}
