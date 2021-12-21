@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c6adbf0_5eb0ba16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-12-21T10:05:07Z",
+      "side": 1,
+      "message": "When in the suspend state, kukui [a detachable device] did not seem to respond to a key press emulated by servo. I saw a message in the logs that says \"Keyboard was not on for call. Turning if off again\". I\u0027m guessing that perhaps suspending a detachable would also mean detaching the keyboard. \n\nFor now, I\u0027ve added a tab on power button to wake detachable devices instead. But, we\u0027ll continue to test on other detachables.",
+      "revId": "4c2e0c30bd01468378f2943446b07f8aaa9056a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
