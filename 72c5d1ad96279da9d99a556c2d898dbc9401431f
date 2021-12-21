@@ -216,6 +216,24 @@
       "parentUuid": "62596a0c_90b9b15e",
       "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917f6a1a_ea1d7c6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/tastrun/run.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-21T21:32:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9cbb14ec_edc9b99e",
+      "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
