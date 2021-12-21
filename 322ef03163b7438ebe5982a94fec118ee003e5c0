@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f53d4c5_8bbc82f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T14:36:01Z",
+      "side": 1,
+      "message": "Both, as we expect in these cases that the button will turn to not restricted.",
+      "parentUuid": "0dcb800e_fbe4b4c2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4612b34b_713539e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec6892aa_041fb57a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T14:36:01Z",
+      "side": 1,
+      "message": "That would make the test more complicated without any gain (other that that 1 second test run time, but it is not a bug gain).",
+      "parentUuid": "4612b34b_713539e0",
+      "range": {
+        "startLine": 140,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 58
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26bc9e3c_492ed52d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-21T14:18:20Z",
       "side": 1,
       "message": "Fatal?",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d53e44_6621f27a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T14:36:01Z",
+      "side": 1,
+      "message": "I would be interested in the button state even if the sleep failed. But I can make it a fatal.",
+      "parentUuid": "26bc9e3c_492ed52d",
       "range": {
         "startLine": 142,
         "startChar": 6,
