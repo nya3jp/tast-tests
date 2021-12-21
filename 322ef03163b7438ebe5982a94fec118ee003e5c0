@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dcb800e_fbe4b4c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-21T14:18:20Z",
+      "side": 1,
+      "message": "I see that test fails for both \"unset\" and \"allowed\" test cases. What subtest you are trying to fix?\n\nCan testing.Poll work to fix some test cases?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4612b34b_713539e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-21T14:18:20Z",
+      "side": 1,
+      "message": "For the restricted case we can sleep, but for all other states we probably can poll, isn\u0027t it?",
+      "range": {
+        "startLine": 140,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 58
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bc9e3c_492ed52d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-21T14:18:20Z",
+      "side": 1,
+      "message": "Fatal?",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
