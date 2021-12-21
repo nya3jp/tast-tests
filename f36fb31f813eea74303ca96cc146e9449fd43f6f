@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac135d28_ab957f6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T12:39:14Z",
+      "side": 1,
+      "message": "would be great validation if we had a local run for those failing oobe tests on KEVIN (or other affected board).",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "f36fb31f813eea74303ca96cc146e9449fd43f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2682d17d_0aeaa561",
@@ -31,6 +54,29 @@
       "writtenOn": "2021-12-20T17:02:14Z",
       "side": 1,
       "message": "Thanks, Roman!\n\n+tast-owners@",
+      "revId": "f36fb31f813eea74303ca96cc146e9449fd43f6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fabde2b0_911cb9cb",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T12:39:14Z",
+      "side": 1,
+      "message": "stupid question - are there cases where that would actually cause a test to run on a hardware that it shouldn\u0027t be run?",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 38
+      },
       "revId": "f36fb31f813eea74303ca96cc146e9449fd43f6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
