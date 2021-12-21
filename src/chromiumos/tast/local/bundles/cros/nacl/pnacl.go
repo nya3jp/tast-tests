@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
@@ -31,6 +32,7 @@ func init() {
 		Data:         extensionFiles,
 		SoftwareDeps: []string{"chrome", "nacl"},
 		Attr:         []string{"group:mainline"},
+		Timeout:      3 * time.Minute,
 	})
 }
 

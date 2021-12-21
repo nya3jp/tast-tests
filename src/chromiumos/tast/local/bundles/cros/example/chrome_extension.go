@@ -10,6 +10,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
@@ -25,6 +26,7 @@ func init() {
 		Data:         []string{"chrome_extension_manifest.json"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
+		Timeout:      3 * time.Minute,
 	})
 }
 

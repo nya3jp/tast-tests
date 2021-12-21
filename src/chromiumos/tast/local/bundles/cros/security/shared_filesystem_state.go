@@ -39,6 +39,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
+		Timeout:      3 * time.Minute,
 	})
 }
 

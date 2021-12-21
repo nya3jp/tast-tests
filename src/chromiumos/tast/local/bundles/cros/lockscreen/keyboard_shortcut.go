@@ -22,7 +22,7 @@ func init() {
 		Desc:         "Checks that screen-locking works by keyboard shortcut",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Attr:         []string{"group:mainline"},
 	})
 }
