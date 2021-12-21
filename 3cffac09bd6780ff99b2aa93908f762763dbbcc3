@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c735cff_c85852e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-12-21T13:54:16Z",
+      "side": 1,
+      "message": "Thank you, Gabor, for working on fixing the test.\n\nLGTM % comment.",
+      "revId": "3cffac09bd6780ff99b2aa93908f762763dbbcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c231c89a_bd5b16bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2021-12-21T13:54:16Z",
+      "side": 1,
+      "message": "Can we just err if prcnt \u003c 76? In the future, if the image becomes a square again, then we don\u0027t have to change this logic one more time?",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "3cffac09bd6780ff99b2aa93908f762763dbbcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
