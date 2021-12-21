@@ -6,6 +6,7 @@ package uidetection
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -147,5 +148,26 @@ func (uda *Context) Exists(s *Finder) uiauto.Action {
 func (uda *Context) WaitUntilExists(s *Finder) uiauto.Action {
 	return func(ctx context.Context) error {
 		return testing.Poll(ctx, uda.Exists(s), &uda.pollOpts)
+	}
+}
+
+// Gone returns an action that returns nil if the specified element doesn't exist.
+func (uda *Context) Gone(s *Finder) uiauto.Action {
+	return func(ctx context.Context) error {
+		// An not-found error is expected.
+		if _, err := uda.Location(ctx, s); err == nil {
+			return errors.Errorf("element %q still exists", s.desc)
+		} else if strings.Contains(err.Error(), ErrNotFound) {
+			return nil
+		} else {
+			return errors.Errorf("expected error: %q, actual error: %q", ErrNotFound, err)
+		}
+	}
+}
+
+// WaitUntilGone returns an action that waits until the specified element doesnt exist.
+func (uda *Context) WaitUntilGone(s *Finder) uiauto.Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, uda.Gone(s), &uda.pollOpts)
 	}
 }

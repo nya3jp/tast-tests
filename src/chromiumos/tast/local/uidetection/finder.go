@@ -13,6 +13,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// ErrNotFound is the error when there is no matching elements found.
+	ErrNotFound = "no matching elements found"
+	// ErrMultipleMatch is the error when there are multiple matching elements found.
+	ErrMultipleMatch = "there are multiple matches"
+	// ErrNthNotFound is the error when the Nth element doesn't exist.
+	ErrNthNotFound = "Nth element not found"
+)
+
 // Location represents the location of a matching UI element.
 type Location struct {
 	// Rectangle of the location.
@@ -112,18 +121,18 @@ func (s *Finder) location() (*Location, error) {
 	numMatches := len(s.boundingBoxes)
 	switch {
 	case numMatches == 0:
-		return nil, errors.New("no matching elements found")
+		return nil, errors.New(ErrNotFound)
 	case numMatches == 1:
 		if s.nth > 0 {
-			return nil, errors.Errorf("find only one element, but want the %d-th one", s.nth)
+			return nil, errors.Errorf("%s: find only one element, but want the %d-th one", ErrNthNotFound, s.nth)
 		}
 		return s.boundingBoxes[0], nil
 	default: // case numMatches > 1.
 		if s.nth < 0 {
-			return nil, errors.Errorf("there are multiple matches: found %d elements. If it is expected, consider using First() or Nth()", numMatches)
+			return nil, errors.Errorf("%s: found %d elements. If it is expected, consider using First() or Nth()", ErrMultipleMatch, numMatches)
 		}
 		if s.nth > numMatches-1 {
-			return nil, errors.Errorf("find %d elements, but want the %d-th one", numMatches, s.nth)
+			return nil, errors.Errorf("%s: find %d elements, but want the %d-th one", ErrNthNotFound, numMatches, s.nth)
 		}
 		return s.boundingBoxes[s.nth], nil
 	}
