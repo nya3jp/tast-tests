@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "180d86c5_7310482c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d72b5fc_ff8d6b81",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "565a939852f414411acd0436f4fc3965f7ce02d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "716e04d5_c27fb8aa",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8019b72_134f255e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:43:07Z",
+      "side": 1,
+      "message": "That is actually good point. It must be some leftover from what the test looked earlier.",
+      "parentUuid": "716e04d5_c27fb8aa",
+      "revId": "565a939852f414411acd0436f4fc3965f7ce02d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ae5eaee_d25bd45c",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-12-16T12:06:40Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 120,
+        "startChar": 48,
+        "endLine": 120,
+        "endChar": 51
+      },
+      "revId": "565a939852f414411acd0436f4fc3965f7ce02d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed4c950_708d669b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:43:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ae5eaee_d25bd45c",
       "range": {
         "startLine": 120,
         "startChar": 48,
