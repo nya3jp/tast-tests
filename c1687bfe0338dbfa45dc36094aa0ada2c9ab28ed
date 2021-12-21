@@ -106,6 +106,24 @@
       "parentUuid": "21337e69_34a61d92",
       "revId": "c1687bfe0338dbfa45dc36094aa0ada2c9ab28ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acef0482_f62694ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-21T15:28:06Z",
+      "side": 1,
+      "message": "About the command failing and update engine still working, the answer is yes. The service always works in the background, the command waits by polling the status AFAIK.",
+      "parentUuid": "dce51107_8fcdbd68",
+      "revId": "c1687bfe0338dbfa45dc36094aa0ada2c9ab28ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
