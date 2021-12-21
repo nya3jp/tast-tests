@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdeca2c1_6f28fbb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-21T17:56:20Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "657f8a5f15ecab7ed8a6d726c9f9fc70b3ea316f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851b4697_956b7bcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_bus_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2021-12-21T17:56:20Z",
+      "side": 1,
+      "message": "nit: Can you pull `s.Param().(bool)` out into a variable now since you are using it multiple times? Having it named will also help with readability.",
+      "revId": "657f8a5f15ecab7ed8a6d726c9f9fc70b3ea316f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
