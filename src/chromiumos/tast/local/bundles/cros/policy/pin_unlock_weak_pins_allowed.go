@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -135,14 +136,21 @@ func PinUnlockWeakPinsAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to type PIN: ", err)
 			}
 
-			// Find the node info for the Continue button.
-			nodeInfo, err := ui.Info(ctx, nodewith.Name("Continue").Role(role.Button))
-			if err != nil {
-				s.Fatal("Could not get info for the Continue button: ", err)
-			}
+			// Try a few times to check for the continue button to change state.
+			doCheckButton := func(ctx context.Context) error {
+				// Find the node info for the Continue button.
+				nodeInfo, err := ui.Info(ctx, nodewith.Name("Continue").Role(role.Button))
+				if err != nil {
+					s.Fatal("Could not get info for the Continue button: ", err)
+				}
 
-			if nodeInfo.Restriction != param.buttonRestriction {
-				s.Fatalf("Unexpected Continue button state: got %v, want %v", nodeInfo.Restriction, param.buttonRestriction)
+				if nodeInfo.Restriction != param.buttonRestriction {
+					return errors.Errorf("unexpected Continue button state: got %v, want %v", nodeInfo.Restriction, param.buttonRestriction)
+				}
+				return nil
+			}
+			if err := ui.Retry(5, doCheckButton)(ctx); err != nil {
+				s.Fatal(err.Error())
 			}
 		})
 	}
