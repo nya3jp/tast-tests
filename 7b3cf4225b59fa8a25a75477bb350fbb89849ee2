@@ -16,6 +16,24 @@
       "message": "(I\u0027m working on the fix for the kevin issue, but, sure, reverting makes sense if it\u0027s blocking uprevs.)",
       "revId": "7b3cf4225b59fa8a25a75477bb350fbb89849ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f659c4_144ac717",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2021-12-21T23:56:02Z",
+      "side": 1,
+      "message": "I think the uprev issue is actually something like b/211032595, so I\u0027ll hold off on this.",
+      "parentUuid": "2bd0a8d0_6ab69135",
+      "revId": "7b3cf4225b59fa8a25a75477bb350fbb89849ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
