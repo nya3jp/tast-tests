@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "393761e8_950be799",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-21T22:27:55Z",
+      "side": 1,
+      "message": "Ack. I like your approach, supplying the strings via the automation API will keep them in lockstep with changes happening on the chromium side and won\u0027t require updating for every string change.",
+      "parentUuid": "9381c840_a0c2b8e0",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "c24b959a12d18c77ea4fb2ea36a677384edf03cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "445b6a73_c32899f6",
         "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke.go",
         "patchSetId": 2
