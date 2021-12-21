@@ -34,6 +34,41 @@
       "parentUuid": "441967f6_3a6d6173",
       "revId": "68f7b5bbd504594f457a72730d519f1cbe9f0bfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28fe517e_1f969b17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-12-21T10:36:41Z",
+      "side": 1,
+      "message": "I agree with you. I will mark this CL as WIP until a 20 or more builds are passing.",
+      "parentUuid": "441967f6_3a6d6173",
+      "revId": "68f7b5bbd504594f457a72730d519f1cbe9f0bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40e6d48_2e9f6f6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2021-12-21T10:36:41Z",
+      "side": 1,
+      "message": "The test is stable on the last \u003e 20 builds. There are only few failures on reks devices that have issue with their WiFi chip which are investigated in this bug: \nhttps://b.corp.google.com/issues/205861192#comment5\n\nStainless:\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2021-11-24\u0026last_date\u003d2021-12-21\u0026test\u003dtast.wifi.CheckIntelFWDump\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\n",
+      "revId": "68f7b5bbd504594f457a72730d519f1cbe9f0bfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
