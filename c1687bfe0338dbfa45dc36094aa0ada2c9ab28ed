@@ -34,6 +34,24 @@
       "parentUuid": "befbcd01_21fdc141",
       "revId": "c1687bfe0338dbfa45dc36094aa0ada2c9ab28ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c769776_857ffdaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-21T14:21:01Z",
+      "side": 1,
+      "message": "Not sure I understand. How would a reboot help?",
+      "parentUuid": "c31bb5fd_923d3810",
+      "revId": "c1687bfe0338dbfa45dc36094aa0ada2c9ab28ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
