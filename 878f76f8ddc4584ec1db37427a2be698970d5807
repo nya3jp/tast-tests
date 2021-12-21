@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aadd4ed2_5530e2a3",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2021-12-21T21:58:53Z",
+      "side": 1,
+      "message": "Refactoring made this comment redundant",
+      "parentUuid": "ff0025cc_07b9b3e0",
+      "range": {
+        "startLine": 104,
+        "startChar": 40,
+        "endLine": 104,
+        "endChar": 46
+      },
+      "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "693e53c8_9958293e",
@@ -151,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4036aa70_99716bc0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2021-12-21T21:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "443e5440_1114756a",
+      "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4efd71af_649681b7",
@@ -198,6 +240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13b5853_5c283844",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2021-12-21T21:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b91d661b_be6d3bf3",
+      "range": {
+        "startLine": 143,
+        "startChar": 26,
+        "endLine": 143,
+        "endChar": 46
+      },
+      "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc711bc_a16f7506",
@@ -221,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbbce9f0_9e195d64",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2021-12-21T21:58:53Z",
+      "side": 1,
+      "message": "No. The timeout is for waiting until the button is enabled, which is the polling check below.",
+      "parentUuid": "dbc711bc_a16f7506",
+      "range": {
+        "startLine": 178,
+        "startChar": 19,
+        "endLine": 178,
+        "endChar": 33
+      },
+      "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0065650_7824d8a0",
@@ -234,6 +324,24 @@
       "writtenOn": "2021-12-20T23:42:43Z",
       "side": 1,
       "message": "Please use const for Timeout and Interval. I think most of the code has the same value.",
+      "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc7afdc_cb1838e9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2021-12-21T21:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0065650_7824d8a0",
       "revId": "878f76f8ddc4584ec1db37427a2be698970d5807",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
