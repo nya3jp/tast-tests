@@ -237,6 +237,11 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 	if cfg.CustomLoginTimeout() != 0 {
 		timeout = cfg.CustomLoginTimeout()
 	}
+	// b/211032595: Sometimes, vm test requires longer timeout.
+	// Make sure the timeout to be at least 2 minutes.
+	if timeout < time.Minute*2 {
+		timeout = time.Minute * 2
+	}
 	origCtx := ctx
 	ctx, cancel := context.WithTimeout(origCtx, timeout)
 	defer cancel()
