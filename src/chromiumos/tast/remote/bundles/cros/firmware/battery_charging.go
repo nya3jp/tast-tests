@@ -22,9 +22,9 @@ func init() {
 		Func:         BatteryCharging,
 		Desc:         "Verify battery information when charger state is changed during suspend",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 	})
 }
 
@@ -100,6 +100,11 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to remove charger: ", err)
 				}
 				hasPluggedAC = false
+			}
+		} else if h.Config.ModeSwitcherType == firmware.TabletDetachableSwitcher {
+			s.Log("Waking DUT from suspend by a tab on power button")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				s.Fatal("Failed to press power button: ", err)
 			}
 		} else {
 			// Old devices would not wake from plugging/unplugging AC.
