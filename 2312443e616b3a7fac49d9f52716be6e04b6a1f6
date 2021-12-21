@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "883b0d68_bc68c40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa3332b8_47f35f4d",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb7292bc_d6835b7a",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-12-16T14:34:36Z",
       "side": 1,
       "message": "In general restriction by model name is discouraged, and instead, some designed hardware feature to be listed here.\nHave you talked to cros infra team already? If not could you reach out to them to be consulted?\nIf you do not have the contact, could you talk to google\u0027s counter part to reach out to the cros infra team?",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c56664e4_24de5071",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Yes, we are working on this.",
+      "parentUuid": "cb7292bc_d6835b7a",
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1003fa3a_2780fc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b50eb2a3_b3f1d208",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b09b642_2a8039d5",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-12-16T14:34:36Z",
       "side": 1,
       "message": "nit: const",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd4a68c5_37a15286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8b09b642_2a8039d5",
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -117,6 +195,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cebab78_71187057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "We are using chrome.LoadSigninProfileExtension() for enabling peripheral data access.",
+      "parentUuid": "d5927140_17ede4f7",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 95
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11af8549_2b10bf8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
         "patchSetId": 1
@@ -128,6 +230,24 @@
       "writtenOn": "2021-12-15T18:47:27Z",
       "side": 1,
       "message": "nit: flip the operator to reduce parentheses? len(dirsBeforePlug) \u003e\u003d len(dirsAfterPlug)",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e9e516c_702dbeba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "11af8549_2b10bf8f",
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e35af2_50d65c89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e606be74_7b935966",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6544d9d6_edbeed3d",
@@ -162,6 +300,24 @@
       "writtenOn": "2021-12-15T18:47:27Z",
       "side": 1,
       "message": "nit: extra space between `file` and `:`",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "590459f5_2c6f337e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6544d9d6_edbeed3d",
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -191,6 +347,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b40a5a61_885749ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Tried with fsutil package but it is failing for larger data transfer.\nIt is working fine with \u0027cp\u0027 shell command.",
+      "parentUuid": "caf0567a_a1bf6a00",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 124
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "695e58a3_0bdae23d",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
         "patchSetId": 1
@@ -202,6 +382,24 @@
       "writtenOn": "2021-12-15T18:47:27Z",
       "side": 1,
       "message": "is it worth including copyErr here so the issue is known?",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26f8a0e3_e83ad2bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Removed copyErr.",
+      "parentUuid": "695e58a3_0bdae23d",
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -240,6 +438,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f23d31_4813385d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a9c31b0a_25f87167",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0649f91_095de4e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "30ebdfa6_91176f91",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30cbbf3f_14955c52",
@@ -253,6 +487,24 @@
       "writtenOn": "2021-12-15T18:47:27Z",
       "side": 1,
       "message": "nit: Extra space at beginning plus follow \"\u003cmessage\u003e; got %v, want %v\" format.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace6088f_98e450ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30cbbf3f_14955c52",
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -274,6 +526,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1df9f9ea_f5874f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730b508e_29548e7a",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "224a501b_c6bb77f3",
@@ -287,6 +557,30 @@
       "writtenOn": "2021-12-16T14:34:36Z",
       "side": 1,
       "message": "style: prefer not to have \"is\" prefix. just \"connected\" should be better.",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 257,
+        "endChar": 12
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7170e15a_a92efd05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224a501b_c6bb77f3",
       "range": {
         "startLine": 257,
         "startChar": 1,
@@ -320,6 +614,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e1e6d30_5c70338a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7488287b_f189ffc2",
+      "range": {
+        "startLine": 263,
+        "startChar": 3,
+        "endLine": 263,
+        "endChar": 26
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6377b388_8b3f37eb",
@@ -333,6 +651,24 @@
       "writtenOn": "2021-12-15T18:47:27Z",
       "side": 1,
       "message": "errors.Wrap(err, ...) here to make sure all the details are captured.",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7d3851_11b45d8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T07:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6377b388_8b3f37eb",
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
