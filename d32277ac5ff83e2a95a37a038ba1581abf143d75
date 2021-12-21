@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa618817_3f72ded8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398886
+      },
+      "writtenOn": "2021-12-21T15:35:34Z",
+      "side": 1,
+      "message": "Gabor, please take a look at this CL, it should fix https://crbug.com/1230460",
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4195fb90_b37e637a",
