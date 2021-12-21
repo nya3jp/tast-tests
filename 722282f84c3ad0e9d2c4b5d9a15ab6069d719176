@@ -163,6 +163,24 @@
       "parentUuid": "95994c7a_78f2ad50",
       "revId": "722282f84c3ad0e9d2c4b5d9a15ab6069d719176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bccbb464_46d5c08a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/system_dialog.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T09:15:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "099f15e0_972749a6",
+      "revId": "722282f84c3ad0e9d2c4b5d9a15ab6069d719176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
