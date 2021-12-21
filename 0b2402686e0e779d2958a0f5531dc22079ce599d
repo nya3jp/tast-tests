@@ -142,6 +142,30 @@
       },
       "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da1912f_8e097078",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1497757
+      },
+      "writtenOn": "2021-12-21T16:27:29Z",
+      "side": 1,
+      "message": "FWIW, crrev/c/2532935 hints at what\u0027s going on:\n\n```\nThe cros_config software dependency only signifies that the device is\nunibuild, not if it has the cros_config tool. Since all devices now have\ncros_config written to sysfs, there is no need to prevent these tests\nfrom running.\n```",
+      "parentUuid": "3162fee4_9f4391d2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
