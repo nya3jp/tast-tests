@@ -16,6 +16,24 @@
       "message": "nit: does hwdep.ForceDischarge() (which includes sarien via modelsWithoutForceDischargeSupport) or hwdep.ChromeEC() help cover what you\u0027re after with a little more context?",
       "revId": "7d07224948579b129a7f47dfa9495361233bd14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f97dd923_9ed92ee1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-12-21T00:24:23Z",
+      "side": 1,
+      "message": "I think ChromeEC() does do the job with more context. Thanks for the suggestion. I will submit another patchset.",
+      "parentUuid": "435f5ffc_a64a6918",
+      "revId": "7d07224948579b129a7f47dfa9495361233bd14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
