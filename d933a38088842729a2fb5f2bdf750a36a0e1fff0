@@ -239,6 +239,24 @@
       "parentUuid": "f68314b6_7ce37c14",
       "revId": "d933a38088842729a2fb5f2bdf750a36a0e1fff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad2f35e3_6a37eb33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-21T19:26:13Z",
+      "side": 1,
+      "message": "for the follow up, you can use activate window (with appropriates waits if necessary) to force a certain order",
+      "parentUuid": "744752ad_986e45cb",
+      "revId": "d933a38088842729a2fb5f2bdf750a36a0e1fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
