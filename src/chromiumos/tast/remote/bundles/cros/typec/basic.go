@@ -26,7 +26,7 @@ func init() {
 		Desc:         "Checks basic typec kernel driver functionality",
 		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
 		Attr:         []string{"group:mainline", "group:typec", "informational"},
-		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.SkipOnModel("fievel", "tiger")),
+		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.SkipOnModel("fievel", "tiger"), hwdep.SkipOnPlatform("sarien")),
 		Vars:         []string{"servo"},
 	})
 }
