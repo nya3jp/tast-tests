@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab703bc_424cc58a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_encode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-21T21:30:22Z",
+      "side": 1,
+      "message": "Sounds good. Went ahead and removed this file from this CL.",
+      "parentUuid": "75686760_d6a5a606",
+      "revId": "166575283f50bfd5b389423905b011e872d92467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3be61ce3_658fc367",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-21T01:10:13Z",
       "side": 1,
       "message": "We may not want to spend lab resources running the variants on devices that don\u0027t support removing the global lock. Also, any new variant will make noise for the video guard.\n\nWe can achieve that by introducing a new software dep based on the video_cards_iHD USE flag (this flag is set by all devices that use the iHD driver).\n\nTake a look at [1] for how to add such a new feature. I\u0027m thinking that the new feature could be named \"ihd\". Then, for each of the variants, you could specify:\n\n  ExtraSoftwareDeps: []string{\"ihd\"}\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#new-features",
+      "revId": "166575283f50bfd5b389423905b011e872d92467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48a50d56_2e62c566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-21T21:30:22Z",
+      "side": 1,
+      "message": "Added a dependency on crrev/c/3352625. Done.\n\nHad the same also apply to media_recorder_multi.go",
+      "parentUuid": "3be61ce3_658fc367",
       "revId": "166575283f50bfd5b389423905b011e872d92467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +117,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f152c239_396ef36d",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-21T21:30:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43eb7012_58e7405a",
+      "range": {
+        "startLine": 317,
+        "startChar": 95,
+        "endLine": 317,
+        "endChar": 102
+      },
+      "revId": "166575283f50bfd5b389423905b011e872d92467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b00e1787_a082ee36",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-21T21:30:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bf40f6e_2fc52647",
+      "range": {
+        "startLine": 317,
+        "startChar": 73,
+        "endLine": 317,
+        "endChar": 85
+      },
+      "revId": "166575283f50bfd5b389423905b011e872d92467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b0c9ede_01ea400b",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-12-21T01:10:13Z",
       "side": 1,
       "message": "chromeos-gfx-video",
+      "range": {
+        "startLine": 318,
+        "startChar": 22,
+        "endLine": 318,
+        "endChar": 39
+      },
+      "revId": "166575283f50bfd5b389423905b011e872d92467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "454261ca_c8c2ecde",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-21T21:30:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0c9ede_01ea400b",
       "range": {
         "startLine": 318,
         "startChar": 22,
