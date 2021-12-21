@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f1e46f_78f9eb8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T15:59:29Z",
+      "side": 1,
+      "message": "This issue is not specific to the Octopus board, so b:207826056 can be closed, or marked as a duplicate, I think.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f33d7c19_442f2b38",
@@ -48,6 +71,24 @@
       "writtenOn": "2021-12-21T15:35:34Z",
       "side": 1,
       "message": "Gabor, please take a look at this CL, it should fix https://crbug.com/1230460",
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2072243d_9e518b2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T15:59:29Z",
+      "side": 1,
+      "message": "I also created a fix: https://crrev.com/c/3347798",
+      "parentUuid": "aa618817_3f72ded8",
       "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
