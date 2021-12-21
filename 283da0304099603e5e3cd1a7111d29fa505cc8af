@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163c7952_66c89a82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-21T08:37:04Z",
+      "side": 1,
+      "message": "This looks fragile: index+19 and index+27 is hard to understand. Also, what if the output is shifted, say, it should be [20, 28) other than [19, 27)?",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d965d777_aa853209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-21T08:37:04Z",
+      "side": 1,
+      "message": "This performs non-trivial string operations, especially extracting latency[0:len(latency)-2] and needs commenting.",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c350b4_92aa0e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-21T08:37:04Z",
+      "side": 1,
+      "message": "pv.Save() is called multiple times, 1 in this function and other 2 in these calls. Won\u0027t they overwrite the previous perf values?",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bccf109e_30b40af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-21T08:37:04Z",
+      "side": 1,
+      "message": "This function name extracts the CPU metric specifically for process iioservice, but it\u0027s unclear about this. If we\u0027d like this specific to iioservice, maybe rename the package name or pass the targetProcessName to make the usage clear.",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050bdf1a_2ecceecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-21T08:37:04Z",
+      "side": 1,
+      "message": "I don\u0027t think passing over the test name is a good design for this utility class. Maybe change the semantics to the \"metric name prefix\" and return pv to the caller (because we shouldn\u0027t save in this function).",
+      "range": {
+        "startLine": 21,
+        "startChar": 66,
+        "endLine": 21,
+        "endChar": 74
+      },
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919d7afa_74467f3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-21T08:37:04Z",
+      "side": 1,
+      "message": "I don\u0027t think we can call pv.Safe() multiple times for a test because it will overwrite the data of previous call(s) of pv.Save().",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
