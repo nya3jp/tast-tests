@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb22323_5706f767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T04:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b8dd82d_7703e2a6",
+      "revId": "4112075509f9e3bd8444e6c37972acbada141127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a625dd_caa3d3e8",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72c43d6e_3615b376",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T04:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8a625dd_caa3d3e8",
+      "revId": "4112075509f9e3bd8444e6c37972acbada141127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bb4be3e_3749086f",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-26T08:47:39Z",
       "side": 1,
       "message": "Use ioutil.ReadFile",
+      "revId": "4112075509f9e3bd8444e6c37972acbada141127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d67062_d4811a98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T04:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bb4be3e_3749086f",
       "revId": "4112075509f9e3bd8444e6c37972acbada141127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
