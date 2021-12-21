@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4818a7ed_6a68c4ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-21T04:10:05Z",
+      "side": 1,
+      "message": "This is to make sure in case of test failure (the process is not killed by bundle run), the process is killed.\nMaybe we can just kill the bundle in L75. Let me update the code.",
+      "parentUuid": "f84c8e92_1f75de40",
+      "range": {
+        "startLine": 39,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13c04018_13b98873",
         "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
         "patchSetId": 5
