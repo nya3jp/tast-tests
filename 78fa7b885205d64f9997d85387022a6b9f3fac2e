@@ -16,6 +16,24 @@
       "message": "I will do a CQ+1 to see if this fix the VM tests chrome login issues. Please take a look if it is the right approach. Thanks.",
       "revId": "78fa7b885205d64f9997d85387022a6b9f3fac2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbc002fa_60045b35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-21T06:20:36Z",
+      "side": 1,
+      "message": "Hope this works. If so, you may also want to increase the timeout for the outer tests. The default timeout is 2 minutes for local tests. If chrome.New() takes 2 minutes, the outer tests certainly need a longer timeout.",
+      "parentUuid": "1218db26_5b02f851",
+      "revId": "78fa7b885205d64f9997d85387022a6b9f3fac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
