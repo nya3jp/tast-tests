@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8fb287c_0f491275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-21T09:08:14Z",
+      "side": 1,
+      "message": "LGTM % some questions and one nit",
+      "revId": "6fe5661eace58eb0d628eb7f3fbf44810c4ff3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f73a1f6a_d7877558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet/tablet_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-21T09:08:14Z",
+      "side": 1,
+      "message": "Does it make sense to make these ints? Will any users of the helper care about the actual values?",
+      "range": {
+        "startLine": 16,
+        "startChar": 66,
+        "endLine": 16,
+        "endChar": 72
+      },
+      "revId": "6fe5661eace58eb0d628eb7f3fbf44810c4ff3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca74728_e4f3f4cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-21T09:08:14Z",
+      "side": 1,
+      "message": "to find touchpad",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "6fe5661eace58eb0d628eb7f3fbf44810c4ff3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86082b8_870b6d22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-21T09:08:14Z",
+      "side": 1,
+      "message": "Is the missing file not a reason to stop polling? You can use PollBreak in that case.",
+      "revId": "6fe5661eace58eb0d628eb7f3fbf44810c4ff3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
