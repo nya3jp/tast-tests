@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b0fbb9_5b5e6ed1",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/fixturehelper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f49d55d_0dc9f5a9",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "2241262297990b628dfe9bc5bb865c522fd3e6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25a5f8a4_4699746c",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/fixturehelper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:42:50Z",
+      "side": 1,
+      "message": "right now it expects file location and the invocation happens like so:\n\ndumpPolicies(ctx, tconn, filepath.Join(s.OutDir(), fixtures.PolicyFileDump))\n\nThe file location is constructed first and passed. Do you think it is worth passing separately directory and file name?\n\nMaybe documenting the function would suffice.",
+      "parentUuid": "5140b6fe_ed669124",
+      "range": {
+        "startLine": 17,
+        "startChar": 64,
+        "endLine": 17,
+        "endChar": 76
+      },
+      "revId": "2241262297990b628dfe9bc5bb865c522fd3e6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9bb0a30_db4e2e1f",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-16T12:04:22Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 9
+      },
+      "revId": "2241262297990b628dfe9bc5bb865c522fd3e6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69589522_267fce63",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9bb0a30_db4e2e1f",
       "range": {
         "startLine": 254,
         "startChar": 4,
