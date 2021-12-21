@@ -52,6 +52,24 @@
       "parentUuid": "c31bb5fd_923d3810",
       "revId": "c1687bfe0338dbfa45dc36094aa0ada2c9ab28ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70ce866_958e2627",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T14:37:44Z",
+      "side": 1,
+      "message": "Tast might be able to reconnect to the DUT. Though I didn\u0027t check the implementation of s.DUT().Reboot(ctx).",
+      "parentUuid": "0c769776_857ffdaa",
+      "revId": "c1687bfe0338dbfa45dc36094aa0ada2c9ab28ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
