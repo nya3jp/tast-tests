@@ -68,6 +68,24 @@
       "parentUuid": "d2b22900_85ff7631",
       "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb891f0_e6dd6d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-21T02:50:33Z",
+      "side": 1,
+      "message": "I think I am missing some context. What do we expect by the sleep?\n1. assuming that it waits for a certain element to appear:\nIf the polling \"interval\" is short enough (like the default 0.3s) and the actual UI appears before timeout, the \"timeout\" of the polling would not affect the test execution time.\n2. if there is a wrong element that is found by the finder and trying to avoid it by sleep, how about detecting UI update by WaitUntilExist another element?",
+      "parentUuid": "a3b75d5d_d9dc29db",
+      "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
