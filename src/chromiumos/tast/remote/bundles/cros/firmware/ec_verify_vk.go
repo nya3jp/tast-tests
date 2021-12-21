@@ -23,13 +23,13 @@ func init() {
 		Func:         ECVerifyVK,
 		Desc:         "Verify whether virtual keyboard window is present during change in tablet mode",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.CheckVirtualKeyboardService"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(
 			hwdep.ChromeEC(),
-			hwdep.FormFactor(hwdep.Convertible, hwdep.Chromeslate, hwdep.Detachable),
+			hwdep.FormFactor(hwdep.Convertible, hwdep.Chromeslate),
 		),
 	})
 }
@@ -109,5 +109,5 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 				tabletMode, res.IsVirtualKeyboardPresent)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second})
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second})
 }

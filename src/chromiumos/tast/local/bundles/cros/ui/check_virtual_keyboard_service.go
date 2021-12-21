@@ -99,7 +99,7 @@ func (cvk *CheckVirtualKeyboardService) CheckVirtualKeyboardIsPresent(ctx contex
 	uiauto := uiauto.New(cvk.tconn)
 
 	vkNode := nodewith.Name("Chrome OS Virtual Keyboard").Role(role.Keyboard).Onscreen()
-	if err := uiauto.WithTimeout(5 * time.Second).WaitUntilExists(vkNode)(ctx); err != nil {
+	if err := uiauto.WithTimeout(3 * time.Second).WaitUntilExists(vkNode)(ctx); err != nil {
 		if !req.IsDutTabletMode {
 			return &pb.CheckVirtualKeyboardResponse{
 				IsVirtualKeyboardPresent: exists,
