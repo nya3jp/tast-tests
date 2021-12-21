@@ -62,6 +62,54 @@
       },
       "revId": "63088c3dcf275caec308556435021ff5d97c80ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a5daa54_e1c89519",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2021-12-21T07:00:02Z",
+      "side": 1,
+      "message": "Changes have been made.",
+      "parentUuid": "710729b9_d58d3aa6",
+      "range": {
+        "startLine": 304,
+        "startChar": 74,
+        "endLine": 304,
+        "endChar": 90
+      },
+      "revId": "63088c3dcf275caec308556435021ff5d97c80ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ec3cba4_3ca9c643",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2021-12-21T07:00:02Z",
+      "side": 1,
+      "message": "This works great. Thank you.",
+      "parentUuid": "b926b2c0_ce8ee76e",
+      "range": {
+        "startLine": 304,
+        "startChar": 41,
+        "endLine": 304,
+        "endChar": 90
+      },
+      "revId": "63088c3dcf275caec308556435021ff5d97c80ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
