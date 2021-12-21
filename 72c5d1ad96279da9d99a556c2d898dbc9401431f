@@ -126,6 +126,24 @@
       "message": "Please how is this change related to the killing of stale bundle. Where exactly did Tast kill the bundle? Also, how Tast determine the bundle is stale?",
       "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cbb14ec_edc9b99e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/tastrun/run.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2021-12-21T04:12:18Z",
+      "side": 1,
+      "message": "Currently, stale bundle is killed by test runner.\ntest runner find old test runner just by looking at process name, and kill it. In turn stale bundles run by the old test runner will be killed.\nIn new flow, where bundle directly invoked from CLI, stale bundles will be killed by bundle ready hook (see next CL).",
+      "parentUuid": "62596a0c_90b9b15e",
+      "revId": "72c5d1ad96279da9d99a556c2d898dbc9401431f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
