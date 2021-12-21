@@ -22,6 +22,30 @@
       },
       "revId": "c2df5310d8b03dff12b93f41c9e96089b8cf412f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96558525_1cc34233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/set_tx_power.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2021-12-21T00:01:32Z",
+      "side": 1,
+      "message": "Removed per above disucssion.",
+      "parentUuid": "d38418f5_f41dcbd7",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "c2df5310d8b03dff12b93f41c9e96089b8cf412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
