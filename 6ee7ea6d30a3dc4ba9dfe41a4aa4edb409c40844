@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26027f6d_7d255383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-12-21T14:02:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78c23868_c7093a77",
+      "revId": "6ee7ea6d30a3dc4ba9dfe41a4aa4edb409c40844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e3fb41_fd9d40e8",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-12-21T08:59:53Z",
       "side": 1,
       "message": "nit: put a . at the end of the comment.",
+      "revId": "6ee7ea6d30a3dc4ba9dfe41a4aa4edb409c40844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7852be13_f53c2f33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/acvp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-12-21T14:02:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e3fb41_fd9d40e8",
       "revId": "6ee7ea6d30a3dc4ba9dfe41a4aa4edb409c40844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
