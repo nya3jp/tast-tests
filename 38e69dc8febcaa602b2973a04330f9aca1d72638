@@ -16,6 +16,23 @@
       "message": "Thanks, Ben.",
       "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b22900_85ff7631",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-21T01:27:09Z",
+      "side": 1,
+      "message": "Can this be replaced with a polling instead of a fixed sleep?\nThe following actions such as selectScanSetting uses s.LeftClick inside. LeftClick() has a polling routine inside it to wait until the UI stabilizes. So I guess setting a longer timeout to pollOpts would work for this.\nSame for the other Sleeps.",
+      "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
