@@ -11,6 +11,7 @@ import (
 	"image/color"
 	"image/jpeg"
 	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -148,7 +149,7 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 			// Take a screenshot of the user image preview.
 			avatarImageScreenshot, err := screenshot.GrabAndCropScreenshot(ctx, cr, rect)
 			if err != nil {
-				s.Fatal("Failed to grap a screenshot of the user image preview")
+				s.Fatal("Failed to grap a screenshot of the user image preview: ", err)
 			}
 
 			// Exit the current view (by clicking Back button) and enter changePicture page again.
@@ -170,9 +171,13 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 
 			if param.shouldMatchPolicyImage {
 				// Verify that the user image is the policy-provided one (red image).
+				// The image in now cropped to be a circe (filled with ~78% red).
 				prcnt := getRedColorPercentage(userImageScreenshot)
-				if prcnt < 95 {
+				if !(75 < prcnt && prcnt < 81) {
 					s.Errorf("User image preview doesn't match the policy-provided image: Red pixels percentage: %d", prcnt)
+					if err := saveImageAsPng(filepath.Join(s.OutDir(), "red_avatar.jpeg"), userImageScreenshot); err != nil {
+						s.Error("Failed to save the avatar image: ", err)
+					}
 				}
 			} else {
 				// Verify that the device account image has changed to the selected avatar image by the user.
@@ -182,6 +187,12 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 				}
 				if sim < 95 {
 					s.Errorf("User cannot change device account image: Similarity percentage: %d", sim)
+					if err := saveImageAsPng(filepath.Join(s.OutDir(), "original_avatar.jpeg"), avatarImageScreenshot); err != nil {
+						s.Error("Failed to save the original avatar image: ", err)
+					}
+					if err := saveImageAsPng(filepath.Join(s.OutDir(), "updated_avatar.jpeg"), userImageScreenshot); err != nil {
+						s.Error("Failed to save the updated avatar image: ", err)
+					}
 				}
 			}
 		})
@@ -229,4 +240,13 @@ func getSimilarityPercentage(img1, img2 image.Image) (int, error) {
 	total := (bounds.Max.Y - bounds.Min.Y) * (bounds.Max.X - bounds.Min.X)
 	prcnt := 100 - diff*100/total
 	return prcnt, nil
+}
+
+func saveImageAsPng(filename string, img image.Image) error {
+	f, err := os.Create(filename)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	return jpeg.Encode(f, img, nil)
 }
