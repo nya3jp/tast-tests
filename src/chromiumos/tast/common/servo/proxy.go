@@ -512,6 +512,7 @@ func (p *Proxy) dockerExec(ctx context.Context, stdin io.Reader, name string, ar
 	// The only user within servod container is root, no sudo needed.
 	execConfig.Cmd = append([]string{name}, args...)
 
+	testing.ContextLog(ctx, "Running docker command ", execConfig.Cmd)
 	r, err := p.dcl.ContainerExecCreate(ctx, p.sdc, execConfig)
 	if err != nil {
 		return nil, err
