@@ -572,11 +572,13 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 
 	// TODO if needed, recovery images are at .../recovery_image.tar.xz.
 	testImageURL := "build-artifact:///chromiumos_test_image.tar.xz"
-	reader, err := cloudStorage.Open(ctx, testImageURL)
+	dataURL, err := cloudStorage.Stage(ctx, testImageURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to download test image %s", dutBuilderPath)
 	}
-	defer reader.Close()
+	if dataURL.Scheme != "http" && dataURL.Scheme != "https" {
+		return errors.Errorf("CloudStorage url is not http(s): %q", dataURL)
+	}
 
 	testing.ContextLog(ctx, "Flashing test OS image to USB")
 	// Make sure the device is synced whether or not the command succeeds.
@@ -602,11 +604,12 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	defer cancel()
 	// If it did have tast files, it won't shortly.
 	h.dutUsbHasTastFiles = false
-	// On my computer with a servo v4, this takes 48 minutes.
-	if err = h.ServoProxy.InputCommand(ctx, true, reader, "sh", "-c", fmt.Sprintf("tar -JxOf - | dd of=%s bs=1M iflag=fullblock conv=nocreat,fsync", shutil.Escape(usbdev))); err != nil {
+	// On my computer with a servo v4, this takes 7 minutes.
+	out, err := h.ServoProxy.OutputCommand(ctx, true, "sh", "-c", fmt.Sprintf("wget -O - %s | tar -JxOf - | dd of=%s bs=1M iflag=fullblock conv=nocreat,fsync", shutil.Escape(dataURL.String()), shutil.Escape(usbdev)))
+	if err != nil {
 		return errors.Wrapf(err, "failed to flash os image %q to USB %q", testImageURL, usbdev)
 	}
-
+	testing.ContextLog(ctx, "Flash finished. Output = ", string(out))
 	return nil
 }
 
