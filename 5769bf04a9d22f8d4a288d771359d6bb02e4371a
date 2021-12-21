@@ -39,6 +39,30 @@
       },
       "revId": "5769bf04a9d22f8d4a288d771359d6bb02e4371a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b18a41_31931f4e",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_kiosk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ed4497_21034218",
+      "range": {
+        "startLine": 150,
+        "startChar": 6,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "5769bf04a9d22f8d4a288d771359d6bb02e4371a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
