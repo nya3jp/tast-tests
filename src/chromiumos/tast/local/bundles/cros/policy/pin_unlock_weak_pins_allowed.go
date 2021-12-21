@@ -6,6 +6,7 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
@@ -133,6 +134,12 @@ func PinUnlockWeakPinsAllowed(ctx context.Context, s *testing.State) {
 			// are forbidden, the Continue button will stay disabled.
 			if err := kb.Type(ctx, pin); err != nil {
 				s.Fatal("Failed to type PIN: ", err)
+			}
+
+			// Sometimes the update on the Continue button is slightly delayed.
+			// Polling here would not work for the restricted state, because that is the state we start from.
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				s.Error("Failed to sleep: ", err)
 			}
 
 			// Find the node info for the Continue button.
