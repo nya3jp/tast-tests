@@ -16,6 +16,46 @@
       "message": "Hi Ben, PTAL.",
       "revId": "ca13c559c0c7ab96e5c0491d2bd274d03d84ee98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13856ab_3c2f9f24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-21T22:31:14Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ca13c559c0c7ab96e5c0491d2bd274d03d84ee98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5315b65_c06a5e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hardware.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2021-12-21T22:31:14Z",
+      "side": 1,
+      "message": "nit: this is a pretty large timeout, can this be reduced at all?",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "ca13c559c0c7ab96e5c0491d2bd274d03d84ee98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
