@@ -85,6 +85,23 @@
       "message": "Looks like it failed on unrelated issues. Retry CQ+1",
       "revId": "78fa7b885205d64f9997d85387022a6b9f3fac2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86df9dfa_159862e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-21T21:30:29Z",
+      "side": 1,
+      "message": "The failure is not related the change. Since the issue is affecting a lot of test in CQs, I will go ahead to chump with permission from shreiff.\n\nhttps://chat.google.com/room/AAAAgA5DP3c/d1u22KqDLK8",
+      "revId": "78fa7b885205d64f9997d85387022a6b9f3fac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
