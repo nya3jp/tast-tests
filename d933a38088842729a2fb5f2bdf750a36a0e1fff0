@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e1b041f_daf2f019",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-21T02:00:58Z",
+      "side": 1,
+      "message": "lgtm, thanks!",
+      "revId": "d933a38088842729a2fb5f2bdf750a36a0e1fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f447b5_32af027c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-21T02:00:58Z",
+      "side": 1,
+      "message": "Is this wait necessary? I noticed the other instanced of set overview state don\u0027t have this below",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "d933a38088842729a2fb5f2bdf750a36a0e1fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc0bb743_1c4e6f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-21T02:00:58Z",
+      "side": 1,
+      "message": "Should this be Fatalf as the check below (for 3 windows) would still pass if all 3 windows failed to close here?",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "d933a38088842729a2fb5f2bdf750a36a0e1fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f3b619_7ebae03e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-21T02:00:58Z",
+      "side": 1,
+      "message": "huge nit: I think the standard (that i\u0027ve seen) is to keep the uiauto combine description lower case\n\nShow -\u003e show",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 7
+      },
+      "revId": "d933a38088842729a2fb5f2bdf750a36a0e1fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf44489_45c14e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-21T02:00:58Z",
+      "side": 1,
+      "message": "ditto nit",
+      "range": {
+        "startLine": 175,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 4
+      },
+      "revId": "d933a38088842729a2fb5f2bdf750a36a0e1fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f68314b6_7ce37c14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2021-12-21T02:00:58Z",
+      "side": 1,
+      "message": "what do you think about doing one more check for the app Name against window Title here?\n\ni.e.\n\nif (ws[0].Title !\u003d apps.Name[0]) {\n}\n\nthat would also check MRU case, but can be done in a follow-up/other test",
+      "revId": "d933a38088842729a2fb5f2bdf750a36a0e1fff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
