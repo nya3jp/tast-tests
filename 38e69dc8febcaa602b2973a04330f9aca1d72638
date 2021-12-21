@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50318bd_96df3378",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-21T02:33:32Z",
+      "side": 1,
+      "message": "Thanks, Tatsuhisa.",
+      "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2b22900_85ff7631",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-12-21T01:27:09Z",
       "side": 1,
       "message": "Can this be replaced with a polling instead of a fixed sleep?\nThe following actions such as selectScanSetting uses s.LeftClick inside. LeftClick() has a polling routine inside it to wait until the UI stabilizes. So I guess setting a longer timeout to pollOpts would work for this.\nSame for the other Sleeps.",
+      "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b75d5d_d9dc29db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-21T02:33:32Z",
+      "side": 1,
+      "message": "The problem with the polling approach is that we only have a single connection to the uiauto library, so increasing the polling time increases the time for every single action we take throughout the test by an order of magnitude. We only need to wait in two specific locations, so sleeping saves several minutes over the execution of the test.",
+      "parentUuid": "d2b22900_85ff7631",
       "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
