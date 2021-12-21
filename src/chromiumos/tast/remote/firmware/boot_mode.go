@@ -70,6 +70,14 @@ const (
 	// CopyTastFiles copies the Tast files from the DUT before rebooting, and writes them back to the DUT afterwards.
 	// This is necessary if you want to use any gRPC services.
 	CopyTastFiles ModeSwitchOption = iota
+
+	// SkipModeCheckAfterReboot can be passed in as an option to ModeAwareReboot, skipping
+	// boot mode check after resetting DUT. One instance where this can be useful is
+	// when verifying that FWMP prevents DUT from booting into dev mode.
+	SkipModeCheckAfterReboot = iota
+
+	// PressEnterAtToNorm presses ENTER to allow DUT to continue to boot when dev mode disabled by FWMP.
+	PressEnterAtToNorm = iota
 )
 
 // msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
@@ -389,7 +397,7 @@ var resetTypePowerState = map[ResetType]servo.PowerStateValue{
 // ModeAwareReboot resets the DUT with awareness of the DUT boot mode.
 // Dev mode will be retained, but rec mode will default back to normal mode.
 // This has the side-effect of disconnecting the RPC connection.
-func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType) error {
+func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType, opts ...ModeSwitchOption) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
@@ -438,15 +446,34 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	}
 
 	// If in dev mode, bypass the TO_DEV screen.
-	if fromMode == fwCommon.BootModeDev {
+	if fromMode == fwCommon.BootModeDev && !msOptsContain(opts, PressEnterAtToNorm) {
 		if err := ms.fwScreenToDevMode(ctx, hasSerialAP); err != nil {
 			return errors.Wrap(err, "bypassing fw screen")
 		}
-	} else if fromMode == fwCommon.BootModeUSBDev {
+	} else if fromMode == fwCommon.BootModeUSBDev && !msOptsContain(opts, PressEnterAtToNorm) {
 		if err := ms.fwScreenToUSBDevMode(ctx); err != nil {
 			return errors.Wrap(err, "bypassing fw screen")
 		}
 	} else {
+		// DUTs would boot into the to_norm screen when dev mode disabled by FWMP.
+		// Press enter to bypass the to_norm screen.
+		if msOptsContain(opts, PressEnterAtToNorm) {
+			testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
+			if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+				return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for TO_NORM screen", h.Config.FirmwareScreen)
+			}
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				testing.ContextLog(ctx, "Pressing ENTER to bypass the to_norm screen")
+				if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+					return err
+				}
+				ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
+				defer cancel()
+				return h.DUT.WaitConnect(ctx)
+			}, &testing.PollOptions{Timeout: reconnectTimeout}); err != nil {
+				return errors.Wrap(err, "failed to reconnect to DUT")
+			}
+		}
 		testing.ContextLog(ctx, "Reestablishing connection to DUT")
 		connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
 		defer cancel()
@@ -470,7 +497,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	}
 	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
 		return errors.Wrapf(err, "checking boot mode after resetting from %s", fromMode)
-	} else if curr != expectMode {
+	} else if curr != expectMode && !msOptsContain(opts, SkipModeCheckAfterReboot) {
 		return errors.Errorf("incorrect boot mode after resetting DUT: got %s; want %s", curr, expectMode)
 	}
 	return nil
