@@ -34,6 +34,23 @@
       "parentUuid": "1218db26_5b02f851",
       "revId": "78fa7b885205d64f9997d85387022a6b9f3fac2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5cd195_ed2e9750",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001563
+      },
+      "writtenOn": "2021-12-21T17:09:17Z",
+      "side": 1,
+      "message": "The error on betty seems to be a timeout too, but not during chrome login. \"Failed to get current input method: cdp.Runtime: Evaluate: context deadline exceeded\"",
+      "revId": "78fa7b885205d64f9997d85387022a6b9f3fac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
