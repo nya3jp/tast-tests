@@ -55,6 +55,7 @@ func PinUnlockWeakPinsAllowed(ctx context.Context, s *testing.State) {
 
 	// Weak PIN, as defined in IsPinDifficultEnough (quick_unlock_private_api.cc).
 	pin := "123456"
+	pinHidden := "••••••"
 	quickUnlockModeAllowlistPolicy := &policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}}
 
 	for _, param := range []struct {
@@ -131,8 +132,12 @@ func PinUnlockWeakPinsAllowed(ctx context.Context, s *testing.State) {
 			// Enter the PIN, which is very easy to guess. The warning message "PIN
 			// may be easy to guess" will appear in any case, but if weak passwords
 			// are forbidden, the Continue button will stay disabled.
-			if err := kb.Type(ctx, pin); err != nil {
-				s.Fatal("Failed to type PIN: ", err)
+			if err := uiauto.Combine("enter PIN",
+				kb.TypeAction(pin),
+				// Wait until all 6 digits are in, and UI is refreshed.
+				ui.WaitUntilExists(nodewith.Name(pinHidden).Role(role.InlineTextBox)),
+			)(ctx); err != nil {
+				s.Fatal("Failed to enter PIN: ", err)
 			}
 
 			// Find the node info for the Continue button.
