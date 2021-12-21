@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f6db77_09d8453e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet/tablet_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T11:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f73a1f6a_d7877558",
+      "range": {
+        "startLine": 16,
+        "startChar": 66,
+        "endLine": 16,
+        "endChar": 72
+      },
+      "revId": "6fe5661eace58eb0d628eb7f3fbf44810c4ff3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ca74728_e4f3f4cb",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df455554_8a6a3877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T11:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ca74728_e4f3f4cb",
+      "range": {
+        "startLine": 78,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "6fe5661eace58eb0d628eb7f3fbf44810c4ff3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c86082b8_870b6d22",
@@ -77,6 +125,24 @@
       "writtenOn": "2021-12-21T09:08:14Z",
       "side": 1,
       "message": "Is the missing file not a reason to stop polling? You can use PollBreak in that case.",
+      "revId": "6fe5661eace58eb0d628eb7f3fbf44810c4ff3d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb21056_1f720fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touchpad_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-21T11:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86082b8_870b6d22",
       "revId": "6fe5661eace58eb0d628eb7f3fbf44810c4ff3d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
