@@ -70,6 +70,24 @@
       "parentUuid": "0c769776_857ffdaa",
       "revId": "c1687bfe0338dbfa45dc36094aa0ada2c9ab28ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21337e69_34a61d92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-21T14:40:24Z",
+      "side": 1,
+      "message": "Yep, it does not help. It also fails if the connection is broken.\nDo you think it is possible that the update command fails (timeout), but still completes the update before we stop the service?\nIn that case an upcoming reboot can have surprises, as it will boot the new image.",
+      "parentUuid": "f70ce866_958e2627",
+      "revId": "c1687bfe0338dbfa45dc36094aa0ada2c9ab28ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
