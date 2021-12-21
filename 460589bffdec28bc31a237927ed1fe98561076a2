@@ -22,6 +22,30 @@
       },
       "revId": "460589bffdec28bc31a237927ed1fe98561076a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "083042d5_9c8dbe31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2021-12-21T00:25:05Z",
+      "side": 1,
+      "message": "Since portrait oriented apps are taken care already in the line, https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go;rcl\u003dabd33c9f92ad18af79a4a778ca75a5334dc502c1;l\u003d1140. Hence, handling of landscape orientation only is needed. \n\nCouldn\u0027t reuse \"split_view.go\", completely as it is used for specific apps whereas \"splitscreen\" test case in \"testutil.go\" is common for all 100 apps under arcappcompat tests. Tried changing \"dragToSnapFirstOverviewWindow\" func in \"src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/split_view.go\" to global accessible func \"DragToSnapFirstOverviewWindow\".            \n\n\"repo upload .\" is failing and got the below tast-lint error,\n\nsrc/chromiumos/tast/local/bundles/cros/arc/split_view.go:78:6: Tast requires exactly one symbol (test function or service type) to be exported in an entry file; unexport func DragToSnapFirstOverviewWindow if it is not one\n        src/chromiumos/tast/local/bundles/cros/arc/split_view.go:171:6: Tast requires exactly one symbol (test function or service type) to be exported in an entry file; unexport func SplitView if it is not one\n        src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go:23:2: import of chromiumos/tast/local/bundles/cros/arc is only allowed from chromiumos/tast/local/bundles/*/arc or its descendant\n        \n       Please let me know your suggestions.",
+      "parentUuid": "cdb5f4b6_ffccaef2",
+      "range": {
+        "startLine": 1150,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 0
+      },
+      "revId": "460589bffdec28bc31a237927ed1fe98561076a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
