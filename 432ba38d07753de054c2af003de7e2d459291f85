@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c86e9c1_d35b0a38",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:42:40Z",
+      "side": 1,
+      "message": "I thought I added some accidental import or did some rebasing wrongly.\n\nThis is actually a list of packages that are allowed to lock/unlock Chrome.",
+      "parentUuid": "474c170f_9af3789e",
+      "revId": "432ba38d07753de054c2af003de7e2d459291f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57e46723_7b62b37f",
         "filename": "src/chromiumos/tast/local/vdi/doc.go",
         "patchSetId": 8
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-16T12:12:11Z",
       "side": 1,
       "message": "managed?",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "432ba38d07753de054c2af003de7e2d459291f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bf7c12_75b51005",
+        "filename": "src/chromiumos/tast/local/vdi/doc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57e46723_7b62b37f",
       "range": {
         "startLine": 7,
         "startChar": 13,
@@ -71,6 +113,30 @@
       "writtenOn": "2021-12-16T11:51:15Z",
       "side": 1,
       "message": "Maybe Error here?",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 9
+      },
+      "revId": "432ba38d07753de054c2af003de7e2d459291f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b4fcca_7e4193f6",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-21T19:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb770dec_4fd5559c",
       "range": {
         "startLine": 177,
         "startChar": 6,
