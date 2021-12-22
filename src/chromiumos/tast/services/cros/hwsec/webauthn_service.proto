@@ -1,0 +1,69 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.hwsec;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/hwsec";
+
+service WebauthnService {
+  // New logs into a Chrome session as a fake user. Close must be called later
+  // to clean up the associated resources.
+  rpc New (NewRequest) returns (google.protobuf.Empty) {}
+
+  // Close releases the resources obtained by New.
+  rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc SetupPIN (SetupPINRequest) returns (google.protobuf.Empty) {}
+
+  rpc StartWebauthn (StartWebauthnRequest) returns (google.protobuf.Empty) {}
+
+  rpc EndWebauthn (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StartMakeCredential (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc CheckMakeCredentialSuccess (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc StartGetAssertion (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc CheckGetAssertionSuccess (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc EnterPin (EnterPinRequest) returns (google.protobuf.Empty) {}
+}
+
+enum UserVerification {
+  DISCOURAGED = 0;
+  PREFERRED = 1;
+  REQUIRED = 2;
+}
+
+
+enum AuthenticatorType {
+  UNSPECIFIED = 0;
+  PLATFORM = 1;
+  CROSS_PLATFORM = 2;
+}
+
+message NewRequest {
+  string out_dir = 1;
+  string username = 2;
+  string password = 3;
+}
+
+message SetupPINRequest {
+  string pin = 1;
+}
+
+message EnterPinRequest {
+  string pin = 1;
+}
+
+message StartWebauthnRequest {
+  UserVerification user_verification = 1;
+  AuthenticatorType authenticator_type = 2;
+  bool has_dialog = 3;
+}
