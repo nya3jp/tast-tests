@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae9e7631_09cf1711",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-22T18:39:07Z",
+      "side": 1,
+      "message": "ditto: different account problem",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 41
+      },
+      "revId": "af02ed09d45e003f6155ff219a1c4fd4bf1ea31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
