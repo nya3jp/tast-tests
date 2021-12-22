@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f30af4_d7137125",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-22T14:48:06Z",
+      "side": 1,
+      "message": "Do we initialize this at any place?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "a71c63f3bbdb3c7b37875e8da9828319c947b411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c0b530_96347217",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/attestation_dbus_service.pb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-22T14:48:06Z",
+      "side": 1,
+      "message": "nit: I guess this will conflict with this CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3332755",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 25
+      },
+      "revId": "a71c63f3bbdb3c7b37875e8da9828319c947b411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
