@@ -166,6 +166,30 @@
       },
       "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8da3a7_324f71f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-12-22T00:17:57Z",
+      "side": 1,
+      "message": "Nice find, thanks! Looks like the `cros_config` dep needs to be renamed",
+      "parentUuid": "4da1912f_8e097078",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "0b2402686e0e779d2958a0f5531dc22079ce599d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
