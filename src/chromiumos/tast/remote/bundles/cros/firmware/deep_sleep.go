@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/servo"
@@ -114,6 +115,9 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			state, err := h.Servo.GetECSystemPowerState(ctx)
 			if err != nil {
+				if strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
+					return err
+				}
 				return testing.PollBreak(errors.Wrap(err, "failed to get power state"))
 			}
 			if state != "G3" {
