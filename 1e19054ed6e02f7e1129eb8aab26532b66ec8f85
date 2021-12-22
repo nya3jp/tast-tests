@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "1e19054ed6e02f7e1129eb8aab26532b66ec8f85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86551c70_e538418a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_kill_stale_bundles.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2021-12-22T01:42:51Z",
+      "side": 1,
+      "message": "In this case cmd is leaked.\n\nOne possible way to wait for the process in a single goroutine would be:\n\n if err :\u003d cmd.Start(); err !\u003d nil {\n   ...\n }\n\n done :\u003d make(chan struct{})\n go func() {\n   cmd.Wait()\n   close(done)\n }()\n\n defer func() {\n   cmd.Process.Kill() // note: concurrent Kill/Wait are handled gracefully by os/exec\n   \u003c-done\n }()\n\n ...\n\n select {\n case \u003c-done:\n   // OK\n case \u003c-shortCtx.Done():\n   s.Fatal(...)\n }",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 10
+      },
+      "revId": "1e19054ed6e02f7e1129eb8aab26532b66ec8f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
