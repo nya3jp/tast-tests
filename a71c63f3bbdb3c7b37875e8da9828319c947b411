@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03830b53_1ea5b867",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-22T14:51:35Z",
+      "side": 1,
+      "message": "I guess seeding the random at here would not be useful for the local service?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "a71c63f3bbdb3c7b37875e8da9828319c947b411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "07c0b530_96347217",
         "filename": "src/chromiumos/tast/services/cros/hwsec/attestation_dbus_service.pb.go",
         "patchSetId": 3
