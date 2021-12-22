@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/bundles/cros/hwsec/util"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/example"
@@ -86,7 +87,7 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 
 	// Ensure chaps finished the initialization.
 	// U2F didn't depend on chaps, but chaps would block the TPM operaions, and caused U2F timeout.
-	if err := ensureChapsSlotsInitialized(ctx, chaps); err != nil {
+	if err := util.EnsureChapsSlotsInitialized(ctx, chaps); err != nil {
 		s.Fatal("Failed to ensure chaps slots: ", err)
 	}
 
@@ -100,7 +101,7 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 	svo := pxy.Servo()
 
 	// Clean up the flags in u2fd after the tests finished.
-	defer setU2fdFlags(ctx, helper, false, false, false)
+	defer util.SetU2fdFlags(ctx, helper, false, false, false)
 
 	for _, tc := range []struct {
 		name     string
@@ -134,7 +135,7 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			if err := setU2fdFlags(ctx, helper, tc.u2f, tc.g2f, tc.userKeys); err != nil {
+			if err := util.SetU2fdFlags(ctx, helper, tc.u2f, tc.g2f, tc.userKeys); err != nil {
 				s.Fatal("Failed to set u2fd flags: ", err)
 			}
 			device, err := u2fDevicePath(ctx, cmdRunner)
@@ -150,70 +151,6 @@ func IntegratedU2F(ctx context.Context, s *testing.State) {
 			}
 		})
 	}
-}
-
-// ensureChapsSlotsInitialized ensures chaps is initialized.
-func ensureChapsSlotsInitialized(ctx context.Context, chaps *pkcs11.Chaps) error {
-	return testing.Poll(ctx, func(context.Context) error {
-		slots, err := chaps.ListSlots(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to list chaps slots")
-		}
-		testing.ContextLog(ctx, slots)
-		if len(slots) < 2 {
-			return errors.Wrap(err, "chaps initialization hasn't finished")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  30 * time.Second,
-		Interval: time.Second,
-	})
-}
-
-// setU2fdFlags sets the flags and restarts u2fd, which will re-create the u2f device.
-func setU2fdFlags(ctx context.Context, helper *hwsecremote.FullHelperRemote, u2f, g2f, userKeys bool) (retErr error) {
-	const (
-		uf2ForcePath      = "/var/lib/u2f/force/u2f.force"
-		gf2ForcePath      = "/var/lib/u2f/force/g2f.force"
-		userKeysForcePath = "/var/lib/u2f/force/user_keys.force"
-	)
-
-	cmd := helper.CmdRunner()
-	dCtl := helper.DaemonController()
-
-	if err := dCtl.Stop(ctx, hwsec.U2fdDaemon); err != nil {
-		return errors.Wrap(err, "failed to stop u2fd")
-	}
-	defer func() {
-		if err := dCtl.Start(ctx, hwsec.U2fdDaemon); err != nil {
-			if retErr != nil {
-				testing.ContextLog(ctx, "Failed to restart u2fd: ", err)
-			} else {
-				retErr = errors.Wrap(err, "failed to restart u2fd")
-			}
-		}
-	}()
-
-	// Remove flags.
-	if _, err := cmd.Run(ctx, "sh", "-c", "rm -f /var/lib/u2f/force/*.force"); err != nil {
-		return errors.Wrap(err, "failed to remove flags")
-	}
-	if u2f {
-		if _, err := cmd.Run(ctx, "touch", uf2ForcePath); err != nil {
-			return errors.Wrap(err, "failed to set u2f flag")
-		}
-	}
-	if g2f {
-		if _, err := cmd.Run(ctx, "touch", gf2ForcePath); err != nil {
-			return errors.Wrap(err, "failed to set g2f flag")
-		}
-	}
-	if userKeys {
-		if _, err := cmd.Run(ctx, "touch", userKeysForcePath); err != nil {
-			return errors.Wrap(err, "failed to set userKeys flag")
-		}
-	}
-	return nil
 }
 
 // u2fDevicePath returns the integrated u2f device path.
