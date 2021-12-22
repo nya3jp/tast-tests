@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f22f611_3c359a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-12-22T07:54:28Z",
+      "side": 1,
+      "message": "I would rather want to be more specific when fetching a node (eg. by ID or something). I tried a number of ways (eg. nodewith.Attribute(\"id\",\"text\")) but doesn\u0027t seem to work with \u003cinput\u003e elem.",
+      "revId": "86bd8fc476b8074eb0751dbf4386ee838c75827d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
