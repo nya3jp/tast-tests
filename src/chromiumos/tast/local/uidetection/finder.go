@@ -5,9 +5,15 @@
 package uidetection
 
 import (
+	"bytes"
 	"context"
+	"image/png"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	pb "chromiumos/tast/local/uidetection/api"
 	"chromiumos/tast/testing"
@@ -86,12 +92,27 @@ func (s *Finder) Nth(nth int) *Finder {
 
 // resolve resolves the UI detection request and stores the bounding boxes
 // of the matching elements.
-func (s *Finder) resolve(ctx context.Context, d *uiDetector, pollOpts testing.PollOptions) error {
+func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions) error {
 	// Take the screenshot.
 	imagePng, err := TakeStableScreenshot(ctx, pollOpts)
 	if err != nil {
 		return errors.Wrap(err, "failed to take screenshot")
 	}
+
+	// Find the sizes of the screenshot and the screen window to calculate the conversion ratios.
+	desktopNode, err := uiauto.New(tconn).Info(ctx, nodewith.Role(role.Window).Name("Built-in display"))
+	if err != nil {
+		return errors.Wrap(err, "failed to find the desktop node")
+	}
+	imgBuf := new(bytes.Buffer)
+	imgBuf.Write(imagePng)
+	img, err := png.Decode(imgBuf)
+	if err != nil {
+		return errors.Wrap(err, "failed to decode image from bytes")
+	}
+	// This ratio is used to convert coordinates in the screenshot to coordinates in the screen.
+	widthRatio := float64(desktopNode.Location.Width) / float64(img.Bounds().Dx())
+	heightRatio := float64(desktopNode.Location.Width) / float64(img.Bounds().Dx())
 
 	response, err := d.sendDetectionRequest(ctx, imagePng, s.request)
 	if err != nil {
@@ -104,10 +125,10 @@ func (s *Finder) resolve(ctx context.Context, d *uiDetector, pollOpts testing.Po
 			s.boundingBoxes,
 			&Location{
 				Rect: coords.NewRectLTRB(
-					int(boundingBox.GetLeft()),
-					int(boundingBox.GetTop()),
-					int(boundingBox.GetRight()),
-					int(boundingBox.GetBottom())),
+					int(float64(boundingBox.GetLeft())*widthRatio),
+					int(float64(boundingBox.GetTop())*heightRatio),
+					int(float64(boundingBox.GetRight())*widthRatio),
+					int(float64(boundingBox.GetBottom())*heightRatio)),
 				Text: boundingBox.GetText(),
 			})
 	}
