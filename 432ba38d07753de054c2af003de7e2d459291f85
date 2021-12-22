@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "660e6d36_6c27db91",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-22T08:31:10Z",
+      "side": 1,
+      "message": "Missed that it was in the middle of the file 😀",
+      "parentUuid": "0c86e9c1_d35b0a38",
+      "revId": "432ba38d07753de054c2af003de7e2d459291f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57e46723_7b62b37f",
