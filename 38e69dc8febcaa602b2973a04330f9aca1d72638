@@ -121,6 +121,24 @@
       "parentUuid": "7bb891f0_e6dd6d81",
       "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bec5361_ed67e560",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-22T01:16:37Z",
+      "side": 1,
+      "message": "One of the existing solution is to repeat clicking the item until the next step UI appears. Does this work for the case?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md#dealing-with-a-race-condition\nIf not, please add a TODO comment here and file a bug with a feature request to uiauto to support this case.",
+      "parentUuid": "243e070b_b2882c4c",
+      "revId": "38e69dc8febcaa602b2973a04330f9aca1d72638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
