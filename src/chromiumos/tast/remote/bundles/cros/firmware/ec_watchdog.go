@@ -45,6 +45,10 @@ func ECWatchdog(ctx context.Context, s *testing.State) {
 
 	h := s.FixtValue().(*fixture.Value).Helper
 
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servod")
+	}
+
 	if oldBootID, err = h.Reporter.BootID(ctx); err != nil {
 		s.Fatal("Failed to fetch current boot ID: ", err)
 	}

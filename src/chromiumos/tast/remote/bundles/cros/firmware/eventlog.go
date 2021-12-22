@@ -223,6 +223,9 @@ func Eventlog(ctx context.Context, s *testing.State) {
 	// Create mode-switcher.
 	v := s.FixtValue().(*fixture.Value)
 	h := v.Helper
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servod")
+	}
 	ms, err := firmware.NewModeSwitcher(ctx, h)
 	if err != nil {
 		s.Fatal("Creating mode switcher: ", err)
