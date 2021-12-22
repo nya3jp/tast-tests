@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c1bd716_62887ed5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T04:11:01Z",
+      "side": 1,
+      "message": "I could only test the \"vm\" case, as I don\u0027t think hatch supports android p now (?).",
+      "revId": "08eddb0275eeae68d438e5b536730f6b1e6c8bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f68bec88_55cdf7f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T04:11:01Z",
+      "side": 1,
+      "message": "By providing fake policy, the Play Store front page is blank, and can\u0027t search any app. I guess this might be the default (allow ARC but can only access a listed set of apps).",
+      "revId": "08eddb0275eeae68d438e5b536730f6b1e6c8bb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
