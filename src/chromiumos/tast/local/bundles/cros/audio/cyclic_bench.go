@@ -14,16 +14,29 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
+)
+
+type schedPolicy int
+
+const (
+	// none indicates no threads will be invoked.
+	none schedPolicy = iota
+	// rrSched uses rr as the scheduler.
+	rrSched
+	// otherSched uses other(normal) as the scheduler.
+	otherSched
 )
 
 // cyclicTestParameters contains all the data needed to run a single test iteration.
 type cyclicTestParameters struct {
-	Priority       int // Priority of the process
-	Threads        int // Number of threads
-	IntervalUs     int // Interval time
-	Loops          int // Number of times
-	P99ThresholdUs int // P99 latency threshold
+	Priority       int         // Priority of the process
+	Threads        int         // Number of threads
+	IntervalUs     int         // Interval time
+	Loops          int         // Number of times
+	P99ThresholdUs int         // P99 latency threshold
+	StressSched    schedPolicy // the schedule policy of the stress workload. none implies no stress.
 }
 
 const (
@@ -31,12 +44,16 @@ const (
 	crasPriority = 12
 	// crasClientPriority indicates the rt-priority of cras client.
 	crasClientPriority = 10
+	// stressPriority indicates the rt-priority of stress threads.
+	stressPriority = 20
 	// defaultIntervalUs is the default interval used in cyclictest.
 	defaultIntervalUs = 10000
 	// defaultLoops is the default number of loops tested in cyclictest.
 	defaultLoops = 6000
 	// defaultP99ThresholdUs is the default p99 latency threshold allowed in cyclictest.
 	defaultP99ThresholdUs = 100
+	// defaultStressWorker is the number of workers spawned in the stress test per cpu thread.
+	defaultStressWorker = 2
 )
 
 func init() {
@@ -46,7 +63,7 @@ func init() {
 		Contacts:     []string{"eddyhsu@chromium.org", "paulhsia@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"cras"},
-		Timeout:      2 * time.Minute,
+		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "rr12_1thread_10ms",
@@ -56,6 +73,7 @@ func init() {
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
+					StressSched:    none,
 				},
 			},
 			{
@@ -66,6 +84,7 @@ func init() {
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
+					StressSched:    none,
 				},
 			},
 			{
@@ -76,6 +95,7 @@ func init() {
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
+					StressSched:    none,
 				},
 			},
 			{
@@ -86,6 +106,29 @@ func init() {
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
+					StressSched:    none,
+				},
+			},
+			{
+				Name: "rr12_1thread_10ms_stress_rr20_2workers_per_cpu",
+				Val: cyclicTestParameters{
+					Priority:       crasPriority,
+					Threads:        1,
+					IntervalUs:     defaultIntervalUs,
+					Loops:          defaultLoops,
+					P99ThresholdUs: defaultP99ThresholdUs,
+					StressSched:    rrSched,
+				},
+			},
+			{
+				Name: "rr12_1thread_10ms_stress_normal_2workers_per_cpu",
+				Val: cyclicTestParameters{
+					Priority:       crasPriority,
+					Threads:        1,
+					IntervalUs:     defaultIntervalUs,
+					Loops:          defaultLoops,
+					P99ThresholdUs: defaultP99ThresholdUs,
+					StressSched:    otherSched,
 				},
 			},
 		},
@@ -145,8 +188,58 @@ func calculateStats(latencies [][]int) []cyclicTestStat {
 	return stats
 }
 
+func (s schedPolicy) String() string {
+	return []string{"none", "rr", "other"}[s]
+}
+
+func getNumberOfCPU(ctx context.Context, s *testing.State) (int, error) {
+	lscpu := testexec.CommandContext(ctx, "lscpu")
+	out, err := lscpu.Output()
+	if err != nil {
+		return -1, errors.Wrap(err, "lscpu failed")
+	}
+	cpuRe := regexp.MustCompile(`^CPU\(s\):\s*(.*)$`)
+	for _, line := range strings.Split(strings.TrimSpace(string(out)), "\n") {
+		if !cpuRe.MatchString(line) {
+			continue
+		}
+		cpus := cpuRe.FindStringSubmatch(line)
+		ret, err := strconv.Atoi(cpus[1])
+		if err != nil {
+			return -1, errors.Wrap(err, "parsing number of cpus failed")
+		}
+		return ret, nil
+	}
+	return -1, errors.New("can't find CPU(s) info in lscpu")
+}
+
 func CyclicBench(ctx context.Context, s *testing.State) {
 	param := s.Param().(cyclicTestParameters)
+
+	// Set the timeout of stress to be 10% more of the expected time
+	// of cyclic test in case the stress-ng failed to be killed.
+	timeout := param.Loops * param.IntervalUs / 1000000 * 11 / 10
+
+	cpus, err := getNumberOfCPU(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to get number of cpus: ", err)
+	}
+	totalWorkers := defaultStressWorker * cpus
+
+	// TODO(eddyhsu): let stress priority configurable.
+	stress := testexec.CommandContext(ctx, "stress-ng",
+		"--cpu="+strconv.Itoa(totalWorkers),
+		"--sched="+param.StressSched.String(),
+		"--sched-prio="+strconv.Itoa(stressPriority),
+		"--timeout="+strconv.Itoa(timeout)+"s")
+	// Working directory of `stress-ng` must be readable and writeable
+	stress.Dir = "/tmp"
+
+	if param.StressSched != none {
+		if err := stress.Start(); err != nil {
+			s.Fatal("Failed to start stress-ng: ", err)
+		}
+	}
 
 	out, err := testexec.CommandContext(ctx, "cyclictest",
 		// TODO(eddyhsu): supports other types of policy.
@@ -162,6 +255,12 @@ func CyclicBench(ctx context.Context, s *testing.State) {
 		"--verbose").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to execute cyclictest: ", err)
+	}
+
+	if param.StressSched != none {
+		if err := stress.Wait(); err != nil {
+			s.Error("stress-ng failed to finish: ", err)
+		}
 	}
 
 	// The log will look like(task_number:count:latency_us):
