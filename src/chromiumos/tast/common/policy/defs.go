@@ -20249,7 +20249,7 @@ type KioskCRXManifestUpdateURLIgnored struct {
 
 func (p *KioskCRXManifestUpdateURLIgnored) Name() string { return "KioskCRXManifestUpdateURLIgnored" }
 func (p *KioskCRXManifestUpdateURLIgnored) Field() string {
-	return "kiosk_crx_manifest_update_url_ignored"
+	return "kiosk_crx_manifest_update_url_ignored.value"
 }
 func (p *KioskCRXManifestUpdateURLIgnored) Scope() Scope          { return ScopeDevice }
 func (p *KioskCRXManifestUpdateURLIgnored) Status() Status        { return p.Stat }
@@ -20665,6 +20665,181 @@ func (p *FullscreenNotificationUrlExemptList) UnmarshalAs(m json.RawMessage) (in
 }
 func (p *FullscreenNotificationUrlExemptList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 931. OnPrintEnterpriseConnector
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type OnPrintEnterpriseConnector struct {
+	Stat Status
+	Val  []*OnPrintEnterpriseConnectorValue
+}
+
+type OnPrintEnterpriseConnectorValue struct {
+	BlockLargeFiles          bool                                             `json:"block_large_files"`
+	BlockUntilVerdict        int                                              `json:"block_until_verdict"`
+	CustomMessages           []*OnPrintEnterpriseConnectorValueCustomMessages `json:"custom_messages,omitempty"`
+	Disable                  []*OnPrintEnterpriseConnectorValueDisable        `json:"disable,omitempty"`
+	Enable                   []*OnPrintEnterpriseConnectorValueEnable         `json:"enable,omitempty"`
+	RequireJustificationTags []string                                         `json:"require_justification_tags,omitempty"`
+	ServiceProvider          string                                           `json:"service_provider"`
+}
+
+type OnPrintEnterpriseConnectorValueEnable struct {
+	Tags    []string `json:"tags,omitempty"`
+	UrlList []string `json:"url_list,omitempty"`
+}
+
+type OnPrintEnterpriseConnectorValueDisable struct {
+	Tags    []string `json:"tags,omitempty"`
+	UrlList []string `json:"url_list,omitempty"`
+}
+
+type OnPrintEnterpriseConnectorValueCustomMessages struct {
+	Language     string `json:"language"`
+	LearnMoreUrl string `json:"learn_more_url"`
+	Message      string `json:"message"`
+	Tag          string `json:"tag"`
+}
+
+func (p *OnPrintEnterpriseConnector) Name() string          { return "OnPrintEnterpriseConnector" }
+func (p *OnPrintEnterpriseConnector) Field() string         { return "" }
+func (p *OnPrintEnterpriseConnector) Scope() Scope          { return ScopeUser }
+func (p *OnPrintEnterpriseConnector) Status() Status        { return p.Stat }
+func (p *OnPrintEnterpriseConnector) UntypedV() interface{} { return p.Val }
+func (p *OnPrintEnterpriseConnector) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v []*OnPrintEnterpriseConnectorValue
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as []*OnPrintEnterpriseConnectorValue", m)
+	}
+	return v, nil
+}
+func (p *OnPrintEnterpriseConnector) Equal(iface interface{}) bool {
+	v, ok := iface.([]*OnPrintEnterpriseConnectorValue)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 932. UserAgentReduction
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type UserAgentReduction struct {
+	Stat Status
+	Val  int
+}
+
+func (p *UserAgentReduction) Name() string          { return "UserAgentReduction" }
+func (p *UserAgentReduction) Field() string         { return "" }
+func (p *UserAgentReduction) Scope() Scope          { return ScopeUser }
+func (p *UserAgentReduction) Status() Status        { return p.Stat }
+func (p *UserAgentReduction) UntypedV() interface{} { return p.Val }
+func (p *UserAgentReduction) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v int
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as int", m)
+	}
+	return v, nil
+}
+func (p *UserAgentReduction) Equal(iface interface{}) bool {
+	v, ok := iface.(int)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 933. OriginAgentClusterDefaultEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type OriginAgentClusterDefaultEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *OriginAgentClusterDefaultEnabled) Name() string          { return "OriginAgentClusterDefaultEnabled" }
+func (p *OriginAgentClusterDefaultEnabled) Field() string         { return "" }
+func (p *OriginAgentClusterDefaultEnabled) Scope() Scope          { return ScopeUser }
+func (p *OriginAgentClusterDefaultEnabled) Status() Status        { return p.Stat }
+func (p *OriginAgentClusterDefaultEnabled) UntypedV() interface{} { return p.Val }
+func (p *OriginAgentClusterDefaultEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *OriginAgentClusterDefaultEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 934. DeviceLoginScreenWebUILazyLoading
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceLoginScreenWebUILazyLoading struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeviceLoginScreenWebUILazyLoading) Name() string { return "DeviceLoginScreenWebUILazyLoading" }
+func (p *DeviceLoginScreenWebUILazyLoading) Field() string {
+	return "login_web_ui_lazy_loading.enabled"
+}
+func (p *DeviceLoginScreenWebUILazyLoading) Scope() Scope          { return ScopeDevice }
+func (p *DeviceLoginScreenWebUILazyLoading) Status() Status        { return p.Stat }
+func (p *DeviceLoginScreenWebUILazyLoading) UntypedV() interface{} { return p.Val }
+func (p *DeviceLoginScreenWebUILazyLoading) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeviceLoginScreenWebUILazyLoading) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v)
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 935. ProjectorEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ProjectorEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ProjectorEnabled) Name() string          { return "ProjectorEnabled" }
+func (p *ProjectorEnabled) Field() string         { return "" }
+func (p *ProjectorEnabled) Scope() Scope          { return ScopeUser }
+func (p *ProjectorEnabled) Status() Status        { return p.Stat }
+func (p *ProjectorEnabled) UntypedV() interface{} { return p.Val }
+func (p *ProjectorEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ProjectorEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
