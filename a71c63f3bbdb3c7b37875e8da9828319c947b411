@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92cbc02_6b0c3dc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-22T16:25:18Z",
+      "side": 1,
+      "message": "Added comment to the bug: https://b.corp.google.com/issues/211450561#comment10",
+      "revId": "a71c63f3bbdb3c7b37875e8da9828319c947b411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f30af4_d7137125",
