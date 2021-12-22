@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4f1671b_7f0eb74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-22T19:37:34Z",
+      "side": 1,
+      "message": "I think we can return the object and use defer in the main function.\n\nFunction length is one concern and it\u0027s subjective how long is too long but the other aspect is cohesion/simplicity. If there related lines of code are moved to a helper then I can infer what is being accomplished by reading the function name without going into details of how it is done. Basically, we can selectively zoom in and out of code without going through each line. It makes the code more declarative IMO.\n\nIt would be easier on my eyes the other way but I\u0027ll let you make the final call.",
+      "parentUuid": "cdbf1dbc_766099df",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d9ebafe_0008b7f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
         "patchSetId": 2
