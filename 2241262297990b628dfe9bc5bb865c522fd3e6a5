@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2c10625_8342fdbc",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/fixturehelper.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2021-12-22T08:30:29Z",
+      "side": 1,
+      "message": "Just pass the file name, it can get the outdir inside the function.",
+      "parentUuid": "25a5f8a4_4699746c",
+      "range": {
+        "startLine": 17,
+        "startChar": 64,
+        "endLine": 17,
+        "endChar": 76
+      },
+      "revId": "2241262297990b628dfe9bc5bb865c522fd3e6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b9bb0a30_db4e2e1f",
         "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi_mgs.go",
         "patchSetId": 8
