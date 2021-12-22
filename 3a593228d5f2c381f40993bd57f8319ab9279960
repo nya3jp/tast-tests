@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "533ecbd5_540479e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T20:41:07Z",
+      "side": 1,
+      "message": "Please see go/paste/5082539933827072 for how the code would look like with a helper func (return two objects and use defer in the main func).\n\nA few reasons I prefer to not use helper func in this particular case.\n1. Extra mental burden: Caller must remember to call defer in the right order to do clean-up for returned objects;\n2. Double check on results: Helper func checks things once. Caller must check return values another time. This results in extra 17 lines of code in total. The code in main func for setting up Chrome only goes from 19 lines to 11 lines (8 lines shorter, but admittedly that 11 lines are easier simpler to read than the 19 lines).\n3. Less info in log: Without passing testing.State, the helper func can\u0027t log anything. In case the test fails, we would have to manually add logging and hope that we can easily repro the issue.\n\nI agree that helper func has the benefit of modularity. One possibility is to put the Chrome setup code into a scope (with \"{}\") and add some comment for the scope (e.g \"this block of code is to setup Chrome\").\n\nFollow-up: 2) and 3) could be overcome, if we allow to pass testing.State into helper func and allow to s.Fatal() there. It doesn\u0027t add more lines of code (roughly) compared the code without helper func.\ngo/paste/5734803631505408",
+      "parentUuid": "f4f1671b_7f0eb74b",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d9ebafe_0008b7f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
         "patchSetId": 2
@@ -155,6 +173,24 @@
       "side": 1,
       "message": "I agree. Will update the code.",
       "parentUuid": "37074ba0_62f0a456",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf25b707_5952ec71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T20:41:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3cb6d9f_c7d5a2ff",
       "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
