@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e05e4c37_b6555639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-12-22T08:50:15Z",
+      "side": 1,
+      "message": "I thought the current metric value outputs were matching the style. Ex:\n```\nMax latency      : 0.017584 s\nMin latency      : 0.004304 s\nMedian latency   : 0.008287 s\nMean latency     : 0.011508 s\n```\n\nDo you mean the metric descriptions are not consistent enough?\n\nUpdated to use regexp.",
+      "parentUuid": "5171fa39_93615d7b",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d965d777_aa853209",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
         "patchSetId": 3
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "You are converting \"Max latency  \" to \"Max Latency\" using string manipulation, right?\n\nIf you name the metric as SensorIioservice.name.location.latency.min (or latency_min), you only need to extract the 1st token of |latency|. I think it\u0027ll be clearer.",
       "parentUuid": "611539b3_2e829987",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8e8ac0_548bf1de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-12-22T08:50:15Z",
+      "side": 1,
+      "message": "Thanks! Updated.",
+      "parentUuid": "b2a745bc_1ac01274",
       "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
