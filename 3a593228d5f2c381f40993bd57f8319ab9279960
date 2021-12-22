@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4253c5d3_54ed1943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T19:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0354c11a_54ac4bb9",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2b5e8c1_f22cfaa5",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdbf1dbc_766099df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T19:15:16Z",
+      "side": 1,
+      "message": "Compared to optin.go, I removed the separate helper function, such that I can use \"defer\" statements for clean-up (for fdms). The original code in optin.go didn\u0027t have the need to defer anything from the helper function.\n\nWith a helper function, the caller will have to take the returned fdms and defer clean up call. And additional parameters need to be passed into the helper func (compared to the 2 params in the original optin.go). For a test func \u003c 50 lines, I feel it\u0027s simpler not to have a separate func (which is only called once).\nAnd I would even consider doing the same thing for optin.go.\n\nWhat do you think?",
+      "parentUuid": "b2b5e8c1_f22cfaa5",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d9ebafe_0008b7f9",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2021-12-22T17:55:48Z",
       "side": 1,
       "message": "we can introduce setupChrome kind of helper here as well as in the original optin test above",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deb675ad_25290f52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T19:15:16Z",
+      "side": 1,
+      "message": "Please see my reply above.",
+      "parentUuid": "9d9ebafe_0008b7f9",
       "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3cb6d9f_c7d5a2ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T19:15:16Z",
+      "side": 1,
+      "message": "I agree. Will update the code.",
+      "parentUuid": "37074ba0_62f0a456",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0539fbe9_63daae35",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
         "patchSetId": 2
@@ -82,6 +154,24 @@
       "writtenOn": "2021-12-22T17:55:48Z",
       "side": 1,
       "message": "Can we use `apps.Launch(ctx, tconn, apps.PlayStore.ID)` instead to avoid simulating key presses and going through the launcher?\n\nExamples: https://source.chromium.org/search?q\u003d%22apps.Launch(ctx,%20tconn,%20apps.PlayStore.ID)%22",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1091f1f_e287df72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T19:15:16Z",
+      "side": 1,
+      "message": "Great suggestion. It\u0027s faster and more reliable than simulating key presses.",
+      "parentUuid": "0539fbe9_63daae35",
       "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -99,6 +189,24 @@
       "writtenOn": "2021-12-22T17:55:48Z",
       "side": 1,
       "message": "isn\u0027t waitForPlayStoreShown enough? I\u0027m wondering why do we need this additional visibility check?",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f08977ee_89646cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-22T19:15:16Z",
+      "side": 1,
+      "message": "Got it. Will remove.",
+      "parentUuid": "05509ade_5d78903d",
       "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
