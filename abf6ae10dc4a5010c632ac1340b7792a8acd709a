@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a94f5d05_f3d54f28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/media_recorder_multi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-22T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2531449_ba54c38b",
+      "range": {
+        "startLine": 52,
+        "startChar": 50,
+        "endLine": 52,
+        "endChar": 53
+      },
+      "revId": "abf6ae10dc4a5010c632ac1340b7792a8acd709a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8289430b_12965552",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-22T04:30:00Z",
       "side": 1,
       "message": "Remove this because trogdor doesn\u0027t meet the \"ihd\" dependency, so it won\u0027t run on that board anyway.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 63
+      },
+      "revId": "abf6ae10dc4a5010c632ac1340b7792a8acd709a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "136fa39c_20f98033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2021-12-22T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8289430b_12965552",
       "range": {
         "startLine": 126,
         "startChar": 0,
