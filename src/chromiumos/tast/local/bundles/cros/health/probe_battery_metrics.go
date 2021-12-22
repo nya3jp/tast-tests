@@ -6,7 +6,6 @@ package health
 
 import (
 	"context"
-	"math"
 	"strconv"
 
 	"chromiumos/tast/errors"
@@ -80,8 +79,12 @@ func checkBatteryFloatProperty(sysfsPath, field string, got float64) error {
 	}
 
 	// Because the value of battery varies continuously, so we only check if it's roughly the same.
-	if want := float64(micros) / 1e6; math.Abs(got-want) > 1e-1 {
-		return errors.Errorf("unexpected value for %v: got %v, want %v", field, got, want)
+	// Checked with hardware team, they recommended that we can check if it's within 5%.
+	want := float64(micros) / 1e6
+	maxWant := want * 1.05
+	minWant := want * 0.95
+	if got > maxWant || got < minWant {
+		return errors.Errorf("unexpected value for %v: got %v, want [%v, %v]", field, got, minWant, maxWant)
 	}
 	return nil
 }
