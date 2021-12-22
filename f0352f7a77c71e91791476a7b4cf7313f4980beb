@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccb84dd9_340c1fd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-22T16:43:14Z",
+      "side": 1,
+      "message": "this can be in multiple lines:\n\n```\nTEST\u003dtast run --build\u003dtrue --var\u003dservo\u003dlocalhost:9999 \\\n     --var\u003dpower.iterations\u003d10 \\\n     \u003cDUTIP\u003e power.SDCardFunctionality.shutdown\n```",
+      "parentUuid": "f58e1d90_fdea3c89",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 123
+      },
+      "revId": "f0352f7a77c71e91791476a7b4cf7313f4980beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "081514fc_add1a16d",
@@ -258,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d70b401_c8399145",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/sd_card_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-22T16:43:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1bdb8613_212ca9f0",
+      "range": {
+        "startLine": 33,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "f0352f7a77c71e91791476a7b4cf7313f4980beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c1cbaea_d90b997d",
@@ -354,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb2329c5_3ba2c943",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/sd_card_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-22T16:43:14Z",
+      "side": 1,
+      "message": "I was looking into other tests in power/ folder and looks like your test should be under new sdcard/ folder. Tests under power/ are more about \"powerd\" daemon and power management in Chrome OS. Am I missing smth?\n\nSince this will be the 1st test in sdcard/ folder and it won\u0027t be running in mainline, no need to add someone from Google.",
+      "parentUuid": "64252c60_26a3cff7",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "f0352f7a77c71e91791476a7b4cf7313f4980beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1b10fec_d97250c2",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/sd_card_functionality.go",
         "patchSetId": 1
@@ -389,6 +461,30 @@
       "side": 1,
       "message": "Yes, Var is required as there are different iteration value for acceptance and functional test-cases.\nAcceptance test-case requires one iteration as per test steps(now script default iteration value is updated with one iteration counter value).\nFunctional test-case requires ten iteration as per test steps.",
       "parentUuid": "e1b10fec_d97250c2",
+      "range": {
+        "startLine": 39,
+        "startChar": 35,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "f0352f7a77c71e91791476a7b4cf7313f4980beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "398fd0fb_d2de08c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/sd_card_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-22T16:43:14Z",
+      "side": 1,
+      "message": "Can you rename it to smth like \"sdcard.functionality_iterations\" to be more specific?",
+      "parentUuid": "991f6305_16459576",
       "range": {
         "startLine": 39,
         "startChar": 35,
