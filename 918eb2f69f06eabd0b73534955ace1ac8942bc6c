@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9760d2d_6da4f396",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2021-12-22T09:29:08Z",
+      "side": 1,
+      "message": "Hi tast-owners,\n\nI needed to regenerate defs.go to propagate changes from policy_templates.json.\nIt\u0027s my first commit to tast-tests, so I hope I didn\u0027t miss anything.",
+      "revId": "918eb2f69f06eabd0b73534955ace1ac8942bc6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
