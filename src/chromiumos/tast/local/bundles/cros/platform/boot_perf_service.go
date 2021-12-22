@@ -97,7 +97,7 @@ func (*BootPerfService) GetBootPerfMetrics(ctx context.Context, _ *empty.Empty) 
 	bootperf.GatherDiskMetrics(out)
 
 	testing.ContextLog(ctx, "Gather firmware boot metric")
-	err = bootperf.GatherFirmwareBootTime(out)
+	err = bootperf.GatherFirmwareBootTime(ctx, out)
 	if err != nil {
 		return nil, err
 	}
@@ -131,6 +131,9 @@ func (*BootPerfService) GetBootPerfRawData(ctx context.Context, _ *empty.Empty) 
 		return nil, err
 	}
 	if err := bootperf.GatherConsoleRamoops(raw); err != nil {
+		return nil, err
+	}
+	if err := bootperf.StoreFirmwareTimestamps(ctx, raw); err != nil {
 		return nil, err
 	}
 

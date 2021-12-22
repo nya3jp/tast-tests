@@ -12,11 +12,13 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	upstartcommon "chromiumos/tast/common/upstart"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/upstart"
@@ -27,8 +29,6 @@ import (
 const (
 	uptimePrefix = "uptime-"
 	diskPrefix   = "disk-"
-
-	firmwareTimeFile = "/tmp/firmware-boot-time"
 
 	// Directory where the current statistics are stored
 	// TODO(b:182094511): Move the statistics to a subdirectory of /tmp
@@ -136,11 +136,6 @@ func WaitUntilBootComplete(ctx context.Context) error {
 					return errors.Wrapf(err, "error in waiting for bootstat file %s", key)
 				}
 			}
-		}
-
-		// Check that firmware boot time files is available.
-		if _, err := os.Stat(firmwareTimeFile); err != nil {
-			return errors.New("waiting for firmware boot time file")
 		}
 
 		// Wait until upstart jobs enter the desired states.
@@ -322,22 +317,28 @@ func GatherDiskMetrics(results *platform.GetBootPerfMetricsResponse) {
 	}
 }
 
-// GatherFirmwareBootTime reads and reports firmware startup time. The boot
-// process writes the firmware startup time to the file named in
-// |firmwareTimeFile|. Read the time from that file, and record it as the metric
-// seconds_power_on_to_kernel.
-func GatherFirmwareBootTime(results *platform.GetBootPerfMetricsResponse) error {
-	b, err := ioutil.ReadFile(firmwareTimeFile)
-	for err != nil {
-		return errors.Wrapf(err, "failed to open file %s", firmwareTimeFile)
-	}
-
-	l := strings.Split(string(b), "\n")[0]
-
-	fw, err := strconv.ParseFloat(l, 64)
+// GatherFirmwareBootTime reads and reports firmware startup time. It extracts firmware boot time from the output of `cbmem -t`
+func GatherFirmwareBootTime(ctx context.Context, results *platform.GetBootPerfMetricsResponse) error {
+	stdout, err := readFirmwareTimestamps(ctx)
 	if err != nil {
-		return errors.Wrapf(err, "failed to parse firmware time %s", l)
+		return err
 	}
+
+	// Parse firmware boot time from the output. `cbmem -t` reports firmware boot time with format of 'Total Time: {comma separated microseconds}'.
+	// Example: Total Time: 4,819,016
+	re := regexp.MustCompile(`Total Time:\s+([0-9,]+)`)
+	stdoutStr := string(stdout)
+	m := re.FindStringSubmatch(stdoutStr)
+	if m == nil {
+		return errors.Errorf("failed to parse firmware boot time from cbmem output: %s", stdoutStr)
+	}
+	t := strings.ReplaceAll(m[1], ",", "") // Remove all commas.
+
+	fwUsec, err := strconv.ParseUint(t, 10, 64)
+	if err != nil {
+		return errors.Wrapf(err, "failed to parse firmware time %s", t)
+	}
+	fw := float64(fwUsec) / 1000000
 
 	bootTime := results.Metrics["seconds_kernel_to_login"]
 	results.Metrics["seconds_power_on_to_kernel"] = fw
@@ -422,6 +423,15 @@ func findMostRecentBootstatArchivePath() (string, error) {
 		}
 	}
 	return "", errors.New("failed to find the bootstat archive for the latest shutdown")
+}
+
+// readFirmwareTimestamps reads firmware timestamp data from `cbmem -t`.
+func readFirmwareTimestamps(ctx context.Context) ([]byte, error) {
+	stdout, err := testexec.CommandContext(ctx, "/usr/bin/cbmem", "-t").Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to execute read firmware timestamps from `cbmem -t`")
+	}
+	return stdout, nil
 }
 
 // GatherRebootMetrics reads and reports shutdown and reboot times. The shutdown
@@ -572,7 +582,7 @@ func CalculateDiff(results *platform.GetBootPerfMetricsResponse) {
 // GatherMetricRawDataFiles gathers content of raw data files to be returned to
 // the client.
 func GatherMetricRawDataFiles(raw map[string][]byte) error {
-	files := []string{firmwareTimeFile}
+	var files []string
 	for _, glob := range []string{uptimeFileGlob, diskFileGlob} {
 		list, _ := filepath.Glob(glob) // filepath.Glob() only returns error on malformed glob patterns.
 		files = append(files, list...)
@@ -601,4 +611,13 @@ func GatherConsoleRamoops(raw map[string][]byte) error {
 	}
 
 	return nil
+}
+
+// StoreFirmwareTimestamps stores the raw firmware timestamps from `cbmem -t`
+func StoreFirmwareTimestamps(ctx context.Context, raw map[string][]byte) error {
+	stdout, err := readFirmwareTimestamps(ctx)
+	if err == nil {
+		raw["cbmem-timestamps"] = stdout
+	}
+	return err
 }
