@@ -124,7 +124,7 @@ func (uda *Context) RightClick(s *Finder, optionList ...Option) uiauto.Action {
 
 // Location finds the location of a finder in the screen.
 func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) {
-	if err := s.resolve(ctx, uda.detector, uda.pollOpts); err != nil {
+	if err := s.resolve(ctx, uda.detector, uda.tconn, uda.pollOpts); err != nil {
 		return nil, errors.Wrapf(err, "failed to resolve the finder: %q", s.desc)
 	}
 	return s.location()
