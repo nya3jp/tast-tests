@@ -104,6 +104,24 @@
       "parentUuid": "6f9a86d1_58a22104",
       "revId": "cd5e695fbb528886aab4428e8e00fd48095ba9c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfec3e41_45c644ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-22T01:47:01Z",
+      "side": 1,
+      "message": "You\u0027re still only verifying positive cases. Especially when verifying libraries, you need to test that the negative cases work as expected, as well. Please also check that you get appropriate errors as well.\n\nFor an example I wrote a while back for screendiff, see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/screenshot/screen_diff.go;l\u003d52;drc\u003d56af2b0a8eafbdfc9812f93815a362f0b055d655",
+      "parentUuid": "63879907_bd8f7585",
+      "revId": "cd5e695fbb528886aab4428e8e00fd48095ba9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
