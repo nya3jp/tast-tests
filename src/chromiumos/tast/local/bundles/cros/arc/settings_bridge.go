@@ -49,7 +49,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that Chrome settings are persisted in ARC",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBootedWithoutUIAutomator",
 		Timeout:      4 * time.Minute,
@@ -60,6 +60,7 @@ func init() {
 			Name:              "unstable",
 			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vm",
 			Val:               stableSettingsBridgeParam,
@@ -68,6 +69,7 @@ func init() {
 			Name:              "vm_unstable",
 			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
