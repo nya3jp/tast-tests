@@ -28,6 +28,10 @@ func init() {
 func ECReboot(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
 
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servod")
+	}
+
 	type rebootTestCase struct {
 		rebootName    string
 		rebootCommand string

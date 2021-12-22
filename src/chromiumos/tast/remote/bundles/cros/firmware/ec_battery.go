@@ -58,6 +58,10 @@ func ECBattery(ctx context.Context, s *testing.State) {
 
 	h := s.FixtValue().(*fixture.Value).Helper
 
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servod")
+	}
+
 	s.Log("Checking for battery info in sysfs")
 	batteryNameOut, err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", BatteryNameLookupScript).Output()
 	if err != nil {
