@@ -16,9 +16,11 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -95,7 +97,7 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 
 			// Move mouse to status tray.
 			if err := ui.MouseMoveTo(nodewith.ClassName("ash/StatusAreaWidgetDelegate"), 0)(ctx); err != nil {
-				s.Fatal("Failed to move mouse to status tray")
+				s.Fatal("Failed to move mouse to status tray: ", err)
 			}
 
 			// Check if a click occurred by checking whether the Sign out button is visible or not.
@@ -112,10 +114,10 @@ func AutoclickEnabled(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			// Move mouse to Launcher button so the next test case will have to move the mouse again.
+			// Move mouse to the top left corner so the next test case will have to move the mouse again.
 			// Otherwise autoclick won't be triggered.
-			if err := ui.MouseMoveTo(nodewith.Name("Launcher").ClassName("ash/HomeButton"), 0)(ctx); err != nil {
-				s.Fatal("Failed to move mouse to status tray")
+			if err := mouse.Move(tconn, coords.Point{X: 0, Y: 0}, 0)(ctx); err != nil {
+				s.Fatal("Failed to move mouse to the top left corner: ", err)
 			}
 
 			if err := policyutil.OSSettingsPage(ctx, cr, "manageAccessibility").
