@@ -155,6 +155,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b19a680_90c1ad47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-22T09:56:49Z",
+      "side": 1,
+      "message": "In the meantime I found another solution that should work, and more elegant than my previous one, I updated my CL. If that is merged, and we have a few test results, I will let you know if it worked.",
+      "parentUuid": "72409154_e7bfd22d",
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4195fb90_b37e637a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
         "patchSetId": 2
