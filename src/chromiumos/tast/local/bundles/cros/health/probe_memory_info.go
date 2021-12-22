@@ -6,12 +6,13 @@ package health
 
 import (
 	"context"
+	"io/ioutil"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type memoryEncryptionInfo struct {
@@ -22,11 +23,11 @@ type memoryEncryptionInfo struct {
 }
 
 type memoryInfo struct {
-	AvailableMemoryKib      jsontypes.Uint32     `json:"available_memory_kib"`
-	FreeMemoryKib           jsontypes.Uint32     `json:"free_memory_kib"`
-	PageFaultsSinceLastBoot jsontypes.Uint64     `json:"page_faults_since_last_boot"`
-	TotalMemoryKib          jsontypes.Uint32     `json:"total_memory_kib"`
-	MemoryEncryptionInfo    memoryEncryptionInfo `json:"memory_encryption_info"`
+	AvailableMemoryKib      jsontypes.Uint32      `json:"available_memory_kib"`
+	FreeMemoryKib           jsontypes.Uint32      `json:"free_memory_kib"`
+	PageFaultsSinceLastBoot jsontypes.Uint64      `json:"page_faults_since_last_boot"`
+	TotalMemoryKib          jsontypes.Uint32      `json:"total_memory_kib"`
+	MemoryEncryptionInfo    *memoryEncryptionInfo `json:"memory_encryption_info"`
 }
 
 func init() {
@@ -42,15 +43,6 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
-		Params: []testing.Param{{
-			Val: false,
-		}, {
-			Name: "memory_encryption",
-			Val:  true,
-			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
-			ExtraAttr:         []string{"informational"},
-		}},
 	})
 }
 
@@ -105,9 +97,21 @@ func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to validate memory data, err [%v]", err)
 	}
 
-	if s.Param().(bool) {
-		if err := validateMemoryEncryptionData(&memory.MemoryEncryptionInfo); err != nil {
-			s.Fatal("Failed to validate Memory Encryption data: ", err)
-		}
+	out, err := ioutil.ReadFile("/proc/cpuinfo")
+	if err != nil {
+		s.Fatal("Failed to read /proc/cpuinfo file: ", err)
 	}
+	// Checking whether the system supports vPro feature or not.
+	if strings.Contains(string(out), "tme") {
+		if err := validateMemoryEncryptionData(memory.MemoryEncryptionInfo); err != nil {
+			s.Fatal("Failed to validate memory encryption data: ", err)
+		}
+
+	} else {
+		if memory.MemoryEncryptionInfo != nil {
+			s.Fatal("Failed to validate empty memory encryption data")
+		}
+
+	}
+
 }
