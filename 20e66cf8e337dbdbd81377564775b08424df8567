@@ -22,6 +22,30 @@
       },
       "revId": "20e66cf8e337dbdbd81377564775b08424df8567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc73869_341d5a11",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_update_id.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2021-12-22T06:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b62af72_94b8636c",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 82
+      },
+      "revId": "20e66cf8e337dbdbd81377564775b08424df8567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
