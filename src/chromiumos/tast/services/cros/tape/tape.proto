@@ -1,0 +1,27 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.tape;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/tape";
+
+// TapeService provides a function to pass a token.
+service TapeService {
+  rpc CreateTokenFile(CreateTokenFileRequest) returns (google.protobuf.Empty) {}
+  rpc RemoveTokenFile(RemoveTokenFileRequest) returns (google.protobuf.Empty) {}
+}
+
+message CreateTokenFileRequest {
+  string path = 1;
+  string file = 2;
+  string token = 3;
+}
+
+message RemoveTokenFileRequest {
+  string path = 1;
+}
