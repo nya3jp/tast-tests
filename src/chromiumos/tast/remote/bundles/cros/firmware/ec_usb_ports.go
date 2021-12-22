@@ -131,7 +131,7 @@ func checkUSBAPortEnabled(ctx context.Context, h *firmware.Helper, expectedStatu
 				gpioOrIoex = "ioex"
 			}
 			cmd := fmt.Sprintf("%sget %s", gpioOrIoex, pin.Name)
-			matchList := []string{fmt.Sprintf(`(0|1)[^\n\r]*\s%s`, pin.Name)}
+			matchList := []string{fmt.Sprintf(`(?i)(0|1)[^\n\r]*\s%s`, pin.Name)}
 			out, err := h.Servo.RunECCommandGetOutput(ctx, cmd, matchList)
 			if err != nil {
 				return errors.Wrapf(err, "failed to run cmd %v, got error", cmd)
@@ -156,7 +156,7 @@ func checkUSBAPortEnabled(ctx context.Context, h *firmware.Helper, expectedStatu
 		for i := 1; i <= portsToCheck; i++ {
 			name := fmt.Sprintf("USB%d_ENABLE", i)
 			cmd := fmt.Sprintf("gpioget %s", name)
-			reFoundPort := regexp.MustCompile(fmt.Sprintf(`(0|1)[^\n\r]*\s%s`, name))
+			reFoundPort := regexp.MustCompile(fmt.Sprintf(`(?i)(0|1)[^\n\r]*\s%s`, name))
 			reNotFoundPort := regexp.MustCompile(`Parameter\s+(\d+)\s+invalid`)
 			matchList := []string{"(" + reFoundPort.String() + "|" + reNotFoundPort.String() + ")"}
 			out, err := h.Servo.RunECCommandGetOutput(ctx, cmd, matchList)
