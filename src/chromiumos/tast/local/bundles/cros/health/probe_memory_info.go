@@ -6,12 +6,13 @@ package health
 
 import (
 	"context"
+	"io/ioutil"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type memoryEncryptionInfo struct {
@@ -39,18 +40,9 @@ func init() {
 			"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
-		Params: []testing.Param{{
-			Val: false,
-		}, {
-			Name: "memory_encryption",
-			Val:  true,
-			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
-			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
-			ExtraAttr:         []string{"informational"},
-		}},
 	})
 }
 
@@ -105,9 +97,22 @@ func ProbeMemoryInfo(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to validate memory data, err [%v]", err)
 	}
 
-	if s.Param().(bool) {
-		if err := validateMemoryEncryptionData(memory.MemoryEncryptionInfo); err != nil {
-			s.Fatal("Failed to validate Memory Encryption data: ", err)
-		}
+	out, err := ioutil.ReadFile("/proc/cpuinfo")
+	if err != nil {
+		s.Fatal("Failed to read /proc/cpuinfo file: ", err)
 	}
+
+	// Checking whether the system supports vPro feature or not.
+	if strings.Contains(string(out), "tme") {
+		if err := validateMemoryEncryptionData(memory.MemoryEncryptionInfo); err != nil {
+			s.Fatal("Failed to validate memory encryption data: ", err)
+		}
+
+	} else {
+		if (memory.MemoryEncryptionInfo != memoryEncryptionInfo{}) {
+			s.Fatal("Failed to validate empty memory encryption data")
+		}
+
+	}
+
 }
