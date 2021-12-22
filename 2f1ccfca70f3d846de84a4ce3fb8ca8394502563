@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0033b64_3c94ab34",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-22T04:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0714138_ea826846",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 6
+      },
+      "revId": "2f1ccfca70f3d846de84a4ce3fb8ca8394502563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b7e88f1_b2fec0a6",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-21T01:23:36Z",
       "side": 1,
       "message": "nit: immutable slice initialization is nicer than mutating a variable.\n\n steps :\u003d []uiauto.Action{\n   s.Foo(...),\n   s.Foo(...),\n   s.Foo(...),\n   ...\n }",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "2f1ccfca70f3d846de84a4ce3fb8ca8394502563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "910e95ab_8e5fa948",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-22T04:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b7e88f1_b2fec0a6",
       "range": {
         "startLine": 212,
         "startChar": 1,
