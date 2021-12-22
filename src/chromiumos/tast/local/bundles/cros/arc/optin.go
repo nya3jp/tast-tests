@@ -14,11 +14,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type optinTestParam struct {
-	username string
-	password string
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Optin,
@@ -29,37 +24,17 @@ func init() {
 			"mhasank@chromium.org",
 			"khmel@chromium.org", // author.
 		},
-		Attr: []string{"group:mainline", "group:arc-functional"},
-		VarDeps: []string{"ui.gaiaPoolDefault",
-			"arc.Optin.managed_username",
-			"arc.Optin.managed_password"},
+		Attr:    []string{"group:mainline", "group:arc-functional"},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{
 			"chrome",
 			"chrome_internal",
 			"play_store",
 		},
 		Params: []testing.Param{{
-			Val:               optinTestParam{},
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			Val:               optinTestParam{},
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}, {
-			Name: "managed",
-			Val: optinTestParam{
-				username: "arc.Optin.managed_username",
-				password: "arc.Optin.managed_password",
-			},
-			ExtraAttr:         []string{"informational"},
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name: "managed_vm",
-			Val: optinTestParam{
-				username: "arc.Optin.managed_username",
-				password: "arc.Optin.managed_password",
-			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 6 * time.Minute,
@@ -75,13 +50,7 @@ func Optin(ctx context.Context, s *testing.State) {
 		maxAttempts = 1
 	)
 
-	param := s.Param().(optinTestParam)
-	var gaiaLogin chrome.Option
-	if param.username != "" {
-		gaiaLogin = chrome.GAIALogin(chrome.Creds{User: s.RequiredVar(param.username), Pass: s.RequiredVar(param.password)})
-	} else {
-		gaiaLogin = chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))
-	}
+	gaiaLogin := chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))
 
 	cr, err := setupChrome(ctx, gaiaLogin)
 	if err != nil {
