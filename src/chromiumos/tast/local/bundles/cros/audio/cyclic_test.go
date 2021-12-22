@@ -17,21 +17,33 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type SchedPolicy int
+
+// TODO(eddyhsu): supports other types of policy.
+const (
+	None SchedPolicy = iota
+	RR
+	Other
+)
+
 // cyclicTestParameters contains all the data needed to run a single test iteration.
 type cyclicTestParameters struct {
-	Priority       int // Priority of the process
-	Threads        int // Number of threads
-	IntervalUs     int // Interval time
-	Loops          int // Number of times
-	P99ThresholdUs int // P99 latency threshold
+	Priority       int         // Priority of the process
+	Threads        int         // Number of threads
+	IntervalUs     int         // Interval time
+	Loops          int         // Number of times
+	P99ThresholdUs int         // P99 latency threshold
+	StressSched    SchedPolicy // the schedule policy of the stress workload. None implies no stress.
 }
 
 const (
 	CrasPriority          = 12
 	CrasClientPriority    = 10
+	StressPriority        = 20
 	DefaultIntervalUs     = 10000
 	DefaultLoops          = 1000
 	DefaultP99ThresholdUs = 100
+	DefaultStressWorker   = 10000
 )
 
 func init() {
@@ -51,6 +63,7 @@ func init() {
 					IntervalUs:     DefaultIntervalUs,
 					Loops:          DefaultLoops,
 					P99ThresholdUs: DefaultP99ThresholdUs,
+					StressSched:    None,
 				},
 			},
 			{
@@ -61,6 +74,7 @@ func init() {
 					IntervalUs:     DefaultIntervalUs,
 					Loops:          DefaultLoops,
 					P99ThresholdUs: DefaultP99ThresholdUs,
+					StressSched:    None,
 				},
 			},
 			{
@@ -71,6 +85,7 @@ func init() {
 					IntervalUs:     DefaultIntervalUs,
 					Loops:          DefaultLoops,
 					P99ThresholdUs: DefaultP99ThresholdUs,
+					StressSched:    None,
 				},
 			},
 			{
@@ -81,6 +96,29 @@ func init() {
 					IntervalUs:     DefaultIntervalUs,
 					Loops:          DefaultLoops,
 					P99ThresholdUs: DefaultP99ThresholdUs,
+					StressSched:    None,
+				},
+			},
+			{
+				Name: "rr12_1thread_10ms_stress_rr20_10000workers",
+				Val: cyclicTestParameters{
+					Priority:       CrasPriority,
+					Threads:        1,
+					IntervalUs:     DefaultIntervalUs,
+					Loops:          DefaultLoops,
+					P99ThresholdUs: DefaultP99ThresholdUs,
+					StressSched:    RR,
+				},
+			},
+			{
+				Name: "rr12_1thread_10ms_stress_normal_10000workers",
+				Val: cyclicTestParameters{
+					Priority:       CrasPriority,
+					Threads:        1,
+					IntervalUs:     DefaultIntervalUs,
+					Loops:          DefaultLoops,
+					P99ThresholdUs: DefaultP99ThresholdUs,
+					StressSched:    Other,
 				},
 			},
 		},
@@ -136,8 +174,33 @@ func CalculateStats(latencies [][]int) []cyclicTestStat {
 	return stats
 }
 
+func SchedPolicyString(schedPolicy SchedPolicy) string {
+	switch schedPolicy {
+	case None:
+		return "None"
+	case RR:
+		return "rr"
+	case Other:
+		return "other"
+	}
+	return "unknown"
+}
+
 func CyclicTest(ctx context.Context, s *testing.State) {
 	param := s.Param().(cyclicTestParameters)
+
+	// TODO(eddyhsu): let stress priority configurable.
+	stress := testexec.CommandContext(ctx, "stress-ng",
+		"--cpu="+strconv.Itoa(DefaultStressWorker),
+		"--sched="+SchedPolicyString(param.StressSched),
+		"--sched-prio="+strconv.Itoa(StressPriority))
+
+	if param.StressSched != None {
+		err := stress.Start()
+		if err != nil {
+			s.Fatal("Failed to start stress-ng: ", err)
+		}
+	}
 
 	out, err := testexec.CommandContext(ctx, "cyclictest",
 		// TODO(eddyhsu): supports other types of policy.
@@ -153,6 +216,13 @@ func CyclicTest(ctx context.Context, s *testing.State) {
 		"--verbose").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to execute cyclictest: ", err)
+	}
+
+	if param.StressSched != None {
+		err := stress.Kill()
+		if err != nil {
+			s.Fatal("Failed to kill stress-ng: ", err)
+		}
 	}
 
 	// The log will look like(task_number:count:latency_us):
