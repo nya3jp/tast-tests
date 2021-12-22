@@ -16,6 +16,46 @@
       "message": "LGTM",
       "revId": "643aed2db93d83eb33a4fa23d40f29cb8e29a906",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97af181_74b6b304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-22T20:45:27Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "643aed2db93d83eb33a4fa23d40f29cb8e29a906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54bf5e28_0b6a9923",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2021-12-22T20:45:27Z",
+      "side": 1,
+      "message": "Function parameter not needed.",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 44
+      },
+      "revId": "643aed2db93d83eb33a4fa23d40f29cb8e29a906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
