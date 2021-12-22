@@ -91,8 +91,8 @@ func ChromevoxHint(ctx context.Context, s *testing.State) {
 	defer sm.Close()
 
 	chromeVoxText := nodewith.NameStartingWith("Do you want to activate ChromeVox").Role(role.StaticText).Onscreen()
-	noButton := nodewith.Name("No, continue without ChromeVox").Role(role.Button).Onscreen()
-	yesButton := nodewith.Name("Yes, activate ChromeVox").Role(role.Button).Onscreen()
+	noButton := nodewith.HasClass("_TAST_continueWithoutChromeVox").Role(role.Button).Onscreen()
+	yesButton := nodewith.HasClass("_TAST_activateChromeVox").Role(role.Button).Onscreen()
 	var speechExpectations []a11y.SpeechExpectation
 	var actions uiauto.Action
 	ui := uiauto.New(tconn)
