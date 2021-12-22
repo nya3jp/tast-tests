@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cdd0b817_a8720aee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:22:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "57f1e46f_78f9eb8a",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f33d7c19_442f2b38",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -93,6 +117,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae8e805_eb348459",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:22:34Z",
+      "side": 1,
+      "message": "Happy to help!",
+      "parentUuid": "cfb55422_f025abd9",
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72409154_e7bfd22d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:22:34Z",
+      "side": 1,
+      "message": "Ah thanks, LMK if I should abandon this change.",
+      "parentUuid": "2072243d_9e518b2c",
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4195fb90_b37e637a",
@@ -139,6 +199,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabbacfd_79e8ab9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4195fb90_b37e637a",
+      "range": {
+        "startLine": 139,
+        "startChar": 65,
+        "endLine": 139,
+        "endChar": 70
+      },
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd88b814_74daa49a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "444ec35b_b6c4d444",
+      "range": {
+        "startLine": 139,
+        "startChar": 6,
+        "endLine": 139,
+        "endChar": 7
+      },
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecf5cf0f_465aec4e",
@@ -152,6 +260,30 @@
       "writtenOn": "2021-12-21T12:19:10Z",
       "side": 1,
       "message": "Can we set a more descriptive name here?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 4
+      },
+      "revId": "d32277ac5ff83e2a95a37a038ba1581abf143d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80518690_2ae672e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1381813
+      },
+      "writtenOn": "2021-12-22T06:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecf5cf0f_465aec4e",
       "range": {
         "startLine": 140,
         "startChar": 0,
