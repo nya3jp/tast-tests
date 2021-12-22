@@ -122,6 +122,24 @@
       "parentUuid": "63879907_bd8f7585",
       "revId": "cd5e695fbb528886aab4428e8e00fd48095ba9c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438f6de7_3193aa5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-22T02:42:07Z",
+      "side": 1,
+      "message": "Right. For the expected error when clicking a non-exist element, I added the method WaitUntilGone(), which is useful as a common method. The logic is the same, it checks if the expected error is thrown.\n\nAlso added another negative check for the multiple-match error.",
+      "parentUuid": "cfec3e41_45c644ed",
+      "revId": "cd5e695fbb528886aab4428e8e00fd48095ba9c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
