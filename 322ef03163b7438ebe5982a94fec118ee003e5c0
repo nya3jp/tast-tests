@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e04bcf4d_22b4bf7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-22T09:54:48Z",
+      "side": 1,
+      "message": "Found a different solution that should work. I would expect the Continue button state to be updated when the 6th digit appears in the UI.",
+      "parentUuid": "2f53d4c5_8bbc82f4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4612b34b_713539e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
         "patchSetId": 2
@@ -118,6 +142,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9654bf5_fcd31f5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-22T09:54:48Z",
+      "side": 1,
+      "message": "Until we have less than 6 digits entered, the Continue button is disabled.",
+      "parentUuid": "6b9017db_5533c7b5",
+      "range": {
+        "startLine": 140,
+        "startChar": 60,
+        "endLine": 140,
+        "endChar": 99
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b69bbff_9f634f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-22T09:54:48Z",
+      "side": 1,
+      "message": "Obsolete",
+      "parentUuid": "ec6892aa_041fb57a",
+      "range": {
+        "startLine": 140,
+        "startChar": 6,
+        "endLine": 140,
+        "endChar": 58
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26bc9e3c_492ed52d",
@@ -155,6 +227,30 @@
       "side": 1,
       "message": "I would be interested in the button state even if the sleep failed. But I can make it a fatal.",
       "parentUuid": "26bc9e3c_492ed52d",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "322ef03163b7438ebe5982a94fec118ee003e5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a721e5_239b2dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-22T09:54:48Z",
+      "side": 1,
+      "message": "Obsolete",
+      "parentUuid": "e8d53e44_6621f27a",
       "range": {
         "startLine": 142,
         "startChar": 6,
