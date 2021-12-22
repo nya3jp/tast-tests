@@ -63,7 +63,7 @@ func init() {
 			Val:               newRoutineParams(croshealthd.RoutineNVMESelfTest),
 			Timeout:           3 * time.Minute,
 			ExtraSoftwareDeps: []string{"nvme"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Nvme(),
+			ExtraHardwareDeps: hwdep.D(hwdep.Nvme(), hwdep.NvmeSelfTest(),
 				// TODO(http://b/175305207): some zork nvme controllers lock up
 				hwdep.SkipOnModel("morphius"),
 				// eve uses Samsung nvme drives which do not support self-test
