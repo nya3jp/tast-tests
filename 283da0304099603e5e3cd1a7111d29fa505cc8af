@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5171fa39_93615d7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-22T03:56:17Z",
+      "side": 1,
+      "message": "Regex is good when it\u0027s easy to understand, or when regex is a better option than the alternatives. Or you may split the string if the output has fixed number of tokens.\n\nIn general, it\u0027s not recommended for parsing log messages in natural languages. This is a bad IPC mechanism. But it\u0027s a sample program so it\u0027s less a problem. If you want the output to be human readable and parse-able at the same time in natural language, you may choose a consistent style like:\n\n(metric description) : (metric value, always in integer or fixed point) (optional unit).\n\nAnd it\u0027s easy to extract the value using regex.",
+      "parentUuid": "e2573138_819c01b4",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d965d777_aa853209",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
         "patchSetId": 3
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I used trailing spaces in |latency| (line 26) to prevent finding other patterns [1].\nAny suggestions to make it cleaner?\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform2/iioservice/iioservice_simpleclient/samples_observer.cc;rcl\u003d0b6765b64aab48f3f7482e1eaef0974004c6cde5;l\u003d107",
       "parentUuid": "d965d777_aa853209",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a745bc_1ac01274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-22T03:56:17Z",
+      "side": 1,
+      "message": "You are converting \"Max latency  \" to \"Max Latency\" using string manipulation, right?\n\nIf you name the metric as SensorIioservice.name.location.latency.min (or latency_min), you only need to extract the 1st token of |latency|. I think it\u0027ll be clearer.",
+      "parentUuid": "611539b3_2e829987",
       "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -195,6 +231,30 @@
         "startChar": 5,
         "endLine": 21,
         "endChar": 21
+      },
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79b43d8_9136ceb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-22T03:56:17Z",
+      "side": 1,
+      "message": "Thanks. This is clearer.",
+      "parentUuid": "78744845_fa8c3084",
+      "range": {
+        "startLine": 21,
+        "startChar": 66,
+        "endLine": 21,
+        "endChar": 74
       },
       "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
