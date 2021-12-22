@@ -19,18 +19,21 @@ import (
 
 // cyclicTestParameters contains all the data needed to run a single test iteration.
 type cyclicTestParameters struct {
-	Priority       int // Priority of the process
-	Threads        int // Number of threads
-	IntervalUs     int // Interval time
-	Loops          int // Number of times
-	P99ThresholdUs int // P99 latency threshold
+	Priority       int  // Priority of the process
+	Threads        int  // Number of threads
+	IntervalUs     int  // Interval time
+	Loops          int  // Number of times
+	P99ThresholdUs int  // P99 latency threshold
+	Stress         bool // stress test?
 }
 
 const CrasPriority = 12
 const CrasClientPriority = 10
-const DefaultIntervalUs = 1000
+const StressPriority = 20
+const DefaultIntervalUs = 10000
 const DefaultLoops = 1000
-const DefaultP99ThresholdUs = 40
+const DefaultP99ThresholdUs = 100
+const DefaultStressWorker = 10000
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -48,6 +51,7 @@ func init() {
 					IntervalUs:     DefaultIntervalUs,
 					Loops:          DefaultLoops,
 					P99ThresholdUs: DefaultP99ThresholdUs,
+					Stress:         false,
 				},
 			},
 			{
@@ -58,6 +62,7 @@ func init() {
 					IntervalUs:     DefaultIntervalUs,
 					Loops:          DefaultLoops,
 					P99ThresholdUs: DefaultP99ThresholdUs,
+					Stress:         false,
 				},
 			},
 			{
@@ -68,6 +73,7 @@ func init() {
 					IntervalUs:     DefaultIntervalUs,
 					Loops:          DefaultLoops,
 					P99ThresholdUs: DefaultP99ThresholdUs,
+					Stress:         false,
 				},
 			},
 			{
@@ -78,6 +84,18 @@ func init() {
 					IntervalUs:     DefaultIntervalUs,
 					Loops:          DefaultLoops,
 					P99ThresholdUs: DefaultP99ThresholdUs,
+					Stress:         false,
+				},
+			},
+			{
+				Name: "cras_pr_with_stress",
+				Val: cyclicTestParameters{
+					Priority:       CrasPriority,
+					Threads:        1,
+					IntervalUs:     DefaultIntervalUs,
+					Loops:          DefaultLoops,
+					P99ThresholdUs: DefaultP99ThresholdUs,
+					Stress:         true,
 				},
 			},
 		},
@@ -135,6 +153,18 @@ func CalculateStats(latencies [][]int) []cyclicTestStat {
 
 func CyclicTest(ctx context.Context, s *testing.State) {
 	param := s.Param().(cyclicTestParameters)
+
+	stress := testexec.CommandContext(ctx, "stress-ng",
+		"--cpu="+strconv.Itoa(DefaultStressWorker),
+		"--sched=rr",
+		"--sched-prio="+strconv.Itoa(StressPriority))
+	if param.Stress {
+		err := stress.Start()
+		if err != nil {
+			s.Fatal("Failed to start stress-ng: ", err)
+		}
+	}
+
 	out, err := testexec.CommandContext(ctx, "cyclictest",
 		"--priority="+strconv.Itoa(param.Priority),
 		"--interval="+strconv.Itoa(param.IntervalUs),
@@ -144,6 +174,13 @@ func CyclicTest(ctx context.Context, s *testing.State) {
 		"--verbose").Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to execute cyclictest: ", err)
+	}
+
+	if param.Stress {
+		err := stress.Kill()
+		if err != nil {
+			s.Fatal("Failed to kill stress-ng: ", err)
+		}
 	}
 
 	// The log will look like(task_number:count:latency_us):
