@@ -22,6 +22,98 @@
       },
       "revId": "af02ed09d45e003f6155ff219a1c4fd4bf1ea31b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5e7c23_421f4550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-22T18:57:18Z",
+      "side": 1,
+      "message": "1000us \u003d 1ms is harsh to the system, maybe start from 5ms or 10ms first.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "af02ed09d45e003f6155ff219a1c4fd4bf1ea31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d90de0_8905a2b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-22T18:57:18Z",
+      "side": 1,
+      "message": "should be larger when using 5ms or 10ms",
+      "range": {
+        "startLine": 33,
+        "startChar": 30,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "af02ed09d45e003f6155ff219a1c4fd4bf1ea31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba1d5f0_ac00178e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-22T18:57:18Z",
+      "side": 1,
+      "message": "could add me: paulhsia@chromium.org and cychiang@chromium.org as well",
+      "range": {
+        "startLine": 39,
+        "startChar": 43,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "af02ed09d45e003f6155ff219a1c4fd4bf1ea31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8c1050_1e87bc8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-22T18:57:18Z",
+      "side": 1,
+      "message": "comment for this option",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 17
+      },
+      "revId": "af02ed09d45e003f6155ff219a1c4fd4bf1ea31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
