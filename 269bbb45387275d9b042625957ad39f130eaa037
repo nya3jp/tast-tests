@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0b0422_d3e3d77f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2021-12-22T15:15:14Z",
+      "side": 1,
+      "message": "This the remote fixture for tape. It starts a loop in the SetUp which calls the tapeservice to create/overwrite a token file on the DuT.\nI\u0027ve set the timeout for the SetUp to 10 minutes for now so the loop will not timeout too quickly.\n\nRight now it looks like that the goroutine will only be executed after a test using the fixture has finished.",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
