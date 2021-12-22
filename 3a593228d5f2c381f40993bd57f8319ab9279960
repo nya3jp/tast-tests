@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0354c11a_54ac4bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-22T17:55:48Z",
+      "side": 1,
+      "message": "since we do not vary this per test, instead of making it a param, we can just directly reference the constants in the test.",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b5e8c1_f22cfaa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-22T17:55:48Z",
+      "side": 1,
+      "message": "can we move line 83 to 91 in a separate helper function to reduce the code in the main test function?\n\nWe\u0027re not supposed to reference \"s\" inside helper functions so you can just return an error and do the fatal in main function\n\nExample: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/arc/optin/optin.go;l\u003d122;drc\u003d0c2581edf4605f1d6853abf1862a85ac42d6447d",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9ebafe_0008b7f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-22T17:55:48Z",
+      "side": 1,
+      "message": "we can introduce setupChrome kind of helper here as well as in the original optin test above",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37074ba0_62f0a456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-22T17:55:48Z",
+      "side": 1,
+      "message": "nit: if we declare the policy in a new line and reference it here, it may make it more clear what policy we\u0027re trying to server. WDYT?",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0539fbe9_63daae35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-22T17:55:48Z",
+      "side": 1,
+      "message": "Can we use `apps.Launch(ctx, tconn, apps.PlayStore.ID)` instead to avoid simulating key presses and going through the launcher?\n\nExamples: https://source.chromium.org/search?q\u003d%22apps.Launch(ctx,%20tconn,%20apps.PlayStore.ID)%22",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05509ade_5d78903d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-22T17:55:48Z",
+      "side": 1,
+      "message": "isn\u0027t waitForPlayStoreShown enough? I\u0027m wondering why do we need this additional visibility check?",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
