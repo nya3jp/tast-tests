@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b7cd36_84cd0a06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-22T17:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98333acc_f842c860",
+      "range": {
+        "startLine": 22,
+        "startChar": 60,
+        "endLine": 22,
+        "endChar": 63
+      },
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f604c8e1_60831139",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-15T19:02:50Z",
       "side": 1,
       "message": "Nit, can use strings.SplitN to get shortVersion in one line.",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e74cac_8529dfc9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-22T17:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f604c8e1_60831139",
       "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b37e59_e96199ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-22T17:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a17c1da5_85464da2",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1680d283_2bf4023d",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-12-15T19:02:50Z",
       "side": 1,
       "message": "Nit, also log the expected version.",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f41295fe_f72091a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-22T17:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1680d283_2bf4023d",
       "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d98fb41_eb3d30ed",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-22T17:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9a83a8_f4674c43",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58d17c87_cdaa8508",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-12-15T19:02:50Z",
       "side": 1,
       "message": "Move to package level.",
+      "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbdcce2_18d8b142",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/h1_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-12-22T17:28:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58d17c87_cdaa8508",
       "revId": "2e25e12d83e4954b44f973e436e0b7a56c9e190e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
