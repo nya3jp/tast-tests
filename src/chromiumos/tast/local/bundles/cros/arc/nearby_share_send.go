@@ -396,18 +396,11 @@ func NearbyShareSend(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get user hash: ", err)
 	}
-	cryptohomePath := filepath.Join("/home/user", ownerID)
-	filePath := filepath.Join(cryptohomePath, shareCacheDir, arcCacheFilesDir)
+	filePath := filepath.Join("/home/user", ownerID, shareCacheDir, arcCacheFilesDir)
 	if sharingFiles {
 		// Verify ARC Nearby Share cache files directory is created when sharing files.
 		if _, err := os.Stat(filePath); err != nil {
-			// TODO(alanding): Remove this check once https://crrev.com/c/3337403 makes its way
-			// into a Chrome OS build and share cache files path switches to the new location.
-			s.Logf("Directory path %s does not exist, checking alternate location", filePath)
-			filePath = filepath.Join(cryptohomePath, arcCacheFilesDir)
-			if _, err := os.Stat(filePath); err != nil {
-				s.Fatalf("Directory path %s does not exist", filePath)
-			}
+			s.Fatalf("Directory path %s does not exist", filePath)
 		}
 	}
 
