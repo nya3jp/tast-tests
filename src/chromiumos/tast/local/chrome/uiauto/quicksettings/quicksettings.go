@@ -403,7 +403,7 @@ func NotificationsHidden(ctx context.Context, tconn *chrome.TestConn) (bool, err
 	if err != nil {
 		return false, errors.Wrap(err, "failed checking if notification node exists")
 	}
-	return exists, nil
+	return !exists, nil
 }
 
 // findSlider finds the UI node for the specified slider. Callers should defer releasing the returned node.
