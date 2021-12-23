@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5788321_860d6754",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-23T09:11:34Z",
+      "side": 1,
+      "message": "do we need to set the policy to `--policy\u003drr` explicitly? what\u0027s the default value?",
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ceeb6bc_67ff9f6c",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
         "patchSetId": 11
