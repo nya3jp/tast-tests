@@ -79,15 +79,10 @@ func VirtualKeyboardGlideTyping(ctx context.Context, s *testing.State) {
 	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-
-	stopRecording := uiauto.RecordVNCVideo(ctx, s)
-	defer stopRecording()
-	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
-	defer cancel()
-
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	inputMethod := s.Param().(glideTypingTestParam).inputMethod
 	shouldFloatLayout := s.Param().(glideTypingTestParam).floatLayout
