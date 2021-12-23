@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acebd6b8_c31769d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-23T00:09:29Z",
+      "side": 1,
+      "message": "The func name is a bit misleading, sounds like it is expecting an error. What about checkError?",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "ae8f53161d628fef574fc6c251f2aefab33ef485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55bb755f_112440c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-23T00:09:29Z",
+      "side": 1,
+      "message": "This indent is not necessary",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "ae8f53161d628fef574fc6c251f2aefab33ef485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95803ba_069df83d",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2021-12-23T00:09:29Z",
+      "side": 1,
+      "message": "Nil is usually return in the last.",
+      "range": {
+        "startLine": 160,
+        "startChar": 9,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "ae8f53161d628fef574fc6c251f2aefab33ef485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
