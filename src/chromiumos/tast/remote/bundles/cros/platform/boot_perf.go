@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -33,6 +34,7 @@ const (
 var (
 	defaultIterations      = 10    // The number of boot iterations. Can be overridden by var "platform.BootPerf.iterations".
 	defaultSkipRootfsCheck = false // Should we skip rootfs verification? Can be overridden by var "platform.BootPerf.skipRootfsCheck"
+	defaultCheckFirmware   = false // Should we perform firmware check? Can be overridden by var "platform.BootPerf.firmwareCheck"
 )
 
 func init() {
@@ -44,7 +46,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService", "tast.cros.platform.BootPerfService", "tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome"},
-		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck"},
+		Vars:         []string{"platform.BootPerf.iterations", "platform.BootPerf.skipRootfsCheck", "platform.BootPerf.checkFirmware"},
 		// This test collects boot timing for |iterations| times and requires a longer timeout.
 		Timeout: 15 * time.Minute,
 	})
@@ -63,6 +65,36 @@ func assertRootfsVerification(ctx context.Context, s *testing.State) {
 	if !strings.Contains(string(cmdline), "dm_verity.dev_wait=1") {
 		s.Fatal("Rootfs verification is off")
 	}
+}
+
+func checkFirmwareState(ctx context.Context, s *testing.State) error {
+	d := s.DUT()
+	err := d.Conn().CommandContext(ctx, "crossystem", "mainfw_type?normal").Run()
+	if err != nil {
+		s.Log("Firmware boot times are not accurate in developer mode. Please run this test in normal mode")
+		return errors.New("test not running in normal mode image")
+	}
+
+	output, err := d.Conn().CommandContext(ctx, "/usr/bin/cbmem", "-1").Output()
+	if err != nil {
+		return errors.Wrap(err, "failed to get firmware log")
+	}
+	if strings.Contains(string(output), "EC returned from reboot") {
+		s.Log(`Firmware boot times should be measured without an EC reboot. Please warm reboot this system by running the "reboot" userspace command, then rerun the test`)
+		return errors.New("warm boot required")
+	}
+
+	output, err = d.Conn().CommandContext(ctx, "/usr/bin/cbmem", "-r", "43425442").Output()
+	if err != nil {
+		return errors.Wrap(err, "failed to get firmware log")
+	}
+	re := regexp.MustCompile(`\x0f\0\0\0\x20\0\0\0........\0\xc2\x01\0`)
+	if re.FindSubmatchIndex(output) != nil {
+		s.Log("Firmware boot times should be measured without serial output. Please rerun this test with a production image (image.bin, not image.dev.bin)")
+		return errors.New("firmware boot times measured with serial output")
+	}
+
+	return nil
 }
 
 // waitUntilCPUCoolDown waits until system CPU cools down to stabilize the test.
@@ -192,6 +224,17 @@ func BootPerf(fullCtx context.Context, s *testing.State) {
 		} else {
 			// User might want to override the default value of iterations but passed a malformed value. Fail the test to inform the user.
 			s.Fatal("Invalid platform.BootPerf.iterations value: ", iter)
+		}
+	}
+
+	checkFirmware := defaultCheckFirmware
+	if val, ok := s.Var("platform.BootPerf.checkFirmware"); ok {
+		checkFirmware = (strings.ToLower(val) == "true")
+	}
+	if checkFirmware {
+		err := checkFirmwareState(fullCtx, s)
+		if err != nil {
+			s.Fatal("Firmware boot times are inaccurate")
 		}
 	}
 
