@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f78757c6_e0345c9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-23T17:09:08Z",
+      "side": 1,
+      "message": "can we promote this to a constant above?",
+      "range": {
+        "startLine": 91,
+        "startChar": 50,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b925e840_4a26ffd7",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
         "patchSetId": 4
@@ -83,6 +106,23 @@
         "endLine": 99,
         "endChar": 17
       },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "830f0032_6f48fcff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-23T17:09:08Z",
+      "side": 1,
+      "message": "We have to pass fake dms url here otherwise it won\u0027t use a fake server and connect to prod.\n\nexample: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go;l\u003d50;drc\u003d56af2b0a8eafbdfc9812f93815a362f0b055d655",
       "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

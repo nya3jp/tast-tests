@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae2193f_68aea2c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-23T17:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "533ecbd5_540479e9",
+      "revId": "3a593228d5f2c381f40993bd57f8319ab9279960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d9ebafe_0008b7f9",
