@@ -16,6 +16,24 @@
       "message": "@mhasank IIUC, this only checks that it can click \"accept\" button on ToS window but doesn\u0027t care about what happens next (e.g. encountering failure during opt-in). Shall we verify that we can open Play Store here (just like the new test does)?",
       "revId": "456ee3f464a64ac07d4762e3a7d74874efd2f4d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2425cff_3fcac12a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-23T20:28:00Z",
+      "side": 1,
+      "message": "The optin window closes when it is successful and if there is an error, it remains open and navigates to error screen. This method looks for the error message if it shows and waits for the window to close.\n\nSee: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/arc/optin/optin.go;l\u003d113;drc\u003d0c2581edf4605f1d6853abf1862a85ac42d6447d",
+      "parentUuid": "0c432cf3_ec4d7d37",
+      "revId": "456ee3f464a64ac07d4762e3a7d74874efd2f4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
