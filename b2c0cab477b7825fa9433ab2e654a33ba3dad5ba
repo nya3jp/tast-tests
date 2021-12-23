@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a444bc8e_3577d2b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1325590
+      },
+      "writtenOn": "2021-12-23T16:16:39Z",
+      "side": 1,
+      "message": "Looks fine to me, but I have not a lot of experienc in go and TAST: a number of things looks suspicious (sleep for 3 seconds for example), but are necessary compomizes.",
+      "revId": "b2c0cab477b7825fa9433ab2e654a33ba3dad5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11b78094_dce8d2d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/crx_manifest_update_url_ignored.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1325590
+      },
+      "writtenOn": "2021-12-23T16:16:39Z",
+      "side": 1,
+      "message": "Nit: Maybe \"the correct logic\"? This corresponds to the code pathes as well, but we should not think here about implementation details.",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 16
+      },
+      "revId": "b2c0cab477b7825fa9433ab2e654a33ba3dad5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98a364d3_d9886c6a",
