@@ -40,6 +40,7 @@ const (
 	DevicePropertySelectedService = "SelectedService"
 
 	// Cellular device property names.
+	DevicePropertyCellularHomeProvider       = "Cellular.HomeProvider"
 	DevicePropertyCellularICCID              = "Cellular.ICCID"
 	DevicePropertyCellularPolicyAllowRoaming = "Cellular.PolicyAllowRoaming"
 	DevicePropertyCellularSIMPresent         = "Cellular.SIMPresent"
@@ -210,6 +211,12 @@ const (
 	DefaultProfileObjectPath dbus.ObjectPath = "/profile/" + DefaultProfileName
 	// DefaultProfilePath is the path of default profile.
 	DefaultProfilePath = defaultStorageDir + DefaultProfileName + ".profile"
+)
+
+// Cellular Operator info values defined in dbus-constants.h
+const (
+	// OperatorUUIDKey is the unique identifier of the carrier in the shill DB.
+	OperatorUUIDKey = "uuid"
 )
 
 // Profile property names.
