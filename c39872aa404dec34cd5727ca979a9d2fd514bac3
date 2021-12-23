@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5556e886_002a7b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-23T05:22:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7841227_9a3a3aeb",
+      "revId": "c39872aa404dec34cd5727ca979a9d2fd514bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "829f28a9_65cde807",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-22T13:02:31Z",
       "side": 1,
       "message": "I think MenoryEncryptionInfo is an optional value in mojo file? If yes, I think we shaould change memory.MemoryEncryptionInfo to pointer in tast, and check if it\u0027s null.",
+      "revId": "c39872aa404dec34cd5727ca979a9d2fd514bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "250878b7_3ef12bee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-23T05:22:05Z",
+      "side": 1,
+      "message": "MenoryEncryptionInfo is an optional value in mojo file? I dont have idea on this, i will check with Jason",
+      "parentUuid": "829f28a9_65cde807",
       "revId": "c39872aa404dec34cd5727ca979a9d2fd514bac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
