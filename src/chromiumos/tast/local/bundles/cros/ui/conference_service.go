@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"net/http"
 	"net/url"
 	"path/filepath"
@@ -256,8 +257,8 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 		Err    string `json:"err"`
 	}
 
-	runConferenceAPI := func(ctx context.Context, sessionToken, host, api, parameterData string) (*responseData, error) {
-		reqURL := fmt.Sprintf("%s/api/room/zoom/%s%s&iszoomcase=true", host, api, parameterData)
+	runConferenceAPI := func(ctx context.Context, sessionToken, host, api, parameterString string) (*responseData, error) {
+		reqURL := fmt.Sprintf("%s/api/room/zoom/%s%s&iszoomcase=true", host, api, parameterString)
 		testing.ContextLog(ctx, "Requesting a zoom room from the zoom bot server with request URL: ", reqURL)
 		httpReq, err := http.NewRequestWithContext(ctx, "GET", reqURL, nil)
 		if err != nil {
@@ -377,11 +378,15 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 		const retryCount = 3
 		for i := 0; i < retryCount; i++ {
 			testing.ContextLogf(ctx, "Attempt #%d to get conference room API", i+1)
-			if data, err = runConferenceAPI(ctx, sessionToken, host, "createaio", "?count="+roomSize); err == nil {
+			// Use the remaining time of the case to set the existence time of the room.
+			deadline, _ := ctx.Deadline()
+			maxDuration := math.Ceil(deadline.Sub(time.Now()).Minutes())
+			parameterString := fmt.Sprintf("?count=%s&max_duration=%v", roomSize, maxDuration)
+			testing.ContextLogf(ctx, "Create a %s-person zoom room that can exist for %v minutes", roomSize, maxDuration)
+			if data, err = runConferenceAPI(ctx, sessionToken, host, "createaio", parameterString); err == nil {
 				break
 			}
 			testing.ContextLog(ctx, "Failed to get conference room: ", err)
-
 		}
 		if err != nil {
 			return "", nil, errors.Wrap(err, "failed to create multiple participants room")
