@@ -56,6 +56,30 @@
       },
       "revId": "ca13c559c0c7ab96e5c0491d2bd274d03d84ee98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8b62c5_5b1ed782",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/hardware.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2021-12-23T01:17:22Z",
+      "side": 1,
+      "message": "We can for now, since this isn\u0027t doing real scans yet - later on we\u0027ll have to increase it again, just because performing scans on real hardware is slow.",
+      "parentUuid": "e5315b65_c06a5e44",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 32
+      },
+      "revId": "ca13c559c0c7ab96e5c0491d2bd274d03d84ee98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
