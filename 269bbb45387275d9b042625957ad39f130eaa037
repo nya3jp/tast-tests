@@ -16,6 +16,138 @@
       "message": "This the remote fixture for tape. It starts a loop in the SetUp which calls the tapeservice to create/overwrite a token file on the DuT.\nI\u0027ve set the timeout for the SetUp to 10 minutes for now so the loop will not timeout too quickly.\n\nRight now it looks like that the goroutine will only be executed after a test using the fixture has finished.",
       "revId": "269bbb45387275d9b042625957ad39f130eaa037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3fcc9b1_49a4a596",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-23T09:52:06Z",
+      "side": 1,
+      "message": "nit: delete",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd975eff_e9051824",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-23T09:52:06Z",
+      "side": 1,
+      "message": "No need for the overwrite if the other tape package is not imported.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc4d417_48748e9d",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-23T09:52:06Z",
+      "side": 1,
+      "message": "nit: \"Failed to dail: \", err",
+      "range": {
+        "startLine": 79,
+        "startChar": 26,
+        "endLine": 79,
+        "endChar": 42
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6253e33f_61f9b572",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-23T09:52:06Z",
+      "side": 1,
+      "message": "Don\u0027t use magic numbers. Use an enumeration instead.",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be091d3_386783e2",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-23T09:52:06Z",
+      "side": 1,
+      "message": "nit: 10 * time.Second",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32db8986_ed99f070",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-23T09:52:06Z",
+      "side": 1,
+      "message": "nit: is still",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 37
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
