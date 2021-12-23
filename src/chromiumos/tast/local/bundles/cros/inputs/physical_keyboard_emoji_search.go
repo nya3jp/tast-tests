@@ -6,9 +6,7 @@ package inputs
 
 import (
 	"context"
-	"time"
 
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -34,19 +32,17 @@ func init() {
 
 func PhysicalKeyboardEmojiSearch(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := uiauto.ReserveForVNCRecordingCleanup(ctx)
 	defer cancel()
 
-	stopRecording := uiauto.RecordVNCVideo(ctx, s)
+	stopRecording := uiauto.RecordVNCVideo(cleanupCtx, s)
 	defer stopRecording()
-	ctx, cancel = uiauto.ReserveForVNCRecordingCleanup(ctx)
-	defer cancel()
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	uc := s.PreValue().(pre.PreData).UserContext
 
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
