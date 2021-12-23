@@ -6,8 +6,11 @@ package uidetection
 
 import (
 	"context"
+	"math"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/coords"
 	pb "chromiumos/tast/local/uidetection/api"
 	"chromiumos/tast/testing"
@@ -77,11 +80,27 @@ func (s *Finder) Nth(nth int) *Finder {
 
 // resolve resolves the UI detection request and stores the bounding boxes
 // of the matching elements.
-func (s *Finder) resolve(ctx context.Context, d *uiDetector, pollOpts testing.PollOptions) error {
+func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions) error {
 	// Take the screenshot.
 	imagePng, err := TakeStableScreenshot(ctx, pollOpts)
 	if err != nil {
 		return errors.Wrap(err, "failed to take screenshot")
+	}
+
+	screens, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the display info")
+	}
+
+	// Find the ratio to convert coordinates in the screenshot to those in the screen.
+	scaleFactor, err := screens[0].GetEffectiveDeviceScaleFactor()
+	if err != nil {
+		return errors.Wrap(err, "failed to get the device scale factor")
+	}
+
+	// Make sure the scale factor is neither 0 nor NaN.
+	if math.IsNaN(scaleFactor) || math.Abs(scaleFactor) < 1e-10 {
+		return errors.Errorf("invalid device scale factor: %q", scaleFactor)
 	}
 
 	response, err := d.sendDetectionRequest(ctx, imagePng, s.request)
@@ -95,10 +114,10 @@ func (s *Finder) resolve(ctx context.Context, d *uiDetector, pollOpts testing.Po
 			s.boundingBoxes,
 			&Location{
 				Rect: coords.NewRectLTRB(
-					int(boundingBox.GetLeft()),
-					int(boundingBox.GetTop()),
-					int(boundingBox.GetRight()),
-					int(boundingBox.GetBottom())),
+					int(float64(boundingBox.GetLeft())/scaleFactor),
+					int(float64(boundingBox.GetTop())/scaleFactor),
+					int(float64(boundingBox.GetRight())/scaleFactor),
+					int(float64(boundingBox.GetBottom())/scaleFactor)),
 				Text: boundingBox.GetText(),
 			})
 	}
