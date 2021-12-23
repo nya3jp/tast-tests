@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e9b2d2e_bc8cc7b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-23T05:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f30af4_d7137125",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 27
+      },
+      "revId": "a71c63f3bbdb3c7b37875e8da9828319c947b411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03830b53_1ea5b867",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-22T14:51:35Z",
       "side": 1,
       "message": "I guess seeding the random at here would not be useful for the local service?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 33
+      },
+      "revId": "a71c63f3bbdb3c7b37875e8da9828319c947b411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "763b58f4_686ef5dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-23T05:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03830b53_1ea5b867",
       "range": {
         "startLine": 44,
         "startChar": 0,
