@@ -12,7 +12,6 @@ import (
 	"math"
 	"net/http"
 	"net/url"
-	"path/filepath"
 	"strconv"
 	"strings"
 	"time"
@@ -27,7 +26,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -82,7 +80,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 	roomSize := int(req.RoomSize)
 	meet, err := conference.GetGoogleMeetConfig(ctx, s.s, roomSize)
 	if err != nil {
-		return nil, errors.New("failed to get meet config")
+		return nil, errors.Wrap(err, "failed to get meet config")
 	}
 	outDir, ok := testing.ContextOutDir(ctx)
 	if !ok {
@@ -182,10 +180,6 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		defer cancel()
 
 		if err := conference.Run(ctx, cr, gmcli, prepare, req.Tier, outDir, tabletMode, roomSize); err != nil {
-			// Dump the UI tree to the service/faillog subdirectory.
-			// Don't dump directly into outDir
-			// because it might be overridden by the test faillog after pulled back to remote server.
-			faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
 			return errors.Wrap(err, "failed to run Google Meet conference")
 		}
 		return nil
@@ -410,13 +404,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	defer cancel()
 	if err := conference.Run(ctx, cr, zmcli, prepare, req.Tier, outDir, tabletMode, int(req.RoomSize)); err != nil {
-		testing.ContextLogf(ctx, "Failed to run conference: %+v", err) // Print error with stack trace.
-
-		// Dump the UI tree to the service/faillog subdirectory.
-		// Don't dump directly into outDir
-		// because it might be overridden by the test faillog after pulled back to remote server.
-		faillog.DumpUITreeWithScreenshotOnError(ctx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
-		return nil, errors.Wrap(err, "failed to run MeetConference")
+		return nil, errors.Wrap(err, "failed to run Zoom conference")
 	}
 
 	return &empty.Empty{}, nil
