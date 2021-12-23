@@ -194,6 +194,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d2c0d15_1a6a152f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-23T13:16:21Z",
+      "side": 1,
+      "message": "You could define new Tast USE flag bound to cras package and use it.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/crosbundle/software_defs.go;l\u003d8?q\u003dfile:tast%20wilco%20-file:tast-tests\u0026start\u003d11\n\nIt will be clear that the test relies on a specific bin to be available in the OS.",
+      "parentUuid": "37481a2a_449fa16c",
+      "range": {
+        "startLine": 138,
+        "startChar": 43,
+        "endLine": 138,
+        "endChar": 53
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46f3810e_a6a869e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
         "patchSetId": 11
