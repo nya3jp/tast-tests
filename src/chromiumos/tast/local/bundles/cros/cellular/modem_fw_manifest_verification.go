@@ -76,6 +76,9 @@ func ModemFWManifestVerification(ctx context.Context, s *testing.State) {
 			if carrierFW.MainFirmwareVersion != "" && !mainFirmwares[carrierFW.MainFirmwareVersion] {
 				s.Fatalf("Main firmware %q referenced by carrier FW %q does not exist", carrierFW.MainFirmwareVersion, carrierFW.Version)
 			}
+			if len(carrierFW.CarrierId) == 0 {
+				s.Fatalf("There is no carrier id defined for carrier FW %q", carrierFW.Version)
+			}
 		}
 	}
 
