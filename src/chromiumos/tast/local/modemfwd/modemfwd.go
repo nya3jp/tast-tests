@@ -6,7 +6,10 @@
 package modemfwd
 
 import (
+	"bytes"
 	"context"
+	"io/ioutil"
+	"os"
 
 	"github.com/godbus/dbus"
 
@@ -118,4 +121,42 @@ func WatchUpdateFirmwareCompleted(ctx context.Context) (*dbusutil.SignalWatcher,
 		Member:    "UpdateFirmwareCompleted",
 	}
 	return dbusutil.NewSignalWatcherForSystemBus(ctx, spec)
+}
+
+// DisableAutoUpdate sets the modemfwd pref value to 1, to disable auto updates. The function
+// returns a closure to restore the pref to its original state.
+func DisableAutoUpdate(ctx context.Context) (func(), error) {
+	fileExists := disableAutoUpdatePrefFileExists()
+	currentValue := GetAutoUpdatePrefValue(ctx)
+	if err := ioutil.WriteFile(DisableAutoUpdatePref, []byte("1"), 0666); err != nil {
+		return nil, errors.Wrapf(err, "could not write to %s", DisableAutoUpdatePref)
+	}
+	return func() {
+		if !fileExists {
+			os.Remove(DisableAutoUpdatePref)
+		} else if !currentValue {
+			ioutil.WriteFile(DisableAutoUpdatePref, []byte("0"), 0666)
+		}
+	}, nil
+}
+
+func disableAutoUpdatePrefFileExists() bool {
+	_, err := os.Stat(DisableAutoUpdatePref)
+	return !os.IsNotExist(err)
+}
+
+// GetAutoUpdatePrefValue Gets the pref value of DisableAutoUpdatePref.
+// True if the file exists and it's set to 1, false otherwise.
+func GetAutoUpdatePrefValue(ctx context.Context) bool {
+	if !disableAutoUpdatePrefFileExists() {
+		return false
+	}
+	pref, err := ioutil.ReadFile(DisableAutoUpdatePref)
+	if err != nil {
+		return false
+	}
+	if bytes.Compare(pref, []byte("1")) == 0 {
+		return true
+	}
+	return false
 }

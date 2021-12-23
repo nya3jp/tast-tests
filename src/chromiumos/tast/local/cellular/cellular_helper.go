@@ -752,3 +752,26 @@ func (h *Helper) EnterIncorrectPuk(ctx context.Context, currentPuk string) error
 
 	return errors.Wrap(err, "unusual puk error")
 }
+
+// GetUUIDFromShill gets the current carrier's UUID from shill.
+func (h *Helper) GetUUIDFromShill(ctx context.Context) (string, error) {
+	ctx, st := timing.Start(ctx, "Helper.GetUUIDFromShill")
+	defer st.End()
+	deviceProps, err := h.Device.GetProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get Device properties")
+	}
+	homeProvider, err := deviceProps.Get(shillconst.DevicePropertyCellularHomeProvider)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to get %q property", shillconst.DevicePropertyCellularHomeProvider)
+	}
+	homeProviderMap, ok := homeProvider.(map[string]string)
+	if !ok {
+		return "", errors.New("invalid format for Home Provider property")
+	}
+	carrierID, ok := homeProviderMap[shillconst.OperatorUUIDKey]
+	if !ok {
+		return "", errors.New("home provider UUID not found")
+	}
+	return carrierID, nil
+}

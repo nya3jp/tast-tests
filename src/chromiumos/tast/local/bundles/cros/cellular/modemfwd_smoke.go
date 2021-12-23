@@ -28,12 +28,8 @@ func init() {
 
 // ModemfwdSmoke Test
 func ModemfwdSmoke(ctx context.Context, s *testing.State) {
-	fileExists := func(file string) bool {
-		_, err := os.Stat(file)
-		return !os.IsNotExist(err)
-	}
 
-	if fileExists(modemfwd.DisableAutoUpdatePref) {
+	if modemfwd.GetAutoUpdatePrefValue(ctx) {
 		os.Remove(modemfwd.DisableAutoUpdatePref)
 		s.Fatalf("%q file found. This file was not properly removed in another test. Deleting it now", modemfwd.DisableAutoUpdatePref)
 	}
