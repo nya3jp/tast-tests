@@ -63,6 +63,30 @@
       },
       "revId": "a14182e956db6d215e108220fdd0bf09367e72c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33d94654_4b4a02ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T11:47:02Z",
+      "side": 1,
+      "message": "This is agains at least C++ code style guide:\nhttps://google.github.io/styleguide/cppguide.html#Local_Variables\n\nI don\u0027t know how Go compiler optimises this code, but I don\u0027t think it makes sene to allocate memory for this variable if you fail in line 58 or 53 or somewhere else. Also it\u0027s easier to find real variable value if it\u0027s located close to the first use. \n\nThat\u0027s why I\u0027d like to apply here that rule.",
+      "parentUuid": "c0bb6218_4eb574dc",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "a14182e956db6d215e108220fdd0bf09367e72c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
