@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25eb2f98_aba623bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-23T09:16:55Z",
+      "side": 1,
+      "message": "I think we can have 2 version\n\n- stress run in CFS\n- stress run in rtprio\n\nthere could be more setup in the future when VM comes in:\n\n(cyclictest on host + stress on host) * {stress CFS, stress rtprio}\ncyclictest in VM * {stress in VM, stress at host} * {stress CFS, stress rtprio}",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "196b7ce845cd6346c8b603f0a545a500d90f162c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
