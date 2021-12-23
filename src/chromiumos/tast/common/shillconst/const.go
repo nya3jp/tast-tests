@@ -234,6 +234,12 @@ const (
 	DefaultProfilePath = defaultStorageDir + DefaultProfileName + ".profile"
 )
 
+// Cellular Operator info values defined in dbus-constants.h
+const (
+	// OperatorUUIDKey is the unique identifier of the carrier in the shill DB.
+	OperatorUUIDKey = "uuid"
+)
+
 // Profile property names.
 const (
 	ProfilePropertyCheckPortalList           = "CheckPortalList"
