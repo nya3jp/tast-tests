@@ -25,7 +25,7 @@ const (
 )
 
 func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
-	if err := d.Object(ui.TextMatches(dialogText)).Exists(ctx); err == nil {
+	if err := d.Object(ui.TextMatches("(?i)" + dialogText)).Exists(ctx); err == nil {
 		testing.ContextLogf(ctx, `%q popup found. Skipping`, dialogText)
 		okButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+buttonText))
 		if err := okButton.WaitForExists(ctx, timeout); err != nil {
@@ -45,14 +45,16 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		defaultUITimeout = 20 * time.Second
 		shortUITimeout   = 10 * time.Second
 
-		accountSetupText   = "Complete account setup"
-		permissionsText    = "needs access to"
-		cantDownloadText   = "Can.t download.*"
-		cantInstallText    = "Can.t install.*"
-		versionText        = "Your device isn.t compatible with this version."
-		compatibleText     = "Your device is not compatible with this item."
-		openMyAppsText     = "Please open my apps.*"
-		termsOfServiceText = "Terms of Service"
+		accountSetupText          = "Complete account setup"
+		permissionsText           = "needs access to"
+		cantDownloadText          = "Can.t download.*"
+		cantInstallText           = "Can.t install.*"
+		versionText               = "Your device isn.t compatible with this version."
+		compatibleText            = "Your device is not compatible with this item."
+		openMyAppsText            = "Please open my apps.*"
+		termsOfServiceText        = "Terms of Service"
+		linkPaypalAccountText     = "Want to link your PayPal account.*"
+		installAppsFromDeviceText = "Install apps from your devices"
 
 		acceptButtonText   = "accept"
 		continueButtonText = "continue"
@@ -64,6 +66,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		playButtonText     = "play"
 		retryButtonText    = "retry"
 		skipButtonText     = "skip"
+		noThanksButtonText = "No thanks"
 
 		intentActionView = "android.intent.action.VIEW"
 	)
@@ -107,6 +110,8 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			{cantInstallText, gotItButtonText},
 			// Also, press Ok to dismiss the dialog if "Please open my apps" dialog pops up.
 			{openMyAppsText, okButtonText},
+			// Also, press "NO THANKS" to dismiss the dialog if "Install apps from your devices" dialog pops up.
+			{installAppsFromDeviceText, noThanksButtonText},
 			// When Play Store hits the rate limit it sometimes show "Your device is not compatible with this item." error.
 			// This error is incorrect and should be ignored like the "Can't download <app name>" error.
 			{compatibleText, okButtonText},
@@ -150,6 +155,25 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 				}
 			} else {
 				return testing.PollBreak(errors.Errorf("hit %s attempt limit of %d times", op, tryLimit))
+			}
+		}
+
+		// Handle "Want to link your PayPal account" if necessary.
+		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText)).WaitForExists(ctx, defaultUITimeout); err == nil {
+			testing.ContextLog(ctx, "Want to link your paypal account does exist")
+			noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+noThanksButtonText))
+			if err := noThanksButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+				return testing.PollBreak(err)
+			}
+			if err := noThanksButton.Click(ctx); err != nil {
+				return testing.PollBreak(err)
+			}
+			skipButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+skipButtonText))
+			if err := skipButton.WaitForExists(ctx, defaultUITimeout); err != nil {
+				return testing.PollBreak(err)
+			}
+			if err := skipButton.Click(ctx); err != nil {
+				return testing.PollBreak(err)
 			}
 		}
 
