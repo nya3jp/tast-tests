@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92353de7_ef770661",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-23T01:46:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure this will work on all boards. Chromebox\u0027s don\u0027t have built in displays.\n\nIf my understanding is correct, your issue is that the ratio is the dp to px ratio?\n\nTry something like this, it might work better:\nscreens, err :\u003d display.GetInfo(ctx, d.tconn)\nscreen \u003d screens[0]\ndisplayMode, err :\u003d screen.GetSelectedMode()\n// look at screen.DisplayZoomFactor, displaymode.DeviceScaleFactor, and displayMode.UIScale. Some combination should give you the ratio.",
+      "revId": "433e1aad57a328072dc37d1f8b2d96b81a92e832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
