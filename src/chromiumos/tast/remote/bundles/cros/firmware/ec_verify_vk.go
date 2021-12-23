@@ -18,6 +18,12 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testParamsTablet struct {
+	canDoTabletSwitch bool
+	tabletModeOn      string
+	tabletModeOff     string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECVerifyVK,
@@ -27,10 +33,29 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.CheckVirtualKeyboardService"},
 		Fixture:      fixture.NormalMode,
-		HardwareDeps: hwdep.D(
-			hwdep.ChromeEC(),
-			hwdep.FormFactor(hwdep.Convertible, hwdep.Chromeslate),
-		),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Params: []testing.Param{{
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
+			Val: &testParamsTablet{
+				canDoTabletSwitch: true,
+				tabletModeOn:      "tabletmode on",
+				tabletModeOff:     "tabletmode reset",
+			},
+		}, {
+			Name:              "detachable",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable)),
+			Val: &testParamsTablet{
+				canDoTabletSwitch: true,
+				tabletModeOn:      "basestate detach",
+				tabletModeOff:     "basestate attach",
+			},
+		}, {
+			Name:              "chromeslate",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Chromeslate)),
+			Val: &testParamsTablet{
+				canDoTabletSwitch: false,
+			},
+		}},
 	})
 }
 
@@ -61,28 +86,36 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open chrome: ", err)
 	}
 
-	for _, dut := range []struct {
-		tabletMode bool
-	}{
-		{true},
-		{false},
-	} {
-		s.Logf("Tablet mode on: %t", dut.tabletMode)
-		if err := verifyVKIsPresent(ctx, h, cvkc, s, dut.tabletMode); err != nil {
+	args := s.Param().(*testParamsTablet)
+
+	// Chromeslates are already in tablet mode, and for this reason,
+	// we could skip switching to tablet mode, and just verify that
+	// virtual keyboard is present after a click on the address bar.
+	if args.canDoTabletSwitch == false {
+		if err := verifyVKIsPresent(ctx, h, cvkc, s, true, ""); err != nil {
 			s.Fatal("Failed to verify virtual keyboard status: ", err)
+		}
+	} else {
+		for _, dut := range []struct {
+			tabletMode  bool
+			tabletState string
+		}{
+			{true, args.tabletModeOn},
+			{false, args.tabletModeOff},
+		} {
+			s.Logf("Tablet mode on: %t", dut.tabletMode)
+			if err := verifyVKIsPresent(ctx, h, cvkc, s, dut.tabletMode, dut.tabletState); err != nil {
+				s.Fatal("Failed to verify virtual keyboard status: ", err)
+			}
 		}
 	}
 }
 
-func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient, s *testing.State, tabletMode bool) error {
+func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVirtualKeyboardServiceClient, s *testing.State, tabletMode bool, command string) error {
 	// Run EC command to put DUT in clamshell/tablet mode.
-	if tabletMode {
-		if err := h.Servo.RunECCommand(ctx, "tabletmode on"); err != nil {
-			return errors.Wrap(err, "failed to set DUT into tablet mode")
-		}
-	} else {
-		if err := h.Servo.RunECCommand(ctx, "tabletmode reset"); err != nil {
-			return errors.Wrap(err, "failed to restore DUT to the original tabletmode setting")
+	if command != "" {
+		if err := h.Servo.RunECCommand(ctx, command); err != nil {
+			return errors.Wrap(err, "failed to set DUT tablet mode state")
 		}
 	}
 
@@ -97,7 +130,7 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 
 	// Use polling here to wait till the UI tree has fully updated,
 	// and check if virtual keyboard is present.
-	s.Log("Checking if virtual keyboard is present")
+	s.Logf("Expecting virtual keyboard present: %t", tabletMode)
 	return testing.Poll(ctx, func(c context.Context) error {
 		res, err := cvkc.CheckVirtualKeyboardIsPresent(ctx, &req)
 		if err != nil {
