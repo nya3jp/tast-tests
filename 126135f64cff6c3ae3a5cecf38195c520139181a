@@ -152,6 +152,48 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "37481a2a_449fa16c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-23T10:40:25Z",
+      "side": 1,
+      "message": "cyclictest bin will shows up in all the test image once the dependent CL got merged (CL:3351311). Do we still need sw dependency here?",
+      "parentUuid": "b8c120f1_149375c8",
+      "range": {
+        "startLine": 138,
+        "startChar": 43,
+        "endLine": 138,
+        "endChar": 53
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018ca34b_f88134f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-23T10:40:25Z",
+      "side": 1,
+      "message": "checked cyclictest.c code, seems like the default value is `SCHED_OTHER` and it\u0027s using normal scheduler (https://github.com/jlelli/rt-tests/blob/857cdd5320ce1f293f5dbcbec79cc8fe22b0bebf/src/cyclictest/cyclictest.c#L1010). And set_scheduler with `SCHED_OTHER` only accept priority 0",
+      "parentUuid": "f5788321_860d6754",
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46f3810e_a6a869e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
         "patchSetId": 11
