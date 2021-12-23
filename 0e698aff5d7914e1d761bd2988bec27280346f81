@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d163bb_29d0795c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "Maybe move it into randomUsername()? It\u0027s unclear why do you need that.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0bf641_3d579cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "I don\u0027t see how do you use this temporary directory. Do you need it?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40e08dbb_0f581685",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "You can just init it when you use it. Also looks like there is no need to keep pointer to it in the service.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4daaba62_59510368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "Does it make sense to log randomly generated user name?",
+      "range": {
+        "startLine": 164,
+        "startChar": 92,
+        "endLine": 164,
+        "endChar": 106
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49438f99_a35f4c8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "nit: add period at the end of comment\nhttps://go.dev/doc/effective_go#commentary",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42de6a3f_e748041f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "Please be more specific, you have the same error message 4 times. You won\u0027t be able to understand where exactly you had a problem.",
+      "range": {
+        "startLine": 172,
+        "startChar": 32,
+        "endLine": 172,
+        "endChar": 63
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fed3513_7ed83de5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "same for \"tconn\". Please check other variables you keep in the service. Try to minimise them.",
+      "range": {
+        "startLine": 187,
+        "startChar": 18,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efeea9e7_a60e537d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/util/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "nit: always pass ctx by value, don\u0027t bind by reference",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27bf0ce9_9b0119c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "nit: rename file to web_authn_u2f_mode.go\n\nsame for service name and all other associated variables with WebAuthn. They should be WebAuthn or webAuthn.",
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea21120_c1fd2705",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "Please handle case when servo var is not present.",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21608b65_0c2f04d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "This function should take context. Same for pinAuthCallback",
+      "range": {
+        "startLine": 118,
+        "startChar": 28,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a048ae_b9d911c6",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "nit: maybe remote Success suffix? are you planning to check failed case?",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af65df48_fc143064",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-23T18:40:55Z",
+      "side": 1,
+      "message": "nit: remove extra blank line",
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
