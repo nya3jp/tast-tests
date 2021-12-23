@@ -22,13 +22,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:     HpdWake,
-		Desc:     "Checks that Display Port HPD (Hot Plug Detect) events can wake the system",
-		Contacts: []string{"pmalani@chromium.org", "chromeos-power@google.com"},
-		Attr:     []string{"group:mainline", "group:typec", "informational"},
-		// TODO(b/184925712): Switch this to rely on SoftwareDeps (for TCPMv2 and kernel >= v5.4) rather
-		// than relying on platform HardwareDeps.
-		HardwareDeps: hwdep.D(hwdep.Platform("dedede", "volteer")),
+		Func:         HpdWake,
+		Desc:         "Checks that Display Port HPD (Hot Plug Detect) events can wake the system",
+		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
+		Attr:         []string{"group:mainline", "group:typec", "informational"},
+		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.ChromeEC()),
 		Vars:         []string{"servo"},
 	})
 }
