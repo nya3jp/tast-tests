@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6df546_34af09b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-12-23T00:45:12Z",
+      "side": 1,
+      "message": "Thanks! Updated the changeset comments above to note that it was tested manually as well on dedede.",
+      "parentUuid": "8b31c8e8_38e0e225",
+      "revId": "ea2ffbb9e87aafb485446f969ddcb98d71a6b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "915cd8b5_87dab1f5",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-22T17:28:00Z",
       "side": 1,
       "message": "How do you know the first one on screen is the textbox? Is it better to specify the extra textbox parameter instead?",
+      "revId": "ea2ffbb9e87aafb485446f969ddcb98d71a6b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e726181_2c5561e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1515645
+      },
+      "writtenOn": "2021-12-23T00:45:12Z",
+      "side": 1,
+      "message": "Good point - I already tried two other ways listed below but it didn\u0027t work\n- nodewith.Role(role.TextField)\n- nodewith.Attribute(\"id\", \"text\")\n\nLet me give it one more go at this ~~ cheers!",
+      "parentUuid": "915cd8b5_87dab1f5",
       "revId": "ea2ffbb9e87aafb485446f969ddcb98d71a6b3d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
