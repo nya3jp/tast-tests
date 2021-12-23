@@ -39,6 +39,30 @@
       },
       "revId": "a14182e956db6d215e108220fdd0bf09367e72c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0bb6218_4eb574dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/pin_unlock_weak_pins_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-23T09:41:51Z",
+      "side": 1,
+      "message": "As the usage is in the for loop, I put it to the start of the test.\nI think it is easy to remember the values even if you read the test for the first time.",
+      "parentUuid": "e23452d4_9f964280",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "a14182e956db6d215e108220fdd0bf09367e72c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
