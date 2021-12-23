@@ -85,6 +85,30 @@
       },
       "revId": "a71c63f3bbdb3c7b37875e8da9828319c947b411",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebc3f00_e17634ed",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/attestation_dbus_service.pb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-23T02:09:28Z",
+      "side": 1,
+      "message": "I guess I could discard the change in attestation.",
+      "parentUuid": "07c0b530_96347217",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 25
+      },
+      "revId": "a71c63f3bbdb3c7b37875e8da9828319c947b411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
