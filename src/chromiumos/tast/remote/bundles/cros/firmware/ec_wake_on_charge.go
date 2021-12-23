@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -24,25 +25,27 @@ func init() {
 		Vars:         []string{"board", "model"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		Params: []testing.Param{{
+			Name:              "device_without_lid",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Chromeslate)),
+			Val:               false,
+		}, {
+			ExtraHardwareDeps: hwdep.D(hwdep.Lid()),
+			Val:               true,
+		}},
 	})
 }
 
 func ECWakeOnCharge(ctx context.Context, s *testing.State) {
-	// g3PollOptions sets the time to wait for DUT's power state to reach G3.
-	g3PollOptions := testing.PollOptions{
-		Timeout:  30 * time.Second,
-		Interval: 1 * time.Second,
-	}
-
 	// getChargerPollOptions sets the time to retry the GetChargerAttached command.
 	getChargerPollOptions := testing.PollOptions{
-		Timeout:  10 * time.Second,
+		Timeout:  30 * time.Second,
 		Interval: 1 * time.Second,
 	}
 
 	// runECPollOptions sets the time to retry the RunECCommandGetOutput command.
 	runECPollOptions := testing.PollOptions{
-		Timeout:  10 * time.Second,
+		Timeout:  30 * time.Second,
 		Interval: 1 * time.Second,
 	}
 
@@ -75,12 +78,19 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			// If DUT has hibernated before, reconnecting power supply will wake up the device.
 			// Wait for DUT to reconnect.
 			if hasHibernated {
-				s.Log("Wait for DUT to power ON")
+				s.Log("Waiting for DUT to power ON")
 				waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
 				defer cancelWaitConnect()
 
 				if err := h.WaitConnect(waitConnectCtx); err != nil {
 					errors.Wrap(err, "failed to reconnect to DUT")
+				}
+
+				// Cr50 goes to sleep during hibernation, and when DUT wakes, CCD state might be locked.
+				// Open CCD after waking DUT and before talking to the EC.
+				s.Log("Opening CCD")
+				if err := h.Servo.RunCR50Command(ctx, "ccd open"); err != nil {
+					return errors.Wrap(err, "failed to run Cr50 command")
 				}
 			}
 
@@ -133,21 +143,53 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	defer h.Servo.SetStringAndCheck(ctx, servo.LidOpen, string(servo.LidOpenYes))
+	done := make(chan struct{})
+	defer func() {
+		done <- struct{}{}
+	}()
+
+	go func() {
+	monitorServo:
+		for {
+			select {
+			case <-done:
+				break monitorServo
+			case <-time.After(20 * time.Second):
+				s.Error("Timeout before getting servo reconnected: ", err)
+			default:
+				if err = testing.Sleep(ctx, time.Second); err != nil {
+					s.Error("Failed to sleep: ", err)
+				}
+				if _, err = h.Servo.Echo(ctx, "ping"); err != nil {
+					s.Log("Failed to ping servo, reconnecting: ", err)
+					err = h.ServoProxy.Reconnect(ctx)
+					if err != nil {
+						s.Error("Failed to reconnect to servo: ", err)
+					}
+				}
+			}
+		}
+	}()
+
+	deviceHasLid := s.Param().(bool)
 	for _, tc := range []struct {
 		lidOpen string
 	}{
 		{string(servo.LidOpenYes)},
 		{string(servo.LidOpenNo)},
 	} {
+		// Only repeat the test in lid closed when device has a lid.
+		if tc.lidOpen == "no" && deviceHasLid == false {
+			break
+		}
+
 		s.Logf("-------------Test with lid open: %s-------------", tc.lidOpen)
 		if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
 			s.Fatal("Failed to set lid state: ", err)
 		}
 
 		var deviceHasHibernated bool
-
-		s.Log("Stop AC Power")
+		s.Log("Stopping AC Power")
 		if err := setPowerSupply(ctx, false, deviceHasHibernated); err != nil {
 			s.Fatal("Failed to stop power supply: ", err)
 		}
@@ -158,32 +200,31 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			if err = h.Servo.ECHibernate(ctx); err != nil {
 				s.Fatal("Failed to hibernate: ", err)
 			}
+			h.DisconnectDUT(ctx)
 			deviceHasHibernated = true
-
+		} else if tc.lidOpen == "no" {
+			// Note: when lid is closed without log-in, power state transitions from S0 to S5,
+			// and then eventually to G3, which would be equivalent to long pressing on power
+			// to put DUT asleep.
+			s.Log("Waiting for power state to become G3")
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
+				s.Fatal("Failed to get powerstates at G3: ", err)
+			}
 		} else {
 			// When using CCD, closed lid is emulated by an EC command, and hibernating EC will stop the emulation.
 			// For this reason, we are using long power button press instead of setting EC to hibernate.
-			s.Log("Long press on power key to put DUT into deep sleep mode")
+			s.Log("Long pressing on power key to put DUT into deep sleep mode")
 			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 				s.Fatal("Failed to set a KeypressControl by servo: ", err)
 			}
 
-			s.Log("Wait for power state to become G3")
-			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				state, err := h.Servo.GetECSystemPowerState(ctx)
-				if err != nil {
-					return testing.PollBreak(errors.Wrap(err, "failed to get power state"))
-				}
-				if state != "G3" {
-					return errors.New("power state is " + state)
-				}
-				return nil
-			}, &g3PollOptions); err != nil {
-				s.Fatal("Failed to wait power state to be G3: ", err)
+			s.Log("Waiting for power state to become G3")
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
+				s.Fatal("Failed to get powerstates at G3: ", err)
 			}
 		}
 
-		s.Log("Reconnect AC power")
+		s.Log("Reconnecting AC")
 		if err := setPowerSupply(ctx, true, deviceHasHibernated); err != nil {
 			s.Fatal("Failed to reconnect power supply: ", err)
 		}
@@ -197,6 +238,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatalf("DUT's lid_open state has changed from %s to %s", tc.lidOpen, lidStateFinal)
 		}
 	}
+
 	if err := h.Servo.OpenLid(ctx); err != nil {
 		s.Fatal("Failed to set lid state: ", err)
 	}
