@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae61df21_1788402c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-23T07:23:24Z",
+      "side": 1,
+      "message": "super nit. tast repo doesn\u0027t require || for variables in comment.",
+      "range": {
+        "startLine": 77,
+        "startChar": 55,
+        "endLine": 77,
+        "endChar": 56
+      },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c6dab9_f1ba538f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-23T07:23:24Z",
+      "side": 1,
+      "message": "Original PerformWithRetry calls FindOptInExtensionPageAndAcceptTerms. \nThe new verification looks different than \n FindOptInExtensionPageAndAcceptTerms. \n\nCan you add it to the commit message?",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 108
+      },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29200162_c5806bb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-23T07:23:24Z",
+      "side": 1,
+      "message": "Do we need to perform retry on this?",
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b925e840_4a26ffd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-23T07:23:24Z",
+      "side": 1,
+      "message": "nit. I\u0027d recommend using errors.Wrap to append some logs to help debugging in the future.",
+      "range": {
+        "startLine": 99,
+        "startChar": 14,
+        "endLine": 99,
+        "endChar": 17
+      },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
