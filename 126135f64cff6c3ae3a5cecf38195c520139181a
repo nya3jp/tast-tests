@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "506e416c_3ea0f853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-23T09:46:44Z",
+      "side": 1,
+      "message": "nit: you can group them in block\n\nconst (\n CrasPriority...\n ...\n)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed17b40_fb7d209f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-23T09:46:44Z",
+      "side": 1,
+      "message": "nit: Start the sentence with a capital letter.",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d87cb2e1_54fc19b6",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
         "patchSetId": 11
@@ -77,6 +123,29 @@
       "writtenOn": "2021-12-23T09:11:34Z",
       "side": 1,
       "message": "do we need to set the policy to `--policy\u003drr` explicitly? what\u0027s the default value?",
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c120f1_149375c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2021-12-23T09:46:44Z",
+      "side": 1,
+      "message": "don\u0027t you need software dependency since you use cyclictext bin?",
+      "range": {
+        "startLine": 138,
+        "startChar": 43,
+        "endLine": 138,
+        "endChar": 53
+      },
       "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
