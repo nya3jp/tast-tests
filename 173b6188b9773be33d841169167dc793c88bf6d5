@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dbab7c2_859c94a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/vm_pstore_dump.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1379789
+      },
+      "writtenOn": "2021-12-23T08:53:08Z",
+      "side": 1,
+      "message": "Why does this do regexp instead of substring search? printk prefix format can change again in the future.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 105
+      },
+      "revId": "173b6188b9773be33d841169167dc793c88bf6d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
