@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c432cf3_ec4d7d37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-23T20:23:39Z",
+      "side": 1,
+      "message": "@mhasank IIUC, this only checks that it can click \"accept\" button on ToS window but doesn\u0027t care about what happens next (e.g. encountering failure during opt-in). Shall we verify that we can open Play Store here (just like the new test does)?",
+      "revId": "456ee3f464a64ac07d4762e3a7d74874efd2f4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
