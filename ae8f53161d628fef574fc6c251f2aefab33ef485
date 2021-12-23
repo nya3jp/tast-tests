@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6a1369b_a2cf278e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-23T00:35:40Z",
+      "side": 1,
+      "message": "we are indeed expecting an error here. This function is used to verify the negative cases, where the API can throw an error as expected if being mis-operated.",
+      "parentUuid": "acebd6b8_c31769d4",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "ae8f53161d628fef574fc6c251f2aefab33ef485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55bb755f_112440c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-23T00:09:29Z",
       "side": 1,
       "message": "This indent is not necessary",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 13
+      },
+      "revId": "ae8f53161d628fef574fc6c251f2aefab33ef485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6d721e5_79a3ed65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-23T00:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55bb755f_112440c4",
       "range": {
         "startLine": 41,
         "startChar": 3,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-23T00:09:29Z",
       "side": 1,
       "message": "Nil is usually return in the last.",
+      "range": {
+        "startLine": 160,
+        "startChar": 9,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "ae8f53161d628fef574fc6c251f2aefab33ef485",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "130b80e8_482ee971",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-23T00:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a95803ba_069df83d",
       "range": {
         "startLine": 160,
         "startChar": 9,
