@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "114da28d_76ebc8a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2021-12-23T00:53:46Z",
+      "side": 1,
+      "message": "Approving for now. We need to work on the restructure to have some library and use it between arc and appcompat tests. ",
+      "revId": "460589bffdec28bc31a237927ed1fe98561076a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb5f4b6_ffccaef2",
