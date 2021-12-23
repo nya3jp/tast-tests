@@ -31,7 +31,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:    []string{"group:mainline", "informational"},
-		Fixture: "chromeLoggedIn",
+		Fixture: "chromeLoggedInWith100FakeApps",
 	})
 }
 
@@ -70,11 +70,23 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the launcher: ", err)
 			}
 
-			if err := dragIconToIcon(ctx, tconn, ui); err != nil {
+			// Each subtest requires at least 3 items on the current page - the first page may have a (default) page break after several
+			// default apps, and depending on the device may not have enough apps to satisfy this requirement.
+			// To work around this, start the test on the second launcher page.
+			if err := newLauncherPageSwitcher(ui).switchToPage(1)(ctx); err != nil {
+				s.Fatal("Failed to switch to second page for test: ", err)
+			}
+
+			firstItem, err := getFirstItemOnCurrentPage(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to get the first item on the current page: ", err)
+			}
+
+			if err := dragIconToIcon(ctx, tconn, ui, firstItem); err != nil {
 				s.Fatal("Failed to drag the first icon to the second icon: ", err)
 			}
 
-			if err := dragIconToNextPage(ctx, tconn, ui); err != nil {
+			if err := dragIconToNextPage(ctx, tconn, ui, firstItem); err != nil {
 				s.Fatal("Failed to drag the first icon to next page: ", err)
 			}
 		}
@@ -85,8 +97,8 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 	}
 }
 
-func dragIconToIcon(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) error {
-	srcInfo, err := ui.Info(ctx, nodewith.HasClass(launcher.ExpandedItemsClass).First())
+func dragIconToIcon(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, firstItem int) error {
+	srcInfo, err := ui.Info(ctx, nodewith.HasClass(launcher.ExpandedItemsClass).Nth(firstItem))
 	if err != nil {
 		return errors.Wrap(err, "failed to get information of first icon")
 	}
@@ -100,9 +112,10 @@ func dragIconToIcon(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Cont
 	// Because launcher.DragIconToIcon can't drag the icon to the middle of two adjacent icons,
 	// and the srcIcon and destIcon will be merged into a folder.
 	// Use launcher.DragIconToIcon and launcher.RemoveIconFromFolder to change the position of the icon while avoiding merging into a folder.
-	if err := launcher.DragIconToIcon(tconn, 0, 2)(ctx); err != nil {
+	if err := launcher.DragIconToIcon(tconn, firstItem, firstItem+2)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag the first icon to the third icon")
 	}
+
 	if err := launcher.RemoveIconFromFolder(tconn)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag out the icon from folder")
 	}
@@ -120,9 +133,9 @@ func dragIconToIcon(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Cont
 	return nil
 }
 
-// dragIconToNextPage drags an icon to the next page.
-func dragIconToNextPage(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context) error {
-	srcInfo, err := ui.Info(ctx, nodewith.HasClass(launcher.ExpandedItemsClass).First())
+// dragIconToNextPage drags an icon to from the current to the next page.
+func dragIconToNextPage(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, itemIndex int) error {
+	srcInfo, err := ui.Info(ctx, nodewith.HasClass(launcher.ExpandedItemsClass).Nth(itemIndex))
 	if err != nil {
 		return errors.Wrap(err, "failed to get information of first icon")
 	}
@@ -132,7 +145,7 @@ func dragIconToNextPage(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 		return errors.Wrap(err, "failed to identify page before dragging")
 	}
 
-	if err := launcher.DragIconToNextPage(tconn)(ctx); err != nil {
+	if err := launcher.DragIconToNextPage(tconn, itemIndex)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag icon to next page")
 	}
 
@@ -146,12 +159,29 @@ func dragIconToNextPage(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 		return errors.New("failed to verify dragged icon in the new page")
 	}
 
-	// Return to the first page after verifying that dropped app should be in the new page.
-	if err := newLauncherPageSwitcher(ui).switchToPage(0)(ctx); err != nil {
-		return errors.Wrap(err, "failed to recovery to the first page")
+	// Return to the previous page after verifying that dropped app should be in the new page.
+	if err := newLauncherPageSwitcher(ui).switchToPage(pageBefore)(ctx); err != nil {
+		return errors.Wrap(err, "failed to recovery to the previous page")
 	}
 
 	return nil
+}
+
+// getFirstItemOnCurrentPage returns the index on the first app list item that's on the current page
+func getFirstItemOnCurrentPage(ctx context.Context, tconn *chrome.TestConn) (int, error) {
+	currentIndex := 0
+
+	for {
+		itemOnCurrentPage, err := launcher.IsItemOnCurrentPage(ctx, tconn, nodewith.ClassName(launcher.ExpandedItemsClass).Nth(currentIndex))
+		if err != nil {
+			return -1, errors.Wrap(err, "checking whether item is on page failed")
+		}
+		if itemOnCurrentPage {
+			break
+		}
+		currentIndex = currentIndex + 1
+	}
+	return currentIndex, nil
 }
 
 // identifyItemInWhichPage identifies which page the target item is on.
