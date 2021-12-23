@@ -22,6 +22,30 @@
       },
       "revId": "d72b035b9df853fa0522cc723d35b1f8789a65e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d72f147_2dad5dca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-23T19:59:03Z",
+      "side": 0,
+      "message": "I was already removing the other lines and the rest is just one line, so I guess this is already solved?",
+      "parentUuid": "f221242d_baac86fc",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "d72b035b9df853fa0522cc723d35b1f8789a65e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

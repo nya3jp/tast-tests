@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2973250_85e64783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-23T19:59:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae61df21_1788402c",
+      "range": {
+        "startLine": 77,
+        "startChar": 55,
+        "endLine": 77,
+        "endChar": 56
+      },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51c6dab9_f1ba538f",
@@ -64,6 +88,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d54801_42ea1a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-23T19:59:03Z",
+      "side": 1,
+      "message": "The opt-in flow used in optin.go seems to involve GUI interactions (e.g. waiting for ToS window to show up and page to load up, and then accept). I guess that leads to lower reliability thus the need to retry. Plus, the max retry attempts is currently set to 1, so essentially no retry on the existing test. The retry code was there in case something is flaky.\n\nThe flow in this new test is to use policy to force ARC opt-in, which doesn\u0027t involve any GUI interaction (thus more reliable).\n\nBesides, this new test will start as informational so we can observe whether it\u0027s flaky.",
+      "parentUuid": "29200162_c5806bb4",
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f108f90_45eff514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-23T19:59:03Z",
+      "side": 1,
+      "message": "The old test only executes opt-in and verify no error. As the name suggests, ```FindOptInExtensionPageAndAcceptTerms``` would find the ARC Terms-of-Service page, and accept the terms (which is part of the opt-in flow). From this point, it returns success and doesn\u0027t seem to check whether the entire flow is successful (btw, ```PerformAndClose``` would check that Play Store window is shown like the new test.).\n\nWhen using policy to force opt-in, the flow happens in the background and there\u0027s no ToS window. Thus there might not be direct way to verify that opt-in is successful. So we have to do one step further and open up Play Store to ensure opt-in succeeded.\n\nLine 77 already indicates that the policy will force ARC opt-in, which will be triggered by ServeAndRefresh. I am rewording that a bit as well.",
+      "parentUuid": "51c6dab9_f1ba538f",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 108
+      },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f78757c6_e0345c9a",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-12-23T17:09:08Z",
       "side": 1,
       "message": "can we promote this to a constant above?",
+      "range": {
+        "startLine": 91,
+        "startChar": 50,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42926b1_887eccbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-23T19:59:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78757c6_e0345c9a",
       "range": {
         "startLine": 91,
         "startChar": 50,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "867728c9_f2bb6f5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-23T19:59:03Z",
+      "side": 1,
+      "message": "Thanks for the pointer. I applied this to both helper functions.",
+      "parentUuid": "b925e840_4a26ffd7",
+      "range": {
+        "startLine": 99,
+        "startChar": 14,
+        "endLine": 99,
+        "endChar": 17
+      },
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "830f0032_6f48fcff",
@@ -123,6 +237,24 @@
       "writtenOn": "2021-12-23T17:09:08Z",
       "side": 1,
       "message": "We have to pass fake dms url here otherwise it won\u0027t use a fake server and connect to prod.\n\nexample: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/system_timezone.go;l\u003d50;drc\u003d56af2b0a8eafbdfc9812f93815a362f0b055d655",
+      "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f761db_8e2ea33e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-23T19:59:03Z",
+      "side": 1,
+      "message": "Thanks for the pointer.\n\nBesides, I also moved the lines for ARC opt-in policy into this helper func. This means fdms already has that policy when it\u0027s used to create chrome instance, rather than creating chrome and then manually apply new policy.",
+      "parentUuid": "830f0032_6f48fcff",
       "revId": "7b42cbc2b5363716c03bde7f57b77ef21bc3a37e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
