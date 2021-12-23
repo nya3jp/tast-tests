@@ -287,6 +287,10 @@ func DragItemToItem(tconn *chrome.TestConn, src, dest *nodewith.Finder) uiauto.A
 func RemoveIconFromFolder(tconn *chrome.TestConn) uiauto.Action {
 	return func(ctx context.Context) error {
 		ui := uiauto.New(tconn)
+
+		// Ensure the folder node is focused, to get its location to update.
+		ui.FocusAndWait(UnnamedFolderFinder)(ctx)
+
 		// Click to open the folder.
 		if err := ui.LeftClick(UnnamedFolderFinder)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click the folder")
@@ -354,7 +358,7 @@ func AddItemsToFolder(ctx context.Context, tconn *chrome.TestConn, folder *nodew
 			return errors.Wrap(err, "failed to check if the item is on the current page")
 		}
 		if !onPage {
-			if err := DragIconToNextPage(tconn)(ctx); err != nil {
+			if err := DragIconToNextPage(tconn, 0)(ctx); err != nil {
 				return errors.Wrap(err, "failed to drag icon to the next page")
 			}
 		}
@@ -379,10 +383,10 @@ func AddItemsToFolder(ctx context.Context, tconn *chrome.TestConn, folder *nodew
 }
 
 // DragIconToNextPage drags an icon to the next page of the app list.
-func DragIconToNextPage(tconn *chrome.TestConn) uiauto.Action {
+func DragIconToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
 	return func(ctx context.Context) error {
 		ui := uiauto.New(tconn)
-		src := nodewith.ClassName(ExpandedItemsClass).Nth(0)
+		src := nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex)
 		// Move and press the mouse on the source icon.
 		start, err := ui.Location(ctx, src)
 		if err != nil {
