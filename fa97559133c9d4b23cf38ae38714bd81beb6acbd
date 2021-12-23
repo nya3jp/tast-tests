@@ -34,6 +34,24 @@
       "parentUuid": "d71af3b1_b4e1f9c8",
       "revId": "fa97559133c9d4b23cf38ae38714bd81beb6acbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eebe877_dcf5aff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1392253
+      },
+      "writtenOn": "2021-12-23T23:02:19Z",
+      "side": 1,
+      "message": "1. The policy package has the same issue as the camerabox package. The conflict is in the policy.proto.\n\n2. You\u0027re right. That\u0027s why I created a separate CL to only update the policy package and camerabox package (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3340314). Fixing these two packages is sufficient to pass the main CL (https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3252922).\n\nUpdating other packages is not necessarily required at the moment. However, since I uprev the dev-go/protobuf, we have to update the pb.go of other packages at some point. As I\u0027ve fixed the policy package and camerabox package in a separate CL, I will modify the CL description and only update the pb.go format of other packages.",
+      "parentUuid": "64749579_ee733f2e",
+      "revId": "fa97559133c9d4b23cf38ae38714bd81beb6acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
