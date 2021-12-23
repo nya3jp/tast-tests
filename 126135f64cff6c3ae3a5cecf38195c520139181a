@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ceeb6bc_67ff9f6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-23T09:04:47Z",
+      "side": 1,
+      "message": "I saw from that\n\n```\n-p, --prio\u003dPRIO\n   Set the priority of the first thread. The given priority is set to the first test thread. Each further thread gets a lower priority: Priority(Thread N) \u003d max(Priority(Thread N-1) - 1, 0)\n```\n\nis this true and should we add a note here?\n\nCould we also check\n\n```\nps -AT -eo rtprio,prio,pid,comm | sort -n | less \n```\n\nand another DUT console while tast is running to check if cyclictest really run in rt-priority?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 43
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
