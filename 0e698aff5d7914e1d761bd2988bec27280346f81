@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "307ded70_63a54228",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:07:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cca85e21_53f10bd0",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c0bf641_3d579cbf",
@@ -125,6 +149,30 @@
       "side": 1,
       "message": "I\u0027ll try, I recall that initing keyboard takes some time (but maybe just the first time), and we\u0027ll be initing it like 5~6 times if we separate it. If there\u0027s no significant latency I\u0027ll definitely change this.",
       "parentUuid": "40e08dbb_0f581685",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2dfc9b6_848c74f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:07:03Z",
+      "side": 1,
+      "message": "If you decide to keep it, please add short comment why do you need it.",
+      "parentUuid": "0777622f_93c5e1eb",
       "range": {
         "startLine": 128,
         "startChar": 0,
@@ -281,6 +329,24 @@
       "side": 1,
       "message": "Not sure about this. It\u0027s convention in the entire chromium/chromiumos codebase to use \"webauthn\" as a word (no underscore) for snake case variable/file names. It\u0027s one word but we capitalize the \u0027A\u0027 when in text because of more correct semantics, thus we also do that for camel case (since it will look like how it\u0027s written in text, not because it\u0027s two words). But we never separate it into two words as in \"web_authn\". I originally want to do \"WebAuthn\" and \"webAuthn\" in code, but still \"webauthn\" for filename, but Go doesn\u0027t allow this. I feel like \"Webauthn\" is still more consistent (at least corresponding to the snake case naming), compared to using \"web_authn\", since we don\u0027t want to make it two words.",
       "parentUuid": "27bf0ce9_9b0119c1",
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dcfb14c_64ad3b94",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:07:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "146aea91_a8e40029",
       "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
