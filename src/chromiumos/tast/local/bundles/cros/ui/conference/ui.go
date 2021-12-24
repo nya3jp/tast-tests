@@ -14,6 +14,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -51,4 +53,25 @@ func waitForFullscreenCondition(tconn *chrome.TestConn, title string, isFullScre
 		}
 		return nil
 	}
+}
+
+// allowPagePermissions checks whether the page has been blocked.
+// If the page has been blocked, unblock camera and microphone permissions.
+func allowPagePermissions(tconn *chrome.TestConn) action.Action {
+	ui := uiauto.New(tconn)
+	blockedButton := nodewith.NameContaining("This page has been blocked").Role(role.Button)
+	dialogRoot := nodewith.Name("Camera and microphone blocked").Role(role.Window).ClassName("ContentSettingBubbleContents")
+	alwaysAllowButton := nodewith.NameContaining("Always allow").Role(role.RadioButton).Ancestor(dialogRoot)
+	doneButton := nodewith.Name("Done").Role(role.Button).Focusable().Ancestor(dialogRoot)
+	reloadButton := nodewith.Name("Reload").Role(role.Button).Focusable().First()
+	accessButton := nodewith.NameContaining("This page is accessing").Role(role.Button)
+	allowPermission := uiauto.NamedAction("allow page permissions",
+		uiauto.Combine("allow page permissions",
+			ui.LeftClick(blockedButton),
+			ui.LeftClick(alwaysAllowButton),
+			ui.LeftClick(doneButton),
+			ui.LeftClick(reloadButton),
+			ui.WaitUntilExists(accessButton),
+		))
+	return ui.IfSuccessThen(ui.WithTimeout(3*time.Second).WaitUntilExists(blockedButton), allowPermission)
 }
