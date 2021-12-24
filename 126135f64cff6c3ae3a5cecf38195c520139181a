@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d32a0c3_1dedd99f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T05:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506e416c_3ea0f853",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eed17b40_fb7d209f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-23T09:46:44Z",
       "side": 1,
       "message": "nit: Start the sentence with a capital letter.",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27af190_ede21c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T05:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed17b40_fb7d209f",
       "range": {
         "startLine": 38,
         "startChar": 13,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba33e2dd_24bcf1bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T05:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d87cb2e1_54fc19b6",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d364cbba_b0b5df51",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-23T09:43:57Z",
       "side": 1,
       "message": "then this could be \"12rr_4thread_10ms\"",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f1ca2e_5d4e1a74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T05:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d364cbba_b0b5df51",
       "range": {
         "startLine": 64,
         "startChar": 11,
@@ -216,6 +312,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f1864bd_892fc283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T05:57:46Z",
+      "side": 1,
+      "message": "Not sure why, but I did check that the threads run in specified rt-priority.\n\nExplicitly add the flag to avoid any uncertainty.",
+      "parentUuid": "018ca34b_f88134f9",
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0df940_1524ee9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T05:57:46Z",
+      "side": 1,
+      "message": "Create crrev/c/3351812 and crrev/c/3353679 to add cras into tast flag",
+      "parentUuid": "1d2c0d15_1a6a152f",
+      "range": {
+        "startLine": 138,
+        "startChar": 43,
+        "endLine": 138,
+        "endChar": 53
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46f3810e_a6a869e7",
@@ -263,6 +401,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3195e3c0_3727494e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T05:57:46Z",
+      "side": 1,
+      "message": "Leave a TODO here.",
+      "parentUuid": "1b6ab651_1fc7f837",
+      "range": {
+        "startLine": 139,
+        "startChar": 5,
+        "endLine": 139,
+        "endChar": 13
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ceeb6bc_67ff9f6c",
@@ -276,6 +438,30 @@
       "writtenOn": "2021-12-23T09:04:47Z",
       "side": 1,
       "message": "I saw from that\n\n```\n-p, --prio\u003dPRIO\n   Set the priority of the first thread. The given priority is set to the first test thread. Each further thread gets a lower priority: Priority(Thread N) \u003d max(Priority(Thread N-1) - 1, 0)\n```\n\nis this true and should we add a note here?\n\nCould we also check\n\n```\nps -AT -eo rtprio,prio,pid,comm | sort -n | less \n```\n\nand another DUT console while tast is running to check if cyclictest really run in rt-priority?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 43
+      },
+      "revId": "126135f64cff6c3ae3a5cecf38195c520139181a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee70cc0_a1792258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T05:57:46Z",
+      "side": 1,
+      "message": "`Each further thread gets a lower priority`\nThis should be set by `--priospread`\n\nI have checked that all the threads are run in the specified rt-priority.",
+      "parentUuid": "3ceeb6bc_67ff9f6c",
       "range": {
         "startLine": 141,
         "startChar": 0,
