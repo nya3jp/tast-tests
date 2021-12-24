@@ -52,6 +52,24 @@
       "parentUuid": "64749579_ee733f2e",
       "revId": "fa97559133c9d4b23cf38ae38714bd81beb6acbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1230816_532bc756",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2021-12-24T17:01:19Z",
+      "side": 1,
+      "message": "Thanks for explaining. I am relatively new to this, so please do not feel blocked by my questions and land this CL when ready, but can you please help me understand:\n\n1. I see that policy.proto does not import common.proto: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/main/src/chromiumos/tast/services/cros/policy/policy.proto, so why do we need to rename it? Or is it conflicting with some other package also named policy? I couldn\u0027t find any error messages mentioning \"policy.proto\" in https://logs.chromium.org/logs/chromeos/buildbucket/cr-buildbucket/8828091911485393201/+/u/install_packages/call_chromite.api.SysrootService_InstallPackages/call_response:_tast-local-tests-cros/build_api_stdout (linked from description of https://crrev.com/c/3340314).\n\n2. What is common.proto conflicting with? My understanding is that this issue only arrises when there are two proto files with the same name (or in the directory/package with the same name package). I could only find single common.proto in this repository. I guess there is another common.proto somewhere else in another repository.",
+      "parentUuid": "7eebe877_dcf5aff8",
+      "revId": "fa97559133c9d4b23cf38ae38714bd81beb6acbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
