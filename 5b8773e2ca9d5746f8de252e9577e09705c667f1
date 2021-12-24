@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46231d7f_d3aa258c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:35:43Z",
+      "side": 1,
+      "message": "nit: try to shorten this up to 52 symbols",
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ff2280_8a803c4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:35:43Z",
+      "side": 1,
+      "message": "nit: you can remove it, it does not add any useful info :)",
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fcebe19_524d19f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:35:43Z",
+      "side": 1,
+      "message": "Please don\u0027t wait shadow reviewer, they are OOO.",
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b9f5117_4fc5edde",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:35:43Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t you remove this space? was this file automatically formatted?",
+      "range": {
+        "startLine": 277,
+        "startChar": 68,
+        "endLine": 277,
+        "endChar": 69
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a9499bc_cbe2aa38",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:35:43Z",
+      "side": 1,
+      "message": "This arg was not originally in MountWithAuthSession, do you really want to add it? Maybe adding this arg is out of this CL scope?",
+      "range": {
+        "startLine": 291,
+        "startChar": 41,
+        "endLine": 291,
+        "endChar": 65
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2df9cdc7_e2bc4853",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:35:43Z",
+      "side": 1,
+      "message": "I don\u0027t think it makes sense to wrap this and other errors in this file. If something will fail, then cryptohome.go:377 will procude the next error:\n\nfailed to invalidate AuthSession: failed to invalidate auth session: \u003cactual error\u003e\n\n\nPlease check documentation about errors:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Error-construction",
+      "range": {
+        "startLine": 850,
+        "startChar": 9,
+        "endLine": 850,
+        "endChar": 20
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703391ba_ab82d6c4",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T09:35:43Z",
+      "side": 1,
+      "message": "nit: \"failed to get user cryptohome directory stat\" to be precise",
+      "range": {
+        "startLine": 337,
+        "startChar": 28,
+        "endLine": 337,
+        "endChar": 67
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
