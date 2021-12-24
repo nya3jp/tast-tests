@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7fa64b_5d35042a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T09:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d9ec507_1bed606d",
+      "range": {
+        "startLine": 55,
+        "startChar": 23,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "21873720b037faa0b9e3b5d8af36e3726dbebe26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b084399e_afd07fba",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-24T09:30:45Z",
       "side": 1,
       "message": "do we need to sync the stress-ng time with cyclictest run time? default stress-ng runtime is 10s or 20s only IIUC",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 47
+      },
+      "revId": "21873720b037faa0b9e3b5d8af36e3726dbebe26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60107d34_e573865d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T09:37:58Z",
+      "side": 1,
+      "message": "default is 86400s(1 day).\n\nExplicitly set the timeout to 3600s(1 hr) to avoid uncertainty.",
+      "parentUuid": "b084399e_afd07fba",
       "range": {
         "startLine": 206,
         "startChar": 0,
