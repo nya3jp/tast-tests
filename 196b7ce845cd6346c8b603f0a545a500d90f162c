@@ -22,6 +22,30 @@
       },
       "revId": "196b7ce845cd6346c8b603f0a545a500d90f162c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9f1f43_3b3d6482",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T07:19:39Z",
+      "side": 1,
+      "message": "Add an option in stress schedule, we can add more coverage in the future changes.",
+      "parentUuid": "25eb2f98_aba623bd",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "196b7ce845cd6346c8b603f0a545a500d90f162c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
