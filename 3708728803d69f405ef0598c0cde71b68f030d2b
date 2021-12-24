@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a76a0c_f0e07615",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T07:12:54Z",
+      "side": 1,
+      "message": "Rename `cyclic_test.go` to `cyclic_bench.go` to align with the naming policy: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-names",
+      "revId": "3708728803d69f405ef0598c0cde71b68f030d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
