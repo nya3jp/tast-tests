@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e9d68de_ea63a94e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-24T10:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46231d7f_d3aa258c",
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56ff2280_8a803c4d",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-24T09:35:43Z",
       "side": 1,
       "message": "nit: you can remove it, it does not add any useful info :)",
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a6316a_907c6ad9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-24T10:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ff2280_8a803c4d",
       "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba7488dc_89b80902",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-24T10:01:28Z",
+      "side": 1,
+      "message": "This file is the automatically formatted by this command:\n```\ngofmt -w src/chromiumos/tast/common/hwsec/cryptohome_binary.go\n```",
+      "parentUuid": "3b9f5117_4fc5edde",
+      "range": {
+        "startLine": 277,
+        "startChar": 68,
+        "endLine": 277,
+        "endChar": 69
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a9499bc_cbe2aa38",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-12-24T09:35:43Z",
       "side": 1,
       "message": "This arg was not originally in MountWithAuthSession, do you really want to add it? Maybe adding this arg is out of this CL scope?",
+      "range": {
+        "startLine": 291,
+        "startChar": 41,
+        "endLine": 291,
+        "endChar": 65
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d93b54_fadeee46",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-24T10:01:28Z",
+      "side": 1,
+      "message": "This option is meanless, removed.",
+      "parentUuid": "4a9499bc_cbe2aa38",
       "range": {
         "startLine": 291,
         "startChar": 41,
@@ -134,6 +218,30 @@
       "writtenOn": "2021-12-24T09:35:43Z",
       "side": 1,
       "message": "nit: \"failed to get user cryptohome directory stat\" to be precise",
+      "range": {
+        "startLine": 337,
+        "startChar": 28,
+        "endLine": 337,
+        "endChar": 67
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389ca66d_00b35b12",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-24T10:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "703391ba_ab82d6c4",
       "range": {
         "startLine": 337,
         "startChar": 28,
