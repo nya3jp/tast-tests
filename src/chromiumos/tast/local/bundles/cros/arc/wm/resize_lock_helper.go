@@ -17,6 +17,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
@@ -271,14 +273,16 @@ func CheckCompatModeButton(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 	}
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		button, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: CenterButtonClassName})
+		ui := uiauto.New(tconn)
+		nodes, err := ui.NodesInfo(ctx, nodewith.ClassName(CenterButtonClassName))
 		if err != nil {
 			return errors.Wrap(err, "failed to find the compat-mode button")
 		}
-		button.Release(ctx)
-
-		if button.Name != mode.String() {
-			return errors.Errorf("failed to verify the name of compat-mode button; got: %s, want: %s", button.Name, mode)
+		if len(nodes) != 1 {
+			return errors.Wrapf(err, "found multiple nodes with class %s", CenterButtonClassName)
+		}
+		if nodes[0].Name != mode.String() {
+			return errors.Errorf("failed to verify the name of compat-mode button; got: %s, want: %s", nodes[0].Name, mode)
 		}
 
 		return nil
@@ -361,10 +365,11 @@ func checkBorder(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.
 
 // CheckVisibility checks whether the node specified by the given class name exists or not.
 func CheckVisibility(ctx context.Context, tconn *chrome.TestConn, className string, visible bool) error {
+	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
 	if visible {
-		return chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: className}, 10*time.Second)
+		return ui.WaitUntilExists(nodewith.ClassName(className))(ctx)
 	}
-	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{ClassName: className}, 10*time.Second)
+	return ui.WaitUntilGone(nodewith.ClassName(className))(ctx)
 }
 
 // CheckResizability verifies the given app's resizability.
@@ -394,13 +399,8 @@ func showCompatModeMenu(ctx context.Context, tconn *chrome.TestConn, method Inpu
 
 // showCompatModeMenuViaButtonClick clicks on the compat-mode button and shows the compat-mode menu.
 func showCompatModeMenuViaButtonClick(ctx context.Context, tconn *chrome.TestConn) error {
-	icon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{ClassName: CenterButtonClassName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the compat-mode button")
-	}
-	defer icon.Release(ctx)
-
-	if err := icon.LeftClick(ctx); err != nil {
+	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+	if err := ui.LeftClick(nodewith.ClassName(CenterButtonClassName))(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on the compat-mode button")
 	}
 
@@ -414,7 +414,8 @@ func showCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn, 
 			return errors.Wrap(err, "failed to inject Search+Alt+C")
 		}
 
-		if err := chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: BubbleDialogClassName}, 2*time.Second); err != nil {
+		ui := uiauto.New(tconn)
+		if err := ui.WithTimeout(2 * time.Second).WaitUntilExists(nodewith.ClassName(BubbleDialogClassName))(ctx); err != nil {
 			return errors.Wrap(err, "failed to find the compat-mode dialog")
 		}
 		return nil
@@ -425,15 +426,12 @@ func showCompatModeMenuViaKeyboard(ctx context.Context, tconn *chrome.TestConn, 
 // After one of the resize lock mode buttons are selected, the compat mode menu disappears after a few seconds of delay.
 // Can't use chromeui.WaitUntilGone() for this purpose because this function also checks whether the dialog has the "Phone" button or not to ensure that we are checking the correct dialog.
 func waitForCompatModeMenuToDisappear(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		dialog, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: BubbleDialogClassName})
-		if err == nil && dialog != nil {
-			defer dialog.Release(ctx)
-
-			phoneButton, err := dialog.Descendant(ctx, chromeui.FindParams{Name: phoneButtonName})
-			if err == nil && phoneButton != nil {
-				phoneButton.Release(ctx)
-				return errors.Wrap(err, "compat mode menu is sitll visible")
+		bubbleDialog := nodewith.ClassName(BubbleDialogClassName)
+		if ui.Exists(bubbleDialog)(ctx) == nil {
+			if err := ui.Exists(nodewith.Ancestor(bubbleDialog).Name(phoneButtonName))(ctx); err == nil {
+				return errors.New("compat mode menu is sitll visible")
 			}
 		}
 		return nil
