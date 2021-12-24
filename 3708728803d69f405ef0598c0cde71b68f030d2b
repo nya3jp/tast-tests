@@ -16,6 +16,29 @@
       "message": "Rename `cyclic_test.go` to `cyclic_bench.go` to align with the naming policy: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-names",
       "revId": "3708728803d69f405ef0598c0cde71b68f030d2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f23924_8e69253d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-24T08:18:07Z",
+      "side": 1,
+      "message": "After reading\n\n- https://www.osadl.org/Real-time-optimization.qa-farm-latency-optimization.0.html and\n- https://www.osadl.org/Profile-of-system-in-rack-0-slot-0.qa-profile-r0s0.0.html and\n- plot https://www.osadl.org/Latency-plot-of-system-in-rack-0-slot.qa-latencyplot-r0s0.0.html?shadow\u003d0\n\nI think we can record \"max_latency\" (and maybe min_latency) as will since we do care about the max latency",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 33
+      },
+      "revId": "3708728803d69f405ef0598c0cde71b68f030d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
