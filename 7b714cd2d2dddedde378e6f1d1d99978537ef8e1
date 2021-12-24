@@ -16,6 +16,24 @@
       "message": "nit: another `Cq-Depend: chromium:3353679` to the use flag CL?",
       "revId": "7b714cd2d2dddedde378e6f1d1d99978537ef8e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f17c762_088262d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-24T09:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67bde70c_2dba1e1c",
+      "revId": "7b714cd2d2dddedde378e6f1d1d99978537ef8e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
