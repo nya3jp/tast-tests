@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e621b1_f8e2d0dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-24T08:00:13Z",
+      "side": 1,
+      "message": "Looks good % argument passing for func processLatency.",
+      "revId": "ce9050e5bf3969610519b0bd51a1af40233aa948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8444cce1_623d6ca6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1294890
+      },
+      "writtenOn": "2021-12-24T08:00:13Z",
+      "side": 1,
+      "message": "latency and pattern are passed as arguments, but they are also visible to this function. You may just iterate over latencies in this function to reduce the number of arguments and make it clearer:\n\nfunc processLatency(strOut string, sensor *iio.Sensor, pv *perf.Values, s *testing.State) error {\n    var latencies \u003d map[string]string{\n        \"max\":    \"Max latency  \",\n        \"min\":    \"Min latency  \",\n        \"median\": \"Median latency  \",\n        \"mean\":   \"Mean latency  \",\n    }\n    \n    for latency, pattern : range latencies {\n        // (what this function does for each latency)\n    }\n}\n\nOr another alternative is inlining this function since it\u0027s only called once.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 113
+      },
+      "revId": "ce9050e5bf3969610519b0bd51a1af40233aa948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
