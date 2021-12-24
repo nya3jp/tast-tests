@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0f2ddab_05d0bdb9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-12-24T09:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b2270b0_a1311f7c",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "adbd81cbeaac13787b0d9f59761ebc38761be3fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d086a05_4f9f2349",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-23T17:49:00Z",
       "side": 1,
       "message": "if val, err :\u003d h.Servo.GetString(ctx, servo.CR50CCDLevel); err !\u003d nil {\n\t\ts.Fatal(\"Failed to get cr50_ccd_level\")\n\t} else if val !\u003d servo.Open {\n\t\ts.Logf(\"CCD is not open, got %q. Attempting to unlock\", val)\n\t\tif err :\u003d h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to unlock CCD\")\n\t\t}\n\t}",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 5
+      },
+      "revId": "adbd81cbeaac13787b0d9f59761ebc38761be3fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e5509f_54da01d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_wake_on_charge.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2021-12-24T09:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d086a05_4f9f2349",
       "range": {
         "startLine": 91,
         "startChar": 4,
