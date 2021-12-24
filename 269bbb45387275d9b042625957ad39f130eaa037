@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110f2441_a6d0b2be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-24T12:31:38Z",
+      "side": 1,
+      "message": "I was able to create goroutine in fixture and see logs from that goroutine. Here is CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3354901\n\nMaybe you faced some issues because some primitives were not thread safe or there was some mutex that blocked your goroutine?",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3fcc9b1_49a4a596",
