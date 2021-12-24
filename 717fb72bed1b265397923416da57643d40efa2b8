@@ -22,6 +22,53 @@
       },
       "revId": "717fb72bed1b265397923416da57643d40efa2b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad12ef14_dbd40e7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-24T09:46:53Z",
+      "side": 1,
+      "message": "maybe 110% is enough, you can try which is more suitable.",
+      "parentUuid": "d0f0aff1_2ce4764a",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 18
+      },
+      "revId": "717fb72bed1b265397923416da57643d40efa2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed3195b_c792f0a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-24T09:46:53Z",
+      "side": 1,
+      "message": "maybe we can change to `Wait()` here?",
+      "range": {
+        "startLine": 236,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 22
+      },
+      "revId": "717fb72bed1b265397923416da57643d40efa2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
