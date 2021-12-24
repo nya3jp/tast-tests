@@ -207,6 +207,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21e38cc3_6a4bdce7",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-24T10:07:55Z",
+      "side": 1,
+      "message": "I think here is the place that is recommended to wrap when you cross package boundary.\nWe hope all new consumers use the hwsec package directly in the future, which means the new consumers would not see \"failed to invalidate AuthSession:\" in their log.",
+      "parentUuid": "2df9cdc7_e2bc4853",
+      "range": {
+        "startLine": 850,
+        "startChar": 9,
+        "endLine": 850,
+        "endChar": 20
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "703391ba_ab82d6c4",
         "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
         "patchSetId": 11
