@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f0aff1_2ce4764a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-24T09:41:04Z",
+      "side": 1,
+      "message": "nit: Should we just use 90s (150% to the cyclictest run time?)\n\nCould this be calculated from defaultLoops and defaultIntervalUs?",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 18
+      },
+      "revId": "717fb72bed1b265397923416da57643d40efa2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
