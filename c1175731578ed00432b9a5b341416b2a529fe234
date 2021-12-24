@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71ad9ea_1d99f787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-24T23:07:51Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "c1175731578ed00432b9a5b341416b2a529fe234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f462957f_60361176",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-24T23:07:51Z",
+      "side": 1,
+      "message": "just attach String() to the type, it is the default `toString` functionality in go.\n\nfunc (s schedPolicy) String() string {\n\treturn []string{\"none\",\"rr\",\"other\"}[s]\n}",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 1
+      },
+      "revId": "c1175731578ed00432b9a5b341416b2a529fe234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d285381c_3f486f47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-24T23:07:51Z",
+      "side": 1,
+      "message": "just param.StressSched",
+      "range": {
+        "startLine": 212,
+        "startChar": 12,
+        "endLine": 212,
+        "endChar": 49
+      },
+      "revId": "c1175731578ed00432b9a5b341416b2a529fe234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4bd036e_87916b43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-24T23:07:51Z",
+      "side": 1,
+      "message": "nit: if err:\u003dstress.Start(); err!\u003dnil {",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 17
+      },
+      "revId": "c1175731578ed00432b9a5b341416b2a529fe234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a921749_1d1581b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-24T23:07:51Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 17
+      },
+      "revId": "c1175731578ed00432b9a5b341416b2a529fe234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
