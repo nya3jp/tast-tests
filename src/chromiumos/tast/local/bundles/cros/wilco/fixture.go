@@ -84,6 +84,13 @@ type wilcoDTCFixture struct {
 }
 
 func (w *wilcoDTCFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	// go func() {
+	// 	for {
+	// 		s.Log("INSIDE GO-ROUTINE LOOP")
+	// 		time.Sleep(time.Second)
+	// 	}
+	// }()
+	
 	fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
 	if !ok {
 		s.Fatal("Parent is not a FakeDMS fixture")

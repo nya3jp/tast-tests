@@ -88,6 +88,13 @@ func checkVPDState(ctx context.Context, d *dut.DUT) error {
 }
 
 func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	go func() {
+		for {
+			s.Log("INSIDE GO-ROUTINE LOOP")
+			time.Sleep(time.Second)
+		}
+	}()
+
 	if err := checkVPDState(ctx, s.DUT()); err != nil {
 		s.Fatal("VPD broken, skipping enrollment: ", err)
 	}
