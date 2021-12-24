@@ -97,7 +97,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 				testing.ContextLog(ctx, "No action is required to ", step.name)
 			}
 		}
-		return nil
+		return allowPagePermissions(tconn)(ctx)
 	}
 
 	switchWindow := func(ctx context.Context) error {
