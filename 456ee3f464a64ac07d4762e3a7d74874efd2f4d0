@@ -34,6 +34,57 @@
       "parentUuid": "0c432cf3_ec4d7d37",
       "revId": "456ee3f464a64ac07d4762e3a7d74874efd2f4d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19f6492_5d5c180d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-25T21:06:48Z",
+      "side": 1,
+      "message": "This appears to be an array of single item. How about we rename the var to policies or declare a single policy here and add an array on L103",
+      "revId": "456ee3f464a64ac07d4762e3a7d74874efd2f4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5bb468_9ad37846",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-25T21:06:48Z",
+      "side": 1,
+      "message": "don\u0027t we need to return from here?",
+      "revId": "456ee3f464a64ac07d4762e3a7d74874efd2f4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef16772_845c9889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2021-12-25T21:06:48Z",
+      "side": 1,
+      "message": "how about we explicitly return nil in place of fdms when there is an error?",
+      "revId": "456ee3f464a64ac07d4762e3a7d74874efd2f4d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
