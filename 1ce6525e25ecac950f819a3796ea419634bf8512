@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2fea90e_bf3ac7e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-27T06:24:40Z",
+      "side": 1,
+      "message": "Hi,\nI am sending a paratial migration CL of the file because I found this file contains about 50 occurances of \"chromeui\", which will lead to very large CL if we try to do all at once. PTAL.",
+      "revId": "1ce6525e25ecac950f819a3796ea419634bf8512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
