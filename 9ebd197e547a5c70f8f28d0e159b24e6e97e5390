@@ -22,6 +22,30 @@
       },
       "revId": "9ebd197e547a5c70f8f28d0e159b24e6e97e5390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9e55de_a9efa187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-27T03:46:28Z",
+      "side": 1,
+      "message": "query cpu(s) could be done by calling `lscpu`",
+      "parentUuid": "f861aac0_84b2925c",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "9ebd197e547a5c70f8f28d0e159b24e6e97e5390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
