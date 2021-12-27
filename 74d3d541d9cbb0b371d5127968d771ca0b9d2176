@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e73283_499ccd7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-27T12:02:30Z",
+      "side": 1,
+      "message": "LGTM % (nits + comment)\n",
+      "revId": "74d3d541d9cbb0b371d5127968d771ca0b9d2176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13666710_da5075ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-27T12:02:30Z",
+      "side": 1,
+      "message": "req.OutDir never used here.\n\nAlso probably s.OutDir() from remote context will refer to a directory on a remote workstation, not DUT. So please remove OutDir parameter from gRPC protocol.",
+      "range": {
+        "startLine": 57,
+        "startChar": 51,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "74d3d541d9cbb0b371d5127968d771ca0b9d2176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc27179_487478c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-27T12:02:30Z",
+      "side": 1,
+      "message": "nit: Usually fatal messages start with \"Failed to\" even in this file. Please be consistent also with other codebase and start messages with \"Failed to\".",
+      "range": {
+        "startLine": 210,
+        "startChar": 13,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "74d3d541d9cbb0b371d5127968d771ca0b9d2176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "598fcf22_32883c77",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-27T12:02:30Z",
+      "side": 1,
+      "message": "nit: either this should be SetupPinRequest or EnterPinRequest should be EnterPINRequest",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 23
+      },
+      "revId": "74d3d541d9cbb0b371d5127968d771ca0b9d2176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
