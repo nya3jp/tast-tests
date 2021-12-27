@@ -36,6 +36,16 @@ type ZoomConference struct {
 	outDir     string
 }
 
+// Zoom has two versions of ui that need to be captured.
+const (
+	startVideoRegexCapture = "(Start Video|start sending my video)"
+	stopVideoRegexCapture  = "(Stop Video|stop sending my video)"
+	muteRegexCapture       = "(Mute|mute).*"
+	unmuteRegexCapture     = "(Unmute|unmute).*"
+	audioRegexCapture      = "(" + muteRegexCapture + "|" + unmuteRegexCapture + ")"
+	cameraRegexCapture     = "(" + startVideoRegexCapture + "|" + stopVideoRegexCapture + ")"
+)
+
 // Join joins a new conference room.
 func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) error {
 	ui := uiauto.New(conf.tconn)
@@ -146,7 +156,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		return nil
 	}
 	joinAudio := func(ctx context.Context) error {
-		audioButton := nodewith.NameRegex(regexp.MustCompile("(mute|unmute) my microphone")).Role(role.Button)
+		audioButton := nodewith.NameRegex(regexp.MustCompile(audioRegexCapture)).Role(role.Button)
 		// Not every room will automatically join audio.
 		// If there is no automatic join audio, do join audio action.
 		if err := ui.WaitUntilExists(audioButton)(ctx); err == nil {
@@ -177,9 +187,9 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 
 	startVideo := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Start video")
-		cameraButton := nodewith.NameRegex(regexp.MustCompile("(stop|start) sending my video")).Role(role.Button)
-		startVideoButton := nodewith.Name("start sending my video").Role(role.Button)
-		stopVideoButton := nodewith.Name("stop sending my video").Role(role.Button)
+		cameraButton := nodewith.NameRegex(regexp.MustCompile(cameraRegexCapture)).Role(role.Button)
+		startVideoButton := nodewith.NameRegex(regexp.MustCompile(startVideoRegexCapture)).Role(role.Button)
+		stopVideoButton := nodewith.NameRegex(regexp.MustCompile(stopVideoRegexCapture)).Role(role.Button)
 		// Start video requires camera permission.
 		// Allow permission doesn't succeed every time. So add retry here.
 		return ui.Retry(3, uiauto.Combine("start video",
@@ -233,18 +243,18 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 	ui := uiauto.New(conf.tconn)
 	toggleVideo := func(ctx context.Context) error {
-		cameraButton := nodewith.NameRegex(regexp.MustCompile("(stop|start) sending my video")).Role(role.Button)
-
+		cameraButton := nodewith.NameRegex(regexp.MustCompile(cameraRegexCapture)).Role(role.Button)
 		info, err := ui.Info(ctx, cameraButton)
 		if err != nil {
 			return errors.Wrap(err, "failed to wait for the meet camera switch button to show")
 		}
-		nowCameraButton := nodewith.Name(info.Name).Role(role.Button)
-		if strings.HasPrefix(info.Name, "start") {
+		startVideoButton := nodewith.NameRegex(regexp.MustCompile(startVideoRegexCapture)).Role(role.Button)
+		if err := ui.Exists(startVideoButton)(ctx); err == nil {
 			testing.ContextLog(ctx, "Turn camera from off to on")
 		} else {
 			testing.ContextLog(ctx, "Turn camera from on to off")
 		}
+		nowCameraButton := nodewith.Name(info.Name).Role(role.Button)
 		if err := ui.LeftClickUntil(nowCameraButton, ui.WithTimeout(5*time.Second).WaitUntilGone(nowCameraButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to toggle video")
 		}
@@ -252,19 +262,19 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 	}
 
 	toggleAudio := func(ctx context.Context) error {
-		microphoneButton := nodewith.NameRegex(regexp.MustCompile("(mute|unmute) my microphone")).Role(role.Button)
-
-		info, err := ui.Info(ctx, microphoneButton)
+		audioButton := nodewith.NameRegex(regexp.MustCompile(audioRegexCapture)).Role(role.Button)
+		info, err := ui.Info(ctx, audioButton)
 		if err != nil {
 			return errors.Wrap(err, "failed to wait for the meet microphone switch button to show")
 		}
-		nowMicrophoneButton := nodewith.Name(info.Name).Role(role.Button)
-		if strings.HasPrefix(info.Name, "unmute") {
+		unmuteButton := nodewith.NameRegex(regexp.MustCompile(unmuteRegexCapture)).Role(role.Button)
+		if err := ui.Exists(unmuteButton)(ctx); err == nil {
 			testing.ContextLog(ctx, "Turn microphone from mute to unmute")
 		} else {
 			testing.ContextLog(ctx, "Turn microphone from unmute to mute")
 		}
-		if err := ui.LeftClickUntil(nowMicrophoneButton, ui.WithTimeout(5*time.Second).WaitUntilGone(nowMicrophoneButton))(ctx); err != nil {
+		nowAudioButton := nodewith.Name(info.Name).Role(role.Button)
+		if err := ui.LeftClickUntil(nowAudioButton, ui.WithTimeout(5*time.Second).WaitUntilGone(nowAudioButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to toggle audio")
 		}
 		return nil
