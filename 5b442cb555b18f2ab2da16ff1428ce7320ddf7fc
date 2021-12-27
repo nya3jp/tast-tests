@@ -22,6 +22,30 @@
       },
       "revId": "5b442cb555b18f2ab2da16ff1428ce7320ddf7fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7720e6d1_945ff011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-27T05:56:49Z",
+      "side": 1,
+      "message": "errors.Wrap could help you wrap returned err from other function call\n\ne.g.\n```\nerrors.Wrap(err, \"Some text\")\n```\n\ncheck more in https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/howto.md",
+      "parentUuid": "5bf4c48c_37dc9f42",
+      "range": {
+        "startLine": 194,
+        "startChar": 59,
+        "endLine": 194,
+        "endChar": 62
+      },
+      "revId": "5b442cb555b18f2ab2da16ff1428ce7320ddf7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
