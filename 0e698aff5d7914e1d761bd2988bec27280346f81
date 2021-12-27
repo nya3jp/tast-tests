@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f7a202_d49e5766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c0bf641_3d579cbf",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40e08dbb_0f581685",
@@ -183,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "417aa818_f03bd07e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2dfc9b6_848c74f3",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 22
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4daaba62_59510368",
@@ -196,6 +244,30 @@
       "writtenOn": "2021-12-23T18:40:55Z",
       "side": 1,
       "message": "Does it make sense to log randomly generated user name?",
+      "range": {
+        "startLine": 164,
+        "startChar": 92,
+        "endLine": 164,
+        "endChar": 106
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea4e4f3_33c9047f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4daaba62_59510368",
       "range": {
         "startLine": 164,
         "startChar": 92,
@@ -229,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a46d74_40264613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49438f99_a35f4c8e",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 31
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42de6a3f_e748041f",
@@ -242,6 +338,30 @@
       "writtenOn": "2021-12-23T18:40:55Z",
       "side": 1,
       "message": "Please be more specific, you have the same error message 4 times. You won\u0027t be able to understand where exactly you had a problem.",
+      "range": {
+        "startLine": 172,
+        "startChar": 32,
+        "endLine": 172,
+        "endChar": 63
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b2f172_f9f9db7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42de6a3f_e748041f",
       "range": {
         "startLine": 172,
         "startChar": 32,
@@ -275,6 +395,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf287e5_fb435cd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fed3513_7ed83de5",
+      "range": {
+        "startLine": 187,
+        "startChar": 18,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efeea9e7_a60e537d",
@@ -288,6 +432,30 @@
       "writtenOn": "2021-12-23T18:40:55Z",
       "side": 1,
       "message": "nit: always pass ctx by value, don\u0027t bind by reference",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce300e3_f4390ca3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/util/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efeea9e7_a60e537d",
       "range": {
         "startLine": 40,
         "startChar": 2,
@@ -374,6 +542,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ada5e1_86a629e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ea21120_c1fd2705",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 13
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21608b65_0c2f04d9",
@@ -387,6 +579,30 @@
       "writtenOn": "2021-12-23T18:40:55Z",
       "side": 1,
       "message": "This function should take context. Same for pinAuthCallback",
+      "range": {
+        "startLine": 118,
+        "startChar": 28,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6940f86b_34aa2631",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/webauthn_u2f_mode.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21608b65_0c2f04d9",
       "range": {
         "startLine": 118,
         "startChar": 28,
@@ -420,6 +636,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee554986_e73cb623",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a048ae_b9d911c6",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af65df48_fc143064",
@@ -433,6 +673,24 @@
       "writtenOn": "2021-12-23T18:40:55Z",
       "side": 1,
       "message": "nit: remove extra blank line",
+      "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96729c74_d466e527",
+        "filename": "src/chromiumos/tast/services/cros/hwsec/webauthn_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-12-27T03:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af65df48_fc143064",
       "revId": "0e698aff5d7914e1d761bd2988bec27280346f81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
