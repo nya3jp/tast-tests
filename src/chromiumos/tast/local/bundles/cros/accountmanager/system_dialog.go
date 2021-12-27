@@ -43,10 +43,12 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Running test cleanup")
-	if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeAsh); err != nil {
-		s.Fatal("Failed to do cleanup: ", err)
-	}
+	defer func(ctx context.Context) {
+		s.Log("Running test cleanup")
+		if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeAsh); err != nil {
+			s.Fatal("Failed to do cleanup: ", err)
+		}
+	}(ctx)
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 
