@@ -253,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02efda5f_5ce38e8c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-12-27T03:18:18Z",
+      "side": 1,
+      "message": "Ok, I removed the Wrap.",
+      "parentUuid": "03faa135_f27eaeca",
+      "range": {
+        "startLine": 850,
+        "startChar": 9,
+        "endLine": 850,
+        "endChar": 20
+      },
+      "revId": "5b8773e2ca9d5746f8de252e9577e09705c667f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "703391ba_ab82d6c4",
