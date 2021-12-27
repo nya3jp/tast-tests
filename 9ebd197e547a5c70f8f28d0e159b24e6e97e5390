@@ -46,6 +46,30 @@
       },
       "revId": "9ebd197e547a5c70f8f28d0e159b24e6e97e5390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3814bcbe_8bd01566",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2021-12-27T04:28:55Z",
+      "side": 1,
+      "message": "updated with 2 workers per cpu thread",
+      "parentUuid": "aa9e55de_a9efa187",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "9ebd197e547a5c70f8f28d0e159b24e6e97e5390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
