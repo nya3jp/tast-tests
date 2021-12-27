@@ -17,6 +17,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	chromeui "chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/colorcmp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
@@ -442,11 +445,11 @@ func waitForCompatModeMenuToDisappear(ctx context.Context, tconn *chrome.TestCon
 
 // CloseSplash closes the splash screen via the given method.
 func CloseSplash(ctx context.Context, tconn *chrome.TestConn, method InputMethodType, keyboard *input.KeyboardEventWriter) error {
-	splash, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: BubbleDialogClassName})
-	if err != nil {
+	ui := uiauto.New(tconn)
+	splash := nodewith.ClassName(BubbleDialogClassName).Role(role.Window)
+	if err := ui.Exists(splash)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find the splash dialog")
 	}
-	defer splash.Release(ctx)
 
 	switch method {
 	case InputMethodClick:
@@ -458,30 +461,28 @@ func CloseSplash(ctx context.Context, tconn *chrome.TestConn, method InputMethod
 }
 
 // closeSplashViaKeyboard presses the Enter key and closes the splash screen.
-func closeSplashViaKeyboard(ctx context.Context, tconn *chrome.TestConn, splash *chromeui.Node, keyboard *input.KeyboardEventWriter) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
+func closeSplashViaKeyboard(ctx context.Context, tconn *chrome.TestConn, splash *nodewith.Finder, keyboard *input.KeyboardEventWriter) error {
+	ui := uiauto.New(tconn)
+	enter := func(ctx context.Context) error {
 		if err := keyboard.Accel(ctx, "Enter"); err != nil {
 			return errors.Wrap(err, "failed to press the Enter key")
 		}
-		return CheckVisibility(ctx, tconn, BubbleDialogClassName, false /* visible */)
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+		return nil
+	}
+	if err := ui.WithTimeout(10*time.Second).RetryUntil(enter, ui.Gone(splash))(ctx); err != nil {
+		return errors.Wrap(err, "failed to close splash via keyboard")
+	}
+	return nil
 }
 
 // closeSplashViaClick clicks on the close button and closes the splash screen.
-func closeSplashViaClick(ctx context.Context, tconn *chrome.TestConn, splash *chromeui.Node) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		button, err := splash.Descendant(ctx, chromeui.FindParams{Name: splashCloseButtonName})
-		if err != nil {
-			return errors.Wrap(err, "failed to find the close button of the splash dialog")
-		}
-		defer button.Release(ctx)
-
-		if err := button.LeftClick(ctx); err != nil {
-			return errors.Wrap(err, "failed to click on the close button of the splash dialog")
-		}
-
-		return CheckVisibility(ctx, tconn, BubbleDialogClassName, false /* visible */)
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+func closeSplashViaClick(ctx context.Context, tconn *chrome.TestConn, splash *nodewith.Finder) error {
+	ui := uiauto.New(tconn)
+	button := nodewith.Ancestor(splash).Role(role.Button).Name(splashCloseButtonName)
+	if err := ui.WithTimeout(10*time.Second).LeftClickUntil(button, ui.Gone(splash))(ctx); err != nil {
+		return errors.Wrap(err, "failed to close splash via click")
+	}
+	return nil
 }
 
 // ToggleResizeLockMode shows the compat-mode menu, selects one of the resize lock mode buttons on the compat-mode menu via the given method, and verifies the post state.
