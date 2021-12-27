@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f861aac0_84b2925c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2021-12-27T03:42:07Z",
+      "side": 1,
+      "message": "Maybe we should get the number of CPU threads the DUT has and run\n\n(1 or 2) * (# CPU threads) instead",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "9ebd197e547a5c70f8f28d0e159b24e6e97e5390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
