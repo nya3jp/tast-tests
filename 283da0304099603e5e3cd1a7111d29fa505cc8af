@@ -90,6 +90,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc5adce_2061e1c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-12-27T07:46:27Z",
+      "side": 1,
+      "message": "base::TimeDelta\u0027s operator \"\u003c\u003c\" contains the unit, I guess :)",
+      "parentUuid": "c5174928_5c9cbb03",
+      "revId": "283da0304099603e5e3cd1a7111d29fa505cc8af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d965d777_aa853209",

@@ -39,6 +39,30 @@
       },
       "revId": "ce9050e5bf3969610519b0bd51a1af40233aa948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f42d914_fea6230f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2021-12-27T07:46:27Z",
+      "side": 1,
+      "message": "Thanks! Done.",
+      "parentUuid": "8444cce1_623d6ca6",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 113
+      },
+      "revId": "ce9050e5bf3969610519b0bd51a1af40233aa948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
