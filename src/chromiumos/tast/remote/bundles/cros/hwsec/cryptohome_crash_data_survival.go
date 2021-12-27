@@ -108,6 +108,9 @@ func CryptohomeCrashDataSurvival(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: waitForCryptohomedTimeout}); err != nil {
 		s.Fatal("Failed to wait for cryptohomed to come back: ", err)
 	}
+	if err := dc.WaitForAllDBusServices(ctx); err != nil {
+		s.Fatal("DBus services did not return: ", err)
+	}
 
 	// Unmount and check that the files are no longer accessible.
 	if err = utility.UnmountAll(ctx); err != nil {
