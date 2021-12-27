@@ -69,6 +69,24 @@
       "parentUuid": "829f28a9_65cde807",
       "revId": "c39872aa404dec34cd5727ca979a9d2fd514bac3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61b9a27_f635bf32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_memory_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1369748
+      },
+      "writtenOn": "2021-12-27T06:16:14Z",
+      "side": 1,
+      "message": "Yes.  It is an optional struct in mojo file",
+      "parentUuid": "250878b7_3ef12bee",
+      "revId": "c39872aa404dec34cd5727ca979a9d2fd514bac3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
