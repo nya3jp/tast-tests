@@ -16,6 +16,24 @@
       "message": "Do I need to create a \"cleanup context\" for this? Not sure I understand why some tests create cleanup context",
       "revId": "9d590d1c894c887c81b2d56bdd217561710ee18c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd9aa7b_fd801b8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2021-12-27T13:33:42Z",
+      "side": 1,
+      "message": "Yes, it is better to use cleanupCTX for these. It is used for deferred functions, as it is possible that one step in the test times out, and in that case (with normal ctx), there is no time left for the cleanup steps.",
+      "parentUuid": "ba28846e_f075cdcd",
+      "revId": "9d590d1c894c887c81b2d56bdd217561710ee18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
