@@ -108,6 +108,12 @@ var FilesSWA = App{
 	Name: "Files",
 }
 
+// FirmwareUpdate has details about the FirmwareUpdate SWA.
+var FirmwareUpdate = App{
+	ID:   "nedcdcceagjbkiaecmdbpafcmlhkiifa",
+	Name: "Firmware Updates",
+}
+
 // Gallery (aka Backlight) has details about the Gallery app.
 var Gallery = App{
 	ID:   "jhdjimmaggjajfjphpljagpgkidjilnj",
