@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e4abcb_ba024c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-28T05:59:24Z",
+      "side": 1,
+      "message": "PTAL.\nI have confirmed the test only gives the same error as cros/main.\n\n\u003e arc.ResizeLock [ FAIL ] Failed to run test Resizable Maximized App: failed to verify resize lock state of org.chromium.arc.testapp.resizelock.ResizableUnspecifiedMaximizedActivity: failed to verify the visibility of the resize lock window border of org.chromium.arc.testapp.resizelock.ResizableUnspecifiedMaximizedActivity: context deadline exceeded; last error follows: failed to verify that the window border is invisible; contains 13962 border color pixels\n",
+      "revId": "6d8734bcfc99379866da6ba95c2e1f4399db1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
