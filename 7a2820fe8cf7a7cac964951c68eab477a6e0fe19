@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09e66a8b_8e726a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Sorry, now it is added under apps package.",
+      "parentUuid": "6c86ad2a_838a991a",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51f0d708_3296a9e0",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2021-10-18T22:53:19Z",
       "side": 1,
       "message": "Please add a google contact to the Contacts list if possible.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd05905c_2332f014",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "We don\u0027t have google contact please suggest.",
+      "parentUuid": "51f0d708_3296a9e0",
       "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50310382_f7866c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "463c97a9_c62aa574",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69281e0d_ccb8a655",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-10-18T23:02:22Z",
       "side": 1,
       "message": "How about using fixture: \"ChromeLoggedIn\" instead?",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0473d7f_0b4f4dec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69281e0d_ccb8a655",
       "range": {
         "startLine": 36,
         "startChar": 12,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09430505_5ff90a94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be550496_de8d9f48",
+      "range": {
+        "startLine": 61,
+        "startChar": 15,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d4871b2_e3eb1de8",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-10-18T23:02:22Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 76,
+        "startChar": 16,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd4daae9_2b37de93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d4871b2_e3eb1de8",
       "range": {
         "startLine": 76,
         "startChar": 16,
@@ -161,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83067503_0be1ce87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2332488_61f7ee18",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ac02f9b_eeded7b0",
@@ -178,6 +328,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79396c96_25467d8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ac02f9b_eeded7b0",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "448ed43e_2cac40ad",
@@ -191,6 +359,24 @@
       "writtenOn": "2021-10-18T22:53:19Z",
       "side": 1,
       "message": "How about making it as a regular function.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23737490_98eb3da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "448ed43e_2cac40ad",
       "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +404,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee6d373_bbe3eb76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee4512f4_5950d79a",
+      "range": {
+        "startLine": 268,
+        "startChar": 15,
+        "endLine": 268,
+        "endChar": 18
+      },
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13a68e7a_b5ad9c9c",
@@ -231,6 +441,24 @@
       "writtenOn": "2021-10-18T22:53:19Z",
       "side": 1,
       "message": "Please add image file name to error.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986a3252_fd4e14e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13a68e7a_b5ad9c9c",
       "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -252,6 +480,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f5dd517_84ed5c2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92f728da_835494f6",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4f3d86b_33150125",
@@ -265,6 +511,24 @@
       "writtenOn": "2021-10-18T22:53:19Z",
       "side": 1,
       "message": "1. Please add a comment on how this formula works.\n2. Please assign the value to a value so that you don\u0027t need to calculate twice: one in log and one in return.",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4fb912_cd543dc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:16:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4f3d86b_33150125",
       "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
