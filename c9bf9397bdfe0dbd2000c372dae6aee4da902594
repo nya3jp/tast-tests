@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3374a91c_56be0b92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2021-12-28T07:13:47Z",
+      "side": 1,
+      "message": "I\u0027m approving as an owner because Eric is OOO now.\nLGTM.",
+      "revId": "c9bf9397bdfe0dbd2000c372dae6aee4da902594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
