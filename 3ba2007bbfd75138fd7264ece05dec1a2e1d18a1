@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eefbf4b_ccceaaab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-28T21:55:05Z",
+      "side": 1,
+      "message": "Please change the following lines in commit message from\n```\nBUG\u003db:195902740\n\nTEST: tast run --build\u003dtrue \u003cDUTIP\u003e apps.GoogleMapBasicCheck\n```\nto \n```\nBUG\u003db:195902740\nTEST\u003dtast run --build\u003dtrue \u003cDUTIP\u003e apps.GoogleMapBasicCheck\n```",
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfd45fc_63b43c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-28T21:55:05Z",
+      "side": 1,
+      "message": "nit: use const",
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9d6e3c_fb7bff72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/google_map_basic_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-28T21:55:05Z",
+      "side": 1,
+      "message": "nit: use const.",
+      "revId": "3ba2007bbfd75138fd7264ece05dec1a2e1d18a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b60a8ff1_d37e7f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-28T21:55:05Z",
+      "side": 1,
+      "message": "I saw a few names on b/195902740. Can you contact them and see if they can be the contact of this test?",
+      "parentUuid": "fd05905c_2332f014",
+      "revId": "7a2820fe8cf7a7cac964951c68eab477a6e0fe19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "463c97a9_c62aa574",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/google_map_basic_check.go",
         "patchSetId": 1
