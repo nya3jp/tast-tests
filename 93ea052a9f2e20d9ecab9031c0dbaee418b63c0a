@@ -33,6 +33,155 @@
       "message": "It seems like there\u0027s a bunch of infra flake related to networking/task timeouts. I\u0027m hitting this with other unrelated changes :(",
       "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3570d59_862b4005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-28T22:16:41Z",
+      "side": 1,
+      "message": "sorry for the late review... just a few nits that can be addressed in a future CL",
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d242fa5e_625937c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-28T22:16:41Z",
+      "side": 1,
+      "message": "here and below:\n\nAdd docstring to all non-trivial functions.",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec12e29_ec753022",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-28T22:16:41Z",
+      "side": 1,
+      "message": "huge nit, consistency: perhaps prevMAC to match the case of prevMACs?",
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ddc235_507fb403",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-28T22:16:41Z",
+      "side": 1,
+      "message": "huge nit, here and below: end sentences with period (.)\n\nhttps://gist.github.com/adamveld12/c0d9f0d5f0e1fba1e551#comment-sentences",
+      "range": {
+        "startLine": 128,
+        "startChar": 31,
+        "endLine": 128,
+        "endChar": 32
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de6d1cf_efdef574",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-28T22:16:41Z",
+      "side": 1,
+      "message": "here and in the rest of cleanup functions: reserve time for cleanup\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 34
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd4ce01_59b60995",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-28T22:16:41Z",
+      "side": 1,
+      "message": "huge nit, ditto above: consistency , call it hwMAC",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 6
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb66673_68a6c27d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-12-28T22:16:41Z",
+      "side": 1,
+      "message": "nit: remove `` from comments since go-doc doesn\u0027t support them",
+      "range": {
+        "startLine": 29,
+        "startChar": 47,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
