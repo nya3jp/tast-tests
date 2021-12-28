@@ -40,6 +40,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/feedback"
 	_ "chromiumos/tast/local/bundles/cros/filemanager"
 	_ "chromiumos/tast/local/bundles/cros/firmware"
+	_ "chromiumos/tast/local/bundles/cros/firmwareupdate"
 	_ "chromiumos/tast/local/bundles/cros/gamepad"
 	_ "chromiumos/tast/local/bundles/cros/graphics"
 	_ "chromiumos/tast/local/bundles/cros/hammerd"
