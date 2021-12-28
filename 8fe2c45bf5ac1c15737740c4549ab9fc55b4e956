@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0286227b_e8dc6e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ced3dbed_f836246d",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b6ffa57_e60444b5",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-10-18T06:35:15Z",
       "side": 1,
       "message": "unused. pls remove.",
+      "range": {
+        "startLine": 75,
+        "startChar": 44,
+        "endLine": 75,
+        "endChar": 59
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0814e9d4_a980a83b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b6ffa57_e60444b5",
       "range": {
         "startLine": 75,
         "startChar": 44,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4e8c92_3708c4c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e59a17b2_0064519d",
+      "range": {
+        "startLine": 83,
+        "startChar": 85,
+        "endLine": 83,
+        "endChar": 92
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f1cde23_640ce8fe",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8b9571_11f0c0f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f1cde23_640ce8fe",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a18d41d_7e9389aa",
@@ -111,6 +195,30 @@
       "writtenOn": "2021-10-18T06:35:15Z",
       "side": 1,
       "message": "nit/style: we do not often shorten text by txt in the context like this.",
+      "range": {
+        "startLine": 97,
+        "startChar": 10,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96cdde46_f84a65cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a18d41d_7e9389aa",
       "range": {
         "startLine": 97,
         "startChar": 10,
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a63717e_7f28d900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f242755_a8ec0301",
+      "range": {
+        "startLine": 105,
+        "startChar": 3,
+        "endLine": 105,
+        "endChar": 39
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68f21090_89856ee9",
@@ -161,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec48dda8_529e1180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68f21090_89856ee9",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0eccefa3_ab680f1f",
@@ -174,6 +324,24 @@
       "writtenOn": "2021-10-18T06:35:15Z",
       "side": 1,
       "message": "ditto for confusion, since this may not be \"add\" for uninstall case.",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec26fd2_6ff5581c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0eccefa3_ab680f1f",
       "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -203,6 +371,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e591430_7d1fb3b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore/webstore_app_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "activate() will activate the tab and brings it to foreground.",
+      "parentUuid": "2c8931c0_6fb0b9d5",
+      "range": {
+        "startLine": 145,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bbacede5_85ae04fb",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
         "patchSetId": 2
@@ -214,6 +406,24 @@
       "writtenOn": "2021-10-18T06:35:15Z",
       "side": 1,
       "message": "why is this in graphics package? Looks like not very directly related to graphics to me.",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5759c2c6_50c858c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Sorry, now it is added under apps package.",
+      "parentUuid": "bbacede5_85ae04fb",
       "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -235,6 +445,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ca64137_b4e75780",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "302f30a9_d763b1c5",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d383b90_ae1f1354",
@@ -252,6 +480,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd91cdaf_cb866114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d383b90_ae1f1354",
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61830212_56d80981",
@@ -265,6 +511,30 @@
       "writtenOn": "2021-10-18T06:35:15Z",
       "side": 1,
       "message": "style:\n\nappURL :\u003d fmt.Sprintf(...)",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 114
+      },
+      "revId": "8fe2c45bf5ac1c15737740c4549ab9fc55b4e956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020efc65_e64b1a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webstore_app_install_uninstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-28T07:05:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61830212_56d80981",
       "range": {
         "startLine": 67,
         "startChar": 1,
