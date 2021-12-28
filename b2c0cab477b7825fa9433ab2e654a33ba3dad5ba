@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89d9b2f_d0668fcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/crx_manifest_update_url_ignored.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2021-12-28T11:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b78094_dce8d2d0",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 16
+      },
+      "revId": "b2c0cab477b7825fa9433ab2e654a33ba3dad5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98a364d3_d9886c6a",
@@ -88,6 +112,30 @@
       "writtenOn": "2021-12-23T16:15:46Z",
       "side": 1,
       "message": "Without looking into the code, the mix use of Title and Version is a bit confusing to me.",
+      "range": {
+        "startLine": 145,
+        "startChar": 74,
+        "endLine": 145,
+        "endChar": 79
+      },
+      "revId": "b2c0cab477b7825fa9433ab2e654a33ba3dad5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6ffb6d_13cd6c8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/crx_manifest_update_url_ignored.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2021-12-28T11:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98a364d3_d9886c6a",
       "range": {
         "startLine": 145,
         "startChar": 74,
