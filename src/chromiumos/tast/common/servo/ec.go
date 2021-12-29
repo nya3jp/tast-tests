@@ -269,3 +269,11 @@ func (s *Servo) HasKBBacklight(ctx context.Context) bool {
 	match := expMatch.FindStringSubmatch(out[0][0])
 	return match != nil
 }
+
+// ACIsPluggedIn returns current AC state.
+func (s *Servo) ACIsPluggedIn(ctx context.Context) bool {
+	testing.ContextLog(ctx, "Checking the AC is plugged in")
+	reACStatus := `ac\s*=\s*(0|1)\s*`
+	out, _ := s.RunECCommandGetOutput(ctx, "chgstate", []string{reACStatus})
+	return out[0][1] != "0"
+}
