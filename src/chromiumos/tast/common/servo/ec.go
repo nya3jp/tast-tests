@@ -269,3 +269,12 @@ func (s *Servo) HasKBBacklight(ctx context.Context) bool {
 	match := expMatch.FindStringSubmatch(out[0][0])
 	return match != nil
 }
+
+// ACIsPluggedIn returns current AC state.
+func (s *Servo) ACIsPluggedIn(ctx context.Context) (bool, error) {
+	out, err := s.RunECCommandGetOutput(ctx, "chgstate", []string{`ac\s*=\s*(0|1)\s*`})
+	if err != nil {
+		return false, errors.Wrap(err, "failed to run chgstate ec command")
+	}
+	return out[0][1] != "0", nil
+}
