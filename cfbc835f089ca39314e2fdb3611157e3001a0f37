@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "026f1920_5205141f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-12-29T19:06:11Z",
+      "side": 1,
+      "message": "Why do we need to used GetAndroid...(). This test has nothing to do with Android.",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9572cc4_4b61319e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/const.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-12-29T19:06:11Z",
+      "side": 1,
+      "message": "Is this the right metric even when android susbeis not invoked?",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14efb425_27f98041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/const.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-12-29T19:06:11Z",
+      "side": 1,
+      "message": "Why util/ needs to know about iioservice? Does it mean that any test that want to report CPU usage information will have to use this file?\nLooking at where \"IioserviceProcessName\" is used, it is only in hardware/sensor_iioservice...go. \nI would remove the define, or move it to the sensor code.",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
