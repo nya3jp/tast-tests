@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fedbc7ca_8e2df431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_autoconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-12-29T17:44:57Z",
+      "side": 1,
+      "message": "Hi Jun, thanks for the comment. I received the opposite feedback in my last CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3291420/2..4/src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_persist_enabled.go#b39\n\nThe reviewer thought it would be clearer to include a struct with named arguments, and I think I agree. Especially if we need to add more parameters later, it makes sense to organize them this way. Let me know if you disagree.",
+      "parentUuid": "7ff62922_783b772f",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "f6b2fcdb9cde0ba481f650d7648afc8065daaf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e606e08b_c45a4204",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-29T02:19:22Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "f6b2fcdb9cde0ba481f650d7648afc8065daaf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3789231_9e9e08a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_autoconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-12-29T17:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e606e08b_c45a4204",
       "range": {
         "startLine": 71,
         "startChar": 14,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a71877_2fc9a294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_autoconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-12-29T17:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "811ef92e_b0cef120",
+      "range": {
+        "startLine": 89,
+        "startChar": 55,
+        "endLine": 89,
+        "endChar": 70
+      },
+      "revId": "f6b2fcdb9cde0ba481f650d7648afc8065daaf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "945a7105_aaedd68a",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-29T02:19:22Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "f6b2fcdb9cde0ba481f650d7648afc8065daaf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8658892_d539f9e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_autoconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-12-29T17:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "945a7105_aaedd68a",
       "range": {
         "startLine": 98,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59255a12_49aa4178",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_autoconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-12-29T17:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ee87e51_babc3515",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 71
+      },
+      "revId": "f6b2fcdb9cde0ba481f650d7648afc8065daaf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7cae1bd_b905ab4f",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-12-29T02:19:22Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 47
+      },
+      "revId": "f6b2fcdb9cde0ba481f650d7648afc8065daaf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b760eb4_dc26a2af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_autoconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-12-29T17:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7cae1bd_b905ab4f",
       "range": {
         "startLine": 117,
         "startChar": 0,

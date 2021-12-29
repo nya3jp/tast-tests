@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c058366a_748065ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363139
+      },
+      "writtenOn": "2021-12-29T17:44:57Z",
+      "side": 1,
+      "message": "Hi Jun, thanks for the comments. Please see my response to the first one, as reviewers in a previous CL provided opposite feedback to yours.",
+      "revId": "c4711932c65c4fe1b70e4c69a1cef471558b659f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
