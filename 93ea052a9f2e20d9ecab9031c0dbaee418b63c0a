@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f39d26a_cee30d1a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-29T18:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d242fa5e_625937c1",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ec12e29_ec753022",
@@ -92,6 +116,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55542b1_6ceedd03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-29T18:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec12e29_ec753022",
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43ddc235_507fb403",
@@ -105,6 +147,30 @@
       "writtenOn": "2021-12-28T22:16:41Z",
       "side": 1,
       "message": "huge nit, here and below: end sentences with period (.)\n\nhttps://gist.github.com/adamveld12/c0d9f0d5f0e1fba1e551#comment-sentences",
+      "range": {
+        "startLine": 128,
+        "startChar": 31,
+        "endLine": 128,
+        "endChar": 32
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06971402_ef95f6aa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-29T18:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ddc235_507fb403",
       "range": {
         "startLine": 128,
         "startChar": 31,
@@ -138,6 +204,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fec8255_ecfe570c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-29T18:41:42Z",
+      "side": 1,
+      "message": "My understanding was that this was done as you wanted.  tf.DeconfigAP was running in original ctx (which was longer) than the shortened context after ReserveForDeconfigAP.  I\u0027ve restructured it a bit (here and below) to make it more explicit so I\u0027m marking this as resolved but if this is not what you meant/wanted please indicate so.",
+      "parentUuid": "0de6d1cf_efdef574",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 34
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fd4ce01_59b60995",
@@ -161,6 +251,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bfa0d0b_0cc66a5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/connect_randomize_mac.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-29T18:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fd4ce01_59b60995",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 6
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bb66673_68a6c27d",
@@ -174,6 +288,30 @@
       "writtenOn": "2021-12-28T22:16:41Z",
       "side": 1,
       "message": "nit: remove `` from comments since go-doc doesn\u0027t support them",
+      "range": {
+        "startLine": 29,
+        "startChar": 47,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "93ea052a9f2e20d9ecab9031c0dbaee418b63c0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a1e2d5_f2c8ebbc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/pcap_util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2021-12-29T18:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb66673_68a6c27d",
       "range": {
         "startLine": 29,
         "startChar": 47,
