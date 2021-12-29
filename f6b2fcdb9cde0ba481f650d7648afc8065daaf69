@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7859c889_0c586ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_suspend_resume_autoconnect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2021-12-29T23:31:27Z",
+      "side": 1,
+      "message": "It is not a big deal. Thanks for clarification.",
+      "parentUuid": "fedbc7ca_8e2df431",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 17
+      },
+      "revId": "f6b2fcdb9cde0ba481f650d7648afc8065daaf69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e606e08b_c45a4204",
