@@ -242,6 +242,36 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 	return geoTables, nil
 }
 
+// expectedTableLength returns what the spec says should be the length
+// of the WRDS or EWRD table, depending on the revision of those tables.
+func expectedTableLength(tableType sarTableType, version int64) int {
+	switch tableType {
+	case profileA: // WRDS
+		if version == 0 {
+			// 2 chains (A and B), 5 entries each per table 3-5 of the spec.
+			return 2 + 2*5
+		} else if version == 1 {
+			// 2 chains (A and B), 11 entries each per table 3-6 of the spec.
+			return 2 + 2*11
+		} else if version == 2 {
+			// 4 chains (A, B, CDB_A and CDB_B), 11 entries each per table 3-6 of the spec.
+			return 2 + 4*11
+		}
+	case profileB: // EWRD
+		if version == 0 {
+			// 2 chains (A and B), 3 extra sets, 5 entries per set per table 3-5 of the spec.
+			return 3 + 2*3*5
+		} else if version == 1 {
+			// 2 chains (A and B), 3 extra sets, 11 entries each per table 3-6 of the spec.
+			return 3 + 2*3*11
+		} else if version == 2 {
+			// 4 chains (A, B, CDB_A and CDB_B), 3 extra sets, 11 entries each per table 3-6 of the spec.
+			return 3 + 4*3*11
+		}
+	}
+	return 0
+}
+
 // getSARTableFromASL parses ASL formatted data and returns
 // the array of integers from the body of the section labeled with the given key.
 // Returns nil if dynamic SAR table is missing or disabled as it is a valid case.
@@ -274,22 +304,19 @@ func getSARTableFromASL(data []byte, tableType sarTableType, s *testing.State) (
 	var tableKey string
 	var tableIndices []int
 	var tableName string
-	var tableLength int
 	switch tableType {
 	case profileA:
 		tableKey = "WRDS"
 		tableName = "PROFILE_A"
 		tableIndices = []int{2, 12}
-		tableLength = 12
 	case profileB:
 		// EWRD may contain additional tables, but ChromeOS only looks at the first
 		// two (high-power and low-power), so we ignore  here.
 		tableKey = "EWRD"
 		tableName = "PROFILE_B"
 		tableIndices = []int{3, 13}
-		tableLength = 33
 	}
-	validSARVersions := []int64{0x00, 0x02}
+	validSARVersions := []int64{0x00, 0x01, 0x02}
 	values, version, err := getRawSARValuesAndCheckVersion(data, tableKey, validSARVersions)
 	if err != nil {
 		return nil, err
@@ -312,22 +339,21 @@ func getSARTableFromASL(data []byte, tableType sarTableType, s *testing.State) (
 			enabled, tableName)
 
 	}
-	if version == 2 {
+	if version == 1 || version == 2 {
 		switch tableType {
 		case profileA:
-			tableLength = 46
 			// We do not support CDB, ignore those tables. Only look at SAR tables
 			// for Chain A and Chain B.
 			tableIndices = []int{2, 24}
 		case profileB:
 			extraSets := int(values[2])
-			tableLength = 135
 			// The table has at least 1 set of SAR settings, |extraSets|
 			// indicates how many optional sets are present in the table.
 			tableIndices = []int{3, 3 + 11*(1+extraSets)}
 		}
 	}
 
+	tableLength := expectedTableLength(tableType, version)
 	// tableIndices[1] should be the length of the array.
 	if len(values) != tableLength {
 		return nil, errors.Errorf("table %v is malformed; got length %d, want %d",
