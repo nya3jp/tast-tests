@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43eb78e_542a7d95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-29T18:37:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a5486f5_81800296",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 52
+      },
+      "revId": "a80c0684494815148c886bd9044a3fecd3caa401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89e9df96_357000bf",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e819b1f4_ef1ec00b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-29T18:37:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89e9df96_357000bf",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "a80c0684494815148c886bd9044a3fecd3caa401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be09f10c_26cbc2ef",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-29T02:17:53Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "a80c0684494815148c886bd9044a3fecd3caa401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e6409c_8172aafe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/optin_managed.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2021-12-29T18:37:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be09f10c_26cbc2ef",
       "range": {
         "startLine": 109,
         "startChar": 8,
