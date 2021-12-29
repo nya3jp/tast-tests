@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7552b988_59e8abd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-29T13:12:50Z",
+      "side": 1,
+      "message": "LGTM % nits. Feel free to submit this CL after resolving last comments. Thanks!",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7d6b23_c3238a5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/imports.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-29T13:12:50Z",
+      "side": 1,
+      "message": "nit: remove this comment",
+      "range": {
+        "startLine": 30,
+        "startChar": 48,
+        "endLine": 30,
+        "endChar": 73
+      },
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf1c597_e608eecb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-29T13:12:50Z",
+      "side": 1,
+      "message": "nit: remote",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 32
+      },
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

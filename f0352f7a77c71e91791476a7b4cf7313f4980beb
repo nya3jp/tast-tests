@@ -943,6 +943,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d03010e_de9d39c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/sd_card_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2021-12-29T13:12:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "68304838_51e3101f",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "f0352f7a77c71e91791476a7b4cf7313f4980beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be73aa0c_dc9e71d6",
