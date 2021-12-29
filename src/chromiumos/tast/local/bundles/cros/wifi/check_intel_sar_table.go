@@ -289,7 +289,7 @@ func getSARTableFromASL(data []byte, tableType sarTableType, s *testing.State) (
 		tableIndices = []int{3, 13}
 		tableLength = 33
 	}
-	validSARVersions := []int64{0x00, 0x02}
+	validSARVersions := []int64{0x00, 0x01, 0x02}
 	values, version, err := getRawSARValuesAndCheckVersion(data, tableKey, validSARVersions)
 	if err != nil {
 		return nil, err
