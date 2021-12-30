@@ -123,11 +123,19 @@ func RunTrace(ctx context.Context, preData arc.PreData, apkFile, traceFile, outD
 
 	testing.ContextLog(ctx, "Starting activity")
 
-	options := []string{"--es", "fileName", tracePath, "--es", "resultFile", resultPath, "--ez", "force_single_window", "true"}
-	if offscreen {
-		options = append(options, "--ez", "forceOffscreen", "true")
+	opts := []arc.ActivityStartOption{
+		arc.WithWaitForLaunch(),
+		arc.WithForceStop(),
+		arc.WithExtraString("fileName", tracePath),
+		arc.WithExtraString("resultFile", resultPath),
+		arc.WithExtraBool("force_single_window", true),
 	}
-	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-S", "-n"}, options); err != nil {
+
+	if offscreen {
+		opts = append(opts, arc.WithExtraBool("forceOffscreen", true))
+	}
+
+	if err := act.Start(ctx, tconn, opts...); err != nil {
 		return errors.Wrap(err, "cannot start retrace")
 	}
 

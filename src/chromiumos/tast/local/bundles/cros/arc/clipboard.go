@@ -169,7 +169,7 @@ func Clipboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a new activity: ", err)
 	}
 	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the activity: ", err)
 	}
 	defer act.Stop(ctx, tconn)
