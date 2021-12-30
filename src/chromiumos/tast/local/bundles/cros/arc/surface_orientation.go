@@ -13,7 +13,6 @@ import (
 	"math"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 
@@ -58,13 +57,11 @@ const (
 	nativeWindowTransformFlipVRotate90 = nativeWindowTransformFlipV | nativeWindowTransformRotate90
 )
 
-const windowingModeFullscreen = 1
-
 type expectedQuadrantColors struct {
-	TopLeft     color.Color
-	TopRight    color.Color
-	BottomLeft  color.Color
-	BottomRight color.Color
+	topLeft     color.Color
+	topRight    color.Color
+	bottomLeft  color.Color
+	bottomRight color.Color
 }
 
 type quadrant int
@@ -117,33 +114,30 @@ func SurfaceOrientation(ctx context.Context, s *testing.State) {
 	// TODO(b/203800119): Add testcases which use multiple transformations in serial.
 
 	for _, tc := range []struct {
-		Name               string
-		Transform          int
-		ExpectedQuadColors expectedQuadrantColors
+		name               string
+		transform          int
+		expectedQuadColors expectedQuadrantColors
 	}{
-		{"NoTransform", nativeWindowTransformNormal, expectedQuadrantColors{TopLeft: red, TopRight: green,
-			BottomLeft: blue, BottomRight: yellow}},
-		{"FlipHorizontal", nativeWindowTransformFlipH, expectedQuadrantColors{TopLeft: green, TopRight: red,
-			BottomLeft: yellow, BottomRight: blue}},
-		{"FlipVertical", nativeWindowTransformFlipV, expectedQuadrantColors{TopLeft: blue, TopRight: yellow,
-			BottomLeft: red, BottomRight: green}},
-		{"Rotate90", nativeWindowTransformRotate90, expectedQuadrantColors{TopLeft: blue, TopRight: red,
-			BottomLeft: yellow, BottomRight: green}},
-		{"Rotate180", nativeWindowTransformRotate180, expectedQuadrantColors{TopLeft: yellow, TopRight: blue,
-			BottomLeft: green, BottomRight: red}},
-		{"Rotate270", nativeWindowTransformRotate270, expectedQuadrantColors{TopLeft: green, TopRight: yellow,
-			BottomLeft: red, BottomRight: blue}},
-		{"FlipHorizontalRotate90", nativeWindowTransformFlipHRotate90, expectedQuadrantColors{TopLeft: yellow, TopRight: green,
-			BottomLeft: blue, BottomRight: red}},
-		{"FlipVerticalRotate90", nativeWindowTransformFlipVRotate90, expectedQuadrantColors{TopLeft: red, TopRight: blue,
-			BottomLeft: green, BottomRight: yellow}},
+		{"NoTransform", nativeWindowTransformNormal, expectedQuadrantColors{topLeft: red, topRight: green,
+			bottomLeft: blue, bottomRight: yellow}},
+		{"FlipHorizontal", nativeWindowTransformFlipH, expectedQuadrantColors{topLeft: green, topRight: red,
+			bottomLeft: yellow, bottomRight: blue}},
+		{"FlipVertical", nativeWindowTransformFlipV, expectedQuadrantColors{topLeft: blue, topRight: yellow,
+			bottomLeft: red, bottomRight: green}},
+		{"Rotate90", nativeWindowTransformRotate90, expectedQuadrantColors{topLeft: blue, topRight: red,
+			bottomLeft: yellow, bottomRight: green}},
+		{"Rotate180", nativeWindowTransformRotate180, expectedQuadrantColors{topLeft: yellow, topRight: blue,
+			bottomLeft: green, bottomRight: red}},
+		{"Rotate270", nativeWindowTransformRotate270, expectedQuadrantColors{topLeft: green, topRight: yellow,
+			bottomLeft: red, bottomRight: blue}},
+		{"FlipHorizontalRotate90", nativeWindowTransformFlipHRotate90, expectedQuadrantColors{topLeft: yellow, topRight: green,
+			bottomLeft: blue, bottomRight: red}},
+		{"FlipVerticalRotate90", nativeWindowTransformFlipVRotate90, expectedQuadrantColors{topLeft: red, topRight: blue,
+			bottomLeft: green, bottomRight: yellow}},
 	} {
-		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
-			// Fullscreen windowing mode so that screenshot scanning is easier
-			prefixes := []string{"--windowingMode", strconv.Itoa(windowingModeFullscreen),
-				"--ei", "transform", strconv.Itoa(tc.Transform)}
-
-			if err := act.StartWithArgs(ctx, tconn, prefixes, []string{}); err != nil {
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			if err := act.Start(ctx, tconn,
+				arc.WithWindowingMode(arc.WindowingModeFullscreen), arc.WithExtraInt("transform", tc.transform)); err != nil {
 				s.Fatal("Failed to start activity: ", err)
 			}
 			defer act.Stop(ctx, tconn)
@@ -185,22 +179,22 @@ func SurfaceOrientation(ctx context.Context, s *testing.State) {
 			}
 
 			var tcErrString strings.Builder
-			tcErrString.WriteString("Test case with transformation " + tc.Name)
+			tcErrString.WriteString("Test case with transformation " + tc.name)
 			tcTransformColorsDidNotMatch := false
 			for _, quadInfo := range []struct {
-				Name          string
-				Quad          quadrant
-				ExpectedColor color.Color
+				name          string
+				quad          quadrant
+				expectedColor color.Color
 			}{
-				{"TopLeft", quadTopLeft, tc.ExpectedQuadColors.TopLeft},
-				{"TopRight", quadTopRight, tc.ExpectedQuadColors.TopRight},
-				{"BottomLeft", quadBottomLeft, tc.ExpectedQuadColors.BottomLeft},
-				{"BottomRight", quadBottomRight, tc.ExpectedQuadColors.BottomRight},
+				{"TopLeft", quadTopLeft, tc.expectedQuadColors.topLeft},
+				{"TopRight", quadTopRight, tc.expectedQuadColors.topRight},
+				{"BottomLeft", quadBottomLeft, tc.expectedQuadColors.bottomLeft},
+				{"BottomRight", quadBottomRight, tc.expectedQuadColors.bottomRight},
 			} {
-				observedColor := img.At(getCenterXYOfQuadrant(quadInfo.Quad, visibleBounds))
-				if !colorcmp.ColorsMatch(observedColor, quadInfo.ExpectedColor, maxRGBValueDiff) {
+				observedColor := img.At(getCenterXYOfQuadrant(quadInfo.quad, visibleBounds))
+				if !colorcmp.ColorsMatch(observedColor, quadInfo.expectedColor, maxRGBValueDiff) {
 					tcErrString.WriteString(fmt.Sprintf(" had wrong color in %s quadrant, colors observed=%v expected=%v; ",
-						quadInfo.Name, observedColor, quadInfo.ExpectedColor))
+						quadInfo.name, observedColor, quadInfo.expectedColor))
 					tcTransformColorsDidNotMatch = true
 				}
 			}
@@ -210,7 +204,7 @@ func SurfaceOrientation(ctx context.Context, s *testing.State) {
 				colorsDidNotMatchErr = errors.Wrap(colorsDidNotMatchErr, tcErrString.String())
 
 				// Save screenshot
-				screenshotFileName := fmt.Sprintf("%s_screeshot_fail.png", tc.Name)
+				screenshotFileName := fmt.Sprintf("%s_screeshot_fail.png", tc.name)
 				outPath, err := saveScreenshot(img, s.OutDir(), screenshotFileName)
 				if err != nil {
 					s.Error("Failed to save screenshot: ", err)
