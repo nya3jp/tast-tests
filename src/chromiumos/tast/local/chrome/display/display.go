@@ -10,6 +10,7 @@ package display
 
 import (
 	"context"
+	"math"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -82,7 +83,14 @@ func (info *Info) GetEffectiveDeviceScaleFactor() (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	return info.DisplayZoomFactor * mode.DeviceScaleFactor, nil
+
+	scaleFactor := info.DisplayZoomFactor * mode.DeviceScaleFactor
+	// Make sure the scale factor is neither 0 nor NaN.
+	if math.IsNaN(scaleFactor) || math.Abs(scaleFactor) < 1e-10 {
+		return 0, errors.Errorf("invalid device scale factor: %f", scaleFactor)
+	}
+
+	return scaleFactor, nil
 }
 
 // GetInfo calls chrome.system.display.getInfo to get information about connected displays.
