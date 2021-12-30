@@ -8,9 +8,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
 // VerifyNotExists checks if the element does not appear during timeout.
@@ -52,4 +54,28 @@ func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, finder *nodewi
 	}
 
 	return VerifyNotExists(ctx, tconn, finder, timeout)
+}
+
+// EnsureMaximized will ensure that the browser window is maximized.
+func EnsureMaximized(ctx context.Context, tconn *chrome.TestConn) error {
+	uia := uiauto.New(tconn)
+	frameCaptionButton := nodewith.Role(role.Button).ClassName("FrameCaptionButton").Nth(1)
+	maximizeButton := nodewith.Role(role.Button).Name("Maximize").ClassName("FrameCaptionButton")
+	restoreButton := nodewith.Role(role.Button).Name("Restore").ClassName("FrameCaptionButton")
+	if err := uia.WaitUntilExists(frameCaptionButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for frame caption button button")
+	}
+	midButton, err := uia.Info(ctx, frameCaptionButton)
+	if err != nil {
+		return errors.Wrap(err, "failed to find frame caption button button")
+	}
+	if midButton.Name == "Maximize" {
+		if err := uiauto.Combine("Maximize the browser window",
+			uia.LeftClick(maximizeButton),
+			uia.WaitUntilExists(restoreButton),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Maximize button")
+		}
+	}
+	return nil
 }
