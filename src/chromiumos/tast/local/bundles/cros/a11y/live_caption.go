@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
 )
 
@@ -67,6 +68,13 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	ui := uiauto.New(tconn)
+
+	// Setup CRAS Aloop for audio test.
+	cleanup, err := voice.EnableAloop(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to load Aloop: ", err)
+	}
+	defer cleanup(cleanupCtx)
 
 	// Turn on Live Caption toggle via OS settings.
 	captionsHeading := nodewith.NameStartingWith("Captions").Role(role.Heading).Ancestor(ossettings.WindowFinder)
