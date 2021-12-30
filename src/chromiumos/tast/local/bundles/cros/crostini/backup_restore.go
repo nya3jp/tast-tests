@@ -24,7 +24,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks crostini backup and restore",
 		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
