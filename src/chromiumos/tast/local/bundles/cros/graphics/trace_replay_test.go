@@ -29,7 +29,6 @@ func TestTraceReplayParams(t *testing.T) {
 						Version: 1,
 					},
 				}`,
-			ExtraAttr:           []string{"informational"},
 			StableHardwareDep:   "trace.HwDepsStable",
 			UnstableHardwareDep: "trace.HwDepsUnstable",
 			MinimalSet:          true,
