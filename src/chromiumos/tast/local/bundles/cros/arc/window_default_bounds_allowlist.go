@@ -136,7 +136,7 @@ func wmAllowlistResizableUnspecified(ctx context.Context, tconn *chrome.TestConn
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			defer act.Stop(ctx, tconn)

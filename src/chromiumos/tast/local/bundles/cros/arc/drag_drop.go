@@ -179,7 +179,7 @@ func DragDrop(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		if err = act.Start(ctx, tconn); err != nil {
+		if err = act.StartWithDefaultOptions(ctx, tconn); err != nil {
 			act.Close()
 			act = nil
 			err = errors.Wrap(err, "failed to start the activity")

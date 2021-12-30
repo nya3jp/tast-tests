@@ -68,7 +68,7 @@ func wmRV19(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -167,7 +167,7 @@ func wmRV20(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -276,7 +276,7 @@ func wmRV21(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to start new activity")
 	}
 	defer func(ctx context.Context) {

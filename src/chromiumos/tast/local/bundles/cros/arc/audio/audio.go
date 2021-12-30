@@ -141,7 +141,7 @@ func (t *ARCAudioTast) startActivity(ctx context.Context, param TestParameters) 
 		return nil, errors.Wrap(err, "failed to create activity")
 	}
 
-	if err := act.Start(ctx, t.tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, t.tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start activity")
 	}
 	return act, nil

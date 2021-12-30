@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -411,9 +410,6 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 	if opts.DecoderType == video.SoftwareDecoder {
 		testArgs = append(testArgs, "--use_sw_decoder")
 	}
-	intentExtras := []string{
-		"--esa", "test-args", strings.Join(testArgs, ","),
-		"--es", "log-file", filepath.Join(arcFilePath, logFileName)}
 
 	sup, cleanup := setup.New("video power")
 	defer func() {
@@ -439,7 +435,11 @@ func PowerVideoDecodePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("CPU failed to cool down: ", err)
 	}
 
-	sup.Add(setup.StartActivity(ctx, tconn, a, c2e2etest.Pkg, c2e2etest.ActivityName, setup.Prefixes("-n"), setup.Suffixes(intentExtras...)))
+	sup.Add(
+		setup.StartActivity(ctx, tconn, a, c2e2etest.Pkg, c2e2etest.ActivityName,
+			arc.WithExtraStringArray("test-args", testArgs),
+			arc.WithExtraString("log-file", filepath.Join(arcFilePath, logFileName))),
+	)
 
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
