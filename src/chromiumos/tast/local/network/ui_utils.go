@@ -53,7 +53,7 @@ func RunArcConnectivityApp(ctx context.Context, a *arc.ARC, tconn *chrome.TestCo
 		return "", errors.Wrap(err, "failed to create a new activity")
 	}
 	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return "", errors.Wrap(err, "failed to start activity")
 	}
 	defer act.Stop(ctx, tconn)

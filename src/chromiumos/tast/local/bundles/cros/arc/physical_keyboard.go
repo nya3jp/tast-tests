@@ -90,7 +90,7 @@ func testTextField(ctx context.Context, st pkTestState, s *testing.State, activi
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return errors.Wrapf(err, "failed to start the activity %q", activity)
 	}
 	defer act.Stop(ctx, tconn)
@@ -151,7 +151,7 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 		s.Fatalf("Failed to create a new activity %q: %v", activityName, err)
 	}
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the activity before typing:")
 	}
 	defer act.Stop(ctx, tconn)
@@ -254,7 +254,7 @@ func physicalKeyboardAllKeycodesTypingTest(ctx context.Context, st pkTestState, 
 		if err := focusField(); err != nil {
 			// Cannot find the text field. Restart the activity.
 			act.Stop(ctx, tconn)
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				s.Fatalf("Failed to restart the activity before typing %d: %v", scancode, err)
 			}
 			if err := focusField(); err != nil {

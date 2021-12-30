@@ -89,7 +89,7 @@ func ImagePasteFromDownloads(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to create a new activity %q", activityName)
 	}
 	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
 	defer act.Stop(ctx, tconn)

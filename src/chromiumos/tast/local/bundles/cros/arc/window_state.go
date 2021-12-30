@@ -189,7 +189,8 @@ func WindowState(ctx context.Context, s *testing.State) {
 			// Close the resources associated with the Activity instance.
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+
 				return errors.Wrap(err, "failed to start the WM24 activity")
 			}
 			// Stop the activity for each test case

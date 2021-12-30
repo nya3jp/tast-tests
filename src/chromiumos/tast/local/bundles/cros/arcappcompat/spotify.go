@@ -218,7 +218,7 @@ func launchAppForSpotify(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to stop app: ", err)
 	}
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app: ", err)
 	}
 
