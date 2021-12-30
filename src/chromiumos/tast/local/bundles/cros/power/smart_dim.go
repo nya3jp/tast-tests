@@ -23,8 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check the SmartDim can make decision with ML Service",
 		Contacts:     []string{"alanlxl@chromium.org"},
-		// TODO(b/204399416): It works again inexplicably, mark it informational.
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "ml_service", "smartdim"},
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
@@ -33,6 +32,7 @@ func init() {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
+			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros_stable"},
 		}},
 	})
