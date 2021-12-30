@@ -59,6 +59,10 @@ func PhoneToCrosBackgroundScanning(ctx context.Context, s *testing.State) {
 	androidDevice := s.FixtValue().(*nearbyshare.FixtData).AndroidDevice
 	androidDisplayName := s.FixtValue().(*nearbyshare.FixtData).AndroidDeviceName
 
+	if err := nearbyshare.ToggleNearbyDeviceIsSharingNotification(ctx, tconn, cr /*setChecked=*/, true); err != nil {
+		s.Fatal("Failed to toggle background scanning notification: ", err)
+	}
+
 	// Extract the test file to the staging directory on the Android device.
 	testData := s.Param().(nearbycommon.TestData)
 	testDataZip := s.DataPath(testData.Filename)
