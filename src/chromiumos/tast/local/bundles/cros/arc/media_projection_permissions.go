@@ -107,7 +107,7 @@ func setupMediaProjection(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to start the activity")
 	}
 

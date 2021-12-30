@@ -200,7 +200,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			act.Close()
 		}()
 
-		if err := act.Start(ctx, tconn); err != nil {
+		if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed starting Play Store or Play Store is empty")
 		}
 

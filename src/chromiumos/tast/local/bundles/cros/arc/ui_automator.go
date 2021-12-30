@@ -72,7 +72,7 @@ func UIAutomator(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the app: ", err)
 	}
 	defer act.Stop(ctx, tconn)
