@@ -101,14 +101,13 @@ func (uda *Context) click(s *Finder, button mouse.Button, optionList ...Option) 
 		opt(options)
 	}
 	return action.Retry(options.Retries, func(ctx context.Context) error {
-		if err := uda.WaitUntilExists(s)(ctx); err != nil {
-			return errors.Wrapf(err, "%q doesn't exist", s.desc)
-		}
-		loc, err := uda.Location(ctx, s)
-		if err != nil {
-			return errors.Wrapf(err, "failed to find the location of %q", s.desc)
-		}
-		return mouse.Click(uda.tconn, loc.CenterPoint(), button)(ctx)
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			loc, err := uda.Location(ctx, s)
+			if err != nil {
+				return errors.Wrapf(err, "failed to find the location of %q", s.desc)
+			}
+			return mouse.Click(uda.tconn, loc.CenterPoint(), button)(ctx)
+		}, &uda.pollOpts)
 	}, options.RetryInterval)
 }
 

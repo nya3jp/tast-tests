@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
 
@@ -69,6 +71,33 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 		uiauto.New(tconn).WaitUntilExists(androidWindow),
 		crostini.TakeAppScreenshot("android_studio"))(ctx); err != nil {
 		s.Fatal("Failed to start android studio in Terminal: ", err)
+	}
+
+	newProjectWindow := nodewith.NameStartingWith("My Application [~/AndroidStudioProjects/MyApplication]").Role(role.Window).First()
+	nextButton := uidetection.Word("Next")
+	finishButton := uidetection.Word("Finish")
+	ud := uidetection.NewDefault(tconn)
+	if err := uiauto.Combine("Create a new project with defaults",
+		// Two-letter words normally need an exact match.
+		ud.LeftClick(uidetection.Word("OK").ExactMatch()),
+		ud.LeftClick(uidetection.TextBlock(strings.Split("Don't send", " "))),
+		ud.LeftClick(nextButton),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Install Type", " "))),
+		ud.LeftClick(nextButton),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Select UI Theme", " "))),
+		ud.LeftClick(nextButton),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Verify Setting", " "))),
+		ud.LeftClick(finishButton),
+		// Installing SDK takes longer than the default timeout.
+		ud.WithTimeout(5*time.Minute).WaitUntilExists(uidetection.TextBlock(strings.Split("Android SDK is up to date", " "))),
+		ud.LeftClick(finishButton),
+		ud.LeftClick(uidetection.TextBlock(strings.Split("Start a new Android Studio project", " "))),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Select a Project Template", " "))),
+		ud.LeftClick(nextButton),
+		ud.LeftClick(finishButton),
+		uiauto.New(tconn).WaitUntilExists(newProjectWindow),
+	)(ctx); err != nil {
+		s.Fatal("Failed to create a new project with defaults: ", err)
 	}
 
 	//TODO(jinrongwu): UI test on android studio code.
