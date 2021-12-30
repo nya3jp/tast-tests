@@ -8,7 +8,9 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
@@ -52,4 +54,20 @@ func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, finder *nodewi
 	}
 
 	return VerifyNotExists(ctx, tconn, finder, timeout)
+}
+
+// MaximizeActiveWindow maximizes the browser active window.
+func MaximizeActiveWindow(ctx context.Context, tconn *chrome.TestConn) error {
+	// Get the current active window.
+	activeWindow, err := ash.GetActiveWindow(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the current active window")
+	}
+	winID := activeWindow.ID
+
+	// Turn the window into maximized state.
+	if err := ash.SetWindowStateAndWait(ctx, tconn, winID, ash.WindowStateMaximized); err != nil {
+		return errors.Wrap(err, "failed to set the window state to maximized")
+	}
+	return nil
 }
