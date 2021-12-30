@@ -158,7 +158,7 @@ func DataLeakPreventionRulesListArcClipboard(ctx context.Context, s *testing.Sta
 				s.Fatal("Failed to press Ctrl+C to copy all content: ", err)
 			}
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				s.Fatalf("Failed to start the activity %q due to error: %v", activityName, err)
 			}
 			defer act.Stop(ctx, tconn)

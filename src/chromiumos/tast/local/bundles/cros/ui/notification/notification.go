@@ -69,7 +69,7 @@ func NewARCClient(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome
 		}
 	}()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start the activity")
 	}
 	defer func() {
