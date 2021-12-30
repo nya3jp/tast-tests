@@ -93,7 +93,7 @@ func chromeVirtualKeyboardBasicEditingTest(
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
 	defer act.Stop(ctx, tconn)
@@ -167,7 +167,7 @@ func chromeVirtualKeyboardFocusChangeTest(
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
 	defer act.Stop(ctx, tconn)
@@ -270,7 +270,7 @@ func chromeVirtualKeyboardEditingOnNullTypeTest(
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
 	defer act.Stop(ctx, tconn)
@@ -355,7 +355,7 @@ func chromeVirtualKeyboardFloatingTest(
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
 	defer act.Stop(ctx, tconn)
@@ -447,7 +447,7 @@ func chromeVirtualKeyboardRotationTest(
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
 	defer act.Stop(ctx, tconn)
@@ -537,7 +537,7 @@ func chromeVirtualKeyboardPasswordEditingTest(
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
 	defer act.Stop(ctx, tconn)
@@ -607,7 +607,7 @@ func chromeVirtualKeyboardNumberInputTest(
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
 	defer act.Stop(ctx, tconn)

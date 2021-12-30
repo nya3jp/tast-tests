@@ -118,7 +118,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to ensure the display is on: ", err)
 	}
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start app before test cases: ", err)
 	}
 	if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
@@ -162,7 +162,7 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 				s.Fatal("Failed to ensure the display is on: ", err)
 			}
 			// Launch the app.
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
 			s.Log("App launched successfully")
@@ -1091,7 +1091,7 @@ func ReOpenWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn,
 
 	// Relaunch the app.
 	s.Log("Relaunching the app")
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to restart app: ", err)
 	}
 }
