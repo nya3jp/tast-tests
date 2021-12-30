@@ -23,13 +23,15 @@ const (
 		`.querySelector("os-settings-page").shadowRoot` +
 		`.querySelector("settings-multidevice-page").shadowRoot` +
 		`.querySelector("settings-nearby-share-subpage")`
-	showVisibilityDialogJS = nearbySettingsSubpageJS + `.showVisibilityDialog_ = true`
-	contactVisibilityJS    = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-contact-visibility-dialog").shadowRoot.getElementById("contactVisibility")`
-	onboardingPageJs       = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-receive-dialog").shadowRoot.querySelector("nearby-onboarding-page")`
-	contactsJS             = contactVisibilityJS + `.contacts`
-	setAllowedConactsJS    = contactVisibilityJS + `.contactManager_.setAllowedContacts`
-	settingsURL            = "chrome://os-settings/"
-	nearbySettingsURL      = "multidevice/nearbyshare"
+	showVisibilityDialogJS                            = nearbySettingsSubpageJS + `.showVisibilityDialog_ = true`
+	contactVisibilityJS                               = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-contact-visibility-dialog").shadowRoot.getElementById("contactVisibility")`
+	onboardingPageJs                                  = nearbySettingsSubpageJS + `.shadowRoot.querySelector("nearby-share-receive-dialog").shadowRoot.querySelector("nearby-onboarding-page")`
+	toggleNearbyDevicesAreSharingNotification         = nearbySettingsSubpageJS + `.shadowRoot.querySelector("#fastInitiationNotificationToggle").click()`
+	getNearbyDevicesAreSharingNotificationToggleState = nearbySettingsSubpageJS + `.shadowRoot.querySelector("#fastInitiationNotificationToggle").hasAttribute('checked')`
+	contactsJS                                        = contactVisibilityJS + `.contacts`
+	setAllowedConactsJS                               = contactVisibilityJS + `.contactManager_.setAllowedContacts`
+	settingsURL                                       = "chrome://os-settings/"
+	nearbySettingsURL                                 = "multidevice/nearbyshare"
 )
 
 // NearbySettings is used to interact with the Nearby Share subpage of OS settings.
@@ -72,6 +74,28 @@ func LaunchNearbySettings(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		return nil, err
 	}
 	return &NearbySettings{settingsConn}, nil
+}
+
+// ToggleNearbyDeviceIsSharingNotification toggles the nearby device is trying to share notification setting on or off.
+func ToggleNearbyDeviceIsSharingNotification(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, setChecked bool) error {
+	nearbySettings, err := LaunchNearbySettings(ctx, tconn, cr)
+	if err != nil {
+		return errors.Wrap(err, "failed to launch nearby share settings")
+	}
+
+	isChecked := false
+	if err := nearbySettings.conn.Eval(ctx, getNearbyDevicesAreSharingNotificationToggleState, &isChecked); err != nil {
+		return errors.Wrap(err, "failed to get background scanning toggle state")
+	}
+
+	if isChecked == setChecked {
+		return nil
+	}
+
+	if err := nearbySettings.conn.Eval(ctx, toggleNearbyDevicesAreSharingNotification, nil); err != nil {
+		return errors.Wrap(err, "failed to set background scanning toggle state")
+	}
+	return nil
 }
 
 // GetNearbySettings connects to an existing OS settings Nearby Share subpage.
