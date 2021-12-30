@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
 
@@ -144,6 +145,12 @@ func UreadaheadValidation(ctx context.Context, s *testing.State) {
 func dumpGuestPack(ctx context.Context, logPath string) error {
 	// File path for ureadahead pack in the quest OS.
 	const ureadaheadDataDir = "/var/lib/ureadahead"
+
+	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to Chrome")
+	}
+	defer cr.Close(ctx)
 
 	outdir, ok := testing.ContextOutDir(ctx)
 	if !ok {
