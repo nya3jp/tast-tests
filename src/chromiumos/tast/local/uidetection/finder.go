@@ -7,6 +7,7 @@ package uidetection
 import (
 	"context"
 	"math"
+	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -41,13 +42,15 @@ type Finder struct {
 	// boundingBoxes stores the locations of the responses from the request.
 	boundingBoxes []*Location
 	// Descriptor for the finder.
-	desc string
-	nth  int
+	desc       string
+	nth        int
+	exactMatch bool
 }
 
 func newFinder() *Finder {
 	return &Finder{
-		nth: -1,
+		nth:        -1,
+		exactMatch: false,
 	}
 }
 
@@ -57,6 +60,7 @@ func newFromRequest(r *pb.DetectionRequest, d string) *Finder {
 		boundingBoxes: nil,
 		desc:          d,
 		nth:           -1,
+		exactMatch:    false,
 	}
 }
 
@@ -84,6 +88,20 @@ func (s *Finder) First() *Finder {
 func (s *Finder) Nth(nth int) *Finder {
 	c := s.copy()
 	c.nth = nth
+	return c
+}
+
+// ExactMatch turns off the approximate match for the word finder.
+// The results will be filtered by exact string matching.
+// USE WITH CAUTION. Due to the performance of the OCR (optical character
+// recognition) model, approximate match is the default behavior for
+// error-tolerance.
+// An example use case is when the matching word is short with two or three
+// letters.
+// TODO(b/211937254): Allow exact matches with max_edit_distance in new proto.
+func (s *Finder) ExactMatch() *Finder {
+	c := s.copy()
+	c.exactMatch = true
 	return c
 }
 
@@ -119,6 +137,9 @@ func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestC
 
 	s.boundingBoxes = []*Location{}
 	for _, boundingBox := range response.BoundingBoxes {
+		if s.exactMatch && !strings.EqualFold(boundingBox.GetText(), s.desc) {
+			continue
+		}
 		s.boundingBoxes = append(
 			s.boundingBoxes,
 			&Location{
