@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
@@ -32,18 +31,6 @@ type TestParams struct {
 	AppActivityName   string
 	Activity          *arc.Activity
 	ActivityStartTime time.Time
-}
-
-// BenchmarkResults stores results for the calls to benchmarking.
-type BenchmarkResults struct {
-	// FPS is a metric that shows average FPS during the sampled period.
-	FPS float64 `json:"fps"`
-	// CommitDeviation is a metric that shows deviation from the ideal time of committing frames
-	// during the sampled period.
-	CommitDeviation float64 `json:"commitDeviation"`
-	// RenderQuality is a metric in range 0%..100% that shows quality of the render during the
-	// sampled period. 100% is ideal quality when frames are produced on time according to FPS.
-	RenderQuality float64 `json:"renderQuality"`
 }
 
 // PerformTestFunc allows callers to run their desired test after a provided activity has been launched.
@@ -93,7 +80,7 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	// Take screenshot on failure.
 	defer func(ctx context.Context) {
 		if s.HasError() {
-			captureScreenshot(ctx, s, cr, "failed-launch-test.png")
+			CaptureScreenshot(ctx, s, cr, "failed-launch-test.png")
 		}
 	}(cleanupCtx)
 
@@ -114,7 +101,7 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 
 	// Always take a screenshot of the final state for debugging purposes.
 	// This is done with the cleanup context so the main flow is not interrupted.
-	defer captureScreenshot(cleanupCtx, s, cr, "final-state.png")
+	defer CaptureScreenshot(cleanupCtx, s, cr, "final-state.png")
 
 	// Defer to the caller to determine when the game is launched.
 	if err := testFunc(TestParams{
@@ -130,26 +117,6 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 }
 
-// StartBenchmarking begins the benchmarking process.
-func StartBenchmarking(ctx context.Context, params TestParams) error {
-	// Leave the mini-game running for while recording metrics.
-	if err := params.TestConn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.arcAppTracingStart)`); err != nil {
-		return errors.Wrap(err, "failed to start benchmarking")
-	}
-
-	return nil
-}
-
-// StopBenchmarking stops the benchmarking process and returns the parsed results.
-func StopBenchmarking(ctx context.Context, params TestParams) (results BenchmarkResults, err error) {
-	var r BenchmarkResults
-	if err := params.TestConn.Call(ctx, &r, `tast.promisify(chrome.autotestPrivate.arcAppTracingStopAndAnalyze)`); err != nil {
-		return r, errors.Wrap(err, "failed to stop benchmarking")
-	}
-
-	return r, nil
-}
-
 // LaunchTimePerfMetric returns a standard metric that launch time can be saved in.
 func LaunchTimePerfMetric() perf.Metric {
 	return perf.Metric{
@@ -159,46 +126,10 @@ func LaunchTimePerfMetric() perf.Metric {
 	}
 }
 
-// TestTimePerfMetric returns a standard metric that test time can be saved in.
-func TestTimePerfMetric() perf.Metric {
-	return perf.Metric{
-		Name:      "testTime",
-		Unit:      "seconds",
-		Direction: perf.SmallerIsBetter,
-	}
-}
-
-// FpsPerfMetric returns a standard metric that measured FPS can be saved in.
-func FpsPerfMetric() perf.Metric {
-	return perf.Metric{
-		Name:      "fps",
-		Unit:      "fps",
-		Direction: perf.BiggerIsBetter,
-	}
-}
-
-// CommitDeviationPerfMetric returns a standard metric that commit deviation can be saved in.
-func CommitDeviationPerfMetric() perf.Metric {
-	return perf.Metric{
-		Name:      "commitDeviation",
-		Unit:      "ms",
-		Direction: perf.SmallerIsBetter,
-	}
-}
-
-// RenderQualityPerfMetric returns a standard metric that render quality can be saved in.
-func RenderQualityPerfMetric() perf.Metric {
-	return perf.Metric{
-		Name:      "renderQuality",
-		Unit:      "percents",
-		Direction: perf.BiggerIsBetter,
-	}
-}
-
-// captureScreenshot takes a screenshot and saves it with the provided filename.
+// CaptureScreenshot takes a screenshot and saves it with the provided filename.
 // Since screenshots are useful in debugging but not important to the flow of the test,
 // errors are logged rather than bubbled up.
-func captureScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
+func CaptureScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
 	path := filepath.Join(s.OutDir(), filename)
 	if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 		testing.ContextLog(ctx, "Failed to capture screenshot, info: ", err)
