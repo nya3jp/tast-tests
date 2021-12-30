@@ -33,7 +33,7 @@ func init() {
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      30 * time.Minute,
+		Timeout:      75 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:    "normal_mode",
