@@ -13,7 +13,6 @@ import (
 	"math"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
 	"time"
 
@@ -57,8 +56,6 @@ const (
 	nativeWindowTransformFlipHRotate90 = nativeWindowTransformFlipH | nativeWindowTransformRotate90
 	nativeWindowTransformFlipVRotate90 = nativeWindowTransformFlipV | nativeWindowTransformRotate90
 )
-
-const windowingModeFullscreen = 1
 
 type expectedQuadrantColors struct {
 	TopLeft     color.Color
@@ -139,11 +136,12 @@ func SurfaceOrientation(ctx context.Context, s *testing.State) {
 			BottomLeft: green, BottomRight: yellow}},
 	} {
 		s.Run(ctx, tc.Name, func(ctx context.Context, s *testing.State) {
-			// Fullscreen windowing mode so that screenshot scanning is easier
-			prefixes := []string{"--windowingMode", strconv.Itoa(windowingModeFullscreen),
-				"--ei", "transform", strconv.Itoa(tc.Transform)}
 
-			if err := act.StartWithArgs(ctx, tconn, prefixes, []string{}); err != nil {
+			opts := arc.MakeActivityStartOptions()
+			opts.SetWindowingMode(arc.WindowingModeFullscreen)
+			opts.AddExtraInt("transform", tc.Transform)
+
+			if err := act.StartWithOptions(ctx, tconn, opts); err != nil {
 				s.Fatal("Failed to start activity: ", err)
 			}
 			defer act.Stop(ctx, tconn)
