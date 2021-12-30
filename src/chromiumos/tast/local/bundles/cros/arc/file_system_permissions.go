@@ -38,6 +38,7 @@ func FileSystemPermissions(ctx context.Context, s *testing.State) {
 		aidRoot    = "0"
 		aidSystem  = "1000"
 		aidCache   = "2001"
+		aidDebugFs = "5005"
 		aidUnknown = "65534"
 	)
 
@@ -71,7 +72,7 @@ func FileSystemPermissions(ctx context.Context, s *testing.State) {
 		{"/dev", aidRoot, aidRoot, "755"},
 		{"/proc", aidUnknown, aidUnknown, "555"},
 		{"/sys/kernel/debug", aidRoot, aidRoot, "755"},
-		{"/sys/kernel/debug/tracing", aidUnknown, aidUnknown, "755"},
+		{"/sys/kernel/debug/tracing", aidUnknown, aidDebugFs, "755"},
 	}
 
 	for _, m := range mounts {
