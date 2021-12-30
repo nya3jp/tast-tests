@@ -90,6 +90,20 @@ func AcceptFastInitiationNotification(ctx context.Context, tconn *chrome.TestCon
 	return nil
 }
 
+// FastInitiationNotificationExists checks if the background scanning notification is present.
+func FastInitiationNotificationExists(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	notifications, err := ash.Notifications(ctx, tconn)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get notifications")
+	}
+	for _, n := range notifications {
+		if strings.Contains(n.Title, "Device nearby is sharing") {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
 // IncomingShareNotificationExists checks if the incoming share notification is present.
 func IncomingShareNotificationExists(ctx context.Context, tconn *chrome.TestConn, senderName string) (bool, error) {
 	notifications, err := ash.Notifications(ctx, tconn)
