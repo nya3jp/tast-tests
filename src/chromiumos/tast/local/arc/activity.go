@@ -10,6 +10,7 @@ import (
 	"math"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -130,6 +131,200 @@ func NewActivity(a *ARC, pkgName, activityName string) (*Activity, error) {
 	}, nil
 }
 
+type ActivityType int
+
+// Constants taken from WindowConfiguration.java. See:
+// http://cs/android/frameworks/base/core/java/android/app/WindowConfiguration.java;l=134;rcl=f0a7059cd059326e26389e84549e5dcd31c49334
+const (
+	ActivityTypeUndefined ActivityType = 0
+	ActivityTypeStandard  ActivityType = 1
+	ActivityTypeHome      ActivityType = 2
+	ActivityTypeRecents   ActivityType = 3
+	ActivityTypeAssistant ActivityType = 4
+	ActivityTypeDream     ActivityType = 5
+)
+
+type WindowingMode int
+
+// Constants taken from WindowConfiguration.java. See:
+// http://cs/android/frameworks/base/core/java/android/app/WindowConfiguration.java;l=94;rcl=3d3bda18c034d6403f5f730b5641a57bde337c86
+const (
+	WindowingModeUndefined            WindowingMode = 0
+	WindowingModeFullscreen           WindowingMode = 1
+	WindowingModePinned               WindowingMode = 2
+	WindowingModeSplitScreenPrimary   WindowingMode = 3
+	WindowingModeSplitScreenSecondary WindowingMode = 4
+	WindowingModeFreeform             WindowingMode = 5
+	WindowingModeMultiWindow          WindowingMode = 6
+)
+
+// ExtraInt is a key value pair that can be added to an ActivityStartOptions instance
+type ExtraInt struct {
+	key string
+	val int
+}
+
+type ExtraString struct {
+	key string
+	val string
+}
+
+type ExtraStringArray struct {
+	key  string
+	vals []string
+}
+
+type ExtraBool struct {
+	key string
+	val bool
+}
+
+// TODO(b/203214749): Add other extra types.
+
+// ActivityStartOptions is a selection of options that can be passed to the "am start" command as flags.
+type ActivityStartOptions struct {
+	enableDebugging       bool
+	enableNativeDebugging bool
+	forceStop             bool
+	waitForLaunch         bool
+	intentAction          string
+	dataURI               string
+	user                  string
+	windowingMode         WindowingMode
+	activityType          ActivityType
+	extraInts             []ExtraInt
+	extraBools            []ExtraBool
+	extraStrings          []ExtraString
+	extraStringArrays     []ExtraStringArray
+}
+
+func (opts *ActivityStartOptions) EnableDebugging() {
+	opts.enableDebugging = true
+}
+
+func (opts *ActivityStartOptions) EnableNativeDebugging() {
+	opts.enableNativeDebugging = true
+}
+
+func (opts *ActivityStartOptions) ForceStop() {
+	opts.forceStop = true
+}
+
+func (opts *ActivityStartOptions) WaitForLaunch() {
+	opts.waitForLaunch = true
+}
+
+func (opts *ActivityStartOptions) SetIntentAction(intentAction string) {
+	opts.intentAction = intentAction
+}
+
+func (opts *ActivityStartOptions) SetDataURI(dataURI string) {
+	opts.dataURI = dataURI
+}
+
+func (opts *ActivityStartOptions) SetUser(user string) {
+	opts.user = user
+}
+
+func (opts *ActivityStartOptions) SetWindowingMode(windowingMode WindowingMode) {
+	opts.windowingMode = windowingMode
+}
+
+func (opts *ActivityStartOptions) SetActivityType(activityType ActivityType) {
+	opts.activityType = activityType
+}
+
+func (opts *ActivityStartOptions) AddExtraInt(key string, val int) {
+	opts.extraInts = append(opts.extraInts, ExtraInt{key, val})
+}
+
+func (opts *ActivityStartOptions) AddExtraString(key, val string) {
+	opts.extraStrings = append(opts.extraStrings, ExtraString{key, val})
+}
+
+func (opts *ActivityStartOptions) AddExtraStringArray(key string, vals []string) {
+	opts.extraStringArrays = append(opts.extraStringArrays, ExtraStringArray{key, vals})
+}
+
+func (opts *ActivityStartOptions) AddExtraBool(key string, val bool) {
+	opts.extraBools = append(opts.extraBools, ExtraBool{key, val})
+}
+
+func (opts ActivityStartOptions) buildStartCmdArgs() []string {
+	var out = []string{}
+	if opts.enableDebugging {
+		out = append(out, "-D")
+	}
+	if opts.enableNativeDebugging {
+		out = append(out, "-N")
+	}
+	if opts.forceStop {
+		out = append(out, "-S")
+	}
+	if opts.waitForLaunch {
+		out = append(out, "-W")
+	}
+	if opts.intentAction != "" {
+		out = append(out, "-a", opts.intentAction)
+	}
+	if opts.dataURI != "" {
+		out = append(out, "-d", opts.dataURI)
+	}
+	if opts.user != "" {
+		out = append(out, "--user", opts.user)
+	}
+	if opts.windowingMode != -1 {
+		out = append(out, "--windowingMode", strconv.Itoa(int(opts.windowingMode)))
+	}
+	if opts.activityType != -1 {
+		out = append(out, "--activityType", strconv.Itoa(int(opts.activityType)))
+	}
+	if len(opts.extraInts) > 0 {
+		out = append(out, "--ei")
+		for _, e := range opts.extraInts {
+			out = append(out, e.key, strconv.Itoa(e.val))
+		}
+	}
+	if len(opts.extraStrings) > 0 {
+		for _, e := range opts.extraStrings {
+			out = append(out, "--es", e.key, e.val)
+		}
+	}
+	if len(opts.extraStringArrays) > 0 {
+		for _, e := range opts.extraStringArrays {
+			out = append(out, "--esa", e.key, strings.Join(e.vals, ","))
+		}
+	}
+	if len(opts.extraBools) > 0 {
+		for _, e := range opts.extraBools {
+			valStr := "false"
+			if e.val {
+				valStr = "true"
+			}
+			out = append(out, "--ez", e.key, valStr)
+		}
+	}
+	return out
+}
+
+func MakeActivityStartOptions() ActivityStartOptions {
+	out := ActivityStartOptions{}
+	out.enableDebugging = false
+	out.enableNativeDebugging = false
+	out.forceStop = false
+	out.waitForLaunch = false
+	out.intentAction = ""
+	out.dataURI = ""
+	out.user = ""
+	out.windowingMode = -1
+	out.activityType = -1
+	out.extraInts = []ExtraInt{}
+	out.extraStrings = []ExtraString{}
+	out.extraStringArrays = []ExtraStringArray{}
+	out.extraBools = []ExtraBool{}
+	return out
+}
+
 // NewActivityOnDisplay returns a new Activity instance on specific display.
 // The caller is responsible for closing a.
 // Returned Activity instance must be closed when the test is finished.
@@ -160,6 +355,14 @@ func (ac *Activity) StartWithArgs(ctx context.Context, tconn *chrome.TestConn, p
 	args = append(args, prefixes...)
 	args = append(args, ac.pkgName+"/"+ac.activityName)
 	args = append(args, suffixes...)
+	cmd := ac.a.Command(ctx, "am", args...)
+	return ac.startHelper(ctx, tconn, cmd)
+}
+
+func (ac *Activity) StartWithOptions(ctx context.Context, tconn *chrome.TestConn, opts ActivityStartOptions) error {
+	args := []string{"start"}
+	args = append(args, opts.buildStartCmdArgs()...)
+	args = append(args, ac.pkgName+"/"+ac.activityName)
 	cmd := ac.a.Command(ctx, "am", args...)
 	return ac.startHelper(ctx, tconn, cmd)
 }
