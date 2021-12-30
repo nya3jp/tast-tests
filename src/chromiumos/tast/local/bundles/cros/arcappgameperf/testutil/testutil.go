@@ -159,6 +159,15 @@ func LaunchTimePerfMetric() perf.Metric {
 	}
 }
 
+// LoginTimePerfMetric returns a standard metric that login time can be saved in.
+func LoginTimePerfMetric() perf.Metric {
+	return perf.Metric{
+		Name:      "loginTime",
+		Unit:      "seconds",
+		Direction: perf.SmallerIsBetter,
+	}
+}
+
 // TestTimePerfMetric returns a standard metric that test time can be saved in.
 func TestTimePerfMetric() perf.Metric {
 	return perf.Metric{
