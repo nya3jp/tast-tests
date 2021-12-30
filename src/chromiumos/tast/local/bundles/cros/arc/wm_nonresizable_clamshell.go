@@ -134,7 +134,7 @@ func wmNC01Inner(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			defer act.Stop(ctx, tconn)
@@ -188,7 +188,7 @@ func wmNC07(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -254,7 +254,7 @@ func wmNC09(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -304,7 +304,7 @@ func wmNC10(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -378,7 +378,7 @@ func wmNC12(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 
 	// Start the activity.
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -476,7 +476,7 @@ func wmNC17(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Devic
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return errors.Wrap(err, "unable to start new activity")
 	}
 	defer func() {
@@ -546,7 +546,7 @@ func ncDisplaySizeChangeTestsHelper(ctx context.Context, tconn *chrome.TestConn,
 	defer act.Close()
 
 	// Start the activity.
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -664,7 +664,7 @@ func checkMaxActivityToFullscreen(ctx context.Context, tconn *chrome.TestConn, a
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)

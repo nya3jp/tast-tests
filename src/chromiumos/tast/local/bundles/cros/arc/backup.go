@@ -111,7 +111,7 @@ func Backup(ctx context.Context, s *testing.State) {
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the activity: ", err)
 	}
 	defer act.Stop(ctx, tconn)
@@ -185,7 +185,7 @@ func Backup(ctx context.Context, s *testing.State) {
 	}
 
 	// Relaunch the application because it closes during backup.
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the activity: ", err)
 	}
 
@@ -222,7 +222,7 @@ func Backup(ctx context.Context, s *testing.State) {
 	}
 
 	// Relaunch the application because it closes during restore.
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start the activity: ", err)
 	}
 

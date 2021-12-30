@@ -127,7 +127,7 @@ func StartActivityWithWindowState(ctx context.Context, tconn *chrome.TestConn, a
 		return nil, errors.Wrap(err, "failed to create new activity")
 	}
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return nil, errors.Wrap(err, "failed to start the activity")
 	}
 
@@ -192,7 +192,7 @@ func RunTest(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, packageName str
 	}
 	defer act.Close()
 
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to start the activity")
 	}
 	defer act.Stop(ctx, tconn)

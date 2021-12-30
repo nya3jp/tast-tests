@@ -140,7 +140,7 @@ func launchAppForMicrosoftOutlook(ctx context.Context, s *testing.State, tconn *
 	if err != nil {
 		s.Fatal("Failed to create new app activity: ", err)
 	}
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start Microsoft outlook: ", err)
 	}
 
@@ -383,7 +383,7 @@ func loginHelperForMicrosoftApp(ctx context.Context, s *testing.State, tconn *ch
 	if err != nil {
 		s.Fatal("Failed to create a new activity: ", err)
 	}
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatal("Failed to start Microsoft outlook: ", err)
 	}
 	// Click on getStarted button.

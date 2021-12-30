@@ -186,7 +186,7 @@ func wmDefaultLaunchClamshell24(ctx context.Context, tconn *chrome.TestConn, a *
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -228,7 +228,7 @@ func wmDefaultLaunchClamshell23(ctx context.Context, tconn *chrome.TestConn, a *
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -286,7 +286,7 @@ func wmMaximizeRestoreClamshell24(ctx context.Context, tconn *chrome.TestConn, a
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -340,7 +340,7 @@ func wmMaximizeRestoreClamshell23(ctx context.Context, tconn *chrome.TestConn, a
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -437,7 +437,7 @@ func wmFollowRoot(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui
 				}
 				defer act.Close()
 
-				if err := act.Start(ctx, tconn); err != nil {
+				if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 					return err
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -527,7 +527,7 @@ func wmSpringboardP(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *
 				}
 				defer act.Close()
 
-				if err := act.Start(ctx, tconn); err != nil {
+				if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 					return err
 				}
 				// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -609,7 +609,7 @@ func wmLightsOutIn(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *u
 	} {
 		if err := func() error {
 			testing.ContextLogf(ctx, "Running subtest %q", test.name)
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -688,7 +688,7 @@ func wmLightsOutIgnored(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			// Stop activity at exit time so that the next WM test can launch a different activity from the same package.
@@ -776,7 +776,7 @@ func wmFreeformResize(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 		return err
 	}
 	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -854,7 +854,7 @@ func wmSnapping(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 		return err
 	}
 	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -900,7 +900,7 @@ func wmDisplayResolutionP(ctx context.Context, tconn *chrome.TestConn, a *arc.AR
 		return err
 	}
 	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
@@ -1000,7 +1000,7 @@ func wmPageZoom(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.D
 		return err
 	}
 	defer act.Close()
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return err
 	}
 	defer act.Stop(ctx, tconn)
