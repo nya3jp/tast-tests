@@ -247,24 +247,26 @@ func getGeoSARTablesFromASL(data []byte) ([]geoSARTable, error) {
 func expectedTableLength(tableType sarTableType, version int64) int {
 	switch tableType {
 	case profileA: // WRDS
-		if version == 0 {
+		switch version {
+		case 0:
 			// 2 chains (A and B), 5 entries each per table 3-5 of the spec.
 			return 2 + 2*5
-		} else if version == 1 {
+		case 1:
 			// 2 chains (A and B), 11 entries each per table 3-6 of the spec.
 			return 2 + 2*11
-		} else if version == 2 {
+		case 2:
 			// 4 chains (A, B, CDB_A and CDB_B), 11 entries each per table 3-6 of the spec.
 			return 2 + 4*11
 		}
 	case profileB: // EWRD
-		if version == 0 {
+		switch version {
+		case 0:
 			// 2 chains (A and B), 3 extra sets, 5 entries per set per table 3-5 of the spec.
 			return 3 + 2*3*5
-		} else if version == 1 {
+		case 1:
 			// 2 chains (A and B), 3 extra sets, 11 entries each per table 3-6 of the spec.
 			return 3 + 2*3*11
-		} else if version == 2 {
+		case 2:
 			// 4 chains (A, B, CDB_A and CDB_B), 3 extra sets, 11 entries each per table 3-6 of the spec.
 			return 3 + 4*3*11
 		}
