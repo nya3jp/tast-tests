@@ -41,55 +41,14 @@ func InstallApp(ctx context.Context, a *arc.ARC, apkDataPath, pkg string) (Clean
 	}, nil
 }
 
-// startActivityOptions holds all optional parameters of StartActivity.
-type startActivityOptions struct {
-	// Optional: prefixes and suffixes to pkgName/activityName. This is useful for intent arguments.
-	// See also: https://developer.android.com/studio/command-line/adb.html#IntentSpec
-	Prefixes []string
-	Suffixes []string
-
-	// Raises an error if the activity is no longer running at cleanup time, if set to false.
-	ExpectStoppedOnTeardown bool
-}
-
-// StartActivityOption sets an optional parameter of StartActivity.
-type StartActivityOption func(*startActivityOptions)
-
-// Prefixes sets the optional prefixes parameter of StartActivity.
-func Prefixes(prefixes ...string) StartActivityOption {
-	return func(args *startActivityOptions) {
-		args.Prefixes = prefixes
-	}
-}
-
-// Suffixes sets the optional suffixes parameter of StartActivity.
-func Suffixes(suffixes ...string) StartActivityOption {
-	return func(args *startActivityOptions) {
-		args.Suffixes = suffixes
-	}
-}
-
-// ExpectStoppedOnTeardown makes the test aware of the fact that the activity will close by itself. Otherwise, the test will throw an error if the activity is no longer running at teardown.
-func ExpectStoppedOnTeardown() StartActivityOption {
-	return func(args *startActivityOptions) {
-		args.ExpectStoppedOnTeardown = true
-	}
-}
-
 // StartActivity starts an Android activity.
-func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg, activityName string, setters ...StartActivityOption) (CleanupCallback, error) {
-	// Default options.
-	var args startActivityOptions
-	for _, setter := range setters {
-		setter(&args)
-	}
-
+func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg, activityName string, optSetters ...arc.ActivityStartOptionSetter) (CleanupCallback, error) {
 	testing.ContextLogf(ctx, "Starting activity %s/%s", pkg, activityName)
 	activity, err := arc.NewActivity(a, pkg, activityName)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to create activity %q in package %q", activityName, pkg)
 	}
-	if err := activity.StartWithArgs(ctx, tconn, args.Prefixes, args.Suffixes); err != nil {
+	if err := activity.Start(ctx, tconn, optSetters...); err != nil {
 		return nil, errors.Wrapf(err, "failed to start activity %q in package %q", activityName, pkg)
 	}
 	if err := activity.SetWindowState(ctx, tconn, arc.WindowStateFullscreen); err != nil {
@@ -105,9 +64,6 @@ func StartActivity(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkg,
 		// Check if the app is still running.
 		_, err := ash.GetARCAppWindowInfo(ctx, tconn, activity.PackageName())
 		if err != nil {
-			if args.ExpectStoppedOnTeardown && errors.Is(err, ash.ErrWindowNotFound) {
-				return nil
-			}
 			return err
 		}
 

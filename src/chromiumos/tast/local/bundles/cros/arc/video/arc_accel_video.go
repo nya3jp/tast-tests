@@ -208,9 +208,9 @@ func runARCVideoTest(ctx context.Context, s *testing.State, cfg arcTestConfig) {
 	}
 	defer act.Close()
 
-	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
-		"--esa", "test-args", strings.Join(args, ","),
-		"--es", "log-file", arcFilePath + textLogName}); err != nil {
+	if err := act.Start(
+		ctx, tconn, arc.WithExtraStringArray("test-args", args),
+		arc.WithExtraString("log-file", arcFilePath+textLogName)); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
 
@@ -264,10 +264,11 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 		s.Fatal("Failed to create new activity: ", err)
 	}
 	defer act.Close()
-	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
-		"--esa", "test-args", strings.Join(args, ","),
-		"--ez", "delay-start", "true",
-		"--es", "log-file", arcFilePath + textLogName}); err != nil {
+
+	if err := act.Start(ctx, tconn,
+		arc.WithExtraStringArray("test-args", args),
+		arc.WithExtraString("log-file", arcFilePath+textLogName),
+		arc.WithExtraBool("delay-start", true)); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
 
@@ -277,8 +278,8 @@ func runARCVideoPerfTest(ctx context.Context, s *testing.State, cfg arcTestConfi
 	}
 
 	s.Log("Starting test")
-	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
-		"-a", "org.chromium.c2.test.START_TEST"}); err != nil {
+
+	if err := act.Start(ctx, tconn, arc.WithIntentAction("org.chromium.c2.test.START_TEST")); err != nil {
 		s.Fatal("Failed to start test: ", err)
 	}
 
