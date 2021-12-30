@@ -50,6 +50,24 @@
       "message": "Per b/206901900#comment25, this does not completely fix the issue. I\u0027ll upload a new patchset that should address that and request a review again once that\u0027s passed the CQ dry-run (that will include running the test against a set of boards)",
       "revId": "c8a084edebcfebca46429b630e0c4156a857c283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f5b4cab_b9b6ff1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-12-30T16:11:06Z",
+      "side": 1,
+      "message": "CL passed the CQ dry-run and Ian confirmed that patchset #2 solves the bug for rev1 tables. @mwarton, @kglund, would you be ok to review that patchset? Thanks!",
+      "parentUuid": "e145e589_f32c503d",
+      "revId": "c8a084edebcfebca46429b630e0c4156a857c283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
