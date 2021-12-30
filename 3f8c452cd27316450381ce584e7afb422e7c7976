@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4adc4f3c_5f055565",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-30T02:08:23Z",
+      "side": 1,
+      "message": "Can you also mention that you introduced constant.go in the commit message?",
+      "revId": "3f8c452cd27316450381ce584e7afb422e7c7976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a2e723_2285eedf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-30T02:08:23Z",
+      "side": 1,
+      "message": "Swing by tast-reviewer as I think Eric is OOO.",
+      "revId": "3f8c452cd27316450381ce584e7afb422e7c7976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

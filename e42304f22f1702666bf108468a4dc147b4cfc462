@@ -50,6 +50,24 @@
       "message": "I see other tests store these configs in an internal yaml file. Should we do the same?",
       "revId": "e42304f22f1702666bf108468a4dc147b4cfc462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7146d870_c9e1aa78",
+        "filename": "src/chromiumos/tast/local/wallpaper/constants/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2021-12-30T02:08:23Z",
+      "side": 1,
+      "message": "If you are referring to Secret variable[1], it is mainly for storing credentials. \nThe constant here in the file doesn\u0027t look private to me so a constant.go should serve the purpose. You may still choose yaml file if you\u0027d like to set it via runtime[2]\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#secret-variables\n[2] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#setting-values",
+      "parentUuid": "66e4dbfc_7eac30f7",
+      "revId": "e42304f22f1702666bf108468a4dc147b4cfc462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
