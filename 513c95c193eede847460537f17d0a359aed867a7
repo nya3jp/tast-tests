@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3756a7a7_8b7cc679",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "578f5694_2f064e55",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b85d03c_a296c845",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-17T10:17:02Z",
       "side": 1,
       "message": "Use RequiredVar instead of ignoring the error.",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d25a826_493e2efe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b85d03c_a296c845",
       "range": {
         "startLine": 41,
         "startChar": 19,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c5bdb68_89657329",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:24:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b78e7ff0_4e6c2eec",
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b877b382_8af01833",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-11-17T10:17:02Z",
       "side": 1,
       "message": "nit: use a more descriptive name",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bbbd33_3fb03c4c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:24:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b877b382_8af01833",
       "range": {
         "startLine": 66,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7470867c_0bb46edb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:24:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e2ffc175_2862c77e",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f425a0dc_e68817d9",
@@ -123,6 +237,24 @@
       "writtenOn": "2021-11-17T10:17:02Z",
       "side": 1,
       "message": "A helper already exists:\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/linuxssh/fileutil.go;l\u003d52",
+      "revId": "513c95c193eede847460537f17d0a359aed867a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f92b7069_2b3893c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f425a0dc_e68817d9",
       "revId": "513c95c193eede847460537f17d0a359aed867a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
