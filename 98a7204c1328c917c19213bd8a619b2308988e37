@@ -81,6 +81,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34b3e544_5e072c5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:39:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "600006d2_cc4a4c87",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 15
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4e587f3_d00e00b0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:39:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "16f648c9_a797cdc6",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e1df9ac_88421e0a",
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5242b5_b8e313e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:39:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e1df9ac_88421e0a",
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a95e052_a85db6cf",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-12-02T21:47:00Z",
       "side": 1,
       "message": "nit: Run(ssh.DumpLogOnError)",
+      "range": {
+        "startLine": 129,
+        "startChar": 132,
+        "endLine": 129,
+        "endChar": 133
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512ca6c8_da1ccf32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:39:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6a95e052_a85db6cf",
       "range": {
         "startLine": 129,
         "startChar": 132,
@@ -144,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ed09549_a437b186",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:39:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f182bec_8a38e216",
+      "range": {
+        "startLine": 148,
+        "startChar": 89,
+        "endLine": 148,
+        "endChar": 90
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58815350_afaa96d2",
@@ -157,6 +271,30 @@
       "writtenOn": "2021-12-02T21:47:00Z",
       "side": 1,
       "message": "nit: does it work if you remove the \"(\" + \")\" from c10PkgPattern",
+      "range": {
+        "startLine": 168,
+        "startChar": 30,
+        "endLine": 168,
+        "endChar": 31
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f90ab9_bd8b9f41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58815350_afaa96d2",
       "range": {
         "startLine": 168,
         "startChar": 30,
@@ -190,6 +328,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "918295ea_c35fb976",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:39:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0718b41e_a5b7decb",
+      "range": {
+        "startLine": 229,
+        "startChar": 41,
+        "endLine": 229,
+        "endChar": 63
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed25dd57_213d64d0",
@@ -203,6 +365,30 @@
       "writtenOn": "2021-12-02T21:47:00Z",
       "side": 1,
       "message": "nit: ssh.DumpLogOnError",
+      "range": {
+        "startLine": 257,
+        "startChar": 67,
+        "endLine": 257,
+        "endChar": 68
+      },
+      "revId": "98a7204c1328c917c19213bd8a619b2308988e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f55a5a6_5d0b2a47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/s0ix_stability_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:39:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ed25dd57_213d64d0",
       "range": {
         "startLine": 257,
         "startChar": 67,
