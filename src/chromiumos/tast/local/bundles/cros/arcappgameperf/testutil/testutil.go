@@ -7,6 +7,7 @@ package testutil
 
 import (
 	"context"
+	"math"
 	"path/filepath"
 	"time"
 
@@ -18,6 +19,8 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -130,6 +133,41 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 }
 
+// displayScaleFactor returns the scale factor for the current display.
+func displayScaleFactor(ctx context.Context, tconn *chrome.TestConn) (float64, error) {
+	// Find the ratio to convert coordinates in the screenshot to those in the screen.
+	screens, err := display.GetInfo(ctx, tconn)
+	if err != nil {
+		return 0.0, errors.Wrap(err, "failed to get the display info")
+	}
+
+	scaleFactor, err := screens[0].GetEffectiveDeviceScaleFactor()
+	if err != nil {
+		return 0.0, errors.Wrap(err, "failed to get the device scale factor")
+	}
+
+	// Make sure the scale factor is neither 0 nor NaN.
+	if math.IsNaN(scaleFactor) || math.Abs(scaleFactor) < 1e-10 {
+		return 0.0, errors.Errorf("invalid device scale factor: %f", scaleFactor)
+	}
+
+	return scaleFactor, nil
+}
+
+// GetCoords returns an approximate pixel location for the current display and
+// given heuristics.
+func GetCoords(ctx context.Context, tconn *chrome.TestConn, activityBounds coords.Rect, widthHeuristic, heightHeuristic float64) (coords.Point, error) {
+	// Get scale factor, in case the display is scaled.
+	scaleFactor, err := displayScaleFactor(ctx, tconn)
+	if err != nil {
+		return coords.Point{}, errors.Wrap(err, "failed to get scale factor")
+	}
+
+	relativeWidth := widthHeuristic / scaleFactor
+	relativeHeight := heightHeuristic / scaleFactor
+	return coords.Point{int(float64(activityBounds.Width) * relativeWidth), int(float64(activityBounds.Height) * relativeHeight)}, nil
+}
+
 // StartBenchmarking begins the benchmarking process.
 func StartBenchmarking(ctx context.Context, params TestParams) error {
 	// Leave the mini-game running for while recording metrics.
@@ -154,6 +192,15 @@ func StopBenchmarking(ctx context.Context, params TestParams) (results Benchmark
 func LaunchTimePerfMetric() perf.Metric {
 	return perf.Metric{
 		Name:      "launchTime",
+		Unit:      "seconds",
+		Direction: perf.SmallerIsBetter,
+	}
+}
+
+// LoginTimePerfMetric returns a standard metric that login time can be saved in.
+func LoginTimePerfMetric() perf.Metric {
+	return perf.Metric{
+		Name:      "loginTime",
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
 	}
