@@ -7,7 +7,6 @@ package arc
 import (
 	"context"
 	"fmt"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -162,10 +161,6 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 
 	param := s.Param().(audio.TestParameters)
 	s.Logf("Measuing power consumption of audio playback with flag: %#x", param.PerformanceMode)
-	intentExtras := []string{
-		"--ei", keyPerformanceMode, strconv.FormatUint(uint64(param.PerformanceMode), 10),
-		"--ei", keyDuration, strconv.FormatUint(uint64(playbackDurationSecond/time.Second), 10),
-	}
 
 	// Give cleanup actions a minute to run, even if we fail by exceeding our
 	// deadline.
@@ -208,7 +203,8 @@ func PowerAudioPlaybackPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Start testing activity.
-	sup.Add(setup.StartActivity(ctx, tconn, a, audio.Pkg, testActivity, setup.Prefixes("-n"), setup.Suffixes(intentExtras...)))
+	// TODO(b/203214749): Maybe need to make another field of ActivityStartOptions that can support uint64 types and pass them as int extras
+	sup.Add(setup.StartActivity(ctx, tconn, a, audio.Pkg, testActivity, arc.WithExtraInt(keyPerformanceMode, int(uint64(param.PerformanceMode))), arc.WithExtraInt(keyDuration, int(uint64(playbackDurationSecond/time.Second)))))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}
