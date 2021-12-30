@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "566f2e69_4e8e5524",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-12-30T20:23:57Z",
+      "side": 1,
+      "message": "Please wait for teammember review before submitting.",
+      "revId": "1a2eeb8341cce2806947ada2a3d63c0dd3bebf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96914fe9_205c8e31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-12-30T20:23:57Z",
+      "side": 1,
+      "message": "optional super nit: If you want to avoid the embedded if statements you can use the fact that cases take an expression:\n\nswitch {\ncase tableType \u003d\u003d profileA \u0026\u0026 version \u003d\u003d 0:\n    return ...\n...\n}",
+      "revId": "1a2eeb8341cce2806947ada2a3d63c0dd3bebf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496767f6_48b388a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2021-12-30T20:23:57Z",
+      "side": 1,
+      "message": "should this be version \u003e\u003d 1?",
+      "revId": "1a2eeb8341cce2806947ada2a3d63c0dd3bebf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
