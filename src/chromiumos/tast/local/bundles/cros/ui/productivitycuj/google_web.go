@@ -350,7 +350,7 @@ func (app *GoogleDocs) validateEditMode(ctx context.Context) error {
 
 // openBlankDocument opens a blank document for the specified service.
 func (app *GoogleDocs) openBlankDocument(ctx context.Context) error {
-	blankOption := nodewith.Name("Blank").Role(role.ListBoxOption)
+	blankOption := nodewith.NameContaining("Blank").Role(role.ListBoxOption)
 	return uiauto.Combine("open a blank document",
 		app.maybeCloseWelcomeDialog,
 		app.uiHdl.Click(blankOption),
