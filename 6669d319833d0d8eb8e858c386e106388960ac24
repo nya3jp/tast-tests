@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45388802_a2bace7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2021-12-30T03:04:00Z",
+      "side": 1,
+      "message": "\u003e \"wizzard\" is a possible misspelling of \"wizard\".\n\nPlease fix.",
+      "parentUuid": "cf31b114_dcfff72e",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "6669d319833d0d8eb8e858c386e106388960ac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
