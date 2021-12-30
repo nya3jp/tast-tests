@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "050d2df9_0bb1491b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-12-30T20:56:07Z",
+      "side": 1,
+      "message": "Yep, will do! Thanks :-)",
+      "parentUuid": "566f2e69_4e8e5524",
+      "revId": "1a2eeb8341cce2806947ada2a3d63c0dd3bebf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96914fe9_205c8e31",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-30T20:23:57Z",
       "side": 1,
       "message": "optional super nit: If you want to avoid the embedded if statements you can use the fact that cases take an expression:\n\nswitch {\ncase tableType \u003d\u003d profileA \u0026\u0026 version \u003d\u003d 0:\n    return ...\n...\n}",
+      "revId": "1a2eeb8341cce2806947ada2a3d63c0dd3bebf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a7f3b3_c5bc53f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-12-30T20:56:07Z",
+      "side": 1,
+      "message": "Good point, thanks! I\u0027ll do that in a follow-up CL I think, now that tests have passed I\u0027d rather not go through another few rounds of CQ flake before this can land to unblock b/206901900",
+      "parentUuid": "96914fe9_205c8e31",
       "revId": "1a2eeb8341cce2806947ada2a3d63c0dd3bebf3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-12-30T20:23:57Z",
       "side": 1,
       "message": "should this be version \u003e\u003d 1?",
+      "revId": "1a2eeb8341cce2806947ada2a3d63c0dd3bebf3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3f09d7_348d98d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2021-12-30T20:56:07Z",
+      "side": 1,
+      "message": "Currently it would be equivalent, but if in the future version 3 of the format is introduced things are likely to be different for v3. So I think it\u0027s better to keep the condition as (version \u003d\u003d 1 || version \u003d\u003d 2), it signals what part of the code likely needs to change with v3.\n\nSomething similar (a table set its version number to then-non-existing version 1 and relied on the parser code to stop when seeing then-invalid version 1) triggered a bad bug that made us write this test in the first place :-)",
+      "parentUuid": "496767f6_48b388a5",
       "revId": "1a2eeb8341cce2806947ada2a3d63c0dd3bebf3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
