@@ -11,8 +11,11 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -32,8 +35,16 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      fixture.ChromePolicyLoggedIn,
-		Timeout:      4 * time.Minute, // There is a longer wait when installing the extension.
+		Params: []testing.Param{{
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val:               browser.TypeLacros,
+		}},
+		Timeout: 4 * time.Minute, // There is a longer wait when installing the extension.
 	})
 }
 
@@ -41,6 +52,11 @@ func init() {
 func ExtensionAllowedTypes(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -89,8 +105,15 @@ func ExtensionAllowedTypes(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// Setup browser based on the chrome type.
+			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+			if err != nil {
+				s.Fatal("Failed to open the browser: ", err)
+			}
+			defer closeBrowser(cleanupCtx)
+
 			// Run actual test.
-			if allowed, err := canInstallExtension(ctx, tconn, cr, url); err != nil {
+			if allowed, err := canInstallExtension(ctx, tconn, br, url); err != nil {
 				s.Fatal("Failed to check if extension can be installed: ", err)
 			} else if allowed != param.wantAllowed {
 				s.Errorf("Unexpected result upon installing the extension: got %t; want %t", allowed, param.wantAllowed)
@@ -99,17 +122,22 @@ func ExtensionAllowedTypes(ctx context.Context, s *testing.State) {
 	}
 }
 
-func canInstallExtension(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, url string) (bool, error) {
+func canInstallExtension(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, url string) (bool, error) {
 	addButton := nodewith.Name("Add to Chrome").Role(role.Button).First()
 	blockedButton := nodewith.Name("Close").ClassName("MdTextButton")
 	undoButton := nodewith.Name("Undo").ClassName("MdTextButton")
 
 	// Open the Chrome Web Store page of the extension.
-	conn, err := cr.NewConn(ctx, url)
+	conn, err := br.NewConn(ctx, url)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to connect to chrome")
 	}
 	defer conn.Close()
+
+	// Ensure the browser window is maximized.
+	if err := policyutil.MaximizeActiveWindow(ctx, tconn); err != nil {
+		return false, errors.Wrap(err, "failed to maximize the browser window")
+	}
 
 	uia := uiauto.New(tconn)
 
