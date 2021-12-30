@@ -209,7 +209,7 @@ func launchActivityOnExternalDisplay(ctx context.Context, s *testing.State, cr *
 				return err
 			}
 			defer act.Close()
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				return err
 			}
 			defer act.Stop(ctx, tconn)

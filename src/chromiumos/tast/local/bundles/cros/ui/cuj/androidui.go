@@ -25,7 +25,7 @@ func OpenAppAndGetStartTime(ctx context.Context, tconn *chrome.TestConn, a *arc.
 	}
 	startTime := time.Now()
 	// Start() will invoke "am start" and waits for the app to be visible on the Chrome side.
-	if err := act.Start(ctx, tconn); err != nil {
+	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return 0, nil, errors.Wrapf(err, "failed to start %s", appName)
 	}
 

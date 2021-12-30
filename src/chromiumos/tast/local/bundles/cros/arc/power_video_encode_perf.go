@@ -185,13 +185,14 @@ func PowerVideoEncodePerf(ctx context.Context, s *testing.State) {
 	if opts.EncoderType == video.SoftwareEncoder {
 		testArgs = append(testArgs, "--use_sw_encoder")
 	}
-	intentExtras := []string{
-		"--ez", "do-encode", "true",
-		"--esa", "test-args", strings.Join(testArgs, ","),
-		"--es", "log-file", filepath.Join(arcFilePath, logFileName)}
 
 	sup.Add(setup.StartActivity(ctx, tconn, a, c2e2etest.Pkg, c2e2etest.ActivityName,
-		setup.Prefixes("-W", "-n"), setup.Suffixes(intentExtras...)))
+		arc.WithWaitForLaunch(),
+		arc.WithExtraBool("do-encode", true),
+		arc.WithExtraStringArray("test-args", testArgs),
+		arc.WithExtraString("log-file",
+			filepath.Join(arcFilePath,
+				logFileName))))
 	if err := sup.Check(ctx); err != nil {
 		s.Fatal("Setup failed: ", err)
 	}

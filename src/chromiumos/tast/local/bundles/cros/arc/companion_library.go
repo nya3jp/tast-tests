@@ -165,7 +165,7 @@ func CompanionLibrary(ctx context.Context, s *testing.State) {
 			}
 			defer act.Close()
 
-			if err := act.Start(ctx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 				s.Fatal("Failed to start activity: ", err)
 			}
 			defer func(ctx context.Context) {
@@ -915,7 +915,7 @@ func testAlwaysOnTop(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, tconn *
 	}
 	defer settingAct.Close()
 
-	if err := settingAct.Start(ctx, tconn); err != nil {
+	if err := settingAct.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return errors.Wrap(err, "could not start Settings Activity")
 	}
 	defer settingAct.Stop(ctx, tconn)
