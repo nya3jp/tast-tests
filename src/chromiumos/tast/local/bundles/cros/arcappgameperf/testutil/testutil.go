@@ -80,7 +80,7 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	// Take screenshot on failure.
 	defer func(ctx context.Context) {
 		if s.HasError() {
-			captureScreenshot(ctx, s, cr, "failed-launch-test.png")
+			CaptureScreenshot(ctx, s, cr, "failed-launch-test.png")
 		}
 	}(cleanupCtx)
 
@@ -101,7 +101,7 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 
 	// Always take a screenshot of the final state for debugging purposes.
 	// This is done with the cleanup context so the main flow is not interrupted.
-	defer captureScreenshot(cleanupCtx, s, cr, "final-state.png")
+	defer CaptureScreenshot(cleanupCtx, s, cr, "final-state.png")
 
 	// Defer to the caller to determine when the game is launched.
 	if err := testFunc(TestParams{
@@ -126,10 +126,10 @@ func LaunchTimePerfMetric() perf.Metric {
 	}
 }
 
-// captureScreenshot takes a screenshot and saves it with the provided filename.
+// CaptureScreenshot takes a screenshot and saves it with the provided filename.
 // Since screenshots are useful in debugging but not important to the flow of the test,
 // errors are logged rather than bubbled up.
-func captureScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
+func CaptureScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome, filename string) {
 	path := filepath.Join(s.OutDir(), filename)
 	if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
 		testing.ContextLog(ctx, "Failed to capture screenshot, info: ", err)
