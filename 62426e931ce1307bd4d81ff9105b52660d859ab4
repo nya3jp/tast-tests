@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92579a1d_e96221fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:13:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "febc5357_34b7c515",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83114eb2_a0b56c63",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-11-17T16:25:18Z",
       "side": 1,
       "message": "nit: maybe add a blank line before this one",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0efbfe8a_900a2cb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:13:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83114eb2_a0b56c63",
       "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f80b60d_8aff3a4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:13:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d32f575e_f878b66e",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39212e8b_eb7c28e6",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-11-17T16:25:18Z",
       "side": 1,
       "message": "nit: delete blank line",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9a55c6_a54dac40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:13:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39212e8b_eb7c28e6",
       "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9548278_80bf5ad2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:13:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6d0766c5_51411f77",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2987453e_1c9dbf01",
@@ -116,6 +206,24 @@
       "writtenOn": "2021-11-17T16:25:18Z",
       "side": 1,
       "message": "nit: maybe add a blank line before this one",
+      "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25585f7a_0b95c159",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2021-12-30T07:13:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2987453e_1c9dbf01",
       "revId": "62426e931ce1307bd4d81ff9105b52660d859ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
