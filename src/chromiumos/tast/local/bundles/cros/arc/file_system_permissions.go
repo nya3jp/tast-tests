@@ -35,10 +35,11 @@ func init() {
 func FileSystemPermissions(ctx context.Context, s *testing.State) {
 	// Android UID/GID inside the container.
 	const (
-		aidRoot    = "0"
-		aidSystem  = "1000"
-		aidCache   = "2001"
-		aidUnknown = "65534"
+		aidRoot             = "0"
+		aidSystem           = "1000"
+		aidCache            = "2001"
+		aidVendorArcDebugFs = "5005"
+		aidOverflowUID      = "65534"
 	)
 
 	a := s.FixtValue().(*arc.PreData).ARC
@@ -69,9 +70,9 @@ func FileSystemPermissions(ctx context.Context, s *testing.State) {
 		{"/dev/pts/ptmx", aidRoot, aidRoot, "666"},
 		{"/dev/ptmx", aidRoot, aidRoot, "666"},
 		{"/dev", aidRoot, aidRoot, "755"},
-		{"/proc", aidUnknown, aidUnknown, "555"},
+		{"/proc", aidOverflowUID, aidOverflowUID, "555"},
 		{"/sys/kernel/debug", aidRoot, aidRoot, "755"},
-		{"/sys/kernel/debug/tracing", aidUnknown, aidUnknown, "755"},
+		{"/sys/kernel/debug/tracing", aidOverflowUID, aidVendorArcDebugFs, "755"},
 	}
 
 	for _, m := range mounts {
