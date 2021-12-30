@@ -245,21 +245,9 @@ func startDownloadFileWithApp(ctx context.Context, a *arc.ARC, tconn *chrome.Tes
 	// Start the MainActivity with an intent. When started successfully,
 	// the test app automatically starts downloading the test file.
 	sourceURL := fmt.Sprintf("http://localhost:%d%s", androidPort, sourcePath)
-	startCommandPrefixes := []string{
-		// Force stop and restart the target app if it's already started.
-		// This allows us to start the activity always with a clean slate.
-		"-S",
-		// Wait for launch to complete.
-		"-W",
-		// Specify the component name to create an explicit intent.
-		"-n",
-	}
-	startCommandSuffixes := []string{
-		// Pass the source URL and target path as ExtraData of the intent.
-		"--es", sourceURLKey, sourceURL,
-		"--es", targetPathKey, targetPath,
-	}
-	if err := act.StartWithArgs(ctx, tconn, startCommandPrefixes, startCommandSuffixes); err != nil {
+
+	if err := act.Start(ctx, tconn, arc.WithForceStop(),
+		arc.WithExtraString(sourceURLKey, sourceURL), arc.WithExtraString(targetPathKey, targetPath)); err != nil {
 		act.Close()
 		return nil, errors.Wrapf(err, "failed to start the main activity for %s", packageName)
 	}

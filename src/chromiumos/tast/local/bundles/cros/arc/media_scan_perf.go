@@ -224,7 +224,7 @@ func startMeasureMediaScanPerfWithApp(ctx context.Context, a *arc.ARC, tconn *ch
 		return nil, err
 	}
 
-	if err := act.StartWithArgs(ctx, tconn, []string{"-S", "-W", "-n"}, []string{"-d", volumeURI}); err != nil {
+	if err := act.Start(ctx, tconn, arc.WithForceStop(), arc.WithDataURI(volumeURI)); err != nil {
 		act.Close()
 		return nil, err
 	}
