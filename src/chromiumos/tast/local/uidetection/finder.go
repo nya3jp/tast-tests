@@ -6,7 +6,6 @@ package uidetection
 
 import (
 	"context"
-	"math"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -136,11 +135,6 @@ func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestC
 	scaleFactor, err := screens[0].GetEffectiveDeviceScaleFactor()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the device scale factor")
-	}
-
-	// Make sure the scale factor is neither 0 nor NaN.
-	if math.IsNaN(scaleFactor) || math.Abs(scaleFactor) < 1e-10 {
-		return nil, errors.Errorf("invalid device scale factor: %f", scaleFactor)
 	}
 
 	response, err := d.sendDetectionRequest(ctx, imagePng, s.request)
