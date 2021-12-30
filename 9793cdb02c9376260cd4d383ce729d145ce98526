@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e29cb4_982aeace",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513257
+      },
+      "writtenOn": "2021-12-30T22:14:42Z",
+      "side": 1,
+      "message": "@swifton, @michaelcheco, this is the tast test for Firmware Update UI which checks that the app is able to render when the flag is enabled.  Let me know if there is additional elements in the UI we want to add to the render check.  I used the package name \"firmwareupdate\" and \"firmwareupdateapp\" because \"fwupd\" was already used under \"firmware\" and wanted to avoid confusion between the two.",
+      "revId": "9793cdb02c9376260cd4d383ce729d145ce98526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
