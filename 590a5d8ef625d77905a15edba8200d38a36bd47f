@@ -62,6 +62,125 @@
       },
       "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35c0f50_310be6ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-30T00:09:40Z",
+      "side": 1,
+      "message": "Nit: rephrase as \"Default to one iteration\"",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28fc7cc2_5ba204b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-30T00:09:40Z",
+      "side": 1,
+      "message": "Why is this being deferred? Surely you\u0027d want to ensure that the DUT is on immediately after starting it, not at the end of the test? I may be missing something",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d462bd_6fe49e87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-30T00:09:40Z",
+      "side": 1,
+      "message": "This seems very common - it should probably be a function in a helper library that you can use across many tests (shutdownAndWaitForS5PowerState)",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a51e325_2c7c1961",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-30T00:09:40Z",
+      "side": 1,
+      "message": "This also seems very common - move to helper library?",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f47aa34_580adcda",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-30T00:09:40Z",
+      "side": 1,
+      "message": "Pretty sure I\u0027ve seen this a few times before. Could we put this into a helper",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31894a55_ee8aa290",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-30T00:09:40Z",
+      "side": 1,
+      "message": "Helper library?",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be006e22_747fefd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2021-12-30T00:09:40Z",
+      "side": 1,
+      "message": "Do we need to test that the SD card works, or just that it\u0027s detected?",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
