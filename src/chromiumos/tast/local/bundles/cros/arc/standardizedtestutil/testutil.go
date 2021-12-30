@@ -199,7 +199,7 @@ func runTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActi
 				act.Close()
 			}(cleanupCtx)
 
-			if err := act.Start(workCtx, tconn); err != nil {
+			if err := act.StartWithDefaultOptions(workCtx, tconn); err != nil {
 				s.Fatal("Failed to start app: ", err)
 			}
 			defer act.Stop(cleanupCtx, tconn)

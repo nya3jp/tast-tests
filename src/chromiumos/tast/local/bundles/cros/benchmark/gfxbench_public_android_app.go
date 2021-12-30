@@ -145,7 +145,7 @@ func openGfxbench(ctx context.Context, tconn *chrome.TestConn, device *ui.Device
 		return coords.Rect{}, errors.Wrap(err, "failed to create new activity")
 	}
 
-	if err = act.Start(ctx, tconn); err != nil {
+	if err = act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		return coords.Rect{}, errors.Wrap(err, "failed to start app")
 	}
 
