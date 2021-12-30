@@ -6,7 +6,6 @@ package uidetection
 
 import (
 	"context"
-	"math"
 	"strings"
 	"time"
 
@@ -178,11 +177,6 @@ func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) 
 	scaleFactor, err := screens[0].GetEffectiveDeviceScaleFactor()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get the device scale factor")
-	}
-
-	// Make sure the scale factor is neither 0 nor NaN.
-	if math.IsNaN(scaleFactor) || math.Abs(scaleFactor) < 1e-10 {
-		return nil, errors.Errorf("invalid device scale factor: %f", scaleFactor)
 	}
 
 	location, err := s.locationPx(ctx, uda, scaleFactor)
