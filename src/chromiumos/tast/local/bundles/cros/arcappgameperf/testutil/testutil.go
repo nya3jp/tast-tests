@@ -17,7 +17,10 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -31,6 +34,16 @@ type TestParams struct {
 	AppActivityName   string
 	Activity          *arc.Activity
 	ActivityStartTime time.Time
+}
+
+// LoginHeuristics stores data about the location of various fields.
+type LoginHeuristics struct {
+	FirstLoginButton  float64
+	UsernameField     float64
+	UsernameString    string
+	PasswordField     float64
+	PasswordString    string
+	SecondLoginButton float64
 }
 
 // PerformTestFunc allows callers to run their desired test after a provided activity has been launched.
@@ -117,6 +130,79 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 }
 
+// PerformLogin assumes a fully launched activity, performs a login, and defers to the caller to perform a test.
+func PerformLogin(ctx context.Context, s *testing.State, params TestParams, loginHeuristics LoginHeuristics, testFunc PerformTestFunc) {
+	// Wait for the CPU to idle before performing the test.
+	if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+		s.Fatal("Failed to wait until CPU is cooled down: ", err)
+	}
+
+	// Take screenshot on failure.
+	defer func(ctx context.Context) {
+		if s.HasError() {
+			captureScreenshot(ctx, s, cr, "failed-login-test.png")
+		}
+	}(cleanupCtx)
+
+	// Start up keyboard.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to open keyboard device: ", err)
+	}
+	defer ew.Close()
+
+	// Derive activity and test connection.
+	act := params.Activity
+	tconn := params.TestConn
+
+	// Locate/click on login button.
+	if err = mouse.Click(tconn, getCoords(ctx, act, loginHeuristics.FirstLoginButton), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click first login button: ", err)
+	}
+	testing.Sleep(2 * time.Second)
+
+	// Locate/click username field, and type username.
+	if err = mouse.Click(tconn, getCoords(ctx, act, loginHeuristics.UsernameField), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click username field: ", err)
+	}
+	testing.Sleep(1 * time.Second)
+	if err = ew.Type(ctx, loginHeuristics.UsernameString); err != nil {
+		s.Fatal("Failed to write username: ", err)
+	}
+	testing.Sleep(1 * time.Second)
+
+	// Locate/click password field, and enter.
+	if err = mouse.Click(tconn, getCoords(ctx, act, loginHeuristics.PasswordField), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click password field: ", err)
+	}
+	testing.Sleep(1 * time.Second)
+	if err = ew.Type(ctx, loginHeuristics.PasswordString); err != nil {
+		s.Fatal("Failed to write password: ", err)
+	}
+	testing.Sleep(1 * time.Second)
+
+	// Locate login button, start timer, and click login button.
+	if err = mouse.Click(tconn, getCoords(ctx, act, loginHeuristics.SecondLoginButton), mouse.LeftButton); err != nil {
+		s.Fatal("Failed to click second login button: ", err)
+	}
+
+	// Reassign start time.
+	startTime := time.Now()
+
+	// Defer to the caller to determine when the game is logged in.
+	if err := testFunc(TestParams{
+		TestConn:          tconn,
+		Arc:               params.a,
+		Device:            params.d,
+		AppPkgName:        params.appPkgName,
+		AppActivityName:   params.appActivity,
+		Activity:          act,
+		ActivityStartTime: startTime,
+	}); err != nil {
+		s.Fatal("Failed to perform test (post login): ", err)
+	}
+}
+
 // LaunchTimePerfMetric returns a standard metric that launch time can be saved in.
 func LaunchTimePerfMetric() perf.Metric {
 	return perf.Metric{
@@ -124,6 +210,16 @@ func LaunchTimePerfMetric() perf.Metric {
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
 	}
+}
+
+// getCoords returns an approximate pixel location given an activity and a
+// heuristic.
+func getCoords(ctx context.Context, act *arc.Activity, heuristic float64) coords.Point {
+	bounds, err := act.SurfaceBounds(ctx)
+	ScreenWidth := bounds.Width
+	ScreenHeight := bounds.Height
+
+	return coords.Point{int(float64(ScreenWidth) * 0.5), int(float64(ScreenHeight) * heuristic)}
 }
 
 // captureScreenshot takes a screenshot and saves it with the provided filename.
