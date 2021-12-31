@@ -31,7 +31,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Fio,
 		Desc:         "Tests crosvm storage device bandwidth",
-		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
+		Contacts:     []string{"crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Data:         []string{vm.ArtifactData(), runFio},
 		SoftwareDeps: []string{"vm_host"},

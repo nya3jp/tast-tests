@@ -23,7 +23,7 @@ func init() {
 		Func:         ShareInvalidPaths,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Tests that seneschal rejects paths that contain symlinks or point to non-regular files/directories",
-		Contacts:     []string{"chirantan@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"cros-containers-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
