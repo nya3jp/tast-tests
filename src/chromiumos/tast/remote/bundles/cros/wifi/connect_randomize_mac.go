@@ -5,12 +5,8 @@
 package wifi
 
 import (
-	"bytes"
 	"context"
 	"net"
-
-	"github.com/google/gopacket"
-	"github.com/google/gopacket/layers"
 
 	cip "chromiumos/tast/common/network/ip"
 	"chromiumos/tast/common/shillconst"
@@ -20,7 +16,6 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -39,97 +34,6 @@ func init() {
 		Fixture:      "wificellFixt",
 		HardwareDeps: hwdep.D(hwdep.WifiMACAddrRandomize()),
 	})
-}
-
-func isBroadcastMAC(mac net.HardwareAddr) bool {
-	return bytes.Compare(mac, []byte{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF}) == 0
-}
-
-// findWrongPackets is a simple filter returning all packets from capture
-// indicated by pcapPath that fail to pass the wrongMAC check, that is when
-// wrongMAC function returns true.
-func findWrongPackets(pcapPath string, wrongMAC func(mac net.HardwareAddr, toDS bool) bool) ([]gopacket.Packet, error) {
-	filters := []pcap.Filter{
-		pcap.RejectLowSignal(),
-		pcap.Dot11FCSValid(),
-		pcap.TypeFilter(
-			layers.LayerTypeDot11,
-			func(layer gopacket.Layer) bool {
-				dot11 := layer.(*layers.Dot11)
-				if dot11.Flags.ToDS() {
-					return wrongMAC(dot11.Address2, true)
-				}
-				if dot11.Flags.FromDS() {
-					return (!isBroadcastMAC(dot11.Address1) && wrongMAC(dot11.Address1, false)) ||
-						(!isBroadcastMAC(dot11.Address3) && wrongMAC(dot11.Address3, false))
-				}
-				return false
-			},
-		),
-	}
-	return pcap.ReadPackets(pcapPath, filters...)
-}
-
-// verifyMACIsKept checks whether currently used MAC address (macAddr) is the
-// same as the original one (origMAC) and that this address is used in all
-// communication (by parsing captured packets in pcapPath).
-func verifyMACIsKept(ctx context.Context, macAddr net.HardwareAddr, pcapPath string, origMAC net.HardwareAddr) error {
-	var wrongMACUsed net.HardwareAddr
-	wrongMAC := func(mac net.HardwareAddr, toDS bool) bool {
-		// When checking that all packets use original MAC we have to
-		// confine search to only 'toDS' direction because of high
-		// probability of getting unrelated packet from the environment.
-		if !bytes.Equal(mac, origMAC) && toDS {
-			if wrongMACUsed == nil {
-				wrongMACUsed = mac
-			}
-			return true
-		}
-		return false
-	}
-	if wrongMAC(macAddr, true) {
-		return errors.Errorf("hardware address changed: got %s, want %s", macAddr, origMAC)
-	}
-	packets, err := findWrongPackets(pcapPath, wrongMAC)
-	if err != nil {
-		return errors.Wrap(err, "failed to read packets")
-	}
-	if len(packets) > 0 {
-		testing.ContextLogf(ctx, "Found %d packets with incorrect MAC", len(packets))
-		return errors.New("found packet using wrong MAC: " + wrongMACUsed.String())
-	}
-	return nil
-}
-
-// verifyMACIsChanged checks whether currently used MAC address (macAddr) is
-// different from any previously used addresses (indicated in prevMACs).
-// It also verifies that none of the previously used MAC addresses is used in
-// communication (by parsing captured packets in pcapPath).
-func verifyMACIsChanged(ctx context.Context, macAddr net.HardwareAddr, pcapPath string, prevMACs []net.HardwareAddr) error {
-	var prevMACUsed net.HardwareAddr
-	wrongMAC := func(mac net.HardwareAddr, _ bool) bool {
-		for _, prevMAC := range prevMACs {
-			if bytes.Equal(mac, prevMAC) {
-				if prevMACUsed == nil {
-					prevMACUsed = prevMAC
-				}
-				return true
-			}
-		}
-		return false
-	}
-	if wrongMAC(macAddr, true) {
-		return errors.New("used previous MAC address: " + prevMACUsed.String())
-	}
-	packets, err := findWrongPackets(pcapPath, wrongMAC)
-	if err != nil {
-		return errors.Wrap(err, "failed to read packets")
-	}
-	if len(packets) > 0 {
-		testing.ContextLogf(ctx, "Found %d packets with incorrect MAC", len(packets))
-		return errors.New("found packet with previously used MAC: " + prevMACUsed.String())
-	}
-	return nil
 }
 
 func ConnectRandomizeMAC(ctx context.Context, s *testing.State) {
@@ -234,14 +138,14 @@ func ConnectRandomizeMAC(ctx context.Context, s *testing.State) {
 	// Connect to AP1 and check that MAC has changed.
 	connMac, ap1pcap1, servicePath := connectAndGetConnData(ctx, ap1, "ap1-connect")
 	s.Log("MAC after connection: ", connMac)
-	if err := verifyMACIsChanged(ctx, connMac, ap1pcap1, []net.HardwareAddr{hwMAC}); err != nil {
+	if err := wifiutil.VerifyMACIsChanged(ctx, connMac, ap1pcap1, []net.HardwareAddr{hwMAC}); err != nil {
 		s.Fatal("Failed to randomize MAC during connection: ", err)
 	}
 
 	// Reconnect to the same network and check that MAC is kept the same.
 	reconnMac, ap1pcap2, _ := connectAndGetConnData(ctx, ap1, "ap1-reconnect")
 	s.Log("MAC after re-connection: ", reconnMac)
-	if err := verifyMACIsKept(ctx, reconnMac, ap1pcap2, connMac); err != nil {
+	if err := wifiutil.VerifyMACIsKept(ctx, reconnMac, ap1pcap2, connMac); err != nil {
 		s.Fatal("Failed to keep the MAC during re-connection: ", err)
 	}
 
@@ -267,7 +171,7 @@ func ConnectRandomizeMAC(ctx context.Context, s *testing.State) {
 		s.Fatal("The same service used for both AP1 and AP2: ", servicePath)
 	}
 	// This should be a new address - no previous one should be used.
-	if err := verifyMACIsChanged(ctx, connMac2, ap2pcap, []net.HardwareAddr{hwMAC, connMac}); err != nil {
+	if err := wifiutil.VerifyMACIsChanged(ctx, connMac2, ap2pcap, []net.HardwareAddr{hwMAC, connMac}); err != nil {
 		s.Fatal("Failed to change MAC for AP2: ", err)
 	}
 
@@ -278,7 +182,7 @@ func ConnectRandomizeMAC(ctx context.Context, s *testing.State) {
 		s.Fatalf("Different service used during reconnection for AP1: got %s, want %s", servicePath1, servicePath)
 	}
 	s.Log("MAC after going back to AP1: ", connMac1)
-	if err := verifyMACIsKept(ctx, connMac1, ap1pcap3, connMac); err != nil {
+	if err := wifiutil.VerifyMACIsKept(ctx, connMac1, ap1pcap3, connMac); err != nil {
 		s.Fatal("Failed to keep the MAC for AP1 after switching back: ", err)
 	}
 
