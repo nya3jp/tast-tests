@@ -25,7 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Virtiofs,
 		Desc:         "Tests that the crosvm virtio-fs device works correctly",
-		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
+		Contacts:     []string{"crosvm-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{runPjdfstest},
 		Timeout:      20 * time.Minute,

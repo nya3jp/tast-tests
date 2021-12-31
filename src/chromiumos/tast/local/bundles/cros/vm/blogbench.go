@@ -31,7 +31,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Blogbench,
 		Desc:         "Tests crosvm storage device small file performance",
-		Contacts:     []string{"chirantan@chromium.org", "crosvm-core@google.com"},
+		Contacts:     []string{"crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Data:         []string{vm.ArtifactData(), runBlogbench},
 		SoftwareDeps: []string{"vm_host"},
