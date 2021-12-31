@@ -1,0 +1,57 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.inputs;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/inputs";
+
+// KeyboardService provides functionalities to interact with keyboard device
+service KeyboardService {
+  // Type injects key events suitable for generating the string s.
+  // Only characters that can be typed using a QWERTY keyboard are supported,
+  // and the current keyboard layout must be QWERTY. The left Shift key is
+  // automatically pressed and released for uppercase letters or other
+  // characters that can be typed using Shift.
+  rpc Type(TypeRequest) returns (google.protobuf.Empty) {}
+
+  // Accel injects a sequence of key events simulating the accelerator (a.k.a.
+  // hotkey) described by s being typed.
+  // Accelerators are described as a sequence of '+'-separated, case-insensitive
+  // key characters or names. In addition to non-whitespace characters that are
+  // present on a QWERTY keyboard, the following key names may be used:
+  //	Modifiers:     "Ctrl", "Alt", "Search", "Shift"
+  //	Whitespace:    "Enter", "Space", "Tab", "Backspace"
+  //	Function keys: "F1", "F2", ..., "F12"
+  // "Shift" must be included for keys that are typed using Shift; for example,
+  // use "Ctrl+Shift+/" rather than "Ctrl+?".
+  rpc Accel(AccelRequest) returns (google.protobuf.Empty) {}
+
+  // AccelPress injects a sequence of key events simulating pressing the
+  // accelerator (a.k.a. hotkey) described by s.
+  rpc AccelPress(AccelPressRequest) returns (google.protobuf.Empty) {}
+
+  // AccelRelease injects a sequence of key events simulating release the
+  // accelerator (a.k.a. hotkey) described by s.
+  rpc AccelRelease(AccelReleaseRequest) returns (google.protobuf.Empty) {}
+}
+
+message TypeRequest {
+  string key = 1;
+}
+
+message AccelRequest {
+  string key = 1;
+}
+
+message AccelPressRequest {
+  string key = 1;
+}
+
+message AccelReleaseRequest {
+  string key = 1;
+}
