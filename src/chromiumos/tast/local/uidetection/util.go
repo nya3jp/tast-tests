@@ -10,10 +10,10 @@ import (
 	"image"
 	"image/png"
 	"os"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -41,24 +41,28 @@ func ReadImage(imgFile string) ([]byte, error) {
 }
 
 // TakeScreenshot takes a screentshot in PNG format and reads it to []byte.
-func TakeScreenshot(ctx context.Context) ([]byte, error) {
-	tmpFile := filepath.Join(screenshotSaveDir, time.Now().Format("20060102150405")+"_sc.png")
-	if err := screenshot.Capture(ctx, tmpFile); err != nil {
-		return nil, errors.Wrap(err, "failed to take screenshot")
+func TakeScreenshot(ctx context.Context, tconn *chrome.TestConn) ([]byte, error) {
+	imgPNG, err := screenshot.CaptureChromeImageWithTestAPI(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to take the screenshot")
 	}
-	defer os.Remove(tmpFile)
 
-	return ReadImage(tmpFile)
+	imgBuf := new(bytes.Buffer)
+	if err := png.Encode(imgBuf, imgPNG); err != nil {
+		return nil, errors.Wrap(err, "failed to write the PNG image into byte buffer")
+	}
+
+	return imgBuf.Bytes(), nil
 }
 
 // TakeStableScreenshot takes a stable screenshot that doesn't changed between two pollings.
-func TakeStableScreenshot(ctx context.Context, pollOpts testing.PollOptions) ([]byte, error) {
+func TakeStableScreenshot(ctx context.Context, tconn *chrome.TestConn, pollOpts testing.PollOptions) ([]byte, error) {
 	var lastScreen []byte
 	var currentScreen []byte
 	start := time.Now()
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
-		currentScreen, err = TakeScreenshot(ctx)
+		currentScreen, err = TakeScreenshot(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to take immediate screenshot")
 		}

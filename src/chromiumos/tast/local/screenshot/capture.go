@@ -75,6 +75,13 @@ func CaptureChromeImage(ctx context.Context, cr *chrome.Chrome) (image.Image, er
 	if err != nil {
 		return nil, err
 	}
+	return CaptureChromeImageWithTestAPI(ctx, tconn)
+}
+
+// CaptureChromeImageWithTestAPI takes a screenshot of the primary display and
+// returns it as an image.Image. It will use Test API to perform the screen
+// capture.
+func CaptureChromeImageWithTestAPI(ctx context.Context, tconn *chrome.TestConn) (image.Image, error) {
 	var base64PNG string
 	if err := tconn.Eval(ctx, takeScreenshot, &base64PNG); err != nil {
 		return nil, err
