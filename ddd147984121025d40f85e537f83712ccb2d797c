@@ -16,6 +16,23 @@
       "message": "Hi Seewai, Kyle, David,\nCan I please get your help in reviewing this?\nThanks,\nJonathan",
       "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40c5848_cda654c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-12-31T01:36:26Z",
+      "side": 1,
+      "message": "I was hoping to use \"chrome\" as the package name as that feels the most natural, but tast-lint does not like \"chrome/chrome_service.go\". Curious if there is any suggestions?",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
