@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b3c614_6d1c33af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-12-31T01:50:57Z",
+      "side": 1,
+      "message": "Hi Seewai, Kyle, David,\nHere is another one. Can I please get your help in reviewing this?\nThanks,\nJonathan\n",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21168fb0_adcc5c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-12-31T01:50:57Z",
+      "side": 1,
+      "message": "There is a fair amount of functions to convert the artifacts from proto and uiauto.  Curious if there is a smart way of handling this?",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc904e4_1b7ae076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-12-31T01:50:57Z",
+      "side": 1,
+      "message": "This portion corresponding to the State (state.State, bool) came out quite clunky. Would definitely love to pick your brain on proto def on making this pretty.",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361b15ce_253f1644",
+        "filename": "src/chromiumos/tast/services/cros/ui/automation_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2021-12-31T01:50:57Z",
+      "side": 1,
+      "message": "In order for the enum values not to conflict, I found two suggested ways:\n1) Wrapped with message (Like in this CL)\n2) Prefix enum value with type, like:\nenum ClickType {\n    CLICK_TYPE_UNSPECIFIED \u003d 0;\n    CLICK_TYPE_LEFT_CLICK \u003d 1;\n    CLICK_TYPE_RIGHT_CLICK \u003d 2;\n    CLICK_TYPE_DOUBLE_CLICK \u003d 3;\n  }\n  \nIs there a google convention for this?",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
