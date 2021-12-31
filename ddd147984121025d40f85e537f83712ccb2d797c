@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e035af_8ee1de0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-31T01:54:06Z",
+      "side": 1,
+      "message": "This CL is too big. Can you split it to multiple CLs?\n\n1. Each new proto should be a CL by itself.\n2. Each server implementation should be a CL by itself.\n",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a40c5848_cda654c2",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-12-31T01:36:26Z",
       "side": 1,
       "message": "I was hoping to use \"chrome\" as the package name as that feels the most natural, but tast-lint does not like \"chrome/chrome_service.go\". Curious if there is any suggestions?",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1a38d8_4e867f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2021-12-31T01:54:06Z",
+      "side": 1,
+      "message": "How about chrome/service.go?",
+      "parentUuid": "a40c5848_cda654c2",
       "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
