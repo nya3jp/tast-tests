@@ -1,0 +1,458 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// AutomationService enables automating with the ChromeOS UI through the
+// chrome.automation API. The chrome.automation API is documented here:
+// https://developer.chrome.com/extensions/automation
+service AutomationService {
+  // Info returns the information for the node found by the input finder.
+  rpc Info(InfoRequest) returns (InfoResponse) {}
+
+  // LeftClick left clicks on the location of the node found by the input
+  // finder.
+  rpc LeftClick(LeftClickRequest) returns (google.protobuf.Empty) {}
+
+  // RightClick right clicks on the location of the node found by the input
+  // finder.
+  rpc RightClick(RightClickRequest) returns (google.protobuf.Empty) {}
+
+  // DoubleClick double clicks on the location of the node found by the input
+  // finder.
+  rpc DoubleClick(DoubleClickRequest) returns (google.protobuf.Empty) {}
+
+  // IsNodeFound immediately checks if any nodes found with given finder.
+  // It returns true if found otherwise false.
+  rpc IsNodeFound(IsNodeFoundRequest) returns (IsNodeFoundResponse) {}
+
+  // MouseClickAtLocation clicks on the specified location.
+  rpc MouseClickAtLocation(MouseClickAtLocationRequest)
+      returns (google.protobuf.Empty) {}
+
+  // WaitUntilExists waits until the node found by the input finder exists.
+  rpc WaitUntilExists(WaitUntilExistsRequest) returns (google.protobuf.Empty) {}
+}
+
+message LeftClickRequest {
+  Finder finder = 1;
+}
+message RightClickRequest {
+  Finder finder = 1;
+}
+message DoubleClickRequest {
+  Finder finder = 1;
+}
+message IsNodeFoundRequest {
+  Finder finder = 1;
+}
+message IsNodeFoundResponse {
+  bool found = 1;
+}
+message MouseClickAtLocationRequest {
+  // ClickType describes how user clicks mouse.
+  ClickType click_type = 1;
+  // Point is the coordinates for the click.
+  Point point = 2;
+}
+
+message WaitUntilExistsRequest {
+  Finder finder = 1;
+}
+
+message InfoRequest {
+  Finder finder = 1;
+}
+
+message InfoResponse {
+  NodeInfo node_info = 1;
+}
+
+// NodeInfo is a wrapper around chrome.automation API AutomationNode.
+// As defined in
+// https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
+message NodeInfo {
+  // Checked contains Tri-state value describing checkbox or radio button:
+  // 'false' | 'true' | 'mixed'.
+  Checked checked = 1;
+  // ClassName is the name of the programmatic backing object.
+  string class_name = 2;
+  // HtmlAttribute is a map containing all HTML attributes and their values.
+  map<string, string> html_attributes = 3;
+  // Location is the rendered location of the bounding of the node in global
+  // screen coordinates.
+  Rect location = 4;
+  // Name is the accessible name for the node
+  string name = 5;
+  // Restriction controls input restriction
+  Restriction restriction = 6;
+  // Role describes the purpose of the node
+  Role role = 7;
+  // State describes the characteristics of the node
+  // As defined in
+  // https://developer.chrome.com/docs/extensions/reference/automation/#type-StateType
+  map<string, bool> state = 8;
+  // Value for this node: for example the value attribute of an <input> element.
+  string value = 9;
+}
+
+// Finder is a wrapper around chrome.automation.FindParams to Golang with a
+// nicer API. As defined in
+// https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
+message Finder {
+  // NodeWiths contain the conditions of the finder
+  repeated NodeWith node_withs = 1;
+}
+
+// NodeInfo specifies a condition for finding nodes
+message NodeWith {
+  oneof value {
+    // creates a condition with ClassName containing the specified value.
+    string has_class = 1;
+    // creates a condition with the specified name.
+    string name = 2;
+    // creates a condition with the specified role.
+    Role role = 3;
+    // creates a condition that will find the n-th node in the matched nodes of
+    // the Finder, instead of requiring uniqueness.
+    int32 nth = 4;
+    // creates a condition with AutofillAvailable set to true.
+    bool autofill_available = 5;
+    // creates a condition with Collapsed set to true.
+    bool collapsed = 6;
+    // creates a condition with Default set to true.
+    bool default = 7;
+    // creates a condition with Editable set to true.
+    bool editable = 8;
+    // creates a condition with Expanded set to true.
+    bool expanded = 9;
+    // creates a condition with Focusable set to true.
+    bool focusable = 10;
+    // creates a condition with Focused set to true.
+    bool focused = 11;
+    // creates a condition with Horizontal set to true.
+    bool horizontal = 12;
+    // creates a condition with Hovered set to true.
+    bool hovered = 13;
+    // creates a condition with Ignored set to true.
+    bool ignored = 14;
+    // creates a condition with Invisible set to true.
+    bool invisible = 15;
+    // creates a condition with Linked set to true.
+    bool linked = 16;
+    // creates a condition with Multiline set to true.
+    bool multiline = 17;
+    // creates a condition with Multiselectable set to true.
+    bool multiselectable = 18;
+    // creates a condition with Offscreen set to true.
+    bool offscreen = 19;
+    // creates a condition with Protected set to true.
+    bool protected = 20;
+    // creates a condition with Required set to true.
+    bool required = 21;
+    // creates a condition with RichlyEditable set to true.
+    bool richly_editable = 22;
+    // creates a condition with Vertical set to true.
+    bool vertical = 23;
+    // creates a condition with Visited set to true.
+    bool visited = 24;
+    // creates a condition with Invisible set to false.
+    bool visible = 25;
+    // creates a condition with Offscreen set to false.
+    bool onscreen = 26;
+    // creates a condition that will find the first node instead of requiring
+    // uniqueness.
+    bool first = 27;
+    // creates a condition that will find the root node.
+    bool root = 28;
+    // creates a condition with a name containing the specified regexp.
+    string name_regex = 29;
+    // creates a condition with a name starting with the specified string.
+    string name_starting_with = 30;
+    // creates a condition with a name containing the specified string.
+    string name_containing = 31;
+    // creates a condition with the specified state.
+    StateValue state = 32;
+    // creates a condition with the specified Finder as the ancestor of the node
+    Finder ancestor = 33;
+  }
+  message StateValue {
+    // State describes the characteristics of the node
+    // See
+    // https://developer.chrome.com/docs/extensions/reference/automation/#type-StateType
+    State state = 1;
+    bool value = 2;
+  }
+}
+
+// Rect defines a bounding box
+// See
+// https://developer.chrome.com/docs/extensions/reference/automation/#type-Rect
+message Rect {
+  int32 left = 1;
+  int32 top = 2;
+  int32 width = 3;
+  int32 height = 4;
+}
+
+message Point {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+enum ClickType {
+  CLICK_TYPE_UNSPECIFIED = 0;
+  CLICK_TYPE_LEFT_CLICK = 1;
+  CLICK_TYPE_RIGHT_CLICK = 2;
+  CLICK_TYPE_DOUBLE_CLICK = 3;
+}
+
+// Checked describes tri-state values of a checkbox or radio button.
+// As defined in
+// https://chromium.googlesource.com/chromium/src/+/refs/heads/main/extensions/common/api/automation.idl
+enum Checked {
+  CHECKED_UNSPECIFIED = 0;
+  CHECKED_TRUE = 1;
+  CHECKED_FALSE = 2;
+  CHECKED_MIXED = 3;
+}
+
+// Restriction describes the restriction state of a chrome.automation
+// AutomationNode. As defined in
+// https://developer.chrome.com/docs/extensions/reference/automation/#type-Restriction
+enum Restriction {
+  RESTRICTION_UNSPECIFIED = 0;
+  RESTRICTION_DISABLED = 1;   // disallows input in itself + any descendants
+  RESTRICTION_READ_ONLY = 2;  // allow focus/selection but not input
+  RESTRICTION_NONE = 3;       // enable control or other object that is not disabled
+}
+
+// State describes the characteristics of the node
+// See
+// https://developer.chrome.com/docs/extensions/reference/automation/#type-StateType
+enum State {
+  STATE_UNSPECIFIED = 0;
+  STATE_AUTOFILL_AVAILABLE = 1;
+  STATE_COLLAPSED = 2;
+  STATE_DEFAULT = 3;
+  STATE_EDITABLE = 4;
+  STATE_EXPANDED = 5;
+  STATE_FOCUSABLE = 6;
+  STATE_FOCUSED = 7;
+  STATE_HORIZONTAL = 8;
+  STATE_HOVERED = 9;
+  STATE_IGNORED = 10;
+  STATE_INVISIBLE = 11;
+  STATE_LINKED = 12;
+  STATE_MULTILINE = 13;
+  STATE_MULTISELECTABLE = 14;
+  STATE_OFFSCREEN = 15;
+  STATE_PROTECTED = 16;
+  STATE_REQUIRED = 17;
+  STATE_RICHLY_EDITABLE = 18;
+  STATE_VERTICAL = 19;
+  STATE_VISITED = 20;
+}
+
+// Role describes the purpose of the node
+// See
+// https://developer.chrome.com/docs/extensions/reference/automation/#type-RoleType
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_ABBR = 1;
+  ROLE_ALERT = 2;
+  ROLE_ALERT_DIALOG = 3;
+  ROLE_ANCHOR = 4;
+  ROLE_APPLICATION = 5;
+  ROLE_ARTICLE = 6;
+  ROLE_AUDIO = 7;
+  ROLE_BANNER = 8;
+  ROLE_BLOCKQUOTE = 9;
+  ROLE_BUTTON = 10;
+  ROLE_CANVAS = 11;
+  ROLE_CAPTION = 12;
+  ROLE_CARET = 13;
+  ROLE_CELL = 14;
+  ROLE_CHECK_BOX = 15;
+  ROLE_CLIENT = 16;
+  ROLE_CODE = 17;
+  ROLE_COLOR_WELL = 18;
+  ROLE_COLUMN = 19;
+  ROLE_COLUMN_HEADER = 20;
+  ROLE_COMBO_BOX_GROUPING = 21;
+  ROLE_COMBO_BOX_MENU_BUTTON = 22;
+  ROLE_COMMENT = 23;
+  ROLE_COMPLEMENTARY = 24;
+  ROLE_CONTENT_DELETION = 25;
+  ROLE_CONTENT_INSERTION = 26;
+  ROLE_CONTENT_INFO = 27;
+  ROLE_DATE = 28;
+  ROLE_DATE_TIME = 29;
+  ROLE_DEFINITION = 30;
+  ROLE_DESCRIPTION_LIST = 31;
+  ROLE_DESCRIPTION_LIST_DETAIL = 32;
+  ROLE_DESCRIPTION_LIST_TERM = 33;
+  ROLE_DESKTOP = 34;
+  ROLE_DETAILS = 35;
+  ROLE_DIALOG = 36;
+  ROLE_DIRECTORY = 37;
+  ROLE_DISCLOSURE_TRIANGLE = 38;
+  ROLE_DOC_ABSTRACT = 39;
+  ROLE_DOC_ACKNOWLEDGMENTS = 40;
+  ROLE_DOC_AFTERWORD = 41;
+  ROLE_DOC_APPENDIX = 42;
+  ROLE_DOC_BACK_LINK = 43;
+  ROLE_DOC_BIBLIO_ENTRY = 44;
+  ROLE_DOC_BIBLIOGRAPHY = 45;
+  ROLE_DOC_BIBLIO_REF = 46;
+  ROLE_DOC_CHAPTER = 47;
+  ROLE_DOC_COLOPHON = 48;
+  ROLE_DOC_CONCLUSION = 49;
+  ROLE_DOC_COVER = 50;
+  ROLE_DOC_CREDIT = 51;
+  ROLE_DOC_CREDITS = 52;
+  ROLE_DOC_DEDICATION = 53;
+  ROLE_DOC_ENDNOTE = 54;
+  ROLE_DOC_ENDNOTES = 55;
+  ROLE_DOC_EPIGRAPH = 56;
+  ROLE_DOC_EPILOGUE = 57;
+  ROLE_DOC_ERRATA = 58;
+  ROLE_DOC_EXAMPLE = 59;
+  ROLE_DOC_FOOTNOTE = 60;
+  ROLE_DOC_FOREWORD = 61;
+  ROLE_DOC_GLOSSARY = 62;
+  ROLE_DOC_GLOSS_REF = 63;
+  ROLE_DOC_INDEX = 64;
+  ROLE_DOC_INTRODUCTION = 65;
+  ROLE_DOC_NOTE_REF = 66;
+  ROLE_DOC_NOTICE = 67;
+  ROLE_DOC_PAGE_BREAK = 68;
+  ROLE_DOC_PAGE_FOOTER = 69;
+  ROLE_DOC_PAGE_HEADER = 70;
+  ROLE_DOC_PAGE_LIST = 71;
+  ROLE_DOC_PART = 72;
+  ROLE_DOC_PREFACE = 73;
+  ROLE_DOC_PROLOGUE = 74;
+  ROLE_DOC_PULLQUOTE = 75;
+  ROLE_DOC_QNA = 76;
+  ROLE_DOC_SUBTITLE = 77;
+  ROLE_DOC_TIP = 78;
+  ROLE_DOC_TOC = 79;
+  ROLE_DOCUMENT = 80;
+  ROLE_EMBEDDED_OBJECT = 81;
+  ROLE_EMPHASIS = 82;
+  ROLE_FEED = 83;
+  ROLE_FIGCAPTION = 84;
+  ROLE_FIGURE = 85;
+  ROLE_FOOTER = 86;
+  ROLE_FOOTER_AS_NON_LANDMARK = 87;
+  ROLE_FORM = 88;
+  ROLE_GENERIC_CONTAINER = 89;
+  ROLE_GRAPHICS_DOCUMENT = 90;
+  ROLE_GRAPHICS_OBJECT = 91;
+  ROLE_GRAPHICS_SYMBOL = 92;
+  ROLE_GRID = 93;
+  ROLE_GROUP = 94;
+  ROLE_HEADER = 95;
+  ROLE_HEADER_AS_NON_LANDMARK = 96;
+  ROLE_HEADING = 97;
+  ROLE_IFRAME = 98;
+  ROLE_IFRAME_PRESENTATIONAL = 99;
+  ROLE_IGNORED = 100;
+  ROLE_IMAGE = 101;
+  ROLE_IMAGE_MAP = 102;
+  ROLE_IME_CANDIDATE = 103;
+  ROLE_INLINE_TEXT_BOX = 104;
+  ROLE_INPUT_TIME = 105;
+  ROLE_KEYBOARD = 106;
+  ROLE_LABEL_TEXT = 107;
+  ROLE_LAYOUT_TABLE = 108;
+  ROLE_LAYOUT_TABLE_CELL = 109;
+  ROLE_LAYOUT_TABLE_ROW = 110;
+  ROLE_LEGEND = 111;
+  ROLE_LINE_BREAK = 112;
+  ROLE_LINK = 113;
+  ROLE_LIST = 114;
+  ROLE_LIST_BOX = 115;
+  ROLE_LIST_BOX_OPTION = 116;
+  ROLE_LIST_GRID = 117;
+  ROLE_LIST_ITEM = 118;
+  ROLE_LIST_MARKER = 119;
+  ROLE_LOG = 120;
+  ROLE_MAIN = 121;
+  ROLE_MARK = 122;
+  ROLE_MARQUEE = 123;
+  ROLE_MATH = 124;
+  ROLE_MENU = 125;
+  ROLE_MENU_BAR = 126;
+  ROLE_MENU_ITEM = 127;
+  ROLE_MENU_ITEM_CHECK_BOX = 128;
+  ROLE_MENU_ITEM_RADIO = 129;
+  ROLE_MENU_LIST_OPTION = 130;
+  ROLE_MENU_LIST_POPUP = 131;
+  ROLE_METER = 132;
+  ROLE_NAVIGATION = 133;
+  ROLE_NOTE = 134;
+  ROLE_PANE = 135;
+  ROLE_PARAGRAPH = 136;
+  ROLE_PDF_ACTIONABLE_HIGHLIGHT = 137;
+  ROLE_PLUGIN_OBJECT = 138;
+  ROLE_POP_UP_BUTTON = 139;
+  ROLE_PORTAL = 140;
+  ROLE_PRE = 141;
+  ROLE_PRESENTATIONAL = 142;
+  ROLE_PROGRESS_INDICATOR = 143;
+  ROLE_RADIO_BUTTON = 144;
+  ROLE_RADIO_GROUP = 145;
+  ROLE_REGION = 146;
+  ROLE_ROOT_WEB_AREA = 147;
+  ROLE_ROW = 148;
+  ROLE_ROW_GROUP = 149;
+  ROLE_ROW_HEADER = 150;
+  ROLE_RUBY = 151;
+  ROLE_RUBY_ANNOTATION = 152;
+  ROLE_SCROLL_BAR = 153;
+  ROLE_SCROLL_VIEW = 154;
+  ROLE_SEARCH = 155;
+  ROLE_SEARCH_BOX = 156;
+  ROLE_SECTION = 157;
+  ROLE_SLIDER = 158;
+  ROLE_SLIDER_THUMB = 159;
+  ROLE_SPIN_BUTTON = 160;
+  ROLE_SPLITTER = 161;
+  ROLE_STATIC_TEXT = 162;
+  ROLE_STATUS = 163;
+  ROLE_STRONG = 164;
+  ROLE_SUGGESTION = 165;
+  ROLE_SVG_ROOT = 166;
+  ROLE_SWITCH = 167;
+  ROLE_TAB = 168;
+  ROLE_TAB_LIST = 169;
+  ROLE_TAB_PANEL = 170;
+  ROLE_TABLE = 171;
+  ROLE_TABLE_HEADER_CONTAINER = 172;
+  ROLE_TERM = 173;
+  ROLE_TEXT_FIELD = 174;
+  ROLE_TEXT_FIELD_WITH_COMBO_BOX = 175;
+  ROLE_TIME = 176;
+  ROLE_TIMER = 177;
+  ROLE_TITLE_BAR = 178;
+  ROLE_TOGGLE_BUTTON = 179;
+  ROLE_TOOLBAR = 180;
+  ROLE_TOOLTIP = 181;
+  ROLE_TREE = 182;
+  ROLE_TREE_GRID = 183;
+  ROLE_TREE_ITEM = 184;
+  ROLE_UNKNOWN = 185;
+  ROLE_VIDEO = 186;
+  ROLE_WEB_AREA = 187;
+  ROLE_WEB_VIEW = 188;
+  ROLE_WINDOW = 189;
+}
