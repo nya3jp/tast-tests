@@ -11,11 +11,13 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/dlc"
 	"chromiumos/tast/testing"
 )
 
@@ -79,6 +81,29 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 		settings.SetToggleOption(cr, liveCaptionToggleName, true),
 	)(ctx); err != nil {
 		s.Fatal("Failed to turn on live caption toggle: ", err)
+	}
+
+	// Wait until dlc libsoda and libsoda-model-en-us are installed.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		dlcMap, err := dlc.List(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to list installed DLC(s)")
+		}
+		testing.ContextLog(ctx, "dlc Map is: ", dlcMap)
+
+		_, ok := dlcMap["libsoda"]
+		if !ok {
+			return errors.Wrap(err, "dlc libsoda is not installed")
+		}
+
+		_, ok = dlcMap["libsoda-model-en-us"]
+		if !ok {
+			return errors.Wrap(err, "dlc libsoda-model-en-us is not installed")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for libsoda dlc to be installed: ", err)
 	}
 
 	// Open the test page and play the audio.
