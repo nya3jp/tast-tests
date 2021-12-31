@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -7,6 +7,7 @@
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. check_power_menu_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. chrome_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. automation_service.proto
+//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. screen_recorder_service.proto
 
 // Package ui provides all ui related types compiled from protobuf.
 package ui
