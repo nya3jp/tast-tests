@@ -1,0 +1,37 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.ui;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// ScreenRecorderService provides functionalities to perform screen recording.
+service ScreenRecorderService {
+  // Start creates a new media recorder and starts to record the screen.
+  // There can be only a single recording in progress at a time.
+  // If user does not specify the file name, the service will generate a
+  // temporary location for the recording and return that to the user in Stop().
+  rpc Start(StartRequest) returns (google.protobuf.Empty) {}
+
+  // Stop stops and saves the recording to the specified location.
+  rpc Stop(google.protobuf.Empty) returns (StopResponse) {}
+}
+
+message StartRequest {
+  // FileName specified the location in the file system where the recording will
+  // be saved. The field is optional. If user does not specify the file name,
+  // the service will generate a temporary location for the recording and return
+  // that to the user in Stop().
+  string file_name = 1;
+}
+
+message StopResponse {
+  // FileName specified the location in the file system where the recording was
+  // saved.
+  string file_name = 1;
+}
