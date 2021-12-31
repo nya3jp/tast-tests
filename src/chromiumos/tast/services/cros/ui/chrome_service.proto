@@ -1,0 +1,86 @@
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.browser;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/ui";
+
+// ChromeService provides functions for managing chrome lifecycle, like
+// creating and closing chrome sessions.
+service ChromeService {
+  // New enables testing for Chrome and logs into a Chrome session.
+  // When try_reuse_session is set to true, service tries to reuse existing
+  // chrome session if the reuse criteria is met.
+  // Close must be called later to clean up the associated resources.
+  rpc New(NewRequest) returns (google.protobuf.Empty) {}
+
+  // Close releases the chrome session obtained by New.
+  // When there is no chrome session, calling Close returns an error.
+  rpc Close(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+// NewRequest to login to Chrome with configurable features, arguments and GAIA
+// credentials.
+message NewRequest {
+  LoginMode login_mode = 1;
+
+  // Credentials is login credentials.
+  Credentials credentials = 2;
+
+  // EnableFeatures contains extra Chrome features to enable.
+  repeated string enable_features = 3;
+
+  // DisableFeatures contains extra Chrome features to disable.
+  repeated string disable_features = 4;
+
+  // ExtraArgs returns extra arguments to pass to Chrome.
+  repeated string extra_args = 5;
+
+  // KeepState controls whether to keep existing user profiles.
+  bool keep_state = 6;
+
+  // TryReuseSession controls whether to try reusing a current user session.
+  bool try_reuse_session = 7;
+
+  message Credentials {
+    // Username is the user name of a user account. It is typically an email
+    // address (e.g. example@gmail.com).
+    string username = 1;
+    // Password is the password of a user account.
+    string password = 2;
+
+    // GaiaId is a GAIA ID used on fake logins. If it is empty, an ID is
+    // generated from the user name. The field is ignored on other type of
+    // logins.
+    string gaia_id = 3;
+
+    // Contact is an email address of a user who owns a test account.
+    // When logging in with a test account, its contact user may be
+    // notified of a login attempt and asked for approval.
+    string contact = 4;
+
+    // ParentUsername is the user name of a parent account. It is used to
+    // approve a login attempt when a child account is supervised by a
+    // parent account.
+    string parent_username = 5;
+
+    // ParentPassword is the pass of a parent account. It is used to approve
+    // a login attempt when a child account is supervised by a parent
+    // account.
+    string parent_password = 6;
+  }
+}
+
+// LoginMode describes the user mode for the login.
+enum LoginMode {
+  UNSPECIFIED = 0;
+  NO_LOGIN = 1;     // restart Chrome but don't log in
+  FAKE_LOGIN = 2;   // fake login with no authentication
+  GAIA_LOGIN = 3;   // real network-based login using GAIA backend
+  GUEST_LOGIN = 4;  // sign in as ephemeral guest user
+}
