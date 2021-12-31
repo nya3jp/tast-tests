@@ -109,7 +109,7 @@ func (s *Finder) ExactMatch() *Finder {
 // of the matching elements.
 func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions) error {
 	// Take the screenshot.
-	imagePng, err := TakeStableScreenshot(ctx, pollOpts)
+	imagePng, err := TakeStableScreenshot(ctx, tconn, pollOpts)
 	if err != nil {
 		return errors.Wrap(err, "failed to take screenshot")
 	}
