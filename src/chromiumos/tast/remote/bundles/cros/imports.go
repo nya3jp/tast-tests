@@ -18,6 +18,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/firmware"
 	_ "chromiumos/tast/remote/bundles/cros/hardware"
 	_ "chromiumos/tast/remote/bundles/cros/hwsec"
+	_ "chromiumos/tast/remote/bundles/cros/inputs"
 	_ "chromiumos/tast/remote/bundles/cros/kernel"
 	_ "chromiumos/tast/remote/bundles/cros/lacros"
 	_ "chromiumos/tast/remote/bundles/cros/meta"
