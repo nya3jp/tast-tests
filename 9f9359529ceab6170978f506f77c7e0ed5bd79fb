@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f2b66c_c2dcf2fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-01-03T07:36:01Z",
+      "side": 1,
+      "message": "Saw the comment in b/172340798#comment12, just curious if the user may also hit this bug, should we also add CL for checking the |app_id| is |std::nullopt_t| case?",
+      "revId": "9f9359529ceab6170978f506f77c7e0ed5bd79fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
