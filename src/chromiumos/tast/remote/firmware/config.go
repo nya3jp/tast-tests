@@ -79,6 +79,7 @@ type Config struct {
 	PowerButtonDevSwitch bool              `json:"power_button_dev_switch"`
 	RecButtonDevSwitch   bool              `json:"rec_button_dev_switch"`
 	Hibernate            bool              `json:"hibernate"`
+	HasKeyboard          bool              `json:"has_keyboard"`
 	RawUSBEnablePins     []json.RawMessage `json:"custom_usb_enable_pins"`
 	USBAPortCount        int               `json:"usb_a_port_count"`
 
