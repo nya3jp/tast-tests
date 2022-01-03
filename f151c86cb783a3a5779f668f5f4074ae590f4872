@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f86728d_50432b7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-03T07:55:48Z",
+      "side": 1,
+      "message": "Can this be Errorf? Does the rest of the test make sense if the condition fails?",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "f151c86cb783a3a5779f668f5f4074ae590f4872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab04b5a9_3d48693c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-03T07:55:48Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 139,
+        "startChar": 4,
+        "endLine": 139,
+        "endChar": 9
+      },
+      "revId": "f151c86cb783a3a5779f668f5f4074ae590f4872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac05697_92a28774",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-03T07:55:48Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 10
+      },
+      "revId": "f151c86cb783a3a5779f668f5f4074ae590f4872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4607c07_27f412b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_wake_on_power_button_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-03T07:55:48Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "f151c86cb783a3a5779f668f5f4074ae590f4872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
