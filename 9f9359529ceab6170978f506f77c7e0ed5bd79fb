@@ -34,6 +34,24 @@
       "parentUuid": "32f2b66c_c2dcf2fd",
       "revId": "9f9359529ceab6170978f506f77c7e0ed5bd79fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5103b332_43f7a163",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-01-03T08:42:58Z",
+      "side": 1,
+      "message": "Discussed offline with Inker. We will wait for the confirm from SWA team before merging this CL to ensure it is really not possible in the production. Otherwise, we might need to take extra care for this case.",
+      "parentUuid": "76f095a0_0d682e0e",
+      "revId": "9f9359529ceab6170978f506f77c7e0ed5bd79fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
