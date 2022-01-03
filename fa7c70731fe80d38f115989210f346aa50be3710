@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f310ce0_3494dd96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-01-03T13:39:12Z",
+      "side": 1,
+      "message": "Hello Jeremy,\n\nI\u0027ve added hwdep.Touchpad, hwdep.Touchscreen, and hwdep.Keyboard to better identify if DUTs have valid input devices at the beginning of test. Also, modifications were made so that for chromeslates, only screenWakeByPowerButton and screenWakeByScreenTouch are executed.\n\nI might need to create another scenario in parameterization for detachables. Though the ticket\u0027s applicability left out detachables, I think this test should be able to run on them using \"basestate attach/detach\" as a way of switching to tablet mode.",
+      "revId": "fa7c70731fe80d38f115989210f346aa50be3710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
