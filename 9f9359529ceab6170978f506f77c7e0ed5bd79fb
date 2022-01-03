@@ -70,6 +70,24 @@
       "parentUuid": "5103b332_43f7a163",
       "revId": "9f9359529ceab6170978f506f77c7e0ed5bd79fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "745a361b_c2cbeb8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-01-03T09:47:06Z",
+      "side": 1,
+      "message": "I see. I kind of think it might be a bit strange that we handle the case in our WebUI controller if the camera app has not been installed. My assumption is that when Chrome reaches CameraAppUI, it means that the camera app should be available.\n\nTo be clearer, I assume the upper layer should either:\n1. Queue the navigation until the SWA is ready\n\nor\n2. Drop the navigation if SWA is not ready\n\nI\u0027ll consult with SWA team to see if my understanding is correct and understand \nwhat the best practice should be. And we can land this CL first to fix the test.",
+      "parentUuid": "ef1686fc_6f39b031",
+      "revId": "9f9359529ceab6170978f506f77c7e0ed5bd79fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
