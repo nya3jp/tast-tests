@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7592921_feeda787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-01-03T02:18:07Z",
+      "side": 1,
+      "message": "Sorry for delay due to the vacation.",
+      "revId": "48d24b036a77d4aad4034ca85d85008476bf1053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11eecaa4_37c8a937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-01-03T02:18:07Z",
+      "side": 1,
+      "message": "You have to clone the original ctx to another variable before shortening it.\n\nctxForCleanUp :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, TimeForCleanUp)\ndefer cancel()\n....\ndefer cryptohome.RemoveVault(ctxForCleanUp, ownerUser)\n\nctxForCleanUp is used for deferred calls and ctx is used for normal calls.",
+      "revId": "48d24b036a77d4aad4034ca85d85008476bf1053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
