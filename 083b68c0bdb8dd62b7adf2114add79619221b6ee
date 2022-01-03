@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a008fd_1b671bf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "Thanks for the comments.\n\nThe problem is that I cannot make rpc calls to the DuT while the test is running. It works before the test execution starts but then stops working because the context was cancelled.\nCreating a new context for the go routine does not work as then the ServiceDeps are missing in the context.\nTo solve this I need to create a new context with the ServiceDeps, but I haven\u0027t found a way to do that yet as the required method: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testcontext/entity.go;l\u003d37?q\u003dWithCurrentEntity\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch cannot be called from user code.",
+      "revId": "083b68c0bdb8dd62b7adf2114add79619221b6ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12bde65a_8b31cfd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "Thanks for trying it out.\nThe logging also works for me, the problem is making rpc calls to the DuT while the test is running, probably some issue with the context.",
+      "parentUuid": "110f2441_a6d0b2be",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3fcc9b1_49a4a596",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc85fe42_42a10e44",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "This is needed for the final version, the CL is now just work in progress till we figure out how to send tokens to the DuT during tests.",
+      "parentUuid": "b3fcc9b1_49a4a596",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd975eff_e9051824",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-12-23T09:52:06Z",
       "side": 1,
       "message": "No need for the overwrite if the other tape package is not imported.",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 3
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "091efc35_67575bc1",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "dd975eff_e9051824",
       "range": {
         "startLine": 15,
         "startChar": 1,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12047523_ca57a0a7",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "No.",
+      "parentUuid": "ea231279_53e0233b",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bc4d417_48748e9d",
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4aaa86b_d5ec5343",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bc4d417_48748e9d",
+      "range": {
+        "startLine": 79,
+        "startChar": 26,
+        "endLine": 79,
+        "endChar": 42
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6253e33f_61f9b572",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-12-23T09:52:06Z",
       "side": 1,
       "message": "Don\u0027t use magic numbers. Use an enumeration instead.",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 12
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0584c2c2_3262c851",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6253e33f_61f9b572",
       "range": {
         "startLine": 80,
         "startChar": 11,
@@ -184,6 +316,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfe61d4_75bace1d",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "Done. For some reason I thought only reading from the channel would be blocking.",
+      "parentUuid": "a223609d_85cfd30f",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c009adb_146beb2f",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be091d3_386783e2",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32db8986_ed99f070",
@@ -197,6 +371,30 @@
       "writtenOn": "2021-12-23T09:52:06Z",
       "side": 1,
       "message": "nit: is still",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 37
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd7ae47_32420e11",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-03T15:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32db8986_ed99f070",
       "range": {
         "startLine": 106,
         "startChar": 32,
