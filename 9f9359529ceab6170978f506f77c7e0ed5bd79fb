@@ -52,6 +52,24 @@
       "parentUuid": "76f095a0_0d682e0e",
       "revId": "9f9359529ceab6170978f506f77c7e0ed5bd79fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef1686fc_6f39b031",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-01-03T09:32:03Z",
+      "side": 1,
+      "message": "Sorry that I\u0027m not meaning to block. IMO, even if it\u0027s possible on chrome side. We can simply do no-ops for launching request if the user action would somehow trigger the launch code while SWA is not ready(Suppose user may keep trying the same action until the SWA is ready). In that way, we still need this CL to prevent the test triggered launch request hit the no-ops code path.",
+      "parentUuid": "5103b332_43f7a163",
+      "revId": "9f9359529ceab6170978f506f77c7e0ed5bd79fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
