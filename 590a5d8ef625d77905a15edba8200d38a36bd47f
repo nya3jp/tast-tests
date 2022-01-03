@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3005e92_98c24baa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/imports.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1b7d6b23_c3238a5d",
+      "range": {
+        "startLine": 30,
+        "startChar": 48,
+        "endLine": 30,
+        "endChar": 73
+      },
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daf1c597_e608eecb",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-29T13:12:50Z",
       "side": 1,
       "message": "nit: remote",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 32
+      },
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8fbb271_a374f27e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/doc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "daf1c597_e608eecb",
       "range": {
         "startLine": 5,
         "startChar": 27,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6baecaa_d70c3a3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f35c0f50_310be6ba",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28fc7cc2_5ba204b6",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-12-30T00:09:40Z",
       "side": 1,
       "message": "Why is this being deferred? Surely you\u0027d want to ensure that the DUT is on immediately after starting it, not at the end of the test? I may be missing something",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "435d8b36_b3a61037",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "This block is for cleanup purpose once test script execution is done, so it is deferred.",
+      "parentUuid": "28fc7cc2_5ba204b6",
       "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a6636e_99e25418",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d462bd_6fe49e87",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a51e325_2c7c1961",
@@ -128,6 +230,24 @@
       "writtenOn": "2021-12-30T00:09:40Z",
       "side": 1,
       "message": "This also seems very common - move to helper library?",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f425738_9ef62820",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a51e325_2c7c1961",
       "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f0bb89_d39e8e6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f47aa34_580adcda",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31894a55_ee8aa290",
@@ -166,6 +304,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b882d9b_ef81bf49",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31894a55_ee8aa290",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be006e22_747fefd3",
@@ -179,6 +335,24 @@
       "writtenOn": "2021-12-30T00:09:40Z",
       "side": 1,
       "message": "Do we need to test that the SD card works, or just that it\u0027s detected?",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa9757ac_eb9fc36d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:52:06Z",
+      "side": 1,
+      "message": "Only detection check.",
+      "parentUuid": "be006e22_747fefd3",
       "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
