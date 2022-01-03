@@ -97,6 +97,15 @@ func NewTestBridgeWithoutTestConfig(ctx context.Context, cr *chrome.Chrome, came
 }
 
 func setUpTestBridge(ctx context.Context, cr *chrome.Chrome) (*chrome.Conn, *chrome.JSObject, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to get test API connection")
+	}
+
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)`); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to wiat for system web apps installed")
+	}
+
 	pageConn, err := cr.NewConn(ctx, "chrome://camera-app/test/test.html")
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to construct bridge page connection")
