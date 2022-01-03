@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe6f056_f4450101",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-03T11:01:18Z",
+      "side": 1,
+      "message": "Hey Florian. I ran into a new Kiosk test of yours - thanks for it!\nI left one comment in the review. Please reach out to me me directly if you want to talk about what I wrote :) ",
+      "revId": "948d211bb3a904d59cd1a4a29cb356eb23047974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe83d85_9cbd4e45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/crx_manifest_update_url_ignored.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-03T11:01:18Z",
+      "side": 1,
+      "message": "Hey Florian, thanks for the new test for Kiosk! :) 👍\n\nSince you define your own account in line 113 I would suggest to use kiosk.CustomLocalAccounts(your_local_account) and then pass policy.KioskCRXManifestUpdateURLIgnored in kiosk.ExtraPolicy().\n\nI will adjust the API doc to be more clear.\n\nAs you mentioned - kiosk.Close() uses accounts configuration that were passed to kioskmode.New() regardless if those are default ones or custom ones. Moreover, kiosk.Close() applies only local accounts without additional policies applied to them. Hence no impact should be done on tests that follow (they will either override policies or not use left configuration).",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "948d211bb3a904d59cd1a4a29cb356eb23047974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
