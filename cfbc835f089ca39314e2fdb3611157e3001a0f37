@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c569a4b_d36ca233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-01-03T02:38:03Z",
+      "side": 1,
+      "message": "As we haven\u0027t created metrics for chromeos, and android metrics are quite useful, we choose to use the existing android metrics for now.\n\nRefs: \nhttps://docs.google.com/document/d/1r9OjfQoWbBlJnNA3R6dZgGPfc3nRvtcLCC-S93kaDjg/edit?resourcekey\u003d0-oyfwJYw0L9Bf38GMeA2fVg#bookmark\u003did.4des8jezb0li\nhttps://cs.android.com/android/platform/superproject/+/master:external/perfetto/protos/perfetto/metrics/metrics.proto;l\u003d107",
+      "parentUuid": "026f1920_5205141f",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9572cc4_4b61319e",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/const.go",
         "patchSetId": 7
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "09592afd_eb347272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/const.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-01-03T02:38:03Z",
+      "side": 1,
+      "message": "Yes: https://docs.google.com/document/d/1r9OjfQoWbBlJnNA3R6dZgGPfc3nRvtcLCC-S93kaDjg/edit?resourcekey\u003d0-oyfwJYw0L9Bf38GMeA2fVg#bookmark\u003did.4des8jezb0li\n\nWe\u0027ve tried using the android metrics in chromeos, and some of them worked as espected, including android_cpu and android_mem.",
+      "parentUuid": "e9572cc4_4b61319e",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14efb425_27f98041",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/const.go",
         "patchSetId": 7
@@ -48,6 +84,24 @@
       "writtenOn": "2021-12-29T19:06:11Z",
       "side": 1,
       "message": "Why util/ needs to know about iioservice? Does it mean that any test that want to report CPU usage information will have to use this file?\nLooking at where \"IioserviceProcessName\" is used, it is only in hardware/sensor_iioservice...go. \nI would remove the define, or move it to the sensor code.",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92cc39e5_d17f17c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/const.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-01-03T02:38:03Z",
+      "side": 1,
+      "message": "\u003e Does it mean that any test that want to report CPU usage information will have to use this file?\nNo, each test in hardware can use the wanted process name.\n\n\u003e move it to the sensor code.\nWhere? like hardware/iio/const.go ? It seems that declaring it in one of the sensor_iioservice...go doesn\u0027t make sense, and we couldn\u0027t declare it twice.",
+      "parentUuid": "14efb425_27f98041",
       "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
