@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc3634f_b9ca3ab5",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-01-03T09:32:54Z",
+      "side": 1,
+      "message": "How about EnsureMaximized or similar? That\u0027s different from full screen mode in Chrome, where the tab bar disappears.",
+      "revId": "c6bec2ee9d9f1527666d5126d2a90008dc04bce2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
