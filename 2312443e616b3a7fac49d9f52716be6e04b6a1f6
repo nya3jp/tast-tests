@@ -219,6 +219,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75989ce9_65441576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-03T07:59:41Z",
+      "side": 1,
+      "message": "You reply sounds like unrelated? Could you elaborate your intention?\nalso, could you take a look at the way to use a new fixture?",
+      "parentUuid": "2cebab78_71187057",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 95
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11af8549_2b10bf8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
         "patchSetId": 1
@@ -359,6 +383,30 @@
       "side": 1,
       "message": "Tried with fsutil package but it is failing for larger data transfer.\nIt is working fine with \u0027cp\u0027 shell command.",
       "parentUuid": "caf0567a_a1bf6a00",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 124
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84556ec5_8effdb14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-03T07:59:41Z",
+      "side": 1,
+      "message": "It sounds weird. What\u0027s the error details?",
+      "parentUuid": "b40a5a61_885749ed",
       "range": {
         "startLine": 232,
         "startChar": 1,
