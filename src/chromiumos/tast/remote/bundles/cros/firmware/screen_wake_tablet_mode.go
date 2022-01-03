@@ -62,24 +62,24 @@ var (
 	scannTouchscreen *bufio.Scanner
 )
 
-// evtestTabletModeExpects lists out detections expected from running evtests in tablet mode.
-// For the convenience of test, they are assigned bool values for each peripheral of interest.
 // Note: while in tablet mode, some models were observed to still have their keyboards seen
 // by evtests. At the moment, these models are filtered out by hardware dependencies, and defined
 // by keyboardScannedTabletMode. Investigation is still underway.
-type evtestTabletModeExpects struct {
-	detectStylus      bool
-	detectKeyboard    bool
-	detectTouchpad    bool
-	detectTouchscreen bool
+type screenWakeTabletModeArgs struct {
+	hasLid                  bool
+	evTestdetectStylus      bool
+	evTestdetectKeyboard    bool
+	evTestdetectTouchpad    bool
+	evTestdetectTouchscreen bool
 }
 
+// Models in keyboardScannedTabletMode are convertibles that appeared to have keyboard
+// detected by evtest when DUT was in tablet mode.
 var keyboardScannedTabletMode = []string{
 	"akemi",
 	"blooguard",
 	"delbin",
 	"dragonair",
-	"foob",
 	"storo360",
 	"jinlon",
 }
@@ -94,26 +94,50 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService", "tast.cros.graphics.ScreenshotService", "tast.cros.inputs.TouchpadService", "tast.cros.inputs.TouchscreenService"},
 		Fixture:      fixture.NormalMode,
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Params: []testing.Param{{
-			Name:              "keyboard_scanned_tablet_mode",
-			ExtraHardwareDeps: hwdep.D(hwdep.Model(keyboardScannedTabletMode...)),
-			Val: &evtestTabletModeExpects{
-				detectStylus:      false,
-				detectKeyboard:    true,
-				detectTouchpad:    false,
-				detectTouchscreen: true,
+			Name: "keyboard_scanned_tablet_mode",
+			ExtraHardwareDeps: hwdep.D(
+				hwdep.Model(keyboardScannedTabletMode...),
+				hwdep.Keyboard(),
+				hwdep.Touchpad(),
+				hwdep.TouchScreen(),
+			),
+			Val: &screenWakeTabletModeArgs{
+				hasLid:                  true,
+				evTestdetectStylus:      false,
+				evTestdetectKeyboard:    true,
+				evTestdetectTouchpad:    false,
+				evTestdetectTouchscreen: true,
+			},
+		}, {
+			Name: "chromeslates",
+			ExtraHardwareDeps: hwdep.D(
+				hwdep.FormFactor(hwdep.Chromeslate),
+				hwdep.TouchScreen(),
+				hwdep.SkipOnModel(keyboardScannedTabletMode...),
+			),
+			Val: &screenWakeTabletModeArgs{
+				hasLid:                  false,
+				evTestdetectStylus:      false,
+				evTestdetectKeyboard:    false,
+				evTestdetectTouchpad:    false,
+				evTestdetectTouchscreen: true,
 			},
 		}, {
 			ExtraHardwareDeps: hwdep.D(
-				hwdep.FormFactor(hwdep.Convertible, hwdep.Chromeslate, hwdep.Detachable),
+				hwdep.FormFactor(hwdep.Convertible),
+				hwdep.Keyboard(),
+				hwdep.Touchpad(),
+				hwdep.TouchScreen(),
 				hwdep.SkipOnModel(keyboardScannedTabletMode...),
 			),
-			Val: &evtestTabletModeExpects{
-				detectStylus:      false,
-				detectKeyboard:    false,
-				detectTouchpad:    false,
-				detectTouchscreen: true,
+			Val: &screenWakeTabletModeArgs{
+				hasLid:                  true,
+				evTestdetectStylus:      false,
+				evTestdetectKeyboard:    false,
+				evTestdetectTouchpad:    false,
+				evTestdetectTouchscreen: true,
 			},
 		}},
 	})
@@ -151,16 +175,25 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 	// Declare the touchpad service.
 	touchpad := inputs.NewTouchpadServiceClient(h.RPCClient.Conn)
 
+	testArgs := s.Param().(*screenWakeTabletModeArgs)
 	deviceScanner := func(ctx context.Context, evEvent evtestEvent) (*bufio.Scanner, error) {
 		var devPath string
 		switch evEvent {
 		case evKeyboard:
+			if !testArgs.hasLid {
+				s.Log("Skip scanning for keyboard because DUT is a chromeslate")
+				return nil, nil
+			}
 			res, err := keyboard.FindPhysicalKeyboard(ctx, &empty.Empty{})
 			if err != nil {
 				return nil, errors.Wrap(err, "during FindPhysicalKeyboard")
 			}
 			devPath = res.Path
 		case evTouchpad:
+			if !testArgs.hasLid {
+				s.Log("Skip scanning for touchpad because DUT is a chromeslate")
+				return nil, nil
+			}
 			res, err := touchpad.FindPhysicalTouchpad(ctx, &empty.Empty{})
 			if err != nil {
 				return nil, errors.Wrap(err, "during FindPhysicalTouchpad")
@@ -187,8 +220,6 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		scanner := bufio.NewScanner(stdout)
 		return scanner, nil
 	}
-
-	testArgs := s.Param().(*evtestTabletModeExpects)
 
 	// Use evtestMonitor to check whether events sent to the devices are picked up by the respective evtest.
 	evtestMonitor := func(ctx context.Context, evEvent evtestEvent, scanner *bufio.Scanner, shouldRespond bool) error {
@@ -307,7 +338,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		case screenWakeByEjectingStylus:
-			if testArgs.detectStylus {
+			if testArgs.evTestdetectStylus {
 				s.Log("To-do: implement a trigger to eject Stylus")
 				// Nothing is done here yet.
 			} else {
@@ -320,18 +351,27 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			if _, err := touchscreen.TouchscreenTap(ctx, &empty.Empty{}); err != nil {
 				return errors.Wrap(err, "error in performing a tap on the touch screen")
 			}
-			if err := evtestMonitor(ctx, evTouchscreen, scannTouchscreen, testArgs.detectTouchscreen); err != nil {
+			if err := evtestMonitor(ctx, evTouchscreen, scannTouchscreen, testArgs.evTestdetectTouchscreen); err != nil {
 				return errors.Wrap(err, "during the evtest for touchscreen")
 			}
 		case screenWakeByMovingLid:
-			// Emulate the action of moving lid by running `tabletmode reset` through EC.
-			if err := h.Servo.RunECCommand(ctx, "tabletmode reset"); err != nil {
+			if !testArgs.hasLid {
+				s.Log("Skip because DUT does not have a lid")
+				return nil
+			}
+			// Emulate the action of moving lid by running `tabletmode off` through EC.
+			s.Log("Turn off tablet mode to wake the screen")
+			if err := h.Servo.RunECCommand(ctx, "tabletmode off"); err != nil {
 				return errors.Wrap(err, "error resetting tabletmode from the EC command")
 			}
 			if err := testing.Sleep(ctx, 1*time.Second); err != nil {
 				return errors.Wrap(err, "error in sleeping for 1 second")
 			}
 		case screenWakeByCloseOpenLid:
+			if !testArgs.hasLid {
+				s.Log("Skip because DUT does not have a lid")
+				return nil
+			}
 			s.Log("Close DUT's lid")
 			if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, string(servo.LidOpenNo)); err != nil {
 				return errors.Wrap(err, "error in closing the lid")
@@ -377,6 +417,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}
+
 	for _, device := range []evtestEvent{evKeyboard, evTouchpad, evTouchscreen} {
 		var err error
 		switch device {
@@ -392,14 +433,16 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Run EC command to turn on tablet mode.
-	s.Log("Put DUT in tablet mode")
-	if err := h.Servo.RunECCommand(ctx, "tabletmode on"); err != nil {
-		s.Fatal("Failed to set DUT into tablet mode: ", err)
-	}
+	if testArgs.hasLid {
+		// Run EC command to turn on tablet mode.
+		s.Log("Put DUT in tablet mode")
+		if err := h.Servo.RunECCommand(ctx, "tabletmode on"); err != nil {
+			s.Fatal("Failed to set DUT into tablet mode: ", err)
+		}
 
-	if err := verifyScreenState(ctx, expectOn); err != nil {
-		s.Fatal("After turning on tablemode: ", err)
+		if err := verifyScreenState(ctx, expectOn); err != nil {
+			s.Fatal("After turning on tablemode: ", err)
+		}
 	}
 
 	s.Log("Tab power button to turn display off")
@@ -418,32 +461,36 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("During setting tabletmode on and a tab on power button: ", err)
 	}
 
-	// Read information from keyboard scan state.
-	keyboardStateOut, err := h.Servo.RunECCommandGetOutput(ctx, "ksstate", []string{`Keyboard scan disable mask:(\s+\w+)`})
-	if err != nil {
-		s.Fatal("Failed to run command ksstate: ", err)
-	}
-	keyboardStateStr := keyboardStateOut[0][1]
-	s.Logf("Keyboard scan disable mask value:%s", keyboardStateStr)
+	if scannKeyboard != nil {
+		// Read information from keyboard scan state.
+		keyboardStateOut, err := h.Servo.RunECCommandGetOutput(ctx, "ksstate", []string{`Keyboard scan disable mask:(\s+\w+)`})
+		if err != nil {
+			s.Fatal("Failed to run command ksstate: ", err)
+		}
+		keyboardStateStr := keyboardStateOut[0][1]
+		s.Logf("Keyboard scan disable mask value:%s", keyboardStateStr)
 
-	// Emulate pressing a keyboard key.
-	if err := h.Servo.ECPressKey(ctx, "<enter>"); err != nil {
-		s.Fatal("Failed to type key: ", err)
-	}
+		// Emulate pressing a keyboard key.
+		if err := h.Servo.ECPressKey(ctx, "<enter>"); err != nil {
+			s.Fatal("Failed to type key: ", err)
+		}
 
-	// Monitor keyboard using evtest.
-	if err := evtestMonitor(ctx, evKeyboard, scannKeyboard, testArgs.detectKeyboard); err != nil {
-		s.Fatal("During the evtest for keyboard: ", err)
-	}
-
-	// Emulate swiping on a touch pad.
-	if _, err := touchpad.TouchpadSwipe(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to swipe on touch pad: ", err)
+		// Monitor keyboard using evtest.
+		if err := evtestMonitor(ctx, evKeyboard, scannKeyboard, testArgs.evTestdetectKeyboard); err != nil {
+			s.Fatal("During the evtest for keyboard: ", err)
+		}
 	}
 
-	// Monitor touch pad using evtest.
-	if err := evtestMonitor(ctx, evTouchpad, scannTouchpad, testArgs.detectTouchpad); err != nil {
-		s.Fatal("During the evtest for touchpad: ", err)
+	if scannTouchpad != nil {
+		// Emulate swiping on a touch pad.
+		if _, err := touchpad.TouchpadSwipe(ctx, &empty.Empty{}); err != nil {
+			s.Fatal("Failed to swipe on touch pad: ", err)
+		}
+
+		// Monitor touch pad using evtest.
+		if err := evtestMonitor(ctx, evTouchpad, scannTouchpad, testArgs.evTestdetectTouchpad); err != nil {
+			s.Fatal("During the evtest for touchpad: ", err)
+		}
 	}
 
 	// Attempt to wake DUT's screen by controls defined under screenWakeTrigger.
