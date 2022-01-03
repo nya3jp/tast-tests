@@ -23,7 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check that emoji search works well",
 		Contacts:     []string{"jopalmer@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:input-tools", "group:input-tools-upstream", "group:mainline", "informational"},
+		Attr:         []string{"group:input-tools", "group:input-tools-upstream", "group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshell,
 		HardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
