@@ -110,26 +110,26 @@ func launchKioskAndVerify(ctx context.Context, s *testing.State, ignoreCrxURL bo
 	accountType := policy.AccountTypeKioskApp
 
 	kioskPolicy := []policy.Policy{
-		&policy.DeviceLocalAccounts{
-			Val: []policy.DeviceLocalAccountInfo{
-				{
-					AccountID:   &accountID,
-					AccountType: &accountType,
-					KioskAppInfo: &policy.KioskAppInfo{
-						AppId:     &appID,
-						UpdateUrl: &updateURL,
-					},
+		&policy.KioskCRXManifestUpdateURLIgnored{Val: ignoreCrxURL},
+	}
+
+	account := &policy.DeviceLocalAccounts{
+		Val: []policy.DeviceLocalAccountInfo{
+			{
+				AccountID:   &accountID,
+				AccountType: &accountType,
+				KioskAppInfo: &policy.KioskAppInfo{
+					AppId:     &appID,
+					UpdateUrl: &updateURL,
 				},
 			},
 		},
-		&policy.KioskCRXManifestUpdateURLIgnored{Val: ignoreCrxURL},
 	}
-	// DefaultLocalAccounts() is used here since it is also used to clear policies on kiosk.Close()
-	// If not cleared, later tests are affected by already installed extensions of different versions
+
 	kiosk, cr, err := kioskmode.New(
 		ctx,
 		fdms,
-		kioskmode.DefaultLocalAccounts(),
+		kioskmode.CustomLocalAccounts(account),
 		kioskmode.ExtraPolicies(kioskPolicy),
 		kioskmode.ExtraChromeOptions(
 			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
@@ -181,11 +181,6 @@ func openExtensionAndCheckTitleChange(ctx context.Context, s *testing.State, cr 
 	matchesVersion, err := ui.IsNodeFound(ctx, titleNode)
 	if err != nil {
 		s.Fatal("Failed to check title node: ", err)
-	}
-
-	quitButton := nodewith.Name("Quit").Role("button")
-	if err := ui.LeftClick(quitButton)(ctx); err != nil {
-		s.Fatal("Error clicking quit button: ", err)
 	}
 
 	return matchesVersion
