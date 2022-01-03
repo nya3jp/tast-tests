@@ -6,13 +6,16 @@ package policyutil
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/testing"
 )
 
 // VerifyNotExists checks if the element does not appear during timeout.
@@ -54,6 +57,32 @@ func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, finder *nodewi
 	}
 
 	return VerifyNotExists(ctx, tconn, finder, timeout)
+}
+
+// EnsureCookiesAccepted ensures that cookies page is accepted and gone.
+func EnsureCookiesAccepted(ctx context.Context, br *browser.Browser) error {
+	conn, err := br.NewConn(ctx, "https://www.google.com/?hl=en")
+	if err != nil {
+		return errors.Wrap(err, "failed to open the browser")
+	}
+	defer conn.Close()
+
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return errors.Wrap(err, "failed waiting for URL to load")
+	}
+
+	var acceptButtonFound bool
+	if err := conn.Eval(ctx, `document.getElementById('L2AGLb') != null`, &acceptButtonFound); err != nil {
+		return errors.Wrap(err, "failed to get cookies element by id")
+	}
+	if acceptButtonFound {
+		testing.ContextLog(ctx, "cookies page is found")
+		clickAccept := fmt.Sprintf("document.getElementById(%q).click()", "L2AGLb")
+		if err := conn.Eval(ctx, clickAccept, nil); err != nil {
+			return errors.Wrap(err, "failed to click accept button")
+		}
+	}
+	return nil
 }
 
 // EnsureMaximized will ensure that the browser window is maximized.

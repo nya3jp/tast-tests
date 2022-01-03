@@ -137,6 +137,11 @@ func ExtensionInstallPolicyCheck(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
+			// Ensure the cookies if any are accepted.
+			if err := policyutil.EnsureCookiesAccepted(ctx, cr.Browser()); err != nil {
+				s.Fatal("Failed to accept cookies: ", err)
+			}
+
 			// Run actual test.
 			if allowInstall, err := isInstallationAllowed(ctx, tconn, cr); err != nil {
 				s.Fatal("Failed to check if extension can be installed: ", err)

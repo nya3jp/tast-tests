@@ -112,6 +112,11 @@ func ExtensionAllowedTypes(ctx context.Context, s *testing.State) {
 			}
 			defer closeBrowser(cleanupCtx)
 
+			// Ensure the cookies if any are accepted.
+			if err := policyutil.EnsureCookiesAccepted(ctx, br); err != nil {
+				s.Fatal("Failed to accept cookies: ", err)
+			}
+
 			// Run actual test.
 			if allowed, err := canInstallExtension(ctx, tconn, br, url); err != nil {
 				s.Fatal("Failed to check if extension can be installed: ", err)
