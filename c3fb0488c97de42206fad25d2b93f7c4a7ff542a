@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6882ea94_9229a23a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf838dca_0e4c0a1a",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39881747_c50e7687",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-16T04:11:15Z",
       "side": 1,
       "message": "...thunderbolt...?",
+      "range": {
+        "startLine": 37,
+        "startChar": 35,
+        "endLine": 37,
+        "endChar": 36
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfdf4b68_10dda418",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39881747_c50e7687",
       "range": {
         "startLine": 37,
         "startChar": 35,
@@ -104,6 +152,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d39471f_bde02436",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30c3d1e7_09e9d1c7",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57915a5b_1efd8fff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8219cac9_e05f4383",
+      "range": {
+        "startLine": 99,
+        "startChar": 59,
+        "endLine": 99,
+        "endChar": 65
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8112d4d_fda21372",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-12-16T04:11:15Z",
       "side": 1,
       "message": "It is difficult to see where the method starts and ends. Prefer to assign the map[string]string to a variable first, and then pass the variable to the function to limit the need for line wrapping.",
+      "range": {
+        "startLine": 100,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 45
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6891ef3b_57f3454f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8112d4d_fda21372",
       "range": {
         "startLine": 100,
         "startChar": 14,
@@ -144,6 +258,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee572df_75d40eb5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d078637f_0dc93df9",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32b92ffd_b09fcf68",
@@ -157,6 +289,30 @@
       "writtenOn": "2021-12-16T04:11:15Z",
       "side": 1,
       "message": "nit: session",
+      "range": {
+        "startLine": 135,
+        "startChar": 28,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561c8fb0_5ca95d9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32b92ffd_b09fcf68",
       "range": {
         "startLine": 135,
         "startChar": 28,
@@ -190,6 +346,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47223724_07344ce9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48b92714_127b6a1c",
+      "range": {
+        "startLine": 141,
+        "startChar": 26,
+        "endLine": 141,
+        "endChar": 35
+      },
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca1b0544_4d47d706",
@@ -203,6 +383,24 @@
       "writtenOn": "2021-12-15T23:47:07Z",
       "side": 1,
       "message": "Not familiar with this, but \"toggle\" to enable implies it\u0027s disabled initially. Is this guaranteed?",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c664a99_2555c717",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Yes, initially cswitch port will be in disable state. Only for given cswitch port ID enabling happens.",
+      "parentUuid": "ca1b0544_4d47d706",
       "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -224,6 +422,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ef27aa_07765fa1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dd91e523_0377267f",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c11e0d98_1b4b9647",
@@ -237,6 +453,24 @@
       "writtenOn": "2021-12-15T23:47:07Z",
       "side": 1,
       "message": "Please remove this line. We only care about the value if it\u0027s not the expected one, in which case we print it below anyway.",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a1b982_e320573b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c11e0d98_1b4b9647",
       "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -260,6 +494,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac3fb9e3_fb385bb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "We are not able to use ioutil.ReadFile() here, instead TAST helper linuxssh.ReadFile() is used.",
+      "parentUuid": "d14d1256_4e9f0e92",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9078e783_d31e4362",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
         "patchSetId": 2
@@ -271,6 +523,24 @@
       "writtenOn": "2021-12-15T23:47:07Z",
       "side": 1,
       "message": "This seems like a rather long interval that could slow down the test. Maybe set it to 1 second?",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fcca8f_2c1d17e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T06:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9078e783_d31e4362",
       "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
