@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "71998518ca4fa2798f3a389b6be6dd44fa0932a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bf34cc7_aa9b154f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-03T07:30:04Z",
+      "side": 1,
+      "message": "I\u0027m still seing failures for the test\n\nhttps://tastboard.corp.google.com/test/arc.SettingsBridge.vm",
+      "revId": "71998518ca4fa2798f3a389b6be6dd44fa0932a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
