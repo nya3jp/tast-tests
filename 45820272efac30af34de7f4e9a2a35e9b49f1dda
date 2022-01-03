@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef860d73_1bbe56e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-03T06:34:19Z",
+      "side": 1,
+      "message": "huge nit/style: could you remove unnecessary empty line?",
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e355e96_638a61ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-03T06:34:19Z",
+      "side": 1,
+      "message": "nit/style: nTab is not needed.\n\nif app.URL \u003d\u003d \"\"{\n  return ...\n}\ntab, err :\u003d newTab(...)\nif err !\u003d nil {\n  return err\n}\ndefer tab.close()",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 18
+      },
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e90886c_afea2ce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-03T06:34:19Z",
+      "side": 1,
+      "message": "Can this poll be broken into pieces? E.g.,\n- wait for add/remove button, then click it.\n- wait for confirm button, then click it. (re-activate the tab).\n- wait for upgraded element.",
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b994acb6_8876047c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-03T06:34:19Z",
+      "side": 1,
+      "message": "style: these lines can be merged by ui.IfSuccessThen.",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 56
+      },
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99e8cd04_2f648d3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore/webstore_app_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-03T06:34:19Z",
+      "side": 1,
+      "message": "this is checked at the beginning of this function, so you can drop this.",
+      "range": {
+        "startLine": 140,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87168365_8fda01b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/webstore_app_install_uninstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-03T06:34:19Z",
+      "side": 1,
+      "message": "Looks very long.\nThis will be blocker to promote these tests to critical.\n\nWhy just installing/uninstalling the app can take so long time...?\nCan this be reduced? Or if this is important, could you document in detail with its background?",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "45820272efac30af34de7f4e9a2a35e9b49f1dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
