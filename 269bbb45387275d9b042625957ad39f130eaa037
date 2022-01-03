@@ -77,6 +77,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea231279_53e0233b",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-03T10:19:14Z",
+      "side": 1,
+      "message": "Is this supposed to be started twice?",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bc4d417_48748e9d",
         "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
         "patchSetId": 2
@@ -146,6 +169,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a223609d_85cfd30f",
+        "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-03T10:19:14Z",
+      "side": 1,
+      "message": "Use select and a channel to stop immediately",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "32db8986_ed99f070",
         "filename": "src/chromiumos/tast/remote/policyutil/tape_fixture.go",
         "patchSetId": 2
@@ -163,6 +203,23 @@
         "endLine": 106,
         "endChar": 37
       },
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf578b6_d9a559bb",
+        "filename": "src/chromiumos/tast/services/cros/tape/tape.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-03T10:19:14Z",
+      "side": 1,
+      "message": "Why not just pass a full path in a single field?",
       "revId": "269bbb45387275d9b042625957ad39f130eaa037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
