@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc024e4f_de9ce31d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T05:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a07628b0_70cf2cff",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 63
+      },
+      "revId": "6ff044f9df4be6825f5586f0143dd5881a5a853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "319fa5c7_17c9c859",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-16T21:52:49Z",
       "side": 1,
       "message": "nit: turnOnDut? (since we\u0027re always coming from S5/G3 and not S3)",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 75
+      },
+      "revId": "6ff044f9df4be6825f5586f0143dd5881a5a853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a37f954_a9720090",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T05:22:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "319fa5c7_17c9c859",
       "range": {
         "startLine": 267,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb9cd5bf_ed7b2e06",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T05:22:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa3fa1c4_33e7703f",
+      "revId": "6ff044f9df4be6825f5586f0143dd5881a5a853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddd43ca7_22fe3ecf",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-12-16T21:52:49Z",
       "side": 1,
       "message": "maybe it would be better to poll here?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 2
+      },
+      "revId": "6ff044f9df4be6825f5586f0143dd5881a5a853d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "566190ad_050578f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-03T05:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddd43ca7_22fe3ecf",
       "range": {
         "startLine": 271,
         "startChar": 0,
