@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0dc8d75_b0ea0108",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-03T20:14:18Z",
+      "side": 1,
+      "message": "Please review.\n\nContext: MARBSSIDRoam is bascially a RoamDbus test with added instrumentation for checking MAC Addresses.\n\nMARSSIDRoam was a tad more hard to develop, thus it works a bit differently (as described in the test comment).\n\nAlso, please keep in mind, that mar_util.go are functions moved from connect_randomize_mac.go to explicitly get utilized in different tests.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
