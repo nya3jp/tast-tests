@@ -72,6 +72,7 @@ type Kiosk struct {
 	cr            *chrome.Chrome
 	fdms          *fakedms.FakeDMS
 	localAccounts *policy.DeviceLocalAccounts
+	autostart     bool
 }
 
 // Close clears policies, but keeps serving device local accounts then closes
@@ -86,12 +87,16 @@ func (k *Kiosk) Close(ctx context.Context) (retErr error) {
 		}
 	}(ctx)
 
-	// When AutoLaunch() option is used, then the corresponding policy has to
+	var policies []policy.Policy
+	// When AutoLaunch() option was used, then the corresponding policy has to
 	// be removed before starting a new Chrome session. Otherwise Kiosk will
 	// start again. When applying an empty policies slice, Chrome crashes.
 	// Hence the safest way is to apply local accounts again. That way Chrome
 	// will load them but will start normally. If the next tests want to use
 	// policy they will override them.
+	if k.autostart {
+		policies = append(policies, k.localAccounts)
+	}
 	if err := policyutil.ServeAndRefresh(ctx, k.fdms, k.cr, []policy.Policy{k.localAccounts}); err != nil {
 		testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test : ", err)
 		return errors.Wrap(err, "could not clear policies")
@@ -258,7 +263,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 		}
 	}
 
-	return &Kiosk{cr: cr, fdms: fdms, localAccounts: cfg.m.DeviceLocalAccounts}, cr, nil
+	return &Kiosk{cr: cr, fdms: fdms, localAccounts: cfg.m.DeviceLocalAccounts, autostart: cfg.m.AutoLaunch}, cr, nil
 }
 
 // startChromeClearPolicies is called when Chrome fails to start in autostart
