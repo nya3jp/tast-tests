@@ -6,6 +6,7 @@ package audio
 
 import (
 	"context"
+	"io/ioutil"
 	"regexp"
 	"sort"
 	"strconv"
@@ -27,6 +28,17 @@ const (
 	otherSched
 )
 
+type affinity int
+
+const (
+	// defaultAff will use all the processors in round-robin order.
+	defaultAff affinity = iota
+	// smallCore will run all the threads on a single small core.
+	smallCore
+	// bigCore will run all the threads on a single big core.
+	bigCore
+)
+
 type schedConfig struct {
 	Policy   schedPolicy // the schedule policy.
 	Priority int         // Priority of the process. If `Policy` is real time, `Priority` is real time priority. If `Policy` is CFS, `Priority` specify the nice value.
@@ -38,6 +50,7 @@ type cyclicTestParameters struct {
 	Threads        int          // Number of threads.
 	IntervalUs     int          // Interval time.
 	Loops          int          // Number of times.
+	Affinity       affinity     // Run cyclictest threads on which sets of processors.
 	P99ThresholdUs int          // P99 latency threshold.
 	StressConfig   *schedConfig // The schedule config of the stress process. if `StressConfig` is nil, no stress process will be run.
 }
@@ -78,6 +91,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -92,6 +106,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -106,6 +121,7 @@ func init() {
 					Threads:        4,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -120,6 +136,7 @@ func init() {
 					Threads:        4,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -134,6 +151,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig: &schedConfig{
 						Policy:   rrSched,
@@ -151,6 +169,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig: &schedConfig{
 						Policy:   otherSched,
@@ -168,6 +187,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -182,6 +202,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -196,6 +217,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: 5000,
 					StressConfig:   nil,
 				},
@@ -210,12 +232,45 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: 30000,
 					StressConfig: &schedConfig{
 						Policy:   otherSched,
 						Priority: 0,
 					},
 				},
+			},
+			{
+				Name: "rr12_1thread_10ms_small_core",
+				Val: cyclicTestParameters{
+					Config: schedConfig{
+						Policy:   rrSched,
+						Priority: crasPriority,
+					},
+					Threads:        1,
+					IntervalUs:     defaultIntervalUs,
+					Loops:          defaultLoops,
+					Affinity:       smallCore,
+					P99ThresholdUs: defaultP99ThresholdUs,
+					StressConfig:   nil,
+				},
+				ExtraSoftwareDeps: []string{"arm"}, // arm has heterogeneous cores.
+			},
+			{
+				Name: "rr12_1thread_10ms_big_core",
+				Val: cyclicTestParameters{
+					Config: schedConfig{
+						Policy:   rrSched,
+						Priority: crasPriority,
+					},
+					Threads:        1,
+					IntervalUs:     defaultIntervalUs,
+					Loops:          defaultLoops,
+					Affinity:       bigCore,
+					P99ThresholdUs: defaultP99ThresholdUs,
+					StressConfig:   nil,
+				},
+				ExtraSoftwareDeps: []string{"arm"}, // arm has heterogeneous cores.
 			},
 		},
 	})
@@ -299,35 +354,93 @@ func getNumberOfCPU(ctx context.Context) (int, error) {
 	return -1, errors.New("can't find CPU(s) info in lscpu")
 }
 
+// getHeteroCPURange returns a list of CPU ranges in the format of
+// "<cpu_id>-<cpu_id>". If cores are heterogeneous ones such as ARM's,
+// there will be more than 1 cpu range.
+func getHeteroCPURange(ctx context.Context) ([]string, error) {
+	// Intel does not have any 'CPU part' line. ARM does, and when it's
+	// big.LITTLE, it has two different CPU parts (e.g. 0xd03 and 0xd09).
+	var cpuPartRE = regexp.MustCompile(`^CPU part\s+:\s+(0x[0-9a-f]+)$`)
+
+	out, err := ioutil.ReadFile("/proc/cpuinfo")
+	if err != nil {
+		return []string{}, errors.Wrap(err, "failed to read cpuinfo")
+	}
+	previousCPUPart := ""
+	var ranges []string
+	startCPUID := 0
+	cpuID := -1
+	for _, line := range strings.Split(string(out), "\n") {
+		matches := cpuPartRE.FindAllStringSubmatch(strings.TrimSpace(line), -1)
+		if matches == nil {
+			continue
+		}
+
+		cpuPart := matches[0][1]
+		cpuID = cpuID + 1
+		if cpuPart != previousCPUPart {
+			if previousCPUPart != "" {
+				ranges = append(ranges, strconv.Itoa(startCPUID)+"-"+strconv.Itoa(cpuID-1))
+			}
+			previousCPUPart = cpuPart
+			startCPUID = cpuID
+		}
+	}
+	if previousCPUPart == "" {
+		return []string{}, errors.New("no CPU part information found")
+	}
+	ranges = append(ranges, strconv.Itoa(startCPUID)+"-"+strconv.Itoa(cpuID))
+	return ranges, nil
+}
+
+func getAffinityString(ctx context.Context, aff affinity) (string, error) {
+	// TODO(eddyhsu): differientiate small/big core by cpu part info.
+	cpuRanges, err := getHeteroCPURange(ctx)
+	if err != nil {
+		return "", err
+	}
+	if len(cpuRanges) != 2 {
+		return "", errors.New("expected 2 types of heterogeneous cores")
+	}
+	switch aff {
+	case smallCore:
+		return cpuRanges[0], nil
+	case bigCore:
+		return cpuRanges[1], nil
+	}
+	return "", errors.New("unsupported affinity option")
+}
+
 func getCommandContext(ctx context.Context, param cyclicTestParameters) (*testexec.Cmd, error) {
+	cmdStr := []string{"cyclictest",
+		"--interval=" + strconv.Itoa(param.IntervalUs),
+		"--threads=" + strconv.Itoa(param.Threads),
+		"--loops=" + strconv.Itoa(param.Loops),
+		// When there are multi-threads, the interval of the i-th
+		// thread will be (`interval` + i * `distance`).
+		// Set distance to 0 to make all the intervals equal.
+		"--distance=0",
+		"--verbose",
+		"--policy=" + param.Config.Policy.String(),
+	}
 	switch param.Config.Policy {
 	case rrSched:
-		return testexec.CommandContext(ctx, "cyclictest",
-			"--policy="+param.Config.Policy.String(),
-			"--priority="+strconv.Itoa(param.Config.Priority),
-			"--interval="+strconv.Itoa(param.IntervalUs),
-			"--threads="+strconv.Itoa(param.Threads),
-			"--loops="+strconv.Itoa(param.Loops),
-			// When there are multi-threads, the interval of the i-th
-			// thread will be (`interval` + i * `distance`).
-			// Set distance to 0 to make all the intervals equal.
-			"--distance=0",
-			"--verbose"), nil
+		cmdStr = append(cmdStr,
+			"--priority="+strconv.Itoa(param.Config.Priority))
+		break
 	case otherSched:
-		return testexec.CommandContext(ctx, "nice",
-			"-n", strconv.Itoa(param.Config.Priority),
-			"cyclictest",
-			"--policy=other",
-			"--interval="+strconv.Itoa(param.IntervalUs),
-			"--threads="+strconv.Itoa(param.Threads),
-			"--loops="+strconv.Itoa(param.Loops),
-			// When there are multi-threads, the interval of the i-th
-			// thread will be (`interval` + i * `distance`).
-			// Set distance to 0 to make all the intervals equal.
-			"--distance=0",
-			"--verbose"), nil
+		cmdStr = append([]string{"nice", "-n", strconv.Itoa(param.Config.Priority)}, cmdStr...)
+		break
 	}
-	return nil, errors.New("unsupported scheduling policy")
+
+	if param.Affinity != defaultAff {
+		affStr, err := getAffinityString(ctx, param.Affinity)
+		if err != nil {
+			return nil, err
+		}
+		cmdStr = append(cmdStr, "--affinity="+affStr)
+	}
+	return testexec.CommandContext(ctx, cmdStr[0], cmdStr[1:]...), nil
 }
 
 func getStressContext(ctx context.Context, param cyclicTestParameters) (*testexec.Cmd, error) {
