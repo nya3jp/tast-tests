@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b421fb_e7764bf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-04T17:01:22Z",
+      "side": 1,
+      "message": "nit: add a blank line above this one",
+      "revId": "e6fa6793e8304d10352920a87ddd22a29ce742bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22dc342_c0dbeed0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-04T17:01:22Z",
+      "side": 1,
+      "message": "This might be a bit hard to read. Maybe\n\n ...(\"Failed SLP counter value %q must be different than the value %q noted most recently\", slpOpSetPost, slpOpSetPre)",
+      "revId": "e6fa6793e8304d10352920a87ddd22a29ce742bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9916d805_929c20b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-04T17:01:22Z",
+      "side": 1,
+      "message": "nit: phrase this as\n\n \"got %v, want 0\"",
+      "revId": "e6fa6793e8304d10352920a87ddd22a29ce742bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1386616c_3e19259c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-04T17:01:22Z",
+      "side": 1,
+      "message": "I think this one is logging the values backwards? It should be Post then Pre, right?",
+      "revId": "e6fa6793e8304d10352920a87ddd22a29ce742bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9fd24ac_ce53b78d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/dut_behavior_on_ac_insertion_tablet_mode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-04T17:01:22Z",
+      "side": 1,
+      "message": "Do you want to log the value of pkgOpSetPost here?",
+      "revId": "e6fa6793e8304d10352920a87ddd22a29ce742bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
