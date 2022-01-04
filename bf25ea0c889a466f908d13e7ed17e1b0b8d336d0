@@ -16,6 +16,23 @@
       "message": "Please wait for team member approval as well",
       "revId": "bf25ea0c889a466f908d13e7ed17e1b0b8d336d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4118a0c7_fe225a18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-04T07:01:09Z",
+      "side": 1,
+      "message": "LGTM, very nice to have the test properly use the kioskmode now.",
+      "revId": "bf25ea0c889a466f908d13e7ed17e1b0b8d336d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
