@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eba53b4_3308459e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/definition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-01-04T11:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65413e64_2f684d79",
+      "range": {
+        "startLine": 60,
+        "startChar": 25,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "664742134527f669f87b663d991eee1fe2ac18fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ee8a249_2d5f19c0",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-01-04T03:21:42Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 70
+      },
+      "revId": "664742134527f669f87b663d991eee1fe2ac18fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ecc25d_bc3e453e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/definition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-01-04T11:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee8a249_2d5f19c0",
       "range": {
         "startLine": 65,
         "startChar": 4,
