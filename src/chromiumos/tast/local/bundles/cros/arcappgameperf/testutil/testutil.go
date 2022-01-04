@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
@@ -31,6 +32,18 @@ type TestParams struct {
 	AppActivityName   string
 	Activity          *arc.Activity
 	ActivityStartTime time.Time
+}
+
+// BenchmarkResults stores results for the calls to benchmarking.
+type BenchmarkResults struct {
+	// FPS is a metric that shows average FPS during the sampled period.
+	FPS float64 `json:"fps"`
+	// CommitDeviation is a metric that shows deviation from the ideal time of committing frames
+	// during the sampled period.
+	CommitDeviation float64 `json:"commitDeviation"`
+	// RenderQuality is a metric in range 0%..100% that shows quality of the render during the
+	// sampled period. 100% is ideal quality when frames are produced on time according to FPS.
+	RenderQuality float64 `json:"renderQuality"`
 }
 
 // PerformTestFunc allows callers to run their desired test after a provided activity has been launched.
@@ -117,12 +130,68 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 }
 
+// StartBenchmarking begins the benchmarking process.
+func StartBenchmarking(ctx context.Context, params TestParams) error {
+	// Leave the mini-game running for while recording metrics.
+	if err := params.TestConn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.arcAppTracingStart)`); err != nil {
+		return errors.Wrap(err, "failed to start benchmarking")
+	}
+
+	return nil
+}
+
+// StopBenchmarking stops the benchmarking process and returns the parsed results.
+func StopBenchmarking(ctx context.Context, params TestParams) (results BenchmarkResults, err error) {
+	var r BenchmarkResults
+	if err := params.TestConn.Call(ctx, &r, `tast.promisify(chrome.autotestPrivate.arcAppTracingStopAndAnalyze)`); err != nil {
+		return r, errors.Wrap(err, "failed to stop benchmarking")
+	}
+
+	return r, nil
+}
+
 // LaunchTimePerfMetric returns a standard metric that launch time can be saved in.
 func LaunchTimePerfMetric() perf.Metric {
 	return perf.Metric{
 		Name:      "launchTime",
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
+	}
+}
+
+// TestTimePerfMetric returns a standard metric that test time can be saved in.
+func TestTimePerfMetric() perf.Metric {
+	return perf.Metric{
+		Name:      "testTime",
+		Unit:      "seconds",
+		Direction: perf.SmallerIsBetter,
+	}
+}
+
+// FpsPerfMetric returns a standard metric that measured FPS can be saved in.
+func FpsPerfMetric() perf.Metric {
+	return perf.Metric{
+		Name:      "fps",
+		Unit:      "fps",
+		Direction: perf.BiggerIsBetter,
+	}
+}
+
+// CommitDeviationPerfMetric returns a standard metric that commit deviation can be saved in.
+func CommitDeviationPerfMetric() perf.Metric {
+	return perf.Metric{
+		Name:      "commitDeviation",
+		Unit:      "ms",
+		Direction: perf.SmallerIsBetter,
+	}
+}
+
+// RenderQualityPerfMetric returns a standard metric that render quality can be saved in.
+func RenderQualityPerfMetric() perf.Metric {
+	return perf.Metric{
+		Name:      "renderQuality",
+		Unit:      "percents",
+		Direction: perf.BiggerIsBetter,
 	}
 }
 

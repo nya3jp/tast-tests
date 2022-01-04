@@ -107,11 +107,24 @@ func (s *Finder) ExactMatch() *Finder {
 
 // resolve resolves the UI detection request and stores the bounding boxes
 // of the matching elements.
-func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions) error {
-	// Take the screenshot.
-	imagePng, err := TakeStableScreenshot(ctx, tconn, pollOpts)
-	if err != nil {
-		return errors.Wrap(err, "failed to take screenshot")
+func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions, strategy ScreenshotStrategy) error {
+	// Take the screenshot depending on the provided strategy.
+	var imagePng []byte
+	var err error
+
+	switch strategy {
+	case StableScreenshot:
+		imagePng, err = TakeStableScreenshot(ctx, tconn, pollOpts)
+		if err != nil {
+			return errors.Wrap(err, "failed to take stable screenshot")
+		}
+	case ImmediateScreenshot:
+		imagePng, err = TakeScreenshot(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to take screenshot")
+		}
+	default:
+		return errors.New("invalid screenshot strategy")
 	}
 
 	screens, err := display.GetInfo(ctx, tconn)
