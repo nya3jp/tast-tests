@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b121b90_14989977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-04T23:54:31Z",
+      "side": 1,
+      "message": "Nit: for currentIndex :\u003d 0; ; currentIndex +\u003d 1",
+      "revId": "67c3607b7577bc3856ee0ba84b106a24917bd870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddfd8a6b_5a7d6b5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-04T23:54:31Z",
+      "side": 1,
+      "message": "Nit: Move the return statement to this line",
+      "revId": "67c3607b7577bc3856ee0ba84b106a24917bd870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
