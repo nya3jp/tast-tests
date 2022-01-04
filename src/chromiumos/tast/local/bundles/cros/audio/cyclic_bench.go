@@ -192,7 +192,7 @@ func (s schedPolicy) String() string {
 	return []string{"none", "rr", "other"}[s]
 }
 
-func getNumberOfCPU(ctx context.Context, s *testing.State) (int, error) {
+func getNumberOfCPU(ctx context.Context) (int, error) {
 	lscpu := testexec.CommandContext(ctx, "lscpu")
 	out, err := lscpu.Output()
 	if err != nil {
@@ -220,7 +220,7 @@ func CyclicBench(ctx context.Context, s *testing.State) {
 	// of cyclic test in case the stress-ng failed to be killed.
 	timeout := param.Loops * param.IntervalUs / 1000000 * 11 / 10
 
-	cpus, err := getNumberOfCPU(ctx, s)
+	cpus, err := getNumberOfCPU(ctx)
 	if err != nil {
 		s.Fatal("Failed to get number of cpus: ", err)
 	}
