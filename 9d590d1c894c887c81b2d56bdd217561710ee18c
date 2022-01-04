@@ -34,6 +34,24 @@
       "parentUuid": "ba28846e_f075cdcd",
       "revId": "9d590d1c894c887c81b2d56bdd217561710ee18c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e228c12_ebd1cbc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-01-04T18:34:07Z",
+      "side": 1,
+      "message": "Done\n\nIs defer func going to be executed if the test fails?",
+      "parentUuid": "8cd9aa7b_fd801b8f",
+      "revId": "9d590d1c894c887c81b2d56bdd217561710ee18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
