@@ -31,6 +31,7 @@ const (
 
 // cyclicTestParameters contains all the data needed to run a single test iteration.
 type cyclicTestParameters struct {
+	SchedPolicy    schedPolicy // the schedule policy of the cyclictest.
 	Priority       int         // Priority of the process
 	Threads        int         // Number of threads
 	IntervalUs     int         // Interval time
@@ -68,6 +69,7 @@ func init() {
 			{
 				Name: "rr12_1thread_10ms",
 				Val: cyclicTestParameters{
+					SchedPolicy:    rrSched,
 					Priority:       crasPriority,
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
@@ -79,6 +81,7 @@ func init() {
 			{
 				Name: "rr10_1thread_10ms",
 				Val: cyclicTestParameters{
+					SchedPolicy:    rrSched,
 					Priority:       crasClientPriority,
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
@@ -90,6 +93,7 @@ func init() {
 			{
 				Name: "rr12_4thread_10ms",
 				Val: cyclicTestParameters{
+					SchedPolicy:    rrSched,
 					Priority:       crasPriority,
 					Threads:        4,
 					IntervalUs:     defaultIntervalUs,
@@ -101,6 +105,7 @@ func init() {
 			{
 				Name: "rr10_4thread_10ms",
 				Val: cyclicTestParameters{
+					SchedPolicy:    rrSched,
 					Priority:       crasClientPriority,
 					Threads:        4,
 					IntervalUs:     defaultIntervalUs,
@@ -112,6 +117,7 @@ func init() {
 			{
 				Name: "rr12_1thread_10ms_stress_rr20_2workers_per_cpu",
 				Val: cyclicTestParameters{
+					SchedPolicy:    rrSched,
 					Priority:       crasPriority,
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
@@ -123,6 +129,7 @@ func init() {
 			{
 				Name: "rr12_1thread_10ms_stress_normal_2workers_per_cpu",
 				Val: cyclicTestParameters{
+					SchedPolicy:    rrSched,
 					Priority:       crasPriority,
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
@@ -243,7 +250,7 @@ func CyclicBench(ctx context.Context, s *testing.State) {
 
 	out, err := testexec.CommandContext(ctx, "cyclictest",
 		// TODO(eddyhsu): supports other types of policy.
-		"--policy=rr",
+		"--policy="+param.SchedPolicy.String(),
 		"--priority="+strconv.Itoa(param.Priority),
 		"--interval="+strconv.Itoa(param.IntervalUs),
 		"--threads="+strconv.Itoa(param.Threads),
