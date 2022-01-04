@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "838583e2_f015ea62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "nit: comments should end with . at the end.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759e5925_4ccccb17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "return error wrapped instead",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 52
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35b28e25_d80d2c74",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
         "patchSetId": 2
@@ -31,6 +71,24 @@
       "writtenOn": "2022-01-04T00:17:45Z",
       "side": 1,
       "message": "nit: If !roamsucceeded instead, to avoid the early return and simplify the code",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70ed2a4d_f465666a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "35b28e25_d80d2c74",
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +112,155 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fb2a5c2_894b9255",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "return error wrapped instead.",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 54
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7cc2c7_0c7a7e79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "nit: comments should end with . at the end.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3717366_923d7324",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "return error wrapped instead",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bcfd0b_96b0d789",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "return error wrapped instead",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9cba22a_ba08ca85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3fe21b_b63ae5f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "should return error wrapped?",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b85bfcb_0f97eabd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "nit: comments should end with . at the end.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2034ac03_d43b6740",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
         "patchSetId": 2
@@ -65,6 +272,29 @@
       "writtenOn": "2022-01-04T00:17:45Z",
       "side": 1,
       "message": "use testing.poll instead?",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87244b4d_ab8201c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T09:58:09Z",
+      "side": 1,
+      "message": "return error wrapped instead",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 54
+      },
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
