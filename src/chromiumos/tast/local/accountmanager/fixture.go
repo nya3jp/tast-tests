@@ -188,9 +188,13 @@ func (f *accountManagerTestFixture) Reset(ctx context.Context) error {
 }
 
 func (f *accountManagerTestFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-
+	if err := f.arc.ResetOutDir(ctx, s.OutDir()); err != nil {
+		s.Error("Failed to to reset outDir field of ARC object: ", err)
+	}
 }
 
 func (f *accountManagerTestFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-
+	if err := f.arc.SaveLogFiles(ctx); err != nil {
+		s.Error("Failed to to save ARC-related log files: ", err)
+	}
 }
