@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5911196_48711c4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/crx_manifest_update_url_ignored.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-01-04T00:35:55Z",
+      "side": 0,
+      "message": "Is this removal intentional?  It wasn\u0027t mentioned in the commit message.",
+      "revId": "266d57ef914d47b0116a3815d3003f9d90554dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
