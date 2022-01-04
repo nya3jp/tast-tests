@@ -33,6 +33,29 @@
       "message": "Thanks for updating expectations.\nBut before we continue, do we know why this happens?\nThis might be expected but not clear why.\nBehind this, gid is changed to expected value but not uid. Is it expected?\nI do see mismatch now, gid and uid",
       "revId": "7b010af56966f297f579cd6137005d5fdd5faed8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8e092b_e2366ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-01-04T18:48:34Z",
+      "side": 1,
+      "message": "This probably should be aidVendorArcDebugFs\nchrome debug_fs differs from vendor_arc_debugfs",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "7b010af56966f297f579cd6137005d5fdd5faed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
