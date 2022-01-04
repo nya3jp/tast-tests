@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c403d8c2_bedcc29a",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-04T22:32:09Z",
+      "side": 1,
+      "message": "Suggest to add to comment how it compares the two images.",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 10
+      },
+      "revId": "2f80c8812e8c3fb40afc24d3945b4eee11e49270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
