@@ -123,6 +123,11 @@ func ExtensionAllowedTypes(ctx context.Context, s *testing.State) {
 }
 
 func canInstallExtension(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, url string) (bool, error) {
+	// Ensure google cookies are accepted, it appears when we open the extension link.
+	if err := policyutil.EnsureGoogleCookiesAccepted(ctx, br); err != nil {
+		return false, errors.Wrap(err, "failed to accept cookies")
+	}
+
 	addButton := nodewith.Name("Add to Chrome").Role(role.Button).First()
 	blockedButton := nodewith.Name("Close").ClassName("MdTextButton")
 	undoButton := nodewith.Name("Undo").ClassName("MdTextButton")
