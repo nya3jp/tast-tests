@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc6cc90_5f121104",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-04T18:13:39Z",
+      "side": 1,
+      "message": "ConnectRandomizeMAC too",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d0dc8d75_b0ea0108",
@@ -14,6 +31,29 @@
       "writtenOn": "2022-01-03T20:14:18Z",
       "side": 1,
       "message": "Please review.\n\nContext: MARBSSIDRoam is bascially a RoamDbus test with added instrumentation for checking MAC Addresses.\n\nMARSSIDRoam was a tad more hard to develop, thus it works a bit differently (as described in the test comment).\n\nAlso, please keep in mind, that mar_util.go are functions moved from connect_randomize_mac.go to explicitly get utilized in different tests.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d5f4ee_6b6d748a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-04T18:13:39Z",
+      "side": 1,
+      "message": "update this once you use BSS TM Request.",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 37
+      },
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +146,23 @@
       "writtenOn": "2022-01-04T00:17:45Z",
       "side": 1,
       "message": "should hostapd.SSID be ap2SSID, or is it intentionally the same?\nIf it\u0027s intentionally the same, please change replace ap1ssid with apSSID",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35d7aadb_27033b54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-04T18:13:39Z",
+      "side": 1,
+      "message": "Please use BSS TM Request instead.",
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -221,6 +278,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eba9989d_5db85cd9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-04T18:13:39Z",
+      "side": 1,
+      "message": "Is DiscoverBSSID even necessary?",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79b641e_ce42e98b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-04T18:13:39Z",
+      "side": 1,
+      "message": "ap2?",
+      "range": {
+        "startLine": 205,
+        "startChar": 76,
+        "endLine": 205,
+        "endChar": 79
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce3fe21b_b63ae5f9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
         "patchSetId": 2
@@ -255,6 +352,23 @@
       "writtenOn": "2022-01-04T09:58:09Z",
       "side": 1,
       "message": "nit: comments should end with . at the end.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31fc59e4_11f249f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-04T18:13:39Z",
+      "side": 1,
+      "message": "I\u0027d rather you ask explicitly for a connection back to the original SSID. We already have tests that test roaming to the another AP on the same network after an AP disappears (RoamAPGone(?) or something), and it\u0027s better to be clear about what you want.",
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
