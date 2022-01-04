@@ -55,6 +55,7 @@ const (
 	ActionTagAddIME    ActionTag = "AddInputMethod"
 	ActionTagRemoveIME ActionTag = "RemoveInputMethod"
 	ActionTagSwitchIME ActionTag = "SwitchIME"
+	ActionTagIMEShelf  ActionTag = "IMEShelf"
 )
 
 // Tags to indicate user input actions.
