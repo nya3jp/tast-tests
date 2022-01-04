@@ -16,6 +16,57 @@
       "message": "PTAL",
       "revId": "06ea7202743b99892670ad8222b173435ceaa311",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873e4e22_eb23d0b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-04T17:54:37Z",
+      "side": 1,
+      "message": "This call will probably happen before the inlined login steps (mentioned below) since the application has to be in it\u0027s started state before the login steps can be performed.",
+      "revId": "06ea7202743b99892670ad8222b173435ceaa311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e194b5c5_82235c5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-04T17:54:37Z",
+      "side": 1,
+      "message": "This would be shared at a per app level rather than at the suite level so for now I\u0027d suggest moving it into the roblox_login.go file since the code will always be test specific.",
+      "revId": "06ea7202743b99892670ad8222b173435ceaa311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "258b2432_e951449e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-04T17:54:37Z",
+      "side": 1,
+      "message": "I\u0027m a little unsure what the heuristic is for. Shouldn\u0027t a pair of percentage based coordinates (i.e. wPercent float64, hPercent float64) be passed in and multiplied by the ScreenWidth, and Height respectively? As is, this function only allows adjustments in the vertical direction (since .5 is hardcoded for the width).",
+      "revId": "06ea7202743b99892670ad8222b173435ceaa311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
