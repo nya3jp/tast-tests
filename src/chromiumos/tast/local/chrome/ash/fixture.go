@@ -21,7 +21,16 @@ func init() {
 		Name:            "install100Apps",
 		Desc:            "Install 100 fake apps in a temporary directory",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            &fakeAppsFixture{numApps: 100},
+		Impl:            &fakeAppsFixture{numApps: 100, defaultOrder: NameAlphabeticalOrder},
+		SetUpTimeout:    fixtureTimeout,
+		TearDownTimeout: fixtureTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "install100AppsInNameReverseOrder",
+		Desc:            "Install 100 fake apps in a temporary directory",
+		Contacts:        []string{"mukai@chromium.org"},
+		Impl:            &fakeAppsFixture{numApps: 100, defaultOrder: NameReverseAlphabeticalOrder},
 		SetUpTimeout:    fixtureTimeout,
 		TearDownTimeout: fixtureTimeout,
 	})
@@ -30,15 +39,16 @@ func init() {
 		Name:            "install2Apps",
 		Desc:            "Install 2 fake apps in a temporary directory",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            &fakeAppsFixture{numApps: 2},
+		Impl:            &fakeAppsFixture{numApps: 2, defaultOrder: NameAlphabeticalOrder},
 		SetUpTimeout:    fixtureTimeout,
 		TearDownTimeout: fixtureTimeout,
 	})
 }
 
 type fakeAppsFixture struct {
-	extDirBase string
-	numApps    int
+	extDirBase   string
+	numApps      int
+	defaultOrder LauncherAppOrderType
 }
 
 func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -48,7 +58,7 @@ func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	f.extDirBase = extDirBase
 
-	dirs, err := PrepareFakeApps(extDirBase, f.numApps, fakeIconData)
+	dirs, err := PrepareFakeApps(extDirBase, f.numApps, f.defaultOrder, true)
 	if err != nil {
 		s.Fatal("Failed to prepare fake apps: ", err)
 	}

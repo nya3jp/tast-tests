@@ -47,6 +47,15 @@ type Accelerator struct {
 	Search  bool   `json:"search"`
 }
 
+// LauncherAppOrderType ...
+type LauncherAppOrderType string
+
+// ...
+const (
+	NameAlphabeticalOrder        LauncherAppOrderType = "NameAlphabetical"
+	NameReverseAlphabeticalOrder LauncherAppOrderType = "NameReverseAlphabetical"
+)
+
 // Accelerator key used to trigger launcher state change.
 var (
 	AccelSearch      = Accelerator{KeyCode: "search", Shift: false, Control: false, Alt: false, Search: false}
@@ -107,7 +116,7 @@ func GetPrepareFakeAppsOptions(numFakeApps int) ([]chrome.Option, string, error)
 		return nil, extDirBase, errors.Wrap(err, "failed to create tempdir")
 	}
 
-	dirs, err := PrepareFakeApps(extDirBase, numFakeApps, nil)
+	dirs, err := PrepareFakeApps(extDirBase, numFakeApps, NameAlphabeticalOrder, false)
 	if err != nil {
 		return nil, extDirBase, errors.Wrap(err, "failed to prepare fake apps")
 	}
@@ -125,7 +134,7 @@ func GetPrepareFakeAppsOptions(numFakeApps int) ([]chrome.Option, string, error)
 // responsibility to clean up the contents under the baseDir. This also may
 // update the ownership of baseDir. iconData is the data of the icon for those
 // fake apps in png format, or nil if the default icon is used.
-func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error) {
+func PrepareFakeApps(baseDir string, num int, defaultAppOrder LauncherAppOrderType, hasIcon bool) ([]string, error) {
 	// The manifest.json data for the fake hosted app; it just opens google.com
 	// page on launch.
 	const manifestTmpl = `{
@@ -147,11 +156,11 @@ func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error)
 	iconDir := filepath.Join(baseDir, "icons")
 	iconFiles := map[int]string{}
 	var iconJSON string
-	if iconData != nil {
+	if hasIcon {
 		if err := os.Mkdir(iconDir, 0755); err != nil {
 			return nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
 		}
-		img, err := png.Decode(bytes.NewReader(iconData))
+		img, err := png.Decode(bytes.NewReader(fakeIconData))
 		if err != nil {
 			return nil, err
 		}
@@ -191,7 +200,13 @@ func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error)
 		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i, iconJSON)), 0644); err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
 		}
-		extDirs = append(extDirs, extDir)
+
+		switch defaultAppOrder {
+		case NameAlphabeticalOrder:
+			extDirs = append(extDirs, extDir)
+		case NameReverseAlphabeticalOrder:
+			extDirs = append([]string{extDir}, extDirs...)
+		}
 	}
 	return extDirs, nil
 }
