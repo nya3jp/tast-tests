@@ -53,17 +53,18 @@ const (
 
 // meetTest specifies the setting of a Hangouts Meet journey. More info at go/cros-meet-tests.
 type meetTest struct {
-	num       int            // Number of the participants in the meeting.
-	layout    meetLayoutType // Type of the layout in the meeting.
-	present   bool           // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
-	docs      bool           // Whether it is running with a Google Docs window.
-	jamboard  bool           // Whether it is running with a Jamboard window.
-	split     bool           // Whether it is in split screen mode. It can not be true if docs is false.
-	cam       bool           // Whether the camera is on or not.
-	power     bool           // Whether to collect power metrics.
-	duration  time.Duration  // Duration of the meet call. Must be less than test timeout.
-	useLacros bool           // Whether to use lacros browser.
-	tracing   bool           // Whether to turn on tracing.
+	num        int            // Number of the participants in the meeting.
+	layout     meetLayoutType // Type of the layout in the meeting.
+	present    bool           // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
+	docs       bool           // Whether it is running with a Google Docs window.
+	jamboard   bool           // Whether it is running with a Jamboard window.
+	split      bool           // Whether it is in split screen mode. It can not be true if docs is false.
+	cam        bool           // Whether the camera is on or not.
+	power      bool           // Whether to collect power metrics.
+	duration   time.Duration  // Duration of the meet call. Must be less than test timeout.
+	useLacros  bool           // Whether to use lacros browser.
+	tracing    bool           // Whether to turn on tracing.
+	validation bool           // Whether to add extra cpu loads before collecting metrics.
 }
 
 const defaultTestTimeout = 7 * time.Minute
@@ -128,6 +129,17 @@ func init() {
 				layout:  meetLayoutTiled,
 				cam:     true,
 				tracing: true,
+			},
+			Fixture: "loggedInToCUJUser",
+		}, {
+			// Validation test for big meeting.
+			Name:    "16p_validation",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:        16,
+				layout:     meetLayoutTiled,
+				cam:        true,
+				validation: true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -421,6 +433,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop recorder: ", err)
 		}
 	}()
+
+	if meet.validation {
+		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
+		if err := validationHelper.Stress(); err != nil {
+			s.Fatal("Failed to stress: ", err)
+		}
+		defer func() {
+			if err := validationHelper.Release(); err != nil {
+				s.Fatal("Failed to release validationHelper: ", err)
+			}
+		}()
+	}
 
 	meetConn, err := cs.NewConn(ctx, "https://meet.google.com/"+meetingCode, browser.WithNewWindow())
 	if err != nil {

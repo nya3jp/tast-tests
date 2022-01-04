@@ -48,6 +48,14 @@ func init() {
 				Tracing:     true,
 			},
 			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
+		}, {
+			Name:      "validation",
+			ExtraData: []string{tabswitchcuj.WPRArchiveName},
+			Val: tabswitchcuj.TabSwitchParam{
+				BrowserType: browser.TypeAsh,
+				Validation:  true,
+			},
+			Pre: wpr.ReplayMode(tabswitchcuj.WPRArchiveName),
 		}},
 	})
 }
