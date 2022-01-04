@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/extension"
+	"chromiumos/tast/testing"
 )
 
 // AppListBubbleClassName is the automation API class name of the bubble launcher.
@@ -52,6 +53,9 @@ var (
 	AccelSearch      = Accelerator{KeyCode: "search", Shift: false, Control: false, Alt: false, Search: false}
 	AccelShiftSearch = Accelerator{KeyCode: "search", Shift: true, Control: false, Alt: false, Search: false}
 )
+
+// AlphabeticalFakeAppNames contains the app names in the alphabetical order.
+var AlphabeticalFakeAppNames = []string{"a", "b", "c", "d", "e"}
 
 // WaitForLauncherState waits until the launcher state becomes state. It waits
 // up to 10 seconds and fail if the launcher doesn't have the desired state.
@@ -126,11 +130,63 @@ func GetPrepareFakeAppsOptions(numFakeApps int) ([]chrome.Option, string, error)
 // update the ownership of baseDir. iconData is the data of the icon for those
 // fake apps in png format, or nil if the default icon is used.
 func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error) {
+	if err := extension.ChownContentsToChrome(baseDir); err != nil {
+		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
+	}
+
+	iconDir := filepath.Join(baseDir, "icons")
+	if iconData != nil {
+		if err := os.Mkdir(iconDir, 0755); err != nil {
+			return nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
+		}
+	}
+
+	extDirs := make([]string, 0, num)
+	for i := 0; i < num; i++ {
+		appName := fmt.Sprintf("fake_%d", i)
+		extDir, err := prepareIndividualFakeApp(baseDir, appName, iconDir, iconData)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to create the extension %s", appName)
+		}
+
+		extDirs = append(extDirs, extDir)
+	}
+	return extDirs, nil
+}
+
+// PrepareFakeAppsWithGivenNames is similar to PrepareFakeApps. The only difference is that the app names are specified.
+func PrepareFakeAppsWithGivenNames(baseDir string, appNames []string, iconData []byte, s *testing.FixtState) ([]string, error) {
+	if err := extension.ChownContentsToChrome(baseDir); err != nil {
+		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
+	}
+
+	iconDir := filepath.Join(baseDir, "icons")
+	if iconData != nil {
+		if err := os.Mkdir(iconDir, 0755); err != nil {
+			return nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
+		}
+	}
+
+	extDirs := make([]string, 0, len(appNames))
+	for _, appName := range appNames {
+		s.Log("app name is: ", appName)
+		extDir, err := prepareIndividualFakeApp(baseDir, appName, iconDir, iconData)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to create the extension %s", appName)
+		}
+
+		extDirs = append(extDirs, extDir)
+	}
+	s.Log("extDirs is", extDirs)
+	return extDirs, nil
+}
+
+func prepareIndividualFakeApp(baseDir, appName, iconDir string, iconData []byte) (string, error) {
 	// The manifest.json data for the fake hosted app; it just opens google.com
 	// page on launch.
 	const manifestTmpl = `{
 		"description": "fake",
-		"name": "fake app %d",
+		"name": "%s",
 		"manifest_version": 2,
 		"version": "0",
 		%s
@@ -140,20 +196,18 @@ func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error)
 			}
 		}
 	}`
-	if err := extension.ChownContentsToChrome(baseDir); err != nil {
-		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
+
+	extDir := filepath.Join(baseDir, appName)
+	if err := os.Mkdir(extDir, 0755); err != nil {
+		return extDir, errors.Wrapf(err, "failed to create the directory for the extension %s", appName)
 	}
 
-	iconDir := filepath.Join(baseDir, "icons")
-	iconFiles := map[int]string{}
 	var iconJSON string
+	iconFiles := map[int]string{}
 	if iconData != nil {
-		if err := os.Mkdir(iconDir, 0755); err != nil {
-			return nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
-		}
-		img, err := png.Decode(bytes.NewReader(iconData))
+		img, err := png.Decode(bytes.NewReader(fakeIconData))
 		if err != nil {
-			return nil, err
+			return extDir, err
 		}
 		for _, siz := range []int{32, 48, 64, 96, 128, 192} {
 			var imgToSave image.Image
@@ -164,36 +218,30 @@ func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error)
 			}
 			iconFile := fmt.Sprintf("icon%d.png", siz)
 			if err := saveImageAsPng(filepath.Join(iconDir, iconFile), imgToSave); err != nil {
-				return nil, err
+				return extDir, err
 			}
 			iconFiles[siz] = iconFile
 		}
 		iconJSONData, err := json.Marshal(iconFiles)
 		if err != nil {
-			return nil, err
+			return extDir, err
 		}
 		iconJSON = fmt.Sprintf(`"icons": %s,`, string(iconJSONData))
 	}
 
-	extDirs := make([]string, 0, num)
-	for i := 0; i < num; i++ {
-		extDir := filepath.Join(baseDir, fmt.Sprintf("fake_%d", i))
-		if err := os.Mkdir(extDir, 0755); err != nil {
-			return nil, errors.Wrapf(err, "failed to create the directory for %d-th extension", i)
-		}
-		if iconJSON != "" {
-			for _, iconFile := range iconFiles {
-				if err := os.Symlink(filepath.Join(iconDir, iconFile), filepath.Join(extDir, iconFile)); err != nil {
-					return nil, errors.Wrapf(err, "failed to create link of icon %q", iconFile)
-				}
+	if iconJSON != "" {
+		for _, iconFile := range iconFiles {
+			if err := os.Symlink(filepath.Join(iconDir, iconFile), filepath.Join(extDir, iconFile)); err != nil {
+				return extDir, errors.Wrapf(err, "failed to create link of icon %q", iconFile)
 			}
 		}
-		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i, iconJSON)), 0644); err != nil {
-			return nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
-		}
-		extDirs = append(extDirs, extDir)
 	}
-	return extDirs, nil
+
+	if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, appName, iconJSON)), 0644); err != nil {
+		return extDir, errors.Wrapf(err, "failed to prepare manifest.json for the extension %s", appName)
+	}
+
+	return extDir, nil
 }
 
 // The remaining definitions are needed only for faillog & CaptureCDP.

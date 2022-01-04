@@ -33,6 +33,92 @@ var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItem
 // SearchResultListItemFinder is the finder of the list items in launcher search result.
 var SearchResultListItemFinder = nodewith.ClassName("ui/app_list/SearchResultView")
 
+// GridIndex demonstrates an app list item's location on the grid.
+type GridIndex struct {
+	Page int `json:"page"`
+	Slot int `json:"slot"`
+}
+
+func (index *GridIndex) isValid() bool {
+	return index.Page >= 0 && index.Slot >= 0
+}
+
+func (index *GridIndex) init() {
+	index.Page = -1
+	index.Slot = -1
+}
+
+// AppListItemInfo encapsulates an app list item's data.
+type AppListItemInfo struct {
+	Name        string    `json:"name"`
+	VisualIndex GridIndex `json:"visualIndex"`
+	IsPageBreak bool      `json:"isPageBreak"`
+	IsFolder    bool      `json:"isFolder"`
+}
+
+// CompareGridIndices ...
+func CompareGridIndices(lhs, rhs GridIndex) bool {
+	if lhs.Page > rhs.Page {
+		return true
+	}
+
+	if lhs.Page < rhs.Page {
+		return false
+	}
+
+	return lhs.Slot > rhs.Slot
+}
+
+// GetTopLevelGridIndicesForNames returns an array of grid indices for the apps specified by `names`.
+func GetTopLevelGridIndicesForNames(ctx context.Context, tconn *chrome.TestConn, names []string) ([]GridIndex, error) {
+	infoArray, err := getTopLevelAppListItemInfo(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the top level app list item information")
+	}
+
+	// Use the mappings from app names to indices to ensure that the i-th element of the returned array is the visual index of the i-th app specified by `names`.
+	nameIndexMapping := make(map[string]int)
+	for index, name := range names {
+		nameIndexMapping[name] = index
+	}
+
+	gridIndices := make([]GridIndex, len(names))
+	for index := range gridIndices {
+		gridIndices[index].init()
+	}
+
+	for _, info := range infoArray {
+		value, ok := nameIndexMapping[info.Name]
+		if !ok {
+			continue
+		}
+
+		// Complain if there is a name conflict between apps.
+		if gridIndices[value].isValid() {
+			return nil, errors.Wrapf(err, "multiple top level items have the same name which is %s", info.Name)
+		}
+
+		// Compain if the fetched visual index is illegal.
+		if !info.VisualIndex.isValid() {
+			return nil, errors.Wrapf(err, "the visual index of the item %s is invalid", info.Name)
+		}
+
+		gridIndices[value] = info.VisualIndex
+	}
+
+	return gridIndices, nil
+}
+
+func getTopLevelAppListItemInfo(ctx context.Context, tconn *chrome.TestConn) ([]*AppListItemInfo, error) {
+	var infoArray []*AppListItemInfo
+
+	const infoQuery = "tast.promisify(chrome.autotestPrivate.getAppListItemInfo)"
+	if err := tconn.Call(ctx, &infoArray, infoQuery); err != nil {
+		return nil, errors.Wrap(err, "failed to call getAppListItemInfo")
+	}
+	return infoArray, nil
+}
+
 // SearchAndWaitForAppOpen return a function that searches for an app, launches it, and waits for it to be open.
 func SearchAndWaitForAppOpen(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, app apps.App) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("SearchAndWaitForAppOpen(%+q)", app),

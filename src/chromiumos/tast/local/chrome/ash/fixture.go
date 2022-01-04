@@ -27,6 +27,15 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:            "install5Apps",
+		Desc:            "Install 5 fake apps with the specified app names in a temporary directory",
+		Contacts:        []string{"mukai@chromium.org"},
+		Impl:            &fakeAppsFixture{appNames: AlphabeticalFakeAppNames},
+		SetUpTimeout:    fixtureTimeout,
+		TearDownTimeout: fixtureTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:            "install2Apps",
 		Desc:            "Install 2 fake apps in a temporary directory",
 		Contacts:        []string{"mukai@chromium.org"},
@@ -39,6 +48,7 @@ func init() {
 type fakeAppsFixture struct {
 	extDirBase string
 	numApps    int
+	appNames   []string
 }
 
 func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -48,7 +58,14 @@ func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	f.extDirBase = extDirBase
 
-	dirs, err := PrepareFakeApps(extDirBase, f.numApps, fakeIconData)
+	var dirs []string
+
+	if f.appNames != nil {
+		dirs, err = PrepareFakeAppsWithGivenNames(extDirBase, f.appNames, fakeIconData, s)
+	} else {
+		dirs, err = PrepareFakeApps(extDirBase, f.numApps, fakeIconData)
+	}
+
 	if err != nil {
 		s.Fatal("Failed to prepare fake apps: ", err)
 	}
