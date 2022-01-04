@@ -17,7 +17,7 @@ type Options struct {
 // DefaultOptions return options with default values.
 func DefaultOptions() *Options {
 	return &Options{
-		Retries:       1,
+		Retries:       10,
 		RetryInterval: time.Second,
 	}
 }
