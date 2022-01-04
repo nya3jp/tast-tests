@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35941a7f_19d08c65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T13:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab2cb4df_8ca214f9",
+      "range": {
+        "startLine": 145,
+        "startChar": 50,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "d4193b663dac574f16ae8d57c9c8ef1a53037a59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e7d4a30_df2523d0",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c329550_c64b0f5d",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T13:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e7d4a30_df2523d0",
+      "revId": "d4193b663dac574f16ae8d57c9c8ef1a53037a59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8c614f8_705e413c",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-01-04T11:06:02Z",
       "side": 1,
       "message": "Have you considered using ash.SetWindowStateAndWait like some other tests do?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/lacros/octane.go;l\u003d50;drc\u003d34b4244f3da58568e433a4ce97af8d060945fe30",
+      "revId": "d4193b663dac574f16ae8d57c9c8ef1a53037a59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae56b2e2_b35c8758",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-04T13:29:31Z",
+      "side": 1,
+      "message": "Thanks for the hint, that was much better solution, because the animation could take some time. PTAL again",
+      "parentUuid": "e8c614f8_705e413c",
       "revId": "d4193b663dac574f16ae8d57c9c8ef1a53037a59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
