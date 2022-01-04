@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "292d7059_f4d37dfa",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-04T08:50:42Z",
+      "side": 1,
+      "message": "I will build on what Georg said - what about making this function more universal and include URL and DOM element locator as aprameters?\n\nEnsureCookiesAccepted(ctx, br, URL, acceptBtnLocator)\n\nWDYT?",
+      "parentUuid": "e2c0366a_7df5bbfd",
+      "revId": "e8f42c6bcd167d3477fcfb91a741bbf41bcb293a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ebd1b7a_d11291bc",
         "filename": "src/chromiumos/tast/local/policyutil/ui.go",
         "patchSetId": 1
