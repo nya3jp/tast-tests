@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0866e2_c18425a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-01-04T17:55:57Z",
+      "side": 1,
+      "message": "waiting for earlier CL to merge before triggering this one",
+      "revId": "0330476f1e4c236b3f21335b43eb415529a93209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

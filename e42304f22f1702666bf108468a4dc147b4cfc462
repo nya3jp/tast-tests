@@ -86,6 +86,24 @@
       "parentUuid": "7146d870_c9e1aa78",
       "revId": "e42304f22f1702666bf108468a4dc147b4cfc462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17c69ff_fa34b9fa",
+        "filename": "src/chromiumos/tast/local/wallpaper/constants/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-01-04T17:55:57Z",
+      "side": 1,
+      "message": "Keeping it in constants.go since all of this can be public.",
+      "parentUuid": "7146d870_c9e1aa78",
+      "revId": "e42304f22f1702666bf108468a4dc147b4cfc462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
