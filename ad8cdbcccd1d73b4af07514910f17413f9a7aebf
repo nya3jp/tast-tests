@@ -22,6 +22,30 @@
       },
       "revId": "ad8cdbcccd1d73b4af07514910f17413f9a7aebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eedf99e4_f02ed9f7",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-04T19:18:27Z",
+      "side": 1,
+      "message": "You are correct that on the ax6100 router, one of the radios is allocated to the low channel radio. The tests currently only run on the high channel radios at the moment.\n\nIn the case of the gtaxe11000 there is only 1 5g radio (index 1, index 0 is 2.4 and index 3 is 6g). In the case of the ax6100 device, there are 2 5ghz radios, their valid control channels are indeed disjoint. There is only 1 radio that supports ax though (index 2). The non ax radio only supports 4 channels (36-48 every 4 channels) while the ax radio supports a lot more 100-161. Our tests on the 5ghz band only tests channels \u003e100 in this case.\n\nWe can split this enum/logic into a low/high channel case if necessary and use a different radio if our test coverage requires that.",
+      "parentUuid": "c8154bd1_da542fad",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "ad8cdbcccd1d73b4af07514910f17413f9a7aebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
