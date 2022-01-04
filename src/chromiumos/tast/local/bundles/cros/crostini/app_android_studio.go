@@ -89,7 +89,7 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Verify Setting", " "))),
 		ud.LeftClick(finishButton),
 		// Installing SDK takes longer than the default timeout.
-		ud.WithTimeout(5*time.Minute).WaitUntilExists(uidetection.TextBlock(strings.Split("Android SDK is up to date", " "))),
+		ud.WithTimeout(5*time.Minute).WaitUntilExists(uidetection.TextBlock(strings.Split("SDK is up to date", " "))),
 		ud.LeftClick(finishButton),
 		ud.LeftClick(uidetection.TextBlock(strings.Split("Start a new Android Studio project", " "))),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Select a Project Template", " "))),
