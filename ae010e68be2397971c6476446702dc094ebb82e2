@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1f1c40_cf6b2b98",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-01-04T13:45:11Z",
+      "side": 1,
+      "message": "Since now nothing in this function is about the browser in particular, you can just say \"... ensure that the active window ...\" (and rename browserWinID to just winID or so).",
+      "revId": "ae010e68be2397971c6476446702dc094ebb82e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
