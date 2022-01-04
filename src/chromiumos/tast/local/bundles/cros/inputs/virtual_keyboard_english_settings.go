@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/imesettings"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -46,6 +47,7 @@ func init() {
 func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
@@ -102,24 +104,51 @@ func VirtualKeyboardEnglishSettings(ctx context.Context, s *testing.State) {
 				if err != nil {
 					s.Fatal("Failed to launch OS settings and land at inputs setting page: ", err)
 				}
-				if err := uiauto.Combine("test input method settings change",
+				disableAutoCapAction := uiauto.Combine("test input method settings change",
 					settings.OpenInputMethodSetting(tconn, subTest.ime),
 					settings.ToggleAutoCap(cr, false),
 					settings.Close,
-				)(ctx); err != nil {
+				)
+
+				if err := useractions.NewUserAction(
+					"disable auto-cap in IME settings",
+					disableAutoCapAction,
+					uc,
+					&useractions.UserActionCfg{
+						Tags: []useractions.ActionTag{useractions.ActionTagIMESettings},
+					},
+				).Run(ctx); err != nil {
 					s.Fatal("Failed to change IME settings: ", err)
 				}
 			}
 
 			vkbCtx := vkb.NewContext(cr, tconn)
 
-			if err := uiauto.Combine("verify VK input",
+			validateAction := uiauto.Combine("verify VK input",
 				vkbCtx.WaitForDecoderEnabled(true),
 				its.Clear(inputField),
 				its.ClickFieldUntilVKShown(inputField),
 				vkbCtx.TapKeys(subTest.keySeq),
 				util.WaitForFieldTextToBe(tconn, inputField.Finder(), subTest.expectedText),
-			)(ctx); err != nil {
+			)
+
+			testScenario := "VK typing with auto-cap disabled"
+			if subTest.capitalizationEnabled {
+				testScenario = "VK typing with auto-cap enabled"
+			}
+
+			if err := useractions.NewUserAction(
+				"VK typing",
+				validateAction,
+				uc,
+				&useractions.UserActionCfg{
+					Attributes: map[string]string{
+						useractions.AttributeInputField:   string(inputField),
+						useractions.AttributeTestScenario: testScenario,
+					},
+					Tags: []useractions.ActionTag{useractions.ActionTagAutoCapitalization},
+				},
+			).Run(ctx); err != nil {
 				s.Fatal("Failed to verify input: ", err)
 			}
 		})
