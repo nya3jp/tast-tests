@@ -280,7 +280,7 @@ func (s schedPolicy) String() string {
 	return []string{"none", "rr", "other"}[s]
 }
 
-func getNumberOfCPU(ctx context.Context, s *testing.State) (int, error) {
+func getNumberOfCPU(ctx context.Context) (int, error) {
 	lscpu := testexec.CommandContext(ctx, "lscpu")
 	out, err := lscpu.Output()
 	if err != nil {
@@ -302,8 +302,7 @@ func getNumberOfCPU(ctx context.Context, s *testing.State) (int, error) {
 }
 
 func getAffinityString(ctx context.Context, aff affinity) (string, error) {
-	// TODO(eddyhsu): testing.State is not used in getNumberOfCPU, refactor it later.
-	cpu, err := getNumberOfCPU(ctx, nil)
+	cpu, err := getNumberOfCPU(ctx)
 	if err != nil {
 		return "", err
 	}
@@ -357,14 +356,14 @@ func getCommandContext(ctx context.Context, param cyclicTestParameters) (*testex
 	return nil, errors.New("unsupported scheduling policy")
 }
 
-func getStressContext(ctx context.Context, s *testing.State, param cyclicTestParameters) *testexec.Cmd {
+func getStressContext(ctx context.Context, param cyclicTestParameters) (*testexec.Cmd, error) {
 	// Set the timeout of stress to be 10% more of the expected time
 	// of cyclic test in case the stress-ng failed to be killed.
 	timeout := param.Loops * param.IntervalUs / 1000000 * 11 / 10
 
-	cpus, err := getNumberOfCPU(ctx, s)
+	cpus, err := getNumberOfCPU(ctx)
 	if err != nil {
-		s.Fatal("Failed to get number of cpus: ", err)
+		return nil, err
 	}
 	totalWorkers := defaultStressWorker * cpus
 
@@ -374,28 +373,30 @@ func getStressContext(ctx context.Context, s *testing.State, param cyclicTestPar
 			"--cpu="+strconv.Itoa(totalWorkers),
 			"--sched=rr",
 			"--sched-prio="+strconv.Itoa(param.StressPri),
-			"--timeout="+strconv.Itoa(timeout)+"s")
+			"--timeout="+strconv.Itoa(timeout)+"s"), nil
 	case otherSched:
 		return testexec.CommandContext(ctx, "nice",
 			"-n", strconv.Itoa(param.StressPri),
 			"--cpu="+strconv.Itoa(totalWorkers),
 			"--sched=other",
-			"--timeout="+strconv.Itoa(timeout)+"s")
+			"--timeout="+strconv.Itoa(timeout)+"s"), nil
 	case none:
-		return nil
+		return nil, nil
 	}
-	return nil
+	return nil, nil
 }
 
 func CyclicBench(ctx context.Context, s *testing.State) {
 	param := s.Param().(cyclicTestParameters)
 
-	stress := getStressContext(ctx, s, param)
+	stress, err := getStressContext(ctx, s, param)
+	if err != nil {
+		s.Error("Failed to get stress command context: ", err)
+	}
 	// Working directory of `stress-ng` must be readable and writeable
 	if stress != nil {
 		stress.Dir = "/tmp"
 	}
-
 	if stress != nil {
 		if err := stress.Start(); err != nil {
 			s.Fatal("Failed to start stress-ng: ", err)
