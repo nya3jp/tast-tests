@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4c0612_97ad6b5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-01-04T19:38:31Z",
+      "side": 1,
+      "message": "After reading more about this issue, updating expectation LG to me as a minimal fix assuming renaming is done per my another comment.\nAs a follow up it is not clear what should be real expectation for UID/GID\nGID is mapped in container from 605 to 5005 but UID is not.",
+      "revId": "7b010af56966f297f579cd6137005d5fdd5faed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af8e092b_e2366ad5",
