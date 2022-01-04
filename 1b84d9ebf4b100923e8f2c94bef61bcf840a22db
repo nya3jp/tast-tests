@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8971215_70f02f79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T21:39:44Z",
+      "side": 1,
+      "message": "If enum type is not shared by more than one message, I think we should put it inline instead. Also, I have concern about exposing the low level API through GRPC service. I think we have seen UI delay issues to make tests flaky. I think it may be worse by using GRPC interface. I would suggest to support higher level operation such as Drag instead. The Drag request can be specified by node specification or position. We can even add an expected event in the request so that it can check before it return.\n\n",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21168fb0_adcc5c3a",
@@ -65,6 +82,24 @@
       "writtenOn": "2021-12-31T01:50:57Z",
       "side": 1,
       "message": "In order for the enum values not to conflict, I found two suggested ways:\n1) Wrapped with message (Like in this CL)\n2) Prefix enum value with type, like:\nenum ClickType {\n    CLICK_TYPE_UNSPECIFIED \u003d 0;\n    CLICK_TYPE_LEFT_CLICK \u003d 1;\n    CLICK_TYPE_RIGHT_CLICK \u003d 2;\n    CLICK_TYPE_DOUBLE_CLICK \u003d 3;\n  }\n  \nIs there a google convention for this?",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fbdc7cb_d3353efb",
+        "filename": "src/chromiumos/tast/services/cros/ui/automation_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T21:39:44Z",
+      "side": 1,
+      "message": "You can declare ClickType inside \n\n```\nmessage MouseClickAtLocationRequest {\n  enum ClickType {\n    UNSPECIFIED \u003d 0;\n    LEFT_CLICK \u003d 1;\n    RIGHT_CLICK \u003d 2;\n    DOUBLE_CLICK \u003d 3;\n  }\n  // ClickType describes how user clicks mouse.\n  ClickType click_type \u003d 1;\n  // Point is the coordinates for the click.\n  Point point \u003d 2;\n}\n```",
+      "parentUuid": "361b15ce_253f1644",
       "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
