@@ -182,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51d15a77_1a12f2eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-04T01:31:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "435d8b36_b3a61037",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32d462bd_6fe49e87",
@@ -353,6 +371,24 @@
       "side": 1,
       "message": "Only detection check.",
       "parentUuid": "be006e22_747fefd3",
+      "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2c8cf9c_9ee3d460",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/sdcard/sd_card_functionality.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-04T01:31:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa9757ac_eb9fc36d",
       "revId": "590a5d8ef625d77905a15edba8200d38a36bd47f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
