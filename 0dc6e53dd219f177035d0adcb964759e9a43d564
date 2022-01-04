@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf2cd893_5b26218b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-04T08:17:13Z",
+      "side": 1,
+      "message": "This test won\u0027t pass. The latency is too high to fit in a test.\n`p99 latency exceeds threshold: 947845 \u003e 10000`\nI\u0027m not sure should we include this test since it looks expected.\n\nWe might need to separate the test and collect data parts.",
+      "range": {
+        "startLine": 154,
+        "startChar": 11,
+        "endLine": 154,
+        "endChar": 60
+      },
+      "revId": "0dc6e53dd219f177035d0adcb964759e9a43d564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
