@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5fd24b_6942c2c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-04T20:52:37Z",
+      "side": 1,
+      "message": "Could you use fixed locations? We should avoid randomness in testing to ensure deterministic behaviour. At least, use a fixed seed.",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 101
+      },
+      "revId": "f2c9da0216d119259e4b4447e03d8ad9de092877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
