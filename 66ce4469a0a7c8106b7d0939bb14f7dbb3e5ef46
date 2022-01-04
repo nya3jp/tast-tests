@@ -16,6 +16,23 @@
       "message": "gentle ping for tast owner review~",
       "revId": "66ce4469a0a7c8106b7d0939bb14f7dbb3e5ef46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1973c41c_f97275f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-04T09:21:52Z",
+      "side": 1,
+      "message": "LGTM\nTast Owners review",
+      "revId": "66ce4469a0a7c8106b7d0939bb14f7dbb3e5ef46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
