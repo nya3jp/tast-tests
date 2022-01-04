@@ -338,9 +338,9 @@ func (cli *WifiClient) TurnOffBgscan(ctx context.Context) (context.Context, func
 	}
 	oldBgConfig := bgscanResp.Config
 
-	turnOffBgConfig := *proto.Clone(oldBgConfig).(*wifi.BgscanConfig)
+	turnOffBgConfig := proto.Clone(oldBgConfig).(*wifi.BgscanConfig)
 	turnOffBgConfig.Method = shillconst.DeviceBgscanMethodNone
-	if _, err := cli.ShillServiceClient.SetBgscanConfig(ctx, &wifi.SetBgscanConfigRequest{Config: &turnOffBgConfig}); err != nil {
+	if _, err := cli.ShillServiceClient.SetBgscanConfig(ctx, &wifi.SetBgscanConfigRequest{Config: turnOffBgConfig}); err != nil {
 		return ctxForRestoreBgConfig, nil, err
 	}
 
@@ -380,16 +380,16 @@ func (cli *WifiClient) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOp
 	origConfig := resp.Config
 
 	// Allow WakeOnWiFi.
-	newConfig := *proto.Clone(origConfig).(*wifi.WakeOnWifiConfig)
+	newConfig := proto.Clone(origConfig).(*wifi.WakeOnWifiConfig)
 	newConfig.Allowed = true
 	for _, op := range ops {
-		op(&newConfig)
+		op(newConfig)
 	}
 
 	ctxRestore := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Second)
 	req := &wifi.SetWakeOnWifiRequest{
-		Config: &newConfig,
+		Config: newConfig,
 	}
 	if _, err := cli.ShillServiceClient.SetWakeOnWifi(ctx, req); err != nil {
 		return ctx, nil, errors.Wrap(err, "failed to set WoWiFi features")
