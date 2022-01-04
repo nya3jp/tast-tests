@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9398ee62_3db525ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-01-04T22:19:59Z",
+      "side": 1,
+      "message": "802.11ay refers to a different standard which specific bands above 45GHz. 6E is specified by updated 802.11ax standards (https://standards.ieee.org/standard/802_11ax-2021.html). To distinguish 6E bands from 5G 11ax bands, I would suggest to use hwdep.Wifi80211ax_6E() or any other proper postfix. I am open-minded to the renaming other than 80211ay. And there are multiple instances below.",
+      "range": {
+        "startLine": 139,
+        "startChar": 37,
+        "endLine": 139,
+        "endChar": 48
+      },
+      "revId": "d360f3c95c3a7fc22501a448f73b39a3b163c533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27edb11d_e11975d1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-01-04T22:19:59Z",
+      "side": 1,
+      "message": "FYI. Different regulatories allows different frequency ranges over 6GHz. US FCC allows 5925 - 7125 MHz, while Europe allows 5925 - 6425 MHz. So channel 213 is outside Europe channel list. We will stich to US regulatory domain for the testing, right?",
+      "range": {
+        "startLine": 151,
+        "startChar": 154,
+        "endLine": 151,
+        "endChar": 157
+      },
+      "revId": "d360f3c95c3a7fc22501a448f73b39a3b163c533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
