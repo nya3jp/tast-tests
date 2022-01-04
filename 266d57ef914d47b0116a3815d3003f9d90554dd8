@@ -16,6 +16,24 @@
       "message": "Is this removal intentional?  It wasn\u0027t mentioned in the commit message.",
       "revId": "266d57ef914d47b0116a3815d3003f9d90554dd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b089c02_7992838d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/crx_manifest_update_url_ignored.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-04T09:12:02Z",
+      "side": 0,
+      "message": "It is. I will add it to the commit message.",
+      "parentUuid": "c5911196_48711c4d",
+      "revId": "266d57ef914d47b0116a3815d3003f9d90554dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
