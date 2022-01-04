@@ -16,6 +16,23 @@
       "message": "Please take a look.",
       "revId": "812d474221133e51f67e377cd95d91f733ba35ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f55c2f3_a5d4899c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-01-04T18:57:43Z",
+      "side": 1,
+      "message": "tast-owners, please take a look.",
+      "revId": "812d474221133e51f67e377cd95d91f733ba35ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
