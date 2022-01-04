@@ -16,6 +16,29 @@
       "message": "Hello Jeremy,\n\nI\u0027ve added hwdep.Touchpad, hwdep.Touchscreen, and hwdep.Keyboard to better identify if DUTs have valid input devices at the beginning of test. Also, modifications were made so that for chromeslates, only screenWakeByPowerButton and screenWakeByScreenTouch are executed.\n\nI might need to create another scenario in parameterization for detachables. Though the ticket\u0027s applicability left out detachables, I think this test should be able to run on them using \"basestate attach/detach\" as a way of switching to tablet mode.",
       "revId": "fa7c70731fe80d38f115989210f346aa50be3710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5c0aca_01af5574",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-04T22:29:25Z",
+      "side": 1,
+      "message": "Anytime you use RunECCommandGetOutput, you should do a chan 0 before and chan restore afterwards. Only ec_adc.go does this today, and it just restores all.\n\nIf you look at src/third_party/hdctools/servo/drv/ec.py, it does `chan save`, `chan 0`, runs the commands, then runs `chan 0xffffffff`, and `chan restore`. It is complicated because some older models don\u0027t have chan save and chan restore.\n\nOtherwise you risk some other logging corrupting your ksstate output.",
+      "range": {
+        "startLine": 466,
+        "startChar": 29,
+        "endLine": 466,
+        "endChar": 56
+      },
+      "revId": "fa7c70731fe80d38f115989210f346aa50be3710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
