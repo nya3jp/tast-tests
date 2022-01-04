@@ -199,10 +199,14 @@ func runARCBinaryWithArgs(ctx context.Context, s *testing.State, a *arc.ARC, com
 	args = append(args, ba.extraArgs...)
 	args = append(args, "--gtest_filter="+ba.testFilter)
 	args = append(args, "--gtest_output=xml:"+arcFilePath+outputXMLFileName)
-	if err := act.StartWithArgs(ctx, tconn, []string{"-W", "-n"}, []string{
-		"--ez", "do-encode", "true",
-		"--esa", "test-args", strings.Join(args, ","),
-		"--es", "log-file", arcFilePath + outputLogFileName}); err != nil {
+
+	opts := arc.MakeActivityStartOptions()
+	opts.WaitForLaunch()
+	opts.AddExtraBool("do-encode", true)
+	opts.AddExtraStringArray("test-args", args)
+	opts.AddExtraString("log-file", arcFilePath+outputLogFileName)
+
+	if err := act.StartWithOptions(ctx, tconn, opts); err != nil {
 		s.Fatal("Failed starting APK main activity: ", err)
 	}
 

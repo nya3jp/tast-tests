@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
@@ -74,9 +75,12 @@ func runSingleDEQPTest(ctx context.Context, a *arc.ARC, tconn *chrome.TestConn, 
 	}
 	defer act.Close()
 
-	prefixArgs := []string{"-W", "-S", "-n"}
-	suffixArgs := []string{"-e", "cmdLine", "deqp --deqp-log-filename=/sdcard/" + name + "-results.qpa --deqp-caselist-file=" + fileName}
-	if err := act.StartWithArgs(ctx, tconn, prefixArgs, suffixArgs); err != nil {
+	opts := arc.MakeActivityStartOptions()
+	opts.WaitForLaunch()
+	opts.ForceStop()
+	opts.AddExtraString("cmdLine", fmt.Sprintf("deqp --deqp-log-filename=/sdcard/%s-results.qpa --deqp-caselist-file=%s", name, fileName))
+
+	if err := act.StartWithOptions(ctx, tconn, opts); err != nil {
 		return errors.Wrapf(err, "failed to start activity for %v", name)
 	}
 

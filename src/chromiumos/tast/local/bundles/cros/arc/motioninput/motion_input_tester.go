@@ -178,8 +178,9 @@ func (t *Tester) readMotionEvents(ctx context.Context) ([]MotionEvent, error) {
 // action to Android, which is subsequently picked up by the MotionInputTest application and handled
 // appropriately.
 func (t *Tester) ClearMotionEvents(ctx context.Context) error {
-	prefixes := []string{"-a", intentActionClearEvents}
-	if err := t.act.StartWithArgs(ctx, t.tconn, prefixes, nil); err != nil {
+	opts := arc.MakeActivityStartOptions()
+	opts.SetIntentAction(intentActionClearEvents)
+	if err := t.act.StartWithOptions(ctx, t.tconn, opts); err != nil {
 		return errors.Wrap(err, "failed to send the clear events intent")
 	}
 	if err := t.ExpectMotionEvents(ctx); err != nil {
