@@ -18,6 +18,57 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "474e37dd_a70b489a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T22:06:10Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks.",
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a9101a_e60bd73a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T22:06:10Z",
+      "side": 1,
+      "message": "Do we need a mutex for handling multiple requests? I think this service will have trouble if two Start requests coming in at the same time.",
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2beef6e9_615c625f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T22:06:10Z",
+      "side": 1,
+      "message": "Just use svc.screenRecorder",
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b509320_3352fb4b",
@@ -61,6 +112,47 @@
         "endLine": 67,
         "endChar": 49
       },
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae47a7e_b562a338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T22:06:10Z",
+      "side": 1,
+      "message": "I think it should simply called \"Stop\"",
+      "parentUuid": "2c8e2ca6_a6a643a8",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 67,
+        "endChar": 49
+      },
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3710f8a4_12d09a38",
+        "filename": "src/chromiumos/tast/services/cros/ui/screen_recorder_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T22:06:10Z",
+      "side": 1,
+      "message": "How about moving file_name to Start instead?",
       "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
