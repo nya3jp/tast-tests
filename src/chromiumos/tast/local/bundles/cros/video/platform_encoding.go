@@ -949,7 +949,7 @@ func PlatformEncoding(ctx context.Context, s *testing.State) {
 	p.Set(perf.Metric{
 		Name:      "KeyFrames",
 		Unit:      "keyframes",
-		Direction: perf.BiggerIsBetter,
+		Direction: perf.SmallerIsBetter,
 	}, float64(keyFrames))
 
 	s.Log(p)
