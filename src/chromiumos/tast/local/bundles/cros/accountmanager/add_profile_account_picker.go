@@ -39,7 +39,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("accountmanager.password1")
 
 	// Reserve one minute for various cleanup.
-	cleanupCtx := ctx
+	lacrosCleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
 	defer cancel()
 
@@ -48,7 +48,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to initialize test: ", err)
 	}
-	defer lacros.CloseLacros(cleanupCtx, l)
+	defer lacros.CloseLacros(lacrosCleanupCtx, l)
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -57,10 +57,16 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Running test cleanup")
-	if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeLacros); err != nil {
-		s.Fatal("Failed to do cleanup: ", err)
-	}
+	cleanupCtx := ctx
+	ctx, cancel1 := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel1()
+
+	defer func(ctx context.Context) {
+		s.Log("Running test cleanup")
+		if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeLacros); err != nil {
+			s.Fatal("Failed to do cleanup: ", err)
+		}
+	}(cleanupCtx)
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 
