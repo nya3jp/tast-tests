@@ -16,6 +16,40 @@
       "message": "Hi Seewai, Kyle, David,\nCan I please get your help in reviewing this?\nThanks,\nJonathan\n",
       "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a43ab40f_0cd9be3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T21:54:04Z",
+      "side": 1,
+      "message": "I am not familiar with how keyboad works. I do have some concern with this GRPC interface will work in keyboard related tests.\n\nHere is one example, I found\n\n```\n\t\tif err :\u003d kb.AccelPress(ctx, \"Alt\"); err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"failed to press alt\")\n\t\t}\n\t\tdefer kb.AccelRelease(ctx, \"Alt\")\n\t\tif err :\u003d testing.Sleep(ctx, 500*time.Millisecond); err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"failed to wait\")\n\t\t}\n\t\tif err :\u003d kb.Accel(ctx, \"Tab\"); err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"failed to type tab\")\n\t\t}\n\t\tif err :\u003d testing.Sleep(ctx, time.Second); err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"failed to wait\")\n\t\t}\n```\nIn this example, we use one single kb for the sequence of operations. With the GRPC interface, we close the kb after each single operation. Will it work?\n\nI am not familiar with how keyboard so I cannot say. I just want a confirmation that this GRPC will work. Thanks.",
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a2d4d2_4f2a9c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T21:54:04Z",
+      "side": 1,
+      "message": "remove blank line.",
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
