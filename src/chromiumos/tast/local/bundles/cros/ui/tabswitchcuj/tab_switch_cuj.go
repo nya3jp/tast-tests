@@ -47,6 +47,7 @@ const (
 type TabSwitchParam struct {
 	BrowserType browser.Type // Chrome type.
 	Tracing     bool         // Whether to turn on tracing.
+	Validation  bool         // Whether to add extra cpu loads before collecting metrics.
 }
 
 // findAnchorURLs returns the unique URLs of the anchors, which matches the pattern.
@@ -164,6 +165,18 @@ func Run(ctx context.Context, s *testing.State) {
 		recorder.EnableTracing(s.OutDir())
 	}
 	defer recorder.Close(closeCtx)
+
+	if param.Validation {
+		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
+		if err := validationHelper.Stress(); err != nil {
+			s.Fatal("Failed to stress: ", err)
+		}
+		defer func() {
+			if err := validationHelper.Release(); err != nil {
+				s.Fatal("Failed to release validationHelper: ", err)
+			}
+		}()
+	}
 
 	for _, data := range []struct {
 		name       string
