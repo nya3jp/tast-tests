@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64a64ea1_7d52e7ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-04T15:40:07Z",
+      "side": 1,
+      "message": "Ruben, since you worked on the autotest before I added you as feature expert for the review. Please let me know if you feel this is incorrect.\n\nThanks for reviewing!",
+      "revId": "ba9501242e447b42a3f7e37459edef6a0ea14404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
