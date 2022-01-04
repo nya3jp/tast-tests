@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/testing"
 )
 
@@ -33,12 +34,22 @@ var serverKeyAddr = testing.RegisterVarString(
 	"The address of ChromeOS UI detection server",
 )
 
+// ScreenshotStrategy holds the different screenshot strategies that can be used for image-based UI detection.
+type ScreenshotStrategy int
+
+// Holds all the screenshot types that can be used.
+const (
+	StableScreenshot ScreenshotStrategy = iota
+	ImmediateScreenshot
+)
+
 // Context provides functionalities for image-based UI automation.
 type Context struct {
-	tconn    *chrome.TestConn
-	detector *uiDetector
-	pollOpts testing.PollOptions
-	options  *Options
+	tconn              *chrome.TestConn
+	detector           *uiDetector
+	pollOpts           testing.PollOptions
+	options            *Options
+	screenshotStrategy ScreenshotStrategy
 }
 
 // New returns a new UI Detection automation instance.
@@ -54,7 +65,8 @@ func New(t *chrome.TestConn, keyType, key, server string) *Context {
 			Interval: 300 * time.Millisecond,
 			Timeout:  60 * time.Second,
 		},
-		options: DefaultOptions(),
+		options:            DefaultOptions(),
+		screenshotStrategy: StableScreenshot,
 	}
 }
 
@@ -65,10 +77,11 @@ func NewDefault(t *chrome.TestConn) *Context {
 
 func (uda *Context) copy() *Context {
 	return &Context{
-		tconn:    uda.tconn,
-		detector: uda.detector,
-		pollOpts: uda.pollOpts,
-		options:  uda.options,
+		tconn:              uda.tconn,
+		detector:           uda.detector,
+		pollOpts:           uda.pollOpts,
+		options:            uda.options,
+		screenshotStrategy: uda.screenshotStrategy,
 	}
 }
 
@@ -90,6 +103,13 @@ func (uda *Context) WithInterval(interval time.Duration) *Context {
 func (uda *Context) WithPollOpts(pollOpts testing.PollOptions) *Context {
 	c := uda.copy()
 	c.pollOpts = pollOpts
+	return c
+}
+
+// WithScreenshotStrategy returns a new Context with the specified screenshot strategy.
+func (uda *Context) WithScreenshotStrategy(s ScreenshotStrategy) *Context {
+	c := uda.copy()
+	c.screenshotStrategy = s
 	return c
 }
 
@@ -125,9 +145,28 @@ func (uda *Context) RightClick(s *Finder) uiauto.Action {
 	return uda.click(s, mouse.RightButton)
 }
 
+// Tap performs a single touchscreen tap.
+func (uda *Context) Tap(s *Finder) uiauto.Action {
+	return action.Retry(uda.options.Retries, func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			loc, err := uda.Location(ctx, s)
+			if err != nil {
+				return errors.Wrapf(err, "failed to find the location of %q", s.desc)
+			}
+
+			ts, err := touch.New(ctx, uda.tconn)
+			if err != nil {
+				return errors.Wrap(err, "failed to create touchscreen")
+			}
+
+			return ts.TapAt(loc.CenterPoint())(ctx)
+		}, &uda.pollOpts)
+	}, uda.options.RetryInterval)
+}
+
 // Location finds the location of a finder in the screen.
 func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) {
-	if err := s.resolve(ctx, uda.detector, uda.tconn, uda.pollOpts); err != nil {
+	if err := s.resolve(ctx, uda.detector, uda.tconn, uda.pollOpts, uda.screenshotStrategy); err != nil {
 		return nil, errors.Wrapf(err, "failed to resolve the finder: %q", s.desc)
 	}
 	return s.location()
