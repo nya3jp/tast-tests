@@ -44,6 +44,7 @@ var StableModels = []string{
 
 // GrammarEnabledModels is a list boards where Grammar Check is enabled.
 var GrammarEnabledModels = []string{
+	"betty",
 	"octopus",
 	"nocturne",
 	"hatch",

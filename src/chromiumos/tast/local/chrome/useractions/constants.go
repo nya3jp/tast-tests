@@ -70,6 +70,7 @@ const (
 	ActionTagEmoji              ActionTag = "Emoji"
 	ActionTagEmojiPicker        ActionTag = "EmojiPicker"
 	ActionTagEmojiSuggestion    ActionTag = "EmojiSuggestion"
+	ActionTagGrammarCheck       ActionTag = "GrammarCheck"
 	ActionTagMultiPaste         ActionTag = "MultiPaste"
 	ActionTagAutoCorrection     ActionTag = "AutoCorrection"
 	ActionTagAutoCapitalization ActionTag = "AutoCapitalization"
