@@ -224,7 +224,12 @@ func startMeasureMediaScanPerfWithApp(ctx context.Context, a *arc.ARC, tconn *ch
 		return nil, err
 	}
 
-	if err := act.StartWithArgs(ctx, tconn, []string{"-S", "-W", "-n"}, []string{"-d", volumeURI}); err != nil {
+	opts := arc.MakeActivityStartOptions()
+	opts.ForceStop()
+	opts.WaitForLaunch()
+	opts.SetDataURI(volumeURI)
+
+	if err := act.StartWithOptions(ctx, tconn, opts); err != nil {
 		act.Close()
 		return nil, err
 	}
