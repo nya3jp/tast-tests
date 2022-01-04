@@ -32,7 +32,7 @@ func init() {
 		Func:         ARCInstallLogging,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that log is uploaded after forced app installation in ARC",
-		Contacts:     []string{"yixie@chromium.org", "arc-eng-muc@google.com"},
+		Contacts:     []string{"yixie@chromium.org", "mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      13 * time.Minute,
