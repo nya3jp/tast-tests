@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c1448d8_ce204c5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-01-04T11:12:54Z",
+      "side": 1,
+      "message": "I\u0027m wondering if it was an intentional decision not to rely on another policy in the test. Adding snijhara (test author). If there are no concerns, I can rewrite the test such that setting up the bookmark happens via a policy instead.",
+      "parentUuid": "44a170a4_97d2e964",
+      "revId": "3e84d839daa303d2fec30a35bf06bff833e6419f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44b0c66b_6d39950c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-15T15:25:19Z",
       "side": 1,
       "message": "In Lacros case, this window stays open while the checks are done in test, while in the Ash case, the browser window is closed by policyutil.ResetChrome().\nIf you want to close the Lacros browser as well, you should place this part into an anonymous function, or inside an s.Run() (the main difference is that s.Run() adds a prefix to the logs).",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "3e84d839daa303d2fec30a35bf06bff833e6419f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "227fc999_891a3cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-01-04T11:12:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "44b0c66b_6d39950c",
       "range": {
         "startLine": 71,
         "startChar": 0,
