@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03add249_19e19999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-04T10:06:56Z",
+      "side": 1,
+      "message": "Should this be `2`? Since defaultStressWorker is 2",
+      "range": {
+        "startLine": 154,
+        "startChar": 44,
+        "endLine": 154,
+        "endChar": 45
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c428c6_4ef6b8ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-04T10:06:56Z",
+      "side": 1,
+      "message": "10ms could be harsh for 2core/2thread devices. Let\u0027s try set to 30ms first.",
+      "range": {
+        "startLine": 173,
+        "startChar": 21,
+        "endLine": 173,
+        "endChar": 26
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5202ee0_2b2678f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-04T10:06:56Z",
+      "side": 1,
+      "message": "should we keep `\"--policy\u003d\"+param.SchedPolicy.String()` here?\n\nThen `fifo` or other real time policy could reuse this path",
+      "range": {
+        "startLine": 263,
+        "startChar": 4,
+        "endLine": 263,
+        "endChar": 16
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aeee704_1a3d4966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-04T10:06:56Z",
+      "side": 1,
+      "message": "is there really \"normal\" policy? I saw only \"other\" in https://github.com/jlelli/rt-tests/blob/master/src/cyclictest/cyclictest.c#L997",
+      "range": {
+        "startLine": 277,
+        "startChar": 13,
+        "endLine": 277,
+        "endChar": 19
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

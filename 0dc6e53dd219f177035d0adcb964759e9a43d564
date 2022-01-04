@@ -22,6 +22,30 @@
       },
       "revId": "0dc6e53dd219f177035d0adcb964759e9a43d564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d13ed4_2f57ac3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-04T10:06:56Z",
+      "side": 1,
+      "message": "For each scheduling period, CFS could only use CPU resource after real time process done doing things (And real time resource could use up to 95% of CPU resource on current ChromeOS). Which means only 5% of CPU resource for rest of the CFS processes.\n\nSo it\u0027s possible to have ~100ms scheduling delay in this case. Maybe we can set the threshold to 100ms for now.",
+      "parentUuid": "cf2cd893_5b26218b",
+      "range": {
+        "startLine": 154,
+        "startChar": 11,
+        "endLine": 154,
+        "endChar": 60
+      },
+      "revId": "0dc6e53dd219f177035d0adcb964759e9a43d564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
