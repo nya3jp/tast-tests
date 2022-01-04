@@ -150,6 +150,11 @@ func ExtensionInstallPolicyCheck(ctx context.Context, s *testing.State) {
 
 // isInstallationAllowed verifies whether the extension should be allowed to install or not.
 func isInstallationAllowed(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (bool, error) {
+	// Ensure google cookies are accepted, it appears when we open the extension link.
+	if err := policyutil.EnsureGoogleCookiesAccepted(ctx, cr.Browser()); err != nil {
+		return false, errors.Wrap(err, "failed to accept cookies")
+	}
+
 	addfinder := nodewith.Role(role.Button).Name("Add to Chrome")
 	blockedfinder := nodewith.Role(role.Button).Name("Blocked by admin")
 
