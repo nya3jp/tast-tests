@@ -24,8 +24,11 @@ const SavedConfigLocation = "/tmp/nvram.cfg"
 type AxType int
 
 const (
+
 	// GtAx11000 is for the GT-Ax11000 device,
 	GtAx11000 AxType = iota
+	// GtAxe11000 is for the GT-Axe11000 device (6e).
+	GtAxe11000
 	// Ax6100 is for the Ax6100 device.
 	Ax6100
 	// Invalid is the default AxType.
@@ -58,6 +61,8 @@ const (
 	Ghz2 BandEnum = iota
 	// Ghz5 corresponds to the 5ghz band on the router.
 	Ghz5
+	// Ghz6 corresponds to the 6ghz band on the router.
+	Ghz6
 )
 
 // RadioEnum is the type for specifying band selection when using the NVRAM commands.
@@ -167,7 +172,15 @@ func BandToRadio(axtype AxType, r BandEnum) RadioEnum {
 	case Ghz2:
 		return Wl0
 	case Ghz5:
+		if axtype == GtAxe11000 {
+			return Wl1
+		}
 		return Wl2
+	case Ghz6:
+		if axtype == GtAxe11000 {
+			return Wl2
+		}
+		return WlInvalid
 	}
 	return WlInvalid
 }
@@ -202,7 +215,7 @@ func Mode(mode ModeEnum) Option {
 	return func(c *Config) {
 		switch mode {
 		case Mode80211ac:
-			if c.Type == GtAx11000 {
+			if c.Type == GtAx11000 || c.Type == GtAxe11000 {
 				for _, band := range []RadioEnum{Wl0, Wl1, Wl2} {
 					c.RouterConfigParams = append(c.RouterConfigParams, ConfigParam{band, KeyHeFeatures, "0"}, ConfigParam{band, KeyTxBfBfeCap, "1"}, ConfigParam{band, KeyTxBfBfrCap, "1"})
 				}
@@ -211,7 +224,7 @@ func Mode(mode ModeEnum) Option {
 			}
 
 		case Mode80211ax:
-			if c.Type == GtAx11000 {
+			if c.Type == GtAx11000 || c.Type == GtAxe11000 {
 				for _, band := range []RadioEnum{Wl0, Wl1, Wl2} {
 					c.RouterConfigParams = append(c.RouterConfigParams, ConfigParam{band, KeyHeFeatures, "3"}, ConfigParam{band, KeyTxBfBfeCap, "5"}, ConfigParam{band, KeyTxBfBfrCap, "5"})
 				}
@@ -255,6 +268,12 @@ func ChanBandwidth(ch int, bw ChanBandwidthEnum) Option {
 		} else if c.Type == Ax6100 {
 			c.RouterConfigParams = append(c.RouterConfigParams, ConfigParam{c.Band, KeyBw, strconv.Itoa(bandw)}, ConfigParam{c.Band, KeyBwCap, strconv.Itoa(bwCap)}, ConfigParam{c.Band, KeyBw160, strconv.Itoa(bw160)})
 		}
-		c.RouterConfigParams = append(c.RouterConfigParams, ConfigParam{c.Band, KeyChanspec, fmt.Sprintf("%d%s", ch, suffix)})
+
+		// GtAxe11000 applies a channel prefix, "6g" if it is transmitting on the 6ghz band.
+		if c.Type == GtAxe11000 && c.Band == Wl2 {
+			c.RouterConfigParams = append(c.RouterConfigParams, ConfigParam{c.Band, KeyChanspec, fmt.Sprintf("6g%d%s", ch, suffix)})
+		} else {
+			c.RouterConfigParams = append(c.RouterConfigParams, ConfigParam{c.Band, KeyChanspec, fmt.Sprintf("%d%s", ch, suffix)})
+		}
 	}
 }
