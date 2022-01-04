@@ -16,6 +16,29 @@
       "message": "Hi reviewers, sorry for the delay, we have addressed all comments, please review, much appreciated.",
       "revId": "11823e8fcd6ec3b87ea65f4d45f4f86d58bfbd53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95783d26_431305ea",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-01-04T18:07:35Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to add these methods, the uiauto package makes performing these tasks easy enough to inline in the tests themselves and we reduce readability by abstracting these away",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 1
+      },
+      "revId": "11823e8fcd6ec3b87ea65f4d45f4f86d58bfbd53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
