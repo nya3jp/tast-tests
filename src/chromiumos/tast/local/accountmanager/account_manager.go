@@ -202,18 +202,6 @@ func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 		return false, errors.Wrap(err, "failed to launch AndroidSettings")
 	}
 
-	defer func(ctx context.Context) error {
-		// Cleanup: close the ARC Settings window.
-		activeWindow, err := ash.GetActiveWindow(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get the active window")
-		}
-		if err := activeWindow.CloseWindow(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to close the active window "+activeWindow.Name)
-		}
-		return nil
-	}(ctx)
-
 	// Scroll until Accounts is visible.
 	scrollLayout := d.Object(androidui.ClassName(scrollClassName),
 		androidui.Scrollable(true))
@@ -312,6 +300,17 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome,
 
 		if err := ui.WaitUntilGone(accountMoreActionsButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait until account is removed")
+		}
+	}
+
+	// Close all windows.
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all open window")
+	}
+	for _, w := range ws {
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to close window (%+v)", w)
 		}
 	}
 
