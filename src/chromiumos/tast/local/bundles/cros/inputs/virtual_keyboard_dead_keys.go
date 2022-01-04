@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -109,6 +110,7 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -128,16 +130,29 @@ func VirtualKeyboardDeadKeys(ctx context.Context, s *testing.State) {
 	defer its.Close()
 
 	inputMethod := testCase.inputMethod
+	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+		s.Fatalf("Failed to set input method to %q: %v: ", inputMethod, err)
+	}
+	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
 	vkbCtx := vkb.NewContext(cr, tconn)
 	inputField := testserver.TextAreaNoCorrectionInputField
 
-	if err := uiauto.Combine("validate dead keys typing",
-		inputMethod.InstallAndActivate(tconn),
+	validateAction := uiauto.Combine("validate dead keys typing",
 		its.ClickFieldUntilVKShown(inputField),
 		vkbCtx.TapKeys(testCase.typingKeys),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.expectedTypingResult),
-	)(ctx); err != nil {
+	)
+
+	if err := useractions.NewUserAction(
+		"VK dead key input",
+		validateAction,
+		uc,
+		&useractions.UserActionCfg{
+			Tags:       []useractions.ActionTag{useractions.ActionTagDeadKey},
+			Attributes: map[string]string{useractions.AttributeInputField: string(inputField)},
+		},
+	).Run(ctx); err != nil {
 		s.Fatal("Failed to verify input: ", err)
 	}
 }
