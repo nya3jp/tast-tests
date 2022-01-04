@@ -405,6 +405,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a12a75_2f1e1787",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-04T01:19:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6c664a99_2555c717",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd91e523_0377267f",
@@ -506,6 +524,24 @@
       "side": 1,
       "message": "We are not able to use ioutil.ReadFile() here, instead TAST helper linuxssh.ReadFile() is used.",
       "parentUuid": "d14d1256_4e9f0e92",
+      "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed1a7ec3_80319931",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/tbt_passive_active_cable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-04T01:19:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac3fb9e3_fb385bb7",
       "revId": "c3fb0488c97de42206fad25d2b93f7c4a7ff542a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
