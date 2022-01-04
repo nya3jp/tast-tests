@@ -420,6 +420,24 @@
       "message": "Why not just pass a full path in a single field?",
       "revId": "269bbb45387275d9b042625957ad39f130eaa037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29a15f6_5caef9e0",
+        "filename": "src/chromiumos/tast/services/cros/tape/tape.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-04T09:31:57Z",
+      "side": 1,
+      "message": "On the DuT I need the filepath separately to first ensure that the folder exists. In the final version I want to have the token in a subfolder in /tmp.",
+      "parentUuid": "ddf578b6_d9a559bb",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
