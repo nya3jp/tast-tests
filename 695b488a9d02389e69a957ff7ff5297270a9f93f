@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60410309_06851ce7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-04T22:17:02Z",
+      "side": 1,
+      "message": "This is not the right check, you need either Servo v4 w/ Type-C or RPM. If you use Helper.SetDUTPower() it will handle both cases, and error if the power can\u0027t be turned off.  So just remove the check here.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2cb2e81_0d5ef409",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-04T22:17:02Z",
+      "side": 1,
+      "message": "The old test checked for AC power here, I would call h.SetDUTPower(true) here instead.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5f12da_ab78fae6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-04T22:17:02Z",
+      "side": 1,
+      "message": "Polling until GetChargerAttached \u003d\u003d false as above would be better than sleeping.",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db42554_13c5a045",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-04T22:17:02Z",
+      "side": 1,
+      "message": "This is the same as h.Servo.GetChargerAttached",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db5db735_d3ef0738",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-04T22:17:02Z",
+      "side": 1,
+      "message": "Instead of returning a map, a struct would be more go-like.",
+      "range": {
+        "startLine": 211,
+        "startChar": 66,
+        "endLine": 211,
+        "endChar": 82
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa8cb0c7_37edcbdd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-04T22:17:02Z",
+      "side": 1,
+      "message": "You need to use \u0027chan 0\u0027 and \u0027chan restore\u0027 whenever you use RunECCommandGetOutput. Also this command is prone to corruption, so retry a few times.",
+      "range": {
+        "startLine": 214,
+        "startChar": 21,
+        "endLine": 214,
+        "endChar": 42
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c474bb24_0692d732",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-04T22:17:02Z",
+      "side": 1,
+      "message": "Also call h.DisconnectDUT to make sure the ssh connection gets closed.",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 11
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
