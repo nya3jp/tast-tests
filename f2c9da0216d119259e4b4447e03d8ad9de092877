@@ -46,6 +46,30 @@
       },
       "revId": "f2c9da0216d119259e4b4447e03d8ad9de092877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9d2580_4dc04b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-04T23:08:38Z",
+      "side": 1,
+      "message": "I understand why you want to click a different location. but as mentioned, randomness should be avoided in test as these locations used are not predictable. i.e., if the size of the text field is changed somehow, the test can be flaky because some randon location may be out of the field. \n\nAt least, use a fixed seed instead of `time.Now().UnixNano()` if you don\u0027t want to use a set of pre-defined different locations.",
+      "parentUuid": "58fafee9_38dc2349",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 101
+      },
+      "revId": "f2c9da0216d119259e4b4447e03d8ad9de092877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
