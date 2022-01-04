@@ -202,18 +202,6 @@ func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 		return false, errors.Wrap(err, "failed to launch AndroidSettings")
 	}
 
-	defer func(ctx context.Context) error {
-		// Cleanup: close the ARC Settings window.
-		activeWindow, err := ash.GetActiveWindow(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "failed to get the active window")
-		}
-		if err := activeWindow.CloseWindow(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to close the active window "+activeWindow.Name)
-		}
-		return nil
-	}(ctx)
-
 	// Scroll until Accounts is visible.
 	scrollLayout := d.Object(androidui.ClassName(scrollClassName),
 		androidui.Scrollable(true))
@@ -274,11 +262,10 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome,
 
 	// Open Account Manager page in OS Settings.
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
-	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton))
+	_, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton))
 	if err != nil {
 		return errors.Wrap(err, "failed to launch Account Manager page")
 	}
-	defer settings.Close(ctx)
 
 	moreActionsButton := nodewith.NameStartingWith("More actions,").Role(role.Button).First()
 	for {
@@ -312,6 +299,17 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome,
 
 		if err := ui.WaitUntilGone(accountMoreActionsButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait until account is removed")
+		}
+	}
+
+	// Close all windows.
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all open window")
+	}
+	for _, w := range ws {
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to close window (%+v)", w)
 		}
 	}
 
