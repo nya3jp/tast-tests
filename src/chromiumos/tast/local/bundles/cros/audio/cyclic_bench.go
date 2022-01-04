@@ -27,6 +27,17 @@ const (
 	otherSched
 )
 
+type affinity int
+
+const (
+	// defaultAff will use all the processors in round-robin order.
+	defaultAff affinity = iota
+	// smallCore will run all the threads on a single small core.
+	smallCore
+	// bigCore will run all the threads on a single big core.
+	bigCore
+)
+
 type schedConfig struct {
 	Policy   schedPolicy // the schedule policy.
 	Priority int         // Priority of the process. If `Policy` is real time, `Priority` is real time priority. If `Policy` is CFS, `Priority` specify the nice value.
@@ -38,6 +49,7 @@ type cyclicTestParameters struct {
 	Threads        int          // Number of threads
 	IntervalUs     int          // Interval time
 	Loops          int          // Number of times
+	Affinity       affinity     // Run cyclictest threads on which sets of processors.
 	P99ThresholdUs int          // P99 latency threshold
 	StressConfig   *schedConfig // the schedule config of the stress process. if `StressConfig` is nil, no stress process will be run.
 }
@@ -78,6 +90,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -92,6 +105,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -106,6 +120,7 @@ func init() {
 					Threads:        4,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -120,6 +135,7 @@ func init() {
 					Threads:        4,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -134,6 +150,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig: &schedConfig{
 						Policy:   rrSched,
@@ -151,6 +168,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig: &schedConfig{
 						Policy:   otherSched,
@@ -168,6 +186,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -182,6 +201,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressConfig:   nil,
 				},
@@ -196,6 +216,7 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: 5000,
 					StressConfig:   nil,
 				},
@@ -210,11 +231,27 @@ func init() {
 					Threads:        1,
 					IntervalUs:     defaultIntervalUs,
 					Loops:          defaultLoops,
+					Affinity:       defaultAff,
 					P99ThresholdUs: 30000,
 					StressConfig: &schedConfig{
 						Policy:   otherSched,
 						Priority: 0,
 					},
+				},
+			},
+			{
+				Name: "rr12_1thread_10ms_big_core",
+				Val: cyclicTestParameters{
+					Config: schedConfig{
+						Policy:   rrSched,
+						Priority: crasPriority,
+					},
+					Threads:        1,
+					IntervalUs:     defaultIntervalUs,
+					Loops:          defaultLoops,
+					Affinity:       bigCore,
+					P99ThresholdUs: defaultP99ThresholdUs,
+					StressConfig:   nil,
 				},
 			},
 		},
@@ -299,7 +336,27 @@ func getNumberOfCPU(ctx context.Context) (int, error) {
 	return -1, errors.New("can't find CPU(s) info in lscpu")
 }
 
+func getAffinityString(ctx context.Context, aff affinity) (string, error) {
+	cpu, err := getNumberOfCPU(ctx)
+	if err != nil {
+		return "", err
+	}
+	switch aff {
+	case defaultAff:
+		return "0-" + strconv.Itoa(cpu-1), nil
+	case smallCore:
+		return "0", nil
+	case bigCore:
+		return strconv.Itoa(cpu - 1), nil
+	}
+	return "", errors.New("unsupported affinity option")
+}
+
 func getCommandContext(ctx context.Context, param cyclicTestParameters) (*testexec.Cmd, error) {
+	affStr, err := getAffinityString(ctx, param.Affinity)
+	if err != nil {
+		return nil, err
+	}
 	switch param.Config.Policy {
 	case rrSched:
 		return testexec.CommandContext(ctx, "cyclictest",
@@ -308,6 +365,7 @@ func getCommandContext(ctx context.Context, param cyclicTestParameters) (*testex
 			"--interval="+strconv.Itoa(param.IntervalUs),
 			"--threads="+strconv.Itoa(param.Threads),
 			"--loops="+strconv.Itoa(param.Loops),
+			"--affinity="+affStr,
 			// When there are multi-threads, the interval of the i-th
 			// thread will be (`interval` + i * `distance`).
 			// Set distance to 0 to make all the intervals equal.
@@ -321,6 +379,7 @@ func getCommandContext(ctx context.Context, param cyclicTestParameters) (*testex
 			"--interval="+strconv.Itoa(param.IntervalUs),
 			"--threads="+strconv.Itoa(param.Threads),
 			"--loops="+strconv.Itoa(param.Loops),
+			"--affinity="+affStr,
 			// When there are multi-threads, the interval of the i-th
 			// thread will be (`interval` + i * `distance`).
 			// Set distance to 0 to make all the intervals equal.
