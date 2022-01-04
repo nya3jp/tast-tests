@@ -6,13 +6,16 @@ package policyutil
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/testing"
 )
 
 // VerifyNotExists checks if the element does not appear during timeout.
@@ -54,6 +57,42 @@ func VerifyNodeState(ctx context.Context, tconn *chrome.TestConn, finder *nodewi
 	}
 
 	return VerifyNotExists(ctx, tconn, finder, timeout)
+}
+
+// EnsureCookiesAccepted ensures that cookies page for the given url is accepted and gone.
+// It will open the url and click on the button with the given ID acceptBtnLocator.
+func EnsureCookiesAccepted(ctx context.Context, br *browser.Browser, url, acceptBtnLocator string) error {
+	conn, err := br.NewConn(ctx, url)
+	if err != nil {
+		return errors.Wrap(err, "failed to open the browser")
+	}
+	defer conn.Close()
+
+	if err := conn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return errors.Wrap(err, "failed waiting for URL to load")
+	}
+
+	var acceptButtonFound bool
+	acceptBtnCheck := fmt.Sprintf("document.getElementById(%q) != null", acceptBtnLocator)
+	if err := conn.Eval(ctx, acceptBtnCheck, &acceptButtonFound); err != nil {
+		return errors.Wrap(err, "failed to get cookies element by id")
+	}
+	if acceptButtonFound {
+		testing.ContextLog(ctx, "cookies page is found")
+		clickAccept := fmt.Sprintf("document.getElementById(%q).click()", acceptBtnLocator)
+		if err := conn.Eval(ctx, clickAccept, nil); err != nil {
+			return errors.Wrap(err, "failed to click accept button")
+		}
+	}
+	return nil
+}
+
+// EnsureGoogleCookiesAccepted ensures that google related cookies are accepted (i.e. search, translate and extensions).
+// It will open google page then click on Accept button.
+func EnsureGoogleCookiesAccepted(ctx context.Context, br *browser.Browser) error {
+	url := "https://www.google.com/?hl=en"
+	acceptBtnLocator := "L2AGLb"
+	return EnsureCookiesAccepted(ctx, br, url, acceptBtnLocator)
 }
 
 // EnsureActiveWinMaximized will ensure that the browser active window is maximized.
