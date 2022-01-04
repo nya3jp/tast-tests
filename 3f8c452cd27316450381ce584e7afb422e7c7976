@@ -33,6 +33,23 @@
       "message": "Swing by tast-reviewer as I think Eric is OOO.",
       "revId": "3f8c452cd27316450381ce584e7afb422e7c7976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e4a843d_8bd0e693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-04T09:39:51Z",
+      "side": 1,
+      "message": "LGTM\nTast Owners review",
+      "revId": "3f8c452cd27316450381ce584e7afb422e7c7976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
