@@ -112,6 +112,11 @@ func ExtensionAllowedTypes(ctx context.Context, s *testing.State) {
 			}
 			defer closeBrowser(cleanupCtx)
 
+			// Ensure google cookies are accepted, it appears when we open the extension link.
+			if err := policyutil.EnsureGoogleCookiesAccepted(ctx, br); err != nil {
+				s.Fatal("Failed to accept cookies: ", err)
+			}
+
 			// Run actual test.
 			if allowed, err := canInstallExtension(ctx, tconn, br, url); err != nil {
 				s.Fatal("Failed to check if extension can be installed: ", err)
