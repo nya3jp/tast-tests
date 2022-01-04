@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25c81558_f4a1a3c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-04T08:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88cd9d2e_1afffe0e",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63e1190d_55b4a5ad",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c68df6b8_d31629fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-04T08:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63e1190d_55b4a5ad",
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3500ab0a_cf1c3880",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-12-06T15:51:31Z",
       "side": 1,
       "message": "use Params for that https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8578d6fc_bebbedca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-04T08:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3500ab0a_cf1c3880",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63c0e7c6_b810ea3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-04T08:48:58Z",
+      "side": 1,
+      "message": "The `cleanupCtx` is used for all cleanup procedures (3 in total) in this function.\n\nShould we separate as two different ctx for cleanup?\nor it is fine to close a `cr` by a ctx without time-reserved?",
+      "parentUuid": "b2e7169e_f954bf56",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e740c07_02fe4f3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
         "patchSetId": 1
@@ -100,6 +190,30 @@
       "writtenOn": "2021-12-06T15:51:31Z",
       "side": 1,
       "message": "alternatively you could wait for the ReadyForPassword state.\nsee https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/lockscreen/signout.go;l\u003d178-180?q\u003dlockscreen.WaitState%20package:chromeos\u0026type\u003dcs",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 47
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6326fbb0_4e8aeab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-04T08:48:58Z",
+      "side": 1,
+      "message": "Thank you for the suggestion, we now apply it to examine that the DUT has logged out.",
+      "parentUuid": "9e740c07_02fe4f3b",
       "range": {
         "startLine": 137,
         "startChar": 0,
@@ -123,6 +237,30 @@
       "writtenOn": "2021-12-06T15:51:31Z",
       "side": 1,
       "message": "I wonder if there could be a race condition:\nlike session stops BEFORE we create waiter for the session manager change?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 55
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3b100e_0d791546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-04T08:48:58Z",
+      "side": 1,
+      "message": "Sorry for not being cautious, we now enhance the procedures to avoid race condition.",
+      "parentUuid": "187a68bd_19e22c5f",
       "range": {
         "startLine": 133,
         "startChar": 0,
