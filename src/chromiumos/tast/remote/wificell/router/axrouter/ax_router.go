@@ -47,7 +47,7 @@ func NewAxRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*
 }
 
 // stageRouterParam changes the router configuration in memory. The actual router configuration does not take effect until restartWirelessService is invoked which pulls the configuration from memory.
-func (r *axRouterStruct) stageRouterParam(ctx context.Context, band BandEnum, key NVRAMKeyEnum, value string) error {
+func (r *axRouterStruct) stageRouterParam(ctx context.Context, band RadioEnum, key NVRAMKeyEnum, value string) error {
 	return r.Host.CommandContext(ctx, "/bin/nvram", "set", fmt.Sprintf("%s_%s=%s", band, key, value)).Run()
 }
 

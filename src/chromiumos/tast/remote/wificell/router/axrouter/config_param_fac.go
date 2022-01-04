@@ -17,5 +17,5 @@ const (
 // SecConfigParamFac defines a Gen() method to generate a ConfigParam list.
 type SecConfigParamFac interface {
 	// Gen builds a list of ConfigParam.
-	Gen() ([]ConfigParam, error)
+	Gen(AxType, BandEnum) ([]ConfigParam, error)
 }

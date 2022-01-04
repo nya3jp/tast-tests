@@ -36,28 +36,28 @@ func init() {
 				// Verifies that DUT can connect to an open 802.11ax on channels 100,104
 				Name: "80211axopen",
 				Val: []axSimpleConnectTestcase{{
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest0"), axrouter.Hidden(false), axrouter.ChanBandwidth(100, axrouter.Bw80)},
-					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(axrouter.Wl2),
+					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}, {
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest1"), axrouter.Hidden(false), axrouter.ChanBandwidth(104, axrouter.Bw80)},
-					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(axrouter.Wl2),
+					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
 			}, {
 				// Verifies that DUT can connect to a hidden 802.11ax network on channel 100, 104
 				Name: "80211axopenhidden",
 				Val: []axSimpleConnectTestcase{{
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest0"), axrouter.Hidden(true), axrouter.ChanBandwidth(100, axrouter.Bw80)},
-					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(axrouter.Wl2),
+					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}, {
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest1"), axrouter.Hidden(true), axrouter.ChanBandwidth(104, axrouter.Bw80)},
-					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(axrouter.Wl2),
+					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
 			},
@@ -65,14 +65,14 @@ func init() {
 				// Verifies that DUT can connect to an open wpa (AES) 802.11ax network on channel 100, 104
 				Name: "80211axwpaaes",
 				Val: []axSimpleConnectTestcase{{
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest0"), axrouter.Hidden(false), axrouter.ChanBandwidth(100, axrouter.Bw80)},
-					routerSecConfFac: axrouter.NewSecWPAConfigParamFac(axrouter.Wl2, "helloworld", axrouter.AES),
+					routerSecConfFac: axrouter.NewSecWPAConfigParamFac("helloworld", axrouter.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}, {
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest1"), axrouter.Hidden(false), axrouter.ChanBandwidth(104, axrouter.Bw80)},
-					routerSecConfFac: axrouter.NewSecWPAConfigParamFac(axrouter.Wl2, "helloworld", axrouter.AES),
+					routerSecConfFac: axrouter.NewSecWPAConfigParamFac("helloworld", axrouter.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
 			},
@@ -80,14 +80,14 @@ func init() {
 				// Verifies that DUT can connect to a hidden (AES) 802.11ax network on channel 100, 104
 				Name: "80211axwpahiddenaes",
 				Val: []axSimpleConnectTestcase{{
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest0"), axrouter.Hidden(true), axrouter.ChanBandwidth(100, axrouter.Bw40)},
-					routerSecConfFac: axrouter.NewSecWPAConfigParamFac(axrouter.Wl2, "helloworld", axrouter.AES),
+					routerSecConfFac: axrouter.NewSecWPAConfigParamFac("helloworld", axrouter.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}, {
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest1"), axrouter.Hidden(true), axrouter.ChanBandwidth(104, axrouter.Bw40)},
-					routerSecConfFac: axrouter.NewSecWPAConfigParamFac(axrouter.Wl2, "helloworld", axrouter.AES),
+					routerSecConfFac: axrouter.NewSecWPAConfigParamFac("helloworld", axrouter.AES),
 					secConfFac:       wpa.NewConfigFactory("helloworld", wpa.Mode(wpa.ModePureWPA), wpa.Ciphers(wpa.CipherCCMP)),
 				}},
 			},
@@ -95,9 +95,9 @@ func init() {
 				// Verifies that DUT can connect to an open 802.11ax on channels 100 with 40Mhz channel width on the 5ghz band
 				Name: "80211axopen40mhz5ghz",
 				Val: []axSimpleConnectTestcase{{
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest0"), axrouter.Hidden(false), axrouter.ChanBandwidth(100, axrouter.Bw40)},
-					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(axrouter.Wl2),
+					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
 			},
@@ -105,9 +105,9 @@ func init() {
 				// Verifies that DUT can connect to an open 802.11ax on channels 100 with 80Mhz channel width on the 5ghz band
 				Name: "80211axopen80mhz5ghz",
 				Val: []axSimpleConnectTestcase{{
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest0"), axrouter.Hidden(false), axrouter.ChanBandwidth(100, axrouter.Bw80)},
-					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(axrouter.Wl2),
+					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
 			},
@@ -115,9 +115,9 @@ func init() {
 				// Verifies that DUT can connect to an open 802.11ax on channels 100 with 160Mhz channel width on the 5ghz band
 				Name: "80211axopen160mhz5ghz",
 				Val: []axSimpleConnectTestcase{{
-					band:             axrouter.Wl2,
+					band:             axrouter.Ghz5,
 					apOpts:           []axrouter.Option{axrouter.Mode(axrouter.Mode80211ax), axrouter.SSID("googleTest0"), axrouter.Hidden(false), axrouter.ChanBandwidth(100, axrouter.Bw160)},
-					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(axrouter.Wl2),
+					routerSecConfFac: axrouter.NewSecOpenConfigParamFac(),
 					secConfFac:       base.NewConfigFactory(),
 				}},
 			},
@@ -185,7 +185,7 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 	defer cancel()
 	// subroutine to be run by each subtest.
 	testOnce := func(ctx context.Context, s *testing.State, band axrouter.BandEnum, options []axrouter.Option, rFac axrouter.SecConfigParamFac, secFac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool) {
-		cfg := axrouter.Config{Band: band,
+		cfg := axrouter.Config{Band: axrouter.BandToRadio(axType, band),
 			Type:              axType,
 			NVRAMOut:          &backupString,
 			RouterRecoveryMap: backupMap}
@@ -197,7 +197,7 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 
 		// Generate security config and update necessary router options
 		if rFac != nil {
-			cfgParamList, err := rFac.Gen()
+			cfgParamList, err := rFac.Gen(axType, band)
 			if err != nil {
 				s.Fatal("Could not generate security ConfigParam list: ", err)
 			}

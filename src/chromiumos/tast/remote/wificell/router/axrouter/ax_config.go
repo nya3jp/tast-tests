@@ -35,7 +35,7 @@ const (
 // Config stores the necessary information for an AX test to run.
 type Config struct {
 	Type               AxType
-	Band               BandEnum
+	Band               RadioEnum
 	SSID               string
 	NVRAMOut           *string
 	RouterRecoveryMap  map[string]ConfigParam
@@ -45,21 +45,33 @@ type Config struct {
 
 // ConfigParam contains the information to configure a parameter on the ax router.
 type ConfigParam struct {
-	Band  BandEnum
+	Band  RadioEnum
 	Key   NVRAMKeyEnum
 	Value string
 }
 
-// BandEnum is the type for specifying band selection when using the NVRAM commands.
-type BandEnum string
+// BandEnum is the type for specifying the radio's transmission frequency desired from the test.
+type BandEnum int
 
 const (
-	// Wl0 is the 2.4Ghz band on the router.
-	Wl0 BandEnum = "wl0"
-	// Wl1 is the first 5Ghz band on the router.
-	Wl1 BandEnum = "wl1"
-	// Wl2 is the second 5Ghz band (gaming) on the router.
-	Wl2 BandEnum = "wl2"
+	// Ghz2 corresponds to the 2ghz band on the router.
+	Ghz2 BandEnum = iota
+	// Ghz5 corresponds to the 5ghz band on the router.
+	Ghz5
+)
+
+// RadioEnum is the type for specifying band selection when using the NVRAM commands.
+type RadioEnum string
+
+const (
+	// Wl0 is the first radio on the router.
+	Wl0 RadioEnum = "wl0"
+	// Wl1 is the second radio on the router.
+	Wl1 RadioEnum = "wl1"
+	// Wl2 is the third radio on the router.
+	Wl2 RadioEnum = "wl2"
+	// WlInvalid is an invalid radio on the router.
+	WlInvalid RadioEnum = "INVALID"
 )
 
 // ModeEnum selects which WiFi protocol should be used for the AP.
@@ -149,6 +161,17 @@ func SSID(ssid string) Option {
 	}
 }
 
+// BandToRadio converts the desired Band to the appropriate radio on the Ax Router.
+func BandToRadio(axtype AxType, r BandEnum) RadioEnum {
+	switch r {
+	case Ghz2:
+		return Wl0
+	case Ghz5:
+		return Wl2
+	}
+	return WlInvalid
+}
+
 // Hidden sets whether the AP is hidden.
 func Hidden(hidden bool) Option {
 	return func(c *Config) {
@@ -180,7 +203,7 @@ func Mode(mode ModeEnum) Option {
 		switch mode {
 		case Mode80211ac:
 			if c.Type == GtAx11000 {
-				for _, band := range []BandEnum{Wl0, Wl1, Wl2} {
+				for _, band := range []RadioEnum{Wl0, Wl1, Wl2} {
 					c.RouterConfigParams = append(c.RouterConfigParams, ConfigParam{band, KeyHeFeatures, "0"}, ConfigParam{band, KeyTxBfBfeCap, "1"}, ConfigParam{band, KeyTxBfBfrCap, "1"})
 				}
 			} else if c.Type == Ax6100 {
@@ -189,7 +212,7 @@ func Mode(mode ModeEnum) Option {
 
 		case Mode80211ax:
 			if c.Type == GtAx11000 {
-				for _, band := range []BandEnum{Wl0, Wl1, Wl2} {
+				for _, band := range []RadioEnum{Wl0, Wl1, Wl2} {
 					c.RouterConfigParams = append(c.RouterConfigParams, ConfigParam{band, KeyHeFeatures, "3"}, ConfigParam{band, KeyTxBfBfeCap, "5"}, ConfigParam{band, KeyTxBfBfrCap, "5"})
 				}
 			} else if c.Type == Ax6100 {
