@@ -35,6 +35,109 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96fa27b_ad9b3451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "I have a few comments. Please take a look. Thanks.",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eef8bc0_b9762ea5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "Don\u0027t worry about breaking up this CL. Thanks.",
+      "parentUuid": "c1e035af_8ee1de0f",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3517039_f7ecf0b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "What if there are multiple New requests? Are they going overwrite the previous one?",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d618d82a_f8ef2bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "First check is not needed.\n\nif len(req.ExtraArgs) \u003e 0",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e1fded_4326d196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "First check is not needed.\n\nif len(req.EnableFeatures) \u003e 0",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f35d0b_59c62fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "First check is not needed.\n\nif len(req.DisableFeatures) \u003e 0",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a40c5848_cda654c2",
@@ -84,6 +187,108 @@
       "side": 1,
       "message": "I am afraid that the classname (Service) and proto (service.proto) could be too generic.",
       "parentUuid": "cb1a38d8_4e867f50",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c507ec_4db5c1ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "Please add a specific user to the email list.",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd448505_12542dc7",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "What if the hostname is an ipv6 address? I don\u0027t think you need to make any code change, but I think you should specify clearly how the string should look like in comments of this function.",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324a08dc_a3813ae2",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "Is it the right thing to kill an existing connection? I would suggest that you can return an error instead.",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324fe8d9_c0da3b9c",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "```\nif pidStr \u003d\u003d \"\" {\n    return nil\n}\n```",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b80b97_c76a813c",
+        "filename": "src/chromiumos/tast/services/cros/browser/chrome_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "What will happend if there are multiple requests?",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c05566_62284c2e",
+        "filename": "src/chromiumos/tast/services/cros/browser/chrome_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-04T20:02:55Z",
+      "side": 1,
+      "message": "What will happend if there are mutliple \"New\" requests? How will Close handle?",
       "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
