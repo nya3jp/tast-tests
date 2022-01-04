@@ -22,6 +22,30 @@
       },
       "revId": "f2c9da0216d119259e4b4447e03d8ad9de092877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fafee9_38dc2349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-04T22:51:05Z",
+      "side": 1,
+      "message": "The reason is commented above. If the first click happened before grammar check trigger, the following click on the same location will not trigger popup window unless click somewhere else. I think it is acceptable.",
+      "parentUuid": "af5fd24b_6942c2c1",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 101
+      },
+      "revId": "f2c9da0216d119259e4b4447e03d8ad9de092877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
