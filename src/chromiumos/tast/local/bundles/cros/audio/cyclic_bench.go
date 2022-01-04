@@ -138,6 +138,42 @@ func init() {
 					StressSched:    otherSched,
 				},
 			},
+			{
+				Name: "normal0_1thread_10ms",
+				Val: cyclicTestParameters{
+					SchedPolicy:    otherSched,
+					Priority:       0,
+					Threads:        1,
+					IntervalUs:     defaultIntervalUs,
+					Loops:          defaultLoops,
+					P99ThresholdUs: defaultP99ThresholdUs,
+					StressSched:    none,
+				},
+			},
+			{
+				Name: "normal0_1thread_10ms_stress_rr20_1workers_per_cpu",
+				Val: cyclicTestParameters{
+					SchedPolicy:    otherSched,
+					Priority:       0,
+					Threads:        1,
+					IntervalUs:     defaultIntervalUs,
+					Loops:          defaultLoops,
+					P99ThresholdUs: 10000,
+					StressSched:    rrSched,
+				},
+			},
+			{
+				Name: "normal0_1thread_10ms_stress_normal_2workers_per_cpu",
+				Val: cyclicTestParameters{
+					SchedPolicy:    otherSched,
+					Priority:       0,
+					Threads:        1,
+					IntervalUs:     defaultIntervalUs,
+					Loops:          defaultLoops,
+					P99ThresholdUs: 10000,
+					StressSched:    otherSched,
+				},
+			},
 		},
 	})
 }
@@ -220,6 +256,39 @@ func getNumberOfCPU(ctx context.Context) (int, error) {
 	return -1, errors.New("can't find CPU(s) info in lscpu")
 }
 
+func getCommandContext(ctx context.Context, param cyclicTestParameters) (*testexec.Cmd, error) {
+	switch param.SchedPolicy {
+	case rrSched:
+		return testexec.CommandContext(ctx, "cyclictest",
+			"--policy=rr",
+			"--priority="+strconv.Itoa(param.Priority),
+			"--interval="+strconv.Itoa(param.IntervalUs),
+			"--threads="+strconv.Itoa(param.Threads),
+			"--loops="+strconv.Itoa(param.Loops),
+			// When there are multi-threads, the interval of the i-th
+			// thread will be (`interval` + i * `distance`).
+			// Set distance to 0 to make all the intervals equal.
+			"--distance=0",
+			"--verbose"), nil
+	case otherSched:
+		return testexec.CommandContext(ctx, "nice",
+			"-n", strconv.Itoa(param.Priority),
+			"cyclictest",
+			"--policy=normal",
+			"--interval="+strconv.Itoa(param.IntervalUs),
+			"--threads="+strconv.Itoa(param.Threads),
+			"--loops="+strconv.Itoa(param.Loops),
+			// When there are multi-threads, the interval of the i-th
+			// thread will be (`interval` + i * `distance`).
+			// Set distance to 0 to make all the intervals equal.
+			"--distance=0",
+			"--verbose"), nil
+	case none:
+		return nil, errors.New("unsupported scheduling policy")
+	}
+	return nil, errors.New("unsupported scheduling policy")
+}
+
 func CyclicBench(ctx context.Context, s *testing.State) {
 	param := s.Param().(cyclicTestParameters)
 
@@ -248,18 +317,11 @@ func CyclicBench(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	out, err := testexec.CommandContext(ctx, "cyclictest",
-		// TODO(eddyhsu): supports other types of policy.
-		"--policy="+param.SchedPolicy.String(),
-		"--priority="+strconv.Itoa(param.Priority),
-		"--interval="+strconv.Itoa(param.IntervalUs),
-		"--threads="+strconv.Itoa(param.Threads),
-		"--loops="+strconv.Itoa(param.Loops),
-		// When there are multi-threads, the interval of the i-th
-		// thread will be (`interval` + i * `distance`).
-		// Set distance to 0 to make all the intervals equal.
-		"--distance=0",
-		"--verbose").Output(testexec.DumpLogOnError)
+	cmd, err := getCommandContext(ctx, param)
+	if err != nil {
+		s.Fatal("Failed to get command context of cyclictest: ", err)
+	}
+	out, err := cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatal("Failed to execute cyclictest: ", err)
 	}
