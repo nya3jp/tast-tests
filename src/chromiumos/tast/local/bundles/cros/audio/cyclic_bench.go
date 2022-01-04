@@ -38,6 +38,7 @@ type cyclicTestParameters struct {
 	Loops          int         // Number of times
 	P99ThresholdUs int         // P99 latency threshold
 	StressSched    schedPolicy // the schedule policy of the stress workload. none implies no stress.
+	StressPri      int         // Priority of the stress process
 }
 
 const (
@@ -45,8 +46,8 @@ const (
 	crasPriority = 12
 	// crasClientPriority indicates the rt-priority of cras client.
 	crasClientPriority = 10
-	// stressPriority indicates the rt-priority of stress threads.
-	stressPriority = 20
+	// defaultStressPriority indicates the default rt-priority of stress threads.
+	defaultStressPriority = 20
 	// defaultIntervalUs is the default interval used in cyclictest.
 	defaultIntervalUs = 10000
 	// defaultLoops is the default number of loops tested in cyclictest.
@@ -76,6 +77,7 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressSched:    none,
+					StressPri:      defaultStressPriority,
 				},
 			},
 			{
@@ -88,6 +90,7 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressSched:    none,
+					StressPri:      defaultStressPriority,
 				},
 			},
 			{
@@ -100,6 +103,7 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressSched:    none,
+					StressPri:      defaultStressPriority,
 				},
 			},
 			{
@@ -112,6 +116,7 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressSched:    none,
+					StressPri:      defaultStressPriority,
 				},
 			},
 			{
@@ -124,10 +129,11 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressSched:    rrSched,
+					StressPri:      defaultStressPriority,
 				},
 			},
 			{
-				Name: "rr12_1thread_10ms_stress_normal_2workers_per_cpu",
+				Name: "rr12_1thread_10ms_stress_normal0_2workers_per_cpu",
 				Val: cyclicTestParameters{
 					SchedPolicy:    rrSched,
 					Priority:       crasPriority,
@@ -136,6 +142,7 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressSched:    otherSched,
+					StressPri:      0,
 				},
 			},
 			{
@@ -148,6 +155,7 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: defaultP99ThresholdUs,
 					StressSched:    none,
+					StressPri:      defaultStressPriority,
 				},
 			},
 			{
@@ -160,10 +168,11 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: 10000,
 					StressSched:    rrSched,
+					StressPri:      defaultStressPriority,
 				},
 			},
 			{
-				Name: "normal0_1thread_10ms_stress_normal_2workers_per_cpu",
+				Name: "normal0_1thread_10ms_stress_normal0_2workers_per_cpu",
 				Val: cyclicTestParameters{
 					SchedPolicy:    otherSched,
 					Priority:       0,
@@ -172,6 +181,7 @@ func init() {
 					Loops:          defaultLoops,
 					P99ThresholdUs: 10000,
 					StressSched:    otherSched,
+					StressPri:      0,
 				},
 			},
 		},
@@ -289,9 +299,7 @@ func getCommandContext(ctx context.Context, param cyclicTestParameters) (*testex
 	return nil, errors.New("unsupported scheduling policy")
 }
 
-func CyclicBench(ctx context.Context, s *testing.State) {
-	param := s.Param().(cyclicTestParameters)
-
+func getStressContext(ctx context.Context, s *testing.State, param cyclicTestParameters) *testexec.Cmd {
 	// Set the timeout of stress to be 10% more of the expected time
 	// of cyclic test in case the stress-ng failed to be killed.
 	timeout := param.Loops * param.IntervalUs / 1000000 * 11 / 10
@@ -302,16 +310,35 @@ func CyclicBench(ctx context.Context, s *testing.State) {
 	}
 	totalWorkers := defaultStressWorker * cpus
 
-	// TODO(eddyhsu): let stress priority configurable.
-	stress := testexec.CommandContext(ctx, "stress-ng",
-		"--cpu="+strconv.Itoa(totalWorkers),
-		"--sched="+param.StressSched.String(),
-		"--sched-prio="+strconv.Itoa(stressPriority),
-		"--timeout="+strconv.Itoa(timeout)+"s")
-	// Working directory of `stress-ng` must be readable and writeable
-	stress.Dir = "/tmp"
+	switch param.StressSched {
+	case rrSched:
+		return testexec.CommandContext(ctx, "stress-ng",
+			"--cpu="+strconv.Itoa(totalWorkers),
+			"--sched=rr",
+			"--sched-prio="+strconv.Itoa(param.StressPri),
+			"--timeout="+strconv.Itoa(timeout)+"s")
+	case otherSched:
+		return testexec.CommandContext(ctx, "nice",
+			"-n", strconv.Itoa(param.StressPri),
+			"--cpu="+strconv.Itoa(totalWorkers),
+			"--sched=other",
+			"--timeout="+strconv.Itoa(timeout)+"s")
+	case none:
+		return nil
+	}
+	return nil
+}
 
-	if param.StressSched != none {
+func CyclicBench(ctx context.Context, s *testing.State) {
+	param := s.Param().(cyclicTestParameters)
+
+	stress := getStressContext(ctx, s, param)
+	// Working directory of `stress-ng` must be readable and writeable
+	if stress != nil {
+		stress.Dir = "/tmp"
+	}
+
+	if stress != nil {
 		if err := stress.Start(); err != nil {
 			s.Fatal("Failed to start stress-ng: ", err)
 		}
@@ -326,7 +353,7 @@ func CyclicBench(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to execute cyclictest: ", err)
 	}
 
-	if param.StressSched != none {
+	if stress != nil {
 		if err := stress.Wait(); err != nil {
 			s.Error("stress-ng failed to finish: ", err)
 		}
