@@ -249,10 +249,10 @@ func RunCrasherProcess(ctx context.Context, cr *chrome.Chrome, opts CrasherOptio
 		crashCaughtMessage = fmt.Sprintf(crashReporterNoConsentLogFormat, pid, usr.Uid, usr.Gid, basename)
 	}
 
-	// Wait until no crash_reporter is running.
-	if err := waitForProcessEnd(ctx, "crash_reporter"); err != nil {
+	// Wait until the crasher has exited and been reaped.
+	if err := waitForProcessEnd(ctx, basename); err != nil {
 		// TODO(crbug.com/970930): include system log message in this error.
-		return nil, errors.Wrap(err, "timeout waiting for crash_reporter to finish")
+		return nil, errors.Wrap(err, "timeout waiting for crasher to finish")
 	}
 
 	// Wait until crash reporter processes the crash, or making sure it didn't.
