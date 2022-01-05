@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687f3fc1_c3cb5bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-05T13:55:12Z",
+      "side": 1,
+      "message": "Maybe add a TODO(+ file a bug) to reduce this time somehow.",
+      "revId": "b51961a1e9a0f710e37e858c899fbe6e35fc9705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8516c3e0_6187a3af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-05T13:55:12Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 89,
+        "startChar": 6,
+        "endLine": 89,
+        "endChar": 11
+      },
+      "revId": "b51961a1e9a0f710e37e858c899fbe6e35fc9705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd7d2432_db6faae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-05T13:55:12Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "b51961a1e9a0f710e37e858c899fbe6e35fc9705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
