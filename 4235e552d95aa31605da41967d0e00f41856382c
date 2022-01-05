@@ -33,6 +33,23 @@
       "message": "Cool, thanks.\nNeed a .go OWNER too",
       "revId": "4235e552d95aa31605da41967d0e00f41856382c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b711bd7_e5049212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308804
+      },
+      "writtenOn": "2022-01-05T02:22:48Z",
+      "side": 1,
+      "message": "Hi Judy, PTAL",
+      "revId": "4235e552d95aa31605da41967d0e00f41856382c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
