@@ -16,6 +16,24 @@
       "message": "@swifton, @michaelcheco, this is the tast test for Firmware Update UI which checks that the app is able to render when the flag is enabled.  Let me know if there is additional elements in the UI we want to add to the render check.  I used the package name \"firmwareupdate\" and \"firmwareupdateapp\" because \"fwupd\" was already used under \"firmware\" and wanted to avoid confusion between the two.",
       "revId": "9793cdb02c9376260cd4d383ce729d145ce98526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61248c1a_53ec137a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510407
+      },
+      "writtenOn": "2022-01-05T07:11:18Z",
+      "side": 1,
+      "message": "It\u0027s probably a question for michaelcheco@ -- I\u0027ve never worked with tast tests. That said, I don\u0027t think this app has very many elements -- just the app itself and the modal dialog for the installation process.",
+      "parentUuid": "c8e29cb4_982aeace",
+      "revId": "9793cdb02c9376260cd4d383ce729d145ce98526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
