@@ -128,6 +128,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a48282_b25686a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T23:41:04Z",
+      "side": 1,
+      "message": "Thanks, I added the default case to return an error.  wanted to keep the error signature even when the chance of it happening is very slim.",
+      "parentUuid": "f847231d_9f861d2d",
+      "range": {
+        "startLine": 71,
+        "startChar": 53,
+        "endLine": 71,
+        "endChar": 58
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea314186_c987f357",
@@ -141,6 +165,30 @@
       "writtenOn": "2022-01-05T15:31:17Z",
       "side": 1,
       "message": "One common use case of nologin is to interact with the signin screen.\nBut to do this we also need to specify an extra chrome option to give us accessibility tree access on the sign in screen:\nchrome.LoadSigninProfileExtension(s.RequiredVar(\"ui.signinProfileTestExtensionManifestKey\"))\n\nI can definitely see this being useful for Mobly users. Can you make a note of this somewhere (if you have a bug for the work we need to do for accessibility tree service eventually).",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2077bb5_15fe6df0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T23:41:04Z",
+      "side": 1,
+      "message": "Thanks, I can add the option \"LoadSigninProfileExtension\" in this request.  Will reach out to you offline on the mechanics.",
+      "parentUuid": "ea314186_c987f357",
       "range": {
         "startLine": 87,
         "startChar": 0,
@@ -347,6 +395,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91e3c555_aa972c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T23:41:04Z",
+      "side": 1,
+      "message": "Upon more research, there is a relatively new \"browser\" package and browser.go which serve as abstraction on top of Chrome and Lacros. So I think I should avoid using browser to avoid  confusion.\nIdeally, I was really hoping that the services can more or less stick with the same lingo we use internally. e.g. The underlying class local/chrome/chrome.go and its functionality is exposed through chrome_service.go.",
+      "parentUuid": "4ea49f35_a760837c",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "244c05c5_146504be",
         "filename": "src/chromiumos/tast/local/common/shared_object.go",
         "patchSetId": 1
@@ -358,6 +424,30 @@
       "writtenOn": "2022-01-05T14:59:04Z",
       "side": 1,
       "message": "the",
+      "range": {
+        "startLine": 27,
+        "startChar": 39,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63197df_971c0a2a",
+        "filename": "src/chromiumos/tast/local/common/shared_object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T23:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "244c05c5_146504be",
       "range": {
         "startLine": 27,
         "startChar": 39,
@@ -426,6 +516,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32aa5c40_38cb9446",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T23:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee9bfc84_494746c6",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f2531b2_baf2495f",
@@ -462,6 +576,30 @@
       "writtenOn": "2022-01-05T14:59:04Z",
       "side": 1,
       "message": "should this be a const somewhere?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf53741_1746f109",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T23:41:04Z",
+      "side": 1,
+      "message": "I wanted to keep this value in the strictly within test, as the server side is able to accept any value.\n\nAs you might have noticed, this function shows up a few times. Tast-lint has restrictions imports to be only within the package or its children, making sharing impossible.",
+      "parentUuid": "6b4c63b3_aee84c8f",
       "range": {
         "startLine": 66,
         "startChar": 1,
@@ -594,6 +732,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1a5121_f8cf7a13",
+        "filename": "src/chromiumos/tast/services/cros/browser/chrome_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T23:41:04Z",
+      "side": 1,
+      "message": "In terms of non concurrent New() request, new one overwrites existing one.\n\nIn terms of dealing with concurrency, I am under the impression that it is not an issue where there is typically one drone talking to one DUT in an synchronous fashion. Other service implementation that I came across do not appear to have mutex guard against concurrent access.",
+      "parentUuid": "a0b80b97_c76a813c",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09c05566_62284c2e",
@@ -607,6 +763,24 @@
       "writtenOn": "2022-01-04T20:02:55Z",
       "side": 1,
       "message": "What will happend if there are mutliple \"New\" requests? How will Close handle?",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4a06e7f_ab90fefb",
+        "filename": "src/chromiumos/tast/services/cros/browser/chrome_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T23:41:04Z",
+      "side": 1,
+      "message": "A close() when there is no session in place will yield an error.  I modified the comment to indicate that.",
+      "parentUuid": "09c05566_62284c2e",
       "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
