@@ -6,6 +6,7 @@ package hermes
 
 import (
 	"context"
+	"strconv"
 
 	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/errors"
@@ -90,25 +91,25 @@ func (e *EUICC) EnabledProfile(ctx context.Context) (*Profile, error) {
 	return nil, nil
 }
 
-// GetTestEUICC will return the test EUICC if found.
-func GetTestEUICC(ctx context.Context) (*EUICC, error) {
+// GetTestEUICC will return the test EUICC and its slot number if found.
+func GetTestEUICC(ctx context.Context) (*EUICC, int, error) {
 	h, err := GetHermesManager(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "could not get Hermes Manager DBus object")
+		return nil, -1, errors.Wrap(err, "could not get Hermes Manager DBus object")
 	}
 
 	props, err := dbusutil.NewDBusProperties(ctx, h.DBusObject)
 	if err != nil {
-		return nil, errors.Wrap(err, "unable to get Hermes manager properties")
+		return nil, -1, errors.Wrap(err, "unable to get Hermes manager properties")
 	}
 	euiccPaths, err := props.GetObjectPaths(hermesconst.ManagerPropertyAvailableEuiccs)
 	if err != nil {
-		return nil, errors.Wrap(err, "unable to get available euiccs")
+		return nil, -1, errors.Wrap(err, "unable to get available euiccs")
 	}
 	for _, euiccPath := range euiccPaths {
 		obj, err := dbusutil.NewDBusObject(ctx, DBusHermesService, DBusHermesEuiccInterface, euiccPath)
 		if err != nil {
-			return nil, errors.Wrap(err, "unable to get EUICC object")
+			return nil, -1, errors.Wrap(err, "unable to get EUICC object")
 		}
 		response := obj.Call(ctx, "IsTestEuicc")
 		if response.Err != nil || len(response.Body) != 1 {
@@ -119,8 +120,12 @@ func GetTestEUICC(ctx context.Context) (*EUICC, error) {
 		}
 
 		testing.ContextLogf(ctx, "Find Test EUICC on path: %s", euiccPath)
-		return &EUICC{obj}, nil
+		slot, err := strconv.Atoi(string(euiccPath)[len(string(euiccPath))-1:])
+		if err != nil {
+			return nil, -1, errors.Wrap(err, "couldn't get test euicc slot number")
+		}
+		return &EUICC{obj}, slot, nil
 	}
 
-	return nil, errors.Wrap(err, "no test euicc found")
+	return nil, -1, errors.Wrap(err, "no test euicc found")
 }
