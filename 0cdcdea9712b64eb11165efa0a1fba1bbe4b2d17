@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d27164_c43e35be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-05T03:33:04Z",
+      "side": 1,
+      "message": "Oops.. typo. Thanks!",
+      "parentUuid": "03add249_19e19999",
+      "range": {
+        "startLine": 154,
+        "startChar": 44,
+        "endLine": 154,
+        "endChar": 45
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c428c6_4ef6b8ec",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-04T10:06:56Z",
       "side": 1,
       "message": "10ms could be harsh for 2core/2thread devices. Let\u0027s try set to 30ms first.",
+      "range": {
+        "startLine": 173,
+        "startChar": 21,
+        "endLine": 173,
+        "endChar": 26
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "514e6d62_e57de0e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-05T03:33:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c428c6_4ef6b8ec",
       "range": {
         "startLine": 173,
         "startChar": 21,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6d9aa42_b583a481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-05T03:33:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5202ee0_2b2678f6",
+      "range": {
+        "startLine": 263,
+        "startChar": 4,
+        "endLine": 263,
+        "endChar": 16
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aeee704_1a3d4966",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1d02a2_cdfe6882",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-05T03:33:04Z",
+      "side": 1,
+      "message": "oh, when setting `normal`, it will fall back to `other`. Thanks for the catch!",
+      "parentUuid": "8aeee704_1a3d4966",
+      "range": {
+        "startLine": 277,
+        "startChar": 13,
+        "endLine": 277,
+        "endChar": 19
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9258a248_796f42c8",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-01-04T10:12:16Z",
       "side": 1,
       "message": "should we remove this?",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 305,
+        "endChar": 52
+      },
+      "revId": "0cdcdea9712b64eb11165efa0a1fba1bbe4b2d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b70d87_2404afc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-05T03:33:04Z",
+      "side": 1,
+      "message": "It\u0027s resolved in the following changes.\n\nThis change only enables the configuration of `cyclictest` itself.\nConfiguration of `stress` is extended in the next change.",
+      "parentUuid": "9258a248_796f42c8",
       "range": {
         "startLine": 305,
         "startChar": 1,
