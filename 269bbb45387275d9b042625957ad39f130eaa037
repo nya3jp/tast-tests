@@ -438,6 +438,24 @@
       "parentUuid": "ddf578b6_d9a559bb",
       "revId": "269bbb45387275d9b042625957ad39f130eaa037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886c082d_8e77e17f",
+        "filename": "src/chromiumos/tast/services/cros/tape/tape.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-05T09:36:39Z",
+      "side": 1,
+      "message": "You can split the path https://pkg.go.dev/path/filepath#Dir",
+      "parentUuid": "d29a15f6_5caef9e0",
+      "revId": "269bbb45387275d9b042625957ad39f130eaa037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
