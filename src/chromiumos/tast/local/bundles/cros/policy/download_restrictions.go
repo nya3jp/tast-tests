@@ -21,10 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -155,24 +152,6 @@ func DownloadRestrictions(ctx context.Context, s *testing.State) {
 				if err := os.Remove(filesapp.DownloadPath + "download_restrictions.zip"); err != nil {
 					s.Error("Failed to remove download_restrictions.zip: ", err)
 				}
-			}
-
-			// Check that "Save page as..." menu option has the right restrictions.
-			ui := uiauto.New(tconn)
-			if err := ui.LeftClick(
-				nodewith.ClassName("BrowserAppMenuButton"))(ctx); err != nil {
-				s.Fatal("Failed to left click the browser app menu button: ", err)
-			}
-			if err := ui.LeftClick(nodewith.Name("More tools"))(ctx); err != nil {
-				s.Fatal("Failed to left click the more tools menu option button: ", err)
-			}
-			var expectedRestriction = restriction.None
-			if param.blocked {
-				expectedRestriction = restriction.Disabled
-			}
-			if err := ui.CheckRestriction(nodewith.Name("Save page as… Ctrl+S"),
-				expectedRestriction)(ctx); err != nil {
-				s.Error("Failed to check the save page as button restrictions: ", err)
 			}
 		})
 	}
