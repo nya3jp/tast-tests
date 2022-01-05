@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512d8c11_6aab56d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-01-05T10:01:27Z",
+      "side": 1,
+      "message": "This patch addresses the following:\n\n- Add chan 0 before and restoration after when RunECCommandGetOutput is used.\n- Add a section for detachables in test parameterization, and relevant changes to handle scanning for keyboard and touchpad differently.\n- This patch has run successfully on the following devices:\n        Coachz [--board\u003dstrongbad]\n        Delbin [--board\u003dvolteer]\n        Hayato [--board\u003dasurada]\n        Limozeen [--board\u003dtrogdor]\n        Boten [--board\u003ddedede]\n        Sparky360 [--board\u003doctopus]\n",
+      "revId": "838ab8dc0c692a556a65b780dbf684190c7ff964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

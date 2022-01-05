@@ -39,6 +39,30 @@
       },
       "revId": "fa7c70731fe80d38f115989210f346aa50be3710",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a968f201_2a07d282",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/screen_wake_tablet_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-01-05T10:01:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e5c0aca_01af5574",
+      "range": {
+        "startLine": 466,
+        "startChar": 29,
+        "endLine": 466,
+        "endChar": 56
+      },
+      "revId": "fa7c70731fe80d38f115989210f346aa50be3710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
