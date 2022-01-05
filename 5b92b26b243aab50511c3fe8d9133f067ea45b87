@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf3da1f_3ea98522",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_keyboard_backlight_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-05T16:59:12Z",
+      "side": 1,
+      "message": "Wouldn\u0027t ChromeEC + KeyboardBacklight be enough?",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 55
+      },
+      "revId": "5b92b26b243aab50511c3fe8d9133f067ea45b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
