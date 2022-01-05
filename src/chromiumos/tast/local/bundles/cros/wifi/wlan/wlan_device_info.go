@@ -24,6 +24,7 @@ const (
 	QualcommAtherosQCA6174     = "Qualcomm Atheros QCA6174"
 	QualcommAtherosQCA6174SDIO = "Qualcomm Atheros QCA6174 SDIO"
 	QualcommWCN3990            = "Qualcomm WCN3990"
+	QualcommWCN6855            = "Qualcomm WCN6855"
 	Intel7260                  = "Intel 7260"
 	Intel7265                  = "Intel 7265"
 	Intel9000                  = "Intel 9000"
@@ -50,6 +51,7 @@ var lookupWLANDev = map[DevInfo]string{
 	{vendor: "0x168c", device: "0x003e"}: QualcommAtherosQCA6174,
 	{vendor: "0x105b", device: "0xe09d"}: QualcommAtherosQCA6174,
 	{vendor: "0x0271", device: "0x050a"}: QualcommAtherosQCA6174SDIO,
+	{vendor: "0x17cb", device: "0x1103"}: QualcommWCN6855,
 	{vendor: "0x8086", device: "0x08b1"}: Intel7260,
 	{vendor: "0x8086", device: "0x08b2"}: Intel7260,
 	{vendor: "0x8086", device: "0x095a"}: Intel7265,
