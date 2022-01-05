@@ -34,6 +34,7 @@ const (
 		`.shadowRoot.getElementById("toggle")`
 	recentPhotosToggleJS = multideviceSubpageJS +
 		`.shadowRoot.getElementById("phoneHubCameraRollItem")` +
+		`.shadowRoot.querySelector("settings-multidevice-feature-item")` +
 		`.shadowRoot.querySelector("settings-multidevice-feature-toggle")` +
 		`.shadowRoot.getElementById("toggle")`
 	featureCheckedJS               = `.checked`
