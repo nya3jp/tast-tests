@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76a8b6c3_c0f10ec8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377300
+      },
+      "writtenOn": "2022-01-05T21:36:19Z",
+      "side": 1,
+      "message": "I guess it should not matter how the bookmarks are added be it policy or through the window. AFAIR, I tried to follow the steps a user would normally follow to add a bookmark and then verify it\u0027s visibility according to the policy. \n\nUsing policy to add bookmarks also helps to reduce our dependency on any UI changes in the bookmark logic and makes test easier to maintain by avoiding changes like - https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/2691209.",
+      "parentUuid": "3c1448d8_ce204c5e",
+      "revId": "3e84d839daa303d2fec30a35bf06bff833e6419f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44b0c66b_6d39950c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/bookmark_bar_enabled.go",
         "patchSetId": 4
