@@ -112,6 +112,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea314186_c987f357",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T15:31:17Z",
+      "side": 1,
+      "message": "One common use case of nologin is to interact with the signin screen.\nBut to do this we also need to specify an extra chrome option to give us accessibility tree access on the sign in screen:\nchrome.LoadSigninProfileExtension(s.RequiredVar(\"ui.signinProfileTestExtensionManifestKey\"))\n\nI can definitely see this being useful for Mobly users. Can you make a note of this somewhere (if you have a bug for the work we need to do for accessibility tree service eventually).",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d618d82a_f8ef2bab",
         "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
         "patchSetId": 1
