@@ -54,7 +54,7 @@ func Regulatory(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get device info: ", err)
 	}
 
-	// Intel WiFi should be self-managed.
+	// List of self-managed platforms
 	selfManagedDevices := []string{
 		wlan.Intel7260,
 		wlan.Intel7265,
@@ -63,6 +63,7 @@ func Regulatory(ctx context.Context, s *testing.State) {
 		wlan.Intel22260,
 		wlan.Intel22560,
 		wlan.IntelAX211,
+		wlan.QualcommWCN6855,
 	}
 
 	expectSelfManaged := false
