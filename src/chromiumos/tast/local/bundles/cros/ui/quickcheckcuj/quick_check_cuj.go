@@ -169,7 +169,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 	if pauseMode == Lock {
 		// Lock the screen before recording the test.
 		if err := LockScreen(ctx, tconn); err != nil {
-			s.Fatal("Failed to lock screen")
+			s.Fatal("Failed to lock screen: ", err)
 		}
 
 		defer func() {
