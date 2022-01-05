@@ -108,6 +108,7 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 		notNowDes          = "NOT NOW"
 		notNowText         = "NOT NOW"
 		notNowID           = "android:id/autofill_save_no"
+		neverButtonID      = "com.google.android.gms:id/credential_save_reject"
 		okText             = "OK"
 		passwordDes        = "Password"
 		textClassName      = "android.widget.EditText"
@@ -117,7 +118,7 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 
 	// Enter email address.
 	MessengerEmailID := s.RequiredVar("arcappcompat.Messenger.emailid")
-	enterEmailAddress := d.Object(ui.ClassName(textClassName), ui.Description(userNameDes))
+	enterEmailAddress := d.Object(ui.ClassName(textClassName), ui.DescriptionMatches("(?i)"+userNameDes))
 	if err := enterEmailAddress.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterEmailAddress doesn't exist: ", err)
 	} else if err := enterEmailAddress.Click(ctx); err != nil {
@@ -128,7 +129,7 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 
 	// Enter Password.
 	MessengerPassword := s.RequiredVar("arcappcompat.Messenger.password")
-	enterPassword := d.Object(ui.ClassName(textClassName), ui.Description(passwordDes))
+	enterPassword := d.Object(ui.ClassName(textClassName), ui.DescriptionMatches("(?i)"+passwordDes))
 	if err := enterPassword.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("EnterPassword doesn't exist: ", err)
 	} else if err := enterPassword.Click(ctx); err != nil {
@@ -137,11 +138,19 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 		s.Fatal("Failed to enterPassword: ", err)
 	}
 
-	clickOnLoginButton := d.Object(ui.ClassName(viewGroupClassName), ui.Description(loginDes))
+	clickOnLoginButton := d.Object(ui.ClassName(viewGroupClassName), ui.DescriptionMatches("(?i)"+loginDes))
 	if err := clickOnLoginButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("clickOnLoginButton doesn't exist: ", err)
 	} else if err := clickOnLoginButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on clickOnLoginButton: ", err)
+	}
+
+	// Click on never button.
+	neverButton := d.Object(ui.ID(neverButtonID))
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
 	}
 
 	// Click on not now button for saving password.
@@ -183,9 +192,10 @@ func launchAppForMessenger(ctx context.Context, s *testing.State, tconn *chrome.
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
-	// Check for homePageVerifier.
-	homePageVerifier := d.Object(ui.ClassName(viewGroupClassName), ui.Description(cameraDes))
-	if err := homePageVerifier.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Fatal("homePageVerifier doesn't exist: ", err)
+	// Check for launch verifier.
+	launchVerifier := d.Object(ui.PackageName(appPkgName))
+	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+		testutil.DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
+		s.Fatal("launchVerifier doesn't exists: ", err)
 	}
 }
