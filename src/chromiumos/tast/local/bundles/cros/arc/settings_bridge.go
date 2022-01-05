@@ -153,7 +153,7 @@ func testAccessibilitySync(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 					return err
 				}
 				return nil
-			}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 				return errors.Wrapf(err, "could not toggle %s to %t", feature, enable)
 			}
 		}
@@ -298,6 +298,10 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating test API connection failed: ", err)
+	}
+
+	if err := a.WaitIntentHelper(ctx); err != nil {
+		s.Fatal("Failed to wait for ArcIntentHelper: ", err)
 	}
 
 	// Run accessibility test.
