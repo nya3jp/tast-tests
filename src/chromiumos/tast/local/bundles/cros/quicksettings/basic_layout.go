@@ -175,11 +175,11 @@ func checkButtons(ctx context.Context, res *basicLayoutTestResources) error {
 		quicksettings.LockButton,
 		quicksettings.SettingsButton,
 		quicksettings.CollapseButton,
+		quicksettings.VolumeToggle,
 		quicksettings.PodIconButton(quicksettings.SettingPodNetwork),
 		quicksettings.PodIconButton(quicksettings.SettingPodBluetooth),
 		quicksettings.PodIconButton(quicksettings.SettingPodDoNotDisturb),
 		quicksettings.PodIconButton(quicksettings.SettingPodNightLight),
-		quicksettings.PodIconButton(quicksettings.SettingPodVolume),
 	} {
 		nodeInfo, err := res.ui.Info(ctx, node)
 		if err != nil || nodeInfo == nil {
@@ -307,5 +307,6 @@ func enableAccessAndKeyboard(ctx context.Context, res *basicLayoutTestResources)
 		res.pc.Click(nodewith.Role(role.CheckBox).First()),
 		res.pc.Click(nodewith.Role(role.Button).Name("Add")),
 		res.ui.WaitUntilExists(nodewith.HasClass("list-item").First()),
+		setting.SetToggleOption(res.cr, "Show input options in the shelf", false),
 	)(ctx)
 }

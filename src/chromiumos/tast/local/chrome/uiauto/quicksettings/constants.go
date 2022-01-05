@@ -56,6 +56,9 @@ var BrightnessSlider = nodewith.Name("Brightness").ClassName("Slider").Role(role
 // VolumeSlider is the finder for the Quick Settings volume slider.
 var VolumeSlider = nodewith.Name("Volume").ClassName("Slider").Role(role.Slider)
 
+// VolumeToggle is the finder for the button that toggles the volume's mute status.
+var VolumeToggle = nodewith.Role(role.ToggleButton).NameStartingWith("Toggle Volume")
+
 // MicGainSlider is the finder for the Quick Settings mic gain slider.
 // The Finder is identical to the volume slider, but it's located on a different
 // page of Quick Settings.
@@ -90,5 +93,4 @@ const (
 	SettingPodNearbyShare   SettingPod = "Nearby Share"
 	SettingPodKeyboard      SettingPod = "keyboard"
 	SettingPodScreenCapture SettingPod = "Screen capture"
-	SettingPodVolume        SettingPod = "Volume"
 )
