@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e03e3fd3_3d78d767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T19:37:39Z",
+      "side": 1,
+      "message": "Can you use golang struct tags (e.g like json annotations) to do this? I\u0027ve used them before to convert similar-but-not-quite-equal data sets \n\nThe fact that one half here is auto-generated from the proto and the other is setup to convert from javascript to golang probably means you cannot edit either side though :-/",
+      "parentUuid": "21168fb0_adcc5c3a",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfc904e4_1b7ae076",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service_test.go",
         "patchSetId": 1
