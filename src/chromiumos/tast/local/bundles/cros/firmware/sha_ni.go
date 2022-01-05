@@ -21,7 +21,7 @@ func init() {
 			"chromeos-firmware@google.com", // CrOS Firmware Developers
 		},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
-		HardwareDeps: hwdep.D(hwdep.X86()),
+		HardwareDeps: hwdep.D(hwdep.CPUSupportsSHANI()),
 	})
 }
 
