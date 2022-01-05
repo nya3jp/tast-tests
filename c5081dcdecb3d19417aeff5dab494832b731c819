@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "899d9774_28377756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T23:58:17Z",
+      "side": 1,
+      "message": "is this a new thing? haven\u0027t seen it before, just wondering if it\u0027s supposed to be here",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "c5081dcdecb3d19417aeff5dab494832b731c819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068ed6fa_f75a5ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T23:58:17Z",
+      "side": 1,
+      "message": "might be nice to use DumpUITreeWithScreenshotOnError here (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/faillog/ui_tree.go;l\u003d25?q\u003ddumpuitreewithscreenshotonerror), I\u0027ve started to prefer using this since the built-in screenshot capture on error isn\u0027t always consistent.",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "c5081dcdecb3d19417aeff5dab494832b731c819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3dd4fe_906c6f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning_disabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T23:58:17Z",
+      "side": 1,
+      "message": "using testing.Poll in this way can introduce subtle race conditions, here\u0027s a more idiomatic example of polling for a negative condition up until a duration:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d410-430",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "c5081dcdecb3d19417aeff5dab494832b731c819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "722413b4_9b205a7a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_receive_ui.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T23:58:17Z",
+      "side": 1,
+      "message": "not used",
+      "range": {
+        "startLine": 94,
+        "startChar": 83,
+        "endLine": 94,
+        "endChar": 104
+      },
+      "revId": "c5081dcdecb3d19417aeff5dab494832b731c819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
