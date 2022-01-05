@@ -114,7 +114,7 @@ func waitUntilDownloadComplete(ctx context.Context, photoName string, sourceFile
 			return errors.Errorf("Photo download not complete yet: expected %d bytes, downloaded %d bytes", sourceFileSizeBytes, currentSizeBytes)
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
 		return errors.Wrap(err, "failed to wait for photo download to complete")
 	}
 	return nil
