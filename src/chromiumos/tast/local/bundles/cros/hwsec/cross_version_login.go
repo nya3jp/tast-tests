@@ -63,6 +63,22 @@ func init() {
 				"cross_version_login/R98-14388.0.0_betty_20220105_data.tar.gz",
 				"cross_version_login/R98-14388.0.0_betty_20220105_config.json",
 			},
+		}, {
+			Name:              "tpm_dynamic",
+			ExtraSoftwareDeps: []string{"tpm_dynamic"},
+			Val: []string{
+				"R96-14268.0.0_reven-vmtest_20220103",
+				"R97-14324.0.0_reven-vmtest_20220103",
+				"R98-14388.0.0_reven-vmtest_20220105",
+			},
+			ExtraData: []string{
+				"cross_version_login/R96-14268.0.0_reven-vmtest_20220103_config.json",
+				"cross_version_login/R96-14268.0.0_reven-vmtest_20220103_data.tar.gz",
+				"cross_version_login/R97-14324.0.0_reven-vmtest_20220103_config.json",
+				"cross_version_login/R97-14324.0.0_reven-vmtest_20220103_data.tar.gz",
+				"cross_version_login/R98-14388.0.0_reven-vmtest_20220105_config.json",
+				"cross_version_login/R98-14388.0.0_reven-vmtest_20220105_data.tar.gz",
+			},
 		}},
 	})
 }
