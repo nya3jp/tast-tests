@@ -115,7 +115,7 @@ func Audible(ctx context.Context, s *testing.State) {
 func launchAppForAudible(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		getStartedButtonText = "Get started"
-		homeDes              = "Open left navigation panel"
+		homeDes              = "Search"
 	)
 
 	// Click on get started button.
@@ -128,7 +128,7 @@ func launchAppForAudible(ctx context.Context, s *testing.State, tconn *chrome.Te
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for homePageVerifier.
-	homePageVerifier := d.Object(ui.Description(homeDes))
+	homePageVerifier := d.Object(ui.DescriptionMatches("(?i)" + homeDes))
 	if err := homePageVerifier.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Fatal("homePageVerifier doesn't exists: ", err)
 	}
