@@ -70,6 +70,30 @@
       },
       "revId": "97ee680978f240b186274ae5785df4c41b8fb9b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81dd224b_047f2d3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-05T06:57:46Z",
+      "side": 1,
+      "message": "seems capitalized character is still invalid, maybe nice_n20 nice_p19 nice_p0 (?)",
+      "parentUuid": "542d3a3a_4fcadd21",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 16
+      },
+      "revId": "97ee680978f240b186274ae5785df4c41b8fb9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
