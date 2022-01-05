@@ -22,6 +22,30 @@
       },
       "revId": "684c52192359691b436454fa2de5da2a7c2359de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02746ea9_3dfbab68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-05T05:51:26Z",
+      "side": 1,
+      "message": "Yes, that makes sense.\nChanged to use nice to avoid ambiguity.",
+      "parentUuid": "f7833d40_6d9f4708",
+      "range": {
+        "startLine": 144,
+        "startChar": 11,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "684c52192359691b436454fa2de5da2a7c2359de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
