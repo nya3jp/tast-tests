@@ -52,6 +52,59 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d2106f_25229136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-05T05:20:47Z",
+      "side": 1,
+      "message": "Replied with explanation on mapping in earlier comment.",
+      "parentUuid": "ed4c0612_97ad6b5b",
+      "revId": "7b010af56966f297f579cd6137005d5fdd5faed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd29940b_5bc51719",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-05T05:20:47Z",
+      "side": 1,
+      "message": "\u003e\u003e But before we continue, do we know why this happens?\n\nI checked with risan@, the aidUnknown should actually be aidOverflowUid. \n\nSince the uid in Chrome side is 0 (root), which does not map to any valid uid in the container.  In this case, quoting from link below: \"This value is returned whenever a uid that has no mapping in the user namespace is returned to userspace\" - This value being 65534.\nhttp://cs/pi-arc-dev/system/core/libcutils/include/private/android_filesystem_config.h?l\u003d181\u0026rcl\u003dd0b7230cbe2822e3bdfe6af51e353c3a6e977642\n\nhttps://crrev.com/c/3300149 changed the GID from debug/tracing to debugfs-access.\nThe 605 (debugfs-access) to 5005 (vendor_arc_debugfs) GID mapping is explained in this CL: https://crrev.com/c/1175514/7/arc/container-bundle/README.md.\n\n\u003e\u003e Behind this, gid is changed to expected value but not uid. Is it expected?\nYes, see below.\n\nChrome:\n```\nlocalhost ~ # ls -laZ /sys/kernel/debug/tracing\ntotal 0\ndrwxr-xr-x.  6 root debugfs-access u:object_r:debugfs_tracing:s0      0 Jan  4 20:00 .\n```\nARC++ Container:\n```\ncaroline_cheets:/ $ ls -laZ /sys/kernel/debug/tracing                                                                                   \ntotal 0\ndrwxr-xr-x  6 overflowuid vendor_arc_debugfs u:object_r:debugfs_tracing:s0       0 2022-01-04 20:00 .\n```",
+      "parentUuid": "4382e80a_56796b8e",
+      "revId": "7b010af56966f297f579cd6137005d5fdd5faed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f04f01_2cb59d27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-05T05:20:47Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "revId": "7b010af56966f297f579cd6137005d5fdd5faed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af8e092b_e2366ad5",
@@ -65,6 +118,30 @@
       "writtenOn": "2022-01-04T18:48:34Z",
       "side": 1,
       "message": "This probably should be aidVendorArcDebugFs\nchrome debug_fs differs from vendor_arc_debugfs",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "7b010af56966f297f579cd6137005d5fdd5faed8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4cd8711_a669be66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/file_system_permissions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-05T05:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8e092b_e2366ad5",
       "range": {
         "startLine": 41,
         "startChar": 2,
