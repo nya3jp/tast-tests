@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20b91039_8cf189f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-01-05T00:50:37Z",
+      "side": 1,
+      "message": "Can you elobrate more on this? Why we latter on remove the logic.",
+      "parentUuid": "efddebe0_c8e79b42",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "399def1a08f374b886fb47a20298831f9a6b61df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3772a245_5e1c5806",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
         "patchSetId": 6

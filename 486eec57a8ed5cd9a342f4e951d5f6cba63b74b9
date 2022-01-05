@@ -16,6 +16,98 @@
       "message": "ping",
       "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9db36581_ad1b5523",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-01-05T00:50:37Z",
+      "side": 1,
+      "message": "Add more comment about its side effect e.g. copy sceneLog back and save under outdir.",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9a3af4_c8f6a1c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-01-05T00:50:37Z",
+      "side": 1,
+      "message": "sceneLogPrefix\nsceneLog :\u003d fmt.Sprintf(\"/tmp/%s_%t.i420\", sceneLogPrefix, enableFaceAe)",
+      "range": {
+        "startLine": 52,
+        "startChar": 100,
+        "endLine": 52,
+        "endChar": 108
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "318bc90c_3b781d39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-01-05T00:50:37Z",
+      "side": 1,
+      "message": "redundent, also include the meaning of return value in your comment.\ne.g. Returns some float32 value and int64 value with some meaning or for some purpose.",
+      "range": {
+        "startLine": 51,
+        "startChar": 89,
+        "endLine": 51,
+        "endChar": 90
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35941210_9ec40f96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-01-05T00:50:37Z",
+      "side": 1,
+      "message": "Why we don\u0027t need to early return when |err !\u003d nil| like the PS6?\nIdeally we should distinguish different error type e.g. intended error or unintended error and returned when unintended error happen.",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
