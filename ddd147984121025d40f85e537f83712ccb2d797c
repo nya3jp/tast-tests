@@ -89,6 +89,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f847231d_9f861d2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T14:59:04Z",
+      "side": 1,
+      "message": "There is nothing in this function that can return this error. Do you need error handling (e.g default cases in the switch statement)?",
+      "range": {
+        "startLine": 71,
+        "startChar": 53,
+        "endLine": 71,
+        "endChar": 58
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d618d82a_f8ef2bab",
         "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
         "patchSetId": 1
@@ -193,6 +216,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e34d53a5_f72ef16b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T14:59:04Z",
+      "side": 1,
+      "message": "I don\u0027t like \"browser\" as a name because the chrome service doesn\u0027t actually do any browser stuff :) It is just about logging in and out",
+      "parentUuid": "ad93c143_9031a1f5",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244c05c5_146504be",
+        "filename": "src/chromiumos/tast/local/common/shared_object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T14:59:04Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 27,
+        "startChar": 39,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5c507ec_4db5c1ad",
         "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
         "patchSetId": 1
@@ -204,6 +268,75 @@
       "writtenOn": "2022-01-04T20:02:55Z",
       "side": 1,
       "message": "Please add a specific user to the email list.",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee9bfc84_494746c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T14:59:04Z",
+      "side": 1,
+      "message": "Make it clearer that it is the new tcp grpc server",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2531b2_baf2495f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T14:59:04Z",
+      "side": 1,
+      "message": "Can you add a parameterized test for this being True. The use of the service in a non-ideal state is interesting to me",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4c63b3_aee84c8f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T14:59:04Z",
+      "side": 1,
+      "message": "should this be a const somewhere?",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 23
+      },
       "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
