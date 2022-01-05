@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "349fb02e_295e82cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-05T10:04:53Z",
+      "side": 1,
+      "message": "Thanks for pointing that out and providing the reference. I adjusted the test accordingly.",
+      "parentUuid": "d17ee54e_ec96091b",
+      "revId": "ba9501242e447b42a3f7e37459edef6a0ea14404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82ce6a4c_9108dc82",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "590cc952_1b0e343a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-05T10:04:53Z",
+      "side": 1,
+      "message": "Changed the test to table driven test and also included the unset option. The timeout was increased a bit to account for the additional test case.",
+      "parentUuid": "82ce6a4c_9108dc82",
+      "revId": "ba9501242e447b42a3f7e37459edef6a0ea14404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b238dd9c_999e6cfa",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-01-04T15:51:09Z",
       "side": 1,
       "message": "To be less racy, start the reader before setting the policy.",
+      "revId": "ba9501242e447b42a3f7e37459edef6a0ea14404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2efa10a_5c8bd79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-05T10:04:53Z",
+      "side": 1,
+      "message": "Thanks for the hint, the reader is now created before setting the policy",
+      "parentUuid": "b238dd9c_999e6cfa",
       "revId": "ba9501242e447b42a3f7e37459edef6a0ea14404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
