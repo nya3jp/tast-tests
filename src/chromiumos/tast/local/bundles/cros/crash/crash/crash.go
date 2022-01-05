@@ -185,7 +185,7 @@ func waitForProcessEnd(ctx context.Context, name string) error {
 		}
 		// pgrep return code 1: no process matched
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}, &testing.PollOptions{Timeout: 60 * time.Second}) // chrome can take up to 60s to reap crash reporter.
 }
 
 // RunCrasherProcess runs the crasher process.
