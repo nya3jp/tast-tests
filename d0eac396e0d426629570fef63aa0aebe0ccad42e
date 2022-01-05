@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cbde62d_19afbe0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-01-05T21:20:29Z",
+      "side": 1,
+      "message": "hmm, not very sure this is true.\nCould you please elaborate how this applied to 8GB devices?\nAlso this probably should mention Guest ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "d0eac396e0d426629570fef63aa0aebe0ccad42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
