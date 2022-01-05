@@ -33,6 +33,46 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "923f1f3dcec20160ea9452198c1afb0be7f16e9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39d55a6_8b8b8ccc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-01-05T01:10:39Z",
+      "side": 1,
+      "message": "+2 but comments inside",
+      "revId": "923f1f3dcec20160ea9452198c1afb0be7f16e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aab294a_34aadf7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_crash_data_survival.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2022-01-05T01:10:39Z",
+      "side": 1,
+      "message": "1) I\u0027d leave a comment that though WaitForAllDBusServices is essentially just waiting for seeing cryptohomed on dbus, the additional getCryptohomedPID cycle makes sure that the pid is different, so is still useful.\n\n2) better yet, let\u0027s do\n```\n\tif err :\u003d dc.WaitForAllDBusServices(ctx); err !\u003d nil {\n\t\ts.Fatal(\"DBus services did not return: \", err)\n\t}\n\tpid, err :\u003d getCryptohomedPID(ctx, r)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"cryptohomed pid unavailable\")\n\t}\n\tif pid \u003d\u003d lastPid {\n\t\treturn errors.Errorf(\"cryptohomed pid %d did not change\", pid)\n\t}\n```\nno need for the 2nd cycle since WaitForAllDBusServices already ensures that cryptohomed is running",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "923f1f3dcec20160ea9452198c1afb0be7f16e9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
