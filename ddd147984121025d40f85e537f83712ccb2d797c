@@ -89,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "469f0527_9b40115b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T17:46:43Z",
+      "side": 1,
+      "message": "Yes, it would overwrite the previous one. I want to provide a similar end user behavior as how a Tast test would call a Chrome.New() without needing to find out the existing state of the current session, unless they explicit want to TryReuseSession.  chrome.New() should handle the previous session if there is one.\n\nThis does not address the potential concurrent access issue. We can discuss more in the other CL comments on the Mutex and concurrency.",
+      "parentUuid": "c3517039_f7ecf0b5",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f847231d_9f861d2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
         "patchSetId": 1
@@ -150,6 +168,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fed363a_ff7da028",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T17:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d618d82a_f8ef2bab",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62e1fded_4326d196",
@@ -167,6 +203,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57479d4_c2f0e64d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T17:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62e1fded_4326d196",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61f35d0b_59c62fcf",
@@ -180,6 +234,24 @@
       "writtenOn": "2022-01-04T20:02:55Z",
       "side": 1,
       "message": "First check is not needed.\n\nif len(req.DisableFeatures) \u003e 0",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d588af0b_c1460d70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T17:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61f35d0b_59c62fcf",
       "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -313,6 +385,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8763bba8_42a655db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T17:46:43Z",
+      "side": 1,
+      "message": "Thanks, I guess I will put my name on it",
+      "parentUuid": "c5c507ec_4db5c1ad",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee9bfc84_494746c6",
@@ -399,6 +489,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52c3abb1_be849a47",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T17:46:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd448505_12542dc7",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "324a08dc_a3813ae2",
@@ -416,6 +524,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a94c4f_6fdf34ca",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T17:46:43Z",
+      "side": 1,
+      "message": "Regarding the mechanism of kill the cros server process, I fail to find a more elegant way other than sending a SIG* to the process, especially for this instance of the StopCrosServer call where we are attempting to clean up potential lingering process from previous sessions.\n\nI will implement the suggestion of returning an error.",
+      "parentUuid": "324a08dc_a3813ae2",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "324fe8d9_c0da3b9c",
@@ -429,6 +555,24 @@
       "writtenOn": "2022-01-04T20:02:55Z",
       "side": 1,
       "message": "```\nif pidStr \u003d\u003d \"\" {\n    return nil\n}\n```",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96df1c47_f520800a",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-05T17:46:43Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "324fe8d9_c0da3b9c",
       "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
