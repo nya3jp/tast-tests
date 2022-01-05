@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "828f3d2c_7daca980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-05T13:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3902315e_dba38585",
+      "range": {
+        "startLine": 33,
+        "startChar": 84,
+        "endLine": 33,
+        "endChar": 91
+      },
+      "revId": "6fb24649aaf5715fd9227397455355791dad494b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cee6f981_911096fd",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-05T12:53:25Z",
       "side": 1,
       "message": "nit: add space after // and end with a .",
+      "range": {
+        "startLine": 53,
+        "startChar": 61,
+        "endLine": 53,
+        "endChar": 63
+      },
+      "revId": "6fb24649aaf5715fd9227397455355791dad494b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd10546_3b57b523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-05T13:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee6f981_911096fd",
       "range": {
         "startLine": 53,
         "startChar": 61,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d4eb0c_1c9b04ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-05T13:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99b2ea7_b7c7275d",
+      "revId": "6fb24649aaf5715fd9227397455355791dad494b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a13fb795_43338d97",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6653f9ac_3c74f94b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-05T13:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13fb795_43338d97",
+      "revId": "6fb24649aaf5715fd9227397455355791dad494b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd869372_6fb5fcc0",
@@ -94,6 +178,24 @@
       "writtenOn": "2022-01-05T12:53:25Z",
       "side": 1,
       "message": "Maybe instead of using a for loop, you can just unroll it. I expect the code to be more readable.",
+      "revId": "6fb24649aaf5715fd9227397455355791dad494b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "536f7ab3_3a77816b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-05T13:51:01Z",
+      "side": 1,
+      "message": "Done, looks much nicer now :)",
+      "parentUuid": "cd869372_6fb5fcc0",
       "revId": "6fb24649aaf5715fd9227397455355791dad494b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
