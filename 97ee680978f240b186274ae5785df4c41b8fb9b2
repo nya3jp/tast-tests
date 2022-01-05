@@ -22,6 +22,30 @@
       },
       "revId": "97ee680978f240b186274ae5785df4c41b8fb9b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0f67274_9299bf29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-05T05:52:34Z",
+      "side": 1,
+      "message": "It will cause invalid test name error.\nI added a comment above",
+      "parentUuid": "51baa843_182717a7",
+      "range": {
+        "startLine": 155,
+        "startChar": 15,
+        "endLine": 155,
+        "endChar": 16
+      },
+      "revId": "97ee680978f240b186274ae5785df4c41b8fb9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
