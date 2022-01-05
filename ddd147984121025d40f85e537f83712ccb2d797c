@@ -257,6 +257,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ea49f35_a760837c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-05T17:41:47Z",
+      "side": 1,
+      "message": "How about authentication/service.go?",
+      "parentUuid": "e34d53a5_f72ef16b",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "244c05c5_146504be",
         "filename": "src/chromiumos/tast/local/common/shared_object.go",
         "patchSetId": 1
