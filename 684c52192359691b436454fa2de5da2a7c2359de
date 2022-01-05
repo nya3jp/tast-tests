@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7833d40_6d9f4708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-05T04:31:05Z",
+      "side": 1,
+      "message": "let\u0027s have `normal-20_1thread_10ms` and `normal19_1thread_10ms` to check the highest and lowest priority results as well.\n\nI\u0027m considering using `nice0`, `nice-20` and `nice19` directly to avoid confusion. wdyt?\n\nSince `prio` in kernel have different meaning (https://elixir.bootlin.com/linux/latest/source/kernel/sched/core.c#L6986) and will map\n\n- real-time 1 ~ 99 (low-high) to 98-0\n- nice 19 ~ -20 (low-high) to 139-100\n\nthe `PRI` option in `ps` could list this out (`ps -AT -eo pri,pid,nice,comm`)",
+      "range": {
+        "startLine": 144,
+        "startChar": 11,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "684c52192359691b436454fa2de5da2a7c2359de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
