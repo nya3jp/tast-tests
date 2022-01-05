@@ -228,10 +228,6 @@ func PodIconButton(setting SettingPod) *nodewith.Finder {
 		return nodewith.HasClass("NetworkFeaturePodButton")
 	}
 
-	if setting == SettingPodVolume {
-		return nodewith.HasClass("UnifiedSliderButton").NameContaining(string(setting))
-	}
-
 	// The pod icon names change based on their state, but a substring containing the setting name stays
 	// the same regardless of state, so we can match that in the name attribute.
 	return nodewith.HasClass("FeaturePodIconButton").NameContaining(string(setting))
