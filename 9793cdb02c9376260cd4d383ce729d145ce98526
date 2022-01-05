@@ -34,6 +34,40 @@
       "parentUuid": "c8e29cb4_982aeace",
       "revId": "9793cdb02c9376260cd4d383ce729d145ce98526",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ce501f_eadd223d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-01-05T15:07:00Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "9793cdb02c9376260cd4d383ce729d145ce98526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beffb563_80fb4f30",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/firmwareupdateapp/firmwareupdateapp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-01-05T15:07:00Z",
+      "side": 1,
+      "message": "Can we verify that an element exists in addition to opening the app? You can use this element for ex: https://source.chromium.org/chromium/chromium/src/+/main:ash/webui/firmware_update_ui/resources/firmware_update_app.html;l\u003d9",
+      "revId": "9793cdb02c9376260cd4d383ce729d145ce98526",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
