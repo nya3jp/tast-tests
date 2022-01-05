@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22885c9b_f4cf5ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/webcodecs_decode.js",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-01-05T08:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74233569_cf8e0c5b",
+      "revId": "af0ed35ca34ea7b1dbf8ceaee56f189b74a9dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16fab924_fbd501bf",
