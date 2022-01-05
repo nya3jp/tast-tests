@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c8f8856_c070c324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T16:11:02Z",
+      "side": 1,
+      "message": "2022 everywhere",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf38b99_e919996b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T16:11:02Z",
+      "side": 1,
+      "message": "this is the name already :)",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18a2d4d2_4f2a9c69",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
         "patchSetId": 2
@@ -48,6 +94,52 @@
       "writtenOn": "2022-01-04T21:54:04Z",
       "side": 1,
       "message": "remove blank line.",
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "144d6b88_0e6ad06c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T16:11:02Z",
+      "side": 1,
+      "message": "what do these map to on ChromeOS? My keyboard doesn\u0027t list them. Is F1\u003dBack, F2\u003dRefresh?",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719f379f_7d276314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-05T16:11:02Z",
+      "side": 1,
+      "message": "Not sure what the difference between Accel and AccelPress is...",
+      "range": {
+        "startLine": 75,
+        "startChar": 28,
+        "endLine": 75,
+        "endChar": 38
+      },
       "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
