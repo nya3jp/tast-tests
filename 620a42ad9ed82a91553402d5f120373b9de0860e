@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84968476_8ebdd707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T22:42:07Z",
+      "side": 1,
+      "message": "use :\u003d here to assign the new variables, then you don\u0027t have to initialize them as empty strings above.",
+      "range": {
+        "startLine": 71,
+        "startChar": 45,
+        "endLine": 71,
+        "endChar": 46
+      },
+      "revId": "620a42ad9ed82a91553402d5f120373b9de0860e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b19b43c_76dbc185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T22:42:07Z",
+      "side": 1,
+      "message": "Do these buttons have unique IDs as HTML attributes? If so, using that might be better long-term than a UI finder with NameContaining and ClassName. There are a couple ways to play around with HTML attributes if you\u0027re interested:\n* HTML attributes can be accessed from the NodeInfo struct (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d147?q\u003dhtmlattributes). There currently isn\u0027t a nodewith Finder that supports matching HTML attributes, though one could probably be added without much difficulty.\n* You could use ossettings.ChromeConn to run javascript against OS settings (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/ossettings/ossettings.go;l\u003d174-186). Tends to be more stable than UI automation, but less end-to-end.\n\nNot super important, though. Just came to mind as these ClassNames seem fairly generic/not entirely in our control.",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 107
+      },
+      "revId": "620a42ad9ed82a91553402d5f120373b9de0860e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41469444_30e597e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T22:42:07Z",
+      "side": 1,
+      "message": "you could probably just uiauto.Combine all of these, with some comments thrown in where it helps",
+      "range": {
+        "startLine": 126,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 4
+      },
+      "revId": "620a42ad9ed82a91553402d5f120373b9de0860e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57edee3d_727b817d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T22:42:07Z",
+      "side": 1,
+      "message": "nit: wrap in quotes for clarity",
+      "range": {
+        "startLine": 146,
+        "startChar": 17,
+        "endLine": 146,
+        "endChar": 37
+      },
+      "revId": "620a42ad9ed82a91553402d5f120373b9de0860e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3315833a_1b4b88f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T22:42:07Z",
+      "side": 1,
+      "message": "this is a bit awkward, is there a better way to check if the button is disabled? the node\u0027s Restriction attribute may reflect the button\u0027s enabled/disabled status (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d150?q\u003drestriction.Restriction)",
+      "range": {
+        "startLine": 147,
+        "startChar": 88,
+        "endLine": 147,
+        "endChar": 98
+      },
+      "revId": "620a42ad9ed82a91553402d5f120373b9de0860e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d24ae84_5e03086e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T22:42:07Z",
+      "side": 1,
+      "message": "nit: end doc comments with a period.",
+      "range": {
+        "startLine": 218,
+        "startChar": 22,
+        "endLine": 218,
+        "endChar": 23
+      },
+      "revId": "620a42ad9ed82a91553402d5f120373b9de0860e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820b005f_7d6aa3c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-05T22:42:07Z",
+      "side": 1,
+      "message": "consider naming these to make it obvious what we\u0027re returning",
+      "range": {
+        "startLine": 219,
+        "startChar": 99,
+        "endLine": 219,
+        "endChar": 113
+      },
+      "revId": "620a42ad9ed82a91553402d5f120373b9de0860e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
