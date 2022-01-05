@@ -33,6 +33,24 @@
       "message": "I\u0027m still seing failures for the test\n\nhttps://tastboard.corp.google.com/test/arc.SettingsBridge.vm",
       "revId": "71998518ca4fa2798f3a389b6be6dd44fa0932a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b81285_64303df9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-01-05T02:26:12Z",
+      "side": 1,
+      "message": "Thanks, I assume you\u0027re pointing the volteer/collis failure on R99-14435.0.0 as all other failures are ARC boot failure. I\u0027ve put a quick analysis in b/199480377#comment12 and will do a follow up before I submit this promotion CL.",
+      "parentUuid": "2bf34cc7_aa9b154f",
+      "revId": "71998518ca4fa2798f3a389b6be6dd44fa0932a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
