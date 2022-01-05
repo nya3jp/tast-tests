@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ada164_d908e2da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-05T12:59:51Z",
+      "side": 1,
+      "message": "Thanks.\nNow I confirmed it passed on volteer once.",
+      "parentUuid": "39327d6c_a3e1cf38",
+      "revId": "6d8734bcfc99379866da6ba95c2e1f4399db1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7b75039_ea279ed2",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-01-05T02:06:29Z",
       "side": 1,
       "message": "nit: Is it common to create a new instance every time it\u0027s used, compared with the option of creating it at the start of the test and pass it around to sub modules?",
+      "revId": "6d8734bcfc99379866da6ba95c2e1f4399db1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213604ee_1e098185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-05T12:59:51Z",
+      "side": 1,
+      "message": "Receiving *chrome.TestConn and creating a new instance of uiauto.Context inside the function looks somewhat common pattern, like seen in uiauto child libraries.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go;l\u003d121;drc\u003d466fd26ccfe7cc4b08e890dd379bfb3f5ca4f977",
+      "parentUuid": "e7b75039_ea279ed2",
       "revId": "6d8734bcfc99379866da6ba95c2e1f4399db1b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
