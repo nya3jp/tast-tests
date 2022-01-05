@@ -351,7 +351,7 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 			if err := ui.Exists(settingsButton)(ctx); err == nil {
 				actions = append(actions,
 					uiauto.NamedAction("click settings button",
-						ui.LeftClickUntil(settingsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(backgroundTab))))
+						ui.WithTimeout(longUITimeout).LeftClickUntil(settingsButton, ui.WaitUntilExists(backgroundTab))))
 			} else {
 				// If the screen width is not enough, the settings button will be moved to more options.
 				moreOptions := nodewith.Name("More meeting control").Ancestor(webArea)
