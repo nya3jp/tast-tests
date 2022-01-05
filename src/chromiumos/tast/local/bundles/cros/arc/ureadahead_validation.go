@@ -13,13 +13,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/shirou/gopsutil/mem"
-
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -42,35 +41,24 @@ func init() {
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			// VM ureadahead should only be validated on 8GB+ boards. Please see arc.DataCollector for details.
+			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
 		}},
 		// Minimum acceptable.
 		Timeout: 5 * time.Minute,
 	})
 }
 
-// ureadaheadPackRequired returns true in case ureadahead is required for the current device.
-func ureadaheadPackRequired(ctx context.Context, vmEnabled bool) (bool, error) {
-	// please see arc.DataCollector for description.
-	const minVMMemoryKB = 7500000
-
-	if !vmEnabled {
-		// For container ureadahead pack is always required.
-		return true, nil
-	}
-
-	m, err := mem.VirtualMemory()
-	if err != nil {
-		return false, errors.Wrap(err, "failed to get memory info")
-	}
-
-	return m.Total > uint64(minVMMemoryKB*1024), nil
-}
-
 func UreadaheadValidation(ctx context.Context, s *testing.State) {
 	const (
 		// Names of ureadahead dump logs.
-		ureadaheadLogName   = "ureadahead.log"
-		ureadaheadVMLogName = "vm_ureadahead.log"
+		ureadaheadLogName      = "ureadahead.log"
+		ureadaheadGuestLogName = "guest_ureadahead.log"
+
+		// Normally generated host ureadahead pack covers >300MB of data.
+		minAcceptableUreadaheadPackSizeKB = 300 * 1024
+		// Guest ureadahead pack is smaller than host from stainless data.
+		minAcceptableGuestUreadaheadPackSizeKB = 100 * 1024
 	)
 
 	vmEnabled, err := arc.VMEnabled()
@@ -89,15 +77,7 @@ func UreadaheadValidation(ctx context.Context, s *testing.State) {
 		if !os.IsNotExist(err) {
 			s.Fatalf("Failed to check ureadahead pack exists %s: %v", packPath, err)
 		}
-		required, err := ureadaheadPackRequired(ctx, vmEnabled)
-		if err != nil {
-			s.Fatalf("Failed to check if ureadahead pack %s required: %v", packPath, err)
-		}
-		if required {
-			s.Fatalf("ureadahead pack %s does not exist but required", packPath)
-		}
-		testing.ContextLogf(ctx, "ureadahead pack %s does not exist and is not required", packPath)
-		return
+		s.Fatalf("Expected ureadahead pack %s does not exist", packPath)
 	}
 
 	logPath := filepath.Join(s.OutDir(), ureadaheadLogName)
@@ -123,20 +103,20 @@ func UreadaheadValidation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open log file: ", err)
 	}
 	defer logFile.Close()
-	if err = checkPackFileDump(ctx, logPath); err != nil {
+	if err = checkPackFileDump(ctx, logPath, minAcceptableUreadaheadPackSizeKB); err != nil {
 		s.Fatalf("Failed to verify ureadahead pack file dump, please check %q: %v", ureadaheadLogName, err)
 	}
 
 	// If VM, also verify guest OS ureadahead dump.
 	if vmEnabled {
-		vmLogPath := filepath.Join(s.OutDir(), ureadaheadVMLogName)
+		vmLogPath := filepath.Join(s.OutDir(), ureadaheadGuestLogName)
 		if err = dumpGuestPack(ctx, vmLogPath); err != nil {
-			s.Fatal("Failed to dump ureadahead pack in the guest OS: ", err)
+			s.Fatal("Failed to dump guest ureadahead pack: ", err)
 		}
 
 		// Verify the guest pack file dump.
-		if err = checkPackFileDump(ctx, vmLogPath); err != nil {
-			s.Fatalf("Failed to verify ureadahead pack file dump, please check %q: %v", ureadaheadVMLogName, err)
+		if err = checkPackFileDump(ctx, vmLogPath, minAcceptableGuestUreadaheadPackSizeKB); err != nil {
+			s.Fatalf("Failed to verify guest ureadahead pack file dump, please check %q: %v", ureadaheadGuestLogName, err)
 		}
 	}
 }
@@ -184,10 +164,7 @@ func dumpGuestPack(ctx context.Context, logPath string) error {
 
 // checkPackFileDump verifies the validity of the generated pack file using
 // ureadahead's own pack file dump functionality.
-func checkPackFileDump(ctx context.Context, logPath string) error {
-	// normally generated ureadahead pack covers >300MB of data.
-	const minAcceptableUreadaheadPackSizeKB = 300 * 1024
-
+func checkPackFileDump(ctx context.Context, logPath string, minPackSize int) error {
 	logFile, err := os.Open(logPath)
 	if err != nil {
 		return errors.Wrap(err, "failed to open log file")
@@ -225,8 +202,9 @@ func checkPackFileDump(ctx context.Context, logPath string) error {
 		return errors.Wrap(err, "failed to parse ureadahead pack dump")
 	}
 
-	if sizeKB < minAcceptableUreadaheadPackSizeKB {
-		return errors.Errorf("failed due to pack size %d kB too small. It is expected to be min %d kb", sizeKB, minAcceptableUreadaheadPackSizeKB)
+	testing.ContextLogf(ctx, "Found ureadahead pack at %s with size of %d kB", logPath, sizeKB)
+	if sizeKB < minPackSize {
+		return errors.Errorf("failed due to pack size %d kB too small. It is expected to be min %d kB", sizeKB, minPackSize)
 	}
 
 	return nil
