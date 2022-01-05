@@ -16,6 +16,41 @@
       "message": "PTAL.\nI have confirmed the test only gives the same error as cros/main.\n\n\u003e arc.ResizeLock [ FAIL ] Failed to run test Resizable Maximized App: failed to verify resize lock state of org.chromium.arc.testapp.resizelock.ResizableUnspecifiedMaximizedActivity: failed to verify the visibility of the resize lock window border of org.chromium.arc.testapp.resizelock.ResizableUnspecifiedMaximizedActivity: context deadline exceeded; last error follows: failed to verify that the window border is invisible; contains 13962 border color pixels\n",
       "revId": "6d8734bcfc99379866da6ba95c2e1f4399db1b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39327d6c_a3e1cf38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-01-05T02:06:29Z",
+      "side": 1,
+      "message": "Although the test is flaky it seems to pass if you try a few times.\nWould you mind confirming the test still passes at least once with this patch?",
+      "parentUuid": "45e4abcb_ba024c38",
+      "revId": "6d8734bcfc99379866da6ba95c2e1f4399db1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7b75039_ea279ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-01-05T02:06:29Z",
+      "side": 1,
+      "message": "nit: Is it common to create a new instance every time it\u0027s used, compared with the option of creating it at the start of the test and pass it around to sub modules?",
+      "revId": "6d8734bcfc99379866da6ba95c2e1f4399db1b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
