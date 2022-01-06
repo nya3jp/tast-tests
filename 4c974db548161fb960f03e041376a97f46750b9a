@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c127ec_22be04ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T09:11:09Z",
+      "side": 1,
+      "message": "we can make this `nil`",
+      "range": {
+        "startLine": 171,
+        "startChar": 21,
+        "endLine": 171,
+        "endChar": 31
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1a0ebc_2faeb248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T09:11:09Z",
+      "side": 1,
+      "message": "Could we add SoftwareDeps to arm for this test case? (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#existing-features)",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 37
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d40dbf_b0097da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T09:11:09Z",
+      "side": 1,
+      "message": "Could we parse /proc/cpuinfo to get the exact big.LTTLE cpu range?\n\nSimilar ideas could be found: https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go;l\u003d143;drc\u003d56af2b0a8eafbdfc9812f93815a362f0b055d655",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 53
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54e7593_d1a93dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T09:11:09Z",
+      "side": 1,
+      "message": "Let\u0027s have\n\n```\ncmdStr \u003d []string{\"cyclictest\", \"--policy\"+ ... }\nif affinity !\u003d nul {\n  // get affStr\n  cmdStr \u003d append(cmdStr, \"--affinity\"+affStr)\n}\ncmdStr \u003d append(cmdStr, //rest of the args)\n\nreturn testexec.CommandContext(ctx, cmdStr...), nil;\n\n// or return return testexec.CommandContext(ctx, cmdStr[0], cmdStr[1]...), nil;\n\n```\n\nthen affinity could be nil in test parameters (or any other optional args could be like this in the future) (https://gobyexample.com/variadic-functions)",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 14
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad2110d_8c8cceed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T09:11:09Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 24
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
