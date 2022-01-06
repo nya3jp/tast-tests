@@ -61,10 +61,10 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 		testing.ContextLog(ctx, "Can't get the hangcheck timer, it is normal for kernels older than 5.4: ", err)
 	} else {
 		// Only tries to set hangcheck timer if we successfully get the timer.
-		if er := graphics.SetHangCheckTimer(hangCheckTimer); er != nil {
+		if er := graphics.SetHangCheckTimer(ctx, hangCheckTimer); er != nil {
 			return errors.Wrapf(er, "failed to set hangcheck timer to %v", hangCheckTimer)
 		}
-		defer graphics.SetHangCheckTimer(hangCheckTimer)
+		defer graphics.SetHangCheckTimer(ctx, hangCheckTimer)
 	}
 
 	// appendErr append the error with msg to resultErr.

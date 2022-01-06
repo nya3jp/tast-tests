@@ -150,11 +150,12 @@ func (f *gpuWatchHangsFixture) SetUp(ctx context.Context, s *testing.FixtState) 
 			if err != nil {
 				return errors.Wrap(err, "failed to get hangcheck timer")
 			}
+			testing.ContextLogf(ctx, "Original hangcheck timer: %v, current hangcheck timer: %v", hangCheckTimer, tTimer)
 			if tTimer == hangCheckTimer {
 				return nil
 			}
 			testing.ContextLog(ctx, "The hangcheck timer is not the same. Tries to set it back to ", hangCheckTimer)
-			if err := SetHangCheckTimer(hangCheckTimer); err != nil {
+			if err := SetHangCheckTimer(ctx, hangCheckTimer); err != nil {
 				return errors.Wrap(err, "failed to set hangcheck timer back")
 			}
 			return nil
