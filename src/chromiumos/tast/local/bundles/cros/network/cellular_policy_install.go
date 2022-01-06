@@ -58,7 +58,7 @@ var renameMenu = nodewith.Name("Rename Profile").Role(role.MenuItem)
 
 func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 	// Remove any existing profile on test euicc
-	euicc, err := hermes.GetTestEUICC(ctx)
+	euicc, slot, err := hermes.GetTestEUICC(ctx)
 	if err != nil {
 		s.Fatal("Failed to get test euicc: ", err)
 	}
@@ -70,11 +70,18 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
-		chrome.EnableFeatures("ESimPolicy", "UseStorkSmdsServerAddress", "CellularUseExternalEuicc"),
+	chromeOpts := []chrome.Option{
+		chrome.EnableFeatures("ESimPolicy"),
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepEnrollment())
+		chrome.KeepEnrollment(),
+	}
+	if slot == 1 {
+		s.Log("Append CellularUseExternalEuicc feature flag")
+		chromeOpts = append(chromeOpts, chrome.EnableFeatures("CellularUseExternalEuicc"))
+	}
+
+	cr, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
