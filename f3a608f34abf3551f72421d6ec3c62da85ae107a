@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f514f730_72662b2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-06T01:55:11Z",
+      "side": 1,
+      "message": "You could use --runstates Z and subtract?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "f3a608f34abf3551f72421d6ec3c62da85ae107a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a09f51_254024f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/crash/crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-06T01:55:11Z",
+      "side": 1,
+      "message": "I would be worried about other crash_reporter processes starting up during the 60 seconds (especially right at the end). Ideally, we\u0027d wait for the crasher process to exit and then wait for all the crash_reporters started before the crashing process exited to exit. Another possibility would be just wait for the crasher process to exit since it shouldn\u0027t be able to exit until crash_reporter is done collecting data from it.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 52
+      },
+      "revId": "f3a608f34abf3551f72421d6ec3c62da85ae107a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
