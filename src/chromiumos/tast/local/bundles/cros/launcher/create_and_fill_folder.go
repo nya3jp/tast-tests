@@ -57,6 +57,10 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+		s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
+	}
+
 	// Open the Launcher and go to the apps grid page.
 	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
 		s.Fatal("Failed to open Expanded Application list view: ", err)
