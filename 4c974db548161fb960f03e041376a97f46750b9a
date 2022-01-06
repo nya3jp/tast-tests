@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e046b1d_a733f86e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-06T10:30:21Z",
+      "side": 1,
+      "message": "Replied in another comment.",
+      "parentUuid": "d1c127ec_22be04ef",
+      "range": {
+        "startLine": 171,
+        "startChar": 21,
+        "endLine": 171,
+        "endChar": 31
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf1a0ebc_2faeb248",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0816ac65_74aaf346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-06T10:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf1a0ebc_2faeb248",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 37
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6d40dbf_b0097da6",
@@ -84,6 +132,30 @@
       "writtenOn": "2022-01-06T09:11:09Z",
       "side": 1,
       "message": "Could we parse /proc/cpuinfo to get the exact big.LTTLE cpu range?\n\nSimilar ideas could be found: https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/arc/cpu_set.go;l\u003d143;drc\u003d56af2b0a8eafbdfc9812f93815a362f0b055d655",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 53
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ccbcadf_53177f9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-06T10:30:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6d40dbf_b0097da6",
       "range": {
         "startLine": 340,
         "startChar": 0,
@@ -119,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4a923d3_817ed5ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-06T10:30:21Z",
+      "side": 1,
+      "message": "Restructured the code but affinity is left as now since I\u0027m not sure is it better to use `nil` to differentiate an enum.\n\nHaving default in an enum and specify it in the test looks okay to me.",
+      "parentUuid": "d54e7593_d1a93dc9",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 14
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ad2110d_8c8cceed",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
         "patchSetId": 12
@@ -130,6 +226,30 @@
       "writtenOn": "2022-01-06T09:11:09Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 24
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "083fdff0_4fc3368c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-06T10:30:21Z",
+      "side": 1,
+      "message": "Replied in another comment.",
+      "parentUuid": "1ad2110d_8c8cceed",
       "range": {
         "startLine": 382,
         "startChar": 0,
