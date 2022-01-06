@@ -103,6 +103,7 @@ func Docusign(ctx context.Context, s *testing.State) {
 func launchAppForDocusign(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		enterEmailAddressID = "username"
+		emailPageClassName  = "android.webkit.WebView"
 		continueButtonText  = "CONTINUE"
 		notNowID            = "android:id/autofill_save_no"
 		passwordID          = "password"
@@ -116,6 +117,15 @@ func launchAppForDocusign(ctx context.Context, s *testing.State, tconn *chrome.T
 		s.Fatal("signInButton doesn't exists: ", err)
 	} else if err := signInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on signInButton: ", err)
+	}
+	// Check if email address page is in web view.
+	// If login page is in web view, the test will skip the login part.
+	checkForEmailPage := d.Object(ui.ClassName(emailPageClassName))
+	if err := checkForEmailPage.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
+		s.Log("checkForEmailPage does not exist: ", err)
+	} else {
+		s.Log("checkForEmailPage in web view does exist")
+		return
 	}
 
 	// Enter email address.
