@@ -213,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "857eecce_489916f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T10:36:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c4a923d3_817ed5ab",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 14
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ad2110d_8c8cceed",
