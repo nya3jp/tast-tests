@@ -23,6 +23,30 @@
       },
       "revId": "773639b3eccef9cc90d5e9827e4b2e50716644bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1255ca7_2ea2fb83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/ephemeral_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-01-06T05:26:11Z",
+      "side": 1,
+      "message": "it was fixed in one of the previos patchsets.",
+      "parentUuid": "6fd59b42_aac016df",
+      "range": {
+        "startLine": 57,
+        "startChar": 46,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "773639b3eccef9cc90d5e9827e4b2e50716644bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
