@@ -88,11 +88,6 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 	}
 
 	pv.Set(perf.Metric{
-		Name:      t.prefix + "DisplaySmoothness",
-		Unit:      "percent",
-		Direction: perf.BiggerIsBetter,
-	}, float64(t.dsData.FramesProduced)/float64(t.dsData.FramesExpected)*100)
-	pv.Set(perf.Metric{
 		Name:      t.prefix + "DisplayJankMetric",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
@@ -113,6 +108,16 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 		Unit:      "count",
 		Direction: perf.SmallerIsBetter,
 	}, float64(t.dsData.JankCount))
+
+	smMetric := perf.Metric{
+		Name:      t.prefix + "Display.Smoothness",
+		Multiple:  true,
+		Unit:      "percent",
+		Direction: perf.BiggerIsBetter,
+	}
+	for _, data := range t.dsData.Throughput {
+		pv.Append(smMetric, float64(data))
+	}
 }
 
 // NewFrameDataTracker creates a new instance for FrameDataTracker.
