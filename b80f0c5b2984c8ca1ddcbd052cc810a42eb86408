@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d225a54_c5c82c73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-06T08:16:27Z",
+      "side": 1,
+      "message": "Good idea! Define a `schedConfig` struct to be used in cyclictest itself, too.",
+      "parentUuid": "16597592_e3cfcc21",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 43
+      },
+      "revId": "b80f0c5b2984c8ca1ddcbd052cc810a42eb86408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be077456_8c215973",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T07:40:02Z",
       "side": 1,
       "message": "missing `stress-ng`?",
+      "range": {
+        "startLine": 332,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 47
+      },
+      "revId": "b80f0c5b2984c8ca1ddcbd052cc810a42eb86408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0c8d27_be3c8a81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-06T08:16:27Z",
+      "side": 1,
+      "message": "Thanks for the catching!",
+      "parentUuid": "be077456_8c215973",
       "range": {
         "startLine": 332,
         "startChar": 2,
