@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec9c955_8a045da2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-06T23:37:15Z",
+      "side": 1,
+      "message": "also add your personal contact or eng team alias here (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration)",
+      "revId": "bf727337582932f9aeba7e9ae341173d3d9f756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd70ac05_ae63d43d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-06T23:37:15Z",
+      "side": 1,
+      "message": "nit: maybe \"arcvm\" for clarity (since there are deps for CrOS VMs too I think)",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "bf727337582932f9aeba7e9ae341173d3d9f756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae8b7c8_89eaad47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-06T23:37:15Z",
+      "side": 1,
+      "message": "I think this is mixed up again, should be err \u003d\u003d nil for the error case if we\u0027re expecting the notification to NOT appear. Would also suggest adding a comment after the curly brace to draw attention to this subtle difference.\n\nAnother more explicit option could be to use uiauto/automation.go\u0027s EnsureGoneFor function (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d410?q\u003densuregonefor), but I\u0027m okay with either option.",
+      "range": {
+        "startLine": 121,
+        "startChar": 84,
+        "endLine": 121,
+        "endChar": 94
+      },
+      "revId": "bf727337582932f9aeba7e9ae341173d3d9f756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c15f9c44_5af79a36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-06T23:37:15Z",
+      "side": 1,
+      "message": "err !\u003d nil if expecting the notification to appear, or alternatively use ui automation and the WaitUntilExists function (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d395)",
+      "range": {
+        "startLine": 135,
+        "startChar": 84,
+        "endLine": 135,
+        "endChar": 94
+      },
+      "revId": "bf727337582932f9aeba7e9ae341173d3d9f756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
