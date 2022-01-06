@@ -102,15 +102,27 @@ func CpufreqConf(ctx context.Context, s *testing.State) {
 	}
 
 	testGovernorSetting := func(governor, setting, expected string) error {
-		path := filepath.Join("/sys/devices/system/cpu/cpufreq", governor, setting)
-		out, err := ioutil.ReadFile(path)
+		// Look for both multi-policy (glob) and single-policy paths.
+		paths, err := filepath.Glob(filepath.Join("/sys/devices/system/cpu/cpu[0-9]*/cpufreq", governor, setting))
 		if err != nil {
-			return err
+			return errors.Wrap(err, "failed to glob for governor setting")
 		}
 
-		val := strings.TrimSpace(string(out))
-		if val != expected {
-			return errors.Errorf("unexpected setting for governor %q: got %q, want %q", governor, val, expected)
+		singlePath := filepath.Join("/sys/devices/system/cpu/cpufreq", governor, setting)
+		if _, err := os.Stat(singlePath); !os.IsNotExist(err) {
+			paths = append(paths, singlePath)
+		}
+
+		for _, path := range paths {
+			out, err := ioutil.ReadFile(path)
+			if err != nil {
+				return err
+			}
+
+			val := strings.TrimSpace(string(out))
+			if val != expected {
+				return errors.Errorf("unexpected setting for governor %q (%s): got %q, want %q", governor, path, val, expected)
+			}
 		}
 
 		return nil
