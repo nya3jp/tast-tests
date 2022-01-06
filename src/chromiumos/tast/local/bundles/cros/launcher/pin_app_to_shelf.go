@@ -69,10 +69,10 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	// When a DUT switching from tablet mode to clamshell mode, sometimes it takes a while to settle down.
-	// Added a delay here to let all events finishing up.
-	if err := uiauto.New(tconn).WaitForLocation(nodewith.Root())(ctx); err != nil {
-		s.Fatal("Failed to wait for location changes: ", err)
+	if !tabletMode {
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
+		}
 	}
 
 	app1 := apps.WebStore
