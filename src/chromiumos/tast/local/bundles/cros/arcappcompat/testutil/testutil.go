@@ -34,6 +34,7 @@ import (
 const (
 	AndroidButtonClassName = "android.widget.Button"
 	notNowText             = "Not now"
+	asphaltPkgName         = "com.gameloft.android.ANMP.GloftA9HM"
 
 	defaultTestCaseTimeout = 2 * time.Minute
 	DefaultUITimeout       = 20 * time.Second
@@ -167,8 +168,17 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			}
 			s.Log("App launched successfully")
 
+			d, err := a.NewUIDevice(ctx)
+			if err != nil {
+				s.Fatal("Failed initializing UI Automator: ", err)
+			}
+			defer d.Close(ctx)
+
 			// Close the app between iterations.
 			defer func(ctx context.Context) {
+				if appPkgName == asphaltPkgName {
+					HandleDialogBoxes(ctx, s, d, appPkgName)
+				}
 				if window, err := ash.GetARCAppWindowInfo(ctx, tconn, appPkgName); err != nil {
 					s.Fatal("Failed to get window info: ", err)
 				} else if err := window.CloseWindow(ctx, tconn); err != nil {
@@ -203,12 +213,6 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 					}
 				}
 			}(cleanupCtx)
-
-			d, err := a.NewUIDevice(ctx)
-			if err != nil {
-				s.Fatal("Failed initializing UI Automator: ", err)
-			}
-			defer d.Close(ctx)
 
 			DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 
@@ -1368,6 +1372,7 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 		allowText                   = "ALLOW"
 		agreeText                   = "Agree"
 		continueText                = "Continue"
+		cancelText                  = "Cancel"
 		gotItText                   = "Got it"
 		notNowText                  = "NOT NOW"
 		okText                      = "OK"
@@ -1386,6 +1391,7 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 	okayButton := d.Object(ui.TextMatches("(?i)" + okayText))
 	skipButton := d.Object(ui.TextMatches("(?i)" + skipText))
 	whileUsingThisAppButton := d.Object(ui.TextMatches("(?i)" + whileUsingThisAppButtonText))
+	cancelButton := d.Object(ui.TextMatches("(?i)" + cancelText))
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := allowButton.Exists(ctx); err == nil {
@@ -1423,6 +1429,10 @@ func HandleDialogBoxes(ctx context.Context, s *testing.State, d *ui.Device, appP
 		if err := gotItButton.Exists(ctx); err == nil {
 			s.Log("Click on gotItButton")
 			gotItButton.Click(ctx)
+		}
+		if err := cancelButton.Exists(ctx); err == nil {
+			s.Log("Click on cancelButton")
+			cancelButton.Click(ctx)
 		}
 		return appverifer.Exists(ctx)
 	}, &testing.PollOptions{Timeout: LongUITimeout}); err != nil {
