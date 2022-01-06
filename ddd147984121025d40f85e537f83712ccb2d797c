@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81c6f522_c5f928f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-06T01:57:15Z",
+      "side": 1,
+      "message": "I think it is different for a GRPC service. A GRPC service can get request any time. There is no guarantee there are not multiple requests coming at the same time. For Chrome.New(), it was assumed to be call inside a single Tast bundle process so we can be sure there is no concurrent request.",
+      "parentUuid": "469f0527_9b40115b",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f847231d_9f861d2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
         "patchSetId": 1
