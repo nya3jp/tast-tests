@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe871371_670a0dc9",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-01-06T19:28:09Z",
+      "side": 1,
+      "message": "We want this before AddCredentialWithAuthSession",
+      "revId": "0c6e9c90019af9303cfc3d51a17c4ea546e3588b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
