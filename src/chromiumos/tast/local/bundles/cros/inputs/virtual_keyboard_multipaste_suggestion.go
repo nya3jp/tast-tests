@@ -35,7 +35,7 @@ func init() {
 		}, {
 			Name:              "informational",
 			ExtraAttr:         []string{"informational"},
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("puff", "fizz")),
 		}},
 	})
 }
