@@ -12,9 +12,18 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	nc "chromiumos/tast/local/network/netconfig"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
+
+var psk = nc.ConfigProperties{
+	TypeConfig: nc.NetworkTypeConfigProperties{
+		Wifi: nc.WiFiConfigProperties{
+			Passphrase: "pass,pass,123",
+			Ssid:       "MyHomeWiFi",
+			Security:   nc.WpaPsk,
+			HiddenSsid: nc.Automatic}}}
 
 func init() {
 	testing.AddService(&testing.Service{
@@ -29,27 +38,72 @@ type RollbackService struct {
 	s *testing.ServiceState
 }
 
-func (r *RollbackService) VerifyRollback(ctx context.Context, req *empty.Empty) (*ppb.RollbackSuccessfulResponse, error) {
-	response := &ppb.RollbackSuccessfulResponse{
-		Successful: false,
-	}
-
-	cr, err := chrome.New(ctx, chrome.NoLogin())
+// SetUpPskNetwork sets up a simple psk network configuration on the device.
+// The device needs to be in a state so that chrome://network may be opened.
+func (r *RollbackService) SetUpPskNetwork(ctx context.Context, req *empty.Empty) (*ppb.SetUpPskResponse, error) {
+	cr, err := chrome.New(ctx, chrome.KeepEnrollment())
 	if err != nil {
-		return response, errors.Wrap(err, "failed to start Chrome")
+		return nil, errors.Wrap(err, "failed to start Chrome")
+	}
+	defer cr.Close(ctx)
+
+	api, err := nc.NewCrosNetworkConfig(ctx, cr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get cros network config api")
+	}
+	defer api.Close(ctx)
+
+	guid, err := api.ConfigureNetwork(ctx, psk, true)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to configure psk network")
+	}
+	return &ppb.SetUpPskResponse{Guid: guid}, nil
+}
+
+// VerifyRollback checks that the device is on the enrollment screen, then logs
+// in as a normal user and verifies the previously set-up network exists.
+func (r *RollbackService) VerifyRollback(ctx context.Context, request *ppb.VerifyRollbackRequest) (*ppb.VerifyRollbackResponse, error) {
+	cr, err := chrome.New(ctx, chrome.DeferLogin())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to restart Chrome for testing after rollback")
 	}
 	defer cr.Close(ctx)
 
 	oobeConn, err := cr.WaitForOOBEConnection(ctx)
 	if err != nil {
-		return response, errors.Wrap(err, "failed to create OOBE connection")
+		return nil, errors.Wrap(err, "failed to create OOBE connection")
 	}
 	defer oobeConn.Close()
 
-	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EnrollmentScreen.isVisible()"); err != nil {
-		return response, errors.Wrap(err, "failed to wait for enrollment screen")
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EnterpriseEnrollmentScreen.signInStep.isReadyForTesting()"); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for enrollment screen")
 	}
 
-	response.Successful = true
+	cr.ContinueLogin(ctx)
+
+	api, err := nc.NewCrosNetworkConfig(ctx, cr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get cros network config api")
+	}
+	defer api.Close(ctx)
+
+	managedProperties, err := api.GetManagedProperties(ctx, request.Guid)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get managed properties for guid %s", request.Guid)
+	}
+
+	response := &ppb.VerifyRollbackResponse{
+		Successful: true,
+	}
+
+	// Passphrase is not passed via cros_network_config, instead mojo passes a constant value if a password is configured. Only check for non-empty.
+	if managedProperties.TypeProperties.Wifi.Security !=
+		psk.TypeConfig.Wifi.Security ||
+		managedProperties.TypeProperties.Wifi.Ssid.ActiveValue !=
+			psk.TypeConfig.Wifi.Ssid ||
+		managedProperties.TypeProperties.Wifi.Passphrase.ActiveValue == "" {
+		response.Successful = false
+	}
+
 	return response, nil
 }
