@@ -1,0 +1,5 @@
+{
+  "sha256sum": "64b5f6e741d8b34e6a124f3a186f927850346b62da420555791ceb2b52f9ea57",
+  "size": 11350,
+  "url": "gs://chromiumos-test-assets-public/tast/cros/video/test_vectors/h264/files_from_bugs/b_210895987_still-colors-360p_20220105.h264"
+}
