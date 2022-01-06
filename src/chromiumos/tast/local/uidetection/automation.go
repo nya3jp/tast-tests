@@ -38,6 +38,7 @@ type Context struct {
 	tconn    *chrome.TestConn
 	detector *uiDetector
 	pollOpts testing.PollOptions
+	options  *Options
 }
 
 // New returns a new UI Detection automation instance.
@@ -53,6 +54,7 @@ func New(t *chrome.TestConn, keyType, key, server string) *Context {
 			Interval: 300 * time.Millisecond,
 			Timeout:  30 * time.Second,
 		},
+		options: DefaultOptions(),
 	}
 }
 
@@ -61,46 +63,48 @@ func NewDefault(t *chrome.TestConn) *Context {
 	return New(t, serverKeyType.Value(), serverKey.Value(), serverKeyAddr.Value())
 }
 
-// WithTimeout returns a new Context with the specified timeout.
-func (uda *Context) WithTimeout(timeout time.Duration) *Context {
+func (uda *Context) copy() *Context {
 	return &Context{
 		tconn:    uda.tconn,
 		detector: uda.detector,
-		pollOpts: testing.PollOptions{
-			Interval: uda.pollOpts.Interval,
-			Timeout:  timeout,
-		},
+		pollOpts: uda.pollOpts,
+		options:  uda.options,
 	}
+}
+
+// WithTimeout returns a new Context with the specified timeout.
+func (uda *Context) WithTimeout(timeout time.Duration) *Context {
+	c := uda.copy()
+	c.pollOpts.Timeout = timeout
+	return c
 }
 
 // WithInterval returns a new Context with the specified polling interval.
 func (uda *Context) WithInterval(interval time.Duration) *Context {
-	return &Context{
-		tconn:    uda.tconn,
-		detector: uda.detector,
-		pollOpts: testing.PollOptions{
-			Interval: interval,
-			Timeout:  uda.pollOpts.Timeout,
-		},
-	}
+	c := uda.copy()
+	c.pollOpts.Interval = interval
+	return c
 }
 
 // WithPollOpts returns a new Context with the specified polling options.
 func (uda *Context) WithPollOpts(pollOpts testing.PollOptions) *Context {
-	return &Context{
-		tconn:    uda.tconn,
-		detector: uda.detector,
-		pollOpts: pollOpts,
-	}
+	c := uda.copy()
+	c.pollOpts = pollOpts
+	return c
 }
 
-func (uda *Context) click(s *Finder, button mouse.Button, optionList ...Option) uiauto.Action {
-	// TODO(b/205235148): Consolidate uiauto for UI tree based finder and image based finder.
-	options := DefaultOptions()
+// WithOptions returns a new Context with the specified polling options.
+func (uda *Context) WithOptions(optionList ...Option) *Context {
+	c := uda.copy()
 	for _, opt := range optionList {
-		opt(options)
+		opt(c.options)
 	}
-	return action.Retry(options.Retries, func(ctx context.Context) error {
+	return c
+}
+
+func (uda *Context) click(s *Finder, button mouse.Button) uiauto.Action {
+	// TODO(b/205235148): Consolidate uiauto for UI tree based finder and image based finder.
+	return action.Retry(uda.options.Retries, func(ctx context.Context) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
 			loc, err := uda.Location(ctx, s)
 			if err != nil {
@@ -108,17 +112,17 @@ func (uda *Context) click(s *Finder, button mouse.Button, optionList ...Option) 
 			}
 			return mouse.Click(uda.tconn, loc.CenterPoint(), button)(ctx)
 		}, &uda.pollOpts)
-	}, options.RetryInterval)
+	}, uda.options.RetryInterval)
 }
 
 // LeftClick returns an action that left-clicks a finder.
-func (uda *Context) LeftClick(s *Finder, optionList ...Option) uiauto.Action {
-	return uda.click(s, mouse.LeftButton, optionList...)
+func (uda *Context) LeftClick(s *Finder) uiauto.Action {
+	return uda.click(s, mouse.LeftButton)
 }
 
 // RightClick returns an action that right-clicks a finder.
 func (uda *Context) RightClick(s *Finder, optionList ...Option) uiauto.Action {
-	return uda.click(s, mouse.RightButton, optionList...)
+	return uda.click(s, mouse.RightButton)
 }
 
 // Location finds the location of a finder in the screen.
