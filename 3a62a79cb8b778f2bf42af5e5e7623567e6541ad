@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a1438e9_a036caad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-06T23:26:35Z",
+      "side": 0,
+      "message": "Clean up of obsolete data while I touch the file. It is not related to the intention of the CL.",
+      "revId": "3a62a79cb8b778f2bf42af5e5e7623567e6541ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

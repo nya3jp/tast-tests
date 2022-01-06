@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba139fee_e10fb200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-06T23:26:35Z",
+      "side": 1,
+      "message": "Tast side change to use start/stopSmoothness api to get throughput data after chromium CL:3371206. ",
+      "revId": "deabd6bd95b5ee7736be6c42d9d3e1a412920923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
