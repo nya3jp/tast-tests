@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01296a73_48672fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T10:40:13Z",
+      "side": 1,
+      "message": "A quick function comments for the logic (some description about \"CPU part\")",
+      "revId": "6b99b81673555e57bc099e2eb5232ef2bf23c839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "830a0c5d_6727a877",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
         "patchSetId": 13
