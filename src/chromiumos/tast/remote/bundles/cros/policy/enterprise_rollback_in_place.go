@@ -66,6 +66,10 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 	if err := enroll(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to enroll before rollback: ", err)
 	}
+	guid, err := configureNetwork(ctx, s.DUT(), s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to configure network: ", err)
+	}
 	if err := saveRollbackData(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to save rollback data: ", err)
 	}
@@ -85,7 +89,7 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed while checking that sensitive data is not logged: ", err)
 	}
 
-	if err := verifyRollback(ctx, s.DUT(), s.RPCHint()); err != nil {
+	if err := verifyRollback(ctx, guid, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to verify rollback: ", err)
 	}
 }
@@ -115,6 +119,21 @@ func enroll(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
 		return errors.Wrap(err, "failed to enroll before rollback")
 	}
 	return nil
+}
+
+func configureNetwork(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) (string, error) {
+	client, err := rpc.Dial(ctx, dut, rpcHint)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to connect to the RPC service on the DUT")
+	}
+	defer client.Close(ctx)
+
+	rollbackService := ps.NewRollbackServiceClient(client.Conn)
+	response, err := rollbackService.SetUpPskNetwork(ctx, &empty.Empty{})
+	if err != nil {
+		return "", errors.Wrap(err, "failed to configure psk network on client")
+	}
+	return response.Guid, nil
 }
 
 func saveRollbackData(ctx context.Context, dut *dut.DUT) error {
@@ -157,7 +176,7 @@ func ensureSensitiveDataIsNotLogged(ctx context.Context, dut *dut.DUT, sensitive
 	return nil
 }
 
-func verifyRollback(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
+func verifyRollback(ctx context.Context, guid string, dut *dut.DUT, rpcHint *testing.RPCHint) error {
 	client, err := rpc.Dial(ctx, dut, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
@@ -165,7 +184,7 @@ func verifyRollback(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint)
 	defer client.Close(ctx)
 
 	rollbackService := ps.NewRollbackServiceClient(client.Conn)
-	response, err := rollbackService.VerifyRollback(ctx, &empty.Empty{})
+	response, err := rollbackService.VerifyRollback(ctx, &ps.VerifyRollbackRequest{Guid: guid})
 	if err != nil {
 		return errors.Wrap(err, "failed to verify rollback on client")
 	}
