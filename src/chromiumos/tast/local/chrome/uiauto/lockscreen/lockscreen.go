@@ -211,20 +211,20 @@ func PINFieldFinder(username string) (*nodewith.Finder, error) {
 	return nodewith.Role(role.TextField).Attribute("name", r).Attribute("placeholder", "PIN or password"), nil
 }
 
-// UserPassword searches the Password field for a given user pod and returns the Password node.
-func UserPassword(ctx context.Context, tconn *chrome.TestConn, username string) (*uiauto.NodeInfo, error) {
-	field, err := PasswordFieldFinder(username)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find the Password node")
-	}
-	return uiauto.New(tconn).Info(ctx, field)
-}
-
-// UserPIN searches the "PIN or password" field for a given user pod and returns the corresponding node.
-func UserPIN(ctx context.Context, tconn *chrome.TestConn, username string) (*uiauto.NodeInfo, error) {
-	field, err := PINFieldFinder(username)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to find the node for \"PIN or password\" field")
+// UserPassword searches the PIN / Password field for a given user pod and returns the corresponding node.
+func UserPassword(ctx context.Context, tconn *chrome.TestConn, username string, pin bool) (*uiauto.NodeInfo, error) {
+	var field *nodewith.Finder
+	var err error
+	if pin {
+		field, err = PINFieldFinder(username)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to find the node for \"PIN or password\" field")
+		}
+	} else {
+		field, err = PasswordFieldFinder(username)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to find the Password node")
+		}
 	}
 	return uiauto.New(tconn).Info(ctx, field)
 }

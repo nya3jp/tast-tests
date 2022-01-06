@@ -1,8 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package lockscreen
+package login
 
 import (
 	"context"
@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type testParameters struct {
+type testParams struct {
 	EnablePIN  bool
 	Autosubmit bool
 }
@@ -29,71 +29,80 @@ const hiddenPwdChar = "•"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ShowPassword,
-		Desc:         "Test Show/Hide password functionality on lockscreen Password field and \"PIN or password\" field",
+		Desc:         "Test Show/Hide password functionality on Password field and \"PIN or password\" field of login screen",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-oac@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
+		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{{
-			Val: testParameters{false, false},
+			Val: testParams{false, false},
 		}, {
 			Name: "pin",
-			Val:  testParameters{true, false},
+			Val:  testParams{true, false},
 		}, {
 			Name: "switch_to_password",
-			Val:  testParameters{true, true},
+			Val:  testParams{true, true},
 		}},
 	})
 }
 
-// ShowPassword tests viewing PIN / Password on lockscreen using the "Show password" button and that it goes hidden using the "Hide password" button.
+// ShowPassword tests viewing PIN / Password on login screen using the "Show password" button and that it goes hidden using the "Hide password" button.
 func ShowPassword(ctx context.Context, s *testing.State) {
-	const (
-		username = "testuser@gmail.com"
-		password = "good"
-		PIN      = "123456789012"
-	)
-	enablePIN := s.Param().(testParameters).EnablePIN
-	autosubmit := s.Param().(testParameters).Autosubmit
+	const PIN = "123456789012"
+	enablePIN := s.Param().(testParams).EnablePIN
+	autosubmit := s.Param().(testParams).Autosubmit
+	var creds chrome.Creds
 
-	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: password}))
+	// Log in and log out to create a user pod on the login screen.
+	func() {
+		cr, err := chrome.New(ctx)
+		if err != nil {
+			s.Fatal("Chrome login failed: ", err)
+		}
+		defer cr.Close(ctx)
+		creds = cr.Creds()
+
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Getting test API connection failed: ", err)
+		}
+		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+		if enablePIN {
+			// Set up PIN through a connection to the Settings page.
+			settings, err := ossettings.Launch(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to launch Settings app: ", err)
+			}
+			s.Log("Performing PIN set up")
+			if err := settings.EnablePINUnlock(cr, creds.Pass, PIN, autosubmit)(ctx); err != nil {
+				s.Fatal("Failed to enable PIN unlock: ", err)
+			}
+		}
+	}()
+
+	// chrome.NoLogin() and chrome.KeepState() are needed to show the login screen with a user pod (instead of the OOBE login screen).
+	cr, err := chrome.New(ctx,
+		chrome.ExtraArgs("--skip-force-online-signin-for-testing"),
+		chrome.NoLogin(),
+		chrome.KeepState(),
+		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+	)
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
 
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Getting test API connection failed: ", err)
+		s.Fatal("Creating login test API connection failed: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if enablePIN {
-		// Set up PIN through a connection to the Settings page.
-		settings, err := ossettings.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to launch Settings app: ", err)
-		}
-		s.Log("Performing PIN set up")
-		if err := settings.EnablePINUnlock(cr, password, PIN, autosubmit)(ctx); err != nil {
-			s.Fatal("Failed to enable PIN unlock: ", err)
-		}
+	// Wait for the login screen to be ready for PIN / Password entry.
+	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.ReadyForPassword }, 30*time.Second); err != nil {
+		s.Fatalf("Failed waiting for the login screen to be ready for PIN / Password entry: %v, last state: %+v", err, st)
 	}
-
-	if err := lockscreen.Lock(ctx, tconn); err != nil {
-		s.Fatal("Failed to lock the screen: ", err)
-	}
-
-	if st, err := lockscreen.WaitState(ctx, tconn, func(st lockscreen.State) bool { return st.Locked && st.ReadyForPassword }, 30*time.Second); err != nil {
-		s.Fatalf("Waiting for the screen to be locked failed: %v (last status %+v)", err, st)
-	}
-
-	// Unlock the screen to ensure subsequent tests aren't affected by the screen remaining locked.
-	// TODO(b/187794615): Remove once chrome.go has a way to clean up the lock screen state.
-	defer func() {
-		if err := lockscreen.Unlock(ctx, tconn); err != nil {
-			s.Fatal("Failed to unlock the screen: ", err)
-		}
-	}()
 
 	// Clicking the "Switch to password" button to view the Password field when PIN autosubmit is enabled
 	if autosubmit {
@@ -102,14 +111,14 @@ func ShowPassword(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Test the working of "Show password" and "Hide password" button on lockscreen.
+	// Test the working of "Show password" and "Hide password" button on login screen.
 	if enablePIN && !autosubmit {
-		if err := showAndHidePassword(ctx, tconn, username, PIN, true); err != nil {
-			s.Fatal("Failed to Show/Hide PIN on lockscreen: ", err)
+		if err := showAndHidePassword(ctx, tconn, creds.User, PIN, true); err != nil {
+			s.Fatal("Failed to Show/Hide PIN on login screen: ", err)
 		}
 	} else {
-		if err := showAndHidePassword(ctx, tconn, username, password, false); err != nil {
-			s.Fatal("Failed to Show/Hide Password on lockscreen: ", err)
+		if err := showAndHidePassword(ctx, tconn, creds.User, creds.Pass, false); err != nil {
+			s.Fatal("Failed to Show/Hide Password on login screen: ", err)
 		}
 	}
 }
@@ -119,20 +128,20 @@ func showAndHidePassword(ctx context.Context, tconn *chrome.TestConn, username, 
 	hiddenPwd := strings.Repeat(hiddenPwdChar, len(password))
 
 	if pin {
-		// Enter the PIN on lockscreen when PIN is enabled.
-		testing.ContextLog(ctx, "Entering PIN on lockscreen \"PIN or password\" field")
+		// Enter the PIN on login screen when PIN is enabled.
+		testing.ContextLog(ctx, "Entering PIN on \"PIN or password\" field of login screen")
 		if err := lockscreen.EnterPIN(ctx, tconn, password); err != nil {
 			return errors.Wrap(err, "failed to enter in PIN")
 		}
 	} else {
-		// Enter password on lockscreen.
+		// Enter password on login screen.
 		kb, err := input.Keyboard(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to get keyboard")
 		}
 		defer kb.Close()
 
-		testing.ContextLog(ctx, "Entering password on lockscreen")
+		testing.ContextLog(ctx, "Entering password on login screen")
 		if err := lockscreen.TypePassword(ctx, tconn, username, password, kb); err != nil {
 			return errors.Wrap(err, "failed to type password")
 		}
