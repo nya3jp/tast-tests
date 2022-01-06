@@ -35,7 +35,7 @@ func init() {
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 		}, {
 			Name:              "informational",
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("puff", "fizz")),
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
