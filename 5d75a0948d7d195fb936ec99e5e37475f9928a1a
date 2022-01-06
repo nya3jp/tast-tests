@@ -16,6 +16,46 @@
       "message": "LGTM, add tast owner",
       "revId": "5d75a0948d7d195fb936ec99e5e37475f9928a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ca3f3ea_e1f61d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-06T13:54:26Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "5d75a0948d7d195fb936ec99e5e37475f9928a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5e06ce_307917e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-06T13:54:26Z",
+      "side": 1,
+      "message": "nit: some consistency in comments would be great :) I know it was like that before and let\u0027s clean that up.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 131
+      },
+      "revId": "5d75a0948d7d195fb936ec99e5e37475f9928a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
