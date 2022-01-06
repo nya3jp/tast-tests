@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f91306de_46eca1c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-06T00:30:46Z",
+      "side": 1,
+      "message": "Agreed. I think there is still a lot of to be done and decided on how UIAuto should be exposed, primarily around coarse grained actions like Drag and composite action like Combined.  \nI started small and include the few core APIs which I felt was absolutely necessary. As Location() stability is already baked into those functions, it should help flakiness. Perhaps the client side would have to do more precondition check (e.g. WaitUntilExists after clicks) before next action.\nConcretely, is there a particular API in this list of 7 which you felt is too low level?",
+      "parentUuid": "a8971215_70f02f79",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21168fb0_adcc5c3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
         "patchSetId": 1
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "You can declare ClickType inside \n\n```\nmessage MouseClickAtLocationRequest {\n  enum ClickType {\n    UNSPECIFIED \u003d 0;\n    LEFT_CLICK \u003d 1;\n    RIGHT_CLICK \u003d 2;\n    DOUBLE_CLICK \u003d 3;\n  }\n  // ClickType describes how user clicks mouse.\n  ClickType click_type \u003d 1;\n  // Point is the coordinates for the click.\n  Point point \u003d 2;\n}\n```",
       "parentUuid": "361b15ce_253f1644",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f90ab0_6d1caace",
+        "filename": "src/chromiumos/tast/services/cros/ui/automation_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-06T00:30:46Z",
+      "side": 1,
+      "message": "Thanks Seewai. Upon more research, I found a discussion on yaqs on this topic: https://yaqs.corp.google.com/eng/q/6578714921009152 and https://developers.google.com/protocol-buffers/docs/style#enums. \ntl/dr recommendation was in this form:\nenum FooBar {\n  FOO_BAR_UNSPECIFIED \u003d 0;\n  FOO_BAR_FIRST_VALUE \u003d 1;\n  FOO_BAR_SECOND_VALUE \u003d 2;\n}\nI will use this for the reusable enums and your suggestions for the one-off ones.",
+      "parentUuid": "4fbdc7cb_d3353efb",
       "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
