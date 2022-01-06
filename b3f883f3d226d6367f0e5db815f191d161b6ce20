@@ -70,6 +70,24 @@
       "parentUuid": "51cd0d80_c758bc96",
       "revId": "b3f883f3d226d6367f0e5db815f191d161b6ce20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f26208_cd9407c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/pin_unpin_file.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-06T10:20:25Z",
+      "side": 1,
+      "message": "Okay, thank you for the suggestion, we\u0027ll modify the existing test. New PS will be updated soon.",
+      "parentUuid": "fd7bbf01_36b26e7a",
+      "revId": "b3f883f3d226d6367f0e5db815f191d161b6ce20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
