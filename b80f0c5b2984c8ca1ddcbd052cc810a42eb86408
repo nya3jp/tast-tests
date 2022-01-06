@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16597592_e3cfcc21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T07:40:02Z",
+      "side": 1,
+      "message": "Could we encapsulate these into stressConfig and have\n\n```\ntype cyclicTestParameters struct {\n   ...\n   StressConfig *stressConfig\n}\n```\n\nand we can assign `nil` when there is no stress worker",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 43
+      },
+      "revId": "b80f0c5b2984c8ca1ddcbd052cc810a42eb86408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be077456_8c215973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T07:40:02Z",
+      "side": 1,
+      "message": "missing `stress-ng`?",
+      "range": {
+        "startLine": 332,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 47
+      },
+      "revId": "b80f0c5b2984c8ca1ddcbd052cc810a42eb86408",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
