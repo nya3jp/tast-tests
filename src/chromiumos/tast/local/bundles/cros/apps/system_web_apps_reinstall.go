@@ -113,7 +113,7 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 
 	// Handle the case where Crostini (Terminal App) is installed, but not shown to the user due
 	// to hardwares not supporting virtualization.
-	crostiniIsAvailable, err := supportCrostini(ctx, cr)
+	crostiniIsAvailable, err := supportCrostini(ctx, tconn)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to determine crostini support")
 	}
@@ -128,27 +128,16 @@ func runChromeSession(ctx context.Context, chromeOpts ...chrome.Option) ([]strin
 	return installedNames, registeredInternalNames, nil
 }
 
-// supportCrostini returns whether Crostini is allowed to run on device, by checking relevant
-// information with OS Settings.
-func supportCrostini(ctx context.Context, cr *chrome.Chrome) (bool, error) {
-	conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/")
+// supportCrostini returns whether Crostini is allowed to run on device.
+func supportCrostini(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	var result bool
+	err := tconn.Eval(
+		ctx,
+		"tast.promisify(chrome.autotestPrivate.couldAllowCrostini)()", &result)
+
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get connection to OS Settings")
-	}
-	defer conn.Close()
-
-	if err := conn.WaitForExpr(ctx, "window.loadTimedata !== null"); err != nil {
-		return false, errors.Wrap(err, "failed to wait for window.loadTimeData to be available")
+		return false, errors.Wrap(err, "failed to get result from Test API")
 	}
 
-	if err := conn.WaitForExpr(ctx, "window.loadTimeData.valueExists('allowCrostini')"); err != nil {
-		return false, errors.Wrap(err, "failed to wait for allowCrostini value to be available")
-	}
-
-	var allowCrostini bool
-	if err := conn.Eval(ctx, "window.loadTimeData.getBoolean('allowCrostini')", &allowCrostini); err != nil {
-		return false, errors.Wrap(err, "failed to evaluate window.loadTimeData.getBoolean('allowCrostini')")
-	}
-
-	return allowCrostini, nil
+	return result, nil
 }
