@@ -329,7 +329,7 @@ func GetDirtyWritebackDuration() (time.Duration, error) {
 // If multiple hangcheck configuration paths are found, all of them are modified.
 // Notice that it is expected to fail if running on older kernels.
 // Notice that the unit of hangcheck timer is millisecond and the function would fail if d is smaller or equal to 1 millisecond.
-func SetHangCheckTimer(d time.Duration) error {
+func SetHangCheckTimer(ctx context.Context, d time.Duration) error {
 	if d < 1*time.Millisecond {
 		return errors.Errorf("invalid hangcheck timer parameter, %v, hangcheck timer must be greater or equal to 1 millisecond", d)
 	}
@@ -347,6 +347,7 @@ func SetHangCheckTimer(d time.Duration) error {
 		if err := ioutil.WriteFile(p, []byte(fmt.Sprintf("%d", periodMs)), 0600); err != nil {
 			return errors.Wrapf(err, "failed to write %d to %s", periodMs, p)
 		}
+		testing.ContextLogf(ctx, "Wrote %d to %s", periodMs, p)
 	}
 	return nil
 }
