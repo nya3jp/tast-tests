@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffaa88fa_924321b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/web_page_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-06T11:22:20Z",
+      "side": 1,
+      "message": "move to notifications package",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "762c88aeabf021a6e34d00e8efc5330daf7b884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "993914be_61d9e22a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/web_page_download.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-01-06T11:22:20Z",
+      "side": 1,
+      "message": "newcomer@: Does Tote download integration make this test case obsolete?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 84
+      },
+      "revId": "762c88aeabf021a6e34d00e8efc5330daf7b884c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
