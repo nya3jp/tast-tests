@@ -9,10 +9,8 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -75,24 +73,20 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	ui := uiauto.New(tconn)
-
 	// When a DUT switches from tablet mode to clamshell mode, sometimes it takes a while to settle down.
-	// Tablet mode's home screen has application icons.
-	// On the other hand, clamshell mode's home screen does not have any application icons and users
-	// have to expand the launcher to see application icons.
-	// Therefore, the following code waits for the icons to go away when changing from tablet mode
-	// to clamshell mode.
 	if originallyEnabled && !tabletMode {
-		launcherNode := nodewith.ClassName(launcher.ExpandedItemsClass)
-		if err := ui.WaitUntilGone(launcherNode)(ctx); err != nil {
-			s.Fatal("Failed to wait tablet mode to clamshell mode transition complete: ", err)
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
 		}
 	}
 
 	// Open the Launcher and go to Apps list page.
 	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
 		s.Fatal("Failed to open Expanded Application list view: ", err)
+	}
+
+	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
 
 	if err := launcher.CreateFolder(ctx, tconn); err != nil {
