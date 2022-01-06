@@ -56,10 +56,18 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+		s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
+	}
+
 	// Open the Launcher and go to Apps list page.
 	ui := uiauto.New(tconn)
 	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
 		s.Fatal("Failed to open Expanded Application list view: ", err)
+	}
+
+	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
 
 	if err := launcher.CreateFolder(ctx, tconn); err != nil {
