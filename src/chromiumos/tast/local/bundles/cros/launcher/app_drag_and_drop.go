@@ -66,8 +66,18 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 		f := func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, subtest.modeName+"_ui_dump")
 
+			if !subtest.isTablet {
+				if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+					s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
+				}
+			}
+
 			if err := launcher.Open(tconn)(ctx); err != nil {
 				s.Fatal("Failed to open the launcher: ", err)
+			}
+
+			if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
+				s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 			}
 
 			// Each subtest requires at least 3 items on the current page - the first page may have a (default) page break after several

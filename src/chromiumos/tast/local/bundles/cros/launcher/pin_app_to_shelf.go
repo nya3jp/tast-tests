@@ -69,10 +69,14 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	// When a DUT switching from tablet mode to clamshell mode, sometimes it takes a while to settle down.
-	// Added a delay here to let all events finishing up.
-	if err := uiauto.New(tconn).WaitForLocation(nodewith.Root())(ctx); err != nil {
-		s.Fatal("Failed to wait for location changes: ", err)
+	if !tabletMode {
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
+		}
+	}
+
+	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
+		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
 
 	app1 := apps.WebStore
@@ -228,7 +232,8 @@ func pinApps(ctx context.Context, tconn *chrome.TestConn, apps []apps.App) error
 		if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(finder)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to find app %v on shelf", app.Name)
 		}
-		if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+
+		if err := ui.WaitForLocation(finder)(ctx); err != nil {
 			errors.Wrap(err, "failed to wait for location changes")
 		}
 

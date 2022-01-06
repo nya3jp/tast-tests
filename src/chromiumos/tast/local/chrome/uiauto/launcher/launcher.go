@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/testing"
 )
 
 // ExpandedItemsClass define the class name of the expanded launcher view which is used as search parameters in ui.
@@ -176,6 +177,35 @@ func UnpinAppFromShelf(tconn *chrome.TestConn, app apps.App) uiauto.Action {
 	)
 }
 
+// WaitForStableNumberOfApps waits for the number of apps shown in the app list to stabilize. As a special case,
+// waits for all system web apps to finish installing, as web app installation may add an item to the app list.
+func WaitForStableNumberOfApps(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.waitForSystemWebAppsInstall)"); err != nil {
+		return errors.Wrap(err, "failed to wait for all system web apps to be installed")
+	}
+
+	ui := uiauto.New(tconn)
+	latestCount := -1
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		items, err := ui.NodesInfo(ctx, nodewith.ClassName("AppListItemView"))
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to collect app list items"))
+		}
+
+		currentCount := len(items)
+		if currentCount == latestCount {
+			return nil
+		}
+
+		latestCount = currentCount
+		return errors.New("Number of items changed")
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "Number of apps in launcher unstable")
+	}
+
+	return nil
+}
+
 // RenameFolder return a function that renames a folder to a new name.
 func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, to string) uiauto.Action {
 	// Chrome add prefix "Folder " to all folder names in AppListItemView.
@@ -323,7 +353,7 @@ func RemoveIconFromFolder(tconn *chrome.TestConn) uiauto.Action {
 		}
 
 		// Drag app to the right of the folder.
-		mouse.Move(tconn, folderLocation.CenterPoint().Add(coords.Point{X: folderLocation.Width, Y: 0}), time.Second)(ctx)
+		mouse.Move(tconn, folderLocation.CenterPoint().Add(coords.Point{X: (folderLocation.Width + 1) / 2, Y: 0}), time.Second)(ctx)
 
 		// Release the mouse, ending the drag.
 		mouse.Release(tconn, mouse.LeftButton)(ctx)
