@@ -37,7 +37,7 @@ const (
 	// Time Android init process takes to start. It should be smaller than BootTimeout.
 	androidInitTimeout = 60 * time.Second
 
-	intentHelperTimeout = 20 * time.Second
+	intentHelperTimeout = 40 * time.Second
 
 	// Time waiting for packages to install, for example enterprise auto install.
 	waitPackagesTimeout = 10 * time.Minute
