@@ -16,6 +16,92 @@
       "message": "Steven can you take a look at this first before I pass it to tast owners?\nI also created a follow up CL with usage in the rollback test. The test does not need to connect to networks, just needs to check the connections are preserved.\n\nAlternatives I considered which you might be wondering about:\n\n- Having the javascript in a file. That does not work for grpc services which I need during the rollback test.\n\n- Not having dedicated javascript at all but instead loading the networkConfig_ object on each call. That makes the code a bit shorter and less cluttered with wrapping. It is a bit slower: Without saving the remote 10000 calls to mojo need 12.928s. With saving 10000 calls need 8.722s.\n\n- Getting by without chrome://network. We need that to use cros_network_config during oobe. The tricky part is having permission to import the mojo files in javascript. I asked tast experts and it is probably possible to add permissions to an extension and then import the javascript mojo files with that extension. I would plan this as a follow up task.\n\n",
       "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b292af_e3e53d61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-06T18:37:42Z",
+      "side": 1,
+      "message": "This generally looks great, and I think this approach is probably fine.\n\n+tbegin@, apologies for dragging you in, but do you have any thoughts or suggestions here based on your experience with using the network_diagnostics API in Tast? Thanks a ton!\n\nMiriam, here is the network_diagnostics api.go file for refernce:\nsrc/platform/tast-tests/src/chromiumos/tast/common/network/diag/api.go",
+      "parentUuid": "548463ed_c72aab3b",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c3d860_ee0b3a2f",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-06T18:37:42Z",
+      "side": 1,
+      "message": "\u0027netconf\u0027 means something else in the Linux kernel, and I believe that convention would name this the same as the subdirectory, i.e. cros_network_config.\n\nI think it would also be OK to name this subdir and module \u0027config\u0027, I don\u0027t forsee any ambiguity there.",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ab2bb9_33c5fd93",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-06T18:37:42Z",
+      "side": 1,
+      "message": "For network_diag we do something similar except we launch the connectivity diagnostics dialog:\nsrc/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/conndiag/conndiag.go\n\nI think this may be fine though, tbegin@ WDYT?",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fceaef08_0709887d",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-06T18:37:42Z",
+      "side": 1,
+      "message": "nit: No blank line",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ae8ecb_267b3684",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-06T18:37:42Z",
+      "side": 1,
+      "message": "Maybe put this in a separate file, especially since it will likely grow over time?",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
