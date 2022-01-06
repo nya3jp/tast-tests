@@ -5,13 +5,16 @@
 package camera
 
 import (
+	"bufio"
 	"context"
 	"os"
 	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/gtest"
@@ -33,6 +36,28 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"bear.mjpeg"},
 	})
+}
+
+func parseLastTestCase(logFile string) (string, error) {
+	file, err := os.Open(logFile)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to open log file")
+	}
+	defer file.Close()
+
+	pattern := regexp.MustCompile(`\[ RUN      \] (.*)`)
+	scanner := bufio.NewScanner(file)
+	lastTestCase := ""
+	for scanner.Scan() {
+		if matches := pattern.FindStringSubmatch(scanner.Text()); matches != nil {
+			lastTestCase = matches[1]
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		return "", errors.Wrap(err, "failed to scan log file")
+	}
+	return lastTestCase, nil
 }
 
 // CaptureUnittests runs Chrome's capture_unittests.
@@ -87,14 +112,23 @@ func CaptureUnittests(ctx context.Context, s *testing.State) {
 	}
 
 	const exec = "capture_unittests"
+	logFile := filepath.Join(s.OutDir(), exec+".log")
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
-		gtest.Logfile(filepath.Join(s.OutDir(), exec+".log")),
+		gtest.Logfile(logFile),
 		gtest.Filter(filter),
 		gtest.ExtraArgs(logging.ChromeVmoduleFlag(), "--test-launcher-jobs=1"),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(shortCtx); err != nil {
-		s.Errorf("Failed to run %v: %v", exec, err)
+		if errors.Is(err, context.DeadlineExceeded) {
+			if testCase, err := parseLastTestCase(logFile); err != nil {
+				s.Error("Test timeout but failed to get last test case: ", err)
+			} else {
+				s.Error("Test timeout. The last test case: ", testCase)
+			}
+		} else {
+			s.Errorf("Failed to run %v: %v", exec, err)
+		}
 		if report != nil {
 			for _, name := range report.FailedTestNames() {
 				s.Error(name, " failed")
