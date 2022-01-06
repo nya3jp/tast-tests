@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb30537b_c0b1ad07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-06T23:05:15Z",
+      "side": 1,
+      "message": "Thanks for automating this. I noticed that a image file is tested, what about google docs?",
+      "revId": "c3b3847670c8074be6544f9ef4538002d1b1845a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
