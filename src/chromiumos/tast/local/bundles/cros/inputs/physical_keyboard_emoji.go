@@ -28,9 +28,10 @@ func init() {
 			ExtraAttr:         []string{"group:input-tools-upstream"},
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
 		}, {
-			Name:              "informational",
-			ExtraAttr:         []string{"informational"},
-			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			Name:      "informational",
+			ExtraAttr: []string{"informational"},
+			// Skip on grunt & zork boards due to b/213400835.
+			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels, hwdep.SkipOnPlatform("grunt", "zork")),
 		}}})
 }
 
