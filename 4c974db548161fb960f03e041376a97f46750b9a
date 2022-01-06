@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b268cb0_3129f925",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-06T09:31:32Z",
+      "side": 1,
+      "message": "You can have `ExtraSoftwareDeps` IIUC.",
+      "parentUuid": "bf1a0ebc_2faeb248",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 37
+      },
+      "revId": "4c974db548161fb960f03e041376a97f46750b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6d40dbf_b0097da6",
         "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
         "patchSetId": 12
