@@ -22,6 +22,30 @@
       },
       "revId": "d0eac396e0d426629570fef63aa0aebe0ccad42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb86537_59294d5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-06T23:19:12Z",
+      "side": 1,
+      "message": "For `hatch` devices, we have stainless data that show guest pack sizes ranging from 157492kB [1](`jinlon` and `dratini`) to 280892kB [2](`kohaku` and `helios`).\n\nBelow shows the `helios`[2] device as example where host pack is larger.  We should probably log the pack sizes in the tast output so it\u0027s easier to verify for both host and guest.\n\nhost pack dump header:\n```\n/opt/google/vms/android/ureadahead.pack: created Mon, 03 Jan 2022 17:53:47 +0000 for ssd 254:0\n0 inode groups, 3 files, 251 blocks (343084 kB)\n```\n\nguest pack dump header:\n```\n/var/lib/ureadahead/pack: created Mon, 03 Jan 2022 17:54:05 +0000 for ssd 254:0\n0 inode groups, 227 files, 278 blocks (280892 kB)\n```\n\n\u003e\u003e Could you please elaborate how this applied to 8GB devices?\n\nPer previous logic, we run ureadahead validation always for container and only if 8GB+ devices for vm. \u0027ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500))\u0027 is only for vm test config which will enforce this requirement.  Per links in the bug [3], we are seeing guest pack files generated on `maglet` which is unexpected, and arc.UreadaheadValidation.vm incorrectly trying to process a pack on `bluebird` which are all 4GB devices.\n\nI verified using 4GB crosfleet lab DUTs that using the HWDEP method allows skipping of test.\n\n\u003e\u003e Also this probably should mention Guest ?\nDone.\n\n[1] http://stainless/browse/chromeos-test-logs/test-runner/prod/2022-01-05/9e720dd1-9455-427a-95dd-76db084b76f0/autoserv_test/tast/results/tests/arc.UreadaheadValidation.vm\n[2] http://stainless/browse/chromeos-test-logs/test-runner/prod/2022-01-04/98cbe573-5f3d-4705-aa09-e732ab4602c1/autoserv_test/tast/results/tests/arc.UreadaheadValidation.vm\n[3] https://b.corp.google.com/issues/212643348#comment4, https://b.corp.google.com/issues/212643348#comment5",
+      "parentUuid": "2cbde62d_19afbe0e",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "d0eac396e0d426629570fef63aa0aebe0ccad42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

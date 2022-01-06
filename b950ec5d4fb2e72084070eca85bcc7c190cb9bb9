@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0570bc4_c7b4b5db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-06T23:19:12Z",
+      "side": 1,
+      "message": "PTALA, thanks.",
+      "revId": "b950ec5d4fb2e72084070eca85bcc7c190cb9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
