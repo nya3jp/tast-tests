@@ -234,6 +234,30 @@
       },
       "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b4d7e3_ad8f0fe9",
+        "filename": "src/chromiumos/tast/local/uidetection/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-06T19:20:19Z",
+      "side": 1,
+      "message": "Thanks! I accidentally left this in assuming you had done some work around it and that I would get back to it :) . I\u0027ll wait for that CL to land and then update accordingly.",
+      "parentUuid": "123e6cfa_d602c469",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
