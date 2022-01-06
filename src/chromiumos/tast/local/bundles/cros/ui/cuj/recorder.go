@@ -182,7 +182,6 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, configs ...
 		newThermalDataSource(ctx),
 		gpuDS,
 		newMemoryDataSource("RAM.Absolute", "RAM.Diff.Absolute", "RAM"),
-		NewFrameDataSource(tconn, "Display.Smoothness"),
 	}
 	timeline, err := perf.NewTimeline(ctx, sources, perf.Interval(checkInterval), perf.Prefix(metricPrefix))
 	if err != nil {
