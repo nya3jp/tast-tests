@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7744eaae_5d37ed4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-01-06T17:07:32Z",
+      "side": 1,
+      "message": "nit: maybe replace all space(s) with \\s* to make this regexp slightly more robust.",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "808fc63e24357bed751c0cfb0f34e28f819cdb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7815616f_cc886235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-01-06T17:07:32Z",
+      "side": 1,
+      "message": "qq: Will we still have the xml output file (which the report is generated from iirc) when hitting timeout? Parsing the unstructured human-oriented log file feels a little bit hacky to me :P",
+      "revId": "808fc63e24357bed751c0cfb0f34e28f819cdb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
