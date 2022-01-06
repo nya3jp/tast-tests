@@ -64,6 +64,7 @@ var h264FilesFromBugs = []string{
 	"test_vectors/h264/files_from_bugs/b_149068426_invalid_video_layout_mtk_8183_with_direct_videodecoder.h264",
 	"test_vectors/h264/files_from_bugs/b_172838252_pixelated_video_on_rk3399.h264",
 	"test_vectors/h264/files_from_bugs/b_174733646_video_with_out_of_order_frames_mtk_8173.h264",
+	"test_vectors/h264/files_from_bugs/b_210895987_still-colors-360p.h264",
 }
 
 var h264Files = map[string][]string{
