@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f414f16d_32369bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_minigame_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-06T19:19:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e7e6a01b_8e734895",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f90cec3b_692acb09",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-06T03:25:12Z",
       "side": 1,
       "message": "ImmediateScreenshot?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efcb2338_6191c015",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-06T19:19:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f90cec3b_692acb09",
       "range": {
         "startLine": 43,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7693dc9d_7f926aa7",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-06T19:19:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a663bdfb_63620c2b",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de9a19cf_c62043c3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-06T03:25:12Z",
       "side": 1,
       "message": "you can remove it.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 90
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89bccde5_526fcfc3",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-06T19:19:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de9a19cf_c62043c3",
       "range": {
         "startLine": 131,
         "startChar": 1,
