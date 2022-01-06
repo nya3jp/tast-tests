@@ -17,11 +17,12 @@ type DisplaySmoothnessTracker struct {
 	displayIDs map[string]bool
 }
 
-// DisplayFrameData  holds the collected display frame data.
+// DisplayFrameData holds the collected display frame data.
 type DisplayFrameData struct {
-	FramesExpected int `json:"framesExpected"`
-	FramesProduced int `json:"framesProduced"`
-	JankCount      int `json:"jankCount"`
+	FramesExpected int   `json:"framesExpected"`
+	FramesProduced int   `json:"framesProduced"`
+	JankCount      int   `json:"jankCount"`
+	Throughput     []int `json:"throughput"`
 }
 
 // displayIDString returns a string representing the given display id.
