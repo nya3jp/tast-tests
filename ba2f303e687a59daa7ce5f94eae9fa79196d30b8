@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "548463ed_c72aab3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-06T10:50:12Z",
+      "side": 1,
+      "message": "Steven can you take a look at this first before I pass it to tast owners?\nI also created a follow up CL with usage in the rollback test. The test does not need to connect to networks, just needs to check the connections are preserved.\n\nAlternatives I considered which you might be wondering about:\n\n- Having the javascript in a file. That does not work for grpc services which I need during the rollback test.\n\n- Not having dedicated javascript at all but instead loading the networkConfig_ object on each call. That makes the code a bit shorter and less cluttered with wrapping. It is a bit slower: Without saving the remote 10000 calls to mojo need 12.928s. With saving 10000 calls need 8.722s.\n\n- Getting by without chrome://network. We need that to use cros_network_config during oobe. The tricky part is having permission to import the mojo files in javascript. I asked tast experts and it is probably possible to add permissions to an extension and then import the javascript mojo files with that extension. I would plan this as a follow up task.\n\n",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
