@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e6a01b_8e734895",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_minigame_gpu_benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-06T03:25:12Z",
+      "side": 1,
+      "message": "uda :\u003d uidetection.NewDefault(params.TestConn).WithScreenshotStrategy(...)",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90cec3b_692acb09",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-06T03:25:12Z",
+      "side": 1,
+      "message": "ImmediateScreenshot?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a663bdfb_63620c2b",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-06T03:25:12Z",
+      "side": 1,
+      "message": "how about the following, which is a more common pattern:\n\nfunc (uda *Context) WithScreenshotStrategy(s ScreenshotStrategy) *Context {\n    return \u0026Context{\n\t\ttconn:    uda.tconn,\n\t\tdetector: uda.detector,\n\t\tpollOpts: uda.pollOpts,\n\t\tscreenshot: s,\n\t\t},\n\t}\n}",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9a19cf_c62043c3",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-06T03:25:12Z",
+      "side": 1,
+      "message": "you can remove it.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 90
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e83ad8f_e6af55be",
+        "filename": "src/chromiumos/tast/local/uidetection/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-06T03:25:12Z",
+      "side": 1,
+      "message": "I am working on a CL to rewrite these options, will CC you there.",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "a7bbaad8c2d5bfc2c5cbcbee470d154982d5fb63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
