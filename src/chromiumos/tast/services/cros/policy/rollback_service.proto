@@ -10,11 +10,22 @@ import "google/protobuf/empty.proto";
 
 option go_package = "chromiumos/tast/services/cros/policy";
 
-// RollbackService provides a function to verify that an enterprise rollback was successful.
+// RollbackService provides functions to set up and verify enterprise rollback.
 service RollbackService {
-  rpc VerifyRollback (google.protobuf.Empty) returns (RollbackSuccessfulResponse);
+  rpc SetUpPskNetwork (google.protobuf.Empty) returns (SetUpPskResponse);
+  // Verifies that oobe ends up on the enrollment screen after rollback and
+  // that the previously set up psk network with the given guid still exists.
+  rpc VerifyRollback (VerifyRollbackRequest) returns (VerifyRollbackResponse);
 }
 
-message RollbackSuccessfulResponse {
+message SetUpPskResponse {
+  string guid = 1;
+}
+
+message VerifyRollbackRequest {
+  string guid = 1;
+}
+
+message VerifyRollbackResponse {
   bool successful = 1;
 }

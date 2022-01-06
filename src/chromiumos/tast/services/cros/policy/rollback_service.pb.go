@@ -29,16 +29,16 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type RollbackSuccessfulResponse struct {
+type SetUpPskResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Successful bool `protobuf:"varint,1,opt,name=successful,proto3" json:"successful,omitempty"`
+	Guid string `protobuf:"bytes,1,opt,name=guid,proto3" json:"guid,omitempty"`
 }
 
-func (x *RollbackSuccessfulResponse) Reset() {
-	*x = RollbackSuccessfulResponse{}
+func (x *SetUpPskResponse) Reset() {
+	*x = SetUpPskResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_policy_rollback_service_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -46,13 +46,13 @@ func (x *RollbackSuccessfulResponse) Reset() {
 	}
 }
 
-func (x *RollbackSuccessfulResponse) String() string {
+func (x *SetUpPskResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RollbackSuccessfulResponse) ProtoMessage() {}
+func (*SetUpPskResponse) ProtoMessage() {}
 
-func (x *RollbackSuccessfulResponse) ProtoReflect() protoreflect.Message {
+func (x *SetUpPskResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_policy_rollback_service_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -64,12 +64,106 @@ func (x *RollbackSuccessfulResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RollbackSuccessfulResponse.ProtoReflect.Descriptor instead.
-func (*RollbackSuccessfulResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use SetUpPskResponse.ProtoReflect.Descriptor instead.
+func (*SetUpPskResponse) Descriptor() ([]byte, []int) {
 	return file_policy_rollback_service_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RollbackSuccessfulResponse) GetSuccessful() bool {
+func (x *SetUpPskResponse) GetGuid() string {
+	if x != nil {
+		return x.Guid
+	}
+	return ""
+}
+
+type VerifyRollbackRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Guid string `protobuf:"bytes,1,opt,name=guid,proto3" json:"guid,omitempty"`
+}
+
+func (x *VerifyRollbackRequest) Reset() {
+	*x = VerifyRollbackRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_policy_rollback_service_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VerifyRollbackRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyRollbackRequest) ProtoMessage() {}
+
+func (x *VerifyRollbackRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_policy_rollback_service_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyRollbackRequest.ProtoReflect.Descriptor instead.
+func (*VerifyRollbackRequest) Descriptor() ([]byte, []int) {
+	return file_policy_rollback_service_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *VerifyRollbackRequest) GetGuid() string {
+	if x != nil {
+		return x.Guid
+	}
+	return ""
+}
+
+type VerifyRollbackResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Successful bool `protobuf:"varint,1,opt,name=successful,proto3" json:"successful,omitempty"`
+}
+
+func (x *VerifyRollbackResponse) Reset() {
+	*x = VerifyRollbackResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_policy_rollback_service_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *VerifyRollbackResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VerifyRollbackResponse) ProtoMessage() {}
+
+func (x *VerifyRollbackResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_policy_rollback_service_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VerifyRollbackResponse.ProtoReflect.Descriptor instead.
+func (*VerifyRollbackResponse) Descriptor() ([]byte, []int) {
+	return file_policy_rollback_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *VerifyRollbackResponse) GetSuccessful() bool {
 	if x != nil {
 		return x.Successful
 	}
@@ -83,21 +177,32 @@ var file_policy_rollback_service_proto_rawDesc = []byte{
 	0x6b, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
 	0x10, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63,
 	0x79, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
-	0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x3c,
-	0x0a, 0x1a, 0x52, 0x6f, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73,
-	0x73, 0x66, 0x75, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1e, 0x0a, 0x0a,
-	0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x66, 0x75, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08,
-	0x52, 0x0a, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x66, 0x75, 0x6c, 0x32, 0x69, 0x0a, 0x0f,
-	0x52, 0x6f, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
-	0x56, 0x0a, 0x0e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6c, 0x6c, 0x62, 0x61, 0x63,
-	0x6b, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x2c, 0x2e, 0x74, 0x61, 0x73, 0x74,
-	0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x52, 0x6f, 0x6c,
-	0x6c, 0x62, 0x61, 0x63, 0x6b, 0x53, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x66, 0x75, 0x6c, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x26, 0x5a, 0x24, 0x63, 0x68, 0x72, 0x6f, 0x6d,
-	0x69, 0x75, 0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73, 0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x26,
+	0x0a, 0x10, 0x53, 0x65, 0x74, 0x55, 0x70, 0x50, 0x73, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x67, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x67, 0x75, 0x69, 0x64, 0x22, 0x2b, 0x0a, 0x15, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79,
+	0x52, 0x6f, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x12, 0x0a, 0x04, 0x67, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x67,
+	0x75, 0x69, 0x64, 0x22, 0x38, 0x0a, 0x16, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6c,
+	0x6c, 0x62, 0x61, 0x63, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1e, 0x0a,
+	0x0a, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x66, 0x75, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x08, 0x52, 0x0a, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x66, 0x75, 0x6c, 0x32, 0xc5, 0x01,
+	0x0a, 0x0f, 0x52, 0x6f, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x12, 0x4d, 0x0a, 0x0f, 0x53, 0x65, 0x74, 0x55, 0x70, 0x50, 0x73, 0x6b, 0x4e, 0x65, 0x74,
+	0x77, 0x6f, 0x72, 0x6b, 0x12, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x22, 0x2e, 0x74,
+	0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e,
+	0x53, 0x65, 0x74, 0x55, 0x70, 0x50, 0x73, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x63, 0x0a, 0x0e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6c, 0x6c, 0x62, 0x61,
+	0x63, 0x6b, 0x12, 0x27, 0x2e, 0x74, 0x61, 0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x70,
+	0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6c, 0x6c,
+	0x62, 0x61, 0x63, 0x6b, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x74, 0x61,
+	0x73, 0x74, 0x2e, 0x63, 0x72, 0x6f, 0x73, 0x2e, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x2e, 0x56,
+	0x65, 0x72, 0x69, 0x66, 0x79, 0x52, 0x6f, 0x6c, 0x6c, 0x62, 0x61, 0x63, 0x6b, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x26, 0x5a, 0x24, 0x63, 0x68, 0x72, 0x6f, 0x6d, 0x69, 0x75,
+	0x6d, 0x6f, 0x73, 0x2f, 0x74, 0x61, 0x73, 0x74, 0x2f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x73, 0x2f, 0x63, 0x72, 0x6f, 0x73, 0x2f, 0x70, 0x6f, 0x6c, 0x69, 0x63, 0x79, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -112,16 +217,20 @@ func file_policy_rollback_service_proto_rawDescGZIP() []byte {
 	return file_policy_rollback_service_proto_rawDescData
 }
 
-var file_policy_rollback_service_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_policy_rollback_service_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_policy_rollback_service_proto_goTypes = []interface{}{
-	(*RollbackSuccessfulResponse)(nil), // 0: tast.cros.policy.RollbackSuccessfulResponse
-	(*empty.Empty)(nil),                // 1: google.protobuf.Empty
+	(*SetUpPskResponse)(nil),       // 0: tast.cros.policy.SetUpPskResponse
+	(*VerifyRollbackRequest)(nil),  // 1: tast.cros.policy.VerifyRollbackRequest
+	(*VerifyRollbackResponse)(nil), // 2: tast.cros.policy.VerifyRollbackResponse
+	(*empty.Empty)(nil),            // 3: google.protobuf.Empty
 }
 var file_policy_rollback_service_proto_depIdxs = []int32{
-	1, // 0: tast.cros.policy.RollbackService.VerifyRollback:input_type -> google.protobuf.Empty
-	0, // 1: tast.cros.policy.RollbackService.VerifyRollback:output_type -> tast.cros.policy.RollbackSuccessfulResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	3, // 0: tast.cros.policy.RollbackService.SetUpPskNetwork:input_type -> google.protobuf.Empty
+	1, // 1: tast.cros.policy.RollbackService.VerifyRollback:input_type -> tast.cros.policy.VerifyRollbackRequest
+	0, // 2: tast.cros.policy.RollbackService.SetUpPskNetwork:output_type -> tast.cros.policy.SetUpPskResponse
+	2, // 3: tast.cros.policy.RollbackService.VerifyRollback:output_type -> tast.cros.policy.VerifyRollbackResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -134,7 +243,31 @@ func file_policy_rollback_service_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_policy_rollback_service_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RollbackSuccessfulResponse); i {
+			switch v := v.(*SetUpPskResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_policy_rollback_service_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VerifyRollbackRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_policy_rollback_service_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*VerifyRollbackResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -152,7 +285,7 @@ func file_policy_rollback_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_policy_rollback_service_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -178,7 +311,10 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type RollbackServiceClient interface {
-	VerifyRollback(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*RollbackSuccessfulResponse, error)
+	SetUpPskNetwork(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*SetUpPskResponse, error)
+	// Verifies that oobe ends up on the enrollment screen after rollback and
+	// that the previously set up psk network with the given guid still exists.
+	VerifyRollback(ctx context.Context, in *VerifyRollbackRequest, opts ...grpc.CallOption) (*VerifyRollbackResponse, error)
 }
 
 type rollbackServiceClient struct {
@@ -189,8 +325,17 @@ func NewRollbackServiceClient(cc grpc.ClientConnInterface) RollbackServiceClient
 	return &rollbackServiceClient{cc}
 }
 
-func (c *rollbackServiceClient) VerifyRollback(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*RollbackSuccessfulResponse, error) {
-	out := new(RollbackSuccessfulResponse)
+func (c *rollbackServiceClient) SetUpPskNetwork(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*SetUpPskResponse, error) {
+	out := new(SetUpPskResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.policy.RollbackService/SetUpPskNetwork", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rollbackServiceClient) VerifyRollback(ctx context.Context, in *VerifyRollbackRequest, opts ...grpc.CallOption) (*VerifyRollbackResponse, error) {
+	out := new(VerifyRollbackResponse)
 	err := c.cc.Invoke(ctx, "/tast.cros.policy.RollbackService/VerifyRollback", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -200,14 +345,20 @@ func (c *rollbackServiceClient) VerifyRollback(ctx context.Context, in *empty.Em
 
 // RollbackServiceServer is the server API for RollbackService service.
 type RollbackServiceServer interface {
-	VerifyRollback(context.Context, *empty.Empty) (*RollbackSuccessfulResponse, error)
+	SetUpPskNetwork(context.Context, *empty.Empty) (*SetUpPskResponse, error)
+	// Verifies that oobe ends up on the enrollment screen after rollback and
+	// that the previously set up psk network with the given guid still exists.
+	VerifyRollback(context.Context, *VerifyRollbackRequest) (*VerifyRollbackResponse, error)
 }
 
 // UnimplementedRollbackServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedRollbackServiceServer struct {
 }
 
-func (*UnimplementedRollbackServiceServer) VerifyRollback(context.Context, *empty.Empty) (*RollbackSuccessfulResponse, error) {
+func (*UnimplementedRollbackServiceServer) SetUpPskNetwork(context.Context, *empty.Empty) (*SetUpPskResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetUpPskNetwork not implemented")
+}
+func (*UnimplementedRollbackServiceServer) VerifyRollback(context.Context, *VerifyRollbackRequest) (*VerifyRollbackResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method VerifyRollback not implemented")
 }
 
@@ -215,8 +366,26 @@ func RegisterRollbackServiceServer(s *grpc.Server, srv RollbackServiceServer) {
 	s.RegisterService(&_RollbackService_serviceDesc, srv)
 }
 
-func _RollbackService_VerifyRollback_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RollbackService_SetUpPskNetwork_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(empty.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RollbackServiceServer).SetUpPskNetwork(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.policy.RollbackService/SetUpPskNetwork",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RollbackServiceServer).SetUpPskNetwork(ctx, req.(*empty.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RollbackService_VerifyRollback_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyRollbackRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -228,7 +397,7 @@ func _RollbackService_VerifyRollback_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/tast.cros.policy.RollbackService/VerifyRollback",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RollbackServiceServer).VerifyRollback(ctx, req.(*empty.Empty))
+		return srv.(RollbackServiceServer).VerifyRollback(ctx, req.(*VerifyRollbackRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -237,6 +406,10 @@ var _RollbackService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.policy.RollbackService",
 	HandlerType: (*RollbackServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SetUpPskNetwork",
+			Handler:    _RollbackService_SetUpPskNetwork_Handler,
+		},
 		{
 			MethodName: "VerifyRollback",
 			Handler:    _RollbackService_VerifyRollback_Handler,
