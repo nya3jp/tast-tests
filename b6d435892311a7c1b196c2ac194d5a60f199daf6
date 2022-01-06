@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e609bfc3_104b302f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273836
+      },
+      "writtenOn": "2022-01-06T08:48:00Z",
+      "side": 1,
+      "message": "Replace CL:3362282, as Chirantan\u0027s account is deactivated so CQ cannot pick up the CL.",
+      "revId": "b6d435892311a7c1b196c2ac194d5a60f199daf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
