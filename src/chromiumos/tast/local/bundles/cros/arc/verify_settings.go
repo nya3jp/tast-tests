@@ -223,12 +223,14 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 	}
 
 	turnOnlocation := arcDevice.Object(androidui.ClassName("android.widget.Button"), androidui.TextMatches("(?i)TURN ON LOCATION"), androidui.Enabled(true))
-	if err := turnOnlocation.WaitForExists(ctx, timeoutUI); err != nil {
-		return errors.Wrap(err, "failed finding TURN ON LOCATION")
-	}
-
-	if err := turnOnlocation.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click TURN ON LOCATION")
+	if err := turnOnlocation.WaitForExists(ctx, timeoutUI); err == nil {
+		if err := turnOnlocation.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click TURN ON LOCATION")
+		}
+	} else {
+		if err := locationToggle.Click(ctx); err != nil {
+			return errors.Wrap(err, "failed to click Location toggle button")
+		}
 	}
 
 	// locationStatus will check for toggle On/Off
