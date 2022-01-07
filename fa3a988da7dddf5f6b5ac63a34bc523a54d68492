@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a33d9221_56af9270",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-01-07T22:19:53Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "1b281c81_79320833",
+      "revId": "fa3a988da7dddf5f6b5ac63a34bc523a54d68492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a71a2ce_731f9741",
@@ -155,6 +173,24 @@
       "side": 0,
       "message": "logout at the end will close it.",
       "parentUuid": "3a71a2ce_731f9741",
+      "revId": "fa3a988da7dddf5f6b5ac63a34bc523a54d68492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d708d3c0_dc0fd452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-01-07T22:19:53Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "db058c06_85eadd61",
       "revId": "fa3a988da7dddf5f6b5ac63a34bc523a54d68492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
