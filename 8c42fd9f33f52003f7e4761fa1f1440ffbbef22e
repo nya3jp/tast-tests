@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe3e0ce2_5dfa2f6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-01-07T06:28:33Z",
+      "side": 1,
+      "message": "I tried that but Call didn\u0027t succeed, but got no error just decodedFramesLen is not set.\nI searched tast code using JSObject. function() + this is used everywhere.\nI don\u0027t understand the reason..\nJSObjet.Call() with JS \"this\" is executed in conn.Call(). conn.Call() can works with non \"function()\" JS function.\nDespite the same seems to be done, so what makes difference between directly executing JSObjet.Call() and conn.Call()..? Perhaps JS \"this\" is a special case that works with non \"function()\" JS function?",
+      "parentUuid": "1d845087_b602bc3f",
+      "range": {
+        "startLine": 185,
+        "startChar": 48,
+        "endLine": 185,
+        "endChar": 83
+      },
+      "revId": "8c42fd9f33f52003f7e4761fa1f1440ffbbef22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e15fcb71_8bca95e5",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/webcodecs/decode.go",
         "patchSetId": 11
