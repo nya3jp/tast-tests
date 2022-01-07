@@ -12,6 +12,7 @@ const (
 	AttributeDeviceMode    string = "DeviceMode"
 	AttributeKeyboardType  string = "KeyboardType"
 	AttributeBoardName     string = "BoardName"
+	AttributeDeviceRegion  string = "DeviceRegion"
 	AttributeIncognitoMode string = "IncognitoMode"
 	AttributeUserMode      string = "UserMode"
 	AttributeInputMethod   string = "InputMethod"
