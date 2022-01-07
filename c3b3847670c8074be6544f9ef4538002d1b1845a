@@ -16,6 +16,24 @@
       "message": "Thanks for automating this. I noticed that a image file is tested, what about google docs?",
       "revId": "c3b3847670c8074be6544f9ef4538002d1b1845a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7031aa96_7ff7e992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-07T01:39:11Z",
+      "side": 1,
+      "message": "The `Google Docs` and `files in Google Drive` tests refer to b:200988266, we planned to introduce those in another CL. \nIs adding those tests in this CL preferred?",
+      "parentUuid": "bb30537b_c0b1ad07",
+      "revId": "c3b3847670c8074be6544f9ef4538002d1b1845a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
