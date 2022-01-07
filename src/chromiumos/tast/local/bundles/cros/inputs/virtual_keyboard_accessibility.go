@@ -7,11 +7,14 @@ package inputs
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -40,16 +43,28 @@ func init() {
 func VirtualKeyboardAccessibility(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
-	vkbCtx := vkb.NewContext(cr, tconn)
+	uc := s.PreValue().(pre.PreData).UserContext
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
+
+	vkbCtx := vkb.NewContext(cr, tconn)
 
 	// Check that the keyboard has modifier and tab keys.
 	keys := []string{"ctrl", "alt", "caps lock", "tab"}
-	if err := uiauto.Combine("trigger A11y virtual keyboard and check functional keys exist",
+	action := uiauto.Combine("trigger A11y virtual keyboard and check functional keys exist",
 		vkbCtx.ShowVirtualKeyboard(),
 		vkbCtx.WaitForKeysExist(keys),
-	)(ctx); err != nil {
+	)
+
+	if err := useractions.NewUserAction("A11y VK functional keys check",
+		action,
+		uc,
+		nil,
+	).Run(ctx); err != nil {
 		s.Fatal("Failed to validate A11y virtual keyboard: ", err)
 	}
 }
