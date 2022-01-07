@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/kioskmode"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -76,7 +77,7 @@ func CRXManifestUpdateURLIgnored(ctx context.Context, s *testing.State) {
 			appID:            "fimgekdokgldflggeacgijngdienfdml",
 			updateURL:        "https://storage.googleapis.com/extension_test/fimgekdokgldflggeacgijngdienfdml-update-10.xml",
 		},
-		// Update URL in crx points to V2 of the app. It should only upgrade to V2 if policy is false
+		// Update URL in crx points to V2 of the app. It should only upgrade to V2 if policy is false.
 		{
 			ignoreCrxURL:     true,
 			originalAppTitle: "Test extension #6",
@@ -91,7 +92,7 @@ func CRXManifestUpdateURLIgnored(ctx context.Context, s *testing.State) {
 			appID:            "epeagdmdgnhlibpbnhalblaohdhhkpne",
 			updateURL:        "https://storage.googleapis.com/extension_test/epeagdmdgnhlibpbnhalblaohdhhkpne-update-12.xml",
 		},
-		// Since policy is set to false, the App should upgrade automatically
+		// Since policy is set to false, the App should upgrade automatically.
 		{
 			ignoreCrxURL:     false,
 			originalAppTitle: "Test extension #6",
@@ -147,7 +148,7 @@ func launchKioskAndVerify(ctx context.Context, s *testing.State, ignoreCrxURL bo
 	}
 }
 
-// openExtensionAndCheckTitleChange opens the kiosk app from login screen using the originalAppTitle and evaluates if the launched app has updatedAppTitle
+// openExtensionAndCheckTitleChange opens the kiosk app from login screen using the originalAppTitle and evaluates if the launched app has updatedAppTitle.
 func openExtensionAndCheckTitleChange(ctx context.Context, s *testing.State, cr *chrome.Chrome, originalAppTitle, updatedAppTitle string) bool {
 	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
@@ -158,10 +159,16 @@ func openExtensionAndCheckTitleChange(ctx context.Context, s *testing.State, cr 
 	ui := uiauto.New(tconn)
 
 	// UI needs some time to be stable to interact, see also start_app_from_sign_in_screen.go
-	// I was not able to find another stable way to interact with the UI
+	// I was not able to find another stable way to interact with the UI.
 	testing.Sleep(ctx, 3*time.Second)
 
-	//Open kiosk app from signin screen and wait until the app is launched
+	// Start syslog reader.
+	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		s.Fatal("Failed to start log reader: ", err)
+	}
+	defer reader.Close()
+
 	testing.ContextLog(ctx, "Opening Kiosk app from signin screen")
 	kioskAppsBtn := nodewith.Name("Apps").ClassName("MenuButton")
 	testExtensionButton := nodewith.Name(originalAppTitle).ClassName("MenuItemView")
@@ -172,9 +179,18 @@ func openExtensionAndCheckTitleChange(ctx context.Context, s *testing.State, cr 
 		ui.LeftClick(kioskAppsBtn),
 		ui.WaitUntilExists(testExtensionButton),
 		ui.LeftClick(testExtensionButton),
-		ui.WaitUntilExists(versionNode),
 	)(ctx); err != nil {
-		s.Fatal("Failed open extension: ", err)
+		s.Fatal("Failed to start extension: ", err)
+	}
+
+	// Wait for kiosk to start.
+	if err := kioskmode.ConfirmKioskStarted(ctx, reader); err != nil {
+		s.Fatal("There was a problem while checking chrome logs for Kiosk related entries: ", err)
+	}
+
+	// Wait for extension UI to be visible.
+	if err := ui.WaitUntilExists(versionNode)(ctx); err != nil {
+		s.Fatal("Failed to wait for extension to launch: ", err)
 	}
 
 	titleNode := nodewith.ClassName("RootView").Name(updatedAppTitle)
