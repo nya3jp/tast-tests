@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1f9287_c24132fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-07T04:58:46Z",
+      "side": 1,
+      "message": "I see it!",
+      "parentUuid": "8cebb07c_fc749b28",
+      "revId": "43ac7c2480556ff2e1a8e460efe985b383604d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a538877_8e8d6ccc",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-07T04:41:47Z",
       "side": 1,
       "message": "optional: fmt.Sprintf() is recommended.\n\nBTW, you may want to consider escaping, because name is given as arg, and there\u0027s no guarantee that name does not contain any whitespace chars.",
+      "range": {
+        "startLine": 80,
+        "startChar": 32,
+        "endLine": 80,
+        "endChar": 118
+      },
+      "revId": "43ac7c2480556ff2e1a8e460efe985b383604d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66b4c76_9c868556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-07T04:58:46Z",
+      "side": 1,
+      "message": "All of the args that are passed as a string slice are escaped by other tast helper code.\n\nDevice.ShellCommand calls shutil.EscapeSlice here:\nhttp://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/android/adb/commands.go;l\u003d22;rcl\u003d2c72f61eaa9af633ac5f76cf52ef7b5a0ba60093\n\nshutil.EscapeSlice does the escaping here:\nhttp://cs/chromeos_public/src/platform/tast/shutil/shutil.go;l\u003d27;rcl\u003d2c72f61eaa9af633ac5f76cf52ef7b5a0ba60093\n\nThat\u0027s why it was not escaped in the preexisting code either.",
+      "parentUuid": "0a538877_8e8d6ccc",
       "range": {
         "startLine": 80,
         "startChar": 32,
