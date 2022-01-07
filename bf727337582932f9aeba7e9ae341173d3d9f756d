@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c49275db_0964ef70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-01-07T19:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fec9c955_8a045da2",
+      "revId": "bf727337582932f9aeba7e9ae341173d3d9f756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd70ac05_ae63d43d",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-06T23:37:15Z",
       "side": 1,
       "message": "nit: maybe \"arcvm\" for clarity (since there are deps for CrOS VMs too I think)",
+      "range": {
+        "startLine": 34,
+        "startChar": 23,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "bf727337582932f9aeba7e9ae341173d3d9f756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "873df01d_95969b64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-01-07T19:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd70ac05_ae63d43d",
       "range": {
         "startLine": 34,
         "startChar": 23,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fadce9bd_fbc8ddcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-01-07T19:35:45Z",
+      "side": 1,
+      "message": "Oh thanks for the heads up. The toggle is ON at this point so the notification shows. I ran the tests and verified of course.",
+      "parentUuid": "fae8b7c8_89eaad47",
+      "range": {
+        "startLine": 121,
+        "startChar": 84,
+        "endLine": 121,
+        "endChar": 94
+      },
+      "revId": "bf727337582932f9aeba7e9ae341173d3d9f756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c15f9c44_5af79a36",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-06T23:37:15Z",
       "side": 1,
       "message": "err !\u003d nil if expecting the notification to appear, or alternatively use ui automation and the WaitUntilExists function (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d395)",
+      "range": {
+        "startLine": 135,
+        "startChar": 84,
+        "endLine": 135,
+        "endChar": 94
+      },
+      "revId": "bf727337582932f9aeba7e9ae341173d3d9f756d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca0d234_ddfa51e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-01-07T19:35:45Z",
+      "side": 1,
+      "message": "The notification should not show at this point my b.",
+      "parentUuid": "c15f9c44_5af79a36",
       "range": {
         "startLine": 135,
         "startChar": 84,
