@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -79,6 +80,10 @@ func WaitUntilCoolDown(ctx context.Context, config CoolDownConfig) (time.Duratio
 
 	zonePaths, err := filepath.Glob(thermalZonePath)
 	if err != nil || len(zonePaths) == 0 {
+		if vm.IsRunningOnVM() {
+			testing.ContextLog(ctx, "Skipping CPU cooldown as virtual machine has no thermal information")
+			return 0, err
+		}
 		return 0, errors.Wrapf(err, "failed to glob %s", thermalZonePath)
 	}
 
