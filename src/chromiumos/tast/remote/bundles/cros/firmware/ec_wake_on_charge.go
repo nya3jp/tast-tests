@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/common/servo"
@@ -147,6 +148,34 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	hibernationKeyPress := func(ctx context.Context) error {
+		// ShortCuts for hibernating DUT: Alt+Vol_Up+H
+		for _, targetKey := range []string{"<alt_l>", "<f10>", "h"} {
+			row, col, err := h.Servo.GetKeyRowCol(targetKey)
+			if err != nil {
+				return errors.Wrapf(err, "failed to get key %s column and row", targetKey)
+			}
+
+			targetKeyName := targetKey
+			targetKeyHold := fmt.Sprintf("kbpress %d %d 1", col, row)
+			targetKeyRelease := fmt.Sprintf("kbpress %d %d 0", col, row)
+
+			s.Logf("Pressing and holding key %s", targetKey)
+			if err := h.Servo.RunECCommand(ctx, targetKeyHold); err != nil {
+				return errors.Wrapf(err, "failed to press and hold key %s", targetKey)
+			}
+
+			defer func(releaseKey, name string) error {
+				s.Logf("Releasing key %s", name)
+				if err := h.Servo.RunECCommand(ctx, releaseKey); err != nil {
+					return errors.Wrapf(err, "failed to release key %s", releaseKey)
+				}
+				return nil
+			}(targetKeyRelease, targetKeyName)
+		}
+		return nil
+	}
+
 	done := make(chan struct{})
 	defer func() {
 		done <- struct{}{}
@@ -185,9 +214,12 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			break
 		}
 
-		s.Logf("-------------Test with lid open: %s-------------", tc.lidOpen)
-		if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
-			s.Fatal("Failed to set lid state: ", err)
+		// Skip setting the lid state for DUTs that don't have a lid, i.e. Chromeslates.
+		if deviceHasLid {
+			s.Logf("-------------Test with lid open: %s-------------", tc.lidOpen)
+			if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
+				s.Fatal("Failed to set lid state: ", err)
+			}
 		}
 
 		var deviceHasHibernated bool
@@ -198,8 +230,13 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 
 		if (tc.lidOpen == "yes" || hasMicroOrC2D2) && h.Config.Hibernate {
 			// Hibernate DUT
-			s.Log("Put DUT in hibernation")
-			if err = h.Servo.ECHibernate(ctx); err != nil {
+			s.Log("Putting DUT in hibernation")
+
+			if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+				s.Fatal("Failed to remove watchdog for ccd: ", err)
+			}
+
+			if err := hibernationKeyPress(ctx); err != nil {
 				s.Fatal("Failed to hibernate: ", err)
 			}
 			h.DisconnectDUT(ctx)
@@ -220,8 +257,8 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to set a KeypressControl by servo: ", err)
 			}
 
-			s.Log("Waiting for power state to become G3")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
+			s.Log("Waiting for power state to become G3 or S3")
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S3"); err != nil {
 				s.Fatal("Failed to get powerstates at G3: ", err)
 			}
 		}
@@ -241,7 +278,9 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := h.Servo.OpenLid(ctx); err != nil {
-		s.Fatal("Failed to set lid state: ", err)
+	if deviceHasLid {
+		if err := h.Servo.OpenLid(ctx); err != nil {
+			s.Fatal("Failed to set lid state: ", err)
+		}
 	}
 }
