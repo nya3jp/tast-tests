@@ -63,17 +63,13 @@ func (a *DUTControlAndreiboard) FlashImage(ctx context.Context, image string) er
 		return errors.Wrapf(err, "reading image file %q", image)
 	}
 
-	var args []*dutcontrol.CommandArg
-	args = append(args, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_Plain{Plain: "-p"}})
-	args = append(args, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_Plain{Plain: "Legacy"}})
-	args = append(args, &dutcontrol.CommandArg{Type: &dutcontrol.CommandArg_File{File: imageBytes}})
-	req := &dutcontrol.CommandRequest{Command: "bootstrap", Args: args}
-	res, err := a.client.Command(ctx, req)
+	req := &dutcontrol.RescueRequest{Image: imageBytes}
+	res, err := a.client.Rescue(ctx, req)
 	if err != nil {
-		return errors.Wrap(err, "bootstrap request")
+		return errors.Wrap(err, "rescue request")
 	}
 	if res.Err != "" {
-		return errors.Errorf("bootstrap operation failed %s: %s", res.Err, res.Output)
+		return errors.Errorf("rescue operation failed: %s", res.Err)
 	}
 	return nil
 }
