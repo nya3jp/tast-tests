@@ -16,6 +16,23 @@
       "message": "Hyung, PTAL.\nThis is the CP of the ToT Lacros Tast test fix to R98 branch.",
       "revId": "9c44c06977c4b66b6b4885d2022bafb10301b892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fdf0ec_910d5877",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-07T17:43:30Z",
+      "side": 1,
+      "message": "Note: after M98 branch, this code was moved to chrome/lacros/launch.go.\nSo, the pure cherry-pick conflicts (as PS1).\nI manually fixed it.",
+      "revId": "9c44c06977c4b66b6b4885d2022bafb10301b892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
