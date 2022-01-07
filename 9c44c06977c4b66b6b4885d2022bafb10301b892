@@ -33,6 +33,29 @@
       "message": "Note: after M98 branch, this code was moved to chrome/lacros/launch.go.\nSo, the pure cherry-pick conflicts (as PS1).\nI manually fixed it.",
       "revId": "9c44c06977c4b66b6b4885d2022bafb10301b892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df56b45_1441a3b4",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-07T18:20:58Z",
+      "side": 1,
+      "message": "Just to confirm: do we need to care about removing this user data dir gracefully?\nOtherwise, this dir would remain and fill up /usr/local/tmp every time rootfs lacros is launched anyway?\n\nI guess we had a quick chat about adding an option of whether to clean up user data dir when lacros is closed. Is it something we can revisit or is it okay without clean up?",
+      "range": {
+        "startLine": 202,
+        "startChar": 5,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "9c44c06977c4b66b6b4885d2022bafb10301b892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
