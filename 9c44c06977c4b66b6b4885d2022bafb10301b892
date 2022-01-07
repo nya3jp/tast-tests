@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6c7b95bc_3584e715",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-07T18:29:06Z",
+      "side": 1,
+      "message": "LGTM for the urgent test fix. Chatted with Hidehiko offline on how to address the comment separately from this. Thanks,",
+      "revId": "9c44c06977c4b66b6b4885d2022bafb10301b892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "11fdf0ec_910d5877",
         "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
         "patchSetId": 2
