@@ -16,6 +16,40 @@
       "message": "PTALA, thanks.",
       "revId": "b950ec5d4fb2e72084070eca85bcc7c190cb9bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a37088e_8ef72970",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-01-07T22:29:03Z",
+      "side": 1,
+      "message": "Please wait for +1 from Yury",
+      "revId": "b950ec5d4fb2e72084070eca85bcc7c190cb9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e29fbc_2e3f6ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-01-07T22:29:03Z",
+      "side": 1,
+      "message": "if it is NotExist you will continue with the code which seems to assume that it exists.  Is this what you want?",
+      "revId": "b950ec5d4fb2e72084070eca85bcc7c190cb9bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
