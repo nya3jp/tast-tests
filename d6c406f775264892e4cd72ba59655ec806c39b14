@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e2e306_b4eb1d62",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2022-01-07T23:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbcc2d3_7c90837c",
+      "revId": "d6c406f775264892e4cd72ba59655ec806c39b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1cbbeb5_07d8b3c1",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b465a3e1_8a7ac09d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2022-01-07T23:42:17Z",
+      "side": 1,
+      "message": "Updated comment",
+      "parentUuid": "e1cbbeb5_07d8b3c1",
+      "revId": "d6c406f775264892e4cd72ba59655ec806c39b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99591440_da440e73",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-01-07T22:24:49Z",
       "side": 1,
       "message": "return \u0026RMAApp{tconn: tconn, ui: uiauto.New(tconn), rootNode: rootNode}",
+      "revId": "d6c406f775264892e4cd72ba59655ec806c39b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd72b43_01eb5078",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/shimlessrmaapp/shimlessrmaapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1500852
+      },
+      "writtenOn": "2022-01-07T23:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99591440_da440e73",
       "revId": "d6c406f775264892e4cd72ba59655ec806c39b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
