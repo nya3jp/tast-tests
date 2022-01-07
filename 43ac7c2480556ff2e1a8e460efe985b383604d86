@@ -81,6 +81,30 @@
       },
       "revId": "43ac7c2480556ff2e1a8e460efe985b383604d86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20341737_fa644a7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-07T15:44:32Z",
+      "side": 1,
+      "message": "E.g. name is \"abc def\", the cmdLine will be\ndeqp --deqp-log-filename\u003d/sdcard/abc def-results.qpa ...\nThe command line parser will split /sdcard/abc and def-results.qpa.\n\nYou\u0027ll need *another* escaping, IIUC.\n\nIt\u0027s not a regression, so if you\u0027d like to make the change in another CL, I\u0027m ok.",
+      "parentUuid": "c66b4c76_9c868556",
+      "range": {
+        "startLine": 80,
+        "startChar": 32,
+        "endLine": 80,
+        "endChar": 118
+      },
+      "revId": "43ac7c2480556ff2e1a8e460efe985b383604d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
