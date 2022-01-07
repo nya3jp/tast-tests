@@ -12,6 +12,8 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"github.com/mafredri/cdp/rpcc"
+
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -211,7 +213,11 @@ func logout(ctx context.Context, cr *chrome.Chrome, s *testing.State) error {
 	defer sw.Close(ctx)
 
 	if err := tconn.Call(ctx, nil, "chrome.autotestPrivate.logout"); err != nil {
-		return errors.Wrap(err, "failed to run chrome.autotestPrivate.logout()")
+		if errors.Is(err, rpcc.ErrConnClosing) {
+			s.Log("WARNING: chrome.autotestPrivate.logout failed with: ", err)
+		} else {
+			return errors.Wrap(err, "failed to run chrome.autotestPrivate.logout()")
+		}
 	}
 
 	s.Log("Waiting for SessionStateChanged \"stopped\" D-Bus signal from session_manager")
