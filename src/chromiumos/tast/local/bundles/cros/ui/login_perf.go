@@ -193,6 +193,11 @@ func reportEnsureWorkVisibleHistogram(ctx context.Context, pv *perfutil.Values, 
 	return nil
 }
 
+// connectionIsClosing returns true if the logout error was caused by closing rpcc connection.
+func connectionIsClosing(err error) bool {
+	return err.Error() == "cdp.Runtime: CallFunctionOn: rpcc: the connection is closing"
+}
+
 // logout is a proxy to chrome.autotestPrivate.logout
 func logout(ctx context.Context, cr *chrome.Chrome, s *testing.State) error {
 	s.Log("Sign out: started")
@@ -211,7 +216,11 @@ func logout(ctx context.Context, cr *chrome.Chrome, s *testing.State) error {
 	defer sw.Close(ctx)
 
 	if err := tconn.Call(ctx, nil, "chrome.autotestPrivate.logout"); err != nil {
-		return errors.Wrap(err, "failed to run chrome.autotestPrivate.logout()")
+		if connectionIsClosing(err) {
+			s.Log("WARNING: chrome.autotestPrivate.logout failed with: ", err)
+		} else {
+			return errors.Wrap(err, "failed to run chrome.autotestPrivate.logout()")
+		}
 	}
 
 	s.Log("Waiting for SessionStateChanged \"stopped\" D-Bus signal from session_manager")
