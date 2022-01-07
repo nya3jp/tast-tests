@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5edb74b2_bd7c4f77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529012
+      },
+      "writtenOn": "2022-01-07T03:19:19Z",
+      "side": 1,
+      "message": "I\u0027ll push a new patch to remove Keyboard and Formfactor, we consider to make this test could be run in stainless first, then we could modify the script if see any results are not in our expected.",
+      "revId": "5b92b26b243aab50511c3fe8d9133f067ea45b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebf3da1f_3ea98522",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-01-05T16:59:12Z",
       "side": 1,
       "message": "Wouldn\u0027t ChromeEC + KeyboardBacklight be enough?",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 55
+      },
+      "revId": "5b92b26b243aab50511c3fe8d9133f067ea45b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e71994b_97f7939c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/check_keyboard_backlight_functionality.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529012
+      },
+      "writtenOn": "2022-01-07T03:19:19Z",
+      "side": 1,
+      "message": "hwdep.Keyboard can ensure this test will be run on clamshell, convertible and detachable properly. So we can remove FormFactor.\n\nBut if we just want keep only ChromeEC + KeyboardBacklight, we have to move the same part of code from Keyboard() to KeybaordBacklight(), in order to check whether the DUT has keyboard. \n\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3366013/1/src/chromiumos/tast/testing/hwdep/hwdep.go, line 342 to 346, line 360.",
+      "parentUuid": "ebf3da1f_3ea98522",
       "range": {
         "startLine": 33,
         "startChar": 3,
