@@ -9,8 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/wm"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
@@ -149,6 +151,14 @@ func WindowState(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	ctxDefer := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	if err := a.Install(ctx, arc.APKPath(wm.APKNameArcWMTestApp24)); err != nil {
+		s.Fatal("Failed to install WM24 app: ", err)
+	}
+	defer a.Uninstall(ctxDefer, wm.Pkg24)
+
 	// Restore tablet mode to its original state on exit.
 	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
@@ -171,8 +181,8 @@ func WindowState(ctx context.Context, s *testing.State) {
 	for _, test := range testParams.tests {
 		s.Log("Testing ", test.name)
 		if err := func() error {
-			// Start the Settings app.
-			act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+			// Start the WM24 app.
+			act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 			if err != nil {
 				return errors.Wrap(err, "failed to create new activity")
 			}
@@ -180,7 +190,7 @@ func WindowState(ctx context.Context, s *testing.State) {
 			defer act.Close()
 
 			if err := act.Start(ctx, tconn); err != nil {
-				return errors.Wrap(err, "failed to start the Settings activity")
+				return errors.Wrap(err, "failed to start the WM24 activity")
 			}
 			// Stop the activity for each test case
 			defer act.Stop(ctx, tconn)
