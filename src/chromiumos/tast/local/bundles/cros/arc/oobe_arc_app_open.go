@@ -64,6 +64,7 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn)
+	statusArea := nodewith.HasClass("ash/StatusAreaWidgetDelegate")
 
 	skip := nodewith.Name("Skip").Role(role.StaticText)
 	noThanks := nodewith.Name("No thanks").Role(role.Button)
@@ -91,6 +92,9 @@ func OobeArcAppOpen(ctx context.Context, s *testing.State) {
 	s.Log("Waiting for notification")
 	_, err = ash.WaitForNotification(ctx, tconn, 20*time.Minute, ash.WaitTitle("Setup complete"))
 	if err != nil {
+		if err := ui.LeftClick(statusArea)(ctx); err != nil {
+			s.Log("Failed to click status area : ", err)
+		}
 		s.Fatal("Failed waiting for Setup complete notification: ", err)
 	}
 
