@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/kioskmode"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -161,7 +162,13 @@ func openExtensionAndCheckTitleChange(ctx context.Context, s *testing.State, cr 
 	// I was not able to find another stable way to interact with the UI
 	testing.Sleep(ctx, 3*time.Second)
 
-	//Open kiosk app from signin screen and wait until the app is launched
+	// Start syslog reader
+	reader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		s.Fatal("Failed to start log reader: ", err)
+	}
+	defer reader.Close()
+
 	testing.ContextLog(ctx, "Opening Kiosk app from signin screen")
 	kioskAppsBtn := nodewith.Name("Apps").ClassName("MenuButton")
 	testExtensionButton := nodewith.Name(originalAppTitle).ClassName("MenuItemView")
@@ -172,9 +179,18 @@ func openExtensionAndCheckTitleChange(ctx context.Context, s *testing.State, cr 
 		ui.LeftClick(kioskAppsBtn),
 		ui.WaitUntilExists(testExtensionButton),
 		ui.LeftClick(testExtensionButton),
-		ui.WaitUntilExists(versionNode),
 	)(ctx); err != nil {
-		s.Fatal("Failed open extension: ", err)
+		s.Fatal("Failed to start extension: ", err)
+	}
+
+	// Wait for kiosk to start.
+	if err := kioskmode.ConfirmKioskStarted(ctx, reader); err != nil {
+		s.Fatal("There was a problem while checking chrome logs for Kiosk related entries: ", err)
+	}
+
+	// Wait for extension UI to be visible
+	if err := ui.WaitUntilExists(versionNode)(ctx); err != nil {
+		s.Fatal("Failed to wait for extension to launch: ", err)
 	}
 
 	titleNode := nodewith.ClassName("RootView").Name(updatedAppTitle)
