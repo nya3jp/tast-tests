@@ -33,6 +33,24 @@
       "message": "Do we need to move this into the poll function? Otherwise, if this expires the first time, we\u0027ll always fail in WaitConnect on subsequent polls.",
       "revId": "818785ee51e0036fd2b4ed291508e87f0d4ee799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30490dfb_da8f3be0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-07T04:23:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04a23a91_752ee93a",
+      "revId": "818785ee51e0036fd2b4ed291508e87f0d4ee799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
