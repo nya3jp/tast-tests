@@ -171,8 +171,8 @@ func WindowState(ctx context.Context, s *testing.State) {
 	for _, test := range testParams.tests {
 		s.Log("Testing ", test.name)
 		if err := func() error {
-			// Start the Settings app.
-			act, err := arc.NewActivity(a, "com.android.settings", ".Settings")
+			// Start the WM24 app.
+			act, err := arc.NewActivity(a, wm.Pkg24, wm.ResizableUnspecifiedActivity)
 			if err != nil {
 				return errors.Wrap(err, "failed to create new activity")
 			}
@@ -180,7 +180,7 @@ func WindowState(ctx context.Context, s *testing.State) {
 			defer act.Close()
 
 			if err := act.Start(ctx, tconn); err != nil {
-				return errors.Wrap(err, "failed to start the Settings activity")
+				return errors.Wrap(err, "failed to start the WM24 activity")
 			}
 			// Stop the activity for each test case
 			defer act.Stop(ctx, tconn)
