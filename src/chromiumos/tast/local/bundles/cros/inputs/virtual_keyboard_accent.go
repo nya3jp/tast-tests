@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -47,8 +49,13 @@ func init() {
 func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
@@ -68,6 +75,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}
+	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
 	inputField := testserver.TextAreaNoCorrectionInputField
 	accentContainerFinder := nodewith.HasClass("accent-container")
@@ -75,18 +83,27 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 	languageLabelFinder := vkb.NodeFinder.Name(languageLabel).First()
 	keyFinder := vkb.KeyByNameIgnoringCase(keyName)
 
-	if err := uiauto.Combine("input accent letter with virtual keyboard",
+	validateAction := uiauto.Combine("input accent letter with virtual keyboard",
 		its.ClickFieldUntilVKShown(inputField),
 		ui.WaitUntilExists(languageLabelFinder),
 		ui.MouseMoveTo(keyFinder, 500*time.Millisecond),
 		mouse.Press(tconn, mouse.LeftButton),
 		// Popup accent window sometimes flash on showing, so using Retry instead of WaitUntilExist.
-
 		ui.WithInterval(time.Second).RetrySilently(10, ui.WaitForLocation(accentContainerFinder)),
 		ui.MouseMoveTo(accentKeyFinder, 500*time.Millisecond),
 		mouse.Release(tconn, mouse.LeftButton),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), accentKeyName),
-	)(ctx); err != nil {
+	)
+
+	if err := useractions.NewUserAction("VK typing accent letters",
+		validateAction,
+		uc,
+		&useractions.UserActionCfg{
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagVKTyping,
+			},
+		},
+	).Run(ctx); err != nil {
 		s.Fatal("Fail to input accent key on virtual keyboard: ", err)
 	}
 }
