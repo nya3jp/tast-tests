@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9755484d_abaa989f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-07T14:57:52Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "8ea0f32cc826e49e9175148e10cc15b5e75db754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abce8e5a_1ac51c1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-07T14:57:52Z",
+      "side": 1,
+      "message": "Might want to make a note of why 3 is the default.",
+      "revId": "8ea0f32cc826e49e9175148e10cc15b5e75db754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
