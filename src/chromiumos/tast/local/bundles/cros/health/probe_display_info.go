@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/croshealthd"
+	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
 )
 
@@ -39,12 +40,26 @@ func ProbeDisplayInfo(ctx context.Context, s *testing.State) {
 }
 
 type displayInfo struct {
-	EDP embeddedDisplayInfo `json:"edp"`
+	EDP embeddedDisplayInfo    `json:"edp"`
+	DP  *[]externalDisplayInfo `json:"dp"`
 }
 
 type embeddedDisplayInfo struct {
-	PrivacyScreenEnabled   bool `json:"privacy_screen_enabled"`
-	PrivacyScreenSupported bool `json:"privacy_screen_supported"`
+	PrivacyScreenEnabled   bool              `json:"privacy_screen_enabled"`
+	PrivacyScreenSupported bool              `json:"privacy_screen_supported"`
+	DisplayWidth           *jsontypes.Uint32 `json:"display_width"`
+	DisplayHeight          *jsontypes.Uint32 `json:"display_height"`
+	ResolutionHorizontal   *jsontypes.Uint32 `json:"resolution_horizontal"`
+	ResolutionVertical     *jsontypes.Uint32 `json:"resolution_vertical"`
+	RefreshRate            *float64          `json:"refresh_rate"`
+}
+
+type externalDisplayInfo struct {
+	DisplayWidth         *jsontypes.Uint32 `json:"display_width"`
+	DisplayHeight        *jsontypes.Uint32 `json:"display_height"`
+	ResolutionHorizontal *jsontypes.Uint32 `json:"resolution_width"`
+	ResolutionVertical   *jsontypes.Uint32 `json:"resolution_height"`
+	RefreshRate          *float64          `json:"refresh_rate"`
 }
 
 func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
