@@ -22,7 +22,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
-var rootNode = nodewith.Name(apps.ShimlessRMA.Name).Role(role.Window)
+var chromeRootNode = nodewith.Name(apps.ShimlessRMA.Name).Role(role.Window)
+var dialogRootNode = nodewith.HasClass("ShimlessRmaDialogView").Role(role.Window)
 
 var nextButton = nodewith.Name("Next >").Role(role.Button)
 var cancelButton = nodewith.Name("Cancel").Role(role.Button)
@@ -46,9 +47,9 @@ const (
 type RMAApp struct {
 	ui    *uiauto.Context
 	tconn *chrome.TestConn
-	// TODO(gavinwill): launched and all support for running the app manually
-	// should be removed once the app launch at boot cls land.
-	launched bool
+	// TODO(gavinwill): rootNode and all support for running the app manually
+	// *could* be removed once the app launch at boot cls land.
+	rootNode *nodewith.Finder
 }
 
 // CreateEmptyStateFile creates a valid empty state file.
@@ -85,30 +86,29 @@ func RemoveStateFile() {
 // Launch launches the Shimless RMA App and returns it.
 // An error is returned if the app fails to launch.
 // TODO(gavinwill): This method and all support for running the app manually
-// should be removed once the app launch at boot cls land.
+// *could* be removed once the app launch at boot cls land.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*RMAApp, error) {
 	// Launch the Shimless RMA App.
 	if err := apps.Launch(ctx, tconn, apps.ShimlessRMA.ID); err != nil {
 		return nil, err
 	}
-	r, err := App(ctx, tconn)
-	if err != nil {
-		return r, err
-	}
+	r := app(ctx, tconn, chromeRootNode)
 	// Find the main Shimless RMA window
-	if err := r.ui.WithTimeout(waitUITimeout).WaitUntilExists(rootNode)(ctx); err != nil {
+	if err := r.ui.WithTimeout(waitUITimeout).WaitUntilExists(r.rootNode)(ctx); err != nil {
 		return nil, err
 	}
-	r.launched = true
 	return r, nil
 }
 
 // App returns an existing instance of the Shimless RMA app.
 // An error is returned if the app cannot be found.
 func App(ctx context.Context, tconn *chrome.TestConn) (*RMAApp, error) {
-	// Create a uiauto.Context with default timeout.
-	ui := uiauto.New(tconn)
-	return &RMAApp{tconn: tconn, ui: ui, launched: false}, nil
+	r := app(ctx, tconn, dialogRootNode)
+	// Find the main Shimless RMA window
+	if err := r.ui.WithTimeout(waitUITimeout).WaitUntilExists(r.rootNode)(ctx); err != nil {
+		return nil, err
+	}
+	return r, nil
 }
 
 // Close closes the Shimless RMA App.
@@ -119,7 +119,7 @@ func (r *RMAApp) Close(ctx context.Context) error {
 	}
 
 	// Wait for window to close.
-	return r.ui.WithTimeout(time.Minute).WaitUntilGone(rootNode)(ctx)
+	return r.ui.WithTimeout(time.Minute).WaitUntilGone(r.rootNode)(ctx)
 }
 
 // WaitForStateFileDeleted returns a function that waits for the state file to be deleted.
@@ -163,6 +163,13 @@ func (r *RMAApp) WaitUntilButtonEnabled(label string, timeout time.Duration) uia
 	return r.waitUntilEnabled(nodewith.Name(label).Role(role.Button).Visible(), timeout)
 }
 
+// app returns an existing instance of the Shimless RMA app.
+func app(ctx context.Context, tconn *chrome.TestConn, rootNode *nodewith.Finder) *RMAApp {
+	// Create a uiauto.Context with default timeout.
+	ui := uiauto.New(tconn)
+	return &RMAApp{tconn: tconn, ui: ui, rootNode: rootNode}
+}
+
 func getRmadUID() (int, error) {
 	u, err := user.Lookup("rmad")
 	if err != nil {
@@ -176,9 +183,7 @@ func getRmadUID() (int, error) {
 }
 
 func (r *RMAApp) waitUntilEnabled(button *nodewith.Finder, timeout time.Duration) uiauto.Action {
-	if r.launched {
-		button = button.Ancestor(rootNode)
-	}
+	button = button.Ancestor(r.rootNode)
 	return uiauto.Combine("waiting for enabled button",
 		r.ui.WithTimeout(waitUITimeout).WaitUntilExists(button),
 		func(ctx context.Context) error {
@@ -195,9 +200,7 @@ func (r *RMAApp) waitUntilEnabled(button *nodewith.Finder, timeout time.Duration
 }
 
 func (r *RMAApp) leftClickButton(button *nodewith.Finder) uiauto.Action {
-	if r.launched {
-		button = button.Ancestor(rootNode)
-	}
+	button = button.Ancestor(r.rootNode)
 	return uiauto.Combine("waiting to trigger left click on button",
 		r.ui.WithTimeout(waitUITimeout).WaitUntilExists(button),
 		r.ui.FocusAndWait(button),
