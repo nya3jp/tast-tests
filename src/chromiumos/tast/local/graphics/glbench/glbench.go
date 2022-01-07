@@ -119,11 +119,13 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 		appendErr(err, "failed to report temperature")
 	}
 
-	failedTests, err := analyzeSummary(output, filepath.Join(outDir, "summary.txt"), pv)
+	failedTests, err := analyzeSummary(output, filepath.Join(outDir, "summary.txt"), config.IsHasty(), pv)
 	if err != nil {
 		return appendErr(err, "failed to write summary")
 	}
+
 	if len(failedTests) > 0 {
+		// Sort the tests to make it easier to read in test dashboard.
 		sort.Strings(failedTests)
 		return appendErr(err, "Some images don't match their references: %q; check summary.txt for details", failedTests)
 	}
@@ -132,7 +134,7 @@ func Run(ctx context.Context, outDir string, preValue interface{}, config Config
 
 // analyzeSummary analyze the output of glbench and write the result to resultPath as well as saving the perf value to pv.
 // The function returns the list of failed tests if found.
-func analyzeSummary(summary, resultPath string, pv *perf.Values) ([]string, error) {
+func analyzeSummary(summary, resultPath string, isHasty bool, pv *perf.Values) ([]string, error) {
 	// Write a copy of stdout to help debug failures.
 	f, err := os.OpenFile(resultPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
@@ -232,6 +234,11 @@ func analyzeSummary(summary, resultPath string, pv *perf.Values) ([]string, erro
 			// it was fixed. Throw an exception as a reminder.
 			errMsg = fmt.Sprintf("fixedbad [%s]", imageFile)
 			failedTests = append(failedTests, testName)
+		case isHasty && strings.Contains(knownBadImageNames, testName):
+			// If the failure is triaged for the test, mark it as knownbad in hasty mode.
+			// Don't throw an exception and remind there is a problem.
+			errMsg = fmt.Sprintf("knownbad [%s]", imageFile)
+			// This failure is allowed so don't add to failedTests.
 		case strings.Contains(knownBadImageNames, imageFile):
 			// We have triaged the failure and have filed a tracking bug.
 			// Don't throw an exception and remind there is a problem.
