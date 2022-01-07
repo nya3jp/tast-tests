@@ -123,7 +123,7 @@ func verifyAndLaunchSystemWebAppFromURL(ctx context.Context, cr *chrome.Chrome, 
 		return err
 	}
 
-	connTarget, err = cr.NewConnForTarget(ctxWithTimeout, chrome.MatchTargetURL(appURL))
+	connTarget, err = cr.NewConnForTarget(ctxWithTimeout, chrome.MatchTargetURLPrefix(appURL))
 	if err != nil {
 		return errors.Wrap(err, "failed getting connection to new target")
 	}
