@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cebb07c_fc749b28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-07T04:41:47Z",
+      "side": 1,
+      "message": "pls find my comment in another CL, too.",
+      "revId": "43ac7c2480556ff2e1a8e460efe985b383604d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a538877_8e8d6ccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-07T04:41:47Z",
+      "side": 1,
+      "message": "optional: fmt.Sprintf() is recommended.\n\nBTW, you may want to consider escaping, because name is given as arg, and there\u0027s no guarantee that name does not contain any whitespace chars.",
+      "range": {
+        "startLine": 80,
+        "startChar": 32,
+        "endLine": 80,
+        "endChar": 118
+      },
+      "revId": "43ac7c2480556ff2e1a8e460efe985b383604d86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
