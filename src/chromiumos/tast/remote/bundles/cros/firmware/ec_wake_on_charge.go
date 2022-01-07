@@ -185,9 +185,12 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			break
 		}
 
-		s.Logf("-------------Test with lid open: %s-------------", tc.lidOpen)
-		if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
-			s.Fatal("Failed to set lid state: ", err)
+		// Skip setting the lid state for DUTs that don't have a lid, i.e. Chromeslates.
+		if deviceHasLid {
+			s.Logf("-------------Test with lid open: %s-------------", tc.lidOpen)
+			if err := h.Servo.SetStringAndCheck(ctx, servo.LidOpen, tc.lidOpen); err != nil {
+				s.Fatal("Failed to set lid state: ", err)
+			}
 		}
 
 		var deviceHasHibernated bool
@@ -198,8 +201,8 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 
 		if (tc.lidOpen == "yes" || hasMicroOrC2D2) && h.Config.Hibernate {
 			// Hibernate DUT
-			s.Log("Put DUT in hibernation")
-			if err = h.Servo.ECHibernate(ctx); err != nil {
+			s.Log("Putting DUT in hibernation")
+			if err = h.Servo.ECHibernate(ctx, servo.UseKeyboard); err != nil {
 				s.Fatal("Failed to hibernate: ", err)
 			}
 			h.DisconnectDUT(ctx)
@@ -208,9 +211,9 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			// Note: when lid is closed without log-in, power state transitions from S0 to S5,
 			// and then eventually to G3, which would be equivalent to long pressing on power
 			// to put DUT asleep.
-			s.Log("Waiting for power state to become G3")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
-				s.Fatal("Failed to get powerstates at G3: ", err)
+			s.Log("Waiting for power state to become G3 or S5")
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S5"); err != nil {
+				s.Fatal("Failed to get powerstates at G3 or S5: ", err)
 			}
 		} else {
 			// For DUTs that do not support the ec hibernation command, we would use
@@ -220,9 +223,9 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to set a KeypressControl by servo: ", err)
 			}
 
-			s.Log("Waiting for power state to become G3")
-			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3"); err != nil {
-				s.Fatal("Failed to get powerstates at G3: ", err)
+			s.Log("Waiting for power state to become G3 or S3")
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "G3", "S3"); err != nil {
+				s.Fatal("Failed to get powerstates at G3 or S3: ", err)
 			}
 		}
 
@@ -241,7 +244,9 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := h.Servo.OpenLid(ctx); err != nil {
-		s.Fatal("Failed to set lid state: ", err)
+	if deviceHasLid {
+		if err := h.Servo.OpenLid(ctx); err != nil {
+			s.Fatal("Failed to set lid state: ", err)
+		}
 	}
 }
