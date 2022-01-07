@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e6208f_17863516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-01-07T02:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7744eaae_5d37ed4c",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "808fc63e24357bed751c0cfb0f34e28f819cdb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7815616f_cc886235",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-06T17:07:32Z",
       "side": 1,
       "message": "qq: Will we still have the xml output file (which the report is generated from iirc) when hitting timeout? Parsing the unstructured human-oriented log file feels a little bit hacky to me :P",
+      "revId": "808fc63e24357bed751c0cfb0f34e28f819cdb67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0120c9_f524a449",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capture_unittests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-01-07T02:28:43Z",
+      "side": 1,
+      "message": "I originally thought so from my testing no the xml file is empty when hitting timeout :(\nSo I instead parsed the information from .log file.\n\nAn alternatives might be introducing some timeout mechanism for each tests in the capture_unittests itself. But the effort is rather big so I choose to land this one.",
+      "parentUuid": "7815616f_cc886235",
       "revId": "808fc63e24357bed751c0cfb0f34e28f819cdb67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
