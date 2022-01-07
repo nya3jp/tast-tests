@@ -141,6 +141,17 @@ var KeyMatrix = map[string]KBMatrixPair{
 	"<right>":     KBMatrixPair{6, 12},
 }
 
+// HibernationOpt is an option for hibernating DUT.
+type HibernationOpt string
+
+// Available options for triggering hibernation.
+const (
+	// UseKeyboard uses keyboard shortcut for hibernating DUT: alt+vol_up+h.
+	UseKeyboard HibernationOpt = "keyboard"
+	// UseConsole uses the EC command `hibernate` to put DUT in hibernation.
+	UseConsole HibernationOpt = "console"
+)
+
 // RunECCommand runs the given command on the EC on the device.
 func (s *Servo) RunECCommand(ctx context.Context, cmd string) error {
 	if err := s.SetString(ctx, ECUARTRegexp, "None"); err != nil {
@@ -173,12 +184,42 @@ func (s *Servo) GetECSystemPowerState(ctx context.Context) (string, error) {
 }
 
 // ECHibernate puts the EC into hibernation mode, after removing the servo watchdog for CCD if necessary.
-func (s *Servo) ECHibernate(ctx context.Context) error {
+func (s *Servo) ECHibernate(ctx context.Context, option HibernationOpt) error {
 	if err := s.WatchdogRemove(ctx, WatchdogCCD); err != nil {
 		return errors.Wrap(err, "failed to remove watchdog for ccd")
 	}
-	if err := s.RunECCommand(ctx, "hibernate"); err != nil {
-		return errors.Wrap(err, "failed to run EC command: hibernate")
+
+	switch option {
+	case "keyboard":
+		if err := func(ctx context.Context) error {
+			for _, targetKey := range []string{"<alt_l>", "<f10>", "h"} {
+				row, col, err := s.GetKeyRowCol(targetKey)
+				if err != nil {
+					return errors.Wrapf(err, "failed to get key %s column and row", targetKey)
+				}
+				targetKeyName := targetKey
+				targetKeyHold := fmt.Sprintf("kbpress %d %d 1", col, row)
+				targetKeyRelease := fmt.Sprintf("kbpress %d %d 0", col, row)
+				testing.ContextLogf(ctx, "Pressing and holding key %s", targetKey)
+				if err := s.RunECCommand(ctx, targetKeyHold); err != nil {
+					return errors.Wrapf(err, "failed to press and hold key %s", targetKey)
+				}
+				defer func(releaseKey, name string) error {
+					testing.ContextLogf(ctx, "Releasing key %s", name)
+					if err := s.RunECCommand(ctx, releaseKey); err != nil {
+						return errors.Wrapf(err, "failed to release key %s", releaseKey)
+					}
+					return nil
+				}(targetKeyRelease, targetKeyName)
+			}
+			return nil
+		}(ctx); err != nil {
+			return err
+		}
+	case "console":
+		if err := s.RunECCommand(ctx, "hibernate"); err != nil {
+			return errors.Wrap(err, "failed to run EC command: hibernate")
+		}
 	}
 
 	// Verify the EC console is unresponsive, ignore null chars, sometimes the servo returns null when the EC is off.
