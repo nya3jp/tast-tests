@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cf08ba_235806f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2022-01-07T16:33:32Z",
+      "side": 1,
+      "message": "LGTM with comments addressed.",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c3d860_ee0b3a2f",
@@ -55,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "980d0b97_32a180a2",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2022-01-07T16:33:32Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "33c3d860_ee0b3a2f",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66ab2bb9_33c5fd93",
         "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
         "patchSetId": 1
@@ -66,6 +101,24 @@
       "writtenOn": "2022-01-06T18:37:42Z",
       "side": 1,
       "message": "For network_diag we do something similar except we launch the connectivity diagnostics dialog:\nsrc/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/conndiag/conndiag.go\n\nI think this may be fine though, tbegin@ WDYT?",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd26211_a67f8b0f",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1304442
+      },
+      "writtenOn": "2022-01-07T16:33:32Z",
+      "side": 1,
+      "message": "I think the reason we launched the connectivity diagnostics dialog was to reuse the code that tested the app itself. I think launching the chrome://network page in a tab should be fine and prefered in this case.",
+      "parentUuid": "66ab2bb9_33c5fd93",
       "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
