@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b281c81_79320833",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-07T15:48:45Z",
+      "side": 0,
+      "message": "I don\u0027t think cr.Close is called in logout?\nAlso, pls consider error handling cases, too.",
+      "parentUuid": "a04650d8_db8d3c7f",
+      "revId": "fa3a988da7dddf5f6b5ac63a34bc523a54d68492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a71a2ce_731f9741",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 2
