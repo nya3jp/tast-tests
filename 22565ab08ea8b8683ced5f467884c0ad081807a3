@@ -16,6 +16,69 @@
       "message": "Hi reviewers, sorry for the delay, we have addressed all comments, please review, much appreciated.",
       "revId": "22565ab08ea8b8683ced5f467884c0ad081807a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179945be_c3fc4bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/menu_overflow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-07T19:24:47Z",
+      "side": 1,
+      "message": "does this format correctly with a time.Duration?",
+      "range": {
+        "startLine": 120,
+        "startChar": 71,
+        "endLine": 120,
+        "endChar": 73
+      },
+      "revId": "22565ab08ea8b8683ced5f467884c0ad081807a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca99b02_86f43916",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-07T19:24:47Z",
+      "side": 1,
+      "message": "It\u0027s more idiomatic to initialize an empty slice like `var apps []*ChromeApp`",
+      "range": {
+        "startLine": 723,
+        "startChar": 1,
+        "endLine": 723,
+        "endChar": 30
+      },
+      "revId": "22565ab08ea8b8683ced5f467884c0ad081807a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f946ae_03183fbe",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-07T19:24:47Z",
+      "side": 1,
+      "message": "nit: delete unnecessary whitespace (unless it was added by gofmt/golint)",
+      "revId": "22565ab08ea8b8683ced5f467884c0ad081807a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
