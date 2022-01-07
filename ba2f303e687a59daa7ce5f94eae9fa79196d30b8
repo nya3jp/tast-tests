@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78ea8727_69a3d653",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-07T16:55:20Z",
+      "side": 1,
+      "message": "Unfortunately go guidelines only let you have short non-camelcase non-underscore package names. :/\n\nMaybe \"crosnetconf\"?\n\nAck to renaming the folder.",
+      "parentUuid": "980d0b97_32a180a2",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66ab2bb9_33c5fd93",
         "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
         "patchSetId": 1
