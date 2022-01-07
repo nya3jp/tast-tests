@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3641155d_0845e3b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-07T13:02:11Z",
+      "side": 1,
+      "message": "LGTM % nit. Thanks for the adjustment.",
+      "revId": "604cece1fb1304ef6c4e5526423be23d8b20b24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331a9fc6_3ae24bc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/crx_manifest_update_url_ignored.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-07T13:02:11Z",
+      "side": 1,
+      "message": "nit: end comment line with dot. Apply to other comments ;)",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "604cece1fb1304ef6c4e5526423be23d8b20b24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
