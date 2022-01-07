@@ -34,6 +34,24 @@
       "parentUuid": "bb30537b_c0b1ad07",
       "revId": "c3b3847670c8074be6544f9ef4538002d1b1845a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75387fa0_f9c1c8b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-07T01:50:09Z",
+      "side": 1,
+      "message": "It\u0027s would be better in another cl. Please just point this out in the commit msg.",
+      "parentUuid": "7031aa96_7ff7e992",
+      "revId": "c3b3847670c8074be6544f9ef4538002d1b1845a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
