@@ -858,7 +858,7 @@ func (s *Servo) SetCC(ctx context.Context, val OnOffValue) error {
 func (s *Servo) SetActiveDUTController(ctx context.Context, adc DUTController) error {
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		err := s.SetString(ctx, ActiveDUTController, string(adc))
-		if !strings.Contains(err.Error(), "activeV4DeviceError") {
+		if err != nil && !strings.Contains(err.Error(), "activeV4DeviceError") {
 			return testing.PollBreak(err)
 		}
 		return err
