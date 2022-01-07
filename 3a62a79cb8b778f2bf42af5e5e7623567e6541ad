@@ -16,6 +16,24 @@
       "message": "Clean up of obsolete data while I touch the file. It is not related to the intention of the CL.",
       "revId": "3a62a79cb8b778f2bf42af5e5e7623567e6541ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ac3d34_0ff0a8e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/frame_data_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-01-07T02:22:23Z",
+      "side": 0,
+      "message": "A little confusing that we have DisplaySmoothness and Display.Smoothness, and a bunch of metrics like Display.* and DisplayJankMetric",
+      "parentUuid": "8a1438e9_a036caad",
+      "revId": "3a62a79cb8b778f2bf42af5e5e7623567e6541ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

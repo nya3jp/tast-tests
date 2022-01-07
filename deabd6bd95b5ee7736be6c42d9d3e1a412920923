@@ -16,6 +16,29 @@
       "message": "Tast side change to use start/stopSmoothness api to get throughput data after chromium CL:3371206. ",
       "revId": "deabd6bd95b5ee7736be6c42d9d3e1a412920923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102b032b_0432e1ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/perfutil/display_smoothness_tracker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-01-07T02:22:23Z",
+      "side": 1,
+      "message": "nit: get rid of extra ws",
+      "range": {
+        "startLine": 20,
+        "startChar": 19,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "deabd6bd95b5ee7736be6c42d9d3e1a412920923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
