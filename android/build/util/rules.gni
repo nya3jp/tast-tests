@@ -184,3 +184,42 @@ template("apk_sign") {
     ]
   }
 }
+
+# cc_lib_shared
+# Defines configs for compiling a C++ shared library (such as a JNI lib).
+
+# Args:
+#     source_files: A list of C++ source files to compile.
+#     shared_libs: A list of shared libs that this lib depends on.
+template("cc_lib_shared") {
+  action(target_name) {
+    forward_variables_from(invoker, [
+      "source_files",
+      "shared_libs",
+    ])
+    script = "//build/util/clang.py"
+    sources = [
+      android_build_tools,
+      unsigned_apk,
+      clang_bin_path,
+    ]
+    outputs = [
+      unsigned_apk
+    ]
+    # TODO(srok): Figure out why all other rules are setting inputs to find.py script.
+    args = [
+      "--android-build-tools",
+      android_build_tools,
+      "--clang-bin",
+      clang_bin_path,
+      "--output",
+      rebase_path(unsigned_apk),
+      "--unsigned-apk",
+      rebase_path(unsigned_apk),
+    ]
+    args += "--"
+    args += rebase_path(source_files)
+
+    # TODO(srok): Figure out how to include shared libs in clang command
+  }
+}

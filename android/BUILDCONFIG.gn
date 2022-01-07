@@ -28,3 +28,5 @@ if (android_key_env == "") {
 }
 
 android_cert = "//certs"
+
+clang_bin_path = "/opt/clang/bin"
