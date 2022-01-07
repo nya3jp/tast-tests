@@ -39,6 +39,30 @@
       },
       "revId": "604cece1fb1304ef6c4e5526423be23d8b20b24c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d56fa46a_2610a912",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/crx_manifest_update_url_ignored.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-07T13:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "331a9fc6_3ae24bc9",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "604cece1fb1304ef6c4e5526423be23d8b20b24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
