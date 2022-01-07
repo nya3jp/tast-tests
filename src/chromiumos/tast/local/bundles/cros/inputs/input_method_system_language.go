@@ -7,10 +7,13 @@ package inputs
 import (
 	"context"
 
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -24,7 +27,7 @@ type testParameters struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VirtualKeyboardSystemLanguages,
+		Func:         InputMethodSystemLanguage,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Launching ChromeOS in different languages defaults input method",
 		Contacts: []string{
@@ -86,11 +89,11 @@ func init() {
 	})
 }
 
-func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
+func InputMethodSystemLanguage(ctx context.Context, s *testing.State) {
 	regionCode := s.Param().(testParameters).regionCode
 	defaultInputMethodID := ime.ChromeIMEPrefix + s.Param().(testParameters).defaultInputMethodID
 
-	cr, err := chrome.New(ctx, chrome.Region(regionCode), chrome.VKEnabled())
+	cr, err := chrome.New(ctx, chrome.Region(regionCode))
 	if err != nil {
 		s.Fatalf("Failed to start Chrome in region %s: %v", regionCode, err)
 	}
@@ -101,15 +104,31 @@ func VirtualKeyboardSystemLanguages(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Verify default input method
-	currentInputMethodID, err := ime.CurrentInputMethod(ctx, tconn)
+	uc, err := inputactions.NewInputsUserContext(ctx, s, cr, tconn, nil)
 	if err != nil {
-		s.Fatal("Failed to get current input method: ", err)
+		s.Fatal("Failed to initiate inputs user context: ", err)
 	}
 
-	if currentInputMethodID != defaultInputMethodID {
-		s.Fatalf("Failed to verify default input method in country %s. got %s; want %s", regionCode, currentInputMethodID, defaultInputMethodID)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	action := func(ctx context.Context) error {
+		// Verify default input method
+		if currentInputMethodID, err := ime.CurrentInputMethod(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to get current input method")
+		} else if currentInputMethodID != defaultInputMethodID {
+			return errors.Wrapf(err, "unexpected default input method in country %s. got %s; want %s", regionCode, currentInputMethodID, defaultInputMethodID)
+		}
+		return nil
+	}
+	if err := useractions.NewUserAction("Default input method in region",
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeDeviceRegion: regionCode,
+			},
+		},
+	).Run(ctx); err != nil {
+		s.Fatalf("Failed to validate default input method in region %q: %v", regionCode, err)
 	}
 }
