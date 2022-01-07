@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3cff65f_99bd3b15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-07T02:19:44Z",
+      "side": 1,
+      "message": "How you want me to handle it? As the comment says, the test shouldn\u0027t fail if the file doesn\u0027t exist, so I can\u0027t just fail the test if I get an error. fs.PathError doesn\u0027t give you a lot of easily-queryable information about what the exact nature of the error was -- the only thing it will reliably tell you is that the error was or was not a timeout, which isn\u0027t relevant here. I don\u0027t see a good way to distinguish \"file didn\u0027t exist\" (expected) from \"filename was a directory\" or \"didn\u0027t have permission to remove\" (bad).\n\nThat\u0027s why I\u0027m checking that the file could be removed on line 119 instead. os.Stat returns much more useful information.",
+      "parentUuid": "602b23bb_9f2b33b7",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 34
+      },
+      "revId": "d124fe4a97e4aa4f1a1b117507cac23df9406845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b9c977f_a59f3163",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-13T22:27:45Z",
       "side": 1,
       "message": "This should go before os.Remove(testModeSuccessfulFile)",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "d124fe4a97e4aa4f1a1b117507cac23df9406845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b05063fa_d6811aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-07T02:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b9c977f_a59f3163",
       "range": {
         "startLine": 115,
         "startChar": 1,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-13T22:27:45Z",
       "side": 1,
       "message": "This would not fail the case?",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "d124fe4a97e4aa4f1a1b117507cac23df9406845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac520b0_5b63234c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-07T02:19:44Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you are asking here, sorry. I want to make sure the test-successful file is removed before I start the real test, so that we don\u0027t get confused by leftovers from previous tests.",
+      "parentUuid": "17393dab_02e29ded",
       "range": {
         "startLine": 119,
         "startChar": 4,
