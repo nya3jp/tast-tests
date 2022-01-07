@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/local/bundles/cros/inputs/data"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -43,24 +45,18 @@ func init() {
 		}, {
 			Name:              "informational",
 			ExtraAttr:         []string{"informational"},
-			Pre:               pre.VKEnabledTablet,
+			Pre:               pre.VKEnabledTabletReset,
 			ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 		}},
 	})
 }
 
 func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
-	cleanupCtx := ctx
-	ctx, cancel := uiauto.ReserveForVNCRecordingCleanup(ctx)
-	defer cancel()
-
-	stopRecording := uiauto.RecordVNCVideo(cleanupCtx, s)
-	defer stopRecording()
-
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	inputMethod := ime.Japanese
 	typingTestData, ok := data.TypingMessageHello.GetInputData(inputMethod)
@@ -85,7 +81,7 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 	inputMethodOption := vkb.NodeFinder.Name(inputMethod.Name).Role(role.StaticText)
 	vkLanguageMenuFinder := vkb.KeyFinder.Name("open keyboard menu")
 
-	if err := uiauto.Combine("verify changing input method on virtual keyboard",
+	validateAction := uiauto.Combine("verify changing input method on virtual keyboard",
 		// Switch IME using virtual keyboard language menu.
 		its.ClickFieldUntilVKShown(inputField),
 		ui.LeftClick(vkLanguageMenuFinder),
@@ -99,7 +95,18 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 		vkbctx.TapKeysIgnoringCase(typingTestData.CharacterKeySeq),
 		vkbctx.SelectFromSuggestion(typingTestData.ExpectedText),
 		util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), typingTestData.ExpectedText),
-	)(ctx); err != nil {
+	)
+
+	if err := useractions.NewUserAction("Change input method on VK",
+		validateAction,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: fmt.Sprintf("Change input method to %q", inputMethod.Name),
+			},
+			Tags: []useractions.ActionTag{useractions.ActionTagSwitchIME},
+		},
+	).Run(ctx); err != nil {
 		s.Fatal("Failed to verify changing input method: ", err)
 	}
 }
