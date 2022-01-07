@@ -9,14 +9,15 @@ const AttributeTestScenario string = "TestScenario"
 
 // Attribute keys used to represent DUT environment.
 const (
-	AttributeDeviceMode    string = "DeviceMode"
-	AttributeKeyboardType  string = "KeyboardType"
-	AttributeBoardName     string = "BoardName"
-	AttributeIncognitoMode string = "IncognitoMode"
-	AttributeUserMode      string = "UserMode"
-	AttributeInputMethod   string = "InputMethod"
-	AttributeInputField    string = "InputField"
-	AttributeFloatVK       string = "FloatVK"
+	AttributeDeviceMode     string = "DeviceMode"
+	AttributeKeyboardType   string = "KeyboardType"
+	AttributeBoardName      string = "BoardName"
+	AttributeIncognitoMode  string = "IncognitoMode"
+	AttributeUserMode       string = "UserMode"
+	AttributeInputMethod    string = "InputMethod"
+	AttributeInputField     string = "InputField"
+	AttributeFloatVK        string = "FloatVK"
+	AttributeKeyboardLayout string = "KeyboardLayout"
 )
 
 // Available attribute values of device mode.

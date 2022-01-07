@@ -36,7 +36,6 @@ type Conn struct {
 
 // NewConn creates a new connection to the given id.
 func (s *Session) NewConn(ctx context.Context, id target.ID) (conn *Conn, retErr error) {
-	testing.ContextLog(ctx, "Connecting to Chrome target ", string(id))
 	co, err := s.manager.Dial(ctx, id)
 	if err != nil {
 		return nil, err
