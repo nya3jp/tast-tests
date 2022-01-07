@@ -16,6 +16,80 @@
       "message": "Hi Julius,\n\nThis is a port of the warning from BootPerfServerCrosPerf. Would you please take a look? Thanks.",
       "revId": "dad1d30964e9860d938496974df7d861c5dcba05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd3dd18_1b1a3f86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-01-07T01:15:44Z",
+      "side": 1,
+      "message": "\"in normal mode\". There\u0027s no such thing as a \"normal mode image\". (I don\u0027t really understand why you\u0027re making up new error reasons and demoting the existing error reasons to log messages here? Is there a character restriction on how long an error reason can be in tast? In general, I think it\u0027s better if the error reason already explains the problem accurately and people aren\u0027t forced to dig through the logs to understand what they did wrong.)",
+      "range": {
+        "startLine": 75,
+        "startChar": 53,
+        "endLine": 75,
+        "endChar": 58
+      },
+      "revId": "dad1d30964e9860d938496974df7d861c5dcba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ddd511_339568f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-01-07T01:15:44Z",
+      "side": 1,
+      "message": "should be \"failed to read coreboot table\"",
+      "revId": "dad1d30964e9860d938496974df7d861c5dcba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933e74f4_191c7094",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-01-07T01:15:44Z",
+      "side": 1,
+      "message": "Please also copy the comment from the autotest code here, because otherwise nobody can understand this regex.\n\nPlease test this (by running this test on a firmware image with serial output enabled and making sure it fails with this message) to confirm the Go regex engine works the same as Python here.",
+      "revId": "dad1d30964e9860d938496974df7d861c5dcba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35c1ff3_65fe90c5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/boot_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2022-01-07T01:15:44Z",
+      "side": 1,
+      "message": "Does this mean this check is not on by default? Why? It really should be.",
+      "revId": "dad1d30964e9860d938496974df7d861c5dcba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
