@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b7ba31_0f902e26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ap_browse_internet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-07T04:41:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2ae5513_02370053",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "50430d764e4964228759eb5f7ec3b1b49921be76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e295ff5_87992f83",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a521d04_80857c13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ap_browse_internet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-07T04:41:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e295ff5_87992f83",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "50430d764e4964228759eb5f7ec3b1b49921be76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3609b701_7a7a8eb4",
@@ -94,6 +142,24 @@
       "writtenOn": "2021-10-13T07:44:12Z",
       "side": 1,
       "message": "NewConn() https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/session.go;l\u003d112?q\u003dNewConn\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2F\nshould wait until the page is loaded.\nCan you check if the test works without this polling?",
+      "revId": "50430d764e4964228759eb5f7ec3b1b49921be76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b01a96ec_e2544258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/ap_browse_internet.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-07T04:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3609b701_7a7a8eb4",
       "revId": "50430d764e4964228759eb5f7ec3b1b49921be76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
