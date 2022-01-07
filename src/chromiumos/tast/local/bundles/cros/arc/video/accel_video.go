@@ -33,7 +33,6 @@ import (
 // TODO(b/155138175): Remove devices from this list once the ARCVM HW encoder is enabled.
 var EncoderBlocklistVM = []string{
 	"grunt-arc-r",
-	"kukui-arc-r",
 }
 
 // EncoderAllowlistVPxVM is the list of devices on which the ARCVM VP8/9 HW encoder is enabled.
