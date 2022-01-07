@@ -22,10 +22,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         Basic,
-		Desc:         "Checks basic typec kernel driver functionality",
-		Contacts:     []string{"pmalani@chromium.org", "chromeos-power@google.com"},
-		Attr:         []string{"group:mainline", "group:typec", "informational"},
+		Func:     Basic,
+		Desc:     "Checks basic typec kernel driver functionality",
+		Contacts: []string{"pmalani@chromium.org", "chromeos-power@google.com"},
+		Attr:     []string{"group:mainline", "group:typec", "informational"},
+		// TODO(b/213260357): Re-enable manatee once there is adequate EC support.
+		SoftwareDeps: []string{"no_manatee"},
 		HardwareDeps: hwdep.D(hwdep.ECFeatureTypecCmd(), hwdep.SkipOnModel("fievel", "tiger"), hwdep.ChromeEC()),
 		Vars:         []string{"servo"},
 	})
