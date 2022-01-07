@@ -73,6 +73,30 @@
       },
       "revId": "9c44c06977c4b66b6b4885d2022bafb10301b892",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45418628_348c4c20",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-07T18:30:44Z",
+      "side": 1,
+      "message": "crbug.com/1277606#c28, 29 and 34 are discussing it.\nLet\u0027s revisit.",
+      "parentUuid": "3df56b45_1441a3b4",
+      "range": {
+        "startLine": 202,
+        "startChar": 5,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "9c44c06977c4b66b6b4885d2022bafb10301b892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
