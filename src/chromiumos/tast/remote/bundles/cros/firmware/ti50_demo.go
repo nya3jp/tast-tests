@@ -23,6 +23,7 @@ func init() {
 			"aluo@chromium.org",            // Test Author
 			"chromeos-firmware@google.com", // CrOS Firmware Developers
 		},
+		Data:        []string{"ti50_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin"},
 		ServiceDeps: []string{"tast.cros.baserpc.FileSystem", "tast.cros.firmware.SerialPortService"},
 		Attr:        []string{"group:firmware"},
 		Fixture:     fixture.DevBoardService,
@@ -38,8 +39,18 @@ func Ti50Demo(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not get board: ", err)
 	}
 
-	image, _ := s.Var("image")
-	s.Log("Using image at: ", image)
+	image, ok := s.Var("image")
+
+	if ok {
+		if image != "" {
+			s.Log("Overriding build image with that from cmdline at: ", image)
+		} else {
+			s.Log("Empty image provided on cmdline, skip flash")
+		}
+	} else {
+		image = s.DataPath("ti50_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin")
+		s.Log("Using image from build at: ", image)
+	}
 
 	if err = ti50.Demo(ctx, board, image); err != nil {
 		s.Fatal("Ti50Demo Failed: ", err)
