@@ -11,12 +11,9 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"regexp"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/arc/version"
 	"chromiumos/tast/rpc"
@@ -24,6 +21,7 @@ import (
 	arcpb "chromiumos/tast/services/cros/arc"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type testParam struct {
@@ -65,6 +63,13 @@ func init() {
 			Name:              "vm",
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local
+			// test configs (upload=false) and non-VM, there are no restrictions.
+			// It is known issue that 4G devices experience memory pressure during the opt in.
+			// This leads to the situation when FS page caches are reclaimed and captured result
+			// does not properly reflect actual FS usage. Don't upload caches to server for
+			// devices lower than 8G.
+			ExtraHardwareDeps: hwdep.D(hwdep.MinMemory(7500)),
 			Val: testParam{
 				vmEnabled: true,
 				upload:    true,
@@ -89,25 +94,6 @@ func init() {
 		}},
 		VarDeps: []string{"arc.perfAccountPool"},
 	})
-}
-
-// getMemoryTotalKB returns total memory available in kilobytes for DUT.
-func getMemoryTotalKB(ctx context.Context, dut *dut.DUT) (int, error) {
-	memInfo, err := dut.Conn().CommandContext(ctx, "cat", "/proc/meminfo").Output()
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to read /proc/meminfo")
-	}
-
-	memTotal := regexp.MustCompile(`(\n|^)MemTotal:\s+(\d+)\s+kB(\n|$)`).FindSubmatch(memInfo)
-	if memTotal == nil {
-		return 0, errors.Errorf("required MemTotal is not found in %q", memInfo)
-	}
-	memTotalInt, err := strconv.Atoi(string(memTotal[2]))
-	if err != nil || memTotalInt <= 0 {
-		return 0, errors.Errorf("failed to parse %q", memTotal[2])
-	}
-
-	return memTotalInt, nil
 }
 
 // DataCollector performs ARC++ boots in various conditions, grabs required data and uploads it to
@@ -142,12 +128,6 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		// needed for occasional OptIn instability on ARC development builds. Only
 		// lower count if for sure OptIn is completely stable.
 		retryCount = 2
-
-		// It is known issue that 4G devices experience memory pressure during the opt in.
-		// This leads to the situation when FS page caches are reclaimed and captured result
-		// does not properly relfect actual FS usage. Don't upload caches to server for
-		// devices lower than 8G.
-		minVMMemoryKB = 7500000
 	)
 
 	d := s.DUT()
@@ -376,34 +356,20 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		s.Log("Retrying generating GMS Core caches, previous attempt failed: ", err)
 	}
 
-	memTotalKB := 0
-	if param.vmEnabled {
-		if memTotalKB, err = getMemoryTotalKB(ctx, d); err != nil {
-			s.Fatal("Failed to get memory info: ", err)
+	// Due to race condition of using ureadahead in various parts of Chrome,
+	// first generation might be incomplete. Pass GMS Core cache generation as a warm-up
+	// for ureadahead generation.
+	attempts = 0
+	for {
+		err := genUreadaheadPack()
+		if err == nil {
+			break
 		}
-		s.Logf("Detected memory total: %d kb", memTotalKB)
-	}
-
-	// Limit running in PFQ for VM devices to 8GB+ RAM spec only. For local test
-	// configs (upload=false) and non-VM, there are no restrictions.
-	if !param.vmEnabled || !param.upload || memTotalKB > minVMMemoryKB {
-		// Due to race condition of using ureadahead in various parts of Chrome,
-		// first generation might be incomplete. Pass GMS Core cache generation as a warm-up
-		// for ureadahead generation.
-		attempts = 0
-		for {
-			err := genUreadaheadPack()
-			if err == nil {
-				break
-			}
-			attempts = attempts + 1
-			dumpLogcat("ureadahead", attempts)
-			if attempts > retryCount {
-				s.Fatal("Failed to generate ureadahead packs. No more retries left: ", err)
-			}
-			s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
+		attempts = attempts + 1
+		dumpLogcat("ureadahead", attempts)
+		if attempts > retryCount {
+			s.Fatal("Failed to generate ureadahead packs. No more retries left: ", err)
 		}
-	} else {
-		s.Logf("Device total memory %d does not meet %d required to run ureadahead on VM, skipping pack generation", memTotalKB, minVMMemoryKB)
+		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
 	}
 }
