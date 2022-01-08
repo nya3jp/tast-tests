@@ -91,6 +91,10 @@ func parseGetStorageInfoOutput(ctx context.Context, out []byte) (*Info, error) {
 			return nil, errors.Wrap(err, "failed to parse eMMC health")
 		}
 		name = parseDeviceNameEMMC(lines)
+		percentageUsed, err = parsePercentageUsedEMMC(lines, emmcUsedA, emmcUsedB)
+		if err != nil {
+			testing.ContextLog(ctx, "Error acquiring usage of eMMC device: ", name, err)
+		}
 	case NVMe:
 		lifeStatus, err = parseDeviceHealthNVMe(lines)
 		if err != nil {
@@ -152,6 +156,14 @@ var (
 	// We want to detect 0x03 for the Urgent case.
 	// That indicates that the eMMC is near the end of life.
 	emmcFailing = regexp.MustCompile(`.*(?P<param>PRE_EOL_INFO]?: 0x03)`)
+	// emmcUsedA detects the Lifetime Estimation type A value for the eMMC drive.
+	// Example eMMC usage text:
+	// "Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x01]"
+	emmcUsedA = regexp.MustCompile(`\s*.*DEVICE_LIFE_TIME_EST_TYP_A]?: 0x(?P<lifetime>0\S)`)
+	// emmcUsedB detects the Lifetime Estimation type A value for the eMMC drive.
+	// Example eMMC usage text:
+	// "Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x01]"
+	emmcUsedB = regexp.MustCompile(`\s*.*DEVICE_LIFE_TIME_EST_TYP_B]?: 0x(?P<lifetime>0\S)`)
 	// nvmeUsed detects the usage (in percents) of the NVMe drive.
 	// Example NVMe usage text: "	Percentage Used:                        0%"
 	nvmeUsed = regexp.MustCompile(`\s*Percentage Used:\s*(?P<percentage>\d*)`)
@@ -339,6 +351,34 @@ func parsePercentageUsed(outLines []string, pattern *regexp.Regexp) (int64, erro
 	}
 
 	return -1, nil
+}
+
+// parsePercentageUsedEMMC is a helper function that analyzes the lifetime estimation
+// value for extracting disk usage. eMMC devices report two values for lifetime
+// estimates, type A and type B, these values are determined by the vendor. These values
+// also represent percentage ranges, for example, 0x01 indicates the device is
+// 0% - 10% device life time used. To simplify our charts, we will just use the larger
+// of the type A and type B values.
+func parsePercentageUsedEMMC(outLines []string, patternA, patternB *regexp.Regexp) (int64, error) {
+	var typeA, typeB int64
+	var err error
+	for _, line := range outLines {
+		if match := patternA.FindStringSubmatch(line); match != nil {
+			typeA, err = strconv.ParseInt(match[1], 16, 64)
+		}
+		if match := patternB.FindStringSubmatch(line); match != nil {
+			typeB, err = strconv.ParseInt(match[1], 16, 64)
+		}
+	}
+	if typeA != 0 || typeB != 0 {
+		if typeA < typeB {
+			return typeB, err
+		}
+		return typeA, err
+	}
+
+	return -1, err
+
 }
 
 // parseTotalBytesWrittenNVMe parses NVMe SMART attribute value to extract
