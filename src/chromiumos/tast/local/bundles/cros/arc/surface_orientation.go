@@ -27,6 +27,7 @@ import (
 
 const (
 	arcSurfaceOrientationTestApkFilename = "ArcSurfaceOrientationTest.apk"
+	pauseBeforeScreenshotDuration        = time.Second
 )
 
 func init() {
@@ -154,6 +155,11 @@ func SurfaceOrientation(ctx context.Context, s *testing.State) {
 
 			if err := d.WaitForIdle(ctx, time.Second); err != nil {
 				s.Fatal("Failed to wait for idle: ", err)
+			}
+
+			// Pause so that colored blocks have a chance to draw in the activity
+			if err := testing.Sleep(ctx, pauseBeforeScreenshotDuration); err != nil {
+				s.Fatal("Failed to sleep after wait for idle and before taking screenshot: ", err)
 			}
 
 			img, err := screenshot.GrabScreenshot(ctx, cr)
