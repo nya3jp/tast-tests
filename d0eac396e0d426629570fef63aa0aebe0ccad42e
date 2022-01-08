@@ -46,6 +46,30 @@
       },
       "revId": "d0eac396e0d426629570fef63aa0aebe0ccad42e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "331ad887_a7c0adbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ureadahead_validation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-08T01:44:00Z",
+      "side": 1,
+      "message": "Some more testing details.  I verified before this CL on octopus-kernelnext (lick) board that it fails with missing pack which shouldn\u0027t have been ran [1].\n\n```\nFailed to dump ureadahead pack in the guest OS: failed to ensure pack file exists: could not determine size of file: /var/lib/ureadahead/pack:\n```\n\nAfter this CL, I used a crosfleet DUT and confirmed the test is skipped on 4GB boards.\n\n```\nDUT_HOSTNAME\u003dchromeos6-row18-rack21-host15.cros\nMODEL\u003dlick\nBOARD\u003doctopus-kernelnext\n\n2022-01-08T01:31:12.037132Z Skipped test arc.UreadaheadValidation.vm due to missing dependencies: The total memory size is smaller than required; got 3889MB, need 7500MB\n2022-01-08T01:31:17.179723Z --------------------------------------------------------------------------------\n2022-01-08T01:31:17.179769Z arc.UreadaheadValidation.vm [ SKIP ] The total memory size is smaller than required; got 3889MB, need 7500MB\n2022-01-08T01:31:17.179789Z --------------------------------------------------------------------------------\n```\n[1] http://stainless/browse/chromeos-test-logs/test-runner/prod/2022-01-06/31ec6035-7137-4606-9f99-e1c6162846d4/autoserv_test/tast/results/tests/arc.UreadaheadValidation.vm/",
+      "parentUuid": "fdb86537_59294d5e",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "d0eac396e0d426629570fef63aa0aebe0ccad42e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
