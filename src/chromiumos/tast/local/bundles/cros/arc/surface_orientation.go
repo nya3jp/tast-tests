@@ -25,9 +25,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	arcSurfaceOrientationTestApkFilename = "ArcSurfaceOrientationTest.apk"
-)
+const arcSurfaceOrientationTestApkFilename = "ArcSurfaceOrientationTest.apk"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -156,71 +154,75 @@ func SurfaceOrientation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to wait for idle: ", err)
 			}
 
-			img, err := screenshot.GrabScreenshot(ctx, cr)
-			if err != nil {
-				s.Fatal("Failed to take screenshot: ", err)
-			}
-
-			windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
-			if err != nil {
-				s.Fatal("Failed to get arc app window info: ", err)
-			}
-
-			dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to get display mode of the primary display: ", err)
-			}
-
-			captionHeight := int(math.Round(float64(windowInfo.CaptionHeight) * dispMode.DeviceScaleFactor))
-
-			bounds, err := act.WindowBounds(ctx)
-			if err != nil {
-				s.Fatal("Failed to get activity window bounds: ", err)
-			}
-			// The rectangle encapsulating the visible area that will be colored in the activity
-			visibleBounds := image.Rect(bounds.Left, bounds.Top+captionHeight, bounds.Width, bounds.Height)
-
-			if err := act.Stop(ctx, tconn); err != nil {
-				s.Fatal("Failed to stop activity: ", err)
-			}
-
-			var tcErrString strings.Builder
-			tcErrString.WriteString("Test case with transformation " + tc.Name)
-			tcTransformColorsDidNotMatch := false
-			for _, quadInfo := range []struct {
-				Name          string
-				Quad          quadrant
-				ExpectedColor color.Color
-			}{
-				{"TopLeft", quadTopLeft, tc.ExpectedQuadColors.TopLeft},
-				{"TopRight", quadTopRight, tc.ExpectedQuadColors.TopRight},
-				{"BottomLeft", quadBottomLeft, tc.ExpectedQuadColors.BottomLeft},
-				{"BottomRight", quadBottomRight, tc.ExpectedQuadColors.BottomRight},
-			} {
-				observedColor := img.At(getCenterXYOfQuadrant(quadInfo.Quad, visibleBounds))
-				if !colorcmp.ColorsMatch(observedColor, quadInfo.ExpectedColor, maxRGBValueDiff) {
-					tcErrString.WriteString(fmt.Sprintf(" had wrong color in %s quadrant, colors observed=%v expected=%v; ",
-						quadInfo.Name, observedColor, quadInfo.ExpectedColor))
-					tcTransformColorsDidNotMatch = true
-				}
-			}
-
-			if tcTransformColorsDidNotMatch {
-				colorsDidNotMatch = true
-				colorsDidNotMatchErr = errors.Wrap(colorsDidNotMatchErr, tcErrString.String())
-
-				// Save screenshot
-				screenshotFileName := fmt.Sprintf("%s_screeshot_fail.png", tc.Name)
-				outPath, err := saveScreenshot(img, s.OutDir(), screenshotFileName)
+			testing.Poll(ctx, func(ctx context.Context) error {
+				img, err := screenshot.GrabScreenshot(ctx, cr)
 				if err != nil {
-					s.Error("Failed to save screenshot: ", err)
-				} else {
-					s.Logf("Screenshot saved to %s", outPath)
+					s.Fatal("Failed to take screenshot: ", err)
 				}
-			}
+
+				windowInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+				if err != nil {
+					s.Fatal("Failed to get arc app window info: ", err)
+				}
+
+				dispMode, err := ash.PrimaryDisplayMode(ctx, tconn)
+				if err != nil {
+					s.Fatal("Failed to get display mode of the primary display: ", err)
+				}
+
+				captionHeight := int(math.Round(float64(windowInfo.CaptionHeight) * dispMode.DeviceScaleFactor))
+
+				bounds, err := act.WindowBounds(ctx)
+				if err != nil {
+					s.Fatal("Failed to get activity window bounds: ", err)
+				}
+				// The rectangle encapsulating the visible area that will be colored in the activity
+				visibleBounds := image.Rect(bounds.Left, bounds.Top+captionHeight, bounds.Width, bounds.Height)
+
+				if err := act.Stop(ctx, tconn); err != nil {
+					s.Fatal("Failed to stop activity: ", err)
+				}
+
+				var tcErrString strings.Builder
+				tcErrString.WriteString("Test case with transformation " + tc.Name)
+				tcTransformColorsDidNotMatch := false
+				for _, quadInfo := range []struct {
+					Name          string
+					Quad          quadrant
+					ExpectedColor color.Color
+				}{
+					{"TopLeft", quadTopLeft, tc.ExpectedQuadColors.TopLeft},
+					{"TopRight", quadTopRight, tc.ExpectedQuadColors.TopRight},
+					{"BottomLeft", quadBottomLeft, tc.ExpectedQuadColors.BottomLeft},
+					{"BottomRight", quadBottomRight, tc.ExpectedQuadColors.BottomRight},
+				} {
+					observedColor := img.At(getCenterXYOfQuadrant(quadInfo.Quad, visibleBounds))
+					if !colorcmp.ColorsMatch(observedColor, quadInfo.ExpectedColor, maxRGBValueDiff) {
+						tcErrString.WriteString(fmt.Sprintf(" had wrong color in %s quadrant, colors observed=%v expected=%v; ",
+							quadInfo.Name, observedColor, quadInfo.ExpectedColor))
+						tcTransformColorsDidNotMatch = true
+					}
+				}
+
+				if tcTransformColorsDidNotMatch {
+					colorsDidNotMatch = true
+					colorsDidNotMatchErr = errors.Wrap(colorsDidNotMatchErr, tcErrString.String())
+
+					// Save screenshot
+					screenshotFileName := fmt.Sprintf("%s_screeshot_fail.png", tc.Name)
+					outPath, err := saveScreenshot(img, s.OutDir(), screenshotFileName)
+					if err != nil {
+						s.Error("Failed to save screenshot: ", err)
+					} else {
+						s.Logf("Screenshot saved to %s", outPath)
+					}
+					return colorsDidNotMatchErr
+				}
+
+				return nil
+			}, &testing.PollOptions{Timeout: 5 * time.Second})
 		})
 	}
-
 	if colorsDidNotMatch {
 		s.Fatal("Pixel color match failed: ", colorsDidNotMatchErr)
 	}
