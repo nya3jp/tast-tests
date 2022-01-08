@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808b589c_d5dea22e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-08T02:17:36Z",
+      "side": 1,
+      "message": "small typo here (missing the \u0027r\u0027 in arcvm)",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "d1ccd8a6b80890834ccdbfef4c7d2c748383728b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa2ef9e_87804ec1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-08T02:17:36Z",
+      "side": 1,
+      "message": "can you add a comment here to call out the subtle difference between L122? something like:\n```\nerr \u003d\u003d nil { // if NO error (notification shown unexpectedly)\n```\n\nthis specific sort of case is called out in the style guide, take a look at the example here: go/go-style/guide#concision",
+      "range": {
+        "startLine": 136,
+        "startChar": 84,
+        "endLine": 136,
+        "endChar": 96
+      },
+      "revId": "d1ccd8a6b80890834ccdbfef4c7d2c748383728b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39ed8ad5_6bba734d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-08T02:17:36Z",
+      "side": 1,
+      "message": "update this error message to indicate that the notification appeared but it was not supposed to",
+      "range": {
+        "startLine": 137,
+        "startChar": 12,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "d1ccd8a6b80890834ccdbfef4c7d2c748383728b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
