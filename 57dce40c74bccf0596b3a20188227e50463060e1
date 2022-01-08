@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94df68b1_cd1f2a20",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-08T00:03:24Z",
+      "side": 0,
+      "message": "This property is never set in existing tests. Therefore this entire struct can be removed and we can just pass a list of option setters below.",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
