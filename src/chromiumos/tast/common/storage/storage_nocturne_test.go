@@ -321,9 +321,10 @@ Command Enabled [CMDQ_MODE_EN]: 0x00
 	}
 
 	exp := &Info{
-		Name:   "hDEaP3",
-		Device: EMMC,
-		Status: Healthy,
+		Name:           "hDEaP3",
+		Device:         EMMC,
+		Status:         Healthy,
+		PercentageUsed: 5,
 	}
 
 	if !reflect.DeepEqual(info, exp) {

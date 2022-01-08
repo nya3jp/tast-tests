@@ -13,6 +13,8 @@ import (
 func TestParseGetStorageInfoOutputSimpleHealthyEMMC(t *testing.T) {
 	const out = `
   Extended CSD rev 1.8 (MMC 5.1)
+Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x01]
+Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x00]
 Pre EOL information [PRE_EOL_INFO: 0x01]
 `
 
@@ -22,9 +24,35 @@ Pre EOL information [PRE_EOL_INFO: 0x01]
 	}
 
 	exp := &Info{
-		Name:   "EMMC",
-		Device: EMMC,
-		Status: Healthy,
+		Name:           "EMMC",
+		Device:         EMMC,
+		Status:         Healthy,
+		PercentageUsed: 5,
+	}
+
+	if !reflect.DeepEqual(info, exp) {
+		t.Errorf("parseGetStorageInfoOutput() = %+v; want %+v", info, exp)
+	}
+}
+
+func TestParseGetStorageInfoOutputHealthyEMMCLifeUsed(t *testing.T) {
+	const out = `
+  Extended CSD rev 1.8 (MMC 5.1)
+Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x0a]
+Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x0b]
+Pre EOL information [PRE_EOL_INFO: 0x01]
+`
+
+	info, err := parseGetStorageInfoOutput(context.Background(), []byte(out))
+	if err != nil {
+		t.Fatal("parseGetStorageInfoOutput() failed: ", err)
+	}
+
+	exp := &Info{
+		Name:           "EMMC",
+		Device:         EMMC,
+		Status:         Healthy,
+		PercentageUsed: 105,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
@@ -35,6 +63,8 @@ Pre EOL information [PRE_EOL_INFO: 0x01]
 func TestParseGetStorageInfoOutputSimpleFailingEMMC(t *testing.T) {
 	const out = `
   Extended CSD rev 1.8 (MMC 5.1)
+Device life time estimation type B [DEVICE_LIFE_TIME_EST_TYP_B: 0x04]
+Device life time estimation type A [DEVICE_LIFE_TIME_EST_TYP_A: 0x02]
 Pre EOL information [PRE_EOL_INFO: 0x03]
 `
 
@@ -44,9 +74,10 @@ Pre EOL information [PRE_EOL_INFO: 0x03]
 	}
 
 	exp := &Info{
-		Name:   "EMMC",
-		Device: EMMC,
-		Status: Failing,
+		Name:           "EMMC",
+		Device:         EMMC,
+		Status:         Failing,
+		PercentageUsed: 35,
 	}
 
 	if !reflect.DeepEqual(info, exp) {
