@@ -12,6 +12,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/mmconst"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
@@ -93,7 +94,6 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Modem disable-enable done")
 
-	simpleConnectProps := map[string]interface{}{"apn": ""}
 	simpleModem, err := modem.GetSimpleModem(ctx)
 	if err != nil {
 		s.Fatal("Could not get simplemodem object: ", err)
@@ -104,30 +104,21 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	if err := modemmanager.EnsureRegistered(ctx, modem, simpleModem); err != nil {
 		s.Fatal("Modem not registered: ", err)
 	}
+
 	s.Log("Connect")
+	simpleConnectProps := map[string]interface{}{"apn": ""}
+
+	// TODO(b/211015303): simplemodem connect with empty apn fails on few carriers.
+	// Get apn from shill properties and try this apn if empty apn connect fails.
+	apn := getApn(ctx, helper)
+
 	// Connect and poll for modem state.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		errConn := simpleModem.Call(ctx, mmconst.ModemConnect, simpleConnectProps).Err
-		if (errConn != nil) && (strings.Contains(errConn.Error(), "no-service")) {
-			return errors.Wrap(errConn, "failed to connect can be network issue")
+	if err := connect(ctx, simpleModem, simpleConnectProps); err != nil {
+		// Retry with first apn from Cellular.APNList.
+		simpleConnectProps = map[string]interface{}{"apn": apn}
+		if errNew := connect(ctx, simpleModem, simpleConnectProps); errNew != nil {
+			s.Fatal("Modem connect failed with errors: ", err, errNew)
 		}
-		if isConnected, err := simpleModem.IsConnected(ctx); err != nil {
-			return errors.Wrap(err, "failed to fetch connected state")
-		} else if !isConnected {
-			return errors.Wrap(err, "modem not connected")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  60 * time.Second,
-		Interval: 2 * time.Second,
-	}); err != nil {
-		// Do graceful exit for known issue. TODO: b/211015303, fix empty apn
-		// connect on specific carrier
-		if strings.Contains(err.Error(), "no-service") {
-			s.Log("Could not connect: ", err)
-			return
-		}
-		s.Fatal("Modem connect failed with: ", err)
 	}
 
 	if err := modemmanager.EnsureConnectState(ctx, modem, simpleModem, true); err != nil {
@@ -142,4 +133,47 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	if err := modemmanager.EnsureConnectState(ctx, modem, simpleModem, false); err != nil {
 		s.Fatal("Modem not disconnected: ", err)
 	}
+}
+
+// connect polls on simple modem D-Bus connect call with given apn.
+func connect(ctx context.Context, modem *modemmanager.Modem, props map[string]interface{}) error {
+	// Connect and poll for modem state.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		errConn := modem.Call(ctx, mmconst.ModemConnect, props).Err
+		if (errConn != nil) && (strings.Contains(errConn.Error(), "no-service")) {
+			return errors.Wrap(errConn, "failed to connect can be network issue")
+		}
+		if isConnected, err := modem.IsConnected(ctx); err != nil {
+			return errors.Wrap(err, "failed to fetch connected state")
+		} else if !isConnected {
+			return errors.Wrap(err, "modem not connected")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: 2 * time.Second,
+	})
+}
+
+// getApn returns first available apn from Cellular.APNList.
+func getApn(ctx context.Context, helper *cellular.Helper) string {
+	props, _ := helper.Device.GetShillProperties(ctx)
+	apns, err := props.Get(shillconst.DevicePropertyCellularAPNList)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get cellular device properties")
+	}
+
+	apnList, ok := apns.([]map[string]string)
+	if !ok {
+		testing.ContextLog(ctx, "Invalid format for cellular apn list")
+	}
+
+	for i := 0; i < len(apnList); i++ {
+		apn := apnList[i]["apn"]
+		if len(apn) > 0 {
+			testing.ContextLog(ctx, "First apn in apn list: ", apn)
+			return apn
+		}
+	}
+	return ""
 }

@@ -40,6 +40,8 @@ const (
 	DevicePropertySelectedService = "SelectedService"
 
 	// Cellular device property names.
+	DevicePropertyCellularAPNList            = "Cellular.APNList"
+	DevicePropertyCellularHomeProvider       = "Cellular.HomeProvider"
 	DevicePropertyCellularICCID              = "Cellular.ICCID"
 	DevicePropertyCellularPolicyAllowRoaming = "Cellular.PolicyAllowRoaming"
 	DevicePropertyCellularSIMPresent         = "Cellular.SIMPresent"
