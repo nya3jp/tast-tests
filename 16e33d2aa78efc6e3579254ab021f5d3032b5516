@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05470932_9eb27469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-09T22:46:05Z",
+      "side": 1,
+      "message": "this line seems to always return (ni, false) as `useractions.AttributeKeyboardLayout` is never set in the test, did I miss something?\n\nplus, the revised imesettings.SetKoreanKeyboardLayout function already checks if the current layout is the expected one, why do another check here?",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 78
+      },
+      "revId": "16e33d2aa78efc6e3579254ab021f5d3032b5516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0d10bd_e61e102f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-09T22:46:05Z",
+      "side": 1,
+      "message": "HasClass(\"OmniboxViewViews\")",
+      "range": {
+        "startLine": 206,
+        "startChar": 19,
+        "endLine": 206,
+        "endChar": 70
+      },
+      "revId": "16e33d2aa78efc6e3579254ab021f5d3032b5516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

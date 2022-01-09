@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92c96772_292dbf0d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/cdputil/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-09T22:46:05Z",
+      "side": 0,
+      "message": "is there a reason why you want to remove this log? since it has been there for a long time, maybe it was added for a reason?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 68
+      },
+      "revId": "fedfbf3f06ed60c22a3f7fd52ede7f70d2667dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
