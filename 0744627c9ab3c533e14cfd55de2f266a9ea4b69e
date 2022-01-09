@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a71dbead_b72ab1bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-09T22:14:13Z",
+      "side": 1,
+      "message": "this is irrelavant to this CL, but it is better to re-write it like:\ndefer func(ctx context.Context){...}(cleanupCtx)\ninstead of directly using `cleanupCtx` in the function body.",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "0744627c9ab3c533e14cfd55de2f266a9ea4b69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
