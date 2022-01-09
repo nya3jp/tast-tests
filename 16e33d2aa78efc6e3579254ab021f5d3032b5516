@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f05a59c5_c7826977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-09T23:21:28Z",
+      "side": 1,
+      "message": "I think it is a bad idea to let the test depend on the internal state of a helper library. In another words, this test should only know the purpose of imesettings.SetKoreanKeyboardLayout which is to change the layout, but it should not assume how it makes that happen (or the internal implementation), because that the internal implementation of the helper function can change arbitrarily.\n\nSince waiting 10s is a temporary solution, it is OK for the test to ignore that (similarly, the internal mechanism should be hidden from the test). You don\u0027t want to revise all tests when we have a better solution.\n\nFor this part, it is reasonable to skip the checks here, and just call imesettings.SetKoreanKeyboardLayout directly.",
+      "parentUuid": "2f4f5505_a998f822",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 78
+      },
+      "revId": "16e33d2aa78efc6e3579254ab021f5d3032b5516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed0d10bd_e61e102f",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
         "patchSetId": 4
