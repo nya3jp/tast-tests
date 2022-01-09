@@ -7,6 +7,7 @@ package imesettings
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ime"
@@ -222,4 +223,43 @@ func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, is
 				useractions.ActionTagAutoCapitalization,
 			},
 		})
+}
+
+// SetKoreanKeyboardLayout returns a user action to change 'Korean keyboard layout' setting.
+func SetKoreanKeyboardLayout(uc *useractions.UserContext, keyboardLayout string) *useractions.UserAction {
+	action := func(ctx context.Context) error {
+		setting, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
+		if err != nil {
+			return errors.Wrap(err, "failed to launch input settings")
+		}
+
+		return uiauto.Combine("test input method settings change",
+			setting.OpenInputMethodSetting(uc.TestAPIConn(), ime.Korean),
+			setting.ChangeKoreanKeyboardLayout(uc.Chrome(), keyboardLayout),
+			setting.Close,
+			// TODO(b/195374149): Remove this sleep once we can determine IME is ready.
+			uiauto.New(uc.TestAPIConn()).Sleep(10*time.Second),
+		)(ctx)
+	}
+
+	return useractions.NewUserAction(
+		"Change Korean keyboard layout setting",
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Tags: []useractions.ActionTag{
+				useractions.ActionTagEssentialInputs,
+				useractions.ActionTagIMESettings,
+			},
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: fmt.Sprintf("Change layout to %q", keyboardLayout),
+			},
+			Callback: func(ctx context.Context, actionError error) error {
+				if actionError == nil {
+					uc.SetAttribute(useractions.AttributeKeyboardLayout, keyboardLayout)
+				}
+				return nil
+			},
+		},
+	)
 }
