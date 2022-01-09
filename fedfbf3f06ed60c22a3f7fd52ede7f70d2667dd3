@@ -22,6 +22,30 @@
       },
       "revId": "fedfbf3f06ed60c22a3f7fd52ede7f70d2667dd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b74d5bd_5f853b24",
+        "filename": "src/chromiumos/tast/local/chrome/internal/cdputil/conn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-09T22:56:59Z",
+      "side": 0,
+      "message": "oh, it prints too much. I can do this separately. Reverted.",
+      "parentUuid": "92c96772_292dbf0d",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 68
+      },
+      "revId": "fedfbf3f06ed60c22a3f7fd52ede7f70d2667dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
