@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda99061_64447414",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-09T08:21:13Z",
+      "side": 1,
+      "message": "Added conditional verizon apn to prevent connect failures on verizon duts, tested on both trogdor and sarien",
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
