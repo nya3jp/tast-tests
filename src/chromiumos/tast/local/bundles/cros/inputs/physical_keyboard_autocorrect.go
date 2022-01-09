@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -62,6 +64,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(autocorrect.TestCase)
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -75,6 +78,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
 		s.Fatalf("Failed to set input method to %q: %v: ", inputMethod, err)
 	}
+	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
 	keyboard, err := input.Keyboard(ctx)
 	if err != nil {
@@ -88,15 +92,18 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	}
 	defer its.Close()
 
-	defer func() {
-		if err := inputMethod.ResetSettings(tconn)(cleanupCtx); err != nil {
+	defer func(ctx context.Context) {
+		if err := inputMethod.ResetSettings(tconn)(ctx); err != nil {
 			// Only log errors in cleanup.
 			s.Log("Failed to reset IME settings: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	const inputField = testserver.TextAreaInputField
-	if err := uiauto.Combine("validate PK autocorrect",
+	uc.SetAttribute(useractions.AttributeInputField, string(inputField))
+	uc.AddTags([]useractions.ActionTag{useractions.ActionTagAutoCorrection})
+
+	validatePKAutocorrectAction := uiauto.Combine("validate PK autocorrect",
 		inputMethod.SetPKAutoCorrection(tconn, ime.AutoCorrectionModest),
 		its.Clear(inputField),
 		its.ClickFieldAndWaitForActive(inputField),
@@ -104,44 +111,71 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord),
 		keyboard.TypeAction(" "),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord+" "),
-	)(ctx); err != nil {
-		s.Fatal("Failed to validate PK autocorrect: ", err)
-	}
+	)
 
-	if err := uiauto.Repeat(len(testCase.CorrectWord)/2+1, keyboard.AccelAction("Left"))(ctx); err != nil {
-		s.Fatal("Failed to press Left: ", err)
+	if err := useractions.NewUserAction("PK Autocorrect",
+		validatePKAutocorrectAction,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: fmt.Sprintf(`correct %q to %q`, testCase.MisspeltWord, testCase.CorrectWord),
+			},
+		},
+	).Run(ctx); err != nil {
+		s.Fatal("Failed to validate PK autocorrect: ", err)
 	}
 
 	ui := uiauto.New(tconn)
 	undoWindowFinder := nodewith.ClassName("UndoWindow").Role(role.Window)
 	undoButtonFinder := nodewith.Name("Undo").Role(role.Button).Ancestor(undoWindowFinder)
 
-	if err := ui.WaitUntilExists(undoButtonFinder)(ctx); err != nil {
-		s.Fatal("Cannot find Undo button: ", err)
+	triggerUndoAction := uiauto.Combine("press left button to trigger AC undo",
+		uiauto.Repeat(len(testCase.CorrectWord)/2+1, keyboard.AccelAction("Left")),
+		ui.WaitUntilExists(undoButtonFinder),
+	)
+
+	if err := useractions.NewUserAction("press LEFT key to trigger AC undo",
+		triggerUndoAction,
+		uc,
+		nil,
+	).Run(ctx); err != nil {
+		s.Fatal("Failed to trigger AC undo: ", err)
 	}
 
+	var testScenario string
+	var undoAction uiauto.Action
 	switch testCase.UndoMethod {
 	case autocorrect.ViaBackspace:
 		// Not applicable for PK. Expect no undo upon Backspace.
-		if err := uiauto.Combine("validate PK autocorrect non-undo via Backspace",
+		testScenario = "PK autocorrect non-undo via Backspace"
+		undoAction = uiauto.Combine(testScenario,
 			keyboard.AccelAction("Backspace"),
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.CorrectWord),
-		)(ctx); err != nil {
-			s.Fatal("Failed to validate PK autocorrect non-undo via Backspace: ", err)
-		}
+		)
 	case autocorrect.ViaPopupUsingPK:
-		if err := uiauto.Combine("validate PK autocorrect undo via popup using PK",
+		testScenario = "PK autocorrect undo via popup using PK"
+		undoAction = uiauto.Combine(testScenario,
 			keyboard.AccelAction("Up"),
 			keyboard.AccelAction("Enter"),
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord+" "),
-		)(ctx); err != nil {
-		}
+		)
 	case autocorrect.ViaPopupUsingMouse:
-		if err := uiauto.Combine("validate PK autocorrect undo",
+		testScenario = "PK autocorrect undo via popup using mouse"
+		undoAction = uiauto.Combine(testScenario,
 			ui.LeftClick(undoButtonFinder),
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord+" "),
-		)(ctx); err != nil {
-			s.Fatal("Failed to validate PK autocorrect undo via popup using mouse: ", err)
-		}
+		)
+	}
+
+	if err := useractions.NewUserAction("PK autocorrect undo",
+		undoAction,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: testScenario,
+			},
+		},
+	).Run(ctx); err != nil {
+		s.Fatal("Failed to validate autocorrect undo: ", err)
 	}
 }
