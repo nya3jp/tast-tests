@@ -12,6 +12,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/mmconst"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
@@ -94,6 +95,16 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	s.Log("Modem disable-enable done")
 
 	simpleConnectProps := map[string]interface{}{"apn": ""}
+	carrier := getCarrier(ctx, helper)
+	s.Log("carrier name: ", carrier)
+	if carrier == "" {
+		s.Log("Device missing carrier name")
+	}
+
+	if carrier == "Verizon" {
+		simpleConnectProps = map[string]interface{}{"apn": "vzwinternet"}
+	}
+
 	simpleModem, err := modem.GetSimpleModem(ctx)
 	if err != nil {
 		s.Fatal("Could not get simplemodem object: ", err)
@@ -142,4 +153,20 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	if err := modemmanager.EnsureConnectState(ctx, modem, simpleModem, false); err != nil {
 		s.Fatal("Modem not disconnected: ", err)
 	}
+}
+
+// getCarrier returns carrier name.
+func getCarrier(ctx context.Context, helper *cellular.Helper) string {
+	props, err := helper.Device.GetShillProperties(ctx)
+	provider, err := props.Get(shillconst.DevicePropertyCellularHomeProvider)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get cellular device properties")
+	}
+	providermap := make(map[string]string)
+	providermap, ok := provider.(map[string]string)
+	if !ok {
+		testing.ContextLog(ctx, "Invalid format for cellular homeprovider value")
+	}
+
+	return providermap["name"]
 }
