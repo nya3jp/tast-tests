@@ -12,6 +12,7 @@ import (
 	"github.com/godbus/dbus"
 
 	"chromiumos/tast/common/mmconst"
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
@@ -94,6 +95,11 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	s.Log("Modem disable-enable done")
 
 	simpleConnectProps := map[string]interface{}{"apn": ""}
+
+	// TODO(b/211015303): simplemodem connect with empty apn fails on few carriers.
+	// Get apn from shill properties and try this apn if empty apn connect fails.
+	apn := getApn(ctx, helper)
+
 	simpleModem, err := modem.GetSimpleModem(ctx)
 	if err != nil {
 		s.Fatal("Could not get simplemodem object: ", err)
@@ -105,8 +111,14 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("Modem not registered: ", err)
 	}
 	s.Log("Connect")
+	connectCount := 0
 	// Connect and poll for modem state.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		connectCount++
+		// Try with first apn from Cellular.APNList.
+		if connectCount > 15 {
+			simpleConnectProps = map[string]interface{}{"apn": apn}
+		}
 		errConn := simpleModem.Call(ctx, mmconst.ModemConnect, simpleConnectProps).Err
 		if (errConn != nil) && (strings.Contains(errConn.Error(), "no-service")) {
 			return errors.Wrap(errConn, "failed to connect can be network issue")
@@ -142,4 +154,26 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	if err := modemmanager.EnsureConnectState(ctx, modem, simpleModem, false); err != nil {
 		s.Fatal("Modem not disconnected: ", err)
 	}
+}
+
+// getApn returns first available apn from Cellular.APNList.
+func getApn(ctx context.Context, helper *cellular.Helper) string {
+	props, _ := helper.Device.GetShillProperties(ctx)
+	apns, err := props.Get(shillconst.DevicePropertyCellularAPNList)
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get cellular device properties")
+	}
+	apnList, ok := apns.([]map[string]string)
+	if !ok {
+		testing.ContextLog(ctx, "Invalid format for cellular apn list")
+	}
+
+	for i := 0; i < len(apnList); i++ {
+		apn := apnList[i]["apn"]
+		if len(apn) > 0 {
+			testing.ContextLog(ctx, "Apn value from apn list: ", apn)
+			return apn
+		}
+	}
+	return ""
 }

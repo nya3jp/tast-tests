@@ -44,6 +44,8 @@ const (
 	DevicePropertyCellularPolicyAllowRoaming = "Cellular.PolicyAllowRoaming"
 	DevicePropertyCellularSIMPresent         = "Cellular.SIMPresent"
 	DevicePropertyCellularSIMSlotInfo        = "Cellular.SIMSlotInfo"
+	DevicePropertyCellularHomeProvider       = "Cellular.HomeProvider"
+	DevicePropertyCellularAPNList            = "Cellular.APNList"
 
 	// Ethernet device property names.
 	DevicePropertyEthernetBusType   = "Ethernet.DeviceBusType"
