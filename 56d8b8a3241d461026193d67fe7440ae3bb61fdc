@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc3c4e6e_4d44071b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-10T17:09:42Z",
+      "side": 1,
+      "message": "I wonder whether we could use\n\n  errors.Is(err, rpcc.ErrConnClosing)\n  \nsince we have a rpcc.ErrConnClosing in the wrapped errors.",
+      "parentUuid": "3bb63bf3_c64e04be",
+      "revId": "56d8b8a3241d461026193d67fe7440ae3bb61fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2619d1c6_e5d64368",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 2
