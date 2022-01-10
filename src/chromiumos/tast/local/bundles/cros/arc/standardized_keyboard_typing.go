@@ -27,22 +27,22 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardTypingTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardTypingTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardTypingTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardTypingTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}},
@@ -57,8 +57,8 @@ func StandardizedKeyboardTyping(ctx context.Context, s *testing.State) {
 		activityName = ".TypingTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 // runStandardizedKeyboardTypingTest types into the input field, and ensures the text appears.

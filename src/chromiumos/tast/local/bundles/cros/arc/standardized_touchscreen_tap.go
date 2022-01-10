@@ -28,22 +28,22 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel("kakadu", "katsu", "kodama")),
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenTapTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedTouchscreenTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenTapTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedTouchscreenTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenTapTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedTouchscreenTapTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenTapTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedTouchscreenTapTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}},
@@ -58,8 +58,8 @@ func StandardizedTouchscreenTap(ctx context.Context, s *testing.State) {
 		activityName = ".TapTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 func runStandardizedTouchscreenTapTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {

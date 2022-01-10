@@ -18,7 +18,7 @@ import (
 )
 
 type standardizedMouseScrollArgs struct {
-	testCases         []standardizedtestutil.TestCase
+	test              standardizedtestutil.Test
 	resizeLockEnabled bool
 }
 
@@ -34,7 +34,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Val: &standardizedMouseScrollArgs{
-					testCases:         standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
+					test:              standardizedtestutil.GetClamshellTest(runStandardizedMouseScrollTest),
 					resizeLockEnabled: false,
 				},
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -44,7 +44,7 @@ func init() {
 			{
 				Name: "vm",
 				Val: &standardizedMouseScrollArgs{
-					testCases:         standardizedtestutil.GetClamshellTests(runStandardizedMouseScrollTest),
+					test:              standardizedtestutil.GetClamshellTest(runStandardizedMouseScrollTest),
 					resizeLockEnabled: false,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
@@ -54,7 +54,13 @@ func init() {
 			{
 				Name: "resize_lock_smooth_scroll_vm",
 				Val: &standardizedMouseScrollArgs{
-					testCases:         []standardizedtestutil.TestCase{{Name: "Normal", Fn: runStandardizedMouseScrollTest, WindowStateType: ash.WindowStateNormal}},
+					test: standardizedtestutil.Test{
+						Fn:           runStandardizedMouseScrollTest,
+						InTabletMode: false,
+						WindowStates: []standardizedtestutil.WindowState{
+							{Name: "Normal", WindowStateType: ash.WindowStateNormal},
+						},
+					},
 					resizeLockEnabled: true,
 				},
 				ExtraSoftwareDeps: []string{"android_vm"},
@@ -72,12 +78,12 @@ func StandardizedMouseScroll(ctx context.Context, s *testing.State) {
 		activityName = ".ScrollTestActivity"
 	)
 
-	testCases := s.Param().(*standardizedMouseScrollArgs).testCases
+	t := s.Param().(*standardizedMouseScrollArgs).test
 	resizeLockEnabled := s.Param().(*standardizedMouseScrollArgs).resizeLockEnabled
 	if resizeLockEnabled {
-		standardizedtestutil.RunTestCasesWithResizeLock(ctx, s, apkName, appName, activityName, testCases)
+		standardizedtestutil.RunResizeLockTest(ctx, s, apkName, appName, activityName, t)
 	} else {
-		standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+		standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 	}
 }
 

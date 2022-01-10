@@ -27,12 +27,12 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseLeftClickTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedMouseLeftClickTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedMouseLeftClickTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedMouseLeftClickTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}},
@@ -47,8 +47,8 @@ func StandardizedMouseLeftClick(ctx context.Context, s *testing.State) {
 		activityName = ".PointerLeftClickTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 // runStandardizedMouseLeftClickTest runs the left click test.
