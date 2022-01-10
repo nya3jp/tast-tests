@@ -16,6 +16,24 @@
       "message": "can we move this closer to where it is used?",
       "revId": "13569b94026a9e8edb307d718eb9365b8e93f830",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cefcf6c2_4881d5f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/oobe_arc_app_open.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-01-10T20:24:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e16fd3_0ab88f46",
+      "revId": "13569b94026a9e8edb307d718eb9365b8e93f830",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
