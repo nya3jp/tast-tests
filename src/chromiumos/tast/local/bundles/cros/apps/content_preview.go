@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -152,6 +153,7 @@ func ContentPreview(ctx context.Context, s *testing.State) {
 
 				// This is to exit the share dialog in the end of each sub test.
 				defer kb.AccelAction("Esc")(ctx)
+				defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 				fileLabel := nodewith.Name(data.name).ClassName("Label").Role(role.StaticText).Ancestor(bubbleView)
 				// Verify the Share dialog and content preview.
