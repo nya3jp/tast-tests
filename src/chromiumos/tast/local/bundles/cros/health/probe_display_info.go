@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
@@ -81,7 +82,7 @@ func isPrivacyScreenEnabled(ctx context.Context) (bool, error) {
 	return strings.TrimRight(string(b), "\n") == "1", nil
 }
 
-func verifyEmbeddedDisplayInfo(ctx context.Context, EDP embeddedDisplayInfo) error {
+func verifyPrivacyScreenInfo(ctx context.Context, EDP *embeddedDisplayInfo) error {
 	privacyScreenSupported, err := isPrivacyScreenSupported(ctx)
 	if err != nil {
 		return err
@@ -105,8 +106,65 @@ func verifyEmbeddedDisplayInfo(ctx context.Context, EDP embeddedDisplayInfo) err
 	return nil
 }
 
+func compareUint32Pointer(got *jsontypes.Uint32, want uint32, field string) error {
+	if got == nil {
+		if want != 0 {
+			return errors.Errorf("failed. %s doesn't match: got nil; want %v", field, want)
+		}
+	} else if want != uint32(*got) {
+		return errors.Errorf("failed. %s doesn't match: got %v; want %v", field, *got, want)
+	}
+
+	return nil
+}
+
+func getModetestConnectorInfo(ctx context.Context, column int) (string, error) {
+	// Example output of "modetest -c" (partially):
+	// id      encoder status          name            size (mm)       modes   encoders
+	// 71      70      connected       eDP-1           290x190         1       70
+	//
+	// We'll try to get the line that contains "eDP" string first, and get the value at |column| index.
+	cmd := "modetest -c | grep eDP | awk -e '{print $" + strconv.Itoa(column) + "}'"
+	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimRight(string(b), "\n"), nil
+}
+
+func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) error {
+	sizeRaw, err := getModetestConnectorInfo(ctx, 5)
+	if err != nil {
+		return err
+	}
+
+	size := strings.Split(sizeRaw, "x")
+	width, _ := strconv.ParseUint(size[0], 10, 32)
+	height, _ := strconv.ParseUint(size[1], 10, 32)
+	if err := compareUint32Pointer(EDP.DisplayWidth, uint32(width), "DisplayWidth"); err != nil {
+		return err
+	}
+	if err := compareUint32Pointer(EDP.DisplayHeight, uint32(height), "DisplayHeight"); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func verifyEmbeddedDisplayInfo(ctx context.Context, EDP *embeddedDisplayInfo) error {
+	if err := verifyPrivacyScreenInfo(ctx, EDP); err != nil {
+		return err
+	}
+	if err := verifyEmbeddedDisplaySize(ctx, EDP); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func verifyDisplayData(ctx context.Context, display *displayInfo) error {
-	if err := verifyEmbeddedDisplayInfo(ctx, display.EDP); err != nil {
+	if err := verifyEmbeddedDisplayInfo(ctx, &display.EDP); err != nil {
 		return err
 	}
 
