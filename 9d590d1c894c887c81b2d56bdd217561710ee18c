@@ -52,6 +52,24 @@
       "parentUuid": "8cd9aa7b_fd801b8f",
       "revId": "9d590d1c894c887c81b2d56bdd217561710ee18c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "930b922f_4ef65a56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-10T10:19:50Z",
+      "side": 1,
+      "message": "Yes, for example this is how we get UI tree dumps after a failure.\nHowever it is eough to use 1 clenupCtx, there is no need to split it into different parts. The goal is to leave some time for these steps, but we do not need to protect one cleanup step from another.",
+      "parentUuid": "4e228c12_ebd1cbc3",
+      "revId": "9d590d1c894c887c81b2d56bdd217561710ee18c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
