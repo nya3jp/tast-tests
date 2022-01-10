@@ -18,6 +18,18 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	// These extensions are unlisted on the Chrome Web Store but can be
+	// downloaded directly using the extension IDs.
+	// The code for the extensions can be found in the Chromium repo at
+	// chrome/test/data/extensions/api_test/login_screen_apis/.
+
+	// LoginScreenExtensionID is the ID for "Login screen APIs test extension".
+	LoginScreenExtensionID = "oclffehlkdgibkainkilopaalpdobkan"
+	// InSessionExtensionID is the ID for "Login screen APIs in-session test extension".
+	InSessionExtensionID = "ofcpkomnogjenhfajfjadjmjppbegnad"
+)
+
 var (
 	// MgsAccountID is the default MGS ID.
 	MgsAccountID = "defaultMgsSetByTast"
@@ -151,4 +163,12 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*MGS, *chr
 	}
 
 	return &MGS{cr: cr, fdms: fdms}, cr, nil
+}
+
+// Chrome returns chrome instance.
+func (m *MGS) Chrome() *chrome.Chrome {
+	if m.cr == nil {
+		panic("Chrome is called with nil chrome instance")
+	}
+	return m.cr
 }
