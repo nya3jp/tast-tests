@@ -179,10 +179,34 @@ func New(ctx context.Context, outDir string) (*ARC, error) {
 	return NewWithSyslogReader(ctx, outDir, reader)
 }
 
-// NewWithSyslogReader waits for Android to finish booting.
+// NewWithTimeout waits for Android to finish booting until timeout expires.
+//
+// ARC must be enabled in advance by passing chrome.ARCEnabled or chrome.ARCSupported with
+// real user gaia login to chrome.New.
+//
+// After this function returns successfully, you can assume BOOT_COMPLETED
+// intent has been broadcast from Android system, and ADB connection is ready.
+// Note that this does not necessarily mean all ARC mojo services are up; call
+// WaitIntentHelper() to wait for ArcIntentHelper to be ready, for example.
+//
+// The returned ARC instance must be closed when the test is finished.
+func NewWithTimeout(ctx context.Context, outDir string, timeout time.Duration) (*ARC, error) {
+	// Start a syslog reader so we can give more useful debug information
+	// waiting for boot. This is too late in the boot to
+	// catch crosvm startup crashes.
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open syslog reader")
+	}
+	defer reader.Close()
+
+	return newWithSyslogReaderAndTimeout(ctx, outDir, reader, timeout)
+}
+
+// newWithSyslogReaderAndTimeout waits for Android to finish booting until timeout expires.
 //
 // Give a syslog.Reader instantiated before chrome.New to allow diagnosing init failure.
-func NewWithSyslogReader(ctx context.Context, outDir string, reader *syslog.Reader) (*ARC, error) {
+func newWithSyslogReaderAndTimeout(ctx context.Context, outDir string, reader *syslog.Reader, timeout time.Duration) (*ARC, error) {
 	ctx, st := timing.Start(ctx, "arc_new")
 	defer st.End()
 
@@ -190,7 +214,7 @@ func NewWithSyslogReader(ctx context.Context, outDir string, reader *syslog.Read
 		panic("Cannot create ARC instance while precondition is being used")
 	}
 
-	ctx, cancel := context.WithTimeout(ctx, BootTimeout)
+	ctx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
 	if err := checkSoftwareDeps(ctx); err != nil {
@@ -289,6 +313,13 @@ func NewWithSyslogReader(ctx context.Context, outDir string, reader *syslog.Read
 
 	toClose = nil
 	return arc, nil
+}
+
+// NewWithSyslogReader waits for Android to finish booting.
+//
+// Give a syslog.Reader instantiated before chrome.New to allow diagnosing init failure.
+func NewWithSyslogReader(ctx context.Context, outDir string, reader *syslog.Reader) (*ARC, error) {
+	return newWithSyslogReaderAndTimeout(ctx, outDir, reader, BootTimeout)
 }
 
 // WaitIntentHelper waits for ArcIntentHelper to get ready.

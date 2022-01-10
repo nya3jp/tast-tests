@@ -121,6 +121,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 		emptyPlayStoreText     = "No results found."
 		somethingWentWrongText = "Something went wrong"
 		maxPlayStoreAttempt    = 5
+		bootTimeout            = time.Minute * 4
 	)
 
 	user := s.RequiredVar(s.Param().(credentialKeys).user)
@@ -139,7 +140,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 	defer cr.Close(ctx)
 
 	// Ensure that ARC is launched.
-	a, err := arc.New(ctx, s.OutDir())
+	a, err := arc.NewWithTimeout(ctx, s.OutDir(), bootTimeout)
 	if err != nil {
 		s.Fatal("Failed to start ARC by user policy: ", err)
 	}
