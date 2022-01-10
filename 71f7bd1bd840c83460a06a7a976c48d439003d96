@@ -50,6 +50,29 @@
       "message": "I believe the momdem should select the correct APN if no APN is provided. Is that not happening?",
       "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a484e3_c941ed3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-01-10T21:42:44Z",
+      "side": 1,
+      "message": "We will need to modify this test every time we have a non empty apn, thus I am not convinced that this is the best approach. We should either get the APN directly from Shill. Or let Shill connect instead of MM (though I understand that it defeats the purpose of the test)\n\nOr run this test only on carriers that support empty APN.",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 15
+      },
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
