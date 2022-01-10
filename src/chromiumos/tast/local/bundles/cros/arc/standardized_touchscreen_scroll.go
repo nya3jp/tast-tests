@@ -29,25 +29,25 @@ func init() {
 		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchScreenScrollTest),
+				Val:               standardizedtestutil.GetClamshellTest(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 			{
 				Name:              "tablet_mode",
-				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchScreenScrollTest),
+				Val:               standardizedtestutil.GetTabletTest(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 			},
 			{
 				Name:              "vm",
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchScreenScrollTest),
+				Val:               standardizedtestutil.GetClamshellTest(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 			{
 				Name:              "vm_tablet_mode",
-				Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchScreenScrollTest),
+				Val:               standardizedtestutil.GetTabletTest(runStandardizedTouchScreenScrollTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 			},
@@ -62,8 +62,8 @@ func StandardizedTouchscreenScroll(ctx context.Context, s *testing.State) {
 		activityName = ".ScrollTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 func runStandardizedTouchScreenScrollTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {

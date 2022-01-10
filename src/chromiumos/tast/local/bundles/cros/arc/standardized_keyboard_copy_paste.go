@@ -27,22 +27,22 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardCopyPasteTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardCopyPasteTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardCopyPasteTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardCopyPasteTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardCopyPasteTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}},
@@ -57,8 +57,8 @@ func StandardizedKeyboardCopyPaste(ctx context.Context, s *testing.State) {
 		activityName = ".CopyPasteTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 // runStandardizedKeyboardCopyPasteTest verifies an input with pre-established source text

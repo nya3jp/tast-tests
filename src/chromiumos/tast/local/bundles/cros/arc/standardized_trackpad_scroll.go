@@ -28,13 +28,13 @@ func init() {
 		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTrackpadScrollTest),
+				Val:               standardizedtestutil.GetClamshellTest(runStandardizedTrackpadScrollTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
 			{
 				Name:              "vm",
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTrackpadScrollTest),
+				Val:               standardizedtestutil.GetClamshellTest(runStandardizedTrackpadScrollTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			},
@@ -49,8 +49,8 @@ func StandardizedTrackpadScroll(ctx context.Context, s *testing.State) {
 		activityName = ".ScrollTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 // runStandardizedTrackpadScrollTest performs up and down scroll tests using the trackpad.

@@ -28,12 +28,12 @@ func init() {
 		Fixture:      "arcBooted",
 		Params: []testing.Param{
 			{
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTrackpadZoomTest),
+				Val:               standardizedtestutil.GetClamshellTest(runStandardizedTrackpadZoomTest),
 				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			}, {
 				Name:              "vm",
-				Val:               standardizedtestutil.GetClamshellTests(runStandardizedTrackpadZoomTest),
+				Val:               standardizedtestutil.GetClamshellTest(runStandardizedTrackpadZoomTest),
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 			}},
@@ -47,8 +47,8 @@ func StandardizedTrackpadZoom(ctx context.Context, s *testing.State) {
 		activityName = ".ZoomTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 func runStandardizedTrackpadZoomTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {

@@ -63,13 +63,17 @@ type TestFuncParams struct {
 // TestFunc represents the test function.
 type TestFunc func(ctx context.Context, testParameters TestFuncParams) error
 
-// TestCase holds information about a test to run.
-type TestCase struct {
+// WindowState holds information about a window state that should be run as part of a test.
+type WindowState struct {
 	Name            string
-	Fn              TestFunc
-	Timeout         time.Duration
 	WindowStateType ash.WindowStateType
-	InTabletMode    bool
+}
+
+// Test holds information about a test that should run in a given mode, over multiple window states.
+type Test struct {
+	Fn           TestFunc
+	InTabletMode bool
+	WindowStates []WindowState
 }
 
 // ZoomType represents the zoom type to perform.
@@ -110,41 +114,49 @@ const (
 	UpScroll
 )
 
-// GetClamshellTests returns the test cases required for clamshell devices.
-func GetClamshellTests(fn TestFunc) []TestCase {
-	return []TestCase{
-		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen, InTabletMode: false},
-		{Name: "Normal", Fn: fn, WindowStateType: ash.WindowStateNormal, InTabletMode: false},
-		{Name: "Snapped left", Fn: fn, WindowStateType: ash.WindowStateLeftSnapped, InTabletMode: false},
-		{Name: "Snapped right", Fn: fn, WindowStateType: ash.WindowStateRightSnapped, InTabletMode: false},
+// GetClamshellTest returns the test cases required for clamshell devices.
+func GetClamshellTest(fn TestFunc) Test {
+	return Test{
+		Fn: fn,
+		WindowStates: []WindowState{
+			{Name: "Full Screen", WindowStateType: ash.WindowStateFullscreen},
+			{Name: "Normal", WindowStateType: ash.WindowStateNormal},
+			{Name: "Snapped left", WindowStateType: ash.WindowStateLeftSnapped},
+			{Name: "Snapped right", WindowStateType: ash.WindowStateRightSnapped},
+		},
+		InTabletMode: false,
 	}
 }
 
 // ClamshellHardwareDep returns the hardware dependencies all clamshell tests share.
 var ClamshellHardwareDep = hwdep.SkipOnModel(TabletOnlyModels...)
 
-// GetTabletTests returns the test cases required for tablet devices.
-func GetTabletTests(fn TestFunc) []TestCase {
-	return []TestCase{
-		{Name: "Full Screen", Fn: fn, WindowStateType: ash.WindowStateFullscreen, InTabletMode: true},
-		{Name: "Maximized", Fn: fn, WindowStateType: ash.WindowStateMaximized, InTabletMode: true},
+// GetTabletTest returns the test cases required for tablet devices.
+func GetTabletTest(fn TestFunc) Test {
+	return Test{
+		Fn: fn,
+		WindowStates: []WindowState{
+			{Name: "Full Screen", WindowStateType: ash.WindowStateFullscreen},
+			{Name: "Maximized", WindowStateType: ash.WindowStateMaximized},
+		},
+		InTabletMode: true,
 	}
 }
 
 // TabletHardwareDep returns the hardware dependencies all tablet tests share.
 var TabletHardwareDep = hwdep.SkipOnModel(TabletOnlyModels...)
 
-// RunTestCases runs the provided test cases and handles cleanup between tests.
-func RunTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, testCases []TestCase) {
-	runTestCases(ctx, s, apkName, appPkgName, appActivity, false /* fromPlayStore */, testCases)
+// RunTest runs the provided test cases and handles cleanup between tests.
+func RunTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, t Test) {
+	runTest(ctx, s, apkName, appPkgName, appActivity, false /* fromPlayStore */, t)
 }
 
-// RunTestCasesWithResizeLock runs the provided test cases with ResizeLock enabled, and handles cleanup between tests.
-func RunTestCasesWithResizeLock(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, testCases []TestCase) {
-	runTestCases(ctx, s, apkName, appPkgName, appActivity, true /* fromPlayStore */, testCases)
+// RunResizeLockTest runs the provided test cases with ResizeLock enabled, and handles cleanup between tests.
+func RunResizeLockTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, t Test) {
+	runTest(ctx, s, apkName, appPkgName, appActivity, true /* fromPlayStore */, t)
 }
 
-func runTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, fromPlayStore bool, testCases []TestCase) {
+func runTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActivity string, fromPlayStore bool, t Test) {
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
 	d := s.FixtValue().(*arc.PreData).UIDevice
@@ -164,29 +176,15 @@ func runTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 		s.Fatal("Could not open Test API connection: ", err)
 	}
 
-	// All test cases must have the same tablet mode set. This allows the
-	// setting to be toggled once.
-	// TODO(b/213803181) Move this value into a single struct since it should be shared.
-	if len(testCases) < 0 {
-		s.Fatal("No test cases provided")
-	}
-
-	inTabletMode := testCases[0].InTabletMode
-	for _, test := range testCases {
-		if test.InTabletMode != inTabletMode {
-			s.Fatal("All test cases must provide the same inTabletMode value")
-		}
-	}
-
-	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, inTabletMode)
+	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, t.InTabletMode)
 	if err != nil {
-		s.Fatal("Failed to set tablet mode to: ", inTabletMode)
+		s.Fatal("Failed to set tablet mode to: ", t.InTabletMode)
 	}
 	defer cleanupTabletMode(ctx)
 
 	// Run the different test cases.
-	for idx, test := range testCases {
-		s.Run(ctx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
+	for idx, windowState := range t.WindowStates {
+		s.Run(ctx, windowState.Name, func(cleanupCtx context.Context, s *testing.State) {
 			// Save time for cleanup by working on a shortened context.
 			workCtx, workCtxCancel := ctxutil.Shorten(cleanupCtx, RunTestCasesCleanupTime)
 			defer workCtxCancel()
@@ -251,12 +249,12 @@ func runTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 			// errors out early and additional tests can run.
 			setWindowStateWorkCtx, setWindowStateCtxCancel := context.WithTimeout(workCtx, ShortUITimeout)
 			defer setWindowStateCtxCancel()
-			if _, err := ash.SetARCAppWindowStateAndWait(setWindowStateWorkCtx, tconn, appPkgName, test.WindowStateType); err != nil {
+			if _, err := ash.SetARCAppWindowStateAndWait(setWindowStateWorkCtx, tconn, appPkgName, windowState.WindowStateType); err != nil {
 				s.Fatal("Failed to set window state: ", err)
 			}
 
 			// TODO(b/207691867): Pointer movements aren't consistent when in the 'Normal' window state unless the bounds are changed first.
-			if test.WindowStateType == ash.WindowStateNormal {
+			if windowState.WindowStateType == ash.WindowStateNormal {
 				// Get the ARC window and its corresponding display info.
 				w, err := ash.GetARCAppWindowInfo(workCtx, tconn, appPkgName)
 				if err != nil {
@@ -285,7 +283,7 @@ func runTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 			}
 
 			// Run the test.
-			if err := test.Fn(workCtx, TestFuncParams{
+			if err := t.Fn(workCtx, TestFuncParams{
 				TestConn:        tconn,
 				Arc:             a,
 				Device:          d,
