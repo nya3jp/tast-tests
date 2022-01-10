@@ -744,6 +744,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c4e8210_69c825b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-10T20:24:23Z",
+      "side": 1,
+      "message": "Fair enough, resolving.",
+      "parentUuid": "8d317e03_494e7842",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2034ac03_d43b6740",
