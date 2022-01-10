@@ -22,7 +22,6 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/dutfs"
 	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/baserpc"
@@ -93,24 +92,6 @@ func hwsecCheckTPMState(ctx context.Context, s *testing.TestHookState, origStatu
 	return nil
 }
 
-func logTelemetryState(ctx context.Context, s *testing.TestHookState, verb string) {
-	// Check Telemetry folder status. See b/203609358
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
-	if err != nil {
-		s.Log("Failed to dial to DUT for remote file system: ", err)
-	} else {
-		defer cl.Close(ctx)
-		fs := dutfs.NewClient(cl.Conn)
-		telemetryDir := "/usr/local/telemetry"
-		_, err := fs.Stat(ctx, telemetryDir)
-		if err != nil {
-			s.Logf("Failed to find %s %s: %v", telemetryDir, verb, err)
-		} else {
-			s.Logf("Found %s %s", telemetryDir, verb)
-		}
-	}
-}
-
 // testHookRemote returns a function that performs post-run activity after a test run is done.
 func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx context.Context,
 	s *testing.TestHookState) {
@@ -130,13 +111,8 @@ func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx cont
 		hwsecTpmStatus = nil
 	}
 
-	logTelemetryState(ctx, s, "pre-test")
-
 	return func(ctx context.Context, s *testing.TestHookState) {
 		// Ensure that the DUT is connected.
-
-		logTelemetryState(ctx, s, "post-test")
-
 		dut := s.DUT()
 		if !dut.Connected(ctx) {
 			if err := dut.WaitConnect(ctx); err != nil {
