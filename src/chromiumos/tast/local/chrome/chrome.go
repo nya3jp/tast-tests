@@ -109,6 +109,7 @@ var prePackages = []string{
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt",
 	"chromiumos/tast/local/multivm",
 	"chromiumos/tast/local/policyutil/fixtures",
+	"chromiumos/tast/local/policyutil/mgs",
 	"chromiumos/tast/local/policyutil/pre",
 	"chromiumos/tast/local/vdi/fixtures",
 	"chromiumos/tast/local/wpr",

@@ -84,6 +84,12 @@ var Docs = App{
 	Name: "Docs",
 }
 
+// Drive has details about the Google Drive app.
+var Drive = App{
+	ID:   "apdfllckaahabafndbhieahigkjlhalf",
+	Name: "Google Drive",
+}
+
 // Duo has details about the Duo app.
 var Duo = App{
 	ID:   "djkcbcmkefiiphjkonbeknmcgiheajce",
