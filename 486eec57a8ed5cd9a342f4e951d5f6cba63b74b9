@@ -108,6 +108,30 @@
       },
       "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10edca8_9bbb853c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-10T03:08:41Z",
+      "side": 1,
+      "message": "because we start from the low brightness, it may have error when there is no face detected, but OK after higher brightness.\nI will put it in the comment.",
+      "parentUuid": "35941210_9ec40f96",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

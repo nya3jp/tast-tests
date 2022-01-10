@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a17888_f8143d55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-10T03:08:41Z",
+      "side": 1,
+      "message": "The test logic is changed, we don\u0027t calibrate to a specific luma value, we checked the face luma with and without face AE.\nSo the calibrate function is used to check if the brightness enough for face detection.",
+      "parentUuid": "20b91039_8cf189f8",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "399def1a08f374b886fb47a20298831f9a6b61df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3772a245_5e1c5806",
