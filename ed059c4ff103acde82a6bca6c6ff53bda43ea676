@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "163e7a1b_67c42cbd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-01-10T04:04:04Z",
+      "side": 1,
+      "message": "I wonder if this is private to fingerprint.",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "ed059c4ff103acde82a6bca6c6ff53bda43ea676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ffdb63_39858a12",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-01-10T04:04:04Z",
+      "side": 1,
+      "message": "Trim(..., \" \") could be TrimSpace; TrimLeft should be TrimSpace here.\nAlso dump is already converted to string at the calling side so no need to string(dump) here.\n\nBut probably you could use a capturing regex `card 0: ([a-z,0-9]+) `.\nAnd use FindStringSubmatch: https://go.dev/play/p/EVN78PxBFht\n\nAlso do sound card ids contain commas? If not I think it should be [a-z0-9]+",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "ed059c4ff103acde82a6bca6c6ff53bda43ea676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852fb6ec_7150930c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1512777
+      },
+      "writtenOn": "2022-01-10T04:04:04Z",
+      "side": 1,
+      "message": "I think we can return the error directly and drop the if.",
+      "range": {
+        "startLine": 76,
+        "startChar": 58,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "ed059c4ff103acde82a6bca6c6ff53bda43ea676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
