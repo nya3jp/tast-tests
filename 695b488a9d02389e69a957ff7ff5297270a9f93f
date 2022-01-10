@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34a37f81_8ab035e9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-10T16:59:43Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t mean to remove the suspend. Just that the old test checked for ac before suspending, I would SetDUTPower(true) instead of checking for ac.",
+      "parentUuid": "880fd2be_9d2f1c77",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da5f12da_ab78fae6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
         "patchSetId": 3
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "I removed this whole suspending DUT function as per this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3360499/comment/a2cb2e81_0d5ef409/",
       "parentUuid": "c474bb24_0692d732",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 11
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b7cb64_9292db87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-10T16:59:43Z",
+      "side": 1,
+      "message": "Yes, that comment was not what I meant though.",
+      "parentUuid": "aa203142_d444702f",
       "range": {
         "startLine": 264,
         "startChar": 1,

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ce98bc_38148ddd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-10T16:59:43Z",
+      "side": 1,
+      "message": "chan restore doesn\u0027t do any thing unless you can chan save first.\n\nI.e. what servod does is:\n\nchan save\nchan 0\n...\nchan 0xffffffff\nchan restore",
+      "range": {
+        "startLine": 228,
+        "startChar": 38,
+        "endLine": 228,
+        "endChar": 50
+      },
+      "revId": "f5b895c2e5c35ed43889fe752df1fd7503c42d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
