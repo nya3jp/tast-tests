@@ -6,12 +6,19 @@ package frontlineworkercuj
 
 import (
 	"context"
+	"fmt"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 )
+
+// personName indicates the name of the person chatting.
+const personName = "CUJ Int01"
 
 // GoogleChat holds the information used to do Google Chat testing.
 type GoogleChat struct {
@@ -36,15 +43,86 @@ func NewGoogleChat(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCon
 
 // maybeCloseWelcomeDialog closes the welcome dialog if it exists.
 func (g *GoogleChat) maybeCloseWelcomeDialog(ctx context.Context) error {
-	return nil
+	welcomeImage := nodewith.Name("Welcome to Google Chat").Role(role.Image)
+	button := nodewith.Name("Get started").Role(role.Button).Focusable()
+	welcomeDialog := nodewith.NameContaining("Find and start chats").Role(role.AlertDialog)
+	close := nodewith.Name("Close").Role(role.Button).Ancestor(welcomeDialog)
+	return uiauto.Combine("close the welcome dialogs",
+		g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(welcomeImage), g.uiHdl.Click(button)),
+		g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(welcomeDialog), g.uiHdl.Click(close)),
+	)(ctx)
 }
 
 // Launch launches the Google Chat standalone app.
 func (g *GoogleChat) Launch(ctx context.Context) (err error) {
-	return nil
+	g.conn, err = g.cr.NewConn(ctx, cuj.GoogleChatURL)
+	if err != nil {
+		return errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleChatURL)
+	}
+
+	installGoogleChatButton := nodewith.Name("Install Google Chat").Role(role.Button).Focusable()
+	installAlertDialog := nodewith.Name("Install app?").Role(role.AlertDialog).Focused()
+	installButton := nodewith.Name("Install").Role(role.Button).Ancestor(installAlertDialog).Default()
+
+	installGoogleChat := func(ctx context.Context) error {
+		return uiauto.Combine("install Google Chat app",
+			g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(installGoogleChatButton), g.uiHdl.Click(installGoogleChatButton)),
+			g.uiHdl.Click(installButton),
+		)(ctx)
+	}
+
+	openLinkButton := nodewith.Name("To open this link, choose an app").Role(role.Button).Focusable()
+	chooseAppDialog := nodewith.Name("To open this link, choose an app").Role(role.Dialog).Focusable()
+	googleChatOption := nodewith.Name("Google Chat").Role(role.Button).Ancestor(chooseAppDialog)
+	openButton := nodewith.Name("Open").Role(role.Button).Default()
+	tryDesktopApp := nodewith.Name("Try the Chat desktop app").Role(role.Dialog)
+	notNowButton := nodewith.Name("Not now").Role(role.Button).Ancestor(tryDesktopApp)
+
+	openGoogleChat := func(ctx context.Context) error {
+		found, err := g.ui.IsNodeFound(ctx, openLinkButton)
+		if err != nil {
+			return err
+		}
+		if found {
+			if err := uiauto.Combine("open the Google Chat app",
+				g.uiHdl.Click(openLinkButton),
+				g.uiHdl.Click(googleChatOption),
+				g.uiHdl.Click(openButton),
+			)(ctx); err != nil {
+				return err
+			}
+		}
+		return g.ui.IfSuccessThen(
+			g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(tryDesktopApp),
+			g.uiHdl.Click(notNowButton),
+		)(ctx)
+	}
+
+	return uiauto.Combine("install the Google Chat and open the app",
+		g.ui.IfSuccessThen(g.ui.WaitUntilExists(installGoogleChatButton), installGoogleChat),
+		g.maybeCloseWelcomeDialog,
+		openGoogleChat,
+	)(ctx)
 }
 
 // StartChat starts a chat.
 func (g *GoogleChat) StartChat(ctx context.Context) error {
-	return nil
+	navigationHovered := nodewith.Role(role.Navigation).Hovered()
+	chatGroup := nodewith.NameContaining("Chat").Role(role.Group)
+	startChatButton := nodewith.Name("Start a chat").Role(role.Button).Ancestor(chatGroup).Focusable()
+	findContainer := nodewith.Name("Find or start conversations").Role(role.GenericContainer).Focusable()
+	textBox := nodewith.Name("Person, space, or bot").Role(role.InlineTextBox).Ancestor(findContainer)
+	personOption := nodewith.NameContaining(personName).Role(role.ListBoxOption).Focusable()
+	messageFieldName := fmt.Sprintf("Message %s. History is on.", personName)
+	messageField := nodewith.Name(messageFieldName).Role(role.TextField).Editable()
+	return uiauto.Combine("start a conversation",
+		g.ui.IfSuccessThen(g.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(navigationHovered), g.uiHdl.Click(navigationHovered)),
+		g.uiHdl.Click(startChatButton),
+		g.uiHdl.Click(textBox),
+		g.kb.TypeAction(personName),
+		g.uiHdl.Click(personOption),
+		g.uiHdl.Click(messageField),
+		g.kb.TypeAction("hi"),
+		g.kb.AccelAction("Enter"),
+	)(ctx)
 }
