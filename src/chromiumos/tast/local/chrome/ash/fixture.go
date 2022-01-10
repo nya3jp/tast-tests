@@ -48,7 +48,7 @@ func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	f.extDirBase = extDirBase
 
-	dirs, err := PrepareFakeApps(extDirBase, f.numApps, fakeIconData)
+	dirs, err := PrepareFakeApps(extDirBase, f.numApps, true)
 	if err != nil {
 		s.Fatal("Failed to prepare fake apps: ", err)
 	}
