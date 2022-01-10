@@ -35,3 +35,33 @@ func AddTastLibrary(ctx context.Context, conn *Conn) error {
 func ExtensionBackgroundPageURL(extID string) string {
 	return extension.BackgroundPageURL(extID)
 }
+
+// ExtensionLoadManager ...
+type ExtensionLoadManager struct {
+	loadedExtensionIds []string
+}
+
+// Close ...
+func (m *ExtensionLoadManager) Close(ctx context.Context, tconn *TestConn) error {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.unloadExtension)", m.loadedExtensionIds); err != nil {
+		return errors.Wrapf(err, "failed to unload the extension %v", m.loadedExtensionIds)
+	}
+
+	return nil
+}
+
+// GetInstalledExtensionIds returns the ids of the loaded extensions.
+func (m *ExtensionLoadManager) GetInstalledExtensionIds() []string {
+	return m.loadedExtensionIds
+}
+
+// LoadExtensions loads extensions from the specified paths.
+func (m *ExtensionLoadManager) LoadExtensions(ctx context.Context, tconn *TestConn, extensionPaths []string) error {
+	var ids []string
+	if err := tconn.Call(ctx, &ids, "tast.promisify(chrome.autotestPrivate.loadExtension)", extensionPaths); err != nil {
+		return errors.Wrapf(err, "failed to load the extension from %v", extensionPaths)
+	}
+
+	m.loadedExtensionIds = append(m.loadedExtensionIds, ids...)
+	return nil
+}
