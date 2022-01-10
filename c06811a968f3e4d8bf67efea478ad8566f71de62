@@ -22,6 +22,30 @@
       },
       "revId": "c06811a968f3e4d8bf67efea478ad8566f71de62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb2021a_157e0e7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-10T04:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef63114e_0ba6aea5",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 202,
+        "endChar": 104
+      },
+      "revId": "c06811a968f3e4d8bf67efea478ad8566f71de62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
