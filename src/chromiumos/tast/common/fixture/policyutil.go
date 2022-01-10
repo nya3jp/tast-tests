@@ -28,6 +28,14 @@ const (
 	ChromeEnrolledLoggedInARC = "chromeEnrolledLoggedInARC"
 )
 
+// Fixtures defined in chromiumos/tast/local/policyutil/mgs/fixture.go.
+const (
+	// ManagedGuestSession is a fixture name.
+	ManagedGuestSession = "managedGuestSession"
+	// ManagedGuestSessionWithExtensions is a fixture name.
+	ManagedGuestSessionWithExtensions = "managedGuestSessionWithExtensions"
+)
+
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/lacros.go.
 const (
 	// LacrosPolicyLoggedIn is a fixture name.
