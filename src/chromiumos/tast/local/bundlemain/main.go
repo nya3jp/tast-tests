@@ -124,24 +124,11 @@ func hwsecCheckTPMState(ctx context.Context, origStatus *hwsec.NonsensitiveStatu
 	return nil
 }
 
-func logTelemetryState(ctx context.Context, s *testing.TestHookState, verb string) {
-	// Check Telemetry folder status. See b/203609358
-	telemetryDir := "/usr/local/telemetry"
-	_, err := os.Stat(telemetryDir)
-	if err != nil {
-		s.Logf("Failed to find %s %s: %v", telemetryDir, verb, err)
-	} else {
-		s.Logf("Found %s %s", telemetryDir, verb)
-	}
-}
-
 func testHookLocal(ctx context.Context, s *testing.TestHookState) func(ctx context.Context, s *testing.TestHookState) {
 	endLogFn, err := syslog.CollectSyslog()
 	if err != nil {
 		s.Log("Saving log position: ", err)
 	}
-
-	logTelemetryState(ctx, s, "pre-test")
 
 	// Ensure disk space and record the current free space.
 	checkFreeSpace := false
