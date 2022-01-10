@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b998cb5_f8a3b0a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-10T03:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db36581_ad1b5523",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b9a3af4_c8f6a1c3",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3011e5e1_e2084c22",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-10T03:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b9a3af4_c8f6a1c3",
+      "range": {
+        "startLine": 52,
+        "startChar": 100,
+        "endLine": 52,
+        "endChar": 108
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "318bc90c_3b781d39",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-05T00:50:37Z",
       "side": 1,
       "message": "redundent, also include the meaning of return value in your comment.\ne.g. Returns some float32 value and int64 value with some meaning or for some purpose.",
+      "range": {
+        "startLine": 51,
+        "startChar": 89,
+        "endLine": 51,
+        "endChar": 90
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b6320f_765e3030",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-10T03:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "318bc90c_3b781d39",
       "range": {
         "startLine": 51,
         "startChar": 89,
@@ -124,6 +196,30 @@
       "side": 1,
       "message": "because we start from the low brightness, it may have error when there is no face detected, but OK after higher brightness.\nI will put it in the comment.",
       "parentUuid": "35941210_9ec40f96",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "486eec57a8ed5cd9a342f4e951d5f6cba63b74b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a31bf8_89581747",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-10T03:19:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b10edca8_9bbb853c",
       "range": {
         "startLine": 60,
         "startChar": 5,
