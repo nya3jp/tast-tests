@@ -16,9 +16,6 @@ const (
 	// PolicyBlob by default. This username should usually be used to log into
 	// Chrome (i.e. passed in to the Chrome login function).
 	DefaultPolicyUser = "tast-user@managedchrome.com"
-
-	defaultInvalidationSource = 16
-	defaultInvalidationName   = "test_policy"
 )
 
 // A PolicyBlob is a struct that marshals into what is expected by Chrome's
@@ -32,8 +29,6 @@ type PolicyBlob struct {
 	ManagedUsers         []string                     `json:"managed_users"`
 	CurrentKeyIdx        int                          `json:"current_key_index,omitempty"`
 	RobotAPIAuthCode     string                       `json:"robot_api_auth_code,omitempty"`
-	InvalidationSrc      int                          `json:"invalidation_source"`
-	InvalidationName     string                       `json:"invalidation_name"`
 	Licenses             *BlobLicenses                `json:"available_licenses,omitempty"`
 	TokenEnrollment      *BlobTokenEnrollment         `json:"token_enrollment,omitempty"`
 	RequestErrors        map[string]int               `json:"request_errors,omitempty"`
@@ -75,10 +70,8 @@ type BlobPolicyMap map[string]json.RawMessage
 // and device policies or modify initial setup as desired.
 func NewPolicyBlob() *PolicyBlob {
 	return &PolicyBlob{
-		ManagedUsers:     []string{"*"},
-		PolicyUser:       DefaultPolicyUser,
-		InvalidationSrc:  defaultInvalidationSource,
-		InvalidationName: defaultInvalidationName,
+		ManagedUsers: []string{"*"},
+		PolicyUser:   DefaultPolicyUser,
 	}
 }
 
