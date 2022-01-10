@@ -65,6 +65,12 @@ func (g *GoogleSheets) ValidatePivotTable(ctx context.Context) error {
 	return nil
 }
 
+// RemoveFile removes the spreadsheet.
+func (g *GoogleSheets) RemoveFile(ctx context.Context, sheetName *string) error {
+	// TODO: Implement the function.
+	return nil
+}
+
 // login logs in to the browser.
 // Since we are now using a guest session, we need to log in to the browser.
 func (g *GoogleSheets) login(ctx context.Context) error {
@@ -92,12 +98,6 @@ func (g *GoogleSheets) openBlankDocument(ctx context.Context) error {
 
 // renameFile renames the name of the spreadsheet.
 func (g *GoogleSheets) renameFile(ctx context.Context, sheetName string) error {
-	// TODO: Implement the function.
-	return nil
-}
-
-// removeFile removes the spreadsheet.
-func (g *GoogleSheets) removeFile(ctx context.Context, sheetName *string) error {
 	// TODO: Implement the function.
 	return nil
 }
