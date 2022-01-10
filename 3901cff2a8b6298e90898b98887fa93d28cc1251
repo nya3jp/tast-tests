@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6db55d_7faa3b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-10T04:03:06Z",
+      "side": 1,
+      "message": "I guess you will add the test for Google docs in this same test? If yes, suggest to rotate the file types here as well. For this cl, there will be only one file type.",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "3901cff2a8b6298e90898b98887fa93d28cc1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60527e2c_161c4785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-10T04:03:06Z",
+      "side": 1,
+      "message": "Does it mean that the newly copied files are always in recent?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "3901cff2a8b6298e90898b98887fa93d28cc1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
