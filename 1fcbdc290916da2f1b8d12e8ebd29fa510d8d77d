@@ -16,6 +16,24 @@
       "message": "Is there a reason why this isn\u0027t exported? If some people need timeout, and others need syslog reader, surely it\u0027s reasonable to expect that someone needs both?",
       "revId": "1fcbdc290916da2f1b8d12e8ebd29fa510d8d77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657b9b93_94a30c39",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-01-10T23:51:50Z",
+      "side": 1,
+      "message": "My thought was to not confuse the developers with many options and keep the interface lean. If anyone feels the need, they can always export it.",
+      "parentUuid": "891fd8fe_68f2d850",
+      "revId": "1fcbdc290916da2f1b8d12e8ebd29fa510d8d77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
