@@ -233,9 +233,9 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to copy spreadsheet")
 		}
 		if err := uiauto.Combine("operate Google Sheets",
-			uiauto.NamedAction("create the pivot table", googleSheets.CreatePivotTable),
-			uiauto.NamedAction("edit the pivot table", googleSheets.EditPivotTable),
-			uiauto.NamedAction("validate the contents of pivot table", googleSheets.ValidatePivotTable),
+			uiauto.NamedAction("create the pivot table", googleSheets.CreatePivotTable()),
+			uiauto.NamedAction("edit the pivot table", googleSheets.EditPivotTable()),
+			uiauto.NamedAction("validate the contents of pivot table", googleSheets.ValidatePivotTable()),
 		)(ctx); err != nil {
 			return err
 		}
