@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed84f30_e6ac26a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1446669
+      },
+      "writtenOn": "2022-01-10T22:27:35Z",
+      "side": 1,
+      "message": "Nitpick: would be useful to mention its set for 1 sec in log.",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 52
+      },
+      "revId": "06d956a687b17364c84ca0492a4a144289773d01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
