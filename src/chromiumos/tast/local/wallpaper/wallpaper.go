@@ -123,7 +123,7 @@ func ValidateBackground(cr *chrome.Chrome, clr color.Color, expectedPercent int)
 				return errors.Wrap(err, "failed to grab screenshot")
 			}
 			rect := img.Bounds()
-			correctPixels := imgcmp.CountPixelsWithDiff(img, clr, 10)
+			correctPixels := imgcmp.CountPixelsWithDiff(img, clr, 60)
 			totalPixels := rect.Dx() * rect.Dy()
 			percent := correctPixels * 100 / totalPixels
 			if percent < expectedPercent {
