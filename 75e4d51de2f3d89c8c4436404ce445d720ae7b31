@@ -22,6 +22,30 @@
       },
       "revId": "75e4d51de2f3d89c8c4436404ce445d720ae7b31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb4c5d6_a2e4072e",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-10T01:28:34Z",
+      "side": 1,
+      "message": "AxType is used later in BandToRadio in the child changelist when I support 6e routers. I originally wrote this as 1 large changelist and split it into two changes.",
+      "parentUuid": "276486e1_f44fac20",
+      "range": {
+        "startLine": 165,
+        "startChar": 17,
+        "endLine": 165,
+        "endChar": 23
+      },
+      "revId": "75e4d51de2f3d89c8c4436404ce445d720ae7b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
