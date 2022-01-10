@@ -93,6 +93,16 @@ func init() {
 }
 
 func VideoCUJ(ctx context.Context, s *testing.State) {
+	// PollOptions to allow blink layout to catch up. Interval at 5s is an
+	// arbitrary long interval for slow DUTs where blink layout could stay
+	// stale for a while (we have seen 3s on grunt in local test) and the default
+	// 100ms interval could take the intermediate layout as the stabilized final
+	// one.
+	layoutPollOptions := testing.PollOptions{
+		Interval: 5 * time.Second,
+		Timeout:  20 * time.Second,
+	}
+
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
@@ -307,7 +317,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			}
 
 			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		}, &layoutPollOptions); err != nil {
 			return coords.Rect{}, err
 		}
 
@@ -389,6 +399,30 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			return err
 		}
 
+		// Wait for the 'video' element to be updated to fullscreen. This is needed
+		// because blink layout is updated asynchronously with the browser window
+		// bounds change.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var fullscreen bool
+			if err := ytConn.Eval(ctx,
+				`(function() {
+						var b = document.querySelector('video').getBoundingClientRect();
+						return Math.abs(b.width -  window.screen.width) < 1e-5 &&
+						       Math.abs(b.height - window.screen.height) < 1e-5;
+					})()`,
+				&fullscreen); err != nil {
+				return errors.Wrap(err, "failed to check video size")
+			}
+			if !fullscreen {
+				return errors.New("video is not fullscreen")
+			}
+
+			return nil
+		}, &layoutPollOptions); err != nil {
+			return errors.Wrap(err, "failed to wait for blink layout")
+		}
+
+		// Wait for the browser window to be in fullscreen state.
 		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 			return w.ID == ytWinID && w.State == ash.WindowStateFullscreen
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
