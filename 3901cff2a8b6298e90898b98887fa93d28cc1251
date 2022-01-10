@@ -45,6 +45,29 @@
       },
       "revId": "3901cff2a8b6298e90898b98887fa93d28cc1251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92a3767_fe17e7fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-10T04:04:56Z",
+      "side": 1,
+      "message": "The default timeout for ui is 15s, and the time left is 10s. Maybe you could shorten the timeout for ui here.",
+      "range": {
+        "startLine": 153,
+        "startChar": 15,
+        "endLine": 153,
+        "endChar": 28
+      },
+      "revId": "3901cff2a8b6298e90898b98887fa93d28cc1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
