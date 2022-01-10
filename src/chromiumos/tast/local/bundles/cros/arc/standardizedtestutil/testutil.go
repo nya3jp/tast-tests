@@ -164,19 +164,32 @@ func runTestCases(ctx context.Context, s *testing.State, apkName, appPkgName, ap
 		s.Fatal("Could not open Test API connection: ", err)
 	}
 
+	// All test cases must have the same tablet mode set. This allows the
+	// setting to be toggled once.
+	// TODO(b/213803181) Move this value into a single struct since it should be shared.
+	if len(testCases) < 0 {
+		s.Fatal("No test cases provided")
+	}
+
+	inTabletMode := testCases[0].InTabletMode
+	for _, test := range testCases {
+		if test.InTabletMode != inTabletMode {
+			s.Fatal("All test cases must provide the same inTabletMode value")
+		}
+	}
+
+	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, inTabletMode)
+	if err != nil {
+		s.Fatal("Failed to set tablet mode to: ", inTabletMode)
+	}
+	defer cleanupTabletMode(ctx)
+
 	// Run the different test cases.
 	for idx, test := range testCases {
 		s.Run(ctx, test.Name, func(cleanupCtx context.Context, s *testing.State) {
 			// Save time for cleanup by working on a shortened context.
 			workCtx, workCtxCancel := ctxutil.Shorten(cleanupCtx, RunTestCasesCleanupTime)
 			defer workCtxCancel()
-
-			// Set the device mode.
-			cleanupTabletMode, err := ash.EnsureTabletModeEnabled(workCtx, tconn, test.InTabletMode)
-			if err != nil {
-				s.Fatal("Failed to set tablet mode to: ", test.InTabletMode)
-			}
-			defer cleanupTabletMode(cleanupCtx)
 
 			// Launch the activity.
 			act, err := arc.NewActivity(a, appPkgName, appActivity)
