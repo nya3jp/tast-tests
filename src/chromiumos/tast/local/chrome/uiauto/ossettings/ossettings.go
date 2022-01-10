@@ -295,6 +295,24 @@ func (s *OSSettings) IsToggleOptionEnabled(ctx context.Context, cr *chrome.Chrom
 	return isEnabled, nil
 }
 
+// DropdownValue returns the value of a dropdown setting.
+func (s *OSSettings) DropdownValue(ctx context.Context, cr *chrome.Chrome, dropdownName string) (string, error) {
+	dropdownElementSelector := fmt.Sprintf(`select[aria-label=%q]`, dropdownName)
+	expr := fmt.Sprintf(`
+		var optionNode = shadowPiercingQuery(%q);
+		if(optionNode == undefined){
+			throw new Error("%s dropdown setting is not found.");
+		}
+		optionNode.value;
+		`, dropdownElementSelector, dropdownName)
+
+	var value string
+	if err := s.EvalJSWithShadowPiercer(ctx, cr, expr, &value); err != nil {
+		return value, errors.Wrapf(err, "failed to get the value of dropdown: %q", dropdownName)
+	}
+	return value, nil
+}
+
 // WaitUntilToggleOption returns an action to wait until the toggle option enabled or disabled.
 func (s *OSSettings) WaitUntilToggleOption(cr *chrome.Chrome, optionName string, expected bool) uiauto.Action {
 	return func(ctx context.Context) error {

@@ -126,9 +126,20 @@ func (i *IMESettings) ToggleAutoCap(cr *chrome.Chrome, expected bool) uiauto.Act
 	return i.SetToggleOption(cr, string(AutoCapitalization), expected)
 }
 
-// ChangeKoreanInputMode sets the Korean IME to a specific value.
-func (i *IMESettings) ChangeKoreanInputMode(cr *chrome.Chrome, expected string) uiauto.Action {
-	return i.SetDropDownOption(cr, string(KoreanKeyboardLayout), expected)
+// ChangeKoreanKeyboardLayout sets the Korean keyboard layout to a specific value.
+func (i *IMESettings) ChangeKoreanKeyboardLayout(cr *chrome.Chrome, expected string) uiauto.Action {
+	return func(ctx context.Context) error {
+		currentLayout, err := i.DropdownValue(ctx, cr, string(KoreanKeyboardLayout))
+		if err != nil {
+			return errors.Wrap(err, "failed to get current layout value")
+		}
+		if currentLayout == expected {
+			testing.ContextLogf(ctx, "Skip to change Korean keyboard layout: the current layout is already %q", expected)
+			return nil
+		}
+		testing.ContextLogf(ctx, "Changing keyboard layout from %q to %q", currentLayout, expected)
+		return i.SetDropDownOption(cr, string(KoreanKeyboardLayout), expected)(ctx)
+	}
 }
 
 // SetVKAutoCorrection sets the 'On-screen keyboard Auto-correction' setting to a specific value.
