@@ -22,6 +22,30 @@
       },
       "revId": "e228e1bf3bb2edad41e996e8b9b592c7f8eb3fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "600eccd1_48743c05",
+        "filename": "src/chromiumos/tast/common/storage/storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1163784
+      },
+      "writtenOn": "2022-01-10T20:49:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28a98973_933c7110",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 2
+      },
+      "revId": "e228e1bf3bb2edad41e996e8b9b592c7f8eb3fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
