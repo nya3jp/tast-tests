@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd30a23c_e0922ee1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-10T22:42:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a2318fcf_177e3f5f",
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f3370d5_57bcc005",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "646a5a5e_e5efce7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-10T22:42:00Z",
+      "side": 1,
+      "message": "Is this should happen on newly installed dut for simple modem : org.freedesktop.ModemManager1.Modem.Simple ? Observed only failing on Fibocom - Verizon combo duts(empty apn call might be treated as incorrect apn and get apn from modem config which is not happening), sounds like modem issue!!",
+      "parentUuid": "2f3370d5_57bcc005",
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70a484e3_c941ed3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
         "patchSetId": 1
@@ -65,6 +101,30 @@
       "writtenOn": "2022-01-10T21:42:44Z",
       "side": 1,
       "message": "We will need to modify this test every time we have a non empty apn, thus I am not convinced that this is the best approach. We should either get the APN directly from Shill. Or let Shill connect instead of MM (though I understand that it defeats the purpose of the test)\n\nOr run this test only on carriers that support empty APN.",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 15
+      },
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0724f4_8308e19c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-10T22:42:00Z",
+      "side": 1,
+      "message": "Yes for every carrier + modem combination having empty apn issue this needs to be done, for now its fibocomm + verizon combo only.\n\n- Reading from shill and supplying available apn might also workaround if empty apn connection on simple modem is expected(as its working with other carrier and trogdor).\n\n- Can be done to run on only att and t-mobile to see(Is it something like having new control file with : NAME: \u0027tast.cellular-ota-nonverizon-unstable\u0027\nDEPENDENCIES \u003d \"carrier:att, tmobile\"  OR \nwith ATTRIBUTES \u003d \"suite:cellular_ota_att, suite:cellular_ota_tmobile\"!!). This might skip this test for failing combo",
+      "parentUuid": "70a484e3_c941ed3b",
       "range": {
         "startLine": 159,
         "startChar": 5,
