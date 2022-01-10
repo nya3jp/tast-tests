@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97ac1e6f_d83b8b92",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-10T11:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60410309_06851ce7",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2cb2e81_0d5ef409",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-04T22:17:02Z",
       "side": 1,
       "message": "The old test checked for AC power here, I would call h.SetDUTPower(true) here instead.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880fd2be_9d2f1c77",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-10T11:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2cb2e81_0d5ef409",
       "range": {
         "startLine": 57,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aa87176_7fcf89a2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-10T11:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da5f12da_ab78fae6",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8db42554_13c5a045",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-04T22:17:02Z",
       "side": 1,
       "message": "This is the same as h.Servo.GetChargerAttached",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e54052_e1c63b01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-10T11:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8db42554_13c5a045",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dddf0406_2eccdacb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-10T11:15:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db5db735_d3ef0738",
+      "range": {
+        "startLine": 211,
+        "startChar": 66,
+        "endLine": 211,
+        "endChar": 82
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa8cb0c7_37edcbdd",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84ed09f_5ca2726c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-10T11:15:45Z",
+      "side": 1,
+      "message": "added chan 0 and chan restore around RunECCommandGetOutput, also added 5 retries for RunECCommandGetOutput.",
+      "parentUuid": "aa8cb0c7_37edcbdd",
+      "range": {
+        "startLine": 214,
+        "startChar": 21,
+        "endLine": 214,
+        "endChar": 42
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c474bb24_0692d732",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-01-04T22:17:02Z",
       "side": 1,
       "message": "Also call h.DisconnectDUT to make sure the ssh connection gets closed.",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 11
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa203142_d444702f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-10T11:15:45Z",
+      "side": 1,
+      "message": "I removed this whole suspending DUT function as per this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3360499/comment/a2cb2e81_0d5ef409/",
+      "parentUuid": "c474bb24_0692d732",
       "range": {
         "startLine": 264,
         "startChar": 1,
