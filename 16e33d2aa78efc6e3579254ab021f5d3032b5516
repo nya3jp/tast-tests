@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46803940_668d1d82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_korean_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-10T04:03:00Z",
+      "side": 1,
+      "message": "As discussed offline. Use a variable to record current layout to avoid over-action.",
+      "parentUuid": "f05a59c5_c7826977",
+      "range": {
+        "startLine": 171,
+        "startChar": 3,
+        "endLine": 171,
+        "endChar": 78
+      },
+      "revId": "16e33d2aa78efc6e3579254ab021f5d3032b5516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed0d10bd_e61e102f",
