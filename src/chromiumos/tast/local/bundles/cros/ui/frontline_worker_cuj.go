@@ -246,7 +246,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 			if appGoogleDrive, err = frontlineworkercuj.NewGoogleDrive(ctx, tconn, ui, kb); err != nil {
 				return errors.Wrap(err, "failed to create Google Drive instance")
 			}
-			appStartTime, err = appGoogleDrive.Launch(ctx)
+			appStartTime, err = appGoogleDrive.Launch(ctx, tconn)
 			if err != nil {
 				return errors.Wrap(err, "failed to launch Google Drive")
 			}
