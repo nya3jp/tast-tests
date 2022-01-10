@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "cad606ea_af8204c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dc6cc90_5f121104",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d0dc8d75_b0ea0108",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -31,6 +49,23 @@
       "writtenOn": "2022-01-03T20:14:18Z",
       "side": 1,
       "message": "Please review.\n\nContext: MARBSSIDRoam is bascially a RoamDbus test with added instrumentation for checking MAC Addresses.\n\nMARSSIDRoam was a tad more hard to develop, thus it works a bit differently (as described in the test comment).\n\nAlso, please keep in mind, that mar_util.go are functions moved from connect_randomize_mac.go to explicitly get utilized in different tests.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4608191c_4fba73b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Fixes applied. Please review.",
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ad2806_5c5ec89b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91d5f4ee_6b6d748a",
+      "range": {
+        "startLine": 41,
+        "startChar": 29,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "838583e2_f015ea62",
@@ -75,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75bf271a_6e17bc8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "838583e2_f015ea62",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "759e5925_4ccccb17",
@@ -88,6 +165,30 @@
       "writtenOn": "2022-01-04T09:58:09Z",
       "side": 1,
       "message": "return error wrapped instead",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 52
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "413c77bd_33de7391",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "759e5925_4ccccb17",
       "range": {
         "startLine": 156,
         "startChar": 4,
@@ -133,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30688189_86fa460a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70ed2a4d_f465666a",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73fe0db5_355a5767",
@@ -150,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "affcbceb_7bde9bd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73fe0db5_355a5767",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35d7aadb_27033b54",
@@ -163,6 +300,24 @@
       "writtenOn": "2022-01-04T18:13:39Z",
       "side": 1,
       "message": "Please use BSS TM Request instead.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2905827_848f2555",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35d7aadb_27033b54",
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +345,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11cb796_3fa01655",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fb2a5c2_894b9255",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 54
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad7cc2c7_0c7a7e79",
@@ -207,6 +386,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eeea8d9_bc48999c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad7cc2c7_0c7a7e79",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3717366_923d7324",
@@ -220,6 +417,30 @@
       "writtenOn": "2022-01-04T09:58:09Z",
       "side": 1,
       "message": "return error wrapped instead",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4185389e_645dc463",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3717366_923d7324",
       "range": {
         "startLine": 138,
         "startChar": 4,
@@ -253,6 +474,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "755990d8_d6c890cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "This function does not return error?\nI guess you meant to simplify this part ;) (Done)",
+      "parentUuid": "c3bcfd0b_96b0d789",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9cba22a_ba08ca85",
@@ -266,6 +511,30 @@
       "writtenOn": "2022-01-04T09:58:09Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 3
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a69442_ebee2e90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9cba22a_ba08ca85",
       "range": {
         "startLine": 183,
         "startChar": 2,
@@ -293,6 +562,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f2c338_827e490f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "It seems not. Fixed.",
+      "parentUuid": "eba9989d_5db85cd9",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c79b641e_ce42e98b",
@@ -306,6 +593,30 @@
       "writtenOn": "2022-01-04T18:13:39Z",
       "side": 1,
       "message": "ap2?",
+      "range": {
+        "startLine": 205,
+        "startChar": 76,
+        "endLine": 205,
+        "endChar": 79
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "871f8e17_2df7238a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c79b641e_ce42e98b",
       "range": {
         "startLine": 205,
         "startChar": 76,
@@ -339,6 +650,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43104700_8e3d2cc1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce3fe21b_b63ae5f9",
+      "range": {
+        "startLine": 208,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 52
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b85bfcb_0f97eabd",
@@ -352,6 +687,24 @@
       "writtenOn": "2022-01-04T09:58:09Z",
       "side": 1,
       "message": "nit: comments should end with . at the end.",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73c69f8_3c854a65",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b85bfcb_0f97eabd",
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -375,6 +728,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8d317e03_494e7842",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "What you\u0027re asking for is done by ConnectRandomizeMAC test.\n\nWhat I want to achieve is autonomous response of the system (changing MAC address to the proper one), when it notices roaming is necessary. I thought initially to use a connected setup and trigger roaming with the attenuator, but then I decided it would be enough to remove the second AP in a manner similar to RoamAPGone (but force change to a different SSID not only different BSSID). This way we\u0027ll have a wider device pool to run the test on.",
+      "parentUuid": "31fc59e4_11f249f7",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2034ac03_d43b6740",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
         "patchSetId": 2
@@ -386,6 +757,24 @@
       "writtenOn": "2022-01-04T00:17:45Z",
       "side": 1,
       "message": "use testing.poll instead?",
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1336cb42_b5b926df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "2034ac03_d43b6740",
       "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -403,6 +792,30 @@
       "writtenOn": "2022-01-04T09:58:09Z",
       "side": 1,
       "message": "return error wrapped instead",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 54
+      },
+      "revId": "984377d3d5d0f8c4e98d14d87ff09c437acf2237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ff4d8cc_194abc5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-10T18:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87244b4d_ab8201c5",
       "range": {
         "startLine": 264,
         "startChar": 4,
