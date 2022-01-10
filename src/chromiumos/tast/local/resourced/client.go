@@ -57,6 +57,14 @@ func (c *Client) SetGameMode(ctx context.Context, mode uint8) error {
 	return nil
 }
 
+// SetGameModeWithTimeout sets the game mode state in resourced, the game mode will be reset after timeout seconds.
+func (c *Client) SetGameModeWithTimeout(ctx context.Context, mode uint8, timeout uint32) error {
+	if err := c.obj.Call(ctx, "SetGameModeWithTimeout", mode, timeout).Err; err != nil {
+		return errors.Wrap(err, "failed to call method SetGameMode")
+	}
+	return nil
+}
+
 // AvailableMemoryKB returns the result of the GetAvailableMemoryKB D-Bus method.
 func (c *Client) AvailableMemoryKB(ctx context.Context) (uint64, error) {
 	var result uint64

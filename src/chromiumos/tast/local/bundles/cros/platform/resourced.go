@@ -80,6 +80,39 @@ func checkSetGameMode(ctx context.Context, rm *resourced.Client) (resErr error) 
 	return nil
 }
 
+func checkSetGameModeWithTimeout(ctx context.Context, rm *resourced.Client) (resErr error) {
+	var newGameMode uint8 = resourced.GameModeBorealis
+	if err := rm.SetGameModeWithTimeout(ctx, newGameMode, 1); err != nil {
+		return errors.Wrap(err, "failed to set game mode state")
+	}
+	testing.ContextLog(ctx, "Set game mode with 1 second timeout: ", newGameMode)
+
+	// Check game mode is set to the new value.
+	gameMode, err := rm.GameMode(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query game mode state")
+	}
+	if newGameMode != gameMode {
+		return errors.Errorf("set game mode to: %d, but got game mode: %d", newGameMode, gameMode)
+	}
+
+	// Check game mode is reset after timeout.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		gameMode, err := rm.GameMode(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to query game mode state")
+		}
+		if gameMode != resourced.GameModeOff {
+			return errors.New("game mode is not reset")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
+		return errors.Wrap(err, "failed to wait for game mode reset")
+	}
+
+	return nil
+}
+
 func checkQueryMemoryStatus(ctx context.Context, rm *resourced.Client) error {
 	availableKB, err := rm.AvailableMemoryKB(ctx)
 	if err != nil {
@@ -145,5 +178,9 @@ func Resourced(ctx context.Context, s *testing.State) {
 
 	if err := checkMemoryPressureSignal(ctx, rm); err != nil {
 		s.Fatal("Checking memory pressure signal failed: ", err)
+	}
+
+	if err := checkSetGameModeWithTimeout(ctx, rm); err != nil {
+		s.Fatal("Checking SetGameModeWithTimeout failed: ", err)
 	}
 }
