@@ -102,7 +102,7 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for libsoda dlc to be installed: ", err)
 	}
 
@@ -113,21 +113,37 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
+	audioPlayButton := nodewith.Name("play").Role(role.Button)
+	audioPauseButton := nodewith.Name("pause").Role(role.Button)
 	liveCaptionBubble := nodewith.ClassName("CaptionBubbleFrameView")
 	liveCaptionContent := nodewith.Name("Hello").Role(role.StaticText)
 
-	// Not use uiauto.Combine because we want to distinguish between "timeout" and "content is wrong".
-	// Because liveCaptionBubble exists only when live caption emits content, if the expected
-	// liveCaptionContent doesn't show, we know there's wrong content.
-	if err := ui.WaitUntilExists(liveCaptionBubble)(ctx); err != nil {
-		s.Fatal("Failed to wait for live caption bubble: ", err)
-	}
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := uiauto.Combine("Play the audio",
+			ui.WaitUntilExists(audioPlayButton),
+			ui.LeftClick(audioPlayButton),
+			ui.WaitUntilExists(audioPauseButton),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to play the audio")
+		}
 
-	if err := ui.WaitUntilExists(liveCaptionContent)(ctx); err != nil {
-		s.Fatal("Failed to wait for correct live caption content: ", err)
-	}
+		// Not use uiauto.Combine because we want to distinguish between "timeout" and "content is wrong".
+		// Because liveCaptionBubble exists only when live caption emits content, if the expected
+		// liveCaptionContent doesn't show, we know there's wrong content.
+		if err := ui.WaitUntilExists(liveCaptionBubble)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for live caption bubble to show")
+		}
 
-	if err := ui.WaitUntilGone(liveCaptionBubble)(ctx); err != nil {
-		s.Fatal("Failed to wait for live caption content disappear: ", err)
+		if err := ui.WaitUntilExists(liveCaptionContent)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for correct content")
+		}
+
+		if err := ui.WaitUntilGone(liveCaptionBubble)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for live caption bubble disappear")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: 60 * time.Second, Interval: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to verify live caption bubble: ", err)
 	}
 }
