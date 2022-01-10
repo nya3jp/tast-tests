@@ -6,12 +6,16 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/mgs"
+	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/fixtures"
+	"chromiumos/tast/local/policyutil/mgs"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
@@ -32,40 +36,65 @@ func init() {
 }
 
 func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
-	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	fdms := s.FixtValue().(*fakedms.FakeDMS)
+
+	// Start a Chrome instance that will fetch policies from the FakeDMS.
+	cr, err := chrome.New(ctx,
+		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+		chrome.DMSPolicy(fdms.URL),
+		chrome.KeepState())
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		// Use cr as a reference to close the last started Chrome instance.
+		if err := cr.Close(ctx); err != nil {
+			s.Error("Failed to close Chrome connection: ", err)
+		}
+	}(ctx)
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
 
 	accountID := "foo@bar.com"
+
 	// These extensions are unlisted on the Chrome Web Store but can be
 	// downloaded directly using the extension IDs.
 	// The code for the extensions can be found in the Chromium repo at
 	// chrome/test/data/extensions/api_test/login_screen_apis/.
 	// ID for "Login screen APIs test extension".
-	loginScreenExtensionID := "oclffehlkdgibkainkilopaalpdobkan"
+	loginScreenExtensionID := mgs.LoginScreenExtensionID
 	// ID for "Login screen APIs in-session test extension".
-	inSessionExtensionID := "ofcpkomnogjenhfajfjadjmjppbegnad"
+	inSessionExtensionID := mgs.InSessionExtensionID
 
-	mgs, cr, err := mgs.New(
-		ctx,
-		fdms,
-		mgs.Accounts(accountID),
-		mgs.AddPublicAccountPolicies(accountID, []policy.Policy{
-			&policy.ExtensionInstallForcelist{Val: []string{inSessionExtensionID}},
-		}),
-		mgs.ExtraPolicies([]policy.Policy{
-			&policy.DeviceLoginScreenExtensions{Val: []string{loginScreenExtensionID}},
-		}),
-		mgs.ExtraChromeOptions(
-			chrome.ExtraArgs("--force-devtools-available"),
-		),
-	)
-	if err != nil {
-		s.Fatal("Failed to start Chrome on Signin screen with MGS accounts: ", err)
+	policies := mgs.DefaultPolicies(accountID)
+
+	pb := fakedms.NewPolicyBlob()
+	pb.AddPolicies(policies)
+	pb.AddPublicAccountPolicy(accountID, &policy.ExtensionInstallForcelist{
+		Val: []string{inSessionExtensionID},
+	})
+
+	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+		s.Fatal("Failed to serve policies: ", err)
 	}
-	defer func() {
-		if err := mgs.Close(ctx); err != nil {
-			s.Fatal("Failed close MGS: ", err)
-		}
-	}()
+
+	// Close the previous Chrome instance.
+	if err := cr.Close(ctx); err != nil {
+		s.Fatal("Failed to close Chrome connection: ", err)
+	}
+
+	// Restart Chrome, forcing Devtools to be available on the login screen.
+	cr, err = chrome.New(ctx,
+		chrome.NoLogin(),
+		chrome.DMSPolicy(fdms.URL),
+		chrome.KeepState(),
+		chrome.ExtraArgs("--force-devtools-available"))
+	if err != nil {
+		s.Fatal("Chrome restart failed: ", err)
+	}
 
 	sm, err := session.NewSessionManager(ctx)
 	if err != nil {

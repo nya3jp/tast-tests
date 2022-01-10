@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
+	"chromiumos/tast/local/policyutil/mgs"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
@@ -58,30 +59,17 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 	defer cancel()
 
 	accountID := "foo@bar.com"
-	accountType := policy.AccountTypePublicSession
 
 	// These extensions are unlisted on the Chrome Web Store but can be
 	// downloaded directly using the extension IDs.
 	// The code for the extensions can be found in the Chromium repo at
 	// chrome/test/data/extensions/api_test/login_screen_apis/.
 	// ID for "Login screen APIs test extension".
-	loginScreenExtensionID := "oclffehlkdgibkainkilopaalpdobkan"
+	loginScreenExtensionID := mgs.LoginScreenExtensionID
 	// ID for "Login screen APIs in-session test extension".
-	inSessionExtensionID := "ofcpkomnogjenhfajfjadjmjppbegnad"
+	inSessionExtensionID := mgs.InSessionExtensionID
 
-	policies := []policy.Policy{
-		&policy.DeviceLocalAccounts{
-			Val: []policy.DeviceLocalAccountInfo{
-				{
-					AccountID:   &accountID,
-					AccountType: &accountType,
-				},
-			},
-		},
-		&policy.DeviceLoginScreenExtensions{
-			Val: []string{loginScreenExtensionID},
-		},
-	}
+	policies := mgs.DefaultPolicies(accountID)
 
 	pb := fakedms.NewPolicyBlob()
 	pb.AddPolicies(policies)
