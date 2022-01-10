@@ -27,22 +27,22 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenThreeFingerSwipeTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedTouchscreenThreeFingerSwipeTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenThreeFingerSwipeTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedTouchscreenThreeFingerSwipeTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenThreeFingerSwipeTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedTouchscreenThreeFingerSwipeTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenThreeFingerSwipeTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedTouchscreenThreeFingerSwipeTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		},
@@ -57,8 +57,8 @@ func StandardizedTouchscreenThreeFingerSwipe(ctx context.Context, s *testing.Sta
 		activityName = ".ThreeFingerSwipeTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 func runStandardizedTouchscreenThreeFingerSwipeTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {

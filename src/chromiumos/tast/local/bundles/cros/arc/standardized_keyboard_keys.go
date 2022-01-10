@@ -61,22 +61,22 @@ func init() {
 		Timeout:      10 * time.Minute,
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedKeyboardKeysTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}},
@@ -91,8 +91,8 @@ func StandardizedKeyboardKeys(ctx context.Context, s *testing.State) {
 		activityName = ".KeysTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 // runStandardizedKeyboardKeysTest verifies that all the provided keys are handled by

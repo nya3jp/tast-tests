@@ -28,22 +28,22 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay(), hwdep.SkipOnModel("kakadu", "katsu", "kodama")),
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenLongTapTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenLongTapTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
-			Val:               standardizedtestutil.GetClamshellTests(runStandardizedTouchscreenLongTapTest),
+			Val:               standardizedtestutil.GetClamshellTest(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "vm_tablet_mode",
-			Val:               standardizedtestutil.GetTabletTests(runStandardizedTouchscreenLongTapTest),
+			Val:               standardizedtestutil.GetTabletTest(runStandardizedTouchscreenLongTapTest),
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}},
@@ -58,8 +58,8 @@ func StandardizedTouchscreenLongTap(ctx context.Context, s *testing.State) {
 		activityName = ".TapTestActivity"
 	)
 
-	testCases := s.Param().([]standardizedtestutil.TestCase)
-	standardizedtestutil.RunTestCases(ctx, s, apkName, appName, activityName, testCases)
+	t := s.Param().(standardizedtestutil.Test)
+	standardizedtestutil.RunTest(ctx, s, apkName, appName, activityName, t)
 }
 
 func runStandardizedTouchscreenLongTapTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
