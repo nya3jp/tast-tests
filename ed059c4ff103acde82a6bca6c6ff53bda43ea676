@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dedb7bc_f1b812e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-01-10T06:23:45Z",
+      "side": 1,
+      "message": "It\u0027s used in the src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/example/rpcdut_reboot.go\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/example/rpcdut_reboot.go;bpv\u003d1\nto demonstrate how to reboot.",
+      "parentUuid": "163e7a1b_67c42cbd",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "ed059c4ff103acde82a6bca6c6ff53bda43ea676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3ffdb63_39858a12",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f50fa97_99962a7e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-01-10T06:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3ffdb63_39858a12",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "ed059c4ff103acde82a6bca6c6ff53bda43ea676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "852fb6ec_7150930c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-10T04:04:04Z",
       "side": 1,
       "message": "I think we can return the error directly and drop the if.",
+      "range": {
+        "startLine": 76,
+        "startChar": 58,
+        "endLine": 79,
+        "endChar": 11
+      },
+      "revId": "ed059c4ff103acde82a6bca6c6ff53bda43ea676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8476d74_193dff47",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-01-10T06:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "852fb6ec_7150930c",
       "range": {
         "startLine": 76,
         "startChar": 58,
