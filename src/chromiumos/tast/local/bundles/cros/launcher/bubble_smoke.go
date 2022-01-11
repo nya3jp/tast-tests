@@ -90,9 +90,24 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not reopen bubble by pressing Search key: ", err)
 	}
 
+	// Wait until the bubble launcher bounds become stable.
+	if err := ui.WaitForLocation(bubble)(ctx); err != nil {
+		s.Fatal("Failed to wait for bubble location changes: ", err)
+	}
+
+	// Ensure that system apps show by scrolling to the end through focus traversal when the bubble launcher is in overflow.
+	if err := kb.TypeKey(ctx, input.KEY_UP); err != nil {
+		s.Fatalf("Failed to send %d: %v", input.KEY_UP, err)
+	}
+
+	// Wait until the setting app button's bounds become stable.
+	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(bubble)
+	if err := ui.WaitForLocation(settingButton)(ctx); err != nil {
+		s.Fatal("Failed to wait for the setting app button location changes: ", err)
+	}
+
 	if err := uiauto.Combine("close bubble by launching Settings app",
-		ui.LeftClick(
-			nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(bubble)),
+		ui.LeftClick(settingButton),
 		ui.WaitUntilGone(bubble),
 	)(ctx); err != nil {
 		s.Fatal("Could not close bubble by launching Settings app: ", err)
