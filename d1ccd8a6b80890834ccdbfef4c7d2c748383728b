@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f78d0374_1e4dfe74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-01-11T17:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "808b589c_d5dea22e",
+      "range": {
+        "startLine": 35,
+        "startChar": 23,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "d1ccd8a6b80890834ccdbfef4c7d2c748383728b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fa2ef9e_87804ec1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38240d5a_31377ac7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-01-11T17:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fa2ef9e_87804ec1",
+      "range": {
+        "startLine": 136,
+        "startChar": 84,
+        "endLine": 136,
+        "endChar": 96
+      },
+      "revId": "d1ccd8a6b80890834ccdbfef4c7d2c748383728b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39ed8ad5_6bba734d",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-08T02:17:36Z",
       "side": 1,
       "message": "update this error message to indicate that the notification appeared but it was not supposed to",
+      "range": {
+        "startLine": 137,
+        "startChar": 12,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "d1ccd8a6b80890834ccdbfef4c7d2c748383728b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41cd208_5933fb26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/app_permission_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-01-11T17:39:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ed8ad5_6bba734d",
       "range": {
         "startLine": 137,
         "startChar": 12,
