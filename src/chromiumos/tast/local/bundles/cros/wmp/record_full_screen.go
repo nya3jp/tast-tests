@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -53,13 +54,15 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	defer cancel()
+
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
 		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
 	}
-	defer cleanup(ctx)
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer cleanup(cleanupCtx)
 
 	ac := uiauto.New(tconn)
 
@@ -73,10 +76,17 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 	recordFullscreenToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Record full screen")
 	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
 	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
+
+	// Enter screen capture mode.
+	if err := wmputils.EnsureCaptureModeActivated(tconn, true)(ctx); err != nil {
+		s.Fatal("Failed to enable recording: ", err)
+	}
+	// Ensure case exit screen capture mode.
+	defer wmputils.EnsureCaptureModeActivated(tconn, false)(cleanupCtx)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
 	if err := uiauto.Combine(
 		"record full screen",
-		// Enter screen capture mode.
-		wmputils.EnsureCaptureModeActivated(tconn, true),
 		ac.LeftClick(screenRecordToggleButton),
 		ac.LeftClick(recordFullscreenToggleButton),
 		kb.AccelAction("Enter"),
@@ -85,8 +95,6 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 		ac.LeftClick(stopRecordButton),
 		// Checks if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),
-		// Exit screen capture mode.
-		wmputils.EnsureCaptureModeActivated(tconn, false),
 	)(ctx); err != nil {
 		s.Fatal("Failed to record full screen: ", err)
 	}

@@ -7,6 +7,7 @@ package wmp
 
 import (
 	"context"
+	"regexp"
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
@@ -25,26 +26,23 @@ const (
 	FullScreen screenshotType = iota
 )
 
-// CaptureScreenshot launches "Screen capture" from Quick Settings.
-// And capture screenshot according to the argument passed in, fullscreen, partial or window.
+// LaunchScreenCapture launches "Screen capture" from Quick Settings.
+func LaunchScreenCapture(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := quicksettings.Show(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to open Quick Settings")
+	}
+	defer func(ctx context.Context, tconn *chrome.TestConn) {
+		if err := quicksettings.Hide(ctx, tconn); err != nil {
+			testing.ContextLog(ctx, "Failed to hide Quick Settings: ", err)
+		}
+	}(ctx, tconn)
+
+	return uiauto.New(tconn).LeftClick(quicksettings.PodIconButton(quicksettings.SettingPodScreenCapture))(ctx)
+}
+
+// CaptureScreenshot captures screenshot according to the argument passed in, fullscreen, partial or window.
 func CaptureScreenshot(tconn *chrome.TestConn, sst screenshotType) action.Action {
 	return func(ctx context.Context) error {
-		if err := quicksettings.Show(ctx, tconn); err != nil {
-			return errors.Wrap(err, "failed to open Quick Settings")
-		}
-
-		defer func(ctx context.Context, tconn *chrome.TestConn) {
-			if err := quicksettings.Hide(ctx, tconn); err != nil {
-				testing.ContextLog(ctx, "Failed to hide Quick Settings")
-			}
-		}(ctx, tconn)
-
-		ui := uiauto.New(tconn)
-
-		if err := ui.LeftClick(quicksettings.PodIconButton(quicksettings.SettingPodScreenCapture))(ctx); err != nil {
-			return errors.Wrap(err, "failed to launch 'Screen capture'")
-		}
-
 		if err := ensureInScreenCaptureMode(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to verify the ui of toolbar")
 		}
@@ -72,11 +70,11 @@ func ensureInScreenCaptureMode(ctx context.Context, tconn *chrome.TestConn) erro
 	for _, btn := range []*nodewith.Finder{
 		nodewith.Role(role.ToggleButton).Name("Screenshot"),
 		nodewith.Role(role.ToggleButton).Name("Screen record"),
-		nodewith.Role(role.ToggleButton).Name("Take full screen screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Take partial screenshot"),
-		nodewith.Role(role.ToggleButton).Name("Take window screenshot"),
+		nodewith.Role(role.ToggleButton).NameRegex(regexp.MustCompile("(Take|Record) full screen.*")),
+		nodewith.Role(role.ToggleButton).NameRegex(regexp.MustCompile("(Take|Record) partial screen.*")),
+		nodewith.Role(role.ToggleButton).NameRegex(regexp.MustCompile("(Take|Record) window.*")),
 		nodewith.Role(role.ToggleButton).Name("Settings"),
-		nodewith.Role(role.Button).Name("Close"),
+		nodewith.Role(role.Button).Name("Close").HasClass("CaptureModeButton"),
 	} {
 		if err := ui.WaitUntilExists(btn)(ctx); err != nil {
 			return err
@@ -93,13 +91,12 @@ func takeFullScreenshot(tconn *chrome.TestConn) action.Action {
 	return uiauto.Combine("take full screenshot",
 		ui.LeftClick(nodewith.Role(role.ToggleButton).Name("Screenshot")),
 		ui.LeftClick(nodewith.Role(role.ToggleButton).Name("Take full screen screenshot")),
-		ui.WaitUntilExists(nodewith.Name("Click anywhere to capture full screen")),
-		ui.LeftClick(nodewith.Role(role.Window).First()), // Click on the center of root window to take the screenshot.
+		ui.WaitUntilExists(nodewith.NameRegex(regexp.MustCompile("(Click|Tap) anywhere to capture full screen"))), // Different names for clamshell/tablet mode.
+		ui.LeftClick(nodewith.Role(role.Window).First()),                                                          // Click on the center of root window to take the screenshot.
 	)
 }
 
 // screenshotTaken checks the screenshot taken by the popup text "Screenshot taken".
 func screenshotTaken(tconn *chrome.TestConn) action.Action {
-	ui := uiauto.New(tconn)
-	return ui.WaitUntilExists(nodewith.Role(role.StaticText).Name("Screenshot taken"))
+	return uiauto.New(tconn).WaitUntilExists(nodewith.Role(role.StaticText).Name("Screenshot taken"))
 }
