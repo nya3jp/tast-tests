@@ -34,7 +34,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Functional test for AdobeIllustratorDraw that installs the app also verifies it is logged in and that the main page is open, checks AdobeIllustratorDraw correctly changes the window state in both clamshell and touchview mode",
 		Contacts:     []string{"mthiyagarajan@chromium.org", "cros-appcompat-test-team@google.com"},
-		Attr:         []string{"group:appcompat"},
+		// Disabled the test since Adobe illustrator draw is no longer available in play store.
+		// Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve")),
 		Params: []testing.Param{{
