@@ -34,7 +34,7 @@ func init() {
 func KmsvncConnect(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
-	k, err := kmsvnc.NewKmsvnc(ctx)
+	k, err := kmsvnc.NewKmsvnc(ctx, true)
 	if err != nil {
 		s.Fatal("Failed to start kmsvnc: ", err)
 	}
