@@ -21,6 +21,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type bubbleSmokeTestType string
+
+const (
+	enableLauncherAppSort  bubbleSmokeTestType = "EnableLauncherAppSort"  // Enable "LauncherAppSort" feature in the test
+	disableLauncherAppSort bubbleSmokeTestType = "DisableLauncherAppSort" // Disable "LauncherAppSort" feature in the test
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BubbleSmoke,
@@ -33,7 +40,18 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWith100FakeAppsProductivityLauncher",
+		Params: []testing.Param{
+			{
+				Name:    "enable_launcher_app_sort",
+				Val:     enableLauncherAppSort,
+				Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncherAppSort",
+			},
+			{
+				Name:    "disable_launcher_app_sort",
+				Val:     disableLauncherAppSort,
+				Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
+			},
+		},
 	})
 }
 
@@ -89,9 +107,29 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not reopen bubble by pressing Search key: ", err)
 	}
 
+	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(bubble)
+
+	if s.Param().(bubbleSmokeTestType) == enableLauncherAppSort {
+		// When the launcher app sort feature is enabled, fake apps are placed at the front. In this case, scroll the apps grid to the end to show the setting app button before launching the app.
+
+		// Wait until the bubble launcher bounds become stable.
+		if err := ui.WaitForLocation(bubble)(ctx); err != nil {
+			s.Fatal("Failed to wait for bubble location changes: ", err)
+		}
+
+		// Ensure that system apps show by scrolling to the end through focus traversal when the bubble launcher is in overflow.
+		if err := kb.TypeKey(ctx, input.KEY_UP); err != nil {
+			s.Fatalf("Failed to send %d: %v", input.KEY_UP, err)
+		}
+
+		// Wait until the setting app button's bounds become stable.
+		if err := ui.WaitForLocation(settingButton)(ctx); err != nil {
+			s.Fatal("Failed to wait for the setting app button location changes: ", err)
+		}
+	}
+
 	if err := uiauto.Combine("close bubble by launching Settings app",
-		ui.LeftClick(
-			nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(bubble)),
+		ui.LeftClick(settingButton),
 		ui.WaitUntilGone(bubble),
 	)(ctx); err != nil {
 		s.Fatal("Could not close bubble by launching Settings app: ", err)
