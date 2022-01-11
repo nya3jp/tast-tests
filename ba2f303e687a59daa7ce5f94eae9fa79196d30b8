@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfeb53c0_94c624a4",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-11T16:50:30Z",
+      "side": 1,
+      "message": "SGTM. FYI: golang can handle multiple packages with the same name:\nimport (\n    \"chrome/config\"\n    netconfig \"network/config\" // this is now imported as netconfig\n)",
+      "parentUuid": "1bb88236_422f682d",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66ab2bb9_33c5fd93",
