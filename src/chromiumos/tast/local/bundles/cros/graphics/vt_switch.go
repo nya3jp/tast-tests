@@ -51,7 +51,8 @@ const (
 )
 
 var (
-	perceptualDiffRe = regexp.MustCompile((`(\d+) pixels are different`))
+	perceptualDiffRe     = regexp.MustCompile((`(\d+) pixels are different`))
+	percentDiffThreshold = 0.00
 )
 
 func inputCheck(ctx context.Context) (*input.KeyboardEventWriter, error) {
@@ -128,7 +129,11 @@ func isPerceptuallySame(ctx context.Context, file1, file2 string) (bool, int, er
 		return isSame, numPix, errors.Wrap(err, "failed to decode vt1 image")
 	}
 
-	stdout, stderr, err := testexec.CommandContext(ctx, "perceptualdiff", "-verbose", file1, file2).SeparatedOutput(testexec.DumpLogOnError)
+	totalPixels := img.Bounds().Max.X * img.Bounds().Max.Y
+
+	// The percentDiffThreshold variable is 5 percent of the percentage of the difference between the initial VT1 and VT2 screenshots
+	threshold := float64(totalPixels) * percentDiffThreshold
+	stdout, stderr, err := testexec.CommandContext(ctx, "perceptualdiff", "-verbose", "-threshold", fmt.Sprintf("%f", threshold), file1, file2).SeparatedOutput(testexec.DumpLogOnError)
 	// If images were different this regex would have some match.
 	matched := perceptualDiffRe.FindStringSubmatch(string(stdout))
 
@@ -137,8 +142,6 @@ func isPerceptuallySame(ctx context.Context, file1, file2 string) (bool, int, er
 
 		return isSame, numPix, errors.Wrap(err, "error occurred while running perceptual diff")
 	}
-
-	totalPixels := img.Bounds().Max.X * img.Bounds().Max.Y
 
 	// Try to find the number of pixels different, if its in the output.
 	if len(matched) > 1 {
@@ -199,8 +202,9 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 		s.Error("Failed to take screenshot: ", err)
 	}
 
-	// Make sure VT1 and VT2 are sufficiently different.
-	isSame, _, err := isPerceptuallySame(ctx, vt1Screenshot, vt2Screenshot)
+	// Make sure VT1 and VT2 are sufficiently different and calculate 5 percent of the initial percent difference.
+	isSame, initialDiffPercent, err := isPerceptuallySame(ctx, vt1Screenshot, vt2Screenshot)
+	percentDiffThreshold = 0.05 * float64(initialDiffPercent)
 
 	if err != nil {
 		s.Fatal("Error occurred while comparing Initial VT1 and VT2 screenshots")
@@ -238,6 +242,12 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 
 		if isSame {
 			identicalScreenshots[vt]++
+			err := os.Remove(currtVTScreenshot)
+
+			if err != nil {
+				s.Errorf("Error deleting file %d", currtVTScreenshot)
+			}
+
 		} else {
 			s.Errorf("Initial and current VT %d are different in iteration %d by %d percent", vt, id, percentDiffPixels)
 			maxDifferencePercent[vt] = max(maxDifferencePercent[vt], percentDiffPixels)
