@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing! khmel@, PTALA.",
       "revId": "61e22fc94331866b9d11f5fc8748f36e1262a6cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9457b04e_f351969d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-11T01:15:10Z",
+      "side": 1,
+      "message": "TY!",
+      "revId": "61e22fc94331866b9d11f5fc8748f36e1262a6cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
