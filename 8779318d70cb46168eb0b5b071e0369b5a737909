@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1341fff7_1a7ed8d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T07:51:32Z",
+      "side": 1,
+      "message": "Move this to a separate CL.",
+      "revId": "8779318d70cb46168eb0b5b071e0369b5a737909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcae8090_9517f097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T07:51:32Z",
+      "side": 1,
+      "message": "Use a poll here with a timeout of 2 seconds.",
+      "revId": "8779318d70cb46168eb0b5b071e0369b5a737909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
