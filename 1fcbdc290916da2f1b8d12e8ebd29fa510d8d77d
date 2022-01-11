@@ -34,6 +34,24 @@
       "parentUuid": "891fd8fe_68f2d850",
       "revId": "1fcbdc290916da2f1b8d12e8ebd29fa510d8d77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28af2605_a4bf3078",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-11T00:00:32Z",
+      "side": 1,
+      "message": "Fair enough, LGTM",
+      "parentUuid": "657b9b93_94a30c39",
+      "revId": "1fcbdc290916da2f1b8d12e8ebd29fa510d8d77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
