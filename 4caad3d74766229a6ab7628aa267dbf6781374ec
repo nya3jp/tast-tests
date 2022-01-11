@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "197f071e_f03cfcb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-11T19:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52405890_823edc7d",
+      "range": {
+        "startLine": 98,
+        "startChar": 23,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "4caad3d74766229a6ab7628aa267dbf6781374ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c5eeff_66bf7440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-11T19:51:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "425afa9c_b030a546",
+      "range": {
+        "startLine": 98,
+        "startChar": 66,
+        "endLine": 98,
+        "endChar": 73
+      },
+      "revId": "4caad3d74766229a6ab7628aa267dbf6781374ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58d60bd8_a1a9ed85",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-01-11T19:36:22Z",
       "side": 1,
       "message": "Is this reliable enough, you think? Is there a way to check the media state to see if the video is playing?",
+      "revId": "4caad3d74766229a6ab7628aa267dbf6781374ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c48df1_27e4f0e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-11T19:51:15Z",
+      "side": 1,
+      "message": "The problem is not video playing status. Something (not sure it is the youtube site, or blink layout logic) has changed recently that youtube site takes more time to catch up with the browser window size change.\n\nHere we are at the \"enterFullscreen()\". After this, we would try to tap the \"fullscreen\" button to toggle. We were fine before with the checking of the browser window state. But that is no longer enough now. In my local test, after the browser window resizes, the website takes a few seconds to finish its layout. Hence, I added this check to ensure that the \"video\" element has the expected fullscreen size. Otherwise, we tap at wrong location and did not toggle fullscreen state change as expected.\n\nIt is still not bullet proof but I hope that we should be good for most of the time.",
+      "parentUuid": "58d60bd8_a1a9ed85",
       "revId": "4caad3d74766229a6ab7628aa267dbf6781374ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
