@@ -101,7 +101,7 @@ func RecordVNCVideoCritical(ctx context.Context, s testingState, mods ...func(*v
 		mod(&cfg)
 	}
 
-	kms, err := kmsvnc.NewKmsvnc(ctx)
+	kms, err := kmsvnc.NewKmsvnc(ctx, false)
 	if err != nil {
 		return nil, err
 	}
