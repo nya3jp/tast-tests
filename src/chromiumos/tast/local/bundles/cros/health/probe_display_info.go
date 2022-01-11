@@ -152,11 +152,74 @@ func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) er
 	return nil
 }
 
+func getEmbeddedDisplayCrtcID(ctx context.Context) (string, error) {
+	encoderID, err := getModetestConnectorInfo(ctx, 2)
+	if err != nil {
+		return "", err
+	}
+
+	// Example output of "modetest -e" (partially):
+	// id      crtc    type    possible crtcs  possible clones
+	// 70      41      TMDS    0x00000007      0x00000001
+	//
+	// We'll try to get the line that starts with |encoderID| first, and get the value for crtc ID at column 2.
+	cmd := "modetest -e | grep ^" + encoderID + " | awk -e '{print $2}'"
+	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimRight(string(b), "\n"), nil
+}
+
+func getModetestCrtcInfo(ctx context.Context, crtcID string, column int) (string, error) {
+	// Example output of "modetest -p" (partially):
+	// id      fb      pos     size
+	// 41      97      (0,0)   (1920x1280)
+	//   #0 1920x1280 60.00 1920 1944 1992 2080 1280 1286 1303 1320 164740 flags: nhsync, nvsync; type: preferred, driver
+	//
+	// We'll try to get the line that starts with |crtcID| first, get the following line as details info, and get the value at |column| index.
+	cmd := "modetest -p | grep ^" + crtcID + " -A 1 | sed '1d' | awk -e '{print $" + strconv.Itoa(column) + "}'"
+	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimRight(string(b), "\n"), nil
+}
+
+func verifyEmbeddedDisplayResolutionSize(ctx context.Context, EDP *embeddedDisplayInfo) error {
+	crtcID, err := getEmbeddedDisplayCrtcID(ctx)
+	if err != nil {
+		return err
+	}
+
+	sizeRaw, err := getModetestCrtcInfo(ctx, crtcID, 2)
+	if err != nil {
+		return err
+	}
+
+	size := strings.Split(sizeRaw, "x")
+	width, _ := strconv.ParseUint(size[0], 10, 32)
+	height, _ := strconv.ParseUint(size[1], 10, 32)
+	if err := compareUint32Pointer(EDP.ResolutionWidth, uint32(width), "ResolutionWidth"); err != nil {
+		return err
+	}
+	if err := compareUint32Pointer(EDP.ResolutionHeight, uint32(height), "ResolutionHeight"); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func verifyEmbeddedDisplayInfo(ctx context.Context, EDP *embeddedDisplayInfo) error {
 	if err := verifyPrivacyScreenInfo(ctx, EDP); err != nil {
 		return err
 	}
 	if err := verifyEmbeddedDisplaySize(ctx, EDP); err != nil {
+		return err
+	}
+	if err := verifyEmbeddedDisplayResolutionSize(ctx, EDP); err != nil {
 		return err
 	}
 
