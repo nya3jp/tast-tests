@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db641952_d8b1947b",
+        "filename": "src/chromiumos/tast/common/fixture/policyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-11T01:24:41Z",
+      "side": 1,
+      "message": "nit: this comment is redundant.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "8b833d1f62098b29eee83ff0be4234bdb107b96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc65039_7a941b30",
+        "filename": "src/chromiumos/tast/common/fixture/policyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-11T01:24:41Z",
+      "side": 1,
+      "message": "nit: this comment is redundant.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "8b833d1f62098b29eee83ff0be4234bdb107b96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df434b2c_c59462f3",
+        "filename": "src/chromiumos/tast/local/policyutil/mgs/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-11T01:24:41Z",
+      "side": 1,
+      "message": "Can you set the id in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go? \nSo it can be used globally.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "8b833d1f62098b29eee83ff0be4234bdb107b96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f210a3f_dac15602",
+        "filename": "src/chromiumos/tast/local/policyutil/mgs/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-11T01:24:41Z",
+      "side": 1,
+      "message": "Instead of fatal here, I would suggest to do:\n\nif g.cr !\u003d nil{\n   ...\n}",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "8b833d1f62098b29eee83ff0be4234bdb107b96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
