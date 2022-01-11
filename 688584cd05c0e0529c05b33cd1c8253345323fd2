@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c574e9_b037a5c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-11T01:04:43Z",
+      "side": 1,
+      "message": "lgtm % tast review\n\nThanks for adding the screenshot strategy!",
+      "revId": "688584cd05c0e0529c05b33cd1c8253345323fd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
