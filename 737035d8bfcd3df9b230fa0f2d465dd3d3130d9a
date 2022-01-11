@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2a8052_0af31fd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-01-11T01:29:56Z",
+      "side": 1,
+      "message": "+2 for Tast Review % nits",
+      "revId": "737035d8bfcd3df9b230fa0f2d465dd3d3130d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea66175_9b5d3d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-01-11T01:29:56Z",
+      "side": 1,
+      "message": "nit: Move to top of file, e.g.:\n\nvar vpdEntryRE \u003d regexp.MustCompile(`^\".+\"\u003d\".+\"$`)\n\n(Unusual to have MustCompile invoked possibly multiple times.)",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "737035d8bfcd3df9b230fa0f2d465dd3d3130d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68dc252f_94d6f737",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-01-11T01:29:56Z",
+      "side": 1,
+      "message": "nit: In my view, declaring this method below this function instead of inline would improve readability, by making this method more digestable. It should be quite easy to do, as it does not depend on s:\n\nfunc validateCache(ctx context.Contxt) {\n   ...\n}",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "737035d8bfcd3df9b230fa0f2d465dd3d3130d9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
