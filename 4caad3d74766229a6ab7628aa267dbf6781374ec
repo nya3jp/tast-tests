@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52405890_823edc7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-01-11T19:36:22Z",
+      "side": 1,
+      "message": "nit: let\u0027s say \u0027we\u0027 instead of \u0027I\u0027",
+      "range": {
+        "startLine": 98,
+        "startChar": 23,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "4caad3d74766229a6ab7628aa267dbf6781374ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425afa9c_b030a546",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-01-11T19:36:22Z",
+      "side": 1,
+      "message": "the default",
+      "range": {
+        "startLine": 98,
+        "startChar": 66,
+        "endLine": 98,
+        "endChar": 73
+      },
+      "revId": "4caad3d74766229a6ab7628aa267dbf6781374ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d60bd8_a1a9ed85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-01-11T19:36:22Z",
+      "side": 1,
+      "message": "Is this reliable enough, you think? Is there a way to check the media state to see if the video is playing?",
+      "revId": "4caad3d74766229a6ab7628aa267dbf6781374ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
