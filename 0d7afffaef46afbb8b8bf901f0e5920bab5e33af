@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ea8258_75cb2be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_multi_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-11T03:33:23Z",
+      "side": 0,
+      "message": "Does this needed to be applied to autotests aswell?",
+      "revId": "0d7afffaef46afbb8b8bf901f0e5920bab5e33af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
