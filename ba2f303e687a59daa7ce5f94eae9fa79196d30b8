@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb88236_422f682d",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-11T16:12:27Z",
+      "side": 1,
+      "message": "netconfig then, I think config is too general and it may clash with other package names.",
+      "parentUuid": "c841a3b5_134b4c9b",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66ab2bb9_33c5fd93",
@@ -194,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d68f72_b0a4a435",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-11T16:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fceaef08_0709887d",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77ae8ecb_267b3684",
@@ -207,6 +243,24 @@
       "writtenOn": "2022-01-06T18:37:42Z",
       "side": 1,
       "message": "Maybe put this in a separate file, especially since it will likely grow over time?",
+      "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcea3948_d04d5e81",
+        "filename": "src/chromiumos/tast/local/network/cros_network_config/cros_network_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-11T16:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77ae8ecb_267b3684",
       "revId": "ba2f303e687a59daa7ce5f94eae9fa79196d30b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
