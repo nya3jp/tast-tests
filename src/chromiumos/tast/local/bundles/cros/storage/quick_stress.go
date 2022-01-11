@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/storage/stress"
+	"chromiumos/tast/local/bundles/cros/storage/util"
 	"chromiumos/tast/testing"
 )
 
@@ -24,7 +24,7 @@ func init() {
 		Desc:         "Performs a short version of storage qualification test",
 		Contacts:     []string{"chromeos-engprod-platform-syd@google.com"},
 		Attr:         []string{"group:storage-qual"},
-		Data:         stress.Configs,
+		Data:         util.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
 		Params: []testing.Param{{
 			Name:    "setup",
@@ -44,15 +44,15 @@ func init() {
 
 // fioStress runs an fio job single given path according to testConfig.
 // If fio returns an error, this function will fail the Tast test.
-func fioStress(ctx context.Context, s *testing.State, testConfig stress.TestConfig) {
-	if err := stress.RunFioStress(ctx, testConfig.WithJobFile(s.DataPath(testConfig.Job))); err != nil {
+func fioStress(ctx context.Context, s *testing.State, testConfig util.TestConfig) {
+	if err := util.RunFioStress(ctx, testConfig.WithJobFile(s.DataPath(testConfig.Job))); err != nil {
 		s.Fatal("FIO stress failed: ", err)
 	}
 }
 
 func setup(ctx context.Context, s *testing.State) {
 	// Fetching info of all storage devices.
-	info, err := stress.ReadDiskInfo(ctx)
+	info, err := util.ReadDiskInfo(ctx)
 	if err != nil {
 		s.Fatal("Failed reading disk info: ", err)
 	}
@@ -71,10 +71,10 @@ func setup(ctx context.Context, s *testing.State) {
 	}
 
 	// Run tests to collect metrics.
-	resultWriter := &stress.FioResultWriter{}
+	resultWriter := &util.FioResultWriter{}
 	defer resultWriter.Save(ctx, s.OutDir(), false)
 
-	testConfig := &stress.TestConfig{ResultWriter: resultWriter, Path: stress.BootDeviceFioPath}
+	testConfig := &util.TestConfig{ResultWriter: resultWriter, Path: util.BootDeviceFioPath}
 	fioStress(ctx, s, testConfig.WithJob("seq_write"))
 	fioStress(ctx, s, testConfig.WithJob("seq_read"))
 	fioStress(ctx, s, testConfig.WithJob("4k_write"))
@@ -84,10 +84,10 @@ func setup(ctx context.Context, s *testing.State) {
 }
 
 func testBlock(ctx context.Context, s *testing.State) {
-	resultWriter := &stress.FioResultWriter{}
+	resultWriter := &util.FioResultWriter{}
 	defer resultWriter.Save(ctx, s.OutDir(), false)
 
-	testConfig := &stress.TestConfig{Path: stress.BootDeviceFioPath}
+	testConfig := &util.TestConfig{Path: util.BootDeviceFioPath}
 
 	fioStress(ctx, s,
 		testConfig.
@@ -111,7 +111,7 @@ func testBlock(ctx context.Context, s *testing.State) {
 		testConfig.
 			WithJob("8k_async_randwrite").
 			WithDuration(4*time.Minute))
-	stress.Suspend(ctx, true)
+	util.Suspend(ctx, true)
 	fioStress(ctx, s,
 		testConfig.
 			WithJob("8k_async_randwrite").
