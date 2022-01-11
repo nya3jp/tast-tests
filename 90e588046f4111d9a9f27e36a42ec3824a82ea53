@@ -39,6 +39,30 @@
       },
       "revId": "90e588046f4111d9a9f27e36a42ec3824a82ea53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc5fce21_e1b0d092",
+        "filename": "src/chromiumos/tast/local/kmsvnc/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-11T02:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "834e4c35_1dfdadcc",
+      "range": {
+        "startLine": 43,
+        "startChar": 36,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "90e588046f4111d9a9f27e36a42ec3824a82ea53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
