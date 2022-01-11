@@ -72,6 +72,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19379cab_ec3ce3a8",
+        "filename": "src/chromiumos/tast/local/policyutil/mgs/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-11T02:46:13Z",
+      "side": 1,
+      "message": "It is usually like this:\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, crostini.PostTimeout)\ndefer cancel()\n\nThen cleanupCtx is used in the following defer. Example: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/app_android_studio.go;l\u003d50",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "8b833d1f62098b29eee83ff0be4234bdb107b96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fde6a5f_776cf902",
+        "filename": "src/chromiumos/tast/local/policyutil/mgs/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-11T02:46:13Z",
+      "side": 1,
+      "message": "Please handle the returned error",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "8b833d1f62098b29eee83ff0be4234bdb107b96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2426868_96d33adf",
+        "filename": "src/chromiumos/tast/local/policyutil/mgs/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-11T02:46:13Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 26
+      },
+      "revId": "8b833d1f62098b29eee83ff0be4234bdb107b96a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f210a3f_dac15602",
         "filename": "src/chromiumos/tast/local/policyutil/mgs/fixture.go",
         "patchSetId": 1
