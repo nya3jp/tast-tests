@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5c436b_095dec62",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "Nit: The existing comments in this file all terminate with a period.\n\nYou should probably do the same where it makes sense. (applies to all the comments you added, I just didn\u0027t want to mark each of them up)",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b2daed_32970e1e",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "Since this is public Chromium source, let\u0027s make the links reference public AOSP sources.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/app/WindowConfiguration.java;l\u003d133;drc\u003d6d5082d3a593d34b413067a3cc30069aa2b78818\n\nor:\n\nhttps://android.googlesource.com/platform/frameworks/base/+/6d5082d3a593d34b413067a3cc30069aa2b78818/core/java/android/app/WindowConfiguration.java#133",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f5d824_dd8a150f",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "Ditto on using equivalent public links.",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fd872b_d28f632f",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "Too bad generics aren\u0027t in go1.17.\n\nWith go1.18 (releasing soon) I would recommend using them. It would condense things:\n\n  type AllowedExtraArgTypes interface {\n    int | string | []string | bool\n  }\n\n  type ExtraArg[ExtraArgType AllowedExtraArgTypes] struct {\n    key string\n    val ExtraArgType\n  }\n\n  type ActivityStartOptions struct {\n    // ...\n    extraInts []ExtraArg[int]\n    extraBools []ExtraArg[bool]\n    // (etc)\n  }",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f44181fe_76f86f3e",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a \"--ei \u003ckey\u003e \u003cvalue\u003e\" for each extraInt entry?",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 3
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45e26fdc_32100f32",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "While Go doesn\u0027t seem to have some kind of switch/case expression, this pattern might be better, and should also catch cases where not all values are specified (for enums values):\n\n  valStr string\n  switch e.val {\n  case false:\n    valStr \u003d \"false\"\n  case true:\n    valStr \u003d \"true\"\n  }\n  \nYou could make it a function and use return to avoid creating an explicit and default initialized local.\n\n(In some language that did have switches/cases as expressions, it might look like:\n\n  valStr :\u003d switch e.val {\n    case false: \"false\"\n    case true:  \"true\"\n  }\n)\n  \n... BUT, for this case, you can do something even simpler:\n\n  valStr :\u003d strconv.FormatBool(e.val)\n  \n(And you can probably just inline the conversion call in the next line)",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 4
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e763454_7c32b237",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "These made me want to suggest using a nullable (aka optional) type, but Go doesn\u0027t have something built-in at this type.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 19
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa10ca4_7d633eb4",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "If these are appended, are they really defaults?\n\nFor example, what happens if the caller looks like:\n\n  act.Start(ctx, tconn, arc.WithDisplayId(42))\n\nMaybe default values should be set in makeActivityStartOptions()? Or a makeActivityOptionsWithDefaults() or similar if the former should construct an \"empty\" options structure?",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 53
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bef0af2_c9ac8712",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "I\u0027m not sure WaitForLaunch should be a default. How do you turn it off for cases that might not want it?",
+      "range": {
+        "startLine": 417,
+        "startChar": 33,
+        "endLine": 417,
+        "endChar": 50
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db30dcb7_2384a6d8",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "It bugs me that \"opts\" is purely a structure used internally to this function (other than type safety for the setters), and that converting the optSetters to arg strings requires two very different passes, and most of the values stored in ActivityStartOptions are very temporary.\n\nI think you would be better served making the setter functions set string arguments directly into ActivityStartOptions, and have that structure just contain arrays of strings.\n\n  type ActivityStartOptions struct {\n    // single-value settings look like this:\n    enableDebugging       []string\n\t\n    // All the extras arguments just go in a single common array\n    extraArgs             []string\n  }\n  \nThe single-value setters can then just set the single-value string fragments directly, and they ALSO encapsulate all knowledge of the command line argument details.\n\n  func WithEnableDebugging() ActivityStartOptionSetter {\n    return func(opts *ActivityStartOptions) {\n      opts.enableDebugging \u003d []string(\"--D\")\n    }\n  }\n  \nWithExtraString/WithExtraInt/etc would just append to extraArgs.  \n\nWDYT?",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 49
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da0affff_626919a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "This line is too long. Perhaps compute fmt.Sprintf() before using it in WithExtraString?",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b48246e_871463ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "Pointing out that the code here didn\u0027t set a default value for the display id (etc) before, and it will now. Not sure that is a problem.",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43dfef4f_923e9709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 1,
+      "message": "screeshot -\u003e screenshot?",
+      "range": {
+        "startLine": 207,
+        "startChar": 40,
+        "endLine": 207,
+        "endChar": 56
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

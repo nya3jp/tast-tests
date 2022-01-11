@@ -1,6 +1,92 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac3a39b_44aa2a23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 0,
+      "message": "Missing arc.WaitForLaunch() in the new code? (Well, it is a default, but....)",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 7
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59c99bf2_44c6cdcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 0,
+      "message": "Does this get added by anything in the new code?",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 7
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cac07b0_d3635e52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 0,
+      "message": "Ditto on questioning where the -n is added by the new code.",
+      "range": {
+        "startLine": 227,
+        "startChar": 62,
+        "endLine": 227,
+        "endChar": 66
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f06c58d_6f0eadd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-11T03:25:26Z",
+      "side": 0,
+      "message": "Note: This call didn\u0027t use -W before to wait for launch. Now it will.\n\n(I guess the WaitForIdle at line 155 is equivalent anyway)\n\nAlso all the other calls use -n, and I commented that I didn\u0027t see anything add that in the new code. Note that this call didn\u0027t use -n before the change.",
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "94df68b1_cd1f2a20",
