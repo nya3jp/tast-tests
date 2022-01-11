@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1a696d_24b18163",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-11T01:38:43Z",
+      "side": 1,
+      "message": "I still have concern regarding the need of mutex, but it is ok for now. Thanks.",
+      "revId": "d0e331ce208666d1136487489eb6b7ba9004fb07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
