@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11308079_cb979324",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-11T01:18:30Z",
+      "side": 1,
+      "message": "The normal state of the world is that the success file doesn\u0027t exist when the test starts. The crashes induced by the test cause crash_sender to create the file, which we then see down on line 155, and mark the test successful. At the end of the test, the defer\u0027ed os.Remove() removes the file, and we\u0027re back to the normal state of \"the success file doesn\u0027t exist\".\n\nIt is, however, possible that the file will exist when the test starts. For example, the DUT might have kernel panicked in the middle of a previous run of this test. Or someone might have run `crash_sender --test_mode` manually for some reason. In that case, we do want to remove the old, leftover success file so that we are starting the body of the test in the normal state (no success file). That\u0027s what I mean by \"Ensure\" -- let\u0027s ensure that we are in the normal, expected state of not having the success file yet. \n\nThe test should not fail in either case -- that\u0027s what I mean by \"doesn\u0027t matter\". If the file is not present at this moment, the test should not fail. If the file is present at this moment, the test should also not fail. The only case in which it should fail from this code is if the file already exists and we are unable to remove it -- in that case, we can\u0027t conduct the test.",
+      "parentUuid": "03cebb32_d3e1a0a7",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 34
+      },
+      "revId": "d124fe4a97e4aa4f1a1b117507cac23df9406845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b9c977f_a59f3163",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "So here if it has not been removed, you want to fail the test case, which conflicts with previous code before.\n\nBTW, if you want to fail the test case here, why not using s.Fatal?",
       "parentUuid": "3ac520b0_5b63234c",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "d124fe4a97e4aa4f1a1b117507cac23df9406845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e512dba3_f6bbe3c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-11T01:18:30Z",
+      "side": 1,
+      "message": "OK, I changed it to s.Fatal. Is that what you were suggesting?",
+      "parentUuid": "97562321_2e046b69",
       "range": {
         "startLine": 119,
         "startChar": 4,
