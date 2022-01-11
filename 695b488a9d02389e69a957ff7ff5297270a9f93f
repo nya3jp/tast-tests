@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dad0454c_0547f687",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-11T23:26:19Z",
+      "side": 1,
+      "message": "brought back the suspend, looks like the original test initially is just making sure AC is in a certain state, the follows a pattern of suspending, setting role to src/sinkc, then checking the corresponding expected state, so I formatted it like that.",
+      "parentUuid": "34a37f81_8ab035e9",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da5f12da_ab78fae6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
         "patchSetId": 3
@@ -368,6 +392,30 @@
       "side": 1,
       "message": "Yes, that comment was not what I meant though.",
       "parentUuid": "aa203142_d444702f",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 11
+      },
+      "revId": "695b488a9d02389e69a957ff7ff5297270a9f93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a34a98_c5cbd763",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-11T23:26:19Z",
+      "side": 1,
+      "message": "added h.DisconnectDUT",
+      "parentUuid": "54b7cb64_9292db87",
       "range": {
         "startLine": 264,
         "startChar": 1,
