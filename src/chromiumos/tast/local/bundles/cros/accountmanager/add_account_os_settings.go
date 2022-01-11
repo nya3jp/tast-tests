@@ -79,10 +79,12 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Runing test cleanup")
-	if err := accountmanager.TestCleanup(ctx, tconn, cr, s.Param().(browser.Type)); err != nil {
-		s.Fatal("Failed to do cleanup: ", err)
-	}
+	defer func(ctx context.Context) {
+		s.Log("Running test cleanup")
+		if err := accountmanager.TestCleanup(ctx, tconn, cr, s.Param().(browser.Type)); err != nil {
+			s.Fatal("Failed to do cleanup: ", err)
+		}
+	}(cleanupCtx)
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC

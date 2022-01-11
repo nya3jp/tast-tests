@@ -7,7 +7,9 @@ package accountmanager
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/accountmanager"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -43,10 +45,16 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	s.Log("Running test cleanup")
-	if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeAsh); err != nil {
-		s.Fatal("Failed to do cleanup: ", err)
-	}
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
+	defer cancel()
+
+	defer func(ctx context.Context) {
+		s.Log("Running test cleanup")
+		if err := accountmanager.TestCleanup(ctx, tconn, cr, browser.TypeAsh); err != nil {
+			s.Fatal("Failed to do cleanup: ", err)
+		}
+	}(cleanupCtx)
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 
