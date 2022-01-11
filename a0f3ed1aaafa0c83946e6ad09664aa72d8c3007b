@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6aa04f_6f5dc3c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-11T01:31:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2beef6e9_615c625f",
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b509320_3352fb4b",
@@ -164,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "182ff2d4_910c5d6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-11T01:31:34Z",
+      "side": 1,
+      "message": "Thanks Seewai and Ang for suggesting on how the API should look like, I modified start and stop based on that.\n\nInitially I tried to mirror the API def of the underlying modules as much as possible for consistency sake.",
+      "parentUuid": "3964baaf_808ee14e",
+      "range": {
+        "startLine": 67,
+        "startChar": 34,
+        "endLine": 67,
+        "endChar": 49
+      },
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3710f8a4_12d09a38",
@@ -177,6 +219,24 @@
       "writtenOn": "2022-01-04T22:06:10Z",
       "side": 1,
       "message": "How about moving file_name to Start instead?",
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9951ff7e_088b301d",
+        "filename": "src/chromiumos/tast/services/cros/ui/screen_recorder_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-11T01:31:34Z",
+      "side": 1,
+      "message": "Thanks, I think that is more intuitive.",
+      "parentUuid": "3710f8a4_12d09a38",
       "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
