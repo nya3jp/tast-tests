@@ -71,7 +71,7 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	chromeOpts := []chrome.Option{
-		chrome.EnableFeatures("ESimPolicy"),
+		chrome.EnableFeatures("ESimPolicy", "UseStorkSmdsServerAddress"),
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepEnrollment(),
@@ -162,7 +162,7 @@ func verifyTestESimProfileNotModifiable(ctx context.Context, tconn *chrome.TestC
 		return errors.Wrap(err, "failed to find the newly installed test profile as a managed profile")
 	}
 
-	if err := ui.WithTimeout(20 * time.Second).LeftClick(testProfileDetailButton)(ctx); err != nil {
+	if err := ui.WithTimeout(time.Minute).LeftClick(testProfileDetailButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to left click Test Profile detail button")
 	}
 
