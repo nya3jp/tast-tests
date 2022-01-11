@@ -149,6 +149,19 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedWithGaia",
+		Desc:     "Logged into a session with Gaia user",
+		Contacts: []string{"jinrongwu@google.com"},
+		Vars:     []string{"ui.gaiaPoolDefault"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
