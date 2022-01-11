@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22e07cfd_e4ab1366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-11T11:02:03Z",
+      "side": 1,
+      "message": "Thank you for the suggestion.\nA test is under development, \nwe are not quite sure if we should add the G-docs test in this same test yet, \nbut we\u0027ll rotate the file types here if we do add it in this test.",
+      "parentUuid": "cf6db55d_7faa3b9f",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "3901cff2a8b6298e90898b98887fa93d28cc1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60527e2c_161c4785",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cecd67c_47cbeb4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-11T11:02:03Z",
+      "side": 1,
+      "message": "Yes it is.",
+      "parentUuid": "60527e2c_161c4785",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "3901cff2a8b6298e90898b98887fa93d28cc1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c92a3767_fe17e7fe",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-10T04:04:56Z",
       "side": 1,
       "message": "The default timeout for ui is 15s, and the time left is 10s. Maybe you could shorten the timeout for ui here.",
+      "range": {
+        "startLine": 153,
+        "startChar": 15,
+        "endLine": 153,
+        "endChar": 28
+      },
+      "revId": "3901cff2a8b6298e90898b98887fa93d28cc1251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7104594_8b42a8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/recent_files_appear.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-11T11:02:03Z",
+      "side": 1,
+      "message": "Fixed, sorry for not being cautious.",
+      "parentUuid": "c92a3767_fe17e7fe",
       "range": {
         "startLine": 153,
         "startChar": 15,
