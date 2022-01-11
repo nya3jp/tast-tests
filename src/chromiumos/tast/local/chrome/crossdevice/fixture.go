@@ -229,6 +229,15 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	defer btsnoopCmd.Wait()
 	defer btsnoopCmd.Kill()
 
+	// Enable bluetooth debug logging.
+	levels := bluetooth.LogVerbosity{
+		Bluez:  true,
+		Kernel: true,
+	}
+	if err := bluetooth.SetDebugLogLevels(ctx, levels); err != nil {
+		return errors.Wrap(err, "failed to enable bluetooth debug logging")
+	}
+
 	// Sometimes during login the tcp connection to the snippet server on Android is lost.
 	// If the Pair RPC fails, reconnect to the snippet server and try again.
 	if err := androidDevice.Pair(ctx); err != nil {
