@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ca5a860_68491d20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-01-11T12:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1341fff7_1a7ed8d6",
+      "revId": "8779318d70cb46168eb0b5b071e0369b5a737909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcae8090_9517f097",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-11T07:51:32Z",
       "side": 1,
       "message": "Use a poll here with a timeout of 2 seconds.",
+      "revId": "8779318d70cb46168eb0b5b071e0369b5a737909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f773081c_d9396298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-01-11T12:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcae8090_9517f097",
       "revId": "8779318d70cb46168eb0b5b071e0369b5a737909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
