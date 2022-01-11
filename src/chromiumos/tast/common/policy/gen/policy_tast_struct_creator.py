@@ -49,6 +49,7 @@ import (
 \t"encoding/json"
 
 \t"github.com/google/go-cmp/cmp"
+\t"github.com/google/go-cmp/cmp/cmpopts"
 
 \t"chromiumos/tast/errors"
 )
@@ -166,7 +167,7 @@ EQ_DEFAULT = """\tv, ok := iface.({self.type})
 \tif !ok {{
 \t\treturn ok
 \t}}
-\treturn cmp.Equal(p.Val, v)"""
+\treturn cmp.Equal(p.Val, v, cmpopts.EquateEmpty())"""
 
 # Templates to create additional structs discovered during schema parsing.
 VALUE_TEMPLATE = """

@@ -11,6 +11,7 @@ import (
 	"encoding/json"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
 
 	"chromiumos/tast/errors"
 )
@@ -41,7 +42,7 @@ func (p *HomepageLocation) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -70,7 +71,7 @@ func (p *HomepageIsNewTabPage) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -99,7 +100,7 @@ func (p *AlternateErrorPagesEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -128,7 +129,7 @@ func (p *SearchSuggestEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -157,7 +158,7 @@ func (p *JavascriptEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -186,7 +187,7 @@ func (p *IncognitoEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -215,7 +216,7 @@ func (p *SavingBrowserHistoryDisabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -244,7 +245,7 @@ func (p *PrintingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -273,7 +274,7 @@ func (p *SafeBrowsingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -302,7 +303,7 @@ func (p *PasswordManagerEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -331,7 +332,7 @@ func (p *AutoFillEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -360,7 +361,7 @@ func (p *SyncDisabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -389,7 +390,7 @@ func (p *ProxyMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -418,7 +419,7 @@ func (p *ProxyServerMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -447,7 +448,7 @@ func (p *ProxyServer) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -476,7 +477,7 @@ func (p *ProxyPacUrl) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -505,7 +506,7 @@ func (p *ProxyBypassList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -533,7 +534,7 @@ func (p *AuthSchemes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -562,7 +563,7 @@ func (p *DisableAuthNegotiateCnameLookup) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -591,7 +592,7 @@ func (p *EnableAuthNegotiatePort) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -619,7 +620,7 @@ func (p *AuthServerWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -647,7 +648,7 @@ func (p *AuthNegotiateDelegateWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -676,7 +677,7 @@ func (p *ExtensionInstallBlacklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -705,7 +706,7 @@ func (p *ExtensionInstallWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -734,7 +735,7 @@ func (p *ExtensionInstallForcelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -763,7 +764,7 @@ func (p *ShowHomeButton) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -792,7 +793,7 @@ func (p *DeveloperToolsDisabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -821,7 +822,7 @@ func (p *RestoreOnStartup) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -850,7 +851,7 @@ func (p *RestoreOnStartupURLs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -879,7 +880,7 @@ func (p *BlockThirdPartyCookies) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -908,7 +909,7 @@ func (p *DefaultSearchProviderEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -937,7 +938,7 @@ func (p *DefaultSearchProviderName) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -966,7 +967,7 @@ func (p *DefaultSearchProviderKeyword) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -995,7 +996,7 @@ func (p *DefaultSearchProviderSearchURL) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1024,7 +1025,7 @@ func (p *DefaultSearchProviderSuggestURL) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1053,7 +1054,7 @@ func (p *DefaultSearchProviderIconURL) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1082,7 +1083,7 @@ func (p *DefaultSearchProviderEncodings) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1111,7 +1112,7 @@ func (p *DefaultCookiesSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1140,7 +1141,7 @@ func (p *DefaultImagesSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1169,7 +1170,7 @@ func (p *DefaultJavaScriptSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1198,7 +1199,7 @@ func (p *DefaultPopupsSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1227,7 +1228,7 @@ func (p *DefaultNotificationsSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1256,7 +1257,7 @@ func (p *DefaultGeolocationSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1285,7 +1286,7 @@ func (p *Disable3DAPIs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1314,7 +1315,7 @@ func (p *PolicyRefreshRate) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1343,7 +1344,7 @@ func (p *ChromeOsLockOnIdleSuspend) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1372,7 +1373,7 @@ func (p *DownloadDirectory) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1401,7 +1402,7 @@ func (p *CookiesBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1430,7 +1431,7 @@ func (p *CookiesSessionOnlyForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1459,7 +1460,7 @@ func (p *ImagesAllowedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1488,7 +1489,7 @@ func (p *ImagesBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1517,7 +1518,7 @@ func (p *JavaScriptAllowedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1546,7 +1547,7 @@ func (p *JavaScriptBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1575,7 +1576,7 @@ func (p *PopupsAllowedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1604,7 +1605,7 @@ func (p *PopupsBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1633,7 +1634,7 @@ func (p *CookiesAllowedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1662,7 +1663,7 @@ func (p *TranslateEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1691,7 +1692,7 @@ func (p *BookmarkBarEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1720,7 +1721,7 @@ func (p *EditBookmarksEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1749,7 +1750,7 @@ func (p *DisabledSchemes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1778,7 +1779,7 @@ func (p *AllowCrossOriginAuthPrompt) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1809,7 +1810,7 @@ func (p *DevicePolicyRefreshRate) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1838,7 +1839,7 @@ func (p *ChromeOsReleaseChannel) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1867,7 +1868,7 @@ func (p *IncognitoModeAvailability) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1896,7 +1897,7 @@ func (p *RemoteAccessHostFirewallTraversal) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1925,7 +1926,7 @@ func (p *AutoSelectCertificateForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1954,7 +1955,7 @@ func (p *URLBlacklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1983,7 +1984,7 @@ func (p *URLWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2012,7 +2013,7 @@ func (p *NotificationsAllowedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2041,7 +2042,7 @@ func (p *NotificationsBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2071,7 +2072,7 @@ func (p *OpenNetworkConfiguration) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2103,7 +2104,7 @@ func (p *DeviceOpenNetworkConfiguration) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2141,7 +2142,7 @@ func (p *ProxySettings) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2170,7 +2171,7 @@ func (p *ReportDeviceVersionInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2199,7 +2200,7 @@ func (p *ReportDeviceActivityTimes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2228,7 +2229,7 @@ func (p *ReportDeviceBootMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2290,7 +2291,7 @@ func (p *DeviceAllowNewUsers) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2319,7 +2320,7 @@ func (p *DeviceGuestModeEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2348,7 +2349,7 @@ func (p *DeviceShowUserNamesOnSignin) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2377,7 +2378,7 @@ func (p *DeviceDataRoamingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2406,7 +2407,7 @@ func (p *DeviceMetricsReportingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2437,7 +2438,7 @@ func (p *DeviceEphemeralUsersEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2466,7 +2467,7 @@ func (p *EnableOnlineRevocationChecks) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2497,7 +2498,7 @@ func (p *ChromeOsReleaseChannelDelegated) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2526,7 +2527,7 @@ func (p *DeviceAutoUpdateDisabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2555,7 +2556,7 @@ func (p *DriveDisabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2584,7 +2585,7 @@ func (p *DriveDisabledOverCellular) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2615,7 +2616,7 @@ func (p *DeviceTargetVersionPrefix) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2645,7 +2646,7 @@ func (p *ReportDeviceLocation) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2674,7 +2675,7 @@ func (p *PinnedLauncherApps) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2705,7 +2706,7 @@ func (p *DeviceUpdateScatterFactor) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2738,7 +2739,7 @@ func (p *DeviceUpdateAllowedConnectionTypes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2767,7 +2768,7 @@ func (p *ExtensionInstallSources) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2796,7 +2797,7 @@ func (p *DefaultMediaStreamSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2825,7 +2826,7 @@ func (p *DisableSafeBrowsingProceedAnyway) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2854,7 +2855,7 @@ func (p *SpellCheckServiceEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2883,7 +2884,7 @@ func (p *ExternalStorageDisabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2912,7 +2913,7 @@ func (p *DisableScreenshots) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2941,7 +2942,7 @@ func (p *RemoteAccessHostDomain) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2970,7 +2971,7 @@ func (p *SystemTimezone) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2999,7 +3000,7 @@ func (p *AudioOutputAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3028,7 +3029,7 @@ func (p *AudioCaptureAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3059,7 +3060,7 @@ func (p *DefaultSearchProviderAlternateURLs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3088,7 +3089,7 @@ func (p *ForceSafeSearch) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3152,7 +3153,7 @@ func (p *DeviceLocalAccounts) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3181,7 +3182,7 @@ func (p *ShowLogoutButtonInTray) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3210,7 +3211,7 @@ func (p *BuiltInDnsClientEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3239,7 +3240,7 @@ func (p *ShelfAutoHideBehavior) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3268,7 +3269,7 @@ func (p *VideoCaptureAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3297,7 +3298,7 @@ func (p *ExtensionAllowedTypes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3326,7 +3327,7 @@ func (p *UserDisplayName) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3355,7 +3356,7 @@ func (p *SessionLengthLimit) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3384,7 +3385,7 @@ func (p *ScreenDimDelayAC) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3413,7 +3414,7 @@ func (p *ScreenOffDelayAC) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3442,7 +3443,7 @@ func (p *ScreenLockDelayAC) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3471,7 +3472,7 @@ func (p *IdleDelayAC) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3500,7 +3501,7 @@ func (p *ScreenDimDelayBattery) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3529,7 +3530,7 @@ func (p *ScreenOffDelayBattery) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3558,7 +3559,7 @@ func (p *ScreenLockDelayBattery) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3587,7 +3588,7 @@ func (p *IdleDelayBattery) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3616,7 +3617,7 @@ func (p *IdleAction) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3645,7 +3646,7 @@ func (p *LidCloseAction) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3674,7 +3675,7 @@ func (p *PowerManagementUsesAudioActivity) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3703,7 +3704,7 @@ func (p *PowerManagementUsesVideoActivity) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3736,7 +3737,7 @@ func (p *DeviceAllowRedeemChromeOsRegistrationOffers) Equal(iface interface{}) b
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3765,7 +3766,7 @@ func (p *TermsOfServiceURL) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3794,7 +3795,7 @@ func (p *AllowDeletingBrowserHistory) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3825,7 +3826,7 @@ func (p *ShowAccessibilityOptionsInSystemTrayMenu) Equal(iface interface{}) bool
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3854,7 +3855,7 @@ func (p *HideWebStoreIcon) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3883,7 +3884,7 @@ func (p *UptimeLimit) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3912,7 +3913,7 @@ func (p *RebootAfterUpdate) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3941,7 +3942,7 @@ func (p *DeviceLocalAccountAutoLoginId) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -3972,7 +3973,7 @@ func (p *DeviceLocalAccountAutoLoginDelay) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4001,7 +4002,7 @@ func (p *IdleWarningDelayAC) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4030,7 +4031,7 @@ func (p *IdleWarningDelayBattery) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4058,7 +4059,7 @@ func (p *DeviceVariationsRestrictParameter) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4087,7 +4088,7 @@ func (p *AttestationEnabledForUser) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4116,7 +4117,7 @@ func (p *AttestationExtensionWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4149,7 +4150,7 @@ func (p *DeviceLocalAccountAutoLoginBailoutEnabled) Equal(iface interface{}) boo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4178,7 +4179,7 @@ func (p *AllowScreenWakeLocks) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4209,7 +4210,7 @@ func (p *AttestationEnabledForDevice) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4238,7 +4239,7 @@ func (p *AudioCaptureAllowedUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4267,7 +4268,7 @@ func (p *VideoCaptureAllowedUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4296,7 +4297,7 @@ func (p *UserActivityScreenDimDelayScale) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4325,7 +4326,7 @@ func (p *LargeCursorEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4354,7 +4355,7 @@ func (p *SpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4383,7 +4384,7 @@ func (p *HighContrastEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4412,7 +4413,7 @@ func (p *ScreenMagnifierType) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4445,7 +4446,7 @@ func (p *DeviceLoginScreenDefaultLargeCursorEnabled) Equal(iface interface{}) bo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4478,7 +4479,7 @@ func (p *DeviceLoginScreenDefaultSpokenFeedbackEnabled) Equal(iface interface{})
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4511,7 +4512,7 @@ func (p *DeviceLoginScreenDefaultHighContrastEnabled) Equal(iface interface{}) b
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4544,7 +4545,7 @@ func (p *DeviceLoginScreenDefaultScreenMagnifierType) Equal(iface interface{}) b
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4573,7 +4574,7 @@ func (p *PresentationScreenDimDelayScale) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4602,7 +4603,7 @@ func (p *IdleActionBattery) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4640,7 +4641,7 @@ func (p *DeviceLoginScreenPowerManagement) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4669,7 +4670,7 @@ func (p *IdleActionAC) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4698,7 +4699,7 @@ func (p *ManagedBookmarks) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4727,7 +4728,7 @@ func (p *MaxInvalidationFetchDelay) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4756,7 +4757,7 @@ func (p *DefaultSearchProviderImageURL) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4787,7 +4788,7 @@ func (p *DefaultSearchProviderSearchURLPostParams) Equal(iface interface{}) bool
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4818,7 +4819,7 @@ func (p *DefaultSearchProviderSuggestURLPostParams) Equal(iface interface{}) boo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4849,7 +4850,7 @@ func (p *DefaultSearchProviderImageURLPostParams) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4880,7 +4881,7 @@ func (p *RequireOnlineRevocationChecksForLocalAnchors) Equal(iface interface{}) 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4909,7 +4910,7 @@ func (p *SystemUse24HourClock) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4938,7 +4939,7 @@ func (p *DefaultSearchProviderNewTabURL) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -4971,7 +4972,7 @@ func (p *AttestationForContentProtectionEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5000,7 +5001,7 @@ func (p *FullscreenAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5029,7 +5030,7 @@ func (p *DeviceAutoUpdateP2PEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5060,7 +5061,7 @@ func (p *DeviceUpdateHttpDownloadsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5090,7 +5091,7 @@ func (p *ChromeOsMultiProfileUserBehavior) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5119,7 +5120,7 @@ func (p *WaitForInitialUserActivity) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5148,7 +5149,7 @@ func (p *ReportDeviceUsers) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5182,7 +5183,7 @@ func (p *UserAvatarImage) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5215,7 +5216,7 @@ func (p *DeviceLocalAccountPromptForNetworkWhenOffline) Equal(iface interface{})
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5244,7 +5245,7 @@ func (p *SAMLOfflineSigninTimeLimit) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5273,7 +5274,7 @@ func (p *VirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5306,7 +5307,7 @@ func (p *DeviceLoginScreenDefaultVirtualKeyboardEnabled) Equal(iface interface{}
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5340,7 +5341,7 @@ func (p *PowerManagementIdleSettings) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5374,7 +5375,7 @@ func (p *ScreenLockDelays) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5403,7 +5404,7 @@ func (p *KeyboardDefaultToFunctionKeys) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5431,7 +5432,7 @@ func (p *WPADQuickCheckEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5465,7 +5466,7 @@ func (p *WallpaperImage) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5496,7 +5497,7 @@ func (p *RemoteAccessHostAllowRelayedConnection) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5525,7 +5526,7 @@ func (p *RemoteAccessHostUdpPortRange) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5554,7 +5555,7 @@ func (p *DeviceBlockDevmode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5588,7 +5589,7 @@ func (p *RegisteredProtocolHandlers) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5617,7 +5618,7 @@ func (p *TouchVirtualKeyboardEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5646,7 +5647,7 @@ func (p *DeviceTransferSAMLCookies) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5676,7 +5677,7 @@ func (p *EasyUnlockAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5705,7 +5706,7 @@ func (p *NetworkPredictionOptions) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5734,7 +5735,7 @@ func (p *SessionLocales) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5774,7 +5775,7 @@ func (p *ExtensionSettings) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5803,7 +5804,7 @@ func (p *SSLVersionMin) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5832,7 +5833,7 @@ func (p *ForceGoogleSafeSearch) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5861,7 +5862,7 @@ func (p *ForceYouTubeSafetyMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5890,7 +5891,7 @@ func (p *DeviceRebootOnShutdown) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5919,7 +5920,7 @@ func (p *ReportDeviceSessionStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5948,7 +5949,7 @@ func (p *ReportUploadFrequency) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5977,7 +5978,7 @@ func (p *HeartbeatEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6006,7 +6007,7 @@ func (p *HeartbeatFrequency) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6038,7 +6039,7 @@ func (p *CaptivePortalAuthenticationIgnoresProxy) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6066,7 +6067,7 @@ func (p *ExtensionCacheSize) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6099,7 +6100,7 @@ func (p *DeviceLoginScreenDomainAutoComplete) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6127,7 +6128,7 @@ func (p *ForceMaximizeOnFirstRun) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6156,7 +6157,7 @@ func (p *SSLErrorOverrideAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6184,7 +6185,7 @@ func (p *QuicAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6217,7 +6218,7 @@ func (p *KeyPermissions) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6248,7 +6249,7 @@ func (p *LogUploadEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6277,7 +6278,7 @@ func (p *UnifiedDesktopEnabledByDefault) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6306,7 +6307,7 @@ func (p *DefaultPrinterSelection) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6335,7 +6336,7 @@ func (p *AllowDinosaurEasterEgg) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6366,7 +6367,7 @@ func (p *DisplayRotationDefault) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6395,7 +6396,7 @@ func (p *RemoteAccessHostClientDomain) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6425,7 +6426,7 @@ func (p *ArcEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6469,7 +6470,7 @@ func (p *ArcPolicy) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6500,7 +6501,7 @@ func (p *AllowKioskAppControlChromeVersion) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6529,7 +6530,7 @@ func (p *DefaultWebBluetoothGuardSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6560,7 +6561,7 @@ func (p *LoginAuthenticationBehavior) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6588,7 +6589,7 @@ func (p *UsbDetachableWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6616,7 +6617,7 @@ func (p *DeviceAllowBluetooth) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6644,7 +6645,7 @@ func (p *SuppressUnsupportedOSWarning) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6675,7 +6676,7 @@ func (p *DeviceQuirksDownloadEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6706,7 +6707,7 @@ func (p *SystemTimezoneAutomaticDetection) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6735,7 +6736,7 @@ func (p *TaskManagerEndProcessEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6764,7 +6765,7 @@ func (p *LoginVideoCaptureAllowedUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6793,7 +6794,7 @@ func (p *AllowScreenLock) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6822,7 +6823,7 @@ func (p *ArcCertificatesSyncMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6851,7 +6852,7 @@ func (p *AllowedDomainsForApps) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6879,7 +6880,7 @@ func (p *EnableMediaRouter) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6910,7 +6911,7 @@ func (p *CertificateTransparencyEnforcementDisabledForUrls) Equal(iface interfac
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6941,7 +6942,7 @@ func (p *DeviceLoginScreenExtensions) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6969,7 +6970,7 @@ func (p *WebRtcUdpPortRange) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -6997,7 +6998,7 @@ func (p *ComponentUpdatesEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7026,7 +7027,7 @@ func (p *ExternalStorageReadOnly) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7055,7 +7056,7 @@ func (p *ForceYouTubeRestrict) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7084,7 +7085,7 @@ func (p *ReportArcStatusEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7113,7 +7114,7 @@ func (p *NativePrinters) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7143,7 +7144,7 @@ func (p *QuickUnlockModeWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7172,7 +7173,7 @@ func (p *QuickUnlockTimeout) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7201,7 +7202,7 @@ func (p *PinUnlockMinimumLength) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7230,7 +7231,7 @@ func (p *PinUnlockMaximumLength) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7259,7 +7260,7 @@ func (p *PinUnlockWeakPinsAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7293,7 +7294,7 @@ func (p *DeviceWallpaperImage) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7322,7 +7323,7 @@ func (p *NewTabPageLocation) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7350,7 +7351,7 @@ func (p *ShowCastIconInToolbar) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7378,7 +7379,7 @@ func (p *DeviceLoginScreenLocales) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7409,7 +7410,7 @@ func (p *DeviceLoginScreenInputMethods) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7439,7 +7440,7 @@ func (p *InstantTetheringAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7468,7 +7469,7 @@ func (p *RemoteAccessHostDomainList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7497,7 +7498,7 @@ func (p *RemoteAccessHostClientDomainList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7526,7 +7527,7 @@ func (p *DownloadRestrictions) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7556,7 +7557,7 @@ func (p *DeviceSecondFactorAuthentication) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7585,7 +7586,7 @@ func (p *NoteTakingAppsLockScreenWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7616,7 +7617,7 @@ func (p *CastReceiverEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7646,7 +7647,7 @@ func (p *CastReceiverName) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7680,7 +7681,7 @@ func (p *NativePrintersBulkConfiguration) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7709,7 +7710,7 @@ func (p *NativePrintersBulkAccessMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7738,7 +7739,7 @@ func (p *NativePrintersBulkBlacklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7767,7 +7768,7 @@ func (p *NativePrintersBulkWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7801,7 +7802,7 @@ func (p *DeviceNativePrinters) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7832,7 +7833,7 @@ func (p *DeviceNativePrintersAccessMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7863,7 +7864,7 @@ func (p *DeviceNativePrintersBlacklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7894,7 +7895,7 @@ func (p *DeviceNativePrintersWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7923,7 +7924,7 @@ func (p *AutofillCreditCardEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7952,7 +7953,7 @@ func (p *NtlmV2Enabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -7981,7 +7982,7 @@ func (p *PromptForDownloadLocation) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8014,7 +8015,7 @@ func (p *DeviceLoginScreenAutoSelectCertificateForUrls) Equal(iface interface{})
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8044,7 +8045,7 @@ func (p *UnaffiliatedArcAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8072,7 +8073,7 @@ func (p *IsolateOrigins) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8100,7 +8101,7 @@ func (p *SitePerProcess) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8129,7 +8130,7 @@ func (p *DefaultDownloadDirectory) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8158,7 +8159,7 @@ func (p *SecurityKeyPermitAttestation) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8187,7 +8188,7 @@ func (p *DeviceHostnameTemplate) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8218,7 +8219,7 @@ func (p *AbusiveExperienceInterventionEnforce) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8247,7 +8248,7 @@ func (p *SpellcheckLanguage) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8277,7 +8278,7 @@ func (p *SecondaryGoogleAccountSigninAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8306,7 +8307,7 @@ func (p *SpellcheckEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8335,7 +8336,7 @@ func (p *AdsSettingForIntrusiveAdsSites) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8364,7 +8365,7 @@ func (p *PasswordProtectionWarningTrigger) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8395,7 +8396,7 @@ func (p *DeviceKerberosEncryptionTypes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8428,7 +8429,7 @@ func (p *DeviceUserPolicyLoopbackProcessingMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8457,7 +8458,7 @@ func (p *RelaunchNotification) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8486,7 +8487,7 @@ func (p *RelaunchNotificationPeriod) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8517,7 +8518,7 @@ func (p *VirtualMachinesAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8546,7 +8547,7 @@ func (p *SafeBrowsingWhitelistDomains) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8575,7 +8576,7 @@ func (p *PasswordProtectionLoginURLs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8606,7 +8607,7 @@ func (p *PasswordProtectionChangePasswordURL) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8637,7 +8638,7 @@ func (p *DeviceMachinePasswordChangeRate) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8668,7 +8669,7 @@ func (p *DeviceRollbackAllowedMilestones) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8699,7 +8700,7 @@ func (p *DeviceRollbackToTargetVersion) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8730,7 +8731,7 @@ func (p *SafeBrowsingExtendedReportingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8759,7 +8760,7 @@ func (p *AutoplayAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8788,7 +8789,7 @@ func (p *AutoplayWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8817,7 +8818,7 @@ func (p *UserNativePrintersAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8846,7 +8847,7 @@ func (p *DefaultWebUsbGuardSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8877,7 +8878,7 @@ func (p *CertificateTransparencyEnforcementDisabledForCas) Equal(iface interface
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8908,7 +8909,7 @@ func (p *CertificateTransparencyEnforcementDisabledForLegacyCas) Equal(iface int
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8937,7 +8938,7 @@ func (p *MediaRouterCastAllowAllIPs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8969,7 +8970,7 @@ func (p *DeviceSamlLoginAuthenticationType) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -8998,7 +8999,7 @@ func (p *WebUsbAskForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9027,7 +9028,7 @@ func (p *WebUsbBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9056,7 +9057,7 @@ func (p *DeveloperToolsAvailability) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9084,7 +9085,7 @@ func (p *AllowedLanguages) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9113,7 +9114,7 @@ func (p *ArcAppInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9180,7 +9181,7 @@ func (p *UsageTimeLimit) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9209,7 +9210,7 @@ func (p *ArcBackupRestoreServiceEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9238,7 +9239,7 @@ func (p *ArcGoogleLocationServicesEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9267,7 +9268,7 @@ func (p *EnableSyncConsent) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9303,7 +9304,7 @@ func (p *DeviceAutoUpdateTimeRestrictions) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9332,7 +9333,7 @@ func (p *PromotionalTabsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9361,7 +9362,7 @@ func (p *SafeSitesFilterBehavior) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9390,7 +9391,7 @@ func (p *AllowedInputMethods) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9420,7 +9421,7 @@ func (p *OverrideSecurityRestrictionsOnInsecureOrigin) Equal(iface interface{}) 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9449,7 +9450,7 @@ func (p *DeviceUpdateStagingSchedule) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9478,7 +9479,7 @@ func (p *AutofillAddressEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9509,7 +9510,7 @@ func (p *UrlKeyedAnonymizedDataCollectionEnabled) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9537,7 +9538,7 @@ func (p *NetworkFileSharesAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9568,7 +9569,7 @@ func (p *DeviceLocalAccountManagedSessionEnabled) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9597,7 +9598,7 @@ func (p *WebRtcEventLogCollectionAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9626,7 +9627,7 @@ func (p *PowerSmartDimEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9657,7 +9658,7 @@ func (p *CoalesceH2ConnectionsWithClientCertificatesForHosts) Equal(iface interf
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9687,7 +9688,7 @@ func (p *NetBiosShareDiscoveryEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9730,7 +9731,7 @@ func (p *WebAppInstallForceList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9760,7 +9761,7 @@ func (p *SmsMessagesAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9789,7 +9790,7 @@ func (p *PrintingAllowedColorModes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9818,7 +9819,7 @@ func (p *PrintingAllowedDuplexModes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9847,7 +9848,7 @@ func (p *PrintingColorDefault) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9876,7 +9877,7 @@ func (p *PrintingDuplexDefault) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9915,7 +9916,7 @@ func (p *PrintingPaperSizeDefault) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9944,7 +9945,7 @@ func (p *PrintHeaderFooter) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -9973,7 +9974,7 @@ func (p *CrostiniAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10004,7 +10005,7 @@ func (p *DeviceUnaffiliatedCrostiniAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10035,7 +10036,7 @@ func (p *EnterpriseHardwarePlatformAPIEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10064,7 +10065,7 @@ func (p *ReportCrostiniUsageEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10093,7 +10094,7 @@ func (p *VpnConfigAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10132,7 +10133,7 @@ func (p *WebUsbAllowDevicesForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10162,7 +10163,7 @@ func (p *SmartLockSigninAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10191,7 +10192,7 @@ func (p *NTLMShareAuthenticationEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10227,7 +10228,7 @@ func (p *NetworkFileSharesPreconfiguredShares) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10256,7 +10257,7 @@ func (p *AllowWakeLocks) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10290,7 +10291,7 @@ func (p *ScreenBrightnessPercent) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10319,7 +10320,7 @@ func (p *CloudReportingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10350,7 +10351,7 @@ func (p *DeviceWiFiFastTransitionEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10390,7 +10391,7 @@ func (p *DeviceDisplayResolution) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10419,7 +10420,7 @@ func (p *PluginVmAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10453,7 +10454,7 @@ func (p *PluginVmImage) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10484,7 +10485,7 @@ func (p *PrintingSendUsernameAndFilenameEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10549,7 +10550,7 @@ func (p *DeviceGpoCacheLifetime) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10580,7 +10581,7 @@ func (p *DeviceAuthDataCacheLifetime) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10609,7 +10610,7 @@ func (p *ReportDevicePowerStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10638,7 +10639,7 @@ func (p *ReportDeviceStorageStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10667,7 +10668,7 @@ func (p *ReportDeviceBoardStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10698,7 +10699,7 @@ func (p *ClientCertificateManagementAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10728,7 +10729,7 @@ func (p *DeviceRebootOnUserSignout) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10757,7 +10758,7 @@ func (p *SchedulerConfiguration) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10786,7 +10787,7 @@ func (p *CrostiniExportImportUIAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10815,7 +10816,7 @@ func (p *PrintingAllowedPinModes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10844,7 +10845,7 @@ func (p *PrintingPinDefault) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10873,7 +10874,7 @@ func (p *VoiceInteractionContextEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10902,7 +10903,7 @@ func (p *AuthNegotiateDelegateByKdcPolicy) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10931,7 +10932,7 @@ func (p *VoiceInteractionHotwordEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10962,7 +10963,7 @@ func (p *DeviceWilcoDtcAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -10998,7 +10999,7 @@ func (p *DeviceWilcoDtcConfiguration) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11027,7 +11028,7 @@ func (p *SpellcheckLanguageBlacklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11056,7 +11057,7 @@ func (p *DeviceWiFiAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11085,7 +11086,7 @@ func (p *DevicePowerPeakShiftEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11118,7 +11119,7 @@ func (p *DevicePowerPeakShiftBatteryThreshold) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11158,7 +11159,7 @@ func (p *DevicePowerPeakShiftDayConfig) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11187,7 +11188,7 @@ func (p *DeviceBootOnAcEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11216,7 +11217,7 @@ func (p *SignedHTTPExchangeEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11247,7 +11248,7 @@ func (p *DeviceQuickFixBuildToken) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11278,7 +11279,7 @@ func (p *SamlInSessionPasswordChangeEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11307,7 +11308,7 @@ func (p *DeviceDockMacAddressSource) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11340,7 +11341,7 @@ func (p *DeviceAdvancedBatteryChargeModeEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11383,7 +11384,7 @@ func (p *DeviceAdvancedBatteryChargeModeDayConfig) Equal(iface interface{}) bool
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11414,7 +11415,7 @@ func (p *DeviceBatteryChargeMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11447,7 +11448,7 @@ func (p *DeviceBatteryChargeCustomStartCharging) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11480,7 +11481,7 @@ func (p *DeviceBatteryChargeCustomStopCharging) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11509,7 +11510,7 @@ func (p *DeviceUsbPowerShareEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11538,7 +11539,7 @@ func (p *PolicyListMultipleSourceMergeList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11569,7 +11570,7 @@ func (p *SamlPasswordExpirationAdvanceWarningDays) Equal(iface interface{}) bool
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11607,7 +11608,7 @@ func (p *DeviceScheduledUpdateCheck) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11636,7 +11637,7 @@ func (p *KerberosEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11665,7 +11666,7 @@ func (p *KerberosRememberPasswordEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11694,7 +11695,7 @@ func (p *KerberosAddAccountsAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11794,7 +11795,7 @@ func (p *StickyKeysEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11823,7 +11824,7 @@ func (p *AppRecommendationZeroStateEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11854,7 +11855,7 @@ func (p *PolicyDictionaryMultipleSourceMergeList) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11883,7 +11884,7 @@ func (p *RelaunchHeadsUpPeriod) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11913,7 +11914,7 @@ func (p *StartupBrowserWindowLaunchSuppressed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11942,7 +11943,7 @@ func (p *UserFeedbackAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -11973,7 +11974,7 @@ func (p *DevicePowerwashAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12007,7 +12008,7 @@ func (p *ExternalPrintServers) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12036,7 +12037,7 @@ func (p *SelectToSpeakEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12066,7 +12067,7 @@ func (p *CrostiniRootAccessAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12095,7 +12096,7 @@ func (p *VmManagementCliAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12124,7 +12125,7 @@ func (p *CACertificateManagementAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12153,7 +12154,7 @@ func (p *PasswordLeakDetectionEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12182,7 +12183,7 @@ func (p *LockScreenMediaPlaybackEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12212,7 +12213,7 @@ func (p *DnsOverHttpsMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12241,7 +12242,7 @@ func (p *PolicyAtomicGroupsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12270,7 +12271,7 @@ func (p *DictationEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12299,7 +12300,7 @@ func (p *KeyboardFocusHighlightEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12328,7 +12329,7 @@ func (p *CursorHighlightEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12357,7 +12358,7 @@ func (p *CaretHighlightEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12386,7 +12387,7 @@ func (p *MonoAudioEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12415,7 +12416,7 @@ func (p *AutoclickEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12448,7 +12449,7 @@ func (p *DeviceLoginScreenLargeCursorEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12476,7 +12477,7 @@ func (p *HSTSPolicyBypassList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12507,7 +12508,7 @@ func (p *ReportDeviceOsUpdateStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12550,7 +12551,7 @@ func (p *DeviceLoginScreenWebUsbAllowDevicesForUrls) Equal(iface interface{}) bo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12579,7 +12580,7 @@ func (p *AllowSyncXHRInPageDismissal) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12612,7 +12613,7 @@ func (p *DeviceLoginScreenSpokenFeedbackEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12645,7 +12646,7 @@ func (p *DeviceLoginScreenHighContrastEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12678,7 +12679,7 @@ func (p *DeviceLoginScreenVirtualKeyboardEnabled) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12707,7 +12708,7 @@ func (p *CloudExtensionRequestEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12740,7 +12741,7 @@ func (p *DeviceLoginScreenSystemInfoEnforced) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12769,7 +12770,7 @@ func (p *SharedClipboardEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12800,7 +12801,7 @@ func (p *DeviceLoginScreenDictationEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12833,7 +12834,7 @@ func (p *DeviceLoginScreenSelectToSpeakEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12866,7 +12867,7 @@ func (p *DeviceLoginScreenCursorHighlightEnabled) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12899,7 +12900,7 @@ func (p *DeviceLoginScreenCaretHighlightEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12930,7 +12931,7 @@ func (p *DeviceLoginScreenMonoAudioEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12961,7 +12962,7 @@ func (p *DeviceLoginScreenAutoclickEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -12994,7 +12995,7 @@ func (p *DeviceLoginScreenStickyKeysEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13027,7 +13028,7 @@ func (p *DeviceLoginScreenKeyboardFocusHighlightEnabled) Equal(iface interface{}
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13056,7 +13057,7 @@ func (p *ShelfAlignment) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13087,7 +13088,7 @@ func (p *PrintingAllowedBackgroundGraphicsModes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13116,7 +13117,7 @@ func (p *PrintingBackgroundGraphicsDefault) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13147,7 +13148,7 @@ func (p *LegacySameSiteCookieBehaviorEnabledForDomainList) Equal(iface interface
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13176,7 +13177,7 @@ func (p *PrintJobHistoryExpirationPeriod) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13209,7 +13210,7 @@ func (p *DeviceLoginScreenScreenMagnifierType) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13238,7 +13239,7 @@ func (p *ExternalPrintServersWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13267,7 +13268,7 @@ func (p *DefaultInsecureContentSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13296,7 +13297,7 @@ func (p *InsecureContentAllowedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13325,7 +13326,7 @@ func (p *InsecureContentBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13358,7 +13359,7 @@ func (p *DeviceWebBasedAttestationAllowedUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13391,7 +13392,7 @@ func (p *DeviceShowNumericKeyboardForPassword) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13425,7 +13426,7 @@ func (p *CrostiniAnsiblePlaybook) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13453,7 +13454,7 @@ func (p *WebRtcLocalIpsAllowedUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13505,7 +13506,7 @@ func (p *PerAppTimeLimits) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13534,7 +13535,7 @@ func (p *DnsOverHttpsTemplates) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13563,7 +13564,7 @@ func (p *GloballyScopeHTTPAuthCacheEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13592,7 +13593,7 @@ func (p *ClickToCallEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13625,7 +13626,7 @@ func (p *DeviceLoginScreenShowOptionsInSystemTrayMenu) Equal(iface interface{}) 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13654,7 +13655,7 @@ func (p *PrinterTypeDenyList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13682,7 +13683,7 @@ func (p *SyncTypesListDisabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13713,7 +13714,7 @@ func (p *AmbientAuthenticationInPrivateModesEnabled) Equal(iface interface{}) bo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13742,7 +13743,7 @@ func (p *PaymentMethodQueryEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13773,7 +13774,7 @@ func (p *StricterMixedContentTreatmentEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13803,7 +13804,7 @@ func (p *NTPCustomBackgroundEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13832,7 +13833,7 @@ func (p *DNSInterceptionChecksEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13861,7 +13862,7 @@ func (p *PrimaryMouseButtonSwitch) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13890,7 +13891,7 @@ func (p *ReportDeviceCpuInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13923,7 +13924,7 @@ func (p *DeviceLoginScreenPrimaryMouseButtonSwitch) Equal(iface interface{}) boo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13962,7 +13963,7 @@ func (p *PerAppTimeLimitsWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -13991,7 +13992,7 @@ func (p *AccessibilityShortcutsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14020,7 +14021,7 @@ func (p *ReportDeviceGraphicsStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14053,7 +14054,7 @@ func (p *DeviceLoginScreenAccessibilityShortcutsEnabled) Equal(iface interface{}
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14082,7 +14083,7 @@ func (p *PrintingAPIExtensionsWhitelist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14113,7 +14114,7 @@ func (p *ReportDeviceCrashReportInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14142,7 +14143,7 @@ func (p *ScreenCaptureAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14182,7 +14183,7 @@ func (p *DeviceMinimumVersion) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14211,7 +14212,7 @@ func (p *ReportDeviceTimezoneInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14247,7 +14248,7 @@ func (p *SystemProxySettings) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14276,7 +14277,7 @@ func (p *DeviceChromeVariations) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14309,7 +14310,7 @@ func (p *DeviceLoginScreenPrivacyScreenEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14338,7 +14339,7 @@ func (p *PrivacyScreenEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14368,7 +14369,7 @@ func (p *ForceLogoutUnauthenticatedUserEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14406,7 +14407,7 @@ func (p *RequiredClientCertificateForUser) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14448,7 +14449,7 @@ func (p *RequiredClientCertificateForDevice) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14477,7 +14478,7 @@ func (p *ReportDeviceMemoryInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14506,7 +14507,7 @@ func (p *SafeBrowsingProtectionLevel) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14535,7 +14536,7 @@ func (p *AdvancedProtectionAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14564,7 +14565,7 @@ func (p *ReportDeviceBacklightInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14592,7 +14593,7 @@ func (p *ScrollToTextFragmentEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14621,7 +14622,7 @@ func (p *SystemFeaturesDisableList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14651,7 +14652,7 @@ func (p *CrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14680,7 +14681,7 @@ func (p *FloatingAccessibilityMenuEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14709,7 +14710,7 @@ func (p *PrintingMaxSheetsAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14766,7 +14767,7 @@ func (p *OnFileAttachedEnterpriseConnector) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14800,7 +14801,7 @@ func (p *DeviceCrostiniArcAdbSideloadingAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14859,7 +14860,7 @@ func (p *OnFileDownloadedEnterpriseConnector) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14917,7 +14918,7 @@ func (p *OnBulkDataEntryEnterpriseConnector) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14946,7 +14947,7 @@ func (p *PluginVmUserId) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -14982,7 +14983,7 @@ func (p *OnSecurityEventEnterpriseConnector) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15011,7 +15012,7 @@ func (p *AutoOpenFileTypes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15040,7 +15041,7 @@ func (p *LoginDisplayPasswordButtonEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15069,7 +15070,7 @@ func (p *ReportDeviceAppInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15098,7 +15099,7 @@ func (p *AccessibilityImageLabelsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15127,7 +15128,7 @@ func (p *UserPluginVmAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15156,7 +15157,7 @@ func (p *AutoOpenAllowedForURLs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15185,7 +15186,7 @@ func (p *ReportDeviceBluetoothInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15214,7 +15215,7 @@ func (p *ReportDeviceFanInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15243,7 +15244,7 @@ func (p *ReportDeviceVpdInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15272,7 +15273,7 @@ func (p *EnableExperimentalPolicies) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15301,7 +15302,7 @@ func (p *PluginVmDataCollectionAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15330,7 +15331,7 @@ func (p *IntensiveWakeUpThrottlingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15361,7 +15362,7 @@ func (p *DeviceMinimumVersionAueMessage) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15392,7 +15393,7 @@ func (p *DefaultSearchProviderContextMenuAccessAllowed) Equal(iface interface{})
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15421,7 +15422,7 @@ func (p *CrostiniPortForwardingAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15458,7 +15459,7 @@ func (p *VirtualKeyboardFeatures) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15488,7 +15489,7 @@ func (p *PinUnlockAutosubmitEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15517,7 +15518,7 @@ func (p *LockScreenReauthenticationEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15546,7 +15547,7 @@ func (p *DeletePrintJobHistoryAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15576,7 +15577,7 @@ func (p *EmojiSuggestionEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15609,7 +15610,7 @@ func (p *ManagedGuestSessionPrivacyWarningsEnabled) Equal(iface interface{}) boo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15638,7 +15639,7 @@ func (p *PluginVmRequiredFreeDiskSpace) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15668,7 +15669,7 @@ func (p *SuggestedContentEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15699,7 +15700,7 @@ func (p *ExtensionInstallEventLoggingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15728,7 +15729,7 @@ func (p *EnterpriseRealTimeUrlCheckMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15756,7 +15757,7 @@ func (p *AssistantOnboardingMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15791,7 +15792,7 @@ func (p *DeviceExternalPrintServers) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15825,7 +15826,7 @@ func (p *DeviceExternalPrintServersAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15854,7 +15855,7 @@ func (p *SafeBrowsingAllowlistDomains) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15883,7 +15884,7 @@ func (p *DevicePrintersAccessMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15912,7 +15913,7 @@ func (p *DevicePrintersBlocklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15941,7 +15942,7 @@ func (p *DevicePrintersAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15970,7 +15971,7 @@ func (p *URLBlocklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -15999,7 +16000,7 @@ func (p *URLAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16028,7 +16029,7 @@ func (p *ExtensionInstallAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16058,7 +16059,7 @@ func (p *ShowFullUrlsInAddressBar) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16087,7 +16088,7 @@ func (p *ExtensionInstallBlocklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16116,7 +16117,7 @@ func (p *ReportDeviceSystemInfo) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16145,7 +16146,7 @@ func (p *AutoplayAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16179,7 +16180,7 @@ func (p *DevicePrinters) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16208,7 +16209,7 @@ func (p *AuthNegotiateDelegateAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16237,7 +16238,7 @@ func (p *AuthServerAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16266,7 +16267,7 @@ func (p *InsecureFormsWarningsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16295,7 +16296,7 @@ func (p *SpellcheckLanguageBlocklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16324,7 +16325,7 @@ func (p *ExternalPrintServersAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16353,7 +16354,7 @@ func (p *DefaultSerialGuardSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16382,7 +16383,7 @@ func (p *SerialAskForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16411,7 +16412,7 @@ func (p *SerialBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16440,7 +16441,7 @@ func (p *DefaultSensorsSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16469,7 +16470,7 @@ func (p *SensorsAllowedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16498,7 +16499,7 @@ func (p *SensorsBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16530,7 +16531,7 @@ func (p *DeviceChannelDowngradeBehavior) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16559,7 +16560,7 @@ func (p *NoteTakingAppsLockScreenAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16589,7 +16590,7 @@ func (p *NearbyShareAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16628,7 +16629,7 @@ func (p *PerAppTimeLimitsAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16661,7 +16662,7 @@ func (p *DeviceShowLowDiskSpaceNotification) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16690,7 +16691,7 @@ func (p *DeviceUserAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16718,7 +16719,7 @@ func (p *UsbDetachableAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16749,7 +16750,7 @@ func (p *InsecurePrivateNetworkRequestsAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16780,7 +16781,7 @@ func (p *InsecurePrivateNetworkRequestsAllowedForUrls) Equal(iface interface{}) 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16809,7 +16810,7 @@ func (p *UserPrintersAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16838,7 +16839,7 @@ func (p *Printers) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16872,7 +16873,7 @@ func (p *PrintersBulkConfiguration) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16901,7 +16902,7 @@ func (p *DeviceReleaseLtsTag) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16930,7 +16931,7 @@ func (p *PrintersBulkAccessMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16959,7 +16960,7 @@ func (p *DefaultFileSystemReadGuardSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -16990,7 +16991,7 @@ func (p *DefaultFileSystemWriteGuardSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17019,7 +17020,7 @@ func (p *FileSystemReadAskForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17048,7 +17049,7 @@ func (p *FileSystemReadBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17077,7 +17078,7 @@ func (p *FileSystemWriteAskForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17106,7 +17107,7 @@ func (p *FileSystemWriteBlockedForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17135,7 +17136,7 @@ func (p *PrintersBulkBlocklist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17164,7 +17165,7 @@ func (p *PrintersBulkAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17193,7 +17194,7 @@ func (p *LookalikeWarningAllowlistDomains) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17222,7 +17223,7 @@ func (p *PrintingAPIExtensionsAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17252,7 +17253,7 @@ func (p *QuickUnlockModeAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17281,7 +17282,7 @@ func (p *AttestationExtensionAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17331,7 +17332,7 @@ func (p *DataLeakPreventionRulesList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17359,7 +17360,7 @@ func (p *WebRtcAllowLegacyTLSProtocols) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17388,7 +17389,7 @@ func (p *MediaRecommendationsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17419,7 +17420,7 @@ func (p *DeviceFamilyLinkAccountsAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17448,7 +17449,7 @@ func (p *EduCoexistenceToSVersion) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17482,7 +17483,7 @@ func (p *BrowsingDataLifetime) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17511,7 +17512,7 @@ func (p *IntranetRedirectBehavior) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17547,7 +17548,7 @@ func (p *DeviceArcDataSnapshotHours) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17577,7 +17578,7 @@ func (p *PhoneHubAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17606,7 +17607,7 @@ func (p *PhoneHubNotificationsAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17635,7 +17636,7 @@ func (p *PhoneHubTaskContinuationAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17665,7 +17666,7 @@ func (p *WifiSyncAndroidAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17694,7 +17695,7 @@ func (p *SecurityTokenSessionBehavior) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17725,7 +17726,7 @@ func (p *SecurityTokenSessionNotificationSeconds) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17753,7 +17754,7 @@ func (p *TargetBlankImpliesNoOpener) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17782,7 +17783,7 @@ func (p *FullscreenAlertEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17811,7 +17812,7 @@ func (p *NTPCardsVisible) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17840,7 +17841,7 @@ func (p *BasicAuthOverHttpEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17869,7 +17870,7 @@ func (p *SystemFeaturesDisableMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17898,7 +17899,7 @@ func (p *ClearBrowsingDataOnExitList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17933,7 +17934,7 @@ func (p *ManagedConfigurationPerOrigin) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17962,7 +17963,7 @@ func (p *BrowserLabsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17995,7 +17996,7 @@ func (p *DeviceAllowMGSToStoreDisplayProperties) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18024,7 +18025,7 @@ func (p *SSLErrorOverrideAllowedForOrigins) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18053,7 +18054,7 @@ func (p *GaiaOfflineSigninTimeLimitDays) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18103,7 +18104,7 @@ func (p *SendDownloadToCloudEnterpriseConnector) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18134,7 +18135,7 @@ func (p *DeviceSystemWideTracingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18167,7 +18168,7 @@ func (p *DevicePciPeripheralDataAccessEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18198,7 +18199,7 @@ func (p *ContextAwareAccessSignalsAllowlist) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18230,7 +18231,7 @@ func (p *FetchKeepaliveDurationSecondsOnShutdown) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18261,7 +18262,7 @@ func (p *SuppressDifferentOriginSubframeDialogs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18290,7 +18291,7 @@ func (p *DeviceBorealisAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18319,7 +18320,7 @@ func (p *UserBorealisAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18349,7 +18350,7 @@ func (p *LacrosSecondaryProfilesAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18380,7 +18381,7 @@ func (p *GaiaLockScreenOfflineSigninTimeLimitDays) Equal(iface interface{}) bool
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18411,7 +18412,7 @@ func (p *SamlLockScreenOfflineSigninTimeLimitDays) Equal(iface interface{}) bool
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18441,7 +18442,7 @@ func (p *ReportDevicePrintJobs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18470,7 +18471,7 @@ func (p *SerialAllowAllPortsForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18509,7 +18510,7 @@ func (p *SerialAllowUsbDevicesForUrls) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18538,7 +18539,7 @@ func (p *CECPQ2Enabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18567,7 +18568,7 @@ func (p *WebRtcIPHandling) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18596,7 +18597,7 @@ func (p *PdfAnnotationsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18627,7 +18628,7 @@ func (p *DeviceAllowedBluetoothServices) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18656,7 +18657,7 @@ func (p *ExplicitlyAllowedNetworkPorts) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18687,7 +18688,7 @@ func (p *DeviceDebugPacketCaptureAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18718,7 +18719,7 @@ func (p *SuggestLogoutAfterClosingLastWindow) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18748,7 +18749,7 @@ func (p *SharedArrayBufferUnrestrictedAccessAllowed) Equal(iface interface{}) bo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18786,7 +18787,7 @@ func (p *RelaunchWindow) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18815,7 +18816,7 @@ func (p *LacrosAvailability) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18845,7 +18846,7 @@ func (p *DataLeakPreventionReportingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18874,7 +18875,7 @@ func (p *AdditionalDnsQueryTypesEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18903,7 +18904,7 @@ func (p *ManagedAccountsSigninRestriction) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18932,7 +18933,7 @@ func (p *LockIconInAddressBarEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18970,7 +18971,7 @@ func (p *DeviceScheduledReboot) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -18999,7 +19000,7 @@ func (p *ReportDeviceLoginLogout) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19027,7 +19028,7 @@ func (p *RemoteDebuggingAllowed) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19056,7 +19057,7 @@ func (p *DeviceAttributesAllowedForOrigins) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19085,7 +19086,7 @@ func (p *DefaultJavaScriptJitSetting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19114,7 +19115,7 @@ func (p *JavaScriptJitAllowedForSites) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19143,7 +19144,7 @@ func (p *JavaScriptJitBlockedForSites) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19172,7 +19173,7 @@ func (p *HttpsOnlyMode) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19202,7 +19203,7 @@ func (p *ReportDeviceAudioStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19233,7 +19234,7 @@ func (p *DeviceHostnameUserConfigurable) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19264,7 +19265,7 @@ func (p *ReportDeviceNetworkConfiguration) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19293,7 +19294,7 @@ func (p *ReportDeviceNetworkStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19323,7 +19324,7 @@ func (p *DataLeakPreventionClipboardCheckSizeLimit) Equal(iface interface{}) boo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19353,7 +19354,7 @@ func (p *CrossOriginWebAssemblyModuleSharingEnabled) Equal(iface interface{}) bo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19386,7 +19387,7 @@ func (p *RestrictedManagedGuestSessionExtensionCleanupExemptList) Equal(iface in
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19416,7 +19417,7 @@ func (p *DisplayCapturePermissionsPolicyEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19445,7 +19446,7 @@ func (p *ScreenCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19474,7 +19475,7 @@ func (p *WindowCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19503,7 +19504,7 @@ func (p *TabCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19534,7 +19535,7 @@ func (p *SameOriginTabCaptureAllowedByOrigins) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19565,7 +19566,7 @@ func (p *AssistantVoiceMatchEnabledDuringOobe) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19594,7 +19595,7 @@ func (p *LensRegionSearchEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19623,7 +19624,7 @@ func (p *ArcAppToWebAppSharingEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19654,7 +19655,7 @@ func (p *EnhancedNetworkVoicesInSelectToSpeakAllowed) Equal(iface interface{}) b
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19683,7 +19684,7 @@ func (p *PrintRasterizePdfDpi) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19714,7 +19715,7 @@ func (p *DeviceTargetVersionSelector) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19747,7 +19748,7 @@ func (p *DeviceRestrictedManagedGuestSessionEnabled) Equal(iface interface{}) bo
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19776,7 +19777,7 @@ func (p *PrintPdfAsImageDefault) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19804,7 +19805,7 @@ func (p *FullRestoreEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19832,7 +19833,7 @@ func (p *GhostWindowEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19861,7 +19862,7 @@ func (p *ReportDeviceSecurityStatus) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19892,7 +19893,7 @@ func (p *EnableDeviceGranularReporting) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19925,7 +19926,7 @@ func (p *DeviceLoginScreenPromptOnMultipleMatchingCertificates) Equal(iface inte
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19956,7 +19957,7 @@ func (p *PromptOnMultipleMatchingCertificates) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -19984,7 +19985,7 @@ func (p *SideSearchEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20014,7 +20015,7 @@ func (p *AccessCodeCastEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20044,7 +20045,7 @@ func (p *AccessCodeCastDeviceDuration) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20074,7 +20075,7 @@ func (p *DeskTemplatesEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20109,7 +20110,7 @@ func (p *PreconfiguredDeskTemplates) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20139,7 +20140,7 @@ func (p *FastPairEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20167,7 +20168,7 @@ func (p *SandboxExternalProtocolBlocked) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20201,7 +20202,7 @@ func (p *ReportDeviceNetworkTelemetryCollectionRateMs) Equal(iface interface{}) 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20235,7 +20236,7 @@ func (p *ReportDeviceNetworkTelemetryEventCheckingRateMs) Equal(iface interface{
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20266,7 +20267,7 @@ func (p *KioskCRXManifestUpdateURLIgnored) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20295,7 +20296,7 @@ func (p *QuickAnswersEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20324,7 +20325,7 @@ func (p *QuickAnswersDefinitionEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20353,7 +20354,7 @@ func (p *QuickAnswersTranslationEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20384,7 +20385,7 @@ func (p *QuickAnswersUnitConverstionEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20415,7 +20416,7 @@ func (p *RemoteAccessHostClipboardSizeBytes) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20446,7 +20447,7 @@ func (p *RemoteAccessHostAllowRemoteSupportConnections) Equal(iface interface{})
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20477,7 +20478,7 @@ func (p *UserAgentClientHintsGREASEUpdateEnabled) Equal(iface interface{}) bool 
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20506,7 +20507,7 @@ func (p *DeviceI18nShortcutsEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20535,7 +20536,7 @@ func (p *HistoryClustersVisible) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20566,7 +20567,7 @@ func (p *ChromadToCloudMigrationEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20602,7 +20603,7 @@ func (p *CopyPreventionSettings) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20636,7 +20637,7 @@ func (p *ReportDeviceAudioStatusCheckingRateMs) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20668,7 +20669,7 @@ func (p *FullscreenNotificationUrlExemptList) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20725,7 +20726,7 @@ func (p *OnPrintEnterpriseConnector) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20754,7 +20755,7 @@ func (p *UserAgentReduction) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20783,7 +20784,7 @@ func (p *OriginAgentClusterDefaultEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20814,7 +20815,7 @@ func (p *DeviceLoginScreenWebUILazyLoading) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -20843,7 +20844,99 @@ func (p *ProjectorEnabled) Equal(iface interface{}) bool {
 	if !ok {
 		return ok
 	}
-	return cmp.Equal(p.Val, v)
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 936. PhoneHubCameraRollAllowed
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type PhoneHubCameraRollAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *PhoneHubCameraRollAllowed) Name() string          { return "PhoneHubCameraRollAllowed" }
+func (p *PhoneHubCameraRollAllowed) Field() string         { return "" }
+func (p *PhoneHubCameraRollAllowed) Scope() Scope          { return ScopeUser }
+func (p *PhoneHubCameraRollAllowed) Status() Status        { return p.Stat }
+func (p *PhoneHubCameraRollAllowed) UntypedV() interface{} { return p.Val }
+func (p *PhoneHubCameraRollAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *PhoneHubCameraRollAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 937. EcheAllowed
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type EcheAllowed struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *EcheAllowed) Name() string          { return "EcheAllowed" }
+func (p *EcheAllowed) Field() string         { return "" }
+func (p *EcheAllowed) Scope() Scope          { return ScopeUser }
+func (p *EcheAllowed) Status() Status        { return p.Stat }
+func (p *EcheAllowed) UntypedV() interface{} { return p.Val }
+func (p *EcheAllowed) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *EcheAllowed) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 938. DeviceKeylockerForStorageEncryptionEnabled
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type DeviceKeylockerForStorageEncryptionEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeviceKeylockerForStorageEncryptionEnabled) Name() string {
+	return "DeviceKeylockerForStorageEncryptionEnabled"
+}
+func (p *DeviceKeylockerForStorageEncryptionEnabled) Field() string {
+	return "keylocker_for_storage_encryption_enabled.enabled"
+}
+func (p *DeviceKeylockerForStorageEncryptionEnabled) Scope() Scope          { return ScopeDevice }
+func (p *DeviceKeylockerForStorageEncryptionEnabled) Status() Status        { return p.Stat }
+func (p *DeviceKeylockerForStorageEncryptionEnabled) UntypedV() interface{} { return p.Val }
+func (p *DeviceKeylockerForStorageEncryptionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeviceKeylockerForStorageEncryptionEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
