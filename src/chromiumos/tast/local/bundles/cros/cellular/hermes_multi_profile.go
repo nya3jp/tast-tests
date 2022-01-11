@@ -9,10 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/hermesconst"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/hermes"
-	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/testing"
 )
 
@@ -30,18 +28,6 @@ func init() {
 }
 
 func HermesMultiProfile(ctx context.Context, s *testing.State) {
-	ctxForCleanUp := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
-	defer cancel()
-	uninhibit, err := modemmanager.InhibitModem(ctx)
-	if err != nil {
-		s.Fatal("Failed to inhibit modem: ", err)
-	}
-	defer func(ctx context.Context) {
-		if err := uninhibit(ctxForCleanUp); err != nil {
-			s.Fatal("Failed to uninhibit modem: ", err)
-		}
-	}(ctxForCleanUp)
 
 	const prodSimSlotNum = 0
 	euicc, err := hermes.NewEUICC(ctx, prodSimSlotNum)
