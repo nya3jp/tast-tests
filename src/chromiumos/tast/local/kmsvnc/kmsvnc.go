@@ -10,6 +10,8 @@ import (
 	"context"
 	"encoding/binary"
 	"net"
+	"os"
+	"path/filepath"
 	"strings"
 	"syscall"
 	"time"
@@ -38,7 +40,7 @@ type Kmsvnc struct {
 
 // NewKmsvnc launches kmsvnc as a subprocess and returns a handle.
 // Blocks until kmsvnc is ready to accept connections, so it's safe to connect to kmsvnc once this function returns.
-func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
+func NewKmsvnc(ctx context.Context, quiet bool) (*Kmsvnc, error) {
 	cmd := testexec.CommandContext(ctx, "kmsvnc")
 
 	// Create a pipe for stderr which we'll be listening later.
@@ -57,10 +59,35 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 	// TODO(b/177965296): Save logs to separate file.
 	ready := make(chan bool)
 	go func(ready chan<- bool) {
+		logger := func(s string) {
+			testing.ContextLog(ctx, "kmsvnc: ", s)
+		}
+		if quiet {
+			outDir, ok := testing.ContextOutDir(ctx)
+			if !ok {
+				testing.ContextLog(ctx, "Unable to determine the output directory")
+			} else {
+				outFile := filepath.Join(outDir, "kmsvnc.log")
+
+				file, err := os.Create(outFile)
+				if err != nil {
+					testing.ContextLog(ctx, "Failed to open kmsvnc log file for appending: ", err)
+				}
+				defer file.Close()
+
+				logger = func(s string) {
+					_, err := file.WriteString(s + "\n")
+					if err != nil {
+						testing.ContextLog(ctx, "Failed to write string to kmsvnc log file: ", err)
+					}
+				}
+			}
+		}
+
 		scanner := bufio.NewScanner(stderr)
 		for scanner.Scan() {
 			t := scanner.Text()
-			testing.ContextLog(ctx, "kmsvnc: ", t)
+			logger(t)
 			if ready != nil && strings.Contains(t, kmsvncReadyMessage) {
 				ready <- true
 				close(ready)
@@ -97,6 +124,8 @@ func NewKmsvnc(ctx context.Context) (*Kmsvnc, error) {
 		if !ok {
 			cleanup()
 			return nil, errors.New("kmsvnc process exited unexpectedly, check logs for details")
+		} else if quiet {
+			testing.ContextLog(ctx, "kmsvnc is ready. Logging to kmsvnc.log")
 		}
 		return &Kmsvnc{cmd: cmd}, nil
 	}
