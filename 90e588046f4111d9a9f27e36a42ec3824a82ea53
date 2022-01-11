@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "965c70b9_8cc733a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-11T01:26:20Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "90e588046f4111d9a9f27e36a42ec3824a82ea53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "834e4c35_1dfdadcc",
+        "filename": "src/chromiumos/tast/local/kmsvnc/kmsvnc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-11T01:26:20Z",
+      "side": 1,
+      "message": "I would personally suggest to use name like silent / verbose.\n\nHave not seen `quiet` before. A bit weird.",
+      "range": {
+        "startLine": 43,
+        "startChar": 36,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "90e588046f4111d9a9f27e36a42ec3824a82ea53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
