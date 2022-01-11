@@ -391,7 +391,6 @@ func CommonSections(advanceExpanded bool) map[string]*nodewith.Finder {
 		"Accounts":             Accounts,
 		"Device":               Device,
 		"Personalization":      Personalization,
-		"Search And Assistant": SearchAndAssistant,
 		"Security And Privacy": SecurityAndPrivacy,
 		"Apps":                 Apps,
 		"About ChromeOS":       AboutChromeOS,
