@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "215ca3cb_d39e10e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/rollback_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T16:36:09Z",
+      "side": 1,
+      "message": "Does KeepEnrollment not suffice?",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "3958461ac84de02319573a0eef5afaad51ac90d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d252d739_7f56d319",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/rollback_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T16:36:09Z",
+      "side": 1,
+      "message": "Dos NoLogin make more sense?",
+      "range": {
+        "startLine": 66,
+        "startChar": 35,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "3958461ac84de02319573a0eef5afaad51ac90d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48daafe2_79906341",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T16:36:09Z",
+      "side": 1,
+      "message": "Not sure you need to document everything this service does here. Maybe change to:\n\n// RollbackService provides helpers to verify that an enterprise rollback was successful.",
+      "revId": "3958461ac84de02319573a0eef5afaad51ac90d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe49629_46921c42",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T16:36:09Z",
+      "side": 1,
+      "message": "Document what the function does. Mention that it uses a hard-coded setup that is shared by VerifyRollback.",
+      "revId": "3958461ac84de02319573a0eef5afaad51ac90d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac96ce4f_bd33a811",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T16:36:09Z",
+      "side": 1,
+      "message": "use SetUpPskResponse",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 16,
+        "endChar": 59
+      },
+      "revId": "3958461ac84de02319573a0eef5afaad51ac90d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1c17499_48b8a6f4",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T16:36:09Z",
+      "side": 1,
+      "message": "use VerifyRollbackRequest",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "3958461ac84de02319573a0eef5afaad51ac90d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bac7f3ea_51e35559",
+        "filename": "src/chromiumos/tast/services/cros/policy/rollback_service.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-11T16:36:09Z",
+      "side": 1,
+      "message": "rename to VerifyRollbackResponse",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 63
+      },
+      "revId": "3958461ac84de02319573a0eef5afaad51ac90d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
