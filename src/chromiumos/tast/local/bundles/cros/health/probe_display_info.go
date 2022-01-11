@@ -6,6 +6,7 @@ package health
 
 import (
 	"context"
+	"math"
 	"strconv"
 	"strings"
 
@@ -216,6 +217,33 @@ func verifyEmbeddedDisplayResolutionSize(ctx context.Context, EDP *embeddedDispl
 	return nil
 }
 
+func verifyEmbeddedDisplayRefreshRate(ctx context.Context, EDP *embeddedDisplayInfo) error {
+	var wantRefreshRate float64
+	if crtcID, err := getEmbeddedDisplayCrtcID(ctx); err != nil {
+		return err
+	} else if htotalRaw, err := getModetestCrtcInfo(ctx, crtcID, 7); err != nil {
+		return err
+	} else if htotal, err := strconv.ParseUint(htotalRaw, 10, 32); err != nil {
+		return err
+	} else if vtotalRaw, err := getModetestCrtcInfo(ctx, crtcID, 11); err != nil {
+		return err
+	} else if vtotal, err := strconv.ParseUint(vtotalRaw, 10, 32); err != nil {
+		return err
+	} else if clockRaw, err := getModetestCrtcInfo(ctx, crtcID, 12); err != nil {
+		return err
+	} else if clock, err := strconv.ParseUint(clockRaw, 10, 32); err != nil {
+		return err
+	} else {
+		wantRefreshRate = float64(clock) * 1000.0 / float64(htotal*vtotal)
+	}
+
+	if math.Abs(wantRefreshRate-*EDP.RefreshRate) > 0.01 {
+		return errors.Errorf("failed. RefreshRate doesn't match: got %v; want %v", *EDP.RefreshRate, wantRefreshRate)
+	}
+
+	return nil
+}
+
 func verifyEmbeddedDisplayInfo(ctx context.Context, EDP *embeddedDisplayInfo) error {
 	if err := verifyPrivacyScreenInfo(ctx, EDP); err != nil {
 		return err
@@ -224,6 +252,9 @@ func verifyEmbeddedDisplayInfo(ctx context.Context, EDP *embeddedDisplayInfo) er
 		return err
 	}
 	if err := verifyEmbeddedDisplayResolutionSize(ctx, EDP); err != nil {
+		return err
+	}
+	if err := verifyEmbeddedDisplayRefreshRate(ctx, EDP); err != nil {
 		return err
 	}
 
