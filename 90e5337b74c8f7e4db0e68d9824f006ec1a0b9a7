@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8408dd87_29fced48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-11T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ca750ff_11618b10",
+      "range": {
+        "startLine": 369,
+        "startChar": 16,
+        "endLine": 369,
+        "endChar": 43
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f8a960e_257e170e",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34297900_96f5adc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-11T11:58:12Z",
+      "side": 1,
+      "message": "This is a test which we are planning to run at Intel end and by other ODMs.\nHave documented the command to execute in the Git message",
+      "parentUuid": "9f8a960e_257e170e",
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89111ca3_989199f5",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-12-16T15:29:14Z",
       "side": 1,
       "message": "nit: const\n\nditto for below.",
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9accd46b_f5a74230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-11T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89111ca3_989199f5",
       "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8940fdbe_6e367981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-11T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "007a88d4_9708641e",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 2
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be96a666_446138a9",
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bff4322b_6a8d1775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-11T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be96a666_446138a9",
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b27379e_972fb805",
@@ -111,6 +213,30 @@
       "writtenOn": "2021-12-16T15:29:14Z",
       "side": 1,
       "message": "in go, we often avoid prefixes, like is, get, has. just videoPlaying.",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 6
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5917b7d_b1786d6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-11T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b27379e_972fb805",
       "range": {
         "startLine": 166,
         "startChar": 4,
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2690d02b_0b910cba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-11T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f47e2a_ab6a4945",
+      "range": {
+        "startLine": 173,
+        "startChar": 20,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6de750a_f93b8f1d",
@@ -157,6 +307,30 @@
       "writtenOn": "2021-12-16T15:29:14Z",
       "side": 1,
       "message": "optional: maybe \"elapsed\" ?",
+      "range": {
+        "startLine": 198,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 9
+      },
+      "revId": "90e5337b74c8f7e4db0e68d9824f006ec1a0b9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b6e5409_e436c429",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-11T11:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6de750a_f93b8f1d",
       "range": {
         "startLine": 198,
         "startChar": 2,
