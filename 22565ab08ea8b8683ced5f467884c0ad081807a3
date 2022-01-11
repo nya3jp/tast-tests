@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f51c958_118577c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/menu_overflow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-11T04:05:20Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "179945be_c3fc4bea",
+      "range": {
+        "startLine": 120,
+        "startChar": 71,
+        "endLine": 120,
+        "endChar": 73
+      },
+      "revId": "22565ab08ea8b8683ced5f467884c0ad081807a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ca99b02_86f43916",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1ffce2_c02c00f8",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-11T04:05:20Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "8ca99b02_86f43916",
+      "range": {
+        "startLine": 723,
+        "startChar": 1,
+        "endLine": 723,
+        "endChar": 30
+      },
+      "revId": "22565ab08ea8b8683ced5f467884c0ad081807a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7f946ae_03183fbe",
@@ -77,6 +125,24 @@
       "writtenOn": "2022-01-07T19:24:47Z",
       "side": 1,
       "message": "nit: delete unnecessary whitespace (unless it was added by gofmt/golint)",
+      "revId": "22565ab08ea8b8683ced5f467884c0ad081807a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b8e3c3_341ee83b",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-11T04:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f946ae_03183fbe",
       "revId": "22565ab08ea8b8683ced5f467884c0ad081807a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
