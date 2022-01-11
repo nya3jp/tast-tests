@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7078b4_fa5aa490",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-11T18:05:39Z",
+      "side": 1,
+      "message": "Thanks Seewai, in fact, I was also debating about that. I was experimenting with the level statefulness with keyboard service (my initial service out of the 4) and my initial version had a keyboard pointer in the svc, ultimately I decided against that in favor of a more stateless approach, hoping that the end users will not have to be responsible with the state management (like calling New() and Close()) method. However down the road though, with the SharedObject, ChromeService, UIAutoService implementation, services are become more stateful, so statefulness of Keyboard service is becoming a moot point.\n\nBased on my tests, functionally both approaches work. I looked at the keyboard code, and under the hood it is writing the keystrokes as events to a file (I am assuming the system pickups the events from there). The stateless approach does have some overhead of opening/closing that file handle.\n\nAnyhow I will revisit this and probably do a little profiling on this.",
+      "parentUuid": "a43ab40f_0cd9be3f",
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c8f8856_c070c324",
