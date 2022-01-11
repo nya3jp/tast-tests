@@ -238,6 +238,10 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 
 		if isSame {
 			identicalScreenshots[vt]++
+			err := os.Remove(currtVTScreenshot)
+			if err != nil {
+				s.Errorf("Error deleting file %d", currtVTScreenshot)
+			}
 		} else {
 			s.Errorf("Initial and current VT %d are different in iteration %d by %d percent", vt, id, percentDiffPixels)
 			maxDifferencePercent[vt] = max(maxDifferencePercent[vt], percentDiffPixels)
