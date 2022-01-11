@@ -1,6 +1,230 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "157f92f3_dfdf5220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "I think the calculation looks right. But it isn\u0027t good to use a global variable as a parameter to the function.",
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c219c59c_b3f29726",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "Please no global that changes over time and is used in functions.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46935d8d_cf512e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "Add a constant for the 5%, say\n samenessRatio \u003d 0.05",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce3b2453_0ee78b8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "How about numPixels or imagePixels?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 12
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b0f5f9_b7f70e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "I think this is too much too complicated.\nYou are using a side effect. That is not good.\n\nThis should be either a constant or a parameter to the function. Having a global variable that changes over time used in the function makes it really complicated to understand what is happening, even if it is right.\n\nNow that it can\u0027t be a constant it needs to be a parameter.\nAlternatively maybe split the totalPixels/numPixels calculation into its own function.",
+      "range": {
+        "startLine": 135,
+        "startChar": 37,
+        "endLine": 135,
+        "endChar": 57
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff032900_cfbd0678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "differentPixels",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 8
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cfece85_3ecd1ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "I am sorry. This should not be an integer. And normally it is simpler to not multiply with 100.0. How about\n\npixelDifferenceRatio :\u003d float64(differentPixels) / float64(imagePixels)",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 74
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd222a0_221d3fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "pixelDifferenceRatio",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 159,
+        "endChar": 31
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4363e7f_59295d90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "initialRatio",
+      "range": {
+        "startLine": 206,
+        "startChar": 9,
+        "endLine": 206,
+        "endChar": 28
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1526fc2a_c4f50ca9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "samenessThreshold \u003d samenessRatio * float64(initialRatio)\n\nmove samenessRatio \u003d 0.05 as constant",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 21
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c47234b6_ed5e8245",
@@ -14,6 +238,24 @@
       "writtenOn": "2022-01-11T22:33:26Z",
       "side": 1,
       "message": "basically i take 5% of the absolute difference percentage. Thus I get a new percentage which is 5% of the difference of between VT1 and VT2, I wonder if I can further simplify this for other developers",
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42134ea6_4ad7139b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T23:19:35Z",
+      "side": 1,
+      "message": "I think we should leave a comment that says we keep track of two 5% bands around the original VT1/VT2 screenshots. Images are considered the same if they fall within the 5% band, which should take care of small differences like the clock ticking but will fail if the images are too different.",
+      "parentUuid": "c47234b6_ed5e8245",
       "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
