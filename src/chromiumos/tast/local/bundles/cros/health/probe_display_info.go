@@ -75,6 +75,33 @@ const (
 	connectorEncoders                         = 7
 )
 
+type modetestEncoderColumn int
+
+const (
+	encoderID             modetestEncoderColumn = 1
+	encoderCrtc                                 = 2
+	encoderType                                 = 3
+	encoderPossibleCrtcs                        = 4
+	encoderPossibleClones                       = 5
+)
+
+type modetestCrtcColumn int
+
+const (
+	crtcID         modetestCrtcColumn = 1
+	crtcName                          = 2
+	crtcVrefresh                      = 3
+	crtcHdisplay                      = 4
+	crtcHsyncStart                    = 5
+	crtcHsyncEnd                      = 6
+	crtcHtotal                        = 7
+	crtcVdisplay                      = 8
+	crtcVSyncStart                    = 9
+	crtcVsyncEnd                      = 10
+	crtcVtotal                        = 11
+	crtcClock                         = 12
+)
+
 func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
 	b, err := testexec.CommandContext(ctx, "modetest", "-c").Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -145,6 +172,37 @@ func getModetestConnectorInfo(ctx context.Context, column modetestConnectorColum
 	return strings.TrimRight(string(b), "\n"), nil
 }
 
+func getModetestEncoderInfo(ctx context.Context, encoderID string, column modetestEncoderColumn) (string, error) {
+	// Example output of "modetest -e" (partially):
+	// id      crtc    type    possible crtcs  possible clones
+	// 70      41      TMDS    0x00000007      0x00000001
+	//
+	// We'll try to get the line that starts with |encoderID| first, and get the value for crtc ID at column 2.
+	cmd := "modetest -e | grep ^" + encoderID + " | awk -e '{print $" + strconv.Itoa(int(column)) + "}'"
+	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimRight(string(b), "\n"), nil
+}
+
+func getModetestCrtcInfo(ctx context.Context, crtcID string, column modetestCrtcColumn) (string, error) {
+	// Example output of "modetest -p" (partially):
+	// id      fb      pos     size
+	// 41      97      (0,0)   (1920x1280)
+	//   #0 1920x1280 60.00 1920 1944 1992 2080 1280 1286 1303 1320 164740 flags: nhsync, nvsync; type: preferred, driver
+	//
+	// We'll try to get the line that starts with |crtcID| first, get the following line as details info, and get the value at |column| index.
+	cmd := "modetest -p | grep ^" + crtcID + " -A 1 | sed '1d' | awk -e '{print $" + strconv.Itoa(int(column)) + "}'"
+	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimRight(string(b), "\n"), nil
+}
+
 func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) error {
 	sizeRaw, err := getModetestConnectorInfo(ctx, connectorSize)
 	if err != nil {
@@ -167,11 +225,36 @@ func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) er
 	return nil
 }
 
+func verifyEmbeddedDisplayResolutionSize(ctx context.Context, EDP *embeddedDisplayInfo) error {
+	if encoderID, err := getModetestConnectorInfo(ctx, connectorEncoder); err != nil {
+		return err
+	} else if crtcID, err := getModetestEncoderInfo(ctx, encoderID, encoderCrtc); err != nil {
+		return err
+	} else if widthRaw, err := getModetestCrtcInfo(ctx, crtcID, crtcHdisplay); err != nil {
+		return nil
+	} else if width, err := strconv.ParseUint(widthRaw, 10, 32); err != nil {
+		return err
+	} else if err := compareUint32Pointer(EDP.ResolutionWidth, uint32(width), "ResolutionWidth"); err != nil {
+		return err
+	} else if heightRaw, err := getModetestCrtcInfo(ctx, crtcID, crtcVdisplay); err != nil {
+		return err
+	} else if height, err := strconv.ParseUint(heightRaw, 10, 32); err != nil {
+		return err
+	} else if err := compareUint32Pointer(EDP.ResolutionHeight, uint32(height), "ResolutionHeight"); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func verifyEmbeddedDisplayInfo(ctx context.Context, EDP *embeddedDisplayInfo) error {
 	if err := verifyPrivacyScreenInfo(ctx, EDP); err != nil {
 		return err
 	}
 	if err := verifyEmbeddedDisplaySize(ctx, EDP); err != nil {
+		return err
+	}
+	if err := verifyEmbeddedDisplayResolutionSize(ctx, EDP); err != nil {
 		return err
 	}
 
