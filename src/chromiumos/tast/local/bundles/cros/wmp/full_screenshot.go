@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -48,17 +49,20 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, s.OutDir(), s.HasError)
-
 	// For verifying the full screenshot later, delete all screenshot files first.
 	if err := deleteAllScreenshots(); err != nil {
 		s.Fatal("Failed to delete all screenshots: ", err)
 	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	defer cancel()
+
+	if err := wmp.LaunchScreenCapture(ctx, tconn); err != nil {
+		s.Fatal("Failed to launch 'Screen capture': ", err)
+	}
+	defer wmputils.EnsureCaptureModeActivated(tconn, false)(cleanupCtx)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
 
 	testing.ContextLog(ctx, "Launch 'Screen capture' and capture screenshot")
 	if err := wmp.CaptureScreenshot(tconn, wmp.FullScreen)(ctx); err != nil {
