@@ -16,6 +16,24 @@
       "message": "LGTM. Btw, this repeat_test script - is it in the Tast repo? Just curious to know if we could also use it for checking flakiness of tests.",
       "revId": "e64e5aa0413093923f96f6e18a62201f119a6609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800c798e_06a79a85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-11T17:35:42Z",
+      "side": 1,
+      "message": "Yep, that\u0027s exactly what I use it for. The script is located in platform/tast-tests/tools. The pattern is: `./repeat-test.sh \u003cconfig\u003e -- \u003cflags to pass to the tast run command\u003e`. The command above tries to run the arc.StandardizedKeyboardCopy* script 100 times, and stops on the first error.",
+      "parentUuid": "c4c0d21b_b91ee342",
+      "revId": "e64e5aa0413093923f96f6e18a62201f119a6609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
