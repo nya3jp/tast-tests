@@ -46,6 +46,30 @@
       },
       "revId": "ad8cdbcccd1d73b4af07514910f17413f9a7aebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2861fb73_c55b09f8",
+        "filename": "src/chromiumos/tast/remote/wificell/router/axrouter/ax_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-01-11T06:10:33Z",
+      "side": 1,
+      "message": "I think current logic is good enough. Since we basically use the same channel for simple connect testing, so that the radio used for testing is known per router type.",
+      "parentUuid": "eedf99e4_f02ed9f7",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "ad8cdbcccd1d73b4af07514910f17413f9a7aebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
