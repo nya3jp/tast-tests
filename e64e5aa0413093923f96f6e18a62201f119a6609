@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c0d21b_b91ee342",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-11T16:26:41Z",
+      "side": 1,
+      "message": "LGTM. Btw, this repeat_test script - is it in the Tast repo? Just curious to know if we could also use it for checking flakiness of tests.",
+      "revId": "e64e5aa0413093923f96f6e18a62201f119a6609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
