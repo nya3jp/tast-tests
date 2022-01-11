@@ -16,6 +16,29 @@
       "message": "basically i take 5% of the absolute difference percentage. Thus I get a new percentage which is 5% of the difference of between VT1 and VT2, I wonder if I can further simplify this for other developers",
       "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fbb0f77_1c34076b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-11T22:48:38Z",
+      "side": 1,
+      "message": "Lets move this into its own change and use less empty lines.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 0
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
