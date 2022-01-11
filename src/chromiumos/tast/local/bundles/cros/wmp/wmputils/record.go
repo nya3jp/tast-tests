@@ -27,22 +27,27 @@ type recordModeCondition struct {
 // EnsureCaptureModeActivated makes sure that the capture mode is activated.
 func EnsureCaptureModeActivated(tconn *chrome.TestConn, activated bool) uiauto.Action {
 	return func(ctx context.Context) error {
+		ac := uiauto.New(tconn)
+
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create a keyboard")
+		}
+
+		topRow, err := input.KeyboardTopRowLayout(ctx, kb)
+		if err != nil {
+			return errors.Wrap(err, "failed to load the top-row layout")
+		}
+
+		screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
+
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			ac := uiauto.New(tconn)
-
-			kb, err := input.Keyboard(ctx)
-			if err != nil {
-				return errors.Wrap(err, "failed to create a keyboard")
-			}
-
-			screenRecordToggleButton := nodewith.ClassName("CaptureModeToggleButton").Name("Screen record")
-
 			var condition recordModeCondition
 			if activated {
 				condition = recordModeCondition{
 					function: ac.Exists(screenRecordToggleButton),
 					errorMsg: "it hasn't entered record mode yet",
-					key:      "Ctrl+Shift+F5",
+					key:      "Ctrl+Shift+" + topRow.SelectTask,
 				}
 			} else {
 				condition = recordModeCondition{

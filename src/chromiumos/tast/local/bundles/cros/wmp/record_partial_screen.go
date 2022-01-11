@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -68,13 +69,16 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 	} else {
 		isTabletMode = false
 	}
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTabletMode)
 	if err != nil {
 		s.Fatalf("Failed to ensure %s: %v", deviceMode, err)
 	}
-	defer cleanup(ctx)
-
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer cleanup(cleanupCtx)
 
 	ac := uiauto.New(tconn)
 
@@ -97,10 +101,18 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 	dragClearPt := info.WorkArea.BottomCenter()
 	stopRecordButton := nodewith.ClassName("TrayBackgroundView").Name("Stop screen recording")
 	recordTakenLabel := nodewith.ClassName("Label").Name("Screen recording taken")
+
+	// Enter screen capture mode.
+	if err := wmputils.EnsureCaptureModeActivated(tconn, true)(ctx); err != nil {
+		s.Fatal("Failed to enable recording: ", err)
+	}
+	// Ensure case exit screen capture mode.
+	defer wmputils.EnsureCaptureModeActivated(tconn, false)(cleanupCtx)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, s.OutDir(), s.HasError)
+
 	if err := uiauto.Combine(
 		"record partial screen",
-		// Enter screen capture mode.
-		wmputils.EnsureCaptureModeActivated(tconn, true),
 		ac.LeftClick(screenRecordToggleButton),
 		ac.LeftClick(recordPartialScreenToggleButton),
 		// Clear the drag area.
@@ -113,8 +125,6 @@ func RecordPartialScreen(ctx context.Context, s *testing.State) {
 		ac.LeftClick(stopRecordButton),
 		// Check if the screen record is taken.
 		ac.WaitUntilExists(recordTakenLabel),
-		// Exit screen capture mode.
-		wmputils.EnsureCaptureModeActivated(tconn, false),
 	)(ctx); err != nil {
 		s.Fatal("Failed to record partial screen: ", err)
 	}
