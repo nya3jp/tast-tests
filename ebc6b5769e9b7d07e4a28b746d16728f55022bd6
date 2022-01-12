@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3850f8d2_09cb7117",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94fb4c99_1ed0a442",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2b5846ed_5cc904ff",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "applies throughout https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#error-strings",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 43
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a744e8_09266a78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "This doc says: \n\n\u003e On the other hand, the style for the full displayed message (logging, test failure, API response, or other UI) depends, but should typically be capitalized.\n\nI think this is what applicable here: it is not a substring of a message, it is a full error message (and a test failure).\n\nDo you agree? Did I understand you correctly?",
+      "parentUuid": "babd9da5_1061f2b1",
       "range": {
         "startLine": 43,
         "startChar": 2,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c96ca56_5e50a3be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "originalImagePath",
+      "parentUuid": "e2555c61_45bc1eaa",
+      "range": {
+        "startLine": 49,
+        "startChar": 72,
+        "endLine": 49,
+        "endChar": 90
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6248246a_ee6c9c8f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "imagePath",
+      "parentUuid": "b57144c8_6b4c0765",
+      "range": {
+        "startLine": 49,
+        "startChar": 58,
+        "endLine": 49,
+        "endChar": 70
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d6ec1ef_467e42b1",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "how about\n\n```\ncommandLineArgs :\u003d []string{\"/usr/sbin/flashrom\", \"-w\", imageToWrite,\n                            \"--flash-contents\", imageFlashContents}\nif noVerifyAll {\n  append(commandLineArgs, \"--noverify-all\")\n}\n```\n\nalso `args` is a fine variable name.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cdc9098_392ed896",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d6ec1ef_467e42b1",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25354e92_f5740d60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "For this specific case: output is actually super useful in a failure case. You would want to see it if test fails.\nI understand generic approach, but this seems to be a special case? Would you agree?",
+      "parentUuid": "92460563_8f812a4d",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2995503d_d6670a33",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -169,6 +313,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "make this into a small func, pass `4096 * 16` as a param that is defined as a global const.\n\nthe \u0027all 1s\u0027 part should really contain the value of \u0027blobByteContent\u0027, \u0027byteValue\u0027 being a much shorter name.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbab7a35_f5e398fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "I did 2 out of 3 suggestions: extracted a global const and put byteValue into a log message instead of hardcoded \"1s\".\nI didn\u0027t make this little piece into a separate function. I am not sure it is worth it? It is small and not used anywhere else.",
+      "parentUuid": "2995503d_d6670a33",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d0adc96_42019acb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f34ebf29_584ab3a8",
+      "range": {
+        "startLine": 79,
+        "startChar": 15,
+        "endLine": 79,
+        "endChar": 20
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27939bf5_dc47b61f",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "drop comment",
+      "range": {
+        "startLine": 83,
+        "startChar": 37,
+        "endLine": 83,
+        "endChar": 48
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29da8634_282b2489",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27939bf5_dc47b61f",
       "range": {
         "startLine": 83,
         "startChar": 37,
@@ -250,6 +466,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b48ecd1e_535d04fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Oh I love when test tells me a lot! What slows down the test actually: doing 2 writes in a loop of 5 iterations. But those writes are an essence of a test. So I think it is slow anyway.",
+      "parentUuid": "e7696354_0a1fe362",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 69
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41b71c8f_bc34f62c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -261,6 +501,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "s/c/C/ and trim \\n after this sentence",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 30
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daca6312_6f2061d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41b71c8f_bc34f62c",
       "range": {
         "startLine": 95,
         "startChar": 1,
@@ -294,6 +558,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a123a776_986963a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d112cfd5_62279ff7",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 57
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99fec029_1c20e902",
@@ -307,6 +595,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "drop comment",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c9d8443_fccbfd50",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99fec029_1c20e902",
       "range": {
         "startLine": 108,
         "startChar": 1,
@@ -340,6 +652,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e1f826_a43f6592",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efa4c42f_998a33bb",
+      "range": {
+        "startLine": 109,
+        "startChar": 67,
+        "endLine": 109,
+        "endChar": 80
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68e91392_7ea49f37",
@@ -353,6 +689,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "trim \\n before this line.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 16
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d3f184_5b31bed0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68e91392_7ea49f37",
       "range": {
         "startLine": 111,
         "startChar": 1,
@@ -388,6 +748,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e32d8727_686bc3a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "At the moment I haven\u0027t find out how to do this in Go: ReplaceAll and Split do not accept regex? how do I do it in go?",
+      "parentUuid": "f4d97335_bb822ffd",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 59
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70bdf4a1_d50e1012",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -399,6 +783,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "should be immediately after the runCommandLine() before attempting to use out.\n\nAs said above, the expected semantics in golang is for `out XOR err`, that is `out` can only be used with a `err \u003d\u003d nil`.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c279094_485049a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70bdf4a1_d50e1012",
       "range": {
         "startLine": 153,
         "startChar": 0,
@@ -432,6 +840,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f95eaa_6becec9f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670589fd_ae51417f",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 28
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab073921_56091baa",
@@ -445,6 +877,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "make into a global const",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 44
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dced103_d4f2cafa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab073921_56091baa",
       "range": {
         "startLine": 166,
         "startChar": 1,
@@ -480,6 +936,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bf8eea4_a7f0d61d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "What exactly to extract into own function? This ddTemplate is a string, the script itself is used in a loop below, but it appends something to ddTemplate in every loop. I am confused what exactly can I extract into a function?",
+      "parentUuid": "53301d1f_fb26c57d",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 45
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d119829_28780607",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -503,6 +983,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfed8568_0743a576",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "How do I do const array in Go?",
+      "parentUuid": "0d119829_28780607",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 66
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dced6e0f_c8145445",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -514,6 +1018,30 @@
       "writtenOn": "2022-01-12T00:58:03Z",
       "side": 1,
       "message": "`sectionSize`",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 193,
+        "endChar": 17
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38c22a9d_b9d859e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dced6e0f_c8145445",
       "range": {
         "startLine": 193,
         "startChar": 8,

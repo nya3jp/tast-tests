@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c403f58_c37d5b42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T06:30:00Z",
+      "side": 1,
+      "message": "Thank you so much for reviewing my ugly code! I resolved most of comments in the latest patchset.\nHowever there are still some that I left unresolved, because either I don\u0027t know how to do it or I am not sure I should do it. I responded to all of them, if we could discuss?",
+      "revId": "8dc88928483d112668fa7e9cead13657bc7da052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
