@@ -8,6 +8,7 @@ import (
 	"context"
 	"regexp"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -26,6 +27,13 @@ const (
 	LargeRoomSize = 16
 	// ClassRoomSize creates a conference room with 38 participants.
 	ClassRoomSize = 38
+)
+
+const (
+	longUITimeout   = time.Minute      // Used for situations where UI might take a long time to respond.
+	mediumUITimeout = 30 * time.Second // Used for situations where UI response are slower.
+	shortUITimeout  = 3 * time.Second  // Used for situations where UI response are faster.
+	viewingTime     = 5 * time.Second  // Used to view the effect after clicking application.
 )
 
 // Conference contains user's operation when enter a confernece room.

@@ -56,7 +56,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		}
 		defer conn.Close()
 
-		if err := webutil.WaitForQuiescence(ctx, conn, 45*time.Second); err != nil {
+		if err := webutil.WaitForQuiescence(ctx, conn, longUITimeout); err != nil {
 			return errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room)
 		}
 		// Maximize the zoom window to show all the browser UI elements for precise clicking.
@@ -74,7 +74,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 			}
 		}
 
-		if err := ui.WaitUntilExists(nodewith.Name("SIGN IN").Role(role.Link))(ctx); err == nil {
+		if err := ui.WithTimeout(shortUITimeout).WaitUntilExists(nodewith.Name("MY ACCOUNT").Role(role.Link))(ctx); err != nil {
 			testing.ContextLog(ctx, "Start to sign in")
 			if err := conn.Navigate(ctx, cuj.ZoomSignInURL); err != nil {
 				return err
@@ -84,7 +84,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 			// If the DUT has only one account, it would login to profile page directly.
 			// Otherwise, it would show list of accounts.
 			if err := uiauto.Combine("sign in",
-				ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(account),
+				ui.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(account),
 					ui.LeftClickUntil(account, ui.Gone(account))),
 				ui.WaitUntilExists(profilePicture),
 			)(ctx); err != nil {
@@ -103,7 +103,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 	allowPerm := func(ctx context.Context) error {
 		unableButton := nodewith.NameContaining("Unable to play media.").Role(role.Video)
 		// If there is an unable button, it will display a alert dialog to allow permission.
-		if err := ui.WithTimeout(5 * time.Second).WaitUntilGone(unableButton)(ctx); err != nil {
+		if err := ui.WithTimeout(shortUITimeout).WaitUntilGone(unableButton)(ctx); err != nil {
 			avPerm := nodewith.NameRegex(regexp.MustCompile(".*Use your (microphone|camera).*")).ClassName("RootView").Role(role.AlertDialog).First()
 			allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(avPerm)
 			testing.ContextLog(ctx, "Start to allow microphone and camera permissions")
@@ -130,7 +130,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		noParticipant := nodewith.NameContaining("[0] particpants").Role(role.Button)
 		if err := uiauto.Combine("wait participants",
 			ui.WaitUntilExists(participant),
-			ui.WithTimeout(30*time.Second).WaitUntilGone(noParticipant),
+			ui.WithTimeout(mediumUITimeout).WaitUntilGone(noParticipant),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait participants")
 		}
@@ -160,7 +160,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		}
 		joinAudioButton := nodewith.Name("Join Audio by Computer").Role(role.Button)
 		testing.ContextLog(ctx, "Join Audio by Computer")
-		return ui.WithTimeout(30*time.Second).LeftClickUntil(joinAudioButton, ui.WithTimeout(time.Second).WaitUntilGone(joinAudioButton))(ctx)
+		return ui.WithTimeout(mediumUITimeout).LeftClickUntil(joinAudioButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(joinAudioButton))(ctx)
 	}
 	startVideo := func(ctx context.Context) error {
 		testing.ContextLog(ctx, "Start video")
@@ -175,7 +175,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 			// Some DUTs start playing video for the first time.
 			// If there is a stop video button, do nothing.
 			ui.IfSuccessThen(ui.Exists(startVideoButton),
-				ui.LeftClickUntil(startVideoButton, ui.WithTimeout(time.Second).WaitUntilGone(startVideoButton))),
+				ui.LeftClickUntil(startVideoButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(startVideoButton))),
 			ui.WaitUntilExists(stopVideoButton),
 		))(ctx)
 	}
@@ -192,14 +192,14 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 	clickJoinButton := ui.Retry(3, uiauto.Combine("click join button",
 		ui.WaitForLocation(joinButton),
 		ui.MakeVisible(joinButton),
-		ui.LeftClickUntil(joinButton, ui.WithTimeout(time.Second).WaitUntilGone(joinButton)),
+		ui.LeftClickUntil(joinButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(joinButton)),
 	))
 	testing.ContextLog(ctx, "Join conference")
 	return uiauto.Combine("join conference",
 		openZoomAndSignIn,
 		ui.WaitUntilExists(joinFromYourBrowser),
-		ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(acceptCookiesButton),
-			ui.LeftClickUntil(acceptCookiesButton, ui.WithTimeout(time.Second).WaitUntilGone(acceptCookiesButton))),
+		ui.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(acceptCookiesButton),
+			ui.LeftClickUntil(acceptCookiesButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(acceptCookiesButton))),
 		ui.LeftClick(joinFromYourBrowser),
 		ui.WithTimeout(longUITimeout).WaitUntilExists(joinButton),
 		ui.WaitUntilExists(video),
@@ -232,7 +232,7 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 			testing.ContextLog(ctx, "Turn camera from on to off")
 		}
 		nowCameraButton := nodewith.Name(info.Name).Role(role.Button)
-		if err := ui.LeftClickUntil(nowCameraButton, ui.WithTimeout(5*time.Second).WaitUntilGone(nowCameraButton))(ctx); err != nil {
+		if err := ui.LeftClickUntil(nowCameraButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(nowCameraButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to toggle video")
 		}
 		return nil
@@ -251,18 +251,18 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 			testing.ContextLog(ctx, "Turn microphone from unmute to mute")
 		}
 		nowAudioButton := nodewith.Name(info.Name).Role(role.Button)
-		if err := ui.LeftClickUntil(nowAudioButton, ui.WithTimeout(5*time.Second).WaitUntilGone(nowAudioButton))(ctx); err != nil {
+		if err := ui.LeftClickUntil(nowAudioButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(nowAudioButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to toggle audio")
 		}
 		return nil
 	}
 
 	return uiauto.Combine("toggle video and audio",
-		//Remain in the state for 5 seconds after each action.
-		toggleVideo, ui.Sleep(5*time.Second),
-		toggleVideo, ui.Sleep(5*time.Second),
-		toggleAudio, ui.Sleep(5*time.Second),
-		toggleAudio, ui.Sleep(5*time.Second),
+		// Remain in the state for 5 seconds after each action.
+		toggleVideo, ui.Sleep(viewingTime),
+		toggleVideo, ui.Sleep(viewingTime),
+		toggleAudio, ui.Sleep(viewingTime),
+		toggleAudio, ui.Sleep(viewingTime),
 	)(ctx)
 }
 
@@ -291,9 +291,10 @@ func (conf *ZoomConference) SwitchTabs(ctx context.Context) error {
 // ChangeLayout changes the conference UI layout.
 func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 	const (
-		view    = "View"
-		speaker = "Speaker View"
-		gallery = "Gallery View"
+		view         = "View"
+		speaker      = "Speaker View"
+		gallery      = "Gallery View"
+		shortTimeout = time.Second
 	)
 	ui := uiauto.New(conf.tconn)
 	viewButton := nodewith.Name(view).First()
@@ -302,8 +303,8 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 	// speaker and gallery view.
 	if err := ui.Retry(3, uiauto.Combine("check view button",
 		conf.showInterface,
-		ui.WithTimeout(time.Second).LeftClick(viewButton),
-		ui.WithTimeout(time.Second).WaitUntilExists(speakerNode),
+		ui.WithTimeout(shortTimeout).LeftClick(viewButton),
+		ui.WithTimeout(shortTimeout).WaitUntilExists(speakerNode),
 	))(ctx); err != nil {
 		// Some DUTs don't support 'Speacker View' and 'Gallery View'.
 		testing.ContextLog(ctx, "Speaker and Gallery View is not supported on this device, ignore changing the layout")
@@ -315,14 +316,14 @@ func (conf *ZoomConference) ChangeLayout(ctx context.Context) error {
 		selectMode := func(ctx context.Context) error {
 			return uiauto.Combine("select layout mode",
 				conf.showInterface,
-				ui.LeftClick(viewButton),
+				ui.IfSuccessThen(ui.Gone(modeNode), ui.LeftClick(viewButton)),
 				ui.LeftClick(modeNode),
 			)(ctx)
 		}
 		testing.ContextLogf(ctx, "Change layout to %q", mode)
 		if err := uiauto.Combine("change layout to '"+mode+"'",
 			ui.Retry(3, selectMode),
-			ui.Sleep(10*time.Second), //After applying new layout, give it 10 seconds for viewing before applying next one.
+			ui.Sleep(viewingTime), //After applying new layout, give it 5 seconds for viewing before applying next one.
 		)(ctx); err != nil {
 			return err
 		}
@@ -376,7 +377,7 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 			// Double click to enter full screen.
 			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", true),
 			// After applying new background, give it 5 seconds for viewing before applying next one.
-			ui.Sleep(5*time.Second),
+			ui.Sleep(viewingTime),
 			// Double click to exit full screen.
 			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", false),
 		)(ctx)
@@ -429,7 +430,7 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 		return uiauto.Combine("share Screen",
 			conf.uiHandler.SwitchToChromeTabByName("Zoom"),
 			conf.showInterface,
-			ui.LeftClickUntil(shareScreenButton, ui.WithTimeout(time.Second).WaitUntilExists(presenMode)),
+			ui.LeftClickUntil(shareScreenButton, ui.WithTimeout(shortUITimeout).WaitUntilExists(presenMode)),
 			ui.LeftClick(presenMode),
 			ui.LeftClick(presentTab),
 			ui.LeftClick(shareButton),
@@ -439,7 +440,7 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 
 	stopPresenting := func(ctx context.Context) error {
 		stopSharing := nodewith.Name("Stop sharing").Role(role.Button).First()
-		return ui.LeftClickUntil(stopSharing, ui.WithTimeout(3*time.Second).WaitUntilGone(stopSharing))(ctx)
+		return ui.LeftClickUntil(stopSharing, ui.WithTimeout(shortUITimeout).WaitUntilGone(stopSharing))(ctx)
 	}
 	// Present on internal display by default.
 	presentOnExtendedDisplay := false
@@ -491,7 +492,7 @@ func (conf *ZoomConference) showInterface(ctx context.Context) error {
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
+	}, &testing.PollOptions{Timeout: mediumUITimeout})
 }
 
 // NewZoomConference creates Zoom conference room instance which implements Conference interface.

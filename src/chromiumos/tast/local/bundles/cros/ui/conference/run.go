@@ -26,7 +26,7 @@ type Cleanup func(context.Context) error
 type Prepare func(context.Context) (string, Cleanup, error)
 
 // Run runs the specified user scenario in conference room with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode bool, roomSize int) error {
+func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepare, tier, outDir string, tabletMode bool, roomSize int) (retErr error) {
 	// Shorten context a bit to allow for cleanup.
 	cleanUpCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -40,7 +40,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	// Dump the UI tree to the service/faillog subdirectory.
 	// Don't dump directly into outDir
 	// because it might be overridden by the test faillog after pulled back to remote server.
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanUpCtx, filepath.Join(outDir, "service"), func() bool { return true }, cr, "ui_dump")
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanUpCtx, filepath.Join(outDir, "service"), func() bool { return retErr != nil }, cr, "ui_dump")
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -85,13 +85,15 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
 
-	meetTimeout := 80 * time.Second
-	if tier == "plus" {
-		meetTimeout = 160 * time.Second
+	meetTimeout := 50 * time.Second
+	if roomSize == NoRoom {
+		meetTimeout = 70 * time.Second
+	} else if tier == "plus" {
+		meetTimeout = 140 * time.Second
+	} else if tier == "premium" {
+		meetTimeout = 3 * time.Minute
 	}
-	if tier == "premium" {
-		meetTimeout = 180 * time.Second
-	}
+
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Collect GPU metrics in goroutine while other tests are being executed.

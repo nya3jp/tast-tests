@@ -45,7 +45,6 @@ const (
 	blurBackground    = "Blur your background"
 	staticBackground  = "Blurry sky with purple horizon"
 	dynamicBackground = "Spaceship"
-	longUITimeout     = time.Minute // Used for situations where UI response are slower.
 )
 
 // Join joins a new conference room.
@@ -74,11 +73,15 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 
 	//  allowPerm allows camera, microphone and notification if browser asks for the permissions.
 	allowPerm := func(ctx context.Context) error {
+		video := nodewith.Role(role.Video)
 		allowButton := nodewith.Name("Allow").Role(role.Button)
 		dismissButton := nodewith.Name("Dismiss").Role(role.Button)
 		avPerm := nodewith.NameRegex(regexp.MustCompile(".*Use your (microphone|camera).*")).ClassName("RootView").Role(role.AlertDialog).First()
 		notiPerm := nodewith.NameContaining("Show notifications").ClassName("RootView").Role(role.AlertDialog)
-
+		// If there is a video, it means permissions are allowed.
+		if err := ui.WithTimeout(shortUITimeout).WaitUntilExists(video)(ctx); err == nil {
+			return nil
+		}
 		for _, step := range []struct {
 			name   string
 			finder *nodewith.Finder
@@ -88,9 +91,10 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 			{"allow microphone and camera", avPerm, allowButton.Ancestor(avPerm)},
 			{"allow notifications", notiPerm, allowButton.Ancestor(notiPerm)},
 		} {
-			if err := ui.WithTimeout(4 * time.Second).WaitUntilExists(step.finder)(ctx); err == nil {
+			if err := ui.WithTimeout(shortUITimeout).WaitUntilExists(step.finder)(ctx); err == nil {
 				// Immediately clicking the allow button sometimes doesn't work. Sleep 2 seconds.
-				if err := uiauto.Combine(step.name, ui.Sleep(2*time.Second), ui.LeftClick(step.button), ui.WaitUntilGone(step.finder))(ctx); err != nil {
+				if err := uiauto.NamedAction(step.name,
+					ui.LeftClickUntil(step.button, ui.WithTimeout(shortUITimeout).WaitUntilGone(step.finder)))(ctx); err != nil {
 					return err
 				}
 			} else {
@@ -136,7 +140,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 				ui.LeftClick(closeButton), // Close "Background" panel.
 				// Some DUT performance is too poor, clicking the turn off button will trigger "Upload a background image".
 				// If the dialog "select a file to open" is opened, close it.
-				ui.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(selectAFileDialog), ui.LeftClick(closeDialog)),
+				ui.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(selectAFileDialog), ui.LeftClick(closeDialog)),
 			))(ctx)
 	}
 
@@ -164,7 +168,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 			actions = append(actions,
 				// Make sure text area is focused before typing. This is especially necessary on low-end DUTs.
 				uiauto.NamedAction("click email field",
-					ui.LeftClickUntil(emailField, ui.WithTimeout(3*time.Second).WaitUntilExists(emailField.Focused()))),
+					ui.LeftClickUntil(emailField, ui.WithTimeout(shortUITimeout).WaitUntilExists(emailField.Focused()))),
 				uiauto.NamedAction("type account", kb.TypeAction(meetAccount)),
 			)
 		}
@@ -178,7 +182,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 			ui.LeftClickUntil(passwordField, ui.Exists(passwordField.Focused())),
 			kb.TypeAction(conf.password),
 			ui.LeftClick(nextButton),
-			ui.LeftClickUntil(iAgree, ui.WithTimeout(time.Second).WaitUntilGone(iAgree)),
+			ui.LeftClickUntil(iAgree, ui.WithTimeout(shortUITimeout).WaitUntilGone(iAgree)),
 		)
 
 		testing.ContextLog(ctx, "Enter email and password")
@@ -199,7 +203,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		}
 
 		addAccPrompt := nodewith.NameStartingWith("Add another Google Account for").Role(role.Heading)
-		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(addAccPrompt)(ctx); err == nil {
+		if err := ui.WithTimeout(shortUITimeout).WaitUntilExists(addAccPrompt)(ctx); err == nil {
 			// Close all notifications to prevent them from covering the ok button.
 			if err := ash.CloseNotifications(ctx, tconn); err != nil {
 				return errors.Wrap(err, "failed to close notifications")
@@ -246,7 +250,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		}
 
 		// If meet account doesn't exist, add the account first.
-		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(meetAccountText)(ctx); err != nil {
+		if err := ui.WithTimeout(shortUITimeout).WaitUntilExists(meetAccountText)(ctx); err != nil {
 			testing.ContextLogf(ctx, "Add additional account %s to existing account", meetAccount)
 			if err := addMeetAccount(ctx); err != nil {
 				return errors.Wrapf(err, "failed to add account %s", meetAccount)
@@ -343,14 +347,11 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 
 // VideoAudioControl controls the video and audio during conference.
 func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
-	// It may take some time to detect the microphone or camera button from the meet UI.
-	const detectButtonTime = 30 * time.Second
 	ui := uiauto.New(conf.tconn)
-
 	toggleVideo := func(ctx context.Context) error {
 		cameraButton := nodewith.NameRegex(regexp.MustCompile("Turn (on|off) camera.*")).Role(role.Button)
 
-		info, err := ui.WithTimeout(detectButtonTime).Info(ctx, cameraButton)
+		info, err := ui.WithTimeout(mediumUITimeout).Info(ctx, cameraButton)
 		if err != nil {
 			return errors.Wrap(err, "failed to wait for the meet camera switch button to show")
 		}
@@ -361,7 +362,7 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 		}
 
 		cameraButton = nodewith.Name(info.Name).Role(role.Button)
-		if err := ui.LeftClickUntil(cameraButton, ui.WithTimeout(5*time.Second).WaitUntilGone(cameraButton))(ctx); err != nil {
+		if err := ui.LeftClickUntil(cameraButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(cameraButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to switch camera")
 		}
 		return nil
@@ -370,7 +371,7 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 	toggleAudio := func(ctx context.Context) error {
 		microphoneButton := nodewith.NameRegex(regexp.MustCompile("Turn (on|off) microphone.*")).Role(role.Button)
 
-		info, err := ui.WithTimeout(detectButtonTime).Info(ctx, microphoneButton)
+		info, err := ui.WithTimeout(mediumUITimeout).Info(ctx, microphoneButton)
 		if err != nil {
 			return errors.Wrap(err, "failed to wait for the meet microphone switch button to show")
 		}
@@ -381,7 +382,7 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 		}
 
 		microphoneButton = nodewith.Name(info.Name).Role(role.Button)
-		if err := ui.LeftClickUntil(microphoneButton, ui.WithTimeout(5*time.Second).WaitUntilGone(microphoneButton))(ctx); err != nil {
+		if err := ui.LeftClickUntil(microphoneButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(microphoneButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to switch microphone")
 		}
 		return nil
@@ -389,10 +390,10 @@ func (conf *GoogleMeetConference) VideoAudioControl(ctx context.Context) error {
 
 	return uiauto.Combine("toggle video and audio",
 		// Remain in the state for 5 seconds after each action.
-		toggleVideo, ui.Sleep(5*time.Second),
-		toggleVideo, ui.Sleep(5*time.Second),
-		toggleAudio, ui.Sleep(5*time.Second),
-		toggleAudio, ui.Sleep(5*time.Second),
+		toggleVideo, ui.Sleep(viewingTime),
+		toggleVideo, ui.Sleep(viewingTime),
+		toggleAudio, ui.Sleep(viewingTime),
+		toggleAudio, ui.Sleep(viewingTime),
 	)(ctx)
 }
 
@@ -448,9 +449,9 @@ func (conf *GoogleMeetConference) ChangeLayout(ctx context.Context) error {
 
 	return uiauto.Combine("change layout",
 		changeLayout("Tiled"),
-		ui.Sleep(10*time.Second), // After applying new layout, give it 10 seconds for viewing before applying next one.
+		ui.Sleep(viewingTime), // After applying new layout, give it 5 seconds for viewing before applying next one.
 		changeLayout("Spotlight"),
-		ui.Sleep(10*time.Second), // After applying new layout, give it 10 seconds for viewing before applying next one.
+		ui.Sleep(viewingTime), // After applying new layout, give it 5 seconds for viewing before applying next one.
 	)(ctx)
 }
 
@@ -478,12 +479,12 @@ func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 			uiauto.Combine("change background and enter full screen",
 				ui.Retry(3, cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433)),
 				ui.LeftClick(changeBackground), // Open "Background" panel.
-				ui.WithTimeout(30*time.Second).LeftClick(backgroundButton),
+				ui.WithTimeout(mediumUITimeout).LeftClick(backgroundButton),
 				ui.LeftClick(closeButton), // Close "Background" panel.
 				// Double click to enter full screen.
 				doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Meet", true),
 				// After applying new background, give it 5 seconds for viewing before applying next one.
-				ui.Sleep(5*time.Second),
+				ui.Sleep(viewingTime),
 				// Double click to exit full screen.
 				doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Meet", false),
 			))
@@ -581,7 +582,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		testing.ContextLog(ctx, "Stop presenting")
 		return uiauto.Combine("stop presenting",
 			switchToTab("Meet"),
-			ui.LeftClickUntil(stopPresentingButton, ui.WithTimeout(3*time.Second).WaitUntilGone(stopPresentingButton)),
+			ui.LeftClickUntil(stopPresentingButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(stopPresentingButton)),
 		)(ctx)
 	}
 
