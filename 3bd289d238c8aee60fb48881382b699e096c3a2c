@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d905c5a_e3a1d346",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-12T22:35:23Z",
+      "side": 1,
+      "message": "@jamescook: I just realized that before I land the CL to enable the app list sort as default, the last patch of code will not work because my previous patch assumes that the sorting is enabled. In the latest patch, I use parameterized tests: enable the sorting and disable the sorting. Please take another look. Thank you!",
+      "revId": "3bd289d238c8aee60fb48881382b699e096c3a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
