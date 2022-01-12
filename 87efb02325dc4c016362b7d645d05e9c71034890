@@ -16,6 +16,29 @@
       "message": "Hi reviewers, sorry for the delay, we have addressed all comments, please review, much appreciated.",
       "revId": "87efb02325dc4c016362b7d645d05e9c71034890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab89bd11_3f5e7a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/logout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-12T08:59:15Z",
+      "side": 1,
+      "message": "Interesting pattern, never used them for the login tests. Seems a bit complex. I think we normally just create the watcher before the action (e.g. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/chrome.go;l\u003d82-99?q\u003dWatchSessionStateChanged%20package:chromeos\u0026type\u003dcs)\n\nKyle, WDYT?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "87efb02325dc4c016362b7d645d05e9c71034890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

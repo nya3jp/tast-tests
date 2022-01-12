@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "843dedfd_44487572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/logout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-12T08:59:15Z",
+      "side": 1,
+      "message": "I think it\u0027s fine actually :)",
+      "parentUuid": "63c0e7c6_b810ea3a",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "1414c4444af0b658e77cccd531ecdc016e4e0c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e740c07_02fe4f3b",
