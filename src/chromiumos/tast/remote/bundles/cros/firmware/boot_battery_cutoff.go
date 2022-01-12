@@ -172,7 +172,16 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	// Some models need a power button press to wake up
+	// Some models need a power button press to wake up, and others need 65w chargers.
+	// Before you add any model to this list, make sure you are using a 65w charger, and that
+	// the model is old and not work just fixing the bug in the firmware.
+	// Leona problems might be b/185437341. Attaching a charger directly vs via a hub or servo behave differently.
+	if h.Model == "leona" {
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			s.Error("Failed to press power key: ", err)
+		}
+	}
+
 	// Confirm a successful boot.
 	if err := confirmBoot(ctx); err != nil {
 		s.Fatal("Failed to boot: ", err)
