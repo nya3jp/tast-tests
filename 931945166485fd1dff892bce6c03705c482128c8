@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbdf3b9_2dfb3312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "Looks better API :-). My initial scan.",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f5c436b_095dec62",
@@ -52,6 +69,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c81433f8_d8af4301",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "could you keep these types package private?",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "35fd872b_d28f632f",
@@ -65,6 +99,46 @@
       "writtenOn": "2022-01-11T03:25:26Z",
       "side": 1,
       "message": "Too bad generics aren\u0027t in go1.17.\n\nWith go1.18 (releasing soon) I would recommend using them. It would condense things:\n\n  type AllowedExtraArgTypes interface {\n    int | string | []string | bool\n  }\n\n  type ExtraArg[ExtraArgType AllowedExtraArgTypes] struct {\n    key string\n    val ExtraArgType\n  }\n\n  type ActivityStartOptions struct {\n    // ...\n    extraInts []ExtraArg[int]\n    extraBools []ExtraArg[bool]\n    // (etc)\n  }",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489cdb3a_3f85329d",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "optional: I\u0027d call this as \"activityStartCmdBuilder\"",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a7d9a10_416d7b98",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "optional: and so this is just \"build()\".",
+      "range": {
+        "startLine": 209,
+        "startChar": 33,
+        "endLine": 209,
+        "endChar": 50
+      },
       "revId": "931945166485fd1dff892bce6c03705c482128c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +168,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a95b9a5f_0c3392c5",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "\",\" in each val needs to be escaped.",
+      "range": {
+        "startLine": 254,
+        "startChar": 52,
+        "endLine": 254,
+        "endChar": 56
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45e26fdc_32100f32",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3
@@ -110,6 +207,53 @@
         "startChar": 0,
         "endLine": 262,
         "endChar": 4
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d7eb0e0_a97c0ed5",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "\u003e While Go doesn\u0027t seem to have some kind of switch/case expression, this pattern might be better, and should also catch cases where not all values are specified (for enums values):\n\u003e \n\u003e   valStr string\n\u003e   switch e.val {\n\u003e   case false:\n\u003e     valStr \u003d \"false\"\n\u003e   case true:\n\u003e     valStr \u003d \"true\"\n\u003e   }\n\nThis is bool so it\u0027s kind of special, but AFAIK, if case does not cover everything, valStr will be kept as default value (empty string), right?\n\n\u003e   \n\u003e You could make it a function and use return to avoid creating an explicit and default initialized local.\n\u003e \n\u003e (In some language that did have switches/cases as expressions, it might look like:\n\u003e \n\u003e   valStr :\u003d switch e.val {\n\u003e     case false: \"false\"\n\u003e     case true:  \"true\"\n\u003e   }\n\u003e )\n\u003e   \n\nFYI: I agreed your comments in general in other language,\nbut I think the current code is common style in go.\n\n\u003e ... BUT, for this case, you can do something even simpler:\n\u003e \n\u003e   valStr :\u003d strconv.FormatBool(e.val)\n\u003e   \n\u003e (And you can probably just inline the conversion call in the next line)\n\nFYI: I\u0027m ok with this, too, but we need to be careful of the detailed diff between string representation on each domain. This specific case is not problematic, though.",
+      "parentUuid": "45e26fdc_32100f32",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 4
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b061d6_6d48a68a",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "optional/style: we often use \"new\" as the prefix of this kind of stuff?",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 9
       },
       "revId": "931945166485fd1dff892bce6c03705c482128c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -134,6 +278,40 @@
         "endLine": 280,
         "endChar": 19
       },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348e6881_67ef4c0f",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "And this is the \"Option\" from outside of the package. Maybe\ntype ActivityStartOption func(*activityStartCmdBuilder)",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa307f5_9bb7e995",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "To keep the semantics as simple as possible, I\u0027d recommend to drop the default options.",
       "revId": "931945166485fd1dff892bce6c03705c482128c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -209,6 +387,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "761f522e_f99d41e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "nit/optional/style: I\u0027d break lines per options, if it becomes longer.\n\nif err :\u003d act.Start(...,\n    arc.WithForceStop(),\n    arc.WithExtraString(...),\n); err !\u003d nil {\n  ....\n}",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da0affff_626919a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
         "patchSetId": 3
@@ -220,6 +415,29 @@
       "writtenOn": "2022-01-11T03:25:26Z",
       "side": 1,
       "message": "This line is too long. Perhaps compute fmt.Sprintf() before using it in WithExtraString?",
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf2289b_aa4148b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "this is not the regression, but need escaping.\nE.g., if |name| is \"abc def\", the cmdLine value will be \"deqp --deqp-log-filename\u003d/sdcard/abc def-results.qpa ...\"\nso, and parsed as \"/sdcard/abc\".",
+      "range": {
+        "startLine": 79,
+        "startChar": 120,
+        "endLine": 79,
+        "endChar": 134
+      },
       "revId": "931945166485fd1dff892bce6c03705c482128c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -260,6 +478,46 @@
         "endLine": 207,
         "endChar": 56
       },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b810e900_71ecdd76",
+        "filename": "src/chromiumos/tast/local/graphics/patrace/paretrace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "nit/style: I\u0027d name \"opts\" to prefer shorter name.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 11
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce2d8df2_b0ff5bf2",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 1,
+      "message": "ditto for naming.",
       "revId": "931945166485fd1dff892bce6c03705c482128c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

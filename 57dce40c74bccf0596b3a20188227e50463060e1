@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b965f69_f338173e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 0,
+      "message": "clarification: is this dropped?",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dac3a39b_44aa2a23",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
         "patchSetId": 3
@@ -83,6 +106,29 @@
       "writtenOn": "2022-01-11T03:25:26Z",
       "side": 0,
       "message": "Note: This call didn\u0027t use -W before to wait for launch. Now it will.\n\n(I guess the WaitForIdle at line 155 is equivalent anyway)\n\nAlso all the other calls use -n, and I commented that I didn\u0027t see anything add that in the new code. Note that this call didn\u0027t use -n before the change.",
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100559c8_ddca9e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T02:57:47Z",
+      "side": 0,
+      "message": "dropped?\n\nDitto for all below.",
+      "range": {
+        "startLine": 202,
+        "startChar": 56,
+        "endLine": 202,
+        "endChar": 60
+      },
       "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
