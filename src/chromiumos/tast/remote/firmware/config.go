@@ -94,6 +94,7 @@ type Config struct {
 	RawSerialFirmwareBootDelay float64 `json:"serial_firmware_boot_delay"`
 	RawUSBPlug                 float64 `json:"usb_plug"`
 	RawHoldPwrButtonPowerOff   float64 `json:"hold_pwr_button_poweroff"`
+	RawShutdown                float64 `json:"shutdown"`
 
 	// Actual duration fields are populated during NewConfig based on raw JSON duration values, defined above.
 	KeypressDelay           time.Duration
@@ -103,6 +104,7 @@ type Config struct {
 	SerialFirmwareBootDelay time.Duration
 	USBPlug                 time.Duration
 	HoldPwrButtonPowerOff   time.Duration
+	Shutdown                time.Duration
 
 	// Instructions for updating AP firmware over servo
 	APFlashCCDProgrammer   string   `json:"ap_flash_ccd_programmer"`
@@ -201,6 +203,7 @@ func NewConfig(cfgFilepath, board, model string) (*Config, error) {
 	cfg.SerialFirmwareBootDelay = toSeconds(cfg.RawSerialFirmwareBootDelay)
 	cfg.USBPlug = toSeconds(cfg.RawUSBPlug)
 	cfg.HoldPwrButtonPowerOff = toSeconds(cfg.RawHoldPwrButtonPowerOff)
+	cfg.Shutdown = toSeconds(cfg.RawShutdown)
 
 	// Parse list of raw json objects into go structs
 	cfg.USBEnablePins = parseRawUSBEnablePins(cfg.RawUSBEnablePins)

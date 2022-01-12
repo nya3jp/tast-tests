@@ -49,9 +49,9 @@ func (p *PowerMenuService) NewChrome(ctx context.Context, req *pb.NewChromeReque
 
 	p.loginRequested = req.Login
 	if p.loginRequested {
-		p.cr, err = chrome.New(ctx)
+		p.cr, err = chrome.New(ctx, chrome.Region("us"))
 	} else {
-		p.cr, err = chrome.New(ctx, chrome.KeepState(), chrome.NoLogin(), chrome.LoadSigninProfileExtension(req.Key))
+		p.cr, err = chrome.New(ctx, chrome.Region("us"), chrome.KeepState(), chrome.NoLogin(), chrome.LoadSigninProfileExtension(req.Key))
 	}
 	if err != nil {
 		return nil, err
