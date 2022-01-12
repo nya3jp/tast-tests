@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124860fa_c6026325",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T17:57:51Z",
+      "side": 1,
+      "message": "Change to false.\n\nThe steps in the python test are: Turn on power, suspend, turn off power, resume, suspend, turn on power, resume.  If you swap the true/false here, then you will match the old test.",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 49
+      },
+      "revId": "c5c9e7eb8e785233a5d25f550e5c336cd6abf184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03e034d_9d745e21",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging_state.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T17:57:51Z",
+      "side": 1,
+      "message": "Change to true.",
+      "range": {
+        "startLine": 66,
+        "startChar": 45,
+        "endLine": 66,
+        "endChar": 50
+      },
+      "revId": "c5c9e7eb8e785233a5d25f550e5c336cd6abf184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
