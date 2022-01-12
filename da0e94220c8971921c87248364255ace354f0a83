@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27296e1a_ee58a0a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-01-12T21:57:21Z",
+      "side": 1,
+      "message": "nit, add a tracking bug to TODO items.",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57798ae_001f934d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-01-12T21:57:21Z",
+      "side": 1,
+      "message": "nit, any harm if the flag is not re-set after the test?",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "865dfd94_05e58889",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-01-12T21:57:21Z",
+      "side": 1,
+      "message": "nit, I think moving this defer to right after the corruption makes things more readable and also avoids unnecessary restores if the test failed before corruption.",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fa3712_ed6f96d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-01-12T21:57:21Z",
+      "side": 1,
+      "message": "nit, refactor the regex into a global.  Also, as a future CL, can create an ec reporter that gets the ec hash, ec bootmode, ec active copy, ec section, so as to improve readability in tests.",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
