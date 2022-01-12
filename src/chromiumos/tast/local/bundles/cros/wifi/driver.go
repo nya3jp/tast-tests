@@ -94,6 +94,9 @@ var expectedWLANDriver = map[string]map[string]string{
 		"5.10": "wireless/ath/ath10k/ath10k_snoc.ko",
 		"5.15": "wireless/ath/ath10k/ath10k_snoc.ko",
 	},
+	wlan.QualcommWCN6750: {
+		"5.15": "wireless/ath/ath11k/ath11k_ahb.ko",
+	},
 	wlan.QualcommWCN6855: {
 		"5.10": "wireless/ath/ath11k/ath11k_pci.ko",
 	},
