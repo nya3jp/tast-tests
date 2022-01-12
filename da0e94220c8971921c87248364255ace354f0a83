@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1c2d97_273ad2b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T23:05:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27296e1a_ee58a0a8",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e57798ae_001f934d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-12T21:57:21Z",
       "side": 1,
       "message": "nit, any harm if the flag is not re-set after the test?",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a75d7a7_9442e53e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T23:05:47Z",
+      "side": 1,
+      "message": "The fixture will reset the GBB flags after the test is done.",
+      "parentUuid": "e57798ae_001f934d",
       "revId": "da0e94220c8971921c87248364255ace354f0a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab335c0b_0469656e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T23:05:47Z",
+      "side": 1,
+      "message": "Ok, but how about right before the corruption in case the corruption fails part way through.",
+      "parentUuid": "865dfd94_05e58889",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70fa3712_ed6f96d7",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-01-12T21:57:21Z",
       "side": 1,
       "message": "nit, refactor the regex into a global.  Also, as a future CL, can create an ec reporter that gets the ec hash, ec bootmode, ec active copy, ec section, so as to improve readability in tests.",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c9ebb39_cc74d572",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T23:05:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70fa3712_ed6f96d7",
       "revId": "da0e94220c8971921c87248364255ace354f0a83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
