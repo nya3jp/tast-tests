@@ -57,8 +57,8 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 	// textblock detection and word detection.
 	if err := uiauto.Combine("verify detections",
 		ud.LeftClick(uidetection.CustomIcon(s.DataPath("logo_chrome.png"))),
-		ud.LeftClick(uidetection.TextBlock([]string{"Add", "shortcut"})),
-		ud.LeftClick(uidetection.Word("Cancel")),
+		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(uidetection.TextBlock([]string{"Add", "shortcut"})),
+		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(uidetection.Word("Cancel")),
 		ud.WaitUntilGone(uidetection.Word("Cancel")),
 		// Check the negative cases.
 		expectError(ud.Exists(uidetection.Word("Google")), uidetection.ErrMultipleMatch),
