@@ -39,6 +39,30 @@
       },
       "revId": "11823e8fcd6ec3b87ea65f4d45f4f86d58bfbd53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63555c92_6ac34cba",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-12T10:25:56Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "95783d26_431305ea",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 1
+      },
+      "revId": "11823e8fcd6ec3b87ea65f4d45f4f86d58bfbd53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
