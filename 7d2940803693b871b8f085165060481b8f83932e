@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64ccc93_b95dc5bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T00:16:27Z",
+      "side": 1,
+      "message": "I made getInactiveSection as a function, is it fine?",
+      "parentUuid": "b5968305_217abd3b",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "7d2940803693b871b8f085165060481b8f83932e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84e3142d_a20fa75c",
@@ -94,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2010dd95_fbda186f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T00:16:27Z",
+      "side": 1,
+      "message": "I extracted flashromRead and flashromWrite functions, this is my understanding of your suggestion. Please tell me if I misunderstood something.",
+      "parentUuid": "082666fa_7852d039",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "7d2940803693b871b8f085165060481b8f83932e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5915024_4986fac2",
@@ -107,6 +155,30 @@
       "writtenOn": "2021-12-08T02:15:40Z",
       "side": 1,
       "message": "put this whole hunk into its own function, it will help bring about more the structure your heading towards.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "7d2940803693b871b8f085165060481b8f83932e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82c264ae_790e8db3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-12T00:16:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5915024_4986fac2",
       "range": {
         "startLine": 87,
         "startChar": 0,
