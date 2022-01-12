@@ -176,6 +176,27 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to attach the charger: ", err)
 	}
 
+	// Cr50 goes to sleep when the battery is disconnected, and when DUT wakes, CCD state might be locked.
+	// Open CCD after supplying power and before talking to the EC.
+	if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
+		s.Fatal("Failed to get cr50_ccd_level: ", err)
+	} else if val != servo.Open {
+		s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+		if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+			s.Fatal("Failed to unlock CCD: ", err)
+		}
+	}
+
+	// Some models need a power button press to wake up, and others need 65w chargers.
+	// Before you add any model to this list, make sure you are using a 65w charger, and that
+	// the model is old and not work just fixing the bug in the firmware.
+	// Leona problems might be b/185437341. Attaching a charger directly vs via a hub or servo behave differently.
+	if h.Model == "leona" {
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			s.Error("Failed to press power key: ", err)
+		}
+	}
+
 	// Confirm a successful boot.
 	if err := confirmBoot(ctx); err != nil {
 		s.Fatal("Failed to boot: ", err)
