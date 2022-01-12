@@ -116,17 +116,13 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 		return nil, errors.Wrap(err, "failed to kill lacros-chrome")
 	}
 
-	// Create a new temporary directory for user data dir. We don't bother
-	// clearing it on shutdown, since it's a subdirectory of the binary
-	// path, which is cleared by pre.go. We need to use a new temporary
-	// directory for each invocation so that successive calls to
-	// LaunchLacros don't interfere with each other.
-	userDataDir, err := ioutil.TempDir(f.LacrosPath(), "")
+	// Create a new temporary directory for user data dir.
+	// The directory will be wiped by fixture's Reset(), so if necessary
+	// the log needs to be preserved within the test.
+	// This creates new directory for each invocation to provide isolated environment.
+	userDataDir, err := ioutil.TempDir(f.UserTmpDir(), "")
 	if err != nil {
-		// Fall back to create it at temporary location in case rootfs-lacros is used.
-		if userDataDir, err = ioutil.TempDir("", "lacros"); err != nil {
-			return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", userDataDir)
-		}
+		return nil, errors.Wrapf(err, "failed to set up a user data dir: %v", userDataDir)
 	}
 
 	// Set user to chronos, since we run lacros as chronos.
