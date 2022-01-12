@@ -137,4 +137,7 @@ const (
 	ZoomURL = "https://zoom.us/"
 	// ZoomSignInURL specifies the URL for Zoom sign in.
 	ZoomSignInURL = "https://zoom.us/google_oauth_signin"
+
+	// WeVideoURL specifies the URL for WeVideo.
+	WeVideoURL = "https://www.wevideo.com/"
 )
