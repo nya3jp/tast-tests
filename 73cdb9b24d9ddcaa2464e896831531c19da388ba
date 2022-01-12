@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16baaa6f_ee335a29",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-12T21:43:57Z",
+      "side": 1,
+      "message": "I\u0027ve decided to add this version of a start activity method so that it is obvious that there is a list of default options that are used for most tast tests that don\u0027t specify any specific args and this way if a test wants to run a start command with no args at all (other than -n \u003cactName\u003e) than it can do that.",
+      "range": {
+        "startLine": 404,
+        "startChar": 20,
+        "endLine": 404,
+        "endChar": 43
+      },
+      "revId": "73cdb9b24d9ddcaa2464e896831531c19da388ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb2ef65_76bdae61",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-12T21:43:57Z",
+      "side": 1,
+      "message": "I\u0027m putting this in for good measure although I think it is not technically required to be right before the activity name.",
+      "range": {
+        "startLine": 422,
+        "startChar": 8,
+        "endLine": 422,
+        "endChar": 26
+      },
+      "revId": "73cdb9b24d9ddcaa2464e896831531c19da388ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
