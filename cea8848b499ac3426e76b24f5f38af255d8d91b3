@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81129e1_0d950b07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-12T19:57:44Z",
+      "side": 1,
+      "message": "This part isn\u0027t done anymore, so just explain that you are cleaning up images to save space.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "cea8848b499ac3426e76b24f5f38af255d8d91b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "614467b6_dd9505d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-12T19:57:44Z",
+      "side": 1,
+      "message": "Make sure to click \"Commit-Queue\" +1",
+      "revId": "cea8848b499ac3426e76b24f5f38af255d8d91b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
