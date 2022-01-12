@@ -166,10 +166,11 @@ func (uda *Context) Tap(s *Finder) uiauto.Action {
 
 // Location finds the location of a finder in the screen.
 func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) {
-	if err := s.resolve(ctx, uda.detector, uda.tconn, uda.pollOpts, uda.screenshotStrategy); err != nil {
+	loc, err := s.resolve(ctx, uda.detector, uda.tconn, uda.pollOpts, uda.screenshotStrategy)
+	if err != nil {
 		return nil, errors.Wrapf(err, "failed to resolve the finder: %q", s.desc)
 	}
-	return s.location()
+	return loc, nil
 }
 
 // Exists returns an action that returns nil if the specified element exists.
