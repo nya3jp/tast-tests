@@ -16,6 +16,46 @@
       "message": "@jamescook: I just realized that before I land the CL to enable the app list sort as default, the last patch of code will not work because my previous patch assumes that the sorting is enabled. In the latest patch, I use parameterized tests: enable the sorting and disable the sorting. Please take another look. Thank you!",
       "revId": "3bd289d238c8aee60fb48881382b699e096c3a2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab2e298d_10cc50fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-01-12T22:46:01Z",
+      "side": 1,
+      "message": "LGTM with nit.",
+      "revId": "3bd289d238c8aee60fb48881382b699e096c3a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92975f9f_441b63ae",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-01-12T22:46:01Z",
+      "side": 1,
+      "message": "Maybe this should say ProductivityLauncher, since that flag is enabled?",
+      "range": {
+        "startLine": 154,
+        "startChar": 42,
+        "endLine": 154,
+        "endChar": 50
+      },
+      "revId": "3bd289d238c8aee60fb48881382b699e096c3a2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
