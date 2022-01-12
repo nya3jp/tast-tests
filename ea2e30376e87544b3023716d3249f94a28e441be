@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a20e769_2f1e0985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T15:31:37Z",
+      "side": 1,
+      "message": "nit: \"break\" looks missing.",
+      "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6ff609aa_df1c1698",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
         "patchSetId": 6
@@ -84,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbc49131_aa8b1e8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T15:31:37Z",
+      "side": 1,
+      "message": "Ah, I see your intention, now.\n\nCould you describe more detailed spec in the Vars comments?\nSpecifically what\u0027s the diff between action_filter and action_sequence focusing on the order of actions to run.",
+      "parentUuid": "0738b687_f4c504db",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13490233_e843e927",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
         "patchSetId": 6
@@ -113,6 +154,41 @@
       "side": 1,
       "message": "actionFilter will get a single action to be stressed, whereas actionSequences will get a set of actions that needs to be stressed. Hence keeping them separate.",
       "parentUuid": "13490233_e843e927",
+      "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da45302_000dae1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T15:31:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "69effcc5_1c64e460",
+      "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1635fec3_e80a0f82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T15:31:37Z",
+      "side": 1,
+      "message": "not a regression, but this looks not correct, because this won\u0027t be called on s.Fatalf above. (ditto for below L260).\n\nI think the function needs to be wrapped by a function to use defer. Could you fix, rather than duplicate the issue?",
       "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
