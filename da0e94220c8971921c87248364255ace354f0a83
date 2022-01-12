@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc43c091_d73e976e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/software_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-01-12T23:18:47Z",
+      "side": 1,
+      "message": "That or just defer the restore before checking for err from corrupt.",
+      "parentUuid": "ab335c0b_0469656e",
+      "revId": "da0e94220c8971921c87248364255ace354f0a83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70fa3712_ed6f96d7",
