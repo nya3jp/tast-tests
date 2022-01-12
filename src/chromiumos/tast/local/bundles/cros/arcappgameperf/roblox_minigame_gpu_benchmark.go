@@ -6,14 +6,12 @@ package arcappgameperf
 
 import (
 	"context"
-	"regexp"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -31,7 +29,7 @@ func init() {
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-benchmark-game-icon.png", "roblox-launch-game.png"},
+		Data:         []string{"roblox-launch-screen-sign-up-button.png", "roblox-home-screen-search-input.png", "roblox-search-benchmark-game-icon.png", "roblox-launch-game.png"},
 		// TODO(b/206442649): Remove after initial testing is complete.
 		HardwareDeps: hwdep.D(hwdep.Model("eve", "hatch", "fizz", "zork")),
 		Params: []testing.Param{
@@ -63,17 +61,21 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 	password := s.RequiredVar("arcappgameperf.roblox_password")
 
 	testutil.PerformTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) error {
-		// onAppReady: Landing will appear in logcat after the game is fully loaded.
-		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
-			return errors.Wrap(err, "onAppReady was not found in LogCat")
-		}
-
 		kbd, err := input.Keyboard(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to create keyboard")
 		}
 
 		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute)
+
+		// Make sure Roblox is launched.
+		if err := uiauto.Combine("Confirm launch",
+			uda.WithTimeout(time.Minute*3).WaitUntilExists(uidetection.CustomIcon(s.DataPath("roblox-launch-screen-sign-up-button.png"))),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to confirm launch")
+		}
+
+		// Launch the benchmark game.
 		if err := uiauto.Combine("Load GPU Benchmark Minigame",
 			// Click the button to start the log in process.
 			uda.Tap(uidetection.TextBlock([]string{"Log", "In"})),
@@ -113,7 +115,7 @@ func RobloxMinigameGpuBenchmark(ctx context.Context, s *testing.State) {
 			// At this point the screen will be updating frequently so don't wait for stable screenshots.
 			uda.WithScreenshotStrategy(uidetection.ImmediateScreenshot).WaitUntilExists(uidetection.TextBlock([]string{"FPS"})),
 		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to finish test")
+			return errors.Wrap(err, "failed to confirm benchmark game was launched")
 		}
 
 		// Leave the mini-game running for while recording metrics.
