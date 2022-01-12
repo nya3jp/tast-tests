@@ -1,0 +1,23 @@
+{
+    "Name": "HP Color LaserJet Pro M478f-9f [BFD680]",
+    "Sources": [
+          {
+                  "SourceType": "Flatbed",
+                  "ColorModes": ["Color", "Grayscale"],
+                  "PageSizes": ["A4", "Letter", "Fit to scan area"],
+                  "Resolutions": ["600 dpi", "300 dpi", "200 dpi", "150 dpi", "100 dpi", "75 dpi"]
+          },
+          {
+                 "SourceType": "Document Feeder (One-sided)",
+                 "ColorModes": ["Color", "Grayscale"],
+                 "PageSizes": ["A4", "Letter", "Fit to scan area"],
+                 "Resolutions": ["300 dpi", "200 dpi", "150 dpi", "100 dpi", "75 dpi"]
+          },
+          {
+                 "SourceType": "Document Feeder (Two-sided)",
+                 "ColorModes": ["Color", "Grayscale"],
+                 "PageSizes": ["A4", "Letter", "Fit to scan area"],
+                 "Resolutions": ["300 dpi", "200 dpi", "150 dpi", "100 dpi", "75 dpi"]
+          }
+    ]
+}
