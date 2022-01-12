@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a1ef195_3d1a6bac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-12T09:14:54Z",
+      "side": 1,
+      "message": "seems fine. What I was getting at here is more that worker functions should return err and the actual logging happen at the call site. So preferably here to have:\n\n`return fmt.Errorf(\"reading image into file failed with: %v\", err)`",
+      "parentUuid": "49a744e8_09266a78",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 43
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b57144c8_6b4c0765",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -302,6 +326,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1007da01_60e4bba0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-12T09:14:54Z",
+      "side": 1,
+      "message": "Nope, the special case is caused by the semantics of the function. `y` is invalid output and cannot be used if `err !\u003d nil`. If you are considering it valid output then you need to adjust the function to behave inline with expectations.\n\nThe concept you are trying to archive here is to log a failed subprocess, however failure should be encoded within the err RType value and not the ret LType valule.\n\nA easy fix for you is to roll the log line inside the func body, if you don\u0027t always want output printed than pass a bool in to toggle it.",
+      "parentUuid": "25354e92_f5740d60",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2995503d_d6670a33",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -478,6 +526,30 @@
       "side": 1,
       "message": "Oh I love when test tells me a lot! What slows down the test actually: doing 2 writes in a loop of 5 iterations. But those writes are an essence of a test. So I think it is slow anyway.",
       "parentUuid": "e7696354_0a1fe362",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 69
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8791384a_bd8fe0f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-12T09:14:54Z",
+      "side": 1,
+      "message": "Yes but this line is over the top, please delete it. See above.\n\nIf you want expressive logging, consider putting all the temp file instantiation part into its own method and return err on failures, `return fmt.Errorf(\"\")` then log the err at the call site with the canonical if err !\u003d nil { log err } pattern",
+      "parentUuid": "b48ecd1e_535d04fa",
       "range": {
         "startLine": 85,
         "startChar": 2,
@@ -772,6 +844,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e00c0b82_fe12d9bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-12T09:14:54Z",
+      "side": 1,
+      "message": "Can you start with moving all the parsing into its own function. Once we have a signature to bound the problem we can talk about implementation detail.",
+      "parentUuid": "e32d8727_686bc3a5",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 59
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70bdf4a1_d50e1012",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -960,6 +1056,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c24fbef_5f607c1b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-12T09:14:54Z",
+      "side": 1,
+      "message": "so the main steps here are:\n\n- iterate some sections,\n- prepare a section,\n- do_something - write etc - the section.\n\nSo the signature of the func would be of the form that consumes a func ptr (Go has anonymous functions - lambda\u0027s) that does the third-step and the func body does all the iteration prep stuff.\n\nThis all sounds trickier than it is https://www.golangprograms.com/anonymous-functions-in-golang.html\n\nI am however fine with it being a follow up.",
+      "parentUuid": "8bf8eea4_a7f0d61d",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 45
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d119829_28780607",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 6
@@ -995,6 +1115,30 @@
       "side": 1,
       "message": "How do I do const array in Go?",
       "parentUuid": "0d119829_28780607",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 66
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2a2223c_5dcf6232",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-12T09:14:54Z",
+      "side": 1,
+      "message": "It has to be a func that returns a const. They are like const member functions.",
+      "parentUuid": "cfed8568_0743a576",
       "range": {
         "startLine": 191,
         "startChar": 1,
