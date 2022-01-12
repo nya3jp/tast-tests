@@ -162,24 +162,24 @@ func Resourced(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Resource Manager client: ", err)
 	}
 
-	// Baseline checks.
-	if err := checkSetGameMode(ctx, rm); err != nil {
-		s.Fatal("Checking SetGameMode failed: ", err)
-	}
-
 	if s.Param().(resourcedTestParams).isBaseline {
+		// Baseline checks.
+		if err := checkSetGameMode(ctx, rm); err != nil {
+			s.Fatal("Checking SetGameMode failed: ", err)
+		}
+
+		if err := checkQueryMemoryStatus(ctx, rm); err != nil {
+			s.Fatal("Querying memory status failed: ", err)
+		}
+
+		if err := checkMemoryPressureSignal(ctx, rm); err != nil {
+			s.Fatal("Checking memory pressure signal failed: ", err)
+		}
+
 		return
 	}
 
 	// Other checks.
-	if err := checkQueryMemoryStatus(ctx, rm); err != nil {
-		s.Fatal("Querying memory status failed: ", err)
-	}
-
-	if err := checkMemoryPressureSignal(ctx, rm); err != nil {
-		s.Fatal("Checking memory pressure signal failed: ", err)
-	}
-
 	if err := checkSetGameModeWithTimeout(ctx, rm); err != nil {
 		s.Fatal("Checking SetGameModeWithTimeout failed: ", err)
 	}
