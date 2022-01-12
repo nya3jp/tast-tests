@@ -21,6 +21,7 @@ type FixtValue interface {
 	TestAPIConn() *chrome.TestConn // The CrOS-chrome test connection.
 	Mode() SetupMode               // Mode used to get the lacros binary.
 	LacrosPath() string            // Root directory for lacros-chrome.
+	UserTmpDir() string            // Path to the directory that can store user data.
 }
 
 // NewFixture creates a new fixture that can launch Lacros chrome with the given setup mode and
