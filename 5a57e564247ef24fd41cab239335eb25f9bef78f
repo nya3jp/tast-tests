@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f65703e1_1e09666f",
+        "filename": "src/chromiumos/tast/local/policyutil/mgs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-12T03:05:29Z",
+      "side": 1,
+      "message": "It seems that it is only used in defer sw.Close(cleanupCtx), does it need 30s?",
+      "range": {
+        "startLine": 110,
+        "startChar": 37,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "5a57e564247ef24fd41cab239335eb25f9bef78f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
