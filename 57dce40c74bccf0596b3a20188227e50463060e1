@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b525b100_9f8358ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/deqp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-12T21:38:10Z",
+      "side": 0,
+      "message": "Yes but it\u0027s fine.",
+      "parentUuid": "3b965f69_f338173e",
+      "range": {
+        "startLine": 77,
+        "startChar": 36,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dac3a39b_44aa2a23",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-11T03:25:26Z",
       "side": 0,
       "message": "Missing arc.WaitForLaunch() in the new code? (Well, it is a default, but....)",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 7
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74001221_e56e82c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-12T21:38:10Z",
+      "side": 0,
+      "message": "I\u0027m removing the concept of defaults.",
+      "parentUuid": "dac3a39b_44aa2a23",
       "range": {
         "startLine": 253,
         "startChar": 2,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b429d5_680b1ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-12T21:38:10Z",
+      "side": 0,
+      "message": "Not necessary. As long as the component name comes as the last arg then this flag isn\u0027t necessary before it.",
+      "parentUuid": "59c99bf2_44c6cdcf",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 7
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cac07b0_d3635e52",
@@ -107,6 +179,30 @@
       "writtenOn": "2022-01-11T03:25:26Z",
       "side": 0,
       "message": "Ditto on questioning where the -n is added by the new code.",
+      "range": {
+        "startLine": 227,
+        "startChar": 62,
+        "endLine": 227,
+        "endChar": 66
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf6c78e1_3f272ea4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_scan_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-12T21:38:10Z",
+      "side": 0,
+      "message": "Not necessary as per other comment.",
+      "parentUuid": "0cac07b0_d3635e52",
       "range": {
         "startLine": 227,
         "startChar": 62,
@@ -134,6 +230,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d070cd7f_821b4a14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-12T21:38:10Z",
+      "side": 0,
+      "message": "-n is not necessary for the start command call.",
+      "parentUuid": "7f06c58d_6f0eadd1",
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "100559c8_ddca9e5d",
@@ -147,6 +261,30 @@
       "writtenOn": "2022-01-12T02:57:47Z",
       "side": 0,
       "message": "dropped?\n\nDitto for all below.",
+      "range": {
+        "startLine": 202,
+        "startChar": 56,
+        "endLine": 202,
+        "endChar": 60
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d1047e_7cf8c0e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/video/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-12T21:38:10Z",
+      "side": 0,
+      "message": "It\u0027s not necessary",
+      "parentUuid": "100559c8_ddca9e5d",
       "range": {
         "startLine": 202,
         "startChar": 56,
