@@ -50,6 +50,24 @@
       "message": "Is the CL still needed?",
       "revId": "a96b963a0e9e529e56a8f5b69e9e4e4b0306312a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd4618c6_6d26d6a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-01-12T07:49:16Z",
+      "side": 1,
+      "message": "Yes. It was needed for a test that waits for the bandwidth to be refactored (but this CL will be used anyway).\n\nI planned to merge both of them together, but I think could merge this now.",
+      "parentUuid": "714cafab_9804655f",
+      "revId": "a96b963a0e9e529e56a8f5b69e9e4e4b0306312a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
