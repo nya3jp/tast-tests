@@ -104,8 +104,6 @@ func IfSuccessThen(preFunc, action Action) Action {
 			if err := action(ctx); err != nil {
 				return err
 			}
-		} else {
-			testing.ContextLogf(ctx, "The prefunc failed, the action was not executed, the error was: %s", err)
 		}
 		return nil
 	}
