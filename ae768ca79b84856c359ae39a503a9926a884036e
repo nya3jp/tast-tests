@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9de121e6_24c09193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-12T05:53:35Z",
+      "side": 1,
+      "message": "Hi all,\nWe just found out that the mgs package implementation we mentioned has been refactored recently and we need to adjust our code accordingly. We need to do further research and then continue the review would be better. I\u0027ll change the CL to the WIP status first. Thank you very much for your time and apologize for the inconvenience.",
+      "revId": "ae768ca79b84856c359ae39a503a9926a884036e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6163a50_d47c488e",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
         "patchSetId": 2
