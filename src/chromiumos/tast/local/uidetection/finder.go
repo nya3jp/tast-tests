@@ -37,6 +37,7 @@ type Location struct {
 // Finder represents a data structure that consists of arguments to find
 // a UI element.
 type Finder struct {
+	screenshot []byte
 	// The request used to construct the finder.
 	request *pb.DetectionRequest
 	// boundingBoxes stores the locations of the responses from the request.
@@ -68,6 +69,7 @@ func newFromRequest(r *pb.DetectionRequest, d string) *Finder {
 // It copies all of the keys/values in attributes and state individually.
 func (s *Finder) copy() *Finder {
 	c := newFinder()
+	c.screenshot = s.screenshot
 	c.request = s.request
 	c.boundingBoxes = s.boundingBoxes
 	c.desc = s.desc
@@ -108,18 +110,16 @@ func (s *Finder) ExactMatch() *Finder {
 // resolve resolves the UI detection request and stores the bounding boxes
 // of the matching elements.
 func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions, strategy ScreenshotStrategy) error {
-	// Take the screenshot depending on the provided strategy.
-	var imagePng []byte
 	var err error
 
 	switch strategy {
 	case StableScreenshot:
-		imagePng, err = TakeStableScreenshot(ctx, tconn, pollOpts)
+		s.screenshot, err = TakeStableScreenshot(ctx, tconn, pollOpts)
 		if err != nil {
 			return errors.Wrap(err, "failed to take stable screenshot")
 		}
 	case ImmediateScreenshot:
-		imagePng, err = TakeScreenshot(ctx, tconn)
+		s.screenshot, err = TakeScreenshot(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to take screenshot")
 		}
@@ -143,7 +143,7 @@ func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestC
 		return errors.Errorf("invalid device scale factor: %f", scaleFactor)
 	}
 
-	response, err := d.sendDetectionRequest(ctx, imagePng, s.request)
+	response, err := d.sendDetectionRequest(ctx, s.screenshot, s.request)
 	if err != nil {
 		return errors.Wrap(err, "failed to resolve the UI detection request")
 	}
