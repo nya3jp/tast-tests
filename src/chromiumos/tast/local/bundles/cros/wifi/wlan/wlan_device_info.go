@@ -24,6 +24,7 @@ const (
 	QualcommAtherosQCA6174     = "Qualcomm Atheros QCA6174"
 	QualcommAtherosQCA6174SDIO = "Qualcomm Atheros QCA6174 SDIO"
 	QualcommWCN3990            = "Qualcomm WCN3990"
+	QualcommWCN6750            = "Qualcomm WCN6750"
 	Intel7260                  = "Intel 7260"
 	Intel7265                  = "Intel 7265"
 	Intel9000                  = "Intel 9000"
@@ -83,6 +84,7 @@ var lookupWLANDev = map[DevInfo]string{
 	{vendor: "0x14c3", device: "0x7961"}:                      MediaTekMT7921PCIE,
 	{vendor: "0x037a", device: "0x7901"}:                      MediaTekMT7921SDIO,
 	{compatible: "qcom,wcn3990-wifi"}:                         QualcommWCN3990,
+	{compatible: "qcom,wcn6750-wifi"}:                         QualcommWCN6750,
 }
 
 // DevInfo contains the information of the WLAN device.
@@ -129,7 +131,7 @@ func DeviceInfo(ctx context.Context, netIf string) (*DevInfo, error) {
 		return nil, errors.Wrapf(err, "failed to get uevent at device %q", netIf)
 	}
 
-	// Support for (qcom,wcn3990-wifi) chip.
+	// Support for (qcom,wcn3990-wifi) and (qcom,wcn6750-wifi) chip.
 	for _, line := range strings.Split(uevent, "\n") {
 		if kv := compatibleRE.FindStringSubmatch(line); kv != nil {
 			if wifiSnoc := strings.Split(line, "="); wifiSnoc != nil {

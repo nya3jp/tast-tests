@@ -93,6 +93,10 @@ var expectedWLANDriver = map[string]map[string]string{
 		"5.10": "wireless/ath/ath10k/ath10k_snoc.ko",
 		"5.15": "wireless/ath/ath10k/ath10k_snoc.ko",
 	},
+	wlan.QualcommWCN6750: {
+		"5.10": "wireless/ath/ath11k/ath11k_ahb.ko",
+		"5.15": "wireless/ath/ath11k/ath11k_ahb.ko",
+	},
 	wlan.Marvell88w8897SDIO: {
 		"3.8":  "wireless/mwifiex/mwifiex_sdio.ko",
 		"3.10": "wireless-3.8/mwifiex/mwifiex_sdio.ko",
