@@ -6,14 +6,14 @@ package arcappgameperf
 
 import (
 	"context"
-	"regexp"
 	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
 
@@ -25,6 +25,7 @@ func init() {
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         []string{"roblox-launch-screen-sign-up-button.png"},
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -46,9 +47,14 @@ func RobloxLaunch(ctx context.Context, s *testing.State) {
 	)
 
 	testutil.PerformTest(ctx, s, appPkgName, appActivity, func(params testutil.TestParams) error {
-		// onAppReady: Landing will appear in logcat after the game is fully loaded.
-		if err := params.Arc.WaitForLogcat(ctx, arc.RegexpPred(regexp.MustCompile(`onAppReady:\sLanding`))); err != nil {
-			return errors.Wrap(err, "onAppReady was not found in LogCat")
+		// Make sure Roblox is launched.
+		uda := uidetection.NewDefault(params.TestConn)
+
+		// Make sure Roblox is launched.
+		if err := uiauto.Combine("Confirm launch",
+			uda.WithTimeout(time.Minute*3).WaitUntilExists(uidetection.CustomIcon(s.DataPath("roblox-launch-screen-sign-up-button.png"))),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to confirm launch")
 		}
 
 		// Save the metric in crosbolt.
