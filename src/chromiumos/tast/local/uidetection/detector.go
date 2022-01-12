@@ -22,6 +22,19 @@ type uiDetector struct {
 	server  string
 }
 
+const retryPolicy = `{
+	"methodConfig": [{
+		"name": [{ "service": "google.chromeos.uidetection.v1.UiDetectionService", "method": "ExecuteDetection" }],
+		"timeout": "60s",
+		"retryPolicy": {
+		  "maxAttempts": 5,
+		  "initialBackoff": "1s",
+		  "maxBackoff": "10s",
+		  "backoffMultiplier": 1.3,
+		  "retryableStatusCodes": ["UNAVAILABLE"]
+		}
+	}]}`
+
 func (d *uiDetector) sendDetectionRequest(ctx context.Context, imagePng []byte, request *pb.DetectionRequest) (*pb.UiDetectionResponse, error) {
 	// Create the UI detection request.
 	uiDetectionRequest := &pb.UiDetectionRequest{
@@ -35,6 +48,7 @@ func (d *uiDetector) sendDetectionRequest(ctx context.Context, imagePng []byte, 
 	conn, err := grpc.Dial(
 		d.server,
 		grpc.WithTransportCredentials(credentials.NewTLS(nil)),
+		grpc.WithDefaultServiceConfig(retryPolicy),
 	)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to establish connection to ui detection server")
