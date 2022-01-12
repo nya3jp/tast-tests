@@ -68,7 +68,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 	ctx, cancel = ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cleanupSetting, err := cuj.InitializeSetting(ctx)
+	cleanupSetting, err := cuj.InitializeSetting(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to set initial settings")
 	}

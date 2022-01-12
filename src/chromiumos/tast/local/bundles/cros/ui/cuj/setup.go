@@ -11,6 +11,8 @@ import (
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj/volume"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
@@ -24,7 +26,7 @@ const (
 )
 
 // InitializeSetting sets all initial settings to DUT before performing CUJ testing.
-func InitializeSetting(ctx context.Context) (action.Action, error) {
+func InitializeSetting(ctx context.Context, tconn *chrome.TestConn) (action.Action, error) {
 	setBrightnessNormal, err := SetScreenBrightness(ctx, expectedBrightness)
 	if err != nil {
 		return nil, err
@@ -33,6 +35,18 @@ func InitializeSetting(ctx context.Context) (action.Action, error) {
 	setVolumeNormal, err := SetAudioVolume(ctx, expectedVolumePercent)
 	if err != nil {
 		return nil, err
+	}
+
+	inputMethod := ime.EnglishUS
+	currentInputMethod, err := ime.ActiveInputMethod(ctx, tconn)
+	if err != nil {
+		return nil, err
+	}
+	if equal := currentInputMethod.Equal(inputMethod); !equal {
+		testing.ContextLogf(ctx, "Current input method: %q; Set current input method to: %q", currentInputMethod, inputMethod)
+		if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+			return nil, err
+		}
 	}
 
 	return func(ctx context.Context) error {

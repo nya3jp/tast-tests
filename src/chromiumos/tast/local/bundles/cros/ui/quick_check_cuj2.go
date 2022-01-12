@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -106,11 +105,6 @@ func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
 
 	param := s.Param().(quickCheckParam)
 	scenario := param.scenario
-
-	// Ensure keyboard layout is "US ENG" so password can be entered correctly when unlocking screen.
-	if err := ime.EnglishUS.Activate(tconn)(ctx); err != nil {
-		s.Fatal("Failed to set keyboard layout to US ENG: ", err)
-	}
 
 	pv := quickcheckcuj.Run(ctx, s, cr, scenario, tabletMode)
 	if err := pv.Save(s.OutDir()); err != nil {
