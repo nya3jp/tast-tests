@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39ebad1_1141e0ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-12T05:23:23Z",
+      "side": 1,
+      "message": "LGTM. Nice work!",
+      "revId": "037a9530a8dd3ab7b0f16cd1e23ac7536f234059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "326c36c6_8cb68b14",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "0x01 represents 0-10% so we want 5, 0x02 represents 10-20% wo we want 15, 0x03 represents 20-30% so we want 25, each value represents a 10% range and we want the median of the bucket. I can clarify this comment.",
       "parentUuid": "326c36c6_8cb68b14",
+      "range": {
+        "startLine": 370,
+        "startChar": 11,
+        "endLine": 370,
+        "endChar": 28
+      },
+      "revId": "037a9530a8dd3ab7b0f16cd1e23ac7536f234059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb804c63_66f91dcb",
+        "filename": "src/chromiumos/tast/common/storage/storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-12T05:23:23Z",
+      "side": 1,
+      "message": "Got it. Thanks for that! Love the depth of the comment btw",
+      "parentUuid": "26225e5c_d04342e0",
       "range": {
         "startLine": 370,
         "startChar": 11,
