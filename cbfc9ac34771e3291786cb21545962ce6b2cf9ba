@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e18d0db_f7d7d46b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2022-01-12T00:54:55Z",
+      "side": 1,
+      "message": "Adding 2 (out of 4) descriptors for printers in lab.",
+      "revId": "cbfc9ac34771e3291786cb21545962ce6b2cf9ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
