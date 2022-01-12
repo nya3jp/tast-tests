@@ -16,6 +16,23 @@
       "message": "I made some non-trival changes to the latest patchset to accommodate a change in the D-Bus method signature.\n\nHidehiko, PTAL. Thanks!",
       "revId": "b3b0308c6eda4ba0fb9ee85da88bdbc0000190b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "023bc428_4f7c6dab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-12T00:15:40Z",
+      "side": 1,
+      "message": "slgtm",
+      "revId": "b3b0308c6eda4ba0fb9ee85da88bdbc0000190b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
