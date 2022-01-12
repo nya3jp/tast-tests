@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57926578_a1251a57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T18:09:11Z",
+      "side": 1,
+      "message": "Just some small nits here.",
+      "revId": "a9e0990d07f34ea5f6f336bfd66d4f4721cbfd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afdf3e5f_ff9d11d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/bios_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T18:09:11Z",
+      "side": 1,
+      "message": "Instead of using the ints here, use pb.Programmers_BIOSProgrammer, etc.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "a9e0990d07f34ea5f6f336bfd66d4f4721cbfd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f71b2d9f_26d20cf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T18:09:11Z",
+      "side": 1,
+      "message": "Use the enum name Programmers_ECProgrammer not a number",
+      "range": {
+        "startLine": 108,
+        "startChar": 91,
+        "endLine": 108,
+        "endChar": 110
+      },
+      "revId": "a9e0990d07f34ea5f6f336bfd66d4f4721cbfd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce81bfe8_82c9d2cb",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-12T18:09:11Z",
+      "side": 1,
+      "message": "Enum names should be singular, i.e. Programmer, not Programmers. Same for ImageSections",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 16
+      },
+      "revId": "a9e0990d07f34ea5f6f336bfd66d4f4721cbfd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
