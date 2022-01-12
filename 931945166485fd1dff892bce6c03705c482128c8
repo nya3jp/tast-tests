@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db392027_6f623969",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-12T20:05:09Z",
+      "side": 1,
+      "message": "\u003e This is bool so it\u0027s kind of special, but AFAIK, if case does not cover\n\u003e everything, valStr will be kept as default value (empty string), right?\n\nSorry, I guess I need to write more Go code and actually test my assumptions about the language. I assumed that the compiler would catch incomplete value coverage by default, just like a C++ compiler (with the appropriate warnings enabled).",
+      "parentUuid": "9d7eb0e0_a97c0ed5",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 4
+      },
+      "revId": "931945166485fd1dff892bce6c03705c482128c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05b061d6_6d48a68a",
         "filename": "src/chromiumos/tast/local/arc/activity.go",
         "patchSetId": 3

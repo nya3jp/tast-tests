@@ -70,6 +70,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29067073_17d45309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/download_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-12T20:05:09Z",
+      "side": 0,
+      "message": "I just saw your comment on the old CL.\n\n\u003e The -n arg as the last prefix arg (so that it goes right before the\n\u003e pkgname/actName) is not actually necessary for the am start command to parse the\n\u003e args. This is also the reason why the notion of prefix and suffix args can be\n\u003e removed and the pkgName/activityName arg can come last.\n\nIt sounds like the removal is expected then. (I didn\u0027t look up what -n did). Feel free to ignore the later comments about -n",
+      "parentUuid": "59c99bf2_44c6cdcf",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 7
+      },
+      "revId": "57dce40c74bccf0596b3a20188227e50463060e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cac07b0_d3635e52",
