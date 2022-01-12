@@ -111,11 +111,14 @@ var AddCellularButton = nodewith.NameStartingWith("Add Cellular").Role(role.Butt
 
 // Elements in "Cellular detail page"
 var (
-	// connectedStatus is the finder for the connected status text UI in the cellular detail page.
+	// ConnectedStatus is the finder for the connected status text UI in the cellular detail page.
 	ConnectedStatus = nodewith.Name("Connected").Role(role.StaticText)
 
-	// disconnectedStatus is the finder for the disconnected status text UI in the cellular detail page.
+	// DisconnectedStatus is the finder for the disconnected status text UI in the cellular detail page.
 	DisconnectedStatus = nodewith.Name("Not Connected").Role(role.StaticText)
+
+	// ConnectingStatus is the finder for the connecting status text UI in the cellular detail page.
+	ConnectingStatus = nodewith.NameStartingWith("Connecting").Role(role.StaticText)
 
 	// connectButton is the finder for the connect button UI in the cellular detail page.
 	ConnectButton = nodewith.Name("Connect").Role(role.Button)

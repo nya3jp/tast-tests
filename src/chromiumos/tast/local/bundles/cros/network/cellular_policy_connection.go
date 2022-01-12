@@ -39,9 +39,12 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_prod_esim"},
 		Fixture:      fixture.FakeDMSEnrolled,
-		Timeout:      5 * time.Minute,
+		Timeout:      7 * time.Minute,
 	})
 }
+
+var managedProfileName = "ManagedProfile"
+var unmanagedProfileName = "UnmanagedProfile"
 
 func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
@@ -61,16 +64,16 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clean up: ", err)
 	}
 
+	managedIccid, err := enableEachCellularBeforeTest(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to each cellular network before applying policy: ", err)
+	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API in clean up: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	managedIccid, unmanagedCellularName, err := enableEachCellularBeforeTest(ctx, tconn, cr)
-	if err != nil {
-		s.Fatal("Failed to connect to each cellular network before applying policy: ", err)
-	}
 
 	for _, param := range []struct {
 		name                            string // subtest name.
@@ -124,7 +127,7 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 			managedCellularDetail := nodewith.ClassName("subpage-arrow").Role(role.Button).Ancestor(managedCellular)
 
 			if err := uiauto.Combine("connect, click on the managed cellular detail page, verify connected status, disconnect and go back",
-				ui.LeftClick(managedCellular),
+				ui.WithTimeout(time.Minute).LeftClick(managedCellular),
 				ui.LeftClick(managedCellularDetail),
 				ui.WithTimeout(3*time.Second).WaitUntilExists(ossettings.ConnectedStatus),
 				ui.LeftClick(ossettings.DisconnectButton),
@@ -159,6 +162,7 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 					ui.LeftClick(ossettings.ConnectButton),
 					ui.WaitUntilExists(ossettings.ConnectedStatus),
 					ui.WaitUntilExists(ossettings.RoamingToggle),
+					ui.EnsureGoneFor(ossettings.ConnectingStatus, 5*time.Second),
 					ui.LeftClick(ossettings.DisconnectButton),
 					ui.WaitUntilExists(ossettings.DisconnectedStatus),
 				)(ctx); err != nil {
@@ -174,8 +178,8 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 			}
 
 			networkFeaturePodLabelButton := nodewith.ClassName("FeaturePodLabelButton").NameContaining("network list")
-			connectUnmanagedNetwork := nodewith.ClassName("HoverHighlightView").NameStartingWith("Connect to " + unmanagedCellularName)
-			openUnmanagedNetwork := nodewith.ClassName("HoverHighlightView").NameStartingWith("Open settings for " + unmanagedCellularName)
+			connectUnmanagedNetwork := nodewith.ClassName("HoverHighlightView").NameStartingWith("Connect to " + UnmanagedProfileName)
+			openUnmanagedNetwork := nodewith.ClassName("HoverHighlightView").NameStartingWith("Open settings for " + UnmanagedProfileName)
 			disableImage := nodewith.NameStartingWith("This network is disabled by your administrator").Role(role.Image).Ancestor(connectUnmanagedNetwork)
 
 			if err := uiauto.Combine("Click unmanaged cellular in the network list",
@@ -205,81 +209,81 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 
 // enableEachCellularBeforeTest enables and disables all the installed profiles on the euicc.
 // This makes sure that a shill configuration will be created for each cellular service.
-// It also returns the ICCID of the profile that's already enabled so that this profile will
-// be shown as a managed profile and a different profile's nickname which will be shown as
-// an unmanaged profile.
-func enableEachCellularBeforeTest(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (managedIccid, unmanagedNickname string, e error) {
+// It also returns one of the profile's ICCID as the managed profile in the following test.
+func enableEachCellularBeforeTest(ctx context.Context) (managedIccid string, e error) {
 	const prodSimSlotNum = 0
 	euicc, err := hermes.NewEUICC(ctx, prodSimSlotNum)
 	if err != nil {
-		return "", "", errors.Wrap(err, "Unable to get Hermes euicc")
+		return "", errors.Wrap(err, "Unable to get Hermes euicc")
 	}
 
 	testing.ContextLog(ctx, "Looking for enabled profile")
 	p, err := euicc.EnabledProfile(ctx)
 	if err != nil {
-		return "", "", errors.Wrap(err, "could not read profile status")
+		return "", errors.Wrap(err, "could not read profile status")
 	}
 
 	// Disable all profiles before starting the test
-	managedNickname := ""
 	if p != nil {
 		testing.ContextLogf(ctx, "Disabling enabled profile %s", p.String())
-		props, err := dbusutil.NewDBusProperties(ctx, p.DBusObject)
-		managedIccid, err = props.GetString(hermesconst.ProfilePropertyIccid)
-		if err != nil {
-			return "", "", errors.Wrap(err, "failed to read profile iccid")
-		}
-		testing.ContextLogf(ctx, "Using managed profile iccid: %s", managedIccid)
-
-		managedNickname, err = props.GetString(hermesconst.ProfilePropertyNickname)
-		if err != nil {
-			return "", "", errors.Wrapf(err, "failed to read profile %s nickname", p.String())
-		}
-		testing.ContextLogf(ctx, "Using managed profile nickname: %s", managedNickname)
 		if err := p.Call(ctx, hermesconst.ProfileMethodDisable).Err; err != nil {
-			return "", "", errors.Wrapf(err, "failed to disable %s", p.String())
+			return "", errors.Wrapf(err, "failed to disable %s", p.String())
 		}
 	}
 
 	testing.ContextLog(ctx, "Looking for installed profile")
 	profiles, err := euicc.InstalledProfiles(ctx)
 	if err != nil {
-		return "", "", errors.Wrap(err, "failed to get installed profiles")
+		return "", errors.Wrap(err, "failed to get installed profiles")
 	}
 	if len(profiles) < 2 {
-		return "", "", errors.Wrap(err, "no profiles found on euicc, expected atleast two installed profiles")
+		return "", errors.Wrap(err, "no profiles found on euicc, expected atleast two installed profiles")
 	}
 
+	findUnmanagedProfile := false
 	for _, profile := range profiles {
 		testing.ContextLogf(ctx, "Enabling profile %s", profile.String())
 		if err := profile.Call(ctx, hermesconst.ProfileMethodEnable).Err; err != nil {
-			return "", "", errors.Wrapf(err, "failed to enable profile: %s", profile.String())
+			return "", errors.Wrapf(err, "failed to enable profile: %s", profile.String())
 		}
 		props, err := dbusutil.NewDBusProperties(ctx, profile.DBusObject)
 		iccid, err := props.GetString(hermesconst.ProfilePropertyIccid)
 		if err != nil {
-			return "", "", errors.Wrapf(err, "failed to read profile %s iccid", profile.String())
+			return "", errors.Wrapf(err, "failed to read profile %s iccid", profile.String())
 		}
-		nickname, err := props.GetString(hermesconst.ProfilePropertyNickname)
+
+		nickName, err := props.GetString(hermesconst.ProfilePropertyNickname)
 		if err != nil {
-			return "", "", errors.Wrapf(err, "failed to read profile %s nickname", profile.String())
+			return "", errors.Wrapf(err, "failed to read profile %s nickname", profile.String())
 		}
+
 		if managedIccid == "" {
 			managedIccid = iccid
-			managedNickname = nickname
-			testing.ContextLogf(ctx, "Using managed profile iccid: %s, nickname: %s", managedIccid, managedNickname)
-		} else if iccid != managedIccid && nickname != managedNickname {
-			unmanagedNickname = nickname
+			testing.ContextLogf(ctx, "Using managed profile iccid: %s", managedIccid)
+			if nickName != ManagedProfileName {
+				testing.ContextLogf(ctx, "Renaming profile %s to ManagedProfile", profile.String())
+				if err := profile.Call(ctx, "Rename", ManagedProfileName).Err; err != nil {
+					return "", errors.Wrapf(err, "failed to rename profile: %s", profile.String())
+				}
+			}
+		} else if !findUnmanagedProfile {
+			if nickName != UnmanagedProfileName {
+				testing.ContextLogf(ctx, "Renaming profile %s to UnmanagedProfile", profile.String())
+				if err := profile.Call(ctx, "Rename", UnmanagedProfileName).Err; err != nil {
+					return "", errors.Wrapf(err, "failed to rename profile: %s", profile.String())
+				}
+			}
+			findUnmanagedProfile = true
 		}
+
 		testing.ContextLogf(ctx, "Disabling profile %s", profile.String())
 		if err := profile.Call(ctx, hermesconst.ProfileMethodDisable).Err; err != nil {
-			return "", "", errors.Wrapf(err, "failed to disable profile: %s", profile.String())
+			return "", errors.Wrapf(err, "failed to disable profile: %s", profile.String())
 		}
 	}
-	testing.ContextLogf(ctx, "Using unmanaged profile nickname: %s", unmanagedNickname)
-	if unmanagedNickname == "" {
-		return "", "", errors.Wrap(nil, "didn't find two profiles with different nicknames")
+	if !findUnmanagedProfile {
+		return "", errors.Wrap(nil, "didn't find unmanaged profile")
 	}
-	return managedIccid, unmanagedNickname, nil
+
+	return managedIccid, nil
 }
