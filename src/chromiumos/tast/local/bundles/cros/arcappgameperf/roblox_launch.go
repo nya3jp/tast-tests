@@ -34,7 +34,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Pre:               pre.ArcAppGamePerfBooted,
 			}},
-		Timeout: 10 * time.Minute,
+		Timeout: 15 * time.Minute,
 		VarDeps: []string{"arcappgameperf.username", "arcappgameperf.password"},
 	})
 }

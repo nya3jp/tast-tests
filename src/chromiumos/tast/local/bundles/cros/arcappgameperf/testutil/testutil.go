@@ -34,6 +34,16 @@ type TestParams struct {
 	ActivityStartTime time.Time
 }
 
+// coolDownConfig returns the config to wait for the machine to cooldown for game performance tests.
+// This overrides the default config timeout (5 minutes) and temperature threshold (46 C)
+// settings to reduce test flakes on low-end devices.
+func coolDownConfig() cpu.CoolDownConfig {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.PollTimeout = 7 * time.Minute
+	cdConfig.TemperatureThreshold = 61000
+	return cdConfig
+}
+
 // BenchmarkResults stores results for the calls to benchmarking.
 type BenchmarkResults struct {
 	// FPS is a metric that shows average FPS during the sampled period.
@@ -86,7 +96,7 @@ func PerformTest(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	}
 
 	// Wait for the CPU to idle before performing the test.
-	if _, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)); err != nil {
+	if _, err := cpu.WaitUntilCoolDown(ctx, coolDownConfig()); err != nil {
 		s.Fatal("Failed to wait until CPU is cooled down: ", err)
 	}
 
