@@ -212,6 +212,17 @@ func (h *Helper) EnsureDUTBooted(ctx context.Context) error {
 	if err := h.SetDUTPower(ctx, true); err != nil {
 		testing.ContextLog(ctx, "Failed to connect charger: ", err)
 	}
+
+	// Cr50 goes to sleep during hibernation and battery cutoff, and when DUT wakes, CCD state might be locked.
+	if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
+		testing.ContextLog(ctx, "Failed to get cr50_ccd_level: ", err)
+	} else if val != servo.Open {
+		testing.ContextLogf(ctx, "CCD is not open, got %q. Attempting to unlock", val)
+		if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+			testing.ContextLog(ctx, "Failed to unlock CCD: ", err)
+		}
+	}
+
 	testing.ContextLog(ctx, "Resetting DUT")
 	if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
 		testing.ContextLog(ctx, "Failed to reset DUT: ", err)
