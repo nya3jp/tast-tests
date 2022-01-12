@@ -58,4 +58,8 @@ func OobePerf(ctx context.Context, s *testing.State) {
 			return []*metrics.Histogram{hist}, err
 		},
 		perfutil.StoreAllWithHeuristics("Duration"))
+
+	if err := r.Values().Save(ctx, s.OutDir()); err != nil {
+		s.Fatal("Failed to save performance data in file: ", err)
+	}
 }
