@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -34,14 +35,18 @@ func init() {
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
 		Fixture:      fixture.NormalMode,
 		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService", "tast.cros.ui.PowerMenuService", "tast.cros.graphics.ScreenshotService"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.SkipOnFormFactor(hwdep.Detachable)),
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
 		Params: []testing.Param{{
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
+			Val:               "convertible",
+		}, {
 			Name:              "clamshell",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
-			Val:               true,
+			Val:               "clamshell",
 		}, {
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnFormFactor(hwdep.Clamshell)),
-			Val:               false,
+			Name:              "detachable",
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable), hwdep.Keyboard()),
+			Val:               "detachable",
 		}},
 	})
 }
@@ -71,7 +76,6 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create mode switcher: ", err)
 	}
-	ffIsClamshell := s.Param().(bool)
 
 	// checkLaptopMode checks if DUT is in laptop mode by comparing its lid angle against the tablet mode settings.
 	checkLaptopMode := func(ctx context.Context) error {
@@ -111,7 +115,8 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	if !ffIsClamshell {
+	dutType := s.Param().(string)
+	if dutType == "convertible" {
 		s.Log("Check initial state of laptop mode")
 		if err := checkLaptopMode(ctx); err != nil {
 			s.Fatal("Unable to check whether DUT is in laptop mode before powering off: ", err)
@@ -232,9 +237,39 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
-		s.Log("Check that display remains on")
-		if err := checkDisplay(ctx); err != nil {
-			s.Fatal("Display has turned off unexpectedly: ", err)
+		// When DUT is a detachable, a tap on the power button would turn off the screen.
+		// We are yet to verify if this would be the case in general for all detachables.
+		// As of now, we've observed such behavior on Kukui and Soraka.
+		if dutType != "detachable" {
+			s.Log("Check that display remains on")
+			if err := checkDisplay(ctx); err != nil {
+				s.Fatal("Error in verifying display on: ", err)
+			}
+		} else {
+			s.Log("Check that display remains off")
+			err := checkDisplay(ctx)
+			if err == nil {
+				s.Fatal("Unexpectedly able to take screenshot after setting display power off")
+			}
+			if !strings.Contains(err.Error(), "CRTC not found. Is the screen on?") {
+				s.Fatal("Unexpected error when taking screenshot: ", err)
+			}
+
+			// Turn the screen on before testing the power menu.
+			s.Log("Tap on the power button to turn the screen on again")
+			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+				s.Fatal("Failed to tap on the power button: ", err)
+			}
+
+			// Wait for a short delay.
+			if err := testing.Sleep(ctx, time.Second); err != nil {
+				s.Fatal("Failed to sleep: ", err)
+			}
+
+			s.Log("Check that display remains on")
+			if err := checkDisplay(ctx); err != nil {
+				s.Fatal("Error in verifying display on: ", err)
+			}
 		}
 
 		s.Log("Press and hold the power button for 1 second to turn on the power menu")
@@ -284,28 +319,40 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		s.Log("Tap on the power button to turn off the power menu")
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
-				return testing.PollBreak(errors.Wrap(err, "failed to tap on the power button"))
-			}
+		// When DUT is a detachable, a tap on the power button will
+		// turn off the screen, instead of the power menu.
+		if dutType != "detachable" {
+			s.Log("Tap on the power button to turn off the power menu")
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to tap on the power button"))
+				}
 
-			// Wait for a short delay.
-			if err := testing.Sleep(ctx, time.Second); err != nil {
-				s.Fatal("Failed to sleep: ", err)
-			}
+				// Wait for a short delay.
+				if err := testing.Sleep(ctx, time.Second); err != nil {
+					s.Fatal("Failed to sleep: ", err)
+				}
 
-			if err := checkPowerMenu(ctx, false); err != nil {
-				return errors.Wrap(err, "failed to check the power menu")
+				if err := checkPowerMenu(ctx, false); err != nil {
+					return errors.Wrap(err, "failed to check the power menu")
+				}
+				return nil
+			}, &powerMenuOffPollOptions); err != nil {
+				s.Fatal("Failed to turn off the power menu: ", err)
 			}
-			return nil
-		}, &powerMenuOffPollOptions); err != nil {
-			s.Fatal("Failed to turn off the power menu: ", err)
 		}
 
 		s.Log("Press and hold the power button for 2~3 seconds")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur((h.Config.HoldPwrButtonPowerOff)/3)); err != nil {
 			s.Fatal("Failed to press and hold on the power button for 3 second: ", err)
+		}
+
+		// To avoid false positive cases, delay for checking on the power states.
+		// Without this delay, if DUT turns down after 2~3 seconds, checking on
+		// the power state during shutdown might still return S0.
+		s.Logf("Sleep for %v before checking on the power state", h.Config.Shutdown)
+		if err := testing.Sleep(ctx, h.Config.Shutdown); err != nil {
+			s.Fatal("Failed to sleep: ", err)
 		}
 
 		s.Log("Check that the power state remains S0")
