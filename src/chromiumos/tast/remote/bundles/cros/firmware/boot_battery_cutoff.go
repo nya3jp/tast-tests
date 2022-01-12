@@ -173,6 +173,12 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	}
 
 	// Some models need a power button press to wake up
+	if h.Model == "leona" || h.Model == "dirinboz" {
+		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
+			s.Error("Failed to press power key: ", err)
+		}
+	}
+
 	// Confirm a successful boot.
 	if err := confirmBoot(ctx); err != nil {
 		s.Fatal("Failed to boot: ", err)
