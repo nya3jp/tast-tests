@@ -1,0 +1,17 @@
+{
+    "Name": "Brother DCP-L2550DW series",
+    "Sources": [
+          {
+                  "SourceType": "Flatbed",
+                  "ColorModes": ["Color", "Grayscale"],
+                  "PageSizes": ["A4", "Letter", "Fit to scan area"],
+                  "Resolutions": ["600 dpi", "300 dpi", "200 dpi", "100 dpi"]
+          },
+          {
+                 "SourceType": "Document Feeder (One-sided)",
+                 "ColorModes": ["Color", "Grayscale"],
+                 "PageSizes": ["A4", "Letter", "Fit to scan area"],
+                 "Resolutions": ["600 dpi", "300 dpi", "200 dpi", "100 dpi"]
+          }
+    ]
+}
