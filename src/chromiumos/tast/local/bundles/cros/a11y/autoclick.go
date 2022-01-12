@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Autoclick,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that the automatic clicks feature can be turned on and used to click buttons without physically pressing the mouse",
 		Contacts: []string{
 			"akihiroota@chromium.org",      // Test author
@@ -32,12 +32,19 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
 func Autoclick(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)

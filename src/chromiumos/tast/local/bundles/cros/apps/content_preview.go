@@ -32,7 +32,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ContentPreview,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test content preview while sharing a single file",
 		Contacts: []string{
 			"jinrongwu@google.com",
@@ -41,7 +41,13 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{cpTextFileName, cpZipFileName, cpVideoFileName, cpPngFileName},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
@@ -53,7 +59,7 @@ type subTestData struct {
 }
 
 func ContentPreview(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
