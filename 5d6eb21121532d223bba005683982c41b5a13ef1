@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d90f686_f7d69afe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-01-12T03:47:59Z",
+      "side": 1,
+      "message": "Let me submit this.\nI am happy to react if Abe-san replies my comments.",
+      "revId": "5d6eb21121532d223bba005683982c41b5a13ef1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
