@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bc0eea9_7406dd6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-12T03:26:15Z",
+      "side": 1,
+      "message": "My concern with that is that 99% of the time, we\u0027d log that error message, and I don\u0027t want to spam the log with \"error\" message that are expected. It confuses people trying to debug failures. \n\nHow about this instead? Only log the error if the remove fails and the file still exists. Then we don\u0027t spam the log in the normal case but can still see a root cause in the case that the test fails.",
+      "parentUuid": "049b29cb_ebd3a8fb",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 34
+      },
+      "revId": "d124fe4a97e4aa4f1a1b117507cac23df9406845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b9c977f_a59f3163",
