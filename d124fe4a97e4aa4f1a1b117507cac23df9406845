@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "049b29cb_ebd3a8fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-12T02:29:46Z",
+      "side": 1,
+      "message": "I see your point. I\u0027d suggest to handle the error and log a msg saying that it fails to delete the file but it won\u0027t impact the test case.",
+      "parentUuid": "11308079_cb979324",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 34
+      },
+      "revId": "d124fe4a97e4aa4f1a1b117507cac23df9406845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b9c977f_a59f3163",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
         "patchSetId": 2
