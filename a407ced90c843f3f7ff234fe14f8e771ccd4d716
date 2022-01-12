@@ -16,6 +16,23 @@
       "message": "stainless link to latest failure (after transformation fix was included in R99-14444.0.0): https://stainless.corp.google.com/search?view\u003dlist\u0026first_date\u003d2022-01-01\u0026last_date\u003d2022-01-08\u0026test\u003d%5Etast%5C.arc%5C.SurfaceOrientation\u0026build\u003dR99-14444.0.0\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dtrue\u0026exclude_non_production\u003dtrue\u0026exclude_non_critical\u003dfalse",
       "revId": "a407ced90c843f3f7ff234fe14f8e771ccd4d716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f9b65c_08cedae7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-12T16:53:31Z",
+      "side": 1,
+      "message": "Instead of sleeping can a poll be used instead? Just grab a screenshot, check things and retry for maybe 5 seconds before giving up?",
+      "revId": "a407ced90c843f3f7ff234fe14f8e771ccd4d716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
