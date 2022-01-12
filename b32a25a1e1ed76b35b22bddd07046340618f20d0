@@ -235,6 +235,24 @@
       "parentUuid": "20cd96e3_b5fd39fb",
       "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "104b8a4b_7aeb7ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-01-12T03:11:51Z",
+      "side": 1,
+      "message": "i can live with either solution. we can also revisit the decision in the future, so disabling it sounds good to me.",
+      "parentUuid": "e4bb9321_1fe61480",
+      "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
