@@ -303,10 +303,6 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 	ctx, st := timing.Start(ctx, "SetUp")
 	defer st.End()
 
-	// Currently we assume the fixture wouldn't be broken, and returns
-	// existing fixture data immediately without checking.
-	// TODO(crbug.com/1176087): Check whether the current environment is reusable, and if not
-	// reset the state.
 	if f.prepared {
 		s.Logf("Fixture has already been prepared. Returning a cached one. mode: %v, lacros path: %v", f.mode, f.lacrosPath)
 		return f.buildFixtData(ctx, s)
@@ -460,6 +456,7 @@ func (f *fixtImpl) cleanUp(ctx context.Context, s *testing.FixtState) {
 		f.cr = nil
 	}
 
+	f.prepared = false
 }
 
 // buildFixtData is a helper method that resets the machine state in
