@@ -169,7 +169,15 @@ func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) 
 	if err := s.resolve(ctx, uda.detector, uda.tconn, uda.pollOpts, uda.screenshotStrategy); err != nil {
 		return nil, errors.Wrapf(err, "failed to resolve the finder: %q", s.desc)
 	}
-	return s.location()
+	loc, err := s.location()
+	if err != nil {
+		// Save the screenshot if the test fails to find an element.
+		if err := saveBytesImageToOutput(ctx, s.screenshot, screenshotFile); err != nil {
+			testing.ContextLogf(ctx, "Failed to save the screenshot: %s", err)
+		}
+		return nil, errors.Wrapf(err, "failed to find the location of %s", s.desc)
+	}
+	return loc, nil
 }
 
 // Exists returns an action that returns nil if the specified element exists.
