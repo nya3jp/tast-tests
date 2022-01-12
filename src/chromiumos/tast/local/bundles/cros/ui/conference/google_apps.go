@@ -40,7 +40,7 @@ const (
 	slideTitle       = "CUJ_slide_title"
 	slideSubTitle    = "For testing only"
 	slideEditContent = "This_is_CUJ_testing_after_edit"
-	slideCount       = 5
+	slideCount       = 2
 	subSlideTitle    = "CUJ_sub_slide_title"
 	subSlideContent  = "This_is_CUJ_testing_sub_slide_content"
 	docTabName       = testTitle + " - Google Docs"
