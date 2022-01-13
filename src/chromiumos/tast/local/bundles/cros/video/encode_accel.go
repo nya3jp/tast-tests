@@ -18,6 +18,7 @@ import (
 const (
 	tulip180P  = "tulip2-320x180.vp9.webm"
 	bear192P   = "bear-320x192.vp9.webm"
+	tulip270P  = "tulip2-480x270.vp9.webm"
 	tulip360P  = "tulip2-640x360.vp9.webm"
 	tulip361P  = "crowd-641x361.vp9.webm"
 	tulip540P  = "tulip2-960x540.vp9.webm"
@@ -48,6 +49,11 @@ func init() {
 			Val:               encode.MakeTestOptions(bear192P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
 			ExtraData:         encode.TestData(bear192P),
+		}, {
+			Name:              "h264_270p",
+			Val:               encode.MakeTestOptions(tulip270P, videotype.H264BaselineProf),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+			ExtraData:         encode.TestData(tulip270P),
 		}, {
 			Name:              "h264_360p",
 			Val:               encode.MakeTestOptions(tulip360P, videotype.H264BaselineProf),
@@ -93,6 +99,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			ExtraData:         encode.TestData(bear192P),
 		}, {
+			Name:              "vp8_270p",
+			Val:               encode.MakeTestOptions(tulip270P, videotype.VP8Prof),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
+			ExtraData:         encode.TestData(tulip270P),
+		}, {
 			Name:              "vp8_360p",
 			Val:               encode.MakeTestOptions(tulip360P, videotype.VP8Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
@@ -122,6 +133,11 @@ func init() {
 			Val:               encode.MakeTestOptions(bear192P, videotype.VP9Prof),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 			ExtraData:         encode.TestData(bear192P),
+		}, {
+			Name:              "vp9_270p",
+			Val:               encode.MakeTestOptions(tulip270P, videotype.VP9Prof),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraData:         encode.TestData(tulip270P),
 		}, {
 			Name:              "vp9_360p",
 			Val:               encode.MakeTestOptions(tulip360P, videotype.VP9Prof),
