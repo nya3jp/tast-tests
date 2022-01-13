@@ -33,6 +33,52 @@
       "message": "FYI: Georg.",
       "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6f7050_908e8065",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-13T02:20:49Z",
+      "side": 1,
+      "message": "Is it redundant if f.cleanUp would remove the dir already?",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 4
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90491102_6b055180",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-13T02:20:49Z",
+      "side": 1,
+      "message": "Curious, if getting a clean user data dir between tests is what we want, it seems that `f.UserTmpDir` per se could be used for that *per-test* user data dir, doesn\u0027t it? It is likely to be reset in the lacrosfixt and short-lived only during each test.\n\nFor simplicity, I\u0027m wondering if `f.UserTmpDir` can be renamed to `f.UserDataDir` or else, then passed in for use by `LaunchWithURL` without needing to make extra temp subdir in line 123. WDYT?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 12
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
