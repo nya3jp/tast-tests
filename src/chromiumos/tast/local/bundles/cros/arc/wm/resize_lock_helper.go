@@ -16,8 +16,8 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	chromeui "chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/colorcmp"
@@ -273,15 +273,16 @@ func CheckCompatModeButton(ctx context.Context, tconn *chrome.TestConn, a *arc.A
 		return CheckVisibility(ctx, tconn, CenterButtonClassName, false /* visible */)
 	}
 
+	uia := uiauto.New(tconn)
+	button := nodewith.HasClass(CenterButtonClassName)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		button, err := chromeui.Find(ctx, tconn, chromeui.FindParams{ClassName: CenterButtonClassName})
+		info, err := uia.Info(ctx, button)
 		if err != nil {
 			return errors.Wrap(err, "failed to find the compat-mode button")
 		}
-		button.Release(ctx)
 
-		if button.Name != mode.String() {
-			return errors.Errorf("failed to verify the name of compat-mode button; got: %s, want: %s", button.Name, mode)
+		if info.Name != mode.String() {
+			return errors.Errorf("failed to verify the name of compat-mode button; got: %s, want: %s", info.Name, mode)
 		}
 
 		return nil
@@ -364,10 +365,12 @@ func checkBorder(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.
 
 // CheckVisibility checks whether the node specified by the given class name exists or not.
 func CheckVisibility(ctx context.Context, tconn *chrome.TestConn, className string, visible bool) error {
+	uia := uiauto.New(tconn)
+	finder := nodewith.HasClass(className).First()
 	if visible {
-		return chromeui.WaitUntilExists(ctx, tconn, chromeui.FindParams{ClassName: className}, 10*time.Second)
+		return uia.WithTimeout(10 * time.Second).WaitUntilExists(finder)(ctx)
 	}
-	return chromeui.WaitUntilGone(ctx, tconn, chromeui.FindParams{ClassName: className}, 10*time.Second)
+	return uia.WithTimeout(10 * time.Second).WaitUntilGone(finder)(ctx)
 }
 
 // CheckResizability verifies the given app's resizability.
@@ -655,69 +658,51 @@ func ToggleAppManagementSettingToggle(ctx context.Context, tconn *chrome.TestCon
 
 // toggleAppManagementSettingToggleViaClick toggles the resize-lock setting toggle via click.
 func toggleAppManagementSettingToggleViaClick(ctx context.Context, tconn *chrome.TestConn) error {
-	settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: AppManagementSettingToggleName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the setting toggle")
-	}
-	defer settingToggle.Release(ctx)
-
-	return settingToggle.LeftClick(ctx)
+	return uiauto.New(tconn).WithTimeout(10 * time.Second).LeftClick(nodewith.Name(AppManagementSettingToggleName))(ctx)
 }
 
 // OpenAppManagementSetting opens the app management page if the given app.
 func OpenAppManagementSetting(ctx context.Context, tconn *chrome.TestConn, appName string) error {
-	resizeLockShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appName, ClassName: shelfIconClassName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrapf(err, "failed to find the shelf icon of %s", appName)
-	}
-	defer resizeLockShelfIcon.Release(ctx)
-
-	if err := resizeLockShelfIcon.RightClick(ctx); err != nil {
+	uia := uiauto.New(tconn)
+	resizeLockShelfIcon := nodewith.Name(appName).HasClass(shelfIconClassName)
+	if err := uia.WithTimeout(10 * time.Second).RightClick(resizeLockShelfIcon)(ctx); err != nil {
 		return errors.Wrapf(err, "failed to click on the shelf icon of %s", appName)
 	}
 
-	appInfoMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: appInfoMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the menu item for the app-management page")
+	appInfoMenuItem := nodewith.Name(appInfoMenuItemViewName).HasClass(menuItemViewClassName)
+	if err := uia.WithTimeout(10 * time.Second).LeftClick(appInfoMenuItem)(ctx); err != nil {
+		return errors.Wrap(err, "failed to find and click on the menu item for the app-management page")
 	}
-	defer appInfoMenuItem.Release(ctx)
-
-	return appInfoMenuItem.LeftClick(ctx)
+	return nil
 }
 
 // CloseAppManagementSetting closes any open app management page.
 func CloseAppManagementSetting(ctx context.Context, tconn *chrome.TestConn) error {
-	settingShelfIcon, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: settingsAppName, ClassName: shelfIconClassName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the shelf icon of the settings app")
-	}
-	defer settingShelfIcon.Release(ctx)
-
-	if err := settingShelfIcon.RightClick(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on the shelf icon of the settings app")
+	uia := uiauto.New(tconn)
+	settingShelfIcon := nodewith.Name(settingsAppName).HasClass(shelfIconClassName)
+	if err := uia.WithTimeout(10 * time.Second).RightClick(settingShelfIcon)(ctx); err != nil {
+		return errors.Wrap(err, "failed to find and right click on the shelf icon of the settings app")
 	}
 
-	closeMenuItem, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: closeMenuItemViewName, ClassName: menuItemViewClassName}, 10*time.Second)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the menu item for closing the settings app")
+	closeMenuItem := nodewith.Name(closeMenuItemViewName).HasClass(menuItemViewClassName)
+	if err := uia.WithTimeout(10 * time.Second).LeftClick(closeMenuItem)(ctx); err != nil {
+		return errors.Wrap(err, "failed to find and click on the menu item for closing the settings app")
 	}
-	defer closeMenuItem.Release(ctx)
-
-	return closeMenuItem.LeftClick(ctx)
+	return nil
 }
 
 // checkAppManagementSettingToggleState verifies the resize lock setting state on the app-management page.
 // The app management page must be open when this function is called.
 func checkAppManagementSettingToggleState(ctx context.Context, tconn *chrome.TestConn, mode ResizeLockMode) error {
+	uia := uiauto.New(tconn)
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		settingToggle, err := chromeui.FindWithTimeout(ctx, tconn, chromeui.FindParams{Name: AppManagementSettingToggleName}, 2*time.Second)
+		settingToggle, err := uia.WithTimeout(2*time.Second).Info(ctx, nodewith.Name(AppManagementSettingToggleName))
 		if err != nil {
 			return errors.Wrap(err, "failed to find the resize lock setting toggle on the app-management page")
 		}
-		defer settingToggle.Release(ctx)
 
-		if ((mode == PhoneResizeLockMode || mode == TabletResizeLockMode) && settingToggle.Checked == chromeui.CheckedStateFalse) ||
-			(mode == ResizableTogglableResizeLockMode && settingToggle.Checked == chromeui.CheckedStateTrue) {
+		if ((mode == PhoneResizeLockMode || mode == TabletResizeLockMode) && settingToggle.Checked == checked.False) ||
+			(mode == ResizableTogglableResizeLockMode && settingToggle.Checked == checked.True) {
 			return errors.Errorf("the app-management resize lock setting value (%v) doesn't match the expected curent state (%s)", settingToggle.Checked, mode)
 		}
 
