@@ -6,13 +6,17 @@ package arc
 
 import (
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/arc/tracing"
 	"chromiumos/tast/local/bundles/cros/arc/perfboot"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
@@ -61,7 +65,7 @@ func RegularBoot(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to do initial optin: ", err)
 	}
 
-	const iterationCount = 7
+	const iterationCount = 1
 	perfValues := perf.NewValues()
 	for i := 0; i < iterationCount; i++ {
 		appLaunchDuration, appShownDuration, enabledScreenDuration, err := performArcRegularBoot(ctx, s.OutDir(), creds, s.Param().([]string))
@@ -159,6 +163,11 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 		return 0, 0, 0, errors.Wrap(err, "failed to drop caches")
 	}
 
+	isVMEnabled, err := arc.VMEnabled()
+	if err != nil {
+		return 0, 0, 0, errors.Wrap(err, "failed to check if VM is running")
+	}
+
 	opts := []chrome.Option{
 		chrome.ARCSupported(),
 		chrome.RestrictARCCPU(),
@@ -187,6 +196,49 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 		return 0, 0, 0, errors.Wrap(err, "failed to wait Play Store shown")
 	}
 
+	if isVMEnabled {
+		// Note, a.WriteFile does not work
+		if err := testexec.CommandContext(ctx, "/usr/sbin/android-sh", "-c", "echo 0 >/sys/kernel/debug/tracing/tracing_arc_on").Run(testexec.DumpLogOnError); err != nil {
+			return 0, 0, 0, errors.Wrap(err, "failed to stop tracing")
+		}
+
+		out, err := testexec.CommandContext(ctx, "/usr/sbin/android-sh", "-c", "cat /sys/kernel/debug/tracing/tracing_arc_read").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return 0, 0, 0, errors.Wrap(err, "failed to read tracing")
+		}
+
+		tracingPath := filepath.Join(testDir, "tracing.txt")
+		if err := ioutil.WriteFile(tracingPath, out, 0644); err != nil {
+			return 0, 0, 0, errors.Wrap(err, "failed to write tracing")
+		}
+		testing.ContextLogf(ctx, "Tracing data is serialized to %s", tracingPath)
+
+		testing.ContextLog(ctx, "***************  TOTAL ***************")
+		result, err := tracing.AnylyzeTracing(string(out), "total", 0)
+		if err != nil {
+			return 0, 0, 0, errors.Wrap(err, "failed to analyze tracing")
+		}
+		testing.ContextLog(ctx, result)
+		testing.ContextLog(ctx, "**************  PER FS ***************")
+		result, err := tracing.AnylyzeTracing(string(out), "fs", 1000)
+		if err != nil {
+			return 0, 0, 0, errors.Wrap(err, "failed to analyze tracing")
+		}
+		testing.ContextLog(ctx, result)
+		testing.ContextLog(ctx, "***********  PER FS AND OP ************")
+		result, err := tracing.AnylyzeTracing(string(out), "fsop", 1000)
+		if err != nil {
+			return 0, 0, 0, errors.Wrap(err, "failed to analyze tracing")
+		}
+		testing.ContextLog(ctx, result)
+		testing.ContextLog(ctx, "***************  PER FILE *************")
+		result, err := tracing.AnylyzeTracing(string(out), "file", 1000)
+		if err != nil {
+			return 0, 0, 0, errors.Wrap(err, "failed to analyze tracing")
+		}
+		testing.ContextLog(ctx, result)
+	}
+
 	delay, err := readFirstAppLaunchHistogram(ctx, tconn, "Arc.FirstAppLaunchDelay.TimeDelta")
 	if err != nil {
 		return 0, 0, 0, err
@@ -206,6 +258,7 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 	if err != nil {
 		return 0, 0, 0, errors.Wrap(err, "failed to connect to ARC")
 	}
+
 	p, err := perfboot.GetPerfValues(ctx, tconn, a)
 	if err != nil {
 		return 0, 0, 0, errors.Wrap(err, "failed to extract ARC boot metrics")
