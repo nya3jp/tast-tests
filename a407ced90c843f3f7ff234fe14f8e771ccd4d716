@@ -33,6 +33,24 @@
       "message": "Instead of sleeping can a poll be used instead? Just grab a screenshot, check things and retry for maybe 5 seconds before giving up?",
       "revId": "a407ced90c843f3f7ff234fe14f8e771ccd4d716",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4afbbf7_c3895ad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-13T23:43:13Z",
+      "side": 1,
+      "message": "I opted for 10 as the arc.BlackFlash test uses a timeout of 20 seconds.",
+      "parentUuid": "23f9b65c_08cedae7",
+      "revId": "a407ced90c843f3f7ff234fe14f8e771ccd4d716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
