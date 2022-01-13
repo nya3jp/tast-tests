@@ -33,6 +33,24 @@
       "message": "Check for error",
       "revId": "ccb876606bfc1f888de049b1d684e6af086ec294",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9bdc02_a0a0361f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-13T13:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62d29e1e_32227af1",
+      "revId": "ccb876606bfc1f888de049b1d684e6af086ec294",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
