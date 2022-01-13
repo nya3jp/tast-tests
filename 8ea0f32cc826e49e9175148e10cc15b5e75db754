@@ -33,6 +33,24 @@
       "message": "Might want to make a note of why 3 is the default.",
       "revId": "8ea0f32cc826e49e9175148e10cc15b5e75db754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7115e87e_d5d04153",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-13T04:24:01Z",
+      "side": 1,
+      "message": "In one of chameleon related reference script file they mentioned default display port as 3 and we followed the same.\n\nReferred script file URL is added below,\nhttps://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/bundles/cros/ui/extended_display_cuj.go",
+      "parentUuid": "abce8e5a_1ac51c1c",
+      "revId": "8ea0f32cc826e49e9175148e10cc15b5e75db754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
