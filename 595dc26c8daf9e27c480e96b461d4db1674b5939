@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0fb1c08_1688ec85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-13T10:59:38Z",
+      "side": 1,
+      "message": "Thanks for porting Florian 👍\nI left some extra comments ;)",
+      "revId": "595dc26c8daf9e27c480e96b461d4db1674b5939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7439518d_97484fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-13T10:59:38Z",
+      "side": 1,
+      "message": "nit: include what was expected to be found in the the logs.",
+      "revId": "595dc26c8daf9e27c480e96b461d4db1674b5939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d8fbef_67d78621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-13T10:59:38Z",
+      "side": 1,
+      "message": "nit: include what was expected to be found in the the logs.",
+      "revId": "595dc26c8daf9e27c480e96b461d4db1674b5939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e16792_a5e73117",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/report_upload_frequency.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-13T10:59:38Z",
+      "side": 1,
+      "message": "nit: Add what kind of message was received - that will help with debugging when test fails.",
+      "revId": "595dc26c8daf9e27c480e96b461d4db1674b5939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
