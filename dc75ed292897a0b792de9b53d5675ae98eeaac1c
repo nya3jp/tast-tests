@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "967d5e0f_2570d706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-13T01:02:24Z",
+      "side": 1,
+      "message": "I think it is reasonable to use immediate screenshot here, as this is the desired use case to use it (when the screen is not expected to be static). Plus, it helps to cover the use of ImmediateScreenshot strategy as well.",
+      "parentUuid": "814775b6_154557ac",
+      "revId": "dc75ed292897a0b792de9b53d5675ae98eeaac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f65f76a_e3bdc4eb",
         "filename": "src/chromiumos/tast/local/uidetection/util.go",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-13T00:00:44Z",
       "side": 1,
       "message": "Global variables are bad code style",
+      "revId": "dc75ed292897a0b792de9b53d5675ae98eeaac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e3496c_2b4e6cc0",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-13T01:02:24Z",
+      "side": 1,
+      "message": "Revise it to a local variable. Instead, add a screenshot field to the Finder struct, and save the screenshot in case of failures from this field.",
+      "parentUuid": "0f65f76a_e3bdc4eb",
       "revId": "dc75ed292897a0b792de9b53d5675ae98eeaac1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
