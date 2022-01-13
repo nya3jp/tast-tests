@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c494a7ab_840cea33",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-13T14:51:24Z",
+      "side": 1,
+      "message": "go/js-style#formatting-block-indentation\n\njs style is 2 spaces.",
+      "revId": "0ce5ad3b7e0bfbc49969716e36cab89f5e4bceee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
