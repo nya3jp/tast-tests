@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5642660f_d368414b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-01-13T02:36:44Z",
+      "side": 1,
+      "message": "It\u0027s better! Thanks for the suggestion!\nI also modified the other two CLs, thanks!",
+      "parentUuid": "67d1e39c_aff2f93d",
+      "revId": "9c4ddf1b95e8e10c2755bae32d607b796138b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f50c24d4_c9e537d1",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "317b41f3_da3773e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-01-13T02:36:44Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to differentiate it because it\u0027s meaningless to us. When issue happens, we still need to find the failed DUT and run the command line tool to see its actual output and investigate why.",
+      "parentUuid": "f50c24d4_c9e537d1",
+      "range": {
+        "startLine": 144,
+        "startChar": 9,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "9c4ddf1b95e8e10c2755bae32d607b796138b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "128545cf_479892f0",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-13T00:37:29Z",
       "side": 1,
       "message": "nit: you can simplify this to just \n```\nreturn verifyEmbeddedDisplaySize(ctx, EDP)\n```",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 11
+      },
+      "revId": "9c4ddf1b95e8e10c2755bae32d607b796138b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3717fbc_f31524fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-01-13T02:36:44Z",
+      "side": 1,
+      "message": "Because we have other fields that need to be verified, so I think we can keep it the same.",
+      "parentUuid": "128545cf_479892f0",
       "range": {
         "startLine": 162,
         "startChar": 1,
