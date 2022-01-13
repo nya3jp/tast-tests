@@ -51,6 +51,24 @@
       "parentUuid": "abce8e5a_1ac51c1c",
       "revId": "8ea0f32cc826e49e9175148e10cc15b5e75db754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c817929a_5f2ca840",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-13T18:44:44Z",
+      "side": 1,
+      "message": "OK, if that\u0027s the case we might want to factor this out as a default constant somewhere. I\u0027ll talk to the power team about that.",
+      "parentUuid": "7115e87e_d5d04153",
+      "revId": "8ea0f32cc826e49e9175148e10cc15b5e75db754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
