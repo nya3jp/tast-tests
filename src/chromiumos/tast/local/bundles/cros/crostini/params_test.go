@@ -92,7 +92,8 @@ var perfTests = map[string]time.Duration{
 }
 
 var mainlineExpensiveTests = map[string]time.Duration{
-	"fs_corruption.go": 10 * time.Minute,
+	"backup_restore.go": 10 * time.Minute,
+	"fs_corruption.go":  10 * time.Minute,
 }
 
 func TestExpensiveParams(t *testing.T) {
