@@ -137,9 +137,13 @@ func DeepSleep(ctx context.Context, s *testing.State) {
 		start = time.Now()
 		s.Logf("Battery charge: %dmAh", mahStart)
 
-		s.Log("Hibernating")
-		if err = h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
-			s.Fatal("Failed to run EC command: ", err)
+		if h.Config.Hibernate {
+			s.Log("Hibernating")
+			if err = h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
+				s.Fatal("Failed to run EC command: ", err)
+			}
+		} else {
+			s.Log("Skipping hibernate, because this DUT doesn't support it")
 		}
 
 		h.DisconnectDUT(ctx)
