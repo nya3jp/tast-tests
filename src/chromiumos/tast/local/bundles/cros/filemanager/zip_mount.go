@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/guestns"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -85,74 +86,102 @@ func init() {
 }
 
 func ZipMount(ctx context.Context, s *testing.State) {
-	testParams := s.Param().(testEntry)
-	zipFiles := testParams.ZipFiles
+	for _, tc := range []struct {
+		name    string
+		isGuest bool
+	}{
+		{
+			name:    "normal_user",
+			isGuest: false,
+		},
+		{
+			name:    "guest_user",
+			isGuest: true,
+		},
+	} {
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			testParams := s.Param().(testEntry)
+			zipFiles := testParams.ZipFiles
+			isGuest := tc.isGuest
 
-	// TODO(nigeltao): remove "FilesArchivemount" after it gets flipped to
-	// enabled-by-default (scheduled for M94) and before the feature flag
-	// expires (scheduled for M100). crbug.com/1216245
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount"))
-	if err != nil {
-		s.Fatal("Cannot start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+			var cr *chrome.Chrome
+			var err error
 
-	// Load ZIP files.
-	for _, zipFile := range zipFiles {
-		zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
+			// TODO(crbug.com/1216245) Remove
+			opt := chrome.EnableFeatures("FilesArchivemount")
 
-		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
-			s.Fatalf("Cannot copy ZIP file to %s: %s", zipFileLocation, err)
-		}
-		defer os.Remove(zipFileLocation)
-	}
-
-	// Open the test API.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Cannot create test API connection: ", err)
-	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Open the Files App.
-	files, err := filesapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Cannot launch the Files App: ", err)
-	}
-
-	// Open the Downloads folder.
-	if err := files.OpenDownloads()(ctx); err != nil {
-		s.Fatal("Cannot open Downloads folder: ", err)
-	}
-
-	// Find and click the 'Name' button to order the file entries alphabetically.
-	orderByNameButton := nodewith.Name("Name").Role(role.Button)
-	if err := files.LeftClick(orderByNameButton)(ctx); err != nil {
-		s.Fatal("Cannot find and click 'Name' button: ", err)
-	}
-
-	// Wait until the ZIP files are correctly ordered in the list box.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		listBox := nodewith.Role(role.ListBox).Focusable().Multiselectable().Vertical()
-		listBoxOption := nodewith.Role(role.ListBoxOption).Ancestor(listBox)
-		nodes, err := files.NodesInfo(ctx, listBoxOption)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-
-		// The names of the descendant nodes should be ordered alphabetically.
-		for i, node := range nodes {
-			if node.Name != zipFiles[i] {
-				return errors.New("the files are still not ordered properly")
+			if isGuest {
+				cr, err = guestns.EnterGuestNS(ctx, opt)
+				if err != nil {
+					s.Fatal("Cannot enter guest namespace: ", err)
+				}
+				defer guestns.ExitGuestNS(ctx)
+			} else {
+				cr, err = chrome.New(ctx, opt)
+				if err != nil {
+					s.Fatal("Cannot start Chrome: ", err)
+				}
+				defer cr.Close(ctx)
 			}
-		}
 
-		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-		s.Fatal("Cannot sort ZIP files properly in the Files app list box: ", err)
+			// Load ZIP files.
+			for _, zipFile := range zipFiles {
+				zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
+
+				if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
+					s.Fatalf("Cannot copy ZIP file to %s: %s", zipFileLocation, err)
+				}
+				defer os.Remove(zipFileLocation)
+			}
+
+			// Open the test API.
+			tconn, err := cr.TestAPIConn(ctx)
+			if err != nil {
+				s.Fatal("Cannot create test API connection: ", err)
+			}
+			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+			// Open the Files App.
+			files, err := filesapp.Launch(ctx, tconn)
+			if err != nil {
+				s.Fatal("Cannot launch the Files App: ", err)
+			}
+
+			// Open the Downloads folder.
+			if err := files.OpenDownloads()(ctx); err != nil {
+				s.Fatal("Cannot open Downloads folder: ", err)
+			}
+
+			// Find and click the 'Name' button to order the file entries alphabetically.
+			orderByNameButton := nodewith.Name("Name").Role(role.Button)
+			if err := files.LeftClick(orderByNameButton)(ctx); err != nil {
+				s.Fatal("Cannot find and click 'Name' button: ", err)
+			}
+
+			// Wait until the ZIP files are correctly ordered in the list box.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				listBox := nodewith.Role(role.ListBox).Focusable().Multiselectable().Vertical()
+				listBoxOption := nodewith.Role(role.ListBoxOption).Ancestor(listBox)
+				nodes, err := files.NodesInfo(ctx, listBoxOption)
+				if err != nil {
+					return testing.PollBreak(err)
+				}
+
+				// The names of the descendant nodes should be ordered alphabetically.
+				for i, node := range nodes {
+					if node.Name != zipFiles[i] {
+						return errors.New("the files are still not ordered properly")
+					}
+				}
+
+				return nil
+			}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+				s.Fatal("Cannot sort ZIP files properly in the Files app list box: ", err)
+			}
+
+			testParams.TestCase(ctx, s, files, zipFiles)
+		})
 	}
-
-	testParams.TestCase(ctx, s, files, zipFiles)
 }
 
 // waitUntilPasswordDialogExists waits for the password dialog to display for a specific encrypted ZIP file.
