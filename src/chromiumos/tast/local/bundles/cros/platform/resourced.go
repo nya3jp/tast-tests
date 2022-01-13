@@ -156,6 +156,43 @@ func checkMemoryPressureSignal(ctx context.Context, rm *resourced.Client) error 
 	return nil
 }
 
+func checkSetRTCAudioActive(ctx context.Context, rm *resourced.Client) error {
+	// Get the original RTC audio active.
+	origRTCAudioActive, err := rm.RTCAudioActive(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query RTC audio active")
+	}
+	testing.ContextLog(ctx, "Original RTC audio active: ", origRTCAudioActive)
+
+	defer func() {
+		// Restore RTC audio active.
+		if err = rm.SetRTCAudioActive(ctx, origRTCAudioActive); err != nil {
+			testing.ContextLog(ctx, "Failed to reset RTC audio active: ", err)
+		}
+	}()
+
+	// Set RTC audio ative to different value.
+	var newRTCAudioActive uint8 = resourced.RTCAudioActiveOff
+	if origRTCAudioActive == resourced.RTCAudioActiveOff {
+		newRTCAudioActive = resourced.RTCAudioActiveOn
+	}
+	if err = rm.SetRTCAudioActive(ctx, newRTCAudioActive); err != nil {
+		// On machines not supporting Intel hardware EPP, SetRTCAudioActive returning error is expected.
+		testing.ContextLog(ctx, "Failed to set RTC audio active: ", err)
+	}
+	testing.ContextLog(ctx, "Set RTC audio active: ", newRTCAudioActive)
+
+	// Check RTC audio active is set to the new value.
+	rtcAudioActive, err := rm.RTCAudioActive(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query RTC audio active")
+	}
+	if newRTCAudioActive != rtcAudioActive {
+		return errors.Errorf("set RTC audio active to: %d, but got RTC audio active: %d", newRTCAudioActive, rtcAudioActive)
+	}
+	return nil
+}
+
 func Resourced(ctx context.Context, s *testing.State) {
 	rm, err := resourced.NewClient(ctx)
 	if err != nil {
@@ -182,5 +219,9 @@ func Resourced(ctx context.Context, s *testing.State) {
 	// Other checks.
 	if err := checkSetGameModeWithTimeout(ctx, rm); err != nil {
 		s.Fatal("Checking SetGameModeWithTimeout failed: ", err)
+	}
+
+	if err := checkSetRTCAudioActive(ctx, rm); err != nil {
+		s.Fatal("Checking SetRTCAudioActive failed: ", err)
 	}
 }
