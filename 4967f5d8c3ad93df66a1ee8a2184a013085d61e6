@@ -22,6 +22,30 @@
       },
       "revId": "4967f5d8c3ad93df66a1ee8a2184a013085d61e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae483388_b42933b7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-13T09:16:24Z",
+      "side": 0,
+      "message": "We were trying to move those constants separately in an independent file just like `uiauto/osssettings/constants.go` \n\nIt looks redundant now due to our major changes on `holdingspace.go` were removed, therefore we have reverted all unnecessary changes.",
+      "parentUuid": "e95fd075_e17e502c",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "4967f5d8c3ad93df66a1ee8a2184a013085d61e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

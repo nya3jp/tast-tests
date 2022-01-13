@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4a50f8_044ac947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-13T09:16:24Z",
+      "side": 1,
+      "message": "Apology, we just noticed this test was designed to use a brand new session.\nRemoved the cleanup procedures and related changes.",
+      "parentUuid": "490b420d_7d4a28f8",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 76
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4362bde4_420241e9",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-13T00:04:04Z",
       "side": 1,
       "message": "nit: typo",
+      "range": {
+        "startLine": 103,
+        "startChar": 60,
+        "endLine": 103,
+        "endChar": 67
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e17a9889_b4975fb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-13T09:16:24Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "4362bde4_420241e9",
       "range": {
         "startLine": 103,
         "startChar": 60,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff43686_e32e0baa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-13T09:16:24Z",
+      "side": 1,
+      "message": "Apology, we removed the unnecessary IfSuccessThen and WaitUntilExists since this test won\u0027t share sessions with other tests.",
+      "parentUuid": "cc942a36_daf611d7",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 30
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9911a35_92df2143",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-01-13T00:04:04Z",
       "side": 1,
       "message": "nit: Maybe just return this w/o wrapping the error since a similar error message is being provided from the test body",
+      "range": {
+        "startLine": 138,
+        "startChar": 11,
+        "endLine": 138,
+        "endChar": 122
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4199ecef_65a544b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-13T09:16:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9911a35_92df2143",
       "range": {
         "startLine": 138,
         "startChar": 11,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97798a1a_f206a701",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-13T09:16:24Z",
+      "side": 1,
+      "message": "Apology, we removed the unnecessary existence checks since this test won\u0027t share sessions with other tests.",
+      "parentUuid": "b7f1e244_571af301",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1b15a10_e56c5c55",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-01-13T00:04:04Z",
       "side": 1,
       "message": "Not used?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6312a986_ea541f53",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-13T09:16:24Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d1b15a10_e56c5c55",
       "range": {
         "startLine": 67,
         "startChar": 0,
