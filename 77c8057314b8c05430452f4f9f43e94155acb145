@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f5b68e_2542f6f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_changepin.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57ab2bd6_55675d92",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e89a9f3_cde13990",
@@ -119,6 +137,24 @@
       "writtenOn": "2021-12-13T17:00:49Z",
       "side": 1,
       "message": "Since we don\u0027t use currentPuk below, the above can be simplified:\nif currentPuk, err :\u003d modem.GetActiveSimPuk(ctx); err !\u003d nil {\n  s.Fatal...\n} else if currentPuk \u003d\u003d \"\" {\n  // Do graceful exit...\n   return;\n}",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e320c4f3_85d0c4ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_changepin.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e89a9f3_cde13990",
       "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "043aaadd_3be7f255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pinlock.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcdf27c2_40049b3c",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56f7b6cd_0af4a2da",
@@ -153,6 +207,24 @@
       "writtenOn": "2021-12-13T17:00:49Z",
       "side": 1,
       "message": "nit: Simplify",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b49d33b3_ed4abb58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pinlock.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f7b6cd_0af4a2da",
       "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -174,6 +246,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08f3a5c_443b8094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_pinlock.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f67bc89b_4480d8e1",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68e32e71_661c6d67",
@@ -187,6 +277,24 @@
       "writtenOn": "2021-12-13T17:00:49Z",
       "side": 1,
       "message": "ditto",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fc55b37_ada63cd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_pinlock.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68e32e71_661c6d67",
       "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -208,6 +316,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a98661_95319b23",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_puklock.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ee4838_f363aada",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b52e1a2d_37608d20",
@@ -221,6 +347,24 @@
       "writtenOn": "2021-12-13T17:00:49Z",
       "side": 1,
       "message": "ditto",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac575163_95661ed4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_puklock.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b52e1a2d_37608d20",
       "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -242,6 +386,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "720e9f16_48f2a11a",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4dbd04a0_ece15467",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b20df808_2a6481a0",
@@ -259,6 +421,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69cedbed_54332848",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "primary slot after slot switched. slot number going to be started from 0 or 1 based on modem type.",
+      "parentUuid": "b20df808_2a6481a0",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "370d67c2_0b52d73d",
@@ -272,6 +452,24 @@
       "writtenOn": "2021-12-13T17:00:49Z",
       "side": 1,
       "message": "Why 100?",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f08fcdf_2011caa6",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Default nil value for uint32 is 0.\nNot sure what to return as this is primary slot number set after switching slots, and can not use 0 at error as fibocomm duts can have 0 also as primary slot.",
+      "parentUuid": "370d67c2_0b52d73d",
       "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -306,6 +504,24 @@
       "writtenOn": "2021-12-13T17:00:49Z",
       "side": 1,
       "message": "Sentences should end with \u0027.\u0027.",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f33044_4a721582",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-13T03:50:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e8a4d32_5c67be8c",
       "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
