@@ -101,23 +101,17 @@ func Kinemaster(ctx context.Context, s *testing.State) {
 // verify Kinemaster reached main activity page of the app.
 func launchAppForKinemaster(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		addButtonID             = "com.nexstreaming.app.kinemasterfree:id/addProject"
 		allowButtonText         = "ALLOW"
-		cancelText              = "Cancel"
-		continueToAppID         = "close-button"
-		closeID                 = "com.nexstreaming.app.kinemasterfree:id/skip_ad_button"
-		closeButtonID           = "com.nexstreaming.app.kinemasterfree:id/collapse_button"
-		noText                  = "No"
+		cancelID                = "com.nexstreaming.app.kinemasterfree:id/app_dialog_button_left_container"
+		closeID                 = "com.nexstreaming.app.kinemasterfree:id/ib_close_button"
 		okText                  = "OK"
-		homeID                  = "com.nexstreaming.app.kinemasterfree:id/mediaListView"
 		remindMelaterButtonText = "Remind Me Later"
 		startText               = "Start"
-		selectLayoutID          = "com.nexstreaming.app.kinemasterfree:id/ratio16v9"
 		shortTimeInterval       = 300 * time.Millisecond
 	)
 
 	// Click on OK Button.
-	clickOnOkButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+okText))
+	clickOnOkButton := d.Object(ui.TextMatches("(?i)" + okText))
 	if err := clickOnOkButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("clickOnOkButton doesn't exists: ", err)
 	} else if err := clickOnOkButton.Click(ctx); err != nil {
@@ -157,24 +151,8 @@ func launchAppForKinemaster(ctx context.Context, s *testing.State, tconn *chrome
 		s.Fatal("Failed to click on clickOnCloseButton: ", err)
 	}
 
-	// Click on no button.
-	clickOnNoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+noText))
-	if err := clickOnNoButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("clickOnNoButton doesn't exists: ", err)
-	} else if err := clickOnNoButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnNoButton: ", err)
-	}
-
-	// Click on continue to app button.
-	continueToAppButton := d.Object(ui.ID(continueToAppID))
-	if err := continueToAppButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("continueToAppButton doesn't exists: ", err)
-	} else if err := continueToAppButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on continueToAppButton: ", err)
-	}
-
 	// Click on remind me later button.
-	clickOnRemindMeLaterButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+remindMelaterButtonText))
+	clickOnRemindMeLaterButton := d.Object(ui.TextMatches("(?i)" + remindMelaterButtonText))
 	if err := clickOnRemindMeLaterButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("clickOnRemindMeLaterButton doesn't exists: ", err)
 	} else if err := clickOnRemindMeLaterButton.Click(ctx); err != nil {
@@ -182,35 +160,11 @@ func launchAppForKinemaster(ctx context.Context, s *testing.State, tconn *chrome
 	}
 
 	// Click on cancel button.
-	cancelButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+cancelText))
+	cancelButton := d.Object(ui.ID(cancelID))
 	if err := cancelButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("cancelButton doesn't exists: ", err)
 	} else if err := cancelButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on cancelButton: ", err)
-	}
-
-	// Click on close button.
-	clickOnCloseButton = d.Object(ui.ID(closeButtonID))
-	if err := clickOnCloseButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("clickOnCloseButton doesn't exists: ", err)
-	} else if err := clickOnCloseButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnCloseButton: ", err)
-	}
-
-	// Click on add button.
-	clickOnAddButton := d.Object(ui.ID(addButtonID))
-	if err := clickOnAddButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("clickOnAddButton doesn't exists: ", err)
-	} else if err := clickOnAddButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnAddButton: ", err)
-	}
-
-	// Click on select Layout.
-	clickOnSlectLayout := d.Object(ui.ID(selectLayoutID))
-	if err := clickOnSlectLayout.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
-		s.Log("clickOnSlectLayout doesn't exists: ", err)
-	} else if err := clickOnSlectLayout.Click(ctx); err != nil {
-		s.Fatal("Failed to click on clickOnSlectLayout: ", err)
 	}
 
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
