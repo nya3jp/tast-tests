@@ -79,6 +79,24 @@
       "message": "I guess you can define this in loginminutemaid/doc.go ?",
       "revId": "53b62c17730b2c156b6ee9b5a68f9afe76637393",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2017ed1_ccffe63d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginminutemaid/minutemaidutil/minutemaidutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1514802
+      },
+      "writtenOn": "2022-01-13T12:08:06Z",
+      "side": 1,
+      "message": "When I moved the variable to doc.go and run hook scripts, it says Tast forbids inter-file references in entry files; move var Locale in doc.go to a shared package. Are there other things I need to do to define it in doc.go?",
+      "parentUuid": "52f3922f_e1bfb56a",
+      "revId": "53b62c17730b2c156b6ee9b5a68f9afe76637393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
