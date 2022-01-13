@@ -22,6 +22,30 @@
       },
       "revId": "fc613606b1615751eda0c3754574e2bd0e3910ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f29aca_7acb96de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-13T05:48:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dfcff385_ca39f9a0",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 33
+      },
+      "revId": "fc613606b1615751eda0c3754574e2bd0e3910ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
