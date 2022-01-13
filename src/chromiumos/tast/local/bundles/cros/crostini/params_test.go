@@ -20,7 +20,6 @@ import (
 var testFiles = []string{
 	"audio_basic.go",
 	"audio_playback_configurations.go",
-	"backup_restore.go",
 	"basic.go",
 	"command_cd.go",
 	"command_ps.go",
@@ -92,7 +91,8 @@ var perfTests = map[string]time.Duration{
 }
 
 var mainlineExpensiveTests = map[string]time.Duration{
-	"fs_corruption.go": 10 * time.Minute,
+	"backup_restore.go": 10 * time.Minute,
+	"fs_corruption.go":  10 * time.Minute,
 }
 
 func TestExpensiveParams(t *testing.T) {
