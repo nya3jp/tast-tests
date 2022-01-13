@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a51dbca_efd9b847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-13T21:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "873e4e22_eb23d0b5",
+      "revId": "06ea7202743b99892670ad8222b173435ceaa311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e194b5c5_82235c5a",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8c7dd4_8d723afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-13T21:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e194b5c5_82235c5a",
+      "revId": "06ea7202743b99892670ad8222b173435ceaa311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "258b2432_e951449e",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-01-04T17:54:37Z",
       "side": 1,
       "message": "I\u0027m a little unsure what the heuristic is for. Shouldn\u0027t a pair of percentage based coordinates (i.e. wPercent float64, hPercent float64) be passed in and multiplied by the ScreenWidth, and Height respectively? As is, this function only allows adjustments in the vertical direction (since .5 is hardcoded for the width).",
+      "revId": "06ea7202743b99892670ad8222b173435ceaa311",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9c5e66_d68d1626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-13T21:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "258b2432_e951449e",
       "revId": "06ea7202743b99892670ad8222b173435ceaa311",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
