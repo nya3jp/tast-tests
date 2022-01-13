@@ -178,7 +178,7 @@ func runTest(ctx context.Context, s *testing.State, apkName, appPkgName, appActi
 
 	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, t.InTabletMode)
 	if err != nil {
-		s.Fatal("Failed to set tablet mode to: ", t.InTabletMode)
+		s.Fatalf("Failed to set tablet mode to %v: %v", t.InTabletMode, err)
 	}
 	defer cleanupTabletMode(ctx)
 
