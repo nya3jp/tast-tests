@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec87adc_21e5e911",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-13T08:16:59Z",
+      "side": 1,
+      "message": "I tried removing `chrome.EnableFeatures(\"FilesArchivemount\")` but unfortunately tast tests start failing after that.",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 52
+      },
+      "revId": "aebf65cd104b503bdaddd643f234f9a0d05232e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
