@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009fea26_b81e6f59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-13T06:56:57Z",
+      "side": 1,
+      "message": "Sorry, now again pushed comment fixed scripts.",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
