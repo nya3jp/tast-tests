@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a51e1f3_ae9dfcf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-13T18:42:33Z",
+      "side": 1,
+      "message": "is this actually necessary? (Should we tag the constants defined in client.go with these types instead so that users don\u0027t have to worry about knowing what type they actually should be?)",
+      "range": {
+        "startLine": 175,
+        "startChar": 23,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "32dd94f95b1f612bf20dfb1dbd1e434f2437b190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4dea0f0_dd857981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-13T18:42:33Z",
+      "side": 1,
+      "message": "nit: please format this as \"got %d, want %d\" for consistency",
+      "range": {
+        "startLine": 191,
+        "startChar": 24,
+        "endLine": 191,
+        "endChar": 81
+      },
+      "revId": "32dd94f95b1f612bf20dfb1dbd1e434f2437b190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44eac3ad_238c4368",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-13T18:42:33Z",
+      "side": 1,
+      "message": "Comments seem redundant here. Do presubmit checks force you to have them?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "32dd94f95b1f612bf20dfb1dbd1e434f2437b190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
