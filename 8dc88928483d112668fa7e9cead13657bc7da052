@@ -200,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d9e0adb_f9dfd558",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-13T06:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "333d0d00_b276b26f",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 56
+      },
+      "revId": "8dc88928483d112668fa7e9cead13657bc7da052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bf070e9_cd296760",
@@ -683,6 +707,30 @@
       "writtenOn": "2022-01-12T09:14:54Z",
       "side": 1,
       "message": "all these lines go into a func",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 99
+      },
+      "revId": "8dc88928483d112668fa7e9cead13657bc7da052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ab241d_517994d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-13T06:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a76439c3_5192ef7f",
       "range": {
         "startLine": 198,
         "startChar": 0,

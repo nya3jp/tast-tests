@@ -395,6 +395,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec2f71a_4768d783",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-13T06:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbab7a35_f5e398fb",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f34ebf29_584ab3a8",
@@ -1116,6 +1140,30 @@
       "side": 1,
       "message": "so the main steps here are:\n\n- iterate some sections,\n- prepare a section,\n- do_something - write etc - the section.\n\nSo the signature of the func would be of the form that consumes a func ptr (Go has anonymous functions - lambda\u0027s) that does the third-step and the func body does all the iteration prep stuff.\n\nThis all sounds trickier than it is https://www.golangprograms.com/anonymous-functions-in-golang.html\n\nI am however fine with it being a follow up.",
       "parentUuid": "8bf8eea4_a7f0d61d",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 45
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee4fbef1_d5aed4c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-13T06:09:40Z",
+      "side": 1,
+      "message": "I will do as follow up, let me create a bug for this.",
+      "parentUuid": "9c24fbef_5f607c1b",
       "range": {
         "startLine": 185,
         "startChar": 0,

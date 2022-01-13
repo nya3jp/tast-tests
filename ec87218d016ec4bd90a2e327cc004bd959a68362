@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e0ee1d_cd924d99",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-13T06:09:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8823561a_a1e5299a",
+      "range": {
+        "startLine": 143,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 155
+      },
+      "revId": "ec87218d016ec4bd90a2e327cc004bd959a68362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5b01cdf_c19d9ee3",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-13T04:33:23Z",
       "side": 1,
       "message": "attributes[\"area_size:\"]",
+      "range": {
+        "startLine": 145,
+        "startChar": 14,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "ec87218d016ec4bd90a2e327cc004bd959a68362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7899810_976c1666",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-13T06:09:40Z",
+      "side": 1,
+      "message": "Done and... funny thing that still worked :D I looked into the code, I can understand why it worked. But that was ofc a bug, thank you so much!",
+      "parentUuid": "f5b01cdf_c19d9ee3",
       "range": {
         "startLine": 145,
         "startChar": 14,
