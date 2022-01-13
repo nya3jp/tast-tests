@@ -19,7 +19,6 @@ func init() {
 		Func: Reset,
 		Desc: "Test that the WiFi interface can be reset successfully, and that WiFi comes back up properly",
 		Contacts: []string{
-			"chharry@google.com",              // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
 		Attr:        []string{"group:wificell", "wificell_suspend"},
@@ -34,15 +33,13 @@ func init() {
 		Params: []testing.Param{
 			{
 				// Default AP settings ported from Autotest.
-				ExtraAttr: []string{"wificell_unstable"},
-				Val:       []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)},
+				Val: []hostapd.Option{hostapd.Mode(hostapd.Mode80211b), hostapd.Channel(1)},
 			},
 			{
 				// The target protocol and channel settings, as this is more widely used nowadays.
 				// TODO(b/175602523): Replace the default with this once the issue is fixed.
-				Name:      "80211n_ch48",
-				ExtraAttr: []string{"wificell_unstable"},
-				Val:       wificell.DefaultOpenNetworkAPOptions(),
+				Name: "80211n_ch48",
+				Val:  wificell.DefaultOpenNetworkAPOptions(),
 			},
 		},
 	})
