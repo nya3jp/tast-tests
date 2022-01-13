@@ -689,7 +689,10 @@ func ShrinkDefaultContainer(ctx context.Context, ownerID string) error {
 	for _, path := range []string{
 		"/usr/lib/gcc",
 		"/usr/lib/git-core",
+		"/usr/lib/python2.7",
 		"/usr/lib/python3",
+		"/usr/lib/python3.9",
+		"/usr/lib/udev",
 		"/usr/share/doc",
 		"/usr/share/fonts",
 		"/usr/share/i18n",
@@ -698,10 +701,12 @@ func ShrinkDefaultContainer(ctx context.Context, ownerID string) error {
 		"/usr/share/man",
 		"/usr/share/perl",
 		"/usr/share/qt5",
+		"/usr/share/samba",
 		"/usr/share/vim",
-		"/var/cache/apt",
+		"/var/cache",
 		"/var/lib/apt",
 		"/var/lib/dpkg",
+		"/var/log",
 	} {
 		cmd := DefaultContainerCommand(ctx, ownerID, "sudo", "sh", "-c", "[ -e "+shutil.Escape(path)+" ]")
 		if err := cmd.Run(); err != nil {
