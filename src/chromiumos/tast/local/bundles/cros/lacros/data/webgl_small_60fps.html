@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Webgl 60 fps Test</title>
+</head>
+
+<body>
+  <canvas id="webglcanvas" width="320" height="240" style="border:8px solid"> Failed to load webgl.</canvas>
+</body>
+
+<script>
+  let g_gl;
+  let g_frame_even = false;
+  function drawAnimation() {
+    if (!g_gl) {
+      let glcanvas = document.getElementById("webglcanvas");
+      g_gl = glcanvas.getContext("webgl");
+    }
+
+    if (g_frame_even) {
+      g_gl.clearColor(1, Math.sqrt(0.5), 0, 1.0);
+    } else {
+      g_gl.clearColor(0, Math.sqrt(0.5), 1, 1.0);
+    }
+    g_frame_even = !g_frame_even;
+    g_gl.clear(g_gl.COLOR_BUFFER_BIT);
+    requestAnimationFrame(drawAnimation);
+  }
+  requestAnimationFrame(drawAnimation);
+</script>
+
+</html>

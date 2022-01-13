@@ -68,6 +68,14 @@ type page struct {
 
 var pageSet = []page{
 	{
+		name: "tiles60fps", // Gradient updated at 60 fps. This is for testing delegated compositing tile performance.
+		url:  "/gradient_color_60fps.html",
+	},
+	{
+		name: "webgl60fps", // Simplest small Webgl canvas at 60fps. This is for testing wayland overlay forwarding performance.
+		url:  "/webgl_small_60fps.html",
+	},
+	{
 		name: "aquarium", // WebGL Aquarium. This page is for testing WebGL.
 		url:  "https://webglsamples.org/aquarium/aquarium.html",
 	},
