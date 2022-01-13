@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cfda252_317f67a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-13T17:40:29Z",
+      "side": 1,
+      "message": "LGTM with suggestions.",
+      "revId": "570d3bb3f06411269e58df420da95965fb510f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe30331_07eaf479",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-13T17:40:29Z",
+      "side": 1,
+      "message": "(optional) Another approach is to introduce a function returning default options.\n\nfunc StartDefaultOptions() []ActivityStartOption {\n  return []ActivityStartOption{\n    WithWaitForLaunch(),\n    WithDisplayId(...),\n  }\n}\n\nthen callers will be\n\nact.Start(ctx, tconn, StartDefaultOptions()...)",
+      "revId": "570d3bb3f06411269e58df420da95965fb510f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

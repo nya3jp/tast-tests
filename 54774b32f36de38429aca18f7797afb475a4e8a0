@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a33a24e_d000fce0",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-13T17:40:29Z",
+      "side": 1,
+      "message": "nit/style:\nargs \u003d append(args, \"-n\", fmt.Sprintf(\"%s/%s\", ac.pkgName, ac.activityName))",
+      "range": {
+        "startLine": 422,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 52
+      },
+      "revId": "54774b32f36de38429aca18f7797afb475a4e8a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
