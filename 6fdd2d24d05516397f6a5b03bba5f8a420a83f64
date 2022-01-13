@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e7b079d_33801f75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-01-13T02:02:56Z",
+      "side": 1,
+      "message": "Harpreet, can you review the CL too? IIRC we had to separate the \"suspend\" Tast jobs from other Tast test in wifi_func_tast because failures in suspend would break all the following tests. Can you make sure that it doesn\u0027t start happening in wfi_matfunc?",
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321d7b2e_055c1ad6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-01-13T02:02:56Z",
+      "side": 1,
+      "message": "Can you remove that contact? When we transition tests to stable the champs take ownership.\nSame for the other test",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
