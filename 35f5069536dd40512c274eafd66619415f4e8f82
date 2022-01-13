@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe815e91_1542eb07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-13T21:11:32Z",
+      "side": 1,
+      "message": "hidehiko@, mind stamping on the M98 merge of the CL you reviewed? It is a clean merge. Thanks.",
+      "revId": "35f5069536dd40512c274eafd66619415f4e8f82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
