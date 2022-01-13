@@ -84,6 +84,24 @@
       "message": "Failures are unrelated.",
       "revId": "d0925d9dbc224a0a9bccb6b5993c7fbcedac5a6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c1998a5_3b0af817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2022-01-13T00:24:02Z",
+      "side": 1,
+      "message": "I went and reviewed the go/cros-oncall chat log for 12/13 and noticed this chump had not been co-ordinated with the oncallers.\n\nThis is a friendly reminder that all chumps need coordinated with the oncall staff.\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#chumping",
+      "parentUuid": "94b197b6_ae6f59ff",
+      "revId": "d0925d9dbc224a0a9bccb6b5993c7fbcedac5a6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
