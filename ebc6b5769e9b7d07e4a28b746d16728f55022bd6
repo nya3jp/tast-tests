@@ -560,6 +560,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0d9832_6d47b5e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-13T01:39:23Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this particular line is over the top, but ok I deleted it :)",
+      "parentUuid": "8791384a_bd8fe0f6",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 69
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41b71c8f_bc34f62c",
@@ -856,6 +880,30 @@
       "side": 1,
       "message": "Can you start with moving all the parsing into its own function. Once we have a signature to bound the problem we can talk about implementation detail.",
       "parentUuid": "e32d8727_686bc3a5",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 59
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "083f3d3c_668c3b78",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-13T01:39:23Z",
+      "side": 1,
+      "message": "Moved to it\u0027s own function `splitByWhitespace`",
+      "parentUuid": "e00c0b82_fe12d9bd",
       "range": {
         "startLine": 119,
         "startChar": 0,
