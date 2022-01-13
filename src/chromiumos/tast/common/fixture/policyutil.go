@@ -76,6 +76,8 @@ const (
 	PersistentFamilyLink = "persistentFamilyLink"
 	// PersistentFamilyLinkARC is a fixture name.
 	PersistentFamilyLinkARC = "persistentFamilyLinkARC"
+	// PersistentGellerARC is a fixture name.
+	PersistentGellerARC = "persistentGellerARC"
 	// PersistentProjectorEDU is a fixture name.
 	PersistentProjectorEDU = "persistentProjectorEDU"
 )

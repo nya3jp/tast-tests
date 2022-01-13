@@ -88,6 +88,22 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.PersistentGellerARC,
+		Desc:     "Fixture setting persistent policy user for a Geller account",
+		Contacts: []string{"sun.tsai@cienet.com", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
+		Vars: []string{
+			"family.gellerEmail",
+		},
+		Impl: &persistentFixture{
+			policyUserVar: "family.gellerEmail",
+		},
+		SetUpTimeout:    5 * time.Second,
+		ResetTimeout:    5 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		PostTestTimeout: 5 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.PersistentProjectorEDU,
 		Desc:     "Fixture setting persistent policy user for a managed EDU account",
 		Contacts: []string{"tobyhuang@chromium.org", "vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
