@@ -44,8 +44,9 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// TODO (b/154038293): hwdep.SkipOnModel(GruntBoardOnly...) once the issue is fixed.
 			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...), hwdep.SkipOnModel(gruntBoardOnly...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
 			Name: "tablet_mode",
@@ -66,8 +67,9 @@ func init() {
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// TODO (b/154038293): hwdep.SkipOnModel(GruntBoardOnly...) once the issue is fixed.
 			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...), hwdep.SkipOnModel(gruntBoardOnly...)),
 			Pre:               pre.AppCompatBooted,
 		}, {
 			Name: "vm_tablet_mode",
@@ -84,6 +86,19 @@ func init() {
 		Timeout: 10 * time.Minute,
 		VarDeps: []string{"arcappcompat.username", "arcappcompat.password"},
 	})
+}
+
+// gruntBoardOnly is a list of grunt only models to be skipped from runs.
+var gruntBoardOnly = []string{
+	// grunt:
+	"careena",
+	"kasumi",
+	"treeya",
+	"grunt",
+	"barla",
+	"aleena",
+	"liara",
+	"nuwani",
 }
 
 // Tiktok test uses library for opting into the playstore and installing app.
