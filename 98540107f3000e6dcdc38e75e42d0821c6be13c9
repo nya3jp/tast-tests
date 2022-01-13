@@ -50,6 +50,29 @@
       "message": "Unrelated red.",
       "revId": "98540107f3000e6dcdc38e75e42d0821c6be13c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c2bbd09_41e44ec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-13T21:14:10Z",
+      "side": 1,
+      "message": "Sorry, I thought you fixed this?\n\ntast-remote-tests-cros-0.0.2-r9049: src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go:243:5: Errorf format %d has arg currtVTScreenshot of wrong type string",
+      "range": {
+        "startLine": 243,
+        "startChar": 34,
+        "endLine": 243,
+        "endChar": 36
+      },
+      "revId": "98540107f3000e6dcdc38e75e42d0821c6be13c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
