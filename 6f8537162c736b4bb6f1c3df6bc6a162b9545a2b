@@ -16,6 +16,144 @@
       "message": "We now improve the test coverage of existing `holdingspace.FilesAppContextMenuPinAndUnpin` by adding the folder related test.\n\nThank you for your time and the suggestions, please review.",
       "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "490b420d_7d4a28f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-01-13T00:04:04Z",
+      "side": 1,
+      "message": "Any particular reason for moving this below launching the Files app?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 76
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4362bde4_420241e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-01-13T00:04:04Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 103,
+        "startChar": 60,
+        "endLine": 103,
+        "endChar": 67
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc942a36_daf611d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-01-13T00:04:04Z",
+      "side": 1,
+      "message": "I believe LeftClick will already wait until maxBtn exists and is stable?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 30
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9911a35_92df2143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-01-13T00:04:04Z",
+      "side": 1,
+      "message": "nit: Maybe just return this w/o wrapping the error since a similar error message is being provided from the test body",
+      "range": {
+        "startLine": 138,
+        "startChar": 11,
+        "endLine": 138,
+        "endChar": 122
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f1e244_571af301",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/files_app_context_menu_pin_and_unpin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-01-13T00:04:04Z",
+      "side": 1,
+      "message": "I believe cryptohome is erased prior to this method being invoked since this test uses a new chrome session, so existence checks shouldn\u0027t be necessary?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 2
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b15a10_e56c5c55",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/holdingspace/holdingspace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-01-13T00:04:04Z",
+      "side": 1,
+      "message": "Not used?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "6f8537162c736b4bb6f1c3df6bc6a162b9545a2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
