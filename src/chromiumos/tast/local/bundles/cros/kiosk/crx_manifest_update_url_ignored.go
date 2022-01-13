@@ -32,7 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.FakeDMSEnrolled,
-		Timeout:      5 * time.Minute, // Starting multiple extensions requires longer timeout
+		Timeout:      7 * time.Minute, // Starting multiple extensions requires longer timeout.
 	})
 }
 
