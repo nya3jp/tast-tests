@@ -33,6 +33,11 @@ const (
 	// ChromePressureLevelCritical means Chrome is advised to free all possible
 	// memory.
 	ChromePressureLevelCritical = 2
+
+	// RTCAudioActiveOff means RTCAudioActive is off.
+	RTCAudioActiveOff uint8 = 0
+	// RTCAudioActiveOn means RTCAudioActive is on.
+	RTCAudioActiveOn uint8 = 1
 )
 
 // Client wraps D-Bus calls to make requests to the Resource Manager (resourced).
@@ -175,6 +180,23 @@ func (c *Client) NewChromePressureWatcher(ctx context.Context) (*ChromePressureW
 		close(pw.Signals)
 	}()
 	return pw, nil
+}
+
+// RTCAudioActive returns the result of the GetRTCAudioActive D-Bus method.
+func (c *Client) RTCAudioActive(ctx context.Context) (uint8, error) {
+	var result uint8
+	if err := c.obj.Call(ctx, "GetRTCAudioActive").Store(&result); err != nil {
+		return 0, errors.Wrap(err, "failed to call method GetRTCAudioActive")
+	}
+	return result, nil
+}
+
+// SetRTCAudioActive sets the RTC audio active state in resourced.
+func (c *Client) SetRTCAudioActive(ctx context.Context, mode uint8) error {
+	if err := c.obj.Call(ctx, "SetRTCAudioActive", mode).Err; err != nil {
+		return errors.Wrap(err, "failed to call method SetRTCAudioActive")
+	}
+	return nil
 }
 
 // NewClient makes a new D-Bus wrapper object for communicating with Resource
