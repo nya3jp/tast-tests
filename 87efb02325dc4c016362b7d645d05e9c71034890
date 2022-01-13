@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "161d5e5c_cd0de9eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/logout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-13T01:58:07Z",
+      "side": 1,
+      "message": "not sure if this belongs in quicksettings, since one of the subtests is just using the keyboard shortcut. how about putting this in the login package? the base test can be with the shortcut, and you can have a parameterized test for the quick settings button or something like that",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "87efb02325dc4c016362b7d645d05e9c71034890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab89bd11_3f5e7a50",
         "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/logout.go",
         "patchSetId": 3
@@ -36,6 +59,87 @@
         "startChar": 0,
         "endLine": 75,
         "endChar": 39
+      },
+      "revId": "87efb02325dc4c016362b7d645d05e9c71034890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f2f9ee_dbfd04e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/logout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-13T01:58:07Z",
+      "side": 1,
+      "message": "I also haven\u0027t seen this pattern before, so I\u0027m leaning towards the simpler approach Roman linked. Good to keep things consistent with the login tests IMO",
+      "parentUuid": "ab89bd11_3f5e7a50",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 39
+      },
+      "revId": "87efb02325dc4c016362b7d645d05e9c71034890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49c23deb_350efc8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/logout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-13T01:58:07Z",
+      "side": 1,
+      "message": "might be nice to check if we can log back in successfully at the end",
+      "revId": "87efb02325dc4c016362b7d645d05e9c71034890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dea797a_d7cada9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/logout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-13T01:58:07Z",
+      "side": 1,
+      "message": "consider adding this function to quicksettings.go",
+      "revId": "87efb02325dc4c016362b7d645d05e9c71034890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780a37de_86dea45d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/logout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-13T01:58:07Z",
+      "side": 1,
+      "message": "this is probably a duplicate of some functionality in quicksettings.go",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 2
       },
       "revId": "87efb02325dc4c016362b7d645d05e9c71034890",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
