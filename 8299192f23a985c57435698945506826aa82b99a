@@ -22,6 +22,30 @@
       },
       "revId": "8299192f23a985c57435698945506826aa82b99a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81959046_26c92f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/check_intel_sar_table.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-01-13T23:50:29Z",
+      "side": 1,
+      "message": "Ah ha, done.",
+      "parentUuid": "c5bf2eef_c0b039d4",
+      "range": {
+        "startLine": 33,
+        "startChar": 76,
+        "endLine": 33,
+        "endChar": 107
+      },
+      "revId": "8299192f23a985c57435698945506826aa82b99a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
