@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "455fa79d5cb9b32077ec9748da8b403ae0e11aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2168c50_4a031c40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-13T22:34:01Z",
+      "side": 1,
+      "message": "We\u0027re sure this is going to be less flaky? It seems like we could be broken by updates to Roblox. Do we have a pinned version that we use for this test?",
+      "revId": "455fa79d5cb9b32077ec9748da8b403ae0e11aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
