@@ -40,6 +40,7 @@ var md5OfYUV = map[string]string{
 	"tulip2-960x540.i420.yuv":           "c0ff5b6c62ba8914aa073d630acd6309",
 	"tulip2-640x360.i420.yuv":           "094bd827de18ca196a83cc6442b7b02f",
 	"tulip2-640x360.nv12.yuv":           "750a9d254415858f821b8df06a5f3d48",
+	"tulip2-480x270.i420.yuv":           "06e0ac8b028a78ed4cd8dda5ab5bceec",
 	"tulip2-320x180.i420.yuv":           "55be7124b3aec1b72bfb57f433297193",
 	"tulip2-320x180.nv12.yuv":           "7899814a845a5342c6b4a6da7e494cc0",
 	"vidyo1-1280x720.i420.yuv":          "b8601dd181bb2921fffce3fbb896351e",
