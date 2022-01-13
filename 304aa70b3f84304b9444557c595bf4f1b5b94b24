@@ -79,6 +79,30 @@
       },
       "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b1cb7b9_2c072009",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-13T02:22:52Z",
+      "side": 1,
+      "message": "Aside, once userDataDir can be set per-test not per-call to `LaunchWithURL` in test, we should also be able to support such a test scenario that need to keep user data over multiple launches of lacros using LaunchWithURL. \nIt could be wrong, but may be related to https://crrev.com/c/3338740 (working around this by using LaunchFromShelf)\n+Gabor +Georg for any thought if it is good to have for policy testing.",
+      "parentUuid": "90491102_6b055180",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 12
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
