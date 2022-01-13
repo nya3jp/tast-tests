@@ -16,6 +16,120 @@
       "message": "Adding Victor as tast reviewer",
       "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6fa034d_3898eddf",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-13T09:33:45Z",
+      "side": 1,
+      "message": "nit: remove newline",
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1e027a_fa9de1fe",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-13T09:33:45Z",
+      "side": 1,
+      "message": "Maybe RemoveNetwork?",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97cf3c96_c7083f78",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-13T09:33:45Z",
+      "side": 1,
+      "message": "Do you need explicit numbers here or can you use iota ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ae951fb_991cbefb",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-13T09:33:45Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b081a5_9c712fc4",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-13T09:33:45Z",
+      "side": 1,
+      "message": "Same",
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60600faf_690100b9",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-13T09:33:45Z",
+      "side": 1,
+      "message": "Something looks off about this formating",
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
