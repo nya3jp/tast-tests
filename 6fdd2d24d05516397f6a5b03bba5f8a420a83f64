@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8bc8095_56bde2a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-13T02:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d68b6b3c_068afaca",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4249312_369d4bfd",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d9e850_60dc6a3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-13T02:20:49Z",
+      "side": 1,
+      "message": "That\u0027s not the right bug. AFAIK we don\u0027t have a bug for stabilizing this.",
+      "parentUuid": "a4249312_369d4bfd",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6923ee1_ac621b99",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-13T02:08:58Z",
       "side": 1,
       "message": "Leave something like check the pass rate on the dashboard instead of leaving None.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "137164bd_93497386",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-13T02:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6923ee1_ac621b99",
       "range": {
         "startLine": 14,
         "startChar": 5,
@@ -148,6 +220,30 @@
       "side": 1,
       "message": "FYI, It\u0027s favorable to have 1 non-alias @google.com contact in the Contacts field. Probably leave one in wifi team?",
       "parentUuid": "321d7b2e_055c1ad6",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d6f2ff_45967e51",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-13T02:20:49Z",
+      "side": 1,
+      "message": "This is the way we\u0027ve been doing things. Is there a reason we need 1 contact? The purpose of having the champs be the owner is so that there\u0027s not 1 person who\u0027s on the hook, and the acting champ is responsible for finding an appropriate owner.",
+      "parentUuid": "5edcb961_7cada4ff",
       "range": {
         "startLine": 22,
         "startChar": 3,
