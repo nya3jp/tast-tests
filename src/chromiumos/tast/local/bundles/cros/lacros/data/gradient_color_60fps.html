@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>60 fps Test tile raster</title>
+  <h1 id="textupdate"></h1>
+</head>
+
+<body>
+  <style>
+    body {
+      height: 10vh;
+      margin: 0;
+      background: radial-gradient(#11111111, #66666666);
+      background-repeat: repeat;
+    }
+  </style>
+</body>
+
+<script>
+  let g_frame_even = false;
+  let g_frame_count = 0;
+  function drawAnimation() {
+    if (g_frame_even) {
+      document.body.style.backgroundColor = "rgb(255, 180, 0)";
+    } else {
+      document.body.style.backgroundColor = "rgb(0, 180, 255)";
+    }
+    g_frame_even = !g_frame_even;
+    let str = " . " + (g_frame_count % 60).toString() + ":" + Math.floor(g_frame_count / 60).toString() + " x ";
+    document.getElementById("textupdate").innerHTML = str;
+    requestAnimationFrame(drawAnimation);
+    g_frame_count++;
+  }
+  requestAnimationFrame(drawAnimation);
+</script>
+
+</html>

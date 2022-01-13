@@ -25,7 +25,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Timeout:      120 * time.Minute,
-		Data:         []string{"video.html", "bbb_1080p60_yuv.vp9.webm"},
+		Data:         []string{"video.html", "gradient_color_60fps.html", "webgl_small_60fps.html", "bbb_1080p60_yuv.vp9.webm"},
 		Params: []testing.Param{{
 			Name: "maximized",
 			Val: gpucuj.TestParams{
