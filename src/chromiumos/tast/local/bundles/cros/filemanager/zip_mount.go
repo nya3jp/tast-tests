@@ -6,9 +6,13 @@ package filemanager
 
 import (
 	"context"
+	"fmt"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/shirou/gopsutil/process"
+	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -19,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -29,6 +34,7 @@ type testFunc func(ctx context.Context, s *testing.State, files *filesapp.FilesA
 type testEntry struct {
 	TestCase testFunc
 	ZipFiles []string
+	IsGuest  bool
 }
 
 func init() {
@@ -55,47 +61,158 @@ func init() {
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.7z"},
+				IsGuest:  false,
 			},
 		}, {
 			Name: "mount_single_rar",
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.rar"},
+				IsGuest:  false,
 			},
 		}, {
 			Name: "mount_single_zip",
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.zip"},
+				IsGuest:  false,
 			},
 		}, {
 			Name: "cancel_multiple",
 			Val: testEntry{
 				TestCase: testCancelingMultiplePasswordDialogs,
 				ZipFiles: []string{"Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip"},
+				IsGuest:  false,
 			},
 		}, {
 			Name: "mount_multiple",
 			Val: testEntry{
 				TestCase: testMountingMultipleZipFiles,
 				ZipFiles: []string{"Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip", "Texts.zip"},
+				IsGuest:  false,
+			},
+		}, {
+			Name: "mount_single_7z_guest",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.7z"},
+				IsGuest:  true,
+			},
+		}, {
+			Name: "mount_single_rar_guest",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.rar"},
+				IsGuest:  true,
+			},
+		}, {
+			Name: "mount_single_zip_guest",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.zip"},
+				IsGuest:  true,
+			},
+		}, {
+			Name: "cancel_multiple_guest",
+			Val: testEntry{
+				TestCase: testCancelingMultiplePasswordDialogs,
+				ZipFiles: []string{"Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip"},
+				IsGuest:  true,
+			},
+		}, {
+			Name: "mount_multiple_guest",
+			Val: testEntry{
+				TestCase: testMountingMultipleZipFiles,
+				ZipFiles: []string{"Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip", "Texts.zip"},
+				IsGuest:  true,
 			},
 		}},
 	})
 }
 
+// getCryptohomeNamespaceMounterPID returns the PID of the 'cryptohome-namespace-mounter' process,
+// if found.
+func getCryptohomeNamespaceMounterPID() (int, error) {
+	const exePath = "/usr/sbin/cryptohome-namespace-mounter"
+
+	all, err := process.Pids()
+	if err != nil {
+		return -1, err
+	}
+
+	for _, pid := range all {
+		if proc, err := process.NewProcess(pid); err != nil {
+			// Assume that the process exited.
+			continue
+		} else if exe, err := proc.Exe(); err == nil && exe == exePath {
+			return int(pid), nil
+		}
+	}
+	return -1, errors.New("mounter process not found")
+}
+
 func ZipMount(ctx context.Context, s *testing.State) {
 	testParams := s.Param().(testEntry)
 	zipFiles := testParams.ZipFiles
+	isGuest := testParams.IsGuest
 
-	// TODO(nigeltao): remove "FilesArchivemount" after it gets flipped to
-	// enabled-by-default (scheduled for M94) and before the feature flag
-	// expires (scheduled for M100). crbug.com/1216245
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount"))
-	if err != nil {
-		s.Fatal("Cannot start Chrome: ", err)
+	var cr *chrome.Chrome
+	var err error
+
+	if isGuest {
+		// TODO(nigeltao): remove "FilesArchivemount" after it gets flipped to
+		// enabled-by-default (scheduled for M94) and before the feature flag
+		// expires (scheduled for M100). crbug.com/1216245
+		cr, err = chrome.New(ctx, chrome.GuestLogin(), chrome.EnableFeatures("FilesArchivemount"))
+		if err != nil {
+			s.Fatal("Login failed: ", err)
+		}
+		// chrome.Chrome.Close() will not log the user out.
+		defer upstart.RestartJob(ctx, "ui")
+
+		nsPath := "/proc/1/ns/mnt"
+		if mounterPid, err := getCryptohomeNamespaceMounterPID(); err == nil {
+			nsPath = fmt.Sprintf("/proc/%d/ns/mnt", mounterPid)
+		}
+
+		// Guest sessions can be mounted in a non-root mount namespace
+		// so the test needs to perform checks in that same namespace.
+		s.Log("Attempting to open Chrome mount namespace at ", nsPath)
+		chromeNsFd, err := unix.Open(nsPath, unix.O_CLOEXEC, unix.O_RDWR)
+		if err != nil {
+			s.Fatal("Opening Chrome mount namespace failed: ", err)
+		}
+		defer unix.Close(chromeNsFd)
+
+		// Open root mount namespace to be able to switch back to it.
+		rootNsFd, err := unix.Open("/proc/1/ns/mnt", unix.O_CLOEXEC, unix.O_RDONLY)
+		if err != nil {
+			s.Fatal("Opening root mount namespace failed: ", err)
+		}
+		defer unix.Close(rootNsFd)
+
+		// Ensure we can successfully call setns(2) by first calling unshare(2)
+		// which will make this thread's view of mounts distinct from the root's.
+		if err := unix.Unshare(unix.CLONE_NEWNS); err != nil {
+			s.Fatal("Unsharing mount namespace failed: ", err)
+		}
+		// As soon as we've successfully called unshare(2) ensure we switch back
+		// to the original namespace.
+		defer unix.Setns(rootNsFd, unix.CLONE_NEWNS)
+
+		if err := unix.Setns(chromeNsFd, unix.CLONE_NEWNS); err != nil {
+			s.Fatalf("Entering Chrome mount namespace at %s failed: %v", nsPath, err)
+		}
+	} else {
+		// TODO(nigeltao): remove "FilesArchivemount" after it gets flipped to
+		// enabled-by-default (scheduled for M94) and before the feature flag
+		// expires (scheduled for M100). crbug.com/1216245
+		cr, err = chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount"))
+		if err != nil {
+			s.Fatal("Cannot start Chrome: ", err)
+		}
+		defer cr.Close(ctx)
 	}
-	defer cr.Close(ctx)
 
 	// Load ZIP files.
 	for _, zipFile := range zipFiles {
