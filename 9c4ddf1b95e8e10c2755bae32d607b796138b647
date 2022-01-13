@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d1e39c_aff2f93d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-13T00:37:29Z",
+      "side": 1,
+      "message": "Are these standardised columns? Can we have an enum to make this more descriptive of what this \"5\" means? something like:\n```\n\ttype ModetestConnectorColumn int\n\n\tconst (\n\t\tConnectorID       ModetestConnectorColumn \u003d 0\n\t\tConnectorEncoder                          \u003d 1\n\t\tConnectorStatus                           \u003d 2\n\t\tConnectorName                             \u003d 3\n\t\tConnectorSize                             \u003d 4\n\t\tConnectorModes                            \u003d 5\n\t\tConnectorEncoders                         \u003d 6\n\t)\n```\n\nThen you can refer to them like:\n```\nsizeRaw, err :\u003d getModetestConnectorInfo(ctx, ConnectorSize)\n```\nAnd update the func signature to be:\n```\nfunc getModetestConnectorInfo(ctx context.Context, column ModetestConnectorColumn) (string, error)\n```\n\nWDYT?",
+      "revId": "9c4ddf1b95e8e10c2755bae32d607b796138b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50c24d4_c9e537d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-13T00:37:29Z",
+      "side": 1,
+      "message": "Wonder if it\u0027s worth wrapping this error to differentiate it from the height conversion below?",
+      "range": {
+        "startLine": 144,
+        "startChar": 9,
+        "endLine": 144,
+        "endChar": 12
+      },
+      "revId": "9c4ddf1b95e8e10c2755bae32d607b796138b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "128545cf_479892f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-13T00:37:29Z",
+      "side": 1,
+      "message": "nit: you can simplify this to just \n```\nreturn verifyEmbeddedDisplaySize(ctx, EDP)\n```",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 11
+      },
+      "revId": "9c4ddf1b95e8e10c2755bae32d607b796138b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
