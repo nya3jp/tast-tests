@@ -16,6 +16,98 @@
       "message": "This is an intermediate patchset, I resolved some comments but I continue working on remaining ones.",
       "revId": "ec87218d016ec4bd90a2e327cc004bd959a68362",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8823561a_a1e5299a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-13T04:33:23Z",
+      "side": 1,
+      "message": "s.Logf(\"Found section %s in bios file %s with recorded offset %s and size %s\", section, imagePath, offsetAttr, sizeAttr)\n\nand move this line after the itermediates.",
+      "range": {
+        "startLine": 143,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 155
+      },
+      "revId": "ec87218d016ec4bd90a2e327cc004bd959a68362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b01cdf_c19d9ee3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-13T04:33:23Z",
+      "side": 1,
+      "message": "attributes[\"area_size:\"]",
+      "range": {
+        "startLine": 145,
+        "startChar": 14,
+        "endLine": 145,
+        "endChar": 41
+      },
+      "revId": "ec87218d016ec4bd90a2e327cc004bd959a68362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4137d8_14ba1004",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-13T04:33:23Z",
+      "side": 1,
+      "message": "```\nfunc parseAttr(offsetAttr, sizeAttr string) ((uint64, uint64), error)\n{\n  offset, err :\u003d strconv.ParseUint(strings.ReplaceAll(offsetAttr, \"0x\", \"\"), 16, 64)\n  if err !\u003d nil {\n    return fmt.Errorf(\"failed to parse offset attribute with: %v\", err)\n  }\n  size, err :\u003d strconv.ParseUint(strings.ReplaceAll(sizeAttr, \"0x\", \"\"), 16, 64)\n  if err !\u003d nil {\n    return fmt.Errorf(\"failed to parse offset attribute with: %v\", err)\n  }\n  return (offset, size)\n}\n\n[..]\n\n(offset, size), err :\u003d parseAttr(offsetAttr, sizeAttr)\nif err !\u003d nil {\n  s.Logf(\"%v\", err)\n}\n```",
+      "range": {
+        "startLine": 146,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 79
+      },
+      "revId": "ec87218d016ec4bd90a2e327cc004bd959a68362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1983984b_45e37d7b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-01-13T04:33:23Z",
+      "side": 1,
+      "message": "determine the len(tokens) and what to do before doing anything with the tokens.\n\nif the len \u003c\u003d 1 then the above will result in a array out of bounds exception for tokens[1] since that is two elements.",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 3
+      },
+      "revId": "ec87218d016ec4bd90a2e327cc004bd959a68362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
