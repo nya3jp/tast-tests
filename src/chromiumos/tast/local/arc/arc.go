@@ -654,6 +654,22 @@ func GetState(ctx context.Context, tconn *chrome.TestConn) (State, error) {
 	return state, nil
 }
 
+// Start requests to start ARC. Note, this does not chagne Play Store enabled preference.
+func Start(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.startArc)`); err != nil {
+		return errors.Wrap(err, "failed to run autotestPrivate.startArc")
+	}
+	return nil
+}
+
+// Stop requests to stop ARC. Note, this does not chagne Play Store enabled preference.
+func Stop(ctx context.Context, tconn *chrome.TestConn) error {
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.stopArc)`); err != nil {
+		return errors.Wrap(err, "failed to run autotestPrivate.stopArc")
+	}
+	return nil
+}
+
 // SaveLogFiles writes log files to the a.outDir directory and clears the a.outDir.
 func (a *ARC) SaveLogFiles(ctx context.Context) error {
 	if a.outDir == "" {
