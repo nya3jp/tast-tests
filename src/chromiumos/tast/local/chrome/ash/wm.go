@@ -795,3 +795,17 @@ func DragToShowHomescreen(ctx context.Context, width, height input.TouchCoord, s
 	}
 	return nil
 }
+
+// CloseAllWindow gets all the windows and close them all.
+func CloseAllWindow(ctx context.Context, tconn *chrome.TestConn) error {
+	ws, err := GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the window list")
+	}
+	for _, w := range ws {
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to close window %s", w.Name)
+		}
+	}
+	return nil
+}
