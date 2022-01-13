@@ -231,6 +231,26 @@ func init() {
 		PostTestTimeout: resetTimeout,
 		Parent:          fixture.PersistentFamilyLinkARC,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkGellerArcPolicyLogin",
+		Desc:     "Supervised Family Link user login with Geller account and ARC support with fakeDMS setup",
+		Contacts: []string{"sun.tsai@cienet.com", "tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.gellerEmail", "family.gellerPassword", true, chrome.ARCSupported(), chrome.ExtraArgs(arc.DisableSyncFlags()...)),
+		Vars: []string{
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.gellerEmail",
+			"family.gellerPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout + arc.BootTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+		Parent:          fixture.PersistentGellerARC,
+	})
+
 }
 
 type familyLinkFixture struct {
