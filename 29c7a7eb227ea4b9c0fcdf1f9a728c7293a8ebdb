@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "679fd6f5_53b1838b",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-13T13:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6fa034d_3898eddf",
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d1e027a_fa9de1fe",
@@ -129,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6294b3c8_a1893dfa",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-13T13:54:18Z",
+      "side": 1,
+      "message": "Cool!",
+      "parentUuid": "97cf3c96_c7083f78",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ae951fb_991cbefb",
@@ -142,6 +184,24 @@
       "writtenOn": "2022-01-13T09:33:45Z",
       "side": 1,
       "message": "Same",
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f282353_3d6602e3",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-13T13:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ae951fb_991cbefb",
       "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e8bb749_92b62e07",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-13T13:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2b081a5_9c712fc4",
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60600faf_690100b9",
@@ -176,6 +254,24 @@
       "writtenOn": "2022-01-13T09:33:45Z",
       "side": 1,
       "message": "Something looks off about this formating",
+      "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9826e6_ead148a2",
+        "filename": "src/chromiumos/tast/local/network/netconfig/js_wrapper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-13T13:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60600faf_690100b9",
       "revId": "29c7a7eb227ea4b9c0fcdf1f9a728c7293a8ebdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
