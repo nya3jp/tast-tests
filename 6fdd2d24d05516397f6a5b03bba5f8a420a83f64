@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68b6b3c_068afaca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-13T02:08:58Z",
+      "side": 1,
+      "message": "Can you also comment that both autotest/tast Reset test runs on suite:wifi_matfunc?",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4249312_369d4bfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-13T02:08:58Z",
+      "side": 1,
+      "message": "b/175602523",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6923ee1_ac621b99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-13T02:08:58Z",
+      "side": 1,
+      "message": "Leave something like check the pass rate on the dashboard instead of leaving None.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9e7b079d_33801f75",
@@ -54,6 +123,30 @@
       "writtenOn": "2022-01-13T02:08:03Z",
       "side": 1,
       "message": "Forgot, thanks.",
+      "parentUuid": "321d7b2e_055c1ad6",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5edcb961_7cada4ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-13T02:08:58Z",
+      "side": 1,
+      "message": "FYI, It\u0027s favorable to have 1 non-alias @google.com contact in the Contacts field. Probably leave one in wifi team?",
       "parentUuid": "321d7b2e_055c1ad6",
       "range": {
         "startLine": 22,
