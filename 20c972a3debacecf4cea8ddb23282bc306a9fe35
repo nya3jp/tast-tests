@@ -16,6 +16,24 @@
       "message": "Can you point to the build failure? This landed a month ago and ran in the lab since.",
       "revId": "20c972a3debacecf4cea8ddb23282bc306a9fe35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dacde71f_7e2888c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-13T00:12:30Z",
+      "side": 1,
+      "message": "I think the CL I uploaded today is where this issue actually is. Because I do not see that line in this CL but rather it is in this one : https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3381416 \n\nI am a bit confused as this change has not landed yet I believe, sorry for the trouble caused.",
+      "parentUuid": "d3cb85ab_8a30aeda",
+      "revId": "20c972a3debacecf4cea8ddb23282bc306a9fe35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
