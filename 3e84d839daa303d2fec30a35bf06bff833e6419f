@@ -133,6 +133,29 @@
       },
       "revId": "3e84d839daa303d2fec30a35bf06bff833e6419f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e65b8f_2f7268ef",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-13T02:39:25Z",
+      "side": 1,
+      "message": "My two cents: lacros.LaunchFromShelf could be used instead. It does the same but has more error checks. cc\u0027ing myself as Gabor and I chatted about this test scenario today 😊",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "3e84d839daa303d2fec30a35bf06bff833e6419f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
