@@ -142,6 +142,24 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "familyLinkGellerArcLogin",
+		Desc:     "Supervised Family Link user login with Geller account and ARC support",
+		Contacts: []string{"sun.tsai@cienet.com", "cros-families-eng+test@google.com"},
+		Impl:     NewFamilyLinkFixture("family.parentEmail", "family.parentPassword", "family.gellerEmail", "family.gellerPassword", true, chrome.ARCSupported()),
+		Vars: []string{
+			"family.parentEmail",
+			"family.parentPassword",
+			"family.gellerEmail",
+			"family.gellerPassword",
+		},
+		SetUpTimeout:    chrome.GAIALoginChildTimeout + arc.BootTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "familyLinkParentArcLogin",
 		Desc:     "Non-supervised Family Link user login with regular parent account and ARC support",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
