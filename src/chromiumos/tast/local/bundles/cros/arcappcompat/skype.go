@@ -7,6 +7,7 @@ package arcappcompat
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -15,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -133,8 +135,9 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		whileUsingThisAppButtonText = "WHILE USING THE APP"
 		mediumUITimeout             = 30 * time.Second
 	)
+
 	// Click on letsGo button.
-	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(letsGoDes))
+	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+letsGoDes))
 	if err := letsGoButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("letsGoButton doesn't exists: ", err)
 	} else if err := letsGoButton.Click(ctx); err != nil {
@@ -143,6 +146,11 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 
 	// Click on sign in button.
 	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signInText))
+	appVer, err := testutil.GetAppVersion(ctx, s, a, d, appPkgName)
+	if strings.Compare(appVer, "8.80.0.137") >= 0 {
+		// Click on sign in button.
+		signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+signInOrCreateDes))
+	}
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Fatal("signInButton doesn't exists: ", err)
 	}
@@ -173,26 +181,45 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	} else if err := allowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on allowButton: ", err)
 	}
-
-	// Enter email id.
-	enterEmailAddress := d.Object(ui.ID(enterEmailAddressID))
-	if err := enterEmailAddress.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("EnterEmailAddress doesn't exists: ", err)
-	} else if err := enterEmailAddress.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterEmailAddress: ", err)
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
 	}
-
-	// Click on emailid text field until the emailid text field is focused.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
-			return errors.New("email text field not focused yet")
-		} else if !emailIDFocused {
-			enterEmailAddress.Click(ctx)
-			return errors.New("email text field not focused yet")
+	t, ok := arc.Type()
+	if !ok {
+		s.Fatal("Unable to determine arc type")
+	}
+	deviceMode := "clamshell"
+	enterEmailAddress := d.Object(ui.ID(enterEmailAddressID))
+	if tabletModeEnabled && t == arc.VM {
+		deviceMode = "tablet"
+		s.Logf("device %v mode", deviceMode)
+		if err := enterEmailAddress.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+			s.Error("EnterEmailAddress doesn't exists: ", err)
+		} else if err := enterEmailAddress.Click(ctx); err != nil {
+			s.Fatal("Failed to click on enterEmailAddress: ", err)
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
-		s.Fatal("Failed to focus EmailId: ", err)
+	} else {
+		s.Logf("device %v mode", deviceMode)
+		// Enter email id.
+		if err := enterEmailAddress.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+			s.Error("EnterEmailAddress doesn't exists: ", err)
+		} else if err := enterEmailAddress.Click(ctx); err != nil {
+			s.Fatal("Failed to click on enterEmailAddress: ", err)
+		}
+
+		// Click on emailid text field until the emailid text field is focused.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if emailIDFocused, err := enterEmailAddress.IsFocused(ctx); err != nil {
+				return errors.New("email text field not focused yet")
+			} else if !emailIDFocused {
+				enterEmailAddress.Click(ctx)
+				return errors.New("email text field not focused yet")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+			s.Log("Failed to focus EmailId: ", err)
+		}
 	}
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -207,32 +234,51 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	s.Log("Entered EmailAddress")
 
 	// Click on next button
-	nextButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(nextButtonText))
+	nextButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+nextButtonText))
 	if err := nextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Next Button doesn't exists: ", err)
+		// Press enter key to click on next button.
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_ENTER: ", err)
+		} else {
+			s.Log("Entered KEYCODE_ENTER")
+		}
 	} else if err := nextButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on nextButton: ", err)
 	}
 
-	// Enter password.
+	deviceMode = "clamshell"
 	enterPassword := d.Object(ui.ID(passwordID))
-	if err := enterPassword.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("EnterPassword doesn't exists: ", err)
-	} else if err := enterPassword.Click(ctx); err != nil {
-		s.Fatal("Failed to click on enterPassword: ", err)
-	}
-
-	// Click on password text field until the password text field is focused.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
-			return errors.New("password text field not focused yet")
-		} else if !pwdFocused {
-			enterPassword.Click(ctx)
-			return errors.New("password text field not focused yet")
+	if tabletModeEnabled && t == arc.VM {
+		deviceMode = "tablet"
+		s.Logf("device %v mode", deviceMode)
+		// Enter password.
+		if err := enterPassword.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+			s.Log("EnterPassword doesn't exists: ", err)
+		} else if err := enterPassword.Click(ctx); err != nil {
+			s.Log("Failed to click on enterPassword: ", err)
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
-		s.Fatal("Failed to focus password: ", err)
+	} else {
+		s.Logf("device %v mode", deviceMode)
+		// Enter password.
+		if err := enterPassword.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
+			s.Log("EnterPassword doesn't exists: ", err)
+		} else if err := enterPassword.Click(ctx); err != nil {
+			s.Fatal("Failed to click on enterPassword: ", err)
+		}
+
+		// Click on password text field until the password text field is focused.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if pwdFocused, err := enterPassword.IsFocused(ctx); err != nil {
+				return errors.New("password text field not focused yet")
+			} else if !pwdFocused {
+				enterPassword.Click(ctx)
+				return errors.New("password text field not focused yet")
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+			s.Fatal("Failed to focus password: ", err)
+		}
 	}
 
 	password := s.RequiredVar("arcappcompat.Skype.password")
@@ -241,29 +287,40 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 	s.Log("Entered password")
 
-	// Click on Sign in button.
-	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
-	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Error("SignInButton doesn't exists: ", err)
-	}
-
-	// Click on signIn Button until not now button exist.
-	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
-	notNowButton := d.Object(ui.ID(notNowID))
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := notNowButton.Exists(ctx); err != nil {
-			signInButton.Click(ctx)
-			return err
+	if tabletModeEnabled && t == arc.VM {
+		deviceMode = "tablet"
+		s.Logf("device %v mode", deviceMode)
+		// Press enter key to click on sign in button.
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_ENTER: ", err)
+		} else {
+			s.Log("Entered KEYCODE_ENTER")
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
-		s.Log("notNowButton doesn't exist: ", err)
-	} else if err := notNowButton.Click(ctx); err != nil {
-		s.Fatal("Failed to click on notNowButton: ", err)
+	} else {
+		// Click on Sign in button.
+		signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signInText))
+		if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+			s.Error("SignInButton doesn't exists: ", err)
+		}
+
+		// Click on signIn Button until not now button exist.
+		signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signInText))
+		notNowButton := d.Object(ui.ID(notNowID))
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if err := notNowButton.Exists(ctx); err != nil {
+				signInButton.Click(ctx)
+				return err
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: testutil.DefaultUITimeout}); err != nil {
+			s.Log("notNowButton doesn't exist: ", err)
+		} else if err := notNowButton.Click(ctx); err != nil {
+			s.Fatal("Failed to click on notNowButton: ", err)
+		}
 	}
 
 	// Click on continue button.
-	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(continueButtonDes))
+	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+continueButtonDes))
 	if err := continueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("Continue Button doesn't exists: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
@@ -272,7 +329,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Click on Sync contacts button.
-	syncContactsButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(syncContactsButtonDes))
+	syncContactsButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+syncContactsButtonDes))
 	if err := syncContactsButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("syncContactsButton doesn't exist: ", err)
 	} else if err := syncContactsButton.Click(ctx); err != nil {
@@ -281,7 +338,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Click on continue Button until allow button exist.
-	continueButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(continueButtonDes))
+	continueButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+continueButtonDes))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := allowButton.Exists(ctx); err != nil {
 			continueButton.Click(ctx)
@@ -320,9 +377,8 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 		signOutDes         = "Sign out"
 		yesText            = "YES"
 	)
-
 	// Check for profileIcon.
-	profileIcon := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
+	profileIcon := d.Object(ui.ClassName(profileClassName), ui.DescriptionMatches("(?i)"+profileDes))
 	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Log("profileIcon doesn't exists and skipped logout: ", err)
 		return
@@ -333,7 +389,7 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	}
 
 	// Click on sign out of Skype.
-	signOutOfSkype := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signOutDes))
+	signOutOfSkype := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+signOutDes))
 	if err := signOutOfSkype.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("signOutOfSkype doesn't exist: ", err)
 	} else if err := signOutOfSkype.Click(ctx); err != nil {
@@ -341,7 +397,7 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	}
 
 	// Click on yes button.
-	yesButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(yesText))
+	yesButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+yesText))
 	if err := yesButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("yesButton doesn't exists: ", err)
 	} else if err := yesButton.Click(ctx); err != nil {
