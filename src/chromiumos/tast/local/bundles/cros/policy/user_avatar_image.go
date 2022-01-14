@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
@@ -181,12 +182,26 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 				}
 			} else {
 				// Verify that the device account image has changed to the selected avatar image by the user.
-				sim, err := getSimilarityPercentage(avatarImageScreenshot, userImageScreenshot)
-				if err != nil {
-					s.Fatal("Failed to count images simialrity percentage: ", err)
-				}
-				if sim < 95 {
-					s.Errorf("User cannot change device account image: Similarity percentage: %d", sim)
+				// There are some animated account images, so comparing just two states is not enough.
+				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					// Take a screenshot of the user image preview to check if it was changed or not.
+					userImageScreenshot, err = screenshot.GrabAndCropScreenshot(ctx, cr, rect)
+					if err != nil {
+						return errors.Wrap(err, "failed to grab screenshot in poll")
+					}
+
+					sim, err := getSimilarityPercentage(avatarImageScreenshot, userImageScreenshot)
+					if err != nil {
+						return errors.Wrap(err, "failed to count images simialrity percentage")
+					}
+
+					if sim < 95 {
+						return errors.Errorf("similarity percentage is too low; got %d, want at least 95", sim)
+					}
+
+					return nil
+				}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+					s.Error("User cannot change device account image: ", err)
 					if err := saveImage(filepath.Join(s.OutDir(), "original_avatar.jpeg"), avatarImageScreenshot); err != nil {
 						s.Error("Failed to save the original avatar image: ", err)
 					}
