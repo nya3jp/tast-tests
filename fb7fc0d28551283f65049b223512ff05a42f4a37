@@ -16,6 +16,23 @@
       "message": "Hi Kamil,\n\nhope it\u0027s okay to assign it to you since you already reviewed the test in the past :)\nThanks!",
       "revId": "fb7fc0d28551283f65049b223512ff05a42f4a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f8ba7f_0948b7b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-14T10:21:21Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "fb7fc0d28551283f65049b223512ff05a42f4a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
