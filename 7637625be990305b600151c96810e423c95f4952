@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d6fe93_8544f842",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-01-14T15:33:47Z",
+      "side": 1,
+      "message": "Thank you, Gabor. LGTM.\n\nGiven the cost of Poll, I am thinking of revisting the whole logic in this test. Maybe comparing the src value (e.g. src\u003d\"chrome://theme/IDR_LOGIN_DEFAULT_USER_89@2x\") in the img node is enough. Will give it a try in the next BugBash.",
+      "revId": "7637625be990305b600151c96810e423c95f4952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fff45ae0_309b0375",
