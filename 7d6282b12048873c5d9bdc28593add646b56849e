@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9792599c_e7a2531a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000337
+      },
+      "writtenOn": "2022-01-14T05:17:53Z",
+      "side": 1,
+      "message": "Can I know more context about this patch? Why is there a bluetooth audio test in tast? Who is going to use and maintain the test? \n\nThis patch verifies that audio is routed through BT device by cras. Is there any plan about developing full-blown bluetooth audio tests in tast?\n",
+      "revId": "7d6282b12048873c5d9bdc28593add646b56849e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
