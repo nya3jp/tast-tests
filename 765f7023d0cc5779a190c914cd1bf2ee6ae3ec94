@@ -369,6 +369,24 @@
       "parentUuid": "956284f0_09dc3e85",
       "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e39d7e_83187a9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-01-14T16:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9280fc8d_a1f9902c",
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
