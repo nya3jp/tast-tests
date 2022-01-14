@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9f71cbb_953565c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-14T02:33:24Z",
+      "side": 1,
+      "message": "Ah, I wasn\u0027t aware of that. It looks like they should already be run in different suites (wificell-func-stable vs. wificell-suspend-stable). The only thing this change does is move the tests from wificell-suspend-unstable to wificell-suspend-stable, which puts those tests into wifi_matfunc. I\u0027d assume this is okay because the autotest versions are also in wifi_matfunc, but I\u0027m not sure. Harpreet, does this look okay to you?",
+      "parentUuid": "da9f08ff_6b6dd15b",
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "321d7b2e_055c1ad6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
         "patchSetId": 1
@@ -322,6 +340,30 @@
       "side": 1,
       "message": "Email groups pointing to oncall rotations (WiFi champs in our case) are explicitly accepted. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration has been updated to reflect that. No need for non-alias owner in that case since there\u0027s an oncall rotation",
       "parentUuid": "52d6f2ff_45967e51",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ddadb43_872eb9d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-14T02:33:24Z",
+      "side": 1,
+      "message": "Resolving.",
+      "parentUuid": "54a71c4c_aeed689d",
       "range": {
         "startLine": 22,
         "startChar": 3,
