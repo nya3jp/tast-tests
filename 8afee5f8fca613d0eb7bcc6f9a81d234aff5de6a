@@ -16,6 +16,98 @@
       "message": "Friendly ping",
       "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a993c964_0fd5f5f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-14T08:18:00Z",
+      "side": 1,
+      "message": "For optional field, could we use `*[]string` instead?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b14af50_ec35585a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-14T08:18:00Z",
+      "side": 1,
+      "message": "then this could be config.VhostUserArgs !\u003d nil",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3d2a87_081705f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-14T08:18:00Z",
+      "side": 1,
+      "message": "do we need this `.` here? For random string we should use `*` instead?",
+      "range": {
+        "startLine": 68,
+        "startChar": 61,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c75c4aeb_32fb1e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-14T08:18:00Z",
+      "side": 1,
+      "message": "Add comment about why \"vhost-user\" device don\u0027t need this",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 68
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
