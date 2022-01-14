@@ -20,8 +20,10 @@ func init() {
 			"chromeos-memory@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		SoftwareDeps: []string{"mosys"},
-		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"mosys",
+			// TODO(b/213995159): Update test expectations for manatee.
+			"no_manatee"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
