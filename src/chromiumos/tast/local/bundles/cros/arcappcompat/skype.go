@@ -7,6 +7,7 @@ package arcappcompat
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -134,7 +135,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		mediumUITimeout             = 30 * time.Second
 	)
 	// Click on letsGo button.
-	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(letsGoDes))
+	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+letsGoDes))
 	if err := letsGoButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("letsGoButton doesn't exists: ", err)
 	} else if err := letsGoButton.Click(ctx); err != nil {
@@ -143,6 +144,15 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 
 	// Click on sign in button.
 	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signInText))
+	appVer, err := testutil.GetAppVersion(ctx, s, a, d, appPkgName)
+	if err != nil {
+		s.Log("Failed to find app version and skipped login: ", err)
+		return
+	}
+	if strings.Compare(appVer, "8.80.0.137") >= 0 {
+		// Click on sign in button.
+		signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+signInOrCreateDes))
+	}
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Fatal("signInButton doesn't exists: ", err)
 	}
@@ -313,16 +323,25 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 // signOutOfSkype verifies app is signed out.
 func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		closeIconClassName = "android.widget.ImageButton"
-		closeIconDes       = "Close main menus"
-		profileClassName   = "android.widget.Button"
-		profileDes         = "My info"
-		signOutDes         = "Sign out"
-		yesText            = "YES"
+		imageButtonClassName = "android.widget.ImageButton"
+		closeIconDes         = "Close main menus"
+		profileClassName     = "android.widget.Button"
+		profileDes           = "My info"
+		hamburgerIconDes     = "Menu"
+		signOutID            = "com.skype.raider:id/drawer_signout"
+		signOutDes           = "Sign out"
+		yesText              = "YES"
 	)
-
+	appVer, err := testutil.GetAppVersion(ctx, s, a, d, appPkgName)
+	if err != nil {
+		s.Log("Failed to find app version and skipped login: ", err)
+		return
+	}
 	// Check for profileIcon.
-	profileIcon := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
+	profileIcon := d.Object(ui.ClassName(profileClassName), ui.DescriptionMatches("(?i)"+profileDes))
+	if strings.Compare(appVer, "8.80.0.137") <= 0 {
+		profileIcon = d.Object(ui.ClassName(imageButtonClassName), ui.DescriptionMatches("(?i)"+hamburgerIconDes))
+	}
 	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Log("profileIcon doesn't exists and skipped logout: ", err)
 		return
@@ -333,7 +352,10 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	}
 
 	// Click on sign out of Skype.
-	signOutOfSkype := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signOutDes))
+	signOutOfSkype := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+signOutDes))
+	if strings.Compare(appVer, "8.80.0.137") <= 0 {
+		signOutOfSkype = d.Object(ui.ID(signOutID))
+	}
 	if err := signOutOfSkype.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("signOutOfSkype doesn't exist: ", err)
 	} else if err := signOutOfSkype.Click(ctx); err != nil {
@@ -341,7 +363,7 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	}
 
 	// Click on yes button.
-	yesButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(yesText))
+	yesButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+yesText))
 	if err := yesButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("yesButton doesn't exists: ", err)
 	} else if err := yesButton.Click(ctx); err != nil {
