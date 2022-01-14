@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef49819b_4158de6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-14T08:12:44Z",
+      "side": 1,
+      "message": "Adding what 2*time.Second means here as a comment might be helpful. (Maybe adding a new constant and putting a comment above is the best?)\n(e.g. Seconds to wait to make sure the tab manager has a chance to kill things)",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8682f58_46075ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-14T08:12:44Z",
+      "side": 1,
+      "message": "Removing the \"limit\" arg completely instead of passing nil here is better I think.",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16630b6f_7b212116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-14T08:12:44Z",
+      "side": 1,
+      "message": "Removing the \"limit\" arg completely instead of passing nil here is better I think. (same as the above)",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f205c3_4968cf6a",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-14T08:12:44Z",
+      "side": 1,
+      "message": "We can merge these if clauses into one by concatenating them with \u0026\u0026",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa69fbf_bdfe9c74",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-14T08:12:44Z",
+      "side": 1,
+      "message": "Please add a description for \"cooldown\" as same as line 197",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b346c82_a6df4bc3",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-14T08:12:44Z",
+      "side": 1,
+      "message": "remove this (see the comments above)",
+      "range": {
+        "startLine": 182,
+        "startChar": 78,
+        "endLine": 182,
+        "endChar": 96
+      },
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a63e1c_e899ceba",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-14T08:12:44Z",
+      "side": 1,
+      "message": "remove this (see the comments above)",
+      "range": {
+        "startLine": 198,
+        "startChar": 78,
+        "endLine": 198,
+        "endChar": 96
+      },
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
