@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57df1007_16fdaa7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/kernel/pstore_console_ramoops.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-01-14T06:54:23Z",
+      "side": 1,
+      "message": "filtering from pstore software deps seems simpler.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 68
+      },
+      "revId": "c9d133ac02b0f948c69e587bb79a2e258fd26a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
