@@ -303,6 +303,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c191f3ad_f2752b6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-01-14T21:47:25Z",
+      "side": 1,
+      "message": "Your explanation sgtm :-)\nLet\u0027s give it a go!",
+      "parentUuid": "292358d8_3b1b04a4",
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "321d7b2e_055c1ad6",
