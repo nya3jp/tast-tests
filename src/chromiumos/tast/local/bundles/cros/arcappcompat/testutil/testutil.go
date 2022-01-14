@@ -38,6 +38,7 @@ const (
 	notNowText             = "Not now"
 	asphaltPkgName         = "com.gameloft.android.ANMP.GloftA9HM"
 	homescapesPkgName      = "com.playrix.homescapes"
+	skypePkgName           = "com.skype.raider"
 
 	defaultTestCaseTimeout = 2 * time.Minute
 	DefaultUITimeout       = 20 * time.Second
@@ -110,10 +111,17 @@ var TouchviewSmokeTests = []TestCase{
 // RunTestCases setups the device and runs all app compat test cases.
 func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases TestParams) {
 	// Step up chrome on Chromebook.
-	cr, tconn, a := setUpDevice(ctx, s, appPkgName, appActivity)
+	cr, tconn, a, appVer := setUpDevice(ctx, s, appPkgName, appActivity)
 
+	updatedAppActivity := appActivity
+	if appPkgName == skypePkgName {
+		if strings.Compare(appVer, "8.80.0.137") >= 0 {
+			updatedAppActivity = "com.skype4life.MainActivity"
+		}
+	}
+	s.Log("Updated app activity: ", updatedAppActivity)
 	// Ensure app launches before test cases.
-	act, err := arc.NewActivity(a, appPkgName, appActivity)
+	act, err := arc.NewActivity(a, appPkgName, updatedAppActivity)
 	if err != nil {
 		s.Fatal("Failed to create new app activity: ", err)
 	}
@@ -256,14 +264,15 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			if !allowedAppPackage {
 				s.Fatalf("Failed to launch app: incorrect package(expected: %s, actual: %s)", appPkgName, currentAppPkg)
 			}
-			test.Fn(ctx, s, tconn, a, d, appPkgName, appActivity)
+			test.Fn(ctx, s, tconn, a, d, appPkgName, updatedAppActivity)
 		})
 		cancel()
 	}
 }
 
 // setUpDevice func setup Chrome on Chromebook.
-func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity string) (*chrome.Chrome, *chrome.TestConn, *arc.ARC) {
+func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity string) (*chrome.Chrome, *chrome.TestConn, *arc.ARC, string) {
+
 	// Setup Chrome.
 	cr := s.PreValue().(arc.PreData).Chrome
 	a := s.PreValue().(arc.PreData).ARC
@@ -301,26 +310,12 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err := playstore.InstallApp(ctx, a, d, appPkgName, 3); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
-	// To get app version name.
-	out, err := a.Command(ctx, "dumpsys", "package", appPkgName).Output()
-	if err != nil {
-		s.Log(err, "could not get dumpsys package")
-	} else {
-		versionNamePrefix := "versionName="
-		output := string(out)
-		splitOutput := strings.Split(output, "\n")
-		for splitLine := range splitOutput {
-			if strings.Contains(splitOutput[splitLine], versionNamePrefix) {
-				versionNameAfterSplit := strings.Split(splitOutput[splitLine], "=")[1]
-				s.Log("Version name of ", appPkgName, " is: ", versionNameAfterSplit)
-				break
-			}
-		}
-	}
+	versionName, err := GetAppVersion(ctx, s, a, d, appPkgName)
+
 	if err := apps.Close(ctx, tconn, apps.PlayStore.ID); err != nil {
 		s.Log("Failed to close Play Store: ", err)
 	}
-	return cr, tconn, a
+	return cr, tconn, a, versionName
 }
 
 // ClamshellFullscreenApp Test launches the app in full screen window and verifies launch successfully without crash or ANR on ARC-P devices
@@ -1583,6 +1578,28 @@ func dragToSnapFirstOverviewWindow(ctx context.Context, s *testing.State, tconn 
 		return errors.Wrap(err, "failed to end swipe")
 	}
 	return nil
+}
+
+// GetAppVersion provides info on app version.
+func GetAppVersion(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName string) (string, error) {
+	var versionNameAfterSplit string
+	// To get app version name.
+	out, err := a.Command(ctx, "dumpsys", "package", appPkgName).Output()
+	if err != nil {
+		s.Log(err, "could not get dumpsys package")
+	} else {
+		versionNamePrefix := "versionName="
+		output := string(out)
+		splitOutput := strings.Split(output, "\n")
+		for splitLine := range splitOutput {
+			if strings.Contains(splitOutput[splitLine], versionNamePrefix) {
+				versionNameAfterSplit = strings.Split(splitOutput[splitLine], "=")[1]
+				s.Log("Version name of ", appPkgName, " is: ", versionNameAfterSplit)
+				break
+			}
+		}
+	}
+	return versionNameAfterSplit, err
 }
 
 // TabletOnlyModels is a list of tablet only models to be skipped from clamshell mode runs.
