@@ -31,12 +31,6 @@ func init() {
 		Timeout:      1 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name: "exit_success",
-				Val: soundcardinit.TestParameters{
-					Func: exitSuccess,
-				},
-			},
-			{
 				Name:              "boot_time_calibration",
 				ExtraHardwareDeps: hwdep.D(hwdep.SmartAmpBootTimeCalibration()),
 				Val: soundcardinit.TestParameters{
@@ -93,44 +87,6 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 	}
 }
 
-// exitSuccess verifies sound_card_init completes running without any error.
-func exitSuccess(ctx context.Context, soundCardID string) error {
-
-	if err := soundcardinit.CreateCalibFiles(ctx, soundCardID, ampCount); err != nil {
-		return errors.Wrap(err, "failed to create calib files")
-	}
-
-	// Run sound_card_init.
-	runTimeFile := fmt.Sprintf(soundcardinit.RunTimeFile, soundCardID)
-	startTime := time.Now()
-	// Run sound_card_init.
-	runCtx, cancel := context.WithTimeout(ctx, initctlTimeout)
-	defer cancel()
-	if err := testexec.CommandContext(
-		runCtx, "/sbin/initctl",
-		"start", "sound_card_init",
-		"SOUND_CARD_ID="+soundCardID,
-	).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "failed to run sound_card_init")
-	}
-
-	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		info, err := os.Stat(runTimeFile)
-		if err != nil {
-			return errors.Wrapf(err, "failed to stat %s", runTimeFile)
-		}
-		if info.ModTime().After(startTime) {
-			return nil
-		}
-		return errors.New(runTimeFile + " is not updated")
-	}, &testing.PollOptions{Timeout: soundCardInitTimeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for sound_card_init completion")
-	}
-
-	return nil
-}
-
 // bootTimeCalibration verifies sound_card_init boot time calibration works correctly.
 func bootTimeCalibration(ctx context.Context, soundCardID string) error {
 
@@ -166,7 +122,7 @@ func bootTimeCalibration(ctx context.Context, soundCardID string) error {
 	return nil
 }
 
-// recentReboot Verifies sound_card_init skips boot time calibration after the recent reboot.
+// recentReboot verifies sound_card_init skips boot time calibration after the recent reboot.
 func recentReboot(ctx context.Context, soundCardID string) error {
 	// Create previous sound_car_init run time as yesterday.
 	if err := soundcardinit.CreateRunTimeFile(ctx, soundCardID, time.Now().AddDate(0, 0, -1).Unix()); err != nil {
