@@ -39,6 +39,30 @@
       },
       "revId": "6edd4dc3b7a3ac6895e9022b187b74de049e3450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86cc2eb7_67776240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/close_tab_in_task_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-14T09:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e8e591d_54b42874",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 10
+      },
+      "revId": "6edd4dc3b7a3ac6895e9022b187b74de049e3450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
