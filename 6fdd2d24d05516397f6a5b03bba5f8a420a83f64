@@ -233,6 +233,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1bc20bc_527bb97c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-01-14T07:06:04Z",
+      "side": 1,
+      "message": "From that bug it looks like the issue that Nicolas mentioned above happens when the test fails with \"Failed to recover unhealthy DUT\". I did a spot check on few devices and still see the issue. When one test fails with this, few following tests fail with the same reason. Also, first such failure is not specific to suspend stress test. Interestingly, all these failing tests have the same start time...\n\nhttps://screenshot.googleplex.com/BsHragxD4nznj2b\nhttps://screenshot.googleplex.com/Bo9A6cN4rCU8nnF\nhttps://screenshot.googleplex.com/52c2J9VtwobuTaC\nhttps://screenshot.googleplex.com/AWuitQ4u8UmhdGr\n\nTest failures with this reason are seen in wifi_matfunc as well with a similar affect .. http://shortn/_W4ha4OHjUi (sort by started date) .. but such failures are not as widespread across devices in wifi_matfunc http://shortn/_tnaegebQu0 when compared to wifi_func_tast http://shortn/_t0HhUCBqD7",
+      "parentUuid": "c9f71cbb_953565c5",
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "321d7b2e_055c1ad6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
         "patchSetId": 1
