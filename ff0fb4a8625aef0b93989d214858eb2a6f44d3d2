@@ -117,6 +117,30 @@
       },
       "revId": "ff0fb4a8625aef0b93989d214858eb2a6f44d3d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a56946a_7985406d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/monitor_thunderbolt_event.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-14T02:11:53Z",
+      "side": 1,
+      "message": "Can I use s.Log () in these cases?",
+      "parentUuid": "8d87733a_d646689f",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "ff0fb4a8625aef0b93989d214858eb2a6f44d3d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
