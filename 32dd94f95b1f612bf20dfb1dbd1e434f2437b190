@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "562d13e9_8044cbae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-01-14T06:21:27Z",
+      "side": 1,
+      "message": "Tagged the constants defined in client.go instead.",
+      "parentUuid": "8a51e1f3_ae9dfcf1",
+      "range": {
+        "startLine": 175,
+        "startChar": 23,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "32dd94f95b1f612bf20dfb1dbd1e434f2437b190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4dea0f0_dd857981",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "379ef5fa_518946d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-01-14T06:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4dea0f0_dd857981",
+      "range": {
+        "startLine": 191,
+        "startChar": 24,
+        "endLine": 191,
+        "endChar": 81
+      },
+      "revId": "32dd94f95b1f612bf20dfb1dbd1e434f2437b190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44eac3ad_238c4368",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-13T18:42:33Z",
       "side": 1,
       "message": "Comments seem redundant here. Do presubmit checks force you to have them?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "32dd94f95b1f612bf20dfb1dbd1e434f2437b190",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157b21a0_51f5d268",
+        "filename": "src/chromiumos/tast/local/resourced/client.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-01-14T06:21:27Z",
+      "side": 1,
+      "message": "Yes, presubmit check forces comment for exported const. Got the following errors if I remove the comments.\n\n[FAILED] chromiumos/platform/tast-tests: tast_lint                           \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/resourced/client.go:37:2: exported const RTCAudioActiveOff should have comment (or a comment on this block) or be unexported",
+      "parentUuid": "44eac3ad_238c4368",
       "range": {
         "startLine": 37,
         "startChar": 0,
