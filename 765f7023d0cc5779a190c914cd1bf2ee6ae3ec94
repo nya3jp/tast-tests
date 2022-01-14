@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef728bd_4e725eb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:03:57Z",
+      "side": 1,
+      "message": "nit/style: could you fix indents? Ditto for below.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 1
+      },
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a31ff6ac_48edf392",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:03:57Z",
+      "side": 1,
+      "message": "nit: unneeded white space?",
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7cd93e1_168ac778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:03:57Z",
+      "side": 1,
+      "message": "also unindent here for consistency?",
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c72c6df6_fab8aac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:03:57Z",
+      "side": 1,
+      "message": "could you move this to L36?",
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8956b9_b5bf1d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:03:57Z",
+      "side": 1,
+      "message": "nit s/var/let/g ?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 5
+      },
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f695888_dc9bd28d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:03:57Z",
+      "side": 1,
+      "message": "nit/style:\n\nif (frame_even) {\n  document.body. ...\n} else {\n  document.body ...\n}\n\n(indent, trailing white space, whitepsace at if-line, and line breaking around braces)",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7cae87d_b9360fa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:03:57Z",
+      "side": 1,
+      "message": "you don\u0027t seem to need bigstr? You can just use str.\nOr, do you need text element update, which webgl version does not have?",
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c32b841f_9ef2f9d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:03:57Z",
+      "side": 1,
+      "message": "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame\n\nThis just returns ID, so not a framecount, right?",
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
