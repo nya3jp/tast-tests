@@ -245,6 +245,24 @@
       "message": "Is there a software/hardware dependency that can be used instead?",
       "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbd6d3d_9a15a7ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-14T08:41:00Z",
+      "side": 1,
+      "message": "We tried to add it before, but the attributes is different per different camera modules. We use different camera modules in one SKU. There is no way to distinguish them in a same SKU.\nb/192531869",
+      "parentUuid": "1df91d84_87bac655",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
