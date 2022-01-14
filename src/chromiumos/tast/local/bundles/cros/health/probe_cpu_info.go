@@ -59,9 +59,11 @@ func init() {
 			"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 		},
-		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "diagnostics"},
-		Fixture:      "crosHealthdRunning",
+		Attr: []string{"group:mainline"},
+		SoftwareDeps: []string{"chrome", "diagnostics",
+			// TODO(b/210950844): Reenable after plumbing through cpu frequency info.
+			"no_manatee"},
+		Fixture: "crosHealthdRunning",
 		Params: []testing.Param{{
 			Val: false,
 		}, {
