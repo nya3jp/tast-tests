@@ -118,20 +118,24 @@ func verifyVKIsPresent(ctx context.Context, h *firmware.Helper, cvkc pb.CheckVir
 			return errors.Wrap(err, "failed to set DUT tablet mode state")
 		}
 	}
-
-	s.Log("Clicking on the address bar of the Chrome page")
-	if _, err := cvkc.ClickChromeAddressBar(ctx, &empty.Empty{}); err != nil {
-		return errors.Wrap(err, "failed to click chrome address bar")
+	// Wait for the command on switching to tablet mode to fully propagate,
+	// before clicking on the address bar.
+	if err := testing.Sleep(ctx, time.Second); err != nil {
+		return errors.Wrap(err, "failed in sleeping for one second before clicking on the address bar")
 	}
 
 	req := pb.CheckVirtualKeyboardRequest{
 		IsDutTabletMode: tabletMode,
 	}
-
 	// Use polling here to wait till the UI tree has fully updated,
 	// and check if virtual keyboard is present.
 	s.Logf("Expecting virtual keyboard present: %t", tabletMode)
 	return testing.Poll(ctx, func(c context.Context) error {
+		s.Log("Clicking on the address bar of the Chrome page")
+		if _, err := cvkc.ClickChromeAddressBar(ctx, &empty.Empty{}); err != nil {
+			return errors.Wrap(err, "failed to click chrome address bar")
+		}
+
 		res, err := cvkc.CheckVirtualKeyboardIsPresent(ctx, &req)
 		if err != nil {
 			return errors.Wrap(err, "failed to check whether virtual keyboard is present")
