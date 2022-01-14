@@ -33,7 +33,7 @@ func init() {
 		Contacts:     []string{"woodychow@google.com", "paulhsia@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runAlsaConformanceTest},
-		Timeout:      8 * time.Minute,
+		Timeout:      12 * time.Minute,
 		SoftwareDeps: []string{"vm_host", "dlc"},
 		Fixture:      "vmDLC",
 		Params: []testing.Param{{
