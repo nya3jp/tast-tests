@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b334858_1126c759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:07:04Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "8b269ae66e068fa9191c11a79a9be79e8ad3ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1238d1d7_ce13df3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:07:04Z",
+      "side": 1,
+      "message": "nit: end with a .",
+      "revId": "8b269ae66e068fa9191c11a79a9be79e8ad3ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337502b6_054ae800",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:07:04Z",
+      "side": 1,
+      "message": "Return error, same for else",
+      "revId": "8b269ae66e068fa9191c11a79a9be79e8ad3ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea06fa4c_99ec96e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:07:04Z",
+      "side": 1,
+      "message": "Maybe remove this log, it\u0027s pretty obvious where the screenshot is stored + internal path is not accurate after the test ends.",
+      "revId": "8b269ae66e068fa9191c11a79a9be79e8ad3ba91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
