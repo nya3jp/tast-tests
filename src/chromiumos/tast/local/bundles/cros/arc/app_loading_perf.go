@@ -23,6 +23,7 @@ import (
 
 // testParameters contains all the data needed to run a single test iteration.
 type testParameters struct {
+	batteryMode       setup.BatteryDischargeMode
 	binaryTranslation bool
 }
 
@@ -58,6 +59,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingBooted,
@@ -66,6 +68,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingBooted,
@@ -74,6 +77,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingRtVcpuVMBooted,
@@ -82,6 +86,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingODirectVMBooted,
@@ -90,6 +95,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge()),
 			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: false,
 			},
 			Pre: arcAppLoadingDalvikMemoryProfileVMBooted,
@@ -98,6 +104,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.X86()),
 			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
 				binaryTranslation: true,
 			},
 			Pre: arcAppLoadingBooted,
@@ -106,6 +113,43 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(hwdep.ForceDischarge(), hwdep.X86()),
 			Val: testParameters{
+				batteryMode:       setup.ForceBatteryDischarge,
+				binaryTranslation: true,
+			},
+			Pre: arcAppLoadingBooted,
+		}, {
+			Name:              "nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testParameters{
+				batteryMode:       setup.NoBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingBooted,
+		}, {
+			Name:              "vm_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge()),
+			Val: testParameters{
+				batteryMode:       setup.NoBatteryDischarge,
+				binaryTranslation: false,
+			},
+			Pre: arcAppLoadingBooted,
+		}, {
+			Name:              "binarytranslation_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.X86()),
+			Val: testParameters{
+				batteryMode:       setup.NoBatteryDischarge,
+				binaryTranslation: true,
+			},
+			Pre: arcAppLoadingBooted,
+		}, {
+			Name:              "vm_binarytranslation_nobatterymetrics",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoForceDischarge(), hwdep.X86()),
+			Val: testParameters{
+				batteryMode:       setup.NoBatteryDischarge,
 				binaryTranslation: true,
 			},
 			Pre: arcAppLoadingBooted,
@@ -206,7 +250,7 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	}
 	config := apploading.TestConfig{
 		PerfValues:           finalPerfValues,
-		BatteryDischargeMode: setup.ForceBatteryDischarge,
+		BatteryDischargeMode: param.batteryMode,
 		ApkPath:              s.DataPath(apkName),
 		OutDir:               s.OutDir(),
 	}
