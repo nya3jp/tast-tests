@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da9f08ff_6b6dd15b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-01-14T01:00:52Z",
+      "side": 1,
+      "message": "b/179004102, I think? It\u0027s been a while so the details aren\u0027t super clear in my head anymore",
+      "parentUuid": "aca55cb8_6907effb",
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "321d7b2e_055c1ad6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
         "patchSetId": 1
@@ -280,6 +298,30 @@
       "side": 1,
       "message": "This is the way we\u0027ve been doing things. Is there a reason we need 1 contact? The purpose of having the champs be the owner is so that there\u0027s not 1 person who\u0027s on the hook, and the acting champ is responsible for finding an appropriate owner.",
       "parentUuid": "5edcb961_7cada4ff",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54a71c4c_aeed689d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-01-14T01:00:52Z",
+      "side": 1,
+      "message": "Email groups pointing to oncall rotations (WiFi champs in our case) are explicitly accepted. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration has been updated to reflect that. No need for non-alias owner in that case since there\u0027s an oncall rotation",
+      "parentUuid": "52d6f2ff_45967e51",
       "range": {
         "startLine": 22,
         "startChar": 3,
