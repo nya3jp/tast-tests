@@ -163,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c276246_03afc750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-14T21:48:31Z",
+      "side": 1,
+      "message": "It is the \"Search\" + keys on the top row, and I believe there is a setting that turns the top row into Function Keys by default.",
+      "parentUuid": "144d6b88_0e6ad06c",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "719f379f_7d276314",
@@ -176,6 +200,30 @@
       "writtenOn": "2022-01-05T16:11:02Z",
       "side": 1,
       "message": "Not sure what the difference between Accel and AccelPress is...",
+      "range": {
+        "startLine": 75,
+        "startChar": 28,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "054bec02_f2a708df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-14T21:48:31Z",
+      "side": 1,
+      "message": "Accel pressed and released the keys.\nAccelPress holds down the key until an AccelRelease for the same key is issued.",
+      "parentUuid": "719f379f_7d276314",
       "range": {
         "startLine": 75,
         "startChar": 28,
