@@ -111,7 +111,7 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 		enterPasswordText      = "Password"
 		homeIconID             = "com.discord:id/tabs_host_bottom_nav_friends_item"
 		notNowID               = "android:id/autofill_save_no"
-		verifyCaptchaID        = "com.discord:id/auth_captcha_verify"
+		verifyText             = "Verify"
 	)
 
 	// Click on sign in button.
@@ -195,7 +195,7 @@ func launchAppForDiscord(ctx context.Context, s *testing.State, tconn *chrome.Te
 	}
 
 	// Check for captcha.
-	verifyCaptcha := d.Object(ui.ID(verifyCaptchaID))
+	verifyCaptcha := d.Object(ui.TextMatches("(?i)" + verifyText))
 	if err := verifyCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("verifyCaptcha doesn't exist: ", err)
 		testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
