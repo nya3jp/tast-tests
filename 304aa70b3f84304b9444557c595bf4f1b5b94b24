@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cafcb410_114d4537",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T16:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df167e71_3b9c5263",
+      "range": {
+        "startLine": 7,
+        "startChar": 48,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa04b5f1_b7e6f1da",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d230a2ed_2cd5d561",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T16:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0060c2e_8b644488",
+      "range": {
+        "startLine": 10,
+        "startChar": 72,
+        "endLine": 10,
+        "endChar": 73
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5feaee73_7785675b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T16:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa04b5f1_b7e6f1da",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12e34aa5_8f55ee4f",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-13T10:01:03Z",
       "side": 1,
       "message": "nit: line too long",
+      "range": {
+        "startLine": 12,
+        "startChar": 72,
+        "endLine": 12,
+        "endChar": 74
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ebfe366_0308545d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T16:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e34aa5_8f55ee4f",
       "range": {
         "startLine": 12,
         "startChar": 72,
@@ -161,6 +257,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd0a680c_213e0957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T16:39:53Z",
+      "side": 1,
+      "message": "Sure. Let\u0027s discuss with Eliot when he\u0027s back.",
+      "parentUuid": "55399d6a_8e7dc595",
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db6f7050_908e8065",
@@ -174,6 +288,30 @@
       "writtenOn": "2022-01-13T02:20:49Z",
       "side": 1,
       "message": "Is it redundant if f.cleanUp would remove the dir already?",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 4
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1874297c_8777316f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T16:39:53Z",
+      "side": 1,
+      "message": "Good catch. DOne.",
+      "parentUuid": "db6f7050_908e8065",
       "range": {
         "startLine": 336,
         "startChar": 0,
@@ -269,6 +407,30 @@
       "side": 1,
       "message": "In policy tests with the Ash browser we didn\u0027t have problem with keeping user data from one test to another.\nIn special cases, like in the bookmark test, it is nice to keep this data for the duration of the test at least (which will be done with this CL as I understand). \nOther than that I have to strong opinion when it should be deleted. Especially if there is a command to trigger a manual wipe.",
       "parentUuid": "95f615ca_4f4b9a03",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 12
+      },
+      "revId": "304aa70b3f84304b9444557c595bf4f1b5b94b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b25b217_e9b20d17",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T16:39:53Z",
+      "side": 1,
+      "message": "Thank you for hte info, Gabor!",
+      "parentUuid": "4fec3240_09dc9346",
       "range": {
         "startLine": 123,
         "startChar": 1,
