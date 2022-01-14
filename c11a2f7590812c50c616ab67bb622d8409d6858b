@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "065b4179_929d2b29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-14T02:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d76e30cb_0c00c653",
+      "range": {
+        "startLine": 52,
+        "startChar": 41,
+        "endLine": 52,
+        "endChar": 44
+      },
+      "revId": "c11a2f7590812c50c616ab67bb622d8409d6858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c4d14a9_ae0dc92c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-14T02:32:13Z",
       "side": 1,
       "message": "As offline discussion, comment about the assumption of how you verify it.",
+      "range": {
+        "startLine": 112,
+        "startChar": 40,
+        "endLine": 112,
+        "endChar": 43
+      },
+      "revId": "c11a2f7590812c50c616ab67bb622d8409d6858b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40dec971_e3f2adfc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-14T02:39:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4d14a9_ae0dc92c",
       "range": {
         "startLine": 112,
         "startChar": 40,
