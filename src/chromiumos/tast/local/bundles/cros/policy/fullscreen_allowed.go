@@ -90,14 +90,17 @@ func FullscreenAllowed(ctx context.Context, s *testing.State) {
 			}
 
 			// Define keyboard to type keyboard shortcut.
-			kb, err := input.Keyboard(ctx)
+			// On physical keyboards the "fullscreen" hotkey needs to be pressed instead of F11 most of the times.
+			// On tablet devices only virtual keyboards are available.
+			// Using a virtual keyboard on all boards is better to enter the full screen mode.
+			kb, err := input.VirtualKeyboard(ctx)
 			if err != nil {
 				s.Fatal("Failed to get the keyboard: ", err)
 			}
 			defer kb.Close()
 
 			// Press the fullscreen hotkey to enter full screen mode.
-			if err := kb.Accel(ctx, "fullscreen"); err != nil {
+			if err := kb.Accel(ctx, "f11"); err != nil {
 				s.Fatal("Failed to type fullscreen hotkey: ", err)
 			}
 
