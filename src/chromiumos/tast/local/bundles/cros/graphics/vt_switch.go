@@ -47,7 +47,8 @@ func init() {
 }
 
 const (
-	waitTime = 5 * time.Second
+	waitTime      = 5 * time.Second
+	samenessRatio = 0.05
 )
 
 var (
@@ -98,7 +99,7 @@ func openVT2(ctx context.Context) error {
 	return nil
 }
 
-func savePerf(number int, name, unit string, pv *perf.Values) {
+func savePerf(number float64, name, unit string, pv *perf.Values) {
 	direction := perf.BiggerIsBetter
 	if unit == "percent" {
 		direction = perf.SmallerIsBetter
@@ -111,9 +112,9 @@ func savePerf(number int, name, unit string, pv *perf.Values) {
 }
 
 // isPerceptuallySame opens a terminal and runs perceptualdiff between two images.
-func isPerceptuallySame(ctx context.Context, file1, file2 string) (bool, int, error) {
+func isPerceptuallySame(ctx context.Context, file1, file2 string, thresholdRatio float64) (bool, float64, error) {
 
-	numPix := 0
+	numPix := 0.0
 	convErr := error(nil)
 	isSame := false
 
@@ -128,7 +129,9 @@ func isPerceptuallySame(ctx context.Context, file1, file2 string) (bool, int, er
 		return isSame, numPix, errors.Wrap(err, "failed to decode vt1 image")
 	}
 
-	stdout, stderr, err := testexec.CommandContext(ctx, "perceptualdiff", "-verbose", file1, file2).SeparatedOutput(testexec.DumpLogOnError)
+	imagePixels := img.Bounds().Max.X * img.Bounds().Max.Y
+	thresholdPixels := fmt.Sprintf("%f", thresholdRatio*float64(imagePixels))
+	stdout, stderr, err := testexec.CommandContext(ctx, "perceptualdiff", "-verbose", "-threshold", thresholdPixels, file1, file2).SeparatedOutput(testexec.DumpLogOnError)
 	// If images were different this regex would have some match.
 	matched := perceptualDiffRe.FindStringSubmatch(string(stdout))
 
@@ -138,25 +141,23 @@ func isPerceptuallySame(ctx context.Context, file1, file2 string) (bool, int, er
 		return isSame, numPix, errors.Wrap(err, "error occurred while running perceptual diff")
 	}
 
-	totalPixels := img.Bounds().Max.X * img.Bounds().Max.Y
-
 	// Try to find the number of pixels different, if its in the output.
 	if len(matched) > 1 {
-		pixels := matched[1]
-		numPix, convErr = strconv.Atoi(pixels)
+		differentPixels := matched[1]
+		numPix, convErr = strconv.ParseFloat(differentPixels, 64)
 		// If converting from string to int didn't work raise a error.
 		if convErr != nil {
 			return isSame, numPix, errors.Wrap(err, "failed to convert pixels from string to int")
 		}
 	}
 
-	pixelPercentage := int(100.00 * (float64(numPix) / float64(totalPixels)))
+	pixelDifferenceRatio := (float64(numPix) / float64(imagePixels))
 	// At this stage the command has ran successfully and can either be a match or no match.
-	isSame = strings.Contains(string(stdout), "PASS")
-	return isSame, pixelPercentage, nil
+	isSame = strings.Contains(string(stdout), "PASS") && pixelDifferenceRatio < thresholdRatio
+	return isSame, pixelDifferenceRatio, nil
 }
 
-func max(first, second int) int {
+func max(first, second float64) float64 {
 	if first > second {
 		return first
 	}
@@ -200,7 +201,10 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 	}
 
 	// Make sure VT1 and VT2 are sufficiently different.
-	isSame, _, err := isPerceptuallySame(ctx, vt1Screenshot, vt2Screenshot)
+	isSame, initialRatio, err := isPerceptuallySame(ctx, vt1Screenshot, vt2Screenshot, 0.0)
+	samenessThreshold := samenessRatio * initialRatio
+
+	s.Logf("The initial samenessThreshold is %f and the initialRatio is %f", samenessThreshold, samenessRatio)
 
 	if err != nil {
 		s.Fatal("Error occurred while comparing Initial VT1 and VT2 screenshots")
@@ -219,7 +223,7 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 	}()
 
 	var identicalScreenshots [3]int
-	var maxDifferencePercent [3]int
+	var maxDifferenceRatio [3]float64
 
 	captureAndCompare := func(vt, id int, original string) {
 
@@ -229,13 +233,12 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 			s.Error("Failed to take screenshot: ", err)
 		}
 
-		isSame, percentDiffPixels, err := isPerceptuallySame(ctx, original, currtVTScreenshot)
+		isSame, diffPixelsRatio, err := isPerceptuallySame(ctx, original, currtVTScreenshot, samenessThreshold)
 
 		if err != nil {
 			s.Errorf("Perceptual difference failed to run when testing Initial and current VT%d in iteration %d, %d", vt, id, err)
 			return
 		}
-
 		if isSame {
 			identicalScreenshots[vt]++
 			err := os.Remove(currtVTScreenshot)
@@ -243,8 +246,8 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 				s.Errorf("Error deleting file %s", currtVTScreenshot)
 			}
 		} else {
-			s.Errorf("Initial and current VT %d are different in iteration %d by %d percent", vt, id, percentDiffPixels)
-			maxDifferencePercent[vt] = max(maxDifferencePercent[vt], percentDiffPixels)
+			s.Errorf("Initial and current VT %d are different in iteration %d by %f ratio, whereas the ratio must be less than %f", vt, id, diffPixelsRatio, samenessThreshold)
+			maxDifferenceRatio[vt] = max(maxDifferenceRatio[vt], diffPixelsRatio)
 		}
 		return
 	}
@@ -261,10 +264,10 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 		captureAndCompare(2, i, vt2Screenshot)
 	}
 
-	savePerf(maxDifferencePercent[1], "percent_VT1_screenshot_max_difference", "percent", pv)
-	savePerf(maxDifferencePercent[2], "percent_VT2_screenshot_max_difference", "percent", pv)
-	savePerf(identicalScreenshots[1], "num_identical_vt1_screenshots", "count", pv)
-	savePerf(identicalScreenshots[2], "num_identical_vt2_screenshots", "count", pv)
+	savePerf(100.00*maxDifferenceRatio[1], "percent_VT1_screenshot_max_difference", "percent", pv)
+	savePerf(100.00*maxDifferenceRatio[2], "percent_VT2_screenshot_max_difference", "percent", pv)
+	savePerf(float64(identicalScreenshots[1]), "num_identical_vt1_screenshots", "count", pv)
+	savePerf(float64(identicalScreenshots[2]), "num_identical_vt2_screenshots", "count", pv)
 
 	if numErrors > 0 {
 		s.Fatalf("Failed %d/%d switches", numErrors, iterations)
