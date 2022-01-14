@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042bbdcb_80b38a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-14T09:12:05Z",
+      "side": 0,
+      "message": "For the stress workers part, if you refactor this into py script then we can only test\n\ncyclictest in VM + stress in VM\n\nbut not\n\ncyclictest in VM + stress out of VM\n\nI think we might want to test both\n\nMaybe we still want to keep this in go for \"stress out of VM\"",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 1
+      },
+      "revId": "4b24be2d86ca960e5be3436a9653ae5ab794b53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
