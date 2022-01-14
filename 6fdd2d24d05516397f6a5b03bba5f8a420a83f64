@@ -287,6 +287,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "292358d8_3b1b04a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-14T21:32:59Z",
+      "side": 1,
+      "message": "Ah thanks for the clarification. My point was that in the screenshots Harpreet linked, we\u0027d see cascading failures for the rest of the tast tests in an autotest wrapper, but the chronologically next autotest wrapper that\u0027s executed ends up passing again, so I figured it would be fine in this case as well since wificell-func-stable and wificell-suspend-stable are two distinct wrappers.",
+      "parentUuid": "8e231b4d_70847e94",
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "321d7b2e_055c1ad6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
         "patchSetId": 1
