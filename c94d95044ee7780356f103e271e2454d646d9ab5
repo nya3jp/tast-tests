@@ -33,6 +33,24 @@
       "message": "Hi reviewers, sorry to bother\nAccording to this comment from another CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3385957/comments/9e8e591d_54b42874\n\nShould we move this package to a newly created `taskmanager` package?",
       "revId": "c94d95044ee7780356f103e271e2454d646d9ab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68089683_2ef3dd1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-14T09:49:19Z",
+      "side": 1,
+      "message": "moved to `taskmanager` package",
+      "parentUuid": "04902a69_4e685eea",
+      "revId": "c94d95044ee7780356f103e271e2454d646d9ab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
