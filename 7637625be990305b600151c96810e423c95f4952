@@ -56,6 +56,30 @@
       },
       "revId": "7637625be990305b600151c96810e423c95f4952",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58824483_f0c37013",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-01-14T15:35:47Z",
+      "side": 1,
+      "message": "+1\n\nUnless Gabor is planning to invest more in this test, I am planning on revisting the logic here and find a simpler approach.",
+      "parentUuid": "fff45ae0_309b0375",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 4
+      },
+      "revId": "7637625be990305b600151c96810e423c95f4952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
