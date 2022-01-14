@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47de3d06_3429dd09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-01-14T00:32:44Z",
+      "side": 1,
+      "message": "LGTM, thanks for the additional test coverage! :)",
+      "revId": "89d2d6b9e6be9698d797227aa47c66c5fd5c095d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
