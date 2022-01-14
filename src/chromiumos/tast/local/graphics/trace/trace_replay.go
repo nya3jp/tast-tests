@@ -73,6 +73,11 @@ var preRunGuestLogEntryList = []guestLogEntry{
 		command:     []string{"dpkg", "-l"},
 	},
 	guestLogEntry{
+		entryName:   "pacman output",
+		logFileName: "pacman.txt",
+		command:     []string{"pacman", "-Q"},
+	},
+	guestLogEntry{
 		entryName:   "lsb-release",
 		logFileName: "lsb-release.txt",
 		command:     []string{"cat", "/etc/lsb-release"},
