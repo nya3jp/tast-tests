@@ -269,6 +269,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e231b4d_70847e94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-01-14T21:25:25Z",
+      "side": 1,
+      "message": "It\u0027s not quite exactly that.\n\nThey\u0027re not distinct suites, they\u0027re 2 different autotest \"tests\" in the same wifi_matfunc suite. See lines\n\nATTRIBUTES \u003d \u0027suite:wifi_matfunc\u0027\n\nin the control.wificell-func-stable and control.wificell-suspend-stable\n\nThose 2 autotest \"tests\" are used as wrappers to launch sets of Tast tests.\n\nSo the question comes down to: if an *autotest* test such as wificell-suspend-stable ends up making the DUT unreachable, does the lab start the DUT repair process before the next *autotest* test control.wificell-func-stable that belongs to the same suite (wifi_matfunc) gets executed? Or does the lab wait for all tests that belong to wifi_matfunc to get executed before it attempts to repair the DUT?\n\nI\u0027m not sure which one it is. If it\u0027s the latter, a failure in one of the suspend/resume tests will also make non-suspend/resume tests fail since the DUT won\u0027t be repaired in time.\nThough tbh, it\u0027s probably not different from the current situation either way (suspend/resume tests are separate *autotest* tests), so maybe it won\u0027t make things worse either way.",
+      "parentUuid": "60439bfc_d0b54c22",
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "321d7b2e_055c1ad6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
         "patchSetId": 1
