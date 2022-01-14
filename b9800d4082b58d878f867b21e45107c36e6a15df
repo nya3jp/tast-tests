@@ -16,6 +16,23 @@
       "message": "Im not sure how we should treat ratios now, Im just using everything as a float but this might not be the technically correct way. Let me know your thoughts.",
       "revId": "b9800d4082b58d878f867b21e45107c36e6a15df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3245643e_ae2afa8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-14T02:12:25Z",
+      "side": 1,
+      "message": "should I change this to percent as well? I think it does not really matter since percentages and ratios are similar but it might be useful to use proper naming.",
+      "revId": "b9800d4082b58d878f867b21e45107c36e6a15df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
