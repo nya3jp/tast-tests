@@ -108,7 +108,7 @@ func init() {
 func Skype(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.skype.raider"
-		appActivity = ".Main"
+		appActivity = "com.skype4life.MainActivity"
 	)
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
@@ -134,7 +134,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 		mediumUITimeout             = 30 * time.Second
 	)
 	// Click on letsGo button.
-	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(letsGoDes))
+	letsGoButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+letsGoDes))
 	if err := letsGoButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("letsGoButton doesn't exists: ", err)
 	} else if err := letsGoButton.Click(ctx); err != nil {
@@ -142,7 +142,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 
 	// Click on sign in button.
-	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signInText))
+	signInButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+signInOrCreateDes))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Fatal("signInButton doesn't exists: ", err)
 	}
@@ -207,7 +207,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	s.Log("Entered EmailAddress")
 
 	// Click on next button
-	nextButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(nextButtonText))
+	nextButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+nextButtonText))
 	if err := nextButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("Next Button doesn't exists: ", err)
 	} else if err := nextButton.Click(ctx); err != nil {
@@ -242,13 +242,13 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	s.Log("Entered password")
 
 	// Click on Sign in button.
-	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
+	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signInText))
 	if err := signInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("SignInButton doesn't exists: ", err)
 	}
 
 	// Click on signIn Button until not now button exist.
-	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signInText))
+	signInButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signInText))
 	notNowButton := d.Object(ui.ID(notNowID))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := notNowButton.Exists(ctx); err != nil {
@@ -263,7 +263,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	}
 
 	// Click on continue button.
-	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(continueButtonDes))
+	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+continueButtonDes))
 	if err := continueButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("Continue Button doesn't exists: ", err)
 	} else if err := continueButton.Click(ctx); err != nil {
@@ -272,7 +272,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Click on Sync contacts button.
-	syncContactsButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(syncContactsButtonDes))
+	syncContactsButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+syncContactsButtonDes))
 	if err := syncContactsButton.WaitForExists(ctx, testutil.ShortUITimeout); err != nil {
 		s.Log("syncContactsButton doesn't exist: ", err)
 	} else if err := syncContactsButton.Click(ctx); err != nil {
@@ -281,7 +281,7 @@ func launchAppForSkype(ctx context.Context, s *testing.State, tconn *chrome.Test
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 
 	// Click on continue Button until allow button exist.
-	continueButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(continueButtonDes))
+	continueButton = d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+continueButtonDes))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := allowButton.Exists(ctx); err != nil {
 			continueButton.Click(ctx)
@@ -322,7 +322,7 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	)
 
 	// Check for profileIcon.
-	profileIcon := d.Object(ui.ClassName(profileClassName), ui.Description(profileDes))
+	profileIcon := d.Object(ui.ClassName(profileClassName), ui.DescriptionMatches("(?i)"+profileDes))
 	if err := profileIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Log("profileIcon doesn't exists and skipped logout: ", err)
 		return
@@ -333,7 +333,7 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	}
 
 	// Click on sign out of Skype.
-	signOutOfSkype := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Description(signOutDes))
+	signOutOfSkype := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.DescriptionMatches("(?i)"+signOutDes))
 	if err := signOutOfSkype.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Error("signOutOfSkype doesn't exist: ", err)
 	} else if err := signOutOfSkype.Click(ctx); err != nil {
@@ -341,7 +341,7 @@ func signOutOfSkype(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	}
 
 	// Click on yes button.
-	yesButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(yesText))
+	yesButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+yesText))
 	if err := yesButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("yesButton doesn't exists: ", err)
 	} else if err := yesButton.Click(ctx); err != nil {
