@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a21a68_1bc498b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-14T15:23:33Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "7637625be990305b600151c96810e423c95f4952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff45ae0_309b0375",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-14T15:23:33Z",
+      "side": 1,
+      "message": "If that gets more complicated (maybe already did) we could shift to check (if possible) if a user avatar field value has changed. I don\u0027t know if that is exposed in any way.\nI believe there has to be a team that makes sure that once user changes avatar it is actually set.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 4
+      },
+      "revId": "7637625be990305b600151c96810e423c95f4952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
