@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ed46afb_2f4337a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-01-14T00:12:56Z",
+      "side": 1,
+      "message": "This `else` is not needed here.",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 8
+      },
+      "revId": "a6a9c541532097869d9c972c020919189673b7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1fad2886_e87a66e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 2
