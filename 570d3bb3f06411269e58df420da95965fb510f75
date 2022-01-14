@@ -33,6 +33,24 @@
       "message": "(optional) Another approach is to introduce a function returning default options.\n\nfunc StartDefaultOptions() []ActivityStartOption {\n  return []ActivityStartOption{\n    WithWaitForLaunch(),\n    WithDisplayId(...),\n  }\n}\n\nthen callers will be\n\nact.Start(ctx, tconn, StartDefaultOptions()...)",
       "revId": "570d3bb3f06411269e58df420da95965fb510f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9d3ce85_c11cd173",
+        "filename": "src/chromiumos/tast/local/arc/activity.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1504533
+      },
+      "writtenOn": "2022-01-14T01:27:55Z",
+      "side": 1,
+      "message": "I think this approach would work, but I like my approach just as much at this time so I\u0027ll keep it. Thanks anyway!",
+      "parentUuid": "4fe30331_07eaf479",
+      "revId": "570d3bb3f06411269e58df420da95965fb510f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
