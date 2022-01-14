@@ -315,6 +315,24 @@
       "parentUuid": "c32b841f_9ef2f9d5",
       "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8977cbb_cc92f602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:46:57Z",
+      "side": 1,
+      "message": "I meant, the conversion to time stamp above looks not correct semantically, IIUC.\n(Sorry for the prev unclear comment)",
+      "parentUuid": "b2147d5d_b7da6b06",
+      "revId": "765f7023d0cc5779a190c914cd1bf2ee6ae3ec94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

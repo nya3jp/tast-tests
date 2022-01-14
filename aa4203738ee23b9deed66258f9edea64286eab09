@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9ac7fb7_0d8b10eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:46:57Z",
+      "side": 1,
+      "message": "i have still a question at L34. Others are just minor style comments.",
+      "revId": "aa4203738ee23b9deed66258f9edea64286eab09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "415590dd_e030d317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/gradient_color_60fps.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:46:57Z",
+      "side": 1,
+      "message": "nit: could you merge these lines?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "aa4203738ee23b9deed66258f9edea64286eab09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e062bb_138c898b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/webgl_small_60fps.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:46:57Z",
+      "side": 1,
+      "message": "nit: let",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "aa4203738ee23b9deed66258f9edea64286eab09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2941f48_4163d132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/webgl_small_60fps.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:46:57Z",
+      "side": 1,
+      "message": "nit: let",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "aa4203738ee23b9deed66258f9edea64286eab09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e556cbd_8cb24e27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/data/webgl_small_60fps.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-14T15:46:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "aa4203738ee23b9deed66258f9edea64286eab09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
