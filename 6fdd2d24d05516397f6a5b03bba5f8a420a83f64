@@ -251,6 +251,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60439bfc_d0b54c22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-01-14T20:38:58Z",
+      "side": 1,
+      "message": "I\u0027m not really sure what course of action you\u0027re suggesting here. In any case, wificell-func-stable and wificell-suspend-stable are distinct suites here, and it seems like only tests within the same suite cause those cascading failures. Does this make sense?",
+      "parentUuid": "f1bc20bc_527bb97c",
+      "revId": "6fdd2d24d05516397f6a5b03bba5f8a420a83f64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "321d7b2e_055c1ad6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/reset.go",
         "patchSetId": 1
