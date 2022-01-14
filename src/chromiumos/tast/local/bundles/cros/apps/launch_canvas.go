@@ -31,15 +31,22 @@ func init() {
 			"shengjun@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromeLoggedInForEA",
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{{
 			Name:              "stable",
+			Fixture:           "chromeLoggedInForEA",
 			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 		}, {
 			Name:              "unstable",
+			Fixture:           "chromeLoggedInForEA",
 			ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosForEA",
+			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+			ExtraSoftwareDeps: []string{"lacros"},
 			ExtraAttr:         []string{"informational"},
 		}},
 	})
@@ -47,7 +54,7 @@ func init() {
 
 // LaunchCanvas verifies launching Canvas after OOBE
 func LaunchCanvas(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)

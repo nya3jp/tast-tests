@@ -40,23 +40,28 @@ func init() {
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{testFile},
-		Fixture:      "chromeLoggedInForEA",
-		Params: []testing.Param{
-			{
-				Name:              "stable",
-				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-			}, {
-				Name:              "unstable",
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
-			},
-		},
+		Params: []testing.Param{{
+			Name:              "stable",
+			Fixture:           "chromeLoggedInForEA",
+			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+		}, {
+			Name:              "unstable",
+			Fixture:           "chromeLoggedInForEA",
+			ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
+			ExtraAttr:         []string{"informational"},
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosForEA",
+			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+		}},
 	})
 }
 
 // LaunchGallery verifies launching Gallery on opening supported files.
 func LaunchGallery(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)

@@ -219,6 +219,23 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{LacrosDeployedBinary},
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosForEA",
+		Desc:     "Lacros Chrome for essential apps",
+		Contacts: []string{"shengjun@chromium.org"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			// Lacros apps don't seem to be installed until lacros is first opened.
+			return []chrome.Option{ /* chrome.EnableWebAppInstall(), */
+				chrome.EnableFeatures("LacrosPrimary"),
+				chrome.ExtraArgs("--disable-lacros-keep-alive",
+					"--disable-login-lacros-opening")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
 }
 
 // TODO(tvignatti): how do we make sure Lacros has this flag implemented? See crrev.com/c/3304121.
