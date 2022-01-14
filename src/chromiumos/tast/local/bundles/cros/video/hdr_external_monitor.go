@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/tracing"
 	"chromiumos/tast/testing"
 )
 
@@ -22,6 +23,8 @@ type hdrExternalMonitorParams struct {
 	fileName            string
 	makeExternalPrimary bool
 }
+
+const traceConfigPath string = "chromium_trace_all_simple_categories.pbtxt"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -41,7 +44,7 @@ func init() {
 					makeExternalPrimary: true,
 				},
 				ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-				ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
+				ExtraData: []string{traceConfigPath, "video.html", "peru.8k.cut.hdr.vp9.webm"},
 				Fixture:   "chromeVideo",
 			},
 			{
@@ -51,7 +54,7 @@ func init() {
 					makeExternalPrimary: false,
 				},
 				ExtraAttr: []string{"group:graphics", "graphics_video", "graphics_perbuild"},
-				ExtraData: []string{"video.html", "peru.8k.cut.hdr.vp9.webm"},
+				ExtraData: []string{traceConfigPath, "video.html", "peru.8k.cut.hdr.vp9.webm"},
 				Fixture:   "chromeVideo",
 			},
 		},
@@ -59,6 +62,26 @@ func init() {
 }
 
 func HdrExternalMonitor(ctx context.Context, s *testing.State) {
+	// TODO(jshargo): Make this tracing optional.
+	traceConfigPath := s.DataPath(traceConfigPath)
+	sess, err := tracing.StartSession(ctx, traceConfigPath)
+	if err != nil {
+		s.Fatal("Unable to start tracing: ", err)
+	}
+	defer func() {
+		s.Log("Stopping tracing session and saving the trace to perfetto_trace.pb")
+		if err := sess.Stop(); err != nil {
+			s.Fatal("Unable to stop perfetto session: ", err)
+		}
+
+		if b, err := ioutil.ReadFile(sess.TraceResultFile.Name()); err == nil {
+			out := path.Join(s.OutDir(), "perfetto_trace.pb")
+			ioutil.WriteFile(out, b, 0664)
+		} else {
+			s.Fatal("Unable to read trace result file: ", err)
+		}
+	}()
+
 	testOpt := s.Param().(hdrExternalMonitorParams)
 
 	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), browser.TypeAsh)

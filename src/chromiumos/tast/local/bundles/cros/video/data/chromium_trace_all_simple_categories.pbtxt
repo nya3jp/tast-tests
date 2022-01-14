@@ -1,0 +1,47 @@
+buffers: {
+    size_kb: 50000
+    fill_policy: DISCARD
+}
+data_sources: {
+    config {
+        name: "org.chromium.trace_event"
+        chrome_config {
+            trace_config: "{\"record_mode\":\"record-until-full\",\"included_categories\":[\"AccountFetcherService\",\"Blob\",\"CacheStorage\",\"Calculators\",\"CameraStream\",\"DXVA_Decoding\",\"FileSystem\",\"GAMEPAD\",\"IndexedDB\",\"Java\",\"PlatformMalloc\",\"RLZ\",\"ServiceWorker\",\"SiteEngagement\",\"ValueStoreFrontend::Backend\",\"WebCore\",\"accessibility\",\"android_webview\",\"aogh\",\"audio\",\"base\",\"benchmark\",\"blink\",\"blink.animations\",\"blink.bindings\",\"blink.console\",\"blink.net\",\"blink.resource\",\"blink.user_timing\",\"blink.worker\",\"blink_gc\",\"blink_style\",\"browser\",\"browsing_data\",\"camera\",\"cast.mdns\",\"cast.mdns.socket\",\"cast.stream\",\"cast_app\",\"cast_perf_test\",\"cc\",\"cc.debug\",\"cdp.perf\",\"chromeos\",\"cma\",\"compositor\",\"content\",\"content_capture\",\"device\",\"devtools\",\"devtools.contrast\",\"devtools.timeline\",\"disk_cache\",\"download\",\"download_service\",\"drm\",\"drmcursor\",\"dwrite\",\"evdev\",\"event\",\"exo\",\"explore_sites\",\"extensions\",\"file_system_provider\",\"fonts\",\"gpu\",\"gpu.angle\",\"gpu.capture\",\"headless\",\"hwoverlays\",\"identity\",\"ime\",\"input\",\"io\",\"ipc\",\"jni\",\"jpeg\",\"latency\",\"latencyInfo\",\"leveldb\",\"loading\",\"log\",\"login\",\"media\",\"media_router\",\"memory\",\"midi\",\"mojom\",\"mus\",\"native\",\"navigation\",\"net\",\"netlog\",\"offline_pages\",\"omnibox\",\"oobe\",\"ozone\",\"p2p\",\"page-serialization\",\"paint_preview\",\"partition_alloc\",\"passwords\",\"pepper\",\"power\",\"ppapi\",\"ppapi_proxy\",\"print\",\"rail\",\"renderer\",\"renderer.scheduler\",\"renderer_host\",\"safe_browsing\",\"screenlock_monitor\",\"segmentation_platform\",\"sequence_manager\",\"service_manager\",\"sharing\",\"shell\",\"shortcut_viewer\",\"shutdown\",\"skia\",\"sql\",\"stadia_media\",\"stadia_rtc\",\"startup\",\"sync\",\"system_apps\",\"test_gpu\",\"thread_pool\",\"toplevel\",\"toplevel.flow\",\"ui\",\"v8\",\"v8.execute\",\"v8.wasm\",\"views\",\"views.frame\",\"viz\",\"vk\",\"wayland\",\"webaudio\",\"weblayer\",\"webrtc\",\"xr\",\"disabled-by-default-toplevel.flow\",\"disabled-by-default-ipc.flow\"],\"memory_dump_config\":{}}"
+        }
+    }
+}
+data_sources: {
+    config {
+        name: "org.chromium.trace_metadata"
+        chrome_config {
+            trace_config: "{\"record_mode\":\"record-until-full\",\"included_categories\":[\"AccountFetcherService\",\"Blob\",\"CacheStorage\",\"Calculators\",\"CameraStream\",\"DXVA_Decoding\",\"FileSystem\",\"GAMEPAD\",\"IndexedDB\",\"Java\",\"PlatformMalloc\",\"RLZ\",\"ServiceWorker\",\"SiteEngagement\",\"ValueStoreFrontend::Backend\",\"WebCore\",\"accessibility\",\"android_webview\",\"aogh\",\"audio\",\"base\",\"benchmark\",\"blink\",\"blink.animations\",\"blink.bindings\",\"blink.console\",\"blink.net\",\"blink.resource\",\"blink.user_timing\",\"blink.worker\",\"blink_gc\",\"blink_style\",\"browser\",\"browsing_data\",\"camera\",\"cast.mdns\",\"cast.mdns.socket\",\"cast.stream\",\"cast_app\",\"cast_perf_test\",\"cc\",\"cc.debug\",\"cdp.perf\",\"chromeos\",\"cma\",\"compositor\",\"content\",\"content_capture\",\"device\",\"devtools\",\"devtools.contrast\",\"devtools.timeline\",\"disk_cache\",\"download\",\"download_service\",\"drm\",\"drmcursor\",\"dwrite\",\"evdev\",\"event\",\"exo\",\"explore_sites\",\"extensions\",\"file_system_provider\",\"fonts\",\"gpu\",\"gpu.angle\",\"gpu.capture\",\"headless\",\"hwoverlays\",\"identity\",\"ime\",\"input\",\"io\",\"ipc\",\"jni\",\"jpeg\",\"latency\",\"latencyInfo\",\"leveldb\",\"loading\",\"log\",\"login\",\"media\",\"media_router\",\"memory\",\"midi\",\"mojom\",\"mus\",\"native\",\"navigation\",\"net\",\"netlog\",\"offline_pages\",\"omnibox\",\"oobe\",\"ozone\",\"p2p\",\"page-serialization\",\"paint_preview\",\"partition_alloc\",\"passwords\",\"pepper\",\"power\",\"ppapi\",\"ppapi_proxy\",\"print\",\"rail\",\"renderer\",\"renderer.scheduler\",\"renderer_host\",\"safe_browsing\",\"screenlock_monitor\",\"segmentation_platform\",\"sequence_manager\",\"service_manager\",\"sharing\",\"shell\",\"shortcut_viewer\",\"shutdown\",\"skia\",\"sql\",\"stadia_media\",\"stadia_rtc\",\"startup\",\"sync\",\"system_apps\",\"test_gpu\",\"thread_pool\",\"toplevel\",\"toplevel.flow\",\"ui\",\"v8\",\"v8.execute\",\"v8.wasm\",\"views\",\"views.frame\",\"viz\",\"vk\",\"wayland\",\"webaudio\",\"weblayer\",\"webrtc\",\"xr\",\"disabled-by-default-toplevel.flow\",\"disabled-by-default-ipc.flow\"],\"memory_dump_config\":{}}"
+        }
+    }
+}
+data_sources: {
+    config {
+        name: "linux.process_stats"
+        process_stats_config {
+            scan_all_processes_on_start: true
+        }
+    }
+}
+data_sources: {
+    config {
+        name: "linux.ftrace"
+        ftrace_config {
+            ftrace_events: "sched/sched_switch"
+            ftrace_events: "power/suspend_resume"
+            ftrace_events: "sched/sched_wakeup"
+            ftrace_events: "sched/sched_wakeup_new"
+            ftrace_events: "sched/sched_waking"
+            ftrace_events: "sched/sched_process_exit"
+            ftrace_events: "sched/sched_process_free"
+            ftrace_events: "task/task_newtask"
+            ftrace_events: "task/task_rename"
+            buffer_size_kb: 2048
+            drain_period_ms: 250
+        }
+    }
+}
+duration_ms: 30000
