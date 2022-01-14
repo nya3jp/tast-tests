@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c89cc2_7338c901",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-14T08:16:26Z",
+      "side": 1,
+      "message": "Moving this line to the end of the function and moving the condition into for statement might be better for the readability.",
+      "revId": "f349321e3e0a559c406eacc102ff3dfb45431b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
