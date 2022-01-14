@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a70c044_fa98d486",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 236,
+        "startChar": 121,
+        "endLine": 236,
+        "endChar": 127
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db12e23_ec02fe7c",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 261,
+        "startChar": 20,
+        "endLine": 261,
+        "endChar": 25
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6ae7bb_9221acf7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Maybe use DumpLogOnError?",
+      "range": {
+        "startLine": 24,
+        "startChar": 84,
+        "endLine": 24,
+        "endChar": 86
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a00609_365ce5b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Do you want to copy symlinks?",
+      "range": {
+        "startLine": 78,
+        "startChar": 110,
+        "endLine": 78,
+        "endChar": 126
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34efd3bb_9f9abeec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Not sure if this helper function is worth it.",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f8ca6df_dfcbe95b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Instead of a for, use a testing.Poll since it also respects context.",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ec3be3_5cf95fcf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Same as for the other test, can this be a software/hardware dependency?",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cefa1f1d_e43b0f0d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Does this value make sense when empty? If not you can use RequiredVar to make sure a value is there.",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 12
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f24fad4d_6dc13686",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Does altAddr make sense when empty. Use RequiredVar instead to guarantee you get a value.",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 12
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e673bd3e_97857f48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Capital L",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 5
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff67d3c_1b8142b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "nit: add newline before",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df91d84_87bac655",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_detection.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-14T08:34:36Z",
+      "side": 1,
+      "message": "Is there a software/hardware dependency that can be used instead?",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
