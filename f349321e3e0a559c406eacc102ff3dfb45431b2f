@@ -16,6 +16,24 @@
       "message": "Moving this line to the end of the function and moving the condition into for statement might be better for the readability.",
       "revId": "f349321e3e0a559c406eacc102ff3dfb45431b2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db72ad87_980bec32",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-14T16:25:51Z",
+      "side": 1,
+      "message": "I agree, a loop like this would be better:\n\n  for i :\u003d 0; i \u003c installRetries; i++ {\n    install\n    return nil if success\n    log msg\n  }\n  return error...",
+      "parentUuid": "45c89cc2_7338c901",
+      "revId": "f349321e3e0a559c406eacc102ff3dfb45431b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
