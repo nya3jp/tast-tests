@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa62ff40_1af0d650",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-14T05:03:13Z",
+      "side": 1,
+      "message": "I initially was thinking to maybe apply this approach to some of the functions but not all of them. But then I went through the file, and now I am not sure again. Can we maybe leave it as is for now? It seems like we will have follow-ups on this test anyway, so I will do more work later here anyway.",
+      "parentUuid": "9a1ef195_3d1a6bac",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 43
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b57144c8_6b4c0765",
@@ -1283,6 +1307,30 @@
       "side": 1,
       "message": "It has to be a func that returns a const. They are like const member functions.",
       "parentUuid": "cfed8568_0743a576",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 66
+      },
+      "revId": "ebc6b5769e9b7d07e4a28b746d16728f55022bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f7cb750_afad13e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-14T05:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a2223c_5dcf6232",
       "range": {
         "startLine": 191,
         "startChar": 1,
