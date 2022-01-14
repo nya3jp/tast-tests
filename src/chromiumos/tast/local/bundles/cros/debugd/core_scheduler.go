@@ -28,7 +28,7 @@ func init() {
 		SoftwareDeps: []string{"amd64"},
 		// TODO(b/197182645): re-enable Volteer once CPU offlining issues are resolved.
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform("volteer")),
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "group:asan"},
 	})
 }
 
