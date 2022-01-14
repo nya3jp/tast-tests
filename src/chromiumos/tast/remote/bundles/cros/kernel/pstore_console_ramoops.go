@@ -22,8 +22,10 @@ func init() {
 			"swboyd@chromium.org",
 			"chromeos-kernel-test@google.com",
 		},
-		SoftwareDeps: []string{"pstore", "reboot"},
-		Attr:         []string{"group:mainline"},
+		SoftwareDeps: []string{"pstore", "reboot",
+			// TODO(b/213995410) Re-enable when console-ramoops is available.
+			"no_manatee"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
