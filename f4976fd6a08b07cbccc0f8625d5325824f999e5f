@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64a28a81_8cf2ab2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-15T00:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c219c59c_b3f29726",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46935d8d_cf512e35",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee90e98_e1f8e5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-15T00:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46935d8d_cf512e35",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce3b2453_0ee78b8c",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-11T23:19:35Z",
       "side": 1,
       "message": "How about numPixels or imagePixels?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 12
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d7c123_17379dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-15T00:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce3b2453_0ee78b8c",
       "range": {
         "startLine": 132,
         "startChar": 1,
@@ -156,6 +228,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9af54ad_c140d719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-15T00:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cfece85_3ecd1ff0",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 74
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bd222a0_221d3fb2",
@@ -169,6 +265,30 @@
       "writtenOn": "2022-01-11T23:19:35Z",
       "side": 1,
       "message": "pixelDifferenceRatio",
+      "range": {
+        "startLine": 159,
+        "startChar": 16,
+        "endLine": 159,
+        "endChar": 31
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7725f73e_dd1c4532",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-15T00:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bd222a0_221d3fb2",
       "range": {
         "startLine": 159,
         "startChar": 16,
@@ -202,6 +322,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a85c97_f7e5aae0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-15T00:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4363e7f_59295d90",
+      "range": {
+        "startLine": 206,
+        "startChar": 9,
+        "endLine": 206,
+        "endChar": 28
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1526fc2a_c4f50ca9",
@@ -215,6 +359,30 @@
       "writtenOn": "2022-01-11T23:19:35Z",
       "side": 1,
       "message": "samenessThreshold \u003d samenessRatio * float64(initialRatio)\n\nmove samenessRatio \u003d 0.05 as constant",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 21
+      },
+      "revId": "f4976fd6a08b07cbccc0f8625d5325824f999e5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d5e572_fb227d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1526837
+      },
+      "writtenOn": "2022-01-15T00:52:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1526fc2a_c4f50ca9",
       "range": {
         "startLine": 207,
         "startChar": 1,
