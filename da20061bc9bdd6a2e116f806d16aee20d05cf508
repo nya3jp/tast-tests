@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6cbfa8a_4c178ec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "I left some initial comments - the performLogin is duplicating what the PerformTest is doing so that call, and the duplicate code, can be eliminated and inlined in the PerformTest like I did here: [1]. That will reorganize quite a few things so after you do that I\u0027ll review the click/heuristic portion.\n\n\n[1] - https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/3b04dac74f4e221da74ce51d4bc2b00da0b5df5d/src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_minigame_gpu_benchmark.go#65",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f88318_d4c02afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "Can you put this in the shared utility file? My thought there was that all metrics would be in one spot so they can be easily shared.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82054e9_b8db7835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "Lines [107, 129) can be removed once all this is inlined in the PerformTest function below. They are already handled by the shared file.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf255fc_e419ade3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "ditto about s.Fatal calls, should be returning errors.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7e4881_bf2bc0c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "This will also go away after inlining below.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2848157_bfade9c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "Username/passwords shouldn\u0027t be in the test themselves. You should use the var deps like I did here: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/3b04dac74f4e221da74ce51d4bc2b00da0b5df5d/src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_minigame_gpu_benchmark.go#47 . You can use the \"arcappgameperf.username\"/\"arcappgameperf.password\" variables.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c2747b_faf65989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "PerformTest accepts an error return result which should be used in place of s.Fatal.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39646ca2_9350ce6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "ditto regarding s.Fatal",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553e60ab_3551ff19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "\u0027PerformTest\u0027 is where the test code can live, no need to call another function which accepts a test function. Just inline the test code here and return errors where needed.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8beaeb18_1501865d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "This comment is the same as the one above but I think it\u0027s related to after the login is complete. Can you adjust the comment to indicate what it\u0027s doing differently?",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e42ae82_8a9a6987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "Include the AvatarExperienceLandingPage part here to help differentiate it in the logs from the error above.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d74aafd_b776ad77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-15T01:14:04Z",
+      "side": 1,
+      "message": "nit: rename to loginTime since that\u0027s what it represents.",
+      "revId": "da20061bc9bdd6a2e116f806d16aee20d05cf508",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
