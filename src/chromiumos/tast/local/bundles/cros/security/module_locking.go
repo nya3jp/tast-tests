@@ -13,6 +13,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"golang.org/x/sys/unix"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
@@ -34,8 +36,8 @@ func ModuleLocking(ctx context.Context, s *testing.State) {
 	const (
 		sysctl        = "/proc/sys/kernel/chromiumos/module_locking"
 		module        = "test_module"                  // installed in test images
-		moduleFile    = "kernel/lib/test_module.ko"    // standard upstream location
-		altModuleFile = "kernel/kernel/test_module.ko" // TODO(crbug.com/908226): remove
+		moduleFile    = "kernel/lib/test_module.ko"    // uncompressed version
+		altModuleFile = "kernel/lib/test_module.ko.gz" // compressed version
 	)
 
 	s.Log("Checking ", sysctl)
@@ -90,16 +92,15 @@ func ModuleLocking(ctx context.Context, s *testing.State) {
 	}
 	defer os.RemoveAll(td)
 
-	tmpPath := filepath.Join(td, module+".ko")
+	tmpPath := filepath.Join(td, filepath.Base(modulePath))
 	copyModule(s, modulePath, tmpPath, false /* gzip */)
 	s.Log("Attempting to insmod ", tmpPath)
 	run(false, "insmod", tmpPath)
 	unloadModule(ctx, s, module)
 
-	tmpGzPath := filepath.Join(td, module+".ko.gz")
-	copyModule(s, modulePath, tmpGzPath, true /* gzip */)
-	s.Logf("Attempting to insmod %s to trigger old blob-style kernel syscall", tmpGzPath)
-	run(false, "insmod", tmpGzPath)
+	if loadViaInitModule(s, modulePath) {
+		s.Error("old-style init_module syscall unexpectedly succeeded")
+	}
 	unloadModule(ctx, s, module)
 
 	// Guard against a regression of http://b/21762937, where a bind unmount would
@@ -174,4 +175,27 @@ func copyModule(s *testing.State, srcPath, dstPath string, useGzip bool) {
 	if err := dst.Close(); err != nil {
 		s.Fatalf("Failed to close %v: %v", dstPath, err)
 	}
+}
+
+func loadViaInitModule(s *testing.State, modulePath string) bool {
+	var r io.ReadCloser
+	r, err := os.Open(modulePath)
+	if err != nil {
+		s.Fatalf("Failed to open module %q: %v", modulePath, err)
+	}
+	defer r.Close()
+
+	if filepath.Ext(modulePath) == ".gz" {
+		if r, err = gzip.NewReader(r); err != nil {
+			s.Fatal("Failed to create gzip reader: ", err)
+		}
+		defer r.Close()
+	}
+
+	buf, err := ioutil.ReadAll(r)
+	if err != nil {
+		s.Fatal("Failed to read module data: ", err)
+	}
+
+	return unix.InitModule(buf, "") == nil
 }
