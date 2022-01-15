@@ -38,15 +38,15 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"shill", "cellular.cc", ".*GetSimLockStatus called with null capability.*", 0},
 		{"shill", "cellular.cc", ".*StartModem failed.*", 0},
 		{"shill", "cellular.cc", ".*StopModem returned an error: org.chromium.flimflam.Error.WrongState.*", 0},
-		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},                                                // b/210893108
-		{"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                                // b/208654528
+		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0}, // b/210893108
+		// {"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                             // b/208654528
 		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                        // b/211000413
 		{"shill", "eap_listener.cc", ".*Could not bind socket to interface: No such device.*", 0},                                 // Test lab only
 		{"shill", "eap_listener.cc", ".*Could not open EAP listener socket.*", 0},                                                 // Test lab only
 		{"shill", "ethernet.cc", ".*cannot disable \\[18\\] tx-tcp-ecn-segmentation.*", 0},                                        // Test lab only
 		{"shill", "ethernet.cc", ".*OnSetInterfaceMacResponse received response with error Cannot assign requested address.*", 0}, // Test lab only
 		{"shill", "http_request.cc", ".*Failed to start DNS client.*", 0},                                                         // b/211000413
-		{"shill", "netlink_manager.cc", ".*Unexpected auxilliary message type: 0.*", 0},                                           // b/211004192
+		// {"shill", "netlink_manager.cc", ".*Unexpected auxiliary message type: 0.*", 0},                                        // b/211004192
 		// Chrome error? need more info:
 		// {"shill", "object_proxy.cc", ".*Failed to call method.*", 0},
 		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},                                                                 // b/213611282
