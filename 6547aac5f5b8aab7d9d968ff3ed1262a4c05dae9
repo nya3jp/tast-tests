@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "800ce051_941e2c8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-17T02:01:12Z",
+      "side": 1,
+      "message": "Is this required still? The fixture seems to list the same artifacts",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 142
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2935d1_59f66a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-17T02:01:12Z",
+      "side": 1,
+      "message": "A couple of points here:\n\n1) Isn\u0027t one of the benefits of fixtures that we can move this cleanup stuff into shared code with an independent timeout, rather than duplicating it for every test?\n\n2) I\u0027ve come to dislike the pattern of closing all the windows we open. It makes things like failure screenshots and DumpUITreeOnError largely useless without a lot of care because by the time they run the state we\u0027re trying to capture has been closed. Here, for example, this dump statement runs after the deferred close statements below.\n\nTests that use chrome are supposed to reset chrome\u0027s window state during setup, so it should be fine to keep them to the end of the test.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1754de4b_516483dd",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 1
@@ -31,6 +77,52 @@
       "writtenOn": "2022-01-17T00:20:37Z",
       "side": 1,
       "message": "I assume this eventually generates all the permutations and adds them?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0d89ab_837e93ac",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-17T02:01:12Z",
+      "side": 1,
+      "message": "How about \"holds the runtime state of the fixture\" ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 51
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac2964a_f1cf1e4f",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-17T02:01:12Z",
+      "side": 1,
+      "message": "How about \"returned by SetUp and passed to tests.\" ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 41
+      },
       "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +163,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ff6d3bf_2e9fcc05",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-17T02:01:12Z",
+      "side": 1,
+      "message": "Should do these checks in reset or pretest. I\u0027m not quite sure which, but we definitely need to reset chrome before each test.",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "071c5141_fe11d4b7",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 1
@@ -82,6 +197,29 @@
       "writtenOn": "2022-01-17T00:20:37Z",
       "side": 1,
       "message": "Might be better to do this before every test, instead of just before the suite?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f47540_9cd53763",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-17T02:01:12Z",
+      "side": 1,
+      "message": "Presumably this is no longer necessary, because it\u0027s defined at the fixture level?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 20
+      },
       "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
