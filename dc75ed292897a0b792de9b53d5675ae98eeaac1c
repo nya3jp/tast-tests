@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b44e1f4d_f685f6fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-17T01:55:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58e2a816_7b992cb3",
+      "revId": "dc75ed292897a0b792de9b53d5675ae98eeaac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f65f76a_e3bdc4eb",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Revise it to a local variable. Instead, add a screenshot field to the Finder struct, and save the screenshot in case of failures from this field.",
       "parentUuid": "0f65f76a_e3bdc4eb",
+      "revId": "dc75ed292897a0b792de9b53d5675ae98eeaac1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d586b0e_74ea6383",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-17T01:55:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88e3496c_2b4e6cc0",
       "revId": "dc75ed292897a0b792de9b53d5675ae98eeaac1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

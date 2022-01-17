@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59479c3a_65607d87",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-17T01:55:55Z",
+      "side": 1,
+      "message": "I don\u0027t think screenshot should be a member here. It\u0027s not really related to the finder itself.\n\nMaybe use the solution I used instead - save the screenshot, then delete it on success?\n\nThat or you could create a new Error type that stores the screenshot as well as the error?",
+      "revId": "089c949f2bb03103e17afff7ff56162003a971fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c88dfb_552c75e9",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-17T01:55:55Z",
+      "side": 1,
+      "message": "Generally in go we\u0027d use a fail-fast policy.\noutputDir, ok :\u003d ...\nif !ok {\n  ...\n}\nsuccess case",
+      "revId": "089c949f2bb03103e17afff7ff56162003a971fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a5cd5fe_9171e93c",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-17T01:55:55Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "089c949f2bb03103e17afff7ff56162003a971fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
