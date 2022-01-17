@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c3eb46_ecca05c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-17T23:16:50Z",
+      "side": 1,
+      "message": "LOGTM from Tast perspective, please wait for Denny to approve before submitting 👍",
+      "revId": "d8fa9bdb85ff7bbd37ed04ed0b9e4342436d41f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff695a3_08a0fc4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-17T23:16:50Z",
+      "side": 1,
+      "message": "Hmmm I wonder if it\u0027s worth having Modetest in a package? I wonder if something changes in modetest, it\u0027ll require a lot of various changes across a few files to achieve this.\n\nFood for thought though, feel free to disregard or raise a separate bug as a follow up 😊",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 27
+      },
+      "revId": "d8fa9bdb85ff7bbd37ed04ed0b9e4342436d41f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
