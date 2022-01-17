@@ -261,6 +261,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95846662_83a2ec05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-17T08:40:00Z",
+      "side": 1,
+      "message": "You will need to handle displayLevel manually (including breaking the loop).\n\nDocs:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/util.go\n\n\nPseudo-go:\n\ndisplayLevel :\u003d float32(20.0)\nerr :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n   if displayLevel \u003e 100 {\n      return nil\n    }\n   \n   ... \n   \n   displayLevel +\u003d adjustStep\n   return errors.New(\"Not done yet\")\n})\n\nAlternatively you handle context expiry yourself (by checking ctx.Err() on each loop iteration).",
+      "parentUuid": "0ba529e1_52aeb082",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60ec3be3_5cf95fcf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
         "patchSetId": 11
@@ -272,6 +290,24 @@
       "writtenOn": "2022-01-14T08:34:36Z",
       "side": 1,
       "message": "Same as for the other test, can this be a software/hardware dependency?",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6113686b_c0e6b613",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-17T08:40:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60ec3be3_5cf95fcf",
       "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
