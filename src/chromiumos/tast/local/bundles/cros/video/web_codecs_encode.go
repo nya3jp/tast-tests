@@ -64,6 +64,13 @@ func init() {
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferHardware},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 		}, {
+			Name: "vp8_sw_l1t3",
+			Val:  webcodecs.TestEncodeArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
+		}, {
+			Name:              "vp8_hw_l1t3",
+			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP8, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T3"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, "vaapi"},
+		}, {
 			Name: "vp9_sw",
 			Val:  webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware},
 		}, {
