@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0595b216_bea7d6d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2022-01-17T08:58:41Z",
+      "side": 1,
+      "message": "In this particular case, there\u0027s no distinction between null and empty array. I think it\u0027s better to keep it simple. Also, \"*[]string\" is not a common pattern at all in tast.\n\nhttps://source.corp.google.com/search?q\u003d%22*%5B%5Dstring%22%20p:chromeos_.*%20f:tast\n\nRegarding \"len(config.VhostUserArgs) \u003e 0\", I just wish there\u0027s an empty method in go.",
+      "parentUuid": "639c8e1c_696c9b3f",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b14af50_ec35585a",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
         "patchSetId": 5
@@ -185,6 +209,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f25c2ec_52f9a53d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2022-01-17T08:58:41Z",
+      "side": 1,
+      "message": "I respectfully disagree. And I don\u0027t see the \"*\" in most other TempDir usages in our codebase.\n\nhttps://source.corp.google.com/search?q\u003dioutil.tempdir%20p:chromeos_.*\u0026sq\u003d",
+      "parentUuid": "1c815708_663d3e93",
+      "range": {
+        "startLine": 68,
+        "startChar": 61,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c75c4aeb_32fb1e51",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
         "patchSetId": 5
@@ -244,6 +292,30 @@
       "side": 1,
       "message": "yeah, I mean put some words like\n\n\"since host-user ..., we don\u0027t need this for that scenario\"",
       "parentUuid": "c5f5ba69_58a2b3c9",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 68
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da0d4e4_90fae271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2022-01-17T08:58:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "970f4ce2_82885368",
       "range": {
         "startLine": 103,
         "startChar": 2,
