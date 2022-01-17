@@ -16,6 +16,125 @@
       "message": "Hi All, sorry this is a large cl, but most of the content are copied from pre.go. Please help review.",
       "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1754de4b_516483dd",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-17T00:20:37Z",
+      "side": 1,
+      "message": "I assume this eventually generates all the permutations and adds them?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01775e88_762cf55f",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-17T00:20:37Z",
+      "side": 1,
+      "message": "Nit: Consistent field names between crostiniFixture and FixtureData would be nice.",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d46b0c5_8d4a9df8",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-17T00:20:37Z",
+      "side": 1,
+      "message": "Does this need to be here? Isn\u0027t SetUp only called at the start of a set of tests, so the container will always be uninitialised? Or if it is still around it\u0027s an error because cleanup from the last test failed?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071c5141_fe11d4b7",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-17T00:20:37Z",
+      "side": 1,
+      "message": "Might be better to do this before every test, instead of just before the suite?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a348ee_4fb94aa1",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-17T00:20:37Z",
+      "side": 1,
+      "message": "Should you also have the Chrome responsivity check pre.go has?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ee26a9a_078bd19e",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-17T00:20:37Z",
+      "side": 1,
+      "message": "Also TODO: stop calling RunCrostiniPostTest in each individual test?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4df072fb_baa84570",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-17T00:20:37Z",
+      "side": 1,
+      "message": "Are there other errors during uninstall besides failed to close settings window?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
