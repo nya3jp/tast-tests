@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b78d5e3f_b9e52885",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef49819b_4158de6a",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8682f58_46075ce8",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd71986d_deaff2f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:23Z",
+      "side": 1,
+      "message": "Oh yeah, it was used in arc.LifecycleChromeOSPerf, which I\u0027ve now updated.",
+      "parentUuid": "f8682f58_46075ce8",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16630b6f_7b212116",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-01-14T08:12:44Z",
       "side": 1,
       "message": "Removing the \"limit\" arg completely instead of passing nil here is better I think. (same as the above)",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46da71d0_0a76ebb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/lifecycle.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16630b6f_7b212116",
       "revId": "64777e5d552dc4133140f752571127014b288fcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e50b6b10_f795998a",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:23Z",
+      "side": 1,
+      "message": "How? The second one introduces a variable.",
+      "parentUuid": "88f205c3_4968cf6a",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0aa69fbf_bdfe9c74",
         "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2022-01-14T08:12:44Z",
       "side": 1,
       "message": "Please add a description for \"cooldown\" as same as line 197",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "825aa545_cfc1130c",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa69fbf_bdfe9c74",
       "revId": "64777e5d552dc4133140f752571127014b288fcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c2dd1d_f5bbea62",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b346c82_a6df4bc3",
+      "range": {
+        "startLine": 182,
+        "startChar": 78,
+        "endLine": 182,
+        "endChar": 96
+      },
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a63e1c_e899ceba",
@@ -122,6 +236,30 @@
       "writtenOn": "2022-01-14T08:12:44Z",
       "side": 1,
       "message": "remove this (see the comments above)",
+      "range": {
+        "startLine": 198,
+        "startChar": 78,
+        "endLine": 198,
+        "endChar": 96
+      },
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3a5958_e745c69b",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1a63e1c_e899ceba",
       "range": {
         "startLine": 198,
         "startChar": 78,
