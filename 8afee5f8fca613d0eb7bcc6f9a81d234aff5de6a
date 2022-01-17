@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b4d499_63a39aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-17T09:23:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0595b216_bea7d6d6",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b14af50_ec35585a",
@@ -221,6 +245,30 @@
       "side": 1,
       "message": "I respectfully disagree. And I don\u0027t see the \"*\" in most other TempDir usages in our codebase.\n\nhttps://source.corp.google.com/search?q\u003dioutil.tempdir%20p:chromeos_.*\u0026sq\u003d",
       "parentUuid": "1c815708_663d3e93",
+      "range": {
+        "startLine": 68,
+        "startChar": 61,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6492f56c_2cac9b03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-17T09:23:05Z",
+      "side": 1,
+      "message": "that\u0027s fair, I see lots of usage similar with yours. ack",
+      "parentUuid": "3f25c2ec_52f9a53d",
       "range": {
         "startLine": 68,
         "startChar": 61,
