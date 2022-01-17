@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3fd339_e11bacba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-17T22:46:48Z",
+      "side": 1,
+      "message": "sure, thanks",
+      "parentUuid": "e39d9b5d_aa486c29",
+      "revId": "a9d49258a4c00e4b41525fb1568c4bac970491dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9c839cb_8d1b7a1d",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "685f5e7d_77038792",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-17T22:46:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c839cb_8d1b7a1d",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 10
+      },
+      "revId": "a9d49258a4c00e4b41525fb1568c4bac970491dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfa96781_84c89ea9",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-17T22:19:56Z",
       "side": 1,
       "message": "There are three func related to save image, suggest to add comments for them.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 22
+      },
+      "revId": "a9d49258a4c00e4b41525fb1568c4bac970491dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5908b61d_06f8ea47",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-17T22:46:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfa96781_84c89ea9",
       "range": {
         "startLine": 121,
         "startChar": 5,
