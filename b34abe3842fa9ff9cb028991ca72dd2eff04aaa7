@@ -33,6 +33,24 @@
       "message": "Remove Kyle from the reviewers/cc list before you add tast owners or else it will get assigned to him again :) ",
       "revId": "b34abe3842fa9ff9cb028991ca72dd2eff04aaa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f74d884_e87cb50a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-17T10:17:17Z",
+      "side": 1,
+      "message": "Thank you for kindly remind, we\u0027ll follow the new procedure.",
+      "parentUuid": "488746a6_17a94ba9",
+      "revId": "b34abe3842fa9ff9cb028991ca72dd2eff04aaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
