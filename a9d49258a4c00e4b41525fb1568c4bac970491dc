@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39d9b5d_aa486c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-17T22:19:56Z",
+      "side": 1,
+      "message": "It seems that these three refactors are not closely related. Suggest to split such kind of changes into multiple cls next time.",
+      "revId": "a9d49258a4c00e4b41525fb1568c4bac970491dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c839cb_8d1b7a1d",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-17T22:19:56Z",
+      "side": 1,
+      "message": "Please add a comment why it returns an error instead of a bool.",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 10
+      },
+      "revId": "a9d49258a4c00e4b41525fb1568c4bac970491dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa96781_84c89ea9",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-17T22:19:56Z",
+      "side": 1,
+      "message": "There are three func related to save image, suggest to add comments for them.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 22
+      },
+      "revId": "a9d49258a4c00e4b41525fb1568c4bac970491dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
