@@ -39,6 +39,30 @@
       },
       "revId": "46dbc860b2c13f23e8f9170f6e2e86da926d747a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899f8808_0eb7b1c4",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "645b64cd_3bb34c68",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "46dbc860b2c13f23e8f9170f6e2e86da926d747a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
