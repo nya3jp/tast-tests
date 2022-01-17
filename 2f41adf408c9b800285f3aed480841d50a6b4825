@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5b182e_b6d3573e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-17T13:23:03Z",
+      "side": 1,
+      "message": "Building tast runs go vet which tests a bit more than presubmit. You can run it locally to see errors.",
+      "parentUuid": "9fbcfca1_724be0ad",
+      "revId": "2f41adf408c9b800285f3aed480841d50a6b4825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adf9e197_6372451f",
