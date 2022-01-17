@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ce5b899_4f648960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-17T14:07:33Z",
+      "side": 1,
+      "message": "Ok the syntax error seems to be gone but there\u0027s another strange error which looks like an infra issue but it doesn\u0027t seem to go away. Victor, any idea if this may be tast related as well?",
+      "parentUuid": "7e5b182e_b6d3573e",
+      "revId": "2f41adf408c9b800285f3aed480841d50a6b4825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adf9e197_6372451f",
         "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go",
         "patchSetId": 5
