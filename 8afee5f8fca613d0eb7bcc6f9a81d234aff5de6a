@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ae7a8b_65b0742a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2022-01-17T09:24:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b14af50_ec35585a",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "8afee5f8fca613d0eb7bcc6f9a81d234aff5de6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3d2a87_081705f2",
