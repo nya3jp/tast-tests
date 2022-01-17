@@ -34,6 +34,24 @@
       "parentUuid": "45c89cc2_7338c901",
       "revId": "f349321e3e0a559c406eacc102ff3dfb45431b2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef480ff_c9bf0fda",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/arc_lifecycle_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-17T07:41:35Z",
+      "side": 1,
+      "message": "That is much better, I think I was trying to avoid logging if we return a failure, but it\u0027s better to have simpler control flow.",
+      "parentUuid": "db72ad87_980bec32",
+      "revId": "f349321e3e0a559c406eacc102ff3dfb45431b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
