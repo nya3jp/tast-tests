@@ -124,6 +124,24 @@
       "parentUuid": "7776189e_2f3de8e0",
       "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb44581_ac53d4e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/prepare_cross_version_login_data.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-01-17T09:37:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ac4412fa_4e533222",
+      "revId": "4360011299c9dc7a8e78f65d82500f02986a2659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
