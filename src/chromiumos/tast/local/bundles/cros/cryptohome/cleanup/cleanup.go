@@ -25,6 +25,8 @@ import (
 const (
 	// Location of user directories.
 	UserHome = "/home/user"
+	// Shadow directory
+	ShadowDir = "/home/.shadow"
 
 	MiB                   uint64 = 1024 * 1024 // 1 MiB
 	GiB                   uint64 = 1024 * MiB  // 1 GiB
@@ -34,10 +36,10 @@ const (
 )
 
 // RunAutomaticCleanup triggers cleanup by restarting cryptohome and waits until it is done.
-func RunAutomaticCleanup(ctx context.Context, cleanupThreshold, aggressiveCleanupThreshold, targetThreshold uint64) error {
+func RunAutomaticCleanup(ctx context.Context, cleanupThreshold, aggressiveCleanupThreshold, criticalCleanupThreshold, targetThreshold uint64) error {
 	testing.ContextLog(ctx, "Performing automatic cleanup")
 
-	cleanupThresholdsArgs := fmt.Sprintf("--cleanup_threshold=%d --aggressive_cleanup_threshold=%d --target_free_space=%d", cleanupThreshold, aggressiveCleanupThreshold, targetThreshold)
+	cleanupThresholdsArgs := fmt.Sprintf("--cleanup_threshold=%d --aggressive_cleanup_threshold=%d --critical_cleanup_threshold=%d --target_free_space=%d", cleanupThreshold, aggressiveCleanupThreshold, criticalCleanupThreshold, targetThreshold)
 
 	reader, err := syslog.NewReader(ctx, syslog.Program(syslog.Cryptohomed))
 	if err != nil {
@@ -70,8 +72,9 @@ func RunAutomaticCleanup(ctx context.Context, cleanupThreshold, aggressiveCleanu
 }
 
 // ForceAutomaticCleanup sets the cleanup thresholds above the current free space, forcing a cleanup.
-// cleanupThreshold, aggressiveCleanupThreshold = freeSpace + MinimalFreeSpace
-// targetThreshold := freeSpace + CleanupTarget
+// Does not continue past cache cleanup.
+// cleanupThreshold = freeSpace + MinimalFreeSpace
+// others = freeSpace + 10*CleanupTarget
 func ForceAutomaticCleanup(ctx context.Context) error {
 	freeSpace, err := disk.FreeSpace(UserHome)
 	if err != nil {
@@ -81,7 +84,7 @@ func ForceAutomaticCleanup(ctx context.Context) error {
 	cleanupThreshold := freeSpace + MinimalFreeSpace
 	targetThreshold := freeSpace + 10*CleanupTarget
 
-	return RunAutomaticCleanup(ctx, cleanupThreshold, targetThreshold, targetThreshold)
+	return RunAutomaticCleanup(ctx, cleanupThreshold, targetThreshold, targetThreshold, targetThreshold)
 }
 
 // RunOnExistingUsers cleans up existing users so they don't affect the test by:
@@ -193,4 +196,20 @@ func CreateFilledUserHomedir(ctx context.Context, user, pass, dir string, size u
 
 	ok = true
 	return fillFile, nil
+}
+
+// UserHomeExists checks if a users home exists on disk.
+func UserHomeExists(ctx context.Context, user string) (bool, error) {
+	hash, err := cryptohome.UserHash(ctx, user)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get user hash")
+	}
+
+	if _, err := os.Stat(filepath.Join(ShadowDir, hash)); err == nil {
+		return true, nil
+	} else if errors.Is(err, os.ErrNotExist) {
+		return false, nil
+	} else {
+		return false, errors.Wrap(err, "failed to stat the user home dir")
+	}
 }
