@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc5d4e2d_16945bfc",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-17T03:04:10Z",
+      "side": 1,
+      "message": "that makes sense. I would avoid unnecessary writing the screenshot to disk. Revised to save the screenshot when the error was first returned, this way we don\u0027t need to save an intermediate screenshot anywhere.",
+      "parentUuid": "59479c3a_65607d87",
+      "revId": "089c949f2bb03103e17afff7ff56162003a971fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1c88dfb_552c75e9",
         "filename": "src/chromiumos/tast/local/uidetection/util.go",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-17T01:55:55Z",
       "side": 1,
       "message": "Generally in go we\u0027d use a fail-fast policy.\noutputDir, ok :\u003d ...\nif !ok {\n  ...\n}\nsuccess case",
+      "revId": "089c949f2bb03103e17afff7ff56162003a971fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b21c1b4_542956bb",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-17T03:04:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1c88dfb_552c75e9",
       "revId": "089c949f2bb03103e17afff7ff56162003a971fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-01-17T01:55:55Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "089c949f2bb03103e17afff7ff56162003a971fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1013f9_c724fb46",
+        "filename": "src/chromiumos/tast/local/uidetection/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-17T03:04:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a5cd5fe_9171e93c",
       "revId": "089c949f2bb03103e17afff7ff56162003a971fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
