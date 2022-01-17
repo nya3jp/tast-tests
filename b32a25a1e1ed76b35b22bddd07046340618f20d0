@@ -253,6 +253,24 @@
       "parentUuid": "e4bb9321_1fe61480",
       "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36fd13e3_2160a71b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-01-17T09:35:57Z",
+      "side": 1,
+      "message": "Hi hidehiko@, does this solution work for you? If so, please revisit this CL, thanks.",
+      "parentUuid": "104b8a4b_7aeb7ca0",
+      "revId": "b32a25a1e1ed76b35b22bddd07046340618f20d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
