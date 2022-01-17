@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd493835_441b4294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-17T13:12:09Z",
+      "side": 1,
+      "message": "Just realizing now that those are not flakes but actual failures:\n\nsrc/chromiumos/tast/local/network/netconfig/cros_network_config_types.go:60:2: struct field tag `json:\"passphrase\", omitempty` not compatible with reflect.StructTag.Get: key:\"value\" pairs not separated by spaces\ntast-remote-tests-cros-0.0.2-r9093: src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go:81:2: struct field tag `json:\"passphrase\", omitempty` not compatible with reflect.StructTag.Get: key:\"value\" pairs not separated by spaces\ntast-remote-tests-cros-0.0.2-r9093: src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go:82:2: struct field tag `json:\"ssid\", omitempty` not compatible with reflect.StructTag.Get: key:\"value\" pairs not separated by spaces\n\nI already tried just adding spaces, but then it\u0027s not marshalled with the lower case name (https://pkg.go.dev/encoding/json#Marshal).",
+      "revId": "2f41adf408c9b800285f3aed480841d50a6b4825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
