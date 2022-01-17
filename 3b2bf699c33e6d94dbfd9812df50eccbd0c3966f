@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "959db464_2c399f36",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a70c044_fa98d486",
+      "range": {
+        "startLine": 236,
+        "startChar": 121,
+        "endLine": 236,
+        "endChar": 127
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6db12e23_ec02fe7c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-14T08:34:36Z",
       "side": 1,
       "message": "nit: remove",
+      "range": {
+        "startLine": 261,
+        "startChar": 20,
+        "endLine": 261,
+        "endChar": 25
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e378c31_2c57e469",
+        "filename": "src/chromiumos/tast/common/camera/chart/chart.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db12e23_ec02fe7c",
       "range": {
         "startLine": 261,
         "startChar": 20,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8cdd49_fd60ebbe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f6ae7bb_9221acf7",
+      "range": {
+        "startLine": 24,
+        "startChar": 84,
+        "endLine": 24,
+        "endChar": 86
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a00609_365ce5b7",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-14T08:34:36Z",
       "side": 1,
       "message": "Do you want to copy symlinks?",
+      "range": {
+        "startLine": 78,
+        "startChar": 110,
+        "endLine": 78,
+        "endChar": 126
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c668950_62f723ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face/face.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a00609_365ce5b7",
       "range": {
         "startLine": 78,
         "startChar": 110,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa26ff2b_f8f8d39e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "it is used to consolidate the output image path.",
+      "parentUuid": "34efd3bb_9f9abeec",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f8ca6df_dfcbe95b",
@@ -123,6 +237,24 @@
       "writtenOn": "2022-01-14T08:34:36Z",
       "side": 1,
       "message": "Instead of a for, use a testing.Poll since it also respects context.",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba529e1_52aeb082",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "could you give me more hits about how to replace a for loop by testing.Poll",
+      "parentUuid": "6f8ca6df_dfcbe95b",
       "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +322,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "184abf53_cacadc96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "Yes, when it is empty, we use the default address(xxx-tablet) of the chart device.",
+      "parentUuid": "cefa1f1d_e43b0f0d",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 12
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1178731_7beabe8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f24fad4d_6dc13686",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 12
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e673bd3e_97857f48",
@@ -213,6 +393,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ab656b_0f919de7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e673bd3e_97857f48",
+      "range": {
+        "startLine": 92,
+        "startChar": 4,
+        "endLine": 92,
+        "endChar": 5
+      },
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ff67d3c_1b8142b3",
@@ -226,6 +430,24 @@
       "writtenOn": "2022-01-14T08:34:36Z",
       "side": 1,
       "message": "nit: add newline before",
+      "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0de98d_9914be76",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/face_auto_exposure.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1124415
+      },
+      "writtenOn": "2022-01-17T06:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ff67d3c_1b8142b3",
       "revId": "3b2bf699c33e6d94dbfd9812df50eccbd0c3966f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
