@@ -16,6 +16,46 @@
       "message": "Po-Hsien, what do you think of this change?",
       "revId": "64b6b4faba6bb93fad50fa40b81f3464a516342f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149d0796_cec85c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-18T22:19:17Z",
+      "side": 1,
+      "message": "Can you also logging the initialRatio and samenessThreshold?",
+      "revId": "64b6b4faba6bb93fad50fa40b81f3464a516342f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5966258_ec2ffb1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/vt_switch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-18T22:19:17Z",
+      "side": 1,
+      "message": "Any reason for changing the name of the perf?\nIf it is 0-100, I feel like it is a percent?",
+      "range": {
+        "startLine": 262,
+        "startChar": 41,
+        "endLine": 262,
+        "endChar": 46
+      },
+      "revId": "64b6b4faba6bb93fad50fa40b81f3464a516342f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
