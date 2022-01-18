@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd565c0d_422937ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_cyclic_bench.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-18T09:07:49Z",
+      "side": 1,
+      "message": "once we can return json from cyclic_bench.py, we can remove this and convert json \n to cyclicTestState directly",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 27
+      },
+      "revId": "75e9092c0e45d9c3c038650d4b44b46e4efea9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a31506_6806c092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_cyclic_bench.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-01-18T09:07:49Z",
+      "side": 1,
+      "message": "we might need change the usage since https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3185059 change the API.\n\nBut we need to wait for the CL get merged (or checkout to the CL by \"https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3185059\" once the CL get +2 and cherry-pick your CLs on top of it. and `repo upload`)",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 90
+      },
+      "revId": "75e9092c0e45d9c3c038650d4b44b46e4efea9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
