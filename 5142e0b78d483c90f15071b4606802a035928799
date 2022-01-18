@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc67e7c0_90fa1213",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/init_login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-01-18T02:57:49Z",
+      "side": 1,
+      "message": "should we put this variable in \"testing.AddTest(\u0026testing.Test{\" ?\n```\nVars: []string{\n\t\"hwsec.InitLoginPerf.numIterations\",\n},\n```",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "5142e0b78d483c90f15071b4606802a035928799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7dc813_e80c1883",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/init_login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-01-18T02:57:49Z",
+      "side": 1,
+      "message": "nit: not sure is it a good idea to parse the /var/log/messages directly.\nI will leave the decision to the tast owner.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "5142e0b78d483c90f15071b4606802a035928799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
