@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b7513ef_4c231845",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-18T04:44:04Z",
+      "side": 1,
+      "message": "Just to double-check: I was using the same approach as it was in the old faft test: https://source.corp.google.com/chromeos_public/infra/autotest-drone/server/site_tests/platform_FlashErasers/platform_FlashErasers.py;l\u003d97\nIn the old test that was called `dut_work_path` and that work path was constructed by a framework (faft).\nHere, of course, the framework is different (tast not faft), but I looked at what other tast tests are doing and took the same work path.\nSo the principal difference is work path created by framework (which is the same one all the time) vs temp directory (which is different every time). Not sure how much it matters...?\nAre there any extra properties of non-temp dir that are useful for tests (like, guaranteed to survive reboot for example? or anything else?)",
+      "parentUuid": "f85b2006_f0f02654",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "cd422f27d9903d3350c3a1cfc79cf095c38733d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5758dc3_332a2d6d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 12
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-18T03:55:10Z",
       "side": 1,
       "message": "string cast can be dropped",
+      "range": {
+        "startLine": 70,
+        "startChar": 66,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "cd422f27d9903d3350c3a1cfc79cf095c38733d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701f5c0a_b9c0ff35",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-18T04:44:04Z",
+      "side": 1,
+      "message": "That\u0027s a good idea, and I dropped few more cases like this.",
+      "parentUuid": "d5758dc3_332a2d6d",
       "range": {
         "startLine": 70,
         "startChar": 66,
