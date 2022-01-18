@@ -14,7 +14,8 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -29,19 +30,33 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
 		Timeout:      30 * time.Second,
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func ChromeValidity(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	// cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	// TODO: Use cleanupCtx.
+	defer closeBrowser(ctx)
 
-	testConcurrentTabs(ctx, s, cr)
+	testConcurrentTabs(ctx, s, br)
 }
 
 // testConcurrentTabs opens and closes tabs concurrently and checks errors.
-func testConcurrentTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome) {
+func testConcurrentTabs(ctx context.Context, s *testing.State, br *browser.Browser) {
 	const (
 		timeout     = 10 * time.Second
 		concurrency = 10
@@ -72,7 +87,8 @@ func testConcurrentTabs(ctx context.Context, s *testing.State, cr *chrome.Chrome
 				}
 
 				if err := func() (retErr error) {
-					conn, err := cr.NewConn(ctx, srv.URL)
+					conn, err := br.NewConn(ctx, srv.URL)
+
 					if err != nil {
 						return errors.Wrap(err, "Chrome.NewConn failed")
 					}
