@@ -16,6 +16,52 @@
       "message": "Finally all comments resolved/responded :) Many thanks for detailed reviews!",
       "revId": "cd422f27d9903d3350c3a1cfc79cf095c38733d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85b2006_f0f02654",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-01-18T03:55:10Z",
+      "side": 1,
+      "message": "If this just needs to be a temporary directory I think the usual way to do that is with ioutil.TempDir(). I.e. something like this at the start of the FwFlashErasers() function:\n\n```\n\ttempDir, err :\u003d ioutil.TempDir(\"\", \"\")\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Creating temp dir failed: \", err)\n\t}\n```",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "cd422f27d9903d3350c3a1cfc79cf095c38733d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5758dc3_332a2d6d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-01-18T03:55:10Z",
+      "side": 1,
+      "message": "string cast can be dropped",
+      "range": {
+        "startLine": 70,
+        "startChar": 66,
+        "endLine": 70,
+        "endChar": 72
+      },
+      "revId": "cd422f27d9903d3350c3a1cfc79cf095c38733d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
