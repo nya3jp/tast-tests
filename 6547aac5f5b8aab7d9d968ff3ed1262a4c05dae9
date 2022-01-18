@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "647dac19_770eb43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "You are right, it is not required anymore.",
+      "parentUuid": "800ce051_941e2c8f",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 142
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e2935d1_59f66a86",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-17T02:01:12Z",
       "side": 1,
       "message": "A couple of points here:\n\n1) Isn\u0027t one of the benefits of fixtures that we can move this cleanup stuff into shared code with an independent timeout, rather than duplicating it for every test?\n\n2) I\u0027ve come to dislike the pattern of closing all the windows we open. It makes things like failure screenshots and DumpUITreeOnError largely useless without a lot of care because by the time they run the state we\u0027re trying to capture has been closed. Here, for example, this dump statement runs after the deferred close statements below.\n\nTests that use chrome are supposed to reset chrome\u0027s window state during setup, so it should be fine to keep them to the end of the test.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 75
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00101ba1_2e5ee826",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/test_fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "Agree with you.\n\nBut we still need to close all the windows after one test to leave a clean env for the next test. I added a func to close all windows in Reset.",
+      "parentUuid": "1e2935d1_59f66a86",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cc6871a_493b7b3c",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "You mean other fixtures I mentioned in the go/ctt-to-fixture? I\u0027ll add them in another cl once this is submitted.",
+      "parentUuid": "1754de4b_516483dd",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db0d89ab_837e93ac",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-01-17T02:01:12Z",
       "side": 1,
       "message": "How about \"holds the runtime state of the fixture\" ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 51
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "958014bb_319afab4",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0d89ab_837e93ac",
       "range": {
         "startLine": 57,
         "startChar": 19,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4458511e_3920c978",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ac2964a_f1cf1e4f",
+      "range": {
+        "startLine": 67,
+        "startChar": 27,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01775e88_762cf55f",
@@ -140,6 +254,24 @@
       "writtenOn": "2022-01-17T00:20:37Z",
       "side": 1,
       "message": "Nit: Consistent field names between crostiniFixture and FixtureData would be nice.",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "915859cb_3b8df706",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01775e88_762cf55f",
       "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +295,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dc4a9cc_048e40c8",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "In the comment to go/ctt-to-fixture you suggested to check keepState in SetUp. I understand that if we want to keepState (which means use Crostini from previous test) we also need to check container. Please correct me.",
+      "parentUuid": "3d46b0c5_8d4a9df8",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ff6d3bf_2e9fcc05",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 1
@@ -174,6 +324,30 @@
       "writtenOn": "2022-01-17T02:01:12Z",
       "side": 1,
       "message": "Should do these checks in reset or pretest. I\u0027m not quite sure which, but we definitely need to reset chrome before each test.",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6892aca_0e5afabc",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "Added these in reset.",
+      "parentUuid": "8ff6d3bf_2e9fcc05",
       "range": {
         "startLine": 87,
         "startChar": 2,
@@ -203,6 +377,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10dbde38_8f7b1993",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "The disk is reported before and after installation, I think we could leave it here unless we want to install Crostini in PreTest.",
+      "parentUuid": "071c5141_fe11d4b7",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89f47540_9cd53763",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 1
@@ -214,6 +406,30 @@
       "writtenOn": "2022-01-17T02:01:12Z",
       "side": 1,
       "message": "Presumably this is no longer necessary, because it\u0027s defined at the fixture level?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 20
+      },
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87af53e6_e81728c6",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89f47540_9cd53763",
       "range": {
         "startLine": 142,
         "startChar": 0,
@@ -241,6 +457,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74eca8d_987762be",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a348ee_4fb94aa1",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ee26a9a_078bd19e",
@@ -258,6 +492,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abdc9b1a_b9236ede",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "We will do this when migrating the test cases to fixture. The changes will not be in this file. So I do not think we need a todo here.",
+      "parentUuid": "6ee26a9a_078bd19e",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4df072fb_baa84570",
@@ -271,6 +523,24 @@
       "writtenOn": "2022-01-17T00:20:37Z",
       "side": 1,
       "message": "Are there other errors during uninstall besides failed to close settings window?",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89691f5e_659a8ecf",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T06:40:44Z",
+      "side": 1,
+      "message": "Good catch. Changed the error msg. Thanks.",
+      "parentUuid": "4df072fb_baa84570",
       "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
