@@ -195,7 +195,7 @@ func init() {
 			// Test eventlog with hardware watchdog.
 			{
 				Name:              "watchdog",
-				ExtraAttr:         []string{"firmware_unstable"},
+				ExtraAttr:         []string{"firmware_ec"},
 				Fixture:           fixture.NormalMode,
 				ExtraSoftwareDeps: []string{"watchdog"},
 				Val: eventLogParams{
