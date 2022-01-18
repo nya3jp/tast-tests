@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/login/userutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -56,7 +57,8 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 
 	// non-owner should not be able to remove users
 	func() {
-		cr, settings, _ := openSettingsInSession(ctx, cleanUpCtx, s, additionalUser2, commonPassword, restrictSignInOption)
+		cr := userutil.Login(ctx, s, additionalUser2, commonPassword)
+		settings, _ := openSettingsInSession(ctx, cleanUpCtx, s, cr, restrictSignInOption)
 		defer cr.Close(cleanUpCtx)
 		defer settings.Close(cleanUpCtx)
 
@@ -71,7 +73,40 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 
 	// device owner should be able to delete other users, but not self
 	func() {
-		cr, settings, ui := openSettingsInSession(ctx, cleanUpCtx, s, deviceOwner, commonPassword, restrictSignInOption)
+		cr := userutil.Login(ctx, s, deviceOwner, commonPassword)
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Creating login test API connection failed: ", err)
+		}
+		defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tconn)
+
+		// wait until user becomes the device owner
+		testing.ContextLog(ctx, "Waiting for the user to become device owner")
+
+		var pollOpts = &testing.PollOptions{Interval: 1 * time.Second, Timeout: 60 * time.Second}
+		var status struct {
+			IsOwner bool
+		}
+
+		err = testing.Poll(ctx, func(ctx context.Context) error {
+			if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.loginStatus)()`, &status); err != nil {
+				// this is caused by failure to run javascript to get login status
+				// quit polling
+				return testing.PollBreak(err)
+			}
+			testing.ContextLogf(ctx, "is owner: %b", status.IsOwner)
+
+			if !status.IsOwner {
+				return errors.New("User did not become device owner yet")
+			}
+
+			return nil
+		}, pollOpts)
+
+		if err != nil {
+			s.Fatal("User failed to become device owner: ", err)
+		}
+		settings, ui := openSettingsInSession(ctx, cleanUpCtx, s, cr, restrictSignInOption)
 		defer cr.Close(cleanUpCtx)
 		defer settings.Close(cleanUpCtx)
 
@@ -171,14 +206,12 @@ func getUsernameFromEmail(email string) string {
 	return email[:strings.IndexByte(email, '@')]
 }
 
-func openSettingsInSession(ctx, cleanUpCtxs context.Context, s *testing.State, loginUser, password, restrictSignInOption string) (*chrome.Chrome, *ossettings.OSSettings, *uiauto.Context) {
-	cr := userutil.Login(ctx, s, loginUser, password)
-
+func openSettingsInSession(ctx, cleanUpCtx context.Context, s *testing.State, cr *chrome.Chrome, restrictSignInOption string) (*ossettings.OSSettings, *uiauto.Context) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating login test API connection failed: ", err)
 	}
-	defer faillog.DumpUITreeOnError(cleanUpCtxs, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tconn)
 
 	// display the list of users
 	ui := uiauto.New(tconn)
@@ -199,7 +232,7 @@ func openSettingsInSession(ctx, cleanUpCtxs context.Context, s *testing.State, l
 		s.Fatal("Failed to wait for the toggle to show the list of users: ", err)
 	}
 
-	return cr, settings, ui
+	return settings, ui
 }
 
 func getCryptohomeFileInfo(ctx context.Context, s *testing.State, user string) (os.FileInfo, error) {
