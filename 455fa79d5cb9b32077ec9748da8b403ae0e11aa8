@@ -67,6 +67,42 @@
       "message": "One other thing I was wondering about: is there any reason we can\u0027t use the UI automator package to test for the sign up button? (I would figure it doesn\u0027t work if Roblox is already drawing all this stuff through a lower-level graphics library, but figured I should ask.)",
       "revId": "455fa79d5cb9b32077ec9748da8b403ae0e11aa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9193b3a_e9fe7c04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T17:53:11Z",
+      "side": 1,
+      "message": "Not currently, the games based performance testing is still in the exploratory stage",
+      "parentUuid": "e2168c50_4a031c40",
+      "revId": "455fa79d5cb9b32077ec9748da8b403ae0e11aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f00e0520_1c9fed22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T17:53:11Z",
+      "side": 1,
+      "message": "Great question, I discuss that more in the doc attached to b/206442649 but the issue with games is that the are using custom engines to render their components. That results in elements which aren\u0027t visible in the layout that uiautomator can access.",
+      "parentUuid": "0e9b434f_997a33da",
+      "revId": "455fa79d5cb9b32077ec9748da8b403ae0e11aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
