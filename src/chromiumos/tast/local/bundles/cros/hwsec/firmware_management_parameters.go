@@ -17,11 +17,13 @@ const (
 	// fwmpRemovedErrorCode is the error code returned by GetFirmwareManagementParameters when the FWMP is removed.
 	fwmpRemovedErrorCode = "CRYPTOHOME_ERROR_FIRMWARE_MANAGEMENT_PARAMETERS_INVALID"
 
-	testFlags1 = "00000006" // FWMP_DEV_DISABLE_RECOVERY | FWMP_DEV_ENABLE_USB
-	testFlags2 = "0000000c" // FWMP_DEV_ENABLE_USB | FWMP_DEV_ENABLE_LEGACY
+	testFlags1   = "00000006" // FWMP_DEV_DISABLE_RECOVERY | FWMP_DEV_ENABLE_USB
+	testFlags2   = "0000000c" // FWMP_DEV_ENABLE_USB | FWMP_DEV_ENABLE_LEGACY
+	clearedFlags = "00000000"
 
-	testHash1 = "0123456789abcdef9876543210abcdef0123456789abcdef9876543210abcdef"
-	testHash2 = "00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff"
+	testHash1   = "0123456789abcdef9876543210abcdef0123456789abcdef9876543210abcdef"
+	testHash2   = "00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff"
+	clearedHash = "0000000000000000000000000000000000000000000000000000000000000000"
 )
 
 func init() {
@@ -39,15 +41,20 @@ func init() {
 
 // checkFWMPCleared checks that FWMP is cleared, and returns nil iff it is cleared.
 func checkFWMPCleared(ctx context.Context, utility *hwsec.CryptohomeClient) error {
-	_, _, err := utility.GetFirmwareManagementParameters(ctx)
-	if err == nil {
-		return errors.New("call to GetFirmwareManagementParameters succeeded when FWMP is cleared")
-	}
+	flags, hash, err := utility.GetFirmwareManagementParameters(ctx)
 
-	if err.ErrorCode != fwmpRemovedErrorCode {
-		return errors.Errorf("call to GetFirmwareManagementParameters failed with an incorrect error code, got %q, want %q", err.ErrorCode, fwmpRemovedErrorCode)
+	// There are 2 possible good results, depending on the coreboot and cryptohome implementation.
+	// Case 1: If the the FWMP index is owner-defined, invalid space is expected after the clear.
+	// Case 2: Otherwise, the FWMP index is platform-defined, which will not be deleted by cryptohome. Instead, cleared flag and hash is expected.
+	if err != nil { // Case 1.
+		if err.ErrorCode != fwmpRemovedErrorCode {
+			return errors.Errorf("call to GetFirmwareManagementParameters failed with an incorrect error code, got %q, want %q", err.ErrorCode, fwmpRemovedErrorCode)
+		}
+	} else { // Case 2.
+		if flags != clearedFlags || hash != clearedHash {
+			return errors.Errorf("flags or hash not cleared (expecting all 0s); flags: %q, hash: %q", flags, hash)
+		}
 	}
-
 	return nil
 }
 
