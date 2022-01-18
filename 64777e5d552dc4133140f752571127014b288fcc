@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47cc4ffe_0afcc42c",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_stress_task.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1412469
+      },
+      "writtenOn": "2022-01-18T02:28:47Z",
+      "side": 1,
+      "message": "Ah, never mind. I was wrong... (I thought we can write something like this:)\nif st.cooldown \u003e 0 \u0026\u0026 (err :\u003d testing.Sleep(ctx, st.cooldown); err !\u003d nil) {\nbut apparently it\u0027s not...",
+      "parentUuid": "e50b6b10_f795998a",
+      "revId": "64777e5d552dc4133140f752571127014b288fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aa69fbf_bdfe9c74",
