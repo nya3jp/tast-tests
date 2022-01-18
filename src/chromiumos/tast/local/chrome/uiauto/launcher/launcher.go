@@ -105,6 +105,22 @@ func OpenExpandedView(tconn *chrome.TestConn) uiauto.Action {
 	}
 }
 
+// OpenBubbleLauncher opens launcher using search accelerator and  waits until the bubble launcher UI becomes visible.
+func OpenBubbleLauncher(tconn *chrome.TestConn) uiauto.Action {
+	bubbleLauncher := nodewith.ClassName("AppListBubbleView")
+	ui := uiauto.New(tconn)
+	return uiauto.Combine("Wait for bubble launcher visibility",
+	       func(ctx context.Context) error {
+			if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelShiftSearch); err != nil {
+				return errors.Wrap(err, "failed to switch to fullscreen")
+			}
+			return nil
+		},
+		ui.WaitUntilExists(bubbleLauncher),
+		ui.WaitForLocation(bubbleLauncher),
+	)
+}
+
 // AppSearchFinder returns a Finder to find the specified app in an open launcher's search results.
 func AppSearchFinder(appName string) *nodewith.Finder {
 	searchResultView := nodewith.ClassName("SearchResultPageView")
@@ -196,9 +212,63 @@ func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, t
 	)
 }
 
+// RecentAppsItemCount returns the number of items shown in the recent apps section of the app list view. This is expected to be 0 if ProductivityLauncher is disabled.
+func FirstNonRecentAppItem(ctx context.Context, tconn *chrome.TestConn) (int, error) {
+	ui := uiauto.New(tconn)
+	recentAppsContainer := nodewith.ClassName("RecentAppsView")
+	if err := ui.Exists(recentAppsContainer)(ctx); err != nil {
+		return 0, nil
+	}
+
+	recentAppsLocation, err := ui.Location(ctx, recentAppsContainer)
+	if err != nil {
+		return -1, errors.Wrap(err, "failed to query recent apps")
+	}
+
+	// Get the index of the first non-folder item.
+	for itemIndex := 0;;itemIndex++ {
+		itemLocation, err := ui.Location(ctx, nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex))
+		if err != nil {
+			return -1, errors.Wrap(err, "failed to get item locatoin")
+		}
+		if !recentAppsLocation.Contains(*itemLocation) {
+			return itemIndex, nil
+		}
+	}
+}
+
+// CloseFolderView closes app list folder view - expects that the app list UI is currently showing a folder content.
+func CloseFolderView(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	folderView := nodewith.ClassName("AppListFolderView")
+	if err := ui.WaitUntilExists(folderView)(ctx); err != nil {
+		return errors.Wrap(err, "failed to find the unnamed folder")
+	}
+
+	folderViewLocation, err := ui.Location(ctx, folderView)
+	if err != nil {
+		return errors.Wrap(err, "failed to get folderViewLocation")
+	}
+	pointOutsideFolder := coords.NewPoint(folderViewLocation.Right()+50, folderViewLocation.CenterY()+50)
+
+	// Click to close the folder.
+	if err := mouse.Click(tconn, pointOutsideFolder, mouse.LeftButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click outside of the folder")
+	}
+
+	return nil
+}
+
 // CreateFolder is a helper function to create a folder by dragging the first non-folder item on top of the second non-folder item.
-func CreateFolder(ctx context.Context, tconn *chrome.TestConn) error {
-	firstItem := -1
+func CreateFolder(ctx context.Context, tconn *chrome.TestConn, folderOpensOnCreation bool) error {
+	// When productivity launcher is enabled, first row of items in the app list will be recent apps, which are not draggable, and cannot
+	// be used for tests that create folder.
+	precedingRecentApps, err := FirstNonRecentAppItem(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to count recent apps items")
+	}
+
+	firstItem := precedingRecentApps - 1
 
 	// Get the index of the first non-folder item.
 	for {
@@ -233,6 +303,14 @@ func CreateFolder(ctx context.Context, tconn *chrome.TestConn) error {
 		return errors.Wrap(err, "failed to drag icon over another icon")
 	}
 
+	// If folders get opened automatically on creation by user gesture, as it's case with productivity launcher feature, close the folder view.
+	if folderOpensOnCreation {
+		if err := CloseFolderView(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to close the folder")
+		}
+	}
+
+	// Make sure the folder items was added to the apps grid.
 	ui := uiauto.New(tconn)
 	if err := ui.WaitUntilExists(UnnamedFolderFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find the unnamed folder")
@@ -341,25 +419,33 @@ func RemoveIconFromFolder(tconn *chrome.TestConn) uiauto.Action {
 // Assumes that the folder is on the current page.
 // If the next available item to add is not on the current page, then the folder will be moved to the next page.
 // If the folder is full, then the attempt will still be made to add the item to the folder, and no error will be returned for that case.
-func AddItemsToFolder(ctx context.Context, tconn *chrome.TestConn, folder *nodewith.Finder, numItemsToAdd int) error {
+func AddItemsToFolder(ctx context.Context, tconn *chrome.TestConn, folder *nodewith.Finder, numItemsToAdd int, paginatedAppList bool) error {
 	numItemsInFolder, err := GetFolderSize(ctx, tconn, folder)
 	if err != nil {
 		return errors.Wrap(err, "failed to get folder size")
 	}
-	itemToAddIndex := 0
+	// When productivity launcher is enabled, first row of items in the app list will be recent apps, which are not draggable, and cannot
+	// be used for tests that create folder.
+	itemToAddIndex, err := FirstNonRecentAppItem(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to count recent apps items preceding grid items")
+	}
+
 	targetTotalItems := numItemsInFolder + numItemsToAdd
 
 	for numItemsInFolder < targetTotalItems {
 		item := nodewith.ClassName(ExpandedItemsClass).Nth(itemToAddIndex)
 
-		// Check that item is on the current page, otherwise move the folder to the next page.
-		onPage, err := IsItemOnCurrentPage(ctx, tconn, item)
-		if err != nil {
-			return errors.Wrap(err, "failed to check if the item is on the current page")
-		}
-		if !onPage {
-			if err := DragIconToNextPage(tconn, 0)(ctx); err != nil {
-				return errors.Wrap(err, "failed to drag icon to the next page")
+		// If the apps grid is paginated, try moving the folder to the next page if the next item is not on the current page.
+		if paginatedAppList {
+			onPage, err := IsItemOnCurrentPage(ctx, tconn, item)
+			if err != nil {
+				return errors.Wrap(err, "failed to check if the item is on the current page")
+			}
+			if !onPage {
+				if err := DragIconToNextPage(tconn, 0)(ctx); err != nil {
+					return errors.Wrap(err, "failed to drag icon to the next page")
+				}
 			}
 		}
 
@@ -447,15 +533,8 @@ func GetFolderSize(ctx context.Context, tconn *chrome.TestConn, folder *nodewith
 		return 0, errors.Wrap(err, "failed to find folderItemsInfo")
 	}
 
-	// Get and click on a location outside of the folder to close it.
-	folderViewLocation, err := ui.Location(ctx, folderView)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to get folderViewLocation")
-	}
-	pointOutsideFolder := coords.NewPoint(folderViewLocation.Right()+50, folderViewLocation.CenterY()+50)
-	// Click to close the folder.
-	if err := mouse.Click(tconn, pointOutsideFolder, mouse.LeftButton)(ctx); err != nil {
-		return 0, errors.Wrap(err, "failed to click outside of the folder")
+	if err := CloseFolderView(ctx, tconn); err != nil {
+		return 0, errors.Wrap(err, "failed to close the folder")
 	}
 
 	return len(folderItemsInfo), nil
