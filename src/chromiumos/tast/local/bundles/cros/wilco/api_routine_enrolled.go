@@ -317,12 +317,6 @@ func APIRoutineEnrolled(ctx context.Context, s *testing.State) {
 
 			wantRoutineStatus := dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_RUNNING
 			if tc.wantRoutineStatus == dtcpb.DiagnosticRoutineStatus_ROUTINE_STATUS_CANCELLED {
-				// Wait until cros_healthd receive callback from debugd,
-				// otherwise routine will have running status even after being cancelled.
-				// TODO(b:208438950): remove this sleep.
-				if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
-					s.Error("Failed to sleep: ", err)
-				}
 				if err := routines.CancelRoutine(ctx, uuid); err != nil {
 					s.Error("Unable to cancel routine: ", err)
 				}

@@ -221,13 +221,6 @@ func (c *WilcoService) TestRoutineCancellation(ctx context.Context, req *wpb.Exe
 		return nil, errors.Wrap(err, "unable to call routine")
 	}
 
-	// Wait until cros_healthd receive callback from debugd,
-	// otherwise routine will have running status even after being cancelled.
-	// TODO(b:208438950): remove this sleep.
-	if err := testing.Sleep(ctx, 100*time.Millisecond); err != nil {
-		return nil, errors.Wrap(err, "failed to sleep")
-	}
-
 	uuid := rrResponse.Uuid
 	response := dtcpb.GetRoutineUpdateResponse{}
 
