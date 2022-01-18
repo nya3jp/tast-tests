@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e96a67e_af23cff3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-18T01:52:37Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "0b24c8bf_a30b9fa8",
+      "revId": "a6a9c541532097869d9c972c020919189673b7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "580f595c_da897616",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-13T23:36:50Z",
       "side": 1,
       "message": "Might want to update this comment to reflect the new IsGuest boolean",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 108
+      },
+      "revId": "a6a9c541532097869d9c972c020919189673b7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c25f5739_96b6629b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-18T01:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580f595c_da897616",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44dbe52b_515a3c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-18T01:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4b8dac1_79435fb8",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 19
+      },
+      "revId": "a6a9c541532097869d9c972c020919189673b7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ed46afb_2f4337a9",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-14T00:12:56Z",
       "side": 1,
       "message": "This `else` is not needed here.",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 8
+      },
+      "revId": "a6a9c541532097869d9c972c020919189673b7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc06c14_32565425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-18T01:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed46afb_2f4337a9",
       "range": {
         "startLine": 147,
         "startChar": 4,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77394342_22605834",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-18T01:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fad2886_e87a66e7",
+      "range": {
+        "startLine": 168,
+        "startChar": 12,
+        "endLine": 168,
+        "endChar": 24
+      },
+      "revId": "a6a9c541532097869d9c972c020919189673b7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c890f90_a1c1ec61",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-01-13T23:36:50Z",
       "side": 1,
       "message": "Try to avoid duplicating comments, I think by employing s.Run to run your test variants you should be able to minimise this",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 52
+      },
+      "revId": "a6a9c541532097869d9c972c020919189673b7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2baab0a4_05054468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-18T01:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c890f90_a1c1ec61",
       "range": {
         "startLine": 207,
         "startChar": 2,
