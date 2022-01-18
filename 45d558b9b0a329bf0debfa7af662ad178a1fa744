@@ -227,6 +227,30 @@
       },
       "revId": "45d558b9b0a329bf0debfa7af662ad178a1fa744",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be51804f_2c1dea46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-01-18T19:19:32Z",
+      "side": 1,
+      "message": "Got it, yes that helps! Thanks 😊",
+      "parentUuid": "e8933e10_01b45ca4",
+      "range": {
+        "startLine": 127,
+        "startChar": 17,
+        "endLine": 127,
+        "endChar": 36
+      },
+      "revId": "45d558b9b0a329bf0debfa7af662ad178a1fa744",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
