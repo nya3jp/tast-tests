@@ -13,7 +13,13 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+type removeFolderItemsTestCase struct {
+	productivityLauncher bool // Whether productivity launcher feature should be enabled
+	tabletMode           bool // Whether the test runs in tablet mode
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -26,6 +32,21 @@ func init() {
 			"mmourgos@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{{
+			Name: "productivity_launcher_clamshell_mode",
+			Val:  removeFolderItemsTestCase{productivityLauncher: true, tabletMode: false},
+		}, {
+			Name: "clamshell_mode",
+			Val:  removeFolderItemsTestCase{productivityLauncher: false, tabletMode: false},
+		}, {
+			Name:              "productivity_launcher_tablet_mode",
+			Val:               removeFolderItemsTestCase{productivityLauncher: true, tabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}, {
+			Name:              "tablet_mode",
+			Val:               removeFolderItemsTestCase{productivityLauncher: false, tabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}},
 	})
 }
 
@@ -37,6 +58,13 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create 10 fake apps")
 	}
 	defer os.RemoveAll(extDirBase)
+
+	productivityLauncher := s.Param().(removeFolderItemsTestCase).productivityLauncher
+	if productivityLauncher {
+		opts = append(opts, chrome.EnableFeatures("ProductivityLauncher"))
+	} else {
+		opts = append(opts, chrome.DisableFeatures("ProductivityLauncher"))
+	}
 
 	// Creating fake apps and logging into a new session in this test ensures that enough apps will be available to folder.
 	cr, err := chrome.New(ctx, opts...)
@@ -50,32 +78,42 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	tabletMode := s.Param().(removeFolderItemsTestCase).tabletMode
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 	if err != nil {
-		s.Fatal("Failed to ensure in clamshell mode: ", err)
+		s.Fatalf("Failed to ensure tablet mode state %t %v: ", tabletMode, err)
 	}
 	defer cleanup(ctx)
 
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
+	if !tabletMode {
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
+		}
 	}
 
 	// Open the Launcher and go to Apps list page.
 	ui := uiauto.New(tconn)
-	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-		s.Fatal("Failed to open Expanded Application list view: ", err)
+	if productivityLauncher && !tabletMode {
+		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
+			s.Fatal("Failed to open bubble launcher: ", err)
+		}
+	} else {
+		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
+			s.Fatal("Failed to open Expanded Application list view: ", err)
+		}
 	}
 
 	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
 
-	if err := launcher.CreateFolder(ctx, tconn); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
+	paginatedAppList := !productivityLauncher || tabletMode
 	// Add 5 app items to the folder.
-	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 5); err != nil {
+	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 5, paginatedAppList); err != nil {
 		s.Fatal("Failed to add items to folder: ", err)
 	}
 
@@ -109,6 +147,14 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 		if err := launcher.RemoveIconFromFolder(tconn)(ctx); err != nil {
 			s.Fatal("Failed to remove icon from folder: ", err)
 		}
+	}
+
+	// With productivity launcher enabled, launcher does not delete single-item folders, so the folder should be around until the last item is dragged out.
+	if productivityLauncher {
+		if err := launcher.RemoveIconFromFolder(tconn)(ctx); err != nil {
+			s.Fatal("Failed to remove last icon from folder: ", err)
+		}
+
 	}
 
 	// Check that there is no longer a folder.
