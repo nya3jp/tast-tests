@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f5a3d4_43155bbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-18T14:46:11Z",
+      "side": 1,
+      "message": "lgtm with a question",
+      "revId": "395008145aa90802488a636aa203c9066743be45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e58bd3_934b9d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/logout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-18T14:46:11Z",
+      "side": 1,
+      "message": "So it seems we don\u0027t wait for the sm.WatchSessionStateChanged(ctx, \"stopped\") anymore. Is this intended? I wonder if we could see some weird effects of chrome logout and chrome.New running at the same time.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "395008145aa90802488a636aa203c9066743be45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
