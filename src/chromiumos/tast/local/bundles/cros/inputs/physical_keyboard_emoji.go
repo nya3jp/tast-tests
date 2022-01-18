@@ -6,10 +6,11 @@ package inputs
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -36,18 +37,15 @@ func init() {
 }
 
 func PhysicalKeyboardEmoji(ctx context.Context, s *testing.State) {
-	cleanupCtx := ctx
-	ctx, cancel := uiauto.ReserveForVNCRecordingCleanup(ctx)
-	defer cancel()
-
-	stopRecording := uiauto.RecordVNCVideo(cleanupCtx, s)
-	defer stopRecording()
-
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
 	uc := s.PreValue().(pre.PreData).UserContext
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	its, err := testserver.Launch(ctx, cr, tconn)
 	if err != nil {
