@@ -52,7 +52,7 @@ func NotificationPopupPerf(ctx context.Context, s *testing.State) {
 
 	// This includes adding notifications to show popup fade in and move up animation,
 	// then remove notification in reverse order (newer then older) to show fade out and move down animation.
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		for _, id := range ids {
 			if err := ash.ClearNotification(ctx, tconn, id); err != nil {
 				return errors.Wrapf(err, "failed to clear notification (id: %s): ", id)

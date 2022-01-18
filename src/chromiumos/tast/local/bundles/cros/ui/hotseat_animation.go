@@ -166,7 +166,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for stable shelf bouds: ", err)
 	}
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 
 	// Collect metrics data from hiding hotseat by window creation.
 	histogramsName := []string{
