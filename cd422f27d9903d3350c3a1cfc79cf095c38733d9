@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "002cb9f7_41351a6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-01-18T06:29:47Z",
+      "side": 1,
+      "message": "The main advantage of a temp dir is probably that it\u0027s isolated from everything else - there won\u0027t be any left over files from other applications or tests, nothing else will try to access it, etc.\n\nThe `/usr/local/share/tast/` dir is also used by firmware/helper.go, so there could potentially be a conflict with it, e.g. if this test started using the helper code in the future.\n\nIf you need persistence over reboots then a fixed directory might be required.",
+      "parentUuid": "7b7513ef_4c231845",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "cd422f27d9903d3350c3a1cfc79cf095c38733d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5758dc3_332a2d6d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 12
