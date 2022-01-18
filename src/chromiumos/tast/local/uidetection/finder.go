@@ -107,7 +107,7 @@ func (s *Finder) ExactMatch() *Finder {
 
 // resolve resolves the UI detection request and stores the bounding boxes
 // of the matching elements.
-func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions, strategy ScreenshotStrategy) error {
+func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions, strategy ScreenshotStrategy) (*Location, error) {
 	// Take the screenshot depending on the provided strategy.
 	var imagePng []byte
 	var err error
@@ -116,36 +116,36 @@ func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestC
 	case StableScreenshot:
 		imagePng, err = TakeStableScreenshot(ctx, tconn, pollOpts)
 		if err != nil {
-			return errors.Wrap(err, "failed to take stable screenshot")
+			return nil, errors.Wrap(err, "failed to take stable screenshot")
 		}
 	case ImmediateScreenshot:
 		imagePng, err = TakeScreenshot(ctx, tconn)
 		if err != nil {
-			return errors.Wrap(err, "failed to take screenshot")
+			return nil, errors.Wrap(err, "failed to take screenshot")
 		}
 	default:
-		return errors.New("invalid screenshot strategy")
+		return nil, errors.New("invalid screenshot strategy")
 	}
 
 	screens, err := display.GetInfo(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to get the display info")
+		return nil, errors.Wrap(err, "failed to get the display info")
 	}
 
 	// Find the ratio to convert coordinates in the screenshot to those in the screen.
 	scaleFactor, err := screens[0].GetEffectiveDeviceScaleFactor()
 	if err != nil {
-		return errors.Wrap(err, "failed to get the device scale factor")
+		return nil, errors.Wrap(err, "failed to get the device scale factor")
 	}
 
 	// Make sure the scale factor is neither 0 nor NaN.
 	if math.IsNaN(scaleFactor) || math.Abs(scaleFactor) < 1e-10 {
-		return errors.Errorf("invalid device scale factor: %f", scaleFactor)
+		return nil, errors.Errorf("invalid device scale factor: %f", scaleFactor)
 	}
 
 	response, err := d.sendDetectionRequest(ctx, imagePng, s.request)
 	if err != nil {
-		return errors.Wrap(err, "failed to resolve the UI detection request")
+		return nil, errors.Wrap(err, "failed to resolve the UI detection request")
 	}
 
 	s.boundingBoxes = []*Location{}
@@ -164,7 +164,16 @@ func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestC
 				Text: boundingBox.GetText(),
 			})
 	}
-	return nil
+
+	loc, err := s.location()
+	if err != nil {
+		// Save the screenshot if the test fails to find an element.
+		if err := saveBytesImageToOutput(ctx, imagePng, screenshotFile); err != nil {
+			testing.ContextLogf(ctx, "Failed to save the screenshot: %s", err)
+		}
+		return nil, errors.Wrapf(err, "failed to find the location of %s", s.desc)
+	}
+	return loc, nil
 }
 
 func (s *Finder) location() (*Location, error) {
