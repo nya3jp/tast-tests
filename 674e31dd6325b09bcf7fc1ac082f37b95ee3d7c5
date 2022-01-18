@@ -23,6 +23,30 @@
       },
       "revId": "674e31dd6325b09bcf7fc1ac082f37b95ee3d7c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee474ce7_71ee32c0",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-01-18T18:16:39Z",
+      "side": 1,
+      "message": "I fixed",
+      "parentUuid": "25de900a_a60c1d8d",
+      "range": {
+        "startLine": 49,
+        "startChar": 51,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "674e31dd6325b09bcf7fc1ac082f37b95ee3d7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
