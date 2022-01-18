@@ -580,7 +580,8 @@ func CountVisibleWindows(ctx context.Context, tconn *chrome.TestConn) (int, erro
 // parallelize the requests to create windows, which may be bad if the caller
 // wants to measure the performance of Chrome. This should be used for a
 // preparation, before the measurement happens.
-func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, url string, n int) error {
+// TODO: Replace ash.ConnSource with browser.Browser when it's no longer used by tests.
+func CreateWindows(ctx context.Context, tconn *chrome.TestConn, br ConnSource, url string, n int) error {
 	prevvis, err := CountVisibleWindows(ctx, tconn)
 	if err != nil {
 		return err
@@ -598,7 +599,7 @@ func CreateWindows(ctx context.Context, tconn *chrome.TestConn, cs ConnSource, u
 	var mu sync.Mutex
 	for i := 0; i < n; i++ {
 		g.Go(func() error {
-			conn, err := cs.NewConn(dctx, url, cdputil.WithNewWindow())
+			conn, err := br.NewConn(dctx, url, cdputil.WithNewWindow())
 			if err != nil {
 				return err
 			}
