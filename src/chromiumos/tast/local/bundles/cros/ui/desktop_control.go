@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -26,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DesktopControl,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check if the performance around desktop UI components is good enough; see also go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
 		Contacts: []string{
 			"newcomer@chromium.org",
@@ -35,19 +37,31 @@ func init() {
 			"mukai@chromium.org", // Tast author
 		},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{
 			{
+				Fixture:           "chromeLoggedIn",
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
+				Val:               browser.TypeAsh,
 			},
 			// TODO(crbug.com/1163981): remove "unstable" once we see stability on all platforms.
 			{
 				Name:              "unstable",
+				Fixture:           "chromeLoggedIn",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
+				Val:               browser.TypeAsh,
 			},
+			{
+				Name:              "lacros",
+				Fixture:           "lacrosPrimary",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
+				Val:               browser.TypeLacros,
+			},
+			// TODO: Add lacros_unstable variant when needed.
 		},
 	})
 }
@@ -65,7 +79,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	)
 	// When custom expectation value needs to be set, modify expects here.
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the connection to the test API: ", err)
@@ -79,9 +93,11 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := ash.CreateWindows(ctx, tconn, cr, "", 2); err != nil {
+	_, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, s.FixtValue(), s.Param().(browser.Type), "")
+	if err := ash.CreateWindows(ctx, tconn, br, "", 2); err != nil {
 		s.Fatal("Failed to create new windows: ", err)
 	}
+	defer closeBrowser(ctx)
 
 	// This test assumes shelf visibility, setting the shelf behavior explicitly.
 	info, err := display.GetPrimaryInfo(ctx, tconn)
@@ -105,7 +121,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set all windows as normal state: ", err)
 	}
 
-	r := perfutil.NewRunner(cr)
+	r := perfutil.NewRunner(cr.Browser())
 	r.Runs = 3
 	r.RunTracing = false
 

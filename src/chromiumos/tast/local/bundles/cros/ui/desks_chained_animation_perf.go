@@ -55,7 +55,7 @@ func DesksChainedAnimationPerf(ctx context.Context, s *testing.State) {
 		}()
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Starting at desk 1, activate desk 4 by activating each adjacent desk until we reach it.
 		if err = ash.ActivateAdjacentDesksToTargetIndex(ctx, tconn, 3); err != nil {
 			return errors.Wrap(err, "failed to activate the fourth desk")

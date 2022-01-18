@@ -107,15 +107,15 @@ func StoreLatency(ctx context.Context, pv *Values, hists []*metrics.Histogram) e
 
 // Runner is an entity to manage multiple runs of the test scenario.
 type Runner struct {
-	cr         *chrome.Chrome
+	br         *browser.Browser
 	pv         *Values
 	Runs       int
 	RunTracing bool
 }
 
 // NewRunner creates a new instance of Runner.
-func NewRunner(cr *chrome.Chrome) *Runner {
-	return &Runner{cr: cr, pv: NewValues(), Runs: DefaultRuns, RunTracing: (cr != nil)}
+func NewRunner(br *browser.Browser) *Runner {
+	return &Runner{br: br, pv: NewValues(), Runs: DefaultRuns, RunTracing: (br != nil)}
 }
 
 // Values returns the values in the runner.
@@ -158,7 +158,7 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		return true
 	}
 
-	defer r.cr.StopTracing(ctx)
+	defer r.br.StopTracing(ctx)
 	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
 		sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
 		defer cancel()
@@ -166,14 +166,14 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 		// that and data points from systrace isn't actually helpful to most of
 		// UI tests, disable systraces for the time being.
 		// TODO(https://crbug.com/1162385, b/177636800): enable it.
-		if err := r.cr.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}, browser.DisableSystrace()); err != nil {
+		if err := r.br.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}, browser.DisableSystrace()); err != nil {
 			s.Log("Failed to start tracing: ", err)
 			return
 		}
 		if _, err := scenario(sctx); err != nil {
 			s.Error("Failed to run the test scenario: ", err)
 		}
-		tr, err := r.cr.StopTracing(ctx)
+		tr, err := r.br.StopTracing(ctx)
 		if err != nil {
 			s.Log("Failed to stop tracing: ", err)
 			return
@@ -195,8 +195,8 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 
 // RunMultiple is a utility to create a new runner, conduct runs multiple times,
 // and returns the recorded values.
-func RunMultiple(ctx context.Context, s *testing.State, cr *chrome.Chrome, scenario ScenarioFunc, store StoreFunc) *Values {
-	r := NewRunner(cr)
+func RunMultiple(ctx context.Context, s *testing.State, br *browser.Browser, scenario ScenarioFunc, store StoreFunc) *Values {
+	r := NewRunner(br)
 	r.RunMultiple(ctx, s, "", scenario, store)
 	return r.Values()
 }
