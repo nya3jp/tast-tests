@@ -45,6 +45,30 @@
       },
       "revId": "5142e0b78d483c90f15071b4606802a035928799",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9383ae_e15f15d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/init_login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-01-18T05:47:11Z",
+      "side": 1,
+      "message": "good question. is platform_InitLoginPerfServer doing the same thing?\n\nwhat is the suggested practice assuming we can also consider polishing the production code?\nBTW, is it possible for tast to read UMA? we can start report the performance of the preparation, and in turn the test can be benefited from it.",
+      "parentUuid": "fd7dc813_e80c1883",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "5142e0b78d483c90f15071b4606802a035928799",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
