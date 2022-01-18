@@ -39,6 +39,30 @@
       },
       "revId": "1c72a852e23ec69a6b0b45ea4439dcea2ee3d00d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8a0a28_15404cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/login_cleanup_hack.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-18T09:25:22Z",
+      "side": 1,
+      "message": "The removal of large logs during login.",
+      "parentUuid": "366679a7_36e2afec",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 46
+      },
+      "revId": "1c72a852e23ec69a6b0b45ea4439dcea2ee3d00d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
