@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
@@ -33,7 +35,18 @@ func init() {
 			hwdep.InternalDisplay(),
 			hwdep.SkipOnModel("burnet"),
 		),
-		Fixture: "chromeLoggedIn",
+		Params: []testing.Param{
+			{
+				Fixture: "chromeLoggedIn",
+				Val:     browser.TypeAsh,
+			},
+			{
+				Name:              "lacros",
+				Fixture:           "lacrosPrimary",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val:               browser.TypeLacros,
+			},
+		},
 	})
 }
 
@@ -43,7 +56,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -58,9 +71,12 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 
 	// We are only dragging one window, but have some background windows as occlusion changes can impact performance.
 	const numWindows = 5
-	if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, numWindows); err != nil {
+	// Open a browser.
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	if err := ash.CreateWindows(ctx, tconn, br, ui.PerftestURL, numWindows); err != nil {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
+	defer closeBrowser(ctx)
 
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
@@ -106,7 +122,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 	// Return to the caption center, this will trigger a remaximize animation.
 	points = append(points, points[0])
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, br, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Move the mouse to caption and press down.
 		if err := mouse.Move(tconn, points[0], 10*time.Millisecond)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move to caption")
