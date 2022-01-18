@@ -29,25 +29,38 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{
-			{
-				Name: "clamshell_mode",
-				Val:  false,
-			},
-			{
-				Name:              "tablet_mode",
-				Val:               true,
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			},
-		},
+		Params: []testing.Param{{
+			Name: "productivity_launcher_clamshell_mode",
+			Val:  launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
+		}, {
+			Name: "clamshell_mode",
+			Val:  launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+		}, {
+			Name:              "productivity_launcher_tablet_mode",
+			Val:               launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}, {
+			Name:              "tablet_mode",
+			Val:               launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}},
 	})
 }
 
 // CreateAndRenameFolder tests if launcher handles renaming of folder correctly.
 func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
-	tabletMode := s.Param().(bool)
+	testCase := s.Param().(launcher.TestCase)
+	tabletMode := testCase.TabletMode
 
-	cr, err := chrome.New(ctx)
+	productivityLauncher := testCase.ProductivityLauncher
+	var opt chrome.Option
+	if productivityLauncher {
+		opt = chrome.EnableFeatures("ProductivityLauncher")
+	} else {
+		opt = chrome.DisableFeatures("ProductivityLauncher")
+	}
+
+	cr, err := chrome.New(ctx, opt)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -81,15 +94,21 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 	}
 
 	// Open the Launcher and go to Apps list page.
-	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-		s.Fatal("Failed to open Expanded Application list view: ", err)
+	if productivityLauncher && !tabletMode {
+		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
+			s.Fatal("Failed to open bubble launcher: ", err)
+		}
+	} else {
+		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
+			s.Fatal("Failed to open Expanded Application list view: ", err)
+		}
 	}
 
 	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
 
-	if err := launcher.CreateFolder(ctx, tconn); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
