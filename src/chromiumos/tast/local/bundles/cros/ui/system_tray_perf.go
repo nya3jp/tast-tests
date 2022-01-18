@@ -109,7 +109,7 @@ func SystemTrayPerf(ctx context.Context, s *testing.State) {
 
 	// This includes toggle the Status Area button to record input latency of showing Quick Settings/notification centre
 	// and toggle the collapsed state of the system tray to record animation smoothness.
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := uiauto.Combine(
 			"open the uber tray, collapse and expand it, then close it",
 			ac.LeftClick(statusArea),

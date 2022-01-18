@@ -146,7 +146,7 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
 	messageCenter := nodewith.ClassName("UnifiedMessageCenterView")
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := uiauto.Combine(
 			"open the uber tray, scroll up and down the notification list, then close it",
 			ac.LeftClick(statusArea),

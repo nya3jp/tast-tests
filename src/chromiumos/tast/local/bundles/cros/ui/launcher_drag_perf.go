@@ -160,7 +160,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	url := server.URL + "/animation.html"
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	currentWindows := 0
 	// Run the dragging gesture for different numbers of browser windows (0 or 2).
 	for _, windows := range []int{0, 2} {

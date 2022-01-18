@@ -72,7 +72,7 @@ func WindowResizePerf(ctx context.Context, s *testing.State) {
 		defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
 	}
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	for _, numWindows := range []int{1, 2} {
 		conn, err := cr.NewConn(ctx, ui.PerftestURL, browser.WithNewWindow())
 		if err != nil {

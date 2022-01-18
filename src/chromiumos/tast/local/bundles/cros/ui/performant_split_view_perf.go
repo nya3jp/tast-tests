@@ -164,7 +164,7 @@ func PerformantSplitViewPerf(ctx context.Context, s *testing.State) {
 	}
 
 	currentWindows := 0
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	var id0 int
 	for i, testCase := range testCases {
 		s.Run(ctx, testCase.name, func(ctx context.Context, s *testing.State) {
