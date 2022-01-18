@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23e0ecb_88363516",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-01-18T05:54:14Z",
+      "side": 1,
+      "message": "LGTM from tast side. Suggest to submit post LGTM from Yuri. Thanks",
+      "revId": "f2b242960e3ae204c050169f5103e21cb6261600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
