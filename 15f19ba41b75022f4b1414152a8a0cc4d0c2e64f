@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d844e3_9e12712f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-18T09:09:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff6a0c81_224388dd",
+      "range": {
+        "startLine": 55,
+        "startChar": 16,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bc523d7_f85dc4e5",
@@ -81,6 +105,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01575dbf_da299fcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-18T09:09:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3bc523d7_f85dc4e5",
+      "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee33d70_a98432f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-18T09:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5be0501_03987e10",
+      "range": {
+        "startLine": 60,
+        "startChar": 37,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b773e2c_7476298e",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-10-29T01:06:55Z",
       "side": 1,
       "message": "What if the DUT failed to wake up? The suspend test are often made as a remote test so that the test can wake up the device via servo in case the DUT fails to resume from suspend.",
+      "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69e33d4a_16a9ee1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-18T09:09:36Z",
+      "side": 1,
+      "message": "As there was no switching from S0ix to S3 state and vice-versa, it was considered that DUT will not go to hangup state, so script was implemented on local side. Now in order to handle above said scenario same script is added on remote side with fixing all above mentioned comments.",
+      "parentUuid": "2b773e2c_7476298e",
       "revId": "15f19ba41b75022f4b1414152a8a0cc4d0c2e64f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
