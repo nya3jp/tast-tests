@@ -401,13 +401,16 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 		// Wait for the 'video' element to be updated to fullscreen. This is needed
 		// because blink layout is updated asynchronously with the browser window
-		// bounds change.
+		// bounds change. 'video' element is considered fullscreen when either its
+		// width or its height matches the screen width or height. This is because
+		// 'video' element is resized to keep video aspect ratio and not always
+		// filling the screen.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
 			var fullscreen bool
 			if err := ytConn.Eval(ctx,
 				`(function() {
 						var b = document.querySelector('video').getBoundingClientRect();
-						return Math.abs(b.width -  window.screen.width) < 1e-5 &&
+						return Math.abs(b.width -  window.screen.width) < 1e-5 ||
 						       Math.abs(b.height - window.screen.height) < 1e-5;
 					})()`,
 				&fullscreen); err != nil {
