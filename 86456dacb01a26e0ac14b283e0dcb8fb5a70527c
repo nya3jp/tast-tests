@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ff6caa_714476ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T23:35:35Z",
+      "side": 1,
+      "message": "Thanks, looks good! Added some nits, and remarks about the positioning function in order to make it more generic.",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d96e976_9c57edc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T23:35:35Z",
+      "side": 1,
+      "message": "nit: not necessary, just move the const variables into your performLogin test function. Ditto for the call to bounds.",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bffd2315_bbf7680b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T23:35:35Z",
+      "side": 1,
+      "message": "nit: remove, this variable is no longer used.",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00f90291_7df7c57c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T23:35:35Z",
+      "side": 1,
+      "message": "Few things with this function:\n\n1. Can it be moved to TestUtil and be renamed: GetCoordsFromRelativePosition? A little wordy by makes the intent clear and goes with (2) below.\n2. This function is assuming everything is located at: [50%, \u003cheuristic\u003e%]. Can it instead take two parameters: percentOfScreenWidth, percentOfScreenHeight and set relativeWidth \u003d percentOfScreenWidth / scaleFactor, and relativeHeight \u003d percentOfScreenHeight / scaleFactor? In that way, it will become a much more generic function that we can use in multiple places, and will remove the hardcoding of .5 (which won\u0027t always be true).\n3. Noted below but scaleFactor is an implementation detail. You can remove it from the parameter list.",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b4d1540_e6c1739a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T23:35:35Z",
+      "side": 1,
+      "message": "This can also move into TestUtil since it will be used by the function you\u0027re moving into there. The caller (i.e. roblox_login.go) should not have to worry about this. It\u0027s an implementation detail of the GetCoordsFromRelativePosition function.",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "598ba7d2_7f0c4e96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T23:35:35Z",
+      "side": 1,
+      "message": "nit: Can you file a bug related to this, CC me on it, and put a TODO here that links to it? That will help track why this is happening, and give us something to look back on and fix in the future.",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5045520_40e5e1dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-18T23:35:35Z",
+      "side": 1,
+      "message": "nit: these testing.Sleeps will come up as part of the required Tast review since testing.Sleep is discouraged. To get ahead of this, can you extract the time (5*time.Second) into a const variable, increase the timeout (15 seconds should be fine), file a bug about waiting on Acuitii stability, and add a TODO on the first sleep referencing that new bug so reviewers know why it\u0027s in place?",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
