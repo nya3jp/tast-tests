@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9841c88_f8274480",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-18T14:47:45Z",
+      "side": 1,
+      "message": "lgtm with a nit",
+      "revId": "9bd28a849c5fa42eeaacd5e8407055e0af9d8fc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aca030fd_84de24be",
@@ -48,6 +65,29 @@
       "writtenOn": "2022-01-07T11:48:51Z",
       "side": 1,
       "message": "should this go in login package and be named\n\nlogin.ShowPassword \n\n?",
+      "revId": "9bd28a849c5fa42eeaacd5e8407055e0af9d8fc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfcdaac3_f15b9aaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/show_password_login_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-18T14:47:45Z",
+      "side": 1,
+      "message": "add cros-oac@google.com too",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 59
+      },
       "revId": "9bd28a849c5fa42eeaacd5e8407055e0af9d8fc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
