@@ -16,6 +16,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type renameFolderTestCase struct {
+	productivityLauncher bool // Whether productivity launcher feature should be enabled
+	tabletMode           bool // Whether the test runs in tablet mode
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CreateAndRenameFolder,
@@ -29,25 +34,37 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Params: []testing.Param{
-			{
-				Name: "clamshell_mode",
-				Val:  false,
-			},
-			{
-				Name:              "tablet_mode",
-				Val:               true,
-				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			},
-		},
+		Params: []testing.Param{{
+			Name: "productivity_launcher_clamshell_mode",
+			Val:  renameFolderTestCase{productivityLauncher: true, tabletMode: false},
+		}, {
+			Name: "clamshell_mode",
+			Val:  renameFolderTestCase{productivityLauncher: false, tabletMode: false},
+		}, {
+			Name:              "productivity_launcher_tablet_mode",
+			Val:               renameFolderTestCase{productivityLauncher: true, tabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}, {
+			Name:              "tablet_mode",
+			Val:               renameFolderTestCase{productivityLauncher: false, tabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}},
 	})
 }
 
 // CreateAndRenameFolder tests if launcher handles renaming of folder correctly.
 func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
-	tabletMode := s.Param().(bool)
+	tabletMode := s.Param().(renameFolderTestCase).tabletMode
 
-	cr, err := chrome.New(ctx)
+	productivityLauncher := s.Param().(renameFolderTestCase).productivityLauncher
+	opts := make([]chrome.Option, 0, 1)
+	if productivityLauncher {
+		opts = append(opts, chrome.EnableFeatures("ProductivityLauncher"))
+	} else {
+		opts = append(opts, chrome.DisableFeatures("ProductivityLauncher"))
+	}
+
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
@@ -81,15 +98,21 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 	}
 
 	// Open the Launcher and go to Apps list page.
-	if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-		s.Fatal("Failed to open Expanded Application list view: ", err)
+	if productivityLauncher && !tabletMode {
+		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
+			s.Fatal("Failed to open bubble launcher: ", err)
+		}
+	} else {
+		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
+			s.Fatal("Failed to open Expanded Application list view: ", err)
+		}
 	}
 
 	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
 		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
 
-	if err := launcher.CreateFolder(ctx, tconn); err != nil {
+	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
