@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "924e2dc9_ba935138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-18T20:53:13Z",
+      "side": 1,
+      "message": "Two nits and some other comments, but LGTM.",
+      "revId": "57babf13a1935b8ea2d0dcdf1d2edf3854509327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "377d3034_01dce61b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-18T20:53:13Z",
+      "side": 1,
+      "message": "The parsing code for --ei is here:\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/content/Intent.java;l\u003d7755;drc\u003d543d84f6b24165be420544d91c22c3dfb986c23a\n\nNote that the Java language doesn\u0027t support unsigned integers or longs, and so it just uses \"Integer.decode(String v)\".\n\nI didn\u0027t check, but presumably it fails if given a string that isn\u0027t a valid signed 64 bit integer, such as \"9223372036854775808\" (aka 0x8000000000000000 as a unsigned 64 bit value). But presumably \"-9223372036854775808\" (0x8000000000000000... as a signed 64 bit value) would work.\n\nThe previous code here at line 166 used strconv.FormatUint(), which outputs 9223372036854775808. You use strconv.Itoa(), which outputs -9223372036854775808.\n\nI suspect your version actually generates strings that can be parsed.\n\nI\u0027m not sure you really need to do too much other than maybe define a function that takes a uint64 but which casts it to int and effectively does what WithExtraInt does with the resulting value.\n\nIt might be good to do that soon, that documents the lack of a \"uint64\" in Java, just so others don\u0027t try and add one later that implements it wrong (like the original code here).",
+      "range": {
+        "startLine": 206,
+        "startChar": 23,
+        "endLine": 206,
+        "endChar": 137
+      },
+      "revId": "57babf13a1935b8ea2d0dcdf1d2edf3854509327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb666400_90c7d73f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_audio_playback_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-18T20:53:13Z",
+      "side": 1,
+      "message": "Nit: consistency. Can you wrap this long line?",
+      "revId": "57babf13a1935b8ea2d0dcdf1d2edf3854509327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde4932d_e77d0000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_video_decode_perf.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-18T20:53:13Z",
+      "side": 1,
+      "message": "Nit: consistency. Can you wrap this long line?",
+      "revId": "57babf13a1935b8ea2d0dcdf1d2edf3854509327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "903d8c32_93f61fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/surface_orientation.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-18T20:53:13Z",
+      "side": 1,
+      "message": "Note: Normally you should not do an unrelated cleanup inside as part of a larger cleanup. If the large cleanup needs to be reverted, you lose the other cleanup, since it is part of the same CL.\n\n(Pointing this out for next time)",
+      "revId": "57babf13a1935b8ea2d0dcdf1d2edf3854509327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

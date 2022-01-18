@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f27bbce_386455ec",
+        "filename": "src/chromiumos/tast/local/power/setup/setup_app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1127931
+      },
+      "writtenOn": "2022-01-18T20:53:13Z",
+      "side": 0,
+      "message": "I had to look to understand that ExpectStoppedOnTeardown was unused by anyone. But now I understand why this was removed.",
+      "revId": "dc22395b4976b3dd716ccb9c153433d8cbeaf082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
