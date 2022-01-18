@@ -55,6 +55,12 @@ func (b *Browser) NewConn(ctx context.Context, url string, opts ...CreateTargetO
 	return b.sess.NewConn(ctx, url, opts...)
 }
 
+// Target is chrome.Target.
+type Target = driver.Target
+
+// TargetID is chrome.TargetID.
+type TargetID = driver.TargetID
+
 // TargetMatcher is chrome.TargetMatcher.
 type TargetMatcher = driver.TargetMatcher
 
@@ -62,6 +68,17 @@ type TargetMatcher = driver.TargetMatcher
 // first one that is matched by tm.
 func (b *Browser) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
 	return b.sess.NewConnForTarget(ctx, tm)
+}
+
+// FindTargets returns the info about Targets, which satisfies the given cond condition.
+// This must not be called after Close().
+func (b *Browser) FindTargets(ctx context.Context, tm TargetMatcher) ([]*Target, error) {
+	return b.sess.FindTargets(ctx, tm)
+}
+
+// CloseTarget closes the target identified by the given id.
+func (b *Browser) CloseTarget(ctx context.Context, id TargetID) error {
+	return b.sess.CloseTarget(ctx, id)
 }
 
 // TestConn is chrome.TestConn.

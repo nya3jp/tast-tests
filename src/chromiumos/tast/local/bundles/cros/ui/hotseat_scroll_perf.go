@@ -280,7 +280,7 @@ func HotseatScrollPerf(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 
 	var mode uiMode
 

@@ -113,7 +113,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create new windows: ", err)
 	}
 
-	r := perfutil.NewRunner(cr)
+	r := perfutil.NewRunner(cr.Browser())
 	r.Runs = 5
 	r.RunTracing = false
 

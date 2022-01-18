@@ -106,7 +106,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 	// Return to the caption center, this will trigger a remaximize animation.
 	points = append(points, points[0])
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Move the mouse to caption and press down.
 		if err := mouse.Move(tconn, points[0], 10*time.Millisecond)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move to caption")

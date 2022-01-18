@@ -320,7 +320,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 
 	const histName = "Ash.Overview.WindowDrag.PresentationTime.TabletMode"
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	drag := s.Param().(dragTest)
 
 	currentWindows := 0

@@ -154,7 +154,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 		suffix = "TabletMode"
 	}
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 
 	const pageSwitchTimeout = 2 * time.Second
 	clickPageButtonAndWait := func(idx int) action.Action {

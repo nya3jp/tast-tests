@@ -84,7 +84,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 
 	numExistingWindows := 0
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
 	for i, numWindows := range []int{2, 8} {
 		if err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, numWindows-numExistingWindows); err != nil {

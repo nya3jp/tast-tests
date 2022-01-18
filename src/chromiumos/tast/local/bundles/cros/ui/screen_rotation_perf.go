@@ -67,7 +67,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 	defer display.SetDisplayRotationSync(closeCtx, tconn, dispInfo.ID, display.Rotate0)
 
 	currentWindows := 0
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	// Run the screen rotation in overview mode with 2 or 8 windows.
 	for _, windows := range []int{2, 8} {
 		if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows); err != nil {
