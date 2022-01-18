@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "170aa2af_6932761d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-18T09:24:26Z",
+      "side": 1,
+      "message": "we should wait for the ownership to be established before logging out. It seems that the corner case of \"the first user logged out before key was generated\" is not handled well.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 70
+      },
+      "revId": "6a84e6c79966689aef188e923fd7661239a44fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
