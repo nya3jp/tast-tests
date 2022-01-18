@@ -69,6 +69,24 @@
       "parentUuid": "7115e87e_d5d04153",
       "revId": "8ea0f32cc826e49e9175148e10cc15b5e75db754",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bebfcb1c_e6f4aedd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/extended_display_coldboot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-18T04:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c817929a_5f2ca840",
+      "revId": "8ea0f32cc826e49e9175148e10cc15b5e75db754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
