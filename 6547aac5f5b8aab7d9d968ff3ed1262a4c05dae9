@@ -453,6 +453,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d022a1ec_9e7a463e",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-18T23:46:56Z",
+      "side": 1,
+      "message": "I guess it\u0027s just the installation where lack of space was the issue, so this is fine. Nevermind :).",
+      "parentUuid": "10dbde38_8f7b1993",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89f47540_9cd53763",
