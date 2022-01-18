@@ -33,6 +33,24 @@
       "message": "Are brya test results not blocking the CQ? All four of the Optin tests listed here fail pretty consistently on that...",
       "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe47a806_7578884e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-01-18T19:58:40Z",
+      "side": 1,
+      "message": "It looks like tests (including critical ones) are failing on brya. This should block CQ.\n\nI will wait a bit until brya is fixed or excluded from CQ, just to be safe, although I don\u0027t think submitting this CL now would make things worse.",
+      "parentUuid": "30e7ede8_d30afa3a",
+      "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
