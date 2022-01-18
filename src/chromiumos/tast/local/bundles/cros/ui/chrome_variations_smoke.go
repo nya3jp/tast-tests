@@ -33,6 +33,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"variations_seed_beta_chromeos.json"},
+		Vars:         []string{"fake-variations-channel", "compressed-seed", "seed-signature"},
 	})
 }
 
@@ -91,19 +92,28 @@ func injectVariationsSeed(ctx context.Context, tconn *chrome.TestConn, seed *var
 
 // ChromeVariationsSmoke tests that Chrome doesn't crash and basic web content rendering is functional when loading a given variations seed.
 func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
-	// Prepare the test seed.
-	testSeedFile, err := os.Open(s.DataPath("variations_seed_beta_chromeos.json"))
-	if err != nil {
-		s.Fatal("Failed to open test seed file: ", err)
-	}
-	defer testSeedFile.Close()
-	b, err := ioutil.ReadAll(testSeedFile)
-	if err != nil {
-		s.Fatal("Failed to read Local State file contents: ", err)
-	}
+	// Prepare the test seed. Use the seed from the runtime vars if provided, otherwise use the fixed seed data file.
 	var testSeed variationsSeedData
-	if err := json.Unmarshal(b, &testSeed); err != nil {
-		s.Fatal("Failed to unmarshal test seed: ", err)
+	compressedSeed, ok1 := s.Var("compressed-seed")
+	seedSignature, ok2 := s.Var("seed-signature")
+	if ok1 && ok2 {
+		s.Log("Using user-provided seed")
+		testSeed.CompressedSeed = compressedSeed
+		testSeed.SeedSignature = seedSignature
+	} else {
+		s.Log("Using fixed seed from test data")
+		testSeedFile, err := os.Open(s.DataPath("variations_seed_beta_chromeos.json"))
+		if err != nil {
+			s.Fatal("Failed to open test seed file: ", err)
+		}
+		defer testSeedFile.Close()
+		b, err := ioutil.ReadAll(testSeedFile)
+		if err != nil {
+			s.Fatal("Failed to read Local State file contents: ", err)
+		}
+		if err := json.Unmarshal(b, &testSeed); err != nil {
+			s.Fatal("Failed to unmarshal test seed: ", err)
+		}
 	}
 
 	// Log in, verify a production seed was fetched, and inject the test seed.
@@ -112,10 +122,17 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 		// Chrome OS test images always have "unknown" browser channel since they are on testimage-channel.
 		// Variations configs are typically not served to unknown channels, so we need to specify
 		// --fake-variations-channel to successfully fetch and apply variations configs.
+		// We will use beta as the default channel (corresponding to the hardcoded seed in data/),
+		// unless a different channel is specified in the runtime vars.
 		// Also, specify the variations server explicitly, otherwise variations configs won't be fetched
 		// on builds that are not Chrome-branded.
+		channel := "beta"
+		if val, ok := s.Var("fake-variations-channel"); ok {
+			s.Log("Setting fake-variations-channel to ", val)
+			channel = val
+		}
 		cr, err := chrome.New(ctx, chrome.ExtraArgs(
-			"--fake-variations-channel=beta",
+			"--fake-variations-channel="+channel,
 			"--variations-server-url=https://clients4.google.com/chrome-variations/seed",
 		))
 		if err != nil {
