@@ -116,8 +116,8 @@ func OpenChromeApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to execute Tab command: ", err)
 	}
 	// Close the Chrome tab. This is not passed to Vmware Horizon in Kiosk mode.
-	if err := kb.Accel(ctx, "Ctrl+w"); err != nil {
-		s.Fatal("Failed to execute Ctrl+w command: ", err)
+	if err := kb.Accel(ctx, "Ctrl+Shift+w"); err != nil {
+		s.Fatal("Failed to execute Ctrl+Shift+w command: ", err)
 	}
 	if err := vdi.ResetSearch(ctx, kb); err != nil {
 		s.Fatal("Was not able to reset search results: ", err)
