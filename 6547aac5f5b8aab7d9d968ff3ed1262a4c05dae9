@@ -353,6 +353,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abbc0ee7_280b6b00",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-18T22:39:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "1f5640fa_2470d9d4",
+      "revId": "6547aac5f5b8aab7d9d968ff3ed1262a4c05dae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ff6d3bf_2e9fcc05",
