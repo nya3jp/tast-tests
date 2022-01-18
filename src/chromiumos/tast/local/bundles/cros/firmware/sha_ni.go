@@ -20,7 +20,7 @@ func init() {
 			"khwon@chromium.org",           // Test Author
 			"chromeos-firmware@google.com", // CrOS Firmware Developers
 		},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware", "firmware_ec"},
 		HardwareDeps: hwdep.D(hwdep.CPUSupportsSHANI()),
 	})
 }

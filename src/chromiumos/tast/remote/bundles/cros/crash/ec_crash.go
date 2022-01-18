@@ -29,7 +29,7 @@ func init() {
 		Func:        ECCrash,
 		Desc:        "Verify artificial EC crash creates crash files",
 		Contacts:    []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
-		Attr:        []string{"group:mainline", "informational", "group:firmware", "firmware_unstable"},
+		Attr:        []string{"group:mainline", "informational", "group:firmware", "firmware_ec"},
 		Timeout:     10 * time.Minute,
 		Fixture:     fixture.NormalMode,
 		ServiceDeps: []string{"tast.cros.crash.FixtureService"},
