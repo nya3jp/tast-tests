@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70bcd4fd_8ed96b52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-19T10:04:50Z",
+      "side": 1,
+      "message": "This should be \"info.Name\" because now variable name \"button\" is reused for a node finder.",
+      "range": {
+        "startLine": 285,
+        "startChar": 94,
+        "endLine": 285,
+        "endChar": 105
+      },
+      "revId": "6c8343dac547b662a8aa55d2f500fe513f24af0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
