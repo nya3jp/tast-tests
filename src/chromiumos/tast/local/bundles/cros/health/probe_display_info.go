@@ -109,12 +109,35 @@ func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
 		return false, errors.Wrap(err, "failed to run modetest command")
 	}
 
+	swStateExist := strings.Contains(string(b), "privacy-screen sw-state")
+	hwStateExist := strings.Contains(string(b), "privacy-screen hw-state")
+	// Both sw-state and hw-state should exist to indicate the feature is supported.
+	if swStateExist && hwStateExist {
+		return true, nil
+	} else if swStateExist || hwStateExist {
+		return false, nil
+	}
+
+	// Fall back to legacy interface.
 	return strings.Contains(string(b), "privacy-screen"), nil
 }
 
 func isPrivacyScreenEnabled(ctx context.Context) (bool, error) {
-	cmd := "modetest -c | sed -n -e '/eDP/,/connected/ p' | grep -A 3 'privacy-screen' | grep 'value' | awk -e '{ print $2 }'"
+	// Only hw-state indicates the real state of privacy screen info.
+	cmd := "modetest -c | sed -n -e '/eDP/,/connected/ p' | grep -A 3 'privacy-screen hw-state' | grep 'value' | awk -e '{ print $2 }'"
 	b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to run modetest command")
+	}
+
+	hwStateValue := strings.TrimRight(string(b), "\n")
+	if hwStateValue != "" {
+		return hwStateValue == "1", nil
+	}
+
+	// hw-state is empty, we need to fall back to legacy interface.
+	cmd = "modetest -c | sed -n -e '/eDP/,/connected/ p' | grep -A 3 'privacy-screen' | grep 'value' | awk -e '{ print $2 }'"
+	b, err = testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to run modetest command")
 	}
