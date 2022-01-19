@@ -38,7 +38,7 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 	// and no disconnection during the period.
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	legacyRouter, err := tf.LegacyRouter()
+	legacyRouter, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}

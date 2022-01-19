@@ -20,7 +20,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
-	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -194,7 +194,7 @@ func ScanAndCollectPcap(fullCtx context.Context, tf *wificell.TestFixture, name 
 // CollectPcapForAction starts a capture on the specified channel, performs a
 // custom action, and then stops the capture. The path to the pcap file is
 // returned.
-func CollectPcapForAction(fullCtx context.Context, rt router.SupportCapture, name string, ch int, freqOps []iw.SetFreqOption, action func(context.Context) error) (string, error) {
+func CollectPcapForAction(fullCtx context.Context, rt support.Capture, name string, ch int, freqOps []iw.SetFreqOption, action func(context.Context) error) (string, error) {
 	capturer, err := func() (ret *pcap.Capturer, retErr error) {
 		capturer, err := rt.StartCapture(fullCtx, name, ch, freqOps)
 		if err != nil {
