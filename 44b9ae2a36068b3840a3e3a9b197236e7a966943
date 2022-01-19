@@ -123,6 +123,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f48fa735_6c6e94b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-19T09:55:19Z",
+      "side": 1,
+      "message": "Agree with you here. As I mentioned in my comment, CrosvmCmd should be responsible for cleanup if returns error:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3185059/6/src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go#70",
+      "parentUuid": "ee5e65e8_487a66f7",
+      "revId": "44b9ae2a36068b3840a3e3a9b197236e7a966943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c66d0f7a_a0b9c673",
         "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
         "patchSetId": 6
