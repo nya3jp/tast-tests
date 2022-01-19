@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce8f3b5_acfa7371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-19T20:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d96e976_9c57edc7",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bffd2315_bbf7680b",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-18T23:35:35Z",
       "side": 1,
       "message": "nit: remove, this variable is no longer used.",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5817327_9e13e6d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-19T20:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bffd2315_bbf7680b",
       "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4690b6b5_851748c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-19T20:58:59Z",
+      "side": 1,
+      "message": "I\u0027ve done most of what you requested for this function, but as far as the screen bounds go, from my earlier testing, I get an error if I try to obtain it after the first \"WaitForLogcat\" call. Is there perhaps another method that can be used to obtain screen bounds? I\u0027ve tried the \"Bounds\" field in display.go, but it\u0027s incorrect, even when accounting for scale factor.",
+      "parentUuid": "00f90291_7df7c57c",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b4d1540_e6c1739a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
         "patchSetId": 6
@@ -82,6 +136,24 @@
       "writtenOn": "2022-01-18T23:35:35Z",
       "side": 1,
       "message": "This can also move into TestUtil since it will be used by the function you\u0027re moving into there. The caller (i.e. roblox_login.go) should not have to worry about this. It\u0027s an implementation detail of the GetCoordsFromRelativePosition function.",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0da2f7a_d0712aa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-19T20:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b4d1540_e6c1739a",
       "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f295ed_0b690acf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-19T20:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "598ba7d2_7f0c4e96",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5045520_40e5e1dd",
@@ -116,6 +206,24 @@
       "writtenOn": "2022-01-18T23:35:35Z",
       "side": 1,
       "message": "nit: these testing.Sleeps will come up as part of the required Tast review since testing.Sleep is discouraged. To get ahead of this, can you extract the time (5*time.Second) into a const variable, increase the timeout (15 seconds should be fine), file a bug about waiting on Acuitii stability, and add a TODO on the first sleep referencing that new bug so reviewers know why it\u0027s in place?",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb55c97_c16b6b13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-19T20:58:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5045520_40e5e1dd",
       "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
