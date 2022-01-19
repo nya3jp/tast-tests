@@ -33,6 +33,69 @@
       "message": "I don\u0027t know Go super well, but this looks reasonable to me.",
       "revId": "829e19751ce17bbd34fa3d0fac74727027f9ff8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff4f4dc_9c574e20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-01-19T03:01:55Z",
+      "side": 1,
+      "message": "lgtm with some nits",
+      "revId": "829e19751ce17bbd34fa3d0fac74727027f9ff8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e143d5_500e06c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-01-19T03:01:55Z",
+      "side": 1,
+      "message": "I think the dash separated format is usually used for passing cmd arguments, for tast, is it better to use the lower camel case? For example fakeVariationsChannel.",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 49
+      },
+      "revId": "829e19751ce17bbd34fa3d0fac74727027f9ff8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3413d67c_1c1f88a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1164104
+      },
+      "writtenOn": "2022-01-19T03:01:55Z",
+      "side": 1,
+      "message": "Can you assert that ok1 and ok2 should be of the same value? It\u0027s apparently an oversight if someone passes a seed, but not a signature, or the other way around.",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 14
+      },
+      "revId": "829e19751ce17bbd34fa3d0fac74727027f9ff8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
