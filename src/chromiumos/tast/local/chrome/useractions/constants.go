@@ -65,6 +65,7 @@ const (
 	ActionTagPKTyping           ActionTag = "PKTyping"
 	ActionTagDeadKey            ActionTag = "DeadKey"
 	ActionTagVKTyping           ActionTag = "VKTyping"
+	ActionTagVKAutoShift        ActionTag = "VKAutoShift"
 	ActionTagVKVoiceInput       ActionTag = "VKVoiceInput"
 	ActionTagVKHandWriting      ActionTag = "VKHandWriting"
 	ActionTagSwitchFloatVK      ActionTag = "SwitchFloatVK"
