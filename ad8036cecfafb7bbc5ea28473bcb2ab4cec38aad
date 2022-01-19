@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "141d4caa_a4218af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a018882b_2e77eb64",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "ad8036cecfafb7bbc5ea28473bcb2ab4cec38aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "433994f5_7fef5f79",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b10e9ab4_23fda768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "433994f5_7fef5f79",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "ad8036cecfafb7bbc5ea28473bcb2ab4cec38aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0749ddaf_fa1071cb",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-12-20T21:32:16Z",
       "side": 1,
       "message": "I\u0027d recommend using a more explainable name. How about verifyHardwareAccelWebGL?",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 108,
+        "endChar": 20
+      },
+      "revId": "ad8036cecfafb7bbc5ea28473bcb2ab4cec38aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef9af46_30fbd01a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0749ddaf_fa1071cb",
       "range": {
         "startLine": 108,
         "startChar": 11,

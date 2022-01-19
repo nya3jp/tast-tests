@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f9321c_3e86bc31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b634e7c9_450dc659",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 40
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc11629_0a1ff3e0",
@@ -123,6 +147,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06843268_a6915ecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efc5b6ac_d1fe12c9",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b5730bc_70cb85e8",
@@ -171,6 +219,24 @@
       "writtenOn": "2021-12-20T07:55:41Z",
       "side": 1,
       "message": "style: WebGLStress\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd2e75c_a4b9b757",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0880be7f_4a28159d",
       "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -245,6 +311,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32892568_d97302ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "40f52a21_b235f187",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 4
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e66e1c0_33182e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed52ffb5_7068318e",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 77
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "841e7aa7_66ea0ca7",
@@ -258,6 +372,30 @@
       "writtenOn": "2021-12-20T07:55:41Z",
       "side": 1,
       "message": "I recommend using indices starting from 0 here and elsewhere.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 37
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f213948_225a8a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "We are iterating over indices and here window index starts from 1, ends at 10.",
+      "parentUuid": "841e7aa7_66ea0ca7",
       "range": {
         "startLine": 86,
         "startChar": 1,
@@ -291,6 +429,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d28f257_8d2ee358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2a9d745_4adeb9d1",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 72
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50d01991_56428241",
@@ -314,6 +476,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31f2883_bb94fb2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "50d01991_56428241",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99edccf6_1142a839",
@@ -327,6 +513,30 @@
       "writtenOn": "2021-12-20T07:55:41Z",
       "side": 1,
       "message": "ditto (conn leak)",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 9
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f9b890a_2015f76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "99edccf6_1142a839",
       "range": {
         "startLine": 99,
         "startChar": 3,
@@ -389,6 +599,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdec32fe_5e13f63e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61649df7_b7c6275b",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e80bd21_dd203a0d",
@@ -402,6 +630,30 @@
       "writtenOn": "2021-12-20T07:55:41Z",
       "side": 1,
       "message": "I think it\u0027s better to define \"index\" within this inner scope. I believe index is always either 1 (in the first iteration) or totalWindows (in later iterations)?",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 5
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f157a932_af09aa51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e80bd21_dd203a0d",
       "range": {
         "startLine": 119,
         "startChar": 2,
@@ -483,6 +735,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f450d44_739e6afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "015963d7_a50a2080",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b3733a4_a80cc5b6",
@@ -496,6 +766,30 @@
       "writtenOn": "2021-12-20T07:55:41Z",
       "side": 1,
       "message": "nit: This code is easier to read by not converting to UNIX epoch times.\n\n endTime :\u003d time.Now().Add(time.Duration(testRun.hour) * time.Hour)\n for {\n   ...\n   if time.Now().After(endTime) {\n     break\n   }\n   s.Logf(...)\n }",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 51
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00126b5_7cb1918f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b3733a4_a80cc5b6",
       "range": {
         "startLine": 143,
         "startChar": 2,
@@ -540,6 +834,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23abefab_ab492807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d50faf5_c4a6be9f",
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4525af4_f26ecdcf",
@@ -553,6 +865,30 @@
       "writtenOn": "2021-12-20T07:55:41Z",
       "side": 1,
       "message": "style: chromeGPU",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 14
+      },
+      "revId": "373666ffe4ff53226b3e0b3a6ca600d60ac60260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1569e0_3e7721c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/webgl_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-19T11:13:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e4525af4_f26ecdcf",
       "range": {
         "startLine": 170,
         "startChar": 5,
