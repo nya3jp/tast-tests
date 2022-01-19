@@ -100,7 +100,7 @@ var plusVideoSrc = []videoSrc{
 }
 
 // Run runs the VideoCUJ test.
-func Run(ctx context.Context, resources TestResources, param TestParams) (retErr error) {
+func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	var (
 		cr              = resources.Cr
 		tconn           = resources.Tconn
@@ -179,8 +179,8 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 		videoSources = plusVideoSrc
 	}
 
-	// Give 5 seconds to cleanup other resources.
-	cleanupCtx := ctx
+	// Give 5 seconds to clean up device objects connected to UI Automator server resources.
+	cleanupDeviceCtx := ctx
 	ctx, cancel = ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
@@ -188,11 +188,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 	if err != nil {
 		return errors.Wrap(err, "failed to create new ARC device")
 	}
-	defer d.Close(cleanupCtx)
-
-	hasError := func() bool { return retErr != nil }
-	defer faillog.DumpUITreeOnError(cleanupCtx, outDir, hasError, tconn)
-	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, outDir, hasError)
+	defer d.Close(cleanupDeviceCtx)
 
 	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
 		conn, err := uiHandler.NewChromeTab(ctx, cr, cuj.GmailURL, true)
@@ -217,7 +213,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 
 	for _, videoSource := range videoSources {
 		// Repeat the run for different video source.
-		if err = recorder.Run(ctx, func(ctx context.Context) error {
+		if err = recorder.Run(ctx, func(ctx context.Context) (retErr error) {
 			var videoApp VideoApp
 			switch appName {
 			case YoutubeWeb:
@@ -226,10 +222,16 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 				videoApp = NewYtApp(tconn, kb, a, d, videoSource)
 			}
 
+			// Give time to cleanup videoApp resources.
+			cleanupResourceCtx := ctx
+			ctx, cancel = ctxutil.Shorten(ctx, 15*time.Second)
+			defer cancel()
+
 			if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
 				return errors.Wrapf(err, "failed to open %s", appName)
 			}
-			defer videoApp.Close(cleanupCtx)
+			defer videoApp.Close(cleanupResourceCtx)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupResourceCtx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
 
 			// Play video at fullscreen.
 			if err := videoApp.EnterFullscreen(ctx); err != nil {
@@ -248,7 +250,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) (retErr
 				return errors.Wrap(err, "failed to open Gmail website")
 			}
 			defer gConn.Close()
-			defer gConn.CloseTarget(cleanupCtx)
+			defer gConn.CloseTarget(cleanupResourceCtx)
 
 			ytApp, ok := videoApp.(*YtApp)
 			// Only do PiP testing for YT APP and when logged in as premium user.
