@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49fb2524_e8959f6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-19T23:12:56Z",
+      "side": 1,
+      "message": "We have an offline chat on this. While the usage of the GRPC is intended to be used by a single host which also starts and stops the cros server, there should not present risks of concurrent requests.  \nHowever, since the cost of adding protection against concurrent access is low, we have decided to add mutex on services and the sharedObject.",
+      "parentUuid": "81c6f522_c5f928f1",
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f847231d_9f861d2d",
@@ -207,6 +225,30 @@
       "side": 1,
       "message": "Thanks, I can add the option \"LoadSigninProfileExtension\" in this request.  Will reach out to you offline on the mechanics.",
       "parentUuid": "ea314186_c987f357",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 28
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04406d02_9f9bbbd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-19T23:12:56Z",
+      "side": 1,
+      "message": "We attempted to include this support but ran into 2 problems\n1) we could not figure out the proper way of storing/passing the manifestkey.  \n2) The TestAPIConn can initialized with either Tast extension or the signinProfile extension. With services now being more modularized, we need a way to introspect from the chrome session whether a signin extension was loaded.\nDecide to table this for now and revisit in the future (b/215421223)",
+      "parentUuid": "d2077bb5_15fe6df0",
       "range": {
         "startLine": 87,
         "startChar": 0,
@@ -571,6 +613,30 @@
       "writtenOn": "2022-01-05T14:59:04Z",
       "side": 1,
       "message": "Can you add a parameterized test for this being True. The use of the service in a non-ideal state is interesting to me",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "ddd147984121025d40f85e537f83712ccb2d797c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe03e46_3e82f35e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-19T23:12:56Z",
+      "side": 1,
+      "message": "Added a couple of parameterized tests, first one creating the sessions and second one reusing it.\nThere is logic in chrome on whether sessions can be reused, primarily depending on whether user, extensions and parameters match between sessions.",
+      "parentUuid": "8f2531b2_baf2495f",
       "range": {
         "startLine": 50,
         "startChar": 2,
