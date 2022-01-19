@@ -33,6 +33,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      5 * time.Minute,
 		Fixture:      "arcBooted",
 		Data:         []string{"com.roblox.client-886.zip"},
 		Params: []testing.Param{{
