@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "516bcf6f_4df4eb2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-01-19T04:47:35Z",
+      "side": 1,
+      "message": "Hi Daphne, please evaluate this modification to labqual.",
+      "revId": "5eaaf3a61b89b2971451efd3437239ab072cd3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
