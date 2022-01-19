@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -42,7 +43,10 @@ func init() {
 func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 	ui := uiauto.New(tconn)
+
+	uc.AddTags([]useractions.ActionTag{useractions.ActionTagVKAutoShift})
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -121,7 +125,7 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 		faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, hasError, cr, subtestName)
 	}
 
-	validateVKShiftInSentenceMode := func(ctx context.Context, inputField testserver.InputField) error {
+	validateVKShiftInSentenceMode := func(ctx context.Context, inputField testserver.InputField) uiauto.Action {
 		return uiauto.Combine("validate VK shift in sentence mode",
 			its.Clear(inputField),
 			// VK should be auto shifted in empty field.
@@ -147,10 +151,10 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 
 			validateManualShiftAndShiftLock,
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), "Hello world. H"),
-		)(ctx)
+		)
 	}
 
-	validateVKShiftInWordMode := func(ctx context.Context, inputField testserver.InputField) error {
+	validateVKShiftInWordMode := func(ctx context.Context, inputField testserver.InputField) uiauto.Action {
 		return uiauto.Combine("validate VK shift in word mode",
 			its.Clear(inputField),
 			// VK should be auto shifted in empty field.
@@ -179,10 +183,10 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 			vkbCtx.TapKey("H"),
 			validateManualShiftAndShiftLock,
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), "Hello World. H"),
-		)(ctx)
+		)
 	}
 
-	validateVKShiftInCharMode := func(ctx context.Context, inputField testserver.InputField) error {
+	validateVKShiftInCharMode := func(ctx context.Context, inputField testserver.InputField) uiauto.Action {
 		return uiauto.Combine("validate VK shift in character mode",
 			its.Clear(inputField),
 			// VK should be shift lock in character mode.
@@ -197,10 +201,10 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 			vkbCtx.TapKeyIgnoringCase("enter"),
 			vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateLocked),
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), "HELLO WORLD\n"),
-		)(ctx)
+		)
 	}
 
-	validateNoVKShift := func(ctx context.Context, inputField testserver.InputField) error {
+	validateNoVKShift := func(ctx context.Context, inputField testserver.InputField) uiauto.Action {
 		return uiauto.Combine("validate no VK shift",
 			its.Clear(inputField),
 			// VK should not be auto shift.
@@ -217,7 +221,7 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 
 			validateManualShiftAndShiftLock,
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), "hello world. h"),
-		)(ctx)
+		)
 	}
 
 	runSubtest := func(ctx context.Context, name string, f func(ctx context.Context) error) {
@@ -236,44 +240,108 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 	}
 
 	runSubtest(ctx, "no_attribute", func(ctx context.Context) error {
-		return validateVKShiftInSentenceMode(ctx, testserver.TextAreaInputField)
+		return useractions.NewUserAction("VK autoshift Sentense mode",
+			validateVKShiftInSentenceMode(ctx, testserver.TextAreaInputField),
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(testserver.TextAreaInputField),
+					useractions.AttributeTestScenario: "Sentense mode applies to fields with no attribute",
+				},
+			},
+		).Run(ctx)
 	})
 
 	runSubtest(ctx, "sentence", func(ctx context.Context) error {
-		return validateVKShiftInSentenceMode(ctx, testserver.TextAreaAutoShiftInSentence)
+		return useractions.NewUserAction("VK autoshift Sentense mode",
+			validateVKShiftInSentenceMode(ctx, testserver.TextAreaAutoShiftInSentence),
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(testserver.TextAreaAutoShiftInSentence),
+					useractions.AttributeTestScenario: "Validate VK autoshift Sentense mode",
+				},
+			},
+		).Run(ctx)
 	})
 
 	runSubtest(ctx, "word", func(ctx context.Context) error {
-		return validateVKShiftInWordMode(ctx, testserver.TextAreaAutoShiftInWord)
+		return useractions.NewUserAction("VK autoshift Word mode",
+			validateVKShiftInWordMode(ctx, testserver.TextAreaAutoShiftInWord),
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(testserver.TextAreaAutoShiftInWord),
+					useractions.AttributeTestScenario: "Validate VK autoshift Word mode",
+				},
+			},
+		).Run(ctx)
 	})
 
 	runSubtest(ctx, "char", func(ctx context.Context) error {
-		return validateVKShiftInCharMode(ctx, testserver.TextAreaAutoShiftInChar)
+		return useractions.NewUserAction("VK autoshift Char mode",
+			validateVKShiftInCharMode(ctx, testserver.TextAreaAutoShiftInChar),
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(testserver.TextAreaAutoShiftInChar),
+					useractions.AttributeTestScenario: "Validate VK autoshift Char mode",
+				},
+			},
+		).Run(ctx)
 	})
 
 	runSubtest(ctx, "off", func(ctx context.Context) error {
-		return validateNoVKShift(ctx, testserver.TextAreaAutoShiftOff)
+		return useractions.NewUserAction("VK autoshift off",
+			validateNoVKShift(ctx, testserver.TextAreaAutoShiftOff),
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(testserver.TextAreaAutoShiftOff),
+					useractions.AttributeTestScenario: "Validate VK autoshift turned off by attribute",
+				},
+			},
+		).Run(ctx)
 	})
 
 	runSubtest(ctx, "url_inapplicable", func(ctx context.Context) error {
-		return validateNoVKShift(ctx, testserver.URLInputField)
+		return useractions.NewUserAction("VK autoshift off",
+			validateNoVKShift(ctx, testserver.URLInputField),
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(testserver.URLInputField),
+					useractions.AttributeTestScenario: "VK autoshift does not apply to inapplicable fields",
+				},
+			},
+		).Run(ctx)
 	})
 
 	runSubtest(ctx, "override_autoshift", func(ctx context.Context) error {
 		inputField := testserver.TextAreaInputField
-		return uiauto.Combine("override auto shift state",
+		action := uiauto.Combine("override auto shift state",
 			its.Clear(inputField),
 			its.ClickFieldUntilVKShown(inputField),
 			vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateShifted),
 			manualShift,
 			vkbCtx.TapKeys(strings.Split("hello", "")),
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), "hello"),
-		)(ctx)
+		)
+		return useractions.NewUserAction("VK autoshift override",
+			action,
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(inputField),
+					useractions.AttributeTestScenario: "VK autoshift is override by manual shift",
+				},
+			},
+		).Run(ctx)
 	})
 
 	runSubtest(ctx, "override_shiftlock", func(ctx context.Context) error {
 		inputField := testserver.TextAreaAutoShiftInChar
-		return uiauto.Combine("override shift lock",
+		action := uiauto.Combine("override shift lock",
 			its.Clear(inputField),
 			its.ClickFieldUntilVKShown(inputField),
 			vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateLocked),
@@ -284,6 +352,17 @@ func VirtualKeyboardAutoShift(ctx context.Context, s *testing.State) {
 			vkbCtx.WaitUntilShiftStatus(vkb.ShiftStateLocked),
 			vkbCtx.TapKeys(strings.Split("ELLO", "")),
 			util.WaitForFieldTextToBe(tconn, inputField.Finder(), "hELLO"),
-		)(ctx)
+		)
+
+		return useractions.NewUserAction("VK autoshift override",
+			action,
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeInputField:   string(inputField),
+					useractions.AttributeTestScenario: "VK autoshift lock is override by manual shift",
+				},
+			},
+		).Run(ctx)
 	})
 }
