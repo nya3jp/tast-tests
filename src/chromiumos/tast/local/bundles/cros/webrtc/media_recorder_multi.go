@@ -49,17 +49,17 @@ func init() {
 		}, {
 			Name:              "vp8_vp8_global_vaapi_lock_disabled",
 			Val:               []videotype.Codec{videotype.VP8, videotype.VP8},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, "video_cards_ihd"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, "thread_safe_libva_backend"},
 			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
 		}, {
 			Name:              "vp8_h264_global_vaapi_lock_disabled",
 			Val:               []videotype.Codec{videotype.H264, videotype.VP8},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264, caps.HWEncodeVP8, "proprietary_codecs", "video_cards_ihd"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, caps.HWEncodeVP8, "proprietary_codecs", "thread_safe_libva_backend"},
 			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
 		}, {
 			Name:              "h264_h264_global_vaapi_lock_disabled",
 			Val:               []videotype.Codec{videotype.H264, videotype.H264},
-			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs", "video_cards_ihd"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "proprietary_codecs", "thread_safe_libva_backend"},
 			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
 		}},
 	})
