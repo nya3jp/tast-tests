@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type backlightInfo struct {
@@ -33,8 +32,6 @@ func init() {
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		// TODO(http://b/182185718): One kip device does not report having a backlight
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kip")),
 		Fixture:      "crosHealthdRunning",
 	})
 }
