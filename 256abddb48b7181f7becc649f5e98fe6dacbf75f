@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b43837b0_1dba7c34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-19T14:09:51Z",
+      "side": 1,
+      "message": "Hi Kamil,\n\nCan I check if moving these tests into their own loginapi package is ok? The tests share a lot of common code and I plan to add helper functions and definitions to reduce the amount of repitition.\n\nRegards,\nJit",
+      "revId": "256abddb48b7181f7becc649f5e98fe6dacbf75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
