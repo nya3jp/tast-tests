@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b59b457d_4a319710",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-19T16:21:05Z",
+      "side": 1,
+      "message": "It\u0027s a bit only details. This sounds like:\n- we set asan for some tests.\nSo, as a result, those tests may not run without asan.\n\nMy recommendation is to make it more explicit.\nWhat this CL does is to enable some tests in asan groups (so the dependency is opposite), and the current tests w/o asan should still keep running.",
+      "parentUuid": "f6fb7b7d_754207fe",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "cea1c82fff7ac18e8b3d76d47ee1f9f9e1b320bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4a4c9b4_9c8765f2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
