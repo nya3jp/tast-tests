@@ -37,7 +37,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_test_esim"},
 		Fixture:      fixture.FakeDMSEnrolled,
-		Timeout:      7 * time.Minute,
+		Timeout:      9 * time.Minute,
 	})
 }
 
@@ -162,7 +162,7 @@ func verifyTestESimProfileNotModifiable(ctx context.Context, tconn *chrome.TestC
 		return errors.Wrap(err, "failed to find the newly installed test profile as a managed profile")
 	}
 
-	if err := ui.WithTimeout(time.Minute).LeftClick(testProfileDetailButton)(ctx); err != nil {
+	if err := ui.WithTimeout(150 * time.Second).LeftClick(testProfileDetailButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to left click Test Profile detail button")
 	}
 
