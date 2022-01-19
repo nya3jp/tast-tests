@@ -85,7 +85,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	legacyRouter, err := tf.LegacyRouter()
+	legacyRouter, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}

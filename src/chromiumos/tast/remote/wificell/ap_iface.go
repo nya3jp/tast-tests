@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -37,11 +38,11 @@ func freeSubnetIdx(i byte) {
 	delete(busySubnet, i)
 }
 
-// APIface is the handle object of an instance of hostapd service managed by Router.
+// APIface is the handle object of an instance of hostapd service managed by router.Standard.
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
 type APIface struct {
-	router    router.Base
+	router    support.Base
 	name      string
 	iface     string
 	subnetIdx byte
@@ -93,7 +94,7 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 // StartAPIface starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r router.LegacyOpenWrtShared, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+func StartAPIface(ctx context.Context, r router.Standard, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "StartAPIface")
 	defer st.End()
 
@@ -159,7 +160,7 @@ func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.
 func (h *APIface) Stop(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "APIface.Stop")
 	defer st.End()
-	r, ok := h.router.(router.LegacyOpenWrtShared)
+	r, ok := h.router.(router.Standard)
 	if !ok {
 		return errors.Errorf("router device of type %v does not have legacy/openwrt support", h.router.RouterType())
 	}
@@ -191,9 +192,9 @@ func (h *APIface) DeauthenticateClient(ctx context.Context, clientMAC string) er
 // On failure, the APIface object will keep holding the old index, but the states of the
 // dhcp server and WiFi interface are not guaranteed and a call of Stop is still needed.
 func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
-	r, ok := h.router.(router.SupportDHCP)
-	if !ok {
-		return errors.Errorf("router device of type %v does not have dhcpcd support", h.router.RouterType())
+	r, err := support.WithDHCP(h.router)
+	if err != nil {
+		return errors.Wrapf(err, "router device of type %v does not have dhcp support", h.router.RouterType())
 	}
 	if h.dhcpd != nil {
 		if err := r.StopDHCP(ctx, h.dhcpd); err != nil {
