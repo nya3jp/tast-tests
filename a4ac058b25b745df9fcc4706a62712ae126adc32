@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b73d885_f128ec61",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-19T06:14:09Z",
+      "side": 1,
+      "message": "Per the comment here[0] cr.ResetState \"tries to close all \"normal\" pages, apps and dialog boxes\". If that\u0027s not correct, or not working, perhaps we should fix it instead of adding a new step that tests have to run to really reset chrome state?\n\n[0] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d390?q\u003dshouldCloseOnReset",
+      "parentUuid": "e6f7c63c_3ffa7293",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 2
+      },
+      "revId": "a4ac058b25b745df9fcc4706a62712ae126adc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "005fb2e1_061a034d",
         "filename": "src/chromiumos/tast/local/crostini/fixture.go",
         "patchSetId": 3
