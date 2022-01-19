@@ -69,10 +69,6 @@ type Base interface {
 	RouterType() Type
 }
 
-// OpenWrt contains the functionality that the future OpenWrt testbed shall support.
-type OpenWrt interface {
-	LegacyOpenWrtShared
-}
 
 // LegacyOpenWrtShared contains the functionality shared between legacy routers and openwrt routers.
 type LegacyOpenWrtShared interface {
@@ -87,6 +83,13 @@ type LegacyOpenWrtShared interface {
 	SupportBridge
 	SupportVeth
 }
+
+
+// OpenWrt contains the functionality that the future OpenWrt testbed shall support.
+type OpenWrt interface {
+	Base
+}
+
 
 // SupportLogs shall be implemented if the router supports log collection.
 type SupportLogs interface {

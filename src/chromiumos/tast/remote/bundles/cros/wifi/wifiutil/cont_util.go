@@ -43,9 +43,9 @@ type ContParam struct {
 
 // ContTest hods all varibles to be accessible for the whole continuity test.
 type ContTest struct {
-	tf          *wificell.TestFixture
-	r           legacyrouter.Legacy
-	clientMAC   string
+	tf        *wificell.TestFixture
+	r         legacy.Legacy
+	clientMAC string
 	br          [2]string
 	veth        [2]string
 	mac         [2]net.HardwareAddr
@@ -101,7 +101,7 @@ func hasFTSupport(ctx context.Context, s *testing.State) bool {
 	return false
 }
 
-func setupPcapOnRouter(ctx context.Context, r legacyrouter.Legacy,
+func setupPcapOnRouter(ctx context.Context, r legacy.Legacy,
 	apName string, apConf *hostapd.Config, ds *destructorStack) error {
 	freqOps, err := apConf.PcapFreqOptions()
 	if err != nil {
@@ -439,6 +439,6 @@ func (ct *ContTest) ContinuityRound(ctx context.Context, s *testing.State, round
 }
 
 // Router returns current router object.
-func (ct *ContTest) Router() legacyrouter.Legacy {
+func (ct *ContTest) Router() legacy.Legacy {
 	return ct.r
 }

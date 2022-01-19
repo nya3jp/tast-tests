@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/remote/wificell/router/openwrt"
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/network/arping"
@@ -35,8 +36,8 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router"
-	"chromiumos/tast/remote/wificell/router/axrouter"
-	"chromiumos/tast/remote/wificell/router/legacyrouter"
+	"chromiumos/tast/remote/wificell/router/ax"
+	"chromiumos/tast/remote/wificell/router/legacy"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/wifi"
@@ -978,8 +979,8 @@ func (tf *TestFixture) RouterByID(idx int) router.Base {
 }
 
 // LegacyRouter returns Router 0 object in the fixture.
-func (tf *TestFixture) LegacyRouter() (legacyrouter.Legacy, error) {
-	r, ok := tf.RouterByID(0).(legacyrouter.Legacy)
+func (tf *TestFixture) LegacyRouter() (legacy.Legacy, error) {
+	r, ok := tf.RouterByID(0).(legacy.Legacy)
 	if !ok {
 		return nil, errors.New("router is not a legacy router")
 	}
@@ -988,8 +989,8 @@ func (tf *TestFixture) LegacyRouter() (legacyrouter.Legacy, error) {
 }
 
 // AxRouter returns Router 0 object in the fixture.
-func (tf *TestFixture) AxRouter() (axrouter.Ax, error) {
-	r, ok := tf.RouterByID(0).(axrouter.Ax)
+func (tf *TestFixture) AxRouter() (ax.Ax, error) {
+	r, ok := tf.RouterByID(0).(ax.Ax)
 	if !ok {
 		return nil, errors.New("router is not an ax router")
 	}
@@ -1003,8 +1004,8 @@ func (tf *TestFixture) Router() router.Base {
 }
 
 // LegacyPcap returns the pcap Router object in the fixture.
-func (tf *TestFixture) LegacyPcap() (legacyrouter.Legacy, error) {
-	p, ok := tf.pcap.(legacyrouter.Legacy)
+func (tf *TestFixture) LegacyPcap() (legacy.Legacy, error) {
+	p, ok := tf.pcap.(legacy.Legacy)
 	if !ok {
 		return nil, errors.New("pcap is not a legacy pcap device")
 	}
@@ -1223,7 +1224,7 @@ func (tf *TestFixture) SetWakeOnWifi(ctx context.Context, ops ...SetWakeOnWifiOp
 }
 
 // newRouter connects to and initializes the router via SSH then returns the Router object.
-// This method takes two context: ctx and daemonCtx, the first is the context for the New
+// This method takes two context: ctx and daemonCtx, the first is the context for the NewLegacyRouter
 // method and daemonCtx is for the spawned background daemons.
 // After getting a Server instance, d, the caller should call r.Close() at the end, and use the
 // shortened ctx (provided by d.ReserveForClose()) before r.Close() to reserve time for it to run.
@@ -1232,9 +1233,11 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 	defer st.End()
 	switch rtype {
 	case router.LegacyT:
-		return legacyrouter.NewLegacyRouter(ctx, daemonCtx, host, name)
+		return legacy.NewLegacyRouter(ctx, daemonCtx, host, name)
 	case router.AxT:
-		return axrouter.NewAxRouter(ctx, daemonCtx, host, name)
+		return ax.NewAxRouter(ctx, daemonCtx, host, name)
+	case router.OpenWrtT:
+		return openwrt.NewOpenWrtRouter(ctx, daemonCtx, host, name)
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}

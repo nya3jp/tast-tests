@@ -2,5 +2,5 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package axrouter provides utilities for accessing or controlling AX enabled routers.
-package axrouter
+// Package legacyrouter provides utilities for accessing or controlling legacy routers.
+package legacy

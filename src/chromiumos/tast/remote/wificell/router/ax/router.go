@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package axrouter
+package ax
 
 import (
 	"context"
@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// Ax contains the funcionality that the ax testbed router should support.
+// Ax contains the functionality that the ax testbed router should support.
 type Ax interface {
 	router.Base
 	// RouterIP gets the router's IP address.
