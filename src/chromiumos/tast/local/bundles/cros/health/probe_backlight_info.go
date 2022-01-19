@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,8 +24,6 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
-		// TODO(http://b/182185718): One kip device does not report having a backlight
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("kip")),
 		Fixture:      "crosHealthdRunning",
 	})
 }
