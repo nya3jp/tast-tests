@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package axrouter
+package ax
 
 // secWPA provides Gen method to build a new Config.
 type secWPA struct {
@@ -11,8 +11,8 @@ type secWPA struct {
 }
 
 // Gen builds a ConfigParam list to allow the router to support a WPA network flow.
-func (f *secWPA) Gen(axtype AxType, band BandEnum) ([]ConfigParam, error) {
-	radio := BandToRadio(axtype, band)
+func (f *secWPA) Gen(axType DeviceType, band BandEnum) ([]ConfigParam, error) {
+	radio := BandToRadio(axType, band)
 	routerConfigParams := []ConfigParam{{radio, KeyAKM, "psk2"}, {radio, KeyAuthMode, "psk2"}, {radio, KeyWPAPSK, f.psk}}
 	if f.cipher == AES {
 		routerConfigParams = append(routerConfigParams, ConfigParam{radio, KeyCrypto, "aes"})
