@@ -6,6 +6,7 @@ package videocuj
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -19,6 +20,13 @@ import (
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+)
+
+const mouseMoveDuration = 500 * time.Millisecond
+
+var (
+	videoPlayer = nodewith.NameStartingWith("YouTube Video Player").Role(role.GenericContainer)
+	video       = nodewith.Role(role.Video).Ancestor(videoPlayer)
 )
 
 // YtWeb defines the struct related to youtube web.
@@ -97,14 +105,11 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to switch Youtube to the main display")
 	}
 
-	skipAdButton := nodewith.NameStartingWith("Skip Ad").Role(role.Button)
-	if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
+	if err := y.SkipAd()(ctx); err != nil {
 		return errors.Wrap(err, "failed to click 'Skip Ad' button")
 	}
 
 	switchQuality := func(resolution string) error {
-		videoPlayer := nodewith.Name("YouTube Video Player").Role(role.GenericContainer)
-		playButton := nodewith.Name("Play (k)").Role(role.Button).Ancestor(videoPlayer)
 		settings := nodewith.Name("Settings").Role(role.PopUpButton).Ancestor(videoPlayer)
 		quality := nodewith.NameStartingWith("Quality").Role(role.MenuItem).Ancestor(videoPlayer)
 
@@ -122,7 +127,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 			}
 
 			// If an ad is playing, skip it before proceeding.
-			if err := y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))(ctx); err != nil {
+			if err := y.SkipAd()(ctx); err != nil {
 				return errors.Wrap(err, "failed to click 'Skip Ad' button")
 			}
 
@@ -156,8 +161,8 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		// that might pause the video (mouse-click will, but touch-tap won't),
 		// here let the video keep playing anyway when switch the quality is finished.
 		if err := y.ui.IfSuccessThen(
-			y.ui.WithTimeout(3*time.Second).WaitUntilExists(playButton),
-			y.uiHdl.Click(playButton),
+			y.ui.WithTimeout(3*time.Second).WaitUntilExists(video),
+			y.uiHdl.Click(video),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "failed to ensure video is playing after show setting panel")
 		}
@@ -206,39 +211,102 @@ func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
 	return nil
 }
 
+// SkipAd skips the ad.
+func (y *YtWeb) SkipAd() uiauto.Action {
+	skipAdButton := nodewith.NameStartingWith("Skip Ad").Role(role.Button)
+	return y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))
+}
+
 // PauseAndPlayVideo verifies video playback on youtube web.
 func (y *YtWeb) PauseAndPlayVideo(ctx context.Context) error {
 	testing.ContextLog(ctx, "Pause and play video")
-	const (
-		playButton  = "Play (k)"
-		pauseButton = "Pause (k)"
-		timeout     = 15 * time.Second
-		waitTime    = 3 * time.Second
-	)
-
-	pauseBtn := nodewith.Name(pauseButton).Role(role.Button)
-	playBtn := nodewith.Name(playButton).Role(role.Button)
 
 	// The video should be playing at this point. However, we'll double check to make sure
 	// as we have seen a few cases where the video became paused automatically.
-	if err := y.ui.IfSuccessThen(
-		y.ui.WithTimeout(waitTime).WaitUntilExists(playBtn),
-		y.uiHdl.Click(playBtn),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to ensure video is playing before pausing")
+	if err := y.Play()(ctx); err != nil {
+		return errors.Wrap(err, "failed to play the video")
 	}
 
-	ui := uiauto.New(y.tconn).WithTimeout(timeout)
 	return uiauto.Combine("check the playing status of youtube video",
-		ui.WaitUntilExists(pauseBtn),
-		y.uiHdl.Click(pauseBtn),
-		ui.WaitUntilExists(playBtn),
-		// Keep in paused state for a while.
-		ui.Sleep(waitTime),
-		y.uiHdl.Click(playBtn),
-		// Keep playing for a while.
-		ui.Sleep(waitTime),
+		y.SkipAd(),
+		y.Pause(),
+		y.Play(),
 	)(ctx)
+}
+
+// Play plays the video by clicking the video itself. If the video has already started playing, the function does nothing.
+func (y *YtWeb) Play() uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := y.IsPlaying()(ctx); err != nil {
+			actionName := "play video"
+			return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
+				y.ui.MouseMoveTo(video, mouseMoveDuration),
+				y.ui.LeftClick(video),
+			))(ctx)
+		}
+		return nil
+	}
+}
+
+// Pause pauses the video by clicking the video itself.
+func (y *YtWeb) Pause() uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := y.IsPaused()(ctx); err != nil {
+			actionName := "pause video"
+			return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
+				y.ui.MouseMoveTo(video, mouseMoveDuration),
+				y.ui.LeftClick(video),
+			))(ctx)
+		}
+		return nil
+	}
+}
+
+// IsPlaying checks if the video is playing now.
+func (y *YtWeb) IsPlaying() uiauto.Action {
+	return func(ctx context.Context) error {
+		previousTime, err := y.getCurrentTime(ctx)
+		if err != nil {
+			return err
+		}
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			currentTime, err := y.getCurrentTime(ctx)
+			if err != nil {
+				return err
+			}
+			if currentTime > previousTime {
+				return nil
+			}
+			return errors.New("youtube is not playing")
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}
+}
+
+// IsPaused checks if the video is paused now.
+func (y *YtWeb) IsPaused() uiauto.Action {
+	return func(ctx context.Context) error {
+		previousTime, err := y.getCurrentTime(ctx)
+		if err != nil {
+			return err
+		}
+		// Considering that the paused action might not react immediately to the low-end DUTs.
+		// If the "paused" reaches the threshold, it means the video is actually paused.
+		threshold := 5
+		paused := 0
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			currentTime, err := y.getCurrentTime(ctx)
+			if err != nil {
+				return err
+			}
+			if currentTime == previousTime {
+				paused++
+			}
+			if paused >= threshold {
+				return nil
+			}
+			return errors.New("youtube is not paused")
+		}, &testing.PollOptions{Timeout: 10 * time.Second})
+	}
 }
 
 // waitForYoutubeReadyState does wait youtube video ready state then return.
@@ -269,6 +337,34 @@ func (y *YtWeb) Close(ctx context.Context) {
 		y.ytConn.Close()
 		y.ytConn = nil
 	}
+}
+
+// getCurrentTime gets the current video time in seconds.
+func (y *YtWeb) getCurrentTime(ctx context.Context) (int, error) {
+	settings := nodewith.Name("Settings").Role(role.PopUpButton).Ancestor(videoPlayer)
+	timeNode := nodewith.NameRegex(regexp.MustCompile("((\\d+):)?(\\d+):(\\d+)$")).Role(role.InlineTextBox).First()
+	if err := uiauto.Combine("make youtube video play time pop up",
+		y.ui.MouseMoveTo(settings, mouseMoveDuration),
+		y.ui.MouseMoveTo(videoPlayer, mouseMoveDuration),
+		y.ui.WaitUntilExists(timeNode),
+	)(ctx); err != nil {
+		return 0, err
+	}
+
+	node, err := y.ui.Info(ctx, timeNode)
+	if err != nil {
+		return 0, err
+	}
+
+	timeFormat := "4:05"
+	if len(node.Name) > 5 { // If the playback time exceeds an hour.
+		timeFormat = "15:04:05"
+	}
+	videoTime, err := time.Parse(timeFormat, node.Name)
+	if err != nil {
+		return 0, err
+	}
+	return videoTime.Hour()*60*60 + videoTime.Minute()*60 + videoTime.Second(), nil
 }
 
 // clearNotificationPrompts finds and clears some youtube web prompts.
