@@ -188,7 +188,6 @@ func (s *Servo) ECHibernate(ctx context.Context, option HibernationOpt) error {
 	if err := s.WatchdogRemove(ctx, WatchdogCCD); err != nil {
 		return errors.Wrap(err, "failed to remove watchdog for ccd")
 	}
-
 	switch option {
 	case "keyboard":
 		if err := func(ctx context.Context) error {
@@ -221,21 +220,8 @@ func (s *Servo) ECHibernate(ctx context.Context, option HibernationOpt) error {
 			return errors.Wrap(err, "failed to run EC command: hibernate")
 		}
 	}
-
-	// Verify the EC console is unresponsive, ignore null chars, sometimes the servo returns null when the EC is off.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		out, err := s.RunECCommandGetOutput(ctx, "version", []string{`[^\x00]+`})
-		if err == nil {
-			return errors.Errorf("EC is still active after hibernating DUT: got %v; expected error", out)
-		}
-		if !strings.Contains(err.Error(), "No data was sent from the pty") &&
-			!strings.Contains(err.Error(), "EC: Timeout waiting for response.") &&
-			!strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
-			return errors.Wrap(err, "unexpected EC error")
-		}
-		return nil
-	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second}); err != nil {
-		return errors.Wrap(err, "while verifying EC unresponsive")
+	if err := s.CheckUnresponsiveEC(ctx); err != nil {
+		return errors.Wrap(err, "while verifying whether EC is unresponsive after hibernating DUT")
 	}
 	return nil
 }
@@ -309,4 +295,22 @@ func (s *Servo) HasKBBacklight(ctx context.Context) bool {
 	expMatch := regexp.MustCompile(reKBBacklight)
 	match := expMatch.FindStringSubmatch(out[0][0])
 	return match != nil
+}
+
+// CheckUnresponsiveEC verifies that EC console is unresponsive in situations such as
+// hibernation and battery cutoff. Ignore null chars, sometimes the servo returns null
+// when the EC is off.
+func (s *Servo) CheckUnresponsiveEC(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := s.RunECCommandGetOutput(ctx, "version", []string{`[^\x00]+`})
+		if err == nil {
+			return errors.Errorf("EC is still active: got %v; expected error", out)
+		}
+		if !strings.Contains(err.Error(), "No data was sent from the pty") &&
+			!strings.Contains(err.Error(), "EC: Timeout waiting for response.") &&
+			!strings.Contains(err.Error(), "Timed out waiting for interfaces to become available") {
+			return errors.Wrap(err, "unexpected EC error")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 20 * time.Second})
 }

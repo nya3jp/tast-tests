@@ -17,17 +17,21 @@ type CrossystemParam string
 
 // Crossystem params used by tests, add more as needed.
 const (
-	CrossystemParamDevBootUsb     CrossystemParam = "dev_boot_usb"
-	CrossystemParamDevDefaultBoot CrossystemParam = "dev_default_boot"
-	CrossystemParamDevswBoot      CrossystemParam = "devsw_boot"
-	CrossystemParamFWBTries       CrossystemParam = "fwb_tries"
-	CrossystemParamFWTryNext      CrossystemParam = "fw_try_next"
-	CrossystemParamFWTryCount     CrossystemParam = "fw_try_count"
-	CrossystemParamFWVboot2       CrossystemParam = "fw_vboot2"
-	CrossystemParamKernkeyVfy     CrossystemParam = "kernkey_vfy"
-	CrossystemParamMainfwAct      CrossystemParam = "mainfw_act"
-	CrossystemParamMainfwType     CrossystemParam = "mainfw_type"
-	CrossystemParamWpswCur        CrossystemParam = "wpsw_cur"
+	CrossystemParamBackupNvramRequest CrossystemParam = "backup_nvram_request"
+	CrossystemParamDevBootUsb         CrossystemParam = "dev_boot_usb"
+	CrossystemParamDevDefaultBoot     CrossystemParam = "dev_default_boot"
+	CrossystemParamDevBootAltfw       CrossystemParam = "dev_boot_altfw"
+	CrossystemParamDevswBoot          CrossystemParam = "devsw_boot"
+	CrossystemParamFWBTries           CrossystemParam = "fwb_tries"
+	CrossystemParamFWTryNext          CrossystemParam = "fw_try_next"
+	CrossystemParamFWTryCount         CrossystemParam = "fw_try_count"
+	CrossystemParamFWUpdatetries      CrossystemParam = "fwupdate_tries"
+	CrossystemParamFWVboot2           CrossystemParam = "fw_vboot2"
+	CrossystemParamKernkeyVfy         CrossystemParam = "kernkey_vfy"
+	CrossystemParamLocIdx             CrossystemParam = "loc_idx"
+	CrossystemParamMainfwAct          CrossystemParam = "mainfw_act"
+	CrossystemParamMainfwType         CrossystemParam = "mainfw_type"
+	CrossystemParamWpswCur            CrossystemParam = "wpsw_cur"
 )
 
 var (
