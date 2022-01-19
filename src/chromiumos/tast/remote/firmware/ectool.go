@@ -99,3 +99,11 @@ func (ec *ECTool) Hash(ctx context.Context) (string, error) {
 
 	return string(match[1]), nil
 }
+
+// BatteryCutoff runs the ectool batterycutoff command.
+func (ec *ECTool) BatteryCutoff(ctx context.Context) error {
+	if err := ec.Command(ctx, "batterycutoff").Start(); err != nil {
+		return errors.Wrap(err, "running 'ectool batterycutoff' on DUT")
+	}
+	return nil
+}
