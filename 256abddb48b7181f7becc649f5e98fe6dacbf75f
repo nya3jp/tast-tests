@@ -16,6 +16,23 @@
       "message": "Hi Kamil,\n\nCan I check if moving these tests into their own loginapi package is ok? The tests share a lot of common code and I plan to add helper functions and definitions to reduce the amount of repitition.\n\nRegards,\nJit",
       "revId": "256abddb48b7181f7becc649f5e98fe6dacbf75f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4f37eca_fc32d736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-19T14:29:03Z",
+      "side": 1,
+      "message": "All look good. Thanks for the clean up - moving those to a separate package 👍",
+      "revId": "256abddb48b7181f7becc649f5e98fe6dacbf75f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
