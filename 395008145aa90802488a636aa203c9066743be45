@@ -39,6 +39,30 @@
       },
       "revId": "395008145aa90802488a636aa203c9066743be45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de7bd79_bf2d7f5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/logout.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-19T09:16:02Z",
+      "side": 1,
+      "message": "Fixed, we now properly wait for the signal and then continue to proceed `chrome.New`.",
+      "parentUuid": "e9e58bd3_934b9d85",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 29
+      },
+      "revId": "395008145aa90802488a636aa203c9066743be45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
