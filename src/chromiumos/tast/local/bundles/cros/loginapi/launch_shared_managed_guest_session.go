@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package policy
+package loginapi
 
 import (
 	"context"
@@ -21,9 +21,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         LoginScreenStorageAPI,
+		Func:         LaunchSharedManagedGuestSession,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Test chrome.login.loginScreenStorage Extension API",
+		Desc:         "Test chrome.login.launchSharedManagedGuestSession Extension API",
 		Contacts: []string{
 			"jityao@google.com", // Test author
 			"chromeos-commercial-identity@google.com",
@@ -34,11 +34,11 @@ func init() {
 	})
 }
 
-// LoginScreenStorageAPI shares a lot of code with LaunchManagedGuestSession in
-// launch_managed_guest_session.go, but b/204177106 is in progress, which would
-// simplify the set up of the test.
-// TODO(jityao): Refactor both tests after b/204177106 is submitted.
-func LoginScreenStorageAPI(ctx context.Context, s *testing.State) {
+// LaunchSharedManagedGuestSession shares a lot of code with
+// LaunchManagedGuestSession in launch_managed_guest_session.go, but
+// b/204177106 is in progress, which would simplify the set up of the test.
+// TODO(jityao): Refactor tests after b/204177106 is submitted.
+func LaunchSharedManagedGuestSession(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
@@ -85,6 +85,9 @@ func LoginScreenStorageAPI(ctx context.Context, s *testing.State) {
 		&policy.DeviceLoginScreenExtensions{
 			Val: []string{loginScreenExtensionID},
 		},
+		&policy.DeviceRestrictedManagedGuestSessionEnabled{
+			Val: true,
+		},
 	}
 
 	pb := fakedms.NewPolicyBlob()
@@ -130,29 +133,18 @@ func LoginScreenStorageAPI(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	storedData := "data"
-	if err := conn.Call(ctx, nil, `(extensionIds, data) => new Promise((resolve, reject) => {
-		chrome.loginScreenStorage.storePersistentData(extensionIds, data, () => {
+	// Launch a shared managed guest session.
+	password := "password"
+	if err := conn.Call(ctx, nil, `(password) => new Promise((resolve, reject) => {
+		chrome.login.launchSharedManagedGuestSession(password, () => {
 			if (chrome.runtime.lastError) {
 				reject(new Error(chrome.runtime.lastError.message));
 				return;
 			}
 			resolve();
 		});
-	})`, []string{inSessionExtensionID}, storedData); err != nil {
-		s.Fatal("Failed to store persistent data: ", err)
-	}
-
-	if err := conn.Eval(ctx, `new Promise((resolve, reject) => {
-		chrome.login.launchManagedGuestSession(() => {
-			if (chrome.runtime.lastError) {
-				reject(new Error(chrome.runtime.lastError.message));
-				return;
-			}
-			resolve();
-		});
-	})`, nil); err != nil {
-		s.Fatal("Failed to launch MGS: ", err)
+	})`, password); err != nil {
+		s.Fatal("Failed to launch shared MGS: ", err)
 	}
 
 	select {
@@ -169,20 +161,59 @@ func LoginScreenStorageAPI(ctx context.Context, s *testing.State) {
 	}
 	defer inSessionConn.Close()
 
-	var retrievedData string
-	if err := inSessionConn.Call(ctx, &retrievedData, `(loginScreenExtensionId) => new Promise((resolve, reject) => {
-		chrome.loginScreenStorage.retrievePersistentData(loginScreenExtensionId, (data) => {
+	// Note that this uses lockManagedGuestSession() since locking an MGS is
+	// equivalent to locking the shared session.
+	if err := inSessionConn.Eval(ctx, `new Promise((resolve, reject) => {
+		chrome.login.lockManagedGuestSession(() => {
 			if (chrome.runtime.lastError) {
 				reject(new Error(chrome.runtime.lastError.message));
 				return;
 			}
-			resolve(data);
+			resolve();
 		});
-	})`, loginScreenExtensionID); err != nil {
-		s.Fatal("Failed to retrieve persistent data: ", err)
+	})`, nil); err != nil {
+		s.Fatal("Failed to lock session: ", err)
 	}
 
-	if retrievedData != storedData {
-		s.Errorf("Wrong data retrieved, expected: %s, actual: %s", storedData, retrievedData)
+	// Previous conn is closed since it is a login screen extension which
+	// closes when the session starts.
+	conn2, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(loginScreenBGURL))
+	if err != nil {
+		s.Fatal("Failed to connect to login screen background page on lock screen: ", err)
+	}
+	defer conn2.Close()
+
+	unlockSessionFunc := `(password) => new Promise((resolve, reject) => {
+		chrome.login.unlockSharedSession(password, () => {
+			if (chrome.runtime.lastError) {
+				reject(new Error(chrome.runtime.lastError.message));
+				return;
+			}
+			resolve();
+		});
+	})`
+
+	// Attempt unlock with wrong password.
+	wrongPassword := "wrong password"
+	if err := conn2.Call(ctx, nil, unlockSessionFunc, wrongPassword); err == nil {
+		s.Fatal("Unlock unexpectedly succeeded with wrong password")
+	}
+
+	swUnlocked, err := sm.WatchScreenIsUnlocked(ctx)
+	if err != nil {
+		s.Fatal("Failed to watch for D-Bus signals: ", err)
+	}
+	defer swUnlocked.Close(ctx)
+
+	// Unlock with correct password.
+	if err := conn2.Call(ctx, nil, unlockSessionFunc, password); err != nil {
+		s.Fatal("Failed to unlock session: ", err)
+	}
+
+	select {
+	case <-swUnlocked.Signals:
+		// Pass
+	case <-ctx.Done():
+		s.Fatal("Timeout before getting session unlocked signal: ", err)
 	}
 }
