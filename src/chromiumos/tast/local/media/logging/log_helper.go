@@ -17,12 +17,9 @@ import (
 // enable logging in media/gpu code.
 func ChromeVmoduleFlag() string {
 	loggingPatterns := []string{
-		"*/media/gpu/*video_decode_accelerator.cc=2",
-		"*/media/gpu/*video_encode_accelerator.cc=2",
-		"*/media/gpu/*jpeg_decode_accelerator.cc=2",
-		"*/media/gpu/*jpeg_encode_accelerator.cc=2",
-		"*/media/gpu/*image_processor.cc=2",
-		"*/media/gpu/*v4l2_device.cc=2",
+		"*/media/gpu/chrome/*2",
+		"*/media/gpu/v4l2/*=2",
+		"*/media/gpu/vaapi/*=2",
 	}
 	return "--vmodule=" + strings.Join(loggingPatterns, ",")
 }
