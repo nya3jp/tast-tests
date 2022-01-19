@@ -34,12 +34,12 @@ func AddUSBPrinter(ctx context.Context, s *testing.State) {
 
 	pr, err := usbprinter.Start(ctx,
 		usbprinter.WithDescriptors("usb_printer.json"))
+	if err != nil {
+		s.Fatal("Failed to attach virtual printer: ", err)
+	}
 	defer func(ctx context.Context) {
 		if err := pr.Stop(ctx); err != nil {
 			s.Error("Failed to stop virtual printer: ", err)
 		}
 	}(ctx)
-	if err != nil {
-		s.Fatal("Failed to attach virtual printer: ", err)
-	}
 }

@@ -61,14 +61,14 @@ func RunIPPUSBPPDTest(ctx context.Context, s *testing.State, attributes string, 
 		usbprinter.WithIPPUSBDescriptors(),
 		usbprinter.WithAttributes(attributes),
 		usbprinter.WaitUntilConfigured())
+	if err != nil {
+		s.Fatal("Failed to start IPP-over-USB printer: ", err)
+	}
 	defer func(ctx context.Context) {
 		if err := printer.Stop(ctx); err != nil {
 			s.Error("Failed to stop printer: ", err)
 		}
 	}(ctx)
-	if err != nil {
-		s.Fatal("Failed to start IPP-over-USB printer: ", err)
-	}
 
 	ppdMap, err := getPPDMap(ctx, printer.ConfiguredName)
 	if err != nil {
