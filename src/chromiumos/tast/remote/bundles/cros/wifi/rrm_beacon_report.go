@@ -215,7 +215,7 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 	defer cancel()
 	ap1Chan := uint8(ap1.Config().Channel)
 
-	legacyRouter, err := tf.LegacyRouter()
+	legacyRouter, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Unable to get legacy router: ", err)
 	}
