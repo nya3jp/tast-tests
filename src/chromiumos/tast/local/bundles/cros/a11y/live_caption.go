@@ -102,7 +102,7 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 2 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for libsoda dlc to be installed: ", err)
 	}
 
