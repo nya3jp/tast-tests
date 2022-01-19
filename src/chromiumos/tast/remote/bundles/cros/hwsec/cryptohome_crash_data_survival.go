@@ -95,18 +95,26 @@ func CryptohomeCrashDataSurvival(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to kill cryptohomed")
 	}
 
-	// Wait for Cryptohomed to come back.
+	// We need to wait for the new pid to appear, because it takes dbus some time to realize that
+	// the cryptohome dbus service is gone.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		pid, err := getCryptohomedPID(ctx, r)
+		if err != nil {
+			return errors.Wrap(err, "cryptohomed pid unavailable")
+		}
+		if pid == lastPid {
+			return errors.Errorf("cryptohomed pid %d did not change", pid)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: waitForCryptohomedTimeout}); err != nil {
+		s.Fatal("Failed to wait for cryptohomed to come back: ", err)
+	}
+
+	// Wait for Cryptohomed service to come back.
 	if err := dc.WaitForAllDBusServices(ctx); err != nil {
 		s.Fatal("DBus services did not return: ", err)
 	}
-	// Cryptohome is back, check that it's restarted.
-	currentPid, err := getCryptohomedPID(ctx, r)
-	if err != nil {
-		s.Fatal("Cryptohomed pid unavailable")
-	}
-	if currentPid == lastPid {
-		s.Fatalf("Cryptohomed pid did not change: %d != %d", currentPid, lastPid)
-	}
+	// Cryptohome is back
 
 	// Unmount and check that the files are no longer accessible.
 	if err = utility.UnmountAll(ctx); err != nil {
