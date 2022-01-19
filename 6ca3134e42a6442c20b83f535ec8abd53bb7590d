@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9325836_0ef3125f",
+        "filename": "src/chromiumos/tast/services/cros/nearbyservice/nearby_share_service.pb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-19T18:59:39Z",
+      "side": 0,
+      "message": "did you have to regenerate this for some reason? not seeing any proto changes so just wondering why this changed",
+      "revId": "6ca3134e42a6442c20b83f535ec8abd53bb7590d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a9ce24_fe65ddbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-19T18:59:39Z",
+      "side": 1,
+      "message": "tiny nit: you can use the `if err :\u003d ...; err !\u003d nil {...}` pattern. Not super important but is more consistent with the style elsewhere\n```\nif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n  ...\n}); err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "7cba5f900d1ccee431b9108e3220fb5f8a08a005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b995b18a_317d8e21",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-19T18:59:39Z",
+      "side": 1,
+      "message": "I know these names are already long, but could you append \"JS\" to the end of them like the other constants? I\u0027d also be OK with replacing \"NearbyDevicesAreSharing\" to something shorter like \"FastInit\" if you wanna make things less verbose haha, and maybe just add a comment about what notification it corresponds to.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "7cba5f900d1ccee431b9108e3220fb5f8a08a005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6928e01c_db611399",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-19T18:59:39Z",
+      "side": 1,
+      "message": "nit: initialize this like:\n`var isChecked bool`",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "7cba5f900d1ccee431b9108e3220fb5f8a08a005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
