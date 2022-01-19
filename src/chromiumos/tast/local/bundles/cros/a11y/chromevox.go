@@ -79,7 +79,7 @@ func Chromevox(ctx context.Context, s *testing.State) {
 	defer cancel()
 	defer crastestclient.Unmute(ctxCleanup)
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, "<p>Start</p><p>This is a ChromeVox test</p><p>End</p>")
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), "<p>Start</p><p>This is a ChromeVox test</p><p>End</p>")
 	if err != nil {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}

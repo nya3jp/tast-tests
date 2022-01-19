@@ -49,7 +49,7 @@ func ChromevoxTTSProcessingCharacters(ctx context.Context, s *testing.State) {
 	}
 	defer crastestclient.Unmute(cleanupCtx)
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, `<p>.</p>
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), `<p>.</p>
 		<p>x.</p>
 		<p>=========</p>
 		<p>&bull; &bull;&bull;</p>

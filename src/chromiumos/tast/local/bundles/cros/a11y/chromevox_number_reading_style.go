@@ -46,7 +46,7 @@ func ChromevoxNumberReadingStyle(ctx context.Context, s *testing.State) {
 	}
 	defer crastestclient.Unmute(ctx)
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, "<p>123</p>")
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), "<p>123</p>")
 	if err != nil {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}
