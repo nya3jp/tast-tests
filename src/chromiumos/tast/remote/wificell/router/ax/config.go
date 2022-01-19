@@ -34,8 +34,8 @@ const (
 
 // Config stores the necessary information for an AX test to run.
 type Config struct {
-	Type DeviceType
-	Band BandEnum
+	Type               DeviceType
+	Band               BandEnum
 	SSID               string
 	NVRAMOut           *string
 	RouterRecoveryMap  map[string]ConfigParam

@@ -12,7 +12,6 @@ import (
 	"strconv"
 	"time"
 
-	"chromiumos/tast/remote/wificell/router/legacy"
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -28,6 +27,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/legacy"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
