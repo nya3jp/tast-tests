@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489790bc_7a222b8e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-19T03:48:57Z",
+      "side": 1,
+      "message": "As you showed concern in the other thread, this is going to affect all the tests.\nI\u0027d suggest modifying the filesApp object upon needed in the test, to limit the impacted area.\n\nFor example, in the ContentPreview test,\n    if err :\u003d files.WithInterval(500*time.Millisecond).LeftClick(shareButton)(ctx); err !\u003d nil {\nor\n    // Open the Files App.\n    files, err :\u003d filesapp.Launch(ctx, tconn).WithInterval(500*time.Millisecond)\nor modifying the filesapp.Launch function to set default for all filesapp test.\n\n\t\t\t\t\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/uiwrapper.go;l\u003d21;drc\u003df6e874d895a53cbaf75b46fe5d0f4f0412a4690b",
+      "revId": "922d6acc4be7350ed85d6fc267c0458a042ea8d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
