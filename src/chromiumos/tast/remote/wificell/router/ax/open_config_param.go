@@ -2,15 +2,15 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package axrouter
+package ax
 
 // secOpen provides Gen method to build a new Config.
 type secOpen struct {
 }
 
 // Gen builds a ConfigParam list to allow the router to support an open network flow.
-func (f *secOpen) Gen(axtype AxType, band BandEnum) ([]ConfigParam, error) {
-	radio := BandToRadio(axtype, band)
+func (f *secOpen) Gen(axType DeviceType, band BandEnum) ([]ConfigParam, error) {
+	radio := BandToRadio(axType, band)
 	routerConfigParams := []ConfigParam{{radio, KeyAKM, ""}, {radio, KeyAuthMode, "open"}}
 	return routerConfigParams, nil
 }
