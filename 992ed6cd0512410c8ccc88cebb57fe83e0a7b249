@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf059f2_4b11c73a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_cyclic_bench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-19T22:50:55Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "992ed6cd0512410c8ccc88cebb57fe83e0a7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9dc6b91_2a9cb8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_cyclic_bench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-19T22:50:55Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "992ed6cd0512410c8ccc88cebb57fe83e0a7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b276eb_c82ac55c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_cyclic_bench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-19T22:50:55Z",
+      "side": 1,
+      "message": "1000 * time.Microsecond\n\nLet\u0027s use time package to deal with time related stuff. It\u0027s easier to follow and less error-prune.",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 26
+      },
+      "revId": "992ed6cd0512410c8ccc88cebb57fe83e0a7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a35a77_10266986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_cyclic_bench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-19T22:50:55Z",
+      "side": 1,
+      "message": "300 * time.Microsecond",
+      "range": {
+        "startLine": 75,
+        "startChar": 25,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "992ed6cd0512410c8ccc88cebb57fe83e0a7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d85389c_a4ad678f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_cyclic_bench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-19T22:50:55Z",
+      "side": 1,
+      "message": "nit. How about getStressCommandContext or getStressCommand?",
+      "range": {
+        "startLine": 263,
+        "startChar": 5,
+        "endLine": 263,
+        "endChar": 21
+      },
+      "revId": "992ed6cd0512410c8ccc88cebb57fe83e0a7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f897f28f_abbfbb7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_cyclic_bench.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-19T22:50:55Z",
+      "side": 1,
+      "message": "If otherSched, this should be `nice`.\nHow about just saying \"Failed to start stressOutOfVM command: \"?",
+      "range": {
+        "startLine": 346,
+        "startChar": 28,
+        "endLine": 346,
+        "endChar": 36
+      },
+      "revId": "992ed6cd0512410c8ccc88cebb57fe83e0a7b249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
