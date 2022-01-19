@@ -39,7 +39,10 @@ func init() {
 		// crbug.com/1092389 and crbug.com/1094802. For the time being, restrict the test
 		// to "amd64" (which incorrectly includes AMD platforms as well, on which the
 		// test will trivially pass).
-		SoftwareDeps: []string{"microcode", "amd64"},
+		//
+		// TODO(b/214466530): Make this test access microcode
+		// information on the hypervisor side for manatee.
+		SoftwareDeps: []string{"microcode", "amd64", "no_manatee"},
 	})
 }
 
