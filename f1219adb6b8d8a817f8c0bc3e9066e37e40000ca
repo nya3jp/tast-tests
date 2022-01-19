@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9adfbbe_f0350b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-01-19T23:56:28Z",
+      "side": 1,
+      "message": "I think this error should change depending on the value of `tabletMode`.",
+      "range": {
+        "startLine": 85,
+        "startChar": 30,
+        "endLine": 85,
+        "endChar": 41
+      },
+      "revId": "f1219adb6b8d8a817f8c0bc3e9066e37e40000ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f25600_23d7637a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-01-19T23:56:28Z",
+      "side": 1,
+      "message": "ditto, change based on `tabletMode`.",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "f1219adb6b8d8a817f8c0bc3e9066e37e40000ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec0ffe6_c2da8a69",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-01-19T23:56:28Z",
+      "side": 1,
+      "message": "Update this error, maybe \"failed to open launcher with shift-search key\"\n\nAlso, does shift+search key need to be used or can just ash.AccelSearch be used to open the bubble launcher instead?",
+      "range": {
+        "startLine": 116,
+        "startChar": 29,
+        "endLine": 116,
+        "endChar": 59
+      },
+      "revId": "f1219adb6b8d8a817f8c0bc3e9066e37e40000ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a534a6_ce902be6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-01-19T23:56:28Z",
+      "side": 1,
+      "message": "update this error string",
+      "range": {
+        "startLine": 276,
+        "startChar": 27,
+        "endLine": 276,
+        "endChar": 60
+      },
+      "revId": "f1219adb6b8d8a817f8c0bc3e9066e37e40000ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
