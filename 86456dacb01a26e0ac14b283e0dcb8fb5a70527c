@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "522cf3d8_dec2d624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-19T22:56:55Z",
+      "side": 1,
+      "message": "That\u0027s what I\u0027m doing for scale factor, but IIUC your comment, you want me to get rid of the bounds as a parameter for the coordinates, which I\u0027m not sure how to do.",
+      "parentUuid": "92a96639_a8354c88",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b4d1540_e6c1739a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
         "patchSetId": 6
