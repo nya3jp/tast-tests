@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385cc8e8_5fcb04f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-19T22:46:19Z",
+      "side": 1,
+      "message": "nit: You can do below. In the implementation of InstallAndActivate, it skips the function if it is already checks the current input method.\n\nif err :\u003d ime.EnglishUS.InstallAndActivate(tconn)(ctx); err !\u003d nil {\n\ts.Fatalf(\"Failed to set input method to %v: %v: \", im, err)\n}",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "1448b2c8b20c6514e876d0bd2ebd0671221ba12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
