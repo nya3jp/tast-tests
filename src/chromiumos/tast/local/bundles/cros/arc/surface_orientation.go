@@ -25,7 +25,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const arcSurfaceOrientationTestApkFilename = "ArcSurfaceOrientationTest.apk"
+const (
+	arcSurfaceOrientationTestApkFilename = "ArcSurfaceOrientationTest.apk"
+	pollingTimeout                       = 20 * time.Second
+)
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -209,7 +212,7 @@ func SurfaceOrientation(ctx context.Context, s *testing.State) {
 				}
 
 				return nil
-			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			}, &testing.PollOptions{Timeout: pollingTimeout}); err != nil {
 				colorsDidNotMatch = true
 				colorsDidNotMatchErr = errors.Wrapf(colorsDidNotMatchErr, "test case with transformation %s %v", tc.Name, err)
 			}
