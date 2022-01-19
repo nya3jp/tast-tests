@@ -85,8 +85,8 @@ var TouchviewCommonTests = []TestCase{
 	//{Name: "Touchview: Touchscreen Scroll", Fn: TouchScreenScroll},
 	//{Name: "Touchview: Virtual Keyboard", Fn: TouchAndTextInputs},
 	//{Name: "Touchview: Largescreen Layout", Fn: Largescreenlayout},
-	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+	//{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	//{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
 }
 
 // ClamshellSmokeTests is a list of clamshell tests common to apps in appcompat_smoke suite.
@@ -99,8 +99,9 @@ var ClamshellSmokeTests = []TestCase{
 
 // TouchviewSmokeTests is a list of touchview tests common to apps in appcompat_smoke suite.
 var TouchviewSmokeTests = []TestCase{
-	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
-	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
+	{Name: "Touchview: Rotate", Fn: TouchviewRotate},
+	/* {Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow}, */
 }
 
 // RunTestCases setups the device and runs all app compat test cases.
@@ -860,12 +861,23 @@ func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	}
 	s.Logf("App Display ID, info.DisplayID %+v", info.DisplayID)
 
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	s.Logf("Orientation angle of primary window before orientation.Type %+v, ", orientation.Type)
+
 	// Set display orientation to natural state 90 degree.
 	if err := display.SetDisplayRotationSync(ctx, tconn, info.DisplayID, "Rotate90"); err != nil {
 		s.Fatal("Failed to set app to 90 rotation: ", err)
 	} else {
 		s.Log("Set app to 90 rotation was successful")
 	}
+	orientation, err = display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	s.Logf("Orientation angle of primary window after rotate90, orientation.Type %+v", orientation.Type)
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 
 	// Set display orientation to natural state 180 degree.
@@ -874,6 +886,11 @@ func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	} else {
 		s.Log("Set app to 180 rotation was successful")
 	}
+	orientation, err = display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	s.Logf("Orientation angle of primary window after rotate180, orientation.Type %+v", orientation.Type)
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 
 	// Set display orientation to natural state 270 degree.
@@ -882,6 +899,11 @@ func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	} else {
 		s.Log("Set app to 270 rotation was successful")
 	}
+	orientation, err = display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	s.Logf("Orientation angle of primary window after rotate270,  orientation.Type %+v", orientation.Type)
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 
 	// Set display orientation to natural state 0 degree.
@@ -890,6 +912,11 @@ func TouchviewRotate(ctx context.Context, s *testing.State, tconn *chrome.TestCo
 	} else {
 		s.Log("Set app to 0 rotation was successful")
 	}
+	orientation, err = display.GetOrientation(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to obtain the orientation info: ", err)
+	}
+	s.Logf("Orientation angle of primary window after rotate0,   orientation.Type %+v", orientation.Type)
 	DetectAndHandleCloseCrashOrAppNotResponding(ctx, s, d)
 }
 
