@@ -7,7 +7,6 @@ package imesettings
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ime"
@@ -237,8 +236,6 @@ func SetKoreanKeyboardLayout(uc *useractions.UserContext, keyboardLayout string)
 			setting.OpenInputMethodSetting(uc.TestAPIConn(), ime.Korean),
 			setting.ChangeKoreanKeyboardLayout(uc.Chrome(), keyboardLayout),
 			setting.Close,
-			// TODO(b/195374149): Remove this sleep once we can determine IME is ready.
-			uiauto.New(uc.TestAPIConn()).Sleep(10*time.Second),
 		)(ctx)
 	}
 

@@ -274,6 +274,7 @@ func (s *OSSettings) SetDropDownOption(cr *chrome.Chrome, optionName, expected s
 	return uiauto.Combine("set drop down option",
 		s.LeftClick(optionFinder),
 		s.LeftClick(settingFinder),
+		s.ui.Sleep(time.Second),
 	)
 }
 
