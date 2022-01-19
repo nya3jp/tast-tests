@@ -112,7 +112,7 @@ func Relaunch(ctx context.Context, tconn *chrome.TestConn, filesApp *FilesApp) (
 // An error is returned if the app cannot be found.
 func App(ctx context.Context, tconn *chrome.TestConn, appID string) (*FilesApp, error) {
 	// Create a uiauto.Context with default timeout.
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithInterval(500 * time.Millisecond)
 
 	// The child folders of My Files in the navigation tree are loaded in
 	// asynchronously meaning any clicks in the navigation tree at startup
