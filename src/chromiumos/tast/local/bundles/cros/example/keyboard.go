@@ -9,25 +9,35 @@ import (
 	"time"
 
 	"chromiumos/tast/local/a11y"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Keyboard,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Demonstrates injecting keyboard events",
 		Contacts:     []string{"ricardoq@chromium.org", "tast-owners@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromePolicyLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -39,7 +49,13 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	)
 
 	// 1. Boilerplate setup + create tab with input form
-	cr := s.FixtValue().(*fixtures.FixtData).Chrome()
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -48,7 +64,7 @@ func Keyboard(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, html)
+	c, err := a11y.NewTabWithHTML(ctx, br, html)
 	if err != nil {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}
@@ -60,7 +76,8 @@ func Keyboard(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("Focus text box",
 		ui.WaitUntilExists(textbox),
-		ui.FocusAndWait(textbox),
+		// TODO: Uncomment when node.focus() works on lacros. It fails with the error "events haven't occurred yet".
+		// ui.FocusAndWait(textbox),
 	)(ctx); err != nil {
 		s.Fatal("Failed to focus the text box: ", err)
 	}

@@ -546,9 +546,9 @@ func startAccumulatingUtterances(ctx context.Context, conn *chrome.Conn, engineD
 
 // NewTabWithHTML creates a new tab with the specified HTML, waits for it to
 // load, and returns a connection to the page.
-func NewTabWithHTML(ctx context.Context, cr *chrome.Chrome, html string) (*chrome.Conn, error) {
+func NewTabWithHTML(ctx context.Context, br *browser.Browser, html string) (*chrome.Conn, error) {
 	url := fmt.Sprintf("data:text/html, %s", html)
-	c, err := cr.NewConn(ctx, url, browser.WithNewWindow())
+	c, err := br.NewConn(ctx, url, browser.WithNewWindow())
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to open new tab with url: %s", url)
 	}

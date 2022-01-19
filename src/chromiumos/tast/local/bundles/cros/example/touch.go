@@ -10,6 +10,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -19,13 +21,21 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Touch,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Demonstrates injecting touch events",
 		Contacts:     []string{"ricardoq@chromium.org", "tast-owners@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.TouchScreen()),
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacrosPrimary",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -36,7 +46,14 @@ func Touch(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	cr := s.PreValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to open connection: ", err)
@@ -51,7 +68,7 @@ func Touch(ctx context.Context, s *testing.State) {
 	// HTML page that accepts drawing should be used. Additionally, Kleki seems to ignore
 	// the 2nd & last events when drawing splines. But for the purpose of showing how
 	// to use the API is good enough.
-	conn, err := cr.NewConn(ctx, "http://kleki.com")
+	conn, err := br.NewConn(ctx, "http://kleki.com")
 	if err != nil {
 		s.Fatal("Failed to open connection: ", err)
 	}
