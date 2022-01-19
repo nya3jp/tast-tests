@@ -33,6 +33,23 @@
       "message": "Thanks!  khmel@, PTAL.",
       "revId": "f2b242960e3ae204c050169f5103e21cb6261600",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8ce47a_916b749a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-01-19T10:01:45Z",
+      "side": 1,
+      "message": "TY!",
+      "revId": "f2b242960e3ae204c050169f5103e21cb6261600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
