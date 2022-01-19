@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -140,7 +140,7 @@ func MARBSSIDRoam(ctx context.Context, s *testing.State) {
 
 	// We want control over capturer start/stop so we don't use fixture with
 	// pcap but spawn it here and use manually.
-	pcapDevice, ok := tf.Pcap().(router.SupportCapture)
+	pcapDevice, ok := tf.Pcap().(support.Capture)
 	if !ok {
 		s.Fatal("Device without capture support - device type: ", tf.Pcap().RouterType())
 	}

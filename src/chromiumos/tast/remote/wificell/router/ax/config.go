@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package axrouter
+package ax
 
 import (
 	"fmt"
@@ -20,24 +20,24 @@ const RestartWirelessService = "restart_wireless"
 // SavedConfigLocation is the path to save the temporary NVRAM config.
 const SavedConfigLocation = "/tmp/nvram.cfg"
 
-// AxType is an enum indicating what model an AxRouter is.
-type AxType int
+// DeviceType is an enum indicating what model an AxRouter is.
+type DeviceType int
 
 const (
 
 	// GtAx11000 is for the GT-Ax11000 device,
-	GtAx11000 AxType = iota
+	GtAx11000 DeviceType = iota
 	// GtAxe11000 is for the GT-Axe11000 device (6e).
 	GtAxe11000
 	// Ax6100 is for the Ax6100 device.
 	Ax6100
-	// Invalid is the default AxType.
+	// Invalid is the default DeviceType.
 	Invalid
 )
 
 // Config stores the necessary information for an AX test to run.
 type Config struct {
-	Type               AxType
+	Type               DeviceType
 	Band               RadioEnum
 	SSID               string
 	NVRAMOut           *string
@@ -167,7 +167,7 @@ func SSID(ssid string) Option {
 }
 
 // BandToRadio converts the desired Band to the appropriate radio on the Ax Router.
-func BandToRadio(axtype AxType, r BandEnum) RadioEnum {
+func BandToRadio(axtype DeviceType, r BandEnum) RadioEnum {
 	switch r {
 	case Ghz2:
 		return Wl0

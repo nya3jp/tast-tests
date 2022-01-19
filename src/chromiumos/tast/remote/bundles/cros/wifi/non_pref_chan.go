@@ -182,7 +182,7 @@ func NonPrefChan(ctx context.Context, s *testing.State) {
 		connectSuccessful = true
 		return nil
 	}
-	legacyRouter, err := tf.LegacyRouter()
+	legacyRouter, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Unable to get legacy router: ", err)
 	}

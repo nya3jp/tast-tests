@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package axrouter
+package ax
 
 // Security determines the PSK authentication method used by the test
 type Security int
@@ -17,5 +17,5 @@ const (
 // SecConfigParamFac defines a Gen() method to generate a ConfigParam list.
 type SecConfigParamFac interface {
 	// Gen builds a list of ConfigParam.
-	Gen(AxType, BandEnum) ([]ConfigParam, error)
+	Gen(DeviceType, BandEnum) ([]ConfigParam, error)
 }

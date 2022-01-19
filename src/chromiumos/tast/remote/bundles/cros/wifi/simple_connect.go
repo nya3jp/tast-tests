@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/remote/wificell"
 	ap "chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
@@ -1325,28 +1326,40 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 	}()
 
 	testOnce := func(ctx context.Context, s *testing.State, options []ap.Option, fac security.ConfigFactory, pingOps []ping.Option, expectedFailure bool) {
-		ap, err := tf.ConfigureAP(ctx, options, fac)
+		apIface, err := tf.ConfigureAP(ctx, options, fac)
 		if err != nil {
 			s.Fatal("Failed to configure ap, err: ", err)
 		}
+
+		// Validate required router functionality.
+		type supportedRouter interface {
+			support.Logs
+			support.Hostapd
+			support.DHCP
+			support.Capture
+		}
+		if _, ok := apIface.Router().(supportedRouter); !ok {
+			s.Fatalf("Router type %q does not have sufficient support for this test: ", apIface.Router().RouterTypeName())
+		}
+
 		defer func(ctx context.Context) {
-			if err := tf.DeconfigAP(ctx, ap); err != nil {
+			if err := tf.DeconfigAP(ctx, apIface); err != nil {
 				s.Error("Failed to deconfig ap, err: ", err)
 			}
 		}(ctx)
-		ctx, cancel := tf.ReserveForDeconfigAP(ctx, ap)
+		ctx, cancel := tf.ReserveForDeconfigAP(ctx, apIface)
 		defer cancel()
 		s.Log("AP setup done")
 
 		// Some tests may fail as expected at following ConnectWifiAP(). In that case entries should still be deleted properly.
 		defer func(ctx context.Context) {
-			req := &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(ap.Config().SSID)}
+			req := &wifi.DeleteEntriesForSSIDRequest{Ssid: []byte(apIface.Config().SSID)}
 			if _, err := tf.WifiClient().DeleteEntriesForSSID(ctx, req); err != nil {
-				s.Errorf("Failed to remove entries for ssid=%s, err: %v", ap.Config().SSID, err)
+				s.Errorf("Failed to remove entries for ssid=%s, err: %v", apIface.Config().SSID, err)
 			}
 		}(ctx)
 
-		resp, err := tf.ConnectWifiAP(ctx, ap)
+		resp, err := tf.ConnectWifiAP(ctx, apIface)
 		if err != nil {
 			if expectedFailure {
 				s.Log("Failed to connect to WiFi as expected")
@@ -1367,7 +1380,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		}
 		s.Log("Connected")
 
-		desc := ap.Config().PerfDesc()
+		desc := apIface.Config().PerfDesc()
 
 		pv.Set(perf.Metric{
 			Name:      desc,
@@ -1388,7 +1401,7 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			Direction: perf.SmallerIsBetter,
 		}, float64(resp.ConfigurationTime)/1e9)
 		ping := func(ctx context.Context) error {
-			return tf.PingFromDUT(ctx, ap.ServerIP().String(), pingOps...)
+			return tf.PingFromDUT(ctx, apIface.ServerIP().String(), pingOps...)
 		}
 
 		if err := tf.AssertNoDisconnect(ctx, ping); err != nil {
@@ -1401,8 +1414,8 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get the WiFi service information from DUT, err: ", err)
 		}
 
-		if serInfo.Wifi.HiddenSsid != ap.Config().Hidden {
-			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", serInfo.Wifi.HiddenSsid, ap.Config().Hidden)
+		if serInfo.Wifi.HiddenSsid != apIface.Config().Hidden {
+			s.Fatalf("Unexpected hidden SSID status: got %t, want %t ", serInfo.Wifi.HiddenSsid, apIface.Config().Hidden)
 		}
 
 		// TODO(crbug.com/1034875): Assert no deauth detected from the server side.

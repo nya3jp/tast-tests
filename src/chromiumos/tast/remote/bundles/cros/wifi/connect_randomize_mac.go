@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
-	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -60,9 +60,9 @@ func ConnectRandomizeMAC(ctx context.Context, s *testing.State) {
 
 	// We want control over capturer start/stop so we don't use fixture with
 	// pcap but spawn it here and use manually.
-	pcapRouter, ok := tf.Pcap().(router.SupportCapture)
+	pcapRouter, ok := tf.Pcap().(support.Capture)
 	if !ok {
-		s.Fatal("Device without capture support - device type: ", tf.Pcap().RouterType())
+		s.Fatal("Device without capture support - device type: ", tf.Pcap().RouterTypeName())
 	}
 
 	// Get the MAC address of WiFi interface.
