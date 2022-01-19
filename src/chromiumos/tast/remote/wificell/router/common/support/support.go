@@ -25,6 +25,8 @@ const (
 	LegacyT RouterType = iota
 	// AxT is the ax router type.
 	AxT
+	// OpenWrtT is the openwrt router type.
+	OpenWrtT
 )
 
 // RouterTypeName returns the human-readable name for a given RouterType
@@ -34,6 +36,8 @@ func RouterTypeName(rt RouterType) string {
 		return "Legacy"
 	case AxT:
 		return "CiscoAX"
+	case OpenWrtT:
+		return "OpenWrt"
 	default:
 		return "Unknown"
 	}
