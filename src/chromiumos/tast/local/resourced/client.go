@@ -38,6 +38,11 @@ const (
 	RTCAudioActiveOff uint8 = 0
 	// RTCAudioActiveOn means RTCAudioActive is on.
 	RTCAudioActiveOn uint8 = 1
+
+	// FullscreenVideoInactive means full screen video is not active.
+	FullscreenVideoInactive uint8 = 0
+	// FullscreenVideoActive means full screen video is active.
+	FullscreenVideoActive uint8 = 1
 )
 
 // Client wraps D-Bus calls to make requests to the Resource Manager (resourced).
@@ -195,6 +200,23 @@ func (c *Client) RTCAudioActive(ctx context.Context) (uint8, error) {
 func (c *Client) SetRTCAudioActive(ctx context.Context, mode uint8) error {
 	if err := c.obj.Call(ctx, "SetRTCAudioActive", mode).Err; err != nil {
 		return errors.Wrap(err, "failed to call method SetRTCAudioActive")
+	}
+	return nil
+}
+
+// FullscreenVideo returns the result of the GetFullscreenVideo D-Bus method.
+func (c *Client) FullscreenVideo(ctx context.Context) (uint8, error) {
+	var result uint8
+	if err := c.obj.Call(ctx, "GetFullscreenVideo").Store(&result); err != nil {
+		return 0, errors.Wrap(err, "failed to call method GetFullscreenVideo")
+	}
+	return result, nil
+}
+
+// SetFullscreenVideoWithTimeout sets the full screen video state in resourced, the state will be reset after timeout seconds.
+func (c *Client) SetFullscreenVideoWithTimeout(ctx context.Context, fullscreenVideo uint8, timeout uint32) error {
+	if err := c.obj.Call(ctx, "SetFullscreenVideoWithTimeout", fullscreenVideo, timeout).Err; err != nil {
+		return errors.Wrap(err, "failed to call method SetFullscreenVideoWithTimeout")
 	}
 	return nil
 }
