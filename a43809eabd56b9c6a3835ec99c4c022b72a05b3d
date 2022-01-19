@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68412c0b_b2c4c5ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-19T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70da9a26_8a4c29eb",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "a43809eabd56b9c6a3835ec99c4c022b72a05b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fabb90e_e1ae56a6",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6930e868_17daa468",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-19T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fabb90e_e1ae56a6",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 52
+      },
+      "revId": "a43809eabd56b9c6a3835ec99c4c022b72a05b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0788c65f_9f8da9e9",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-19T08:39:04Z",
       "side": 1,
       "message": "nit: merge to one line: if err\u003d...; err!\u003dnil{",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "a43809eabd56b9c6a3835ec99c4c022b72a05b3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3448c99_43bf7b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-19T20:26:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0788c65f_9f8da9e9",
       "range": {
         "startLine": 107,
         "startChar": 1,
