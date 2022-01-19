@@ -12,7 +12,6 @@ import (
 	"strings"
 	"time"
 
-	"chromiumos/tast/remote/wificell/router/openwrt"
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/network/arping"
@@ -38,6 +37,7 @@ import (
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/ax"
 	"chromiumos/tast/remote/wificell/router/legacy"
+	"chromiumos/tast/remote/wificell/router/openwrt"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/wifi"
@@ -1027,8 +1027,8 @@ func (tf *TestFixture) WifiClient() *WifiClient {
 	return tf.wifiClient
 }
 
-// Rpc returns the gRPC connection of the DUT.
-func (tf *TestFixture) Rpc() *rpc.Client {
+// RPC returns the gRPC connection of the DUT.
+func (tf *TestFixture) RPC() *rpc.Client {
 	return tf.rpc
 }
 
@@ -1270,15 +1270,13 @@ func (tf *TestFixture) WaitWifiConnected(ctx context.Context, guid string) error
 			}
 			if len(addrs.Ipv4) > 0 {
 				return nil
-			} else {
-				return errors.New("IPv4 address not assigned yet")
 			}
+			return errors.New("IPv4 address not assigned yet")
 		} else {
 			if guid != serInfo.Guid {
 				return errors.New("GUID does not match, current service is: " + serInfo.Guid)
-			} else {
-				return errors.New("Service is not connected")
 			}
+			return errors.New("Service is not connected")
 		}
 	}, &testing.PollOptions{
 		Timeout:  time.Minute,

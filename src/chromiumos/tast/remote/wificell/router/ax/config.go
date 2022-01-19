@@ -20,22 +20,22 @@ const RestartWirelessService = "restart_wireless"
 // SavedConfigLocation is the path to save the temporary NVRAM config.
 const SavedConfigLocation = "/tmp/nvram.cfg"
 
-// AxType is an enum indicating what model an AxRouter is.
-type AxType int
+// DeviceType is an enum indicating what model an AxRouter is.
+type DeviceType int
 
 const (
 	// GtAx11000 is for the GT-Ax11000 device,
-	GtAx11000 AxType = iota
+	GtAx11000 DeviceType = iota
 	// Ax6100 is for the Ax6100 device.
 	Ax6100
-	// Invalid is the default AxType.
+	// Invalid is the default DeviceType.
 	Invalid
 )
 
 // Config stores the necessary information for an AX test to run.
 type Config struct {
-	Type               AxType
-	Band               BandEnum
+	Type DeviceType
+	Band BandEnum
 	SSID               string
 	NVRAMOut           *string
 	RouterRecoveryMap  map[string]ConfigParam

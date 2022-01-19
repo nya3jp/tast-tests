@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/remote/wificell/router/legacy"
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -27,7 +28,6 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router"
-	"chromiumos/tast/remote/wificell/router/legacyrouter"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -43,9 +43,9 @@ type ContParam struct {
 
 // ContTest hods all varibles to be accessible for the whole continuity test.
 type ContTest struct {
-	tf        *wificell.TestFixture
-	r         legacy.Legacy
-	clientMAC string
+	tf          *wificell.TestFixture
+	r           legacy.Legacy
+	clientMAC   string
 	br          [2]string
 	veth        [2]string
 	mac         [2]net.HardwareAddr
