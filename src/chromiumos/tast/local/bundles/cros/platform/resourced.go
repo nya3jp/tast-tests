@@ -193,6 +193,42 @@ func checkSetRTCAudioActive(ctx context.Context, rm *resourced.Client) error {
 	return nil
 }
 
+func checkSetFullscreenVideoWithTimeout(ctx context.Context, rm *resourced.Client) (resErr error) {
+	var newFullscreenVideo uint8 = resourced.FullscreenVideoActive
+	var timeout uint32 = 1
+	if err := rm.SetFullscreenVideoWithTimeout(ctx, newFullscreenVideo, timeout); err != nil {
+		// On machines not supporting Intel hardware EPP, SetFullscreenVideoWithTimeout returning error is expected.
+		testing.ContextLog(ctx, "Failed to set full screen video active: ", err)
+		return nil
+	}
+	testing.ContextLog(ctx, "Set full screen video active with 1 second timeout: ", newFullscreenVideo)
+
+	// Check full screen video state is set to the new value.
+	fullscreenVideo, err := rm.FullscreenVideo(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to query full screen video state")
+	}
+	if newFullscreenVideo != fullscreenVideo {
+		return errors.Errorf("failed to set full screen video state: got %d, want: %d", fullscreenVideo, newFullscreenVideo)
+	}
+
+	// Check full screen video state is reset after timeout.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		fullscreenVideo, err := rm.FullscreenVideo(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to query full screen video state")
+		}
+		if fullscreenVideo != resourced.FullscreenVideoInactive {
+			return errors.New("Full screen video state is not reset")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 2 * time.Second, Interval: 100 * time.Millisecond}); err != nil {
+		return errors.Wrap(err, "failed to wait for full screen video state reset")
+	}
+
+	return nil
+}
+
 func Resourced(ctx context.Context, s *testing.State) {
 	rm, err := resourced.NewClient(ctx)
 	if err != nil {
@@ -223,5 +259,9 @@ func Resourced(ctx context.Context, s *testing.State) {
 
 	if err := checkSetRTCAudioActive(ctx, rm); err != nil {
 		s.Fatal("Checking SetRTCAudioActive failed: ", err)
+	}
+
+	if err := checkSetFullscreenVideoWithTimeout(ctx, rm); err != nil {
+		s.Fatal("Checking SetFullscreenVideoWithTimeout failed: ", err)
 	}
 }
