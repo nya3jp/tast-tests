@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -37,11 +38,16 @@ func freeSubnetIdx(i byte) {
 	delete(busySubnet, i)
 }
 
-// APIface is the handle object of an instance of hostapd service managed by Router.
+type supportedRouter interface {
+	support.Hostapd
+	support.DHCP
+}
+
+// APIface is the handle object of an instance of hostapd service managed by a router.
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
 type APIface struct {
-	router    router.Base
+	router    supportedRouter
 	name      string
 	iface     string
 	subnetIdx byte
@@ -93,15 +99,21 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 // StartAPIface starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r router.LegacyOpenWrtShared, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "StartAPIface")
 	defer st.End()
 
 	var h APIface
 	var err error
-	h.router = r
 
-	h.hostapd, err = r.StartHostapd(ctx, name, conf)
+	// Validate router support.
+	if rSupported, ok := r.(supportedRouter); ok {
+		h.router = rSupported
+	} else {
+		return nil, errors.New("router type must support Hostapd and DHCP")
+	}
+
+	h.hostapd, err = h.router.StartHostapd(ctx, name, conf)
 	if err != nil {
 		return nil, err
 	}
@@ -126,7 +138,7 @@ func StartAPIface(ctx context.Context, r router.LegacyOpenWrtShared, name string
 		}
 	}()
 
-	h.dhcpd, err = r.StartDHCP(ctx, name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
+	h.dhcpd, err = h.router.StartDHCP(ctx, name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
 	if err != nil {
 		return nil, err
 	}
@@ -159,24 +171,25 @@ func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.
 func (h *APIface) Stop(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "APIface.Stop")
 	defer st.End()
-	r, ok := h.router.(router.LegacyOpenWrtShared)
-	if !ok {
-		return errors.Errorf("router device of type %v does not have legacy/openwrt support", h.router.RouterType())
-	}
 	if h.stopped {
 		return nil
 	}
 	var retErr error
+
+	// Stop DHCP
 	if h.dhcpd != nil {
-		if err := r.StopDHCP(ctx, h.dhcpd); err != nil {
+		if err := h.router.StopDHCP(ctx, h.dhcpd); err != nil {
 			retErr = errors.Wrapf(retErr, "failed to stop dhcp server, err=%s", err.Error())
 		}
 	}
-	if h.hostapd != nil {
-		if err := r.StopHostapd(ctx, h.hostapd); err != nil {
+
+	// Stop Hostapd
+	if h.dhcpd != nil {
+		if err := h.router.StopHostapd(ctx, h.hostapd); err != nil {
 			retErr = errors.Wrapf(retErr, "failed to stop hostapd, err=%s", err.Error())
 		}
 	}
+
 	freeSubnetIdx(h.subnetIdx)
 	h.stopped = true
 	return retErr
@@ -191,12 +204,8 @@ func (h *APIface) DeauthenticateClient(ctx context.Context, clientMAC string) er
 // On failure, the APIface object will keep holding the old index, but the states of the
 // dhcp server and WiFi interface are not guaranteed and a call of Stop is still needed.
 func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
-	r, ok := h.router.(router.SupportDHCP)
-	if !ok {
-		return errors.Errorf("router device of type %v does not have dhcpcd support", h.router.RouterType())
-	}
 	if h.dhcpd != nil {
-		if err := r.StopDHCP(ctx, h.dhcpd); err != nil {
+		if err := h.router.StopDHCP(ctx, h.dhcpd); err != nil {
 			return errors.Wrap(err, "failed to stop dhcp server")
 		}
 		h.dhcpd = nil
@@ -219,7 +228,7 @@ func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
 	}()
 	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
 
-	h.dhcpd, err = r.StartDHCP(ctx, h.name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
+	h.dhcpd, err = h.router.StartDHCP(ctx, h.name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
 	if err != nil {
 		return errors.Wrap(err, "failed to start dhcp server")
 	}
@@ -254,4 +263,9 @@ func (h *APIface) STAInfo(ctx context.Context, staMAC string) (*hostapd.STAInfo,
 // SendBeaconRequest sends a Beacon Request to the specified client.
 func (h *APIface) SendBeaconRequest(ctx context.Context, clientMAC string, params hostapd.BeaconReqParams) error {
 	return h.hostapd.SendBeaconRequest(ctx, clientMAC, params)
+}
+
+// Router returns the current router used by the AP.
+func (h *APIface) Router() router.Base {
+	return h.router
 }

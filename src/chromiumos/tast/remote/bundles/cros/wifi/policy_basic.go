@@ -210,7 +210,7 @@ func PolicyBasic(ctx context.Context, s *testing.State) {
 	}
 
 	tf := s.FixtValue().(*wificell.TestFixture)
-	pc := ps.NewPolicyServiceClient(tf.Rpc().Conn)
+	pc := ps.NewPolicyServiceClient(tf.RPC().Conn)
 
 	for _, tc := range testCases {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {

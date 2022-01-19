@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package axrouter
+package ax
 
 import "chromiumos/tast/errors"
 
@@ -13,8 +13,8 @@ type secSAE struct {
 }
 
 // Gen builds a ConfigParam list to allow the router to support a WPA network flow.
-func (f *secSAE) Gen(axtype AxType, band BandEnum) ([]ConfigParam, error) {
-	radio := BandToRadio(axtype, band)
+func (f *secSAE) Gen(axType DeviceType, band BandEnum) ([]ConfigParam, error) {
+	radio := BandToRadio(axType, band)
 	routerConfigParams := []ConfigParam{{radio, KeyAKM, "sae"}, {radio, KeyAuthMode, "sae"}, {radio, KeyWPAPSK, f.psk}}
 	if f.cipher == AES {
 		routerConfigParams = append(routerConfigParams, ConfigParam{radio, KeyCrypto, "aes"})
