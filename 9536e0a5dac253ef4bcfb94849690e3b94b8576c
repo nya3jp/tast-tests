@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dec3b5e9_db4e04dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-19T17:02:04Z",
+      "side": 1,
+      "message": "This looks fine to me. I\u0027ve run into the second issue as well and brought it up to the tast team if you\u0027re interested (https://groups.google.com/a/chromium.org/g/tast-users/c/kUtby1sXQac). It seems that is a known property of Tast so I think you\u0027re OK there.",
+      "revId": "9536e0a5dac253ef4bcfb94849690e3b94b8576c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
