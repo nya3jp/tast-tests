@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92a96639_a8354c88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-19T22:33:44Z",
+      "side": 1,
+      "message": "Did you try:\n\n```\n        screens, err :\u003d display.GetInfo(ctx, tconn)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to get the display info\")\n\t}\n\n\tscaleFactor, err :\u003d screens[0].GetEffectiveDeviceScaleFactor()\n```\n\nas is done in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3354256 ? I think that may lead to some more consistent results. Where the call happens shouldn\u0027t matter AFAIK. If that continues to give you issues, shoot me a ping and I\u0027ll pull down the branch and take a look.",
+      "parentUuid": "4690b6b5_851748c4",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b4d1540_e6c1739a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
         "patchSetId": 6
