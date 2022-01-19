@@ -55,7 +55,7 @@ func New(tconn *chrome.TestConn) *Context {
 	return &Context{
 		tconn: tconn,
 		pollOpts: testing.PollOptions{
-			Interval: 300 * time.Millisecond,
+			Interval: 500 * time.Millisecond,
 			Timeout:  15 * time.Second,
 		},
 	}
