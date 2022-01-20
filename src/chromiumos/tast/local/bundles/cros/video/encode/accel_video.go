@@ -48,6 +48,9 @@ type TestOptions struct {
 
 	// Encode bitrate.
 	bitrate int
+
+	// Controls the global VAAPI Lock.
+	disableGlobalVaapiLock bool
 }
 
 // MakeTestOptions creates TestOptions from webMName and profile.
@@ -71,6 +74,19 @@ func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bit
 		spatialLayers:  1,
 		temporalLayers: 1,
 		bitrate:        bitrate,
+	}
+}
+
+// MakeTestOptionsWithNoGlobalVaapiLock creates TestOptions from webMName and profile.
+// spatialLayers and temporalLayers are set to 1.
+// Always disables the global VAAPI lock.
+func MakeTestOptionsWithNoGlobalVaapiLock(webMName string, profile videotype.CodecProfile) TestOptions {
+	return TestOptions{
+		webMName:               webMName,
+		profile:                profile,
+		spatialLayers:          1,
+		temporalLayers:         1,
+		disableGlobalVaapiLock: true,
 	}
 }
 
@@ -173,6 +189,9 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 	if opts.temporalLayers > 1 {
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
 	}
+	if opts.disableGlobalVaapiLock {
+		testArgs = append(testArgs, "--disable_vaapi_lock")
+	}
 
 	exec := filepath.Join(chrome.BinTestDir, "video_encode_accelerator_tests")
 	logfile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%d.txt", filepath.Base(exec), time.Now().Unix()))
@@ -274,6 +293,9 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	}
 	if opts.bitrate > 0 {
 		testArgs = append(testArgs, fmt.Sprintf("--bitrate=%d", opts.bitrate))
+	}
+	if opts.disableGlobalVaapiLock {
+		testArgs = append(testArgs, "--disable_vaapi_lock")
 	}
 
 	if report, err := gtest.New(
