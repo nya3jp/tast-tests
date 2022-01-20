@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8f91bf_608b61ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:44:06Z",
+      "side": 1,
+      "message": "just want to make sure that Andrew and Pavan\u0027s comments are being addressed here",
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "560ebace_695cfc57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:44:06Z",
+      "side": 1,
+      "message": "do we need these log lines?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2318fcf_177e3f5f",
@@ -130,6 +170,29 @@
         "startChar": 5,
         "endLine": 159,
         "endChar": 15
+      },
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c2e8502_aa3e6706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:44:06Z",
+      "side": 1,
+      "message": "nit: \"providerMap\" to be consistent with go style",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 12
       },
       "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
