@@ -19179,7 +19179,6 @@ func (p *HttpsOnlyMode) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 873. ReportDeviceAudioStatus
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type ReportDeviceAudioStatus struct {
 	Stat Status
@@ -20641,30 +20640,30 @@ func (p *ReportDeviceAudioStatusCheckingRateMs) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 930. FullscreenNotificationUrlExemptList
+// 930. KeepFullscreenWithoutNotificationUrlAllowList
 // This policy can be modified without rebooting.
 // This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
-type FullscreenNotificationUrlExemptList struct {
+type KeepFullscreenWithoutNotificationUrlAllowList struct {
 	Stat Status
 	Val  []string
 }
 
-func (p *FullscreenNotificationUrlExemptList) Name() string {
-	return "FullscreenNotificationUrlExemptList"
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Name() string {
+	return "KeepFullscreenWithoutNotificationUrlAllowList"
 }
-func (p *FullscreenNotificationUrlExemptList) Field() string         { return "" }
-func (p *FullscreenNotificationUrlExemptList) Scope() Scope          { return ScopeUser }
-func (p *FullscreenNotificationUrlExemptList) Status() Status        { return p.Stat }
-func (p *FullscreenNotificationUrlExemptList) UntypedV() interface{} { return p.Val }
-func (p *FullscreenNotificationUrlExemptList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Field() string         { return "" }
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Scope() Scope          { return ScopeUser }
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Status() Status        { return p.Stat }
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) UntypedV() interface{} { return p.Val }
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	var v []string
 	if err := json.Unmarshal(m, &v); err != nil {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
 }
-func (p *FullscreenNotificationUrlExemptList) Equal(iface interface{}) bool {
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
 		return ok
@@ -20932,6 +20931,35 @@ func (p *DeviceKeylockerForStorageEncryptionEnabled) UnmarshalAs(m json.RawMessa
 	return v, nil
 }
 func (p *DeviceKeylockerForStorageEncryptionEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 939. ReportCRDSessions
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ReportCRDSessions struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ReportCRDSessions) Name() string          { return "ReportCRDSessions" }
+func (p *ReportCRDSessions) Field() string         { return "device_reporting.report_crd_sessions" }
+func (p *ReportCRDSessions) Scope() Scope          { return ScopeDevice }
+func (p *ReportCRDSessions) Status() Status        { return p.Stat }
+func (p *ReportCRDSessions) UntypedV() interface{} { return p.Val }
+func (p *ReportCRDSessions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ReportCRDSessions) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
