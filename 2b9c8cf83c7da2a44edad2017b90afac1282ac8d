@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baaa360c_9c5f00a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-20T17:36:30Z",
+      "side": 1,
+      "message": "Few more nits but otherwise LGTM to be sent to tast-owners@ for final approval.",
+      "revId": "2b9c8cf83c7da2a44edad2017b90afac1282ac8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e3fe52_5b236444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-20T17:36:30Z",
+      "side": 1,
+      "message": "nit: missing period (`.`) at the end of the sentence.",
+      "revId": "2b9c8cf83c7da2a44edad2017b90afac1282ac8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a9b83a0_8544caf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-20T17:36:30Z",
+      "side": 1,
+      "message": "nit: maybe rename to \u0027InitiateLoginButton\u0027 here and in other references?",
+      "revId": "2b9c8cf83c7da2a44edad2017b90afac1282ac8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b5e7aa_a2a988ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-20T17:36:30Z",
+      "side": 1,
+      "message": "nit: maybe rename to \u0027SubmitLoginButton\u0027 here and in other references? 1/2 are a bit vague.",
+      "revId": "2b9c8cf83c7da2a44edad2017b90afac1282ac8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6455f04_cc22d5b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-20T17:36:30Z",
+      "side": 1,
+      "message": "nit: can you pull out the 0.5 into a constant to make it clear why it\u0027s being used, and reduce duplication?",
+      "revId": "2b9c8cf83c7da2a44edad2017b90afac1282ac8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
