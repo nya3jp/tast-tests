@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3875f97f_2e86b78f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-01-20T23:54:53Z",
+      "side": 1,
+      "message": "tast-wise: +2 % nit \n\ndeferring to jorgelo@ regarding his comment\n\n",
+      "revId": "ed3a033cee647a7761784611e6b4f96fd9736901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926dca1c_b99cecc1",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_client.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-01-20T23:54:53Z",
+      "side": 1,
+      "message": "huge nit: error string should not be capitalized\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting",
+      "range": {
+        "startLine": 462,
+        "startChar": 34,
+        "endLine": 462,
+        "endChar": 35
+      },
+      "revId": "ed3a033cee647a7761784611e6b4f96fd9736901",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
