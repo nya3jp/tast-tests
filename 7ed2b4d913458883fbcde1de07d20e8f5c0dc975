@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed8d4a7_51d9422d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "My initial scan.",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d474d99d_5cf1a678",
@@ -60,6 +77,46 @@
         "endLine": 44,
         "endChar": 90
       },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21821618_50d2101e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 47,
+        "startChar": 35,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553176c8_ca956570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "nit: could you use BrowserType?",
       "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -135,6 +192,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "061e8c8a_af9e04ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "tconn and bTconn look just same. Could you merge?",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c110c007_547c6231",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
         "patchSetId": 1
@@ -151,6 +225,173 @@
         "startChar": 0,
         "endLine": 125,
         "endChar": 2
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e97f63_4a5d42cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "cf) browserfixt.SetUpWithURL can work?",
+      "parentUuid": "c110c007_547c6231",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03fc92c5_9f7b0064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "can we just open this url from the beginning, instead of open NTP the navigate?",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee7eb5b_8e62a6f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "so does this try to click the button repeatedly?\nCan it be simplified to:\n- Wait for the button is shown.\n- Click the button.\n- Wait for the permission is granted.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fb15ac7_55ebffb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "ditto for window opening.",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "798c1261_afb9a75d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "what is the background of this sleep? Can we wait for some certain condition, instead?",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 14
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "651a7e05_ca6dbef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "maybe permissionGrantNeeded?",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 26
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491bc9ff_284e82bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "could you pass the parameters via Call, instead?",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be530d5d_4b6d6da0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T05:27:16Z",
+      "side": 1,
+      "message": "could you use async function instead for simplicity of JS code piece?",
+      "range": {
+        "startLine": 270,
+        "startChar": 4,
+        "endLine": 270,
+        "endChar": 16
       },
       "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
