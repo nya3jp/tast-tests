@@ -22,7 +22,7 @@ func init() {
 			"jettrink@chromium.org",
 			"chromeos-sensors-eng@google.com",
 		},
-		SoftwareDeps: []string{"cros_config"},
+		SoftwareDeps: []string{"unibuild"},
 		Attr:         []string{"group:mainline"},
 	})
 }
