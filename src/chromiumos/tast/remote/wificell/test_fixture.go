@@ -553,7 +553,7 @@ func (tf *TestFixture) getUniqueAPName() string {
 func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
-	r, ok := tf.routers[idx].object.(router.Router)
+	r, ok := tf.routers[idx].object.(router.Standard)
 	if !ok {
 		return nil, errors.Errorf("router device of type %v does not have legacy/openwrt support", tf.routers[idx].object.RouterType())
 	}
@@ -985,9 +985,9 @@ func (tf *TestFixture) Router() support.Base {
 	return tf.RouterByID(0)
 }
 
-// StandardRouter returns support.Base 0 object in the fixture as a router.Router
-func (tf *TestFixture) StandardRouter() (router.Router, error) {
-	r, ok := tf.Router().(router.Router)
+// StandardRouter returns support.Base 0 object in the fixture as a router.Standard
+func (tf *TestFixture) StandardRouter() (router.Standard, error) {
+	r, ok := tf.Router().(router.Standard)
 	if !ok {
 		return nil, errors.New("router is not a standard router")
 	}
@@ -1012,7 +1012,7 @@ func (tf *TestFixture) AxRouter() (*ax.Router, error) {
 	return r, nil
 }
 
-// OpenWrtRouter returns router.Router 0 object in the fixture as an openwrt.Router
+// OpenWrtRouter returns router.Standard 0 object in the fixture as an openwrt.Router
 func (tf *TestFixture) OpenWrtRouter() (*openwrt.Router, error) {
 	r, ok := tf.Router().(openwrt.Router)
 	if !ok {
@@ -1021,12 +1021,12 @@ func (tf *TestFixture) OpenWrtRouter() (*openwrt.Router, error) {
 	return &r, nil
 }
 
-// Pcap returns the pcap router.Router object in the fixture.
+// Pcap returns the pcap router.Standard object in the fixture.
 func (tf *TestFixture) Pcap() support.Base {
 	return tf.pcap
 }
 
-// LegacyPcap returns the pcap router.Router object in the fixture.
+// LegacyPcap returns the pcap router.Standard object in the fixture.
 func (tf *TestFixture) LegacyPcap() (*legacy.Router, error) {
 	p, ok := tf.pcap.(*legacy.Router)
 	if !ok {

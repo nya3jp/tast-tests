@@ -8,9 +8,16 @@ import (
 	"chromiumos/tast/remote/wificell/router/common/support"
 )
 
-// Router contains the functionality the standard WiFi testing router controller should support.
-// Use this in tests if you are not specifically testing with a router that has different support
-type Router interface {
+// Standard contains the functionality the standard WiFi testing router controller should support.
+//
+// Use this in tests if you are not specifically testing with a router that has
+// non-standard support. There is no guarantee of what type of router this is; it
+// just guarantees that the given router controller instance supports controlling
+// these features.
+//
+// If you require a specific support.Type of router, use its respective router
+// implementation instead.
+type Standard interface {
 	support.Base
 	support.Logs
 	support.Capture
