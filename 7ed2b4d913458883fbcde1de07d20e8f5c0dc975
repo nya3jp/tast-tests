@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9fbe0d0_e06a9c25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-20T04:35:32Z",
+      "side": 1,
+      "message": "Adding Hidehiko for Lacros tast test review\nFWIW go/lacros-tast-porting is the latest guidelines to make Tast tests work for both browsers.\n",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d474d99d_5cf1a678",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-20T04:35:32Z",
+      "side": 1,
+      "message": "nit: LacrosVariantExists if you\u0027re adding a lacros variant to this new test",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b7646b_d79ae842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-20T04:35:32Z",
+      "side": 1,
+      "message": "nit: a typo",
+      "range": {
+        "startLine": 44,
+        "startChar": 84,
+        "endLine": 44,
+        "endChar": 90
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a84d09_37e6311e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-20T04:35:32Z",
+      "side": 1,
+      "message": "If the Val here is just to specify the type of browser to use in each test, I think it could be simplified as below\n\nat line 51-53\n`Val: browser.TypeLacros,`\nat line 58-60\n`Val: browser.TypeAsh,`\n\nTo use in tests at line 67\n`bt :\u003d s.Param().(browser.Type)`",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26f3c974_a50f6844",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-20T04:35:32Z",
+      "side": 1,
+      "message": "\"chromeLoggedIn\" would be appropriate if you\u0027d like to enable ash-chrome and stay signed in with fake credential.",
+      "range": {
+        "startLine": 61,
+        "startChar": 13,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f925870_6ad0e336",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-20T04:35:32Z",
+      "side": 1,
+      "message": "chrome.HasChrome",
+      "range": {
+        "startLine": 68,
+        "startChar": 22,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c110c007_547c6231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-20T04:35:32Z",
+      "side": 1,
+      "message": "This boilerplate for setup could probably be simplified further with the browser abstraction. https://docs.google.com/document/d/1MtkFEB5t5bWHLht_g7qk3oSq6EvAjyN_n-zWvQU9CiA/edit?resourcekey\u003d0-MFe2_R4LkfwXgHUZVUJzOQ#bookmark\u003did.oqcve93xlx54",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
