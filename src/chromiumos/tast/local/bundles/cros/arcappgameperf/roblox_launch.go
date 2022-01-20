@@ -23,7 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Captures launch metrics for Roblox",
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{
