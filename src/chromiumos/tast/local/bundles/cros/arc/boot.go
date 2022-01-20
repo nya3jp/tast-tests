@@ -98,6 +98,16 @@ func init() {
 			ExtraAttr:         []string{"group:mainline", "informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           25 * time.Minute,
+		}, {
+			Name: "vm_large_memory",
+			Val: bootConfig{
+				numTrials: 1,
+				// Boot ARCVM with the largest possible guest memory size.
+				chromeArgs: []string{"--enable-features=ArcVmMemorySize:shift_mib/0"},
+			},
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Timeout:           5 * time.Minute,
 		}},
 	})
 }
