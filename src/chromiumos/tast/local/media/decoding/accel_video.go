@@ -54,8 +54,9 @@ const (
 
 // TestParams allows adjusting some of the test arguments passed in.
 type TestParams struct {
-	DecoderType  DecoderType
-	LinearOutput bool
+	DecoderType      DecoderType
+	LinearOutput     bool
+	DisableVaapiLock bool
 }
 
 func generateCmdArgs(outDir, filename string, parameters TestParams) []string {
@@ -71,6 +72,9 @@ func generateCmdArgs(outDir, filename string, parameters TestParams) []string {
 	}
 	if parameters.LinearOutput {
 		args = append(args, "--linear_output")
+	}
+	if parameters.DisableVaapiLock {
+		args = append(args, "--disable_vaapi_lock")
 	}
 	return args
 }
@@ -192,6 +196,8 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 		cappedTestname = "MeasureCappedPerformance"
 		// Name of the uncapped performance test.
 		uncappedTestname = "MeasureUncappedPerformance"
+		// Name of the uncapped, multiple concurrent test.
+		multipleConcurrentTestname = "MeasureUncappedPerformance_MultipleConcurrentDecoders"
 		// Duration of the interval during which CPU usage will be measured.
 		measureDuration = 20 * time.Second
 		// Time reserved for cleanup.
@@ -226,7 +232,7 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 
 	const exec = "video_decode_accelerator_perf_tests"
 	if report, err := runAccelVideoTestCmd(ctx, exec,
-		fmt.Sprintf("*%s:*%s", cappedTestname, uncappedTestname),
+		fmt.Sprintf("*%s:*%s:*%s", cappedTestname, uncappedTestname, multipleConcurrentTestname),
 		filepath.Join(outDir, exec+".1.log"), args); err != nil {
 		msg := fmt.Sprintf("failed to run %v with video %s", exec, filename)
 		if report != nil {
@@ -248,11 +254,21 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 		return errors.Wrap(err, "failed to find capped performance metrics file")
 	}
 
-	if err := parseUncappedPerfMetrics(uncappedJSON, p); err != nil {
+	multipleConcurrentJSON := filepath.Join(outDir, "VideoDecoderTest", multipleConcurrentTestname+".json")
+	if _, err := os.Stat(multipleConcurrentJSON); os.IsNotExist(err) {
+		return errors.Wrap(err, "failed too find multiple concurrent decoders performance metrics file")
+	}
+
+	if err := parseUncappedPerfMetrics(uncappedJSON, p, "uncapped"); err != nil {
 		return errors.Wrap(err, "failed to parse uncapped performance metrics")
 	}
 	if err := parseCappedPerfMetrics(cappedJSON, p); err != nil {
 		return errors.Wrap(err, "failed to parse capped performance metrics")
+	}
+	// TODO(b/211783279) Replace this parser with one that cana handle multiple captures.
+	// Use the uncapped parser since only one performance evaluator is current being used in the test.
+	if err := parseUncappedPerfMetrics(multipleConcurrentJSON, p, "multipleConcurrent"); err != nil {
+		return errors.Wrap(err, "failed to parse multiple concurrent decoders performance metrics")
 	}
 
 	// Test 2: Measure CPU usage and power consumption while running capped

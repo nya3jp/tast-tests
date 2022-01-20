@@ -48,6 +48,9 @@ type TestOptions struct {
 
 	// Encode bitrate.
 	bitrate int
+
+	// Controls the VAAPI Lock disabling flag.
+	disableVaapiLock bool
 }
 
 // MakeTestOptions creates TestOptions from webMName and profile.
@@ -71,6 +74,19 @@ func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bit
 		spatialLayers:  1,
 		temporalLayers: 1,
 		bitrate:        bitrate,
+	}
+}
+
+// MakeVaapiLockTestOptions creates TestOptions from webMName and codec.
+// spatialLayers and temporalLayers are set to 1.
+// Controls whether the VAAPI Lock disabling feature is active or not.
+func MakeVaapiLockTestOptions(webMName string, profile videotype.CodecProfile, disableVaapiLock bool) TestOptions {
+	return TestOptions{
+		webMName:         webMName,
+		profile:          profile,
+		spatialLayers:    1,
+		temporalLayers:   1,
+		disableVaapiLock: disableVaapiLock,
 	}
 }
 
@@ -173,6 +189,9 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 	if opts.temporalLayers > 1 {
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
 	}
+	if opts.disableVaapiLock {
+		testArgs = append(testArgs, "--disable_vaapi_lock")
+	}
 
 	exec := filepath.Join(chrome.BinTestDir, "video_encode_accelerator_tests")
 	logfile := filepath.Join(s.OutDir(), fmt.Sprintf("output_%s_%d.txt", filepath.Base(exec), time.Now().Unix()))
@@ -210,6 +229,8 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		cappedTestname = "MeasureCappedPerformance"
 		// Name of the bitstream quality test.
 		qualityTestname = "MeasureProducedBitstreamQuality"
+		// Name of the multiple concurrent encoders test.
+		multipleConcurrentTestname = "MeasureUncappedPerformance_MultipleConcurrentEncoders"
 		// The binary performance test.
 		exec = "video_encode_accelerator_perf_tests"
 	)
@@ -272,11 +293,14 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	if opts.bitrate > 0 {
 		testArgs = append(testArgs, fmt.Sprintf("--bitrate=%d", opts.bitrate))
 	}
+	if opts.disableVaapiLock {
+		testArgs = append(testArgs, "--disable_vaapi_lock")
+	}
 
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".uncap_and_quality.log")),
-		gtest.Filter(fmt.Sprintf("*%s:*%s", uncappedTestname, qualityTestname)),
+		gtest.Filter(fmt.Sprintf("*%s:*%s:*%s", uncappedTestname, qualityTestname, multipleConcurrentTestname)),
 		gtest.ExtraArgs(testArgs...),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
@@ -293,7 +317,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	if _, err := os.Stat(uncappedJSON); os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to find uncapped performance metrics file")
 	}
-	if err := encoding.ParseUncappedPerfMetrics(uncappedJSON, p); err != nil {
+	if err := encoding.ParseUncappedPerfMetrics(uncappedJSON, p, "uncapped"); err != nil {
 		return errors.Wrap(err, "failed to parse uncapped performance metrics")
 	}
 
@@ -311,6 +335,16 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		if err := addQualityMetrics(qualityJSONPath, "", p); err != nil {
 			return errors.Wrap(err, "failed to parse quality performance metrics")
 		}
+	}
+
+	multipleConcurrentJSON := filepath.Join(s.OutDir(), "VideoEncoderTest", multipleConcurrentTestname+".json")
+	if _, err := os.Stat(multipleConcurrentJSON); os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to find multiple concurrent encoders performance metrics file")
+	}
+	// Use the uncapped parser since only one performance evaluator is current being used in the test.
+	// TODO(b/211783279) Replace this parser with one that cana handle multiple captures.
+	if err := encoding.ParseUncappedPerfMetrics(multipleConcurrentJSON, p, "multipleConcurrent"); err != nil {
+		return errors.Wrap(err, "failed to parse multiple concurrent encoders performance metrics")
 	}
 
 	// Test 2: Measure CPU usage and power consumption while running capped
