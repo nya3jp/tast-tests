@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9bd9d89_f444c5f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-20T19:25:36Z",
+      "side": 1,
+      "message": "I am not an owner, but I think it\u0027s reasonable to make this test informational to see if this unblocks golang upgrade. If this does not help, we should revert this CL shortly after. If it does, I\u0027ll continue my investigation and revert this CL after fixing the test.",
+      "revId": "fafbaec86fb103ead1f679b0c23305908da33966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
