@@ -63,6 +63,19 @@ func (c *cryptohomeBinary) removeFile(ctx context.Context, filename string) erro
 	return err
 }
 
+func (c *cryptohomeBinary) chapsLockExists(ctx context.Context) (bool, error) {
+	const (
+		lockDir     = "/run/lock/power_override"
+		lockPattern = "chapsd_token_init_slot_*"
+	)
+	out, err := c.runner.Run(ctx, "find", lockDir, "-iname", lockPattern)
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to check for %s lock files in %s", lockPattern, lockDir)
+	}
+
+	return string(out) != "", nil
+}
+
 // installAttributesGetStatus calls "cryptohome --action=install_attributes_get_status".
 func (c *cryptohomeBinary) installAttributesGetStatus(ctx context.Context) (string, error) {
 	out, err := c.call(ctx, "--action=install_attributes_get_status")
