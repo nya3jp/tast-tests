@@ -10,8 +10,10 @@ import (
 	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
+	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/testing"
 )
 
@@ -20,11 +22,13 @@ import (
 // allowGBBForce defines whether to force dev mode via GBB flags.
 // resetAfterBoot defines whether to perform a ModeAwareReboot after switching to bootToMode.
 // resetType defines whether ModeAwareReboot should use a warm or a cold reset.
+// checkBootFromMain defines whether to boot from the main storage.
 type bootModeTestParams struct {
-	bootToMode     fwCommon.BootMode
-	allowGBBForce  bool
-	resetAfterBoot bool
-	resetType      firmware.ResetType
+	bootToMode        fwCommon.BootMode
+	allowGBBForce     bool
+	resetAfterBoot    bool
+	resetType         firmware.ResetType
+	checkBootFromMain bool
 }
 
 func init() {
@@ -86,8 +90,9 @@ func init() {
 			Name:    "dev_warm",
 			Fixture: fixture.DevMode,
 			Val: bootModeTestParams{
-				resetAfterBoot: true,
-				resetType:      firmware.WarmReset,
+				resetAfterBoot:    true,
+				resetType:         firmware.WarmReset,
+				checkBootFromMain: true,
 			},
 			ExtraAttr: []string{"firmware_smoke"},
 			Timeout:   15 * time.Minute,
@@ -95,8 +100,9 @@ func init() {
 			Name:    "dev_cold",
 			Fixture: fixture.DevMode,
 			Val: bootModeTestParams{
-				resetAfterBoot: true,
-				resetType:      firmware.ColdReset,
+				resetAfterBoot:    true,
+				resetType:         firmware.ColdReset,
+				checkBootFromMain: true,
 			},
 			ExtraAttr: []string{"firmware_smoke"},
 			Timeout:   15 * time.Minute,
@@ -141,6 +147,11 @@ func BootMode(ctx context.Context, s *testing.State) {
 	tc := s.Param().(bootModeTestParams)
 	pv := s.FixtValue().(*fixture.Value)
 	h := pv.Helper
+
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to init servo: ", err)
+	}
+
 	ms, err := firmware.NewModeSwitcher(ctx, h)
 	if err != nil {
 		s.Fatal("Creating mode switcher: ", err)
@@ -155,7 +166,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Error opening servo: ", err)
 	}
-	if tc.bootToMode == fwCommon.BootModeRecovery {
+	if tc.bootToMode == fwCommon.BootModeRecovery || tc.checkBootFromMain {
 		skipFlashUSB := false
 		if skipFlashUSBStr, ok := s.Var("firmware.skipFlashUSB"); ok {
 			skipFlashUSB, err = strconv.ParseBool(skipFlashUSBStr)
@@ -197,7 +208,6 @@ func BootMode(ctx context.Context, s *testing.State) {
 			s.Fatalf("Error during transition from %s to %s: %+v", pv.BootMode, tc.bootToMode, err)
 		}
 		s.Log("Transition completed successfully")
-
 	}
 
 	// Reset the DUT, if the test case calls for it.
@@ -228,6 +238,59 @@ func BootMode(ctx context.Context, s *testing.State) {
 				s.Fatalf("Error returning from %s to %s: %+v", curr, fwCommon.BootModeNormal, err)
 			}
 			s.Log("Transition completed successfully")
+		}
+	}
+
+	// Check that DUT can boot from the main storage despite USB device attached.
+	if tc.checkBootFromMain {
+		// Ensure that mainfw_act returns A, and if not set up crossystem param
+		// for the device to boot from firmware A next time.
+		mainfwAct, err := h.Reporter.CrossystemParam(ctx, reporters.CrossystemParamMainfwAct)
+		if err != nil {
+			s.Fatal("Failed to get crossystem mainfw_act: ", err)
+		}
+		if mainfwAct != "A" {
+			s.Log("Current mainfw_act not set to A. Attempting to set the device to boot from A during next reboot")
+			if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "fw_try_next=A").Run(); err != nil {
+				s.Fatal("Failed to set 'crossystem fw_try_next=A': ", err)
+			}
+		}
+
+		s.Log("Enabling USB connection to DUT")
+		if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxDUT); err != nil {
+			s.Fatal("Failed to set 'usb3_mux_sel:dut_sees_usbkey': ", err)
+		}
+
+		s.Log("Power-cycling DUT with a warm reset")
+		h.CloseRPCConnection(ctx)
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
+			s.Fatal("Failed to reboot DUT by servo: ", err)
+		}
+
+		s.Log("Waiting for DUT to power ON")
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+		defer cancelWaitConnect()
+
+		if err := s.DUT().WaitConnect(waitConnectCtx); err != nil {
+			s.Fatal("Failed to reconnect to DUT: ", err)
+		}
+
+		s.Log("Checking that DUT has booted from main")
+		bootedDeviceType, err := h.Reporter.BootedDevice(ctx)
+		if err != nil {
+			s.Fatal("Could not determine boot device type: ", err)
+		}
+		if bootedDeviceType != reporters.BootedDeviceDeveloperInternalSig {
+			s.Fatalf("DUT did not boot from the internal device, and got bootedDeviceType:%v", bootedDeviceType)
+		}
+
+		s.Log("Checking the value of mainfw_act after reboot")
+		mainfwAct, err = h.Reporter.CrossystemParam(ctx, reporters.CrossystemParamMainfwAct)
+		if err != nil {
+			s.Fatal("Failed to get crossystem mainfw_act: ", err)
+		}
+		if mainfwAct != "A" {
+			s.Fatalf("Expected mainfw_act:A but got mainfw_act:%s", mainfwAct)
 		}
 	}
 }
