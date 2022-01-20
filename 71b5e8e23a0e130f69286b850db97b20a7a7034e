@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3146e708_668088d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-20T23:38:32Z",
+      "side": 1,
+      "message": "Where is this object beginning used?",
+      "revId": "71b5e8e23a0e130f69286b850db97b20a7a7034e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee59fdd_68799001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-20T23:38:32Z",
+      "side": 1,
+      "message": "Can we just use one lock for ChromeService,svc.sharedObject.ChromeMutex.Lock?",
+      "revId": "71b5e8e23a0e130f69286b850db97b20a7a7034e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
