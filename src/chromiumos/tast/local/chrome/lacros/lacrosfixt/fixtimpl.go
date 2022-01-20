@@ -266,7 +266,7 @@ type fixtValueImpl struct {
 	testAPIConn *chrome.TestConn
 	mode        SetupMode
 	lacrosPath  string
-	userTmpDir  string
+	userTmpDir  *string
 }
 
 // Chrome gets the CrOS-chrome instance.
@@ -297,7 +297,7 @@ func (f *fixtValueImpl) LacrosPath() string {
 // space. To avoid that problem, the user data will be wiped for each
 // test run.
 func (f *fixtValueImpl) UserTmpDir() string {
-	return f.userTmpDir
+	return *f.userTmpDir
 }
 
 // fixtImpl is a fixture that allows Lacros chrome to be launched.
@@ -504,7 +504,7 @@ func (f *fixtImpl) buildFixtData(ctx context.Context, s *testing.FixtState) *fix
 	if err := f.cr.ResetState(ctx); err != nil {
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
-	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath, f.userTmpDir}
+	return &fixtValueImpl{f.cr, f.tconn, f.mode, f.lacrosPath, &f.userTmpDir}
 }
 
 // waitForPathToExist is a helper method that waits the given binary path to be present
