@@ -10,8 +10,8 @@ import (
 	"strings"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	pb "chromiumos/tast/local/uidetection/api"
 	"chromiumos/tast/testing"
@@ -26,6 +26,9 @@ const (
 	ErrNthNotFound = "Nth element not found"
 )
 
+// maxInt isn't available in go 1.15.
+const maxInt = int(math.MaxInt32)
+
 // Location represents the location of a matching UI element.
 type Location struct {
 	// Rectangle of the location.
@@ -39,12 +42,11 @@ type Location struct {
 type Finder struct {
 	// The request used to construct the finder.
 	request *pb.DetectionRequest
-	// boundingBoxes stores the locations of the responses from the request.
-	boundingBoxes []*Location
 	// Descriptor for the finder.
-	desc       string
-	nth        int
-	exactMatch bool
+	desc        string
+	nth         int
+	exactMatch  bool
+	constraints []func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error)
 }
 
 func newFinder() *Finder {
@@ -56,37 +58,36 @@ func newFinder() *Finder {
 
 func newFromRequest(r *pb.DetectionRequest, d string) *Finder {
 	return &Finder{
-		request:       r,
-		boundingBoxes: nil,
-		desc:          d,
-		nth:           -1,
-		exactMatch:    false,
+		request:    r,
+		desc:       d,
+		nth:        -1,
+		exactMatch: false,
 	}
 }
 
 // copy returns a copy of the input Finder.
 // It copies all of the keys/values in attributes and state individually.
-func (s *Finder) copy() *Finder {
+func (f *Finder) copy() *Finder {
 	c := newFinder()
-	c.request = s.request
-	c.boundingBoxes = s.boundingBoxes
-	c.desc = s.desc
-	c.nth = s.nth
+	c.request = f.request
+	c.desc = f.desc
+	c.nth = f.nth
+	c.constraints = f.constraints
 	return c
 }
 
 // First enables the finder to choose the first match of a UI element
 // if there are multiple matches.
-func (s *Finder) First() *Finder {
-	c := s.copy()
+func (f *Finder) First() *Finder {
+	c := f.copy()
 	c.nth = 0
 	return c
 }
 
 // Nth enables the finder to choose the n-th match of a UI element.
 // if there are multiple matches.
-func (s *Finder) Nth(nth int) *Finder {
-	c := s.copy()
+func (f *Finder) Nth(nth int) *Finder {
+	c := f.copy()
 	c.nth = nth
 	return c
 }
@@ -99,27 +100,206 @@ func (s *Finder) Nth(nth int) *Finder {
 // An example use case is when the matching word is short with two or three
 // letters.
 // TODO(b/211937254): Allow exact matches with max_edit_distance in new proto.
-func (s *Finder) ExactMatch() *Finder {
-	c := s.copy()
+func (f *Finder) ExactMatch() *Finder {
+	c := f.copy()
 	c.exactMatch = true
 	return c
 }
 
-// resolve resolves the UI detection request and stores the bounding boxes
-// of the matching elements.
-func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestConn, pollOpts testing.PollOptions, strategy ScreenshotStrategy) (*Location, error) {
+func (f *Finder) newConstraint(constraint func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error)) *Finder {
+	c := f.copy()
+	c.constraints = append(c.constraints, constraint)
+	return c
+}
+
+func (f *Finder) pxConstraintBuilder(rect *coords.Rect) *Finder {
+	return f.newConstraint(func(context.Context, *Context, float64) (*coords.Rect, error) { return rect, nil })
+}
+
+// WithinPx ensures that the element returned must be within the rectangle on the screen, measured in pixels.
+func (f *Finder) WithinPx(r coords.Rect) *Finder {
+	return f.pxConstraintBuilder(&r)
+}
+
+// WithinDp ensures that the element returned must be within the rectangle on the screen, measuren in dp.
+func (f *Finder) WithinDp(r coords.Rect) *Finder {
+	return f.newConstraint(func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error) {
+		px := coords.ConvertBoundsFromDPToPX(r, scaleFactor)
+		return &px, nil
+	})
+}
+
+// Within ensures that the element returned must be within the element returned by the finder on the screen.
+func (f *Finder) Within(other *Finder) *Finder {
+	return f.newConstraint(func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error) {
+		loc, err := other.locationPx(ctx, uda, scaleFactor)
+		if err != nil {
+			return nil, err
+		}
+		return &coords.Rect{Left: loc.Left, Top: loc.Top, Width: loc.Width, Height: loc.Height}, nil
+	})
+}
+
+// WithinA11yNode ensures that the element returned must be above the element returned by the a11y node finder on the screen.
+func (f *Finder) WithinA11yNode(other *nodewith.Finder) *Finder {
+	return f.newConstraint(func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error) {
+		loc, err := uiauto.New(uda.tconn).WithPollOpts(uda.pollOpts).Location(ctx, other)
+		if err != nil {
+			return nil, err
+		}
+		px := coords.ConvertBoundsFromDPToPX(*loc, scaleFactor)
+		return &px, nil
+	})
+}
+
+func above(px int) *coords.Rect {
+	return &coords.Rect{Left: 0, Top: 0, Width: maxInt, Height: px}
+}
+
+func below(px int) *coords.Rect {
+	return &coords.Rect{Left: 0, Top: px, Width: maxInt, Height: maxInt}
+}
+
+func leftOf(px int) *coords.Rect {
+	return &coords.Rect{Left: 0, Top: 0, Width: px, Height: maxInt}
+}
+
+func rightOf(px int) *coords.Rect {
+	return &coords.Rect{Left: px, Top: 0, Width: maxInt, Height: maxInt}
+}
+
+type directionFn = func(px int) *coords.Rect
+
+func (f *Finder) dpConstraintBuilder(dp int, direction directionFn) *Finder {
+	return f.newConstraint(func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error) {
+		return direction(int(float64(dp) / scaleFactor)), nil
+	})
+}
+
+func (f *Finder) constraintBuilder(other *Finder, direction directionFn, side func(Location) int) *Finder {
+	return f.newConstraint(func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error) {
+		loc, err := other.locationPx(ctx, uda, scaleFactor)
+		if err != nil {
+			return nil, err
+		}
+		return direction(side(*loc)), nil
+	})
+}
+
+func (f *Finder) a11yNodeConstraintBuilder(other *nodewith.Finder, direction directionFn, side func(coords.Rect) int) *Finder {
+	return f.newConstraint(func(ctx context.Context, uda *Context, scaleFactor float64) (*coords.Rect, error) {
+		loc, err := uiauto.New(uda.tconn).WithPollOpts(uda.pollOpts).Location(ctx, other)
+		if err != nil {
+			return nil, err
+		}
+		return direction(side(coords.ConvertBoundsFromDPToPX(*loc, scaleFactor))), nil
+
+	})
+}
+
+// AbovePx ensures that the element returned must be above px pixels on the screen.
+func (f *Finder) AbovePx(px int) *Finder {
+	return f.pxConstraintBuilder(above(px))
+}
+
+// AboveDp ensures that the element returned must be above dp display pixels on the screen.
+func (f *Finder) AboveDp(dp int) *Finder {
+	return f.dpConstraintBuilder(dp, above)
+}
+
+// Above ensures that the element returned must be above the element returned by the finder on the screen.
+func (f *Finder) Above(other *Finder) *Finder {
+	return f.constraintBuilder(other, above, func(l Location) int { return l.Top })
+}
+
+// AboveA11yNode ensures that the element returned must be above the element returned by the a11y node finder on the screen.
+func (f *Finder) AboveA11yNode(other *nodewith.Finder) *Finder {
+	return f.a11yNodeConstraintBuilder(other, above, func(r coords.Rect) int { return r.Top })
+}
+
+// BelowPx ensures that the element returned must be below px pixels on the screen.
+func (f *Finder) BelowPx(px int) *Finder {
+	return f.pxConstraintBuilder(below(px))
+}
+
+// BelowDp ensures that the element returned must be below dp display pixels on the screen.
+func (f *Finder) BelowDp(dp int) *Finder {
+	return f.dpConstraintBuilder(dp, below)
+}
+
+// Below ensures that the element returned must be below the element returned by the finder on the screen.
+func (f *Finder) Below(other *Finder) *Finder {
+	return f.constraintBuilder(other, below, func(l Location) int { return l.Bottom() })
+}
+
+// BelowA11yNode ensures that the element returned must be below the element returned by the a11y node finder on the screen.
+func (f *Finder) BelowA11yNode(other *nodewith.Finder) *Finder {
+	return f.a11yNodeConstraintBuilder(other, below, func(r coords.Rect) int { return r.Bottom() })
+}
+
+// LeftOfPx ensures that the element returned must be left of px pixels on the screen.
+func (f *Finder) LeftOfPx(px int) *Finder {
+	return f.pxConstraintBuilder(leftOf(px))
+}
+
+// LeftOfDp ensures that the element returned must be left of dp display pixels on the screen.
+func (f *Finder) LeftOfDp(dp int) *Finder {
+	return f.dpConstraintBuilder(dp, leftOf)
+}
+
+// LeftOf ensures that the element returned must be left of the element returned by the finder on the screen.
+func (f *Finder) LeftOf(other *Finder) *Finder {
+	return f.constraintBuilder(other, leftOf, func(l Location) int { return l.Left })
+}
+
+// LeftOfA11yNode ensures that the element returned must be left of the element returned by the a11y node finder on the screen.
+func (f *Finder) LeftOfA11yNode(other *nodewith.Finder) *Finder {
+	return f.a11yNodeConstraintBuilder(other, leftOf, func(r coords.Rect) int { return r.Left })
+}
+
+// RightOfPx ensures that the element returned must be right of px pixels on the screen.
+func (f *Finder) RightOfPx(px int) *Finder {
+	return f.pxConstraintBuilder(rightOf(px))
+}
+
+// RightOfDp ensures that the element returned must be right of dp display pixels on the screen.
+func (f *Finder) RightOfDp(dp int) *Finder {
+	return f.dpConstraintBuilder(dp, rightOf)
+}
+
+// RightOf ensures that the element returned must be right of the element returned by the finder on the screen.
+func (f *Finder) RightOf(other *Finder) *Finder {
+	return f.constraintBuilder(other, rightOf, func(l Location) int { return l.Right() })
+}
+
+// RightOfA11yNode ensures that the element returned must be right of the element returned by the a11y node finder on the screen.
+func (f *Finder) RightOfA11yNode(other *nodewith.Finder) *Finder {
+	return f.a11yNodeConstraintBuilder(other, rightOf, func(r coords.Rect) int { return r.Right() })
+}
+
+// locationPx resolves the UI detection request and stores the bounding boxes of the matching element in pixels.
+func (f *Finder) locationPx(ctx context.Context, uda *Context, scaleFactor float64) (*Location, error) {
 	// Take the screenshot depending on the provided strategy.
 	var imagePng []byte
 	var err error
+	boundingBox := coords.Rect{Left: 0, Top: 0, Width: maxInt, Height: maxInt}
 
-	switch strategy {
+	for _, constraint := range f.constraints {
+		rect, err := constraint(ctx, uda, scaleFactor)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to find sub-element bounding box")
+		}
+		boundingBox = boundingBox.Intersection(*rect)
+	}
+
+	switch uda.screenshotStrategy {
 	case StableScreenshot:
-		imagePng, err = TakeStableScreenshot(ctx, tconn, pollOpts)
+		imagePng, err = takeStableScreenshot(ctx, uda.tconn, uda.pollOpts, boundingBox)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to take stable screenshot")
 		}
 	case ImmediateScreenshot:
-		imagePng, err = TakeScreenshot(ctx, tconn)
+		imagePng, err = takeScreenshot(ctx, uda.tconn, boundingBox)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to take screenshot")
 		}
@@ -127,75 +307,52 @@ func (s *Finder) resolve(ctx context.Context, d *uiDetector, tconn *chrome.TestC
 		return nil, errors.New("invalid screenshot strategy")
 	}
 
-	screens, err := display.GetInfo(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the display info")
-	}
-
-	// Find the ratio to convert coordinates in the screenshot to those in the screen.
-	scaleFactor, err := screens[0].GetEffectiveDeviceScaleFactor()
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get the device scale factor")
-	}
-
-	// Make sure the scale factor is neither 0 nor NaN.
-	if math.IsNaN(scaleFactor) || math.Abs(scaleFactor) < 1e-10 {
-		return nil, errors.Errorf("invalid device scale factor: %f", scaleFactor)
-	}
-
-	response, err := d.sendDetectionRequest(ctx, imagePng, s.request)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to resolve the UI detection request")
-	}
-
-	s.boundingBoxes = []*Location{}
-	for _, boundingBox := range response.BoundingBoxes {
-		if s.exactMatch && !strings.EqualFold(boundingBox.GetText(), s.desc) {
-			continue
-		}
-		s.boundingBoxes = append(
-			s.boundingBoxes,
-			&Location{
-				Rect: coords.NewRectLTRB(
-					int(float64(boundingBox.GetLeft())/scaleFactor),
-					int(float64(boundingBox.GetTop())/scaleFactor),
-					int(float64(boundingBox.GetRight())/scaleFactor),
-					int(float64(boundingBox.GetBottom())/scaleFactor)),
-				Text: boundingBox.GetText(),
-			})
-	}
-
-	loc, err := s.location()
-	if err != nil {
+	failure := func(err error) (*Location, error) {
 		// Save the screenshot if the test fails to find an element.
 		if err := saveBytesImageToOutput(ctx, imagePng, screenshotFile); err != nil {
 			testing.ContextLogf(ctx, "Failed to save the screenshot: %s", err)
 		}
-		return nil, errors.Wrapf(err, "failed to find the location of %s", s.desc)
+		return nil, err
 	}
-	return loc, nil
-}
 
-func (s *Finder) location() (*Location, error) {
-	if s.boundingBoxes == nil {
-		return nil, errors.New("the finder is not resolved")
+	response, err := uda.detector.sendDetectionRequest(ctx, imagePng, f.request)
+	if err != nil {
+		return failure(errors.Wrap(err, "failed to resolve the UI detection request"))
 	}
-	numMatches := len(s.boundingBoxes)
+
+	var locations []Location
+	for _, location := range response.BoundingBoxes {
+		if f.exactMatch && !strings.EqualFold(location.GetText(), f.desc) {
+			continue
+		}
+		locations = append(
+			locations,
+			Location{
+				Rect: coords.NewRectLTRB(
+					boundingBox.Left+int(location.GetLeft()),
+					boundingBox.Top+int(location.GetTop()),
+					boundingBox.Left+int(location.GetRight()),
+					boundingBox.Top+int(location.GetBottom())),
+				Text: location.GetText(),
+			})
+	}
+
+	numMatches := len(locations)
 	switch {
 	case numMatches == 0:
-		return nil, errors.New(ErrNotFound)
+		return failure(errors.New(ErrNotFound))
 	case numMatches == 1:
-		if s.nth > 0 {
-			return nil, errors.Errorf("%s: find only one element, but want the %d-th one", ErrNthNotFound, s.nth)
+		if f.nth > 0 {
+			return failure(errors.Errorf("%s: find only one element, but want the %d-th one", ErrNthNotFound, f.nth))
 		}
-		return s.boundingBoxes[0], nil
+		return &locations[0], nil
 	default: // case numMatches > 1.
-		if s.nth < 0 {
-			return nil, errors.Errorf("%s: found %d elements. If it is expected, consider using First() or Nth()", ErrMultipleMatch, numMatches)
+		if f.nth < 0 {
+			return failure(errors.Errorf("%s: found %d elementf. If it is expected, consider using First() or Nth()", ErrMultipleMatch, numMatches))
 		}
-		if s.nth > numMatches-1 {
-			return nil, errors.Errorf("%s: find %d elements, but want the %d-th one", ErrNthNotFound, numMatches, s.nth)
+		if f.nth > numMatches-1 {
+			return failure(errors.Errorf("%s: find %d elements, but want the %d-th one", ErrNthNotFound, numMatches, f.nth))
 		}
-		return s.boundingBoxes[s.nth], nil
+		return &locations[f.nth], nil
 	}
 }

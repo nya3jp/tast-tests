@@ -13,7 +13,7 @@ import (
 // CustomIcon returns a finder for a given icon.
 func CustomIcon(iconFile string) *Finder {
 	// Read icon image from file.
-	icon, err := ReadImage(iconFile)
+	icon, err := readImage(iconFile)
 	if err != nil {
 		panic(fmt.Sprintf("failed to read the icon: %q", iconFile))
 	}
