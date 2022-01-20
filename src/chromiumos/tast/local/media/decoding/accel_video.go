@@ -54,8 +54,9 @@ const (
 
 // TestParams allows adjusting some of the test arguments passed in.
 type TestParams struct {
-	DecoderType  DecoderType
-	LinearOutput bool
+	DecoderType            DecoderType
+	LinearOutput           bool
+	DisableGlobalVaapiLock bool
 }
 
 func generateCmdArgs(outDir, filename string, parameters TestParams) []string {
@@ -71,6 +72,9 @@ func generateCmdArgs(outDir, filename string, parameters TestParams) []string {
 	}
 	if parameters.LinearOutput {
 		args = append(args, "--linear_output")
+	}
+	if parameters.DisableGlobalVaapiLock {
+		args = append(args, "--disable_vaapi_lock")
 	}
 	return args
 }
@@ -96,6 +100,7 @@ func runAccelVideoTestCmd(ctx context.Context, execCmd, filter, logfilepath stri
 //    implementations.
 // 2. If the output of the decoder is a linear buffer (this is false by
 //    default).
+// 3. If the global VA-API lock should be disabled.
 func RunAccelVideoTest(ctx context.Context, outDir, filename string, parameters TestParams) error {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
@@ -176,6 +181,7 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 //    implementations.
 // 2. If the output of the decoder is a linear buffer (this is false by
 //    default).
+// 3. If the global VA-API lock should be disabled.
 // Both capped and uncapped performance is measured.
 // - Uncapped performance: the specified test video is decoded from start to
 // finish as fast as possible. This provides an estimate of the decoder's max
