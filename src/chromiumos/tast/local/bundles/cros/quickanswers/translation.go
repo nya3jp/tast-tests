@@ -36,8 +36,7 @@ func Translation(ctx context.Context, s *testing.State) {
 		chrome.GAIALogin(chrome.Creds{
 			User: s.RequiredVar("quickanswers.username"),
 			Pass: s.RequiredVar("quickanswers.password"),
-		}),
-		chrome.EnableFeatures("QuickAnswersV2"))
+		}))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
