@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92d7f4f_0c1bcf1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-20T23:27:37Z",
+      "side": 1,
+      "message": "As discussed offline, we\u0027ll leave it in this test because the results of my test are dependent on the existing results of this test.",
+      "parentUuid": "12add221_f0dd10cb",
+      "range": {
+        "startLine": 24,
+        "startChar": 18,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "ccfde9b59af0e02f293eb43721d31f912e075896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b900992a_a75337e2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-20T20:59:34Z",
       "side": 1,
       "message": "how might we add `scaleFactor` to be a field of uidetection.Context and initilize this in New()? Then we don\u0027t need to retrieve this action-invariant var every time?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ccfde9b59af0e02f293eb43721d31f912e075896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3bf816_66c8167a",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-20T23:27:37Z",
+      "side": 1,
+      "message": "I considered this, but if you\u0027re using screendiff, the scale factor can change halfway through the test.",
+      "parentUuid": "b900992a_a75337e2",
       "range": {
         "startLine": 172,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6531e05a_59859dfc",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-20T23:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9943922_f037dcee",
+      "range": {
+        "startLine": 133,
+        "startChar": 17,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "ccfde9b59af0e02f293eb43721d31f912e075896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "528743fb_d8f20305",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-20T07:23:48Z",
       "side": 1,
       "message": "add comment to emphasize that the returned coordinates is in px not dp?",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 280,
+        "endChar": 13
+      },
+      "revId": "ccfde9b59af0e02f293eb43721d31f912e075896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd9b710_655c66f4",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-20T23:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "528743fb_d8f20305",
       "range": {
         "startLine": 280,
         "startChar": 3,
