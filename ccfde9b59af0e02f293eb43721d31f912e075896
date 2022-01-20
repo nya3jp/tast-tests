@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b900992a_a75337e2",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-20T20:59:34Z",
+      "side": 1,
+      "message": "how might we add `scaleFactor` to be a field of uidetection.Context and initilize this in New()? Then we don\u0027t need to retrieve this action-invariant var every time?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "ccfde9b59af0e02f293eb43721d31f912e075896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9943922_f037dcee",
         "filename": "src/chromiumos/tast/local/uidetection/finder.go",
         "patchSetId": 2
