@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49257757_eb2c365a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-20T12:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a40dad1_335ecb5d",
+      "range": {
+        "startLine": 78,
+        "startChar": 12,
+        "endLine": 78,
+        "endChar": 48
+      },
+      "revId": "4f2fa77b223df98745c9b59d8b7b49c4775bc80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b9a330_470babd7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-13T18:06:42Z",
       "side": 1,
       "message": "If you are going to check for g3, there really isn\u0027t any reason to waitunreachable, it will just add extra time to the test.",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "4f2fa77b223df98745c9b59d8b7b49c4775bc80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef3f2bc_06bf4d57",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-20T12:12:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65b9a330_470babd7",
       "range": {
         "startLine": 108,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79a5cda_f6c1a4b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-20T12:12:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea19deb7_858754bd",
+      "range": {
+        "startLine": 116,
+        "startChar": 50,
+        "endLine": 116,
+        "endChar": 51
+      },
+      "revId": "4f2fa77b223df98745c9b59d8b7b49c4775bc80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9313d44d_c325a5a7",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-13T18:06:42Z",
       "side": 1,
       "message": "h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, \"G3\") might be a more robust version of this poll loop.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "4f2fa77b223df98745c9b59d8b7b49c4775bc80c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b81d65_0a9a9cee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/shutdown_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-20T12:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9313d44d_c325a5a7",
       "range": {
         "startLine": 173,
         "startChar": 1,
