@@ -54,8 +54,9 @@ const (
 
 // TestParams allows adjusting some of the test arguments passed in.
 type TestParams struct {
-	DecoderType  DecoderType
-	LinearOutput bool
+	DecoderType      DecoderType
+	LinearOutput     bool
+	DisableVaapiLock bool
 }
 
 func generateCmdArgs(outDir, filename string, parameters TestParams) []string {
@@ -71,6 +72,9 @@ func generateCmdArgs(outDir, filename string, parameters TestParams) []string {
 	}
 	if parameters.LinearOutput {
 		args = append(args, "--linear_output")
+	}
+	if parameters.DisableVaapiLock {
+		args = append(args, "--disable_vaapi_lock")
 	}
 	return args
 }

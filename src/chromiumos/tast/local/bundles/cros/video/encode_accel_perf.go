@@ -123,6 +123,11 @@ func init() {
 			ExtraData:         encode.TestData(crowd1080p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 		}, {
+			Name:              "h264_1080p_vaapi_lock_disabled",
+			Val:               encode.MakeVaapiLockTestOptions(crowd1080p, videotype.H264BaselineProf, true),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "thread_safe_libva_backend"},
+		}, {
 			Name:              "vp8_180p",
 			Val:               encode.MakeTestOptions(crowd180p, videotype.VP8Prof),
 			ExtraData:         encode.TestData(crowd180p),
@@ -147,6 +152,11 @@ func init() {
 			Val:               encode.MakeTestOptions(crowd2160p, videotype.VP8Prof),
 			ExtraData:         encode.TestData(crowd2160p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8_4K},
+		}, {
+			Name:              "vp8_1080p_vaapi_lock_disabled",
+			Val:               encode.MakeVaapiLockTestOptions(crowd1080p, videotype.VP8Prof, true),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, "thread_safe_libva_backend"},
 		}, {
 			Name:              "vp9_180p",
 			Val:               encode.MakeTestOptions(crowd180p, videotype.VP9Prof),
@@ -222,6 +232,11 @@ func init() {
 			Val:               encode.MakeTestOptions(crowd2160p, videotype.VP9Prof),
 			ExtraData:         encode.TestData(crowd2160p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP9_4K},
+		}, {
+			Name:              "vp9_1080p_vaapi_lock_disabled",
+			Val:               encode.MakeVaapiLockTestOptions(crowd1080p, videotype.VP9Prof, true),
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "thread_safe_libva_backend"},
 		}},
 	})
 }
