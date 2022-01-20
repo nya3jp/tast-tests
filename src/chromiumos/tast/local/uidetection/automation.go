@@ -6,15 +6,18 @@ package uidetection
 
 import (
 	"context"
+	"math"
 	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/touch"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -166,10 +169,31 @@ func (uda *Context) Tap(s *Finder) uiauto.Action {
 
 // Location finds the location of a finder in the screen.
 func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) {
-	if err := s.resolve(ctx, uda.detector, uda.tconn, uda.pollOpts, uda.screenshotStrategy); err != nil {
-		return nil, errors.Wrapf(err, "failed to resolve the finder: %q", s.desc)
+	screens, err := display.GetInfo(ctx, uda.tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the display info")
 	}
-	return s.location()
+
+	// Find the ratio to convert coordinates in the screenshot to those in the screen.
+	scaleFactor, err := screens[0].GetEffectiveDeviceScaleFactor()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the device scale factor")
+	}
+
+	// Make sure the scale factor is neither 0 nor NaN.
+	if math.IsNaN(scaleFactor) || math.Abs(scaleFactor) < 1e-10 {
+		return nil, errors.Errorf("invalid device scale factor: %f", scaleFactor)
+	}
+
+	location, err := s.locationPx(ctx, uda, scaleFactor)
+	if err != nil {
+		return nil, err
+	}
+	rect := coords.NewRect(location.Left, location.Top, location.Width, location.Height)
+
+	return &Location{
+		Text: location.Text,
+		Rect: coords.ConvertBoundsFromPXToDP(rect, scaleFactor)}, nil
 }
 
 // Exists returns an action that returns nil if the specified element exists.
