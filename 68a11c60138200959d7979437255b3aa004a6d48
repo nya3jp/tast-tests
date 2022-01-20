@@ -16,6 +16,23 @@
       "message": "One comment I left unresolved, I have a response/question. Thanks!",
       "revId": "68a11c60138200959d7979437255b3aa004a6d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1db70806_3c97969f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-20T23:31:09Z",
+      "side": 1,
+      "message": "Hello Katherine, nice to meet you! If you could have a look at this patch it would be great!\nWe did code review within the team already, and as of right now all comments are resolved.\nThis test replaces old deprecated test. That old one has been shutdown and not running at all. We need this new one because we are missing the coverage in this area.\nThank you!!",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
