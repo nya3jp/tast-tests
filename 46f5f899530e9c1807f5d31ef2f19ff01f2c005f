@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6c7521_392ac8b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-20T08:42:19Z",
+      "side": 1,
+      "message": "Use capital letter -\u003e Add",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403abf8a_86f12138",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-20T08:42:19Z",
+      "side": 1,
+      "message": "Add a message about adjusting closing closing Chrome in opening Chrome test.",
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9339a539_166240a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/data/start_button_icon.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-20T08:42:19Z",
+      "side": 1,
+      "message": "Give more descriptive name - it is not just start button. It may be confusing to someone later checking this test.",
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5dddb5_51d194b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-20T08:42:19Z",
+      "side": 1,
+      "message": "Please remove as not true any more.",
+      "range": {
+        "startLine": 111,
+        "startChar": 52,
+        "endLine": 112,
+        "endChar": 49
+      },
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3bd34d_78109801",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_desktop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-20T08:42:19Z",
+      "side": 1,
+      "message": "If I see it right there is no cleanup - closing the window with opened virtualized desktop and invoking vdi.ResetSearch().\n\nTry run existing existing test and this one together. E.g. \ntast run ip vdi.OpenChromeApp.citrix vdi.OpenDesktop.citrix\n\nThe fixture will run Reset() between those tests calling v.vdiConnector.WaitForMainScreenVisible() that will make sure that the main view of the VDI app, in this instance Citrix will be present.",
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac34526a_f9a2c3ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_desktop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-20T08:42:19Z",
+      "side": 1,
+      "message": "Invoke opening start menu",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
