@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "554dd101_fcbfca26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-20T10:45:38Z",
+      "side": 1,
+      "message": "the test seems to be stable on crosfleet devices now. please take a look, thanks",
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
