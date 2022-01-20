@@ -440,7 +440,16 @@ func (u *CryptohomeClient) ChangeVaultPassword(ctx context.Context, username, pa
 
 // RemoveVault remove the vault for username.
 func (u *CryptohomeClient) RemoveVault(ctx context.Context, username string) (bool, error) {
-	_, err := u.binary.remove(ctx, username)
+	// In test environments, the time between remove and mount is sometimes short
+	// enough that chapsd is still writing to the user cryptohome at removal.
+	// Terminate pkcs11 services before removal.
+	// TODO(sarthakkukreti@): Check if this can be moved before unmount to mimic ui-post-stop.
+	_, err := u.binary.pkcs11Terminate(ctx, username)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to terminate pkcs11 services")
+	}
+
+	_, err = u.binary.remove(ctx, username)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to remove vault")
 	}

@@ -224,6 +224,11 @@ func (c *cryptohomeBinary) pkcs11UserTokenInfo(ctx context.Context, username str
 	return out, err
 }
 
+// pkcs11Terminate calls "cryptohome --action=pkcs11_terminate"
+func (c *cryptohomeBinary) pkcs11Terminate(ctx context.Context, username string) ([]byte, error) {
+	return c.call(ctx, "--action=pkcs11_terminate", "--user="+username)
+}
+
 // getFirmwareManagementParameters calls "cryptohome --action=get_firmware_management_parameters".
 func (c *cryptohomeBinary) getFirmwareManagementParameters(ctx context.Context) ([]byte, error) {
 	return c.call(ctx, "--action=get_firmware_management_parameters")
