@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa11c12_a91691cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-01-20T18:28:08Z",
+      "side": 1,
+      "message": "ejcaruso@ trivial follow-up to fix an omission in a CL you just reviewed, PTAL!",
+      "revId": "422e20300f34d06e01d25043be3bfa63c4168617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
