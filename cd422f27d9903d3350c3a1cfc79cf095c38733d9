@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "043668e7_4ca91134",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-20T00:50:58Z",
+      "side": 1,
+      "message": "Thank you for explanation! I see. If you don\u0027t mind, I will do this as a follow up. There are few things that can be done to modernise the test. At the moment it is important to unblock P0 lack of coverage.",
+      "parentUuid": "54fb30e2_fe0ae219",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "cd422f27d9903d3350c3a1cfc79cf095c38733d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5758dc3_332a2d6d",
