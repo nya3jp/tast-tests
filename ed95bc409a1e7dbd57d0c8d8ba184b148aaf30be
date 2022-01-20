@@ -34,6 +34,23 @@
       "parentUuid": "520ba645_fef490fd",
       "revId": "ed95bc409a1e7dbd57d0c8d8ba184b148aaf30be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5072ad2e_f4e997ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:47:08Z",
+      "side": 1,
+      "message": "If these are fixed, we shouldn\u0027t leave them commented out -- just remove them.",
+      "revId": "ed95bc409a1e7dbd57d0c8d8ba184b148aaf30be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
