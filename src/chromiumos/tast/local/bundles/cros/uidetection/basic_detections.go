@@ -13,6 +13,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
@@ -25,7 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
-		Timeout:      3 * time.Minute,
+		Timeout:      8 * time.Minute,
 		Data:         []string{"logo_chrome.png"},
 	})
 }
@@ -51,20 +54,71 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "basic_detections")
 
 	ud := uidetection.NewDefault(tconn)
+	ui := uiauto.New(tconn)
+
+	chromeIcon := uidetection.CustomIcon(s.DataPath("logo_chrome.png"))
+	addShortcut := uidetection.TextBlock([]string{"Add", "shortcut"})
+	bottomBar := nodewith.ClassName("ShelfView")
+	notificationArea := nodewith.ClassName("StatusAreaWidget")
+	chromeWindow := nodewith.Role(role.Window).Name("Chrome - New Tab")
+
+	verifyChromeIsMinimized := uiauto.Combine("verify that chrome is minimized",
+		ui.WaitUntilExists(chromeWindow.Invisible()))
+	verifyChromeIsShown := uiauto.Combine("verify that chrome is shown",
+		ui.WaitUntilExists(chromeWindow.Visible()))
+
 	// Perform UI interaction to click Chrome logo to open Chrome,
 	// click "Add shortcut", and click "cancel".
 	// This covers all three UI detections: custom icon detection,
 	// textblock detection and word detection.
 	if err := uiauto.Combine("verify detections",
-		ud.LeftClick(uidetection.CustomIcon(s.DataPath("logo_chrome.png"))),
-		ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(uidetection.TextBlock([]string{"Customize", "Chrome"})),
-		ud.LeftClick(uidetection.Word("Cancel")),
-		ud.WaitUntilGone(uidetection.Word("Cancel")),
-		// Check the negative cases.
-		expectError(ud.Exists(uidetection.Word("Google")), uidetection.ErrMultipleMatch),
-		expectError(ud.Exists(uidetection.Word("Google").Nth(4)), uidetection.ErrNthNotFound),
-		expectError(ud.Exists(uidetection.TextBlock([]string{"Add", "shortcut"}).Nth(2)), uidetection.ErrNthNotFound),
-	)(ctx); err != nil {
+		uiauto.Combine("verify that basic matchers work",
+			ud.LeftClick(chromeIcon),
+			verifyChromeIsShown,
+			ud.WithScreenshotStrategy(uidetection.ImmediateScreenshot).LeftClick(uidetection.TextBlock([]string{"Customize", "Chrome"})),
+			ud.LeftClick(uidetection.Word("Cancel")),
+			ud.WaitUntilGone(uidetection.Word("Cancel")),
+			// Check the negative cases.
+			expectError(ud.Exists(uidetection.Word("Google")), uidetection.ErrMultipleMatch),
+			expectError(ud.Exists(uidetection.Word("Google").Nth(4)), uidetection.ErrNthNotFound),
+			expectError(ud.Exists(uidetection.TextBlock([]string{"Add", "shortcut"}).Nth(2)), uidetection.ErrNthNotFound)),
+
+		uiauto.Combine("verify that within successfully matches",
+			uiauto.Combine("for px",
+				expectError(ud.Exists(chromeIcon.WithinPx(coords.NewRect(0, 0, 50, 50))), uidetection.ErrNotFound),
+				ud.LeftClick(chromeIcon.WithinPx(coords.NewRect(50, 50, 9999, 9999))),
+				verifyChromeIsMinimized),
+			uiauto.Combine("for dp",
+				expectError(ud.Exists(chromeIcon.WithinDp(coords.NewRect(0, 0, 50, 50))), uidetection.ErrNotFound),
+				ud.LeftClick(chromeIcon.WithinDp(coords.NewRect(50, 50, 9999, 9999))),
+				verifyChromeIsShown),
+			uiauto.Combine("for uid",
+				expectError(ud.Exists(chromeIcon.WithinUid(addShortcut)), uidetection.ErrNotFound),
+				ud.LeftClick(chromeIcon.WithinUid(chromeIcon)),
+				verifyChromeIsMinimized),
+			uiauto.Combine("for uiauto",
+				expectError(ud.Exists(chromeIcon.WithinUiauto(notificationArea)), uidetection.ErrNotFound),
+				ud.LeftClick(chromeIcon.WithinUiauto(bottomBar)),
+				verifyChromeIsShown)),
+
+		uiauto.Combine("verify that relative pixel successfully match",
+			uiauto.Combine("for uiauto",
+				expectError(ud.Exists(chromeIcon.RightOfUiauto(chromeWindow)), uidetection.ErrNotFound),
+				expectError(ud.Exists(chromeIcon.LeftOfUiauto(chromeWindow)), uidetection.ErrNotFound),
+				ud.LeftClick(chromeIcon.LeftOfUiauto(notificationArea)),
+				verifyChromeIsMinimized),
+			uiauto.Combine("for dp",
+				expectError(ud.Exists(chromeIcon.LeftOfDp(50)), uidetection.ErrNotFound),
+				ud.LeftClick(chromeIcon.RightOfDp(50)),
+				verifyChromeIsShown),
+			uiauto.Combine("for uid",
+				expectError(ud.Exists(chromeIcon.AboveUid(addShortcut)), uidetection.ErrNotFound),
+				ud.LeftClick(chromeIcon.BelowUid(addShortcut)),
+				verifyChromeIsMinimized),
+			uiauto.Combine("for px",
+				expectError(ud.Exists(chromeIcon.AbovePx(100)), uidetection.ErrNotFound),
+				ud.LeftClick(chromeIcon.BelowPx(100)),
+				verifyChromeIsShown)))(ctx); err != nil {
 		s.Fatal("Failed to perform image-based UI interactions: ", err)
 	}
 }
