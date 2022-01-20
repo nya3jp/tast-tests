@@ -32,6 +32,9 @@ const (
 
 	binFuseX64Zip     = "bin_fuse_x86_64.zip"
 	fuseEnabledRepros = "fuse_x86_64.txt"
+
+	binBpfX64Zip     = "bin_bpf_x86_64.zip"
+	bpfEnabledRepros = "bpf_x86_64.txt"
 )
 
 type testParam struct {
@@ -91,6 +94,16 @@ func init() {
 					windowSize:  5,
 				},
 				ExtraData: []string{binFuseX64Zip, fuseEnabledRepros},
+			},
+			{
+				Name: "bpf",
+				Val: testParam{
+					subsystem:   "bpf",
+					binariesZip: binBpfX64Zip,
+					reprosList:  bpfEnabledRepros,
+					windowSize:  1,
+				},
+				ExtraData: []string{binBpfX64Zip, bpfEnabledRepros},
 			},
 		},
 	})

@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/syzcorpus/bin_bpf_x86_64_20220120.zip",
+  "size": 18010993,
+  "sha256sum": "32387f28691013df5e0e1718fa327fa2090cf2d3be1e54af0b05aba0d73a4024"
+}
