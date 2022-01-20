@@ -21,7 +21,7 @@ func init() {
 			"chromeos-platform-power@google.com", // CrOS platform power developers
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"dptf", "cros_config"},
+		SoftwareDeps: []string{"dptf", "unibuild"},
 
 		// Atlas is a migrated pre-unibuild device, and uses a
 		// script to override the DPTF profile instead of

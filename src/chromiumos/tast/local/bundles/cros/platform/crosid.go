@@ -19,7 +19,7 @@ func init() {
 			"jrosenth@chromium.org", // Test author
 			"chromeos-config@google.com",
 		},
-		SoftwareDeps: []string{"cros_config"},
+		SoftwareDeps: []string{"unibuild"},
 		Attr:         []string{"group:mainline"},
 	})
 }
