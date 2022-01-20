@@ -476,6 +476,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "991f7763_abe50e8f",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "Calling code should not consider this return value valid until it has ensured that the function did not return an error, so the value we put here shouldn\u0027t matter.\n\nThat being said, it would probably signal an error more obviously (and maybe more conventionally) if you put math.MaxUint32 here instead.",
+      "parentUuid": "7f08fcdf_2011caa6",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3981b5c2_af476316",
         "filename": "src/chromiumos/tast/local/shill/device.go",
         "patchSetId": 9

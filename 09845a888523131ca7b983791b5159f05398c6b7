@@ -16,6 +16,504 @@
       "message": "Hi Steve, Eric, Madhav :\n  Tests are ready for review. Tested on trogdor with ATT, Verizon carriers.\n  Steve: Modified as per review comments.\nThanks.",
       "revId": "09845a888523131ca7b983791b5159f05398c6b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c454cf7_ea13d9c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_changepin.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: ShillCellularSimChangePin (here and below)",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79fb8ef7_37cfa4c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_changepin.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "maybe we can phrase this a little better, like \"Verifies that the cellular device SIM PIN can be changed\"?",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 62
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba13d59c_417bb819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_changepin.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "We should probably defer this block after the PIN change on L65 succeeds, right? Otherwise we might end up in a situation where the device remains PIN locked if we fail on e.g. L77 or L81.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d678f0f_e950b294",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: ShillCellularSimFailedEnablePinLock (here and below)",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f0986ce_e8fde2b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: can\u0027t be enabled",
+      "range": {
+        "startLine": 21,
+        "startChar": 52,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98d6e59_6d0c2f8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "Please log something here so we can see why this test was skipped and fix it in the lab",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b524604_da43b33a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "This err value is not checked.",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a7d209_350056c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "defer helper.Device.RequirePin(ctx, badPin, false) after this if enabling the PIN succeeds. Also, this err value is not checked -- if it is nil we will crash on L62",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89dbf42a_1c2ab58d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_failed_enable_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: \"Bad pin...\"",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb4c07b_4a3f974b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: ShillCellularSimPinLock (here and below)",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e488a32_396783cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "Log something here so we can figure out how to fix it in the lab",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1840e5a9_63c8798a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_pinlock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "If enabling succeeds, we should defer the helper.Device.RequirePin(ctx, mmconst.DefaultSimPin, false) from L76-78 here to make sure it gets disabled no matter what.",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80a63f29_8b04bbae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_puklock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: ShillCellularSimPukLock (here and below)",
+      "range": {
+        "startLine": 18,
+        "startChar": 12,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b527ec6_55a0e58e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_puklock.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "Defer this after L48 succeeds so we don\u0027t leave behind a PUK locked device if something fails in the middle.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0667c800_9e028eaf",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "where do we do this?",
+      "range": {
+        "startLine": 63,
+        "startChar": 38,
+        "endLine": 63,
+        "endChar": 58
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ed20d6_21335f21",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "minor nit: move this assignment above the prior line and just use lock in the ContextLog",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ed1c5dd_ec78c436",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "minor nit: move this assignment above the prior line and just use lock in the ContextLog",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f7587fe_8d7cfffe",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "This might be misleading -- this will only trigger if retriesLeft really is an int32, but is negative. Non-int32 values of retriesLeft will cause a panic. Do we want to check that the type assertion passed first?\n\nIf this is guaranteed to be an int32, then we should probably make the error message a little clearer: \"negative retriesLeft property\" for instance.\n\nEither way it might be a little cleaner to perform the type assertion separately and then use the int32-typed variable in the rest of the function.",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e39eea_44102eec",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: we use this for the 8-digit PUK too. Just say that this generates a random number in the given range",
+      "range": {
+        "startLine": 613,
+        "startChar": 51,
+        "endLine": 613,
+        "endChar": 70
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dbe65e9_f47103e3",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: PrimarySimSlot",
+      "range": {
+        "startLine": 482,
+        "startChar": 40,
+        "endLine": 482,
+        "endChar": 54
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2952190_6bc46ae1",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: just call this modemManufacturer",
+      "range": {
+        "startLine": 490,
+        "startChar": 1,
+        "endLine": 490,
+        "endChar": 10
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd2b3d0_661d6d11",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "Is there no way we can check what the indices are supposed to be without bringing in the manufacturer here? e.g. does the SimSlots property we fetch in L476 have proper indices that we can use instead?",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e7a59b_237c9549",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "nit: do we need this log line?",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008d9e5b_9ac66af1",
+        "filename": "src/chromiumos/tast/local/shill/device.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-20T19:40:59Z",
+      "side": 1,
+      "message": "We should probably be a little more consistent about the capitalization/naming here.\n\nIn Go, acronyms are expected to be spelled entirely in the same casing as their first letter, as you did below in UnblockPUK. However, in this instance we are adopting the D-Bus method names as the names of these functions and trying to keep those consistent. So, in my opinion, we should probably just change UnblockPUK to UnblockPin to be consistent with the rest of the D-Bus usage here.",
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
