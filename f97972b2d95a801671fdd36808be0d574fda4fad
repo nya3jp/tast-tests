@@ -16,6 +16,52 @@
       "message": "This looks good to me. However, I\u0027m thinking if the users login, logout then remove vault really fast, will it trigger the same kind of issues? That is, should we fix this by blocking remove vault when pkcs11 initialization is still underway as well? I guess the probability of that happening is really low as well in practice, so I\u0027m kind of on the fence.",
       "revId": "f97972b2d95a801671fdd36808be0d574fda4fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8070c1a0_0289f925",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-20T18:19:26Z",
+      "side": 1,
+      "message": "Should we shorten this context here?",
+      "range": {
+        "startLine": 71,
+        "startChar": 26,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "f97972b2d95a801671fdd36808be0d574fda4fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "affde0d5_07ae926c",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-20T18:19:26Z",
+      "side": 1,
+      "message": "Can we list the files here?",
+      "range": {
+        "startLine": 73,
+        "startChar": 60,
+        "endLine": 73,
+        "endChar": 70
+      },
+      "revId": "f97972b2d95a801671fdd36808be0d574fda4fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
