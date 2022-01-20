@@ -440,7 +440,29 @@ func (u *CryptohomeClient) ChangeVaultPassword(ctx context.Context, username, pa
 
 // RemoveVault remove the vault for username.
 func (u *CryptohomeClient) RemoveVault(ctx context.Context, username string) (bool, error) {
-	_, err := u.binary.remove(ctx, username)
+	// In test environments, the time between remove and mount is sometimes short
+	// enough that chapsd is still writing to the user cryptohome at removal.
+	// Wait for chaps lock file to disappear.
+	err := testing.Poll(ctx, func(context.Context) error {
+		exists, err := u.binary.chapsLockExists(ctx)
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if exists {
+			return errors.New("lock file still exists")
+		}
+
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: time.Second,
+	})
+	if err != nil {
+		return false, errors.Wrap(err, "expected chaps to finish all load events")
+	}
+
+	_, err = u.binary.remove(ctx, username)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to remove vault")
 	}
