@@ -7,6 +7,7 @@ package servo
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -632,7 +633,18 @@ func (s *Servo) SetStringAndCheck(ctx context.Context, control StringControl, va
 
 // KeypressWithDuration sets a KeypressControl to a KeypressDuration value.
 func (s *Servo) KeypressWithDuration(ctx context.Context, control KeypressControl, value KeypressDuration) error {
-	return s.SetString(ctx, StringControl(control), string(value))
+	// The default duration with SetString is 10s.
+	timeout := 5 * time.Second
+	// If duration is string (e.g. press, tab, long_press) don't parse as duration string.
+	if match := regexp.MustCompile(`\d+(.|\.\d+)?`).FindStringSubmatch(string(value)); match != nil {
+		out, err := time.ParseDuration(fmt.Sprintf("%ss", string(value)))
+		if err != nil {
+			return errors.Wrap(err, "parsing duration")
+		}
+		timeout = out
+	}
+	// Set timeout to 2 x length of keypress to make it doesn't timeout too soon.
+	return s.SetStringTimeout(ctx, StringControl(control), string(value), 2*timeout)
 }
 
 // GetUSBMuxState determines whether the servo USB mux is on, and if so, which direction it is pointed.

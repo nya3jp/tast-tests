@@ -87,24 +87,28 @@ type Config struct {
 	// They are used during NewConfig to populate actual duration fields, which are defined below.
 	// Generally, these raw fields should not be accessed by tests and libraries.
 	// Nevertheless, the raw fields must be exported in order for them to be set by json.Unmarshal.
-	RawKeypressDelay           float64 `json:"keypress_delay"`
-	RawDelayRebootToPing       float64 `json:"delay_reboot_to_ping"`
-	RawECBootToPwrButton       float64 `json:"ec_boot_to_pwr_button"`
-	RawFirmwareScreen          float64 `json:"firmware_screen"`
-	RawSerialFirmwareBootDelay float64 `json:"serial_firmware_boot_delay"`
-	RawUSBPlug                 float64 `json:"usb_plug"`
-	RawHoldPwrButtonPowerOff   float64 `json:"hold_pwr_button_poweroff"`
-	RawShutdown                float64 `json:"shutdown"`
+	RawKeypressDelay                 float64 `json:"keypress_delay"`
+	RawDelayRebootToPing             float64 `json:"delay_reboot_to_ping"`
+	RawECBootToPwrButton             float64 `json:"ec_boot_to_pwr_button"`
+	RawFirmwareScreen                float64 `json:"firmware_screen"`
+	RawSerialFirmwareBootDelay       float64 `json:"serial_firmware_boot_delay"`
+	RawUSBPlug                       float64 `json:"usb_plug"`
+	RawHoldPwrButtonPowerOff         float64 `json:"hold_pwr_button_poweroff"`
+	RawHoldPwrButtonPowerOn          float64 `json:"hold_pwr_button_poweron"`
+	RawHoldPwrButtonNoPowerdShutdown float64 `json:"hold_pwr_button_nopowerd_shutdown"`
+	RawShutdown                      float64 `json:"shutdown"`
 
 	// Actual duration fields are populated during NewConfig based on raw JSON duration values, defined above.
-	KeypressDelay           time.Duration
-	DelayRebootToPing       time.Duration
-	ECBootToPwrButton       time.Duration
-	FirmwareScreen          time.Duration
-	SerialFirmwareBootDelay time.Duration
-	USBPlug                 time.Duration
-	HoldPwrButtonPowerOff   time.Duration
-	Shutdown                time.Duration
+	KeypressDelay                 time.Duration
+	DelayRebootToPing             time.Duration
+	ECBootToPwrButton             time.Duration
+	FirmwareScreen                time.Duration
+	SerialFirmwareBootDelay       time.Duration
+	USBPlug                       time.Duration
+	HoldPwrButtonPowerOff         time.Duration
+	HoldPwrButtonPowerOn          time.Duration
+	HoldPwrButtonNoPowerdShutdown time.Duration
+	Shutdown                      time.Duration
 
 	// Instructions for updating AP firmware over servo
 	APFlashCCDProgrammer   string   `json:"ap_flash_ccd_programmer"`
@@ -203,6 +207,8 @@ func NewConfig(cfgFilepath, board, model string) (*Config, error) {
 	cfg.SerialFirmwareBootDelay = toSeconds(cfg.RawSerialFirmwareBootDelay)
 	cfg.USBPlug = toSeconds(cfg.RawUSBPlug)
 	cfg.HoldPwrButtonPowerOff = toSeconds(cfg.RawHoldPwrButtonPowerOff)
+	cfg.HoldPwrButtonPowerOn = toSeconds(cfg.RawHoldPwrButtonPowerOn)
+	cfg.HoldPwrButtonNoPowerdShutdown = toSeconds(cfg.RawHoldPwrButtonNoPowerdShutdown)
 	cfg.Shutdown = toSeconds(cfg.RawShutdown)
 
 	// Parse list of raw json objects into go structs
