@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19bbbcaf_67a067dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T18:09:43Z",
+      "side": 1,
+      "message": "Does it make sense to define the shared structure?",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c85028a3_59005203",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
         "patchSetId": 4
@@ -71,6 +88,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "498b7ecb_bc89c643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T18:09:43Z",
+      "side": 1,
+      "message": "maybe move to L95 and use this at L96?",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97fb98b7_6ef22d0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T18:09:43Z",
+      "side": 1,
+      "message": "why not just \n\nchrome.Option opt\nif productivityLauncher {\n  opt \u003d chrome.EnableFeatures(...)\n} else {\n  opt \u003d ...\n}",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db4ebb44_1fb16198",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
         "patchSetId": 4
@@ -88,6 +139,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5631072d_2587a13d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T18:09:43Z",
+      "side": 1,
+      "message": "huge nit: no empty line needed.",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4dc9cfa5_67fefffd",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 4
@@ -99,6 +167,40 @@
       "writtenOn": "2022-01-20T17:09:02Z",
       "side": 1,
       "message": "is there a reason this case should return 0 rather than -1? If so, I think making that clear in the function comment would be beneficial. I.e. returns item index if found, 0 if \u003creason\u003e, -1 if \u003cother reason\u003e",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a44647_f86fc65f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T18:09:43Z",
+      "side": 1,
+      "message": "could you document the option?",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2457ad_93429ef5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-20T18:09:43Z",
+      "side": 1,
+      "message": "ditto for document.",
       "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
