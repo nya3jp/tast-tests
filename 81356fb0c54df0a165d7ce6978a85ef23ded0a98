@@ -16,6 +16,23 @@
       "message": "Rebased.",
       "revId": "81356fb0c54df0a165d7ce6978a85ef23ded0a98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed696e35_f3bb31bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360092
+      },
+      "writtenOn": "2022-01-20T20:17:06Z",
+      "side": 1,
+      "message": "+2 on Daphne\u0027s behalf",
+      "revId": "81356fb0c54df0a165d7ce6978a85ef23ded0a98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
