@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "677f7d84_bf48dc39",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-20T00:15:29Z",
+      "side": 1,
+      "message": "I thought it only closes the chrome apps according to the comment for ResetState.\n\nThanks.",
+      "parentUuid": "8b73d885_f128ec61",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 2
+      },
+      "revId": "a4ac058b25b745df9fcc4706a62712ae126adc32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "005fb2e1_061a034d",
