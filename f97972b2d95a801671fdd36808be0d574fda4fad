@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b029d176_eb7df08d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-01-20T17:30:33Z",
+      "side": 1,
+      "message": "This looks good to me. However, I\u0027m thinking if the users login, logout then remove vault really fast, will it trigger the same kind of issues? That is, should we fix this by blocking remove vault when pkcs11 initialization is still underway as well? I guess the probability of that happening is really low as well in practice, so I\u0027m kind of on the fence.",
+      "revId": "f97972b2d95a801671fdd36808be0d574fda4fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
