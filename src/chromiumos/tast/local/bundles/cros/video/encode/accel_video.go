@@ -202,6 +202,7 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 // - Capped performance: the specified test video is encoded for 300 frames by the hardware encoder at 30fps.
 // This is used to measure cpu usage and power consumption in the practical case.
 // - Quality performance: the specified test video is encoded for 300 frames and computes the SSIM and PSNR metrics of the encoded stream.
+// - Multiple concurrent performance: the specified test video is encoded with multiple concurrent encoders as fast as possible.
 func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts TestOptions, cacheExtractedVideo bool) error {
 	const (
 		// Name of the uncapped performance test.
@@ -210,6 +211,8 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		cappedTestname = "MeasureCappedPerformance"
 		// Name of the bitstream quality test.
 		qualityTestname = "MeasureProducedBitstreamQuality"
+		// Name of the multiple concurrent encoders test.
+		multipleConcurrentTestname = "MeasureUncappedPerformance_MultipleConcurrentEncoders"
 		// The binary performance test.
 		exec = "video_encode_accelerator_perf_tests"
 	)
@@ -276,7 +279,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	if report, err := gtest.New(
 		filepath.Join(chrome.BinTestDir, exec),
 		gtest.Logfile(filepath.Join(s.OutDir(), exec+".uncap_and_quality.log")),
-		gtest.Filter(fmt.Sprintf("*%s:*%s", uncappedTestname, qualityTestname)),
+		gtest.Filter(fmt.Sprintf("*%s:*%s:*%s", uncappedTestname, qualityTestname, multipleConcurrentTestname)),
 		gtest.ExtraArgs(testArgs...),
 		gtest.UID(int(sysutil.ChronosUID)),
 	).Run(ctx); err != nil {
@@ -293,7 +296,7 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 	if _, err := os.Stat(uncappedJSON); os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to find uncapped performance metrics file")
 	}
-	if err := encoding.ParseUncappedPerfMetrics(uncappedJSON, p); err != nil {
+	if err := encoding.ParseUncappedPerfMetrics(uncappedJSON, p, "single_encoder"); err != nil {
 		return errors.Wrap(err, "failed to parse uncapped performance metrics")
 	}
 
@@ -311,6 +314,16 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		if err := addQualityMetrics(qualityJSONPath, "", p); err != nil {
 			return errors.Wrap(err, "failed to parse quality performance metrics")
 		}
+	}
+
+	multipleConcurrentJSON := filepath.Join(s.OutDir(), "VideoEncoderTest", multipleConcurrentTestname+".json")
+	if _, err := os.Stat(multipleConcurrentJSON); os.IsNotExist(err) {
+		return errors.Wrap(err, "failed to find multiple concurrent encoders performance metrics file")
+	}
+	// Use the uncapped parser since only one performance evaluator is current being used in the test.
+	// TODO(b/211783279) Replace this parser with one that can handle multiple captures.
+	if err := encoding.ParseUncappedPerfMetrics(multipleConcurrentJSON, p, "multiple_concurrent_encoders"); err != nil {
+		return errors.Wrap(err, "failed to parse multiple concurrent encoders performance metrics")
 	}
 
 	// Test 2: Measure CPU usage and power consumption while running capped
