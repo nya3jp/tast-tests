@@ -216,3 +216,78 @@ func captureScreenshot(ctx context.Context, s *testing.State, cr *chrome.Chrome,
 		testing.ContextLogf(ctx, "Saved screenshot to %s", filename)
 	}
 }
+
+// ModelsToTest stores the models that are initially relevant for game performance tests.
+// TODO(b/206442649): Remove after initial testing is complete.
+func ModelsToTest() []string {
+	return []string{
+		// Eve.
+		"eve",
+
+		// Soraka.
+		"soraka",
+
+		// Nautilus.
+		"nautilus",
+
+		// Zork.
+		"berknip",
+		"dirinboz",
+		"ezkinil",
+		"gumboz",
+		"jelboz",
+		"jelboz360",
+		"morphius",
+		"vilboz",
+		"vilboz14",
+		"vilboz360",
+		"woomax",
+
+		// Octopus.
+		"ampton",
+		"apel",
+		"bloog",
+		"blooglet",
+		"blooguard",
+		"blorb",
+		"bluebird",
+		"bobba",
+		"bobba360",
+		"casta",
+		"dood",
+		"dorp",
+		"droid",
+		"fleex",
+		"foob",
+		"foob360",
+		"garfour",
+		"garg",
+		"garg360",
+		"grabbiter",
+		"laser14",
+		"lick",
+		"meep",
+		"mimrock",
+		"nospike",
+		"orbatrix",
+		"phaser",
+		"phaser360",
+		"sparky",
+		"sparky360",
+		"vorticon",
+		"vortininja",
+
+		// Hatch.
+		"nightfury",
+		"akemi",
+		"dragonair",
+		"dratini",
+		"helios",
+		"jinlon",
+		"kindred",
+		"kled",
+		"kohaku",
+		"nightfury",
+		"helios",
+	}
+}

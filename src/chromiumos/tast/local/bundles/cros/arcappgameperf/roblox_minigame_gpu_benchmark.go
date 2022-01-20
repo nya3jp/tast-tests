@@ -32,8 +32,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"roblox-home-screen-search-input.png", "roblox-search-benchmark-game-icon.png", "roblox-launch-game.png"},
-		// TODO(b/206442649): Remove after initial testing is complete.
-		HardwareDeps: hwdep.D(hwdep.Model("eve", "hatch", "fizz", "zork")),
+		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},

@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/pre"
 	"chromiumos/tast/local/bundles/cros/arcappgameperf/testutil"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -25,6 +26,7 @@ func init() {
 		Contacts:     []string{"davidwelling@google.com", "arc-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...)),
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
