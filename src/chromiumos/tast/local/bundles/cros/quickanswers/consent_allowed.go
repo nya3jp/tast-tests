@@ -17,8 +17,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: Definition,
-		Desc: "Test Quick Answers definition feature",
+		Func: ConsentAllowed,
+		Desc: "Test Quick Answers consent flow",
 		Contacts: []string{
 			"updowndota@google.com",
 			"croissant-eng@google.com",
@@ -29,8 +29,8 @@ func init() {
 	})
 }
 
-// Definition tests Quick Answers definition fearture.
-func Definition(ctx context.Context, s *testing.State) {
+// ConsentAllowed tests Quick Answers consent flow.
+func ConsentAllowed(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -43,10 +43,6 @@ func Definition(ctx context.Context, s *testing.State) {
 	}
 
 	ui := uiauto.New(tconn)
-
-	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.quick_answers.enabled", true); err != nil {
-		s.Fatal("Failed to enable Quick Answers: ", err)
-	}
 
 	// Open page with the query word on it.
 	var queryWord = "icosahedron"
@@ -70,13 +66,22 @@ func Definition(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to select query: ", err)
 	}
 
-	// Right click the selected word and ensure the Quick Answers UI shows up with the definition result.
+	// Right click the selected word and ensure the consent UI shows up.
+	userConsent := nodewith.ClassName("UserConsentView")
+	allowButton := nodewith.Name("Allow").ClassName("CustomizedLabelButton")
+	if err := uiauto.Combine("Show consent UI",
+		ui.RightClick(query),
+		ui.WaitUntilExists(userConsent))(ctx); err != nil {
+		s.Fatal("Quick Answers consent UI not showing up: ", err)
+	}
+
+	// Left click the allow button and ensure the Quick Answers UI shows up with the query result.
 	quickAnswers := nodewith.ClassName("QuickAnswersView")
 	definitionResult := nodewith.NameContaining("twenty plane faces").ClassName("Label")
-	if err := uiauto.Combine("Show context menu",
-		ui.RightClick(query),
+	if err := uiauto.Combine("Show Quick Answers query result",
+		ui.LeftClick(allowButton),
 		ui.WaitUntilExists(quickAnswers),
 		ui.WaitUntilExists(definitionResult))(ctx); err != nil {
-		s.Fatal("Quick Answers result not showing up: ", err)
+		s.Fatal("Quick Answers query result not showing up: ", err)
 	}
 }

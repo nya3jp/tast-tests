@@ -32,7 +32,7 @@ func init() {
 
 // UnitConversion tests Quick Answers unit conversion fearture.
 func UnitConversion(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("QuickAnswersV2"))
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
