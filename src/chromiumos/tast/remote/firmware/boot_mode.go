@@ -575,6 +575,7 @@ func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, hasSerialAP bool,
 		return errors.Wrap(err, "requiring servo")
 	}
 
+	testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
 	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
 		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
 	}
