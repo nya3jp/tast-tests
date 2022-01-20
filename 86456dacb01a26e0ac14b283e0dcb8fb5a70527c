@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43fb04ef_d876366f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-20T00:44:12Z",
+      "side": 1,
+      "message": "I see, I misread that block. You\u0027re right, what\u0027s happening is that the params.Activity is saving off the activity it was told to load (\".startup.ActivitySplash\") but Roblox switches to the: .client.ActivityNativeMain activity after launch (which corresponds to that log message being emitted), making the params.Activity variable (and corresponding call to bounds) stale. How you have it is fine. One nit may be to rename it: activityBounds throughout but otherwise I think this is OK.",
+      "parentUuid": "522cf3d8_dec2d624",
+      "revId": "86456dacb01a26e0ac14b283e0dcb8fb5a70527c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b4d1540_e6c1739a",
