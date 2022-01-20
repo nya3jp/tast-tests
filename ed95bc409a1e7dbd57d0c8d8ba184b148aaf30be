@@ -16,6 +16,24 @@
       "message": "Unsure if these failed builds mean anything. It appears to be related to some tast tests",
       "revId": "ed95bc409a1e7dbd57d0c8d8ba184b148aaf30be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eaeb768_16e35c0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-20T16:19:15Z",
+      "side": 1,
+      "message": "Since this can only affect the ShillNoErrorsInLog test, you can generally assume that any other failures are flake and select CQ+2 again.",
+      "parentUuid": "520ba645_fef490fd",
+      "revId": "ed95bc409a1e7dbd57d0c8d8ba184b148aaf30be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
