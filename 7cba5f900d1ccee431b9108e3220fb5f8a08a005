@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a85a8fe_d0b610bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning_disabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2022-01-20T15:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a9ce24_fe65ddbf",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "7cba5f900d1ccee431b9108e3220fb5f8a08a005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b995b18a_317d8e21",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682c9a32_3b6002ae",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2022-01-20T15:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b995b18a_317d8e21",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "7cba5f900d1ccee431b9108e3220fb5f8a08a005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6928e01c_db611399",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-19T18:59:39Z",
       "side": 1,
       "message": "nit: initialize this like:\n`var isChecked bool`",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "7cba5f900d1ccee431b9108e3220fb5f8a08a005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2568b97f_dc2cdc0a",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/cros_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2022-01-20T15:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6928e01c_db611399",
       "range": {
         "startLine": 86,
         "startChar": 1,
