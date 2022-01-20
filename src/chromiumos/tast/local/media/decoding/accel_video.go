@@ -113,6 +113,7 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, parameters 
 	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	args := generateCmdArgs(outDir, filename, parameters)
+	args = append(args, logging.ChromeVmoduleFlag())
 
 	const exec = "video_decode_accelerator_tests"
 	if report, err := runAccelVideoTestCmd(shortCtx,
@@ -149,6 +150,7 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 	var failedFilenames []string
 	for _, file := range testVectors {
 		args := generateCmdArgs(outDir, file, TestParams{DecoderType: VD, LinearOutput: false})
+		args = append(args, logging.ChromeVmoduleFlag())
 		if validatorType == SSIM {
 			args = append(args, "--validator_type=ssim")
 		} else if validatorType == MD5 {
