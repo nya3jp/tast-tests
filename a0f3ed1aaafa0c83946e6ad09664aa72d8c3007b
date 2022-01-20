@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50e6628_23cecd03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-20T23:48:13Z",
+      "side": 1,
+      "message": "Thanks. Included mutex control for svc as well as sharedobject/chrome.",
+      "parentUuid": "00a9101a_e60bd73a",
+      "revId": "a0f3ed1aaafa0c83946e6ad09664aa72d8c3007b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2beef6e9_615c625f",
