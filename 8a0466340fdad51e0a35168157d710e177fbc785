@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d648391a_dbbea711",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-01-20T11:27:35Z",
+      "side": 1,
+      "message": "Because there are some tests calling the CryptohomeClient directly, I guess you should add this at here:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/cryptohome_client.go\n\n(BTW, the cryptohome_client is the common part of local \u0026 remote tests, so you would need to change this code into some shell commands.)",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "8a0466340fdad51e0a35168157d710e177fbc785",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
