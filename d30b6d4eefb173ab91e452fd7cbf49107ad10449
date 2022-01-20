@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "184bd9ac_7b7f3ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-20T23:36:20Z",
+      "side": 1,
+      "message": "sangchin@ or msta@, I need a +2 from a committer, thanks!\n",
+      "revId": "d30b6d4eefb173ab91e452fd7cbf49107ad10449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
