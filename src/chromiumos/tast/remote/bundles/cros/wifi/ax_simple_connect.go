@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dutcfg"
-	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/ax"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/testing"
 )
 
@@ -155,7 +155,7 @@ func AxSimpleConnect(ctx context.Context, s *testing.State) {
 		s.Fatal("AxRouterType not defined. Please specify router type with --routertype (gtax11000|ax6100)")
 	}
 
-	tfOps = append(tfOps, wificell.TFRouterType(router.AxT))
+	tfOps = append(tfOps, wificell.TFRouterType(support.AxT))
 	// Assert WiFi is up.
 	tf, err := wificell.NewTestFixture(ctx, ctx, s.DUT(), s.RPCHint(), tfOps...)
 	if err != nil {

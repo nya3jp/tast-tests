@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/crypto/certificate"
@@ -27,7 +28,6 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router"
-	"chromiumos/tast/remote/wificell/router/legacy"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -44,7 +44,7 @@ type ContParam struct {
 // ContTest hods all varibles to be accessible for the whole continuity test.
 type ContTest struct {
 	tf          *wificell.TestFixture
-	r           legacy.Legacy
+	r           router.Router
 	clientMAC   string
 	br          [2]string
 	veth        [2]string
@@ -101,22 +101,22 @@ func hasFTSupport(ctx context.Context, s *testing.State) bool {
 	return false
 }
 
-func setupPcapOnRouter(ctx context.Context, r legacy.Legacy,
+func setupPcapOnRouter(ctx context.Context, r router.Router,
 	apName string, apConf *hostapd.Config, ds *destructorStack) error {
 	freqOps, err := apConf.PcapFreqOptions()
 	if err != nil {
 		return errors.Wrap(err, "failed to get Freq Opts")
 	}
-	captureIf, ok := r.(router.SupportCapture)
-	if !ok {
+	routerWithCapture, err := support.WithCapture(r)
+	if err != nil {
 		return errors.Wrap(err, "this device does not have a packet capture support")
 	}
-	capturer, err := captureIf.StartCapture(ctx, apName, apConf.Channel, freqOps)
+	capturer, err := routerWithCapture.StartCapture(ctx, apName, apConf.Channel, freqOps)
 	if err != nil {
 		return errors.Wrap(err, "failed to start capturer")
 	}
 	ds.push(func() {
-		captureIf.StopCapture(ctx, capturer)
+		routerWithCapture.StopCapture(ctx, capturer)
 	})
 	return nil
 }
@@ -193,7 +193,7 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 		}
 	})
 
-	ct.r, err = tf.LegacyRouter()
+	ct.r, err = tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}
@@ -439,6 +439,6 @@ func (ct *ContTest) ContinuityRound(ctx context.Context, s *testing.State, round
 }
 
 // Router returns current router object.
-func (ct *ContTest) Router() legacy.Legacy {
+func (ct *ContTest) Router() router.Router {
 	return ct.r
 }

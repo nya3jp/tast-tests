@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package openwrt provides utilities for accessing or controlling OpenWrt routers.
+// Package openwrt provides utilities for accessing or controlling Router routers.
 package openwrt
 
 // TODO: refactor out common functionality and put it here

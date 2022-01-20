@@ -82,7 +82,7 @@ func MBOAssocDisallow(ctx context.Context, s *testing.State) {
 		}
 		return errors.New("Unexpectedly connected to AP")
 	}
-	legacyRouter, err := tf.LegacyRouter()
+	legacyRouter, err := tf.StandardRouter()
 	if err != nil {
 		s.Fatal("Failed to get legacy router: ", err)
 	}

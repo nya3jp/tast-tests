@@ -41,7 +41,7 @@ func freeSubnetIdx(i byte) {
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
 type APIface struct {
-	router    router.Base
+	router    router.SupportBase
 	name      string
 	iface     string
 	subnetIdx byte
@@ -93,7 +93,7 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 // StartAPIface starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r router.LegacyOpenWrtShared, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+func StartAPIface(ctx context.Context, r router.Router, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "StartAPIface")
 	defer st.End()
 
@@ -159,7 +159,7 @@ func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.
 func (h *APIface) Stop(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "APIface.Stop")
 	defer st.End()
-	r, ok := h.router.(router.LegacyOpenWrtShared)
+	r, ok := h.router.(router.Router)
 	if !ok {
 		return errors.Errorf("router device of type %v does not have legacy/openwrt support", h.router.RouterType())
 	}
