@@ -22,6 +22,30 @@
       },
       "revId": "1448b2c8b20c6514e876d0bd2ebd0671221ba12d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d59024_b8e87e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-20T01:00:12Z",
+      "side": 1,
+      "message": "Due to most default language settings in EN-US and `func ime.EnglishUS.InstallAndActivate(tconn)(ctx)` checks if the current input method is the same as we expect to use until `func ime.Activate(tconn)`. So I think a direct comparison would be better.",
+      "parentUuid": "385cc8e8_5fcb04f8",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "1448b2c8b20c6514e876d0bd2ebd0671221ba12d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
