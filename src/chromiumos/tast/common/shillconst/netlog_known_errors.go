@@ -38,17 +38,20 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"shill", "cellular.cc", ".*GetSimLockStatus called with null capability.*", 0},
 		{"shill", "cellular.cc", ".*StartModem failed.*", 0},
 		{"shill", "cellular.cc", ".*StopModem returned an error: org.chromium.flimflam.Error.WrongState.*", 0},
-		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},                                                // b/210893108
-		{"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                                // b/208654528
-		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                        // b/211000413
-		{"shill", "eap_listener.cc", ".*Could not bind socket to interface: No such device.*", 0},                                 // Test lab only
-		{"shill", "eap_listener.cc", ".*Could not open EAP listener socket.*", 0},                                                 // Test lab only
-		{"shill", "ethernet.cc", ".*cannot disable \\[18\\] tx-tcp-ecn-segmentation.*", 0},                                        // Test lab only
-		{"shill", "ethernet.cc", ".*OnSetInterfaceMacResponse received response with error Cannot assign requested address.*", 0}, // Test lab only
-		{"shill", "http_request.cc", ".*Failed to start DNS client.*", 0},                                                         // b/211000413
-		{"shill", "netlink_manager.cc", ".*Unexpected auxilliary message type: 0.*", 0},                                           // b/211004192
-		// Chrome error? need more info:
-		// {"shill", "object_proxy.cc", ".*Failed to call method.*", 0},
+		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},                                                           // b/210893108
+		{"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                                           // b/208654528
+		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                                   // b/211000413
+		{"shill", "eap_listener.cc", ".*Could not bind socket to interface: No such device.*", 0},                                            // Test lab only
+		{"shill", "eap_listener.cc", ".*Could not open EAP listener socket.*", 0},                                                            // Test lab only
+		{"shill", "ethernet.cc", ".*cannot disable \\[18\\] tx-tcp-ecn-segmentation.*", 0},                                                   // Test lab only
+		{"shill", "ethernet.cc", ".*OnSetInterfaceMacResponse received response with error Cannot assign requested address.*", 0},            // Test lab only
+		{"shill", "http_request.cc", ".*Failed to start DNS client.*", 0},                                                                    // b/211000413
+		{"shill", "netlink_manager.cc", ".*Unexpected auxilliary message type: 0.*", 0},                                                      // b/211004192
+		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.CreateInterface.*", 0},                                  // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.Interface.Scan.*", 0},                                   // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PatchPanel.GetTrafficCounters.*", 0},                             // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PowerManager.ChangeWifiRegDomain.*", 0},                          // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.dhcpcd.Release.*", 0},                                            // b/215373366
 		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},                                                                 // b/213611282
 		{"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},                                                               // b/213612672
 		{"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},                                              // b/213612672
