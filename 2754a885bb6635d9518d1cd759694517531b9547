@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cdee745_76f13888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/test_blocks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-01-20T20:36:58Z",
+      "side": 1,
+      "message": "I assume this file will be subsequently split onto more granular once, right?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 29
+      },
+      "revId": "2754a885bb6635d9518d1cd759694517531b9547",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
