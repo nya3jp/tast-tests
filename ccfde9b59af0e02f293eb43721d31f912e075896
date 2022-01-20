@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12add221_f0dd10cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-20T07:23:48Z",
+      "side": 1,
+      "message": "how about creating a new test for this new feature?",
+      "range": {
+        "startLine": 24,
+        "startChar": 18,
+        "endLine": 24,
+        "endChar": 31
+      },
+      "revId": "ccfde9b59af0e02f293eb43721d31f912e075896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9943922_f037dcee",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-20T07:23:48Z",
+      "side": 1,
+      "message": "These names are not very informative, especially when the users are not familiar with uid or uiauto (plus, these package names may subject to changes like the migration from ui -\u003e uiauto). My suggestion is to use Within, Above, Below... directly for Finder, and use WithinA11yNode(), AboveA11yNode()... for nodewith.Finder. WDYT?",
+      "range": {
+        "startLine": 133,
+        "startChar": 17,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "ccfde9b59af0e02f293eb43721d31f912e075896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "528743fb_d8f20305",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-20T07:23:48Z",
+      "side": 1,
+      "message": "add comment to emphasize that the returned coordinates is in px not dp?",
+      "range": {
+        "startLine": 280,
+        "startChar": 3,
+        "endLine": 280,
+        "endChar": 13
+      },
+      "revId": "ccfde9b59af0e02f293eb43721d31f912e075896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
