@@ -16,6 +16,23 @@
       "message": "ptal",
       "revId": "1cd772f376c46cc3246c2764f0ec44ed1ab14570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4824b3aa_b98594f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/wm/resize_lock_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-01-20T00:19:32Z",
+      "side": 1,
+      "message": "This function is meant to be used whether more than or equal to one node(s) in question exists. (i.e. returns true if non-zero)",
+      "revId": "1cd772f376c46cc3246c2764f0ec44ed1ab14570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
