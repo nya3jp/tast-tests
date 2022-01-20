@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e10002_a02c1150",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-01-20T19:19:42Z",
+      "side": 1,
+      "message": "Yeah, this condition is way more likelier in tests because we can call cryptohome{mount, unmount, remove} directly to mimic a session. OTOH, the user\u0027s session mount/unmount calls will go through more involved steps related to session management (eg. stop/restart ui).",
+      "parentUuid": "b029d176_eb7df08d",
+      "revId": "f97972b2d95a801671fdd36808be0d574fda4fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8070c1a0_0289f925",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48d581a4_d3fb6ff8",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-01-20T19:19:42Z",
+      "side": 1,
+      "message": "I mostly kept it the same as other functions in the module. Do you have any specific preferences?",
+      "parentUuid": "8070c1a0_0289f925",
+      "range": {
+        "startLine": 71,
+        "startChar": 26,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "f97972b2d95a801671fdd36808be0d574fda4fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "affde0d5_07ae926c",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
         "patchSetId": 4
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-20T18:19:26Z",
       "side": 1,
       "message": "Can we list the files here?",
+      "range": {
+        "startLine": 73,
+        "startChar": 60,
+        "endLine": 73,
+        "endChar": 70
+      },
+      "revId": "f97972b2d95a801671fdd36808be0d574fda4fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa535596_597cca18",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-01-20T19:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "affde0d5_07ae926c",
       "range": {
         "startLine": 73,
         "startChar": 60,
