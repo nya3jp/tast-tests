@@ -511,6 +511,7 @@ func (p *ProxyBypassList) Equal(iface interface{}) bool {
 
 ///////////////////////////////////////////////////////////////////////////////
 // 26. AuthSchemes
+// This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
 type AuthSchemes struct {
 	Stat Status
@@ -19179,7 +19180,6 @@ func (p *HttpsOnlyMode) Equal(iface interface{}) bool {
 ///////////////////////////////////////////////////////////////////////////////
 // 873. ReportDeviceAudioStatus
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
 type ReportDeviceAudioStatus struct {
 	Stat Status
@@ -19321,36 +19321,6 @@ func (p *DataLeakPreventionClipboardCheckSizeLimit) UnmarshalAs(m json.RawMessag
 }
 func (p *DataLeakPreventionClipboardCheckSizeLimit) Equal(iface interface{}) bool {
 	v, ok := iface.(int)
-	if !ok {
-		return ok
-	}
-	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// 878. CrossOriginWebAssemblyModuleSharingEnabled
-///////////////////////////////////////////////////////////////////////////////
-type CrossOriginWebAssemblyModuleSharingEnabled struct {
-	Stat Status
-	Val  bool
-}
-
-func (p *CrossOriginWebAssemblyModuleSharingEnabled) Name() string {
-	return "CrossOriginWebAssemblyModuleSharingEnabled"
-}
-func (p *CrossOriginWebAssemblyModuleSharingEnabled) Field() string         { return "" }
-func (p *CrossOriginWebAssemblyModuleSharingEnabled) Scope() Scope          { return ScopeUser }
-func (p *CrossOriginWebAssemblyModuleSharingEnabled) Status() Status        { return p.Stat }
-func (p *CrossOriginWebAssemblyModuleSharingEnabled) UntypedV() interface{} { return p.Val }
-func (p *CrossOriginWebAssemblyModuleSharingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
-	var v bool
-	if err := json.Unmarshal(m, &v); err != nil {
-		return nil, errors.Wrapf(err, "could not read %s as bool", m)
-	}
-	return v, nil
-}
-func (p *CrossOriginWebAssemblyModuleSharingEnabled) Equal(iface interface{}) bool {
-	v, ok := iface.(bool)
 	if !ok {
 		return ok
 	}
@@ -20358,29 +20328,27 @@ func (p *QuickAnswersTranslationEnabled) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 920. QuickAnswersUnitConverstionEnabled
+// 920. QuickAnswersUnitConversionEnabled
 // This policy can be modified without rebooting.
 ///////////////////////////////////////////////////////////////////////////////
-type QuickAnswersUnitConverstionEnabled struct {
+type QuickAnswersUnitConversionEnabled struct {
 	Stat Status
 	Val  bool
 }
 
-func (p *QuickAnswersUnitConverstionEnabled) Name() string {
-	return "QuickAnswersUnitConverstionEnabled"
-}
-func (p *QuickAnswersUnitConverstionEnabled) Field() string         { return "" }
-func (p *QuickAnswersUnitConverstionEnabled) Scope() Scope          { return ScopeUser }
-func (p *QuickAnswersUnitConverstionEnabled) Status() Status        { return p.Stat }
-func (p *QuickAnswersUnitConverstionEnabled) UntypedV() interface{} { return p.Val }
-func (p *QuickAnswersUnitConverstionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+func (p *QuickAnswersUnitConversionEnabled) Name() string          { return "QuickAnswersUnitConversionEnabled" }
+func (p *QuickAnswersUnitConversionEnabled) Field() string         { return "" }
+func (p *QuickAnswersUnitConversionEnabled) Scope() Scope          { return ScopeUser }
+func (p *QuickAnswersUnitConversionEnabled) Status() Status        { return p.Stat }
+func (p *QuickAnswersUnitConversionEnabled) UntypedV() interface{} { return p.Val }
+func (p *QuickAnswersUnitConversionEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	var v bool
 	if err := json.Unmarshal(m, &v); err != nil {
 		return nil, errors.Wrapf(err, "could not read %s as bool", m)
 	}
 	return v, nil
 }
-func (p *QuickAnswersUnitConverstionEnabled) Equal(iface interface{}) bool {
+func (p *QuickAnswersUnitConversionEnabled) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
@@ -20641,30 +20609,29 @@ func (p *ReportDeviceAudioStatusCheckingRateMs) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-// 930. FullscreenNotificationUrlExemptList
+// 930. KeepFullscreenWithoutNotificationUrlAllowList
 // This policy can be modified without rebooting.
-// This is a future policy, it is not present in stable builds.
 ///////////////////////////////////////////////////////////////////////////////
-type FullscreenNotificationUrlExemptList struct {
+type KeepFullscreenWithoutNotificationUrlAllowList struct {
 	Stat Status
 	Val  []string
 }
 
-func (p *FullscreenNotificationUrlExemptList) Name() string {
-	return "FullscreenNotificationUrlExemptList"
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Name() string {
+	return "KeepFullscreenWithoutNotificationUrlAllowList"
 }
-func (p *FullscreenNotificationUrlExemptList) Field() string         { return "" }
-func (p *FullscreenNotificationUrlExemptList) Scope() Scope          { return ScopeUser }
-func (p *FullscreenNotificationUrlExemptList) Status() Status        { return p.Stat }
-func (p *FullscreenNotificationUrlExemptList) UntypedV() interface{} { return p.Val }
-func (p *FullscreenNotificationUrlExemptList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Field() string         { return "" }
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Scope() Scope          { return ScopeUser }
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Status() Status        { return p.Stat }
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) UntypedV() interface{} { return p.Val }
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) UnmarshalAs(m json.RawMessage) (interface{}, error) {
 	var v []string
 	if err := json.Unmarshal(m, &v); err != nil {
 		return nil, errors.Wrapf(err, "could not read %s as []string", m)
 	}
 	return v, nil
 }
-func (p *FullscreenNotificationUrlExemptList) Equal(iface interface{}) bool {
+func (p *KeepFullscreenWithoutNotificationUrlAllowList) Equal(iface interface{}) bool {
 	v, ok := iface.([]string)
 	if !ok {
 		return ok
@@ -20932,6 +20899,94 @@ func (p *DeviceKeylockerForStorageEncryptionEnabled) UnmarshalAs(m json.RawMessa
 	return v, nil
 }
 func (p *DeviceKeylockerForStorageEncryptionEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 939. ReportCRDSessions
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type ReportCRDSessions struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *ReportCRDSessions) Name() string          { return "ReportCRDSessions" }
+func (p *ReportCRDSessions) Field() string         { return "device_reporting.report_crd_sessions" }
+func (p *ReportCRDSessions) Scope() Scope          { return ScopeDevice }
+func (p *ReportCRDSessions) Status() Status        { return p.Stat }
+func (p *ReportCRDSessions) UntypedV() interface{} { return p.Val }
+func (p *ReportCRDSessions) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *ReportCRDSessions) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 940. DeviceRunAutomaticCleanupOnLogin
+///////////////////////////////////////////////////////////////////////////////
+type DeviceRunAutomaticCleanupOnLogin struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *DeviceRunAutomaticCleanupOnLogin) Name() string { return "DeviceRunAutomaticCleanupOnLogin" }
+func (p *DeviceRunAutomaticCleanupOnLogin) Field() string {
+	return "device_run_automatic_cleanup_on_login.value"
+}
+func (p *DeviceRunAutomaticCleanupOnLogin) Scope() Scope          { return ScopeDevice }
+func (p *DeviceRunAutomaticCleanupOnLogin) Status() Status        { return p.Stat }
+func (p *DeviceRunAutomaticCleanupOnLogin) UntypedV() interface{} { return p.Val }
+func (p *DeviceRunAutomaticCleanupOnLogin) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *DeviceRunAutomaticCleanupOnLogin) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// 941. NTPMiddleSlotAnnouncementVisible
+// This policy can be modified without rebooting.
+///////////////////////////////////////////////////////////////////////////////
+type NTPMiddleSlotAnnouncementVisible struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *NTPMiddleSlotAnnouncementVisible) Name() string          { return "NTPMiddleSlotAnnouncementVisible" }
+func (p *NTPMiddleSlotAnnouncementVisible) Field() string         { return "" }
+func (p *NTPMiddleSlotAnnouncementVisible) Scope() Scope          { return ScopeUser }
+func (p *NTPMiddleSlotAnnouncementVisible) Status() Status        { return p.Stat }
+func (p *NTPMiddleSlotAnnouncementVisible) UntypedV() interface{} { return p.Val }
+func (p *NTPMiddleSlotAnnouncementVisible) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *NTPMiddleSlotAnnouncementVisible) Equal(iface interface{}) bool {
 	v, ok := iface.(bool)
 	if !ok {
 		return ok
