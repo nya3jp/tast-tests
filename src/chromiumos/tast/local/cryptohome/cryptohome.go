@@ -10,7 +10,9 @@ package cryptohome
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -147,6 +149,32 @@ func CreateVault(ctx context.Context, user, password string) error {
 
 // RemoveVault removes the vault for the user.
 func RemoveVault(ctx context.Context, user string) error {
+	// In test environments, the time between remove and mount is sometimes short
+	// enough that chapsd is still writing to the user cryptohome at removal.
+	// Wait for chaps lock file to disappear.
+	const (
+		lockDir    = "/run/lock/power_override"
+		lockPrefix = "chapsd_token_init_slot_"
+	)
+	err := testing.Poll(ctx, func(context.Context) error {
+		files, err := ioutil.ReadDir(lockDir)
+		if err != nil {
+			return testing.PollBreak(errors.Wrapf(err, "failed to read directory at %s", lockDir))
+		}
+		for _, lock := range files {
+			if strings.HasPrefix(lock.Name(), lockPrefix) {
+				return errors.New("lock file still exists")
+			}
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  30 * time.Second,
+		Interval: time.Second,
+	})
+	if err != nil {
+		return errors.Wrap(err, "Expects chaps to finish all load events")
+	}
+
 	testing.ContextLogf(ctx, "Removing vault for user %q", user)
 	cmdRunner := hwseclocal.NewLoglessCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
