@@ -460,6 +460,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77a5da59_d32a61ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-21T17:31:13Z",
+      "side": 1,
+      "message": "You can do as follows.\n1) Chrome object (\u003d ash-chrome controller).\n\ncr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()\n\nthis should work for both \"chromeLoggedIn\" fixture and \"lacros\" fixture.\n\n\n2) Then, close all windows to guarantee the situation. \n(For simplicity, err check is dropped. Pls add them for each)\n\ntconn, err :\u003d cr.TestAPIConn()\nws, err :\u003d ash.GetAllWindows(ctx, tconn)\nfor _, w :\u003d range ws {\n  w.CloseWindow(ctx, tconn)  \n}\ntesting.Poll(..., function() {\n  ws, err :\u003d ash.GetAllWindows(...)\n  if len(ws) \u003e 0 {\n    return errors.New(...)\n  }\n  return nil\n}\n\n3) Set up browser.\n\nbr, cleanup, err :\u003d browserfixt.SetUp(ctx, f, browserType)\ndefer cleanup(ctx)\n\n4) specifying WithNewWindow\n\nbr.NewConn(..., browser.WithNewWindow())\n\nif the bt is Lacros, you need to close the first window.\n\n5) Obtain a window for the browser.\n\nw, err :\u003d ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {\n  return window.WindowType \u003d\u003d ash.WindowTypeBrowser \n})\n\n(or WindowTypeLacros for lacros)",
+      "parentUuid": "92e78a1c_c3c10055",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03fc92c5_9f7b0064",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
         "patchSetId": 1
@@ -542,6 +566,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f32a3206_3693f48a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-21T17:31:13Z",
+      "side": 1,
+      "message": "Could you click each then, outside of polling?",
+      "parentUuid": "37c8b964_ef6fd5c1",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fb15ac7_55ebffb3",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
         "patchSetId": 1
@@ -612,6 +660,30 @@
       "side": 1,
       "message": "This is copied from the power_videocall autotest code. I think the intention is to simulate someone taking notes as kind of a bursty activity, meaning there\u0027s a delay followed by some typing.",
       "parentUuid": "798c1261_afb9a75d",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 14
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17982b0_a704241c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-21T17:31:13Z",
+      "side": 1,
+      "message": "If selection select is flaky, could you wait for the focus?\nOn porting autotest to tast, we try to avoid import anti-patterns.",
+      "parentUuid": "729e1716_5b3fa431",
       "range": {
         "startLine": 192,
         "startChar": 3,
