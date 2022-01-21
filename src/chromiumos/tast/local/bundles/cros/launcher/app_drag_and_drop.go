@@ -173,13 +173,13 @@ func dragIconToIcon(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Cont
 		}
 	}
 
-	if err := launcher.RemoveIconFromFolder(tconn)(ctx); err != nil {
+	if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag out the icon from folder")
 	}
 
 	// Productivity launcher supports single-item folders, so the folder should still exist after removing second to last item.
 	if productivityLauncher {
-		if err := launcher.RemoveIconFromFolder(tconn)(ctx); err != nil {
+		if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
 			return errors.Wrap(err, "failed to drag out the icon from single-item folder")
 		}
 	}
@@ -209,7 +209,7 @@ func dragIconToNextPage(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.
 		return errors.Wrap(err, "failed to identify page before dragging")
 	}
 
-	if err := launcher.DragIconToNextPage(tconn, itemIndex)(ctx); err != nil {
+	if err := launcher.DragIconAtIndexToNextPage(tconn, itemIndex)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag icon to next page")
 	}
 
@@ -250,7 +250,7 @@ func dragFirstIconToScrollableContainerBottom(ctx context.Context, tconn *chrome
 	itemCount := len(allItemsInfo)
 	targetItem := scrollableGridItems.Nth(itemCount - 1)
 
-	if err := launcher.DragItemInBubbleLauncherWithScrolling(ctx, tconn, ui, dragItem, targetItem /*up=*/, false); err != nil {
+	if err := launcher.DragItemInBubbleLauncherWithScrolling(ctx, tconn, ui, dragItem, targetItem, false /*up*/); err != nil {
 		return -1, errors.Wrap(err, "bubble launcher scroll failed")
 	}
 
@@ -278,7 +278,7 @@ func dragIconToScrollableContainerTop(ctx context.Context, tconn *chrome.TestCon
 
 	targetItem := scrollableGridItems.Nth(0)
 
-	if err := launcher.DragItemInBubbleLauncherWithScrolling(ctx, tconn, ui, dragItem, targetItem /*up=*/, true); err != nil {
+	if err := launcher.DragItemInBubbleLauncherWithScrolling(ctx, tconn, ui, dragItem, targetItem, true /*up*/); err != nil {
 		return errors.Wrap(err, "bubble launcher scroll failed")
 	}
 

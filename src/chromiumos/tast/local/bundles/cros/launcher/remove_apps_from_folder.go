@@ -123,7 +123,7 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 
 	// Remove 3 items from the folder.
 	for i := 0; i < 3; i++ {
-		if err := launcher.RemoveIconFromFolder(tconn)(ctx); err != nil {
+		if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
 			s.Fatal("Failed to remove icon from folder: ", err)
 		}
 	}
@@ -139,14 +139,14 @@ func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 
 	// Remove 3 items from the folder.
 	for i := 0; i < 3; i++ {
-		if err := launcher.RemoveIconFromFolder(tconn)(ctx); err != nil {
+		if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
 			s.Fatal("Failed to remove icon from folder: ", err)
 		}
 	}
 
 	// With productivity launcher enabled, launcher does not delete single-item folders, so the folder should be around until the last item is dragged out.
 	if productivityLauncher {
-		if err := launcher.RemoveIconFromFolder(tconn)(ctx); err != nil {
+		if err := launcher.RemoveIconFromFolder(tconn, launcher.UnnamedFolderFinder)(ctx); err != nil {
 			s.Fatal("Failed to remove last icon from folder: ", err)
 		}
 	}
