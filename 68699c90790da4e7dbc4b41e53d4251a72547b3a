@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a5d2230_bc63cfed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-21T00:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c8f8856_c070c324",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cf38b99_e919996b",
@@ -140,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec429cf_6de8c7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-21T00:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "360122ae_406a30e6",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18a2d4d2_4f2a9c69",
@@ -153,6 +201,24 @@
       "writtenOn": "2022-01-04T21:54:04Z",
       "side": 1,
       "message": "remove blank line.",
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb7a10d_1ed355e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-21T00:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18a2d4d2_4f2a9c69",
       "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
