@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d05dfcb_13e33556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T01:16:09Z",
+      "side": 1,
+      "message": "LGTM with one last question",
+      "revId": "a0d7593d182b5bbc0310e41e2a9edee2d5a5e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ec88fc_e1a9c475",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/logout.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T01:16:09Z",
+      "side": 1,
+      "message": "just noticed this, do we need a GAIA login for this test? any reason to use one over a fake login?",
+      "range": {
+        "startLine": 58,
+        "startChar": 28,
+        "endLine": 58,
+        "endChar": 85
+      },
+      "revId": "a0d7593d182b5bbc0310e41e2a9edee2d5a5e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
