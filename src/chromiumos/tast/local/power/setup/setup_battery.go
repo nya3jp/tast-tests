@@ -6,6 +6,7 @@ package setup
 
 import (
 	"context"
+	"strings"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -13,16 +14,23 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type chargeControlState string
+type chargeControlState struct {
+	state          string
+	expectedOutput string
+}
 
-const (
-	ccDischarge chargeControlState = "discharge"
-	ccNormal    chargeControlState = "normal"
+var (
+	ccDischarge = chargeControlState{"discharge", "Charge state machine force discharge."}
+	ccNormal    = chargeControlState{"normal", "Charge state machine is in normal mode."}
 )
 
 func setChargeControl(ctx context.Context, s chargeControlState) error {
-	if err := testexec.CommandContext(ctx, "ectool", "chargecontrol", string(s)).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrapf(err, "unable to set battery charge to %s", s)
+	stdout, stderr, err := testexec.CommandContext(ctx, "ectool", "chargecontrol", s.state).SeparatedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrapf(err, "unable to set battery charge to %s, got error %s", s.state, string(stderr))
+	}
+	if output := strings.TrimSpace(string(stdout)); output != s.expectedOutput {
+		return errors.Errorf("unexpected output: got %s; want %s", output, s.expectedOutput)
 	}
 	return nil
 }
