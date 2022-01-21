@@ -16,6 +16,379 @@
       "message": "PTAL",
       "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d14d51c_2ce311ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "Due to the documentation, \"new tests should always consider lacros\".\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/test.go;l\u003d121?q\u003dLacrosVariantUnknown\n\nMaybe LacrosVariantUnneeded fits better here?",
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eeb28a8_48bb1072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "move it inside performLogin function",
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5849cdb0_3e90ee18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "Don\u0027t pass testing.State, just pass OutDir() instead",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 55
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fedfb8b_2da22145",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "nit: initiateLoginButton",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da6a37d_c4490045",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "nit: move it inside one const block",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6777ec53_56acfb51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "I\u0027d recommend to use VirtualKeyboard, because you might have some issues with the real one on some keyboard layouts if case you want to press keys like F1, Ctrl, Alt, etc.",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 65,
+        "endChar": 26
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a323b7_f5f2bdbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "nit: \"kb\" is more common name for keyboard",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00756c00_0ca6ee2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "nit: err :\u003d mouse.Click is more common",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a082d5e_4f523d66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "add more context to make it easier to debug, e.g. \"failed to sleep after \u003cevent\u003e\" or \"failed to sleep to \u003cdescription\u003e\".",
+      "range": {
+        "startLine": 84,
+        "startChar": 27,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d3e751a_15816065",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "Are all these sleeps really necessary? Can\u0027t you poll for some condition instead?\n\nEach time you sleep for 15 seconds which is a lot.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e8808e_b9663ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "Please update this comment or remove it.",
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfaecdc3_2533bee0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "I\u0027d personally prefer this function to be before performLogin since this is a main function in this file.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 57
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc498cf_3e5b58cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "nit: add a period at the end of sentence.\nhttps://go.dev/doc/effective_go#commentary",
+      "range": {
+        "startLine": 176,
+        "startChar": 28,
+        "endLine": 176,
+        "endChar": 33
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ec6818_a1e241a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "Don\u0027t start error with capital letter",
+      "range": {
+        "startLine": 182,
+        "startChar": 22,
+        "endLine": 182,
+        "endChar": 28
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406b7225_e19479a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "Don\u0027t ignore returned error",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 32
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "945b127e_4c791a7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "nit: scale should have default value when you return error, i.e. 0.0 for float64.",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 12
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fa7e06_494f2e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T11:49:38Z",
+      "side": 1,
+      "message": "Can this really happen? If so, maybe move this logic inside GetEffectiveDeviceScaleFactor(), then other clients will benefit from that check and don\u0027t have to do it on their own.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
