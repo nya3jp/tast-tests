@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79218bdd_debfea2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-01-21T23:34:37Z",
+      "side": 1,
+      "message": "Overall this implementation looks good to me.",
+      "revId": "cae50eb57a8dc0aca1eacd81ef4ffb09230f6d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5324dae_785dd2f7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-01-21T23:34:37Z",
+      "side": 1,
+      "message": "How does the test infra know which cells to run these tests on? Is there a pool or swarming label that specifies that a cell contains an AX or AX6E router? (I seem to recall you were working on a document about additional swarming labels, but I can\u0027t seem to find it now. Is that related?)",
+      "revId": "cae50eb57a8dc0aca1eacd81ef4ffb09230f6d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
