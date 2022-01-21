@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "113efab4_032f2c0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-21T01:53:43Z",
+      "side": 1,
+      "message": "s is not used in this case. It is a service registration convention for services to have access to the testing metadata. \nI did a quick grep. Out of 54 services with `s *testing.ServiceState`, only 6 actually uses it.",
+      "parentUuid": "3146e708_668088d9",
+      "revId": "71b5e8e23a0e130f69286b850db97b20a7a7034e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ee59fdd_68799001",
         "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
         "patchSetId": 8
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-20T23:38:32Z",
       "side": 1,
       "message": "Can we just use one lock for ChromeService,svc.sharedObject.ChromeMutex.Lock?",
+      "revId": "71b5e8e23a0e130f69286b850db97b20a7a7034e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ba21a8_d84c23ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-21T01:53:43Z",
+      "side": 1,
+      "message": "Good idea. I don\u0027t think we really need both, I will only keep the chrome lock.",
+      "parentUuid": "1ee59fdd_68799001",
       "revId": "71b5e8e23a0e130f69286b850db97b20a7a7034e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
