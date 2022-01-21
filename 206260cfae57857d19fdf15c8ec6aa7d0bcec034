@@ -317,6 +317,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7aeda722_56daf429",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-21T21:13:02Z",
+      "side": 1,
+      "message": "I think the new comment makes it acceptable. If 0 means something in passing cases then returning 0 in an error case feels off to me.",
+      "parentUuid": "7346728c_c2889365",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8a44647_f86fc65f",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 4
