@@ -26,6 +26,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa485848_57e7c609",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:33:02Z",
+      "side": 1,
+      "message": "why do you use uiauto.Combine? seems like you just need a single action here",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 42
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae02bcad_2de4820d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:33:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf8a4715_b229726e",
         "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
         "patchSetId": 3
