@@ -52,6 +52,24 @@
       "parentUuid": "138a68b1_d826f2ad",
       "revId": "6ca3134e42a6442c20b83f535ec8abd53bb7590d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6edacdfc_9b5aa937",
+        "filename": "src/chromiumos/tast/services/cros/nearbyservice/nearby_share_service.pb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441608
+      },
+      "writtenOn": "2022-01-21T14:37:24Z",
+      "side": 0,
+      "message": "After rebasing my generated file has no diff.",
+      "parentUuid": "a5db9f75_5d7a72ae",
+      "revId": "6ca3134e42a6442c20b83f535ec8abd53bb7590d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
