@@ -39,6 +39,30 @@
       },
       "revId": "a458d3de42b5c91bcd84c199d3d98547a2e65f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90267d7b_a4c008bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-01-21T04:36:18Z",
+      "side": 1,
+      "message": "It will be a builtin python script once CL:3379888 and CL:3380169 are merged.",
+      "parentUuid": "523dfb38_d779876a",
+      "range": {
+        "startLine": 286,
+        "startChar": 21,
+        "endLine": 286,
+        "endChar": 36
+      },
+      "revId": "a458d3de42b5c91bcd84c199d3d98547a2e65f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
