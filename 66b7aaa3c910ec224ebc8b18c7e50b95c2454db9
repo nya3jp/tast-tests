@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "065ed8ab_47875bea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-01-21T22:56:21Z",
+      "side": 1,
+      "message": "Updated it to testing.LacrosVariantUnneeded. Thank you!",
+      "parentUuid": "45896724_d64a7c31",
+      "revId": "66b7aaa3c910ec224ebc8b18c7e50b95c2454db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06c69de4_24a89647",
