@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd04a2a_dcb67836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-21T00:32:48Z",
+      "side": 1,
+      "message": "I did some profiling on the overhead of getting a new keyboard every time `kb, err :\u003d input.Keyboard(ctx)` and it is on average 1.5 to 2ms. Considering the keyboard interaction time is typically 1 to 2 orders of magnitude higher (e.g. Accel has an internal 100ms wait), I feel the overhead is a fair cost to pay to make the service methods a bit more stateless.",
+      "parentUuid": "af7078b4_fa5aa490",
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c8f8856_c070c324",
