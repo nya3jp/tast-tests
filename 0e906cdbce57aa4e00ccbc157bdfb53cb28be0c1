@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f727f03_3743e9c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-21T10:59:05Z",
+      "side": 1,
+      "message": "In case if retErr is nil, cleanup never executed.\n\nPTAL on this example: https://go.dev/play/p/2VesAfBJpXN\n\nAlso you can find there how to fix the issue.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "0e906cdbce57aa4e00ccbc157bdfb53cb28be0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
