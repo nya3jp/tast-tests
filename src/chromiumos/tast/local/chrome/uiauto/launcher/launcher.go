@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -248,6 +249,22 @@ func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, t
 	)
 }
 
+// IndexOfFirstVisibleItem returns the index of the first item which is visible in the current app list UI,
+// and whose index among app list item views is at least minIndex.
+func IndexOfFirstVisibleItem(ctx context.Context, tconn *chrome.TestConn, minIndex int) (int, error) {
+	for itemIndex := minIndex; ; itemIndex++ {
+		item := nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex)
+		onPage, err := IsItemOnCurrentPage(ctx, tconn, item)
+		if err != nil {
+			return -1, errors.Wrapf(err, "failed to query whether item is on page %d: %v", itemIndex, err)
+		}
+
+		if onPage {
+			return itemIndex, nil
+		}
+	}
+}
+
 // FirstNonRecentAppItem returns the first app list item view shown in the current app list UI that is not in the recent apps container.
 // If productivity launcher is disabled, in which case recent apps container does not exist, return 0 - the index of the first app list item view.
 // The return value will be -1 on error.
@@ -358,6 +375,46 @@ func CreateFolder(ctx context.Context, tconn *chrome.TestConn, folderOpensOnCrea
 	}
 
 	return nil
+}
+
+// DragItemAfterItem drags an app list item returned by src node finder to a location after the app
+// list item node returned by dest node finder.
+func DragItemAfterItem(tconn *chrome.TestConn, src, dest *nodewith.Finder) uiauto.Action {
+	const duration = time.Second
+	return func(ctx context.Context) error {
+		ui := uiauto.New(tconn)
+		start, err := ui.Location(ctx, src)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for src icon")
+		}
+
+		if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to press the button")
+		}
+
+		// Move a little bit first to trigger launcher-app-paging.
+		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 10, Y: 10}), time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		// Get destination location during drag.
+		end, err := ui.Location(ctx, dest)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for dst icon")
+		}
+		if err := mouse.Move(tconn, coords.NewPoint(end.Right()+5, end.CenterY()), 200*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to release the mouse")
+		}
+
+		return nil
+	}
 }
 
 // DragIconToIcon drags from one icon to another icon.
@@ -485,7 +542,7 @@ func AddItemsToFolder(ctx context.Context, tconn *chrome.TestConn, folder *nodew
 				return errors.Wrap(err, "failed to check if the item is on the current page")
 			}
 			if !onPage {
-				if err := DragIconToNextPage(tconn, 0)(ctx); err != nil {
+				if err := DragIconAtIndexToNextPage(tconn, 0)(ctx); err != nil {
 					return errors.Wrap(err, "failed to drag icon to the next page")
 				}
 			}
@@ -510,15 +567,25 @@ func AddItemsToFolder(ctx context.Context, tconn *chrome.TestConn, folder *nodew
 	return nil
 }
 
+// DragIconAtIndexToNextPage drags an icon which has itemIndex in the app list to the next page of the app list.
+func DragIconAtIndexToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
+	return DragIconToNextPage(tconn, nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex))
+}
+
 // DragIconToNextPage drags an icon to the next page of the app list.
-func DragIconToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
+func DragIconToNextPage(tconn *chrome.TestConn, item *nodewith.Finder) uiauto.Action {
+	return DragIconToNeighbourPage(tconn, item, true /*next*/)
+}
+
+// DragIconToNeighbourPage drags an icon to the next, or previous page of the app list.
+// next indicates whether the icon should be dragged to the next page.
+func DragIconToNeighbourPage(tconn *chrome.TestConn, item *nodewith.Finder, next bool) uiauto.Action {
 	return func(ctx context.Context) error {
 		ui := uiauto.New(tconn)
-		src := nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex)
-		// Move and press the mouse on the source icon.
-		start, err := ui.Location(ctx, src)
+		// Move and press the mouse on the drag item.
+		start, err := ui.Location(ctx, item)
 		if err != nil {
-			return errors.Wrap(err, "failed to get location for first icon")
+			return errors.Wrap(err, "failed to get location for drag item")
 		}
 		if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move to the start location")
@@ -528,7 +595,7 @@ func DragIconToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
 		}
 
 		// Move a little bit first to trigger launcher-app-paging.
-		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 1, Y: 1}), time.Second)(ctx); err != nil {
+		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 20, Y: 20}), time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move the mouse")
 		}
 
@@ -537,7 +604,13 @@ func DragIconToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
 		if err != nil {
 			return errors.Wrap(err, "failed to get location for AppsGridView")
 		}
-		endPoint := coords.NewPoint(end.CenterPoint().X, end.Bottom())
+
+		var endPoint coords.Point
+		if next {
+			endPoint = coords.NewPoint(end.CenterPoint().X, end.Bottom())
+		} else {
+			endPoint = coords.NewPoint(end.CenterPoint().X, end.Top)
+		}
 
 		// Drag icon to the bottom of the AppsGridView.
 		if err := mouse.Move(tconn, endPoint, 200*time.Millisecond)(ctx); err != nil {
@@ -586,17 +659,94 @@ func GetFolderSize(ctx context.Context, tconn *chrome.TestConn, folder *nodewith
 // Assumes that there is no folder open, and may not work if a folder is opened.
 func IsItemOnCurrentPage(ctx context.Context, tconn *chrome.TestConn, item *nodewith.Finder) (bool, error) {
 	ui := uiauto.New(tconn)
-	itemLocation, err := ui.Location(ctx, item)
+	info, err := ui.Info(ctx, item)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get location for the item")
+		return false, errors.Wrap(err, "failed to get item info")
 	}
 
-	gridLocation, err := ui.Location(ctx, nodewith.ClassName("AppsGridView"))
+	return !info.State[state.Offscreen], nil
+}
+
+// DragScrollBubbleLauncherUntilItemVisible moves the pointer to top or the bottom of the app list bubble view, which is expected to scroll the view.
+// It keeps the pointer in scrolling position until the item returned by targetItem becomes visible.
+// up indicates whether the bubble app list view apps page should be scrolled up, or down.
+// NOTE: This is intended to be used during app list item drag, otherwise just hovering the pointer over bubble bounds will not scroll the app list.
+// This may be flaky if targetItem is not visible in fully scrolled state - in that case polling interval may miss the period when the view is visible.
+func DragScrollBubbleLauncherUntilItemVisible(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, targetItem *nodewith.Finder, up bool) error {
+	// Move the icon to the bottom of the bubble launcher - this should trigger scroll within the app list bubble.
+	bubbleView := nodewith.ClassName("AppListBubbleView")
+	bubbleViewLocation, err := ui.Location(ctx, bubbleView)
 	if err != nil {
-		return false, errors.Wrap(err, "failed to get location for the AppsGridView")
+		return errors.Wrap(err, "failed to get bubble view bounds")
 	}
 
-	return gridLocation.Contains(*itemLocation), nil
+	var scrollPoint coords.Point
+	if up {
+		scrollPoint = coords.NewPoint(bubbleViewLocation.CenterX(), bubbleViewLocation.Top)
+	} else {
+		scrollPoint = bubbleViewLocation.BottomCenter()
+	}
+	if err := mouse.Move(tconn, scrollPoint, 100)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move to the start location")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		targetItemInfo, err := ui.Info(ctx, targetItem)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get target item info"))
+		}
+
+		if !targetItemInfo.State[state.Offscreen] {
+			return nil
+		}
+
+		return errors.New("Target item no in viewport")
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "Target item did not become visible")
+	}
+
+	if err := mouse.Move(tconn, bubbleViewLocation.CenterPoint(), 100)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move to the grid center")
+	}
+
+	return nil
+}
+
+// DragItemInBubbleLauncherWithScrolling performs app list item drag in bubble launcher where the launcher is expected to scroll during the drag.
+// dragItem is the item that will be dragged, and is expected to be visible when the method gets called.
+// targetItem is an item used to determing the drag item drop spot - the drag item will be dropped just right of the targetItem.
+// up describes the direction the app list should be scrolled for the targetItem to become visible
+// NOTE: targetItem should be an item that's visible when the app list is fully scrolled.
+func DragItemInBubbleLauncherWithScrolling(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, dragItem, targetItem *nodewith.Finder, up bool) error {
+	// Start item drag.
+	start, err := ui.Location(ctx, dragItem)
+	if err != nil {
+		return errors.Wrap(err, "failed to get location for drag icon")
+	}
+	if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move to the start location")
+	}
+	if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to press the button")
+	}
+
+	if err := DragScrollBubbleLauncherUntilItemVisible(ctx, tconn, ui, targetItem, up); err != nil {
+		return errors.Wrap(err, "Bubble launcher scroll failed")
+	}
+
+	// Get drag drop location.
+	end, err := ui.Location(ctx, targetItem)
+	if err != nil {
+		return errors.Wrap(err, "failed to get location for drag drop point")
+	}
+	if err := mouse.Move(tconn, coords.NewPoint(end.Right()+5, end.CenterY()), 0)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move to drop location")
+	}
+	if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+		return errors.Wrap(err, "mouse release failed")
+	}
+
+	return nil
 }
 
 // IsFolderItem returns whether the item is a folder. Assumes that there is no folder open.
