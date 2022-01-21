@@ -7,6 +7,7 @@ package videocuj
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -188,7 +189,12 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to create new ARC device")
 	}
-	defer d.Close(cleanupDeviceCtx)
+	defer func(ctx context.Context) {
+		if d.Alive(ctx) {
+			testing.ContextLog(ctx, "UI device is still alive")
+			d.Close(ctx)
+		}
+	}(cleanupDeviceCtx)
 
 	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
 		conn, err := uiHandler.NewChromeTab(ctx, cr, cuj.GmailURL, true)
@@ -227,11 +233,21 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 			ctx, cancel = ctxutil.Shorten(ctx, 15*time.Second)
 			defer cancel()
 
+			defer func(ctx context.Context) {
+				// Make sure to close the arc UI device before calling the function. Otherwise uiautomator might have errors.
+				if appName == YoutubeApp && retErr != nil {
+					if err := d.Close(ctx); err != nil {
+						testing.ContextLog(ctx, "Failed to close ARC UI device: ", err)
+					}
+					a.DumpUIHierarchyOnError(ctx, filepath.Join(outDir, "arc"), func() bool { return retErr != nil })
+				}
+				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
+				videoApp.Close(ctx)
+			}(cleanupResourceCtx)
+
 			if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
 				return errors.Wrapf(err, "failed to open %s", appName)
 			}
-			defer videoApp.Close(cleanupResourceCtx)
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupResourceCtx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
 
 			// Play video at fullscreen.
 			if err := videoApp.EnterFullscreen(ctx); err != nil {
