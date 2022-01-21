@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c58486b_55f7ab35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-21T01:57:08Z",
+      "side": 1,
+      "message": "I think I didn\u0027t make it clear. I still want it to be stateless. I was implying to let use to specify a sequence of events instead one single event for each request.\nI am not really worried too much about the overhead. Just worried about if it would work we broke down the keyboard event. As long as you test it out, I am find with it.",
+      "parentUuid": "6dd04a2a_dcb67836",
+      "revId": "68699c90790da4e7dbc4b41e53d4251a72547b3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c8f8856_c070c324",
