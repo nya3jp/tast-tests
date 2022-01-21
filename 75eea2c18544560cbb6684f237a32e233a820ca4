@@ -68,6 +68,24 @@
       "parentUuid": "2229a93b_7666c99a",
       "revId": "75eea2c18544560cbb6684f237a32e233a820ca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1384a852_5ebbb742",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-21T10:57:36Z",
+      "side": 1,
+      "message": "Until the migration is done, this readme is how we can run the tests, so it is worth to have it. If the migration is done, we just need to update the file.\n\nIt might be worth to add that if this method is no longer working, it is most probably because of the migration.",
+      "parentUuid": "b5853495_941acdd6",
+      "revId": "75eea2c18544560cbb6684f237a32e233a820ca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
