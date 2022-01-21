@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "951f9c67_4768890e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-01-21T19:08:30Z",
+      "side": 1,
+      "message": "I don\u0027t know what does it mean neither. Since other tests under wmp use this, I just copied it. yichenz@ could you please help answer is you know? Thank you!",
+      "parentUuid": "c8c8fef4_3c9db3a7",
+      "revId": "66b7aaa3c910ec224ebc8b18c7e50b95c2454db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06c69de4_24a89647",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-21T18:53:03Z",
       "side": 1,
       "message": "nit: format is off",
+      "revId": "66b7aaa3c910ec224ebc8b18c7e50b95c2454db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a4f597_fcffdf28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-01-21T19:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c69de4_24a89647",
       "revId": "66b7aaa3c910ec224ebc8b18c7e50b95c2454db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
