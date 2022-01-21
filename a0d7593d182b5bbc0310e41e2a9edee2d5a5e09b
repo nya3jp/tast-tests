@@ -39,6 +39,30 @@
       },
       "revId": "a0d7593d182b5bbc0310e41e2a9edee2d5a5e09b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd83fa3a_c92dbeb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/logout.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-21T02:27:10Z",
+      "side": 1,
+      "message": "Thank you Kyle, \nGAIA login is required since we have a step at the end of the test to verify if we can log back in.",
+      "parentUuid": "18ec88fc_e1a9c475",
+      "range": {
+        "startLine": 58,
+        "startChar": 28,
+        "endLine": 58,
+        "endChar": 85
+      },
+      "revId": "a0d7593d182b5bbc0310e41e2a9edee2d5a5e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
