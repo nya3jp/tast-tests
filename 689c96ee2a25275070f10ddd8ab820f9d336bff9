@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c20caa_394da7a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-21T01:45:16Z",
+      "side": 1,
+      "message": "Where is \"s\" beginng used?",
+      "revId": "689c96ee2a25275070f10ddd8ab820f9d336bff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016f8839_39e5dbd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-21T01:45:16Z",
+      "side": 1,
+      "message": "Do you need both mutex?",
+      "revId": "689c96ee2a25275070f10ddd8ab820f9d336bff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
