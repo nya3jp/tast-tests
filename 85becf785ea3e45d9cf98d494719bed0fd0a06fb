@@ -16,6 +16,29 @@
       "message": "the test seems to be stable on crosfleet devices now. please take a look, thanks",
       "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0051a45_49ed5858",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-21T09:04:38Z",
+      "side": 1,
+      "message": "let\u0027s extract a config option for that. Something like \nWaitForOwnershipEstablished \u003d false (by default).\n\nSee https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;l\u003d286?q\u003dWaitForCryptohome%20package:chromeos\u0026type\u003dcs for current ones\n\nI\u0027ve added one option in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3303794",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 1
+      },
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
