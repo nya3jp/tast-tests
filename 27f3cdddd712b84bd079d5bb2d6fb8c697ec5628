@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef9c44e_de2e330f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T00:54:13Z",
+      "side": 1,
+      "message": "LGTM from Tast perspective",
+      "revId": "27f3cdddd712b84bd079d5bb2d6fb8c697ec5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66df74a6_d1b92e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T00:54:13Z",
+      "side": 1,
+      "message": "Personal preference, but I think \"WithTimeout\" functions are clearer to understand at the callsite if the timeout is one of the parameters (also makes it more flexible if different timeouts are ever needed).",
+      "range": {
+        "startLine": 196,
+        "startChar": 28,
+        "endLine": 196,
+        "endChar": 39
+      },
+      "revId": "27f3cdddd712b84bd079d5bb2d6fb8c697ec5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2de4b6fe_75ee894e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T00:54:13Z",
+      "side": 1,
+      "message": "nit: insert timeout\u0027s value here to make things easier if it ever changes",
+      "range": {
+        "startLine": 204,
+        "startChar": 60,
+        "endLine": 204,
+        "endChar": 61
+      },
+      "revId": "27f3cdddd712b84bd079d5bb2d6fb8c697ec5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e6da4f0_8bc5d403",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T00:54:13Z",
+      "side": 1,
+      "message": "also base this on the timeout variable",
+      "range": {
+        "startLine": 225,
+        "startChar": 34,
+        "endLine": 225,
+        "endChar": 49
+      },
+      "revId": "27f3cdddd712b84bd079d5bb2d6fb8c697ec5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
