@@ -797,3 +797,29 @@ func (ac *Context) DoDefault(finder *nodewith.Finder) Action {
 		return nil
 	}
 }
+
+// ResetScrollOffset returns a function that calls setScrollOffset(0, 0) JS method to reset the
+// scroll offset on a node to scroll it to its default scroll position.
+func (ac *Context) ResetScrollOffset(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		q, err := finder.GenerateQuery()
+		if err != nil {
+			return err
+		}
+		query := fmt.Sprintf(`
+		(async () => {
+			%s
+			node.setScrollOffset(0, 0);
+		})()
+	`, q)
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			return ac.tconn.Eval(ctx, query, nil)
+		}, &ac.pollOpts); err != nil {
+			return errors.Wrap(err, "failed to call setScrollOffset() on the node")
+		}
+
+		return nil
+	}
+
+}
