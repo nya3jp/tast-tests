@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c4a5d89_5a78920a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-01-21T00:34:15Z",
+      "side": 1,
+      "message": "If that is the case, why we don\u0027t just call \"cryptohome --action\u003dpkcs11_terminate\" at here?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/login_manager/init/scripts/ui-post-stop\n\nSo our test behavior would be more similar to the production.",
+      "parentUuid": "c3e10002_a02c1150",
+      "revId": "f97972b2d95a801671fdd36808be0d574fda4fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8070c1a0_0289f925",
         "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
         "patchSetId": 4
