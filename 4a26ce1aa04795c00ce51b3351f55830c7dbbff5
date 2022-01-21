@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09eace4d_3e47c1e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-01-21T18:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea3bd39_5595a190",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "4a26ce1aa04795c00ce51b3351f55830c7dbbff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02981792_1b2f1c3c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76f2357_381e7d15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-01-21T18:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02981792_1b2f1c3c",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 49
+      },
+      "revId": "4a26ce1aa04795c00ce51b3351f55830c7dbbff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55e0d04a_77e5e51f",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-21T07:57:36Z",
       "side": 1,
       "message": "uiauto.Combine",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "4a26ce1aa04795c00ce51b3351f55830c7dbbff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be7f3480_f16dd89f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-01-21T18:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55e0d04a_77e5e51f",
       "range": {
         "startLine": 124,
         "startChar": 0,
