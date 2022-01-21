@@ -56,6 +56,30 @@
       },
       "revId": "0f8a72d059d9191322b22c87c5838d2125cef679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c542436_9a5ace6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-01-21T04:34:51Z",
+      "side": 1,
+      "message": "Hey Kyle,\nI think it\u0027s still normal because a. It\u0027s using a test eSIM profile and b. It usually takes longer time to connect to the eSIM network for the first time.",
+      "parentUuid": "6cc13fcf_9fcf4f12",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 43
+      },
+      "revId": "0f8a72d059d9191322b22c87c5838d2125cef679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
