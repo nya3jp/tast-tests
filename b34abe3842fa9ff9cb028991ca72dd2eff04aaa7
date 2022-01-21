@@ -51,6 +51,46 @@
       "parentUuid": "488746a6_17a94ba9",
       "revId": "b34abe3842fa9ff9cb028991ca72dd2eff04aaa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a76d95_4c42ece2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T01:12:29Z",
+      "side": 1,
+      "message": "Consider using a longer duration for your cleanupCtx. 5-10 seconds is very short relative to the time `wmp.EnsureCaptureModeActivated` can take. It polls for up to 5 seconds, and also sets up a keyboard interface with `input.Keyboard(ctx)` which can be quite a lengthy operation IIRC.\n\n15-20 seconds should be a safer value to use to avoid hitting the context deadline during cleanup. Update the Timeout value in the test registration too if you think you\u0027ll need additional time after shortening the context this much.\n\nOtherwise LGTM",
+      "revId": "b34abe3842fa9ff9cb028991ca72dd2eff04aaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78995fda_105f1190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/full_screenshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T01:12:29Z",
+      "side": 1,
+      "message": "tiny nit: I think there\u0027s a `DumpUITreeWithScreenshotOnError` that combines both of these",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 76
+      },
+      "revId": "b34abe3842fa9ff9cb028991ca72dd2eff04aaa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
