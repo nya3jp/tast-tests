@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45896724_d64a7c31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-21T20:37:33Z",
+      "side": 1,
+      "message": "it just means this test hasn\u0027t been checked if it requires lacros or not. Seems like they want all new tests to consider lacros so it should be either testing.LacrosVariantNeeded or testing.LacrosVariantUnneeded",
+      "parentUuid": "951f9c67_4768890e",
+      "revId": "66b7aaa3c910ec224ebc8b18c7e50b95c2454db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06c69de4_24a89647",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
         "patchSetId": 3
