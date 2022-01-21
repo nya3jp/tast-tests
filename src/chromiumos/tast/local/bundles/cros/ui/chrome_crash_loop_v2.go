@@ -73,7 +73,8 @@ func init() {
 // crashes often enough to log the user out, a crash report will be generated
 // and immediately sent to crash_sender; check that crash_sender correctly receives
 // the crash report. This the V2 version, a rewrite to avoid some of the intractable
-// problems with the previous version. TODO(b/202795944) Remove old version
+// problems with the previous version.
+// TODO(b/202795944): Remove old version once this is out of "informational".
 func ChromeCrashLoopV2(ctx context.Context, s *testing.State) {
 	// Ensure success file isn't left over from previous test. By default, we
 	// don't print out the error here, nor do we fail the test because of errors
