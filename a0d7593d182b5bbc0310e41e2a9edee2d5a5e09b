@@ -63,6 +63,30 @@
       },
       "revId": "a0d7593d182b5bbc0310e41e2a9edee2d5a5e09b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83235b84_672273a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/logout.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-21T08:09:11Z",
+      "side": 1,
+      "message": "Oh, I did not notice that too. I think you could use fake login and pass --skip-force-online-signin-for-testing.\n\nsee this example:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/login/pin.go;l\u003d181-212?q\u003df:pin%20f:login%20package:chromeos%20online",
+      "parentUuid": "cd83fa3a_c92dbeb7",
+      "range": {
+        "startLine": 58,
+        "startChar": 28,
+        "endLine": 58,
+        "endChar": 85
+      },
+      "revId": "a0d7593d182b5bbc0310e41e2a9edee2d5a5e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
