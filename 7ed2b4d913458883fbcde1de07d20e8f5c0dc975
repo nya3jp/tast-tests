@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb185e06_aade32bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-21T23:03:34Z",
+      "side": 1,
+      "message": "I don\u0027t think there is a document for this yet, but it is to keep track of what tests need a lacros variant and what\u0027s done.\nYou may find this useful instead: https://crbug.com/1262011 and https://crrev.com/c/3234053 +Eliot +Hidehiko in case you have any comments.",
+      "parentUuid": "7aa3fbb2_84aeeea9",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50b7646b_d79ae842",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
         "patchSetId": 1

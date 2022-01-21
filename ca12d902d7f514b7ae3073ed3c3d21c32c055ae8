@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ed28fc_5504a940",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-21T23:03:34Z",
+      "side": 1,
+      "message": "I think br.TestAPIConn would return the same conn as tconn for Ash (while it returns a new conn object for Lacros). so this could be simplified without checking the browser type as below:\n```\nbtconn, err \u003d br.TestAPIConn(ctx)\nif err !\u003d nil {\n  s.Fatal(\"Failed to get lacros test api connection: \", err)\n}\n```\n\nthus, tconn for ash-chrome, btconn for either browser.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "ca12d902d7f514b7ae3073ed3c3d21c32c055ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
