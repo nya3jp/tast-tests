@@ -482,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5db94e84_bce7cdf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-21T21:31:09Z",
+      "side": 1,
+      "message": "\u003e You can do as follows.\n\u003e 1) Chrome object (\u003d ash-chrome controller).\n\u003e \n\u003e cr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()\n\nDone.\n\n\u003e \n\u003e this should work for both \"chromeLoggedIn\" fixture and \"lacros\" fixture.\n\u003e \n\u003e \n\u003e 2) Then, close all windows to guarantee the situation. \n\u003e (For simplicity, err check is dropped. Pls add them for each)\n\u003e \n\u003e tconn, err :\u003d cr.TestAPIConn()\n\u003e ws, err :\u003d ash.GetAllWindows(ctx, tconn)\n\u003e for _, w :\u003d range ws {\n\u003e   w.CloseWindow(ctx, tconn)  \n\u003e }\n\u003e testing.Poll(..., function() {\n\u003e   ws, err :\u003d ash.GetAllWindows(...)\n\u003e   if len(ws) \u003e 0 {\n\u003e     return errors.New(...)\n\u003e   }\n\u003e   return nil\n\u003e }\n\nI\u0027ve added this, but for my education, what windows typically need closed at this stage? I\u0027ve not seen one here before.\n\n\u003e \n\u003e 3) Set up browser.\n\u003e \n\u003e br, cleanup, err :\u003d browserfixt.SetUp(ctx, f, browserType)\n\u003e defer cleanup(ctx)\n\u003e \n\nDone, although I used SetUpWithURL.\n\n\u003e 4) specifying WithNewWindow\n\u003e \n\u003e br.NewConn(..., browser.WithNewWindow())\n\u003e \n\u003e if the bt is Lacros, you need to close the first window.\n\u003e \n\nThanks for this. Using SetUpWithURL I don\u0027t have to close the first window on Lacros.\n\n\u003e 5) Obtain a window for the browser.\n\u003e \n\u003e w, err :\u003d ash.FindWindow(ctx, tconn, func(window *ash.Window) bool {\n\u003e   return window.WindowType \u003d\u003d ash.WindowTypeBrowser \n\u003e })\n\u003e \n\u003e (or WindowTypeLacros for lacros)\n\nDone.",
+      "parentUuid": "77a5da59_d32a61ea",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03fc92c5_9f7b0064",
@@ -513,6 +537,24 @@
       "side": 1,
       "message": "Same question as above.",
       "parentUuid": "03fc92c5_9f7b0064",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b5d3fd_38da29e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-21T21:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3812538_c8f2ca9b",
       "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -590,6 +632,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "698100c6_8cdfe942",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-21T21:31:09Z",
+      "side": 1,
+      "message": "I copied this code from the MeetCUJ setup code. My read is they are polling because the permission windows don\u0027t always show up in the same order, and sometimes don\u0027t show up at all. That may not be the case for us, I will try some testing around just always clicking twice.",
+      "parentUuid": "f32a3206_3693f48a",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fb15ac7_55ebffb3",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
         "patchSetId": 1
@@ -619,6 +685,24 @@
       "side": 1,
       "message": "Same question as above.",
       "parentUuid": "0fb15ac7_55ebffb3",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cb8812d_cdc1dafc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-21T21:31:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e526213a_865715b0",
       "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -684,6 +768,30 @@
       "side": 1,
       "message": "If selection select is flaky, could you wait for the focus?\nOn porting autotest to tast, we try to avoid import anti-patterns.",
       "parentUuid": "729e1716_5b3fa431",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 14
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15639fca_c817cced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-21T21:31:09Z",
+      "side": 1,
+      "message": "You\u0027re right, my mistake, I thought you were referring to a different delay. I\u0027ve removed the delay, I haven\u0027t needed it in my testing.",
+      "parentUuid": "c17982b0_a704241c",
       "range": {
         "startLine": 192,
         "startChar": 3,
