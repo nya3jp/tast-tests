@@ -668,7 +668,7 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 // openNewFile opens a new document for the specified service.
 func (app *MicrosoftWebOffice) openNewFile(service string) action.Action {
 	oneDriveWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
-	newItem := nodewith.Name("New").Role(role.MenuItem).Ancestor(oneDriveWebArea)
+	newItem := nodewith.NameStartingWith("New").Role(role.MenuItem).Ancestor(oneDriveWebArea)
 	newItemMenu := nodewith.Role(role.Menu).Ancestor(newItem)
 	serviceItem := nodewith.Name(service).Role(role.MenuItem).Ancestor(oneDriveWebArea)
 	return uiauto.NamedAction("open a new "+service, uiauto.Combine("create a new file",
