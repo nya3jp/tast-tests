@@ -16,6 +16,64 @@
       "message": "Frienly nag :)",
       "revId": "91ef12cc421432d3fa179627ae79ec897b89be8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06013b2_7fe59305",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-21T00:20:49Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "91ef12cc421432d3fa179627ae79ec897b89be8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b04f09_71261473",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-21T00:20:49Z",
+      "side": 1,
+      "message": "Apologies, missed this one. Thanks for the ping!",
+      "parentUuid": "cf583aca_1c51e9b1",
+      "revId": "91ef12cc421432d3fa179627ae79ec897b89be8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e7e43a7_ff38c8f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-21T00:20:49Z",
+      "side": 1,
+      "message": "nit: you might want a cleanup context for this to ensure you get screenshots (the timeout might exceed and not screenshot when this defer is ran)",
+      "range": {
+        "startLine": 54,
+        "startChar": 33,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "91ef12cc421432d3fa179627ae79ec897b89be8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
