@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e0a2d4_2cd4ec00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/user_files_guest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-21T00:00:31Z",
+      "side": 1,
+      "message": "This is actually not the \"guest\" namespace. We enabled non-init mount namespaces for Guest sessions first because Guest sessions are simpler (no ARC++, no Crostini) but there is nothing specific about Guest sessions here.\n\nThis package should be called maybe \"mountns\" or \"usersession\" or \"usersessionns\".",
+      "range": {
+        "startLine": 12,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "882ce6a606233cfd398a9acabb02b45124ce8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13655fd8_3ffaea5c",
+        "filename": "src/chromiumos/tast/local/guestns/guestns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-21T00:00:31Z",
+      "side": 1,
+      "message": "Should be called mountns or usersessionns",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "882ce6a606233cfd398a9acabb02b45124ce8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e6e6a17_52ffe817",
+        "filename": "src/chromiumos/tast/local/guestns/guestns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-21T00:00:31Z",
+      "side": 1,
+      "message": "We should elide all mentions of the word \"Guest\" from this package.\n\nEnterUserSessionMountNS is a better name.",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "882ce6a606233cfd398a9acabb02b45124ce8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f1d6bc_329536c7",
+        "filename": "src/chromiumos/tast/local/guestns/guestns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-21T00:00:31Z",
+      "side": 1,
+      "message": "This comment belongs in the test, not here in the helper function.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "882ce6a606233cfd398a9acabb02b45124ce8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d416e1_81219c08",
+        "filename": "src/chromiumos/tast/local/guestns/guestns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-21T00:00:31Z",
+      "side": 1,
+      "message": "Same comment as above.\n\nBut here I\u0027d even go as far as to say this should be called \"EnterInitMountNamespace\" rather than \"ExitUserSessionNamespace\". Enter... above can actually sometimes just enter the existing init mount namespace, so in that case this function will not really exit it.",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "882ce6a606233cfd398a9acabb02b45124ce8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f10c764e_1c5c1f83",
+        "filename": "src/chromiumos/tast/local/guestns/guestns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-21T00:00:31Z",
+      "side": 1,
+      "message": "Leftover debugging?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 71
+      },
+      "revId": "882ce6a606233cfd398a9acabb02b45124ce8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b311322f_da9d2ca3",
+        "filename": "src/chromiumos/tast/local/guestns/guestns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-21T00:00:31Z",
+      "side": 1,
+      "message": "I don\u0027t know if this function should be responsible for doing this, actually.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "882ce6a606233cfd398a9acabb02b45124ce8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
