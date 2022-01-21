@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97cc3e7a_96e15bef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-21T01:59:08Z",
+      "side": 1,
+      "message": "I think you should remove it if it is not used. Put it back when you need it.  I think it is the only reason that you use two mutex. Thanks.",
+      "parentUuid": "113efab4_032f2c0a",
+      "revId": "71b5e8e23a0e130f69286b850db97b20a7a7034e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ee59fdd_68799001",
         "filename": "src/chromiumos/tast/local/bundles/cros/browser/chrome_service.go",
         "patchSetId": 8
