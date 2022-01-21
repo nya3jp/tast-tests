@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7ac97b_ad41cd30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-21T04:22:42Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "a458d3de42b5c91bcd84c199d3d98547a2e65f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523dfb38_d779876a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-21T04:22:42Z",
+      "side": 1,
+      "message": "nit: where is this file? I note it doesn\u0027t appear in Data, is it already on disk? possible to have absolute path?",
+      "range": {
+        "startLine": 286,
+        "startChar": 21,
+        "endLine": 286,
+        "endChar": 36
+      },
+      "revId": "a458d3de42b5c91bcd84c199d3d98547a2e65f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
