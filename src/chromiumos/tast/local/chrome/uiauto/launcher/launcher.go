@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -597,6 +598,88 @@ func IsItemOnCurrentPage(ctx context.Context, tconn *chrome.TestConn, item *node
 	}
 
 	return gridLocation.Contains(*itemLocation), nil
+}
+
+// ScrollBubbleLauncherDuringItemDragUntilItemVisible moves the pointer to top or the bottom of the app list bubble view, which is expected to scroll the view.
+// It keeps the pointer in scrolling position until the item returned by targetItem becomes visible.
+// up indicates whether the bubble app list view apps page should be scrolled up, or down.
+// NOTE: This is intended to be used during app list item drag, otherwise just hovering the pointer over bubble bounds will not scroll the app list.
+// This may be flaky if targetItem is not visible in fully scrolled state - in that case polling interval may miss the period when the view is visible.
+func ScrollBubbleLauncherDuringItemDragUntilItemVisible(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, targetItem *nodewith.Finder, up bool) error {
+	// Move the icon to the bottom of the bubble launcher - this should trigger scroll within the app list bubble.
+	bubbleView := nodewith.ClassName("AppListBubbleView")
+	bubbleViewLocation, err := ui.Location(ctx, bubbleView)
+	if err != nil {
+		return errors.Wrap(err, "failed to get bubble view bounds")
+	}
+
+	var scrollPoint coords.Point
+	if up {
+		scrollPoint = coords.NewPoint(bubbleViewLocation.CenterX(), bubbleViewLocation.Top)
+	} else {
+		scrollPoint = bubbleViewLocation.BottomCenter()
+	}
+	if err := mouse.Move(tconn, scrollPoint, 100)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move to the start location")
+	}
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		targetItemInfo, err := ui.Info(ctx, targetItem)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get target item info"))
+		}
+
+		if !targetItemInfo.State[state.Offscreen] {
+			return nil
+		}
+
+		return errors.New("Target item no in viewport")
+	}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "Target item did not become visible")
+	}
+
+	if err := mouse.Move(tconn, bubbleViewLocation.CenterPoint(), 100)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move to the grid center")
+	}
+
+	return nil
+}
+
+// DragItemInBubbleLauncherWithScrolling performs app list item drag in bubble launcher where the launcher is expected to scroll during the drag.
+// dragItem is the item that will be dragged, and is expected to be visible when the method gets called.
+// targetItem is an item used to determing the drag item drop spot - the drag item will be dropped just right of the targetItem.
+// up describes the direction the app list should be scrolled for the targetItem to become visible
+// NOTE: targetItem should be an item that's visible when the app list is fully scrolled.
+func DragItemInBubbleLauncherWithScrolling(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, dragItem, targetItem *nodewith.Finder, up bool) error {
+	// Start item drag.
+	start, err := ui.Location(ctx, dragItem)
+	if err != nil {
+		return errors.Wrap(err, "failed to get location for drag icon")
+	}
+	if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move to the start location")
+	}
+	if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+		return errors.Wrap(err, "failed to press the button")
+	}
+
+	if err := ScrollBubbleLauncherDuringItemDragUntilItemVisible(ctx, tconn, ui, targetItem, up); err != nil {
+		return errors.Wrap(err, "Bubble launcher scroll failed")
+	}
+
+	// Get drag drop location.
+	end, err := ui.Location(ctx, targetItem)
+	if err != nil {
+		return errors.Wrap(err, "failed to get location for drag drop point")
+	}
+	if err := mouse.Move(tconn, coords.NewPoint(end.Right()+5, end.CenterY()), 0)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move to drop location")
+	}
+	if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+		return errors.Wrap(err, "mouse release failed")
+	}
+
+	return nil
 }
 
 // IsFolderItem returns whether the item is a folder. Assumes that there is no folder open.
