@@ -20995,6 +20995,36 @@ func (p *NTPMiddleSlotAnnouncementVisible) Equal(iface interface{}) bool {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// 942. CloudProfileReportingEnabled
+// This policy can be modified without rebooting.
+// This is a future policy, it is not present in stable builds.
+///////////////////////////////////////////////////////////////////////////////
+type CloudProfileReportingEnabled struct {
+	Stat Status
+	Val  bool
+}
+
+func (p *CloudProfileReportingEnabled) Name() string          { return "CloudProfileReportingEnabled" }
+func (p *CloudProfileReportingEnabled) Field() string         { return "" }
+func (p *CloudProfileReportingEnabled) Scope() Scope          { return ScopeUser }
+func (p *CloudProfileReportingEnabled) Status() Status        { return p.Stat }
+func (p *CloudProfileReportingEnabled) UntypedV() interface{} { return p.Val }
+func (p *CloudProfileReportingEnabled) UnmarshalAs(m json.RawMessage) (interface{}, error) {
+	var v bool
+	if err := json.Unmarshal(m, &v); err != nil {
+		return nil, errors.Wrapf(err, "could not read %s as bool", m)
+	}
+	return v, nil
+}
+func (p *CloudProfileReportingEnabled) Equal(iface interface{}) bool {
+	v, ok := iface.(bool)
+	if !ok {
+		return ok
+	}
+	return cmp.Equal(p.Val, v, cmpopts.EquateEmpty())
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // Reference values (used via '$ref' in JSON Schema).
 ///////////////////////////////////////////////////////////////////////////////
 
