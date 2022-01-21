@@ -74,6 +74,30 @@
       },
       "revId": "91ef12cc421432d3fa179627ae79ec897b89be8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ff0771_88791f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-21T08:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e7e43a7_ff38c8f8",
+      "range": {
+        "startLine": 54,
+        "startChar": 33,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "91ef12cc421432d3fa179627ae79ec897b89be8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
