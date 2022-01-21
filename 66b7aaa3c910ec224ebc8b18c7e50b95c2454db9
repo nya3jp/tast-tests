@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdfd5d60_8b6347b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-01-21T18:53:03Z",
+      "side": 1,
+      "message": "lgtm with comments below, thanks!",
+      "revId": "66b7aaa3c910ec224ebc8b18c7e50b95c2454db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c8fef4_3c9db3a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-01-21T18:53:03Z",
+      "side": 1,
+      "message": "qq: does this mean the test does not test on lacros windows and we\u0027ll need a lacros variant test?",
+      "revId": "66b7aaa3c910ec224ebc8b18c7e50b95c2454db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c69de4_24a89647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-01-21T18:53:03Z",
+      "side": 1,
+      "message": "nit: format is off",
+      "revId": "66b7aaa3c910ec224ebc8b18c7e50b95c2454db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
