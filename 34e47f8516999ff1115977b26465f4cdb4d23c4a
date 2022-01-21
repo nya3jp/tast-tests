@@ -16,6 +16,52 @@
       "message": "LGTM",
       "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c999a55_e637e050",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1528158
+      },
+      "writtenOn": "2022-01-21T19:03:44Z",
+      "side": 1,
+      "message": "seems a relative low level API(similar for other APIs), wondering what\u0027s the trade-off we chose to sync on this level?",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f4e5e6_0ae9cf3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1528158
+      },
+      "writtenOn": "2022-01-21T19:03:44Z",
+      "side": 1,
+      "message": "possible to make it an argument? (ideally should remove such statement in the future)",
+      "range": {
+        "startLine": 173,
+        "startChar": 20,
+        "endLine": 173,
+        "endChar": 41
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
