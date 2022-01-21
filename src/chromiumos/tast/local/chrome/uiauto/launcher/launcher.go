@@ -249,6 +249,22 @@ func RenameFolder(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, from, t
 	)
 }
 
+// IndexOfFirstVisibleItem returns the index of the first item which is visible in the current app list UI,
+// and whose index among app list item views is at least minIndex.
+func IndexOfFirstVisibleItem(ctx context.Context, tconn *chrome.TestConn, minIndex int) (int, error) {
+	for itemIndex := minIndex; ; itemIndex++ {
+		item := nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex)
+		onPage, err := IsItemOnCurrentPage(ctx, tconn, item)
+		if err != nil {
+			return -1, errors.Wrapf(err, "failed to query whether item is on page %d: %v", itemIndex, err)
+		}
+
+		if onPage {
+			return itemIndex, nil
+		}
+	}
+}
+
 // FirstNonRecentAppItem returns the first app list item view shown in the current app list UI that is not in the recent apps container.
 // If productivity launcher is disabled, in which case recent apps container does not exist, return 0 - the index of the first app list item view.
 // The return value will be -1 on error.
@@ -359,6 +375,46 @@ func CreateFolder(ctx context.Context, tconn *chrome.TestConn, folderOpensOnCrea
 	}
 
 	return nil
+}
+
+// DragItemAfterItem drags an app list item returned by src node finder to a location after the app
+// list item node returned by dest node finder.
+func DragItemAfterItem(tconn *chrome.TestConn, src, dest *nodewith.Finder) uiauto.Action {
+	const duration = time.Second
+	return func(ctx context.Context) error {
+		ui := uiauto.New(tconn)
+		start, err := ui.Location(ctx, src)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for src icon")
+		}
+
+		if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to press the button")
+		}
+
+		// Move a little bit first to trigger launcher-app-paging.
+		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 10, Y: 10}), time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		// Get destination location during drag.
+		end, err := ui.Location(ctx, dest)
+		if err != nil {
+			return errors.Wrap(err, "failed to get location for dst icon")
+		}
+		if err := mouse.Move(tconn, coords.NewPoint(end.Right()+5, end.CenterY()), 200*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to release the mouse")
+		}
+
+		return nil
+	}
 }
 
 // DragIconToIcon drags from one icon to another icon.
@@ -486,7 +542,7 @@ func AddItemsToFolder(ctx context.Context, tconn *chrome.TestConn, folder *nodew
 				return errors.Wrap(err, "failed to check if the item is on the current page")
 			}
 			if !onPage {
-				if err := DragIconToNextPage(tconn, 0)(ctx); err != nil {
+				if err := DragIconAtIndexToNextPage(tconn, 0)(ctx); err != nil {
 					return errors.Wrap(err, "failed to drag icon to the next page")
 				}
 			}
@@ -511,15 +567,25 @@ func AddItemsToFolder(ctx context.Context, tconn *chrome.TestConn, folder *nodew
 	return nil
 }
 
+// DragIconAtIndexToNextPage drags an icon which has itemIndex in the app list to the next page of the app list.
+func DragIconAtIndexToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
+	return DragIconToNextPage(tconn, nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex))
+}
+
 // DragIconToNextPage drags an icon to the next page of the app list.
-func DragIconToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
+func DragIconToNextPage(tconn *chrome.TestConn, item *nodewith.Finder) uiauto.Action {
+	return DragIconToNeighbourPage(tconn, item, true /*next*/)
+}
+
+// DragIconToNeighbourPage drags an icon to the next, or previous page of the app list.
+// next indicates whether the icon should be dragged to the next page.
+func DragIconToNeighbourPage(tconn *chrome.TestConn, item *nodewith.Finder, next bool) uiauto.Action {
 	return func(ctx context.Context) error {
 		ui := uiauto.New(tconn)
-		src := nodewith.ClassName(ExpandedItemsClass).Nth(itemIndex)
-		// Move and press the mouse on the source icon.
-		start, err := ui.Location(ctx, src)
+		// Move and press the mouse on the drag item.
+		start, err := ui.Location(ctx, item)
 		if err != nil {
-			return errors.Wrap(err, "failed to get location for first icon")
+			return errors.Wrap(err, "failed to get location for drag item")
 		}
 		if err := mouse.Move(tconn, start.CenterPoint(), 0)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move to the start location")
@@ -529,7 +595,7 @@ func DragIconToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
 		}
 
 		// Move a little bit first to trigger launcher-app-paging.
-		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 1, Y: 1}), time.Second)(ctx); err != nil {
+		if err := mouse.Move(tconn, start.CenterPoint().Add(coords.Point{X: 20, Y: 20}), time.Second)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move the mouse")
 		}
 
@@ -538,7 +604,13 @@ func DragIconToNextPage(tconn *chrome.TestConn, itemIndex int) uiauto.Action {
 		if err != nil {
 			return errors.Wrap(err, "failed to get location for AppsGridView")
 		}
-		endPoint := coords.NewPoint(end.CenterPoint().X, end.Bottom())
+
+		var endPoint coords.Point
+		if next {
+			endPoint = coords.NewPoint(end.CenterPoint().X, end.Bottom())
+		} else {
+			endPoint = coords.NewPoint(end.CenterPoint().X, end.Top)
+		}
 
 		// Drag icon to the bottom of the AppsGridView.
 		if err := mouse.Move(tconn, endPoint, 200*time.Millisecond)(ctx); err != nil {
@@ -587,14 +659,35 @@ func GetFolderSize(ctx context.Context, tconn *chrome.TestConn, folder *nodewith
 // Assumes that there is no folder open, and may not work if a folder is opened.
 func IsItemOnCurrentPage(ctx context.Context, tconn *chrome.TestConn, item *nodewith.Finder) (bool, error) {
 	ui := uiauto.New(tconn)
+	info, err := ui.Info(ctx, item)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get item info")
+	}
+
+	if info.State[state.Offscreen] {
+		return false, nil
+	}
+
+	// Offscreen state is not always correctly set of last row on the previous app list page, when it's
+	// clipped by paged apps grid view, but it's bounds are still within the screen bounds. For items
+	// reported as onscreen, additionally check that their location is within the apps grid.
+	// TODO(tbarzic): This should not be needed on Chrome 100.0.4858.0 and up (CL:3421151).
 	itemLocation, err := ui.Location(ctx, item)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get location for the item")
 	}
 
-	gridLocation, err := ui.Location(ctx, nodewith.ClassName("AppsGridView"))
-	if err != nil {
-		return false, errors.Wrap(err, "failed to get location for the AppsGridView")
+	var gridLocation *coords.Rect
+	if findError := ui.Exists(nodewith.ClassName("AppsGridView"))(ctx); findError == nil {
+		gridLocation, err = ui.Location(ctx, nodewith.ClassName("AppsGridView"))
+		if err != nil {
+			return false, errors.Wrap(err, "failed to get location for the AppsGridView")
+		}
+	} else {
+		gridLocation, err = ui.Location(ctx, nodewith.ClassName("ScrollableAppsGridView"))
+		if err != nil {
+			return false, errors.Wrap(err, "failed to get location for the ScrollableAppsGridView")
+		}
 	}
 
 	return gridLocation.Contains(*itemLocation), nil
