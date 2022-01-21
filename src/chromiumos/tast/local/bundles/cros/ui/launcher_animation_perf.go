@@ -73,6 +73,7 @@ func runLauncherAnimation(ctx context.Context, tconn *chrome.TestConn, kb *input
 		trigger = ash.AccelShiftSearch
 		firstState = ash.FullscreenAllApps
 	}
+	testing.ContextLog(ctx, "Triggeer peeking launcher")
 	if err := ash.TriggerLauncherStateChange(ctx, tconn, trigger); err != nil {
 		return errors.Wrap(err, "failed to open launcher")
 	}
@@ -80,6 +81,7 @@ func runLauncherAnimation(ctx context.Context, tconn *chrome.TestConn, kb *input
 		return errors.Wrap(err, "failed to wait for state")
 	}
 
+	testing.ContextLog(ctx, "HERE")
 	if at == animationTypeHalf || at == animationTypeFullscreenSearch {
 		if err := kb.Type(ctx, "a"); err != nil {
 			return errors.Wrap(err, "failed to type 'a'")
@@ -90,6 +92,7 @@ func runLauncherAnimation(ctx context.Context, tconn *chrome.TestConn, kb *input
 	}
 
 	if at == animationTypeFullscreenSearch {
+		testing.ContextLog(ctx, "Shhist search")
 		if err := ash.TriggerLauncherStateChange(ctx, tconn, ash.AccelShiftSearch); err != nil {
 			return errors.Wrap(err, "failed to switch to fullscreen")
 		}
@@ -135,6 +138,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
+	testing.ContextLog(ctx, "ENSURED TABLET MODE STATE")
+
 	// Run an http server to serve the test contents for accessing from the chrome browsers.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -150,6 +155,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
 	for _, numWindows := range []int{0, 2} {
 		func() {
+			testing.ContextLog(ctx, "creating windows")
 			// Set up environment. Close all windows at first.
 			ws, err := ash.GetAllWindows(ctx, tconn)
 			if err != nil {

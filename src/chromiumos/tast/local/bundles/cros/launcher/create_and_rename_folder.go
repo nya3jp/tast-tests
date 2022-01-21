@@ -112,7 +112,7 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create folder app: ", err)
 	}
 
-	if err := launcher.RenameFolder(tconn, kb, "Unnamed", "NewName")(ctx); err != nil {
+	if err := launcher.RenameFolder(tconn, kb, launcher.UnnamedFolderFinder.First(), "NewName")(ctx); err != nil {
 		s.Fatal("Failed to rename folder to NewName: ", err)
 	}
 }
