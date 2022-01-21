@@ -87,6 +87,30 @@
       },
       "revId": "a0d7593d182b5bbc0310e41e2a9edee2d5a5e09b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c62f9f_0aca95ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/logout.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-21T11:19:23Z",
+      "side": 1,
+      "message": "Fixed.\n\nThank you very much for the helpful information.\nWe removed the not necessary GAIA login.",
+      "parentUuid": "83235b84_672273a0",
+      "range": {
+        "startLine": 58,
+        "startChar": 28,
+        "endLine": 58,
+        "endChar": 85
+      },
+      "revId": "a0d7593d182b5bbc0310e41e2a9edee2d5a5e09b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
