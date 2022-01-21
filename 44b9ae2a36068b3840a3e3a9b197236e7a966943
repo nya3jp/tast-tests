@@ -247,6 +247,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a1d98b_a7f689f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2022-01-21T09:28:15Z",
+      "side": 1,
+      "message": "That is an interesting pattern. I honestly don\u0027t think it is cleaner but sure.",
+      "parentUuid": "d64a2623_37197668",
+      "revId": "44b9ae2a36068b3840a3e3a9b197236e7a966943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66d0f7a_a0b9c673",
@@ -472,6 +490,30 @@
       "side": 1,
       "message": "See the other comment.",
       "parentUuid": "fc483d2e_0bd94012",
+      "range": {
+        "startLine": 70,
+        "startChar": 20,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "44b9ae2a36068b3840a3e3a9b197236e7a966943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8a24d4a_df3444bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2022-01-21T09:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7febe712_52a6894c",
       "range": {
         "startLine": 70,
         "startChar": 20,
