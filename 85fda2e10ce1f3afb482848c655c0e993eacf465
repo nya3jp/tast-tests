@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58753b5_c9208b51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:23:50Z",
+      "side": 1,
+      "message": "tast run \u003cDUT\u003e uidetection.BasicDetections",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8a4715_b229726e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:23:50Z",
+      "side": 1,
+      "message": "instead of using the hardcoded coordinates, how ahout we compute the center point in px and dp and use it for testing?",
+      "range": {
+        "startLine": 88,
+        "startChar": 61,
+        "endLine": 88,
+        "endChar": 72
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ccd0212_e701d1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:23:50Z",
+      "side": 1,
+      "message": "for screen UI?",
+      "range": {
+        "startLine": 95,
+        "startChar": 23,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e764287e_457be5cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:23:50Z",
+      "side": 1,
+      "message": "for A11y nodes?",
+      "range": {
+        "startLine": 99,
+        "startChar": 23,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbbc38e1_f322b4a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:23:50Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 105,
+        "startChar": 23,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c325ccb_6ec63cb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:23:50Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 114,
+        "startChar": 23,
+        "endLine": 114,
+        "endChar": 26
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acdbabd6_ef9539d1",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-21T00:23:50Z",
+      "side": 1,
+      "message": "nit: rename to pxConstraintBuilder? similarly to others, and uidBuilder can be just called constraintBuilder",
+      "range": {
+        "startLine": 115,
+        "startChar": 17,
+        "endLine": 115,
+        "endChar": 26
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
