@@ -289,11 +289,6 @@ func verifyPointerCaptureDisabledWhenChromeFocused(ctx context.Context, s *testi
 		s.Fatal("Failed to verify that pointer capture is enabled: ", err)
 	}
 
-	// The first move event is consumed by Chrome (b/185837950), so send an extra one.
-	if err := t.mew.Move(10, 10); err != nil {
-		s.Fatal("Failed to move mouse: ", err)
-	}
-
 	// Clear events, since hover events could have been generated before Pointer Capture was re-enabled.
 	if err := t.tester.ClearMotionEvents(ctx); err != nil {
 		s.Fatal("Failed to clear events: ", err)
@@ -344,11 +339,6 @@ func verifyPointerCaptureWithKeyboardFocusChange(ctx context.Context, s *testing
 	// The activity will automatically request pointer capture when it gains focus.
 	if err := expectPointerCaptureState(ctx, t.d, true); err != nil {
 		s.Fatal("Failed to verify that pointer capture is enabled: ", err)
-	}
-
-	// The first move event is consumed by Chrome (b/185837950), so send an extra one.
-	if err := t.mew.Move(10, 10); err != nil {
-		s.Fatal("Failed to move mouse: ", err)
 	}
 
 	// Clear events, since hover events could have been generated before Pointer Capture was re-enabled.
