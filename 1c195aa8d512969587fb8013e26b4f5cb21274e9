@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84de47ae_f318bee2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-21T10:01:30Z",
+      "side": 1,
+      "message": "LGTM from tast owner perspective",
+      "revId": "1c195aa8d512969587fb8013e26b4f5cb21274e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f41604_41b8c978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-21T10:01:30Z",
+      "side": 1,
+      "message": "nit: can this be combined with below action?",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "1c195aa8d512969587fb8013e26b4f5cb21274e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
