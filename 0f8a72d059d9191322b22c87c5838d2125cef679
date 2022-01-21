@@ -16,6 +16,46 @@
       "message": "Hi Kyle,\nCould you help take a look, thanks!",
       "revId": "0f8a72d059d9191322b22c87c5838d2125cef679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461e18c1_b530554d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T00:59:42Z",
+      "side": 1,
+      "message": "You may want to consider adding some testing signals ",
+      "revId": "0f8a72d059d9191322b22c87c5838d2125cef679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc13fcf_9fcf4f12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_install.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-21T00:59:42Z",
+      "side": 1,
+      "message": "is this expected/acceptable from a performance perspective for the feature? just wondering since it seems kinda long",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 43
+      },
+      "revId": "0f8a72d059d9191322b22c87c5838d2125cef679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
