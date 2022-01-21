@@ -68,6 +68,10 @@ func init() {
 // crashes often enough to log the user out, a crash report will be generated
 // and immediately sent to crash_sender; check that crash_sender correctly receives
 // the crash report.
+// DEPRECATED: This test has persistent issues where unrelated Chrome crashes
+// make the test seem flaky. See ChromeCrashLoopV2 for a rewrite that removes
+// this problem. See b/202795944 for more.
+// TODO(b/202795944): Remove this version once ChromeCrashLoopV2 is out of "informational".
 func ChromeCrashLoop(ctx context.Context, s *testing.State) {
 	params := s.Param().(chromeCrashLoopParams)
 
