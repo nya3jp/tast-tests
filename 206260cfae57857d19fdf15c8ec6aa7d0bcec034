@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd04b2d_af45dd0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "yeah, I think it does",
+      "parentUuid": "19bbbcaf_67a067dc",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c85028a3_59005203",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-01-20T17:09:02Z",
       "side": 1,
       "message": "nit: Can this just pull out (fillFolderTestCase) and reference that here and below (for tablet mode check) to reduce code duplication? Ditto in all files.",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e786d46_f1b24c62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c85028a3_59005203",
       "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "375a092c_e4b9e192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "781ea65e_bd1fdd56",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "498b7ecb_bc89c643",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-01-20T18:09:43Z",
       "side": 1,
       "message": "maybe move to L95 and use this at L96?",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6b43093_efb38e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_fill_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "498b7ecb_bc89c643",
       "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +192,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "154be829_12485ce0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/create_and_rename_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97fb98b7_6ef22d0d",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db4ebb44_1fb16198",
@@ -137,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ce6206_9d1fc72d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db4ebb44_1fb16198",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5631072d_2587a13d",
@@ -150,6 +258,24 @@
       "writtenOn": "2022-01-20T18:09:43Z",
       "side": 1,
       "message": "huge nit: no empty line needed.",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "040422a1_65563019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/remove_apps_from_folder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5631072d_2587a13d",
       "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -173,6 +299,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7346728c_c2889365",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "yeah - this is a valid case (where we don\u0027t have any recent apps), in which case the method should return the index of the first app list item view.\n\nnot being able to get a location of the recent apps container when it exists indicates an error (so -1 makes more sense) - though I could be convinced to return 0 in that case too.",
+      "parentUuid": "4dc9cfa5_67fefffd",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b8a44647_f86fc65f",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 4
@@ -184,6 +328,24 @@
       "writtenOn": "2022-01-20T18:09:43Z",
       "side": 1,
       "message": "could you document the option?",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5539b33_76692979",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a44647_f86fc65f",
       "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +363,24 @@
       "writtenOn": "2022-01-20T18:09:43Z",
       "side": 1,
       "message": "ditto for document.",
+      "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a94bbd6_79058998",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-21T19:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f2457ad_93429ef5",
       "revId": "206260cfae57857d19fdf15c8ec6aa7d0bcec034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
