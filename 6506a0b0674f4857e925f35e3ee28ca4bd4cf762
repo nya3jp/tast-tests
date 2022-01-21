@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26072f1_c5221088",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d14d51c_2ce311ed",
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eeb28a8_48bb1072",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6511346_886626b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eeb28a8_48bb1072",
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5849cdb0_3e90ee18",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-01-21T11:49:38Z",
       "side": 1,
       "message": "Don\u0027t pass testing.State, just pass OutDir() instead",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 55
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f129593_c0f63b0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "I need the testing state to extract login variables; should I pass those in as well, or keep the testing.State variable?",
+      "parentUuid": "5849cdb0_3e90ee18",
       "range": {
         "startLine": 52,
         "startChar": 39,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccff3cbe_078055d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fedfb8b_2da22145",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da6a37d_c4490045",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-01-21T11:49:38Z",
       "side": 1,
       "message": "nit: move it inside one const block",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 22
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9df15a_88b6db0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da6a37d_c4490045",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -167,6 +275,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e21e6eb_2f83d371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6777ec53_56acfb51",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 65,
+        "endChar": 26
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f35cedd_e88b12af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73a323b7_f5f2bdbc",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 3
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00756c00_0ca6ee2c",
@@ -190,6 +346,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27906b53_40640a4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00756c00_0ca6ee2c",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a082d5e_4f523d66",
@@ -203,6 +383,30 @@
       "writtenOn": "2022-01-21T11:49:38Z",
       "side": 1,
       "message": "add more context to make it easier to debug, e.g. \"failed to sleep after \u003cevent\u003e\" or \"failed to sleep to \u003cdescription\u003e\".",
+      "range": {
+        "startLine": 84,
+        "startChar": 27,
+        "endLine": 84,
+        "endChar": 42
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1072d0c2_a49a025d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a082d5e_4f523d66",
       "range": {
         "startLine": 84,
         "startChar": 27,
@@ -238,6 +442,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea242999_d421e10e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "I have tested for a 5 second sleep, which works fine on my volteer DUT. Should I use that instead?\n\nAs for a condition, the only option is to use ACUITI, but this test is done specifically not to use ACUITI.",
+      "parentUuid": "7d3e751a_15816065",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18e8808e_b9663ee4",
         "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
         "patchSetId": 9
@@ -249,6 +477,24 @@
       "writtenOn": "2022-01-21T11:49:38Z",
       "side": 1,
       "message": "Please update this comment or remove it.",
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff8de67_0d1d2e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18e8808e_b9663ee4",
       "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -266,6 +512,30 @@
       "writtenOn": "2022-01-21T11:49:38Z",
       "side": 1,
       "message": "I\u0027d personally prefer this function to be before performLogin since this is a main function in this file.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 57
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80fcecf_9928b99e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfaecdc3_2533bee0",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -299,6 +569,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c923988_c0badcc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdc498cf_3e5b58cb",
+      "range": {
+        "startLine": 176,
+        "startChar": 28,
+        "endLine": 176,
+        "endChar": 33
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19ec6818_a1e241a1",
@@ -312,6 +606,30 @@
       "writtenOn": "2022-01-21T11:49:38Z",
       "side": 1,
       "message": "Don\u0027t start error with capital letter",
+      "range": {
+        "startLine": 182,
+        "startChar": 22,
+        "endLine": 182,
+        "endChar": 28
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1efc3105_0a7c1fcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19ec6818_a1e241a1",
       "range": {
         "startLine": 182,
         "startChar": 22,
@@ -345,6 +663,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6d6dc8_2eda50e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406b7225_e19479a6",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 32
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "945b127e_4c791a7d",
@@ -368,6 +710,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba21f79c_2a42854e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "945b127e_4c791a7d",
+      "range": {
+        "startLine": 141,
+        "startChar": 9,
+        "endLine": 141,
+        "endChar": 12
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12fa7e06_494f2e8c",
@@ -381,6 +747,30 @@
       "writtenOn": "2022-01-21T11:49:38Z",
       "side": 1,
       "message": "Can this really happen? If so, maybe move this logic inside GetEffectiveDeviceScaleFactor(), then other clients will benefit from that check and don\u0027t have to do it on their own.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2896566f_edced402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-21T16:51:30Z",
+      "side": 1,
+      "message": "I saw the same check in another file:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/uidetection/finder.go?q\u003dgeteffectivedevicescalefactor",
+      "parentUuid": "12fa7e06_494f2e8c",
       "range": {
         "startLine": 148,
         "startChar": 0,
