@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "713ffd85_cffe911f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58753b5_c9208b51",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa485848_57e7c609",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-21T00:33:02Z",
       "side": 1,
       "message": "why do you use uiauto.Combine? seems like you just need a single action here",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 42
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee73770_e34551e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa485848_57e7c609",
       "range": {
         "startLine": 65,
         "startChar": 28,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "626b163a_6edfeaf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae02bcad_2de4820d",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 38
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf8a4715_b229726e",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-21T00:23:50Z",
       "side": 1,
       "message": "instead of using the hardcoded coordinates, how ahout we compute the center point in px and dp and use it for testing?",
+      "range": {
+        "startLine": 88,
+        "startChar": 61,
+        "endLine": 88,
+        "endChar": 72
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73021662_437f8070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "We could do that, but IMO there\u0027s really no point. It\u0027s just yet another thing that could go wrong, for no particular gain. Our objective isn\u0027t a specific portion of the screen, just \"a small part\" and \"everything except a small part\".\n\nThis also makes it easier to debug whether it\u0027s doing it correctly, because it\u0027s far easier to see \"is the image it sends to the ACUITI servers 50x50px\", rather than arbitrary values.",
+      "parentUuid": "bf8a4715_b229726e",
       "range": {
         "startLine": 88,
         "startChar": 61,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "267044b9_36a93fae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "Screen UI is rather vague, as it could also refer to the a11y nodes. I\u0027ve changed it to ui detection.",
+      "parentUuid": "1ccd0212_e701d1df",
+      "range": {
+        "startLine": 95,
+        "startChar": 23,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e764287e_457be5cf",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-01-21T00:23:50Z",
       "side": 1,
       "message": "for A11y nodes?",
+      "range": {
+        "startLine": 99,
+        "startChar": 23,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da1749e_44542c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e764287e_457be5cf",
       "range": {
         "startLine": 99,
         "startChar": 23,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c519fd2_89e92525",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbbc38e1_f322b4a1",
+      "range": {
+        "startLine": 105,
+        "startChar": 23,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c325ccb_6ec63cb8",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02f08df8_1343e729",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c325ccb_6ec63cb8",
+      "range": {
+        "startLine": 114,
+        "startChar": 23,
+        "endLine": 114,
+        "endChar": 26
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acdbabd6_ef9539d1",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-01-21T00:23:50Z",
       "side": 1,
       "message": "nit: rename to pxConstraintBuilder? similarly to others, and uidBuilder can be just called constraintBuilder",
+      "range": {
+        "startLine": 115,
+        "startChar": 17,
+        "endLine": 115,
+        "endChar": 26
+      },
+      "revId": "85fda2e10ce1f3afb482848c655c0e993eacf465",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edfe15cb_af99c1d6",
+        "filename": "src/chromiumos/tast/local/uidetection/finder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-21T00:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acdbabd6_ef9539d1",
       "range": {
         "startLine": 115,
         "startChar": 17,
