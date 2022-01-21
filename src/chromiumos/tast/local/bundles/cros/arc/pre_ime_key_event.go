@@ -17,7 +17,7 @@ import (
 )
 
 type testKeyStroke struct {
-	Key                 string
+	Key                 input.EventCode
 	ExpectedPreIMEKey   int
 	ExpectedPostIMEKey  int
 	ExpectedTextOnField string
@@ -89,7 +89,7 @@ func testPreIMEKeyEvent(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	preIMEKeyLabel := d.Object(ui.ID(lastPreIMEKeyLabelID))
 	keyDownLabel := d.Object(ui.ID(lastKeyDownLabelID))
 	for _, key := range keystrokes {
-		if err := kb.Type(ctx, key.Key); err != nil {
+		if err := kb.TypeKey(ctx, key.Key); err != nil {
 			s.Fatalf("Failed to type %q", key.Key)
 		}
 		if err := preIMEKeyLabel.WaitForText(ctx, getExpectedKeyLabelText(key.ExpectedPreIMEKey), 30*time.Second); err != nil {
@@ -129,7 +129,7 @@ func testPreIMEKeyEvent(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC,
 	const initialFieldText = "hello"
 	textField.SetText(ctx, initialFieldText)
 	for _, key := range keystrokes {
-		if err := kb.Type(ctx, key.Key); err != nil {
+		if err := kb.TypeKey(ctx, key.Key); err != nil {
 			s.Fatalf("Failed to type %q", key.Key)
 		}
 		if err := preIMEKeyLabel.WaitForText(ctx, getExpectedKeyLabelText(key.ExpectedPreIMEKey), 30*time.Second); err != nil {
@@ -196,11 +196,12 @@ func PreIMEKeyEvent(ctx context.Context, s *testing.State) {
 			name:    "normal",
 			fieldID: editTextID,
 			strokes: []testKeyStroke{
-				{"a", 29, 0, "a"},    // AKEYCODE_A
-				{"b", 30, 0, "ab"},   // AKEYCODE_B
-				{"c", 31, 0, "abc"},  // AKEYCODE_C
-				{"\b", 67, 67, "ab"}, // AKEYCODE_DEL
-				{"\n", 66, 66, "ab"}, // AKEYCODE_ENTER
+				{input.KEY_A, 29, 0, "a"},           // AKEYCODE_A
+				{input.KEY_B, 30, 0, "ab"},          // AKEYCODE_B
+				{input.KEY_C, 31, 0, "abc"},         // AKEYCODE_C
+				{input.KEY_ZENKAKUHANKAKU, 204, 204, "ab"}, // AKEYCODE_LANGUAGE_SWITCH
+				{input.KEY_BACKSPACE, 67, 67, "ab"}, // AKEYCODE_DEL
+				{input.KEY_ENTER, 66, 66, "ab"},     // AKEYCODE_ENTER
 			},
 		},
 		{
@@ -208,11 +209,11 @@ func PreIMEKeyEvent(ctx context.Context, s *testing.State) {
 			name:    "null",
 			fieldID: nullEditTextID,
 			strokes: []testKeyStroke{
-				{"a", 29, 29, "a"},   // AKEYCODE_A
-				{"b", 30, 30, "ab"},  // AKEYCODE_B
-				{"c", 31, 31, "abc"}, // AKEYCODE_C
-				{"\b", 67, 67, "ab"}, // AKEYCODE_DEL
-				{"\n", 66, 66, "ab"}, // AKEYCODE_ENTER
+				{input.KEY_A, 29, 29, "a"},           // AKEYCODE_A
+				{input.KEY_B, 30, 30, "ab"},          // AKEYCODE_B
+				{input.KEY_C, 31, 31, "abc"},         // AKEYCODE_C
+				{input.KEY_BACKSPACE, 67, 67, "ab"}, // AKEYCODE_DEL
+				{input.KEY_ENTER, 66, 66, "ab"},     // AKEYCODE_ENTER
 			},
 		},
 	} {
