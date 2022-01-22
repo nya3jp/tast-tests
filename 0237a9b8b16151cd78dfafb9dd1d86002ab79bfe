@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f23f351_894d6005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-01-22T02:23:46Z",
+      "side": 1,
+      "message": "Hi Tatsuhisa, I tried running the patch on my eve, the test failed with below error, \narcappcompat.Gmail.vm_clamshell_mode [ FAIL ] Clamshell: Resize window: Failed to click on the compat-mode dialog: failed to find the compat-mode menu dialog of com.google.android.gm: context deadline exceeded; last error follows: Uncaught (in promise): \"multiple nodes matched, if you expect this and only want the first use First(): {className: /\\\\bBubbleDialogDelegateView\\\\b/}\". Wanted to let you know. Thanks.\n",
+      "revId": "0237a9b8b16151cd78dfafb9dd1d86002ab79bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
