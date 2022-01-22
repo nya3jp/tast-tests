@@ -94,8 +94,6 @@ func (a *Andreiboard) ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp)
 			return re.FindSubmatch(buf[:total]), nil
 		}
 		if total == len(a.targetBufferUnread) {
-			testing.ContextLog(ctx, "Buffer full, contents:")
-			testing.ContextLog(ctx, string(buf))
 			a.targetBufferUnreadLen = copy(a.targetBufferUnread, buf)
 			return nil, errors.Errorf("buffer is full (wanted %s)", re)
 		}
@@ -107,8 +105,6 @@ func (a *Andreiboard) ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp)
 		}
 		total += current
 		if err != nil {
-			testing.ContextLogf(ctx, "Read error: %v, buffer contents", err)
-			testing.ContextLog(ctx, string(buf[:total]))
 			a.targetBufferUnreadLen = copy(a.targetBufferUnread, buf[:total])
 			return nil, errors.Wrapf(err, "port read error (wanted %s)", re)
 		}
@@ -117,8 +113,6 @@ func (a *Andreiboard) ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp)
 		}
 	}
 
-	testing.ContextLog(ctx, "Count not find match, buffer contents:")
-	testing.ContextLog(ctx, string(buf[:total]))
 	a.targetBufferUnreadLen = copy(a.targetBufferUnread, buf[:total])
 	return nil, errors.New("failed to find match")
 }
