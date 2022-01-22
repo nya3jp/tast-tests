@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39829586_97ba4ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-22T04:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a8b61c_364aef84",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 74
+      },
+      "revId": "f66c23f79aac9ef6d009aebb370bede489cf456f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f78cdffb_8a1d1826",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-01-21T09:14:39Z",
       "side": 1,
       "message": "nit: Failed to\nsame for the other error messages",
+      "range": {
+        "startLine": 157,
+        "startChar": 14,
+        "endLine": 157,
+        "endChar": 23
+      },
+      "revId": "f66c23f79aac9ef6d009aebb370bede489cf456f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5277227f_71ce81de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-22T04:34:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78cdffb_8a1d1826",
       "range": {
         "startLine": 157,
         "startChar": 14,
