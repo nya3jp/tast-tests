@@ -24,7 +24,12 @@ import (
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
+
+type testParam struct {
+	fingerprintSupported bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -38,7 +43,22 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
+		Params: []testing.Param{
+			{
+				Val: testParam{fingerprintSupported: false},
+			},
+			{
+				Name:              "fingerprint_test",
+				ExtraHardwareDeps: hwdep.D(hwdep.Fingerprint()),
+				Val:               testParam{fingerprintSupported: true},
+			},
+		},
 	})
+}
+
+type testCase struct {
+	name                     string
+	quickUnlockModeAllowlist policy.QuickUnlockModeAllowlist
 }
 
 func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
@@ -58,10 +78,7 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	for _, param := range []struct {
-		name                     string
-		quickUnlockModeAllowlist policy.QuickUnlockModeAllowlist
-	}{
+	testCases := []testCase{
 		{
 			name:                     "unset",
 			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Stat: policy.StatusUnset},
@@ -78,7 +95,19 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 			name:                     "pin",
 			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
 		},
-	} {
+	}
+
+	fingerprintSupported := s.Param().(testParam).fingerprintSupported
+
+	if fingerprintSupported {
+		testCases = append(testCases, testCase{
+			name:                     "fingerprint",
+			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Val: []string{"FINGERPRINT"}},
+		},
+		)
+	}
+
+	for _, param := range testCases {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree_"+param.name)
 
@@ -119,10 +148,10 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to find radio group: ", err)
 			}
 
-			capabilities := getCapabilities(&param.quickUnlockModeAllowlist, "PIN")
+			pinCapabilities := getExpectedCapabilities(&param.quickUnlockModeAllowlist, "PIN")
 
 			var wantRestriction restriction.Restriction
-			if capabilities.set {
+			if pinCapabilities.set {
 				wantRestriction = restriction.None
 			} else {
 				wantRestriction = restriction.Disabled
@@ -130,10 +159,21 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 
 			// Check that the radio button group has the expected restriction.
 			if rgNode.Restriction != wantRestriction {
-				s.Errorf("Unexpected Continue button state: got %v, want %v", rgNode.Restriction, wantRestriction)
+				s.Errorf("Unexpected radio button group state: got %v, want %v", rgNode.Restriction, wantRestriction)
 			}
 
-			if capabilities.unlock {
+			if fingerprintSupported {
+				fingerprintCapabilities := getExpectedCapabilities(&param.quickUnlockModeAllowlist, "FINGERPRINT")
+				found, err := ui.IsNodeFound(ctx, nodewith.Name("Edit Fingerprints").Role(role.StaticText))
+				if err != nil {
+					s.Fatal("Failed to find Edit Fingerprints node: ", err)
+				}
+				if found != fingerprintCapabilities.set {
+					s.Errorf("Failed checking if fingerprint can be set: got %v, want %v", found, fingerprintCapabilities.set)
+				}
+			}
+
+			if pinCapabilities.unlock {
 				if err := uiauto.Combine("switch to PIN or password and wait for PIN dialog",
 					// Find and click on radio button "PIN or password".
 					ui.LeftClick(nodewith.Name("PIN or password").Role(role.RadioButton)),
@@ -189,7 +229,6 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 				if err := ui.LeftClick(nodewith.Name("Password only").Role(role.RadioButton))(ctx); err != nil {
 					s.Fatal("Failed to delete PIN: ", err)
 				}
-
 			}
 		})
 	}
@@ -200,7 +239,7 @@ type capabilities struct {
 	unlock bool
 }
 
-func getCapabilities(quickUnlockModeAllowlist *policy.QuickUnlockModeAllowlist, authMethod string) capabilities {
+func getExpectedCapabilities(quickUnlockModeAllowlist *policy.QuickUnlockModeAllowlist, authMethod string) capabilities {
 	if quickUnlockModeAllowlist.Stat == policy.StatusUnset {
 		return capabilities{
 			set:    false,
