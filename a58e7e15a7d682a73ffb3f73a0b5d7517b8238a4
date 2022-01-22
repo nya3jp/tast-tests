@@ -45,6 +45,69 @@
       },
       "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1eebcb0_3e91a07c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-22T00:16:36Z",
+      "side": 1,
+      "message": "This enforces clamshell mode. Why not just use the default mode of a device? I am not sure whether the mode is important enough for scrolling a sheet.\n\nIs it because we use \"input.Trackpad\"?",
+      "range": {
+        "startLine": 86,
+        "startChar": 57,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59dd617b_d47331f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-22T00:16:36Z",
+      "side": 1,
+      "message": "We don\u0027t have any histograms to record? Default TPS metrics (CPU/Mem/Display Smoothness etc) might not reflect problems of scrolling in blink very well.\n\nGenerally, some smoothness and latency metrics would be intersting.\ne.g.\n\n- Graphics.Smoothness.PercentDroppedFrames.MainThread.WheelScroll\nhttps://source.chromium.org/chromium/chromium/src/+/main:cc/metrics/frame_sequence_metrics.cc;l\u003d533;bpv\u003d0;bpt\u003d1\n\n- Event.Latency.ScrollUpdate.Wheel.TimeToHandled2_Main\nhttps://source.chromium.org/chromium/chromium/src/+/main:ui/latency/latency_tracker.cc;l\u003d438;bpv\u003d0;bpt\u003d1\n\nNot sure whether touchpad scroll would be tracked in as mouse \"Wheel\". So please double check.",
+      "range": {
+        "startLine": 109,
+        "startChar": 43,
+        "endLine": 109,
+        "endChar": 46
+      },
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab60a12_f307679b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-22T00:16:36Z",
+      "side": 1,
+      "message": "Is there a way to verify that the spreadsheet really gets scrolled? If there is no good way using injected JS, then we must have some scroll metrics to ensure that there is at least some scrolling happened.",
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
