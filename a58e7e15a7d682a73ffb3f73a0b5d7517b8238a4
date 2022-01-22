@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "425517ac_4fc4f209",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-01-22T00:18:53Z",
+      "side": 1,
+      "message": "Where did you get this data? I\u0027m worried that it refers to real people, or may be perceived as such. \n\nSome other ideas: List of towns/cities in the world with population, random words from a dictionary with word counts, or even some book with words in cells",
+      "parentUuid": "f49bea8d_dc830a03",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 155
+      },
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1eebcb0_3e91a07c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
         "patchSetId": 3
