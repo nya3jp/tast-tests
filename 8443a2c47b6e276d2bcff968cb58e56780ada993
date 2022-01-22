@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31acb816_59951474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-22T01:45:11Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3402917",
+      "parentUuid": "257e8c7b_323d161e",
+      "revId": "8443a2c47b6e276d2bcff968cb58e56780ada993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ece9883_e1db5439",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-01-20T00:46:10Z",
       "side": 1,
       "message": "TODO comments have a specific format. They should go at the start of the line, and should always look like:\n// TODO(b/...): Relevant information",
+      "revId": "8443a2c47b6e276d2bcff968cb58e56780ada993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb885ea1_6961f127",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_loop_v2.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-01-22T01:45:11Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3402917",
+      "parentUuid": "6ece9883_e1db5439",
       "revId": "8443a2c47b6e276d2bcff968cb58e56780ada993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
