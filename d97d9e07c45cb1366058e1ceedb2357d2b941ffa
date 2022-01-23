@@ -16,6 +16,23 @@
       "message": "PTAL. Thanks!",
       "revId": "d97d9e07c45cb1366058e1ceedb2357d2b941ffa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9577e35c_797a9313",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-23T22:33:23Z",
+      "side": 1,
+      "message": "LGTM from tast-owners. Thanks for the cleanup!",
+      "revId": "d97d9e07c45cb1366058e1ceedb2357d2b941ffa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
