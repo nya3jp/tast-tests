@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/logsaver"
+	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/testing"
 )
 
@@ -213,11 +214,23 @@ func (f *loggedInFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	}
 	Lock()
 	f.cr = cr
+
+	if cr.LoginMode() == "Guest" {
+		if err := mountns.EnterUserSessionMountNS(ctx); err != nil {
+			s.Fatal("Failed to enter user session namespace: ", err)
+		}
+	}
+
 	return cr
 }
 
 func (f *loggedInFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	Unlock()
+
+	if f.cr.LoginMode() == "Guest" {
+		mountns.EnterInitMountNs(ctx)
+	}
+
 	if err := f.cr.Close(ctx); err != nil {
 		s.Log("Failed to close Chrome connection: ", err)
 	}
