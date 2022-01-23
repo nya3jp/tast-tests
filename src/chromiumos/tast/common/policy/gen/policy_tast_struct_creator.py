@@ -764,9 +764,15 @@ def main():
   # one_to_many_policies is used to ignore unsupported policies.
   one_to_many_policies = set()
   one_to_many_count = set()
+  no_proto_policies = set()
   for [legacy, val] in pt_contents['legacy_device_policy_proto_map']:
-    if not legacy or not val:
-      # Discard unknown/invalid fields which are noted as '' in this list.
+    if not legacy:
+      # Discard unknown legacy policies which are noted as '' in this list.
+      continue
+    if not val:
+      # Remember legacy policies with no proto field (we don't generate code for
+      # them).
+      no_proto_policies.add(legacy)
       continue
     if legacy in one_to_many_count:
       one_to_many_policies.add(legacy)
@@ -781,6 +787,9 @@ def main():
   errors = []
   for pt in pt_contents['policy_definitions']:
     if pt.get('type') == 'group':
+      continue
+    if pt['name'] in no_proto_policies:
+      # Silently ignoring legacy policies with no known proto.
       continue
     try:
       one_to_many = pt['name'] in one_to_many_policies
