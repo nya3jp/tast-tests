@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae6d024_8afc22b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-24T16:15:20Z",
+      "side": 1,
+      "message": "Unfortunately, for some reason, all tests pass most of the time, but sometimes the transition from the guest fixture to the regular user fixture causes all regular user tests to fail. I believe this could have something do with the mount namespace not being set for all go threads. I noticed an option to make a syscall on all go threads (https://go-review.googlesource.com/c/go/+/285597/) was somewhat recently added, but I wonder if it could suffice to always enter either the user session or the init mount namespace when setting up a `loggedInFixture`.",
+      "revId": "1168e79914573b9b9a689fe7d7280211c04e88e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
