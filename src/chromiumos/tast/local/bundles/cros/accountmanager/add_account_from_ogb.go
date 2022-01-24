@@ -64,9 +64,10 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	cr := s.FixtValue().(accountmanager.FixtureData).Chrome()
+	fixtureVal := s.FixtValue().(accountmanager.FixtureData).GetFixture()
 
 	// Setup the browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	br, closeBrowser, err := browserfixt.SetUp(ctx, fixtureVal, s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}

@@ -80,27 +80,19 @@ type FixtureData struct {
 }
 
 // Chrome gets the CrOS-chrome instance.
-// Implement chrome.HasChrome and lacrosfixt.FixtValue interface.
+// Implement chrome.HasChrome interface.
 func (f FixtureData) Chrome() *chrome.Chrome {
 	return f.cr
 }
 
-// TestAPIConn gets the CrOS-chrome test connection.
-// Implement lacrosfixt.FixtValue interface.
-func (f FixtureData) TestAPIConn() *chrome.TestConn {
-	return f.LacrosFixt.TestAPIConn()
-}
-
-// Mode gets the mode used to get the lacros binary.
-// Implement lacrosfixt.FixtValue interface.
-func (f FixtureData) Mode() lacrosfixt.SetupMode {
-	return f.LacrosFixt.Mode()
-}
-
-// LacrosPath gets the root directory for lacros-chrome.
-// Implement lacrosfixt.FixtValue interface.
-func (f FixtureData) LacrosPath() string {
-	return f.LacrosFixt.LacrosPath()
+// GetFixture returns the fixture data to be passed to browserfixt.SetUp().
+// If Lacros fixture is present - returns lacrosfixt.FixtValue type.
+// Otherwise returns accountmanager.FixtureData which implements chrome.HasChrome interface.
+func (f FixtureData) GetFixture() interface{} {
+	if f.LacrosFixt != nil {
+		return f.LacrosFixt
+	}
+	return f
 }
 
 type accountManagerTestFixture struct {
