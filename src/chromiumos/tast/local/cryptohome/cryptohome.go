@@ -48,6 +48,12 @@ func UserHash(ctx context.Context, user string) (string, error) {
 
 // UserPath returns the path to user's encrypted home directory.
 func UserPath(ctx context.Context, user string) (string, error) {
+	// TODO: Calls made from hwsec/cryptohome_path_binary.go are possibly a better place to
+	// differentiate between regular users and guest users. Also, don't rely on the username.
+	if user == "$guest@gmail.com" {
+		return "/home/chronos/user", nil
+	}
+
 	cmdRunner := hwseclocal.NewLoglessCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 	path, err := cryptohome.GetHomeUserPath(ctx, user)
