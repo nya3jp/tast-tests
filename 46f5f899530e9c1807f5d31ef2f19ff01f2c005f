@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3015931b_e7bb7efb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T12:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c6c7521_392ac8b8",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "403abf8a_86f12138",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b13ffd_e1572b1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T12:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "403abf8a_86f12138",
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9339a539_166240a8",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-01-20T08:42:19Z",
       "side": 1,
       "message": "Give more descriptive name - it is not just start button. It may be confusing to someone later checking this test.",
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be33e8a_8cb72809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/data/start_button_icon.png",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T12:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9339a539_166240a8",
       "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f849a9_dac8bdc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_chrome_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T12:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5dddb5_51d194b0",
+      "range": {
+        "startLine": 111,
+        "startChar": 52,
+        "endLine": 112,
+        "endChar": 49
+      },
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf3bd34d_78109801",
@@ -98,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d0f162_3a2ac640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_desktop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T12:57:59Z",
+      "side": 1,
+      "message": "As per our offline conversation, we\u0027re going with this solution for now, but we will add another cleanup in the fixtures later.",
+      "parentUuid": "cf3bd34d_78109801",
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac34526a_f9a2c3ef",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-01-20T08:42:19Z",
       "side": 1,
       "message": "Invoke opening start menu",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "46f5f899530e9c1807f5d31ef2f19ff01f2c005f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55770d0d_6e5de187",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_desktop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T12:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac34526a_f9a2c3ef",
       "range": {
         "startLine": 96,
         "startChar": 4,
