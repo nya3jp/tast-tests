@@ -308,7 +308,7 @@ var tpmOwnedRegexp = regexp.MustCompile(`(?m)^\s*is_owned:\s*true\s*$`)
 var tpmSupportRuntimeSelectionRegexp = regexp.MustCompile(`(?m)^\s*support_runtime_selection:\s*true\s*$`)
 
 // These match lines in the output from "attestation_client status".
-var tpmInitializedRegexp = regexp.MustCompile(`(?m)^\s*prepared_for_enrollment:\s*true\s*$`)
+var tpmInitializedRegexp = regexp.MustCompile(`(?m)^\s*prepared_for_enrollment:\s*.*\s*$`)
 
 // ensureTPMInitialized checks if the TPM is already initialized and tries to take ownership if not.
 // nil is returned if the TPM is not enabled (as is the case on VMs).
