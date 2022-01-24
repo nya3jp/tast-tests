@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0dd8bf_f36b7506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-01-24T06:53:30Z",
+      "side": 1,
+      "message": "Thanks for checking.\nI added parent node for it.",
+      "parentUuid": "8f424c85_b4912d9b",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "3dd2e8a0a649128ca7672bfb16cec3c00e726454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b83c50d2_f8cdbee6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-24T04:25:51Z",
       "side": 1,
       "message": "nit: remove one space.",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 5
+      },
+      "revId": "3dd2e8a0a649128ca7672bfb16cec3c00e726454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed42fc3_89aac133",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-01-24T06:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b83c50d2_f8cdbee6",
       "range": {
         "startLine": 102,
         "startChar": 3,
