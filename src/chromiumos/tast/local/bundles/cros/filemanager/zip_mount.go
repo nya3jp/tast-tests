@@ -6,15 +6,9 @@ package filemanager
 
 import (
 	"context"
-	"os"
-	"path/filepath"
 	"time"
 
-	"chromiumos/tast/errors"
-	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -51,35 +45,89 @@ func init() {
 			"Texts.zip",
 		},
 		Params: []testing.Param{{
+			Name: "mount_single_7z_guest",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.7z"},
+			},
+			Fixture: "chromeLoggedInGuestForFileManager",
+		}, {
+			Name: "mount_single_rar_guest",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.rar"},
+			},
+			Fixture: "chromeLoggedInGuestForFileManager",
+		}, {
+			Name: "mount_single_zip_guest",
+			Val: testEntry{
+				TestCase: testMountingSingleZipFile,
+				ZipFiles: []string{"Texts.zip"},
+			},
+			Fixture: "chromeLoggedInGuestForFileManager",
+		}, {
+			Name: "cancel_multiple_guest",
+			Val: testEntry{
+				TestCase: testCancelingMultiplePasswordDialogs,
+				ZipFiles: []string{
+					"Encrypted_AES-256.zip",
+					"Encrypted_ZipCrypto.zip",
+				},
+			},
+			Fixture: "chromeLoggedInGuestForFileManager",
+		}, {
+			Name: "mount_multiple_guest",
+			Val: testEntry{
+				TestCase: testMountingMultipleZipFiles,
+				ZipFiles: []string{
+					"Encrypted_AES-256.zip",
+					"Encrypted_ZipCrypto.zip",
+					"Texts.zip",
+				},
+			},
+			Fixture: "chromeLoggedInGuestForFileManager",
+		}, {
 			Name: "mount_single_7z",
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.7z"},
 			},
+			Fixture: "chromeLoggedInForFileManager",
 		}, {
 			Name: "mount_single_rar",
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.rar"},
 			},
+			Fixture: "chromeLoggedInForFileManager",
 		}, {
 			Name: "mount_single_zip",
 			Val: testEntry{
 				TestCase: testMountingSingleZipFile,
 				ZipFiles: []string{"Texts.zip"},
 			},
+			Fixture: "chromeLoggedInForFileManager",
 		}, {
 			Name: "cancel_multiple",
 			Val: testEntry{
 				TestCase: testCancelingMultiplePasswordDialogs,
-				ZipFiles: []string{"Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip"},
+				ZipFiles: []string{
+					"Encrypted_AES-256.zip",
+					"Encrypted_ZipCrypto.zip",
+				},
 			},
+			Fixture: "chromeLoggedInForFileManager",
 		}, {
 			Name: "mount_multiple",
 			Val: testEntry{
 				TestCase: testMountingMultipleZipFiles,
-				ZipFiles: []string{"Encrypted_AES-256.zip", "Encrypted_ZipCrypto.zip", "Texts.zip"},
+				ZipFiles: []string{
+					"Encrypted_AES-256.zip",
+					"Encrypted_ZipCrypto.zip",
+					"Texts.zip",
+				},
 			},
+			Fixture: "chromeLoggedInForFileManager",
 		}},
 	})
 }
@@ -88,69 +136,7 @@ func ZipMount(ctx context.Context, s *testing.State) {
 	testParams := s.Param().(testEntry)
 	zipFiles := testParams.ZipFiles
 
-	// TODO(nigeltao): remove "FilesArchivemount" after it gets flipped to
-	// enabled-by-default (scheduled for M94) and before the feature flag
-	// expires (scheduled for M100). crbug.com/1216245
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount"))
-	if err != nil {
-		s.Fatal("Cannot start Chrome: ", err)
-	}
-	defer cr.Close(ctx)
-
-	// Load ZIP files.
-	for _, zipFile := range zipFiles {
-		zipFileLocation := filepath.Join(filesapp.DownloadPath, zipFile)
-
-		if err := fsutil.CopyFile(s.DataPath(zipFile), zipFileLocation); err != nil {
-			s.Fatalf("Cannot copy ZIP file to %s: %s", zipFileLocation, err)
-		}
-		defer os.Remove(zipFileLocation)
-	}
-
-	// Open the test API.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Cannot create test API connection: ", err)
-	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	// Open the Files App.
-	files, err := filesapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Cannot launch the Files App: ", err)
-	}
-
-	// Open the Downloads folder.
-	if err := files.OpenDownloads()(ctx); err != nil {
-		s.Fatal("Cannot open Downloads folder: ", err)
-	}
-
-	// Find and click the 'Name' button to order the file entries alphabetically.
-	orderByNameButton := nodewith.Name("Name").Role(role.Button)
-	if err := files.LeftClick(orderByNameButton)(ctx); err != nil {
-		s.Fatal("Cannot find and click 'Name' button: ", err)
-	}
-
-	// Wait until the ZIP files are correctly ordered in the list box.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		listBox := nodewith.Role(role.ListBox).Focusable().Multiselectable().Vertical()
-		listBoxOption := nodewith.Role(role.ListBoxOption).Ancestor(listBox)
-		nodes, err := files.NodesInfo(ctx, listBoxOption)
-		if err != nil {
-			return testing.PollBreak(err)
-		}
-
-		// The names of the descendant nodes should be ordered alphabetically.
-		for i, node := range nodes {
-			if node.Name != zipFiles[i] {
-				return errors.New("the files are still not ordered properly")
-			}
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
-		s.Fatal("Cannot sort ZIP files properly in the Files app list box: ", err)
-	}
+	files := s.FixtValue().(*filesapp.FilesApp)
 
 	testParams.TestCase(ctx, s, files, zipFiles)
 }
@@ -161,7 +147,6 @@ func waitUntilPasswordDialogExists(ctx context.Context, files *filesapp.FilesApp
 	passwordDialog := nodewith.Role(role.Dialog)
 	node := nodewith.Name(fileName).Role(role.StaticText).Ancestor(passwordDialog)
 	return files.WithTimeout(15 * time.Second).WaitUntilExists(node)(ctx)
-
 }
 
 // checkAndUnmountZipFile checks that a given ZIP file is correctly mounted and click the 'eject' button to unmount it.
