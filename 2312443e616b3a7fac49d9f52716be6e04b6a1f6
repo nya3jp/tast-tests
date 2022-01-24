@@ -267,6 +267,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc0035bb_a2b78bb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T10:59:41Z",
+      "side": 1,
+      "message": "I think there\u0027s miscommunication. \nI\u0027m not saying to use chromeLoggedIn. My recommendation is to use fixture. You can define your fixture.",
+      "parentUuid": "4d35d2e7_8d67a1a1",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 95
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11af8549_2b10bf8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
         "patchSetId": 1
@@ -455,6 +479,30 @@
       "side": 1,
       "message": "Upon calling fsutil.CopyFile() below error was thrown: \nFailed to copy file to /media/removable/USB_3/usb3_test_sample_file.txt path: failed to change owner of tmp file: chown /media/removable/USB_3/.usb3_test_sample_file.txt.962379058: operation not permitted.\n\nAlso tried same thing by changing USB storage format but was getting same above said error.\n\nWhile using \u0027cp\u0027 command no errors were encountered and working as expected.",
       "parentUuid": "84556ec5_8effdb14",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 124
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c67b61_c8e590b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T10:59:41Z",
+      "side": 1,
+      "message": "ok, you do not need owner to be changed (and it\u0027s not supported on USB device)?\nThen, maybe introducing a copy file function for this purpose is needed.",
+      "parentUuid": "d2bff6c7_a230e4e0",
       "range": {
         "startLine": 232,
         "startChar": 1,
