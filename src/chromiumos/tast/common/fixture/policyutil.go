@@ -10,6 +10,11 @@ const (
 	Enrolled = "enrolled"
 )
 
+// Fixture defined in chromiumos/tast/remote/policyutil/clean_ownership.go.
+const (
+	CleanOwnership = "cleanOwnership"
+)
+
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/fakedms.go.
 const (
 	// FakeDMS is a fixture name.
