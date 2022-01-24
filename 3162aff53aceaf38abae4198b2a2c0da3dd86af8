@@ -16,6 +16,23 @@
       "message": "Stainless results showed a few DUTs failed on reading Cr50_ccd_level, and the reason might be that there wasn\u0027t a CCD connection. WatchdogRemove was skipped on them for the same reason.\n\nThere was also an error in checking ec unresponsive after hibernation. Adding a delay before releasing keys might help with this error.",
       "revId": "3162aff53aceaf38abae4198b2a2c0da3dd86af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2228f2f_0fe49f36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-24T20:43:52Z",
+      "side": 1,
+      "message": "Oops.",
+      "revId": "3162aff53aceaf38abae4198b2a2c0da3dd86af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
