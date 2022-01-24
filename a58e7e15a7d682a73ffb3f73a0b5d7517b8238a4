@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1704e88_c6cb0b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-24T18:57:37Z",
+      "side": 1,
+      "message": "Think we use the default mode of a device when the mode should not matter so that the tests run in a similar situation of users.\ne.g.\nQuickCheckCUJ:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go\n\nDesksAnimationPerf:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/desks_animation_perf.go\n\nAnd if the clamshell and tablet mode is important, we create different variations to force it, like MeetCUJ, WindowArrangementCUJ.\n\nI am okay if we want to run tests at the same mode but want to point out it is not consistent with what we have right now.",
+      "parentUuid": "b07a51f5_960ab7e0",
+      "range": {
+        "startLine": 86,
+        "startChar": 57,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59dd617b_d47331f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
         "patchSetId": 3
@@ -202,6 +226,24 @@
       "writtenOn": "2022-01-24T18:36:53Z",
       "side": 1,
       "message": "I think \"Graphics.Smoothness.PercentDroppedFrames.MainThread.TouchScroll\" and \"Event.Latency.ScrollUpdate.Touch.TimeToHandled2\" https://source.corp.google.com/eureka_internal/chromium/src/tools/metrics/histograms/histograms_xml/event/histograms.xml;l\u003d1408?q\u003dEvent.Latency.ScrollUpdate.Touch.TimeToHandled2 can be used here.",
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd0e6ac_eb406faf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-24T18:57:37Z",
+      "side": 1,
+      "message": "Would the test pass if we add them?\n\nI doubt that touchpad scroll would emit these histograms. \"touch\" in the UMA name probably refers to TouchEvents from inputs like touch screens. IIUC, touchpad generate MouseEvents rather than TouchEvents.",
+      "parentUuid": "31270b8a_2a8e4e39",
       "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
