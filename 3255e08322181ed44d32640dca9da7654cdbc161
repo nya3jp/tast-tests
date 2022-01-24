@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2de2fba7_538745dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-01-24T13:55:24Z",
+      "side": 1,
+      "message": "Hi Alex,\n\nWhen I rand the policy_tast_strut_creator last week, I was very much confused with the error messages regarding legacy policies.\n\nThis is taking those messages away.\n\nPTAL!\n\nThanks,\nRoland",
+      "revId": "3255e08322181ed44d32640dca9da7654cdbc161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
