@@ -251,6 +251,24 @@
       "parentUuid": "1635fec3_e80a0f82",
       "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6445af64_1aa357bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_stress.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T15:38:59Z",
+      "side": 1,
+      "message": "Could you wrap L245-249 with a anonymous function so that actionCancel will be called for each for-iteration?\n\nNote: defer will be called at the end of function, rather than exiting from the scope.",
+      "parentUuid": "5effcfb5_a6326c3d",
+      "revId": "ea2e30376e87544b3023716d3249f94a28e441be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
