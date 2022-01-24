@@ -85,15 +85,18 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 				if err := h.WaitConnect(waitConnectCtx); err != nil {
 					errors.Wrap(err, "failed to reconnect to DUT")
 				}
-
 				// Cr50 goes to sleep during hibernation, and when DUT wakes, CCD state might be locked.
 				// Open CCD after waking DUT and before talking to the EC.
-				if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
-					s.Fatal("Failed to get cr50_ccd_level: ", err)
-				} else if val != servo.Open {
-					s.Logf("CCD is not open, got %q. Attempting to unlock", val)
-					if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
-						s.Fatal("Failed to unlock CCD: ", err)
+				if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
+					s.Fatal("While checking if servo has a CCD connection: ", err)
+				} else if hasCCD {
+					if val, err := h.Servo.GetString(ctx, servo.CR50CCDLevel); err != nil {
+						s.Fatal("Failed to get cr50_ccd_level: ", err)
+					} else if val != servo.Open {
+						s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+						if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+							s.Fatal("Failed to unlock CCD: ", err)
+						}
 					}
 				}
 			}
