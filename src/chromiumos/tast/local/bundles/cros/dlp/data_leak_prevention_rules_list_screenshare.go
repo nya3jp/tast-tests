@@ -88,8 +88,8 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 	screenRecorder.Start(ctx, tconn)
 	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "dlpScreenShare.mp4"))
 
-	const paused = "Screen capture paused"
-	const resumed = "Screen capture resumed"
+	const paused = "Screen share paused"
+	const resumed = "Screen share resumed"
 	const nonRestrictedSite = "https://www.chromium.org/"
 
 	for _, param := range []struct {
@@ -129,7 +129,7 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 				s.Fatal("Failed to check frame status: ", err)
 			}
 
-			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("screen_capture_dlp_paused-"), ash.WaitTitle(paused)); err != nil && !param.wantAllowed {
+			if _, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains("screen_share_dlp_paused-"), ash.WaitTitle(paused)); err != nil && !param.wantAllowed {
 				s.Errorf("Failed to wait for notification with title %q: %v", paused, err)
 			}
 
@@ -142,7 +142,7 @@ func DataLeakPreventionRulesListScreenshare(ctx context.Context, s *testing.Stat
 				s.Fatal("Failed to check frame status: ", err)
 			}
 
-			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("screen_capture_dlp_resumed-"), ash.WaitTitle(resumed)); err != nil && !param.wantAllowed {
+			if _, err := ash.WaitForNotification(ctx, tconn, 5*time.Second, ash.WaitIDContains("screen_share_dlp_resumed-"), ash.WaitTitle(resumed)); err != nil && !param.wantAllowed {
 				s.Errorf("Failed to wait for notification with title %q: %v", resumed, err)
 			}
 
