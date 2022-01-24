@@ -150,6 +150,32 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	// TODO(crbug.com/1216245): Remove and replace usage with "chromeLoggedIn"
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithArchiveMount",
+		Desc:     "Logged into a user session",
+		Contacts: []string{"nya@chromium.org", "oka@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{EnableFeatures("FilesArchivemount")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	// TODO(crbug.com/1216245): Remove and replace usage with "chromeLoggedInGuest"
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInGuestWithArchiveMount",
+		Desc:     "Logged into a guest user session",
+		Contacts: []string{"benreich@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{GuestLogin(), EnableFeatures("FilesArchivemount")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
