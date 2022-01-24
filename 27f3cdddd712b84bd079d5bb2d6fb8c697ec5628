@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57de7a4b_006ef50e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-01-24T05:18:43Z",
+      "side": 1,
+      "message": "Changed the name to checkSetFullscreenVideo (remove WithTimeout).",
+      "parentUuid": "66df74a6_d1b92e6a",
+      "range": {
+        "startLine": 196,
+        "startChar": 28,
+        "endLine": 196,
+        "endChar": 39
+      },
+      "revId": "27f3cdddd712b84bd079d5bb2d6fb8c697ec5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2de4b6fe_75ee894e",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21938f6a_98a1ddde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-01-24T05:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2de4b6fe_75ee894e",
+      "range": {
+        "startLine": 204,
+        "startChar": 60,
+        "endLine": 204,
+        "endChar": 61
+      },
+      "revId": "27f3cdddd712b84bd079d5bb2d6fb8c697ec5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e6da4f0_8bc5d403",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-21T00:54:13Z",
       "side": 1,
       "message": "also base this on the timeout variable",
+      "range": {
+        "startLine": 225,
+        "startChar": 34,
+        "endLine": 225,
+        "endChar": 49
+      },
+      "revId": "27f3cdddd712b84bd079d5bb2d6fb8c697ec5628",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28faf191_96a0f495",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/resourced.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1179424
+      },
+      "writtenOn": "2022-01-24T05:18:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e6da4f0_8bc5d403",
       "range": {
         "startLine": 225,
         "startChar": 34,
