@@ -243,6 +243,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d35d2e7_8d67a1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-24T05:07:09Z",
+      "side": 1,
+      "message": "chrome.New() used in script does the chrome login with special manifest key which is used as parameter in chrome.LoadSigninProfileExtension() which will install policy key while logging in. Through this policy key typecutils.EnablePeripheralDataAccess() will enables data protection access, which is required for mounting all connected storage devices.\n\nIf login is done alone with normal \u0027chromeLoggedIn\u0027 fixture then we will end up with device detection failure.",
+      "parentUuid": "75989ce9_65441576",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 95
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11af8549_2b10bf8f",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
         "patchSetId": 1
@@ -419,6 +443,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2bff6c7_a230e4e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-24T05:07:09Z",
+      "side": 1,
+      "message": "Upon calling fsutil.CopyFile() below error was thrown: \nFailed to copy file to /media/removable/USB_3/usb3_test_sample_file.txt path: failed to change owner of tmp file: chown /media/removable/USB_3/.usb3_test_sample_file.txt.962379058: operation not permitted.\n\nAlso tried same thing by changing USB storage format but was getting same above said error.\n\nWhile using \u0027cp\u0027 command no errors were encountered and working as expected.",
+      "parentUuid": "84556ec5_8effdb14",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 124
+      },
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "695e58a3_0bdae23d",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
         "patchSetId": 1
@@ -448,6 +496,24 @@
       "side": 1,
       "message": "Removed copyErr.",
       "parentUuid": "695e58a3_0bdae23d",
+      "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880e5d63_2de7d867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-24T05:07:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26f8a0e3_e83ad2bd",
       "revId": "2312443e616b3a7fac49d9f52716be6e04b6a1f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

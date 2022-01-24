@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e2ccca_deef7cde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-24T05:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0095b45b_dc728317",
+      "revId": "90bddd01a4da59186ee940eaad71fa74cf21585a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38b581b7_7de2e3da",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-03T07:59:41Z",
       "side": 1,
       "message": "optional: how about return DeviceSpeed(), instead of check the given string speed here.\nThen call can check the value with \u003d\u003d, which should be more precise pieces of code.",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "90bddd01a4da59186ee940eaad71fa74cf21585a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685b4394_f48c8172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-24T05:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38b581b7_7de2e3da",
       "range": {
         "startLine": 50,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2e04b5_50b04900",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/device_speed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-24T05:07:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1b3687e_232bfa65",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "90bddd01a4da59186ee940eaad71fa74cf21585a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70d2cab0_5a45a0c9",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-01-03T07:59:41Z",
       "side": 1,
       "message": "clarification: why this needs to be checked periodically?\nIsn\u0027t it enough to check removableDirs?",
+      "revId": "90bddd01a4da59186ee940eaad71fa74cf21585a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf6c462_f8faf972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1446889
+      },
+      "writtenOn": "2022-01-24T05:07:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70d2cab0_5a45a0c9",
       "revId": "90bddd01a4da59186ee940eaad71fa74cf21585a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
