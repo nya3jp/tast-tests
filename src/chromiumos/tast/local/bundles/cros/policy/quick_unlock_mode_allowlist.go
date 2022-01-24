@@ -56,12 +56,16 @@ func init() {
 	})
 }
 
-type testCase struct {
-	name                     string
-	quickUnlockModeAllowlist policy.QuickUnlockModeAllowlist
-}
-
 func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
+	type testCase struct {
+		name                     string
+		quickUnlockModeAllowlist policy.QuickUnlockModeAllowlist
+		// Since this policy have similar set of entries and controls whether an auth method can be set with
+		// QuickUnlockModeAllowlist together, we want test cases that verify behaviors are correct when both
+		// policies are set and have different values. See comments in quickUnlockTestCases.
+		webAuthnFactors policy.WebAuthnFactors
+	}
+
 	const PIN = "123456"
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
@@ -82,18 +86,30 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 		{
 			name:                     "unset",
 			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Stat: policy.StatusUnset},
+			webAuthnFactors:          policy.WebAuthnFactors{Stat: policy.StatusUnset},
 		},
 		{
 			name:                     "empty",
 			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Val: []string{}},
+			webAuthnFactors:          policy.WebAuthnFactors{Stat: policy.StatusUnset},
 		},
+		// WebAuthnFactors set to empty list shouldn't affect set and unlock capabilities.
 		{
 			name:                     "all",
 			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Val: []string{"all"}},
+			webAuthnFactors:          policy.WebAuthnFactors{Val: []string{}},
 		},
 		{
 			name:                     "pin",
 			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Val: []string{"PIN"}},
+			webAuthnFactors:          policy.WebAuthnFactors{Stat: policy.StatusUnset},
+		},
+		// WebAuthnFactors set to all will allow user to set up PIN, but shouldn't allow user
+		// to unlock screen using PIN.
+		{
+			name:                     "quick_unlock_empty_webauthn_all",
+			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Val: []string{}},
+			webAuthnFactors:          policy.WebAuthnFactors{Val: []string{"all"}},
 		},
 	}
 
@@ -103,6 +119,7 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 		testCases = append(testCases, testCase{
 			name:                     "fingerprint",
 			quickUnlockModeAllowlist: policy.QuickUnlockModeAllowlist{Val: []string{"FINGERPRINT"}},
+			webAuthnFactors:          policy.WebAuthnFactors{Stat: policy.StatusUnset},
 		},
 		)
 	}
@@ -118,6 +135,7 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 
 			policies := []policy.Policy{
 				&param.quickUnlockModeAllowlist,
+				&param.webAuthnFactors,
 			}
 
 			// Update policies.
@@ -148,7 +166,7 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to find radio group: ", err)
 			}
 
-			pinCapabilities := getExpectedCapabilities(&param.quickUnlockModeAllowlist, "PIN")
+			pinCapabilities := getExpectedQuickUnlockCapabilities(&param.quickUnlockModeAllowlist, &param.webAuthnFactors, "PIN")
 
 			var wantRestriction restriction.Restriction
 			if pinCapabilities.set {
@@ -163,7 +181,7 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 			}
 
 			if fingerprintSupported {
-				fingerprintCapabilities := getExpectedCapabilities(&param.quickUnlockModeAllowlist, "FINGERPRINT")
+				fingerprintCapabilities := getExpectedQuickUnlockCapabilities(&param.quickUnlockModeAllowlist, &param.webAuthnFactors, "FINGERPRINT")
 				found, err := ui.IsNodeFound(ctx, nodewith.Name("Edit Fingerprints").Role(role.StaticText))
 				if err != nil {
 					s.Fatal("Failed to find Edit Fingerprints node: ", err)
@@ -173,7 +191,8 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			if pinCapabilities.unlock {
+			// If PIN can be set, we set up a PIN and see if the lock screen UI corresponds to PIN's unlock capability.
+			if pinCapabilities.set {
 				if err := uiauto.Combine("switch to PIN or password and wait for PIN dialog",
 					// Find and click on radio button "PIN or password".
 					ui.LeftClick(nodewith.Name("PIN or password").Role(role.RadioButton)),
@@ -221,8 +240,8 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to wait for PIN confirmation dialog to disappear: ", err)
 				}
 
-				if err := lockAndUnlockScreen(ctx, tconn, PIN, false); err != nil {
-					s.Fatal("Failed to lock and unlock the screen using PIN: ", err)
+				if err := lockAndUnlockScreen(ctx, tconn, kb, fixtures.Password, PIN, pinCapabilities.unlock); err != nil {
+					s.Fatal("Failed to lock and unlock the screen using PIN or password: ", err)
 				}
 
 				// Delete the PIN so upcoming tests don't get affected.
@@ -234,34 +253,37 @@ func QuickUnlockModeAllowlist(ctx context.Context, s *testing.State) {
 	}
 }
 
-type capabilities struct {
-	set    bool
+type quickUnlockCapabilities struct {
+	// Whether the auth method is allowed to be set in OS Settings.
+	set bool
+	// Whether the auth method is allowed to be used for unlocking the screen.
 	unlock bool
 }
 
-func getExpectedCapabilities(quickUnlockModeAllowlist *policy.QuickUnlockModeAllowlist, authMethod string) capabilities {
-	if quickUnlockModeAllowlist.Stat == policy.StatusUnset {
-		return capabilities{
-			set:    false,
-			unlock: false,
-		}
-	}
-	for _, entry := range quickUnlockModeAllowlist.Val {
-		if entry == authMethod || entry == "all" {
-			return capabilities{
-				set:    true,
-				unlock: true,
+func getExpectedQuickUnlockCapabilities(quickUnlockModeAllowlist *policy.QuickUnlockModeAllowlist, webauthnFactors *policy.WebAuthnFactors, authMethod string) quickUnlockCapabilities {
+	set, unlock := false, false
+	if quickUnlockModeAllowlist.Stat != policy.StatusUnset {
+		for _, entry := range quickUnlockModeAllowlist.Val {
+			if entry == authMethod || entry == "all" {
+				set = true
+				unlock = true
 			}
 		}
 	}
-	return capabilities{
-		set:    false,
-		unlock: false,
+	if webauthnFactors.Stat != policy.StatusUnset {
+		for _, entry := range webauthnFactors.Val {
+			if entry == authMethod || entry == "all" {
+				set = true
+			}
+		}
+	}
+	return quickUnlockCapabilities{
+		set,
+		unlock,
 	}
 }
 
-func lockAndUnlockScreen(ctx context.Context, tconn *chrome.TestConn, PIN string, autosubmit bool) error {
-	// Lock the screen.
+func lockAndUnlockScreen(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, password, PIN string, pinEnabled bool) error {
 	if err := lockscreen.Lock(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to lock the screen")
 	}
@@ -270,14 +292,23 @@ func lockAndUnlockScreen(ctx context.Context, tconn *chrome.TestConn, PIN string
 		return errors.Wrapf(err, "waiting for screen to be locked failed (last status %+v)", st)
 	}
 
-	// Enter and submit the PIN to unlock the DUT.
-	if err := lockscreen.EnterPIN(ctx, tconn, PIN); err != nil {
-		return errors.Wrap(err, "failed to enter in PIN")
+	hasPinPad := lockscreen.HasPinPad(ctx, tconn)
+
+	if hasPinPad != pinEnabled {
+		return errors.Errorf("unexpected PIN pad presence: got %v, want %v", hasPinPad, pinEnabled)
 	}
 
-	if !autosubmit {
+	if pinEnabled {
+		if err := lockscreen.EnterPIN(ctx, tconn, PIN); err != nil {
+			return errors.Wrap(err, "failed to enter in PIN")
+		}
+
 		if err := lockscreen.SubmitPIN(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to submit PIN")
+		}
+	} else {
+		if err := kb.Type(ctx, password+"\n"); err != nil {
+			return errors.Wrap(err, "failed to enter password")
 		}
 	}
 
