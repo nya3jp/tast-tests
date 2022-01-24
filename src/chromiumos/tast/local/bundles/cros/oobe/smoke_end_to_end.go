@@ -20,22 +20,28 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SmokeInformational,
-		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Smoke test that clicks through OOBE using the automation tools",
+		Func:         SmokeEndToEnd,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Smoke test that goes through OOBE, Login and Onboarding using the automation tools",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
-			"cros-oac@google.com",
+			"cros-oobe@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
+		VarDeps: []string{
+			"ui.signinProfileTestExtensionManifestKey",
+			"ui.gaiaPoolDefault",
+		},
 	})
 }
 
-func SmokeInformational(ctx context.Context, s *testing.State) {
+func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.NoLogin(),
+		chrome.DontSkipOOBEAfterLogin(),
+		chrome.DeferLogin(),
+		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -126,7 +132,7 @@ func SmokeInformational(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the user creation screen to be visible: ", err)
 	}
 
-	if err := ui.LeftClickUntil(focusedButton, ui.Gone(focusedButton))(ctx); err != nil {
+	if err := ui.LeftClick(focusedButton)(ctx); err != nil {
 		s.Fatal("Failed to click user creation screen next button: ", err)
 	}
 
@@ -134,5 +140,77 @@ func SmokeInformational(ctx context.Context, s *testing.State) {
 	gaiaInput := nodewith.State(state.Focused, true).Role(role.TextField).Ancestor(nodewith.Role(role.Iframe))
 	if err := ui.WaitUntilExists(gaiaInput)(ctx); err != nil {
 		s.Fatal("Failed to wait for the login screen to be visible: ", err)
+	}
+
+	if err := cr.ContinueLogin(ctx); err != nil {
+		s.Fatal("Failed to continue login: ", err)
+	}
+
+	s.Log("Waiting for the sync screen")
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.SyncScreen.isVisible()"); err != nil {
+		s.Fatal("Failed to wait for the sync creation screen to be visible: ", err)
+	}
+	if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+		s.Fatal("Failed to continue on the sync screen: ", err)
+	}
+
+	shouldSkipFingerprint := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.FingerprintScreen.shouldSkip()", &shouldSkipFingerprint); err != nil {
+		s.Fatal("Failed to evaluate whether to skip fingerprint screen: ", err)
+	}
+
+	if shouldSkipFingerprint {
+		s.Log("Skipping the fingerprint screen")
+	} else {
+		s.Log("Waiting for the fingerprint screen")
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.FingerprintScreen.isVisible()"); err != nil {
+			s.Fatal("Failed to wait for the fingerprint screen to be visible: ", err)
+		}
+
+		if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+			s.Fatal("Failed to skip on the fingerprint screen: ", err)
+		}
+	}
+
+	shouldSkipAssistant := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.AssistantScreen.shouldSkip()", &shouldSkipAssistant); err != nil {
+		s.Fatal("Failed to evaluate whether to skip assistant screen: ", err)
+	}
+
+	if shouldSkipAssistant {
+		s.Log("Skipping the assistant screen")
+	} else {
+		s.Log("Waiting for the assistant screen")
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.AssistantScreen.isReadyForTesting()"); err != nil {
+			s.Fatal("Failed to wait for the assistant screen to be visible: ", err)
+		}
+		var assistantSkipButton string
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.AssistantScreen.getSkipButtonName()", &assistantSkipButton); err != nil {
+			s.Fatal("Failed to get assistant next button name: ", err)
+		}
+		skipButton := nodewith.Role(role.Button).Name(assistantSkipButton)
+		if err := ui.LeftClickUntil(skipButton, ui.Gone(skipButton))(ctx); err != nil {
+			s.Fatal("Failed to click assistant skip button: ", err)
+		}
+	}
+
+	shouldSkipMarketingOptIn := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.MarketingOptInScreen.shouldSkip()", &shouldSkipMarketingOptIn); err != nil {
+		s.Fatal("Failed to evaluate whether to skip marketing opt-in screen: ", err)
+	}
+
+	if shouldSkipMarketingOptIn {
+		s.Log("Skipping marketing optin screen")
+	} else {
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.MarketingOptInScreen.isVisible()"); err != nil {
+			s.Fatal("Failed to wait for the marketing opt-in screen to be visible: ", err)
+		}
+		if err := ui.LeftClick(focusedButton)(ctx); err != nil {
+			s.Fatal("Failed to continue on the marketing opt-in screen: ", err)
+		}
+	}
+
+	if err := cr.WaitForOOBEConnectionToBeDismissed(ctx); err != nil {
+		s.Fatal("Failed to wait for OOBE to be dismissed: ", err)
 	}
 }
