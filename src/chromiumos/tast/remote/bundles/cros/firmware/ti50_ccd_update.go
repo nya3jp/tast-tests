@@ -50,10 +50,16 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 	}
 	defer board.Close(ctx)
 
-	heximage := s.RequiredVar("heximage")
-	err = board.FlashImage(ctx, heximage)
-	if err != nil {
-		s.Fatal("Failed spiflash: ", err)
+	heximage, _ := s.Var("heximage")
+	if heximage == "" {
+		if err = board.Reset(ctx); err != nil {
+			s.Fatal("Failed to reset: ", err)
+		}
+	} else {
+		err = board.FlashImage(ctx, heximage)
+		if err != nil {
+			s.Fatal("Failed spiflash: ", err)
+		}
 	}
 
 	i := ti50.NewCrOSImage(board)
