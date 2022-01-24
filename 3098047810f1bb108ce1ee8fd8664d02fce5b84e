@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d73b2d0_5392c847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/e2e_auto_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-24T17:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad8dccb5_01ff8b4d",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "3098047810f1bb108ce1ee8fd8664d02fce5b84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84ca0493_ad817c5e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-24T16:18:51Z",
       "side": 1,
       "message": "Maybe add here, that this reboots the DUT before every test.",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "3098047810f1bb108ce1ee8fd8664d02fce5b84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f473003_d5cd6287",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-24T17:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84ca0493_ad817c5e",
       "range": {
         "startLine": 20,
         "startChar": 2,
