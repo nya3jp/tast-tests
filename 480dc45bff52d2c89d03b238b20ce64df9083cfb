@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69255518_c4f4b074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-24T13:47:38Z",
+      "side": 1,
+      "message": "Added the quick test as part of mainline group",
+      "parentUuid": "f1196f98_6ca196ab",
+      "revId": "480dc45bff52d2c89d03b238b20ce64df9083cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73c4da82_bad6a859",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-12T15:53:22Z",
       "side": 1,
       "message": "nit: const",
+      "revId": "480dc45bff52d2c89d03b238b20ce64df9083cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74e96bc_94b8bf2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_audio_stress.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-24T13:47:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73c4da82_bad6a859",
       "revId": "480dc45bff52d2c89d03b238b20ce64df9083cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
