@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b75477b_931143e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-24T13:01:27Z",
+      "side": 1,
+      "message": "I\u0027ve made a last change in tape.go to add the oauth token generation there. Other than that no further changes should be required here so I\u0027d like to finally submit it.\nCould you take another quick look at the changes?",
+      "revId": "6f665a9809317de72769fc8dc46ce1c37fe2649d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
