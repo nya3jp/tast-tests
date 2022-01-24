@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253f556a_8667208f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T12:46:18Z",
+      "side": 1,
+      "message": "I have to check with the others on how the expansion of the Lacros fixture should be handled to avoid situations like this test breaking.\nThe solution you did is valid, but seems complicated, we will try to find something.",
+      "revId": "5153104f2d21ee8d830ea7e14ed38b06a9adfb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
