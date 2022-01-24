@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6131447b_de40aa04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T16:31:03Z",
+      "side": 1,
+      "message": "The test is not using DPanel.\nnit: we usually prefix tests in this package with \"policy: \"\nE.g.:\n\u003e  policy: Add Lacros test for Printers",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0cc08f9d_4ec97674",
@@ -31,6 +54,132 @@
       "writtenOn": "2022-01-24T15:42:37Z",
       "side": 1,
       "message": "PTAL at this TAST test that replaces a manual test.",
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64e27e7_05ac61b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T16:31:03Z",
+      "side": 1,
+      "message": "Thanks for the test!",
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b8482d4_c9156293",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T16:31:03Z",
+      "side": 1,
+      "message": "You need to add \"lacros\" to the dependecies here as well.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "875ee02a_28ba545c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T16:31:03Z",
+      "side": 1,
+      "message": "You don\u0027t have to put this into a Run() function. The main benefit of Run() is to prefix every log from inside the function, but there is no need for that here, as there are no subtests.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 79
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf92693_214497e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T16:31:03Z",
+      "side": 1,
+      "message": "If I remember correctly, browserfixt.SetUp() already opens an empty page. If you don\u0027 need the connection (conn) for the opened page, you don\u0027t need to open a new one.",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98fdd2d0_dbfb4768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T16:31:03Z",
+      "side": 1,
+      "message": "nit: input.Keyboard(ctx) should be enough. It is faster on boards with physical keyboards, and falls back to VirtualKeyboard() on tablets.",
+      "range": {
+        "startLine": 91,
+        "startChar": 19,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeabfe91_20f0dee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T16:31:03Z",
+      "side": 1,
+      "message": "It is possible to combine UI interactions and checks, that way you don\u0027t need to do error handling after each step.\nCheck uiauto.Combine at go/tast-codelab-3",
       "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
