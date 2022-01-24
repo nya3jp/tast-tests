@@ -30,6 +30,34 @@ func init() {
 				Fixture:           "crostiniBuster",
 				Timeout:           2 * time.Minute,
 			},
+			{
+				Name:              "bullseye_stable",
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Fixture:           "crostiniBullseye",
+				Timeout:           2 * time.Minute,
+			},
+			{
+				Name:              "buster_stable_gaia",
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Fixture:           "crostiniBusterGaia",
+				Timeout:           2 * time.Minute,
+			},
+			{
+				Name:              "bullseye_stable_gaia",
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Fixture:           "crostiniBullseyeGaia",
+				Timeout:           2 * time.Minute,
+			},
+			{
+				Name:              "large_container",
+				ExtraSoftwareDeps: []string{"dlc"},
+				ExtraHardwareDeps: crostini.CrostiniStable,
+				Fixture:           "crostiniBullseyeLargeContainer",
+				Timeout:           2 * time.Minute,
+			},
 		},
 	})
 }
