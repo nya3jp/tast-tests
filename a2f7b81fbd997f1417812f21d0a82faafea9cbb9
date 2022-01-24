@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f601e76_f18c853a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-24T08:38:53Z",
+      "side": 1,
+      "message": "nit: unless there is a plan to add more fields here, just pass the bool directly as the parameter.",
+      "revId": "a2f7b81fbd997f1417812f21d0a82faafea9cbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb15318_03690581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-24T08:38:53Z",
+      "side": 1,
+      "message": "Don\u0027t ignore errors.",
+      "range": {
+        "startLine": 167,
+        "startChar": 11,
+        "endLine": 167,
+        "endChar": 12
+      },
+      "revId": "a2f7b81fbd997f1417812f21d0a82faafea9cbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5499aac3_0dd68ad0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-24T08:38:53Z",
+      "side": 1,
+      "message": "Also check that fingerprintCapabilities is correct.",
+      "revId": "a2f7b81fbd997f1417812f21d0a82faafea9cbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
