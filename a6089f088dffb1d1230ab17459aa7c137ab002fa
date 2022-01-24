@@ -16,6 +16,75 @@
       "message": "Thank you both -- PTAL again.",
       "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c837fb7_6e2ac9cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-24T19:28:40Z",
+      "side": 1,
+      "message": "IMHO, I would keep this before getting kb/tconn. It could be that policyutil.ResetChrome reboots a device and I am not sure if kb/tconn would survive that. The policyutil.ServeAndVerify should not cause such issues, but I would still get kb/tconn just before you actually need them. Most tests have these two operations in the beginning of the test.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2ec2779_3a9e2e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-24T19:28:40Z",
+      "side": 1,
+      "message": "There is kb.AcceltAction that returns an action that can also be combined with other actions below: https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input#KeyboardEventWriter.AccelAction",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b6a5f4_d59426be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-24T19:28:40Z",
+      "side": 1,
+      "message": "Can this also be combined with other actions below?",
+      "range": {
+        "startLine": 117,
+        "startChar": 11,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

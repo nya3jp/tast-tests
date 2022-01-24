@@ -166,6 +166,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c6f27fc_6137b0ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-24T19:28:40Z",
+      "side": 1,
+      "message": "The issue is that we generally do not own each and every policy in Chrome, but do own the policy stack. Hence, it makes sense that we are CC\u0027d here, but if possible, please also add a team that owns the printing stack.",
+      "parentUuid": "4a430d8c_8ce9f17f",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b8482d4_c9156293",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
         "patchSetId": 1
@@ -366,6 +390,30 @@
       "side": 1,
       "message": "You are right -- however, I think I am running into some sort of race condition after switching to `input.Keyboard` from `input.VirtualKeyboard` (likely because it is faster): The print dialog never opens after pressing CTRL+P (or maybe it opens but is immediately closed due to the initial navigation to the default about:blank page, or there is some other oddity with the about:blank page). I am afraid that I am unsure how I would further debug this, but it works consistently when opening chrome://newtab separately.",
       "parentUuid": "fcf92693_214497e5",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e20485_fdbfbd02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-24T19:28:40Z",
+      "side": 1,
+      "message": "Few things you can do to debug this:\n* observe what happens on the device while the test is running\n* add more logs to Chrome, build and deploy it to the device, run the test and then inspect the logs to see what happens\n\nIMHO we should investigate races instead of just artificially changing the timing until it does not happen any longer. Let me know if you still get stuck and we can have a look at this together.",
+      "parentUuid": "553f3725_ab052d73",
       "range": {
         "startLine": 77,
         "startChar": 2,
