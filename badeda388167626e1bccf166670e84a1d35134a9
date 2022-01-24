@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b73f5a_377259a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "You should also add the variants for the non-perf tests and for the non-VD tests (DecodeAccelPerf, DecodeAccel, DecodeAccelVD, and EncodeAccel).",
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fbb87705_33140dfc",
@@ -14,6 +31,259 @@
       "writtenOn": "2022-01-20T23:50:28Z",
       "side": 1,
       "message": "LGTM. Defer Andres.",
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1026e3ed_7e311e7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "disableGlobalVaapiLock",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a74c5d46_49802f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "_global_vaapi_lock_disabled to be consistent with the variants in the, e.g., webrtc.MediaRecorderMulti.* tests.",
+      "range": {
+        "startLine": 39,
+        "startChar": 39,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0c6cc4_bfc1e02a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "nit: Remove \"disabling flag.\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 42
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d374d9_165a2a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "global",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89cc0b4_7d82c19e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "disableGlobalVaapiLock",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc3af12_45d86ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "profile",
+      "range": {
+        "startLine": 80,
+        "startChar": 66,
+        "endLine": 80,
+        "endChar": 71
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5295d68b_d980f51a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "global VAAPI lock is disabled or not.",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 69
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92bde3b_827aad8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "disableGlobalVaapiLock",
+      "range": {
+        "startLine": 83,
+        "startChar": 79,
+        "endLine": 83,
+        "endChar": 95
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c589f962_74fd8b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "It looks like the third argument is true at every call site. Consider one of the following alternatives:\n\n1) Name this MakeTestOptionsWithNoGlobalVaapiLock() and omit the third argument.\n2) Don\u0027t create an additional function and instead add the third argument to MakeTestOptions().\n\nI prefer (1) because it\u0027s more readable than passing a boolean argument in the test parameters.",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 29
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078cc5e3_32f488f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "_global_vaapi_lock_disabled",
+      "range": {
+        "startLine": 126,
+        "startChar": 33,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1654303_51b0bfe1",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-24T15:59:04Z",
+      "side": 1,
+      "message": "DisableGlobalVaapiLock",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 17
+      },
       "revId": "badeda388167626e1bccf166670e84a1d35134a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
