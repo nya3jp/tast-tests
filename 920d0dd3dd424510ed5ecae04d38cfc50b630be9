@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a19ac19_32e42708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1450227
+      },
+      "writtenOn": "2022-01-24T19:58:21Z",
+      "side": 1,
+      "message": "Should this call to time.Now() be moved to before the Sleep directly above so that we start the time calculation right after the mouse click occurs on the login button?",
+      "revId": "920d0dd3dd424510ed5ecae04d38cfc50b630be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
