@@ -86,7 +86,7 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 
 			conn, err := cr.NewConn(ctx, "https://"+param.url)
 			if err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
 			}
 			defer conn.Close()
 
@@ -100,7 +100,7 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 
 			err = rightClickOmnibox(ctx, tconn, param.url, param.wantAllowed)
 			if err != nil {
-				s.Error("Failed to right click omni box: ", err)
+				s.Fatal("Failed to right click omni box: ", err)
 			}
 
 			// Get the omni box which is not selected.
@@ -110,7 +110,7 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 
 			err = pasteOmnibox(ctx, tconn, keyboard, param.url, param.wantAllowed)
 			if err != nil {
-				s.Error("Failed to paste content in omni box: ", err)
+				s.Fatal("Failed to paste content in omni box: ", err)
 			}
 		})
 	}
@@ -119,7 +119,7 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 func rightClickOmnibox(ctx context.Context, tconn *chrome.TestConn, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	addressBar := nodewith.Name("Address and search bar").First()
+	addressBar := nodewith.HasClass("OmniboxViewViews")
 
 	if err := ui.RightClick(addressBar)(ctx); err != nil {
 		return errors.Wrap(err, "failed to right click omni box")
