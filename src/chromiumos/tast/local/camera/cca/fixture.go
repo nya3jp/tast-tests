@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -274,6 +275,10 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		}
 	}()
 
+	if f.guestMode {
+		mountns.EnterUserSessionMountNS(ctx)
+	}
+
 	if f.arcBooted {
 		a, err := arc.New(ctx, s.OutDir())
 		if err != nil {
@@ -320,6 +325,10 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 			s.Error("Failed to tear down ARC: ", err)
 		}
 		f.arc = nil
+	}
+
+	if f.guestMode {
+		mountns.EnterInitMountNs(ctx)
 	}
 
 	if err := f.cr.Close(ctx); err != nil {
