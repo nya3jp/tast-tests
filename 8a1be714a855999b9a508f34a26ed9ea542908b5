@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d551a7_0f72488e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-01-24T08:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40cbb0a5_b26fae68",
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9964f9c_9f67b824",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-24T02:52:38Z",
       "side": 1,
       "message": "this will be called twice.\n\nMaybe moving this defer (and L119\u0027s) to L114, with guarding configList is not empty.",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 4
+      },
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad651668_ed95508e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-01-24T08:07:57Z",
+      "side": 1,
+      "message": "Done. Note that the usernames are different in this two defer function, so we will need to iterate through the configList instead of checking if it is empty.",
+      "parentUuid": "b9964f9c_9f67b824",
       "range": {
         "startLine": 138,
         "startChar": 3,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db14114f_b5d9102e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-01-24T08:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abfc7085_e9ead373",
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe2b325a_c80b91d8",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-01-24T02:52:38Z",
       "side": 1,
       "message": "Could you add a brief comment where this format needs to be sync with?",
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4299033b_697c5750",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-01-24T08:07:57Z",
+      "side": 1,
+      "message": "This JSON file is for storing the CrossVersionLoginConfig, so the format is what CrossVersionLoginConfig is, right? I am not quite sure what you mean, but I updated the comment for more details about the purpose of this file. Please correct me if I am wrong.",
+      "parentUuid": "fe2b325a_c80b91d8",
       "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
