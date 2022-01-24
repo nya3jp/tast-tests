@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40cbb0a5_b26fae68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T02:52:38Z",
+      "side": 1,
+      "message": "could you add the document about this test\u0027s usage? Specifically, this is here because of very rare characteristic (suspending the intermediate state of the test for testing performance reason).",
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9964f9c_9f67b824",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T02:52:38Z",
+      "side": 1,
+      "message": "this will be called twice.\n\nMaybe moving this defer (and L119\u0027s) to L114, with guarding configList is not empty.",
+      "range": {
+        "startLine": 138,
+        "startChar": 3,
+        "endLine": 141,
+        "endChar": 4
+      },
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abfc7085_e9ead373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T02:52:38Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2b325a_c80b91d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T02:52:38Z",
+      "side": 1,
+      "message": "Could you add a brief comment where this format needs to be sync with?",
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
