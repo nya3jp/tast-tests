@@ -164,6 +164,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "638ea20f_44c2fc81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-24T17:58:31Z",
+      "side": 1,
+      "message": "You can also use string interpolation, i.e. something like this:\n\n printersPolicy :\u003d \u0026policy.Printers{Val: []string{\n   fmt.Sprintln(`{\n     \"display_name\": \"%s\",\n     \"description\": \"The printer next to the water cooler.\",\n     \"manufacturer\": \"Printer Manufacturer\",\n     \"model\": \"Color Laser 2004\",\n     \"uri\": \"ipps://print-server.intranet.example.com:443/ipp/cl2k4\",\n     \"uuid\": \"1c395fdb-5d93-4904-b246-b2c046e79d12\",\n     \"ppd_resource\": {\n       \"effective_model\": \"Printer Manufacturer ColorLaser2k4\",\n       \"autoconf\": false\n     }\n   }`, printerName)\n }};",
+      "parentUuid": "449d57db_5daf7802",
+      "range": {
+        "startLine": 59,
+        "startChar": 51,
+        "endLine": 59,
+        "endChar": 427
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "875ee02a_28ba545c",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
         "patchSetId": 1
