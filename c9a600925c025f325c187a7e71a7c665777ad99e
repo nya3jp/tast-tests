@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90be0447_e3e6bdb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-24T11:16:36Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "c9a600925c025f325c187a7e71a7c665777ad99e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9721ba09_c977318d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-24T11:16:36Z",
+      "side": 1,
+      "message": "nit: i\u0027d remove \u0026 from here and pass \"\u0026st\" to the Unmarshal function for better readability",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "c9a600925c025f325c187a7e71a7c665777ad99e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
