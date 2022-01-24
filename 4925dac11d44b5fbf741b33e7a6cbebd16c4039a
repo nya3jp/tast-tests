@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1bfad2_ea97239c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-24T11:06:19Z",
+      "side": 1,
+      "message": "@vsavu,\nI\u0027m not sure when will the policy server uprev be done, so I put those test cases that would fail currently (due to policy server) as TODO, and try to make my tests not blocked by that bug.",
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
