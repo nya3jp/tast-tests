@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9dfc883_ba4eef98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T04:17:39Z",
+      "side": 1,
+      "message": "There\u0027s a plan to send PSA on the completion of the work.\nIt\u0027s slightly being delayed due to OOOs.",
+      "parentUuid": "cb185e06_aade32bf",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50b7646b_d79ae842",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
         "patchSetId": 1
@@ -407,6 +431,24 @@
       "side": 1,
       "message": "Because cr is now different between lacros and ash profiles, bTconn is no longer the same between them, so needs to remain separate from tconn. If I use the test connection from cr.TestAPIConn(ctx) the RunAndWaitAll() command fails on Lacros variant with an error about not being able to collect the histogram from the browser.",
       "parentUuid": "061e8c8a_af9e04ca",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5988f9a9_be37200d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T04:17:39Z",
+      "side": 1,
+      "message": "ok, thanks for explanation. Could you remove this declaration, and merge to the below line? (See my comment below, too).",
+      "parentUuid": "ba888545_b984ea78",
       "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

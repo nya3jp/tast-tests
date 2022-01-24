@@ -22,6 +22,30 @@
       },
       "revId": "ca12d902d7f514b7ae3073ed3c3d21c32c055ae8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a63d30c_d4ce942a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T04:17:39Z",
+      "side": 1,
+      "message": "+1.\n\nnit/style: bTconn, err :\u003d br.TestAPIConn(ctx)\n\n(to declare the var, too).",
+      "parentUuid": "c0ed28fc_5504a940",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 2
+      },
+      "revId": "ca12d902d7f514b7ae3073ed3c3d21c32c055ae8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
