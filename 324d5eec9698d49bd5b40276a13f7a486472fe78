@@ -22,6 +22,30 @@
       },
       "revId": "324d5eec9698d49bd5b40276a13f7a486472fe78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d4c5d1_123055ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/pre/its_pre.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-01-24T10:50:47Z",
+      "side": 1,
+      "message": "Tweak the logic to original idea, detail:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3325362/comments/b270eb70_24680393",
+      "parentUuid": "89c53b0e_46444a2f",
+      "range": {
+        "startLine": 189,
+        "startChar": 109,
+        "endLine": 189,
+        "endChar": 112
+      },
+      "revId": "324d5eec9698d49bd5b40276a13f7a486472fe78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
