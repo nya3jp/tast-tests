@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8dccb5_01ff8b4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/e2e_auto_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-24T15:11:52Z",
+      "side": 1,
+      "message": "Every test that uses this new fixture should have the \"reboot\" software dep as well.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "3098047810f1bb108ce1ee8fd8664d02fce5b84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
