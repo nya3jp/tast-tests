@@ -87,6 +87,24 @@
       "parentUuid": "4ebd1b7a_d11291bc",
       "revId": "e8f42c6bcd167d3477fcfb91a741bbf41bcb293a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47cf4a77_d82d0c5a",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T13:58:24Z",
+      "side": 1,
+      "message": "It looks stable for now, so we\u0027ll use it, and it shouldn\u0027t affect the behavior of the test if it fails.",
+      "parentUuid": "99ac1610_2f3afdcf",
+      "revId": "e8f42c6bcd167d3477fcfb91a741bbf41bcb293a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
