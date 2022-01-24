@@ -35,7 +35,7 @@ func (c *Connector) Init(s *testing.FixtState, d *uidetection.Context) {
 func (c *Connector) Login(ctx context.Context, k *input.KeyboardEventWriter, cfg *apps.VDILoginConfig) error {
 	testing.ContextLog(ctx, "Citrix: logging in")
 
-	if err := c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.CustomIcon(c.dataPath(CitrixData[SplashscreenServerURLTbx])))(ctx); err != nil {
+	if err := c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.Word("https://URL"))(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for Citrix splashscreen")
 	}
 

@@ -205,7 +205,8 @@ func (v *fixtureState) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	detector := uidetection.New(tconn,
 		s.RequiredVar("uidetection.key_type"),
 		s.RequiredVar("uidetection.key"),
-		s.RequiredVar("uidetection.server"))
+		s.RequiredVar("uidetection.server"),
+	).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
 	v.vdiConnector.Init(s, detector)
 
 	kb, err := input.Keyboard(ctx)
