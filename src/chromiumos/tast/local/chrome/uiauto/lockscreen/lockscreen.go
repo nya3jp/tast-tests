@@ -158,6 +158,13 @@ func EnterPIN(ctx context.Context, tconn *chrome.TestConn, PIN string) error {
 	return nil
 }
 
+// HasPinPad checks whether the PIN pad is present, i.e., whether PIN unlock is enabled.
+func HasPinPad(ctx context.Context, tconn *chrome.TestConn) bool {
+	ui := uiauto.New(tconn)
+	found, _ := ui.IsNodeFound(ctx, nodewith.ClassName("LoginPinView"))
+	return found
+}
+
 // SubmitPIN submits the entered PIN.
 func SubmitPIN(ctx context.Context, tconn *chrome.TestConn) error {
 	return uiauto.New(tconn).WithTimeout(uiTimeout).LeftClick(SubmitButton)(ctx)
