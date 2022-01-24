@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/network/ip"
 	"chromiumos/tast/ctxutil"
 )
 
@@ -36,4 +37,18 @@ const (
 // The shortened ctx is used for running things before r.Close() to reserve time for it to run.
 func ReserveForRouterClose(ctx context.Context) (context.Context, context.CancelFunc) {
 	return ctxutil.Shorten(ctx, 5*time.Second)
+}
+
+// RemoveDevicesWithPrefix removes the devices whose names start with the given prefix.
+func RemoveDevicesWithPrefix(ctx context.Context, ipr *ip.Runner, prefix string) error {
+	devs, err := ipr.LinkWithPrefix(ctx, prefix)
+	if err != nil {
+		return err
+	}
+	for _, dev := range devs {
+		if err := ipr.DeleteLink(ctx, dev); err != nil {
+			return err
+		}
+	}
+	return nil
 }
