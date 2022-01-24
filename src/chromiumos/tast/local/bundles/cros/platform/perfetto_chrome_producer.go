@@ -6,8 +6,11 @@ package platform
 
 import (
 	"context"
-	"strings"
+	"regexp"
 	"time"
+
+	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
+	"github.com/golang/protobuf/proto"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -33,21 +36,35 @@ func waitForChromeProducer(ctx context.Context) error {
 	const requiredChromeProducers = 2
 
 	return testing.Poll(ctx, func(context.Context) error {
-		cmd := testexec.CommandContext(ctx, "/usr/bin/perfetto", "--query")
+		// "perfetto --query-raw" outputs the TracingServiceState proto message.
+		cmd := testexec.CommandContext(ctx, "/usr/bin/perfetto", "--query-raw")
 
 		out, err := cmd.Output(testexec.DumpLogOnError)
 		if err != nil {
 			return errors.Wrap(err, "failed to query the service state of traced")
 		}
 
+		st := perfetto_proto.TracingServiceState{}
 		// Count the number of data sources named "org.chromium.trace_event".
 		chromeProducers := 0
-		lines := strings.Split(string(out), "\n")
-		for _, line := range lines {
-			if strings.Contains(line, "name: \"org.chromium.trace_event\"") {
+		if err = proto.Unmarshal(out, &st); err != nil {
+			return errors.Wrap(err, "failed to parse the service state output of traced")
+		}
+
+		// Example chrome producer (in pbtxt):
+		// producers: {
+		//   id: 192
+		//   name: "org.chromium-31550"
+		//   uid: 1000
+		//   sdk_version: "Perfetto v0.0 (unknown)"
+		// }
+		re := regexp.MustCompile(`^org.chromium-\d+$`)
+		for _, prd := range st.GetProducers() {
+			if re.MatchString(prd.GetName()) {
 				chromeProducers++
 			}
 		}
+
 		if chromeProducers < requiredChromeProducers {
 			return errors.Errorf("unexpected number (%d) of Chrome producer connected", chromeProducers)
 		}
