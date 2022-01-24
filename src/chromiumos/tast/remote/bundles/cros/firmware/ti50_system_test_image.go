@@ -7,12 +7,15 @@ package firmware
 import (
 	"context"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/firmware/ti50"
 	remoteTi50 "chromiumos/tast/remote/firmware/ti50"
 	"chromiumos/tast/testing"
 )
+
+const timeLimit = 50 * time.Second
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -34,7 +37,7 @@ func Ti50SystemTestImage(ctx context.Context, s *testing.State) {
 	mode, _ := s.Var("mode")
 	spiflash, _ := s.Var("spiflash")
 
-	board, rpcClient, err := remoteTi50.GetTi50TestBoard(ctx, s.DUT(), s.RPCHint(), mode, spiflash, 10000, 50*time.Second)
+	board, rpcClient, err := remoteTi50.GetTi50TestBoard(ctx, s.DUT(), s.RPCHint(), mode, spiflash, 10000, time.Second)
 
 	if err != nil {
 		s.Fatal("GetTi50TestBoard: ", err)
@@ -68,11 +71,11 @@ func Ti50SystemTestImage(ctx context.Context, s *testing.State) {
 
 func checkTestResults(ctx context.Context, s *testing.State, board ti50.DevBoard, sectionName string) int {
 	failCount := 0
-	_, err := board.ReadSerialSubmatch(ctx, regexp.MustCompile("##"+sectionName+" TESTS START"))
+	_, err := board.ReadSerialSubmatch(ctx, regexp.MustCompile("##"+regexp.QuoteMeta(sectionName)+" TESTS START"))
 	if err != nil {
 		s.Fatal("Failed to read section start: ", err)
 	}
-	endMarker := "##" + sectionName + " TESTS END"
+	endMarker := "##" + regexp.QuoteMeta(sectionName) + " TESTS END"
 	re := regexp.MustCompile("(" + endMarker + `|##TEST (SKIP|START) (\S+)\s)`)
 	for {
 		m, err := board.ReadSerialSubmatch(ctx, re)
@@ -87,15 +90,50 @@ func checkTestResults(ctx context.Context, s *testing.State, board ti50.DevBoard
 		testName := string(m[3])
 		result := "Skip"
 		if start != "SKIP" {
-			m, err := board.ReadSerialSubmatch(ctx, regexp.MustCompile("##TEST RESULT "+testName+`: (\S+)\s`))
+			result, err = waitForTest(ctx, s, board, testName)
 			if err != nil {
 				s.Fatal("Failed to read test result: ", err)
 			}
-			result = string(m[1])
 		}
-		s.Logf("%s: %s", testName, result)
 		if result == "Fail" {
 			failCount++
 		}
 	}
+}
+
+func waitForTest(ctx context.Context, s *testing.State, board ti50.DevBoard, testName string) (result string, err error) {
+	lineRe := regexp.MustCompile(`.*[\r\n]+`)
+	slowCryptoRe := regexp.MustCompile("Long running SW crypto operation")
+	resultRe := regexp.MustCompile("##TEST RESULT " + regexp.QuoteMeta(testName) + `: (\S+)`)
+	testTime := time.Now()
+	var line string
+	lineTime := time.Now()
+	timeLimit := timeLimit
+
+	var elapsedTime time.Duration
+	for ; elapsedTime < timeLimit; elapsedTime = time.Since(testTime) {
+		m, err := board.ReadSerialSubmatch(ctx, lineRe)
+		if err != nil {
+			continue
+		}
+		delay := time.Since(lineTime)
+		if delay > 10*time.Second {
+			s.Logf("(%q took %v)", line, delay.Round(time.Second))
+		}
+		lineTime = time.Now()
+		line = strings.TrimSpace(string(m[0]))
+		if m := resultRe.FindStringSubmatch(line); m != nil {
+			result := m[1]
+			s.Logf("%s: %s (%v)", testName, result, elapsedTime.Round(time.Second))
+			return result, nil
+		}
+		if slowCryptoRe.MatchString(line) {
+			timeLimit += 5 * time.Minute
+			s.Log("(Waiting for slow crypto.)")
+		}
+	}
+	s.Logf("Still waiting for test %s after %v, giving up", testName, elapsedTime.Round(time.Second))
+	delay := time.Since(lineTime)
+	s.Logf("Waited %v at %q", delay.Round(time.Second), line)
+	return "", err
 }
