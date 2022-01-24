@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d89454cb_b3397bc6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2b73f5a_377259a6",
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fbb87705_33140dfc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de6899e_9a69acaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1026e3ed_7e311e7c",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a74c5d46_49802f9b",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-01-24T15:59:04Z",
       "side": 1,
       "message": "_global_vaapi_lock_disabled to be consistent with the variants in the, e.g., webrtc.MediaRecorderMulti.* tests.",
+      "range": {
+        "startLine": 39,
+        "startChar": 39,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54aa0b6c_93d64b27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a74c5d46_49802f9b",
       "range": {
         "startLine": 39,
         "startChar": 39,
@@ -127,6 +193,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0c2616_0c472ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0c6cc4_bfc1e02a",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 42
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f50b827_3e8feef7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22d374d9_165a2a9c",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d89cc0b4_7d82c19e",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-01-24T15:59:04Z",
       "side": 1,
       "message": "disableGlobalVaapiLock",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2011bd_929499a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d89cc0b4_7d82c19e",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -173,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32fc1af_d120466b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cc3af12_45d86ea1",
+      "range": {
+        "startLine": 80,
+        "startChar": 66,
+        "endLine": 80,
+        "endChar": 71
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5295d68b_d980f51a",
@@ -186,6 +348,30 @@
       "writtenOn": "2022-01-24T15:59:04Z",
       "side": 1,
       "message": "global VAAPI lock is disabled or not.",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 69
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794197d6_94be88b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5295d68b_d980f51a",
       "range": {
         "startLine": 82,
         "startChar": 24,
@@ -242,6 +428,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e2bb49_501e53f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c589f962_74fd8b1b",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 29
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9078b07e_f7472ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92bde3b_827aad8a",
+      "range": {
+        "startLine": 83,
+        "startChar": 79,
+        "endLine": 83,
+        "endChar": 95
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "078cc5e3_32f488f6",
@@ -265,6 +499,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209ca54f_fd460aea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078cc5e3_32f488f6",
+      "range": {
+        "startLine": 126,
+        "startChar": 33,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1654303_51b0bfe1",
@@ -278,6 +536,30 @@
       "writtenOn": "2022-01-24T15:59:04Z",
       "side": 1,
       "message": "DisableGlobalVaapiLock",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "badeda388167626e1bccf166670e84a1d35134a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "602ca116_6e89579d",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-24T20:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1654303_51b0bfe1",
       "range": {
         "startLine": 59,
         "startChar": 1,
