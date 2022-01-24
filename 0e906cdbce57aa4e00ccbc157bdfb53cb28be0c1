@@ -22,6 +22,30 @@
       },
       "revId": "0e906cdbce57aa4e00ccbc157bdfb53cb28be0c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69536d82_aa6d596f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1366225
+      },
+      "writtenOn": "2022-01-24T10:03:38Z",
+      "side": 1,
+      "message": "Thank you very much for whipping up the example. I think it\u0027s an obscure pattern but anyhow.",
+      "parentUuid": "0f727f03_3743e9c7",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "0e906cdbce57aa4e00ccbc157bdfb53cb28be0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
