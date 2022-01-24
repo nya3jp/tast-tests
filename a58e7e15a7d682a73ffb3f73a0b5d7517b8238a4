@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24b5b2b6_0339a9e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-24T18:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29819d0e_cb1892be",
+      "range": {
+        "startLine": 33,
+        "startChar": 50,
+        "endLine": 33,
+        "endChar": 73
+      },
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f49bea8d_dc830a03",
@@ -73,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c57b08a5_c218033d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-24T18:36:53Z",
+      "side": 1,
+      "message": "I used Mockaroo to generate the mock data:\nhttps://g3doc.corp.google.com/java/com/google/analytics/suite/dataplatform/tools/fakedata/README.md?cl\u003dhead I think they are random?",
+      "parentUuid": "425517ac_4fc4f209",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 155
+      },
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1eebcb0_3e91a07c",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
         "patchSetId": 3
@@ -84,6 +132,30 @@
       "writtenOn": "2022-01-22T00:16:36Z",
       "side": 1,
       "message": "This enforces clamshell mode. Why not just use the default mode of a device? I am not sure whether the mode is important enough for scrolling a sheet.\n\nIs it because we use \"input.Trackpad\"?",
+      "range": {
+        "startLine": 86,
+        "startChar": 57,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b07a51f5_960ab7e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-24T18:36:53Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the swiping has different performance in tablet and clamshell mode so I\u0027m trying to control variables and keep all tests in the same mode...",
+      "parentUuid": "a1eebcb0_3e91a07c",
       "range": {
         "startLine": 86,
         "startChar": 57,
@@ -113,6 +185,23 @@
         "endLine": 109,
         "endChar": 46
       },
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31270b8a_2a8e4e39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-24T18:36:53Z",
+      "side": 1,
+      "message": "I think \"Graphics.Smoothness.PercentDroppedFrames.MainThread.TouchScroll\" and \"Event.Latency.ScrollUpdate.Touch.TimeToHandled2\" https://source.corp.google.com/eureka_internal/chromium/src/tools/metrics/histograms/histograms_xml/event/histograms.xml;l\u003d1408?q\u003dEvent.Latency.ScrollUpdate.Touch.TimeToHandled2 can be used here.",
       "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
