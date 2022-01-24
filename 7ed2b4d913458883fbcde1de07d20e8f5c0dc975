@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf4405a_dc1a2f03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-24T22:34:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9dfc883_ba4eef98",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50b7646b_d79ae842",
@@ -453,6 +477,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b625bb61_2935c724",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-24T22:34:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5988f9a9_be37200d",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c110c007_547c6231",
@@ -720,6 +762,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eba4e51_b5f6d57a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-24T22:34:28Z",
+      "side": 1,
+      "message": "It seems to work reliably if I just click the button once, so I\u0027ve simplified the code to that.",
+      "parentUuid": "698100c6_8cdfe942",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 3
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fb15ac7_55ebffb3",
@@ -932,6 +998,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a7f3963_20b1d865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-24T22:34:28Z",
+      "side": 1,
+      "message": "This code is deleted.",
+      "parentUuid": "491bc9ff_284e82bb",
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be530d5d_4b6d6da0",
@@ -945,6 +1029,30 @@
       "writtenOn": "2022-01-20T05:27:16Z",
       "side": 1,
       "message": "could you use async function instead for simplicity of JS code piece?",
+      "range": {
+        "startLine": 270,
+        "startChar": 4,
+        "endLine": 270,
+        "endChar": 16
+      },
+      "revId": "7ed2b4d913458883fbcde1de07d20e8f5c0dc975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd45127_4b244db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-24T22:34:28Z",
+      "side": 1,
+      "message": "This code is deleted.",
+      "parentUuid": "be530d5d_4b6d6da0",
       "range": {
         "startLine": 270,
         "startChar": 4,
