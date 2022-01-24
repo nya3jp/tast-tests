@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/chrome/ime"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/vkb"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -47,14 +49,22 @@ func init() {
 func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 	cr := s.PreValue().(pre.PreData).Chrome
 	tconn := s.PreValue().(pre.PreData).TestAPIConn
+	uc := s.PreValue().(pre.PreData).UserContext
 	vkbCtx := vkb.NewContext(cr, tconn)
 	ui := uiauto.New(tconn)
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	if err := ime.AddAndSetInputMethod(ctx, tconn, ime.ChromeIMEPrefix+ime.Japanese.ID); err != nil {
-		s.Fatal("Failed to set input method: ", err)
+	im := ime.Japanese
+	s.Log("Set current input method to: ", im)
+	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+		s.Fatalf("Failed to set input method to %v: %v: ", im, err)
 	}
+	uc.SetAttribute(useractions.AttributeInputMethod, im.Name)
 
 	s.Log("Opening Japanese IME options page")
 	optionPage, err := cr.NewConn(ctx, "chrome-extension://jkghodnilhceideoidjikpgommlajknk/mozc_option.html")
@@ -88,7 +98,7 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 	const loadNewSettingDuration = 2 * time.Second
 
 	assertInputMode := func(ctx context.Context, mode inputMode) {
-		if err := uiauto.Combine(fmt.Sprintf("assert input mode is %s", mode.name),
+		action := uiauto.Combine(fmt.Sprintf("assert input mode is %s", mode.name),
 			vkbCtx.ClickUntilVKShown(omniboxFinder),
 			vkbCtx.TapKey(mode.typeKey),
 			ui.RetrySilently(5, func(ctx context.Context) error {
@@ -104,13 +114,25 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 			// Press backspace button to clear omnibox result.
 			vkbCtx.TapKey("backspace"),
 			ui.WaitUntilGone(omniboxFirstResultFinder),
-		)(ctx); err != nil {
+		)
+
+		if err := useractions.NewUserAction("VK typing",
+			action,
+			uc,
+			&useractions.UserActionCfg{
+				Tags: []useractions.ActionTag{useractions.ActionTagVKTyping},
+				Attributes: map[string]string{
+					useractions.AttributeInputField:     "Omnibox",
+					useractions.AttributeKeyboardLayout: mode.name,
+				},
+			},
+		).Run(ctx); err != nil {
 			s.Fatal("Failed to assert input mode: ", err)
 		}
 	}
 
 	switchInputMode := func(ctx context.Context, mode inputMode) {
-		if err := uiauto.Combine(fmt.Sprintf("switch input mode to %q", mode.name),
+		action := uiauto.Combine(fmt.Sprintf("switch input mode to %q", mode.name),
 			// Click page header to deactivate virtualkeyboard.
 			// Note: vkb.HideVirtualKeyboard() will not trigger reloading of setting changes.
 			ui.LeftClickUntil(settingPageHeaderFinder, vkbCtx.WaitUntilHidden()),
@@ -122,7 +144,18 @@ func VirtualKeyboardJapaneseInputMode(ctx context.Context, s *testing.State) {
 			// No available method to check that settings being loaded. On a low-end device, it might take a second.
 			// So added sleep to wait for loading.
 			ui.Sleep(loadNewSettingDuration),
-		)(ctx); err != nil {
+		)
+
+		if err := useractions.NewUserAction("Switch Japanese input mode",
+			action,
+			uc,
+			&useractions.UserActionCfg{
+				Tags: []useractions.ActionTag{useractions.ActionTagIMESettings},
+				Attributes: map[string]string{
+					useractions.AttributeKeyboardLayout: mode.name,
+				},
+			},
+		).Run(ctx); err != nil {
 			s.Fatalf("Failed to switch input mode to %q: %v", mode.name, err)
 		}
 	}
