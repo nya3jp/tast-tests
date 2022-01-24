@@ -77,6 +77,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "297be602_8b75f97e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-24T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eb15318_03690581",
+      "range": {
+        "startLine": 167,
+        "startChar": 11,
+        "endLine": 167,
+        "endChar": 12
+      },
+      "revId": "a2f7b81fbd997f1417812f21d0a82faafea9cbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5499aac3_0dd68ad0",
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "Thanks for explaining. Maybe rename the function to getExpectedCapabilities to be clearer?",
       "parentUuid": "3b1f0746_af6ca119",
+      "revId": "a2f7b81fbd997f1417812f21d0a82faafea9cbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9998b0c3_d9356be1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-24T10:44:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adf9f2ee_01344c3b",
       "revId": "a2f7b81fbd997f1417812f21d0a82faafea9cbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
