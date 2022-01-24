@@ -151,6 +151,24 @@
       "parentUuid": "fe2b325a_c80b91d8",
       "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5d8347_eaac0a91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-24T11:12:23Z",
+      "side": 1,
+      "message": "Could you document that \"CreateCrossVersionLoginData\" must be stable?\nOtherwise the tests in the future may be broken, right?",
+      "parentUuid": "4299033b_697c5750",
+      "revId": "8a1be714a855999b9a508f34a26ed9ea542908b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
