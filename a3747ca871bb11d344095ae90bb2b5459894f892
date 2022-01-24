@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "935efc88_7a41518c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-24T13:39:15Z",
+      "side": 1,
+      "message": "Not specifically a very short 200ms press for a device with no internal display. It\u0027s contrasted with an identical test here for devices with a display expecting different behaviour so it seems fitting to have both together. \nThere is a similar one in ec_wake_source.go that uses a regular power button press if the device has an internal display but I think that\u0027s testing something different.",
+      "parentUuid": "13e6ebe8_de9549c1",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 34
+      },
+      "revId": "a3747ca871bb11d344095ae90bb2b5459894f892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c618e758_a8607c42",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-20T22:22:55Z",
       "side": 1,
       "message": "Do we need this sleep?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 0
+      },
+      "revId": "a3747ca871bb11d344095ae90bb2b5459894f892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e93a76e_5bfa879e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-24T13:39:15Z",
+      "side": 1,
+      "message": "Not really. Removed.",
+      "parentUuid": "c618e758_a8607c42",
       "range": {
         "startLine": 124,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-20T22:22:55Z",
       "side": 1,
       "message": "This also seems like an overlap with firmware.BootMode",
+      "range": {
+        "startLine": 240,
+        "startChar": 5,
+        "endLine": 240,
+        "endChar": 32
+      },
+      "revId": "a3747ca871bb11d344095ae90bb2b5459894f892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa0e1b09_47ec0ae0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-24T13:39:15Z",
+      "side": 1,
+      "message": "I\u0027ll remove it from here then.",
+      "parentUuid": "b33792a6_e0b18b98",
       "range": {
         "startLine": 240,
         "startChar": 5,
@@ -106,6 +178,30 @@
       "writtenOn": "2022-01-20T22:22:55Z",
       "side": 1,
       "message": "Maybe WaitConnect instead to make sure the DUT is fully up.",
+      "range": {
+        "startLine": 320,
+        "startChar": 2,
+        "endLine": 323,
+        "endChar": 3
+      },
+      "revId": "a3747ca871bb11d344095ae90bb2b5459894f892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b23228_210ed579",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-24T13:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c44e9ce8_1359675e",
       "range": {
         "startLine": 320,
         "startChar": 2,
