@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8753e6_d23dbf58",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-24T23:03:17Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "d1f3abf8_317c3cf3",
+      "range": {
+        "startLine": 298,
+        "startChar": 2,
+        "endLine": 300,
+        "endChar": 3
+      },
+      "revId": "a3747ca871bb11d344095ae90bb2b5459894f892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c44e9ce8_1359675e",
