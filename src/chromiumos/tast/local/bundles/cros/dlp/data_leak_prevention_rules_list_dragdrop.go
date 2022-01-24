@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -87,19 +88,44 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 			}
 
 			if _, err = cr.NewConn(ctx, "https://www.google.com/"); err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
 			}
 
 			if _, err = cr.NewConn(ctx, "https://"+param.url, browser.WithNewWindow()); err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
+			}
+
+			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+				s.Fatal("Failed to enter into the overview mode: ", err)
+			}
+
+			// Snap the param.url window to the right
+			w1, err := ash.FindFirstWindowInOverview(ctx, tconn)
+			if err != nil {
+				s.Fatalf("Failed to find the %s window in the overview mode: %s", param.url, err)
+			}
+
+			if err := ash.SetWindowStateAndWait(ctx, tconn, w1.ID, ash.WindowStateRightSnapped); err != nil {
+				s.Fatalf("Failed to snap the %s window to the right: %s", param.url, err)
+			}
+
+			// Snap the google.com window to the left.
+			w2, err := ash.FindFirstWindowInOverview(ctx, tconn)
+			if err != nil {
+				s.Fatal("Failed to find the google.com window in the overview mode: ", err)
+			}
+
+			if err := ash.SetWindowStateAndWait(ctx, tconn, w2.ID, ash.WindowStateLeftSnapped); err != nil {
+				s.Fatal("Failed to snap the google.com window to the left: ", err)
+			}
+
+			// Activate the clipboard source (param.url) window.
+			if err := w1.ActivateWindow(ctx, tconn); err != nil {
+				s.Fatalf("Failed to activate the %s window: %s", param.url, err)
 			}
 
 			if err = keyboard.Accel(ctx, "Ctrl+A"); err != nil {
 				s.Fatal("Failed to press Ctrl+A to select all content: ", err)
-			}
-
-			if err = keyboard.Accel(ctx, "Alt+]"); err != nil {
-				s.Fatal("Failed to press Alt+] to snap window to right: ", err)
 			}
 
 			s.Log("Draging and dropping content")
