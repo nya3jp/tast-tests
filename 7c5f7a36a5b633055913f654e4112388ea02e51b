@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "70aeb365_29b16314",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-24T18:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6131447b_de40aa04",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0cc08f9d_4ec97674",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -118,6 +142,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a430d8c_8ce9f17f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-24T18:11:46Z",
+      "side": 1,
+      "message": "I was following go/tast-policy-codelab#metadata, which explicitly asks to add `chromeos-commercial-remote-management@google.com` to policy-related tests. This is also the case for the two other printing-related test files in this directory. WDYT?",
+      "parentUuid": "75c707dc_51bdd5a9",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b8482d4_c9156293",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
         "patchSetId": 1
@@ -129,6 +177,30 @@
       "writtenOn": "2022-01-24T16:31:03Z",
       "side": 1,
       "message": "You need to add \"lacros\" to the dependecies here as well.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8084ae7d_c243588a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-24T18:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b8482d4_c9156293",
       "range": {
         "startLine": 37,
         "startChar": 2,
@@ -186,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7343e97_8a739be0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-24T18:11:46Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "449d57db_5daf7802",
+      "range": {
+        "startLine": 59,
+        "startChar": 51,
+        "endLine": 59,
+        "endChar": 427
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "875ee02a_28ba545c",
@@ -199,6 +295,30 @@
       "writtenOn": "2022-01-24T16:31:03Z",
       "side": 1,
       "message": "You don\u0027t have to put this into a Run() function. The main benefit of Run() is to prefix every log from inside the function, but there is no need for that here, as there are no subtests.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 79
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5dc367_d6e70eab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-24T18:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "875ee02a_28ba545c",
       "range": {
         "startLine": 61,
         "startChar": 1,
@@ -234,6 +354,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "553f3725_ab052d73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-24T18:11:46Z",
+      "side": 1,
+      "message": "You are right -- however, I think I am running into some sort of race condition after switching to `input.Keyboard` from `input.VirtualKeyboard` (likely because it is faster): The print dialog never opens after pressing CTRL+P (or maybe it opens but is immediately closed due to the initial navigation to the default about:blank page, or there is some other oddity with the about:blank page). I am afraid that I am unsure how I would further debug this, but it works consistently when opening chrome://newtab separately.",
+      "parentUuid": "fcf92693_214497e5",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98fdd2d0_dbfb4768",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
         "patchSetId": 1
@@ -245,6 +389,30 @@
       "writtenOn": "2022-01-24T16:31:03Z",
       "side": 1,
       "message": "nit: input.Keyboard(ctx) should be enough. It is faster on boards with physical keyboards, and falls back to VirtualKeyboard() on tablets.",
+      "range": {
+        "startLine": 91,
+        "startChar": 19,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b3bd8b_afc1235f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-24T18:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98fdd2d0_dbfb4768",
       "range": {
         "startLine": 91,
         "startChar": 19,
@@ -268,6 +436,24 @@
       "writtenOn": "2022-01-24T16:31:03Z",
       "side": 1,
       "message": "It is possible to combine UI interactions and checks, that way you don\u0027t need to do error handling after each step.\nCheck uiauto.Combine at go/tast-codelab-3",
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee74a7df_3307b5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-24T18:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeabfe91_20f0dee8",
       "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
