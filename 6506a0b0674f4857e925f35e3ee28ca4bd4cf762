@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28880d2d_9a89ff68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-24T17:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0191c96_a517f084",
+      "range": {
+        "startLine": 52,
+        "startChar": 39,
+        "endLine": 52,
+        "endChar": 55
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fedfb8b_2da22145",
@@ -512,6 +536,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ac7996_4fa61ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-24T17:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcf5b4d9_9b06d0ff",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18e8808e_b9663ee4",
@@ -843,6 +891,30 @@
       "side": 1,
       "message": "that\u0027s what I am talking about. All will benefit if this check will be inside that library.",
       "parentUuid": "2896566f_edced402",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "594969fb_5ee4c0df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-24T17:42:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f829c8_55c02382",
       "range": {
         "startLine": 148,
         "startChar": 0,
