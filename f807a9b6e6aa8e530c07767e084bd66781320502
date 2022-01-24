@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dddedae_0992cf41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-24T09:52:58Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "f807a9b6e6aa8e530c07767e084bd66781320502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5193b3ff_419a6c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj/google_chat.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-24T09:52:58Z",
+      "side": 1,
+      "message": "These are dummy functions. Please attach a TODO task to complete it later.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 1
+      },
+      "revId": "f807a9b6e6aa8e530c07767e084bd66781320502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323fe495_27c83b30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj/google_drive.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-24T09:52:58Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "f807a9b6e6aa8e530c07767e084bd66781320502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da89127c_b4d3c892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj/google_sheets.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-24T09:52:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "f807a9b6e6aa8e530c07767e084bd66781320502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
