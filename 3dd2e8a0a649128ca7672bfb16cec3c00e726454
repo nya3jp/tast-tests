@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ce4463_7e0f00c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-24T04:25:51Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "3dd2e8a0a649128ca7672bfb16cec3c00e726454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f424c85_b4912d9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-24T04:25:51Z",
+      "side": 1,
+      "message": "nit: This locator is too general across the window. I am a bit worried it can be fragile without a parent node.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 54
+      },
+      "revId": "3dd2e8a0a649128ca7672bfb16cec3c00e726454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83c50d2_f8cdbee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/zoom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-24T04:25:51Z",
+      "side": 1,
+      "message": "nit: remove one space.",
+      "range": {
+        "startLine": 102,
+        "startChar": 3,
+        "endLine": 102,
+        "endChar": 5
+      },
+      "revId": "3dd2e8a0a649128ca7672bfb16cec3c00e726454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
