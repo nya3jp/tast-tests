@@ -33,6 +33,24 @@
       "message": "nit: move this outside the function and make it public.",
       "revId": "2102f4d0b7d03e817967ab17e472f70d18a3f1b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "546ba6eb_a6ab540d",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-24T14:49:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a118761_c98362f5",
+      "revId": "2102f4d0b7d03e817967ab17e472f70d18a3f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
