@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7779ab5_7a608286",
+        "filename": "src/chromiumos/tast/common/servo/methods.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-24T23:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7fd441_41b62d20",
+      "range": {
+        "startLine": 646,
+        "startChar": 4,
+        "endLine": 646,
+        "endChar": 77
+      },
+      "revId": "2a551da2167448df0a03596fd6749df04c81f204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b3eb54e_a45be95e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-24T23:08:04Z",
       "side": 1,
       "message": "What is this?",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "2a551da2167448df0a03596fd6749df04c81f204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12bce6d_1f59b4c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_button.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-01-24T23:15:39Z",
+      "side": 1,
+      "message": "My mistake, was commented out for testing, forgot to uncomment.",
+      "parentUuid": "4b3eb54e_a45be95e",
       "range": {
         "startLine": 79,
         "startChar": 2,
