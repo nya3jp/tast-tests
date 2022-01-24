@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0daba0_54d7bba5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-24T11:24:33Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "78af4a426cd8e0d1d495498ab5976a032f5346cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e863eb42_2a889fac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audioutils/audioutils.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-24T11:24:33Z",
+      "side": 1,
+      "message": "nit: please move it after line 65 in case if you will add some extra logic for a cleanup function.\n\nAlso, please handle error returned by cleanupFunc() call, e.g.\n\n```\nif err :\u003d cleanupFunc(); err !\u003d nil {\n  testing.ContextLog(ctx, \"Failed to cleanup: \", err)\n}\n```",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 5
+      },
+      "revId": "78af4a426cd8e0d1d495498ab5976a032f5346cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
