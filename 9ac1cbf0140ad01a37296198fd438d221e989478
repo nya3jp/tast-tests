@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bb104f0_aa9d8643",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-01-24T17:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78ee9ff9_b0802b67",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "9ac1cbf0140ad01a37296198fd438d221e989478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6479245f_a7a54f3c",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-24T02:50:38Z",
       "side": 1,
       "message": "go/go-style/decisions#got-before-want\nit\u0027d be better to place \"got %d\" first, for consistency.",
+      "revId": "9ac1cbf0140ad01a37296198fd438d221e989478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66686b5e_c9bf1ec8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_drag_window_to_new_desk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-01-24T17:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6479245f_a7a54f3c",
       "revId": "9ac1cbf0140ad01a37296198fd438d221e989478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
