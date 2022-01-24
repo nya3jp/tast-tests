@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bfe347_aaee7788",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T13:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08caa1a9_ed1c6acb",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "f423f85a80510ef2c3c7f85fc87de3e4ff02d029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f51a90a3_516953d4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-10T10:56:23Z",
       "side": 1,
       "message": "Does this work with GetActiveWindow() as well? In that case you don\u0027t need to select the first window.",
+      "range": {
+        "startLine": 62,
+        "startChar": 16,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "f423f85a80510ef2c3c7f85fc87de3e4ff02d029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b8bb85_7c892d8f",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-24T13:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f51a90a3_516953d4",
       "range": {
         "startLine": 62,
         "startChar": 16,
