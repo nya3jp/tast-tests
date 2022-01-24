@@ -33,6 +33,23 @@
       "message": "Friendly ping for review again.",
       "revId": "67b9a1d5d75d83d8b05b71f7f63d6987d0ea6430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a75183_5159263e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-24T03:31:19Z",
+      "side": 1,
+      "message": "lgtm % tast review\nDefer to dbeckett\u0027s review as the domain expert.",
+      "revId": "67b9a1d5d75d83d8b05b71f7f63d6987d0ea6430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
