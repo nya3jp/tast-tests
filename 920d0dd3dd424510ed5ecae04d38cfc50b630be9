@@ -16,6 +16,24 @@
       "message": "Should this call to time.Now() be moved to before the Sleep directly above so that we start the time calculation right after the mouse click occurs on the login button?",
       "revId": "920d0dd3dd424510ed5ecae04d38cfc50b630be9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fbe443b_724217a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-01-24T21:11:44Z",
+      "side": 1,
+      "message": "Actually, there probably shouldn\u0027t even be a testing.Sleep() call after clicking the login button - thanks for the catch",
+      "parentUuid": "8a19ac19_32e42708",
+      "revId": "920d0dd3dd424510ed5ecae04d38cfc50b630be9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
