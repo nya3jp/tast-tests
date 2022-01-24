@@ -16,6 +16,30 @@
       "message": "I\u0027ve made a last change in tape.go to add the oauth token generation there. Other than that no further changes should be required here so I\u0027d like to finally submit it.\nCould you take another quick look at the changes?",
       "revId": "6f665a9809317de72769fc8dc46ce1c37fe2649d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de2f614_15c130f9",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-24T13:47:23Z",
+      "side": 1,
+      "message": "\u003e \"neccessary\" is a possible misspelling of \"necessary\".\n\nPlease fix.",
+      "parentUuid": "9a9c542a_cfbf4157",
+      "range": {
+        "startLine": 95,
+        "startChar": 58,
+        "endLine": 95,
+        "endChar": 68
+      },
+      "revId": "6f665a9809317de72769fc8dc46ce1c37fe2649d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
