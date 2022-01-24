@@ -25,7 +25,7 @@ const (
 	installationTimeout   = 7 * time.Minute
 	checkContainerTimeout = time.Minute
 	postTestTimeout       = 30 * time.Second
-	cninstallationTimeout = time.Minute
+	uninstallationTimeout = time.Minute
 )
 
 func init() {
@@ -37,11 +37,64 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + installationTimeout,
 		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
 		PostTestTimeout: postTestTimeout,
-		TearDownTimeout: chrome.ResetTimeout + cninstallationTimeout,
+		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 
 		// TODO (jinrongwu): switch to Global RunTime Variable when deprecating pre.go.
+		// The same for the rest keepState var.
 		Vars: []string{"keepState"},
 		Data: []string{"crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseye",
+		Desc:            "Install Crostini with Bullseye",
+		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBullseye},
+		SetUpTimeout:    chrome.LoginTimeout + installationTimeout,
+		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		Vars:            []string{"keepState"},
+		Data:            []string{"crostini_test_container_metadata_bullseye_amd64.tar.xz", "crostini_test_container_rootfs_bullseye_amd64.tar.xz"},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBusterGaia",
+		Desc:            "Install Crostini with Buster in Chrome logged in with Gaia",
+		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBusterGaia},
+		SetUpTimeout:    chrome.GAIALoginTimeout + installationTimeout,
+		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
+		Data:            []string{"crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeGaia",
+		Desc:            "Install Crostini with Bullseye in Chrome logged in with Gaia",
+		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBullseyeGaia},
+		SetUpTimeout:    chrome.GAIALoginTimeout + installationTimeout,
+		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
+		Data:            []string{"crostini_test_container_metadata_bullseye_amd64.tar.xz", "crostini_test_container_rootfs_bullseye_amd64.tar.xz"},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBullseyeLargeContainer",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed",
+		Contacts:        []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBullseyeLC},
+		SetUpTimeout:    chrome.LoginTimeout + installationTimeout,
+		ResetTimeout:    chrome.ResetTimeout + checkContainerTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
+		Vars:            []string{"keepState"},
+		Data:            []string{"crostini_app_test_container_metadata_bullseye_amd64.tar.xz", "crostini_app_test_container_rootfs_bullseye_amd64.tar.xz"},
 	})
 
 }
@@ -76,6 +129,28 @@ type FixtureData struct {
 var preTestDataBuster = &preTestData{
 	container:     normal,
 	debianVersion: vm.DebianBuster,
+}
+
+var preTestDataBullseye = &preTestData{
+	container:     normal,
+	debianVersion: vm.DebianBullseye,
+}
+
+var preTestDataBusterGaia = &preTestData{
+	container:     normal,
+	debianVersion: vm.DebianBuster,
+	loginType:     loginGaia,
+}
+
+var preTestDataBullseyeGaia = &preTestData{
+	container:     normal,
+	debianVersion: vm.DebianBullseye,
+	loginType:     loginGaia,
+}
+
+var preTestDataBullseyeLC = &preTestData{
+	container:     largeContainer,
+	debianVersion: vm.DebianBullseye,
 }
 
 func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
