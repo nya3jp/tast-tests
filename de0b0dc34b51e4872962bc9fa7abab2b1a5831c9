@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f75ed9_feb478c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-25T08:34:34Z",
+      "side": 1,
+      "message": "would be good to run unit test \n ./fast_build.sh -T",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "de0b0dc34b51e4872962bc9fa7abab2b1a5831c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "deeee3f1_57440756",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-01-24T17:39:34Z",
       "side": 1,
       "message": "Hi! Please review this CL :) ",
+      "revId": "de0b0dc34b51e4872962bc9fa7abab2b1a5831c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d2803b_bad1c93d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-25T08:34:34Z",
+      "side": 1,
+      "message": "LGTM % nit",
       "revId": "de0b0dc34b51e4872962bc9fa7abab2b1a5831c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
