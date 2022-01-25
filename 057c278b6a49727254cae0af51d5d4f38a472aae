@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "187a0c0d_a277d595",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-25T21:05:00Z",
+      "side": 1,
+      "message": "+akihiroota for test owner review and to see if this test needs a lacros variant.",
+      "revId": "057c278b6a49727254cae0af51d5d4f38a472aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b73ecc7_dda1987d",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-01-25T09:04:16Z",
       "side": 1,
       "message": "looks like lacros fixture is not used.../ What\u0027s the intention of this fixture variation?",
+      "revId": "057c278b6a49727254cae0af51d5d4f38a472aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bf6b12_0abec5c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-25T21:05:00Z",
+      "side": 1,
+      "message": "Actually I was feeling the same when I looked at this test. Btw, this test was flagged to need a lacros variant in the old spreadsheet https://docs.google.com/spreadsheets/d/16kWTnOWTIXWedJ3IltLRQJtHL6RTC9m7fwIqjYFCF8I/edit?resourcekey\u003d0-fNkrr-XYt69jqtjjFpaA4A#gid\u003d509116212\n\n+akihiroota can you confirm if this test needs a lacros variant or not? If not, we can simply update LacrosStatus metadata to LacrosVariantUnneeded in this CL.",
+      "parentUuid": "3b73ecc7_dda1987d",
       "revId": "057c278b6a49727254cae0af51d5d4f38a472aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
