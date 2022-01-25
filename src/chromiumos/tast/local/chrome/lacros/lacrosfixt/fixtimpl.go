@@ -257,6 +257,9 @@ const (
 	lacrosRootPath = lacrosTestPath + "/lacros_binary"
 )
 
+// Verify that *fixtValueImpl implements FixtValue interface.
+var _ FixtValue = &fixtValueImpl{}
+
 // fixtValueImpl holds values related to the lacros instance and connection.
 // Tests should not use this directly, unless they are composing fixtures
 // and need to embed this struct in their own FixtValue. Instead, access
