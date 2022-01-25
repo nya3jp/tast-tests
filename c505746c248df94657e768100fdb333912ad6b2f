@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10627ac6_bc3d3a83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-01-25T07:53:42Z",
+      "side": 1,
+      "message": "https://docs.google.com/spreadsheets/d/16kWTnOWTIXWedJ3IltLRQJtHL6RTC9m7fwIqjYFCF8I/edit?resourcekey\u003d0-fNkrr-XYt69jqtjjFpaA4A#gid\u003d0\nhttps://bugs.chromium.org/p/chromium/issues/detail?id\u003d1262011\n\nI guess I should mark this test as testing.LacrosVariantUnneeded instead.",
+      "parentUuid": "16cab13b_56c76247",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54fb6057_f85e0a0a",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-25T01:53:15Z",
       "side": 1,
       "message": "maybe add some comments here to explain why we need do this?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d292fade_88bd169e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-01-25T07:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54fb6057_f85e0a0a",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf037cc_b10eb775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-01-25T07:53:42Z",
+      "side": 1,
+      "message": "It\u0027s just like I haven\u0027t figured out the correct way to process certs here and planned to do it in a later patch. Adding a TODO here.",
+      "parentUuid": "181fd711_ca062b4d",
+      "range": {
+        "startLine": 113,
+        "startChar": 13,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49ee9c50_c62b9272",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-01-25T01:53:15Z",
       "side": 1,
       "message": "If this Fatal is hit, will the following subtests be ran?",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 11
+      },
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "171258db_c04e3a93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-01-25T07:53:42Z",
+      "side": 1,
+      "message": "Yes (That\u0027s one nice thing of using subtests).",
+      "parentUuid": "49ee9c50_c62b9272",
       "range": {
         "startLine": 138,
         "startChar": 6,
