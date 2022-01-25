@@ -14,13 +14,20 @@ import (
 	"chromiumos/tast/timing"
 )
 
+func getSigninOrRegularTestAPIConn(ctx context.Context, c *chrome.Chrome) (*chrome.TestConn, error) {
+	if tconn, err := c.SigninProfileTestAPIConn(ctx); err == nil {
+		return tconn, err
+	}
+	return c.TestAPIConn(ctx)
+}
+
 // ServeAndVerify serves the policies using ServeAndRefresh and verifies that they are set in Chrome.
 func ServeAndVerify(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
 	if err := ServeAndRefresh(ctx, fdms, cr, ps); err != nil {
 		return errors.Wrap(err, "failed to serve policies")
 	}
 
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := getSigninOrRegularTestAPIConn(ctx, cr)
 	if err != nil {
 		return errors.Wrap(err, "failed to create Test API connection")
 	}
@@ -56,7 +63,7 @@ func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.
 
 // RefreshChromePolicies forces an immediate refresh of policies in Chrome.
 func RefreshChromePolicies(ctx context.Context, cr *chrome.Chrome) error {
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := getSigninOrRegularTestAPIConn(ctx, cr)
 	if err != nil {
 		return errors.Wrap(err, "failed to create Test API connection")
 	}
