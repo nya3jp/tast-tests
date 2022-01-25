@@ -49,7 +49,7 @@ func ChromevoxRichTextEditing(ctx context.Context, s *testing.State) {
 	}
 	defer crastestclient.Unmute(cleanupCtx)
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, `<div role="textbox" contenteditable>
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), `<div role="textbox" contenteditable>
 <h2>hello</h2>
 <div><br></div>
 <p>This is a <a href="%23test">test</a> of rich text</p>

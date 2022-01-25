@@ -68,7 +68,7 @@ func Dictation(ctx context.Context, s *testing.State) {
 	}
 
 	// Open a new tab with a text area.
-	c, err := a11y.NewTabWithHTML(ctx, cr, "<textarea class='myTextArea'></textarea>")
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), "<textarea class='myTextArea'></textarea>")
 	if err != nil {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}

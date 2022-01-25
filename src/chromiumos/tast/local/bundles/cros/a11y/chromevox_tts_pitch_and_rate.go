@@ -49,7 +49,7 @@ func ChromevoxTTSPitchAndRate(ctx context.Context, s *testing.State) {
 	}
 	defer crastestclient.Unmute(cleanupCtx)
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, `<p>hi</p>
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), `<p>hi</p>
 		<p>high</p>
 		<p>normal</p>
 		<p>low</p>
