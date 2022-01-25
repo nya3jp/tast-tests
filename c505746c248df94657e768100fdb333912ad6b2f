@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0abf166_a43533f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-01-25T01:53:15Z",
+      "side": 1,
+      "message": "Thanks for adding the test!",
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cab13b_56c76247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-01-25T01:53:15Z",
+      "side": 1,
+      "message": "A question not related to this test: What does \"LacrosVariant\" mean?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54fb6057_f85e0a0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-01-25T01:53:15Z",
+      "side": 1,
+      "message": "maybe add some comments here to explain why we need do this?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181fd711_ca062b4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-01-25T01:53:15Z",
+      "side": 1,
+      "message": "just curious, why only l2tpipsec-psk is added but not others (cert, openvpn, etc.)?",
+      "range": {
+        "startLine": 113,
+        "startChar": 13,
+        "endLine": 113,
+        "endChar": 26
+      },
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ee9c50_c62b9272",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-01-25T01:53:15Z",
+      "side": 1,
+      "message": "If this Fatal is hit, will the following subtests be ran?",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 11
+      },
+      "revId": "c505746c248df94657e768100fdb333912ad6b2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
