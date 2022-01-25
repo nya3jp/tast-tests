@@ -49,14 +49,14 @@ func init() {
 			Fixture:           "loggedInToChromeAndArcWithLacros",
 			Val:               browser.TypeLacros,
 		}},
-		VarDeps: []string{"accountmanager.username1", "accountmanager.password1"},
+		VarDeps: []string{"accountmanager.username2", "accountmanager.password2"},
 		Timeout: 6 * time.Minute,
 	})
 }
 
 func AddAccountOSSettings(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("accountmanager.username1")
-	password := s.RequiredVar("accountmanager.password1")
+	username := s.RequiredVar("accountmanager.username2")
+	password := s.RequiredVar("accountmanager.password2")
 
 	// Reserve one minute for various cleanup.
 	cleanupCtx := ctx
