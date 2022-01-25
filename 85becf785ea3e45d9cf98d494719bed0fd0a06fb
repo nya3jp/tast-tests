@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b9e54e_3d6e099a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_users_except_owner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-25T14:18:20Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "4629d9ea_953f8c9e",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 48
+      },
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5f27327_05804690",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-21T09:57:18Z",
       "side": 1,
       "message": "Most functions in this file uses *testing.State which feels very strange, According to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages, it is highly recommended not to passing around *testing.State.\n\nErrors are generally ignored in this file.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ed4719_03d7f8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-25T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5f27327_05804690",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd7f9ff_e06782da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-25T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c53c7e59_4065b763",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 52
+      },
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "099c02f0_5369d7dd",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-01-21T09:57:18Z",
       "side": 1,
       "message": "Can you refactor the function definition as func(..) error without *testing.State",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 79
+      },
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4395b211_b64d49d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-25T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "099c02f0_5369d7dd",
       "range": {
         "startLine": 84,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "562cf03a_2dc8383c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-25T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3fd3f1_e04e4d62",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 61
+      },
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96bfc9d9_f04c113c",
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ffc679c_ff3285ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-25T14:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96bfc9d9_f04c113c",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0051a45_49ed5858",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-01-21T09:04:38Z",
       "side": 1,
       "message": "let\u0027s extract a config option for that. Something like \nWaitForOwnershipEstablished \u003d false (by default).\n\nSee https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;l\u003d286?q\u003dWaitForCryptohome%20package:chromeos\u0026type\u003dcs for current ones\n\nI\u0027ve added one option in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3303794",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 1
+      },
+      "revId": "85becf785ea3e45d9cf98d494719bed0fd0a06fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "182e80f4_9007f1ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-25T14:18:20Z",
+      "side": 1,
+      "message": "as discussed, for now we\u0027ll leave it as is",
+      "parentUuid": "e0051a45_49ed5858",
       "range": {
         "startLine": 82,
         "startChar": 0,
