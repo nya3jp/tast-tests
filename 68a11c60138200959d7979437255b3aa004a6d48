@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae8476e_437ae687",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-25T02:18:08Z",
+      "side": 1,
+      "message": "This is an interesting case where an error itself is not that important, but the output of command line run is critical. I implemented this in the following way. runCommandLine has last parameter `logOutput bool`, which indicated whether to log output from command line or not.\nSo the equivalent of saying: \"I want useful information in case of error\" is to pass last argument `true` (exactly what\u0027s happening in this invocation of `runCommandLine`).",
+      "parentUuid": "1099e93e_7f45b4fe",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa1e0e05_b1c4ab9a",
@@ -86,6 +104,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "650e0df4_92b87e39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-25T02:18:08Z",
+      "side": 1,
+      "message": "I agree, removed this line.",
+      "parentUuid": "aa1e0e05_b1c4ab9a",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a4b5810_a149f8c9",
@@ -99,6 +135,24 @@
       "writtenOn": "2022-01-25T01:30:47Z",
       "side": 1,
       "message": "Is it OK to return (0, 0) and the caller continue processing?",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ac9cf3_488cecaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-25T02:18:08Z",
+      "side": 1,
+      "message": "Oh no, that\u0027s fatal you are right! thank you for catching!",
+      "parentUuid": "4a4b5810_a149f8c9",
       "revId": "68a11c60138200959d7979437255b3aa004a6d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
