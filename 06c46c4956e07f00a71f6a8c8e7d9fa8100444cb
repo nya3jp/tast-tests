@@ -16,6 +16,23 @@
       "message": "greenjustin@, tast-owners@ PTAL\n\nOthers FYI",
       "revId": "06c46c4956e07f00a71f6a8c8e7d9fa8100444cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "606b68c0_59a95fcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-01-25T06:16:55Z",
+      "side": 1,
+      "message": "Please wait for team member review.",
+      "revId": "06c46c4956e07f00a71f6a8c8e7d9fa8100444cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
