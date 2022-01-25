@@ -70,15 +70,12 @@ var h264FilesFromBugs = []string{
 var h264Files = map[string][]string{
 	"baseline": {
 		"test_vectors/h264/baseline/AUD_MW_E.h264",
-		"test_vectors/h264/baseline/BA1_FT_C.h264",
 		"test_vectors/h264/baseline/BA1_Sony_D.h264",
 		"test_vectors/h264/baseline/BA2_Sony_F.h264",
 		"test_vectors/h264/baseline/BAMQ1_JVC_C.h264",
 		"test_vectors/h264/baseline/BAMQ2_JVC_C.h264",
 		"test_vectors/h264/baseline/BANM_MW_D.h264",
-		"test_vectors/h264/baseline/BASQP1_Sony_C.h264",
 		"test_vectors/h264/baseline/BA_MW_D.h264",
-		"test_vectors/h264/baseline/CI1_FT_B.h264",
 		"test_vectors/h264/baseline/CI_MW_D.h264",
 		"test_vectors/h264/baseline/CVSE2_Sony_B.h264",
 		"test_vectors/h264/baseline/HCBP1_HHI_A.h264",
@@ -95,16 +92,27 @@ var h264Files = map[string][]string{
 		"test_vectors/h264/baseline/NRF_MW_E.h264",
 		"test_vectors/h264/baseline/SVA_BA1_B.h264",
 		"test_vectors/h264/baseline/SVA_BA2_D.h264",
-		"test_vectors/h264/baseline/SVA_Base_B.h264",
-		"test_vectors/h264/baseline/SVA_CL1_E.h264",
-		"test_vectors/h264/baseline/SVA_FM1_E.h264",
 		"test_vectors/h264/baseline/SVA_NL1_B.h264",
 		"test_vectors/h264/baseline/SVA_NL2_E.h264",
-		"test_vectors/h264/baseline/MR1_BT_A.h264",
-		"test_vectors/h264/baseline/MR2_TANDBERG_E.h264",
-		"test_vectors/h264/baseline/MR3_TANDBERG_B.h264",
-		"test_vectors/h264/baseline/MR4_TANDBERG_C.h264",
-		"test_vectors/h264/baseline/MR5_TANDBERG_C.h264",
+
+		// The following test vectors are disabled because they don't verify that
+		// some slice header's |first_mb_in_slice| are not equal to zero as
+		// expected, see b/216179527.
+		//"test_vectors/h264/baseline/BA1_FT_C.h264",
+		//"test_vectors/h264/baseline/BASQP1_Sony_C.h264",
+		//"test_vectors/h264/baseline/CI1_FT_B.h264",
+		//"test_vectors/h264/baseline/SVA_Base_B.h264",
+		//"test_vectors/h264/baseline/SVA_CL1_E.h264",
+		//"test_vectors/h264/baseline/SVA_FM1_E.h264",
+		//"test_vectors/h264/baseline/MR1_BT_A.h264",
+
+		// The following test vectors are disabled because they don't verify that
+		// |max_num_reorder_frames| is smaller or equal to the DPB size, see
+		// b/216179527.
+		//"test_vectors/h264/baseline/MR2_TANDBERG_E.h264",
+		//"test_vectors/h264/baseline/MR3_TANDBERG_B.h264",
+		//"test_vectors/h264/baseline/MR4_TANDBERG_C.h264",
+		//"test_vectors/h264/baseline/MR5_TANDBERG_C.h264",
 	},
 	"main": {
 		"test_vectors/h264/main/CABA1_SVA_B.h264",
