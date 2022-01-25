@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a684c7eb_0bdc783c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T02:44:58Z",
+      "side": 1,
+      "message": "If uprev is once a week and depends on my policy landing first, then sure I\u0027ll submit this after uprev. But let us improve the CL chain to +2 first since the testing is also a blocker of my policy launch. I\u0027ll verify and land after uprev. SG?",
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ff785b3b_81aa69b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
         "patchSetId": 2
@@ -49,6 +66,30 @@
       "writtenOn": "2022-01-24T13:43:27Z",
       "side": 1,
       "message": "This is testing 2 policies, choose a different name.",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3aafcb6_c4de0d2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T02:44:58Z",
+      "side": 1,
+      "message": "Then I\u0027ll have to change the test name of QuickUnlockAllowlist too, which is also testing the same two policies. The problem with naming is that the list of policy will increase, like we\u0027ll add policies for login auth methods and re-auth auth methods in the future. I originally thought that I can just use a big test to test all behaviors, but for the same reason (list will keep increasing) I didn\u0027t think it\u0027s a good idea because the test will keep getting more complicated.\n\nI managed to separate them using the logic: each of the policy\u0027s test only test behavior that it controls. So WebAuthn policy tests \"setup\" and \"webauthn\", QuickUnlock policy tests \"setup\" and \"unlock\", ReAuth policy will test \"setup\" and \"re-auth\", etc. Including other policies in is not for testing all combinations, instead I\u0027ll just put some test cases where I want to test for the main policy\u0027s independence (i.e., test that the auth backend in chrome doesn\u0027t mess similar policies up). These policies each controls a behavior independently, and altogether control the \"setup\" behavior. So I\u0027ll just include enough test cases to verify\n1. Main policy enabled will enable \"setup\" the auth method and using it in the target behavior (like \"unlock\"), even if all other policies disable it.\n2. Main policy disabled will disable the target behavior even if all other policies enabled it, but will not disable \"setup\" for that auth method.\n\nSo each test still has a concept that which policy is the main one in this test. Do you still recommend to change test name? If so, how should we name them?",
+      "parentUuid": "ff785b3b_81aa69b3",
       "range": {
         "startLine": 37,
         "startChar": 16,
@@ -76,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e68b7a_c2c98842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T02:44:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cb66f72e_54789496",
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c8a8c3c_dbb7963f",
@@ -89,6 +148,24 @@
       "writtenOn": "2022-01-24T13:43:27Z",
       "side": 1,
       "message": "Can you host the website as part of the test?\n\nWe can\u0027t depend on an external website to not change.",
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5a69a7_d1234084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T02:44:58Z",
+      "side": 1,
+      "message": "This is an open bug (http://b/210418148). We used this site in two tast tests already, and I put TODOs pointing to this bug above them. I\u0027ll put it here too.",
+      "parentUuid": "2c8a8c3c_dbb7963f",
       "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -129,6 +206,30 @@
       "writtenOn": "2022-01-24T13:43:27Z",
       "side": 1,
       "message": "Maybe 20 to be more confident on uniqueness?",
+      "range": {
+        "startLine": 321,
+        "startChar": 21,
+        "endLine": 321,
+        "endChar": 23
+      },
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c83b68_6d5f4c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T02:44:58Z",
+      "side": 1,
+      "message": "The record is cleared each day, so I think it\u0027s fine. But I don\u0027t see any disadvantage of increasing to 20 too, so acking.",
+      "parentUuid": "55ef9a60_9d5d272b",
       "range": {
         "startLine": 321,
         "startChar": 21,
