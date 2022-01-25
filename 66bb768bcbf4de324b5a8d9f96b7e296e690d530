@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4088d8f8_8c5a2061",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/scroll_to_text_fragment_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-25T09:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595373b3_0efbeb7b",
+      "revId": "66bb768bcbf4de324b5a8d9f96b7e296e690d530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c3eca78_4725d46f",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-01-25T09:16:40Z",
       "side": 1,
       "message": "not sure if 100 will be sufficient on high resolution screens.",
+      "range": {
+        "startLine": 53,
+        "startChar": 17,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "66bb768bcbf4de324b5a8d9f96b7e296e690d530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5728e3f_94965713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/scroll_to_text_fragment_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-25T09:45:10Z",
+      "side": 1,
+      "message": "Thanks for pointing this out, increased to 500.",
+      "parentUuid": "3c3eca78_4725d46f",
       "range": {
         "startLine": 53,
         "startChar": 17,
