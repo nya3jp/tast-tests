@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b578985_a9d059ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/boot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-25T07:22:15Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t know you could do this in Tast, cool",
+      "revId": "2faaa242b6e8f61d9120894762ad3b4c6ca48c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
