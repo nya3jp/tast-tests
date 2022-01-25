@@ -492,6 +492,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca4f9467_750bbdc2",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-25T00:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "991f7763_abe50e8f",
+      "revId": "77c8057314b8c05430452f4f9f43e94155acb145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3981b5c2_af476316",
