@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "933f354d_a67d5ece",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-25T20:48:21Z",
+      "side": 1,
+      "message": "This worked in mainlab: https://ci.chromium.org/ui/p/chromeos/builders/test_runner/test_runner/b8824049975222069233/overview\n\nFlashing USB stick\n```\n01/25 08:23:57.001 INFO |             utils:0304| [stdout] [16:23:57.001] Current build on USB (grunt-release/R100-14476.0.0) differs from DUT (grunt-release-tryjob/R100-14471.0.0-b5095354), proceed with download\n01/25 08:23:57.003 INFO |             utils:0304| [stdout] [16:23:57.003] Devserver status: [[http://100.115.220.100:8082 UP] [http://100.115.220.101:8082 UP] [http://100.115.220.103:8082 UP] [http://100.115.220.104:8082 UP] [http://100.115.220.105:8082 UP] [http://100.115.220.108:8082 UP] [http://100.115.220.109:8082 UP] [http://100.115.220.112:8082 UP]]\n01/25 08:23:57.005 INFO |             utils:0304| [stdout] [16:23:57.005] Downloading gs://chromeos-image-archive/grunt-release-tryjob/R100-14471.0.0-b5095354/chromiumos_test_image.tar.xz via http://100.115.220.104:8082 (already staged)\n01/25 08:23:57.005 INFO |             utils:0304| [stdout] [16:23:57.005] Flashing test OS image to USB\n01/25 08:40:22.591 INFO |             utils:0304| [stdout] [16:40:22.591] Flash finished. Output \u003d \n```",
+      "revId": "51e1b0c39feb577f1ffbcd2a166f9b22f3d11fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
