@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd97bde_1ce3687b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-25T17:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "658e49da_cd3d94ed",
+      "range": {
+        "startLine": 195,
+        "startChar": 15,
+        "endLine": 195,
+        "endChar": 46
+      },
+      "revId": "62c9ea99f3c808a54c736d1c9aa869c26a6fb057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cedb68b1_9a2e2dae",
@@ -89,6 +113,24 @@
       "writtenOn": "2022-01-25T17:27:36Z",
       "side": 1,
       "message": "ditto\n\nh.Name + \".percent_95\"",
+      "revId": "62c9ea99f3c808a54c736d1c9aa869c26a6fb057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cc08662_023d71a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/power_videocall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1113039
+      },
+      "writtenOn": "2022-01-25T17:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cedb68b1_9a2e2dae",
       "revId": "62c9ea99f3c808a54c736d1c9aa869c26a6fb057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
