@@ -33,6 +33,24 @@
       "message": "LGTM. Please also run tast unit test: \"fast_build.sh -T\". Thanks.",
       "revId": "ae210ec86c06095e59f792f2dbd139c968289cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cdb3d42_d737486b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-01-25T19:07:42Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "c5ffc646_24ebc1d4",
+      "revId": "ae210ec86c06095e59f792f2dbd139c968289cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
