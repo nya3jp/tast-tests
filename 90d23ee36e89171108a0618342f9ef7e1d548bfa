@@ -16,6 +16,46 @@
       "message": "Takise-san, could you take a look? Thanks.",
       "revId": "90d23ee36e89171108a0618342f9ef7e1d548bfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bb8ca3_4aab44a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-01-25T07:31:46Z",
+      "side": 1,
+      "message": "My opinion around which state we should wait for, Android or Chrome, is that it should be enough to wait only for the ash state as it\u0027s the only window state that\u0027s exposed to users, but I\u0027m interested in your thoughts here too.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "90d23ee36e89171108a0618342f9ef7e1d548bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a291aa_c3e44f7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-01-25T07:31:46Z",
+      "side": 1,
+      "message": "We may also want to check other states related to compat mode such as compat-mode button, shadow, etc both in this function and at the end of testUnsnapByDragging.\n\nAlso these utility functions should be in resize_util I guess?",
+      "revId": "90d23ee36e89171108a0618342f9ef7e1d548bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
