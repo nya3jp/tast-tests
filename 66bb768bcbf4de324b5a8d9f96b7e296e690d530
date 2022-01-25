@@ -16,6 +16,63 @@
       "message": "Hi Kamil,\n\nI\u0027ve written a policy test for ScrollToTextFragmentEnabled, PTAL!\n\nRegards,\nJit",
       "revId": "66bb768bcbf4de324b5a8d9f96b7e296e690d530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb370e6_4f13bcef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-25T09:16:40Z",
+      "side": 1,
+      "message": "Thanks for the test Jit. \nLGTM % nit.\n\nPlease don\u0027t forget to mark as verified.",
+      "revId": "66bb768bcbf4de324b5a8d9f96b7e296e690d530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "595373b3_0efbeb7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/scroll_to_text_fragment_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-25T09:16:40Z",
+      "side": 1,
+      "message": ". missing at the end of the comment.",
+      "revId": "66bb768bcbf4de324b5a8d9f96b7e296e690d530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3eca78_4725d46f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/scroll_to_text_fragment_enabled.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-25T09:16:40Z",
+      "side": 1,
+      "message": "not sure if 100 will be sufficient on high resolution screens.",
+      "range": {
+        "startLine": 53,
+        "startChar": 17,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "66bb768bcbf4de324b5a8d9f96b7e296e690d530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
