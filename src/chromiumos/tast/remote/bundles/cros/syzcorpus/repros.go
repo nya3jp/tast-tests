@@ -35,6 +35,9 @@ const (
 
 	binBpfX64Zip     = "bin_bpf_x86_64.zip"
 	bpfEnabledRepros = "bpf_x86_64.txt"
+
+	binSoundX64Zip     = "bin_sound_x86_64.zip"
+	soundEnabledRepros = "sound_x86_64.txt"
 )
 
 type testParam struct {
@@ -104,6 +107,16 @@ func init() {
 					windowSize:  1,
 				},
 				ExtraData: []string{binBpfX64Zip, bpfEnabledRepros},
+			},
+			{
+				Name: "sound",
+				Val: testParam{
+					subsystem:   "sound",
+					binariesZip: binSoundX64Zip,
+					reprosList:  soundEnabledRepros,
+					windowSize:  1,
+				},
+				ExtraData: []string{binSoundX64Zip, soundEnabledRepros},
 			},
 		},
 	})
