@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e67d5c_6a1acfbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:12:17Z",
+      "side": 1,
+      "message": "should just be named cellular.ModemfwdSmoke, right?",
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d99c1226_e18aadaa",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:12:17Z",
+      "side": 1,
+      "message": "\"Initial flashing\" might be misleading here since we may not flash anything if we\u0027re already on the correct firmware, right? Maybe just say we\u0027re waiting for quiescence?",
+      "range": {
+        "startLine": 59,
+        "startChar": 69,
+        "endLine": 59,
+        "endChar": 85
+      },
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ce0fb9_6915a411",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:12:17Z",
+      "side": 1,
+      "message": "We might want to expose modemfwd\u0027s current status as some kind of D-Bus property... I think there are other use cases for this as it is (could be used to show Chrome notifications when the cellular device is not present, etc.) and it would also prevent us from having to parse logs, which is fragile.",
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0051e4_b98a56b4",
+        "filename": "src/chromiumos/tast/local/modemfwd/modemfwd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:12:17Z",
+      "side": 1,
+      "message": "looks like a candidate for testing.Poll",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "9e629997583dbef2d6bce4e331c48e0d1887ea8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
