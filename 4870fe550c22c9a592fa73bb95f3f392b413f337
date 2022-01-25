@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f12ac570_c957ecf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:16:18Z",
+      "side": 1,
+      "message": "we might already have a pref here, we need to set it back to what it was before if there was one. Maybe just make a function that sets up the auto-update pref and returns a closure that resets the state, which can be deferred.",
+      "revId": "4870fe550c22c9a592fa73bb95f3f392b413f337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7d02dc_96ea2db9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:16:18Z",
+      "side": 1,
+      "message": "file a bug for this so it doesn\u0027t get lost",
+      "revId": "4870fe550c22c9a592fa73bb95f3f392b413f337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ab4d32_15eec248",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:16:18Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be tagged with cleanUp? the defer will run well after NewHelper completes...",
+      "revId": "4870fe550c22c9a592fa73bb95f3f392b413f337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d22995_93eab85e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:16:18Z",
+      "side": 1,
+      "message": "should this just be part of the Helper?",
+      "revId": "4870fe550c22c9a592fa73bb95f3f392b413f337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ebbbfb6_3f54ae47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modem_fw_manifest_installation.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T21:16:18Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be tagged with getUUIDFromShill? the defer will run way after NewHelper completes (and not only that, but it will conflict with the timing calls in cleanUp)",
+      "revId": "4870fe550c22c9a592fa73bb95f3f392b413f337",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
