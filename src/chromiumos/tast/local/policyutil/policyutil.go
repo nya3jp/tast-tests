@@ -14,30 +14,58 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// ServeAndVerify serves the policies using ServeAndRefresh and verifies that they are set in Chrome.
-func ServeAndVerify(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
-	if err := ServeAndRefresh(ctx, fdms, cr, ps); err != nil {
+func serveAndVerify(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tconn *chrome.TestConn, ps []policy.Policy) error {
+	if err := serveAndRefresh(ctx, fdms, cr, tconn, ps); err != nil {
 		return errors.Wrap(err, "failed to serve policies")
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to create Test API connection")
 	}
 
 	return Verify(ctx, tconn, ps)
 }
 
+// ServeAndVerify serves the policies using ServeAndRefresh and verifies that they are set in Chrome.
+func ServeAndVerify(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+	return serveAndVerify(ctx, fdms, cr, tconn, ps)
+}
+
+// ServeAndVerifyOnLoginScreen same as ServeAndVerify but in the login context. It uses the Signin Profile Test API connection.
+func ServeAndVerifyOnLoginScreen(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
+	tconn, err := cr.SigninProfileTestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Signin Profile Test API connection")
+	}
+	return serveAndVerify(ctx, fdms, cr, tconn, ps)
+}
+
 // ServeAndRefresh updates the policies served by FakeDMS and refreshes them in Chrome.
 // Not all polcies can be set in this way and may require restarting Chrome or a reboot.
 func ServeAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, ps []policy.Policy) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+	return serveAndRefresh(ctx, fdms, cr, tconn, ps)
+}
+
+func serveAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tconn *chrome.TestConn, ps []policy.Policy) error {
 	pb := fakedms.NewPolicyBlob()
 	pb.AddPolicies(ps)
-	return ServeBlobAndRefresh(ctx, fdms, cr, pb)
+	return serveBlobAndRefresh(ctx, fdms, cr, tconn, pb)
 }
 
 // ServeBlobAndRefresh updates the policy blob of FakeDMS and refreshes the policies in Chrome.
 func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, pb *fakedms.PolicyBlob) error {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create Test API connection")
+	}
+	return serveBlobAndRefresh(ctx, fdms, cr, tconn, pb)
+}
+
+func serveBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.Chrome, tconn *chrome.TestConn, pb *fakedms.PolicyBlob) error {
 	// Make sure FakeDMS is still running.
 	if err := fdms.Ping(ctx); err != nil {
 		return errors.Wrap(err, "failed to ping FakeDMS")
@@ -47,7 +75,7 @@ func ServeBlobAndRefresh(ctx context.Context, fdms *fakedms.FakeDMS, cr *chrome.
 		return errors.Wrap(err, "failed to write policies to FakeDMS")
 	}
 
-	if err := RefreshChromePolicies(ctx, cr); err != nil {
+	if err := Refresh(ctx, tconn); err != nil {
 		return err
 	}
 
