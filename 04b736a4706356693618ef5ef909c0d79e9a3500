@@ -74,6 +74,30 @@
       },
       "revId": "04b736a4706356693618ef5ef909c0d79e9a3500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876cadc4_215932f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_policy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-25T10:50:35Z",
+      "side": 1,
+      "message": "Thanks for the advice, I didn\u0027t know AccelAction existed :-) \nI would keep the current implementation in this case for more specific error messages, since failing to close the message box here also affects other tests.",
+      "parentUuid": "5cf7653a_585a7d2c",
+      "range": {
+        "startLine": 134,
+        "startChar": 13,
+        "endLine": 134,
+        "endChar": 18
+      },
+      "revId": "04b736a4706356693618ef5ef909c0d79e9a3500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
