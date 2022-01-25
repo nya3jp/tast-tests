@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "234ce42c_6328a160",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-25T09:42:51Z",
+      "side": 1,
+      "message": "Good point, I wasn\u0027t aware of the implications of moving that code.",
+      "parentUuid": "0c837fb7_6e2ac9cf",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2ec2779_3a9e2e3a",
@@ -112,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "178536da_10f01cc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-25T09:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6452ed2c_fef70456",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55b6a5f4_d59426be",
@@ -135,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ab487ea_8e2f8604",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-25T09:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55b6a5f4_d59426be",
+      "range": {
+        "startLine": 117,
+        "startChar": 11,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aec6ea7_2a8c7ae9",
@@ -148,6 +220,30 @@
       "writtenOn": "2022-01-25T09:16:59Z",
       "side": 1,
       "message": "nit: this should be in a new line, so the inner part of if is visually separated from the condition.",
+      "range": {
+        "startLine": 124,
+        "startChar": 73,
+        "endLine": 124,
+        "endChar": 93
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a760201_25a2119a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-25T09:42:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aec6ea7_2a8c7ae9",
       "range": {
         "startLine": 124,
         "startChar": 73,

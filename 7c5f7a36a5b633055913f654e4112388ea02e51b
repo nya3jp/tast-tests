@@ -450,6 +450,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb0d4e48_823bd610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-25T09:42:51Z",
+      "side": 1,
+      "message": "To summarize the flakiness:\nA browserfixt.Setup + br.NewConn with \u0027chrome://newtab\u0027 -\u003e works every time\nB browserfixt.Setup + br.NewConn with \u0027\"\"\u0027 (\u003d about:blank) -\u003e seems to fairly consistently work when I run the test for the first time, but subsequent runs fail due to the print window not opening (I run the test using `tast -verbose run $DUT policy.Printers`). Pressing CTRL+P manually when the test is stuck makes it continue.\nC browserfixt.Setup -\u003e fails to open print window, pressing CTRL+P manually when the test is stuck makes it continue.\nD browserfixt.SetUpWithURL(..., \"chrome://newtab\") -\u003e fails to open print window, pressing CTRL+P manually when the test is stuck DOES NOT make it continue.\n\nWhile C and D can be explained due to Setup(WithURL) not waiting for the page to load, I am not sure why B is also failing. There seems to be some special handling in `Session.NewConn` for `about:blank` URLs (see also https://chromium.googlesource.com/chromium/src/+/HEAD/docs/special_case_urls.md#about_blank).\n\nThe default_search_provider_enabled.go test also apparently had a weird issue with the about:blank page (albeit a different one) and references the following bug [1] which comes to the conclusion that it is likely a tast issue.\n\n[1] https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1188362#c19",
+      "parentUuid": "6490f745_5f4cb4bb",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98fdd2d0_dbfb4768",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
         "patchSetId": 1
