@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1530964e_734d7c98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-25T15:20:32Z",
+      "side": 1,
+      "message": "Looks like `var _ FixtValue \u003d (*fixtValueImpl)(nil)` is more common and there is really to runtime overhead. Not sure about previous approach runtime impact.",
+      "revId": "664bed1cf407260c0a99e5932a1d06663b264b5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
