@@ -923,6 +923,30 @@
       },
       "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a6b449_694d0a32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/testutil/testutil.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-25T10:33:52Z",
+      "side": 1,
+      "message": "Can you please remove that check from src/platform/tast-tests/src/chromiumos/tast/local/uidetection/finder.go ?",
+      "parentUuid": "594969fb_5ee4c0df",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "6506a0b0674f4857e925f35e3ee28ca4bd4cf762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
