@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "081160a4_428f7a25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-25T09:16:59Z",
+      "side": 1,
+      "message": "I almost missed this, as we always have an Ash browser test as well.\npolicyutil.ResetChrome() is not needed here, as it only resets the Ash browser. The function name is before Lacros was created, so it might be misleading now.",
+      "parentUuid": "0c837fb7_6e2ac9cf",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2ec2779_3a9e2e3a",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-24T19:28:40Z",
       "side": 1,
       "message": "There is kb.AcceltAction that returns an action that can also be combined with other actions below: https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/input#KeyboardEventWriter.AccelAction",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 19
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6452ed2c_fef70456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-25T09:16:59Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "f2ec2779_3a9e2e3a",
       "range": {
         "startLine": 113,
         "startChar": 11,
@@ -82,6 +130,29 @@
         "startChar": 11,
         "endLine": 117,
         "endChar": 29
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aec6ea7_2a8c7ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-25T09:16:59Z",
+      "side": 1,
+      "message": "nit: this should be in a new line, so the inner part of if is visually separated from the condition.",
+      "range": {
+        "startLine": 124,
+        "startChar": 73,
+        "endLine": 124,
+        "endChar": 93
       },
       "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
