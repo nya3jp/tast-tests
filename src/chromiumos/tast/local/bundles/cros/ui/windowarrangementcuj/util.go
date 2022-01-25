@@ -61,6 +61,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 		var err error
 		bTconn, err = cr.TestAPIConn(ctx)
 		if err != nil {
+			cleanup(ctx)
 			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get TestAPIConn")
 		}
 	} else {
@@ -75,12 +76,14 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 		}
 
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			cleanup(ctx)
 			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
 		}
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
+		cleanup(ctx)
 		return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to conect to test api")
 	}
 
