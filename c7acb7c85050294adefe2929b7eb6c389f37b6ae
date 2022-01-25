@@ -33,6 +33,24 @@
       "message": "Hi Steven,\n\nFYI as harpreet@ mentioned that you will be interested in this.\n\nRegards\nShijin ",
       "revId": "c7acb7c85050294adefe2929b7eb6c389f37b6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db0e53b_d5daa829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-25T23:50:52Z",
+      "side": 1,
+      "message": "Thanks Shinjin!\n\nWe now have something very similar for cros_network_config.mojom here:\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/netconfig/\n\nIt might be worth scanning through that for any style or functional differences that might influence this CL. (I\u0027m not personally familiar enough with the implementation details to have a strong opinion. You might want to have mpolzer@, who created the netconfig implementation, take a look).\n\nCheers.",
+      "parentUuid": "3b507cef_15157649",
+      "revId": "c7acb7c85050294adefe2929b7eb6c389f37b6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
