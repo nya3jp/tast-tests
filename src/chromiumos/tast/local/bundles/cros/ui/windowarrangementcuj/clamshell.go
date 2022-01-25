@@ -212,6 +212,16 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
+	testing.ContextLog(ctx, "Dragging the divider with an overview window")
+	dragDivider := pc.Drag(splitViewDragPoints[0],
+		pc.DragTo(splitViewDragPoints[1], duration),
+		pc.DragTo(splitViewDragPoints[2], duration),
+		pc.DragTo(splitViewDragPoints[0], duration),
+	)
+	const dividerDragError = "failed to drag divider slightly right, all the way left, and back to center"
+	if err := dragDivider(ctx); err != nil {
+		return errors.Wrap(err, dividerDragError)
+	}
 	w, err = ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the window in the overview mode to drag to snap")
@@ -233,15 +243,10 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
-
 	// Drag divider.
-	testing.ContextLog(ctx, "Dragging the divider")
-	if err := pc.Drag(splitViewDragPoints[0],
-		pc.DragTo(splitViewDragPoints[1], duration),
-		pc.DragTo(splitViewDragPoints[2], duration),
-		pc.DragTo(splitViewDragPoints[0], duration),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag divider slightly right, all the way left, and back to center")
+	testing.ContextLog(ctx, "Dragging the divider with an empty overview grid")
+	if err := dragDivider(ctx); err != nil {
+		return errors.Wrap(err, dividerDragError)
 	}
 
 	return nil
