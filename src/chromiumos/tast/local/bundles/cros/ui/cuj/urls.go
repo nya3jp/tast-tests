@@ -106,10 +106,12 @@ const (
 
 	// URLs used by VideoCUJ2.
 
-	// YoutubeNatureVideoURL specifies the URL for a YouTube video on nature.
-	YoutubeNatureVideoURL = "https://www.youtube.com/watch?v=b3wcQqINmE4"
-	// YoutubeThailandVideoURL specifies the URL for a YouTube video on Thailand.
-	YoutubeThailandVideoURL = "https://www.youtube.com/watch?v=zWAfyYKCr3o"
+	// YoutubeGoogleTVVideoURL specifies the URL of the YouTube video for Google TV.
+	YoutubeGoogleTVVideoURL = "https://youtu.be/g309_g-RF_s"
+	// YoutubeDeveloperKeynoteVideoURL specifies the URL of the YouTube video for Google I/O ‘21.
+	YoutubeDeveloperKeynoteVideoURL = "https://youtu.be/D_mVOAXcrtc"
+	// YoutubeStadiaGDCVideoURL specifies the URL of the YouTube video for Stadia GDC 2019.
+	YoutubeStadiaGDCVideoURL = "https://youtu.be/nUih5C5rOrA"
 
 	// URLs used by ProductivityCUJ.
 

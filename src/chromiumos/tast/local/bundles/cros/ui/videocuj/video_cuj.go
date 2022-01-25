@@ -75,26 +75,26 @@ type videoSrc struct {
 
 var basicVideoSrc = []videoSrc{
 	{
-		cuj.YoutubeThailandVideoURL,
-		"Thailand 4K - Scenic Relaxation Film With Calming Music",
+		cuj.YoutubeGoogleTVVideoURL,
+		"Chris Paul | Watch With Me | Google TV",
 		"1080p",
 	},
 	{
-		cuj.YoutubeNatureVideoURL,
-		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
+		cuj.YoutubeDeveloperKeynoteVideoURL,
+		"Developer Keynote (Google I/O '21) - American Sign Language",
 		"720p60",
 	},
 	{
-		cuj.YoutubeNatureVideoURL,
-		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
+		cuj.YoutubeStadiaGDCVideoURL,
+		"Stadia GDC 2019 Gaming Announcement",
 		"1080p60",
 	},
 }
 
 var plusVideoSrc = []videoSrc{
 	{
-		cuj.YoutubeNatureVideoURL,
-		"8K Videos | Collection of World's nature  UltraHD (120 FPS)",
+		cuj.YoutubeStadiaGDCVideoURL,
+		"Stadia GDC 2019 Gaming Announcement",
 		"2160p60",
 	},
 }
