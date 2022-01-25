@@ -16,6 +16,23 @@
       "message": "+seewaifu@ as tast owner",
       "revId": "ae210ec86c06095e59f792f2dbd139c968289cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ffc646_24ebc1d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-25T18:56:48Z",
+      "side": 1,
+      "message": "LGTM. Please also run tast unit test: \"fast_build.sh -T\". Thanks.",
+      "revId": "ae210ec86c06095e59f792f2dbd139c968289cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
