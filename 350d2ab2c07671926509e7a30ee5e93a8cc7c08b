@@ -34,6 +34,24 @@
       "parentUuid": "6fbfa169_dfefb0be",
       "revId": "350d2ab2c07671926509e7a30ee5e93a8cc7c08b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "134ac7da_cbbc78f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-01-25T18:35:08Z",
+      "side": 1,
+      "message": "Merging to M99 is approved. @alston, can you do another cherry-pick to M99 and leave this M88 cherry-pick pending temporarily?\n\nThanks Jun for the review!",
+      "parentUuid": "9a8549dd_bc7ff000",
+      "revId": "350d2ab2c07671926509e7a30ee5e93a8cc7c08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
