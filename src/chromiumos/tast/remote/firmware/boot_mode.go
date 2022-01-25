@@ -267,9 +267,6 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
 			if err := ms.fwScreenToDevMode(ctx); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
-				if err != nil {
-					return errors.Wrap(err, "determining boot mode after simple reboot")
-				}
 				testing.ContextLogf(ctx, "Warm reset finished, DUT in %s", newMode)
 				transitionToDev = newMode != fwCommon.BootModeDev
 			}
@@ -285,11 +282,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 				return errors.Wrap(err, "moving from firmware screen to dev mode")
 			}
 		} else {
-			// Reconnect to the DUT.
 			testing.ContextLog(ctx, "Reestablishing connection to DUT")
-			connectCtx, cancel := context.WithTimeout(ctx, reconnectTimeout)
-			defer cancel()
-			if err := h.WaitConnect(connectCtx); err != nil {
 				return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 			}
 		}
@@ -310,9 +303,6 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			// menu, so navigate to dev mode, but it that fails, fall through to the next attempt below.
 			if err := ms.fwScreenToDevMode(ctx); err == nil {
 				newMode, err := h.Reporter.CurrentBootMode(ctx)
-				if err != nil {
-					return errors.Wrap(err, "determining boot mode after simple reboot")
-				}
 				testing.ContextLogf(ctx, "Warm reset finished, DUT in %s", newMode)
 				switch newMode {
 				case fwCommon.BootModeDev:
@@ -646,9 +636,11 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, opts ...ModeSw
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
 	}
-	testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
-	if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
-		return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
+	if waitForFwScreen {
+		testing.ContextLogf(ctx, "Sleeping %s (FirmwareScreen)", h.Config.FirmwareScreen)
+		if err := testing.Sleep(ctx, h.Config.FirmwareScreen); err != nil {
+			return errors.Wrapf(err, "sleeping for %s (FirmwareScreen) to wait for INSERT screen", h.Config.FirmwareScreen)
+		}
 	}
 	// Keep pressing the normal mode keys until connected, but wait a little longer for the connect each time.
 	connectTimeout := 2 * time.Second
@@ -734,7 +726,7 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, opts ...ModeSw
 	return nil
 }
 
-// fwScreenToDevMode moves the DUT from the firmware bootup screen to Dev mode.
+// FwScreenToDevMode moves the DUT from the firmware bootup screen to Dev mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
 func (ms *ModeSwitcher) fwScreenToDevMode(ctx context.Context, opts ...ModeSwitchOption) error {
