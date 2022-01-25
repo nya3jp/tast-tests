@@ -1042,6 +1042,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0de423be_d6c1f003",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-25T18:54:00Z",
+      "side": 1,
+      "message": "Added modem status in this page: Anything specific to version? as these are outputs on before and after the mentioned versions on different duts.\n\nhttps://paste.googleplex.com/6441109963145216\n\nPrimarySimSlot: 0 on this device.",
+      "parentUuid": "c2ca7bd0_653bd79d",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75e7a59b_237c9549",
         "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
         "patchSetId": 11
