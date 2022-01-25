@@ -159,6 +159,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),
 			cuj.NewLatencyMetricConfig("Ash.InteractiveWindowResize.TimeToPresent"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.SingleWindow"),
+			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.ClamshellMode.WithOverview"),
 			cuj.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
 				"percent", perf.SmallerIsBetter, []int64{50, 80}, bTconn),
