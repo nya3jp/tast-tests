@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed5d6d05_5c823c18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T14:49:39Z",
+      "side": 1,
+      "message": "I think you accidentally uncommented this in the commit message, you probably want to remove it",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "33a88612_cad6814f",
@@ -14,6 +37,69 @@
       "writtenOn": "2022-01-25T00:13:39Z",
       "side": 1,
       "message": "Updated for Eric\u0027s Review comments and possible bugs found. Thanks Eric.",
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "579a5045_5b44806c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T14:49:39Z",
+      "side": 1,
+      "message": "Great, looks a lot better. Just a few more comments (mostly nits).",
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2889628_c7dc0006",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T14:49:39Z",
+      "side": 1,
+      "message": "nit: For",
+      "range": {
+        "startLine": 289,
+        "startChar": 4,
+        "endLine": 289,
+        "endChar": 7
+      },
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "261105b2_68dcae11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_sim_pin_lock.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T14:49:39Z",
+      "side": 1,
+      "message": "Either uncomment this if we need it or remove it if we don\u0027t",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 5
+      },
       "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

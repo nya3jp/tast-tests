@@ -780,6 +780,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0455c983_6b60b54b",
+        "filename": "src/chromiumos/tast/local/cellular/cellular_helper.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T14:49:39Z",
+      "side": 1,
+      "message": "Sounds good, thanks.",
+      "parentUuid": "c01639bb_c5c59326",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6e39eea_44102eec",
@@ -958,6 +982,30 @@
       "side": 1,
       "message": "Not known other way as index of PrimarySimSlot is different start on these modems.\n\n PrimarySimSlot: 0 on Fibocomm and \n PrimarySimSlot: 1 on Qualcomm\n \n and index of SIM dbus object 0 on both and can not rely on this value as this wont reflect number of slots or slot indexes.",
       "parentUuid": "8dd2b3d0_661d6d11",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d7911c_ba1169df",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T14:49:39Z",
+      "side": 1,
+      "message": "Right, I\u0027m just thinking that this is a problem now because it actually breaks the ModemManager property spec[1] in the Fibocom case:\n\n The \"PrimarySimSlot\" property\n PrimarySimSlot  readable   u\n The index of the primary active SIM slot in the \n org.freedesktop.ModemManager1.Modem.SimSlots array, given in the [1,N] range.\n\n If multiple SIM slots aren\u0027t supported, this property will report value 0.\n \nNotably, we shouldn\u0027t get 0 for the primary slot if there are multiple SIMs here, so this *should* only handle the case where we have one slot, I think. You already handle that one up above, though:\n\n if numSlots \u003c 2 {\n   return primary, nil\n }\n \nSo I think we have a bit of an issue, and your test code is working around something that should really be fixed in MM itself. +Pavan to weigh in on this.\n\n[1] https://www.freedesktop.org/software/ModemManager/api/latest/gdbus-org.freedesktop.ModemManager1.Modem.html#gdbus-property-org-freedesktop-ModemManager1-Modem.SimSlots",
+      "parentUuid": "0c1815cf_64894918",
       "range": {
         "startLine": 495,
         "startChar": 0,
