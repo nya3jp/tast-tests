@@ -22,6 +22,30 @@
       },
       "revId": "3969db0fc4358d05dc333da358f728b71d3c10a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8250572_0cbbed90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-01-25T23:59:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d19dbbdf_f53c7074",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 14
+      },
+      "revId": "3969db0fc4358d05dc333da358f728b71d3c10a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
