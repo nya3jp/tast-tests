@@ -22,6 +22,30 @@
       },
       "revId": "1631f34a43bc11a9e9536558202831c0a0c358f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9440b5a0_cc30489c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_system_test_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-01-25T00:30:04Z",
+      "side": 1,
+      "message": "Does the updated commit message help?",
+      "parentUuid": "c7f2a29b_ba397ca7",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "1631f34a43bc11a9e9536558202831c0a0c358f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
