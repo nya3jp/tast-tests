@@ -1088,6 +1088,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "279fabe6_beb323b6",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-25T21:50:57Z",
+      "side": 1,
+      "message": "In this case not required to do Manufacturer based slot switch. Removed that part.",
+      "parentUuid": "47022ca4_28d11b87",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75e7a59b_237c9549",
