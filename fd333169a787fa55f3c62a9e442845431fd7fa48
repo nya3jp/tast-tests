@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef981baa_2ac9bbd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "Thanks Jeff. LGTM after this batch of comments.",
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2e3572_d60e2bee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "Consider adding _resolution_switch_global_vaapi_lock variants as that\u0027s an important use case.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e83670c_49b1d667",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be here for the h264_1080p_60fps variant.",
+      "range": {
+        "startLine": 36,
+        "startChar": 75,
+        "endLine": 36,
+        "endChar": 102
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c6e84c9_5c8396fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be here for the vp8_1080p_60fps variant.",
+      "range": {
+        "startLine": 61,
+        "startChar": 52,
+        "endLine": 61,
+        "endChar": 79
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25fa4758_5d540c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "nit: To be consistent with the naming in the other files, this should be videoDecodeAccelVdTestParams. However, I\u0027d prefer it if you shortened the other names instead (e.g., decodeAccelTestParams).\n\nAlso, use *Params (as opposed to *Param) for consistency.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae50d237_62f648f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "Add a variant for this as well.",
+      "range": {
+        "startLine": 44,
+        "startChar": 23,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988f1b09_186a9bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "Add _resolution_switch_global_vaapi_lock_disabled variants as well.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9d2903_bc43ef61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "nit: Shorten to MakeTestOptionsWithNoGlobalVaapiLock().",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 50
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98ab3c0_6d3300cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "nit: Move to above the vp8_2160p variant to try to keep an ordering by resolution.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 6
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d94aeea_5ba1ef20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "nit: Similarly, move to above the vp9_2160p variant.",
+      "range": {
+        "startLine": 235,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 78
+      },
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60dac467_c9763cc0",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "nit:\n\n  3. If the global VA-API lock should be disabled.",
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab7309e8_cf0f4ce5",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-01-25T04:37:23Z",
+      "side": 1,
+      "message": "nit:\n\n  3. If the global VA-API lock should be disabled.",
+      "revId": "fd333169a787fa55f3c62a9e442845431fd7fa48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
