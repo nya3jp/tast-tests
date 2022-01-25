@@ -126,13 +126,19 @@ func testBlockCameraFeature(ctx context.Context, cr *chrome.Chrome, scripts []st
 
 	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
 	blockedWindowFinder := nodewith.Role(role.Window).Name("Camera is blocked")
-	okButtonFinder := nodewith.Role(role.Button).Name("OK")
-	err = uiauto.Combine("Check and close blocked window",
-		ui.WaitUntilExists(blockedWindowFinder),
-		ui.LeftClick(okButtonFinder))(ctx)
-	if err != nil {
+
+	if err = ui.WaitUntilExists(blockedWindowFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed to check and close blocked window")
 	}
+
+	if err = kb.Accel(ctx, "Enter"); err != nil {
+		return errors.Wrap(err, "failed to press Enter to close camera warning dialog")
+	}
+
+	if err = ui.WaitUntilGone(blockedWindowFinder)(ctx); err != nil {
+		return errors.Wrap(err, "failed to close camera warning dialog. This might potentially effect later tests")
+	}
+
 	return nil
 }
 
