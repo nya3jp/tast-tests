@@ -16,6 +16,24 @@
       "message": "Hi there,\n\nI did not find another way to reliably close the message box other than pressing \u003cEnter\u003e. It works fine using a physical mouse but LeftClick does not work.\n\nThanks for reviewing!",
       "revId": "04b736a4706356693618ef5ef909c0d79e9a3500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b98b3e39_cdbb6f4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-01-25T07:02:51Z",
+      "side": 1,
+      "message": "Thanks for identifying this issue and the fix.",
+      "parentUuid": "be557c56_702629e2",
+      "revId": "04b736a4706356693618ef5ef909c0d79e9a3500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
