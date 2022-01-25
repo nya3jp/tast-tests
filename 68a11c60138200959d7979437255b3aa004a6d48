@@ -50,6 +50,57 @@
       "message": "Hello People! We would really appreciate owners review on this patch. This test is a replacement of deprecated test, we lost critical coverage and it is very important to get this coverage back. Thank you!",
       "revId": "68a11c60138200959d7979437255b3aa004a6d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1099e93e_7f45b4fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-25T01:30:47Z",
+      "side": 1,
+      "message": "optional: In case of an error, I suggest including err in the message, if it contains useful information in case of error. Same for all other calls to Command.",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa1e0e05_b1c4ab9a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-25T01:30:47Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log\nI think these %s are redundant, as they are already logged by line 80, unless this function is called with multiple args in parallel.\nAlso, how about omitting this line, because when this was success, it is often obvious by the log by other subsequent log lines (e.g. error in next step)?",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4b5810_a149f8c9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-25T01:30:47Z",
+      "side": 1,
+      "message": "Is it OK to return (0, 0) and the caller continue processing?",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
