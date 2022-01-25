@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fbfa169_dfefb0be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-25T09:03:50Z",
+      "side": 1,
+      "message": "Hi @abgerman, this is a cherrypick to beta. Can you please confirm if this is a necessary cherrypick?",
+      "revId": "350d2ab2c07671926509e7a30ee5e93a8cc7c08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
