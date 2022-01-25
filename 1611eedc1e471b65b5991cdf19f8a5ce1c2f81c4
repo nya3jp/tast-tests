@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb365c02_ccfb4f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_secondary_profiles_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-01-25T12:33:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138a5704_aba4ef67",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 88
+      },
+      "revId": "1611eedc1e471b65b5991cdf19f8a5ce1c2f81c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c02c1dbf_27cc29cc",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-01-25T09:24:01Z",
       "side": 1,
       "message": "If you use Errorf it will not stop the execution of the subtest, hence we will have two assertions checked.",
+      "range": {
+        "startLine": 120,
+        "startChar": 6,
+        "endLine": 120,
+        "endChar": 12
+      },
+      "revId": "1611eedc1e471b65b5991cdf19f8a5ce1c2f81c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "455c4d52_a13a237e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_secondary_profiles_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-01-25T12:33:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c02c1dbf_27cc29cc",
       "range": {
         "startLine": 120,
         "startChar": 6,
