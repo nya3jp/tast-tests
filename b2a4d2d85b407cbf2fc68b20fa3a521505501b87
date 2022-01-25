@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bee73834_367bb1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-01-25T18:21:30Z",
+      "side": 1,
+      "message": "we don\u0027t add our CUJ tests to mainline or any other groups. We should delete thhis line @alston",
+      "parentUuid": "6423d108_41e25045",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 57
+      },
+      "revId": "b2a4d2d85b407cbf2fc68b20fa3a521505501b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4affdeb_eadc9c16",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj/frontline_worker_cuj.go",
         "patchSetId": 7
