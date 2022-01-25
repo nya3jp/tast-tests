@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/syzcorpus/bin_sound_x86_64_20220125.zip",
+  "size": 13097090,
+  "sha256sum": "b104afdccfaa5f5c20965b545954e6d911859612f0bfe148dfdcc8918117b561"
+}
