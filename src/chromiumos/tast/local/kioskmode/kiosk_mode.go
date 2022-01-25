@@ -114,6 +114,7 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 	const (
 		kioskStarting        = "Starting kiosk mode"
 		kioskLaunchSucceeded = "Kiosk launch succeeded"
+		kioskSplashClosing   = "App window created, closing splash screen"
 
 		// logScanTimeout is a timeout for log messages indicating Kiosk startup
 		// and successful launch to be present. It is set to over a minute as Kiosk
@@ -136,6 +137,15 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 		},
 	); err != nil {
 		return errors.Wrap(err, "failed to verify successful launch of Kiosk mode")
+	}
+
+	testing.ContextLog(ctx, "Waiting for splash screen to close")
+	if _, err := reader.Wait(ctx, logScanTimeout,
+		func(e *syslog.Entry) bool {
+			return strings.Contains(e.Content, kioskSplashClosing)
+		},
+	); err != nil {
+		return errors.Wrap(err, "failed to verify closing of splash screen")
 	}
 	return nil
 }
