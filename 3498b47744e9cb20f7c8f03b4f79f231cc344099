@@ -16,6 +16,23 @@
       "message": "Thanks! Still LGTM!",
       "revId": "3498b47744e9cb20f7c8f03b4f79f231cc344099",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f171287_32afadd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-25T18:06:16Z",
+      "side": 1,
+      "message": "Please also run tast unit test: fast_build.sh -T\n\nThanks.",
+      "revId": "3498b47744e9cb20f7c8f03b4f79f231cc344099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
