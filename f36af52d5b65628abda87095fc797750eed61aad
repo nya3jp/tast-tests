@@ -16,6 +16,23 @@
       "message": "Thank you for the quick review! ",
       "revId": "f36af52d5b65628abda87095fc797750eed61aad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebdb2f1e_24d81661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-25T22:57:39Z",
+      "side": 1,
+      "message": "Hey Kamil,\nCould you, please, review this changes? ",
+      "revId": "f36af52d5b65628abda87095fc797750eed61aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
