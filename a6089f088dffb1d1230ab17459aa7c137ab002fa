@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e13fb42_b607a7bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-25T11:29:14Z",
+      "side": 1,
+      "message": "Cool. Didn\u0027t know this only worked for ash browser. How does one reset the Lacros browser? Is it done as part of the fixture?",
+      "parentUuid": "234ce42c_6328a160",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2ec2779_3a9e2e3a",
