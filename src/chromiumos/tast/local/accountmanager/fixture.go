@@ -19,6 +19,9 @@ import (
 const resetTimeout = 30 * time.Second
 
 func init() {
+	// Verify that *FixtureData implements lacrosfixt.FixtValue interface.
+	var _ lacrosfixt.FixtValue = &FixtureData{}
+
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToChromeAndArc",
 		Desc: "Logged in using real Gaia account. ARC is booted with disabling sync flags",

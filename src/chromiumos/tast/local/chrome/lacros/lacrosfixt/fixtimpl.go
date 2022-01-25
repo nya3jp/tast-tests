@@ -23,6 +23,9 @@ import (
 const LacrosDeployedBinary = "lacrosDeployedBinary"
 
 func init() {
+	// Verify that *fixtValueImpl implements FixtValue interface.
+	var _ FixtValue = &fixtValueImpl{}
+
 	// lacros uses rootfs lacros, which is the recommend way to use lacros
 	// in Tast tests, unless you have a specific use case for using lacros from
 	// another source.
