@@ -16,6 +16,40 @@
       "message": "LGTM, thanks!",
       "revId": "05f28614ba084171d4d591c4301e8ed50158fe0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ff2963_6b86325d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-25T16:31:16Z",
+      "side": 1,
+      "message": "Can you change `crosbolt_perbuild` to `crosbolt_nightly` like I did in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3404572 ? That will give more frequent results.",
+      "revId": "05f28614ba084171d4d591c4301e8ed50158fe0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afd201d_81f33df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappgameperf/roblox_login.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-25T16:31:16Z",
+      "side": 1,
+      "message": "Can you rebase to head, remove this line, and replace the `HardwareDeps` with: `HardwareDeps: hwdep.D(hwdep.Model(testutil.ModelsToTest()...))`? That will give better data now that https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3404575 has landed.",
+      "revId": "05f28614ba084171d4d591c4301e8ed50158fe0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
