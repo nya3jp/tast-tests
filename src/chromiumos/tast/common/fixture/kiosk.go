@@ -6,8 +6,10 @@ package fixture
 
 // Fixtures defined in chromiumos/tast/local/kioskmode/fixtures/kiosk.go.
 const (
-	// KioskLoggedIn
-	KioskLoggedIn = "kioskLoggedIn"
+	// KioskLoggedInAsh
+	KioskLoggedInAsh = "kioskLoggedInAsh"
+	// KioskLoggedInLacros
+	KioskLoggedInLacros = "kioskLoggedInLacros"
 	// KioskAutoLaunchCleanup is a fixture name.
 	KioskAutoLaunchCleanup = "kioskAutoLaunchCleanup"
 )

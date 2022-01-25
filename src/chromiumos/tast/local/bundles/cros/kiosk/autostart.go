@@ -18,11 +18,19 @@ func init() {
 		Desc:         "Checks that Kiosk configuration starts when set to autologin",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
+			"irfedorova@google.com",  // Lacros test author
 			"chromeos-kiosk-eng+TAST@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.KioskLoggedIn,
+		Params: []testing.Param{{
+			Name:    "ash",
+			Fixture: fixture.KioskLoggedInAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.KioskLoggedInLacros,
+		}},
 	})
 }
 
