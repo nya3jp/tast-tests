@@ -46,7 +46,7 @@ const (
 
 func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 	cleanUpCtx := ctx
-	// 30 seconds should be enough for all clean up operations
+	// 30 seconds should be enough for all clean up operations.
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
@@ -54,9 +54,13 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 
 	const restrictSignInOption = "Restrict sign-in to the following users:"
 
-	// non-owner should not be able to remove users
+	// Non-owner should not be able to remove users.
 	func() {
-		cr, settings, _ := openSettingsInSession(ctx, cleanUpCtx, s, additionalUser2, commonPassword, restrictSignInOption)
+		cr, err := userutil.Login(ctx, additionalUser2, commonPassword)
+		if err != nil {
+			s.Fatal("Failed to log in as non-owner user: ", err)
+		}
+		settings, _ := openSettingsInSession(ctx, cleanUpCtx, s, cr, restrictSignInOption)
 		defer cr.Close(cleanUpCtx)
 		defer settings.Close(cleanUpCtx)
 
@@ -69,9 +73,23 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// device owner should be able to delete other users, but not self
+	// Device owner should be able to delete other users, but not self.
 	func() {
-		cr, settings, ui := openSettingsInSession(ctx, cleanUpCtx, s, deviceOwner, commonPassword, restrictSignInOption)
+		cr, err := userutil.Login(ctx, deviceOwner, commonPassword)
+		if err != nil {
+			s.Fatal("Failed to log in as device owner: ", err)
+		}
+		if err := userutil.WaitForOwnership(ctx, cr); err != nil {
+			s.Fatal("User did not become device owner: ", err)
+		}
+
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Creating login test API connection failed: ", err)
+		}
+		defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tconn)
+
+		settings, ui := openSettingsInSession(ctx, cleanUpCtx, s, cr, restrictSignInOption)
 		defer cr.Close(cleanUpCtx)
 		defer settings.Close(cleanUpCtx)
 
@@ -79,7 +97,7 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to show the list of users: ", err)
 		}
 
-		// remove a non-owner user
+		// Remove a non-owner user.
 		removeButtonName := "Remove " + getUsernameFromEmail(additionalUser1)
 
 		if err := uiauto.Combine("remove a non-owner user",
@@ -90,13 +108,16 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 			s.Fatal("Deletion failed: ", err)
 		}
 
-		// it shouldn't be possible to remove the owner
+		// It shouldn't be possible to remove the owner.
 		if err := ui.Gone(nodewith.Name("Remove " + getUsernameFromEmail(deviceOwner)).Role(role.Button))(ctx); err != nil {
 			s.Fatal("Didn't expect to find remove button for device owner: ", err)
 		}
 
-		// check if the user has been removed properly, and that the device owher is still there
-		knownEmails := userutil.GetKnownEmailsFromLocalState(s)
+		// Check if the user has been removed properly, and that the device owher is still there.
+		knownEmails, err := userutil.GetKnownEmailsFromLocalState()
+		if err != nil {
+			s.Fatal("Failed to get known emails from local state: ", err)
+		}
 
 		if knownEmails[additionalUser1] {
 			s.Fatal("Removed user is still in LoggedInUsers list")
@@ -105,7 +126,7 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 			s.Fatal("Device owner is not in LoggedInUsers list")
 		}
 
-		// cryptohome of a deleted user should not exist
+		// Cryptohome of a deleted user should not exist.
 		cryptohomeFileInfo, err := getCryptohomeFileInfo(ctx, s, additionalUser1)
 		if err == nil {
 			s.Fatalf("Cryptohome directory for %s still exists", additionalUser1)
@@ -113,7 +134,7 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 			s.Fatal("Unexpected error: ", err)
 		}
 
-		// cryptohome of the device owher should be available
+		// Cryptohome of the device owher should be available.
 		cryptohomeFileInfo, err = getCryptohomeFileInfo(ctx, s, deviceOwner)
 		if err != nil {
 			s.Fatalf("Cryptohome directory for %s could not be accessed: %v", deviceOwner, err)
@@ -122,7 +143,7 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// go back to the login screen and check user pods
+	// Go back to the login screen and check user pods.
 	cr, err := chrome.New(
 		ctx,
 		chrome.NoLogin(),
@@ -142,7 +163,7 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// pods of device owner and one of the other users should be available
+	// Pods of device owner and one of the other users should be available.
 	if err := ui.WaitUntilExists(nodewith.Name(deviceOwner).Role(role.Button))(ctx); err != nil {
 		s.Fatal("Failed to wait for user pod to be available: ", err)
 	}
@@ -150,7 +171,7 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for user pod to be available: ", err)
 	}
 
-	// there should be no pod for the user that was removed earlier
+	// There should be no pod for the user that was removed earlier.
 	userPodFound, err := ui.IsNodeFound(ctx, nodewith.Name(additionalUser1).Role(role.Button))
 	if err != nil {
 		s.Fatal("Failed to lookup user pod: ", err)
@@ -161,31 +182,37 @@ func RemoveUsersExceptOwner(ctx context.Context, s *testing.State) {
 }
 
 func setupUsers(ctx, cleanUpCtxs context.Context, s *testing.State) {
-	userutil.CreateUser(ctx, cleanUpCtxs, s, deviceOwner, commonPassword)
+	// For the device owner we wait until their ownership has been established.
+	if err := userutil.CreateDeviceOwner(ctx, cleanUpCtxs, deviceOwner, commonPassword); err != nil {
+		s.Fatal("Failed to create device owner: ", err)
+	}
 
-	userutil.CreateUser(ctx, cleanUpCtxs, s, additionalUser1, commonPassword, chrome.KeepState())
-	userutil.CreateUser(ctx, cleanUpCtxs, s, additionalUser2, commonPassword, chrome.KeepState())
+	// For other users we don't need to wait for anything.
+	if err := userutil.CreateUser(ctx, cleanUpCtxs, additionalUser1, commonPassword, chrome.KeepState()); err != nil {
+		s.Fatal("Failed to create new user: ", err)
+	}
+	if err := userutil.CreateUser(ctx, cleanUpCtxs, additionalUser2, commonPassword, chrome.KeepState()); err != nil {
+		s.Fatal("Failed to create new user: ", err)
+	}
 }
 
 func getUsernameFromEmail(email string) string {
 	return email[:strings.IndexByte(email, '@')]
 }
 
-func openSettingsInSession(ctx, cleanUpCtxs context.Context, s *testing.State, loginUser, password, restrictSignInOption string) (*chrome.Chrome, *ossettings.OSSettings, *uiauto.Context) {
-	cr := userutil.Login(ctx, s, loginUser, password)
-
+func openSettingsInSession(ctx, cleanUpCtx context.Context, s *testing.State, cr *chrome.Chrome, restrictSignInOption string) (*ossettings.OSSettings, *uiauto.Context) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating login test API connection failed: ", err)
 	}
-	defer faillog.DumpUITreeOnError(cleanUpCtxs, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(cleanUpCtx, s.OutDir(), s.HasError, tconn)
 
-	// display the list of users
+	// Display the list of users.
 	ui := uiauto.New(tconn)
 
 	const subsettingsName = "Manage other people"
 
-	// open settings, Manage Other People
+	// Open settings, Manage Other People.
 	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "osPrivacy", ui.WaitUntilExists(nodewith.Name(subsettingsName)))
 	if err != nil {
 		s.Fatal("Failed to connect to the settings page: ", err)
@@ -199,7 +226,7 @@ func openSettingsInSession(ctx, cleanUpCtxs context.Context, s *testing.State, l
 		s.Fatal("Failed to wait for the toggle to show the list of users: ", err)
 	}
 
-	return cr, settings, ui
+	return settings, ui
 }
 
 func getCryptohomeFileInfo(ctx context.Context, s *testing.State, user string) (os.FileInfo, error) {
