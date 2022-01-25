@@ -22,7 +22,13 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      fixture.KioskLoggedIn,
+		Params: []testing.Param{{
+			Fixture: fixture.KioskLoggedIn,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.KioskLoggedInLacros,
+		}},
 	})
 }
 

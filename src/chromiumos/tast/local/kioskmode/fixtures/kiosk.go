@@ -40,6 +40,22 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.KioskLoggedInLacros,
+		Desc:     "Kiosk mode started with default app setup, DUT is enrolled and Lacros enabled",
+		Contacts: []string{"irfedorova@google.com", "kamilszarek@google.com", "alt-modalities-stability@google.com"},
+		Impl: &kioskFixture{
+			autoLaunchKioskAppID: kioskmode.WebKioskAccountID,
+			localAccounts:        &kioskmode.DefaultLocalAccountsConfiguration,
+			extraOpts:            []chrome.Option{chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore")},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.FakeDMSEnrolled,
+	})
 }
 
 type kioskFixture struct {

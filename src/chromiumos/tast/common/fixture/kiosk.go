@@ -8,6 +8,8 @@ package fixture
 const (
 	// KioskLoggedIn
 	KioskLoggedIn = "kioskLoggedIn"
+	// KioskLoggedInLacros
+	KioskLoggedInLacros = "kioskLoggedInLacros"
 	// KioskAutoLaunchCleanup is a fixture name.
 	KioskAutoLaunchCleanup = "kioskAutoLaunchCleanup"
 )
