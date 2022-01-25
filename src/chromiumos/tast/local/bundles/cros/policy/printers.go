@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/printmanagementapp"
+	"chromiumos/tast/local/chrome/uiauto/printpreview"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -36,14 +37,24 @@ func init() {
 			"project-bolton@google.com",
 			"chromeos-commercial-remote-management@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "lacros"},
+		SoftwareDeps: []string{"chrome"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",
 			"paper-io_printing",
 			"informational",
 		},
-		Fixture: fixture.LacrosPolicyLoggedIn,
+		Params: []testing.Param{
+			{
+				Fixture: fixture.ChromePolicyLoggedIn,
+				Val:     browser.TypeAsh,
+			}, {
+				Name:              "lacros",
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val:               browser.TypeLacros,
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
@@ -57,11 +68,14 @@ func Printers(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	browserType := s.Param().(browser.Type)
+
 	printerName := "Water Cooler Printer"
+	printerDescription := "The printer next to the water cooler"
 	printersPolicy := &policy.Printers{Val: []string{
 		fmt.Sprintf(`{
 			"display_name": "%s",
-			"description": "The printer next to the water cooler.",
+			"description": "%s",
 			"manufacturer": "Printer Manufacturer",
 			"model": "Color Laser 2004",
 			"uri": "lpd://localhost:9100",
@@ -70,14 +84,14 @@ func Printers(ctx context.Context, s *testing.State) {
 				"effective_model": "generic pcl 6/pcl xl printer pxlcolor",
 				"autoconf": false
 			}
-		}`, printerName)}}
+		}`, printerName, printerDescription)}}
 
 	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{printersPolicy}); err != nil {
 		s.Fatal("Failed to update policies: ", err)
 	}
 
 	// TODO(crbug.com/1259615): This should be part of the fixture.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeLacros)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browserType)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
@@ -107,15 +121,50 @@ func Printers(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	ui := uiauto.New(tconn)
-	if err := uiauto.Combine("select the printer and print",
+	if err := uiauto.Combine("open print preview",
 		kb.AccelAction("Ctrl+P"),
-		ui.WaitUntilExists(nodewith.Role(role.Window).Name("Print").ClassName("RootView")),
-		ui.LeftClick(nodewith.Role(role.PopUpButton).NameStartingWith("Destination")),
-		ui.LeftClick(nodewith.Role(role.MenuItem).Name("See more destinations")),
-		ui.LeftClick(nodewith.Role(role.Cell).NameStartingWith(printerName)),
-		ui.LeftClick(nodewith.Role(role.Button).Name("Print")),
+		printpreview.WaitForPrintPreview(tconn),
 	)(ctx); err != nil {
-		s.Fatal("Failed to select printer in print destination popup and print: ", err)
+		s.Fatal("Failed to open print preview: ", err)
+	}
+
+	if err := printpreview.SelectPrinter(ctx, tconn, fmt.Sprintf("%s %s", printerName, printerDescription)); err != nil {
+		s.Fatal("Failed to select printer: ", err)
+	}
+
+	if err := printpreview.SetPages(ctx, tconn, "1"); err != nil {
+		s.Fatal("Failed to set pages: ", err)
+	}
+
+	if err := printpreview.SetLayout(ctx, tconn, printpreview.Layout(printpreview.Landscape)); err != nil {
+		s.Fatal("Failed to set pages: ", err)
+	}
+
+	if err := uiauto.Combine("configure additional print options",
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Color")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Black and white")),
+		// Configure more settings
+		ui.LeftClick(nodewith.Role(role.Button).Name("More settings")),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Paper size")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("A5")),
+		// Setting 'Pages per sheet' will disable the 'Margins' option, thus set
+		// 'Margins' first.
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Margins")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Minimum")),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Pages per sheet")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("2")),
+		// We need to make the dropdown visible before opening it, otherwise the
+		// dropdown options cannot be accessed.
+		ui.MakeVisible(nodewith.Role(role.PopUpButton).Name("Scale")),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Scale")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Custom")),
+		ui.LeftClick(nodewith.Role(role.CheckBox).Name("Background graphics")),
+	)(ctx); err != nil {
+		s.Fatal("Failed to configure additional print options: ", err)
+	}
+
+	if err := printpreview.Print(ctx, tconn); err != nil {
+		s.Fatal("Failed to print: ", err)
 	}
 
 	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
