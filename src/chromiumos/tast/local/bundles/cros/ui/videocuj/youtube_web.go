@@ -22,7 +22,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const mouseMoveDuration = 500 * time.Millisecond
+const (
+	mouseMoveDuration = 500 * time.Millisecond
+	shortUITimeout    = 5 * time.Second
+)
 
 var (
 	videoPlayer = nodewith.NameStartingWith("YouTube Video Player").Role(role.GenericContainer)
@@ -74,7 +77,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	// If prompted to open in YouTube app, instruct device to stay in Chrome.
 	stayInChrome := nodewith.Name("Stay in Chrome").Role(role.Button)
 	if err := y.ui.IfSuccessThen(
-		y.ui.WithTimeout(5*time.Second).WaitUntilExists(stayInChrome),
+		y.ui.WithTimeout(shortUITimeout).WaitUntilExists(stayInChrome),
 		func(ctx context.Context) error {
 			testing.ContextLog(ctx, "dialog popped up and asked whether to switch to YouTube app")
 			rememberMyChoice := nodewith.Name("Remember my choice").Role(role.CheckBox)
@@ -213,8 +216,25 @@ func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
 
 // SkipAd skips the ad.
 func (y *YtWeb) SkipAd() uiauto.Action {
-	skipAdButton := nodewith.NameStartingWith("Skip Ad").Role(role.Button)
-	return y.ui.IfSuccessThen(y.ui.WaitUntilExists(skipAdButton), y.uiHdl.Click(skipAdButton))
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Checking for YouTube ads")
+
+		adText := nodewith.NameContaining("Ad").Role(role.StaticText).Ancestor(videoPlayer).First()
+		skipAdButton := nodewith.NameStartingWith("Skip Ad").Role(role.Button)
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			if err := y.ui.WithTimeout(shortUITimeout).WaitUntilExists(adText)(ctx); err != nil {
+				testing.ContextLog(ctx, "No ads found")
+				return nil
+			}
+			if err := y.ui.Exists(skipAdButton)(ctx); err != nil {
+				return errors.Wrap(err, "'Skip Ads' button not available yet")
+			}
+			if err := y.uiHdl.Click(skipAdButton)(ctx); err != nil {
+				return errors.Wrap(err, "failed to click 'Skip Ads'")
+			}
+			return errors.New("have not determined whether the ad has been skipped successfully")
+		}, &testing.PollOptions{Timeout: time.Minute})
+	}
 }
 
 // PauseAndPlayVideo verifies video playback on youtube web.
@@ -372,8 +392,8 @@ func (y *YtWeb) getCurrentTime(ctx context.Context) (int, error) {
 func clearNotificationPrompts(ctx context.Context, ui *uiauto.Context, uiHdl cuj.UIActionHandler, prompts ...string) {
 	for _, name := range prompts {
 		tartgetPrompt := nodewith.Name(name).Role(role.Button)
-		if err := ui.WithTimeout(15*time.Second).IfSuccessThen(
-			ui.WithTimeout(3*time.Second).WaitUntilExists(tartgetPrompt),
+		if err := ui.IfSuccessThen(
+			ui.WithTimeout(shortUITimeout).WaitUntilExists(tartgetPrompt),
 			uiHdl.ClickUntil(tartgetPrompt, ui.WithTimeout(2*time.Second).WaitUntilGone(tartgetPrompt)),
 		)(ctx); err != nil {
 			testing.ContextLogf(ctx, "Failed to clear prompt %q", name)

@@ -40,7 +40,7 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_youtube_web",
-				Timeout: 10 * time.Minute,
+				Timeout: 12 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeWeb,
@@ -56,7 +56,7 @@ func init() {
 				},
 			}, {
 				Name:    "plus_youtube_web",
-				Timeout: 10 * time.Minute,
+				Timeout: 12 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Plus,
 					app:  videocuj.YoutubeWeb,

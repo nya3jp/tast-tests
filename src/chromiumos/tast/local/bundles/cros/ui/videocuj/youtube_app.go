@@ -405,15 +405,19 @@ func (y *YtApp) skipAds(ctx context.Context) error {
 		return nil
 	}
 
-	testing.ContextLog(ctx, "Checking for YouTube ads")
-	visitAdvertiserBtn := y.d.Object(androidui.Text("Visit advertiser"))
-	skipAdsID := youtubePkg + ":id/skip_ad_button"
+	const (
+		visitAdvertiserText = "Visit advertiser"
+		skipAdsID           = youtubePkg + ":id/skip_ad_button"
+	)
+
+	visitAdvertiserBtn := y.d.Object(androidui.Text(visitAdvertiserText))
 	skipAdsBtn := y.d.Object(androidui.ID(skipAdsID))
+
+	testing.ContextLog(ctx, "Checking for YouTube ads")
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := visitAdvertiserBtn.WaitForExists(ctx, uiWaitTime); err != nil && androidui.IsTimeout(err) {
 			return nil
 		}
-
 		if err := skipAdsBtn.Exists(ctx); err != nil {
 			return errors.Wrap(err, "'Skip ads' button not available yet")
 		}
@@ -421,7 +425,7 @@ func (y *YtApp) skipAds(ctx context.Context) error {
 			return errors.Wrap(err, "failed to click 'Skip ads'")
 		}
 		return errors.New("have not determined whether the ad has been skipped successfully")
-	}, &testing.PollOptions{Interval: 100 * time.Millisecond, Timeout: 30 * time.Second})
+	}, &testing.PollOptions{Timeout: time.Minute})
 }
 
 // Close closes the resources related to video.
