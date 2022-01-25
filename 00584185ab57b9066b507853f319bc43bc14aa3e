@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50b5d6f6_50bc1bcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-25T11:44:01Z",
+      "side": 1,
+      "message": "Good point!",
+      "parentUuid": "d2eccb13_ba6d2a14",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "00584185ab57b9066b507853f319bc43bc14aa3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d738dd79_55d1c8b7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-25T11:29:14Z",
       "side": 1,
       "message": "nit: a bit shorter:\n\nfailed to check existence of the printer in print destination popup",
+      "range": {
+        "startLine": 120,
+        "startChar": 28,
+        "endLine": 120,
+        "endChar": 123
+      },
+      "revId": "00584185ab57b9066b507853f319bc43bc14aa3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f5d016_835c02e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-25T11:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d738dd79_55d1c8b7",
       "range": {
         "startLine": 120,
         "startChar": 28,

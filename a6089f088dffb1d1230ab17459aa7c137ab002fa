@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a818ed6a_fbc38259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-25T11:44:01Z",
+      "side": 1,
+      "message": "Oh, I just realized that I initially missed your comment about removing the ResetChrome() call, sorry for that, it is removed now.",
+      "parentUuid": "1e13fb42_b607a7bf",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "a6089f088dffb1d1230ab17459aa7c137ab002fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2ec2779_3a9e2e3a",
