@@ -39,6 +39,30 @@
       },
       "revId": "b8e11dc48568510c51c62b133d3e3436353c473f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7633d3fb_ead89d76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/logout.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-25T02:30:49Z",
+      "side": 1,
+      "message": "Fixed, sorry for not being cautious.",
+      "parentUuid": "6727166b_0c324401",
+      "range": {
+        "startLine": 37,
+        "startChar": 25,
+        "endLine": 37,
+        "endChar": 47
+      },
+      "revId": "b8e11dc48568510c51c62b133d3e3436353c473f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
