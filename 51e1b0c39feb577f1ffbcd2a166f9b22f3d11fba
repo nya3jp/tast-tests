@@ -16,6 +16,23 @@
       "message": "This worked in mainlab: https://ci.chromium.org/ui/p/chromeos/builders/test_runner/test_runner/b8824049975222069233/overview\n\nFlashing USB stick\n```\n01/25 08:23:57.001 INFO |             utils:0304| [stdout] [16:23:57.001] Current build on USB (grunt-release/R100-14476.0.0) differs from DUT (grunt-release-tryjob/R100-14471.0.0-b5095354), proceed with download\n01/25 08:23:57.003 INFO |             utils:0304| [stdout] [16:23:57.003] Devserver status: [[http://100.115.220.100:8082 UP] [http://100.115.220.101:8082 UP] [http://100.115.220.103:8082 UP] [http://100.115.220.104:8082 UP] [http://100.115.220.105:8082 UP] [http://100.115.220.108:8082 UP] [http://100.115.220.109:8082 UP] [http://100.115.220.112:8082 UP]]\n01/25 08:23:57.005 INFO |             utils:0304| [stdout] [16:23:57.005] Downloading gs://chromeos-image-archive/grunt-release-tryjob/R100-14471.0.0-b5095354/chromiumos_test_image.tar.xz via http://100.115.220.104:8082 (already staged)\n01/25 08:23:57.005 INFO |             utils:0304| [stdout] [16:23:57.005] Flashing test OS image to USB\n01/25 08:40:22.591 INFO |             utils:0304| [stdout] [16:40:22.591] Flash finished. Output \u003d \n```",
       "revId": "51e1b0c39feb577f1ffbcd2a166f9b22f3d11fba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ec575d_5d0b0318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-25T20:58:08Z",
+      "side": 1,
+      "message": "This worked in satlab: https://ci.chromium.org/ui/p/chromeos/builders/testplatform/cros_test_platform/b8824043140688996449/overview\n\n```\n01/25 10:30:23.877 INFO |             utils:0304| [stdout] [18:30:23.876] Current build on USB (grunt-release-tryjob/R99-14449.0.0-b5086915) differs from DUT (grunt-release-tryjob/R100-14471.0.0-b5095354), proceed with download\n01/25 10:30:23.881 INFO |             utils:0304| [stdout] [18:30:23.879] Devserver status: [[http://192.168.100.1:8082 UP]]\n01/25 10:30:23.882 INFO |             utils:0304| [stdout] [18:30:23.881] Downloading gs://chromeos-image-archive/grunt-release-tryjob/R100-14471.0.0-b5095354/chromiumos_test_image.tar.xz via http://192.168.100.1:8082 (already staged)\n01/25 10:30:23.883 INFO |             utils:0304| [stdout] [18:30:23.881] Flashing test OS image to USB\n01/25 10:30:23.884 INFO |             utils:0304| [stdout] [18:30:23.881] Running docker command [sh -c wget -O - \u0027http://192.168.100.1:8082/static/grunt-release-tryjob/R100-14471.0.0-b5095354/chromiumos_test_image.tar.xz?gs_bucket\u003dchromeos-image-archive\u0027 | tar -JxOf - | dd of\u003d/dev/sda bs\u003d1M iflag\u003dfullblock conv\u003dnocreat,fsync]\n01/25 10:47:40.311 INFO |             utils:0304| [stdout] Got global error: connection to test bundle broken: rpc error: code \u003d ResourceExhausted desc \u003d grpc: received message larger than max (5412025 vs. 4194304)\n01/25 10:47:40.311 INFO |             utils:0304| [stdout] [18:47:40.311] Error: Got global error: connection to test bundle broken: rpc error: code \u003d ResourceExhausted desc \u003d grpc: received message larger than max (5412025 vs. 4194304)\n01/25 10:47:40.311 INFO |             utils:0304| [stdout] [18:47:40.311] Error: Test did not finish\n```\n\nThe USB stick booted in the 2nd test, so the flash did succeed, I need to track down that rpc error, but I suspect it is unrelated.",
+      "revId": "51e1b0c39feb577f1ffbcd2a166f9b22f3d11fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
