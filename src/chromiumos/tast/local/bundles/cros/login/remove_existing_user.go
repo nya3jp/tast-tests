@@ -55,9 +55,15 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 20*time.Second)
 	defer cancel()
 
-	userutil.CreateUser(ctx, cleanUpCtx, s, user1, password)
-	userutil.CreateUser(ctx, cleanUpCtx, s, user2, password, chrome.KeepState())
-	userutil.CreateUser(ctx, cleanUpCtx, s, user3, password, chrome.KeepState())
+	if err := userutil.CreateUser(ctx, cleanUpCtx, user1, password); err != nil {
+		s.Fatal("Failed to create new user: ", err)
+	}
+	if err := userutil.CreateUser(ctx, cleanUpCtx, user2, password, chrome.KeepState()); err != nil {
+		s.Fatal("Failed to create new user: ", err)
+	}
+	if err := userutil.CreateUser(ctx, cleanUpCtx, user3, password, chrome.KeepState()); err != nil {
+		s.Fatal("Failed to create new user: ", err)
+	}
 
 	removeUsersOnLoginScreen(ctx, cleanUpCtx, s, user1, user3)
 
@@ -73,10 +79,14 @@ func RemoveExistingUser(ctx context.Context, s *testing.State) {
 	defer cr.Close(cleanUpCtx)
 
 	// Check that there is no user3 in LoggedInUsers list.
-	knownEmails := userutil.GetKnownEmailsFromLocalState(s)
+	knownEmails, err := userutil.GetKnownEmailsFromLocalState()
+	if err != nil {
+		s.Fatal("Failed to get known emails from local state: ", err)
+	}
 	if knownEmails[user3] {
 		s.Fatal("Removed user is still in LoggedInUsers list")
 	}
+
 	// Check that cryptohome for user3 was deleted.
 	path, err := cryptohome.UserPath(ctx, user3)
 	if _, err := os.Stat(path); err == nil {
