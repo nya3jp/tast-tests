@@ -16,6 +16,52 @@
       "message": "Hello reviewers, sorry for the delay, please review this CL, much appreciated.",
       "revId": "36b9388444c1e0e8d54adc4465c8c430b8a566ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6227d57b_9320c9ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-25T07:24:30Z",
+      "side": 1,
+      "message": "Add LacrosStatus here?\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/test.go;l\u003d120?q\u003dLacrosVariantUnneeded\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2F",
+      "range": {
+        "startLine": 77,
+        "startChar": 20,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "36b9388444c1e0e8d54adc4465c8c430b8a566ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4835f47f_64c5d1f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-25T07:24:30Z",
+      "side": 1,
+      "message": "is format off here?",
+      "range": {
+        "startLine": 180,
+        "startChar": 37,
+        "endLine": 180,
+        "endChar": 41
+      },
+      "revId": "36b9388444c1e0e8d54adc4465c8c430b8a566ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
