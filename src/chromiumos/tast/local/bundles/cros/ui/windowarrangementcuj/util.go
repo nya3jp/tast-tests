@@ -33,7 +33,7 @@ type ChromeCleanUpFunc func(ctx context.Context) error
 type CloseAboutBlankFunc func(ctx context.Context) error
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
-func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, *chrome.TestConn, error) {
+func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, *chrome.TestConn, error) {
 	testParam := s.Param().(TestParam)
 
 	var cr *chrome.Chrome
@@ -43,6 +43,15 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 
 	cleanup := func(ctx context.Context) error { return nil }
 	closeAboutBlank := func(ctx context.Context) error { return nil }
+
+	ok := false
+	defer func() {
+		if !ok {
+			if err := cleanup(closeCtx); err != nil {
+				s.Error("Failed to clean up after detecting error condition: ", err)
+			}
+		}
+	}()
 
 	if testParam.BrowserType == browser.TypeAsh {
 		if testParam.Tablet {
@@ -89,5 +98,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 			return l.CloseAboutBlank(ctx, tconn, 0)
 		}
 	}
+
+	ok = true
 	return cr, cs, tconn, cleanup, closeAboutBlank, bTconn, nil
 }
