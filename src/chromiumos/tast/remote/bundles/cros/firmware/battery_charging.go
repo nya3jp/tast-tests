@@ -8,6 +8,7 @@ import (
 	"context"
 	"regexp"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
@@ -42,7 +43,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 	// checkPowerInfo checks the power supply information after waking up DUT from suspend.
 	checkPowerInfo := func(ctx context.Context) (string, error) {
 		s.Log("Checking for DUT's powerstate at S0")
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 60*time.Second, "S0"); err != nil {
 			return "", errors.Wrap(err, "failed to get powerstate at S0 after waking DUT")
 		}
 
@@ -83,7 +84,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Checking for DUT in S0ix or S3 powerstates")
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, firmware.PowerStateTimeout, "S0ix", "S3"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 60*time.Second, "S0ix", "S3"); err != nil {
 			s.Fatal("Failed to get powerstates at S0ix or S3: ", err)
 		}
 
@@ -110,27 +111,33 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			// Old devices would not wake from plugging/unplugging AC.
 			// Instead, we replace by pressing a keyboard key.
 			s.Log("Waking DUT from suspend by pressing ENTER key")
-			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurTab); err != nil {
+			if err := h.Servo.KeypressWithDuration(ctx, servo.Enter, servo.DurPress); err != nil {
 				s.Fatal("Failed to press ENTER key: ", err)
 			}
 		}
 
-		battery, err := checkPowerInfo(ctx)
-		if err != nil {
-			s.Fatal("While verifying power supply information: ", err)
-		}
-
+		var batteryState string
 		s.Log("Checking power supply information")
-		switch hasPluggedAC {
-		case true:
-			if battery != "Fully charged" && battery != "Charging" {
-				s.Fatalf("Found unexpected battery state when AC plugged: %s", battery)
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			battery, err := checkPowerInfo(ctx)
+			if err != nil {
+				return err
 			}
-		case false:
-			if battery != "Discharging" {
-				s.Fatalf("Found unexpected battery state when AC unplugged: %s", battery)
+			switch hasPluggedAC {
+			case true:
+				if battery != "Fully charged" && battery != "Charging" {
+					return errors.Errorf("found unexpected battery state when AC plugged: %s", battery)
+				}
+			case false:
+				if battery != "Discharging" {
+					return errors.Errorf("found unexpected battery state when AC unplugged: %s", battery)
+				}
 			}
+			batteryState = battery
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
+			s.Fatal("Unable to verify power supply information: ", err)
 		}
-		s.Logf("Battery state: %q", battery)
+		s.Logf("Battery state: %q", batteryState)
 	}
 }
