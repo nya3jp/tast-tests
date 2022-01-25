@@ -16,6 +16,137 @@
       "message": "Victor, please take a look!",
       "revId": "ef0af4ecbd06bd80a95ca87ca7bbd87478a22cf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa52d3f_8d2f2eea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-25T10:17:25Z",
+      "side": 1,
+      "message": "LGTM with nits. Thanks for adding a way to load policies on the login screen.",
+      "revId": "ef0af4ecbd06bd80a95ca87ca7bbd87478a22cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "747b3800_650cf4cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_show_user_names_on_signin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-25T10:17:25Z",
+      "side": 1,
+      "message": "Add a comment on why you are logging in.",
+      "revId": "ef0af4ecbd06bd80a95ca87ca7bbd87478a22cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75cba037_3b9bd304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_show_user_names_on_signin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-25T10:17:25Z",
+      "side": 1,
+      "message": "minor nit: not needed since you have KeepState.",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 23
+      },
+      "revId": "ef0af4ecbd06bd80a95ca87ca7bbd87478a22cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f2a32f_e70bb3ff",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-25T10:17:25Z",
+      "side": 1,
+      "message": "Also link crbug.com/1289165 . I didn\u0027t think about such a simple solution 😀.",
+      "revId": "ef0af4ecbd06bd80a95ca87ca7bbd87478a22cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d77f1b_7e457bb6",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-25T10:17:25Z",
+      "side": 1,
+      "message": "nit: nil",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "ef0af4ecbd06bd80a95ca87ca7bbd87478a22cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d06d433e_fb3b01e7",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-25T10:17:25Z",
+      "side": 1,
+      "message": "On error is there a specific one that we can check against?",
+      "revId": "ef0af4ecbd06bd80a95ca87ca7bbd87478a22cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63ac9a5_33e79b14",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-25T10:17:25Z",
+      "side": 1,
+      "message": "nit: add newline before",
+      "revId": "ef0af4ecbd06bd80a95ca87ca7bbd87478a22cf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
