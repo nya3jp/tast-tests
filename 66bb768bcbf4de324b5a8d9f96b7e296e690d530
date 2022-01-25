@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf4520d_30b72d45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-25T08:59:45Z",
+      "side": 1,
+      "message": "Hi Kamil,\n\nI\u0027ve written a policy test for ScrollToTextFragmentEnabled, PTAL!\n\nRegards,\nJit",
+      "revId": "66bb768bcbf4de324b5a8d9f96b7e296e690d530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
