@@ -39,6 +39,30 @@
       },
       "revId": "f1ff6bc82c2b742a27bd39bf239095dacbc49d2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "946e1d88_99780053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/chromevox_plain_text_editing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2022-01-25T23:33:53Z",
+      "side": 1,
+      "message": "Yes, katie@ is on my team, but she is OOO until May 2022.",
+      "parentUuid": "6e6b8f54_8e2b5cd1",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "f1ff6bc82c2b742a27bd39bf239095dacbc49d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
