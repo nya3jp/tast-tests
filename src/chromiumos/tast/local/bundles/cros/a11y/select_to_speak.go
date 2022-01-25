@@ -66,7 +66,7 @@ func SelectToSpeak(ctx context.Context, s *testing.State) {
 	}
 	defer sm.Close()
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, "<p>This is a select-to-speak test</p>")
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), "<p>This is a select-to-speak test</p>")
 	if err != nil {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}

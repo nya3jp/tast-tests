@@ -49,7 +49,7 @@ func ChromevoxTTSProcessingWhitespace(ctx context.Context, s *testing.State) {
 	}
 	defer crastestclient.Unmute(cleanupCtx)
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, "<textarea></textarea>")
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), "<textarea></textarea>")
 	if err != nil {
 		s.Fatal("Failed to open a new tab with HTML: ", err)
 	}

@@ -49,7 +49,7 @@ func ChromevoxPlainTextEditing(ctx context.Context, s *testing.State) {
 	}
 	defer crastestclient.Unmute(cleanupCtx)
 
-	c, err := a11y.NewTabWithHTML(ctx, cr, `<label for='singleLine'>singleLine</label>
+	c, err := a11y.NewTabWithHTML(ctx, cr.Browser(), `<label for='singleLine'>singleLine</label>
 <input type='text' id='singleLine' value='Single line field'><br>
 <label for='textarea'>textArea</label>
 <textarea id='textarea'>Line 1
