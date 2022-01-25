@@ -33,7 +33,7 @@ type ChromeCleanUpFunc func(ctx context.Context) error
 type CloseAboutBlankFunc func(ctx context.Context) error
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
-func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, *chrome.TestConn, error) {
+func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, *chrome.TestConn, error) {
 	testParam := s.Param().(TestParam)
 
 	var cr *chrome.Chrome
@@ -61,6 +61,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 		var err error
 		bTconn, err = cr.TestAPIConn(ctx)
 		if err != nil {
+			cleanup(closeCtx)
 			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get TestAPIConn")
 		}
 	} else {
@@ -75,12 +76,14 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 		}
 
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			cleanup(closeCtx)
 			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
 		}
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
+		cleanup(closeCtx)
 		return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to conect to test api")
 	}
 

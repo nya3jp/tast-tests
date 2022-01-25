@@ -110,7 +110,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	testParam := s.Param().(windowarrangementcuj.TestParam)
 	tabletMode := testParam.Tablet
 
-	cr, cs, tconn, chromeCleanUp, closeAboutBlank, bTconn, err := windowarrangementcuj.SetupChrome(ctx, s)
+	cr, cs, tconn, chromeCleanUp, closeAboutBlank, bTconn, err := windowarrangementcuj.SetupChrome(ctx, closeCtx, s)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
