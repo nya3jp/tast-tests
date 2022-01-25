@@ -16,6 +16,23 @@
       "message": "Hi All,\n\nThis is a example test which uses Bluetooth Mojo API to toggle bluetooth and confirm the state change. PTAL.\n\nRegards\nShijin ",
       "revId": "c7acb7c85050294adefe2929b7eb6c389f37b6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b507cef_15157649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-25T22:54:46Z",
+      "side": 1,
+      "message": "Hi Steven,\n\nFYI as harpreet@ mentioned that you will be interested in this.\n\nRegards\nShijin ",
+      "revId": "c7acb7c85050294adefe2929b7eb6c389f37b6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
