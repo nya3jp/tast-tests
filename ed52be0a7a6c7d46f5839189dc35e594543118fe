@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a54fcec_39c5c94d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-01-25T05:39:01Z",
+      "side": 1,
+      "message": "Seems that we\u0027re matching different string patterns?\nAnd why do we need this change?",
+      "range": {
+        "startLine": 48,
+        "startChar": 45,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "ed52be0a7a6c7d46f5839189dc35e594543118fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
