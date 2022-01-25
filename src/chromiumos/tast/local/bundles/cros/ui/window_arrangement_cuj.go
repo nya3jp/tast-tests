@@ -281,7 +281,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	var f func(ctx context.Context) error
 	if !tabletMode {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunClamShell(ctx, conns.TestConn, ui, pc)
+			return windowarrangementcuj.RunClamShell(ctx, closeCtx, conns.TestConn, ui, pc, conns.ArcVideoActivity, conns.WithTestVideo)
 		}
 	} else {
 		f = func(ctx context.Context) error {
