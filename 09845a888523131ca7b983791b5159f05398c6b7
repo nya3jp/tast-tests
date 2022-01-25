@@ -1066,6 +1066,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47022ca4_28d11b87",
+        "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-01-25T19:05:21Z",
+      "side": 1,
+      "message": "14358.0.0 is when dual sim support for MBIM landed.\nOne can figure out if a modem is single sim or dual sim by reading the SimSlots array. Or like Eric suggested, PrimarySimSlot\u003d0 means that it\u0027s a single sim device.",
+      "parentUuid": "0de423be_d6c1f003",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 2
+      },
+      "revId": "09845a888523131ca7b983791b5159f05398c6b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75e7a59b_237c9549",
         "filename": "src/chromiumos/tast/local/modemmanager/modem.go",
         "patchSetId": 11
