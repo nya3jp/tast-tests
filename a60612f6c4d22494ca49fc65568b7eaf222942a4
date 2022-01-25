@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98db127_2c0ea7eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-25T20:33:17Z",
+      "side": 1,
+      "message": "file a bug for this please",
+      "revId": "a60612f6c4d22494ca49fc65568b7eaf222942a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
