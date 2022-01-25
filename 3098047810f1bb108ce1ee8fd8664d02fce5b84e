@@ -93,6 +93,30 @@
       },
       "revId": "3098047810f1bb108ce1ee8fd8664d02fce5b84e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c890848_4f7e08a9",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-25T10:25:20Z",
+      "side": 1,
+      "message": "I think it should be added to the fixture, and not for the test.",
+      "parentUuid": "9f473003_d5cd6287",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "3098047810f1bb108ce1ee8fd8664d02fce5b84e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
