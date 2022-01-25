@@ -86,22 +86,25 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 	const captureAllowed = "Screenshot taken"
 
 	for _, param := range []struct {
-		name             string
-		wantNotification string
-		wantAllowed      bool
-		url              string
+		name                  string
+		wantNotificationTitle string
+		wantNotificationID    string
+		wantAllowed           bool
+		url                   string
 	}{
 		{
-			name:             "example",
-			wantAllowed:      false,
-			wantNotification: captureNotAllowed,
-			url:              "https://www.example.com/",
+			name:                  "example",
+			wantAllowed:           false,
+			wantNotificationTitle: captureNotAllowed,
+			wantNotificationID:    "screen_capture_dlp_blocked",
+			url:                   "https://www.example.com/",
 		},
 		{
-			name:             "chromium",
-			wantAllowed:      true,
-			wantNotification: captureAllowed,
-			url:              "https://www.chromium.org/",
+			name:                  "chromium",
+			wantAllowed:           true,
+			wantNotificationTitle: captureAllowed,
+			wantNotificationID:    "capture_mode_notification",
+			url:                   "https://www.chromium.org/",
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -126,8 +129,8 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 				s.Fatal("Failed to press Ctrl+F5 to take screenshot: ", err)
 			}
 
-			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("capture_mode_notification"), ash.WaitTitle(param.wantNotification)); err != nil {
-				s.Fatalf("Failed to wait for notification with title %q: %v", param.wantNotification, err)
+			if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains(param.wantNotificationID), ash.WaitTitle(param.wantNotificationTitle)); err != nil {
+				s.Fatalf("Failed to wait for notification with title %q: %v", param.wantNotificationTitle, err)
 			}
 
 			// Check if the screenshot is taken.
