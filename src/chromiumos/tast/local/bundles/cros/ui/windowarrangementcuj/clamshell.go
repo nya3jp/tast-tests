@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -23,10 +24,39 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// Multiresize summons a multiresizer and drags it like Drag, but with all
+// drag points adjusted for the location of the multiresizer.
+func Multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, dragPoints DragPoints, duration time.Duration) error {
+	if err := action.Combine(
+		"hover mouse where windows meet",
+		mouse.Move(tconn, dragPoints[0].Sub(coords.NewPoint(10, 10)), 0),
+		mouse.Move(tconn, dragPoints[0], duration),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to summon multiresizer")
+	}
+
+	multiresizerBounds, err := ui.Location(ctx, nodewith.Role("window").ClassName("MultiWindowResizeController"))
+	if err != nil {
+		return errors.Wrap(err, "failed to get the multiresizer location")
+	}
+
+	offset := multiresizerBounds.CenterPoint().Sub(dragPoints[0])
+	var multiresizeDragPoints DragPoints
+	for i, p := range dragPoints {
+		multiresizeDragPoints[i] = p.Add(offset)
+	}
+
+	if err := Drag(ctx, tconn, pc, multiresizeDragPoints, duration); err != nil {
+		return errors.Wrap(err, "failed to drag multiresizer")
+	}
+
+	return nil
+}
+
 // RunClamShell runs window arrangement cuj for clamshell. We test performance
 // for resizing window, dragging window, maximizing window, minimizing window
 // and split view resizing.
-func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context) error {
+func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, act *arc.Activity) error {
 	const (
 		timeout  = 10 * time.Second
 		duration = 2 * time.Second
@@ -70,19 +100,19 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	bounds := browserWin.BoundsInRoot
 	upperLeftPt := coords.NewPoint(bounds.Left, bounds.Top)
 	middlePt := coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2)
-	testing.ContextLog(ctx, "Resizing the window")
+	testing.ContextLog(ctx, "Resizing the browser window")
 	if err := pc.Drag(upperLeftPt, pc.DragTo(middlePt, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to resize window from the upper left to the middle")
+		return errors.Wrap(err, "failed to resize browser window from the upper left to the middle")
 	}
 
 	browserWin, err = ash.GetWindow(ctx, tconn, browserWinID)
 	if err != nil {
-		return errors.Wrap(err, "failed to get window info")
+		return errors.Wrap(err, "failed to get browser window info")
 	}
 	bounds = browserWin.BoundsInRoot
 	newUpperLeftPt := coords.NewPoint(bounds.Left, bounds.Top)
 	if err := pc.Drag(newUpperLeftPt, pc.DragTo(upperLeftPt, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to resize window back from the middle")
+		return errors.Wrap(err, "failed to resize browser window back from the middle")
 	}
 
 	// Drag window.
@@ -92,64 +122,64 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 		return errors.Wrap(err, "failed to get the location of the new tab button")
 	}
 	tabStripGapPt := coords.NewPoint(newTabButtonRect.Right()+10, newTabButtonRect.Top)
-	testing.ContextLog(ctx, "Dragging the window")
+	testing.ContextLog(ctx, "Dragging the browser window")
 	if err := pc.Drag(tabStripGapPt, pc.DragTo(middlePt, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag window from the tab strip point to the middle")
+		return errors.Wrap(err, "failed to drag browser window from the tab strip point to the middle")
 	}
 	if err := pc.Drag(middlePt, pc.DragTo(tabStripGapPt, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag window back from the middle")
+		return errors.Wrap(err, "failed to drag browser window back from the middle")
 	}
 
 	// Maximize window.
 	maximizeButton := nodewith.Name("Maximize").ClassName("FrameCaptionButton").Role(role.Button)
 	if err := ui.LeftClick(maximizeButton)(ctx); err != nil {
-		return errors.Wrap(err, "failed to maximize the window")
+		return errors.Wrap(err, "failed to maximize the browser window")
 	}
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 		return w.ID == browserWinID && w.State == ash.WindowStateMaximized && !w.IsAnimating
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for window to become maximized")
+		return errors.Wrap(err, "failed to wait for browser window to become maximized")
 	}
 
 	// Minimize window.
 	minimizeButton := nodewith.Name("Minimize").ClassName("FrameCaptionButton").Role(role.Button)
 	if err := ui.LeftClick(minimizeButton)(ctx); err != nil {
-		return errors.Wrap(err, "failed to minimize the window")
+		return errors.Wrap(err, "failed to minimize the browser window")
 	}
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 		return w.ID == browserWinID && w.State == ash.WindowStateMinimized && !w.IsAnimating
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for window to become minimized")
+		return errors.Wrap(err, "failed to wait for browser window to become minimized")
 	}
 
 	// Restore window.
 	if _, err := ash.SetWindowState(ctx, tconn, browserWinID, ash.WMEventNormal, true /* waitForStateChange */); err != nil {
-		return errors.Wrap(err, "failed to set the window state to normal")
+		return errors.Wrap(err, "failed to set the browser window state to normal")
 	}
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 		return w.ID == browserWinID && w.State == ash.WindowStateNormal && !w.IsAnimating
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for window to become normal")
+		return errors.Wrap(err, "failed to wait for browser window to become normal")
 	}
 
 	// Lacros browser sometime restores to a different bounds so calculate
 	// a new grab point.
 	newBrowserWin, err := ash.GetWindow(ctx, tconn, browserWinID)
 	if err != nil {
-		return errors.Wrap(err, "failed to get window info")
+		return errors.Wrap(err, "failed to get browser window info")
 	}
 	newBounds := newBrowserWin.BoundsInRoot
 	tabStripGapPt = coords.NewPoint(newBounds.Left+newBounds.Width*3/4, newBounds.Top+10)
 
 	// Snap the window to the left and drag the second tab to snap to the right.
-	testing.ContextLog(ctx, "Snapping the window to the left")
+	testing.ContextLog(ctx, "Snapping the browser window to the left")
 	if err := pc.Drag(tabStripGapPt, pc.DragTo(snapLeftPoint, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to snap the window to the left")
+		return errors.Wrap(err, "failed to snap the browser window to the left")
 	}
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 		return w.ID == browserWinID && w.State == ash.WindowStateLeftSnapped && !w.IsAnimating
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for window to be left snapped")
+		return errors.Wrap(err, "failed to wait for browser window to be left snapped")
 	}
 	testing.ContextLog(ctx, "Snapping the second tab to the right")
 	firstTab := nodewith.Role(role.Tab).ClassName("Tab").First()
@@ -173,32 +203,15 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 			(ws[0].State == ash.WindowStateLeftSnapped && ws[1].State == ash.WindowStateRightSnapped) {
 			return nil
 		}
-		return errors.New("windows are not snapped yet")
+		return errors.New("browser windows are not snapped yet")
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for windows to be snapped correctly")
+		return errors.Wrap(err, "failed to wait for browser windows to be snapped correctly")
 	}
 
 	// Use multiresize on the two snapped windows.
-	if err := action.Combine(
-		"hover mouse over split view divider to show the multiresizer",
-		mouse.Move(tconn, splitViewDragPoints[0].Sub(coords.NewPoint(10, 10)), 0),
-		mouse.Move(tconn, splitViewDragPoints[0], duration),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to hover mouse over split view divider")
-	}
-	multiresizerBounds, err := ui.Location(ctx, nodewith.Role("window").ClassName("MultiWindowResizeController"))
-	if err != nil {
-		return errors.Wrap(err, "failed to get the multiresizer location")
-	}
-	offset := multiresizerBounds.CenterPoint().Sub(splitViewDragPoints[0])
-	var multiresizeDragPoints DragPoints
-	for i := range multiresizeDragPoints {
-		multiresizeDragPoints[i] = splitViewDragPoints[i].Add(offset)
-	}
-	// Drag divider.
-	testing.ContextLog(ctx, "Dragging the divider with two snapped windows")
+	testing.ContextLog(ctx, "Multiresizing two snapped browser windows")
 	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
-	if err := Drag(ctx, tconn, pc, multiresizeDragPoints, duration); err != nil {
+	if err := Multiresize(ctx, tconn, ui, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
@@ -212,7 +225,8 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the top-row layout")
 	}
-	if err := kw.AccelAction(topRow.SelectTask)(ctx); err != nil {
+	enterOverview := kw.AccelAction(topRow.SelectTask)
+	if err := enterOverview(ctx); err != nil {
 		return errors.Wrap(err, "failed to enter overview mode")
 	}
 	// Create a second virtual desk.
@@ -226,17 +240,17 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	// Drag the first window from overview grid to snap.
 	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to find the window in the overview mode")
+		return errors.Wrap(err, "failed to find the browser window in the overview mode")
 	}
 	if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapLeftPoint, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag window from overview to snap")
+		return errors.Wrap(err, "failed to drag browser window from overview to snap")
 	}
 	// Wait for location-change events to be completed.
 	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
 	// Drag divider.
-	testing.ContextLog(ctx, "Dragging the divider with an overview window")
+	testing.ContextLog(ctx, "Dragging the divider between a snapped browser window and an overview window")
 	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
@@ -255,14 +269,82 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(),
 		ui.Sleep(2*time.Second),
 		pc.DragTo(deskMiniViews[1].Location.CenterPoint(), duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag window from overview grid to desk mini-view")
+		return errors.Wrap(err, "failed to drag browser window from overview grid to desk mini-view")
 	}
 	// Wait for location-change events to be completed.
 	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
 	// Drag divider.
-	testing.ContextLog(ctx, "Dragging the divider with an empty overview grid")
+	testing.ContextLog(ctx, "Dragging the divider between a snapped browser window and an empty overview grid")
+	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
+		return errors.Wrap(err, dividerDragError)
+	}
+
+	// For the part with an ARC window, adjust the drag points to avoid https://crbug.com/1297297.
+	// TODO(https://crbug.com/1297297): Remove this when the bug is fixed.
+	if splitViewDragPoints[1].X < 501 {
+		splitViewDragPoints[1].X = 501
+	}
+	splitViewDragPoints[2].X -= 343
+
+	// Start the ARC app.
+	if err := act.Start(ctx, tconn, arc.WithExtraString("video_codec", "vp8")); err != nil {
+		return errors.Wrap(err, "failed to start ARC app")
+	}
+	// Use Alt+] to snap the ARC app on the right.
+	if err := kw.AccelAction("Alt+]")(ctx); err != nil {
+		return errors.Wrap(err, "failed to press Alt+] to snap the ARC app on the right")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateRightSnapped); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC app to be snapped on right")
+	}
+	// Use multiresize on the two snapped windows.
+	testing.ContextLog(ctx, "Multiresizing a snapped browser window and a snapped ARC window")
+	if err := Multiresize(ctx, tconn, ui, pc, splitViewDragPoints, duration); err != nil {
+		return errors.Wrap(err, dividerDragError)
+	}
+	// Enter the overview mode.
+	if err := enterOverview(ctx); err != nil {
+		return errors.Wrap(err, "failed to enter overview mode")
+	}
+	// Wait for location-change events to be completed.
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for location-change events to be completed")
+	}
+	// Drag the ARC window from overview grid to snap.
+	w, err = ash.GetARCAppWindowInfo(ctx, tconn, pkgName)
+	if err != nil {
+		return errors.Wrap(err, "failed to find ARC window in the overview mode")
+	}
+	if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapLeftPoint, duration))(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag ARC window from overview to snap")
+	}
+	// Wait for location-change events to be completed.
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for location-change events to be completed")
+	}
+	// Drag divider.
+	testing.ContextLog(ctx, "Dragging the divider between a snapped ARC window and an overview window")
+	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
+		return errors.Wrap(err, dividerDragError)
+	}
+	// Drag the remaining browser window to another desk to obtain an empty overview grid.
+	w, err = ash.FindFirstWindowInOverview(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the browser window in the overview mode to drag to another desk")
+	}
+	if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(),
+		ui.Sleep(2*time.Second),
+		pc.DragTo(deskMiniViews[1].Location.CenterPoint(), duration))(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag browser window from overview grid to desk mini-view")
+	}
+	// Wait for location-change events to be completed.
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for location-change events to be completed")
+	}
+	// Drag divider.
+	testing.ContextLog(ctx, "Dragging the divider between a snapped ARC window and an empty overview grid")
 	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}

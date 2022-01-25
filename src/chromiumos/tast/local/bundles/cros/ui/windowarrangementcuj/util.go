@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -19,6 +20,8 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
+
+const pkgName = "org.chromium.arc.testapp.pictureinpicturevideo"
 
 // TestParam holds parameters of window arrangement cuj test variations.
 type TestParam struct {
@@ -40,13 +43,14 @@ type CloseAboutBlankFunc func(ctx context.Context) error
 type DragPoints [3]coords.Point
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
-func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, *chrome.TestConn, error) {
+func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, *chrome.TestConn, *arc.Activity, error) {
 	testParam := s.Param().(TestParam)
 
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
 	var l *lacros.Lacros
 	var bTconn *chrome.TestConn
+	var a *arc.ARC
 
 	cleanup := func(ctx context.Context) error { return nil }
 	closeAboutBlank := func(ctx context.Context) error { return nil }
@@ -63,25 +67,29 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrom
 	if testParam.BrowserType == browser.TypeAsh {
 		if testParam.Tablet {
 			var err error
-			if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
-				return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to init chrome")
+			if cr, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
+				return nil, nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to init chrome")
 			}
 			cleanup = cr.Close
+			if a, err = arc.New(ctx, s.OutDir()); err != nil {
+				return nil, nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to init ARC")
+			}
 		} else {
-			cr = s.FixtValue().(*chrome.Chrome)
+			cr = s.FixtValue().(*arc.PreData).Chrome
+			a = s.FixtValue().(*arc.PreData).ARC
 		}
 		cs = cr
 
 		var err error
 		bTconn, err = cr.TestAPIConn(ctx)
 		if err != nil {
-			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get TestAPIConn")
+			return nil, nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get TestAPIConn")
 		}
 	} else {
 		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), testParam.BrowserType)
+		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).LacrosFixt, browser.TypeLacros)
 		if err != nil {
-			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to setup lacros")
+			return nil, nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to setup lacros")
 		}
 		cleanup = func(ctx context.Context) error {
 			lacros.CloseLacros(ctx, l)
@@ -89,13 +97,28 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrom
 		}
 
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
+			return nil, nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
 		}
+
+		a = s.FixtValue().(*arc.PreData).ARC
+	}
+
+	if err := a.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
+		return nil, nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to install ARC app")
+	}
+	act, err := arc.NewActivity(a, pkgName, ".VideoActivity")
+	if err != nil {
+		return nil, nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to create ARC activity")
+	}
+	oldCleanup := cleanup
+	cleanup = func(ctx context.Context) error {
+		act.Close()
+		return oldCleanup(ctx)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to conect to test api")
+		return nil, nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to connect to test api")
 	}
 
 	if testParam.BrowserType == browser.TypeLacros {
@@ -105,7 +128,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrom
 	}
 
 	ok = true
-	return cr, cs, tconn, cleanup, closeAboutBlank, bTconn, nil
+	return cr, cs, tconn, cleanup, closeAboutBlank, bTconn, act, nil
 }
 
 // Drag does the specified drag based on the documentation of DragPoints.

@@ -49,7 +49,8 @@ func init() {
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeAsh,
 				},
-				Fixture: "chromeLoggedIn",
+				Fixture:           "arcBootedInClamshellMode",
+				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "tablet_mode",
@@ -57,6 +58,7 @@ func init() {
 					BrowserType: browser.TypeAsh,
 					Tablet:      true,
 				},
+				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "tablet_mode_trace",
@@ -65,6 +67,7 @@ func init() {
 					Tablet:      true,
 					Tracing:     true,
 				},
+				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "tablet_mode_validation",
@@ -73,14 +76,23 @@ func init() {
 					Tablet:      true,
 					Validation:  true,
 				},
+				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
 				Name: "lacros",
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeLacros,
 				},
-				Fixture:           "lacrosUI",
-				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "lacrosWithArcBooted",
+				ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			},
+			{
+				Name: "vm",
+				Val: windowarrangementcuj.TestParam{
+					BrowserType: browser.TypeAsh,
+				},
+				Fixture:           "arcBootedInClamshellMode",
+				ExtraSoftwareDeps: []string{"android_vm"},
 			},
 		},
 	})
@@ -110,7 +122,7 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	testParam := s.Param().(windowarrangementcuj.TestParam)
 	tabletMode := testParam.Tablet
 
-	cr, cs, tconn, chromeCleanUp, closeAboutBlank, bTconn, err := windowarrangementcuj.SetupChrome(ctx, closeCtx, s)
+	cr, cs, tconn, chromeCleanUp, closeAboutBlank, bTconn, act, err := windowarrangementcuj.SetupChrome(ctx, closeCtx, s)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
@@ -259,11 +271,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	var f func(ctx context.Context) error
 	if !tabletMode {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunClamShell(ctx, tconn, ui, pc)
+			return windowarrangementcuj.RunClamShell(ctx, tconn, ui, pc, act)
 		}
 	} else {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunTablet(ctx, tconn, ui, pc)
+			return windowarrangementcuj.RunTablet(ctx, tconn, ui, pc, act)
 		}
 	}
 

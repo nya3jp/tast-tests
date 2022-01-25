@@ -8,7 +8,9 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -21,14 +23,69 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// ExerciseSplitViewResize assumes two snapped windows and then does the following:
+// 1. Drag the divider.
+// 2. Enter overview.
+// 3. Drag the divider.
+// 4. Close the overview window.
+// 5. Drag the divider.
+func ExerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, splitViewDragPoints DragPoints, enterOverview action.Action) error {
+	const (
+		slow = 2 * time.Second
+		fast = time.Second / 2
+	)
+
+	// 1. Drag the divider.
+	testing.ContextLog(ctx, "Dragging the divider between two snapped windows")
+	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
+		return errors.Wrap(err, "failed to drag divider between two snapped windows")
+	}
+
+	// 2. Enter overview.
+	if err := enterOverview(ctx); err != nil {
+		return errors.Wrap(err, "failed to enter overview mode")
+	}
+
+	// 3. Drag the divider.
+	testing.ContextLog(ctx, "Dragging the divider between an overview window and a snapped window")
+	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
+		return errors.Wrap(err, "failed to drag divider between overview window and snapped window")
+	}
+
+	// 4. Close the first overview window.
+	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the window in the overview mode to swipe to close")
+	}
+	swipeStart := w.OverviewInfo.Bounds.CenterPoint()
+	if err := pc.Drag(swipeStart, pc.DragTo(swipeStart.Sub(coords.NewPoint(0, 200)), fast))(ctx); err != nil {
+		return errors.Wrap(err, "failed to swipe to close overview window")
+	}
+	// Wait for the swipe-to-close animation to finish before dragging the divider. This is important
+	// because the state at the beginning of the divider drag determines which performance metrics
+	// are recorded for the entire drag. If the drag begins before the window has actually closed,
+	// the resulting data will be for Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview
+	// and not Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow.
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for location-change events to be completed")
+	}
+
+	// 5. Drag the divider.
+	testing.ContextLog(ctx, "Dragging the divider between an empty overview grid and a snapped window")
+	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
+		return errors.Wrap(err, "failed to drag divider between empty overview grid and snapped window")
+	}
+
+	return nil
+}
+
 // RunTablet runs window arrangement cuj for tablet. Since windows are always
 // maximized in tablet mode, we only test performance for tab dragging and split
 // view resizing.
-func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context) error {
+func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, act *arc.Activity) error {
 	const (
-		timeout = 10 * time.Second
-		slow    = 2 * time.Second
-		fast    = time.Second / 2
+		timeout           = 10 * time.Second
+		doubleTapInterval = 100 * time.Millisecond
 	)
 
 	// Gets primary display info and interesting drag points.
@@ -75,19 +132,11 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 			(ws[0].State == ash.WindowStateLeftSnapped && ws[1].State == ash.WindowStateRightSnapped) {
 			return nil
 		}
-		return errors.New("windows are not snapped yet")
+		return errors.New("browser windows are not snapped yet")
 	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for windows to be snapped correctly")
+		return errors.Wrap(err, "failed to wait for browser windows to be snapped correctly")
 	}
 
-	// Split view resizing by dragging the divider.
-	testing.ContextLog(ctx, "Dragging the divider with two snapped windows")
-	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
-		return errors.Wrap(err, dividerDragError)
-	}
-
-	// Enter the overview mode.
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to open the keyboard")
@@ -97,38 +146,40 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the top-row layout")
 	}
-	if err := kw.AccelAction(topRow.SelectTask)(ctx); err != nil {
-		return errors.Wrap(err, "failed to enter overview mode")
+	enterOverview := kw.AccelAction(topRow.SelectTask)
+	// Exercise split view resize functionality.
+	if err := ExerciseSplitViewResize(ctx, tconn, ui, pc, splitViewDragPoints, enterOverview); err != nil {
+		return errors.Wrap(err, "failed to exercise split view resize functionality with two browser windows")
 	}
 
-	// Split view resizing by dragging the divider.
-	testing.ContextLog(ctx, "Dragging the divider with an overview window")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
-		return errors.Wrap(err, dividerDragError)
+	// For the part with an ARC window, adjust the drag points to avoid https://crbug.com/1297297.
+	// TODO(https://crbug.com/1297297): Remove this when the bug is fixed.
+	splitViewDragPoints[2].X -= 347
+
+	// Start the ARC app.
+	if err := act.Start(ctx, tconn, arc.WithExtraString("video_codec", "vp8")); err != nil {
+		return errors.Wrap(err, "failed to start ARC app")
+	}
+	// The ARC app will be automatically snapped because split view mode is active.
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateLeftSnapped); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC app to be snapped on left")
 	}
 
-	// Close the overview window.
-	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find the window in the overview mode to swipe to close")
+	// Swap the windows so that enterOverview will put the browser
+	// window in overview and leave the ARC window snapped.
+	tapDivider := pc.ClickAt(splitViewDragPoints[0])
+	if err := action.Combine("double tap the divider", tapDivider, ui.Sleep(doubleTapInterval), tapDivider)(ctx); err != nil {
+		return errors.Wrap(err, "failed to swap snapped windows")
 	}
-	swipeStart := w.OverviewInfo.Bounds.CenterPoint()
-	if err := pc.Drag(swipeStart, pc.DragTo(swipeStart.Sub(coords.NewPoint(0, 200)), fast))(ctx); err != nil {
-		return errors.Wrap(err, "failed to swipe to close overview window")
-	}
-	// Wait for the swipe-to-close animation to finish before dragging the divider. This is important
-	// because the state at the beginning of the divider drag determines which performance metrics
-	// are recorded for the entire drag. If the drag begins before the window has actually closed,
-	// the resulting data will be for Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview
-	// instead of Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow.
+
+	// Wait for location-change events to be completed.
 	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
 
-	// Split view resizing by dragging the divider.
-	testing.ContextLog(ctx, "Dragging the divider with an empty overview grid")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
-		return errors.Wrap(err, dividerDragError)
+	// Exercise split view resize functionality.
+	if err := ExerciseSplitViewResize(ctx, tconn, ui, pc, splitViewDragPoints, enterOverview); err != nil {
+		return errors.Wrap(err, "failed to exercise split view resize functionality with an ARC window and a browser window")
 	}
 
 	return nil
