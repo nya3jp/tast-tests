@@ -35,14 +35,25 @@ func init() {
 			"cmfcmf@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		SoftwareDeps: []string{"chrome", "lacros"},
+		SoftwareDeps: []string{"chrome"},
 		Attr: []string{
 			"group:mainline",
 			"group:paper-io",
 			"paper-io_printing",
 			"informational",
 		},
-		Fixture: fixture.LacrosPolicyLoggedIn,
+		Params: []testing.Param{
+			{
+				Name:    "printers",
+				Fixture: fixture.ChromePolicyLoggedIn,
+				Val:     browser.TypeAsh,
+			}, {
+				Name:              "lacros_printers",
+				Fixture:           fixture.LacrosPolicyLoggedIn,
+				Val:               browser.TypeLacros,
+				ExtraSoftwareDeps: []string{"lacros"},
+			},
+		},
 	})
 }
 
@@ -56,6 +67,8 @@ func Printers(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	browserType := s.Param().(browser.Type)
+
 	printerName := "Water Cooler Printer"
 	printersPolicy := &policy.Printers{Val: []string{
 		fmt.Sprintf(`{
@@ -63,11 +76,10 @@ func Printers(ctx context.Context, s *testing.State) {
 			"description": "The printer next to the water cooler.",
 			"manufacturer": "Printer Manufacturer",
 			"model": "Color Laser 2004",
-			"uri": "ipps://print-server.intranet.example.com:443/ipp/cl2k4",
+			"uri": "lpd://localhost:9100",
 			"uuid": "1c395fdb-5d93-4904-b246-b2c046e79d12",
 			"ppd_resource": {
-				"effective_model":
-				"Printer Manufacturer ColorLaser2k4",
+				"effective_model": "generic pcl 6/pcl xl printer pxlcolor",
 				"autoconf": false
 			}
 		}`, printerName)}}
@@ -77,7 +89,7 @@ func Printers(ctx context.Context, s *testing.State) {
 	}
 
 	// TODO(crbug.com/1259615): This should be part of the fixture.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browser.TypeLacros)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), browserType)
 	if err != nil {
 		s.Fatal("Failed to setup chrome: ", err)
 	}
@@ -109,11 +121,34 @@ func Printers(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("check that the printer is available",
 		kb.AccelAction("Ctrl+P"),
+		// Select printer
 		ui.WaitUntilExists(nodewith.Name("Print").ClassName("RootView").Role(role.Window)),
-		ui.LeftClick(nodewith.Role("popUpButton").NameStartingWith("Destination")),
-		ui.LeftClick(nodewith.Role("menuItem").Name("See more destinations")),
-		ui.WaitUntilExists(nodewith.Role("cell").NameStartingWith(printerName)),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).NameStartingWith("Destination")),
+		ui.LeftClick(nodewith.Role(role.MenuItem).Name("See more destinations")),
+		ui.LeftClick(nodewith.Role(role.Cell).NameStartingWith(printerName)),
+		// Select layout and color options
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Pages")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Odd pages only")),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Layout")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Landscape")),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Color")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Black and white")),
+		// Configure more settings
+		ui.LeftClick(nodewith.Role(role.Button).Name("More settings")),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Paper size")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("A5")),
+		// Setting 'Pages per sheet' will disable the 'Margins' option, thus test
+		// 'Margins' first.
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Margins")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Minimum")),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Pages per sheet")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("2")),
+		ui.LeftClick(nodewith.Role(role.PopUpButton).Name("Scale")),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Custom")),
+		ui.LeftClick(nodewith.Role(role.CheckBox).Name("Background graphics")),
+		// Print!
+		ui.LeftClick(nodewith.Role(role.Button).Name("Print")),
 	)(ctx); err != nil {
-		s.Fatal(errors.Wrap(err, "failed to check existence of the printer in print destination popup"))
+		s.Fatal(errors.Wrap(err, "failed to select printer, configure page, and print the page"))
 	}
 }
