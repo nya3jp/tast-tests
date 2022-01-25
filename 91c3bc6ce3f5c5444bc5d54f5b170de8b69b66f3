@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b105ad_8b4b853c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-01-25T00:59:24Z",
+      "side": 1,
+      "message": "Nit: I\u0027d make the summary what the description currently is (fixtures, plural), and ditch the duplicate description since it doesn\u0027t add anything.",
+      "revId": "91c3bc6ce3f5c5444bc5d54f5b170de8b69b66f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
