@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02270786_f015d4b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T06:16:14Z",
+      "side": 1,
+      "message": "Discuss in the following CL together.",
+      "parentUuid": "2393a6a3_1cfa09a3",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "5b771c58b549a6b0c3fe6218f660914af66b1cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12a31235_bf4fe621",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-24T13:31:24Z",
       "side": 1,
       "message": "nit: Add a comment on why this is added here.",
+      "revId": "5b771c58b549a6b0c3fe6218f660914af66b1cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b487d0_9f4c8292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T06:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12a31235_bf4fe621",
       "revId": "5b771c58b549a6b0c3fe6218f660914af66b1cc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d570ebc2_b9ae62e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T06:16:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "719bd0fc_f2b77482",
+      "revId": "5b771c58b549a6b0c3fe6218f660914af66b1cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cec03a70_f08b4505",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-01-24T13:31:24Z",
       "side": 1,
       "message": "This node seems much too generic.",
+      "range": {
+        "startLine": 164,
+        "startChar": 43,
+        "endLine": 164,
+        "endChar": 46
+      },
+      "revId": "5b771c58b549a6b0c3fe6218f660914af66b1cc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022a293a_46bcba6d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T06:16:14Z",
+      "side": 1,
+      "message": "Changed to the submit button.\n\nUpdate: we can\u0027t actually use submit button. Password input has submit button too. I\u0027ll find something better.",
+      "parentUuid": "cec03a70_f08b4505",
       "range": {
         "startLine": 164,
         "startChar": 43,
