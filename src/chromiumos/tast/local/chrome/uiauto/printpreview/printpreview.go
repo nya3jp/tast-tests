@@ -93,7 +93,7 @@ func SetLayout(ctx context.Context, tconn *chrome.TestConn, layout Layout) error
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("find and click layout list",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(layoutList),
-		ui.LeftClick(layoutList),
+		ui.DoDefault(layoutList),
 	)(ctx); err != nil {
 		return err
 	}
