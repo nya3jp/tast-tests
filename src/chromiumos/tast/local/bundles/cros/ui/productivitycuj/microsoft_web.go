@@ -670,7 +670,7 @@ func (app *MicrosoftWebOffice) openNewFile(service string) action.Action {
 	oneDriveWebArea := nodewith.Name("My files - OneDrive").Role(role.RootWebArea)
 	newItem := nodewith.NameStartingWith("New").Role(role.MenuItem).Ancestor(oneDriveWebArea)
 	newItemMenu := nodewith.Role(role.Menu).Ancestor(newItem)
-	serviceItem := nodewith.Name(service).Role(role.MenuItem).Ancestor(oneDriveWebArea)
+	serviceItem := nodewith.NameContaining(service).Role(role.MenuItem).Ancestor(oneDriveWebArea)
 	return uiauto.NamedAction("open a new "+service, uiauto.Combine("create a new file",
 		app.uiHdl.ClickUntil(newItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(newItemMenu)),
 		app.uiHdl.ClickUntil(serviceItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilGone(oneDriveWebArea)),
@@ -682,6 +682,15 @@ func (app *MicrosoftWebOffice) openNewFile(service string) action.Action {
 // Therefore, we try to open a blank document from OneDrive to avoid this situation.
 func (app *MicrosoftWebOffice) openBlankDocument(service string) action.Action {
 	return func(ctx context.Context) error {
+		// Skip an alert dialog "Get the most out of your OneDrive" when it pops up.
+		noThanksButton := nodewith.Name("No thanks").Role(role.Button).Focusable()
+		if err := app.ui.IfSuccessThen(
+			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(noThanksButton),
+			app.uiHdl.Click(noThanksButton),
+		)(ctx); err != nil {
+			return err
+		}
+
 		if err := app.openNewFile(service)(ctx); err != nil {
 			return err
 		}
