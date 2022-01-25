@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "260bcbb4_201a8b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/e2e_policy_verification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-25T10:52:31Z",
+      "side": 1,
+      "message": "Add comments what are those credentials.",
+      "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24eb8739_551521ac",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/e2e_policy_verification.go",
         "patchSetId": 3
@@ -20,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48f5ff55_8aefc7b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/e2e_policy_verification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-25T10:52:31Z",
+      "side": 1,
+      "message": "Will remove.",
+      "parentUuid": "24eb8739_551521ac",
+      "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62e42be5_43eb911c",
         "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
         "patchSetId": 3
@@ -31,6 +66,24 @@
       "writtenOn": "2022-01-24T17:23:53Z",
       "side": 1,
       "message": "Does reset already work for remote fixtures?\n\nHave you tested with multiple tests?",
+      "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2beb95d9_063561aa",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-25T10:52:31Z",
+      "side": 1,
+      "message": "I haven\u0027t tried multiple tests. I will give it a try.",
+      "parentUuid": "62e42be5_43eb911c",
       "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
