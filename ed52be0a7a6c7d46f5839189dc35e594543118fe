@@ -46,6 +46,30 @@
       },
       "revId": "ed52be0a7a6c7d46f5839189dc35e594543118fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67d26f8_a17773b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perfetto_chrome_producer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1349355
+      },
+      "writtenOn": "2022-01-25T07:23:57Z",
+      "side": 1,
+      "message": "Thanks for the explanation!\n\nDo we need to update this comment, or it means the same thing, so no?",
+      "parentUuid": "08f7541a_aa74540d",
+      "range": {
+        "startLine": 48,
+        "startChar": 45,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "ed52be0a7a6c7d46f5839189dc35e594543118fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
