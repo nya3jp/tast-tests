@@ -8,6 +8,7 @@ package testutil
 
 import (
 	"context"
+	"encoding/json"
 	"strings"
 	"time"
 
@@ -155,4 +156,24 @@ func GetUSBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
 		return nil, err
 	}
 	return strings.Fields(string(out)), nil
+}
+
+// GetMIPICamerasFromCrOSCameraTool returns a list of MIPI camera information outputted from cros-camera-tool.
+func GetMIPICamerasFromCrOSCameraTool(ctx context.Context) ([]map[string]string, error) {
+	cmd := testexec.CommandContext(ctx, "cros-camera-tool", "modules", "list")
+	out, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run cros-camera-tool")
+	}
+	var cams []map[string]string
+	if err := json.Unmarshal(out, &cams); err != nil {
+		return nil, errors.Wrap(err, "failed to parse cros-camera-tool output")
+	}
+	return cams, nil
+}
+
+// IsVividDriverLoaded returns whether vivid driver is loaded on the device.
+func IsVividDriverLoaded(ctx context.Context) bool {
+	cmd := testexec.CommandContext(ctx, "sh", "-c", "lsmod | grep -q vivid")
+	return cmd.Run() == nil
 }
