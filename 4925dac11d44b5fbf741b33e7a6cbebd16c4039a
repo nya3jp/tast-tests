@@ -170,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1aeca4_97023ee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T06:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c5a69a7_d1234084",
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8f37fc8_cce2170b",
@@ -183,6 +201,30 @@
       "writtenOn": "2022-01-24T13:43:27Z",
       "side": 1,
       "message": "generates",
+      "range": {
+        "startLine": 317,
+        "startChar": 18,
+        "endLine": 317,
+        "endChar": 25
+      },
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83ed303b_07f27b6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T06:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f37fc8_cce2170b",
       "range": {
         "startLine": 317,
         "startChar": 18,
@@ -230,6 +272,30 @@
       "side": 1,
       "message": "The record is cleared each day, so I think it\u0027s fine. But I don\u0027t see any disadvantage of increasing to 20 too, so acking.",
       "parentUuid": "55ef9a60_9d5d272b",
+      "range": {
+        "startLine": 321,
+        "startChar": 21,
+        "endLine": 321,
+        "endChar": 23
+      },
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22bb8870_44e0f4e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-01-25T06:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89c83b68_6d5f4c84",
       "range": {
         "startLine": 321,
         "startChar": 21,
