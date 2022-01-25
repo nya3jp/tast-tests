@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45ae573_90ee5ecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-01-25T16:15:59Z",
+      "side": 1,
+      "message": "I\u0027d change the description to highlight that it is a parameterized test for lacros \u0026 ash now. Something like\n\nAdd kiosk.Autostart.lacros test\n\nMake kiosk.Autostart a parameterized test to cover PWA kiosk autostart in both ash and lacros.\nAdd kioskLoggedInLacros ficture for PWA kiosk on lacros.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "ab42778ce3cd8a96a8fff461a1d64e304b384b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ffb275_faed2853",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-01-25T16:15:59Z",
+      "side": 1,
+      "message": "Thanks, Irina, LGTM + nits",
+      "revId": "ab42778ce3cd8a96a8fff461a1d64e304b384b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94ab5165_16c67286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-01-25T16:15:59Z",
+      "side": 1,
+      "message": "What do you think about naming this test \"ash\"?",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "ab42778ce3cd8a96a8fff461a1d64e304b384b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
