@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f0d4413_c80c51b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-26T09:50:49Z",
+      "side": 1,
+      "message": "Here is working POC that requires some extra attention and removal/implementation of TODOs. \nImportant next steps:\n- Change Ash to Lacros or have it as yet separate fixture (to have both)\n- [Extra] Adjust locators for Chrome app, login view as they seem to be HTML5 app",
+      "revId": "e28da890ab92afcab18e281774c0d11c272a0a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
