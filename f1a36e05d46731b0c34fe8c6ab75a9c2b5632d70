@@ -18,6 +18,190 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8d3c7c_d19a6281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-26T23:50:18Z",
+      "side": 1,
+      "message": "nit: given this is a fixture and not a precondition this doesn\u0027t really belong here. Are we able to raise a TODO to migrate filemanager preconditions to fixtures as a follow up?",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe57c741_aa7e9aa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-26T23:50:18Z",
+      "side": 1,
+      "message": "This is scoped to the pre namespace, so pre.testFiles, try to make this rather specific to the purpose of these test files, e.g. fileManagerArchiveTestFiles",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbc49ccf_09077f8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-26T23:50:18Z",
+      "side": 1,
+      "message": "Just reiterating this here: I think the various layers fixtures are potentially not needed. The chromeLoggedInWithArchiveMount fixture is incredibly specific to files app and the suite of tests, consider just calling chrome.New in the SetUp (and appropriately reusing when necessary) with the []chrome.Option that you used this fixture for.",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5c8706d_ec0c9793",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-26T23:50:18Z",
+      "side": 1,
+      "message": "I wonder if this is enough time given we\u0027re moving some files around as well",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e8adbdd_5068efda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-26T23:50:18Z",
+      "side": 1,
+      "message": "We don\u0027t need this, TearDown is always called after all tests have ran by this fixture this may result in (if all successful) dumping the UI tree for the final test always.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a7e1aa5_dfddd2e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-26T23:50:18Z",
+      "side": 1,
+      "message": "nit: Make sure to check errors here.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe6bb127_6258fe6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-26T23:50:18Z",
+      "side": 1,
+      "message": "Can we close the old Files app window and then try open a new one? This has memory leakage here with the old reference being overridden but not removed.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go;l\u003d132;drc\u003d32fef65103e294a6c8ce14cf679dad1f7c0a604c",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 16
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9609fb98_894ed561",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-26T23:50:18Z",
+      "side": 1,
+      "message": "Can we export this from the fixture.go file and use it here? Single source of truth",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef4bddd8_a309430c",
