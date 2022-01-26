@@ -16,6 +16,24 @@
       "message": "A better pattern here would be:\n\nok :\u003d false\ndefer func(){\n  if !ok {\n    cleanup()\n  }\n}()\n\nYou only set ok to true at the end of the function.\n\nThis ensures all return paths are covered (even if someone changes the function).",
       "revId": "159bcf6b2484834f35292f80c3f4d81453830dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da15db26_fc886cd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-01-26T17:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "738349e8_c2654c0b",
+      "revId": "159bcf6b2484834f35292f80c3f4d81453830dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
