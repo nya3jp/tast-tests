@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c5d3718_df17d9b7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/powerd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-01-26T05:51:59Z",
+      "side": 1,
+      "message": "I am confused with \"the factory mode\" means here. Is it specific for a certain state of powerd, or you\u0027re referring \"DUT is booting with factory flow\".\n\nIt is unclear to me whether this function is checking the mode of \"DUT\" or the mode of powerd at first glance.\n\nmaybe `checkPowerdInFactoryMode` or something?",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c7aa5d8_d744de2e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/factory/powerd.go",
         "patchSetId": 2
@@ -43,6 +66,53 @@
         "startChar": 43,
         "endLine": 61,
         "endChar": 79
+      },
+      "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4a0b14_b6294988",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/powerd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-01-26T05:51:59Z",
+      "side": 1,
+      "message": "If we are concerning the reliability based on log file, how about chat with powerd team to see if they can expose an dbus API to check which mode they are?",
+      "parentUuid": "c998baba_50985087",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 79
+      },
+      "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ed2767_e1600309",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/powerd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1113505
+      },
+      "writtenOn": "2022-01-26T05:51:59Z",
+      "side": 1,
+      "message": "this also confused me here.",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 34
       },
       "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
