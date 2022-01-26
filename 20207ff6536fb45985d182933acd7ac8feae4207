@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1905b482_decbb65a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-01-26T10:29:58Z",
+      "side": 1,
+      "message": "Thanks in advance. \n\nUpdated test can be seen to be passing on previously failing boards here - https://ci.chromium.org/ui/p/chromeos/builders/cq/cq-orchestrator/b8824067088354776705/test-results. The test was temporarily upgraded to critical for CQ dry run testing.",
+      "revId": "20207ff6536fb45985d182933acd7ac8feae4207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10803ff4_fbdd1865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_dragdrop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1522562
+      },
+      "writtenOn": "2022-01-26T10:29:58Z",
+      "side": 1,
+      "message": "This and below were changed to Fatal as I don\u0027t think the test should continue if the source/destination webpages don\u0027t open.",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "20207ff6536fb45985d182933acd7ac8feae4207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
