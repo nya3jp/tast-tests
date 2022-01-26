@@ -86,6 +86,24 @@
       "parentUuid": "b5853495_941acdd6",
       "revId": "75eea2c18544560cbb6684f237a32e233a820ca4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1200b009_df74f303",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-26T10:40:03Z",
+      "side": 1,
+      "message": "Makes sense, I\u0027ll add a comment to that effect.",
+      "parentUuid": "1384a852_5ebbb742",
+      "revId": "75eea2c18544560cbb6684f237a32e233a820ca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
