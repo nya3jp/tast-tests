@@ -85,6 +85,24 @@
       "message": "am I not looking in the right place?\n\nhttps://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dOptinManaged\u0026dep\u003d\n\nthere is a lot of red here",
       "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0095402a_205f4b7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-01-26T18:04:21Z",
+      "side": 1,
+      "message": "That\u0027s the right place. The failures almost all come from Brya board. That\u0027s why I asked. I am not sure whether the bar is to have every single board pass for a few weeks (sorry I am new to this).",
+      "parentUuid": "ab843e71_c24cc544",
+      "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
