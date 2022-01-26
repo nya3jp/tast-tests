@@ -39,8 +39,8 @@ func RestrictiveDLPPolicyForClipboard() []policy.Policy {
 	}
 }
 
-// StandardDLPPolicyForClipboard returns the standard clipboard dlp policy.
-func StandardDLPPolicyForClipboard() []policy.Policy {
+// PopulateDLPPolicyForClipboard returns a clipboard dlp policy blocking clipboard from source to destination.
+func PopulateDLPPolicyForClipboard(source, destination string) []policy.Policy {
 	return []policy.Policy{&policy.DataLeakPreventionRulesList{
 		Val: []*policy.DataLeakPreventionRulesListValue{
 			{
@@ -48,12 +48,12 @@ func StandardDLPPolicyForClipboard() []policy.Policy {
 				Description: "User should not be able to copy and paste confidential content in restricted destination",
 				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
-						"example.com",
+						source,
 					},
 				},
 				Destinations: &policy.DataLeakPreventionRulesListValueDestinations{
 					Urls: []string{
-						"google.com",
+						destination,
 					},
 				},
 				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
@@ -66,4 +66,9 @@ func StandardDLPPolicyForClipboard() []policy.Policy {
 		},
 	},
 	}
+}
+
+// StandardDLPPolicyForClipboard returns the standard clipboard dlp policy.
+func StandardDLPPolicyForClipboard() []policy.Policy {
+	return PopulateDLPPolicyForClipboard("example.com", "google.com")
 }
