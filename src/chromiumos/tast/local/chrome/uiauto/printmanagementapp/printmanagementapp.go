@@ -50,6 +50,12 @@ func (p *PrintManagementApp) VerifyHistoryLabel() uiauto.Action {
 	return p.ui.WithTimeout(20 * time.Second).WaitUntilExists(printManagementHistoryLabel)
 }
 
+// VerifyNoHistoryLabel returns an action that verifies the History section of
+// the Print Management app is not visible.
+func (p *PrintManagementApp) VerifyNoHistoryLabel() uiauto.Action {
+	return p.ui.EnsureGoneFor(printManagementHistoryLabel, 20*time.Second)
+}
+
 // VerifyPrintJob returns an action that verifies at least one print job is
 // visible in the Print Management app.
 func (p *PrintManagementApp) VerifyPrintJob() uiauto.Action {
