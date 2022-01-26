@@ -51,6 +51,23 @@
       "parentUuid": "a3abe81e_ff11279d",
       "revId": "a1be6082ddd545528237c49deb9ddd9eccdf9b9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cda747b_3b304e4d",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-26T09:32:31Z",
+      "side": 1,
+      "message": "I guess it\u0027s safer to add \"-maxdepth\", \"0\".",
+      "revId": "a1be6082ddd545528237c49deb9ddd9eccdf9b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
