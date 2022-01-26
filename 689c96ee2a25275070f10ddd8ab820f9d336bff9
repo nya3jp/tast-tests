@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b7a6ce4_0beea5fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-26T23:46:40Z",
+      "side": 1,
+      "message": "I will remove this now.",
+      "parentUuid": "a8c20caa_394da7a8",
+      "revId": "689c96ee2a25275070f10ddd8ab820f9d336bff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "016f8839_39e5dbd9",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-21T01:45:16Z",
       "side": 1,
       "message": "Do you need both mutex?",
+      "revId": "689c96ee2a25275070f10ddd8ab820f9d336bff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35944e01_15481b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-26T23:46:40Z",
+      "side": 1,
+      "message": "I will remove the mutex for svc.",
+      "parentUuid": "016f8839_39e5dbd9",
       "revId": "689c96ee2a25275070f10ddd8ab820f9d336bff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
