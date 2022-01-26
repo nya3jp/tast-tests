@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8f5c91c_7b8191a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-26T16:26:04Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5567d2493e180f128a9e990aa9ac5ad469ac7111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ca6175_7f98ec3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-26T16:26:04Z",
+      "side": 1,
+      "message": "Don\u0027t comment out code.",
+      "revId": "5567d2493e180f128a9e990aa9ac5ad469ac7111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1101425f_ee93faf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-26T16:26:04Z",
+      "side": 1,
+      "message": "Error",
+      "range": {
+        "startLine": 105,
+        "startChar": 6,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "5567d2493e180f128a9e990aa9ac5ad469ac7111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e57e1ad_1c0f1f89",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-26T16:26:04Z",
+      "side": 1,
+      "message": "nit: end with .",
+      "revId": "5567d2493e180f128a9e990aa9ac5ad469ac7111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
