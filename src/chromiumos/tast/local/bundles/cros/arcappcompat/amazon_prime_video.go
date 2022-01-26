@@ -33,11 +33,13 @@ var touchviewLaunchForAmazonPrimeVideo = []testutil.TestCase{
 // clamshellAppSpecificTestsForAmazonPrimeVideo are placed here.
 var clamshellAppSpecificTestsForAmazonPrimeVideo = []testutil.TestCase{
 	{Name: "Clamshell: Video Playback", Fn: testutil.TouchAndPlayVideo},
+	{Name: "Clamshell: Signout app", Fn: signOutAmazonPrimeVideo},
 }
 
 // touchviewAppSpecificTestsForAmazonPrimeVideo are placed here.
 var touchviewAppSpecificTestsForAmazonPrimeVideo = []testutil.TestCase{
 	{Name: "Touchview: Video Playback", Fn: testutil.TouchAndPlayVideo},
+	{Name: "Touchview: Signout app", Fn: signOutAmazonPrimeVideo},
 }
 
 func init() {
@@ -119,8 +121,6 @@ func AmazonPrimeVideo(ctx context.Context, s *testing.State) {
 func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
 		allowButtonText      = "ALLOW"
-		textViewClassName    = "android.widget.TextView"
-		myStuffText          = "My Stuff"
 		enterEmailAddressID  = "ap_email"
 		passwordClassName    = "android.widget.EditText"
 		passwordID           = "ap_password"
@@ -219,26 +219,18 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 	}
 
 	// Check for captcha and OTP.
-	myStuffIcon := d.Object(ui.ClassName(textViewClassName), ui.Text(myStuffText))
 	checkForCaptcha := d.Object(ui.TextStartsWith(importantMessageText))
 	sendOTPButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(sendOTPText))
 
-	if err := checkForCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-		s.Log("checkForCaptcha doesn't exists: ", err)
-		if err := sendOTPButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
-			s.Log("Send OTP Button doesn't exist")
-			//Check for myStuffIcon.
-			if err := myStuffIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-				s.Log("myStuffIcon doesn't exist: ", err)
-			} else {
-				signOutAmazonPrimeVideo(ctx, s, a, d, appPkgName, appActivity)
-			}
-		} else {
-			s.Log("Send OTP Button does exist")
-		}
-	} else {
-		s.Log("Check for captcha exist")
+	if err := checkForCaptcha.WaitForExists(ctx, testutil.DefaultUITimeout); err == nil {
+		s.Log("checkForCaptcha does exists")
+		return
 	}
+	if err := sendOTPButton.WaitForExists(ctx, testutil.DefaultUITimeout); err == nil {
+		s.Log("Send OTP Button does exist")
+		return
+	}
+
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
@@ -249,21 +241,22 @@ func launchAppForAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *
 }
 
 // signOutAmazonPrimeVideo verifies app is signed out.
-func signOutAmazonPrimeVideo(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+func signOutAmazonPrimeVideo(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
 	const (
-		textViewClassName             = "android.widget.TextView"
-		myStuffText                   = "My Stuff"
+		layoutClassName               = "android.widget.FrameLayout"
+		myStuffDes                    = "My Stuff"
 		settingsIconClassName         = "android.widget.ImageButton"
 		settingsIconDescription       = "Settings"
 		selectSignedInOptionClassName = "android.widget.TextView"
-		selectSignedInOptionText      = "Signed in as Music Tester"
-		signOutText                   = "SIGN OUT"
+		selectSignedInOptionText      = "Signed in as amazonautomation"
+		signOutText                   = "Sign out"
 	)
 
 	// Click on my stuff icon.
-	myStuffIcon := d.Object(ui.ClassName(textViewClassName), ui.Text(myStuffText))
+	myStuffIcon := d.Object(ui.ClassName(layoutClassName), ui.DescriptionMatches("(?i)"+myStuffDes))
 	if err := myStuffIcon.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
-		s.Error("MyStuffIcon doesn't exist: ", err)
+		s.Log("MyStuffIcon doesn't exist and skipped logout: ", err)
+		return
 	} else if err := myStuffIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click MyStuffIcon: ", err)
 	}
@@ -275,15 +268,15 @@ func signOutAmazonPrimeVideo(ctx context.Context, s *testing.State, a *arc.ARC, 
 	} else if err := settingsIcon.Click(ctx); err != nil {
 		s.Fatal("Failed to click on settingsIcon: ", err)
 	}
-	// Select signed in option as music tester.
-	selectSignedInOption := d.Object(ui.ClassName(selectSignedInOptionClassName), ui.Text(selectSignedInOptionText))
+	// Select signed in option as amazonautomation.
+	selectSignedInOption := d.Object(ui.ClassName(selectSignedInOptionClassName), ui.TextMatches("(?i)"+selectSignedInOptionText))
 	if err := selectSignedInOption.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("SelectSignedInOption doesn't exist: ", err)
 	} else if err := selectSignedInOption.Click(ctx); err != nil {
 		s.Fatal("Failed to click on selectSignedInOption: ", err)
 	}
 	// Click on sign out button.
-	signOutButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.Text(signOutText))
+	signOutButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+signOutText))
 	if err := signOutButton.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
 		s.Error("SignOutButton doesn't exist: ", err)
 	} else if err := signOutButton.Click(ctx); err != nil {
