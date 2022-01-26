@@ -32,7 +32,7 @@ const chromePoliciesURL = "chrome://policy/"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Homepage,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of the HomepageLocation and HomepageIsNewTabPage policies",
 		Contacts: []string{
 			"snijhara@google.com", // Test author

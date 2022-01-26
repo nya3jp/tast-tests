@@ -28,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TranslateEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of Translate policy, checking if the translate widget shows up or not dependent on the policy setting",
 		Contacts: []string{
 			"marcgrimme@google.com", // Test author

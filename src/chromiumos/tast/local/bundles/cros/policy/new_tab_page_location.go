@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NewTabPageLocation,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of the NewTabPageLocation policy",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author

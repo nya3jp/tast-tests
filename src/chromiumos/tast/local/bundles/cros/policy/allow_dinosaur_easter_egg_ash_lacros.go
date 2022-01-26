@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AllowDinosaurEasterEggAshLacros,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of AllowDinosaurEasterEgg policy on both Ash and Lacros browser",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
