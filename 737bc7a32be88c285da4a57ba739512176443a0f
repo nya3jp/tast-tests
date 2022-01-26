@@ -16,6 +16,30 @@
       "message": "Hi, ptal.\n\nPavol, according to the documentation, you own this policy (I guess it\u0027s just old so it was assigned to somebody?), so I added you as owner to the test, hope that\u0027s ok.",
       "revId": "737bc7a32be88c285da4a57ba739512176443a0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4037e58_98b833b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2022-01-26T15:48:00Z",
+      "side": 1,
+      "message": "\u003e \"relevent\" is a possible misspelling of \"relevant\".\n\nDone.",
+      "parentUuid": "a475d1bc_e02578f8",
+      "range": {
+        "startLine": 78,
+        "startChar": 36,
+        "endLine": 78,
+        "endChar": 44
+      },
+      "revId": "737bc7a32be88c285da4a57ba739512176443a0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
