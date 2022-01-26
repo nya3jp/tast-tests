@@ -70,6 +70,24 @@
       "parentUuid": "134ac7da_cbbc78f9",
       "revId": "350d2ab2c07671926509e7a30ee5e93a8cc7c08b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9538d9e6_67c863ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-26T01:30:44Z",
+      "side": 1,
+      "message": "Another cherry-pick to M99. Please refer to: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3414800",
+      "parentUuid": "bc69ef00_49179de3",
+      "revId": "350d2ab2c07671926509e7a30ee5e93a8cc7c08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
