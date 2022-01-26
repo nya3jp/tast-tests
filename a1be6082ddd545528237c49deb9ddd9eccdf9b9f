@@ -33,6 +33,24 @@
       "message": "Just a comment; I thought we alreay had a utility function to manipulate filesystem, but it is actually only for remote, not common.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/dutfs/dutfs.go;l\u003d72;drc\u003d49024c3171973b1a1ce31a22a2579b72c1032a1c\nI thought it\u0027d be nicer to have file operation logic code shared with other libs if possible, but this change should be OK for now.",
       "revId": "a1be6082ddd545528237c49deb9ddd9eccdf9b9f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80ed19ae_e94f8208",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-01-26T09:26:34Z",
+      "side": 1,
+      "message": "Ack, I can add a follow up CL to take a look at that (keeping this open for now for tracking on my end, I\u0027ll close the comment out with a CL once it is ready)",
+      "parentUuid": "a3abe81e_ff11279d",
+      "revId": "a1be6082ddd545528237c49deb9ddd9eccdf9b9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
