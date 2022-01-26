@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
@@ -26,7 +27,7 @@ type Connector struct {
 }
 
 // Init initializes state of the connector.
-func (c *Connector) Init(s *testing.FixtState, d *uidetection.Context) {
+func (c *Connector) Init(s *testing.FixtState, tconn *chrome.TestConn, d *uidetection.Context) {
 	c.dataPath = s.DataPath
 	c.detector = d
 }
@@ -61,6 +62,37 @@ func (c *Connector) Login(ctx context.Context, k *input.KeyboardEventWriter, cfg
 	}
 
 	return nil
+}
+
+// WebLogin logs in into PWA Citrix app.
+func (c *Connector) WebLogin(ctx context.Context, tconn *chrome.TestConn, k *input.KeyboardEventWriter, cfg *apps.VDILoginConfig) error {
+
+	if err := tconn.WaitForExpr(ctx, "document.readyState === 'complete'"); err != nil {
+		return errors.Wrap(err, "failed waiting for URL to load")
+	}
+
+	// testing.Sleep(ctx, 5*time.Second)
+	// testing.ContextLog(ctx, "Waiting for the username text box")
+	// if err := tconn.WaitForExpr(ctx, `document.getElementById('username').id === username`); err != nil {
+	// 	return errors.Wrap(err, "failed to wait for text id=username field to focus")
+	// }
+
+	// testing.ContextLog(ctx, "Clicking on username textfield")
+	// if err := tconn.Eval(ctx, `document.getElementById('username').click()`, nil); err != nil {
+	// 	return errors.Wrap(err, "failed to click the id=username textfield")
+	// }
+	k.Type(ctx, cfg.Username)
+	k.Accel(ctx, "Tab")
+
+	// if err := tconn.Eval(ctx, "document.getElementById('password').click()", nil); err != nil {
+	// 	return errors.Wrap(err, "failed to click the id=password textfield")
+	// }
+
+	k.Type(ctx, cfg.Password)
+	k.Accel(ctx, "Enter")
+
+	return nil
+
 }
 
 // WaitForMainScreenVisible ensures that element visible on the screen

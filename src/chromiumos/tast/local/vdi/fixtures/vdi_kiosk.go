@@ -166,7 +166,7 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 		s.RequiredVar("uidetection.key_type"),
 		s.RequiredVar("uidetection.key"),
 		s.RequiredVar("uidetection.server"))
-	v.vdiConnector.Init(s, detector)
+	v.vdiConnector.Init(s, nil, detector)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {

@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
@@ -26,7 +27,7 @@ type Connector struct {
 }
 
 // Init initializes state of the connector.
-func (c *Connector) Init(s *testing.FixtState, d *uidetection.Context) {
+func (c *Connector) Init(s *testing.FixtState, tconn *chrome.TestConn, d *uidetection.Context) {
 	c.dataPath = s.DataPath
 	c.detector = d
 }
