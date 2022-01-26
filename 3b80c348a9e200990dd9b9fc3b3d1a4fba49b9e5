@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d5b3b3_aac5fefd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-26T16:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9917fca5_bd813ef9",
+      "range": {
+        "startLine": 59,
+        "startChar": 28,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "3b80c348a9e200990dd9b9fc3b3d1a4fba49b9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1516b9b9_8665f700",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d953dc3_8d7920b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-26T16:35:44Z",
+      "side": 1,
+      "message": "good point, done",
+      "parentUuid": "1516b9b9_8665f700",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "3b80c348a9e200990dd9b9fc3b3d1a4fba49b9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b88b5e04_ede156e2",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-26T15:15:24Z",
       "side": 1,
       "message": "hm, does it really work? I mean loginStatus returns a json object. Is it correctly unmarshalled into a struct with one field?\n\nThe other example of autotestPrivate.loginStatus leverages the whole struct corresponding to the status dictionary\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go;l\u003d31-45?q\u003dloginStatus%20f:go$%20package:chromeos\u0026type\u003dcs",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "3b80c348a9e200990dd9b9fc3b3d1a4fba49b9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d42316_34ed2322",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-01-26T16:35:44Z",
+      "side": 1,
+      "message": "yes, it works fine. the Eval function internally uses the Unmarshall function from the json package, which ignores object keys that don\u0027t have a corresponding struct field (https://pkg.go.dev/encoding/json#Unmarshal).",
+      "parentUuid": "b88b5e04_ede156e2",
       "range": {
         "startLine": 113,
         "startChar": 0,
