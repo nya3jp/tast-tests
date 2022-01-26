@@ -16,6 +16,23 @@
       "message": "+seewaifu for test owner review on the migration (as nya@ is ooo)",
       "revId": "0c4d842dce971a506d0cb4efd534a288370a7298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc4d1c1d_741b935b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-26T01:06:42Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "0c4d842dce971a506d0cb4efd534a288370a7298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
