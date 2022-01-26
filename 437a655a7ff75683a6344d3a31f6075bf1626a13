@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38149159_67edb524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-01-26T04:39:14Z",
+      "side": 1,
+      "message": "Update the Desc as well",
+      "range": {
+        "startLine": 18,
+        "startChar": 85,
+        "endLine": 18,
+        "endChar": 104
+      },
+      "revId": "437a655a7ff75683a6344d3a31f6075bf1626a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
