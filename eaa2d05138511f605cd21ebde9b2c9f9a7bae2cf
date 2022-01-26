@@ -16,6 +16,23 @@
       "message": "This is mechanical CP for M99. PTAL.",
       "revId": "eaa2d05138511f605cd21ebde9b2c9f9a7bae2cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b26607e_165a7cc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-26T15:58:41Z",
+      "side": 1,
+      "message": "oops, I found M99 merge approval is not yet made. Unset auto-submit, and pinged.",
+      "revId": "eaa2d05138511f605cd21ebde9b2c9f9a7bae2cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
