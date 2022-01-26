@@ -6,6 +6,8 @@ package ui
 
 import (
 	"context"
+	"fmt"
+	"os"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -21,7 +23,7 @@ func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
 			pb.RegisterChromeServiceServer(srv,
-				&ChromeService{sharedObject: common.SharedObjectsForServiceSingleton})
+				&ChromeService{sharedObject: common.SharedObjectsForServiceSingleton, s: s})
 		},
 		GuaranteeCompatibility: true,
 	})
@@ -29,6 +31,7 @@ func init() {
 
 // ChromeService implements tast.cros.ui.ChromeService
 type ChromeService struct {
+	s            *testing.ServiceState
 	sharedObject *common.SharedObjectsForService
 }
 
@@ -43,6 +46,20 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 	svc.sharedObject.ChromeMutex.Lock()
 	defer svc.sharedObject.ChromeMutex.Unlock()
 
+	fmt.Printf("CONTEXT ChromeService %v\n", &ctx)
+
+	svc.s.Log("JFAN svc.s.Log")
+	testing.ContextLog(ctx, "JFAN testing.ContextLog")
+
+	os.Stderr.WriteString("JFAN your message here")
+	fmt.Println("std out Chrome Service")
+
+	for i := 1; i <= 1; i++ {
+		// os.Stderr.WriteString(fmt.Sprintf("Err%d\n", i))
+		fmt.Fprintln(os.Stderr, fmt.Sprintf("Err%d", i))
+		fmt.Println(fmt.Sprintf("Std%d", i))
+	}
+
 	opts, err := toOptions(req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to convert to chrome options")
@@ -56,6 +73,19 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 		testing.ContextLog(ctx, "Failed to start Chrome")
 		return nil, err
 	}
+
+	// time.Sleep(time.Second)
+	// for i := 11; i <= 15; i++ {
+	// 	// os.Stderr.WriteString(fmt.Sprintf("Err%d\n", i))
+	// 	fmt.Fprintln(os.Stderr, fmt.Sprintf("Err%d", i))
+	// 	fmt.Println(fmt.Sprintf("Std%d", i))
+	// }
+	// time.Sleep(time.Second)
+	// for i := 21; i <= 25; i++ {
+	// 	// os.Stderr.WriteString(fmt.Sprintf("Err%d\n", i))
+	// 	fmt.Fprintln(os.Stderr, fmt.Sprintf("Err%d", i))
+	// 	fmt.Println(fmt.Sprintf("Std%d", i))
+	// }
 
 	// Store the newly created chrome sessions in the shared object so other services can use it.
 	svc.sharedObject.Chrome = cr

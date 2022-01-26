@@ -27,6 +27,7 @@ func init() {
 }
 
 func GRPC(ctx context.Context, s *testing.State) {
+	testing.ContextLog(ctx, "THIS SHOULD BREAK THINGS")
 	// Connect to the gRPC server on the DUT.
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
