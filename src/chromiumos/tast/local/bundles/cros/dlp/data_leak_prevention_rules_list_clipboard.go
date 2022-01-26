@@ -6,10 +6,8 @@ package dlp
 
 import (
 	"context"
-	"strings"
 
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
@@ -96,7 +94,7 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 				s.Fatal("Failed to press Ctrl+C to copy content: ", err)
 			}
 
-			copiedString, err := clipBoardText(ctx, tconn)
+			copiedString, err := clipboard.GetClipboardContent(ctx, tconn)
 			if err != nil {
 				s.Fatal("Failed to get clipboard content: ", err)
 			}
@@ -127,7 +125,7 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 			}
 
 			// Check Pasted content.
-			pastedError := checkPastedContent(ctx, ui, copiedString)
+			pastedError := clipboard.CheckPastedContent(ctx, ui, copiedString)
 
 			if param.copyAllowed && pastedError != nil {
 				s.Fatal("Couldn't check for pasted content: ", pastedError)
@@ -138,28 +136,4 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 			}
 		})
 	}
-}
-
-func clipBoardText(ctx context.Context, tconn *chrome.TestConn) (string, error) {
-	var clipData string
-	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
-		return "", errors.Wrap(err, "failed to get clipboard content")
-	}
-	return clipData, nil
-}
-
-func checkPastedContent(ctx context.Context, ui *uiauto.Context, content string) error {
-	// Slicing the string to get first 10 words in single line.
-	// Since pasted string in search box will be in single line format.
-	words := strings.Fields(content)
-	content = strings.Join(words[:10], " ")
-
-	contentNode := nodewith.NameContaining(content).Role(role.InlineTextBox).First()
-
-	if err := uiauto.Combine("Pasted ",
-		ui.WaitUntilExists(contentNode))(ctx); err != nil {
-		return errors.Wrap(err, "failed to check for pasted content")
-	}
-
-	return nil
 }
