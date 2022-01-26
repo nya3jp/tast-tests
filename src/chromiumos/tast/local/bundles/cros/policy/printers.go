@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -116,5 +117,30 @@ func Printers(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.Role(role.Button).Name("Print")),
 	)(ctx); err != nil {
 		s.Fatal(errors.Wrap(err, "failed to select printer in print destination popup and print"))
+	}
+
+	if err := uiauto.Combine("check that the print job is visible in print jobs overview",
+		// Open Settings app
+		kb.AccelAction("Search"),
+		ui.WaitUntilExists(nodewith.Role(role.TextField).NameStartingWith("Search your device")),
+		kb.TypeAction("Settings"),
+		ui.LeftClick(nodewith.Role(role.ListBoxOption).Name("Settings, Installed App")),
+		// Open "Print and scan" settings page
+		ui.WaitUntilExists(nodewith.Role(role.SearchBox).Name("Search settings")),
+		kb.TypeAction("Print jobs"),
+		ui.WaitUntilExists(nodewith.Focusable().NameContaining("Print jobs. Press Enter to navigate to section.")),
+		kb.AccelAction("Enter"),
+		// Open "Print jobs" window
+		ui.LeftClick(nodewith.Role(role.Link).Name("Print jobs View and manage print jobs")),
+		ui.WaitUntilExists(nodewith.Role(role.Window).Name("Print jobs").ClassName("BrowserFrame")),
+		// Verify that a print job for our printer exists and is not cancelled. The
+		// Name contains the time and title of the page we printed, which we exclude
+		// by using a Regexp.
+		ui.WaitUntilExists(nodewith.Focusable().NameRegex(
+			regexp.MustCompile(fmt.Sprintf(".*%s.*%s.*",
+				regexp.QuoteMeta(printerName),
+				regexp.QuoteMeta("Press enter to cancel the print job."))))),
+	)(ctx); err != nil {
+		s.Fatal(errors.Wrap(err, "failed to check existence of print job"))
 	}
 }
