@@ -122,6 +122,24 @@
       "parentUuid": "322b3c3c_c4e98263",
       "revId": "057c278b6a49727254cae0af51d5d4f38a472aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7dbef5c_a5f46e1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1310429
+      },
+      "writtenOn": "2022-01-26T18:09:14Z",
+      "side": 1,
+      "message": "I think marking as LacrosVariantUnneeded sounds good since this test is only testing autoclick behavior in ash. Thanks for following up on this!",
+      "parentUuid": "4d74f155_2ba623cc",
+      "revId": "057c278b6a49727254cae0af51d5d4f38a472aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
