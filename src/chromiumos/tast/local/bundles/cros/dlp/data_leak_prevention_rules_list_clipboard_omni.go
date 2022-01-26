@@ -75,7 +75,7 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 
 	s.Log("Waiting for chrome.clipboard API to become available")
 	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
-		s.Fatal("chrome.clipboard API unavailable: ", err)
+		s.Fatal("Failed to wait for chrome.clipboard API to become available: ", err)
 	}
 
 	for _, param := range []struct {
@@ -84,12 +84,12 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 		wantAllowed bool
 	}{
 		{
-			name:        "example",
+			name:        "wantDisallowed",
 			url:         "www.example.com",
 			wantAllowed: false,
 		},
 		{
-			name:        "chromium",
+			name:        "wantAllowed",
 			url:         "www.chromium.org",
 			wantAllowed: true,
 		},
@@ -113,12 +113,10 @@ func DataLeakPreventionRulesListClipboardOmni(ctx context.Context, s *testing.St
 			}
 			defer conn.Close()
 
-			if err := keyboard.Accel(ctx, "Ctrl+A"); err != nil {
-				s.Fatal("Failed to press Ctrl+A to select all content: ", err)
-			}
-
-			if err := keyboard.Accel(ctx, "Ctrl+C"); err != nil {
-				s.Fatal("Failed to press Ctrl+C to copy content: ", err)
+			if err := uiauto.Combine("copy all text from source website",
+				keyboard.AccelAction("Ctrl+A"),
+				keyboard.AccelAction("Ctrl+C"))(ctx); err != nil {
+				s.Fatal("Failed to copy text from source browser: ", err)
 			}
 
 			err = rightClickOmnibox(ctx, tconn, param.url, param.wantAllowed)
