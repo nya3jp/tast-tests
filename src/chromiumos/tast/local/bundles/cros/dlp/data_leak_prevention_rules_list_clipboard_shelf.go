@@ -14,7 +14,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -23,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataLeakPreventionRulesListClipboardShelf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction in the shelf textfield",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
@@ -96,9 +98,9 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 				s.Fatal("Failed to press Ctrl+C to copy content: ", err)
 			}
 
-			// Press the search key to bring the launcher into focus.
-			if err := keyboard.Accel(ctx, "Search"); err != nil {
-				s.Fatal("Failed to press Search to open shelf box: ", err)
+			// Open the launcher.
+			if err := launcher.Open(tconn)(ctx); err != nil {
+				s.Fatal("Failed to open the launcher: ", err)
 			}
 
 			s.Log("Right clicking shelf box")
@@ -117,13 +119,10 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	searchNode := nodewith.NameContaining("Search your device, apps, settings").First()
+	searchNode := nodewith.ClassName("SearchBoxView").Role(role.Group)
 
-	// Select shelf box first time.
-	if url == "www.example.com" {
-		if err := ui.LeftClick(searchNode)(ctx); err != nil {
-			return errors.Wrap(err, "failed finding shelf and clicking it")
-		}
+	if err := ui.LeftClick(searchNode)(ctx); err != nil {
+		return errors.Wrap(err, "failed finding shelf and clicking it")
 	}
 
 	if err := ui.RightClick(searchNode)(ctx); err != nil {
@@ -150,7 +149,7 @@ func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string,
 func pasteShelfbox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, url string, wantAllowed bool) error {
 	ui := uiauto.New(tconn)
 
-	searchNode := nodewith.NameContaining("Search your device, apps, settings").First()
+	searchNode := nodewith.ClassName("SearchBoxView").Role(role.Group)
 	if err := uiauto.Combine("Paste content in shelf box",
 		ui.LeftClick(searchNode),
 		keyboard.AccelAction("ctrl+V"))(ctx); err != nil {
