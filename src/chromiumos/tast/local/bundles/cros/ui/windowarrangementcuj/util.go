@@ -50,9 +50,7 @@ func SetupChrome(ctx context.Context, s *testing.State) (*chrome.Chrome, ash.Con
 			if cr, err = chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
 				return nil, nil, nil, nil, nil, nil, errors.Wrap(err, "failed to init chrome")
 			}
-			cleanup = func(ctx context.Context) error {
-				return cr.Close(ctx)
-			}
+			cleanup = cr.Close
 		} else {
 			cr = s.FixtValue().(*chrome.Chrome)
 		}
