@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da38b63_350706f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-26T17:39:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b191d2d2_eafbb13c",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "b783ec8f9e63a570b223c6813ce2e0a10380ad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a13b504e_2fd5e2b6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-26T17:11:25Z",
       "side": 1,
       "message": "Why are you using cr?\nprobably you missed the lacros variant? If so, please have a look at go/lacros-policy-testing-codelab",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "b783ec8f9e63a570b223c6813ce2e0a10380ad7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b06b3d_804c18f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-26T17:39:32Z",
+      "side": 1,
+      "message": "Was just blindly following some other policy test which I thought was correct. Fixed.",
+      "parentUuid": "a13b504e_2fd5e2b6",
       "range": {
         "startLine": 95,
         "startChar": 16,
