@@ -37,15 +37,24 @@ func init() {
 	})
 }
 
+type restrictionLevel int
+
+const (
+	allowed restrictionLevel = iota
+	blocked
+	warnCanceled
+	warnProceeded
+)
+
 func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	// DLP policy with printing blocked restriction.
-	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
+	blockPolicy := []policy.Policy{&policy.DataLeakPreventionRulesList{
 		Val: []*policy.DataLeakPreventionRulesListValue{
 			{
-				Name:        "Disable Printing in confidential content",
+				Name:        "Disable printing of confidential content",
 				Description: "User should not be able to print confidential content",
 				Sources: &policy.DataLeakPreventionRulesListValueSources{
 					Urls: []string{
@@ -63,13 +72,26 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	},
 	}
 
-	// Update the policy blob.
-	pb := fakedms.NewPolicyBlob()
-	pb.AddPolicies(policyDLP)
-
-	// Update policy.
-	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
-		s.Fatal("Failed to serve and refresh: ", err)
+	// DLP policy with printing warn restriction.
+	warnPolicy := []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Warn before printing confidential content",
+				Description: "User should be warned before printing confidential content",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						"example.com",
+					},
+				},
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "PRINTING",
+						Level: "WARN",
+					},
+				},
+			},
+		},
+	},
 	}
 
 	// Connect to Test API.
@@ -84,29 +106,48 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	}
 	defer keyboard.Close()
 
-	printingNotAllowed := "Printing is blocked"
-
 	for _, param := range []struct {
-		name             string
-		printingAllowed  bool
-		url              string
-		wantNotification string
+		name        string
+		url         string
+		restriction restrictionLevel
+		policyDLP   []policy.Policy
 	}{
 		{
-			name:             "example",
-			printingAllowed:  false,
-			url:              "https://www.example.com/",
-			wantNotification: printingNotAllowed,
+			name:        "blocked",
+			url:         "https://www.example.com/",
+			restriction: blocked,
+			policyDLP:   blockPolicy,
 		},
 		{
-			name:             "chromium",
-			printingAllowed:  true,
-			url:              "https://www.chromium.org/",
-			wantNotification: "Printing allowed no notification",
+			name:        "warnAndCancel",
+			url:         "https://www.example.com/",
+			restriction: warnCanceled,
+			policyDLP:   warnPolicy,
+		},
+		{
+			name:        "warnAndProceed",
+			url:         "https://www.example.com/",
+			restriction: warnProceeded,
+			policyDLP:   warnPolicy,
+		},
+		{
+			name:        "chromium",
+			url:         "https://www.chromium.org/",
+			restriction: allowed,
+			policyDLP:   blockPolicy,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+
+			// Update the policy blob.
+			pb := fakedms.NewPolicyBlob()
+			pb.AddPolicies(param.policyDLP)
+
+			// Update policy.
+			if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
+				s.Fatal("Failed to serve and refresh: ", err)
+			}
 
 			conn, err := cr.NewConn(ctx, param.url)
 			if err != nil {
@@ -114,19 +155,23 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 			}
 			defer conn.Close()
 
+			// Determine if printing should be allowed.
+			printingAllowed := (param.restriction == allowed || param.restriction == warnProceeded)
+
 			// Make a call to print page.
-			printingPossible, err := testPrinting(ctx, tconn, keyboard)
-			if err != nil && param.printingAllowed {
+			printingPossible, err := testPrinting(ctx, tconn, keyboard, param.restriction)
+			if err != nil && printingAllowed {
 				s.Fatal("Failed to run test body: ", err)
 			}
 
-			if printingPossible != param.printingAllowed {
-				s.Errorf("Unexpected printing restriction; got: %t, want: %t", printingPossible, param.printingAllowed)
+			if printingPossible != printingAllowed {
+				s.Errorf("Unexpected printing restriction; got: %t, want: %t", printingPossible, printingAllowed)
 			}
 
-			if !param.printingAllowed {
-				if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("print_dlp_blocked"), ash.WaitTitle(param.wantNotification)); err != nil {
-					s.Errorf("Failed to wait for notification with title %q: %v", param.wantNotification, err)
+			// Confirm that the notification only appeared if expected.
+			if param.restriction == blocked {
+				if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("print_dlp_blocked"), ash.WaitTitle("Printing is blocked")); err != nil {
+					s.Error("Failed to wait for notification with title 'Printing is blocked': ", err)
 				}
 			}
 		})
@@ -134,10 +179,24 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 }
 
 // testPrinting tests whether printing is possible via hotkey (Ctrl + P).
-func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter) (bool, error) {
+func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, restriction restrictionLevel) (bool, error) {
 	// Type the shortcut.
 	if err := keyboard.Accel(ctx, "Ctrl+P"); err != nil {
 		return false, errors.Wrap(err, "failed to type printing hotkey")
+	}
+
+	if restriction == warnProceeded || restriction == warnCanceled {
+		if restriction == warnProceeded {
+			// Hit Enter, which is equivalent to clicking on the "Print anyway" button.
+			if err := keyboard.Accel(ctx, "Enter"); err != nil {
+				return false, errors.Wrap(err, "failed to hit Enter")
+			}
+		} else {
+			// Hit Esc, which is equivalent to clicking on the "Cancel" button.
+			if err := keyboard.Accel(ctx, "Esc"); err != nil {
+				return false, errors.Wrap(err, "failed to hit Esc")
+			}
+		}
 	}
 
 	// Check if printing dialog has appeared.
