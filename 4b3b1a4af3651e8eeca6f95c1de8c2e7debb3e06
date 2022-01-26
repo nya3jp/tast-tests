@@ -16,6 +16,23 @@
       "message": "Hi vsavu@, after adding more fixes (mentioned in the CL), I no longer see the failure in recent runs:\n\nhttps://tastboard.corp.google.com/issue/611\n\nCould you take a look again? Thank you!",
       "revId": "4b3b1a4af3651e8eeca6f95c1de8c2e7debb3e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc925bdd_ccccacc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-01-26T08:13:18Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "4b3b1a4af3651e8eeca6f95c1de8c2e7debb3e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
