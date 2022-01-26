@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d19aff58_9df6f0d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-26T15:27:40Z",
+      "side": 1,
+      "message": "I think you need to extract the value here:\n\nvar keyboard_detected bool;\n\tif err :\u003d oobeConn.Eval(ctx, \"OobeAPI.screens.HIDDetectionScreen.keyboardDetected()\", \u0026keyboard_detected); err !\u003d nil {",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 106
+      },
+      "revId": "9f7d5674a600e9b63432af5c4db9e006bc8cdfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f1565f_824a9118",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-26T15:27:40Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 103
+      },
+      "revId": "9f7d5674a600e9b63432af5c4db9e006bc8cdfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf6247d_a359f9e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-26T15:27:40Z",
+      "side": 1,
+      "message": "please use the uiauto with names provide through API. See https://docs.google.com/document/d/1cxMLPQUNVVoa_i3dBfrAGhITQtdKV_HS1vdcM8BjKEE/edit?resourcekey\u003d0-TOcN57danKvOskgvJGpRJQ#heading\u003dh.v7qa4pg619lx",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "9f7d5674a600e9b63432af5c4db9e006bc8cdfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eedc09a7_b8ba95aa",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-26T15:27:40Z",
+      "side": 1,
+      "message": "Maybe EnableHIDDetectionOnOobe or DontDisableHIDDetection(OnOobe)",
+      "range": {
+        "startLine": 264,
+        "startChar": 17,
+        "endLine": 264,
+        "endChar": 32
+      },
+      "revId": "9f7d5674a600e9b63432af5c4db9e006bc8cdfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
