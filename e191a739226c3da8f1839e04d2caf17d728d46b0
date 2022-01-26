@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5ab8db0_ab81f92a",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-01-26T17:18:23Z",
+      "side": 1,
+      "message": "Sort them alphabetically",
+      "revId": "e191a739226c3da8f1839e04d2caf17d728d46b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d60e546_709a7ec9",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
         "patchSetId": 2
