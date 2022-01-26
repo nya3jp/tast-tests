@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8f3d3c_0cde5b44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2022-01-26T01:18:57Z",
+      "side": 1,
+      "message": "I have created ShowPassword test inside login package. Removed \"showpassword\" subpackage from lockscreen package and moved the functions out of this subpackage to respective test scripts (one in login.ShowPassword \u0026 one in lockscreen.ShowPassword) since GoLang didn\u0027t allow using this subpackage outside of lockscreen package. \n\nExisting test lockscreen.ShowPassword test is modified just to add the functions from this subpackage.\n",
+      "revId": "b123f7b102aefaf14eab345129ddf0c02926c057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

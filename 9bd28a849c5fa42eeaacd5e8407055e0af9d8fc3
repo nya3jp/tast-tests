@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31e64af_355038f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/show_password_login_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2022-01-26T01:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca030fd_84de24be",
+      "revId": "9bd28a849c5fa42eeaacd5e8407055e0af9d8fc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfcdaac3_f15b9aaf",
@@ -92,6 +110,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af9019c_8e9d6d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/show_password_login_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2022-01-26T01:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfcdaac3_f15b9aaf",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "9bd28a849c5fa42eeaacd5e8407055e0af9d8fc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "465500c3_d8c4369c",
@@ -105,6 +147,30 @@
       "writtenOn": "2022-01-07T19:13:55Z",
       "side": 1,
       "message": "I don\u0027t think this is necessary since cr.Close is deferred, and the next call to chrome.New should do this automatically",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "9bd28a849c5fa42eeaacd5e8407055e0af9d8fc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e267004_81c3fb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lockscreen/show_password_login_screen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1232569
+      },
+      "writtenOn": "2022-01-26T01:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "465500c3_d8c4369c",
       "range": {
         "startLine": 81,
         "startChar": 2,
