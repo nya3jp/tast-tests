@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa461ab_d6861693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-01-26T14:03:29Z",
+      "side": 1,
+      "message": "Oops, sorry. Fixed.",
+      "parentUuid": "57ef0285_6105ecf0",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "363bed89228b95470e3ec235e3811f31b3714592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "605e3c22_5088417a",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc0aeae_f3592b73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-01-26T14:03:29Z",
+      "side": 1,
+      "message": "Yes, I think we can do that. Thanks for the suggestion, done.",
+      "parentUuid": "605e3c22_5088417a",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 11
+      },
+      "revId": "363bed89228b95470e3ec235e3811f31b3714592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "851f4b24_47a5c9cf",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-01-26T13:48:13Z",
       "side": 1,
       "message": "binary.BigEndian.PutUint32(arcIP, device.Ipv4Addr), assuming endianess is correct.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "363bed89228b95470e3ec235e3811f31b3714592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7785e9e_bb1fead5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-01-26T14:03:29Z",
+      "side": 1,
+      "message": "Thanks! I think the endianness is flipped here though, used little endian instead, done.",
+      "parentUuid": "851f4b24_47a5c9cf",
       "range": {
         "startLine": 101,
         "startChar": 0,
