@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3ea73fe_feef2a1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-26T23:06:48Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way Shijin! It is really exciting to see this coming through :D Overall this LGTM with a few nits, please take a look whenever you have a moment.",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c508f4_e14866f2",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-26T23:06:48Z",
+      "side": 1,
+      "message": "Not sure if this is standard practice, but could we do something similar to https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/role/constants.go;l\u003d13;drc\u003d58edcef69cf5b8b70dab2e4c4fad5fac0dd716bf and provide a link to the Mojo API:\n\nhttps://chromium.googlesource.com/chromium/src/+/refs/heads/main/chromeos/services/bluetooth_config/public/mojom/cros_bluetooth_config.mojom",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6fe857_e223ec35",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-26T23:06:48Z",
+      "side": 1,
+      "message": "Nit: Move to the line above.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28958c3_6043b397",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/js.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-26T23:06:48Z",
+      "side": 1,
+      "message": "Nit: Space after slashes.",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed7a12c2_4acfa11b",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/js.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-26T23:06:48Z",
+      "side": 1,
+      "message": "Nit: Remove newline.",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ed8ef86_bfdd955d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-26T23:06:48Z",
+      "side": 1,
+      "message": "It may be more clear to rename \"state\" to be \"is_enabled\"/\"bluetooth_is_enabled\" and rename \"want\" to \"state\". WDYT?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839793bd_124e27c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-26T23:06:48Z",
+      "side": 1,
+      "message": "Nit: Newline after closing brace.",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f20b9945_16c8a8c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-26T23:06:48Z",
+      "side": 1,
+      "message": "What do you think of combining these to be:\n\n  s.Logf(\"Toggling Bluetooth state to %t (iteration %d of %d)\", state, i+1, iterations)",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
