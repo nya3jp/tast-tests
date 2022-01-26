@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Test</title>
+    <script>
+        const ACCEPTABLE_COLORS = ["red", "green", "blue", "gray", "black", "white"];
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const color = urlParams.get("color");
+        window.onload = () => {
+            if (ACCEPTABLE_COLORS.includes(color)) {
+                document.body.style.backgroundColor = color;
+                // This reduces flakiness by waiting for the page to have 
+                // rerendered before setting the title. In this way, we can 
+                // wait on the title to be set to make sure the page is loaded 
+                // in tests.
+                requestAnimationFrame(() => document.title = color);
+            } else {
+                document.body.innerHTML = "Unsupported 'color' URL param";
+            }
+        };
+    </script>
+</head>
+
+<body></body>
+
+</html>
