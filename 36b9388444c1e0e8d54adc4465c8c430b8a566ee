@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2711f6fb_1682463e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-26T03:55:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6227d57b_9320c9ca",
+      "range": {
+        "startLine": 77,
+        "startChar": 20,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "36b9388444c1e0e8d54adc4465c8c430b8a566ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4835f47f_64c5d1f4",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-25T07:24:30Z",
       "side": 1,
       "message": "is format off here?",
+      "range": {
+        "startLine": 180,
+        "startChar": 37,
+        "endLine": 180,
+        "endChar": 41
+      },
+      "revId": "36b9388444c1e0e8d54adc4465c8c430b8a566ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44411419_6c3f0c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-01-26T03:55:33Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "4835f47f_64c5d1f4",
       "range": {
         "startLine": 180,
         "startChar": 37,
