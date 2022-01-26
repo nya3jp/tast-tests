@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -35,6 +36,7 @@ func init() {
 			"chromeos-dlp@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "fakeDMS",
 		Data:         []string{"manifest.json", "background.js", "content.js"},
