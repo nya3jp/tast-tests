@@ -592,6 +592,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5271382e_c1ad338b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-26T11:09:11Z",
+      "side": 1,
+      "message": "Yes, it should be enough. I made a draft with the bug linking it here, but forgot to send it :) Glad you could find it.",
+      "parentUuid": "afaac80a_04079f51",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98fdd2d0_dbfb4768",
