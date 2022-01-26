@@ -16,6 +16,24 @@
       "message": "file a bug for this please",
       "revId": "a60612f6c4d22494ca49fc65568b7eaf222942a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6746ded_f48089f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_mojo_conf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-01-26T01:29:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c98db127_2c0ea7eb",
+      "revId": "a60612f6c4d22494ca49fc65568b7eaf222942a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
