@@ -112,27 +112,35 @@ func FillFromLSBRelease(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCH
 
 // UpdateFromGS updates the DUT to an image found in the Google Storage under the builder path folder.
 // It saves the logs (udpdate engine logs and Nebraska logs) to the given outdir.
-func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *testing.RPCHint, builderPath string) (retErr error) {
+func UpdateFromGS(updateCtx context.Context, dut *dut.DUT, outdir string, rpcHint *testing.RPCHint, builderPath string) (retErr error) {
 	// Limit the timeout for the update.
-	ctx, cancel := context.WithTimeout(ctx, UpdateTimeout)
+	updateCtx, cancel := context.WithTimeout(updateCtx, UpdateTimeout)
 	defer cancel()
 
 	// Reserve cleanup time for copying the logs from the DUT.
-	cleanupCtx := ctx
-	ctx, cancel = ctxutil.Shorten(ctx, 1*time.Minute)
+	cleanupCtx := updateCtx
+	updateCtx, cancel = ctxutil.Shorten(updateCtx, 2*time.Minute)
+	defer cancel()
+
+	// Limit the timeout for caching the update files.
+	cachingCtx, cancel := context.WithTimeout(updateCtx, 3*time.Minute)
 	defer cancel()
 
 	gsPathPrefix := fmt.Sprintf("gs://chromeos-image-archive/%s", builderPath)
 
 	// Cache the selected update image in a server accessible by the DUT.
 	// The update images are stored in a GS bucket which requires corp access.
-	url, err := cacheForDUT(ctx, dut, tlwAddress.Value(), gsPathPrefix)
+	url, err := cacheForDUT(cachingCtx, dut, tlwAddress.Value(), gsPathPrefix)
 	if err != nil {
 		return errors.Wrap(err, "unexpected error when caching file")
 	}
 
+	// Limit the timeout for preparation steps before the update.
+	preparationCtx, cancel := context.WithTimeout(updateCtx, time.Minute)
+	defer cancel()
+
 	// Connect to DUT.
-	cl, err := rpc.Dial(ctx, dut, rpcHint)
+	cl, err := rpc.Dial(preparationCtx, dut, rpcHint)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
 	}
@@ -140,7 +148,7 @@ func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *tes
 
 	// Create a temp dir to store the Nebraska logs and the update payload metadata.
 	nebraskaClient := aupb.NewNebraskaServiceClient(cl.Conn)
-	tempDir, err := nebraskaClient.CreateTempDir(ctx, &empty.Empty{})
+	tempDir, err := nebraskaClient.CreateTempDir(preparationCtx, &empty.Empty{})
 	if err != nil {
 		return errors.Wrap(err, "failed to create temporary directory for Nebraska")
 	}
@@ -162,11 +170,11 @@ func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *tes
 	}
 
 	// Download the payload metadata from the caching server.
-	if err := dut.Conn().CommandContext(ctx, "wget", args...).Run(); err != nil {
+	if err := dut.Conn().CommandContext(preparationCtx, "wget", args...).Run(); err != nil {
 		return errors.Wrap(err, "failed to download payload metadata")
 	}
 
-	nebraska, err := nebraskaClient.Start(ctx, &aupb.StartRequest{
+	nebraska, err := nebraskaClient.Start(preparationCtx, &aupb.StartRequest{
 		Update: &aupb.Payload{
 			Address:        url,
 			MetadataFolder: tempDir.Path,
@@ -199,7 +207,7 @@ func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *tes
 
 	// Trigger the update and wait for the results.
 	updateClient := aupb.NewUpdateServiceClient(cl.Conn)
-	if _, err := updateClient.CheckForUpdate(ctx, &aupb.UpdateRequest{
+	if _, err := updateClient.CheckForUpdate(updateCtx, &aupb.UpdateRequest{
 		OmahaUrl: fmt.Sprintf("http://127.0.0.1:%s/update?critical_update=True", nebraska.Port),
 	}); err != nil {
 		return errors.Wrap(err, "failed to check for updates")

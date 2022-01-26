@@ -15,10 +15,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	preTimeoutN2M  = 2 * time.Minute
+	postTimeoutN2M = 2 * time.Minute
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BasicNToM,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Example test for updating to an older version using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
@@ -29,18 +34,22 @@ func init() {
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.UpdateService",
 		},
-		Timeout: updateutil.UpdateTimeout + 4*time.Minute, // Reserve 4 minutes for setup and device image restoration.
+		Timeout: preTimeoutN2M + updateutil.UpdateTimeout + postTimeoutN2M,
 	})
 }
 
 func BasicNToM(ctx context.Context, s *testing.State) {
+	// Limit the timeout for the preparation steps.
+	preCtx, cancel := context.WithTimeout(ctx, preTimeoutN2M)
+	defer cancel()
+
 	lsbContent := map[string]string{
 		lsbrelease.Board:     "",
 		lsbrelease.Version:   "",
 		lsbrelease.Milestone: "",
 	}
 
-	err := updateutil.FillFromLSBRelease(ctx, s.DUT(), s.RPCHint(), lsbContent)
+	err := updateutil.FillFromLSBRelease(preCtx, s.DUT(), s.RPCHint(), lsbContent)
 	if err != nil {
 		s.Fatal("Failed to get all the required information from lsb-release: ", err)
 	}
@@ -55,7 +64,7 @@ func BasicNToM(ctx context.Context, s *testing.State) {
 	milestoneM := milestoneN - 3 // Target milestone.
 
 	// Find the latest stable release for milestone M.
-	paygen, err := updateutil.LoadPaygenFromGS(ctx)
+	paygen, err := updateutil.LoadPaygenFromGS(preCtx)
 	if err != nil {
 		s.Fatal("Failed to load paygen data: ", err)
 	}
@@ -69,19 +78,24 @@ func BasicNToM(ctx context.Context, s *testing.State) {
 
 	builderPath := fmt.Sprintf("%s-release/R%d-%s", board, milestoneM, rollbackVersion)
 
+	// Update the DUT.
 	s.Logf("Starting update from %s to %s", originalVersion, rollbackVersion)
 	if err := updateutil.UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
 		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
 	}
 
+	// Limit the timeout for the verification steps.
+	postCtx, cancel := context.WithTimeout(ctx, postTimeoutN2M)
+	defer cancel()
+
 	// Reboot the DUT.
 	s.Log("Rebooting the DUT after the update")
-	if err := s.DUT().Reboot(ctx); err != nil {
+	if err := s.DUT().Reboot(postCtx); err != nil {
 		s.Fatal("Failed to reboot the DUT after update: ", err)
 	}
 
 	// Check the image version.
-	version, err := updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
+	version, err := updateutil.ImageVersion(postCtx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to read DUT image version after the update: ", err)
 	}
@@ -96,18 +110,18 @@ func BasicNToM(ctx context.Context, s *testing.State) {
 
 	// Restore original image version with rollback.
 	s.Log("Restoring the original device image")
-	if err := s.DUT().Conn().CommandContext(ctx, "update_engine_client", "--rollback", "--nopowerwash", "--follow").Run(); err != nil {
+	if err := s.DUT().Conn().CommandContext(postCtx, "update_engine_client", "--rollback", "--nopowerwash", "--follow").Run(); err != nil {
 		s.Error("Failed to rollback the DUT: ", err)
 	}
 
 	// Reboot the DUT.
 	s.Log("Rebooting the DUT after the rollback")
-	if err := s.DUT().Reboot(ctx); err != nil {
+	if err := s.DUT().Reboot(postCtx); err != nil {
 		s.Fatal("Failed to reboot the DUT after rollback: ", err)
 	}
 
 	// Check the image version.
-	version, err = updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
+	version, err = updateutil.ImageVersion(postCtx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to read DUT image version after the update: ", err)
 	}

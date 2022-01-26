@@ -13,10 +13,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const (
+	preTimeoutN2N  = 1 * time.Minute
+	postTimeoutN2N = 1 * time.Minute
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BasicNToN,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Example test for the N2N update using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
@@ -27,17 +32,21 @@ func init() {
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.UpdateService",
 		},
-		Timeout: updateutil.UpdateTimeout + 2*time.Minute,
+		Timeout: preTimeoutN2N + updateutil.UpdateTimeout + postTimeoutN2N,
 	})
 }
 
 func BasicNToN(ctx context.Context, s *testing.State) {
+	// Limit the timeout for the preparation steps.
+	preCtx, cancel := context.WithTimeout(ctx, preTimeoutN2N)
+	defer cancel()
+
 	lsbContent := map[string]string{
 		lsbrelease.Version:     "",
 		lsbrelease.BuilderPath: "",
 	}
 
-	err := updateutil.FillFromLSBRelease(ctx, s.DUT(), s.RPCHint(), lsbContent)
+	err := updateutil.FillFromLSBRelease(preCtx, s.DUT(), s.RPCHint(), lsbContent)
 	if err != nil {
 		s.Fatal("Failed to get all the required information from lsb-release: ", err)
 	}
@@ -47,18 +56,23 @@ func BasicNToN(ctx context.Context, s *testing.State) {
 	// Builder path is used in selecting the update image.
 	builderPath := lsbContent[lsbrelease.BuilderPath]
 
+	// Update the DUT.
 	if err := updateutil.UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
 		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
 	}
 
+	// Limit the timeout for the verification steps.
+	postCtx, cancel := context.WithTimeout(ctx, preTimeoutN2N)
+	defer cancel()
+
 	// Reboot the DUT.
 	s.Log("Rebooting the DUT after the update")
-	if err := s.DUT().Reboot(ctx); err != nil {
+	if err := s.DUT().Reboot(postCtx); err != nil {
 		s.Fatal("Failed to reboot the DUT after update: ", err)
 	}
 
 	// Check the image version.
-	version, err := updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
+	version, err := updateutil.ImageVersion(postCtx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to read DUT image version after the update: ", err)
 	}
