@@ -107,7 +107,7 @@ func GetPrepareFakeAppsOptions(numFakeApps int) ([]chrome.Option, string, error)
 		return nil, extDirBase, errors.Wrap(err, "failed to create tempdir")
 	}
 
-	dirs, err := PrepareFakeApps(extDirBase, numFakeApps, nil)
+	dirs, err := PrepareDefaultFakeApps(extDirBase, numFakeApps, false)
 	if err != nil {
 		return nil, extDirBase, errors.Wrap(err, "failed to prepare fake apps")
 	}
@@ -119,18 +119,43 @@ func GetPrepareFakeAppsOptions(numFakeApps int) ([]chrome.Option, string, error)
 	return opts, extDirBase, nil
 }
 
-// PrepareFakeApps creates directories for num fake apps (hosted apps) under
-// the directory of baseDir and returns their path names. The intermediate
-// data may remain even when an error is returned. It is the caller's
-// responsibility to clean up the contents under the baseDir. This also may
-// update the ownership of baseDir. iconData is the data of the icon for those
-// fake apps in png format, or nil if the default icon is used.
-func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error) {
+// GetPrepareFakeAppsWithNamesOptions is similar with GetPrepareFakeAppsOptions.
+// But fake apps use the specified app names.
+func GetPrepareFakeAppsWithNamesOptions(names []string) ([]chrome.Option, string, error) {
+	extDirBase, err := ioutil.TempDir("", "")
+	if err != nil {
+		return nil, extDirBase, errors.Wrap(err, "failed to create tempdir")
+	}
+
+	iconDir, iconFiles, err := prepareFakeAppIcon(extDirBase, fakeIconData)
+	if err != nil {
+		return nil, extDirBase, errors.Wrap(err, "failed to parepare the shared icon for fake apps")
+	}
+
+	var dirs []string
+	for _, name := range names {
+		dir, err := prepareFakeApp(extDirBase, name, iconDir, iconFiles)
+		if err != nil {
+			return nil, extDirBase, errors.Wrapf(err, "failed to prepare data for %s", name)
+		}
+		dirs = append(dirs, dir)
+	}
+
+	opts := make([]chrome.Option, 0, len(names))
+	for _, dir := range dirs {
+		opts = append(opts, chrome.UnpackedExtension(dir))
+	}
+	return opts, extDirBase, nil
+}
+
+// prepareFakeApp creates data for a fake app with the specified app name and
+// icon (if any).
+func prepareFakeApp(baseDir, appName, iconDir string, iconFileMap map[int]string) (string, error) {
 	// The manifest.json data for the fake hosted app; it just opens google.com
 	// page on launch.
 	const manifestTmpl = `{
 		"description": "fake",
-		"name": "fake app %d",
+		"name": "%s",
 		"manifest_version": 2,
 		"version": "0",
 		%s
@@ -140,60 +165,98 @@ func PrepareFakeApps(baseDir string, num int, iconData []byte) ([]string, error)
 			}
 		}
 	}`
-	if err := extension.ChownContentsToChrome(baseDir); err != nil {
-		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
+
+	extDir := filepath.Join(baseDir, appName)
+	if err := os.Mkdir(extDir, 0755); err != nil {
+		return "", errors.Wrapf(err, "failed to create the directory for %s", appName)
 	}
 
-	iconDir := filepath.Join(baseDir, "icons")
-	iconFiles := map[int]string{}
 	var iconJSON string
-	if iconData != nil {
-		if err := os.Mkdir(iconDir, 0755); err != nil {
-			return nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
-		}
-		img, err := png.Decode(bytes.NewReader(iconData))
-		if err != nil {
-			return nil, err
-		}
-		for _, siz := range []int{32, 48, 64, 96, 128, 192} {
-			var imgToSave image.Image
-			if siz == img.Bounds().Size().X {
-				imgToSave = img
-			} else {
-				imgToSave = scaleImage(img, siz)
+	if iconDir != "" {
+		for _, iconFileName := range iconFileMap {
+			if err := os.Symlink(filepath.Join(iconDir, iconFileName), filepath.Join(extDir, iconFileName)); err != nil {
+				return "", errors.Wrapf(err, "failed to create link of icon %s", iconFileName)
 			}
-			iconFile := fmt.Sprintf("icon%d.png", siz)
-			if err := saveImageAsPng(filepath.Join(iconDir, iconFile), imgToSave); err != nil {
-				return nil, err
-			}
-			iconFiles[siz] = iconFile
 		}
-		iconJSONData, err := json.Marshal(iconFiles)
+
+		iconJSONData, err := json.Marshal(iconFileMap)
 		if err != nil {
-			return nil, err
+			return "", errors.Wrap(err, "failed to turn the mapptings between icon sizes and icon names into a JSON string")
 		}
 		iconJSON = fmt.Sprintf(`"icons": %s,`, string(iconJSONData))
 	}
 
-	extDirs := make([]string, 0, num)
-	for i := 0; i < num; i++ {
-		extDir := filepath.Join(baseDir, fmt.Sprintf("fake_%d", i))
-		if err := os.Mkdir(extDir, 0755); err != nil {
-			return nil, errors.Wrapf(err, "failed to create the directory for %d-th extension", i)
-		}
-		if iconJSON != "" {
-			for _, iconFile := range iconFiles {
-				if err := os.Symlink(filepath.Join(iconDir, iconFile), filepath.Join(extDir, iconFile)); err != nil {
-					return nil, errors.Wrapf(err, "failed to create link of icon %q", iconFile)
-				}
-			}
-		}
-		if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, i, iconJSON)), 0644); err != nil {
-			return nil, errors.Wrapf(err, "failed to prepare manifest.json for %d-th extension", i)
-		}
-		extDirs = append(extDirs, extDir)
+	if err := ioutil.WriteFile(filepath.Join(extDir, "manifest.json"), []byte(fmt.Sprintf(manifestTmpl, appName, iconJSON)), 0644); err != nil {
+		return "", errors.Wrapf(err, "failed to prepare manifest.json for %s", appName)
 	}
-	return extDirs, nil
+
+	return extDir, nil
+}
+
+// prepareFakeAppIcon creates icon images in different scales with the given
+// icon data. These images are stored in a directory created under `baseDir`.
+func prepareFakeAppIcon(baseDir string, iconData []byte) (string, map[int]string, error) {
+	iconDir := filepath.Join(baseDir, "icons")
+	if err := os.Mkdir(iconDir, 0755); err != nil {
+		return "", nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
+	}
+
+	img, err := png.Decode(bytes.NewReader(iconData))
+	if err != nil {
+		return "", nil, errors.Wrap(err, "failed to decode icon data")
+	}
+
+	iconFiles := map[int]string{}
+	for _, siz := range []int{32, 48, 64, 96, 128, 192} {
+		var imgToSave image.Image
+		if siz == img.Bounds().Size().X {
+			imgToSave = img
+		} else {
+			imgToSave = scaleImage(img, siz)
+		}
+		iconFile := fmt.Sprintf("icon%d.png", siz)
+		iconFileFullPath := filepath.Join(iconDir, iconFile)
+		if err := saveImageAsPng(iconFileFullPath, imgToSave); err != nil {
+			return "", nil, errors.Wrapf(err, "failed to save the icon file to %s", iconFileFullPath)
+		}
+		iconFiles[siz] = iconFile
+	}
+
+	return iconDir, iconFiles, nil
+}
+
+// PrepareDefaultFakeApps creates directories for `num` fake apps (hosted apps)
+// under the directory of baseDir and returns their path names. Each fake app
+// uses a generated name. `hasIcon` specifies whether a default icon should be
+// used. The intermediate data may remain even when an error is returned. It is
+// the caller's responsibility to clean up the contents under the baseDir. This
+// also may update the ownership of baseDir.
+func PrepareDefaultFakeApps(baseDir string, num int, hasIcon bool) ([]string, error) {
+	if err := extension.ChownContentsToChrome(baseDir); err != nil {
+		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
+	}
+
+	var iconDir string
+	var iconFiles map[int]string
+	var err error
+	if hasIcon {
+		iconDir, iconFiles, err = prepareFakeAppIcon(baseDir, fakeIconData)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to parepare the shared icon for fake apps")
+		}
+	}
+
+	var dirs []string
+	for i := 0; i < num; i++ {
+		appName := fmt.Sprintf("fake_%d", i)
+		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to prepare data for %s", appName)
+		}
+		dirs = append(dirs, dir)
+	}
+
+	return dirs, nil
 }
 
 // The remaining definitions are needed only for faillog & CaptureCDP.
