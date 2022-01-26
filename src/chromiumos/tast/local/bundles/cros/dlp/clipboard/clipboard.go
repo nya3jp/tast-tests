@@ -8,8 +8,10 @@ package clipboard
 
 import (
 	"context"
+	"strings"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -43,6 +45,37 @@ func CheckClipboardBubble(ctx context.Context, ui *uiauto.Context, url string) e
 		ui.WaitUntilExists(bubbleButton),
 		ui.WaitUntilExists(bubble))(ctx); err != nil {
 		return errors.Wrap(err, "failed to check for notification bubble existence")
+	}
+
+	return nil
+}
+
+// GetClipboardContent retrieves the current clipboard content.
+func GetClipboardContent(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	var clipData string
+	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
+		return "", errors.Wrap(err, "failed to get clipboard content")
+	}
+	return clipData, nil
+}
+
+// CheckPastedContent checks if a certain string appears in the search box.
+func CheckPastedContent(ctx context.Context, ui *uiauto.Context, content string) error {
+	// // Slicing the string to get first 10 words in single line.
+	// // Since pasted string in search box will be in single line format.
+	words := strings.Fields(content)
+	numSampleWords := len(words)
+	if numSampleWords > 10 {
+		numSampleWords = 10
+	} else if numSampleWords < 1 {
+		return errors.New("sample text has too few words")
+	}
+	content = strings.Join(words[:numSampleWords], " ")
+
+	contentNode := nodewith.NameStartingWith(content).Role(role.InlineTextBox).First()
+
+	if err := ui.WaitUntilExists(contentNode)(ctx); err != nil {
+		return errors.Wrap(err, "failed to check for pasted content")
 	}
 
 	return nil
