@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74556697_e3cab5e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-26T23:18:34Z",
+      "side": 1,
+      "message": "Interesting question. We probably cannot do a global change because many of those tests might actually want to continue running in the init mount namespace. I don\u0027t think all tests that enter a Guest session will want to check the state of mounts inside the user session.",
+      "parentUuid": "e53be74a_572225c0",
+      "revId": "882ce6a606233cfd398a9acabb02b45124ce8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30e0a2d4_2cd4ec00",
