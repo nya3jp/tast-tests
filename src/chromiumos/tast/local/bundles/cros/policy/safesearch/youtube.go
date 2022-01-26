@@ -34,13 +34,13 @@ const (
 // restricted as expected, and returns an error if it isn't.
 func TestYouTubeRestrictedMode(ctx context.Context, br ash.ConnSource, expectedStrongContentRestricted, expectedMildContentRestricted bool) error {
 	if mildContentRestricted, err := isYouTubeContentRestricted(ctx, br, mildContent); err != nil {
-		return err
+		return errors.Wrap(err, "failed to check whether mild content is restricted")
 	} else if mildContentRestricted != expectedMildContentRestricted {
 		return errors.Errorf("unexpected mild content restriction; got %t, wanted %t", mildContentRestricted, expectedMildContentRestricted)
 	}
 
 	if strongContentRestricted, err := isYouTubeContentRestricted(ctx, br, strongContent); err != nil {
-		return err
+		return errors.Wrap(err, "failed to check whether strong content is restricted")
 	} else if strongContentRestricted != expectedStrongContentRestricted {
 		return errors.Errorf("unexpected strong content restriction; got %t, wanted %t", strongContentRestricted, expectedStrongContentRestricted)
 	}
