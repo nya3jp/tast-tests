@@ -8,6 +8,7 @@ package launcher
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"regexp"
 	"time"
 
@@ -27,6 +28,12 @@ import (
 
 // ExpandedItemsClass define the class name of the expanded launcher view which is used as search parameters in ui.
 const ExpandedItemsClass = "AppListItemView"
+
+// BubbleAppsGridViewClass defines the class name of the apps grid used in clamshell mode.
+const BubbleAppsGridViewClass = "ScrollableAppsGridView"
+
+// PagedAppsGridViewClass defines the class name of the apps grid used in tablet mode.
+const PagedAppsGridViewClass = "PagedAppsGridView"
 
 // UnnamedFolderFinder is the finder of a newly created folder with the default name.
 var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItemsClass)
@@ -358,6 +365,107 @@ func CreateFolder(ctx context.Context, tconn *chrome.TestConn, folderOpensOnCrea
 	}
 
 	return nil
+}
+
+// GetAppListItemIndices calculates view indices of the specified app list items.
+func GetAppListItemIndices(ctx context.Context, tconn *chrome.TestConn, items []*nodewith.Finder, appsGrid *nodewith.Finder) ([]int, error) {
+	// Build the default return value.
+	var viewIndices = make([]int, len(items))
+	for idx := 1; idx < len(viewIndices); idx++ {
+		viewIndices[idx] = -1
+	}
+
+	// Fetch the given items' node information.
+	ui := uiauto.New(tconn)
+	itemInfoArray := make([]*uiauto.NodeInfo, len(items))
+	for index, finder := range items {
+		info, err := ui.Info(ctx, finder)
+		if err != nil {
+			return viewIndices, errors.Wrap(err, "failed to find the node information of the given app list item")
+		}
+		itemInfoArray[index] = info
+	}
+
+	// Get the node information of all app list items.
+	appListItems, err := ui.NodesInfo(ctx, nodewith.ClassName(ExpandedItemsClass).Ancestor(appsGrid))
+	if err != nil {
+		return viewIndices, errors.Wrap(err, "failed to get the node information of all app list items")
+	}
+
+	if len(appListItems) == 0 {
+		return viewIndices, errors.New("the node information of app list items is empty")
+	}
+
+	// Calculate view indices by matching the node information of the given items and that of all app list items.
+	for itemIndex, appListItem := range appListItems {
+		for infoIndex, info := range itemInfoArray {
+			if !reflect.DeepEqual(appListItem, *info) {
+				continue
+			}
+			viewIndices[infoIndex] = itemIndex
+		}
+	}
+
+	return viewIndices, nil
+}
+
+// DragIconAfterIcon moves an app list item at `srcIndex` to `destIndex` by drag-and-drop. `srcIndex` and `destIndex` are view indices (i.e. the index that indicates an item's order among its sibilings).
+func DragIconAfterIcon(ctx context.Context, tconn *chrome.TestConn, srcIndex, destIndex int, appsGrid *nodewith.Finder) uiauto.Action {
+	const duration = time.Second
+	return func(ctx context.Context) error {
+		if srcIndex == destIndex {
+			return errors.Errorf("destIndex should be different from srcIndex: srcIndex is %v; destIndex is %v", srcIndex, destIndex)
+		}
+
+		ui := uiauto.New(tconn)
+		appListItems, err := ui.NodesInfo(ctx, nodewith.ClassName(ExpandedItemsClass).Ancestor(appsGrid))
+		if err != nil {
+			return errors.Wrap(err, "failed to get the node information of app list items")
+		}
+
+		srcBounds := appListItems[srcIndex].Location
+		if err := mouse.Move(tconn, srcBounds.CenterPoint(), 0)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to press the button")
+		}
+
+		// Move a little bit first to trigger launcher-app-paging.
+		if err := mouse.Move(tconn, srcBounds.CenterPoint().Add(coords.Point{X: 10, Y: 10}), time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		// Fetch the bounds of the item view at `destIndex` after launcher-app-paging completes.
+		destInfo := appListItems[destIndex]
+		destBounds, err := ui.Location(ctx, nodewith.ClassName(ExpandedItemsClass).Name(destInfo.Name).Ancestor(appsGrid))
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for the destination item bounds")
+		}
+
+		// Calculate the move target location. If `srcIndex` is smaller(bigger) than `destIndex`, the source item should be dragged to the right(left) of the destination item to trigger apps grid reorder.
+		var x int
+		if srcIndex < destIndex {
+			x = destBounds.Right() + 5
+		} else {
+			x = destBounds.Left - 5
+		}
+		targetLocation := coords.NewPoint(x, destBounds.CenterY())
+
+		if err := mouse.Move(tconn, targetLocation, 200*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to release the mouse")
+		}
+
+		if err := ui.WaitForLocation(nodewith.ClassName(appListItems[srcIndex].ClassName).Name(appListItems[srcIndex].Name).Ancestor(appsGrid))(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for the dragged item to become idle")
+		}
+
+		return nil
+	}
 }
 
 // DragIconToIcon drags from one icon to another icon.

@@ -164,6 +164,19 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithFakeAppsWithSpecifiedNamesProductivityLauncherAppSort",
+		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
+		Contacts: []string{"jamescook@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{EnableFeatures("ProductivityLauncher", "ProductivityLauncherAnimation", "LauncherAppSort")}, nil
+		}),
+		Parent:          "install5AppsWithNames",
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedWithGaia",
 		Desc:     "Logged into a session with Gaia user",
 		Contacts: []string{"jinrongwu@google.com"},
