@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8ab2691_8c51ccb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-26T12:47:27Z",
+      "side": 1,
+      "message": "Hi Kamil,\n\nThis CL adds a policy test for ScreenCaptureAllowed, PTAL!\n\nRegards,\nJit",
+      "revId": "dd9e7236ce815179b19b26c1419933b056a8c110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
