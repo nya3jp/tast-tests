@@ -22,6 +22,30 @@
       },
       "revId": "50e3b5ead4ec2f1ae353f7fef2d2317b0f5a0cc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1028b0d2_ed790f4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1503804
+      },
+      "writtenOn": "2022-01-26T14:41:01Z",
+      "side": 1,
+      "message": "I don\u0027t know, but I guess not.\nIt it not updated in the official example. Dino policy:\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg_ash_lacros.go;drc\u003d56af2b0a8eafbdfc9812f93815a362f0b055d655;l\u003d26",
+      "parentUuid": "37f35bfb_393a878f",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "50e3b5ead4ec2f1ae353f7fef2d2317b0f5a0cc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
