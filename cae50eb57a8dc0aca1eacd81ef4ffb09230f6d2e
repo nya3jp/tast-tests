@@ -68,6 +68,24 @@
       "message": "Every other router type has a log statement, should there be one here also?\n\n(Wouldn\u0027t it be easier to log right after routertype is defined, and just log that string, since it\u0027s basically the same thing as what ends up getting logged anyway?)",
       "revId": "cae50eb57a8dc0aca1eacd81ef4ffb09230f6d2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff9569f_329bd4e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/ax_simple_connect.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-26T01:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed08dc24_4a6a86ad",
+      "revId": "cae50eb57a8dc0aca1eacd81ef4ffb09230f6d2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
