@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9917fca5_bd813ef9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-26T15:15:24Z",
+      "side": 1,
+      "message": "please have different error messages for different users (e.g. ...new user1..., ner user2, etc.)",
+      "range": {
+        "startLine": 59,
+        "startChar": 28,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "3b80c348a9e200990dd9b9fc3b3d1a4fba49b9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1516b9b9_8665f700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-26T15:15:24Z",
+      "side": 1,
+      "message": "why not just\nreturn chrome.New(ctx, opts...) \n? )",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 15
+      },
+      "revId": "3b80c348a9e200990dd9b9fc3b3d1a4fba49b9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88b5e04_ede156e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-26T15:15:24Z",
+      "side": 1,
+      "message": "hm, does it really work? I mean loginStatus returns a json object. Is it correctly unmarshalled into a struct with one field?\n\nThe other example of autotestPrivate.loginStatus leverages the whole struct corresponding to the status dictionary\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/lockscreen/lockscreen.go;l\u003d31-45?q\u003dloginStatus%20f:go$%20package:chromeos\u0026type\u003dcs",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "3b80c348a9e200990dd9b9fc3b3d1a4fba49b9e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
