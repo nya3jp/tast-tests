@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ca7ed6_51e12c54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-01-26T11:48:51Z",
+      "side": 1,
+      "message": "Done, replaced by the GetDevices API.",
+      "parentUuid": "1e3b219b_66f994e9",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "4cca5cf19fc4d14f419eac41f453ddc6b15d08ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aa91e40_ed82d283",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-08T08:14:48Z",
       "side": 1,
       "message": "QC devices use \"rmnet\" but they don\u0027t necessarily follow the \"rmnet%d\". There are also \"rmnet_ipa%d\" and \"rmnet_data%d\".\n\nFibocom devices use wwlan%d.",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "4cca5cf19fc4d14f419eac41f453ddc6b15d08ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea6967e_e88f78d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-01-26T11:48:51Z",
+      "side": 1,
+      "message": "Done, replaced by the GetDevices API.",
+      "parentUuid": "2aa91e40_ed82d283",
       "range": {
         "startLine": 54,
         "startChar": 3,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede63b04_884b323c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-01-26T11:48:51Z",
+      "side": 1,
+      "message": "Done, thanks for the suggestion! Looks much cleaner.",
+      "parentUuid": "55ab913b_504cff96",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "4cca5cf19fc4d14f419eac41f453ddc6b15d08ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b30bc06e_cadf08f5",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-08T08:14:48Z",
       "side": 1,
       "message": "nit: physical network interfaces.\n\nAlso I would add that this returns devices regardless of whether they are managed by shill or not as a network Device.",
+      "range": {
+        "startLine": 64,
+        "startChar": 38,
+        "endLine": 64,
+        "endChar": 66
+      },
+      "revId": "4cca5cf19fc4d14f419eac41f453ddc6b15d08ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "915e1499_b84ecb20",
+        "filename": "src/chromiumos/tast/local/network/network.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-01-26T11:48:51Z",
+      "side": 1,
+      "message": "Removed this code.",
+      "parentUuid": "b30bc06e_cadf08f5",
       "range": {
         "startLine": 64,
         "startChar": 38,
