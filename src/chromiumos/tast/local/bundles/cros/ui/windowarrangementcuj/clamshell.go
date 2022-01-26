@@ -189,7 +189,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the top-row layout")
 	}
-	if err = kw.Accel(ctx, topRow.SelectTask); err != nil {
+	if err := kw.AccelAction(topRow.SelectTask)(ctx); err != nil {
 		return errors.Wrap(err, "failed to enter overview mode")
 	}
 	// Snap one of the window to the left from the overview grid.
