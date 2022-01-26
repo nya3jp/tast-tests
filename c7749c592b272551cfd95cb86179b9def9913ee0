@@ -103,6 +103,41 @@
       "parentUuid": "ab843e71_c24cc544",
       "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5faf15e0_504ad852",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-26T18:29:26Z",
+      "side": 1,
+      "message": "Hi Yao:\n\nHave you check why it failed on Brya? Is this test supposed to be tested on Brya?\n\nIf it is supposed to work on Brya, you need to check why it fails.\n\nIf it is not supposed to work on Brya, you should add hwdep.SkipOnModel in HardwareDeps.\n\nPlease make it clear.\n\nAlso, have you check the failure in dedede? \n\nThanks.\n\nSeewai",
+      "parentUuid": "0095402a_205f4b7a",
+      "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a74fc2_105c1372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-26T18:29:26Z",
+      "side": 1,
+      "message": "Hi Yao:\n\nPlease take a look at my comments. Thanks.\n\nSeewai",
+      "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
