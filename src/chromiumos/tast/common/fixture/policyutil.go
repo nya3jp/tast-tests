@@ -26,6 +26,8 @@ const (
 	ChromeEnrolledLoggedIn = "chromeEnrolledLoggedIn"
 	// ChromeEnrolledLoggedInARC is a fixture name.
 	ChromeEnrolledLoggedInARC = "chromeEnrolledLoggedInARC"
+	// ChromePolicyWindowCaptureLoggedIn is a fixture name.
+	ChromePolicyWindowCaptureLoggedIn = "chromePolicyWindowCaptureLoggedIn"
 )
 
 // Fixtures defined in chromiumos/tast/local/mgs/fixture.go.
@@ -38,6 +40,8 @@ const (
 const (
 	// LacrosPolicyLoggedIn is a fixture name.
 	LacrosPolicyLoggedIn = "lacrosPolicyLoggedIn"
+	// LacrosPolicyLoggedInWindowCapture is a fixture name.
+	LacrosPolicyLoggedInWindowCapture = "lacrosPolicyLoggedInWindowCapture"
 )
 
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/persistent.go.
