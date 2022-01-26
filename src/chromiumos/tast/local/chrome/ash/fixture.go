@@ -10,6 +10,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
@@ -21,7 +22,7 @@ func init() {
 		Name:            "install100Apps",
 		Desc:            "Install 100 fake apps in a temporary directory",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            &fakeAppsFixture{numApps: 100},
+		Impl:            &defaultFakeAppFixture{numApps: 100},
 		SetUpTimeout:    fixtureTimeout,
 		TearDownTimeout: fixtureTimeout,
 	})
@@ -30,45 +31,89 @@ func init() {
 		Name:            "install2Apps",
 		Desc:            "Install 2 fake apps in a temporary directory",
 		Contacts:        []string{"mukai@chromium.org"},
-		Impl:            &fakeAppsFixture{numApps: 2},
+		Impl:            &defaultFakeAppFixture{numApps: 2},
+		SetUpTimeout:    fixtureTimeout,
+		TearDownTimeout: fixtureTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "install5AppsWithNames",
+		Desc:            "Install 5 fake apps with the specified names in a temporary directory",
+		Contacts:        []string{"andrewxu@chromium.org"},
+		Impl:            &fakeAppWithNameFixture{names: FakeAppAlphabeticalNames},
 		SetUpTimeout:    fixtureTimeout,
 		TearDownTimeout: fixtureTimeout,
 	})
 }
 
-type fakeAppsFixture struct {
+// The base fixture to prepare for fake apps.
+type fakeAppsFixtureBase struct {
 	extDirBase string
-	numApps    int
 }
 
-func (f *fakeAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+func (f *fakeAppsFixtureBase) PrepareExtDir(s *testing.FixtState) error {
 	extDirBase, err := ioutil.TempDir("", "")
 	if err != nil {
-		s.Fatal("Failed to create a tempdir: ", err)
+		return errors.Wrap(err, "failed to create a tempdir")
 	}
 	f.extDirBase = extDirBase
+	return nil
+}
 
-	dirs, err := PrepareFakeApps(extDirBase, f.numApps, fakeIconData)
-	if err != nil {
-		s.Fatal("Failed to prepare fake apps: ", err)
-	}
-	opts := make([]chrome.Option, 0, f.numApps)
+func (f *fakeAppsFixtureBase) UnpackExtension(dirs []string) interface{} {
+	opts := make([]chrome.Option, 0, len(dirs))
 	for _, dir := range dirs {
 		opts = append(opts, chrome.UnpackedExtension(dir))
 	}
 	return opts
 }
 
-func (f *fakeAppsFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+func (f *fakeAppsFixtureBase) TearDown(ctx context.Context, s *testing.FixtState) {
 	if err := os.RemoveAll(f.extDirBase); err != nil {
 		s.Error("Failed to remove ", f.extDirBase, ": ", err)
 	}
 }
 
-func (f *fakeAppsFixture) Reset(ctx context.Context) error {
+func (f *fakeAppsFixtureBase) Reset(ctx context.Context) error {
 	return nil
 }
 
-func (f *fakeAppsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fakeAppsFixtureBase) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
-func (f *fakeAppsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (f *fakeAppsFixtureBase) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+
+// The fixture used for populating default fake apps.
+type defaultFakeAppFixture struct {
+	fakeAppsFixtureBase
+	numApps int
+}
+
+func (f *defaultFakeAppFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if err := f.PrepareExtDir(s); err != nil {
+		s.Fatal("Failed to prepare for an external directory: ", err)
+	}
+
+	dirs, err := PrepareDefaultFakeApps(f.extDirBase, f.numApps, true)
+	if err != nil {
+		s.Fatal("Failed to prepare fake apps with default names and icons: ", err)
+	}
+	return f.UnpackExtension(dirs)
+}
+
+// The fixture used for populating fake apps with specified names.
+type fakeAppWithNameFixture struct {
+	fakeAppsFixtureBase
+	names []string
+}
+
+func (f *fakeAppWithNameFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if err := f.PrepareExtDir(s); err != nil {
+		s.Fatal("Failed to prepare for an external directory: ", err)
+	}
+
+	dirs, err := PrepareFakeAppsWithNames(f.extDirBase, f.names)
+	if err != nil {
+		s.Fatal("Failed to prepare fake apps with default names and icons: ", err)
+	}
+	return f.UnpackExtension(dirs)
+}
