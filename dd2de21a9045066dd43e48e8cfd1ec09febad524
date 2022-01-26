@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f5bca4_92ca55e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-01-26T13:02:14Z",
+      "side": 1,
+      "message": "Please take a look. Thanks!",
+      "revId": "dd2de21a9045066dd43e48e8cfd1ec09febad524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e79a08_ebf31c49",
+        "filename": "src/chromiumos/tast/common/android/adb/device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-01-26T13:02:14Z",
+      "side": 1,
+      "message": "This |timeout| is set to ctxutil.MaxTimeout by arc.connectADB:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/arc/adb.go;l\u003d24;drc\u003d61bd0f0b18602f26d8c95c0bcb9cd94f46e18e65\n\nOn the other hand, |ctx| in arc.connectADB is the one generated using ARC\u0027s boot timeout value:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/arc/arc.go;l\u003d217;drc\u003d4db07098d97ebdb1b8a90582c537919fd679d032\n\nSo, I think it\u0027s acceptable to just remove testing.PollBreak here without changing the timeout value passed from arc.connectADB.",
+      "range": {
+        "startLine": 193,
+        "startChar": 63,
+        "endLine": 193,
+        "endChar": 70
+      },
+      "revId": "dd2de21a9045066dd43e48e8cfd1ec09febad524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
