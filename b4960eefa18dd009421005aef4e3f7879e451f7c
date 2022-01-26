@@ -52,6 +52,24 @@
       "parentUuid": "49305245_4f5babff",
       "revId": "b4960eefa18dd009421005aef4e3f7879e451f7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31d3606_87b5e918",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1503804
+      },
+      "writtenOn": "2022-01-26T21:48:17Z",
+      "side": 1,
+      "message": "Thanks. I corrected commit message in patchset 4. I didn\u0027t realized that `reto upload` overrode it to the original message.",
+      "parentUuid": "7cd0d9cb_0c36baf4",
+      "revId": "b4960eefa18dd009421005aef4e3f7879e451f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
