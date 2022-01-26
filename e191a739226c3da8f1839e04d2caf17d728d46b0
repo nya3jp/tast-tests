@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8a1962_f62fef60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-26T04:27:25Z",
+      "side": 1,
+      "message": "Replaced carrier based function with getApn to read apn from shill properties.\n",
+      "revId": "e191a739226c3da8f1839e04d2caf17d728d46b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
