@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f932a13c_9ae825b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-01-26T04:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361462ab_49970a4d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "62daf37cb07e1f66f3fe7020e050465cc3d1c01c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b2605fe2_be911c7c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -88,6 +112,30 @@
       "writtenOn": "2021-10-28T14:56:32Z",
       "side": 1,
       "message": "I wonder if you could emulate it with tast. Maybe check something from https://source.corp.google.com/search?q\u003dPhysicalKeyboard%20package:chromeos\u0026sq\u003d",
+      "range": {
+        "startLine": 47,
+        "startChar": 82,
+        "endLine": 47,
+        "endChar": 105
+      },
+      "revId": "62daf37cb07e1f66f3fe7020e050465cc3d1c01c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be480c6b_13e80ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/hid_screen_shown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-01-26T04:15:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad10b150_33c2f558",
       "range": {
         "startLine": 47,
         "startChar": 82,
