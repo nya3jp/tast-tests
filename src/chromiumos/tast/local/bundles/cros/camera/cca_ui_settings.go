@@ -83,7 +83,7 @@ func testFeedback(ctx context.Context, cr *chrome.Chrome, app *cca.App) error {
 		return errors.Wrap(err, "failed to click feedback button")
 	}
 	matcher := func(t *target.Info) bool {
-		return strings.Contains(t.URL, "gfdkimpbcpahaombhbimeihdjnejgicl") && t.Type == "app"
+		return strings.Contains(t.URL, "chrome://feedback")
 	}
 	fConn, err := cr.NewConnForTarget(ctx, matcher)
 	if err != nil {
