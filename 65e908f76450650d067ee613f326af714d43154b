@@ -16,6 +16,29 @@
       "message": "Updated. Added poll on both empty and non-empty apn for 30 seconds each.",
       "revId": "65e908f76450650d067ee613f326af714d43154b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e21f0bac_d2238c44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-26T20:57:05Z",
+      "side": 1,
+      "message": "maybe just log the first error before the next call to connect, then fatal on the second one? Then you can also avoid using errNew and just assign all of the errors to err. But this is a pretty minor nit, YMMV",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "65e908f76450650d067ee613f326af714d43154b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
