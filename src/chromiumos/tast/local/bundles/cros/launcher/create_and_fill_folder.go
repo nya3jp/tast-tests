@@ -49,7 +49,7 @@ func init() {
 // CreateAndFillFolder tests that a folder can be filled to the maximum allowed size.
 func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	// Create 50 fake apps and get the the options to add to the new chrome session.
-	opts, extDirBase, err := ash.GetPrepareFakeAppsOptions(50)
+	opts, extDirBase, err := ash.GeneratePrepareFakeAppsOptions(50)
 	if err != nil {
 		s.Fatal("Failed to create 50 fake apps")
 	}
