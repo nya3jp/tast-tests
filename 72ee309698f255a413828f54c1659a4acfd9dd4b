@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec80fb1_401e8662",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-01-26T00:35:58Z",
+      "side": 1,
+      "message": "lgtm w nits",
+      "revId": "72ee309698f255a413828f54c1659a4acfd9dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c87f0a_154e4716",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-01-26T00:35:58Z",
+      "side": 1,
+      "message": "nit: lowercase \"target\" and \"no\"-\u003e\"not\"",
+      "range": {
+        "startLine": 636,
+        "startChar": 21,
+        "endLine": 636,
+        "endChar": 47
+      },
+      "revId": "72ee309698f255a413828f54c1659a4acfd9dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12ead738_9c1edad1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-01-26T00:35:58Z",
+      "side": 1,
+      "message": "nit: maybe reword \u0027determining\u0027 -\u003e \u0027determine\u0027",
+      "range": {
+        "startLine": 650,
+        "startChar": 33,
+        "endLine": 650,
+        "endChar": 44
+      },
+      "revId": "72ee309698f255a413828f54c1659a4acfd9dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08596462_7cfabe65",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-01-26T00:35:58Z",
+      "side": 1,
+      "message": "nit: lowercase \u0027bubble\u0027",
+      "range": {
+        "startLine": 668,
+        "startChar": 27,
+        "endLine": 668,
+        "endChar": 33
+      },
+      "revId": "72ee309698f255a413828f54c1659a4acfd9dd4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
