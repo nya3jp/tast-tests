@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "637b7a55_ec877faf",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-26T20:45:57Z",
+      "side": 1,
+      "message": "Thanks, Done.",
+      "parentUuid": "b5ab8db0_ab81f92a",
+      "revId": "e191a739226c3da8f1839e04d2caf17d728d46b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d60e546_709a7ec9",
@@ -65,6 +83,30 @@
       "writtenOn": "2022-01-26T17:15:49Z",
       "side": 1,
       "message": "I think that if e.g. simpleModem.Call ends up blocking a bunch, we might not actually get to this block. We should probably base it on time (i.e. have we been polling for 30 seconds?) using the context.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "e191a739226c3da8f1839e04d2caf17d728d46b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d42fcec_66e6f15a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-26T20:45:57Z",
+      "side": 1,
+      "message": "Modified with 30 second polls for each empty apn and non empty apn if exist. Thanks for suggesting cleaner way(hopefully this is the thought you are asking!).\n\nearlier assumed dbus call fails with timeout and made 15 times thinking of 15*2 30 seconds.",
+      "parentUuid": "3d60e546_709a7ec9",
       "range": {
         "startLine": 117,
         "startChar": 0,

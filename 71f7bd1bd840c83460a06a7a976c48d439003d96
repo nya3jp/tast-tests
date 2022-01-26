@@ -170,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6514d8c_21f3735c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-26T20:45:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbb6cf63_49b47bf9",
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70a484e3_c941ed3b",
@@ -231,6 +249,30 @@
       "side": 1,
       "message": "Removed carrier based implementations\nImplemented using apn from shill APNList if fails with empty APN for 30sec.",
       "parentUuid": "7d0724f4_8308e19c",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 15
+      },
+      "revId": "71f7bd1bd840c83460a06a7a976c48d439003d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbbe8fb_276def4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-26T20:45:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63e8d032_aaf42d70",
       "range": {
         "startLine": 159,
         "startChar": 5,
