@@ -149,6 +149,19 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWithFakeAppsWithSpecifiedNamesProductivityLauncherAppSort",
+		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
+		Contacts: []string{"jamescook@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{EnableFeatures("ProductivityLauncher", "ProductivityLauncherAnimation", "LauncherAppSort")}, nil
+		}),
+		Parent:          "install5AppsWithNames",
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
