@@ -86,6 +86,24 @@
       "parentUuid": "f1bf6b12_0abec5c4",
       "revId": "057c278b6a49727254cae0af51d5d4f38a472aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322b3c3c_c4e98263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/a11y/autoclick.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-26T01:21:53Z",
+      "side": 1,
+      "message": "Akihiro, AFAICT some examples of tests that need a lacros variant are:\n1. Test tests interaction between the browser and ChromeOS\n2. Test tests specific web content in the browser\n3. Test tests some aspect of performance while using the browser\n\nHowever, I don\u0027t see this test specifically would fall under any of those since it seems to be just okay testing autoclick with ash-chrome. Should I mark this as LacrosVariantUnneeded?",
+      "parentUuid": "f6c47ecf_8d8d141e",
+      "revId": "057c278b6a49727254cae0af51d5d4f38a472aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
