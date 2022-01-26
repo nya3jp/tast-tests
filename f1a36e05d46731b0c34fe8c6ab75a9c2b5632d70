@@ -16,6 +16,52 @@
       "message": "This last patchset is basically what I was suggesting in the previous comment. I seen to get straight \"all tests passed\" with this change.",
       "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4bddd8_a309430c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-26T23:21:08Z",
+      "side": 1,
+      "message": "Does this log in and log out for every entry?",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 43
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee795d06_3742aeec",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-26T23:21:08Z",
+      "side": 1,
+      "message": "This might be unnecessary: unless you think that somehow the Tast test is running in a non-init mount namespace, this is a no-op.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 38
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
