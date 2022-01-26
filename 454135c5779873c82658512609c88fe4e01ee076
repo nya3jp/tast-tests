@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9e58103_c2031cdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-26T08:32:37Z",
+      "side": 1,
+      "message": "break the line before \"automatically\"",
+      "revId": "454135c5779873c82658512609c88fe4e01ee076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6dc2c9b_0f8267de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-26T08:32:37Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "454135c5779873c82658512609c88fe4e01ee076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a00633_30b787c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/close_tab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-26T08:32:37Z",
+      "side": 1,
+      "message": "Is this random required for the test?",
+      "revId": "454135c5779873c82658512609c88fe4e01ee076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
