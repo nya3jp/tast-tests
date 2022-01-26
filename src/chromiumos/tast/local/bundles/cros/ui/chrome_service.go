@@ -21,7 +21,7 @@ func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
 			pb.RegisterChromeServiceServer(srv,
-				&ChromeService{sharedObject: common.SharedObjectsForServiceSingleton})
+				&ChromeService{sharedObject: common.SharedObjectsForServiceSingleton, s: s})
 		},
 		GuaranteeCompatibility: true,
 	})
@@ -29,6 +29,7 @@ func init() {
 
 // ChromeService implements tast.cros.ui.ChromeService
 type ChromeService struct {
+	s            *testing.ServiceState
 	sharedObject *common.SharedObjectsForService
 }
 
@@ -42,6 +43,17 @@ var defaultCreds = chrome.Creds{
 func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.Empty, error) {
 	svc.sharedObject.ChromeMutex.Lock()
 	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	testing.ContextLog(ctx, "Service ChromeService New testing.ContextLog")
+
+	// os.Stderr.WriteString("JFAN your message here")
+	// fmt.Println("std out Chrome Service")
+
+	// for i := 1; i <= 1; i++ {
+	// 	// os.Stderr.WriteString(fmt.Sprintf("Err%d\n", i))
+	// 	fmt.Fprintln(os.Stderr, fmt.Sprintf("Err%d", i))
+	// 	fmt.Println(fmt.Sprintf("Std%d", i))
+	// }
 
 	opts, err := toOptions(req)
 	if err != nil {
@@ -57,6 +69,7 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 		return nil, err
 	}
 
+	testing.ContextLog(ctx, "Service ChromeService After New testing.ContextLog")
 	// Store the newly created chrome sessions in the shared object so other services can use it.
 	svc.sharedObject.Chrome = cr
 
@@ -68,6 +81,8 @@ func (svc *ChromeService) New(ctx context.Context, req *pb.NewRequest) (*empty.E
 func (svc *ChromeService) Close(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
 	svc.sharedObject.ChromeMutex.Lock()
 	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	testing.ContextLog(ctx, "Service ChromeService Close testing.ContextLog")
 
 	if svc.sharedObject.Chrome == nil {
 		return nil, errors.New("Chrome not available")
