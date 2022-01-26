@@ -20,6 +20,7 @@ func ChromeVmoduleFlag() string {
 		"*/media/gpu/chromeos/*=2",
 		"*/media/gpu/v4l2/*=2",
 		"*/media/gpu/vaapi/*=2",
+		"*/media/gpu/*=1",
 	}
 	return "--vmodule=" + strings.Join(loggingPatterns, ",")
 }
