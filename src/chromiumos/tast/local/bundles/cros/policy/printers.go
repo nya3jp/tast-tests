@@ -13,13 +13,13 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/printmanagementapp"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -102,7 +102,7 @@ func Printers(ctx context.Context, s *testing.State) {
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
-		s.Fatal(errors.Wrap(err, "failed to get the keyboard"))
+		s.Fatal("Failed to get the keyboard: ", err)
 	}
 	defer kb.Close()
 
@@ -115,6 +115,14 @@ func Printers(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.Role(role.Cell).NameStartingWith(printerName)),
 		ui.LeftClick(nodewith.Role(role.Button).Name("Print")),
 	)(ctx); err != nil {
-		s.Fatal(errors.Wrap(err, "failed to select printer in print destination popup and print"))
+		s.Fatal("Failed to select printer in print destination popup and print: ", err)
+	}
+
+	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch Print Management app: ", err)
+	}
+	if err := printManagementApp.VerifyPrintJob()(ctx); err != nil {
+		s.Fatal("Failed to check existence of print job: ", err)
 	}
 }
