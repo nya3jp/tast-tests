@@ -59,6 +59,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
 
+	s.Log("Waiting for the welcome screen")
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the welcome screen to be visible: ", err)
 	}
@@ -76,11 +77,16 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to evaluate whether to skip Network screen: ", err)
 	}
 
-	if !shouldSkipNetworkScreen {
+	if shouldSkipNetworkScreen {
+		s.Log("Skipping the network screen")
+	} else {
+		s.Log("Waiting for the network screen")
 		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
 			s.Fatal("Failed to wait for the network screen to be visible: ", err)
 		}
-		if err := ui.LeftClickUntil(focusedButton, ui.Gone(focusedButton))(ctx); err != nil {
+		//(TODO, https://crbug.com/1291153): Switch to focused button.
+		nextButton := nodewith.Name("Next").Role(role.Button)
+		if err := ui.LeftClickUntil(nextButton, ui.Gone(nextButton))(ctx); err != nil {
 			s.Fatal("Failed to click network page next button: ", err)
 		}
 	}
@@ -90,7 +96,10 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to evaluate whether to skip Eula screen: ", err)
 	}
 
-	if !shouldSkipEulaScreen {
+	if shouldSkipEulaScreen {
+		s.Log("Skipping the EULA screen")
+	} else {
+		s.Log("Waiting for the EULA screen")
 		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.isVisible()"); err != nil {
 			s.Fatal("Failed to wait for the eula screen to be visible: ", err)
 		}
@@ -112,6 +121,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	s.Log("Waiting for the user creation screen")
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.UserCreationScreen.isVisible()"); err != nil {
 		s.Fatal("Failed to wait for the user creation screen to be visible: ", err)
 	}
@@ -120,6 +130,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click user creation screen next button: ", err)
 	}
 
+	s.Log("Waiting for the Gaia screen")
 	gaiaInput := nodewith.State(state.Focused, true).Role(role.TextField).Ancestor(nodewith.Role(role.Iframe))
 	if err := ui.WaitUntilExists(gaiaInput)(ctx); err != nil {
 		s.Fatal("Failed to wait for the login screen to be visible: ", err)
