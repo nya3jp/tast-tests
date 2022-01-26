@@ -63,6 +63,20 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromePolicyWindowCaptureLoggedIn,
+		Desc:     "Logged into a user session, skips the capture source dialog",
+		Contacts: []string{"dandrader@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOpts: []chrome.Option{chrome.ExtraArgs("--auto-select-desktop-capture-source=Chrome")},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
 }
 
 type policyChromeFixture struct {
