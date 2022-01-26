@@ -167,6 +167,8 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	} else {
 		configs = []cuj.MetricConfig{
 			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.TabletMode"),
+			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow"),
+			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview"),
 			cuj.NewLatencyMetricConfig("Ash.SplitViewResize.PresentationTime.TabletMode.MultiWindow"),
 			cuj.NewCustomMetricConfigWithTestConn(
 				"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
