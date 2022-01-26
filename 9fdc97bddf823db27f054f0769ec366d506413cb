@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb327fc_a1327636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1503804
+      },
+      "writtenOn": "2022-01-26T09:13:38Z",
+      "side": 1,
+      "message": "All failed tests had the same error:\nError at smoke.go:81: Failed to wait for the network screen to be visible: context deadline exceeded; last error follows: \"!!(OobeAPI.screens.NetworkScreen.isVisible())\" is false\n\nWhich doesn\u0027t seem to be related to DLP.",
+      "revId": "9fdc97bddf823db27f054f0769ec366d506413cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
