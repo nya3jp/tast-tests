@@ -101,10 +101,12 @@ func ChromeServiceGRPC(ctx context.Context, s *testing.State) {
 	}
 
 	// Start Chrome on DUT
+	testing.ContextLog(ctx, "GRPC Before ChromeService.New")
 	cs := pb.NewChromeServiceClient(cl.Conn)
 	if _, err := cs.New(ctx, loginReq, grpc.WaitForReady(true)); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+	testing.ContextLog(ctx, "GRPC After ChromeService.New")
 
 	// Close Chrome on DUT
 	if _, err := cs.Close(ctx, &empty.Empty{}); err != nil {

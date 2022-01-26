@@ -6,8 +6,11 @@
 package crosserverutil
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+
+	// "path/filepath"
 	"strconv"
 	"strings"
 
@@ -123,13 +126,30 @@ func StartCrosServer(ctx context.Context, sshConn *ssh.Conn, port int) error {
 	}
 
 	// Start CrOS server as a separate process
-	// TODO(jonfan): Pipe the output from ssh command to testing.contextlog with a marker prefix
-	// For cros server log to be effective, changes in cros server has to be made such that
-	// log from individual grpc services can be aggregated to the cros server log instead of
-	// being exposed through the grp  directional log streaming service
 	// TODO(jonfan): To keep the path of cros private and encapsulated from the users, create a
 	// shell script or symlink, e.g. /usr/bin/cros, that resolves the path for cros
 	cmd := sshConn.CommandContext(ctx, "/usr/local/libexec/tast/bundles/local_pushed/cros", args...)
+
+	// combine stdout and stderr to a single reader by assigning a single pipe to cmd.Stdout
+	// and cmd.Stderr
+	cmdReader, err := cmd.StdoutPipe()
+	if err != nil {
+		return errors.Wrap(err, "failed to setup StdOut pipe")
+	}
+	cmd.Stderr = cmd.Stdout
+
+	stdoutScanner := bufio.NewScanner(cmdReader)
+
+	// Pipe the output from ssh command to testing.contextlog
+	go func() {
+		// The command session will close the stderr and stdout upon termination
+		// causing the scanner to exit the loop.
+		for stdoutScanner.Scan() {
+			line := stdoutScanner.Text()
+			testing.ContextLog(ctx, "Cros: ", line)
+		}
+	}()
+
 	if err := cmd.Start(); err != nil {
 		return errors.Wrapf(err, "failed to start CrOS server with parameter: %v", args)
 	}
