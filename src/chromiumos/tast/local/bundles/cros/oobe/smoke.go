@@ -80,7 +80,9 @@ func Smoke(ctx context.Context, s *testing.State) {
 		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.NetworkScreen.isVisible()"); err != nil {
 			s.Fatal("Failed to wait for the network screen to be visible: ", err)
 		}
-		if err := ui.LeftClickUntil(focusedButton, ui.Gone(focusedButton))(ctx); err != nil {
+		//(TODO, https://crbug.com/1291153): Switch to focused button.
+		nextButton := nodewith.Name("Next").Role(role.Button)
+		if err := ui.LeftClickUntil(nextButton, ui.Gone(nextButton))(ctx); err != nil {
 			s.Fatal("Failed to click network page next button: ", err)
 		}
 	}
