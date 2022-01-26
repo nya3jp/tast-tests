@@ -22,6 +22,30 @@
       },
       "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c998baba_50985087",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/powerd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-01-26T04:54:34Z",
+      "side": 1,
+      "message": "From the doc:\nhttps://source.corp.google.com/chromeos_public/src/platform2/power_manager/docs/logging.md\n\nI think the log is not flushed out. puthik is that the case? thank you.\n\nI think another idea is that if powerd is in factory mode but not exposing this information to other client, this should also consider as a issue and is also good to catch it in this test.",
+      "parentUuid": "7c7aa5d8_d744de2e",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 79
+      },
+      "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
