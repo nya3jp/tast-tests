@@ -34,6 +34,24 @@
       "parentUuid": "08dd897c_cdf30a85",
       "revId": "b4960eefa18dd009421005aef4e3f7879e451f7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd0d9cb_0c36baf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-26T17:28:55Z",
+      "side": 1,
+      "message": "The commit message should start with the package changed.\ndlp: ...",
+      "parentUuid": "49305245_4f5babff",
+      "revId": "b4960eefa18dd009421005aef4e3f7879e451f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
