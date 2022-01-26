@@ -16,6 +16,46 @@
       "message": "Replaced carrier based function with getApn to read apn from shill properties.\n",
       "revId": "e191a739226c3da8f1839e04d2caf17d728d46b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fbe79ee_3fb0682a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-26T17:15:49Z",
+      "side": 1,
+      "message": "Great, thanks for removing the VZW-specific hacks.",
+      "revId": "e191a739226c3da8f1839e04d2caf17d728d46b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d60e546_709a7ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-01-26T17:15:49Z",
+      "side": 1,
+      "message": "I think that if e.g. simpleModem.Call ends up blocking a bunch, we might not actually get to this block. We should probably base it on time (i.e. have we been polling for 30 seconds?) using the context.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "e191a739226c3da8f1839e04d2caf17d728d46b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
