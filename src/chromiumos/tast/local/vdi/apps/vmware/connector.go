@@ -70,6 +70,11 @@ func (c *Connector) Login(ctx context.Context, k *input.KeyboardEventWriter, cfg
 	return nil
 }
 
+// WebLogin logs in into PWA Vmware app.
+func (c *Connector) WebLogin(ctx context.Context, k *input.KeyboardEventWriter, cfg *apps.VDILoginConfig) error {
+	return errors.New("NOT IMPLEMENTED")
+}
+
 // WaitForMainScreenVisible waits for the specific element to be visible in
 // the UI indicating Vmware Horizon app is on its main screen.
 func (c *Connector) WaitForMainScreenVisible(ctx context.Context) error {

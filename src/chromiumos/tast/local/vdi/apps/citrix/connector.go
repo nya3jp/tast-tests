@@ -63,6 +63,12 @@ func (c *Connector) Login(ctx context.Context, k *input.KeyboardEventWriter, cfg
 	return nil
 }
 
+// WebLogin logs in into PWA Citrix app.
+func (c *Connector) WebLogin(ctx context.Context, k *input.KeyboardEventWriter, cfg *apps.VDILoginConfig) error {
+	return errors.New("NOT IMPLEMENTED")
+
+}
+
 // WaitForMainScreenVisible ensures that element visible on the screen
 // indicates it is the main Citrix screen.
 func (c *Connector) WaitForMainScreenVisible(ctx context.Context) error {

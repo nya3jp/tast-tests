@@ -12,6 +12,12 @@ const (
 	VmwareLaunched = "vmwareLaunched"
 )
 
+// Fixtures defined in chromiumos/tast/local/vdi/fixtures/vdi_pwa.go.
+const (
+	PWACitrixLaunched = "pwaCitrixLaunched"
+	PWAVmwareLaunched = "pwaVmwareLaunched"
+)
+
 // Fixtures defined in chromiumos/tast/local/vdi/fixtures/vdi_msg.go.
 const (
 	// MgsCitrixLaunched is a fixture name.
