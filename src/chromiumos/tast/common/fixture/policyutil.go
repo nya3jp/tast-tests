@@ -32,12 +32,16 @@ const (
 const (
 	// LacrosPolicyLoggedIn is a fixture name.
 	LacrosPolicyLoggedIn = "lacrosPolicyLoggedIn"
+	// LacrosPolicyLoggedInRealUser is a fixture name.
+	LacrosPolicyLoggedInRealUser = "lacrosPolicyLoggedInRealUser"
 )
 
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/persistent.go.
 const (
 	// PersistentLacros is a fixture name.
 	PersistentLacros = "persistentLacros"
+	// PersistentLacrosRealUser is a fixture name.
+	PersistentLacrosRealUser = "persistentLacrosRealUser"
 	// PersistentFamilyLink is a fixture name.
 	PersistentFamilyLink = "persistentFamilyLink"
 	// PersistentFamilyLinkARC is a fixture name.
