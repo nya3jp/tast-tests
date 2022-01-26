@@ -6,6 +6,7 @@
 package crosserverutil
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"strconv"
@@ -30,6 +31,7 @@ type Client struct {
 	hostname  string
 	port      int
 	forwarder *ssh.Forwarder
+	cmd       *ssh.Cmd
 }
 
 // Close shuts down cros server and performs other necessary cleanup.
@@ -38,7 +40,7 @@ func (c *Client) Close(ctx context.Context) error {
 		c.Conn.Close()
 	}
 	if c.sshConn != nil {
-		if err := StopCrosServer(ctx, c.sshConn, c.port); err != nil {
+		if err := c.stopCrosServer(ctx); err != nil {
 			return errors.Wrap(err, "failed to stop CrOS server process")
 		}
 	}
@@ -70,7 +72,7 @@ func (c *Client) Close(ctx context.Context) error {
 func Dial(ctx context.Context, d *dut.DUT, hostname string, port int, useForwarder bool) (*Client, error) {
 	var err error
 	sshConn := d.Conn()
-	client := &Client{
+	c := &Client{
 		sshConn:  sshConn,
 		hostname: hostname,
 		port:     port,
@@ -79,73 +81,90 @@ func Dial(ctx context.Context, d *dut.DUT, hostname string, port int, useForward
 	// Best effort to clean up in case of failure
 	defer func() {
 		if err != nil {
-			client.Close(ctx)
+			c.Close(ctx)
 		}
 	}()
 
 	// Setup forwarder to expose remote gRPC server port through SSH connection
 	if useForwarder {
 		addr := fmt.Sprintf("localhost:%d", port)
-		client.forwarder, err = sshConn.ForwardLocalToRemote("tcp", addr, addr, func(err error) {})
+		c.forwarder, err = sshConn.ForwardLocalToRemote("tcp", addr, addr, func(err error) {})
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to setup port forwarding")
 		}
 	}
 
 	// Start CrOS server
-	if err = StartCrosServer(ctx, sshConn, port); err != nil {
+	if err = c.startCrosServer(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start CrOS server process")
 	}
 
 	// Setup gRPC channel
-	client.Conn, err = grpc.Dial(fmt.Sprintf("%s:%d", hostname, port), grpc.WithInsecure())
+	c.Conn, err = grpc.Dial(fmt.Sprintf("%s:%d", hostname, port), grpc.WithInsecure())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to setup gRPC channel")
 	}
 
-	return client, nil
+	return c, nil
 }
 
-// StartCrosServer initiates the cros server process and grpc server on DUT through SSH
-func StartCrosServer(ctx context.Context, sshConn *ssh.Conn, port int) error {
-	args := []string{"-rpctcp", "-port", strconv.Itoa(port)}
+// startCrosServer initiates the cros server process and grpc server on DUT through SSH
+func (c *Client) startCrosServer(ctx context.Context) error {
+	args := []string{"-rpctcp", "-port", strconv.Itoa(c.port)}
 	testing.ContextLog(ctx, "Start CrOS server with parameters: ", args)
 
 	// Try to kill any process using the desired port
-	if err := StopCrosServer(ctx, sshConn, port); err != nil {
-		return errors.Wrapf(err, "failed to kill existing process using the TCP port: %d", port)
+	if err := c.stopCrosServer(ctx); err != nil {
+		return errors.Wrapf(err, "failed to kill existing process using the TCP port: %d", c.port)
 	}
 
 	// Open up TCP port for incoming traffic
-	ipTableArgs := []string{"-A", "INPUT", "-p", "tcp", "--dport", strconv.Itoa(port), "-j", "ACCEPT"}
-	if err := sshConn.CommandContext(ctx, "iptables", ipTableArgs...).Run(); err != nil {
-		return errors.Wrapf(err, "failed to open up TCP port: %d for incoming traffic", port)
+	ipTableArgs := []string{"-A", "INPUT", "-p", "tcp", "--dport", strconv.Itoa(c.port), "-j", "ACCEPT"}
+	if err := c.sshConn.CommandContext(ctx, "iptables", ipTableArgs...).Run(); err != nil {
+		return errors.Wrapf(err, "failed to open up TCP port: %d for incoming traffic", c.port)
 	}
 
 	// Start CrOS server as a separate process
-	// TODO(jonfan): Pipe the output from ssh command to testing.contextlog with a marker prefix
-	// For cros server log to be effective, changes in cros server has to be made such that
-	// log from individual grpc services can be aggregated to the cros server log instead of
-	// being exposed through the grp  directional log streaming service
 	// TODO(jonfan): To keep the path of cros private and encapsulated from the users, create a
 	// shell script or symlink, e.g. /usr/bin/cros, that resolves the path for cros
-	cmd := sshConn.CommandContext(ctx, "/usr/local/libexec/tast/bundles/local_pushed/cros", args...)
+	cmd := c.sshConn.CommandContext(ctx, "/usr/local/libexec/tast/bundles/local_pushed/cros", args...)
+
+	// Combine stdout and stderr to a single reader by assigning a single pipe to cmd.Stdout
+	// and cmd.Stderr.
+	cmdReader, err := cmd.StdoutPipe()
+	if err != nil {
+		return errors.Wrap(err, "failed to setup StdOut pipe")
+	}
+	cmd.Stderr = cmd.Stdout
+	stdoutScanner := bufio.NewScanner(cmdReader)
+
+	// Pipe the output from ssh command to testing.Contextlog
+	go func() {
+		// The command session will close the stderr and stdout upon termination
+		// causing the scanner to exit the loop.
+		for stdoutScanner.Scan() {
+			line := stdoutScanner.Text()
+			testing.ContextLog(ctx, "cros: ", line)
+		}
+	}()
+
 	if err := cmd.Start(); err != nil {
 		return errors.Wrapf(err, "failed to start CrOS server with parameter: %v", args)
 	}
+	c.cmd = cmd
 
 	return nil
 }
 
-// StopCrosServer stops the cros server process and grpc server listening
+// stopCrosServer stops the cros server process and grpc server listening
 // on the given port through SSH
-func StopCrosServer(ctx context.Context, sshConn *ssh.Conn, port int) error {
+func (c *Client) stopCrosServer(ctx context.Context) error {
 	// Get the pid of process using the desired port
 	// lsof return a non-zero code when no process is found. We will ignore the error.
 	// GRPC tests leverage port forwarding through SSH tunnel. It introduces a few more
 	// processes using the same port. Additional filters are needed to filter out the
 	// sshd processes needed for port forwarding.
-	out, _ := sshConn.CommandContext(ctx, "lsof", "-t", fmt.Sprintf("-i:%d", port), "-c", "^sshd").CombinedOutput()
+	out, _ := c.sshConn.CommandContext(ctx, "lsof", "-t", fmt.Sprintf("-i:%d", c.port), "-c", "^sshd").CombinedOutput()
 
 	pidStr := strings.TrimRight(string(out), "\r\n")
 	if pidStr == "" {
@@ -155,10 +174,18 @@ func StopCrosServer(ctx context.Context, sshConn *ssh.Conn, port int) error {
 	if err != nil {
 		return err
 	}
-	testing.ContextLogf(ctx, "Kill CrOS server process pid: %d port: %d", pid, port)
-	if out, err := sshConn.CommandContext(ctx, "kill", "-9", strconv.Itoa(pid)).CombinedOutput(); err != nil {
-		return errors.Wrapf(err, "failed to kill CrOS server process pid: %d port: %d StdOut: %v", pid, port, out)
+	testing.ContextLogf(ctx, "Kill CrOS server process pid: %d port: %d", pid, c.port)
+	// Cros server process intercepts SIGINT and SIGTERM to gracefully stop gRPC server
+	// and the cros process. Killing with SIGTERM provides the client side an opportunity
+	// to receive logs during the server shutdown routine.
+	if out, err := c.sshConn.CommandContext(ctx, "kill", "-15", strconv.Itoa(pid)).CombinedOutput(); err != nil {
+		return errors.Wrapf(err, "failed to kill CrOS server process pid: %d port: %d StdOut: %v", pid, c.port, out)
 	}
 
+	// If process using the port is tied to cros command, cmd.Wait() is called as a best effort
+	// attempt to receive the remaining logs.
+	if c.cmd != nil {
+		return c.cmd.Wait()
+	}
 	return nil
 }
