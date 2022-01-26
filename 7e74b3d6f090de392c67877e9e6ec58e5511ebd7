@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6257b0_459088b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-26T18:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ad25f4_1899189e",
+      "revId": "7e74b3d6f090de392c67877e9e6ec58e5511ebd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "602fd395_e8f7f261",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-26T15:45:39Z",
       "side": 1,
       "message": "Similar here.",
+      "revId": "7e74b3d6f090de392c67877e9e6ec58e5511ebd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb87329_dbaae985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-26T18:49:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "602fd395_e8f7f261",
       "revId": "7e74b3d6f090de392c67877e9e6ec58e5511ebd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
