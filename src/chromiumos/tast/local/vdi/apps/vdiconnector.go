@@ -29,6 +29,7 @@ type VDILoginConfig struct {
 type VDIInt interface {
 	Init(s *testing.FixtState, d *uidetection.Context)
 	Login(ctx context.Context, k *input.KeyboardEventWriter, cfg *VDILoginConfig) error
+	WebLogin(ctx context.Context, k *input.KeyboardEventWriter, cfg *VDILoginConfig) error
 	WaitForMainScreenVisible(ctx context.Context) error
 	SearchAndOpenApplication(ctx context.Context, k *input.KeyboardEventWriter, appName string, checkIfOpened func(context.Context) error) uiauto.Action
 	ResetSearch(ctx context.Context, k *input.KeyboardEventWriter) error

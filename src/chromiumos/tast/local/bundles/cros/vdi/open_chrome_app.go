@@ -33,6 +33,10 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
+				Name:    "citrix_pwa",
+				Fixture: "fixturePWACitrixLaunched",
+			},
+			{
 				Name:    "citrix",
 				Fixture: fixture.CitrixLaunched,
 			},
