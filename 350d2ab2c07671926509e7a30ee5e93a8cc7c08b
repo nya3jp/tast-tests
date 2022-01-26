@@ -52,6 +52,24 @@
       "parentUuid": "9a8549dd_bc7ff000",
       "revId": "350d2ab2c07671926509e7a30ee5e93a8cc7c08b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc69ef00_49179de3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1497117
+      },
+      "writtenOn": "2022-01-26T00:45:42Z",
+      "side": 1,
+      "message": "And merge to M98 is also approved. Can we move forward for this cherry-pick, Jun?",
+      "parentUuid": "134ac7da_cbbc78f9",
+      "revId": "350d2ab2c07671926509e7a30ee5e93a8cc7c08b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
