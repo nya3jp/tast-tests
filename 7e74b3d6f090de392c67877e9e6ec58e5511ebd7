@@ -16,6 +16,40 @@
       "message": "LGTM",
       "revId": "7e74b3d6f090de392c67877e9e6ec58e5511ebd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ad25f4_1899189e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-01-26T15:45:39Z",
+      "side": 1,
+      "message": "Nit: I\u0027d move that into canInstallExtension since that\u0027s where the extension page is opened.",
+      "revId": "7e74b3d6f090de392c67877e9e6ec58e5511ebd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602fd395_e8f7f261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_install_policy_check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-01-26T15:45:39Z",
+      "side": 1,
+      "message": "Similar here.",
+      "revId": "7e74b3d6f090de392c67877e9e6ec58e5511ebd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
