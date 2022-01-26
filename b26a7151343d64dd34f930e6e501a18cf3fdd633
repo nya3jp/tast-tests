@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1fe9911_8182aab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-26T20:04:34Z",
+      "side": 1,
+      "message": "Thanks for the review Keigo. I have addressed the comments. PTAL",
+      "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cdd9422_84829c11",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-01-26T04:53:47Z",
       "side": 1,
       "message": "Empty line at the beginning of a function is not necessary.\nDitto for others.",
+      "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ec50f1_71199195",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-26T20:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cdd9422_84829c11",
       "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "153b6fe5_67454038",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-26T20:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8cbd43_79fba5f5",
+      "range": {
+        "startLine": 61,
+        "startChar": 3,
+        "endLine": 61,
+        "endChar": 4
+      },
+      "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1027a75d_2ef3ad05",
@@ -71,6 +130,24 @@
       "writtenOn": "2022-01-26T04:53:47Z",
       "side": 1,
       "message": "nit: const url \u003d ...",
+      "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47429d91_4d384fdb",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-26T20:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1027a75d_2ef3ad05",
       "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92438f60_c5b7a906",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-26T20:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a3980c_46542cb4",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 7
+      },
+      "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "272ecf58_5dfa3f5d",
@@ -111,6 +212,24 @@
       "writtenOn": "2022-01-26T04:53:47Z",
       "side": 1,
       "message": "nit: remove empty line",
+      "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "383222b9_9c02c90f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-26T20:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272ecf58_5dfa3f5d",
       "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +257,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3621188d_4f8fab38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-26T20:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa73bcc4_5c9bb459",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 16
+      },
+      "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d69d1586_03191c84",
@@ -151,6 +294,24 @@
       "writtenOn": "2022-01-26T04:53:47Z",
       "side": 1,
       "message": "nit: remove empty line.",
+      "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6481b418_8706afc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-26T20:04:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69d1586_03191c84",
       "revId": "b26a7151343d64dd34f930e6e501a18cf3fdd633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
