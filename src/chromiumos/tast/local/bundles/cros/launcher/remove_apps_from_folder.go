@@ -48,7 +48,7 @@ func init() {
 // RemoveAppsFromFolder tests that items can be removed from a folder.
 func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
 	// Create 10 fake apps and get the the options to add to the new chrome session.
-	opts, extDirBase, err := ash.GetPrepareFakeAppsOptions(10)
+	opts, extDirBase, err := ash.GeneratePrepareFakeAppsOptions(10)
 	if err != nil {
 		s.Fatal("Failed to create 10 fake apps")
 	}
