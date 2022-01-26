@@ -8,6 +8,7 @@ package launcher
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"regexp"
 	"time"
 
@@ -26,6 +27,12 @@ import (
 
 // ExpandedItemsClass define the class name of the expanded launcher view which is used as search parameters in ui.
 const ExpandedItemsClass = "AppListItemView"
+
+// BubbleAppsGridViewClass ...
+const BubbleAppsGridViewClass = "ScrollableAppsGridView"
+
+// PagedAppsGridViewClass ...
+const PagedAppsGridViewClass = "PagedAppsGridView"
 
 // UnnamedFolderFinder is the finder of a newly created folder with the default name.
 var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItemsClass)
@@ -239,6 +246,106 @@ func CreateFolder(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	return nil
+}
+
+// GetIconIndices ...
+func GetIconIndices(ctx context.Context, tconn *chrome.TestConn, items []*nodewith.Finder, isBubbleLuncher bool) ([]int, error) {
+	var appsGridClassName string
+	if isBubbleLuncher {
+		appsGridClassName = BubbleAppsGridViewClass
+	} else {
+		appsGridClassName = PagedAppsGridViewClass
+	}
+
+	var viewIndices = make([]int, len(items))
+
+	ui := uiauto.New(tconn)
+	itemInfoArray := make([]*uiauto.NodeInfo, len(items))
+	for index, finder := range items {
+		info, err := ui.Info(ctx, finder)
+		if err != nil {
+			return viewIndices, errors.Wrap(err, "failed to find NodeInfo")
+		}
+		itemInfoArray[index] = info
+	}
+
+	appsGrid := nodewith.ClassName(appsGridClassName)
+	appListItems, err := ui.NodesInfo(ctx, nodewith.ClassName(ExpandedItemsClass).Ancestor(appsGrid))
+	if err != nil {
+		return viewIndices, errors.Wrap(err, "failed to get the info of app list items")
+	}
+
+	for itemIndex, appListItem := range appListItems {
+		for infoIndex, info := range itemInfoArray {
+			if !reflect.DeepEqual(appListItem, *info) {
+				continue
+			}
+			viewIndices[infoIndex] = itemIndex
+		}
+	}
+
+	return viewIndices, nil
+}
+
+// DragIconAfterIcon ...
+func DragIconAfterIcon(ctx context.Context, tconn *chrome.TestConn, srcIndex, destIndex int, isBubbleLuncher bool) uiauto.Action {
+	const duration = time.Second
+	return func(ctx context.Context) error {
+		if srcIndex == destIndex {
+			return errors.Errorf("destIndex should be different from srcIndex: srcIndex is %v; destIndex is %v", srcIndex, destIndex)
+		}
+
+		var appsGridClassName string
+		if isBubbleLuncher {
+			appsGridClassName = BubbleAppsGridViewClass
+		} else {
+			appsGridClassName = PagedAppsGridViewClass
+		}
+
+		appsGrid := nodewith.ClassName(appsGridClassName)
+		ui := uiauto.New(tconn)
+		appListItems, err := ui.NodesInfo(ctx, nodewith.ClassName(ExpandedItemsClass).Ancestor(appsGrid))
+		if err != nil {
+			return errors.Wrap(err, "failed to get the info of app list items")
+		}
+
+		srcBounds := appListItems[srcIndex].Location
+		if err := mouse.Move(tconn, srcBounds.CenterPoint(), 0)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to press the button")
+		}
+
+		// Move a little bit first to trigger launcher-app-paging.
+		if err := mouse.Move(tconn, srcBounds.CenterPoint().Add(coords.Point{X: 10, Y: 10}), time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		destInfo := appListItems[destIndex]
+		destBounds, err := ui.Location(ctx, nodewith.ClassName(ExpandedItemsClass).Name(destInfo.Name).Ancestor(appsGrid))
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for the destination item bounds")
+		}
+
+		var xOffset int
+		if srcIndex < destIndex {
+			xOffset = destBounds.Right() + 5
+		} else {
+			xOffset = destBounds.Left - 5
+		}
+		targetLocation := coords.NewPoint(xOffset, destBounds.CenterY())
+
+		if err := mouse.Move(tconn, targetLocation, 200*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to release the mouse")
+		}
+
+		return nil
+	}
 }
 
 // DragIconToIcon drags from one icon to another icon.
