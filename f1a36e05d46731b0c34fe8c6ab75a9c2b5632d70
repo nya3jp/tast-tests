@@ -227,6 +227,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1b11166f_8b1665bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-26T23:51:28Z",
+      "side": 1,
+      "message": "It doesn\u0027t. Log in/out only takes place in the beginning/end of the batch of tests under the same fixture.\n\nSorry, does that answer your question?",
+      "parentUuid": "ef4bddd8_a309430c",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 43
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee795d06_3742aeec",
         "filename": "src/chromiumos/tast/local/chrome/fixture.go",
         "patchSetId": 3
@@ -238,6 +262,30 @@
       "writtenOn": "2022-01-26T23:21:08Z",
       "side": 1,
       "message": "This might be unnecessary: unless you think that somehow the Tast test is running in a non-init mount namespace, this is a no-op.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 38
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c8bd02_9017e355",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-26T23:51:28Z",
+      "side": 1,
+      "message": "Yes, 100%. The problem I was trying to address here is that due to the multi-threaded nature of Go, it seems we can\u0027t really tell whether the thread running this code is in the init namespace or not.\n\nIe, the guest fixture \"setup\" might run in one thread and have its \"tear-down\" taking place in another thread. In this case, depending on the underlying implementation, we could be left with a thread that isn\u0027t on the init namespace in a thread pool (apologies for my lack of knowledge on the underlying implementation details here - there might be no thread pool at all, I just came up with this hypothesis because tests were failing intermittently due to being in the wrong namespace, despite the setup/teardown we are doing in the guest fixture).\n\nI wonder if setting the namespace with `syscall.AllThreadsSyscall` (https://go-review.googlesource.com/c/go/+/285597/) could the a superior approach here. Note: even with this line, I\u0027m still getting random test failures, so this could even be the only possible approach.",
+      "parentUuid": "ee795d06_3742aeec",
       "range": {
         "startLine": 236,
         "startChar": 0,
