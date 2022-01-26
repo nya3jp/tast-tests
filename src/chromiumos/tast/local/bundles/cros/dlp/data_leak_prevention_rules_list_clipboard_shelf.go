@@ -60,7 +60,7 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 
 	s.Log("Waiting for chrome.clipboard API to become available")
 	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
-		s.Fatal("chrome.clipboard API unavailable: ", err)
+		s.Fatal("Failed to wait for chrome.clipboard API to become available: ", err)
 	}
 
 	for _, param := range []struct {
@@ -69,12 +69,12 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 		wantAllowed bool
 	}{
 		{
-			name:        "example",
+			name:        "wantDisallowed",
 			url:         "www.example.com",
 			wantAllowed: false,
 		},
 		{
-			name:        "chromium",
+			name:        "wantAllowed",
 			url:         "www.chromium.org",
 			wantAllowed: true,
 		},
@@ -87,15 +87,13 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 			}
 
 			if _, err = cr.NewConn(ctx, "https://"+param.url); err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
 			}
 
-			if err := keyboard.Accel(ctx, "Ctrl+A"); err != nil {
-				s.Fatal("Failed to press Ctrl+A to select all content: ", err)
-			}
-
-			if err := keyboard.Accel(ctx, "Ctrl+C"); err != nil {
-				s.Fatal("Failed to press Ctrl+C to copy content: ", err)
+			if err := uiauto.Combine("copy all text from source website",
+				keyboard.AccelAction("Ctrl+A"),
+				keyboard.AccelAction("Ctrl+C"))(ctx); err != nil {
+				s.Fatal("Failed to copy text from source browser: ", err)
 			}
 
 			// Open the launcher.
