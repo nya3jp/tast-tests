@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "369f1af5_9f75591b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-01-26T02:23:09Z",
+      "side": 1,
+      "message": "Fixed VarDeps errors preventing this promotion CL from landing.",
+      "revId": "9893a63285c0820edb1d9210769bce3894741306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
