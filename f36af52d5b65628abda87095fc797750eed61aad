@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b45521e_50f7200a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-26T08:46:17Z",
+      "side": 1,
+      "message": "Thanks :)\n\nYes, I ran tests in my DUT, and they passed.",
+      "parentUuid": "3d49cb33_dbeff28c",
+      "revId": "f36af52d5b65628abda87095fc797750eed61aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46222729_4ca7b3df",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-01-26T08:23:03Z",
       "side": 1,
       "message": "nit: you could add yourself as an author of Lacros flavor.",
+      "revId": "f36af52d5b65628abda87095fc797750eed61aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b25e6ac0_0b9fc61d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/autostart.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-26T08:46:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46222729_4ca7b3df",
       "revId": "f36af52d5b65628abda87095fc797750eed61aad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
