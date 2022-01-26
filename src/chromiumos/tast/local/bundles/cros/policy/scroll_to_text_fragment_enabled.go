@@ -33,7 +33,7 @@ func init() {
 			"jityao@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "lacros"},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.LacrosPolicyLoggedIn,
 	})
@@ -97,13 +97,6 @@ func ScrollToTextFragmentEnabled(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
-			// Perform cleanup.
-			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-				s.Fatal("Failed to clean up: ", err)
-			}
-
 			// Update policies.
 			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
@@ -115,6 +108,8 @@ func ScrollToTextFragmentEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			conn, err := br.NewConn(ctx, "")
 			if err != nil {
