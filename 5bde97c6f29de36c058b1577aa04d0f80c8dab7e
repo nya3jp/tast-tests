@@ -16,6 +16,23 @@
       "message": "Tast LG. Defer to Akihiro.",
       "revId": "5bde97c6f29de36c058b1577aa04d0f80c8dab7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "546f049f_256b36d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-26T18:13:50Z",
+      "side": 1,
+      "message": "Thanks all for the review and clarifying!",
+      "revId": "5bde97c6f29de36c058b1577aa04d0f80c8dab7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
