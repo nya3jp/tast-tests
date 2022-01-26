@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70dff3a6_8b7e453f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-26T23:49:43Z",
+      "side": 1,
+      "message": "I\u0027m validating that these changes do not break anything by running the tast tests `\u0027(\"group:wificell\" \u0026\u0026 wificell_func \u0026\u0026 !wificell_unstable)\u0027` with a crosfleet legacy wificell. Once that passes I\u0027ll mark it as active.\n\nThis implements the design described in go/tast-router-package-generic-refactor.",
+      "revId": "844b8cb06d128b85f0dd5d04a09701e8defc8e03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
