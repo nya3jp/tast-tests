@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02596c69_b141cf7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-01-26T07:44:23Z",
+      "side": 1,
+      "message": "in",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "282c000a0437cd3c74d89895c32c029ae82fd9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062c4e51_b45ca1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-01-26T07:44:23Z",
+      "side": 1,
+      "message": "in",
+      "range": {
+        "startLine": 26,
+        "startChar": 29,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "282c000a0437cd3c74d89895c32c029ae82fd9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef33d3ce_f803d6e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-01-26T07:44:23Z",
+      "side": 1,
+      "message": "hasUSB\nGolang uses different rule for initialisms other than C++:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "282c000a0437cd3c74d89895c32c029ae82fd9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43cba6fa_132cc3ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/capability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-01-26T07:44:23Z",
+      "side": 1,
+      "message": "hasMIPI",
+      "revId": "282c000a0437cd3c74d89895c32c029ae82fd9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
