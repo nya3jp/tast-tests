@@ -26,11 +26,76 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// finder for the print dialog.
+var printDialog = nodewith.Name("Print").HasClass("RootView").Role(role.Window)
+
+// Type of the DLP restriction enforced, potentially including the user's response to the warning dialog (proceed or cancel).
+type restrictionLevel int
+
+const (
+	allowed restrictionLevel = iota
+	blocked
+	warnCancelled
+	warnProceeded
+)
+
+type printingTestParams struct {
+	name        string
+	url         string
+	restriction restrictionLevel
+	policyDLP   []policy.Policy
+	browserType browser.Type
+}
+
+// DLP policy with printing blocked restriction.
+var blockPolicy = []policy.Policy{&policy.DataLeakPreventionRulesList{
+	Val: []*policy.DataLeakPreventionRulesListValue{
+		{
+			Name:        "Disable printing of confidential content",
+			Description: "User should not be able to print confidential content",
+			Sources: &policy.DataLeakPreventionRulesListValueSources{
+				Urls: []string{
+					"example.com",
+				},
+			},
+			Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+				{
+					Class: "PRINTING",
+					Level: "BLOCK",
+				},
+			},
+		},
+	},
+},
+}
+
+// DLP policy with printing warn restriction.
+var warnPolicy = []policy.Policy{&policy.DataLeakPreventionRulesList{
+	Val: []*policy.DataLeakPreventionRulesListValue{
+		{
+			Name:        "Warn before printing confidential content",
+			Description: "User should be warned before printing confidential content",
+			Sources: &policy.DataLeakPreventionRulesListValueSources{
+				Urls: []string{
+					"example.com",
+				},
+			},
+			Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+				{
+					Class: "PRINTING",
+					Level: "WARN",
+				},
+			},
+		},
+	},
+},
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataLeakPreventionRulesListPrinting,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Test behavior of DataLeakPreventionRulesList policy with printing blocked restriction",
+		Desc:         "Test behavior of DataLeakPreventionRulesList policy with printing restrictions",
 		Contacts: []string{
 			"vishal38785@gmail.com", // Test author
 			"chromeos-dlp@google.com",
@@ -38,14 +103,95 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
+			Name:    "ash_blocked",
 			Fixture: fixture.ChromePolicyLoggedIn,
-			Val:     browser.TypeAsh,
+			Val: printingTestParams{
+				name:        "blocked",
+				url:         "https://www.example.com/",
+				restriction: blocked,
+				policyDLP:   blockPolicy,
+				browserType: browser.TypeAsh,
+			},
 		}, {
-			Name:              "lacros",
+			Name:    "ash_allowed",
+			Fixture: fixture.ChromePolicyLoggedIn,
+			Val: printingTestParams{
+				name:        "allowed",
+				url:         "https://www.chromium.com/",
+				restriction: allowed,
+				policyDLP:   blockPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:      "ash_warn_proceeded",
+			ExtraAttr: []string{"informational"},
+			Fixture:   fixture.ChromePolicyLoggedIn,
+			Val: printingTestParams{
+				name:        "warn_proceded",
+				url:         "https://www.example.com/",
+				restriction: warnProceeded,
+				policyDLP:   warnPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:      "ash_warn_cancelled",
+			ExtraAttr: []string{"informational"},
+			Fixture:   fixture.ChromePolicyLoggedIn,
+			Val: printingTestParams{
+				name:        "warn_cancelled",
+				url:         "https://www.example.com/",
+				restriction: warnCancelled,
+				policyDLP:   warnPolicy,
+				browserType: browser.TypeAsh,
+			},
+		}, {
+			Name:              "lacros_blocked",
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           fixture.LacrosPolicyLoggedIn,
-			Val:               browser.TypeLacros,
+			Val: printingTestParams{
+				name:        "blocked",
+				url:         "https://www.example.com/",
+				restriction: blocked,
+				policyDLP:   blockPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_allowed",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: printingTestParams{
+				name:        "allowed",
+				url:         "https://www.chromium.com/",
+				restriction: allowed,
+				policyDLP:   blockPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_warn_proceeded",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: printingTestParams{
+				name:        "warn_proceeded",
+				url:         "https://www.example.com/",
+				restriction: warnProceeded,
+				policyDLP:   warnPolicy,
+				browserType: browser.TypeLacros,
+			},
+		}, {
+			Name:              "lacros_warn_cancelled",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Val: printingTestParams{
+				name:        "warn_cancelled",
+				url:         "https://www.example.com/",
+				restriction: warnCancelled,
+				policyDLP:   warnPolicy,
+				browserType: browser.TypeLacros,
+			},
 		}},
 	})
 }
@@ -57,37 +203,6 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-
-	// DLP policy with printing blocked restriction.
-	policyDLP := []policy.Policy{&policy.DataLeakPreventionRulesList{
-		Val: []*policy.DataLeakPreventionRulesListValue{
-			{
-				Name:        "Disable Printing in confidential content",
-				Description: "User should not be able to print confidential content",
-				Sources: &policy.DataLeakPreventionRulesListValueSources{
-					Urls: []string{
-						"example.com",
-					},
-				},
-				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
-					{
-						Class: "PRINTING",
-						Level: "BLOCK",
-					},
-				},
-			},
-		},
-	},
-	}
-
-	// Update the policy blob.
-	pb := fakedms.NewPolicyBlob()
-	pb.AddPolicies(policyDLP)
-
-	// Update policy.
-	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
-		s.Fatal("Failed to serve and refresh: ", err)
-	}
 
 	// Connect to Test API.
 	tconn, err := cr.TestAPIConn(ctx)
@@ -101,74 +216,75 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	}
 	defer keyboard.Close()
 
-	printingNotAllowed := "Printing is blocked"
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+s.Param().(printingTestParams).name)
 
-	for _, param := range []struct {
-		name             string
-		printingAllowed  bool
-		url              string
-		wantNotification string
-	}{
-		{
-			name:             "example",
-			printingAllowed:  false,
-			url:              "https://www.example.com/",
-			wantNotification: printingNotAllowed,
-		},
-		{
-			name:             "chromium",
-			printingAllowed:  true,
-			url:              "https://www.chromium.org/",
-			wantNotification: "Printing allowed no notification",
-		},
-	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+	// Update the policy blob.
+	pb := fakedms.NewPolicyBlob()
+	pb.AddPolicies(s.Param().(printingTestParams).policyDLP)
 
-			br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
-			if err != nil {
-				s.Fatal("Failed to open the browser: ", err)
-			}
-			defer closeBrowser(cleanupCtx)
+	// Update policy.
+	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
+		s.Fatal("Failed to serve and refresh: ", err)
+	}
 
-			conn, err := br.NewConn(ctx, param.url)
-			if err != nil {
-				s.Fatal("Failed to open page: ", err)
-			}
-			defer conn.Close()
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(printingTestParams).browserType)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
 
-			// Make a call to print page.
-			printingPossible, err := testPrinting(ctx, tconn, keyboard)
-			if err != nil && param.printingAllowed {
-				s.Fatal("Failed to run test body: ", err)
-			}
+	conn, err := br.NewConn(ctx, s.Param().(printingTestParams).url)
+	if err != nil {
+		s.Fatal("Failed to open page: ", err)
+	}
+	defer conn.Close()
 
-			if printingPossible != param.printingAllowed {
-				s.Errorf("Unexpected printing restriction; got: %t, want: %t", printingPossible, param.printingAllowed)
-			}
+	// Make a call to print page.
+	if err := testPrinting(ctx, tconn, keyboard, s.Param().(printingTestParams).restriction); err != nil {
+		s.Fatal("Failed to run test body: ", err)
+	}
 
-			if !param.printingAllowed {
-				if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("print_dlp_blocked"), ash.WaitTitle(param.wantNotification)); err != nil {
-					s.Errorf("Failed to wait for notification with title %q: %v", param.wantNotification, err)
-				}
-			}
-		})
+	// Confirm that the notification only appeared if expected.
+	if s.Param().(printingTestParams).restriction == blocked {
+		if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("print_dlp_blocked"), ash.WaitTitle("Printing is blocked")); err != nil {
+			s.Error("Failed to wait for notification with title 'Printing is blocked': ", err)
+		}
 	}
 }
 
 // testPrinting tests whether printing is possible via hotkey (Ctrl + P).
-func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter) (bool, error) {
+func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, restriction restrictionLevel) error {
 	// Type the shortcut.
 	if err := keyboard.Accel(ctx, "Ctrl+P"); err != nil {
-		return false, errors.Wrap(err, "failed to type printing hotkey")
+		return errors.Wrap(err, "failed to type printing hotkey")
 	}
 
-	// Check if printing dialog has appeared.
+	if restriction == warnProceeded {
+		// Hit Enter, which is equivalent to clicking on the "Print anyway" button.
+		if err := keyboard.Accel(ctx, "Enter"); err != nil {
+			return errors.Wrap(err, "failed to hit Enter")
+		}
+	}
+
+	if restriction == warnCancelled {
+		// Hit Esc, which is equivalent to clicking on the "Cancel" button.
+		if err := keyboard.Accel(ctx, "Esc"); err != nil {
+			return errors.Wrap(err, "failed to hit Esc")
+		}
+	}
+
+	// Check that the printing dialog appears if and only if printing the page is allowed.
 	ui := uiauto.New(tconn)
 
-	if err := ui.WaitUntilExists(nodewith.Name("Print").ClassName("RootView").Role(role.Window))(ctx); err != nil {
-		return false, errors.Wrap(err, "failed to check for printing windows existence")
+	if restriction == allowed || restriction == warnProceeded {
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(printDialog)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find the printing window")
+		}
+	} else {
+		if err := ui.EnsureGoneFor(printDialog, 5*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "should not show the printing window")
+		}
 	}
 
-	return true, nil
+	return nil
 }
