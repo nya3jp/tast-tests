@@ -6,10 +6,8 @@ package dlp
 
 import (
 	"context"
-	"strings"
 
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
@@ -42,9 +40,8 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fakeDMS := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	// Set DLP policy with clipboard blocked restriction.
 	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.StandardDLPPolicyForClipboard()); err != nil {
-		s.Fatal("Failed to serve and verify: ", err)
+		s.Fatal("Failed to serve and verify the DLP policy: ", err)
 	}
 
 	// Connect to Test API.
@@ -61,7 +58,7 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 
 	s.Log("Waiting for chrome.clipboard API to become available")
 	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
-		s.Fatal("chrome.clipboard API unavailable: ", err)
+		s.Fatal("Failed to wait for chrome.clipboard API to become available: ", err)
 	}
 
 	for _, param := range []struct {
@@ -70,12 +67,12 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 		url         string
 	}{
 		{
-			name:        "example",
+			name:        "copyBlocked",
 			copyAllowed: false,
 			url:         "www.example.com",
 		},
 		{
-			name:        "chromium",
+			name:        "copyAllowed",
 			copyAllowed: true,
 			url:         "www.chromium.org",
 		},
@@ -89,15 +86,13 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 			}
 			defer conn.Close()
 
-			if err := keyboard.Accel(ctx, "Ctrl+A"); err != nil {
-				s.Fatal("Failed to press Ctrl+A to select all content: ", err)
+			if err := uiauto.Combine("copy all text from source website",
+				keyboard.AccelAction("Ctrl+A"),
+				keyboard.AccelAction("Ctrl+C"))(ctx); err != nil {
+				s.Fatal("Failed to copy text from source browser: ", err)
 			}
 
-			if err := keyboard.Accel(ctx, "Ctrl+C"); err != nil {
-				s.Fatal("Failed to press Ctrl+C to copy content: ", err)
-			}
-
-			copiedString, err := clipBoardText(ctx, tconn)
+			copiedString, err := clipboard.GetClipboardContent(ctx, tconn)
 			if err != nil {
 				s.Fatal("Failed to get clipboard content: ", err)
 			}
@@ -139,47 +134,27 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 				s.Fatal("Failed to paste into search bar: ", err)
 			}
 
-			// Verify Notification Bubble.
-			notification := clipboard.CheckClipboardBubble(ctx, ui, param.url)
+			// Verify notification bubble.
+			notifError := clipboard.CheckClipboardBubble(ctx, ui, param.url)
 
-			if !param.copyAllowed && notification != nil {
-				s.Fatal("Couldn't check for notification: ", notification)
+			if !param.copyAllowed && notifError != nil {
+				s.Error("Expected notification but found an error: ", notifError)
 			}
 
-			// Check Pasted content.
-			pastedError := checkPastedContent(ctx, ui, copiedString)
+			if param.copyAllowed && notifError == nil {
+				s.Error("Didn't expect notification but one was found: ")
+			}
+
+			// Check pasted content.
+			pastedError := clipboard.CheckPastedContent(ctx, ui, copiedString)
 
 			if param.copyAllowed && pastedError != nil {
-				s.Fatal("Couldn't check for pasted content: ", pastedError)
+				s.Error("Checked pasted content but found an error: ", pastedError)
 			}
 
-			if (!param.copyAllowed && pastedError == nil) || (param.copyAllowed && notification == nil) {
-				s.Fatal("Content pasted, expected restriction")
+			if !param.copyAllowed && pastedError == nil {
+				s.Error("Content was pasted but should have been blocked")
 			}
 		})
 	}
-}
-
-func clipBoardText(ctx context.Context, tconn *chrome.TestConn) (string, error) {
-	var clipData string
-	if err := tconn.Eval(ctx, `tast.promisify(chrome.autotestPrivate.getClipboardTextData)()`, &clipData); err != nil {
-		return "", errors.Wrap(err, "failed to get clipboard content")
-	}
-	return clipData, nil
-}
-
-func checkPastedContent(ctx context.Context, ui *uiauto.Context, content string) error {
-	// Slicing the string to get first 10 words in single line.
-	// Since pasted string in search box will be in single line format.
-	words := strings.Fields(content)
-	content = strings.Join(words[:10], " ")
-
-	contentNode := nodewith.NameContaining(content).Role(role.InlineTextBox).First()
-
-	if err := uiauto.Combine("Pasted ",
-		ui.WaitUntilExists(contentNode))(ctx); err != nil {
-		return errors.Wrap(err, "failed to check for pasted content")
-	}
-
-	return nil
 }

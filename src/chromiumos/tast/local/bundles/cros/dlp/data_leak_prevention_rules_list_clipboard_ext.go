@@ -98,7 +98,7 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 
 	s.Log("Waiting for chrome.clipboard API to become available")
 	if err := tconn.WaitForExpr(ctx, "chrome.clipboard"); err != nil {
-		s.Fatal("chrome.clipboard API unavailable: ", err)
+		s.Fatal("Failed to wait for chrome.clipboard API to become available: ", err)
 	}
 
 	info, err := display.GetInternalInfo(ctx, tconn)
@@ -118,12 +118,12 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 		accessAllowed bool
 	}{
 		{
-			name:          "example",
+			name:          "accessDenied",
 			url:           "www.example.com",
 			accessAllowed: false,
 		},
 		{
-			name:          "chromium",
+			name:          "accessAllowed",
 			url:           "www.chromium.org",
 			accessAllowed: true,
 		},
@@ -138,12 +138,10 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 			defer conn.Close()
 
 			ui := uiauto.New(tconn)
-			if err := keyboard.Accel(ctx, "Ctrl+A"); err != nil {
-				s.Fatal("Failed to press Ctrl+A to select all content: ", err)
-			}
-
-			if err := keyboard.Accel(ctx, "Ctrl+C"); err != nil {
-				s.Fatal("Failed to press Ctrl+C to copy content: ", err)
+			if err := uiauto.Combine("copy all text from source website",
+				keyboard.AccelAction("Ctrl+A"),
+				keyboard.AccelAction("Ctrl+C"))(ctx); err != nil {
+				s.Fatal("Failed to copy text from source browser: ", err)
 			}
 
 			googleConn, err := cr.NewConn(ctx, "https://google.com")
@@ -154,7 +152,7 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 
 			// Select the tab for extension.
 			if err := ui.MouseClickAtLocation(0, coords.Point{X: displayWidth / 2, Y: displayHeight / 2})(ctx); err != nil {
-				s.Error("Failed to select tab: ", err)
+				s.Fatal("Failed to select tab: ", err)
 			}
 
 			// A Custom command in extension 'DLP extension to get clipboard data' which doesn't affect clipboard content.
