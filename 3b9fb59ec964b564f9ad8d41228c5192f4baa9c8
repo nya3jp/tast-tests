@@ -16,6 +16,29 @@
       "message": "+tast-owners@ for the review",
       "revId": "3b9fb59ec964b564f9ad8d41228c5192f4baa9c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c68948d3_609f31ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-26T21:49:20Z",
+      "side": 1,
+      "message": "This test seems to be flaky on some boards (also see b/216381189). \n\nThe previous CL (https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3338658) seems to make a significant change to the critical test. \n\nHow might we mark the new test as informational until it is stable, and meanwhile keep the old one (the one before the code changes in the previous CL) in CQ for continuous protection.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 43
+      },
+      "revId": "3b9fb59ec964b564f9ad8d41228c5192f4baa9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
