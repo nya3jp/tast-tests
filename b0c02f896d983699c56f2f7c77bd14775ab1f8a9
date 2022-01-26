@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2203c016_51ce3818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-26T18:04:11Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "b0c02f896d983699c56f2f7c77bd14775ab1f8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d970782_6bc15bc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-26T18:04:11Z",
+      "side": 1,
+      "message": "I\u0027d add this line before the cleanup.\ndefer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+tc.name)",
+      "revId": "b0c02f896d983699c56f2f7c77bd14775ab1f8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
