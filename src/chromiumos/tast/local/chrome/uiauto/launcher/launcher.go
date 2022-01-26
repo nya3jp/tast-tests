@@ -28,6 +28,12 @@ import (
 // ExpandedItemsClass define the class name of the expanded launcher view which is used as search parameters in ui.
 const ExpandedItemsClass = "AppListItemView"
 
+// BubbleAppsGridViewClass defines the class name of the apps grid used in clamshell mode.
+const BubbleAppsGridViewClass = "ScrollableAppsGridView"
+
+// PagedAppsGridViewClass defines the class name of the apps grid used in tablet mode.
+const PagedAppsGridViewClass = "AppsGridView"
+
 // UnnamedFolderFinder is the finder of a newly created folder with the default name.
 var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItemsClass)
 
@@ -39,6 +45,17 @@ type TestCase struct {
 	ProductivityLauncher bool // Whether productivity launcher feature should be enabled
 	TabletMode           bool // Whether the test runs in tablet mode
 }
+
+// SortType Indicates the order that the launcher is sorted with.
+type SortType string
+
+const (
+	// AlphabeticalSort indicates the items are sorted with the app name alphabetical order.
+	AlphabeticalSort SortType = "alphabetical sort"
+
+	// ColorSort indicates the items are sorted with the app icon color order.
+	ColorSort SortType = "color sort"
+)
 
 // SearchAndWaitForAppOpen return a function that searches for an app, launches it, and waits for it to be open.
 func SearchAndWaitForAppOpen(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, app apps.App) uiauto.Action {
@@ -112,6 +129,29 @@ func OpenExpandedView(tconn *chrome.TestConn) uiauto.Action {
 	}
 }
 
+// HideTabletModeLauncher returns a function that hides the launcher in tablet mode by launching the Chrome browser.
+func HideTabletModeLauncher(tconn *chrome.TestConn) uiauto.Action {
+	return func(ctx context.Context) error {
+		if err := LaunchApp(tconn, apps.Chrome.Name)(ctx); err != nil {
+			return errors.Wrap(err, "failed to close launcher in tablet by activating the browser")
+		}
+
+		ws, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the window list")
+		}
+		if len(ws) != 1 {
+			return errors.Errorf("expected 1 window, got %v", len(ws))
+		}
+
+		if err := ash.WaitWindowFinishAnimating(ctx, tconn, ws[0].ID); err != nil {
+			return errors.Wrap(err, "failed to wait for the window animation")
+		}
+
+		return nil
+	}
+}
+
 // OpenBubbleLauncher opens launcher using search accelerator and  waits until the bubble launcher UI becomes visible.
 func OpenBubbleLauncher(tconn *chrome.TestConn) uiauto.Action {
 	bubbleLauncher := nodewith.ClassName("AppListBubbleView")
@@ -125,6 +165,16 @@ func OpenBubbleLauncher(tconn *chrome.TestConn) uiauto.Action {
 		},
 		ui.WaitUntilExists(bubbleLauncher),
 		ui.WaitForLocation(bubbleLauncher),
+	)
+}
+
+// CloseBubbleLauncher closes launcher by mouse clicking in screen corner.
+func CloseBubbleLauncher(tconn *chrome.TestConn) uiauto.Action {
+	bubbleLauncher := nodewith.ClassName(BubbleAppsGridViewClass)
+	ui := uiauto.New(tconn)
+	return uiauto.Combine("Wait for bubble launcher to be closed",
+		mouse.Click(tconn, coords.Point{X: 0, Y: 0}, mouse.LeftButton),
+		ui.WaitUntilGone(bubbleLauncher),
 	)
 }
 
@@ -155,6 +205,25 @@ func Search(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, query string)
 		}
 		return nil
 	}
+}
+
+// TriggerAppListSortAndWait sorts app list items through the item context menu.
+func TriggerAppListSortAndWait(ctx context.Context, ui *uiauto.Context, sortType SortType, item *nodewith.Finder) error {
+	reorderContextMenuItem := nodewith.Name("Reorder by").ClassName("MenuItemView")
+	nameSortContextMenuItem := nodewith.Name("Name").ClassName("MenuItemView")
+	undoButton := nodewith.Name("Undo").ClassName("PillButton")
+	if err := uiauto.Combine("sort app list items through the context menu with the alphabetical order",
+		ui.RightClick(item),
+		ui.WaitUntilExists(reorderContextMenuItem),
+		ui.MouseMoveTo(reorderContextMenuItem, 0),
+		ui.WaitUntilExists(nameSortContextMenuItem),
+		ui.LeftClick(nameSortContextMenuItem),
+		ui.WaitUntilExists(undoButton),
+	)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to trigger alphabetical sorting by %v", string(sortType))
+	}
+
+	return nil
 }
 
 // LaunchAndWaitForAppOpen return a function that launches an app from the expanded launcher and waits for it to be open.
@@ -358,6 +427,65 @@ func CreateFolder(ctx context.Context, tconn *chrome.TestConn, folderOpensOnCrea
 	}
 
 	return nil
+}
+
+// DragIconAfterIcon moves an app list item at `srcIndex` to `destIndex` by
+// drag-and-drop. `srcIndex` and `destIndex` are app list item view indices in
+// the provided apps grid.
+func DragIconAfterIcon(ctx context.Context, tconn *chrome.TestConn, srcIndex, destIndex int, appsGrid *nodewith.Finder) uiauto.Action {
+	const duration = time.Second
+	return func(ctx context.Context) error {
+		if srcIndex == destIndex {
+			return errors.Errorf("destIndex should be different from srcIndex: srcIndex is %v; destIndex is %v", srcIndex, destIndex)
+		}
+
+		ui := uiauto.New(tconn)
+		itemListFinder := nodewith.ClassName(ExpandedItemsClass).Ancestor(appsGrid)
+		srcBounds, err := ui.Location(ctx, itemListFinder.Nth(srcIndex))
+		if err != nil {
+			return errors.Wrap(err, "failed to get the source item's bounds")
+		}
+
+		if err := mouse.Move(tconn, srcBounds.CenterPoint(), 0)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move to the start location")
+		}
+		if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to press the button")
+		}
+
+		// Move a little bit first to trigger launcher-app-paging.
+		if err := mouse.Move(tconn, srcBounds.CenterPoint().Add(coords.Point{X: 10, Y: 10}), time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		// Fetch the bounds of the item view at `destIndex` after
+		// launcher-app-paging completes.
+		destBounds, err := ui.Location(ctx, itemListFinder.Nth(destIndex))
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for the destination item bounds")
+		}
+
+		// Calculate the move target location. If `srcIndex` is smaller(bigger) than
+		// `destIndex`, the source item should be dragged to the right(left) of the
+		// destination item to trigger apps grid reorder.
+		var x int
+		if srcIndex < destIndex {
+			x = destBounds.Right() + 5
+		} else {
+			x = destBounds.Left - 5
+		}
+		targetLocation := coords.NewPoint(x, destBounds.CenterY())
+
+		if err := mouse.Move(tconn, targetLocation, 200*time.Millisecond)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		if err := mouse.Release(tconn, mouse.LeftButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to release the mouse")
+		}
+
+		return nil
+	}
 }
 
 // DragIconToIcon drags from one icon to another icon.
