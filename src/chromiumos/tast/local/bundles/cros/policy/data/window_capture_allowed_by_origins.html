@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>getDisplayMedia</title>
+<html>
+<body>
+  <video id="video" controls autoplay muted></video>
+<script>
+function start(surface) {
+  const video = document.querySelector('video');
+
+  const displayMediaOptions = {
+    video: {
+      displaySurface: surface
+    },
+    audio: false
+  };
+
+  navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+}
+</script>
+</body>
+</html>
