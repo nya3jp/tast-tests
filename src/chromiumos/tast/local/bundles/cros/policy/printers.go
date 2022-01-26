@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/printmanagementapp"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
@@ -116,5 +117,16 @@ func Printers(ctx context.Context, s *testing.State) {
 		ui.LeftClick(nodewith.Role(role.Button).Name("Print")),
 	)(ctx); err != nil {
 		s.Fatal(errors.Wrap(err, "failed to select printer in print destination popup and print"))
+	}
+
+	printManagementApp, err := printmanagementapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal(errors.Wrap(err, "failed to launch Print Management app"))
+	}
+	if err := uiauto.Combine("check that the print job is visible in print jobs overview",
+		printManagementApp.VerifyPrintJob(),
+		printManagementApp.VerifyNoHistoryLabel(),
+	)(ctx); err != nil {
+		s.Fatal(errors.Wrap(err, "failed to check existence of print job"))
 	}
 }
