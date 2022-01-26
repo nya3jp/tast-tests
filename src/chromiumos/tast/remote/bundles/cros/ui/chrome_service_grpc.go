@@ -86,11 +86,13 @@ func ChromeServiceGRPC(ctx context.Context, s *testing.State) {
 	}
 
 	// Connect to TCP based gRPC Server on DUT.
+	testing.ContextLog(ctx, "GRPC Before crosserverutil.Dial")
 	cl, err := crosserverutil.Dial(ctx, s.DUT(), "localhost", grpcServerPort, true)
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	defer cl.Close(ctx)
+	testing.ContextLog(ctx, "GRPC After crosserverutil.Dial")
 
 	// Populate credentials from Tast variable for the Gaia login test case.
 	loginReq := s.Param().(*pb.NewRequest)
@@ -101,15 +103,19 @@ func ChromeServiceGRPC(ctx context.Context, s *testing.State) {
 	}
 
 	// Start Chrome on DUT
+	testing.ContextLog(ctx, "GRPC Before ChromeService.New")
 	cs := pb.NewChromeServiceClient(cl.Conn)
 	if _, err := cs.New(ctx, loginReq, grpc.WaitForReady(true)); err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+	testing.ContextLog(ctx, "GRPC After ChromeService.New")
 
 	// Close Chrome on DUT
+	testing.ContextLog(ctx, "GRPC Before ChromeService.Close")
 	if _, err := cs.Close(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to close Chrome: ", err)
 	}
+	testing.ContextLog(ctx, "GRPC After ChromeService.Close")
 }
 
 var random = rand.New(rand.NewSource(time.Now().UnixNano()))

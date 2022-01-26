@@ -6,8 +6,11 @@
 package crosserverutil
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+
+	// "path/filepath"
 	"strconv"
 	"strings"
 
@@ -129,7 +132,72 @@ func StartCrosServer(ctx context.Context, sshConn *ssh.Conn, port int) error {
 	// being exposed through the grp  directional log streaming service
 	// TODO(jonfan): To keep the path of cros private and encapsulated from the users, create a
 	// shell script or symlink, e.g. /usr/bin/cros, that resolves the path for cros
+	// output, _ := os.Create(filepath.Join("/tmp", "cros_server.log"))
+	// output, _ := os.Create("/tmp/cros_server.log")
 	cmd := sshConn.CommandContext(ctx, "/usr/local/libexec/tast/bundles/local_pushed/cros", args...)
+	// cmd.Stdout = output
+	// cmd.Stderr = output
+
+	// stdout, err := cmd.StdoutPipe()
+
+	// combine stdout and stderr to a single reader by assigning a single pipe to
+	// cmd.Stdout and cmd.Stderr
+	cmdReader, err := cmd.StdoutPipe()
+	if err != nil {
+		return errors.Wrap(err, "failed to setup StdOut pipe")
+	}
+	cmd.Stderr = cmd.Stdout
+
+	stdoutScanner := bufio.NewScanner(cmdReader)
+
+	go func() {
+		testing.ContextLog(ctx, "Cros SSH: WAITING FOR StdOut")
+		// defer close(lines)
+		// The command session will close the stderr and stdout upon termination
+		// causing the scanner to exit the loop.
+		for stdoutScanner.Scan() {
+			line := stdoutScanner.Text()
+			testing.ContextLog(ctx, "Cros SSH:  ", line)
+		}
+		testing.ContextLog(ctx, "Cros SSH: DONE FOR StdOut")
+	}()
+
+	// stdout, err := cmd.StdoutPipe()
+	// if err != nil {
+	// 	return errors.Wrap(err, "failed to get Sstand out pipe")
+	// }
+	// // lines := make(chan string, 100)
+
+	// stdoutScanner := bufio.NewScanner(stdout)
+
+	// go func() {
+	// 	testing.ContextLog(ctx, "WAITING FOR StdOut")
+	// 	// defer close(lines)
+	// 	for stdoutScanner.Scan() {
+	// 		line := stdoutScanner.Text()
+	// 		testing.ContextLog(ctx, "Print a StdOut: ", line)
+	// 	}
+	// 	testing.ContextLog(ctx, "DONE FOR StdOut")
+	// }()
+
+	// stderr, err := cmd.StderrPipe()
+	// if err != nil {
+	// 	return errors.Wrap(err, "failed to get Sstand out pipe")
+	// }
+	// // lines := make(chan string, 100)
+
+	// stderrScanner := bufio.NewScanner(stderr)
+
+	// go func() {
+	// 	testing.ContextLog(ctx, "WAITING FOR StdErr")
+	// 	// defer close(lines)
+	// 	for stderrScanner.Scan() {
+	// 		line := stderrScanner.Text()
+	// 		testing.ContextLog(ctx, "Print a StdErr: ", line)
+	// 	}
+	// 	testing.ContextLog(ctx, "DONE FOR StdErr")
+	// }()
+
 	if err := cmd.Start(); err != nil {
 		return errors.Wrapf(err, "failed to start CrOS server with parameter: %v", args)
 	}
