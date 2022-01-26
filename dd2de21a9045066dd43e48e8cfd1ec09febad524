@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ff8b598d_0468c8c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-01-26T23:09:45Z",
+      "side": 1,
+      "message": "Thank you for the reviews!",
+      "revId": "dd2de21a9045066dd43e48e8cfd1ec09febad524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "84e79a08_ebf31c49",
         "filename": "src/chromiumos/tast/common/android/adb/device.go",
         "patchSetId": 2
