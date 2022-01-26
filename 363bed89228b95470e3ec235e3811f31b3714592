@@ -16,6 +16,92 @@
       "message": "PTAL, thanks!",
       "revId": "363bed89228b95470e3ec235e3811f31b3714592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29e5f9f_ec2bc812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-01-26T13:48:13Z",
+      "side": 1,
+      "message": "LGTM. This might also require to wait a bit for the system_api stuff to propagate before you can merge it. I don\u0027t have experience of tast dependencies on in-flight system_api proto schema changes.",
+      "revId": "363bed89228b95470e3ec235e3811f31b3714592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ef0285_6105ecf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-01-26T13:48:13Z",
+      "side": 1,
+      "message": "Are you sure this is the right error msg ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 26,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "363bed89228b95470e3ec235e3811f31b3714592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "605e3c22_5088417a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-01-26T13:48:13Z",
+      "side": 1,
+      "message": "Just curious: since this is not really an ARCVM side issue, we should make sure that the test does not fail on such preconditions. Is that the case ? It seems so but I am not familiar enough with tast facilities to know for sure.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 11
+      },
+      "revId": "363bed89228b95470e3ec235e3811f31b3714592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851f4b24_47a5c9cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-01-26T13:48:13Z",
+      "side": 1,
+      "message": "binary.BigEndian.PutUint32(arcIP, device.Ipv4Addr), assuming endianess is correct.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "363bed89228b95470e3ec235e3811f31b3714592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
