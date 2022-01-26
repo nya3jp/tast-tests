@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5830f446_c4b9efc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-26T06:23:53Z",
+      "side": 1,
+      "message": "+2 for the merge CL of https://crrev.com/c/3379901 onto the branch",
+      "revId": "d3327b3136dff0178bc22e65f5b5ae5becdb39d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
