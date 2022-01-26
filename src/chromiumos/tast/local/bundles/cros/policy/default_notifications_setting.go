@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DefaultNotificationsSetting,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of DefaultNotificationsSetting policy, checks the notification permission in JavaScript at different policy values",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author

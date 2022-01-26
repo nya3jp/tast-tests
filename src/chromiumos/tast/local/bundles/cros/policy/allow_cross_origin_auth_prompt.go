@@ -31,7 +31,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AllowCrossOriginAuthPrompt,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks the behavior of 3rd part resources on pages whether it shows auth prompt or not",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author

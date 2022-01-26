@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         JavaScriptAllowedForUrls,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check that the JavaScriptAllowedForUrls policy allows execution of JavaScript only on the given sites",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author

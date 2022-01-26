@@ -27,7 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ScrollToTextFragmentEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that the ScrollToTextFragmentEnabled policy is correctly applied",
 		Contacts: []string{
 			"jityao@google.com", // Test author

@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NotificationsAllowedForUrls,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of NotificationsAllowedForUrls policy: checking if notifications are allowed for a specified url",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author

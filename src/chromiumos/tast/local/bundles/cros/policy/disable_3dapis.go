@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Disable3DAPIs,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of the Disable3DAPIs policy",
 		Contacts: []string{
 			"vsavu@google.com", // Test author
