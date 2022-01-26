@@ -16,6 +16,24 @@
       "message": "I couldn\u0027t figure out how to create a fixture for enrolled + real user + lacros. So I\u0027m just testing with a manager used, without enrollment.",
       "revId": "a48c9dd06f4e2a320c49b812afb1e8cf927f8770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ddb9c7_e0a1b7d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-01-26T12:50:06Z",
+      "side": 1,
+      "message": "managed user*",
+      "parentUuid": "241ffbb8_96f786ac",
+      "revId": "a48c9dd06f4e2a320c49b812afb1e8cf927f8770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
