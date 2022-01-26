@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -25,8 +26,9 @@ import (
 // view resizing.
 func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context) error {
 	const (
-		timeout  = 10 * time.Second
-		duration = 2 * time.Second
+		timeout = 10 * time.Second
+		slow    = 2 * time.Second
+		fast    = time.Second / 2
 	)
 
 	// Gets primary display info and interesting drag points.
@@ -79,13 +81,59 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 	}
 
 	// Split view resizing by dragging the divider.
-	testing.ContextLog(ctx, "Dragging the divider")
-	if err := pc.Drag(splitViewDragPoints[0],
-		pc.DragTo(splitViewDragPoints[1], duration),
-		pc.DragTo(splitViewDragPoints[2], duration),
-		pc.DragTo(splitViewDragPoints[0], duration),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag divider slightly right, all the way left, and back to center")
+	testing.ContextLog(ctx, "Dragging the divider with two snapped windows")
+	dragDivider := pc.Drag(splitViewDragPoints[0],
+		pc.DragTo(splitViewDragPoints[1], slow),
+		pc.DragTo(splitViewDragPoints[2], slow),
+		pc.DragTo(splitViewDragPoints[0], slow),
+	)
+	const dividerDragError = "failed to drag divider slightly right, all the way left, and back to center"
+	if err := dragDivider(ctx); err != nil {
+		return errors.Wrap(err, dividerDragError)
+	}
+
+	// Enter the overview mode.
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to open the keyboard")
+	}
+	defer kw.Close()
+	topRow, err := input.KeyboardTopRowLayout(ctx, kw)
+	if err != nil {
+		return errors.Wrap(err, "failed to obtain the top-row layout")
+	}
+	if err = kw.Accel(ctx, topRow.SelectTask); err != nil {
+		return errors.Wrap(err, "failed to enter overview mode")
+	}
+
+	// Split view resizing by dragging the divider.
+	testing.ContextLog(ctx, "Dragging the divider with an overview window")
+	if err := dragDivider(ctx); err != nil {
+		return errors.Wrap(err, dividerDragError)
+	}
+
+	// Close the overview window.
+	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the window in the overview mode to swipe to close")
+	}
+	swipeStart := w.OverviewInfo.Bounds.CenterPoint()
+	if err := pc.Drag(swipeStart, pc.DragTo(swipeStart.Sub(coords.NewPoint(0, 200)), fast))(ctx); err != nil {
+		return errors.Wrap(err, "failed to swipe to close overview window")
+	}
+	// Wait for the swipe-to-close animation to finish before dragging the divider. This is important
+	// because the state at the beginning of the divider drag determines which performance metrics
+	// are recorded for the entire drag. If the drag begins before the window has actually closed,
+	// the resulting data will be for Ash.SplitViewResize.PresentationTime.TabletMode.WithOverview
+	// instead of Ash.SplitViewResize.PresentationTime.TabletMode.SingleWindow.
+	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for location-change events to be completed")
+	}
+
+	// Split view resizing by dragging the divider.
+	testing.ContextLog(ctx, "Dragging the divider with an empty overview grid")
+	if err := dragDivider(ctx); err != nil {
+		return errors.Wrap(err, dividerDragError)
 	}
 
 	return nil
