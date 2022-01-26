@@ -174,6 +174,24 @@
       "parentUuid": "ab843e71_c24cc544",
       "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b288ca21_9fa1686c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1519467
+      },
+      "writtenOn": "2022-01-26T22:40:20Z",
+      "side": 1,
+      "message": "My response is the same with my other comment in this CL. I will wait and see those tests turn green. (Unmanaged) OptIn tests are already \"critical\", and I don\u0027t think I should change that just for failures on certain board(s). Plus the fix is already merged and we will just see how it goes.",
+      "parentUuid": "400a9fae_5c211ad2",
+      "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
