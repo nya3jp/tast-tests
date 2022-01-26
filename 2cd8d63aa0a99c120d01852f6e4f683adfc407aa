@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f9e12d_95fcfcde",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-26T23:07:02Z",
+      "side": 1,
+      "message": "That is the name of the parametrized tests and the convention is typically using string literal in this paraemetrized test declaration block.",
+      "parentUuid": "80f23c90_c985ff10",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "2cd8d63aa0a99c120d01852f6e4f683adfc407aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39751452_4190440b",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be206054_7071d804",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-26T23:07:02Z",
+      "side": 1,
+      "message": "Thanks, I think this test declaration cannot take arguments directly as the argument passing comes from `s *testing.State` which is passed in only in the main test function. \nFor username and password in any case, they are only place holders (as long as there is one, Chrome will allow fakelogin) and does not have any bearing to downstream logic. I moved them as const instead.",
+      "parentUuid": "39751452_4190440b",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "2cd8d63aa0a99c120d01852f6e4f683adfc407aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "362b2ad4_be7fdfdf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
         "patchSetId": 10
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-21T18:33:18Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 65,
+        "startChar": 19,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "2cd8d63aa0a99c120d01852f6e4f683adfc407aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d0cfdf_027a745e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-26T23:07:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "362b2ad4_be7fdfdf",
       "range": {
         "startLine": 65,
         "startChar": 19,
