@@ -45,7 +45,7 @@ func init() {
 				},
 				ExtraData:         []string{"small_jpg.zip"},
 				Timeout:           nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("coral")),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("coral", "octopus")),
 			},
 		},
 	})
