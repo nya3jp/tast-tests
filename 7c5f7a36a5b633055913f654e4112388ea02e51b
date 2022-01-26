@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a5d03f_7179ce95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-26T09:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "633194aa_e687fb8d",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b8482d4_c9156293",
@@ -534,6 +558,30 @@
       "side": 1,
       "message": "Please let me know once you created the bug so that I can link it in the comment in the source code :)",
       "parentUuid": "d1edf3f1_f2ffe660",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "7c5f7a36a5b633055913f654e4112388ea02e51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afaac80a_04079f51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-26T09:04:49Z",
+      "side": 1,
+      "message": "I added a reference to the bug you opened - I feel like that should be enough for this CL(?)",
+      "parentUuid": "7bfa60bb_5e9fb68e",
       "range": {
         "startLine": 77,
         "startChar": 2,

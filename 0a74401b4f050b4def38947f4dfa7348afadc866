@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0322ab61_53c2f866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-26T09:04:49Z",
+      "side": 1,
+      "message": "PTAL again - I think I addressed all remaining feedback now. I also slightly extended the test to actually select the printer and press the \"Print\" button. I had to adjust the Printers policy JSON for that to work. I also replaced the role strings with Role enum values.",
+      "revId": "0a74401b4f050b4def38947f4dfa7348afadc866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
