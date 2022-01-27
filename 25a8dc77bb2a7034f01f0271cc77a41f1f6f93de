@@ -33,6 +33,24 @@
       "message": "are you sure you\u0027ll get a valid APN here? I\u0027ve tried on my DUT, and this only works after I manually choose one APN in the UI.",
       "revId": "25a8dc77bb2a7034f01f0271cc77a41f1f6f93de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb8d9728_d0cd22e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-27T19:15:33Z",
+      "side": 1,
+      "message": "I tried on octopus(ATT, Verizon), trogdor and able to get without any selection. Will try on same device, what is the model/board and carrier? if its a requirement to select from UI doing it once on lab needed devices is an option.\n\nHow modem gets a default apn? is it by default having an apn set! as this is from Shill properties - might be shill fetches same for ShillCellularConnect tast test aswell.",
+      "parentUuid": "5bf15d71_8df9dfc2",
+      "revId": "25a8dc77bb2a7034f01f0271cc77a41f1f6f93de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
