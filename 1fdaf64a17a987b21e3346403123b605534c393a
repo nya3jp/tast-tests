@@ -140,6 +140,24 @@
       "parentUuid": "2beb95d9_063561aa",
       "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e723f320_49292a7b",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-27T14:58:09Z",
+      "side": 1,
+      "message": "Let\u0027s only merge this fixture when the functionality is ready. Having a broken fixture is not a great thing.",
+      "parentUuid": "b3919dd9_1b9eb39b",
+      "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
