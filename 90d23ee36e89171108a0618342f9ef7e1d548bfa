@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "801b37c1_8bc924eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-01-27T07:24:13Z",
+      "side": 1,
+      "message": "yeah I totally understand your arguments.\n\nI don\u0027t think there\u0027s any one-fit-all answer here. If this kind of thing is common for splitview, I think it totally makes sense to check the internal state to save your future debugging time :)",
+      "parentUuid": "5c0ba36d_baa5b6a8",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "90d23ee36e89171108a0618342f9ef7e1d548bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58a291aa_c3e44f7b",
