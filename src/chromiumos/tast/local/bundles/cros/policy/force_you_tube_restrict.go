@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -113,7 +114,7 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
@@ -123,6 +124,8 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to setup chrome: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Run actual test.
 			if err := testRestrictedMode(ctx, br, param.strongContentRestricted, param.mildContentRestricted); err != nil {
@@ -159,6 +162,9 @@ func isYouTubeContentRestricted(ctx context.Context, br ash.ConnSource, url stri
 
 // getYouTubeErrorMessage returns the error message, if any, returned by Youtube while trying to view the given url.
 func getYouTubeErrorMessage(ctx context.Context, br ash.ConnSource, url string) (string, error) {
+	// Maximum number of times to continue polling YouTube after seeing an empty error message.
+	const pollingThreshold = 5
+
 	conn, err := br.NewConn(ctx, url)
 	if err != nil {
 		return "", err
@@ -166,10 +172,23 @@ func getYouTubeErrorMessage(ctx context.Context, br ash.ConnSource, url string) 
 	defer conn.Close()
 
 	var message string
+	cnt := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := conn.Eval(ctx, `document.getElementById('error-screen').innerText`, &message); err != nil {
 			return err
 		}
+
+		if strings.TrimSpace(message) == "" {
+			// Seeing an empty error message in the HTML DOM does not guarantee that YouTube is playing the video at `url`.
+			// YouTube creates an error message DOM element with empty text and then dynamically updates it via Javascript.
+			// Continue polling a few times to make sure that the error message continues to be empty.
+			cnt++
+			if cnt < pollingThreshold {
+				return errors.New("youtube may not have fully loaded yet")
+			}
+		}
+
+		// We either saw a non-empty error message, or we saw an empty error message enough number of times. Stop polling.
 		return nil
 	}, &testing.PollOptions{
 		Timeout:  15 * time.Second,
