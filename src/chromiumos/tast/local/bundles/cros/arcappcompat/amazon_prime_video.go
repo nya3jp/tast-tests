@@ -49,54 +49,181 @@ func init() {
 		Attr:         []string{"group:appcompat", "appcompat_smoke"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name: "clamshell_mode",
+			Name: "clamshell_launch_and_touchscreen_scroll",
 			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.ClamshellSmokeTests,
-				AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
+				LaunchTests:                    clamshellLaunchForAmazonPrimeVideo,
+				ClamshellTouchScreenScrollTest: testutil.ClamshellTouchScreenScrollTest,
+				//CommonTests:      testutil.ClamshellSmokeTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
-			Name: "tablet_mode",
-			Val: testutil.TestParams{
-				LaunchTests:      touchviewLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.TouchviewSmokeTests,
-				AppSpecificTests: touchviewAppSpecificTestsForAmazonPrimeVideo,
+		},
+			{
+				Name: "mouse_click",
+				Val: testutil.TestParams{
+					LaunchTests:    clamshellLaunchForAmazonPrimeVideo,
+					MouseClickTest: testutil.MouseClickTest,
+					//CommonTests:      testutil.ClamshellSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
 			},
-			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}, {
-			Name: "vm_clamshell_mode",
-			Val: testutil.TestParams{
-				LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.ClamshellSmokeTests,
-				AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
+			{
+				Name: "resize",
+				Val: testutil.TestParams{
+					LaunchTests: clamshellLaunchForAmazonPrimeVideo,
+					ResizeTest:  testutil.ResizeTest,
+					//CommonTests:      testutil.ClamshellSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
+			}, {
+				Name: "playback",
+				Val: testutil.TestParams{
+					LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
+					AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
+			}, {
+				Name: "minimize_restore",
+				Val: testutil.TestParams{
+					LaunchTests:         touchviewLaunchForAmazonPrimeVideo,
+					MinimizeRestoreTest: testutil.MinimizeRestoreTest,
+					//CommonTests:      testutil.TouchviewSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 			},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on tablet only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
-			Pre:               pre.AppCompatBootedUsingTestAccountPool,
-		}, {
-			Name: "vm_tablet_mode",
-			Val: testutil.TestParams{
-				LaunchTests:      touchviewLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.TouchviewSmokeTests,
-				AppSpecificTests: touchviewAppSpecificTestsForAmazonPrimeVideo,
+			{
+				Name: "reopen",
+				Val: testutil.TestParams{
+					LaunchTests: touchviewLaunchForAmazonPrimeVideo,
+					ReopenTest:  testutil.ReopenTest,
+					//CommonTests:      testutil.TouchviewSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 			},
-			ExtraSoftwareDeps: []string{"android_vm"},
-			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
-			// Skip on clamshell only models.
-			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
-			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
-		}},
+			{
+				Name: "tablet_playback",
+				Val: testutil.TestParams{
+					LaunchTests:      touchviewLaunchForAmazonPrimeVideo,
+					AppSpecificTests: touchviewAppSpecificTestsForAmazonPrimeVideo,
+					//CommonTests:      testutil.TouchviewSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_p"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			}, {
+				Name: "vm_clamshell_launch_and_touchscreen_scroll",
+				Val: testutil.TestParams{
+					LaunchTests:                    clamshellLaunchForAmazonPrimeVideo,
+					ClamshellTouchScreenScrollTest: testutil.ClamshellTouchScreenScrollTest,
+					//CommonTests:      testutil.ClamshellSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
+			},
+			{
+				Name: "vm_mouse_click",
+				Val: testutil.TestParams{
+					LaunchTests:    clamshellLaunchForAmazonPrimeVideo,
+					MouseClickTest: testutil.MouseClickTest,
+					//CommonTests:      testutil.ClamshellSmokeTests,
+					//AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
+			},
+			{
+				Name: "vm_resize",
+				Val: testutil.TestParams{
+					LaunchTests: clamshellLaunchForAmazonPrimeVideo,
+					ResizeTest:  testutil.ResizeTest,
+					//CommonTests:      testutil.ClamshellSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
+			}, {
+				Name: "vm_playback",
+				Val: testutil.TestParams{
+					LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
+					AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on tablet only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+				Pre:               pre.AppCompatBootedUsingTestAccountPool,
+			}, {
+				Name: "vm_minimize_restore",
+				Val: testutil.TestParams{
+					LaunchTests:         touchviewLaunchForAmazonPrimeVideo,
+					MinimizeRestoreTest: testutil.MinimizeRestoreTest,
+					//CommonTests:      testutil.TouchviewSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			},
+			{
+				Name: "vm_reopen",
+				Val: testutil.TestParams{
+					LaunchTests: touchviewLaunchForAmazonPrimeVideo,
+					ReopenTest:  testutil.ReopenTest,
+					//CommonTests:      testutil.TouchviewSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			},
+			{
+				Name: "vm_tablet_playback",
+				Val: testutil.TestParams{
+					LaunchTests:      touchviewLaunchForAmazonPrimeVideo,
+					AppSpecificTests: touchviewAppSpecificTestsForAmazonPrimeVideo,
+					//CommonTests:      testutil.TouchviewSmokeTests,
+				},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+				// Skip on clamshell only models.
+				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+				Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+			}},
 		Timeout: 10 * time.Minute,
 		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
 		VarDeps: []string{"arcappcompat.AmazonPrimeVideo.username", "arcappcompat.AmazonPrimeVideo.password"},

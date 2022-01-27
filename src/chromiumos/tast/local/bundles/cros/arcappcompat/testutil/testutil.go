@@ -53,9 +53,45 @@ type TestCase struct {
 
 // TestParams represents the collection of tests to run in tablet mode or clamshell mode.
 type TestParams struct {
-	LaunchTests      []TestCase
-	CommonTests      []TestCase
-	AppSpecificTests []TestCase
+	LaunchTests                    []TestCase
+	CommonTests                    []TestCase
+	AppSpecificTests               []TestCase
+	ClamshellTouchScreenScrollTest []TestCase
+	PhysicalKeyboardTest           []TestCase
+	MouseClickTest                 []TestCase
+	ResizeTest                     []TestCase
+	MinimizeRestoreTest            []TestCase
+	ReopenTest                     []TestCase
+}
+
+// ClamshellTouchScreenScrollTest in clamshell mode.
+var ClamshellTouchScreenScrollTest = []TestCase{
+	{Name: "Clamshell: Touchscreen Scroll", Fn: TouchScreenScroll},
+}
+
+// PhysicalKeyboardTest in clamshell mode.
+var PhysicalKeyboardTest = []TestCase{
+	{Name: "Clamshell: Physical Keyboard", Fn: TouchAndTextInputs},
+}
+
+// MouseClickTest in clamshell mode.
+var MouseClickTest = []TestCase{
+	{Name: "Clamshell: Mouse click", Fn: MouseClick},
+}
+
+// ResizeTest in clamshell mode.
+var ResizeTest = []TestCase{
+	{Name: "Clamshell: Resize window", Fn: ClamshellResizeWindow},
+}
+
+// MinimizeRestoreTest in tablet mode.
+var MinimizeRestoreTest = []TestCase{
+	{Name: "Touchview: Minimise and Restore", Fn: MinimizeRestoreApp},
+}
+
+// ReopenTest in tablet mode.
+var ReopenTest = []TestCase{
+	{Name: "Touchview: Reopen app", Fn: ReOpenWindow},
 }
 
 // ClamshellCommonTests is a list of all tests common to all apps in clamshell mode.
