@@ -33,6 +33,167 @@
       "message": "Thank you for your patience with these reviews Shijin! This looks good to me :)",
       "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ab0020_eb0a993e",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-27T18:55:05Z",
+      "side": 1,
+      "message": "nit: means",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d73b6b_db49b983",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-27T18:55:05Z",
+      "side": 1,
+      "message": "nit: You could use iota for the enumeration. Would need to split up the const block into two blocks then.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "356d2e9b_60484df6",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-27T18:55:05Z",
+      "side": 1,
+      "message": "nit: dot",
+      "range": {
+        "startLine": 41,
+        "startChar": 76,
+        "endLine": 41,
+        "endChar": 79
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df74446_426bad68",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-27T18:55:05Z",
+      "side": 1,
+      "message": "I don\u0027t think you need fmt here\n```\njs :\u003d `function() {return this.systemProperties_;}`\nif err :\u003d btmojo.Call(ctx, \u0026r, js)\n```\nor\n```\nif err :\u003d btmojo.Call(ctx, \u0026r, `function() {return this.systemProperties_;}`)\n```",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6faa43_fdf3853e",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-27T18:55:05Z",
+      "side": 1,
+      "message": "nit: I think this can be simplified to \n```\nif err :\u003d btmojo.Call(ctx, nil, `function(enabled) {this.bluetoothConfig.setBluetoothEnabledState(enabled)}`, enabled)\n```",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 50
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7672294f_f673f2fb",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-27T18:55:05Z",
+      "side": 1,
+      "message": "nit: Might be a bit confusing to have a JSObject contain a JSObject. Maybe rename to BluetoothConn or something similar?",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b206f21_aebb5bd4",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-27T18:55:05Z",
+      "side": 1,
+      "message": "I think the JsObject should be released on fixture teardown to avoid memory leak:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;l\u003d559?q\u003dJSObject%20Release\u0026sq\u003dpackage:chromeos_public",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
