@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c14f7ce_3898a5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:27:40Z",
+      "side": 1,
+      "message": "nit: attach err information in the log.\ns.Fatal(\"Failed to do sth: \", err)",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 45
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4c87e8_4f77fbae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:27:40Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 44
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948ff127_1863d323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:27:40Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 43
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4a9567_87cbc8ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:27:40Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9db123_c1118e33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:27:40Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 52
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09c969e_54cfab5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:27:40Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 55
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f768144_bf28b55e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:27:40Z",
+      "side": 1,
+      "message": "Please do not simply put everything in the common lib or test script. I think you should have a good structure in mind what are shared functions, what is the test logic.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba33f48_a33bca26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:27:40Z",
+      "side": 1,
+      "message": "ditto and same to the rest if any.",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
