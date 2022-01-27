@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb4f393_1b0ff091",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-27T21:31:56Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "4c24c43dad40712b6b371b65699339520388002b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce38cd22_7a9edf06",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-27T21:31:56Z",
+      "side": 1,
+      "message": "use actionName here? since it could be PK now.",
+      "range": {
+        "startLine": 188,
+        "startChar": 24,
+        "endLine": 188,
+        "endChar": 81
+      },
+      "revId": "4c24c43dad40712b6b371b65699339520388002b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e08517_fd5e07a0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-01-27T21:31:56Z",
+      "side": 1,
+      "message": "ditto, the description here seems irrelevant.",
+      "range": {
+        "startLine": 223,
+        "startChar": 24,
+        "endLine": 223,
+        "endChar": 53
+      },
+      "revId": "4c24c43dad40712b6b371b65699339520388002b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
