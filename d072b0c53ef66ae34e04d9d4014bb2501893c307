@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96354dbf_9680c80c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-01-27T00:48:49Z",
+      "side": 1,
+      "message": "We don\u0027t want to run WebGLAquarium for many hours at a time in our lab. But if Intel wants to do it there should be a suite for that.\n\nI am ok to have bronze/silver/gold tests for Intel.\n\nWe can run Aquarium once a day in the Google lab for a minute for regression or even performance testing.",
+      "revId": "d072b0c53ef66ae34e04d9d4014bb2501893c307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
