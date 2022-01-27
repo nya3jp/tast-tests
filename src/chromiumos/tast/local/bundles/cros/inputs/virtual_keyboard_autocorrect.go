@@ -144,11 +144,6 @@ func VirtualKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to clear then click input field to show VK: ", err)
 	}
 
-	s.Log("Wait for decoder running")
-	if err := vkbCtx.WaitForDecoderEnabled(true)(ctx); err != nil {
-		s.Fatal("Failed to wait for decoder running: ", err)
-	}
-
 	triggerACAction := uiauto.Combine("validate VK autocorrect",
 		vkbCtx.TapKeys(strings.Split(testCase.MisspeltWord, "")),
 		util.WaitForFieldTextToBe(tconn, inputField.Finder(), testCase.MisspeltWord),

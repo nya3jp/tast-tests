@@ -142,11 +142,15 @@ func (i *IMESettings) ChangeKoreanKeyboardLayout(cr *chrome.Chrome, expected str
 	}
 }
 
-// SetVKAutoCorrection sets the 'On-screen keyboard Auto-correction' setting to a specific value.
-func (i *IMESettings) SetVKAutoCorrection(cr *chrome.Chrome, expected string) uiauto.Action {
+// setAutoCorrection sets the 'Auto-correction' of PK or VK setting to a specific value.
+func (i *IMESettings) setAutoCorrection(cr *chrome.Chrome, isVK bool, expected string) uiauto.Action {
 	// VK and PK setting use exactly the same name.
 	// Use index to find the option since impossible to unique identify VK setting.
-	optionFinder := nodewith.Name(string(VKAutoCorrection)).Role(role.PopUpButton).Nth(1)
+	index := 0
+	if isVK {
+		index = 1
+	}
+	optionFinder := nodewith.Name(string(VKAutoCorrection)).Role(role.PopUpButton).Nth(index)
 	settingFinder := nodewith.Name(expected).Role(role.ListBoxOption)
 	return uiauto.Combine("set drop down option",
 		i.LeftClick(optionFinder),
