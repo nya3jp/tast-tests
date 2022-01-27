@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ec438c_faac4e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/remove_existing_user.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:20:01Z",
+      "side": 1,
+      "message": "nit: You are probably interested to use action.Action in this case. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go?l\u003d95\n\nThen you can do below:\n\nif err :\u003d uiauto.Combine(\"Create users\",\n    userutil.CreateUser(user1, password),\n    userutil.CreateUser(user2, password),\n    userutil.CreateUser(user3, password),\n)(ctx); err !\u003d nil{\n    ...\n}",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "1d6798038b810650d08de61d986cb1ac417b94aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c3ec90_ef208f49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:20:01Z",
+      "side": 1,
+      "message": "I do not think cleanupCtxs are required in CreateUser and CreateDeviceOwner methods. cr.Close() is a part of the valid test steps not cleanup. So you can just use defer cr.Close(ctx)\n\nIn case any earlier steps failed due to context timeout, it would not be harmful to following tests.",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "1d6798038b810650d08de61d986cb1ac417b94aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df039b2_fc1e014c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:20:01Z",
+      "side": 1,
+      "message": "You can use defer function to close CR regardless of WaitForOwnership:\n\ncr, err :\u003d login(ctx, username, password, extraOpts...)\nif err !\u003d nil {\n\treturn errors.Wrap(err, \"failed to create new user\")\n}\ndefer cr.Close(cleanUpCtxs)\n\nreturn WaitForOwnership(ctx, cr)",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "1d6798038b810650d08de61d986cb1ac417b94aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f99a8b4_1a4542a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:20:01Z",
+      "side": 1,
+      "message": "nit: Better to log in full sentence.",
+      "range": {
+        "startLine": 113,
+        "startChar": 28,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "1d6798038b810650d08de61d986cb1ac417b94aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08313bbd_847f2d49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/userutil/user_util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T12:20:01Z",
+      "side": 1,
+      "message": "nit: The last error check is redundant.\n\nreturn testing.Poll(ctx, func(ctx context.Context) error {\n   ...\n}",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 13
+      },
+      "revId": "1d6798038b810650d08de61d986cb1ac417b94aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
