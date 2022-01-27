@@ -16,6 +16,24 @@
       "message": "Can the ccdimage default to image or does it have to be different?",
       "revId": "65fabde8bab0b06503809831534bfbef2396bc71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc5862c_dd85e327",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_ccd_update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-01-27T23:49:01Z",
+      "side": 1,
+      "message": "It has to be different (wipe some RO bytes, see b/213509827 for the details).\nI\u0027d like to make this tast test create ccdimage automatically from image, but that can wait for later.",
+      "parentUuid": "6f326b52_8c766530",
+      "revId": "65fabde8bab0b06503809831534bfbef2396bc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
