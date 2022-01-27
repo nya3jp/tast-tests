@@ -187,6 +187,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2ee3060_e49c5400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-27T21:55:01Z",
+      "side": 1,
+      "message": "Hi Hengxiang, thanks again for clarifying. Sorry I misunderstood your question in the first place.\n\nThe UI automation library uses Automation Accessibility tree APIs to interact with the UI objects. Upon performing an action on the UI, the UI updates and the accessibility tree also updates with a delay. In previous incarnation of the UI automation API, there were fair amount of flakiness resulting of performing the next action when accessibility is still being updated. Therefore, in the current version of the UI automation lib, most methods have a location stability precondition check to verify that the UI tree has finished updating. The location stability check polls at 300ms to make sure that the ui element of interest stays in the same location in the UI Tree between 2 subsequent UI tree fetch calls. \n\nOn top of that, it is not uncommon to have UI updates that takes much longer than that (like a few seconds), with calls like uiauto.WaitUntilExists (element) or a simply sleep() with various duration to ensure that the UI change indeed complete before moving to the next. \n\nYou might notice in general the UI automation library or test code is not optimized for performance, but instead it is more geared towards correctness and repeatability. My conjecture is that such optimization savings is likely 2 orders of magnitudes smaller(e.g. LAN network roundtrip in 1ms, golang mutex in microseconds) that it is unlikely to have much impact on the overall execution.",
+      "parentUuid": "b65a28e0_90b70ee6",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1f4e5e6_0ae9cf3a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
         "patchSetId": 5
