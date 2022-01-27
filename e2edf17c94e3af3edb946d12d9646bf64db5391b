@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f9fa1c_90a7bbf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-01-27T16:48:52Z",
+      "side": 1,
+      "message": "Yes, each test takes from a few seconds to few minutes. We could run them by group, but I had by experience running a group when one test fail, and the test does not manage to continue. I find it more stable and easy to use to have one tast test for each to make sure that we don\u0027t have side effect from one test on another.",
+      "parentUuid": "c77108bc_d95c12cf",
+      "revId": "e2edf17c94e3af3edb946d12d9646bf64db5391b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12037d75_1fd54447",
