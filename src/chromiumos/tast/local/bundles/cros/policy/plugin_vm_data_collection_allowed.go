@@ -30,7 +30,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome", "plugin_vm"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
 	})
 }
