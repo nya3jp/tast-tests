@@ -16,6 +16,24 @@
       "message": "Insert a \" \" between image and err or just use s.Fatalf to format the message, image path should probably be before the colon.",
       "revId": "162cfd5f037e01bacec747405113dacb665a48bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa52432_d3d87176",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ti50_system_test_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-01-27T20:59:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f3dbd38_5a93cbb7",
+      "revId": "162cfd5f037e01bacec747405113dacb665a48bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
