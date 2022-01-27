@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab195487_639c9dce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-27T02:01:25Z",
+      "side": 1,
+      "message": "Not sure if I understand about the term common instance here? \n\nHow about this? \n\n```\nservice KeyboardService {\n  rpc Actions(ActionsRequest) return (google.protobuf.Empty) {}\n}\n\nmessage ActionsRequest {\n  repeat Action action \u003d 1;\n}\n\nmessage Action {\n\n  oneof request {\n  \n     TypeRequest type_req \u003d 1;\n     AccelRequest accel_req \u003d 2;\n     AccelPressRequest accel_press_req \u003d 3;\n     AccelReleaseRequest accel_release_req \u003d 4; \n  }\n}\n\n```\n\nThen, the request will include in sequence of actions instead of one single action.\n\nIf the users just want an atomic action, they can pass in a list of one single item.\n\nI just bring it up for discussion sake.",
+      "parentUuid": "d4b7ac59_d8182ad4",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1f4e5e6_0ae9cf3a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
         "patchSetId": 5
