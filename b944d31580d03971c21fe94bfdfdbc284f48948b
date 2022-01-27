@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3683d327_68d1425d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T12:54:03Z",
+      "side": 1,
+      "message": "I would recommend to run kiosk.* to make sure other tests work alright.",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ed4f93_0a085d70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T12:54:03Z",
+      "side": 1,
+      "message": "Thanks for the change Florian.",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e012d4_801eef53",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T12:54:03Z",
+      "side": 1,
+      "message": "for the future - change for the library could be in a separate CL 😎",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
