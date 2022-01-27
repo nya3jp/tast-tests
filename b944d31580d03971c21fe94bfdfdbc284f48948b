@@ -37,6 +37,74 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21e76b28_7b094daf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T16:08:11Z",
+      "side": 1,
+      "message": "nit/style: no empty line needed.",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c75308c_e6272202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T16:08:11Z",
+      "side": 1,
+      "message": "nit/style: no empty line needed. it is better to put error check tied to the calling code for readability, IMO.",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d9011b_f639ce22",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T16:08:11Z",
+      "side": 1,
+      "message": "this is not really true in precise.\nWe have four cases:\nTwo cases for production use:\n- Rootfs lacros\n- Stateful lacros\n\nTwo more cases for testing use:\n- Lacros installed manually (mostly done by deploy_chrome.py script)\n- Installed via Tast data file (deprecated).\n\nThis is the path for Rootfs case, so could you introduce\n\nRootfsLacrosExecPath\nStatefulLacrosExecPath\nDeployedLacrosExecPath",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd1a0d6_ed524b8e",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T16:08:11Z",
+      "side": 1,
+      "message": "also could you add an enum to representing one of these three?",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2e012d4_801eef53",
         "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
         "patchSetId": 4
