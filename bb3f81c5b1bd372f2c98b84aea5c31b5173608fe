@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1813e83f_82acd9a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-27T22:06:50Z",
+      "side": 1,
+      "message": "just checking: Do we then also want to have a test variant which does not set the policy at all and expects unrestricted? (no idea if that\u0027s useful)",
+      "parentUuid": "e280eabf_e63ece32",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "bb3f81c5b1bd372f2c98b84aea5c31b5173608fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96c4b6c2_c8975d65",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
         "patchSetId": 4
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "The second one. I found out how to do it properly, the nil value for checked.Checked is \"\" since checked.Checked is a string type.",
       "parentUuid": "bf3ed1ef_a407971a",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 40
+      },
+      "revId": "bb3f81c5b1bd372f2c98b84aea5c31b5173608fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03110a67_7696a8f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-27T22:06:50Z",
+      "side": 1,
+      "message": "I don\u0027t have much knowledge of golang, but stackoverflow seems to suggest that a string can not be nil (https://stackoverflow.com/questions/36001477/why-cant-a-string-be-nil-in-go) so it\u0027s a bit confusing to me that \u0027the nil value is \"\"\u0027.\n\nWhat does \"the nil value\" mean here?\n\n(I care mainly about the comment which now exists above:\n// wantContextCheck should be nil, since there is no checkmark in this case.\nwantContextCheck: \"\",\n\nTo me this looks like the comment contradicts the statement in the following line :-) \n)",
+      "parentUuid": "f4b2d61e_d1e27af6",
       "range": {
         "startLine": 169,
         "startChar": 0,
