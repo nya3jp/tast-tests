@@ -13,7 +13,7 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/godbus/dbus"
+	"github.com/godbus/dbusutil"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/timing"
@@ -108,7 +108,7 @@ func SystemBus() (conn *dbus.Conn, err error) {
 func SystemBusPrivate(opts ...dbus.ConnOption) (*dbus.Conn, error) {
 	// Append user-passed options after our default options, so that
 	// they can override our defaults.
-	return dbus.SystemBusPrivate(append(busOptions(), opts...)...)
+	return dbusutil.SystemBusPrivate(append(busOptions(), opts...)...)
 }
 
 // Connect sets up the D-Bus connection to the service specified by name, path by using SystemBus.
@@ -120,7 +120,7 @@ func Connect(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn
 	return ConnectNoTiming(ctx, name, path)
 }
 
-// ConnectNoTiming, like Connect() but without emitting timing information.
+// ConnectNoTiming runs like Connect() but without emitting timing information.
 func ConnectNoTiming(ctx context.Context, name string, path dbus.ObjectPath) (*dbus.Conn, dbus.BusObject, error) {
 	conn, err := SystemBus()
 	if err != nil {
@@ -137,16 +137,20 @@ func ConnectNoTiming(ctx context.Context, name string, path dbus.ObjectPath) (*d
 // SystemBusPrivateWithAuth returns a connection with switched euid.
 // The returned *dbus.Conn should be closed after use.
 func SystemBusPrivateWithAuth(ctx context.Context, uid uint32) (*dbus.Conn, error) {
+	ignoreRUID := -1
 	origEUID := os.Geteuid()
-	runtime.LockOSThread() // See https://golang.org/issue/1435
-	defer runtime.UnlockOSThread()
 
-	if err := syscall.Setreuid(-1, int(uid)); err != nil {
+	// Workaround for b/206462481: the syscall.Setreuid attempts to change the EUID on all threads and hangs. Instead, we change
+	// the EUID on current OS thread only via syscall.RawSyscall and ensure that this same thread is used to communicate with DBus
+	// by calling runtime.LockOSThread.
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	if _, _, err := syscall.RawSyscall(syscall.SYS_SETREUID, uintptr(ignoreRUID), uintptr(uid), 0); err != 0 {
 		return nil, errors.Wrapf(err, "failed to set euid to %d", uid)
 	}
-	defer syscall.Setreuid(-1, origEUID)
+	defer syscall.RawSyscall(syscall.SYS_SETREUID, uintptr(ignoreRUID), uintptr(origEUID), 0)
 
-	conn, err := dbus.SystemBusPrivate(busOptions()...)
+	conn, err := dbusutil.SystemBusPrivate(busOptions()...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to system bus")
 	}
