@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3196a3f1_9cbd5d1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:48:40Z",
+      "side": 1,
+      "message": "Thanks for the test Goran 👍 \nLGTM % nit",
+      "revId": "93b0c66d91a1485fc6df52983be150eecacac205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee135e3a_bfed6554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/prevent_default_profile_removal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:48:40Z",
+      "side": 1,
+      "message": "please add LacrosStatus: testing.LacrosVariantExists",
+      "revId": "93b0c66d91a1485fc6df52983be150eecacac205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
