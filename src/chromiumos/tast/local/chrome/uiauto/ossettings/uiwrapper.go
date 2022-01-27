@@ -102,3 +102,8 @@ func (s *OSSettings) MakeVisible(finder *nodewith.Finder) uiauto.Action {
 func (s *OSSettings) NodesInfo(ctx context.Context, finder *nodewith.Finder) ([]uiauto.NodeInfo, error) {
 	return s.ui.NodesInfo(ctx, finder.FinalAncestor(WindowFinder))
 }
+
+// Sleep returns an action to sleep for a certain time.
+func (s *OSSettings) Sleep(duration time.Duration) uiauto.Action {
+	return s.ui.Sleep(duration)
+}

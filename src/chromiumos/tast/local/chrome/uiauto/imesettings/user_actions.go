@@ -7,6 +7,7 @@ package imesettings
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/ime"
@@ -165,7 +166,19 @@ const (
 
 // SetVKAutoCorrection returns a user action to change 'On-screen keyboard Auto-correction' setting.
 func SetVKAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, acLevel AutoCorrectionLevel) *useractions.UserAction {
-	actionName := fmt.Sprintf("Set VK auto-correction level to %q", acLevel)
+	return setAutoCorrection(uc, im, true, acLevel)
+}
+
+// SetPKAutoCorrection returns a user action to change 'Physical keyboard Auto-correction' setting.
+func SetPKAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, acLevel AutoCorrectionLevel) *useractions.UserAction {
+	return setAutoCorrection(uc, im, false, acLevel)
+}
+
+func setAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, isVK bool, acLevel AutoCorrectionLevel) *useractions.UserAction {
+	actionName := fmt.Sprintf("Set PK auto-correction level to %q", acLevel)
+	if isVK {
+		actionName = fmt.Sprintf("Set VK auto-correction level to %q", acLevel)
+	}
 
 	action := func(ctx context.Context) error {
 		setting, err := LaunchAtInputsSettingsPage(ctx, uc.TestAPIConn(), uc.Chrome())
@@ -174,7 +187,10 @@ func SetVKAutoCorrection(uc *useractions.UserContext, im ime.InputMethod, acLeve
 		}
 		return uiauto.Combine(fmt.Sprintf("Set VK auto-correction level to %q", acLevel),
 			setting.OpenInputMethodSetting(uc.TestAPIConn(), im),
-			setting.SetVKAutoCorrection(uc.Chrome(), string(acLevel)),
+			setting.setAutoCorrection(uc.Chrome(), isVK, string(acLevel)),
+			// TODO(b/157686038) A better solution to identify decoder status.
+			// Decoder works async in returning status to frontend IME and self loading.
+			setting.Sleep(5*time.Second),
 			setting.Close,
 		)(ctx)
 	}
@@ -207,6 +223,9 @@ func SetVKAutoCapitalization(uc *useractions.UserContext, im ime.InputMethod, is
 		return uiauto.Combine("change glide typing setting",
 			setting.OpenInputMethodSetting(uc.TestAPIConn(), im),
 			setting.ToggleAutoCap(uc.Chrome(), isEnabled),
+			// TODO(b/157686038) A better solution to identify decoder status.
+			// Decoder works async in returning status to frontend IME and self loading.
+			setting.Sleep(5*time.Second),
 			setting.Close,
 		)(ctx)
 	}
