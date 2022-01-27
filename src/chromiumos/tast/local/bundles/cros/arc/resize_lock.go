@@ -22,6 +22,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
+	ashwallpaper "chromiumos/tast/local/wallpaper"
+	ashwallpaperconstants "chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -168,7 +170,6 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 		pkgName       string
 		fromPlayStore bool
 	}{
-		{wm.APKNameArcWMTestApp23, wm.Pkg23, false},
 		{wm.APKNameArcWMTestApp24, wm.Pkg24, true},
 		{wm.APKNameArcWMTestApp24Maximized, wm.Pkg24InMaximizedList, true},
 		{wm.ResizeLockApkName, wm.ResizeLockTestPkgName, true},
@@ -187,19 +188,21 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 		defer a.Uninstall(ctxDefer, app.pkgName)
 	}
 
-	// Place a maximized activity below to ensure that the display has a white background.
-	// This is necessary because currently checking the visibility of the translucent window border relies on taking a screenshot.
-	// The WM23 app is used here as the WM24 app is used for testing O4C (Optimized for Chromebook).
-	activity, err := arc.NewActivity(a, wm.Pkg23, wm.NonResizableLandscapeActivity)
-	if err != nil {
-		s.Fatal("Failed to create the WM23 unresizable landscape activity: ", err)
+	// Set a pure white wallpaper to reduce the noises on a screenshot because currently checking the visibility of the translucent window border relies on a screenshot.
+	// The Wallpaper will exist continuous if the Chrome session gets reused.
+	ui := uiauto.New(tconn)
+	if err := ashwallpaper.OpenWallpaperPicker(ui)(ctx); err != nil {
+		s.Fatal("Failed to open wallpaper picker: ", err)
 	}
-	defer activity.Close()
-
-	if err := activity.Start(ctx, tconn); err != nil {
-		s.Fatal("Failed to start the WM23 unresizable landscape activity: ", err)
+	if err := ashwallpaper.SelectCollection(ui, ashwallpaperconstants.SolidColorsCollection)(ctx); err != nil {
+		s.Fatal("Failed to select collection: ", err)
 	}
-	defer activity.Stop(ctx, tconn)
+	if err := ashwallpaper.SelectImage(ui, "White")(ctx); err != nil {
+		s.Fatal("Failed to select image: ", err)
+	}
+	if err := ashwallpaper.CloseWallpaperPicker()(ctx); err != nil {
+		s.Fatal("Failed to close wallpaper picker: ", err)
+	}
 
 	for _, test := range testCases {
 		s.Logf("Running test %q", test.name)
