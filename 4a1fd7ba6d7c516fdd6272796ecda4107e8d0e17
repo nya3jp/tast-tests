@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d41f1b9_b3008f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T10:18:30Z",
+      "side": 1,
+      "message": "That is really good point. Please add this check to the kiosk mode library. Everyone would be happy to have it there :)",
+      "parentUuid": "b602b57e_e6bccf88",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "4a1fd7ba6d7c516fdd6272796ecda4107e8d0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dff87fbd_3e2d0a2f",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
         "patchSetId": 2
