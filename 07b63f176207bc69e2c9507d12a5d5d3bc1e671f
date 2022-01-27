@@ -84,6 +84,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c78629a_4179b6d2",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-01-27T18:20:39Z",
+      "side": 1,
+      "message": "nit: Incorrect Pin (just to match the rest of the error messages)",
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536c8042_0ef0a8d9",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-01-27T18:20:39Z",
+      "side": 1,
+      "message": "nit: Pin Failure or SIM Pin Failure?",
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2889628_c7dc0006",
         "filename": "src/chromiumos/tast/common/shillconst/const.go",
         "patchSetId": 12
@@ -125,6 +159,23 @@
         "endLine": 289,
         "endChar": 7
       },
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60430f38_27dd51c4",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-01-27T18:20:39Z",
+      "side": 1,
+      "message": "nit: Pin Blocked or SIM Pin Blocked",
       "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
