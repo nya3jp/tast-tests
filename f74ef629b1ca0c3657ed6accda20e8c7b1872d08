@@ -22,6 +22,30 @@
       },
       "revId": "f74ef629b1ca0c3657ed6accda20e8c7b1872d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1311e6_d37986b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T15:44:39Z",
+      "side": 1,
+      "message": "Yes, could you file a tracking bug and link it from here, please?\n\nGeorg, do you have some spare time to take a quick look at here?",
+      "parentUuid": "3cee3d05_6d8914b2",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "f74ef629b1ca0c3657ed6accda20e8c7b1872d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
