@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "385e9a48_fb2ad134",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:30:36Z",
+      "side": 1,
+      "message": "Sure thing, good point!",
+      "parentUuid": "cc8d3c7c_d19a6281",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe57c741_aa7e9aa3",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0d1502_b058ec11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe57c741_aa7e9aa3",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbc49ccf_09077f8f",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-26T23:50:18Z",
       "side": 1,
       "message": "Just reiterating this here: I think the various layers fixtures are potentially not needed. The chromeLoggedInWithArchiveMount fixture is incredibly specific to files app and the suite of tests, consider just calling chrome.New in the SetUp (and appropriately reusing when necessary) with the []chrome.Option that you used this fixture for.",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 50
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd6cb01_11ac7567",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:30:36Z",
+      "side": 1,
+      "message": "Thanks! We already discussed this offline but, for future readers, we believe it can be worth the performance and DRY tradeoff to use \"chromeLoggedInWithArchiveMount\" here. Also, keep in mind that \"chromeLoggedInWithArchiveMount\" with be replaced with just \"chromeLoggedIn\" once the archive mount feature flag becomes enabled by default.\n\nThe performance tradeoff comes from the fact that it prevents a chrome restart, shaving some seconds on the tests using this fixture.\n\nThe DRY tradeoff comes from not having the repeat functionality already provided by the \"chromeLoggedIn\" set of fixtures.",
+      "parentUuid": "dbc49ccf_09077f8f",
       "range": {
         "startLine": 33,
         "startChar": 20,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78e00d8b_3b497d9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:30:36Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I haven\u0027t hit the limit yet, but I wouldn\u0027t mind adding a few seconds here just in case.\n\nNote that `chrome.LoginTimeout` is already 80 seconds (https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/hwsec/cryptohome_mount_info.go;l\u003d32?q\u003dWaitForUserTimeout\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$) so it\u0027s possibly already very permissive.",
+      "parentUuid": "a5c8706d_ec0c9793",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e8adbdd_5068efda",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
         "patchSetId": 3
@@ -123,6 +219,30 @@
       "writtenOn": "2022-01-26T23:50:18Z",
       "side": 1,
       "message": "We don\u0027t need this, TearDown is always called after all tests have ran by this fixture this may result in (if all successful) dumping the UI tree for the final test always.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cdb5bd8_d98f29cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e8adbdd_5068efda",
       "range": {
         "startLine": 126,
         "startChar": 1,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "399c7919_8ca03ffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a7e1aa5_dfddd2e8",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 28
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe6bb127_6258fe6f",
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "802b41a3_c1395c5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe6bb127_6258fe6f",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 16
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9609fb98_894ed561",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-01-26T23:50:18Z",
       "side": 1,
       "message": "Can we export this from the fixture.go file and use it here? Single source of truth",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e07532a_e3cdb008",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:30:36Z",
+      "side": 1,
+      "message": "😭 I spent quite a bit of time trying to do exactly that, but turns out, unfortunately, the pre-submit hooks complain if this isn\u0027t specified as a literal - although the tests seem to run just fine if you do what you\u0027re proposing.\n\nI think we could make it work if we converted this slice into a const, but Go slices can\u0027t be const.\n\nBy the way, I also tryed generating Params by looping over a slice containing [\u0027_guest\u0027, \u0027\u0027] and setting fixtures \u0026 names on the fly, but the pre-submit hooks also complained about that. I think the looping code I had was easier to follow, but unfortunately we currently have this limitation.",
+      "parentUuid": "9609fb98_894ed561",
       "range": {
         "startLine": 40,
         "startChar": 8,
