@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e99112e_fbb31563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:08:51Z",
+      "side": 1,
+      "message": "nit: it can be skipped",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3181c897_2a02a85c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:08:51Z",
+      "side": 1,
+      "message": "TEST\u003dtast run \u003cDUT_IP\u003e policy.SSLErrorOverrideAllowed*",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 134
+      },
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73f8ea9_4b9c905e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:08:51Z",
+      "side": 1,
+      "message": "Thank you for the test!",
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208058e8_c3fc9852",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:08:51Z",
+      "side": 1,
+      "message": "nit: Comments should be full sentences with `.` at the end.\nSame for the comments below.",
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19238eb8_f677e6bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:08:51Z",
+      "side": 1,
+      "message": "Subtest names should be short, and lowercase. E.g. `true`, `false` and `combined` in this case.",
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40e1bd7_94f18864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:08:51Z",
+      "side": 1,
+      "message": "nit: This can go to the previous line.",
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e97b763_53a1c7c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:08:51Z",
+      "side": 1,
+      "message": "`defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+param.name)` is preferred, as it contains a screenshot, and the file names are different for the subtests (so they don\u0027t overwrite each other).",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 144,
+        "endChar": 70
+      },
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6937cd89_8ac658e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:08:51Z",
+      "side": 1,
+      "message": "In most cases passing the `testing.State` should be avoided. It is preferred to return with an error, and do some error handling in the main test function.",
+      "range": {
+        "startLine": 157,
+        "startChar": 54,
+        "endLine": 157,
+        "endChar": 71
+      },
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
