@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2716a6e4_7bc02076",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-27T21:03:35Z",
+      "side": 1,
+      "message": "This is not ready for submission but to ask for advice to address the test scenario commented in the patchset.\nI can follow it up (maybe split this into a few smaller CLs) for migrating ui.* tests. Thanks,",
+      "revId": "e604070499df05deaa4bfa5f1ab65214db623dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0b7284_7e85fcbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-27T21:03:35Z",
+      "side": 1,
+      "message": "Hidehiko, Georg, I\u0027m just sending this change to discuss the test scenario here and ask for your thoughts.\n\nThe test needs to open two windows. However, browserfixt.SetUp will open an extra window for lacros fixture.\nA quick fix is like line 112-123 to close the extra window after the setup, which requires having FindTarget/CloseTarget in the Browser.\n\nHowever, I\u0027d like to hear about a way to put this up better for Chrome, Lacros and Browser, so I can follow it up for this migration. A few thoughts\n- let browserfixt.SetUp returns a closure CloseAboutBlank that does the same but for easy use by a caller.\n- have CloseAboutBlank convenience method in Browser that can route a call to lacros.CloseAboutBlank that has already existed.\n- or better ideas.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "e604070499df05deaa4bfa5f1ab65214db623dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
