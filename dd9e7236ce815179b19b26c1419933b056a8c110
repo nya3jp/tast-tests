@@ -50,6 +50,24 @@
       "message": "please change to testing.LacrosVariantExists",
       "revId": "dd9e7236ce815179b19b26c1419933b056a8c110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0f59c9_d53ed875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_capture_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-27T08:44:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610f8551_b5c49a7f",
+      "revId": "dd9e7236ce815179b19b26c1419933b056a8c110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
