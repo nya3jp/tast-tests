@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea90355_e048ab75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "this fixture seems very specific to this test.. can we just set up chrome session in this test (without using fixtures) - something like what launcher.CreateAndFillFolder does.\n\nOr at least make this fixture name a bit more concise.",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e44e566_b49bfb34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "can we add this to launcher.go",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8ea8f2_b83d3caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "Can we use something similar to launcher.CreateAndRenameFolder to open the launcher?\n\nusing keyboard shortcuts seems easier :)",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8af5db43_56182a4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "can we wait for launcher state instead?",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14d1947_ce852c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "how about we do something like (in pseudocode):\n\n```\nallItems \u003d getallnodeinfo(nodesith.ClassName(launcher.ExpandedItemsClass).Ancestor(appsGrid));\n\nfilteredItems \u003d make\nfor index, node : allItems\n  if node.name found in ash.FakeAppAlphabeticalNames\n     set filteredItems[index in fake apps array] to index \n```",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fcd38f2_e6faa86f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "can we rename this verifyFakeAppsOrdered, and return an error if they\u0027re not in expected order (so we can have more useful error string)",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa16155_8c7ace89",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "prepareFakeApp ?",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd48742_eb5f13b6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "let\u0027s use AppsGridView for now, and we can move usages to PagedAppsGridView at the same time we update other usages.",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2794ec80_7f677fdb",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "itemListFinder :\u003d nodewith.ClassName(ExpandedItemsClass).Ancestor(appsGrid)\nsrcBounds \u003d ui.Location(itemListFinder.Nth(srcIndex))",
+      "range": {
+        "startLine": 423,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 46
+      },
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff84ce3_2a49f580",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "same...\ndestBounds :\u003d ui.Location(itemListFinder.Nth(destIndex))",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 0
+      },
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e9f237_71777590",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-27T06:26:23Z",
+      "side": 1,
+      "message": "I\u0027d be fine skipping this, but you can always just do something like\n\nui.WaitForLocation(itemListFinder.Nth(destIndex))",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
