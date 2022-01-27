@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4b7ac59_d8182ad4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-27T01:31:54Z",
+      "side": 1,
+      "message": "On the UIAuto and keyboard side, the paradigm is based on composition of these smaller building block with uiauto.Combine.  \n\nCurrently with the GRPC interface, while we can\u0027t replicate the uiauto.Combine right now because it requires a common instance across all actions, I am leaning towards keeping the granularity of the building blocks the same as the underlying functions.  The rationale is that people have familiarity with these building blocks and it is easier to find code snippet for high order functions.\n\nTo be honest, I do not have too much exposure to writing test to have a sense of where new functionalities could be useful. Definitely I am open to the higher level APIs that can bring more value.",
+      "parentUuid": "5c999a55_e637e050",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1f4e5e6_0ae9cf3a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-21T19:03:44Z",
       "side": 1,
       "message": "possible to make it an argument? (ideally should remove such statement in the future)",
+      "range": {
+        "startLine": 173,
+        "startChar": 20,
+        "endLine": 173,
+        "endChar": 41
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4919f4d8_721e9481",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-27T01:31:54Z",
+      "side": 1,
+      "message": "Thanks. Replace some instances of the sleep function to explicit  searching/polling for the next required UI element.\nFor the remaining 2 usages, change to wait time to be a const of 500ms which should be enough for the UI to react.",
+      "parentUuid": "b1f4e5e6_0ae9cf3a",
       "range": {
         "startLine": 173,
         "startChar": 20,
