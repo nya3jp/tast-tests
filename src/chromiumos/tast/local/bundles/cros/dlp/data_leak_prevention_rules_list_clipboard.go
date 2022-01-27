@@ -110,6 +110,22 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 			ui := uiauto.New(tconn)
 
 			searchNode := nodewith.Name("Search").Role(role.TextFieldWithComboBox).State("editable", true).First()
+
+			// Check if the search bar is present.
+			found, err := ui.IsNodeFound(ctx, searchNode)
+			if err != nil {
+				s.Error("Failed to check if search bar is present: ", err)
+			}
+
+			// If not, it is probably overlayed by the Google consent banner. It does not provide usable ids,
+			// so we try to quit it with Shift+Tab, then Enter.
+			if !found {
+				testing.ContextLog(ctx, "Did not find search bar, closing consent banner")
+				if err := keyboard.Accel(ctx, "Shift+Tab+Enter"); err != nil {
+					s.Fatal("Failed to press Shift+Tab+Enter to close consent banner: ", err)
+				}
+			}
+
 			// Focus in search box
 			if err := ui.LeftClick(searchNode)(ctx); err != nil {
 				s.Fatal("Failed to left click node: ", err)
