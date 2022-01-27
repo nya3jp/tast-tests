@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c88d9c_f8c2fd71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-01-27T14:17:41Z",
+      "side": 1,
+      "message": "Done. Any particular reason we prefer US spelling btw?",
+      "parentUuid": "00d0acb5_88fbd1a8",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "6fe856fb6dfd62f3f762e86a9966653e25e5cbb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbc3e31f_15d5d1ee",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-27T12:16:44Z",
       "side": 1,
       "message": "nit: probably just \nif restriction \u003d\u003d warnProceeded {\nreturn ... \n}\nif restriction \u003d\u003d warnCancelled {\nreturn ...\n} \nno need for nested ifs",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "6fe856fb6dfd62f3f762e86a9966653e25e5cbb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb43dbdb_40b5515f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-01-27T14:17:41Z",
+      "side": 1,
+      "message": "Done, this was leftover when I wanted to another check that the warning dialog is actually shown which should be done for both proceed and cancel.",
+      "parentUuid": "fbc3e31f_15d5d1ee",
       "range": {
         "startLine": 188,
         "startChar": 1,
