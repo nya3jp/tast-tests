@@ -6,12 +6,13 @@ package firmware
 
 import (
 	"context"
+	"os"
 	"regexp"
 	"time"
 
 	"chromiumos/tast/common/firmware/ti50"
 	"chromiumos/tast/common/testexec"
-	remoteTi50 "chromiumos/tast/remote/firmware/ti50"
+	"chromiumos/tast/remote/firmware/ti50/fixture"
 	"chromiumos/tast/testing"
 )
 
@@ -20,13 +21,14 @@ func init() {
 		Func:    Ti50CCDUpdate,
 		Desc:    "Ti50 firmware update over CCD using gsctool",
 		Timeout: 5 * time.Minute,
-		Vars:    []string{"mode", "spiflash", "heximage", "binimage", "serial"},
+		Vars:    []string{"image", "ccdimage", "serial"},
 		Contacts: []string{
 			"ecgh@chromium.org",
 			"ti50-core@google.com",
 		},
-		ServiceDeps: []string{"tast.cros.baserpc.FileSystem", "tast.cros.firmware.SerialPortService"},
-		Attr:        []string{"group:firmware"},
+		Data:    []string{"ti50_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin"},
+		Attr:    []string{"group:firmware"},
+		Fixture: fixture.DevBoardService,
 	})
 }
 
@@ -37,42 +39,45 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 		UpdateErrorExitCode   = 3
 	)
 
-	mode, _ := s.Var("mode")
-	spiflash, _ := s.Var("spiflash")
+	f := s.FixtValue().(*fixture.Value)
 
-	board, rpcClient, err := remoteTi50.GetTi50TestBoard(ctx, s.DUT(), s.RPCHint(), mode, spiflash, 4096, 100*time.Millisecond)
-
+	board, err := f.DevBoard(ctx, 10000, time.Second)
 	if err != nil {
-		s.Fatal("GetTi50TestBoard: ", err)
+		s.Fatal("Could not get board: ", err)
 	}
-	if rpcClient != nil {
-		defer rpcClient.Close(ctx)
-	}
-	defer board.Close(ctx)
 
-	heximage, _ := s.Var("heximage")
-	if heximage == "" {
-		if err = board.Reset(ctx); err != nil {
-			s.Fatal("Failed to reset: ", err)
+	ccdimage := s.RequiredVar("ccdimage")
+	if _, err := os.Stat(ccdimage); err != nil {
+		s.Fatal("ccdimage file not found: ", err)
+	}
+
+	image, ok := s.Var("image")
+
+	if !ok {
+		image = s.DataPath("ti50_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin")
+	}
+
+	if image != "" {
+		if err = board.FlashImage(ctx, image); err != nil {
+			s.Fatalf("Failed to flash %s: %v", image, err)
 		}
-	} else {
-		err = board.FlashImage(ctx, heximage)
-		if err != nil {
-			s.Fatal("Failed spiflash: ", err)
-		}
+	}
+
+	if err = board.Reset(ctx); err != nil {
+		s.Fatal("Failed to reset: ", err)
 	}
 
 	i := ti50.NewCrOSImage(board)
 
 	if err := i.WaitUntilBooted(ctx); err != nil {
-		s.Fatal("Failed boot after spiflash: ", err)
+		s.Fatal("Failed boot after flash: ", err)
 	}
 
 	out, err := i.Command(ctx, "version")
 	if err != nil {
 		s.Fatal("Console version: ", err)
 	}
-	testing.ContextLog(ctx, "Version after spiflash: ")
+	testing.ContextLog(ctx, "Version after flash: ")
 	testing.ContextLog(ctx, out)
 
 	cmd := testexec.CommandContext(ctx, "lsusb", "-d", Ti50USBID, "-v")
@@ -93,16 +98,10 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read version: ", err)
 	}
 
-	binimage := s.RequiredVar("binimage")
-	cmd = testexec.CommandContext(ctx, "ls", binimage)
-	if err := cmd.Run(); err != nil {
-		s.Fatal("File not found for binimage: ", err)
-	}
-
 	// Ti50 will reject updates for 60 seconds.
 	testing.Sleep(ctx, 30*time.Second)
 
-	cmd = testexec.CommandContext(ctx, "/usr/sbin/gsctool", "-n", serial, binimage)
+	cmd = testexec.CommandContext(ctx, "/usr/sbin/gsctool", "-n", serial, ccdimage)
 	err = cmd.Run()
 	if c, _ := testexec.ExitCode(err); c != UpdateErrorExitCode {
 		s.Fatal("Wrong exit code for update too soon: ", err)
@@ -114,7 +113,7 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 
 	testing.Sleep(ctx, 30*time.Second)
 
-	cmd = testexec.CommandContext(ctx, "/usr/sbin/gsctool", "-n", serial, binimage)
+	cmd = testexec.CommandContext(ctx, "/usr/sbin/gsctool", "-n", serial, ccdimage)
 	err = cmd.Run()
 	if c, _ := testexec.ExitCode(err); c != UpdateSuccessExitCode {
 		s.Fatal("Failed gsctool update: ", err)
