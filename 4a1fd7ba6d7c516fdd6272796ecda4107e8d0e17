@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd0714b_86adc4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-27T10:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5841a479_0e301f17",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 71
+      },
+      "revId": "4a1fd7ba6d7c516fdd6272796ecda4107e8d0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcff68fd_4cff2a1d",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-01-27T10:00:46Z",
       "side": 1,
       "message": "please add . at the end of comments.\nSame below.",
+      "revId": "4a1fd7ba6d7c516fdd6272796ecda4107e8d0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5b608fa_4b8d455a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-27T10:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcff68fd_4cff2a1d",
       "revId": "4a1fd7ba6d7c516fdd6272796ecda4107e8d0e17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b602b57e_e6bccf88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-27T10:13:39Z",
+      "side": 1,
+      "message": "ConfirmKioskStarted() still works, but it returns before the splash screen is gone. This would kill lacros while still in splash screen making it not disappear. I thought it\u0027s more realistic to have the browser show before killing hit.\n\nI\u0027m happy to take suggestions and might also remove it.",
+      "parentUuid": "94deaf93_1279f20e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "4a1fd7ba6d7c516fdd6272796ecda4107e8d0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dff87fbd_3e2d0a2f",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
         "patchSetId": 2
@@ -94,6 +160,30 @@
       "writtenOn": "2022-01-27T10:00:46Z",
       "side": 1,
       "message": "I see that the test uses this function. Are the others needed?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "4a1fd7ba6d7c516fdd6272796ecda4107e8d0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80400959_f297df95",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-27T10:13:39Z",
+      "side": 1,
+      "message": "You are right, the other functions are unused and I removed them.",
+      "parentUuid": "dff87fbd_3e2d0a2f",
       "range": {
         "startLine": 28,
         "startChar": 0,
