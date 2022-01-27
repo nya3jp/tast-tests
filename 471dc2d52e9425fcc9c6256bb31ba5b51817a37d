@@ -39,6 +39,30 @@
       },
       "revId": "471dc2d52e9425fcc9c6256bb31ba5b51817a37d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29917a5e_c396a02d",
+        "filename": "src/chromiumos/tast/local/policyutil/ui.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-27T14:36:57Z",
+      "side": 1,
+      "message": "Nice catch, yeah you are right, there is no need for this line, it\u0027s working fine without it.",
+      "parentUuid": "b34ec30e_29867005",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "471dc2d52e9425fcc9c6256bb31ba5b51817a37d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
