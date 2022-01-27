@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41b68d87_b6f5d3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_google_safe_search.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-27T13:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aff6819_57376eaf",
+      "revId": "4a37f6dd118e2f4b98ff89054898b8fc7641b546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5269f993_baea2491",
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "For now, let\u0027s leave it here. I added this as a topic to discuss during MUC Tast Forum to come up with an approach how we want to do it.",
       "parentUuid": "5269f993_baea2491",
+      "revId": "4a37f6dd118e2f4b98ff89054898b8fc7641b546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "632a6990_cce59fff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_you_tube_restrict.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-27T13:26:27Z",
+      "side": 1,
+      "message": "Sounds good!",
+      "parentUuid": "bd6dcb45_a5cb95f8",
       "revId": "4a37f6dd118e2f4b98ff89054898b8fc7641b546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
