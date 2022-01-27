@@ -43,8 +43,8 @@ var (
 	// KioskAppAccountID identifier of the Kiosk application.
 	KioskAppAccountID   = "arbitrary_id_store_app_2"
 	kioskAppAccountType = policy.AccountTypeKioskApp
-	// kioskAppID pointing to the Printtest app - not listed in the WebStore.
-	kioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
+	// KioskAppID pointing to the Printtest app - not listed in the WebStore.
+	KioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
 	// KioskAppBtnNode node representing this application on the Apps menu on
 	// the Sign-in screen.
 	KioskAppBtnNode = nodewith.Name("Simple Printest").ClassName("MenuItemView")
@@ -52,7 +52,7 @@ var (
 		AccountID:   &KioskAppAccountID,
 		AccountType: &kioskAppAccountType,
 		KioskAppInfo: &policy.KioskAppInfo{
-			AppId: &kioskAppID,
+			AppId: &KioskAppID,
 		}}
 
 	// DefaultLocalAccountsConfiguration holds default Kiosks accounts
@@ -286,4 +286,13 @@ func startChromeClearPolicies(ctx context.Context, fdms *fakedms.FakeDMS, userna
 		return errors.Wrap(err, "failed to clear policies")
 	}
 	return nil
+}
+
+// StartNewChromeWithOptions replaces the current Chrome in kiosk instance with
+// a new one using custom options. It will be closed by Kiosk.Close(). The old
+// Chrome instance must be closed manually before calling this function.
+func (k *Kiosk) StartNewChromeWithOptions(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
+	cr, err := chrome.New(ctx, opts...)
+	k.cr = cr
+	return cr, err
 }
