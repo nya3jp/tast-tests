@@ -33,6 +33,23 @@
       "message": "Reviewers ping.",
       "revId": "8849b3b9a5417366950db00de5a165c84cbd87fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f23380_25c669ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-27T22:39:05Z",
+      "side": 1,
+      "message": "LGTM from tast-owners, please wait for Pranav review before submitting 👍",
+      "revId": "8849b3b9a5417366950db00de5a165c84cbd87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
