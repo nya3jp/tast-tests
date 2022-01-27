@@ -28,7 +28,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks the Quick Settings from SignIn screen",
 		Contacts:     []string{"chromeos-sw-engprod@google.com", "cros-system-ui-eng@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		Params: []testing.Param{
