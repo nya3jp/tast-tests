@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4cfadf7_3fb49a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/e2e_policy_verification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T13:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "260bcbb4_201a8b6f",
+      "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24eb8739_551521ac",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "I haven\u0027t tried multiple tests. I will give it a try.",
       "parentUuid": "62e42be5_43eb911c",
+      "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3919dd9_1b9eb39b",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T13:46:33Z",
+      "side": 1,
+      "message": "tried it and it does not work. I will leave the warning not to add more tests for now.",
+      "parentUuid": "2beb95d9_063561aa",
       "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
