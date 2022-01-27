@@ -137,14 +137,18 @@ func ConnectNoTiming(ctx context.Context, name string, path dbus.ObjectPath) (*d
 // SystemBusPrivateWithAuth returns a connection with switched euid.
 // The returned *dbus.Conn should be closed after use.
 func SystemBusPrivateWithAuth(ctx context.Context, uid uint32) (*dbus.Conn, error) {
+	ignoreRUID := -1
 	origEUID := os.Geteuid()
-	runtime.LockOSThread() // See https://golang.org/issue/1435
-	defer runtime.UnlockOSThread()
 
-	if err := syscall.Setreuid(-1, int(uid)); err != nil {
+	// Workaround for b/206462481: the syscall.Setreuid attempts to change the EUID on all threads and hangs. Instead, we change
+	// the EUID on current OS thread only via syscall.RawSyscall and ensure that this same thread is used to communicate with DBus
+	// by calling runtime.LockOSThread.
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	if _, _, err := syscall.RawSyscall(syscall.SYS_SETREUID, uintptr(ignoreRUID), uintptr(uid), 0); err != 0 {
 		return nil, errors.Wrapf(err, "failed to set euid to %d", uid)
 	}
-	defer syscall.Setreuid(-1, origEUID)
+	defer syscall.RawSyscall(syscall.SYS_SETREUID, uintptr(ignoreRUID), uintptr(origEUID), 0)
 
 	conn, err := dbus.SystemBusPrivate(busOptions()...)
 	if err != nil {
