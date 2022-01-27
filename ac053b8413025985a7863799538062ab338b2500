@@ -16,6 +16,23 @@
       "message": "LGTM. Thanks for the test Jit.",
       "revId": "ac053b8413025985a7863799538062ab338b2500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2d51be_4d4cfc2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-27T12:12:55Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "ac053b8413025985a7863799538062ab338b2500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
