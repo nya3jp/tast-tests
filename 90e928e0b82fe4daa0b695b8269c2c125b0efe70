@@ -16,6 +16,29 @@
       "message": "It has been verified in the following DUTs:\nClamshell:\nVilboz [--board\u003dzork]\n\nConvertibles:\nHayato [--board\u003dAsurada]\nStoro [--board\u003ddedede]\nDelbin [--board\u003dvolteer]\n\nDetachables:\nkakadu [--board\u003dkukui]\nCoachz [--board strongbad]",
       "revId": "90e928e0b82fe4daa0b695b8269c2c125b0efe70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db453045_e9e7d508",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fwmp_dev_disable_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-27T22:46:52Z",
+      "side": 1,
+      "message": "Instead of looking for specific error messages, which might change at any time, add a new param to ModeAwareReboot to not check the boot mode.  Adding a `opts ...ModeSwitchOption` param like RebootToMode would work well.  THen you could add some new options like:\n\nSkipModeCheckAfterReboot\n\nand PressEnterWhileConnecting",
+      "range": {
+        "startLine": 100,
+        "startChar": 36,
+        "endLine": 100,
+        "endChar": 59
+      },
+      "revId": "90e928e0b82fe4daa0b695b8269c2c125b0efe70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
