@@ -16,6 +16,23 @@
       "message": "Added comment.",
       "revId": "25a8dc77bb2a7034f01f0271cc77a41f1f6f93de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf15d71_8df9dfc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/modemmanager_enable_and_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1377951
+      },
+      "writtenOn": "2022-01-27T18:27:29Z",
+      "side": 1,
+      "message": "are you sure you\u0027ll get a valid APN here? I\u0027ve tried on my DUT, and this only works after I manually choose one APN in the UI.",
+      "revId": "25a8dc77bb2a7034f01f0271cc77a41f1f6f93de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
