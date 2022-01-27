@@ -396,6 +396,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7964756f_d659ca03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T07:34:26Z",
+      "side": 1,
+      "message": "tried* 😐\n(I have to proof-read my comments more carefully, since they\u0027re essentially like email)",
+      "parentUuid": "7e07532a_e3cdb008",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef4bddd8_a309430c",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/zip_mount.go",
         "patchSetId": 3
