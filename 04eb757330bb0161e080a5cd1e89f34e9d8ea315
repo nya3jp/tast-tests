@@ -16,6 +16,29 @@
       "message": "Thanks!",
       "revId": "04eb757330bb0161e080a5cd1e89f34e9d8ea315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34355f2_65db4892",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-27T09:46:16Z",
+      "side": 1,
+      "message": "Sorry, this should be testing.LacrosVariantNeeded.\nbecause we need a lacros variant for this test, unless you implement that as well, if so you can follow this codelab go/lacros-policy-testing-codelab",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "04eb757330bb0161e080a5cd1e89f34e9d8ea315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
