@@ -36,7 +36,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         UserAvatarImage,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of UserAvatarImage policy: verify that the user cannot change the device account image when the policy is set, otherwise, the user can change it",
 		Contacts: []string{
 			"mgawad@google.com", // Test author

@@ -39,7 +39,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ExtensionInstallEventLoggingEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of ExtensionInstallEventLoggingEnabled policy, checking if all events from the installation of an extension are logged",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author

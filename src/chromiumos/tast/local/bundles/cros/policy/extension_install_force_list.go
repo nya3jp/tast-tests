@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ExtensionInstallForceList,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of ExtensionForceList policy",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author

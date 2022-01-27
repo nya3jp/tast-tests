@@ -36,7 +36,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WallpaperImage,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of WallpaperImage policy, set the policy to a monochromatic wallpaper then take a screenshot of the desktop wallpaper and check the pixels percentage",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author

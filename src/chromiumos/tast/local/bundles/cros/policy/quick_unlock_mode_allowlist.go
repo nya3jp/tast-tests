@@ -29,7 +29,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         QuickUnlockModeAllowlist,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that quick unlock options are enabled or disabled based on the policy value",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
