@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0eb3fd6a_0527de79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-27T10:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e55ac08_5aef8426",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "b0c02f896d983699c56f2f7c77bd14775ab1f8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2203c016_51ce3818",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-27T09:39:39Z",
       "side": 1,
       "message": "Test data files should be prefixed with the test name that uses it.",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "b0c02f896d983699c56f2f7c77bd14775ab1f8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b09b450_7ddb4a4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-27T10:38:09Z",
+      "side": 1,
+      "message": "Done.\n\nAnd what\u0027s the guideline when the same html is used by multiple tests? I\u0027m afraid this will turn out to be the case here when others go implement tests for other \"*CaptureAllowed*\" policy tests.\n\nActually is already is used by another test since this file is just a symlink to the html used by the tast test webrtc.GetDisplayMedia.",
+      "parentUuid": "d5506d22_428573fc",
       "range": {
         "startLine": 26,
         "startChar": 13,
@@ -95,6 +143,24 @@
       "side": 1,
       "message": "It should be added after `defer closeBrowser(cleanupCtx)`.",
       "parentUuid": "6d970782_6bc15bc7",
+      "revId": "b0c02f896d983699c56f2f7c77bd14775ab1f8a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb15800f_a9632f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-27T10:38:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2833016_187d9aac",
       "revId": "b0c02f896d983699c56f2f7c77bd14775ab1f8a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
