@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f988ee20_9577d993",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-27T10:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b55add5_6039590e",
+      "revId": "572104dd10db70eddb00578b7f1aadfac22a3168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "195707aa_f59d6439",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-01-26T15:11:44Z",
       "side": 1,
       "message": "nit: same",
+      "revId": "572104dd10db70eddb00578b7f1aadfac22a3168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa333547_7069a2a1",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-27T10:32:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "195707aa_f59d6439",
       "revId": "572104dd10db70eddb00578b7f1aadfac22a3168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
