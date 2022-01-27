@@ -163,8 +163,9 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, a *arc.ARC, p *p
 
 	// Order is critical here: SmapsMetrics and CrosvmFincoreMetrics do heavy processing,
 	// and we don't want that processing to interfere in the earlier, cheaper stats.
-	if err := memory.SmapsMetrics(ctx, p, outdir, suffix); err != nil {
-		return errors.Wrap(err, "failed to collect smaps_rollup metrics")
+	hostSummary, err := memory.HostMetrics(ctx, vmEnabled, p, outdir, suffix)
+	if err != nil {
+		return errors.Wrap(err, "failed to collect host metrics")
 	}
 
 	if err := memory.CrosvmFincoreMetrics(ctx, p, outdir, suffix); err != nil {
@@ -175,12 +176,16 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, a *arc.ARC, p *p
 		const dumpsysRetries = 3
 		dumpsysSucceeded := false
 		for i := 0; i < dumpsysRetries; i++ {
-			if err := memoryarc.DumpsysMeminfoMetrics(ctx, a, p, outdir, suffix); err != nil {
+			vmSummary, err := memoryarc.DumpsysMeminfoMetrics(ctx, a, p, outdir, suffix)
+			if err != nil {
 				testing.ContextLog(ctx, "Failed to collect ARC dumpsys meminfo metrics: ", err)
 				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 					return errors.Wrap(err, "failed to sleep between dumpsys meminfo retries")
 				}
 			} else {
+				if vmSummary != nil && hostSummary != nil && p != nil {
+					memory.LogSummaryMetrics(ctx, vmEnabled, hostSummary, vmSummary, p, suffix)
+				}
 				dumpsysSucceeded = true
 				break
 			}
