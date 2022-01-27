@@ -16,6 +16,40 @@
       "message": "Hi Kamil,\n\nThis CL adds a policy test for ScreenCaptureAllowed, PTAL!\n\nRegards,\nJit",
       "revId": "dd9e7236ce815179b19b26c1419933b056a8c110",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b604e613_f1f29c30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:29:14Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "dd9e7236ce815179b19b26c1419933b056a8c110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610f8551_b5c49a7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/screen_capture_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:29:14Z",
+      "side": 1,
+      "message": "please change to testing.LacrosVariantExists",
+      "revId": "dd9e7236ce815179b19b26c1419933b056a8c110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
