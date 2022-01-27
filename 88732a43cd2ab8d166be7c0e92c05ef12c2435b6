@@ -166,6 +166,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "147d92ec_b46a4f5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T07:04:04Z",
+      "side": 1,
+      "message": "Log can be done via testing.ContextLog or ContextLogf.\nInstead of Fatal, could you return an error an then let callers handle?",
+      "parentUuid": "36ea8249_a6366748",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 57
+      },
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "711c20c2_a741db27",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 14
@@ -277,6 +301,24 @@
       "side": 1,
       "message": "I am not sure I understand what do you mean? If you could elaborate that would be very helpful, thanks!",
       "parentUuid": "eed670cd_076d994f",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84704c0_74d13a4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T07:04:04Z",
+      "side": 1,
+      "message": "TempFile is a function to create a File.\nhttps://pkg.go.dev/io/ioutil#TempFile\nso you need to close it. https://pkg.go.dev/os#File.Close",
+      "parentUuid": "0edf6a6e_4c460478",
       "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -471,6 +513,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f7d6e5f_de9984bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T07:04:04Z",
+      "side": 1,
+      "message": "Oops, I was wrong. How about passing 0 to the second param?",
+      "parentUuid": "84634eab_ad23b6d5",
+      "range": {
+        "startLine": 144,
+        "startChar": 34,
+        "endLine": 144,
+        "endChar": 74
+      },
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9639d6a_f55842d4",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 14
@@ -500,6 +566,24 @@
       "side": 1,
       "message": "No, there will be only one area with the name equal to `section`. This is why we have return right after the area found: we return since there is no need to loop anymore.\nI actually like this approach, to return straight away :) It is more compact (no need to have extract variable(s) to maintain loop state, no need to check search status at the end of the loop). Also it seems to me less error-prone (because there are less local variable involved).\nWould you agree on that? What do you think?",
       "parentUuid": "e9639d6a_f55842d4",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387521b6_fdad8eab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T07:04:04Z",
+      "side": 1,
+      "message": "TO decouple the logic, I would write:\n\nattributes \u003d make(map[string]string)\nfor _, line :\u003d range strings.Split(...) {\n  tokens :\u003d strings.Fields(line)\n  if len(tokens) \u003c\u003d 1 {\n    continue\n  }\n  attributes[tokens[0]] \u003d tokens[1]\n}\n\nif area_name, ok :\u003d attributes[\"area_name:\"]; !ok || area_name !\u003d section {\n  // return an error.\n}\n\noffsetAttr :\u003d attributes[\"area_offset:\"]\nsizeAttr :\u003d attributes[\"area_size:\"]\n...\nreturn offset, size\n\nEach block does one thing. \"Convert to map\", \"check area_name\", \"calculate offset/size\", I believe it\u0027d be simpler.\n\nAny thoughts?",
+      "parentUuid": "a3bba6e3_918d8a48",
       "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -582,6 +666,24 @@
       "side": 1,
       "message": "I am not sure I understand, which string and which string manipulations you suggest to replace with an array? If you could elaborate that would be great, thanks!",
       "parentUuid": "7cec08f5_f5260fde",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55df8e3_bbb5c134",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-27T07:04:04Z",
+      "side": 1,
+      "message": "ddTemplate.\n\nit just appends the count\u003d... then parse.\nCould you pass the command in []string type, and get rid of string manipulation for the value at L205?",
+      "parentUuid": "dc3c4d8a_3e5f5abc",
       "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
