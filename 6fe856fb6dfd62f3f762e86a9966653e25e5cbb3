@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9d17c8_62649b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-01-27T14:24:04Z",
+      "side": 1,
+      "message": "I didn\u0027t know that canceled is also correct :) You can keep it as is then.",
+      "parentUuid": "f4c88d9c_f8c2fd71",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "6fe856fb6dfd62f3f762e86a9966653e25e5cbb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbc3e31f_15d5d1ee",
