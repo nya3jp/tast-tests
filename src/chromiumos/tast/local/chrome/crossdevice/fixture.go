@@ -262,6 +262,9 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		if err := phonehub.Hide(ctx, tconn); err != nil {
 			s.Fatal("Failed to hide Phone Hub after enabling it: ", err)
 		}
+		if err := androidDevice.EnablePhoneHubNotifications(ctx); err != nil {
+			s.Fatal("Failed to enable Phone Hub notifications: ", err)
+		}
 	}
 
 	if _, err := ash.WaitForNotification(ctx, tconn, 90*time.Second, ash.WaitTitleContains("Connected to")); err != nil {
