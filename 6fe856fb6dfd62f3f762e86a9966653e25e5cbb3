@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060581c7_a76f21d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-01-27T12:16:44Z",
+      "side": 1,
+      "message": "lgtm, thanks!",
+      "revId": "6fe856fb6dfd62f3f762e86a9966653e25e5cbb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d0acb5_88fbd1a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-01-27T12:16:44Z",
+      "side": 1,
+      "message": "nit: Cancelled*",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 13
+      },
+      "revId": "6fe856fb6dfd62f3f762e86a9966653e25e5cbb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc3e31f_15d5d1ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-01-27T12:16:44Z",
+      "side": 1,
+      "message": "nit: probably just \nif restriction \u003d\u003d warnProceeded {\nreturn ... \n}\nif restriction \u003d\u003d warnCancelled {\nreturn ...\n} \nno need for nested ifs",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "6fe856fb6dfd62f3f762e86a9966653e25e5cbb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
