@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578c2df1_12982c6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T09:20:10Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "9515ee9f242e429e93643fb4e884e93e8e3591b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9005d7e6_fa18f0d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T09:20:10Z",
+      "side": 1,
+      "message": "Update this value.",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "9515ee9f242e429e93643fb4e884e93e8e3591b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17fa220e_35a3b530",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/extension_allowed_types.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T09:20:10Z",
+      "side": 1,
+      "message": "This should be moved to be after `defer closeBrowser(cleanupCtx)`.",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 104
+      },
+      "revId": "9515ee9f242e429e93643fb4e884e93e8e3591b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
