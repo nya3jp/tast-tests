@@ -16,6 +16,23 @@
       "message": "Thanks Chad. I have addressed the review comments.",
       "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e88dc0_d498ff0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-01-27T17:30:20Z",
+      "side": 1,
+      "message": "Thank you for your patience with these reviews Shijin! This looks good to me :)",
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
