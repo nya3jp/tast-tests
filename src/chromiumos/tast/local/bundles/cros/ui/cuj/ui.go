@@ -106,7 +106,7 @@ func GetBrowserStartTime(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 // GetBrowserTabs gets all browser tabs through chrome.tabs API.
 func GetBrowserTabs(ctx context.Context, tconn *chrome.TestConn) ([]Tab, error) {
 	var tabs []Tab
-	if err := tconn.Eval(ctx, `(async () => {
+	if err := tconn.Eval(ctx, `(syanc () => {
 		const tabs = await tast.promisify(chrome.tabs.query)({currentWindow: true});
 		return tabs;
 	})()`, &tabs); err != nil {
