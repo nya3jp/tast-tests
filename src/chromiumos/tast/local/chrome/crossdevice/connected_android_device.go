@@ -7,6 +7,7 @@ package crossdevice
 
 import (
 	"context"
+	"encoding/json"
 	"path/filepath"
 	"strings"
 	"time"
@@ -97,6 +98,51 @@ func (c *AndroidDevice) Pair(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// GenerateMessageNotification creates a message notification on the phone.
+// The notification has inline reply enabled, so it can be used to test Phone Hub's notification features.
+// The notification title and message text can be specified by the inputs.
+// You can create multiple distinct notifications by calling this with different notification IDs.
+// The returned function will retrieve the reply to the notification.
+func (c *AndroidDevice) GenerateMessageNotification(ctx context.Context, id int, title, text string) (func(context.Context) (string, error), error) {
+	res, err := c.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "generateMessageNotification", title, text, id)
+	if err != nil {
+		return nil, err
+	}
+	callbackID := res.Callback
+
+	// Return a function that will wait for a reply to the message notification and return the replied text.
+	return func(ctx context.Context) (string, error) {
+		res, err := c.snippetClient.EventWaitAndGet(ctx, callbackID, "replyReceived", 10*time.Second)
+		if err != nil {
+			return "", errors.Wrap(err, "failed to wait for replyReceived snippet event")
+		}
+
+		// Sample response: {"callback_id":"1-1", "name":"replyReceived", "creation_time":"1642817334319", "data":{'reply': 'reply text'}}
+		// Unmarshall 'result' to a map instead of building a matching struct just to get one value.
+		var result map[string]interface{}
+		if err := json.Unmarshal(res.Result, &result); err != nil {
+			return "", errors.Wrap(err, "failed to read result map from json response")
+		}
+
+		// The reply value is in another map called 'data' within the 'result' map.
+		data, ok := result["data"]
+		if !ok {
+			return "", errors.Wrap(err, "'data' map didn't exist in onAwaitingReceiverAccept response's result field")
+		}
+		reply := data.(map[string]interface{})["reply"]
+		replyStr, ok := reply.(string)
+		if !ok {
+			return "", errors.Wrap(err, "reply in replyReceived's response was not a string")
+		}
+		return replyStr, nil
+	}, nil
+}
+
+// EnablePhoneHubNotifications sets the flag on Android to allow Phone Hub to receive notification updates.
+func (c *AndroidDevice) EnablePhoneHubNotifications(ctx context.Context) error {
+	return c.device.ShellCommand(ctx, "cmd", "notification", "allow_listener", "com.google.android.gms/.auth.proximity.phonehub.PhoneHubNotificationListenerService").Run()
 }
 
 // SetPIN sets a screen lock PIN on Android.
