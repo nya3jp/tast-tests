@@ -33,6 +33,193 @@
       "message": "should this put into wmp package?",
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929cfd95_e877ec2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: missing comment description",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb86a54_6fdb5cfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: missing comment description",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a672b85c_3c92cd89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: can this be moved out into a private func. that has a description of it\u0027s inputs/return types so it\u0027s more clear? Additionally, is it possible to remove these bitwise operators completely (which tend to be a little more difficult to follow) in place of arrays/contains, or something simpler?",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d6fb7a_0a5bbe41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: as above, can this function be broken out into its own private function with a description? As-is, the inline definition makes it hard to follow the test. The result of that will be the function returns an error instead of calling s.Fatal directly.",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf74bf48_4f6a3f9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "Should this be pulled out of the function and set before calling the function? It seems you can shorten the context once and then use that shorted version for anything that follows.",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90dd4d0b_1730075a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: missing comment",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c703e2_3dd31ca4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: missing comment",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8717a025_eacfcec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: missing default case. It can simply return an error that the value is not supported.",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "535d857f_a55e3de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: default case missing as above",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9cabac_7b10652e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "Should these be broken out into another file? There\u0027s a lot going on from here on and I\u0027m not sure if it helps to all be contained in this file.",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a03919db_87aacdcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-27T19:49:33Z",
+      "side": 1,
+      "message": "nit: uninstall ?",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
