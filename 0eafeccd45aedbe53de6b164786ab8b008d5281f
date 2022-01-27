@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a446eaad_fc1f3120",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-27T17:39:11Z",
+      "side": 1,
+      "message": "I have two comments. Please take a look. Also, please run fast_build.sh -T to make sure all the unit tests pass. Thanks.",
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42cb082c_1448e009",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-01-27T10:25:42Z",
       "side": 1,
       "message": "Please change to Fatal",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d31483e_0e19ef33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-27T17:39:11Z",
+      "side": 1,
+      "message": "Also, you probably want to print out the param so that you know what param has an issue. Same for all other error message inside this loop.",
+      "parentUuid": "42cb082c_1448e009",
       "range": {
         "startLine": 87,
         "startChar": 6,
@@ -60,6 +101,23 @@
         "endLine": 106,
         "endChar": 11
       },
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29152f79_e19a3ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-27T17:39:11Z",
+      "side": 1,
+      "message": "Should it be Fatal?",
       "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
