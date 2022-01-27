@@ -16,6 +16,40 @@
       "message": "Hey Kyle,\nCould you help take a look, sorry for always modify the test. Thanks!",
       "revId": "d20c4afc4576fb5e6394dc21cd67801b86a6929b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab1e925_4d0c9920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-27T23:18:16Z",
+      "side": 1,
+      "message": "sorry for the delay, lgtm!",
+      "revId": "d20c4afc4576fb5e6394dc21cd67801b86a6929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26da3837_e8d22f3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cellular_policy_connection.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-27T23:18:16Z",
+      "side": 1,
+      "message": "nit: handle the returned error",
+      "revId": "d20c4afc4576fb5e6394dc21cd67801b86a6929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
