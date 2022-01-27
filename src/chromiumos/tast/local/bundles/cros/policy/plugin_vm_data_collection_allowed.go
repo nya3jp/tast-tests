@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PluginVMDataCollectionAllowed,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of PluginVmDataCollectionAllowed policy",
 		Contacts: []string{
 			"okalitova@chromium.org", // Test author

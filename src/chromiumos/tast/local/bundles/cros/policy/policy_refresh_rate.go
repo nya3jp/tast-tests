@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PolicyRefreshRate,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of PolicyRefreshRate policy",
 		Contacts: []string{
 			"swapnilgupta@google.com", // Test author

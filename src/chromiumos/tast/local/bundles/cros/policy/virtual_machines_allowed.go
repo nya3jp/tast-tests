@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualMachinesAllowed,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify that installing Crostini is allowed only when VirtualMachinesAllowed policy is enabled",
 		Contacts: []string{
 			"janagrill@google.com", // Test author
