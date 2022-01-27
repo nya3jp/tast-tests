@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c0ba36d_baa5b6a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-01-27T07:09:28Z",
+      "side": 1,
+      "message": "That makes sense.\nIn my opinion, only reason to check the ARC-side state is to make it easier to isolate a problem when ARC state and ash state are different. I guess that kind of situation should\u0027t happen by design (especially for ARC-R+), but anything can happen in our world so checking ARC-side state is somewhat beneficial in practice comparing its cost.\n\nBut I can also understand and agree your suggestion: This is an end-to-end test so why do we test internal state... hmm...",
+      "parentUuid": "f0bb8ca3_4aab44a1",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "90d23ee36e89171108a0618342f9ef7e1d548bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58a291aa_c3e44f7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "writtenOn": "2022-01-25T07:31:46Z",
       "side": 1,
       "message": "We may also want to check other states related to compat mode such as compat-mode button, shadow, etc both in this function and at the end of testUnsnapByDragging.\n\nAlso these utility functions should be in resize_util I guess?",
+      "revId": "90d23ee36e89171108a0618342f9ef7e1d548bfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27e15b6_28cfacf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-01-27T07:09:28Z",
+      "side": 1,
+      "message": "Good idea! Added the check.\n(Thanks for making the useful utility function.)",
+      "parentUuid": "58a291aa_c3e44f7b",
       "revId": "90d23ee36e89171108a0618342f9ef7e1d548bfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
