@@ -16,6 +16,69 @@
       "message": "Hi Kamil,\n\nThis CL adds a policy test for SpellCheckEnabled, PTAL!\n\nRegards,\nJit",
       "revId": "ac3b81350a24ad89facf8a3f4722d048374a7cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a351a2a8_5e6eb502",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:39:16Z",
+      "side": 1,
+      "message": "please change to testing.LacrosVariantExists",
+      "revId": "ac3b81350a24ad89facf8a3f4722d048374a7cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5453b0e_2ff09d8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:39:16Z",
+      "side": 1,
+      "message": "Lets avoid logic that determines what should be checked in test. What if we move the expectation to the test matrix like here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/system_timezone_automatic_detection.go;l\u003d64?q\u003drestriction.Disabled",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 4
+      },
+      "revId": "ac3b81350a24ad89facf8a3f4722d048374a7cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e599de3_5cbda89b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:39:16Z",
+      "side": 1,
+      "message": "Could we use any kind of polling here for some condition to avoid static wait?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 35
+      },
+      "revId": "ac3b81350a24ad89facf8a3f4722d048374a7cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
