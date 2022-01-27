@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d941e8af_5c7e77b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-01-27T19:59:25Z",
+      "side": 1,
+      "message": "One thing we might want to do is have an image test that makes sure the installed SafeSetID config isn\u0027t broken (i.e. all the users and groups exist)",
+      "revId": "3a96e5e76405f6dbf3a5eb5aca2a73f02adc68e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
