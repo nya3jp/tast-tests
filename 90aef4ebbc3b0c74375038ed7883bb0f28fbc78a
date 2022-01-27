@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35dd178_722415ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-27T14:38:49Z",
+      "side": 1,
+      "message": "LGTM as a Tast owners review.\ndeferring to poromov@ for reviewing the test logic.",
+      "revId": "90aef4ebbc3b0c74375038ed7883bb0f28fbc78a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
