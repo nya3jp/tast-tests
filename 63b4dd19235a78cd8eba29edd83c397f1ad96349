@@ -16,6 +16,40 @@
       "message": "Thsi",
       "revId": "63b4dd19235a78cd8eba29edd83c397f1ad96349",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0d7fd4_24467816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:26:02Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "63b4dd19235a78cd8eba29edd83c397f1ad96349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e4d252_50787c2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-27T08:26:02Z",
+      "side": 1,
+      "message": "please add:\nLacrosStatus: testing.LacrosVariantExists.",
+      "revId": "63b4dd19235a78cd8eba29edd83c397f1ad96349",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
