@@ -9,7 +9,10 @@ package kioskmode
 import (
 	"context"
 	"io/ioutil"
+<<<<<<< HEAD
+=======
 	"os"
+>>>>>>> af3f1cab5 (kiosk: Add test for launching cached Chrome apps offline)
 	"strings"
 	"time"
 
