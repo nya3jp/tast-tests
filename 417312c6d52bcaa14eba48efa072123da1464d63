@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960760f0_b7e93223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/history_clusters_visible.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-27T17:02:41Z",
+      "side": 1,
+      "message": "cr is the ash browser so you are opening the url in the ash browser instead of the lacros browser. See here on how to get the lacros browser: https://g3doc.corp.google.com/company/teams/chromeos-commercial-remote-management/tast-codelabs/lacros_policy_testing.md?cl\u003dhead#test-body\nYou need browser.TypeLacros there.",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 60
+      },
+      "revId": "417312c6d52bcaa14eba48efa072123da1464d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edc2e808_7a781a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/history_clusters_visible.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-27T17:02:41Z",
+      "side": 1,
+      "message": "Is there no ui element from the accessibility tree you could use for the check? Using the uiauto package would be the preferred way to check and interact with ui elements.\n\nYou can get the accessibility tree entries by adding:\ndefer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+param.name) at the start of the subtest and then simply failing the test here. In the faillog you can then find the uitree.",
+      "range": {
+        "startLine": 73,
+        "startChar": 18,
+        "endLine": 73,
+        "endChar": 281
+      },
+      "revId": "417312c6d52bcaa14eba48efa072123da1464d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
