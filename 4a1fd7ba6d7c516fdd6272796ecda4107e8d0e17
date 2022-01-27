@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d32e29_2715f83f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-27T09:43:19Z",
+      "side": 1,
+      "message": "Anqing, I added you as a reviewer since you are the author of the lacros webkiosk design spec.\n\nThanks for reviewing everyone!",
+      "revId": "4a1fd7ba6d7c516fdd6272796ecda4107e8d0e17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
