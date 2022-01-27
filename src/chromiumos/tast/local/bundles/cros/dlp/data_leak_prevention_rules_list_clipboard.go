@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -84,7 +85,7 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 
 			conn, err := cr.NewConn(ctx, "https://"+param.url)
 			if err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatalf("Failed to open page %q: %v", param.url, err)
 			}
 			defer conn.Close()
 
@@ -103,20 +104,38 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 
 			googleConn, err := cr.NewConn(ctx, "https://www.google.com/?hl=en")
 			if err != nil {
-				s.Error("Failed to open page: ", err)
+				s.Fatal("Failed to open page: ", err)
 			}
 			defer googleConn.Close()
 
 			ui := uiauto.New(tconn)
 
-			searchNode := nodewith.Name("Search").Role(role.TextFieldWithComboBox).State("editable", true).First()
-			// Focus in search box
-			if err := ui.LeftClick(searchNode)(ctx); err != nil {
-				s.Fatal("Failed to left click node: ", err)
+			searchNode := nodewith.Name("Search").Role(role.TextFieldWithComboBox).State(state.Editable, true).First()
+
+			if err := ui.WaitUntilExists(searchNode)(ctx); err != nil {
+				s.Fatal("Failed to find search bar: ", err)
 			}
 
-			if err := keyboard.Accel(ctx, "Ctrl+V"); err != nil {
-				s.Fatal("Failed to press Ctrl+V to paste content: ", err)
+			searchNodeInfo, err := ui.Info(ctx, searchNode)
+			if err != nil {
+				s.Fatal("Error retrieving info for search node: ", err)
+			}
+
+			// If the search bar is invisible, it is probably overlaid by the Google consent banner.
+			// It does not provide usable ids, so we try to quit it with Shift+Tab, then Enter.
+			if searchNodeInfo.State[state.Invisible] {
+				s.Log("Search bar is invisible, closing consent banner")
+				if err := keyboard.Accel(ctx, "Shift+Tab+Enter"); err != nil {
+					s.Fatal("Failed to press Shift+Tab+Enter to close consent banner: ", err)
+				}
+			}
+
+			if err := uiauto.Combine("Pasting into search bar",
+				ui.WaitUntilExists(searchNode.State(state.Invisible, false)),
+				ui.LeftClick(searchNode),
+				keyboard.AccelAction("Ctrl+V"),
+			)(ctx); err != nil {
+				s.Fatal("Failed to paste into search bar: ", err)
 			}
 
 			// Verify Notification Bubble.
