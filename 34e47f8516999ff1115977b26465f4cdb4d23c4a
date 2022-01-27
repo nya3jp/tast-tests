@@ -163,6 +163,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b65a28e0_90b70ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1528158
+      },
+      "writtenOn": "2022-01-27T18:37:58Z",
+      "side": 1,
+      "message": "Sorry I may not made my question clear, though the discussion on the proto design was also good one!\nWhat I wanted to learn more is the synchronization on low level APIs vs. synchronization on high level APIs, in some cases sync on low level API leads to unnecessary overhead and slows down things if they are invoked very often. An example is the StringBuilder vs. StringBuffer in java. I don\u0027t exactly know which one is better for our use case, just bring this to you.",
+      "parentUuid": "fd86969a_eee619b6",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1f4e5e6_0ae9cf3a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
         "patchSetId": 5
