@@ -43,8 +43,8 @@ var (
 	// KioskAppAccountID identifier of the Kiosk application.
 	KioskAppAccountID   = "arbitrary_id_store_app_2"
 	kioskAppAccountType = policy.AccountTypeKioskApp
-	// kioskAppID pointing to the Printtest app - not listed in the WebStore.
-	kioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
+	// KioskAppID pointing to the Printtest app - not listed in the WebStore.
+	KioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
 	// KioskAppBtnNode node representing this application on the Apps menu on
 	// the Sign-in screen.
 	KioskAppBtnNode = nodewith.Name("Simple Printest").ClassName("MenuItemView")
@@ -52,7 +52,7 @@ var (
 		AccountID:   &KioskAppAccountID,
 		AccountType: &kioskAppAccountType,
 		KioskAppInfo: &policy.KioskAppInfo{
-			AppId: &kioskAppID,
+			AppId: &KioskAppID,
 		}}
 
 	// DefaultLocalAccountsConfiguration holds default Kiosks accounts
