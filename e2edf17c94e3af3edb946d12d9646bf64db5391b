@@ -16,6 +16,75 @@
       "message": "Emma FYI. It would be nice to run and track these tests on a higher level.\n\nRomaric, I couldn\u0027t run these tests on my volteer as the ebuild doesn\u0027t install them. We could add \u003e 1000 tests to tast. But there is a lot of overhead. It would be nice if we could compact them somewhat. I wish I could try them first though.",
       "revId": "e2edf17c94e3af3edb946d12d9646bf64db5391b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12037d75_1fd54447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-27T01:59:37Z",
+      "side": 1,
+      "message": "Better to have a list of pass/fail expectation in txt file or something else instead of define in the test meta data.",
+      "range": {
+        "startLine": 1556,
+        "startChar": 58,
+        "endLine": 1556,
+        "endChar": 62
+      },
+      "revId": "e2edf17c94e3af3edb946d12d9646bf64db5391b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2c8e7bf_a5ac12b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-27T01:59:37Z",
+      "side": 1,
+      "message": "tast has its own way of generating params.[1]\n\nI wonder how long would the whole test run.\n\n[1] https://docs.google.com/document/d/1sIiCvBIDYPJrpCfzaiR6HG-Q6iIXp3Mx53yP5O_UB58/edit#heading\u003dh.xzptrog8pyxf",
+      "range": {
+        "startLine": 1594,
+        "startChar": 16,
+        "endLine": 1594,
+        "endChar": 24
+      },
+      "revId": "e2edf17c94e3af3edb946d12d9646bf64db5391b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b34565d_84f0c694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-27T01:59:37Z",
+      "side": 1,
+      "message": "Use Fatalf and use printf style string formatting.",
+      "range": {
+        "startLine": 1616,
+        "startChar": 4,
+        "endLine": 1616,
+        "endChar": 9
+      },
+      "revId": "e2edf17c94e3af3edb946d12d9646bf64db5391b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

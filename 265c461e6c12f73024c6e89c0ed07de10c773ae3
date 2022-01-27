@@ -16,6 +16,24 @@
       "message": "This fails the tast_lint hook:\n\nsrc/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go:1594:17: Test Params should be an array literal of Param struct literals\n\nIs there a way of keeping the test declaration like that?",
       "revId": "265c461e6c12f73024c6e89c0ed07de10c773ae3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dfc261e_7e7eaffd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-27T01:59:37Z",
+      "side": 1,
+      "message": "Checks the docs\n\nhttps://docs.google.com/document/d/1sIiCvBIDYPJrpCfzaiR6HG-Q6iIXp3Mx53yP5O_UB58/edit#heading\u003dh.zdlavartcrrw",
+      "parentUuid": "05396491_28de6012",
+      "revId": "265c461e6c12f73024c6e89c0ed07de10c773ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
