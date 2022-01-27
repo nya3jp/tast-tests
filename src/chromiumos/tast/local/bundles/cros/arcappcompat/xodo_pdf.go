@@ -100,8 +100,44 @@ func XodoPdf(ctx context.Context, s *testing.State) {
 // launchAppForXodoPdf verifies XodoPdf is logged in and
 // verify XodoPdf reached main activity page of the app.
 func launchAppForXodoPdf(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, appPkgName, appActivity string) {
+	const (
+		allowButtonText = "ALLOW"
+		continueBtnText = "CONTINUE TO APP"
+		toggleBtnID     = "android:id/switch_widget"
+		navigateDes     = "Back"
+	)
+	// Click on continue to app.
+	continueButton := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+continueBtnText))
+	if err := continueButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("continueButton doesn't exists: ", err)
+	} else if err := continueButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on continueButton: ", err)
+	}
 
-	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
+	// Click on allow button to access your photos, media and files.
+	allowBtn := d.Object(ui.ClassName(testutil.AndroidButtonClassName), ui.TextMatches("(?i)"+allowButtonText))
+	if err := allowBtn.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Allow Button doesn't exists: ", err)
+	} else if err := allowBtn.Click(ctx); err != nil {
+		s.Fatal("Failed to click on allowButton: ", err)
+	}
+
+	// Enable toggle button to allow access to manage all files.
+	toggleBtn := d.Object(ui.ID(toggleBtnID))
+	if err := toggleBtn.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("toggleBtn doesn't exists: ", err)
+	} else if err := toggleBtn.Click(ctx); err != nil {
+		s.Fatal("Failed to click on toggleBtn: ", err)
+	}
+
+	// Click on navigate button.
+	navigateBtn := d.Object(ui.DescriptionMatches("(?i)" + navigateDes))
+	if err := navigateBtn.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("navigateBtn doesn't exists: ", err)
+	} else if err := navigateBtn.Click(ctx); err != nil {
+		s.Fatal("Failed to click on navigateBtn: ", err)
+	}
+
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
 	if err := launchVerifier.WaitForExists(ctx, testutil.LongUITimeout); err != nil {
