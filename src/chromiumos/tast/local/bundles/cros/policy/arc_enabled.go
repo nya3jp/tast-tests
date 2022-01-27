@@ -25,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ArcEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of ArcEnabled policy, checking whether ARC is enabled after setting the policy",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author

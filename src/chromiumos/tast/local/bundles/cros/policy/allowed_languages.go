@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AllowedLanguages,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of AllowedLanguages policy, checking the correspoding checkbox states (count) after setting the policy",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author

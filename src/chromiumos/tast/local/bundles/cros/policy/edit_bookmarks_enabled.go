@@ -29,7 +29,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EditBookmarksEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of EditBookmarksEnabled policy: check if you can create, edit and remove bookmarks based on the policy value",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author

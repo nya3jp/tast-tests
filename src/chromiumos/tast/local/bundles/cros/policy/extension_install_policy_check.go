@@ -34,7 +34,7 @@ const extensionURL = "https://chrome.google.com/webstore/detail/" + extensionID
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ExtensionInstallPolicyCheck,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks the behavior of ExtensionInstallAllowlist, ExtensionInstallBlocklist policies",
 		Contacts: []string{
 			"swapnilgupta@google.com", //Test Author

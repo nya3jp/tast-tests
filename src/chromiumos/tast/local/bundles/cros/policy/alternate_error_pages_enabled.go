@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AlternateErrorPagesEnabled,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of the AlternateErrorPagesEnabled policy: check that an alternate set of error pages is shown based on the policy",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author

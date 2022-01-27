@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ExtensionAllowedTypes,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of ExtensionAllowedTypes policy, checking if a theme can be added to Chrome",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author

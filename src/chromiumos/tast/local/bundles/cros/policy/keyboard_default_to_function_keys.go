@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         KeyboardDefaultToFunctionKeys,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test the KeyboardDefaultToFunctionKeys policy: check that the behavior of function keys is swapped",
 		Contacts: []string{
 			"mpolzer@google.com", // Test author

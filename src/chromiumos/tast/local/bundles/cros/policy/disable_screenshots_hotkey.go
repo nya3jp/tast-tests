@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DisableScreenshotsHotkey,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by pressing hotkeys",
 		Contacts: []string{
 			"lamzin@google.com", // Test port author
