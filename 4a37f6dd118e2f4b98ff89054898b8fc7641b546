@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a15cb1c_db0283c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-27T11:55:33Z",
+      "side": 1,
+      "message": "PTAL at these two policy tests that automated a manual test.",
+      "revId": "4a37f6dd118e2f4b98ff89054898b8fc7641b546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df5f36a0_5e981a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_google_safe_search.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-27T11:55:33Z",
+      "side": 1,
+      "message": "I wasn\u0027t 100% sure which emails to put here. I opted for the other group listed in the existing MSG test and the group listed in most policy tests.",
+      "revId": "4a37f6dd118e2f4b98ff89054898b8fc7641b546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5269f993_baea2491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_you_tube_restrict.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-27T11:55:33Z",
+      "side": 1,
+      "message": "This code and also the constants at the top are copied from https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go -- let me know if you want me to extract that and feel free to suggest where I should put it.",
+      "revId": "4a37f6dd118e2f4b98ff89054898b8fc7641b546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
