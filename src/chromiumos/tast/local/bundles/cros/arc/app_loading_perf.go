@@ -332,10 +332,10 @@ func calcGeometricMean(scores []float64) (float64, error) {
 
 // runAppLoadingTest will test each app loading subflow with timeout.
 func runAppLoadingTest(ctx context.Context, config apploading.TestConfig, a *arc.ARC, cr *chrome.Chrome) (float64, error) {
-	shorterCtx, cancel := context.WithTimeout(ctx, 390*time.Second)
+	shorterCtx, cancel := context.WithTimeout(ctx, 510*time.Second)
 	defer cancel()
 
-	// Each subflow should take no longer than 6.5 minutes based on stainless
+	// Each subflow should take no longer than 8.5 minutes based on stainless
 	// data. If it takes longer, very likely the app is stuck (e.g. b/169367367).
 	return apploading.RunTest(shorterCtx, config, a, cr)
 }
