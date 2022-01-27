@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03d93de2_fa0ec194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1273632
+      },
+      "writtenOn": "2022-01-27T12:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "461fbb9e_5735c4ab",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 10
+      },
+      "revId": "cccf6bc0a68c2a907219bcb5f61af8903a5c8132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8c34199_0abf8113",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-27T12:12:18Z",
       "side": 1,
       "message": "This needs to be outside of runServer().\n\nListenAndServe() is blocking and will not return until the server is shutdown (in which the error returned will be ErrServerClosed).\n\nThe intention of the defer Shutdown() is so that the server is notified to shutdown when the test finishes running. Otherwise it would remain running after the test ends (possibly across different tests as well).\n\nThe server code should look something like:\n\n  server :\u003d \u0026http.Server{...}\n  go func() {\n    s.Log(\"Server has shutdown: \", server.ListenAndServeTLS(...))\n  }\n  defer server.Shutdown(ctx)",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 27
+      },
+      "revId": "cccf6bc0a68c2a907219bcb5f61af8903a5c8132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35aebc4a_bd15e993",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1273632
+      },
+      "writtenOn": "2022-01-27T12:48:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8c34199_0abf8113",
       "range": {
         "startLine": 153,
         "startChar": 1,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707cf24f_e08e8afe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273632
+      },
+      "writtenOn": "2022-01-27T12:48:49Z",
+      "side": 1,
+      "message": "@jityao: thanks!\n@tast-owners@: PTAL, thanks!",
+      "revId": "385ea5125312635ee54b58db5037c8e62b85ea22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
