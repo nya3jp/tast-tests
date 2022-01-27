@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e087b24_d801abba",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-27T02:29:15Z",
+      "side": 1,
+      "message": "Added the full path",
+      "parentUuid": "e3c508f4_e14866f2",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d6fe857_e223ec35",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-01-26T23:06:48Z",
       "side": 1,
       "message": "Nit: Move to the line above.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66430755_7ef978d5",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-27T02:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6fe857_e223ec35",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19f74bd0_0bcec063",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/js.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-27T02:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28958c3_6043b397",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed7a12c2_4acfa11b",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-01-26T23:06:48Z",
       "side": 1,
       "message": "Nit: Remove newline.",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1aae3e_8b2b6288",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/js.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-27T02:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed7a12c2_4acfa11b",
       "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba52a76_05c7ace5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-27T02:29:15Z",
+      "side": 1,
+      "message": "changed state\u003d\u003e isEnabled and want \u003d\u003e expectedState\n\nI was under the impression that short variable names are preferred but looking at the other tests I see larger names are fine.",
+      "parentUuid": "5ed8ef86_bfdd955d",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "839793bd_124e27c6",
@@ -132,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5825cc9b_15cb233b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-27T02:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "839793bd_124e27c6",
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f20b9945_16c8a8c6",
@@ -145,6 +265,30 @@
       "writtenOn": "2022-01-26T23:06:48Z",
       "side": 1,
       "message": "What do you think of combining these to be:\n\n  s.Logf(\"Toggling Bluetooth state to %t (iteration %d of %d)\", state, i+1, iterations)",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "61a193dfa5e9d19fc4f36d7b8b12f44caf99a0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bea261a_38c05183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/toggle_bluetooth_using_mojo.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-27T02:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f20b9945_16c8a8c6",
       "range": {
         "startLine": 49,
         "startChar": 0,
