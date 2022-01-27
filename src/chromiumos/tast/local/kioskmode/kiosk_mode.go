@@ -8,6 +8,8 @@ package kioskmode
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
 	"strings"
 	"time"
 
@@ -20,6 +22,7 @@ import (
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 var (
@@ -43,8 +46,8 @@ var (
 	// KioskAppAccountID identifier of the Kiosk application.
 	KioskAppAccountID   = "arbitrary_id_store_app_2"
 	kioskAppAccountType = policy.AccountTypeKioskApp
-	// kioskAppID pointing to the Printtest app - not listed in the WebStore.
-	kioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
+	// KioskAppID pointing to the Printtest app - not listed in the WebStore.
+	KioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
 	// KioskAppBtnNode node representing this application on the Apps menu on
 	// the Sign-in screen.
 	KioskAppBtnNode = nodewith.Name("Simple Printest").ClassName("MenuItemView")
@@ -52,7 +55,7 @@ var (
 		AccountID:   &KioskAppAccountID,
 		AccountType: &kioskAppAccountType,
 		KioskAppInfo: &policy.KioskAppInfo{
-			AppId: &kioskAppID,
+			AppId: &KioskAppID,
 		}}
 
 	// DefaultLocalAccountsConfiguration holds default Kiosks accounts
@@ -286,4 +289,30 @@ func startChromeClearPolicies(ctx context.Context, fdms *fakedms.FakeDMS, userna
 		return errors.Wrap(err, "failed to clear policies")
 	}
 	return nil
+}
+
+// WaitForCrxInCache waits for Kiosk crx to be available in cache.
+func WaitForCrxInCache(ctx context.Context, id string) error {
+	const crxCachePath = "/home/chronos/kiosk/crx/"
+	ctx, st := timing.Start(ctx, "wait_crx_cache")
+	defer st.End()
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		files, err := ioutil.ReadDir(crxCachePath)
+		if err != nil {
+			if errors.Is(err, os.ErrNotExist) {
+				return errors.Wrap(err, "Kiosk crx cache does not exist yet")
+			}
+			return testing.PollBreak(errors.Wrap(err, "failed to list content of Kiosk cache"))
+		}
+
+		for _, file := range files {
+			if strings.HasPrefix(file.Name(), id) {
+				testing.ContextLog(ctx, "Found crx in cache: "+file.Name())
+				return nil
+			}
+		}
+
+		return errors.Wrap(err, "Kiosk crx cache does not have "+id)
+	}, nil)
 }
