@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3033919d_cb05ca6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/user_files_guest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-27T02:28:16Z",
+      "side": 1,
+      "message": "Agreed, I think NS should be clear enough. Thanks!",
+      "parentUuid": "c1b3d312_0a521e74",
+      "range": {
+        "startLine": 42,
+        "startChar": 29,
+        "endLine": 42,
+        "endChar": 38
+      },
+      "revId": "a2702e63292695f622be7928dd1715f252bceb5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1acd82dd_086930e5",
