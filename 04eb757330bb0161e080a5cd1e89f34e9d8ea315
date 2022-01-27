@@ -39,6 +39,30 @@
       },
       "revId": "04eb757330bb0161e080a5cd1e89f34e9d8ea315",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b253dd1_4ccf4b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_shelf.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-01-27T10:21:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e34355f2_65db4892",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "04eb757330bb0161e080a5cd1e89f34e9d8ea315",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
