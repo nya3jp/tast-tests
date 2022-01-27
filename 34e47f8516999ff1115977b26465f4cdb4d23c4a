@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd86969a_eee619b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-01-27T18:23:34Z",
+      "side": 1,
+      "message": "Thanks Seewai.  Let me put together a quick prototype who hopefully a basis for us to iterate on the idea.",
+      "parentUuid": "5670147f_46e97f0b",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1f4e5e6_0ae9cf3a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
         "patchSetId": 5
