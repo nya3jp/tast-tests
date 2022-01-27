@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49553090_829376d4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T22:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce38cd22_7a9edf06",
+      "range": {
+        "startLine": 188,
+        "startChar": 24,
+        "endLine": 188,
+        "endChar": 81
+      },
+      "revId": "4c24c43dad40712b6b371b65699339520388002b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18e08517_fd5e07a0",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-27T21:31:56Z",
       "side": 1,
       "message": "ditto, the description here seems irrelevant.",
+      "range": {
+        "startLine": 223,
+        "startChar": 24,
+        "endLine": 223,
+        "endChar": 53
+      },
+      "revId": "4c24c43dad40712b6b371b65699339520388002b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3f5f47_76f7a271",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/imesettings/user_actions.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-27T22:00:23Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "18e08517_fd5e07a0",
       "range": {
         "startLine": 223,
         "startChar": 24,
