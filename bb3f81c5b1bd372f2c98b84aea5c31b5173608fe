@@ -16,6 +16,92 @@
       "message": "Thanks, I addressed all comments, I also changed the wrong Errof formatting that the bots complained about. ptal",
       "revId": "bb3f81c5b1bd372f2c98b84aea5c31b5173608fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bdd69fd_206eeda9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-27T10:53:54Z",
+      "side": 1,
+      "message": "LGTM % questions",
+      "revId": "bb3f81c5b1bd372f2c98b84aea5c31b5173608fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0890f161_06438adf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-27T10:53:54Z",
+      "side": 1,
+      "message": "Just checking: It\u0027s intentional that this is always restriction.Disabled, correct?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "bb3f81c5b1bd372f2c98b84aea5c31b5173608fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c4b6c2_c8975d65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-27T10:53:54Z",
+      "side": 1,
+      "message": "Is \u0027info\u0027 a meaningful name here?\n\nIt\u0027s weird for an \u0027info\u0027 to be checked or not chekced IMO.",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 5
+      },
+      "revId": "bb3f81c5b1bd372f2c98b84aea5c31b5173608fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf3ed1ef_a407971a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-27T10:53:54Z",
+      "side": 1,
+      "message": "Is this saying \"True or nil means the same for the purpose of this test\" (which would seem to contradict the next condition) or \"It can have two values: True or nil, each means something different\"?\n\nIn any case, I\u0027d suggest changing the check to make sure that we display what we actually compare (in \"actual\u003d%s\" vs the if condition) if possible",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 40
+      },
+      "revId": "bb3f81c5b1bd372f2c98b84aea5c31b5173608fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
