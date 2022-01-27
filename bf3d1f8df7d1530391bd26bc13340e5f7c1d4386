@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f1b8b1_1e277186",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-01-27T20:04:20Z",
+      "side": 1,
+      "message": "Hi!\nI\u0027m interested in adding ARC logs for my fixture the same as here: https://crrev.com/c/3188457\n\nBut with this CL I\u0027m getting this error: https://paste.googleplex.com/5737024934903808\n\nCould you please take a look - Am I doing something wrong here?",
+      "revId": "bf3d1f8df7d1530391bd26bc13340e5f7c1d4386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
