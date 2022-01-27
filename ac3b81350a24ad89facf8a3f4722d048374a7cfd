@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e20294_94b6bc0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-27T10:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a351a2a8_5e6eb502",
+      "revId": "ac3b81350a24ad89facf8a3f4722d048374a7cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5453b0e_2ff09d8e",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c43156_49f54802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-27T10:14:36Z",
+      "side": 1,
+      "message": "Thanks for the heads up!",
+      "parentUuid": "a5453b0e_2ff09d8e",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 4
+      },
+      "revId": "ac3b81350a24ad89facf8a3f4722d048374a7cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e599de3_5cbda89b",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-01-27T08:39:16Z",
       "side": 1,
       "message": "Could we use any kind of polling here for some condition to avoid static wait?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 35
+      },
+      "revId": "ac3b81350a24ad89facf8a3f4722d048374a7cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f925e146_9da82d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_enabled.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-27T10:14:36Z",
+      "side": 1,
+      "message": "I\u0027ve split this into 3 steps:\n1. Set up the observer\n2. Keyboard input\n3. Evaluate if spellcheck is enabled\n\nStep 3 still requires a poll since the observer isn\u0027t guaranteed to fire immediately.",
+      "parentUuid": "9e599de3_5cbda89b",
       "range": {
         "startLine": 171,
         "startChar": 0,
