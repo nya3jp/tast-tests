@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c64587_6a49ba9b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/powerd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-01-27T07:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a312fc91_8491d09c",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c7aa5d8_d744de2e",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "Using powerd SGTM",
       "parentUuid": "969d2c15_3cd1e0d2",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 34
+      },
+      "revId": "b2848d45f304dfa5fb4a6ecc5b519eb92c47b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e6a086_8ebc863e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/factory/powerd.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-01-27T07:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c670bd6_a123037e",
       "range": {
         "startLine": 70,
         "startChar": 11,
