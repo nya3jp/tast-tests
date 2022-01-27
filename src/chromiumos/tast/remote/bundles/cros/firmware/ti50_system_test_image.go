@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/firmware/ti50"
-	remoteTi50 "chromiumos/tast/remote/firmware/ti50"
+	"chromiumos/tast/remote/firmware/ti50/fixture"
 	"chromiumos/tast/testing"
 )
 
@@ -22,40 +22,40 @@ func init() {
 		Func:    Ti50SystemTestImage,
 		Desc:    "Ti50 system test",
 		Timeout: 5 * time.Minute,
-		Vars:    []string{"image", "spiflash", "mode"},
+		Vars:    []string{"image"},
 		Contacts: []string{
 			"ecgh@chromium.org",
 			"ti50-core@google.com",
 		},
-		ServiceDeps: []string{"tast.cros.baserpc.FileSystem", "tast.cros.firmware.SerialPortService"},
-		Attr:        []string{"group:firmware"},
+		Data:    []string{"system_test_auto_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin"},
+		Attr:    []string{"group:firmware"},
+		Fixture: fixture.DevBoardService,
 	})
 }
 
 func Ti50SystemTestImage(ctx context.Context, s *testing.State) {
 
-	mode, _ := s.Var("mode")
-	spiflash, _ := s.Var("spiflash")
+	f := s.FixtValue().(*fixture.Value)
 
-	board, rpcClient, err := remoteTi50.GetTi50TestBoard(ctx, s.DUT(), s.RPCHint(), mode, spiflash, 10000, time.Second)
-
+	board, err := f.DevBoard(ctx, 10000, time.Second)
 	if err != nil {
-		s.Fatal("GetTi50TestBoard: ", err)
+		s.Fatal("Could not get board: ", err)
 	}
-	if rpcClient != nil {
-		defer rpcClient.Close(ctx)
-	}
-	defer board.Close(ctx)
 
-	image, _ := s.Var("image")
-	if image == "" {
-		if err = board.Reset(ctx); err != nil {
-			s.Fatal("Failed to reset: ", err)
-		}
-	} else {
+	image, ok := s.Var("image")
+
+	if !ok {
+		image = s.DataPath("system_test_auto_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin")
+	}
+
+	if image != "" {
 		if err = board.FlashImage(ctx, image); err != nil {
-			s.Fatal("Failed spiflash: ", image, err)
+			s.Fatal("Failed to flash: ", image, err)
 		}
+	}
+
+	if err = board.Reset(ctx); err != nil {
+		s.Fatal("Failed to reset: ", err)
 	}
 
 	s.Log("Kernel tests:")
