@@ -16,6 +16,23 @@
       "message": "Takise-san, PTAL!",
       "revId": "0f15d004ba42b7a575f78f61f1d59261f929d08e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be688444_d3c1ba57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-01-27T07:25:31Z",
+      "side": 1,
+      "message": "Thanks a lot. This is much better.",
+      "revId": "0f15d004ba42b7a575f78f61f1d59261f929d08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
