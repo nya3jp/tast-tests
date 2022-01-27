@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "394931f8_e46ccb63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-27T13:10:41Z",
+      "side": 1,
+      "message": "Please use `LacrosVariantExists`.\nWe are updating this field now in other tests as well (WIP).",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 44
+      },
+      "revId": "1ff87a07411df59e56d181e26c2f3a94a5a69fb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "208058e8_c3fc9852",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
         "patchSetId": 5
