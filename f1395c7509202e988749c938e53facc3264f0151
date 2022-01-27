@@ -16,6 +16,29 @@
       "message": "Thanks for the review! Added tast owners.",
       "revId": "f1395c7509202e988749c938e53facc3264f0151",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf3fea1_5114e158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-01-27T23:46:39Z",
+      "side": 1,
+      "message": "I\u0027m a bit skeptical of changing this to Logf, since it sort of hides the problem in the logs and the reported error on stainless/tastboard/etc. might not reveal the actual point of failure as clearly.\n\nLooks like from the comments, the idea here was to avoid failing this test for non-ARC related reasons right? Unfortunately Tast does not support multiple failure statuses at the moment (like how autotest has warning/test_na/not_run/etc.), so I think the best option is probably to fail with a distinct error message here to easily separate it from other failure modes. Not a big deal though so I\u0027ll leave it up to you",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "f1395c7509202e988749c938e53facc3264f0151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
