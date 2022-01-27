@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e7a492_36419a48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/scroll_to_text_fragment_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-27T16:56:38Z",
+      "side": 1,
+      "message": "Fixed in crrev.com/c/3417092",
+      "parentUuid": "1a845947_04678797",
+      "revId": "94838ca2bbf53e23b1aa04bb1038a764e8cb1a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba76d626_d372c261",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fad3e210_10a557d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/scroll_to_text_fragment_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-27T16:56:38Z",
+      "side": 1,
+      "message": "Fixed in crrev.com/c/3417092",
+      "parentUuid": "ba76d626_d372c261",
+      "revId": "94838ca2bbf53e23b1aa04bb1038a764e8cb1a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a4f0f48_9e16a13c",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-01-26T09:45:26Z",
       "side": 1,
       "message": "this is not needed for Lacros only tests.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 4
+      },
+      "revId": "94838ca2bbf53e23b1aa04bb1038a764e8cb1a3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e031938b_5639d0ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/scroll_to_text_fragment_enabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1344668
+      },
+      "writtenOn": "2022-01-27T16:56:38Z",
+      "side": 1,
+      "message": "Fixed in crrev.com/c/3417092",
+      "parentUuid": "4a4f0f48_9e16a13c",
       "range": {
         "startLine": 102,
         "startChar": 0,
