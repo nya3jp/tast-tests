@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "716be9df_2fc89a08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done. Set up chrome session in the test now.",
+      "parentUuid": "aea90355_e048ab75",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e44e566_b49bfb34",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-27T06:26:23Z",
       "side": 1,
       "message": "can we add this to launcher.go",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7bad5f_258640b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e44e566_b49bfb34",
       "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c196472e_c2e024d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd8ea8f2_b83d3caa",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8af5db43_56182a4e",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-01-27T06:26:23Z",
       "side": 1,
       "message": "can we wait for launcher state instead?",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0553ffd8_cbd85ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Waiting for the launcher state may not work in tablet. In the latest patch, window animation is waited for.",
+      "parentUuid": "8af5db43_56182a4e",
       "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b729f97_3ca595c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14d1947_ce852c68",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fcd38f2_e6faa86f",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-01-27T06:26:23Z",
       "side": 1,
       "message": "can we rename this verifyFakeAppsOrdered, and return an error if they\u0027re not in expected order (so we can have more useful error string)",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1f0024a_98b23ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fcd38f2_e6faa86f",
       "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a152cffe_473bac7d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa16155_8c7ace89",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bd48742_eb5f13b6",
@@ -137,6 +263,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49277bec_3082d79e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd48742_eb5f13b6",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2794ec80_7f677fdb",
@@ -150,6 +294,30 @@
       "writtenOn": "2022-01-27T06:26:23Z",
       "side": 1,
       "message": "itemListFinder :\u003d nodewith.ClassName(ExpandedItemsClass).Ancestor(appsGrid)\nsrcBounds \u003d ui.Location(itemListFinder.Nth(srcIndex))",
+      "range": {
+        "startLine": 423,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 46
+      },
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f87a229_23e063ff",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2794ec80_7f677fdb",
       "range": {
         "startLine": 423,
         "startChar": 1,
@@ -183,6 +351,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fee4b72_198e4aa4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eff84ce3_2a49f580",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 0
+      },
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e9f237_71777590",
@@ -196,6 +388,24 @@
       "writtenOn": "2022-01-27T06:26:23Z",
       "side": 1,
       "message": "I\u0027d be fine skipping this, but you can always just do something like\n\nui.WaitForLocation(itemListFinder.Nth(destIndex))",
+      "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02698b70_a1ce1461",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-27T23:21:11Z",
+      "side": 1,
+      "message": "Move this line out of the function. Wait for the bounds to be stable in app_list_sort_smoke.go",
+      "parentUuid": "09e9f237_71777590",
       "revId": "cb83dcd9a4a0a7ded9d1a7da3250b422069b6c85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
