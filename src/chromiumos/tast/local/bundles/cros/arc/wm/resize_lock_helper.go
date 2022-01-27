@@ -346,7 +346,7 @@ func checkBorder(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.
 				onRightBorder := bounds.Right() < x && x <= bounds.Right()+borderWidthPX
 				onBottomBorder := bounds.Bottom() < y && y <= bounds.Bottom()+borderWidthPX
 				onBorder := onLeftBorder || onTopBorder || onRightBorder || onBottomBorder
-				if onBorder && colorcmp.ColorsMatch(img.At(x, y), color.RGBA{155, 155, 155, 255}, pixelColorDiffMargin) {
+				if onBorder && colorcmp.ColorsMatch(img.At(x, y), color.RGBA{165, 165, 165, 255}, pixelColorDiffMargin) {
 					borderColorPixels++
 				}
 			}
