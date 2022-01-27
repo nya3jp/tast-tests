@@ -6,6 +6,8 @@ package policy
 
 import (
 	"context"
+	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -19,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -37,6 +40,9 @@ const (
 	mildContent   = "https://www.youtube.com/watch?v=Fmwfmee2ZTE"
 	strongContent = "https://www.youtube.com/watch?v=yR79oLrI1g4"
 )
+
+// Maximum number of times to continue polling YouTube after seeing an empty error message.
+const pollingThreshold = 5
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -107,13 +113,23 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
+			// This is needed only for debugging purpose to understand why the test is flaky.
+			// TODO(crbug/1201030): Remove when test is stable.
+			defer func(ctx context.Context) {
+				if s.HasError() {
+					if err := screenshot.Capture(ctx, filepath.Join(s.OutDir(), fmt.Sprintf("screenshot_%s.png", param.name))); err != nil {
+						s.Error("Failed to capture screenshot: ", err)
+					}
+				}
+			}(cleanupCtx)
+
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
 			// Update policies.
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
@@ -166,10 +182,23 @@ func getYouTubeErrorMessage(ctx context.Context, br ash.ConnSource, url string) 
 	defer conn.Close()
 
 	var message string
+	cnt := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if err := conn.Eval(ctx, `document.getElementById('error-screen').innerText`, &message); err != nil {
 			return err
 		}
+
+		if strings.TrimSpace(message) == "" {
+			// Seeing an empty error message in the HTML DOM does not guarantee that YouTube is playing the video at `url`.
+			// YouTube creates an error message DOM element with empty text and then dynamically updates it via Javascript.
+			// Continue polling a few times to make sure that the error message continues to be empty.
+			cnt++
+			if cnt < pollingThreshold {
+				return errors.New("youtube may not have fully loaded yet")
+			}
+		}
+
+		// We either saw a non-empty error message, or we saw an empty error message enough number of times. Stop polling.
 		return nil
 	}, &testing.PollOptions{
 		Timeout:  15 * time.Second,
