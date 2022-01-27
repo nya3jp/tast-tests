@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "183edccf_d3d2cc48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-01-27T10:49:03Z",
+      "side": 1,
+      "message": "It has been verified in the following DUTs:\nClamshell:\nVilboz [--board\u003dzork]\n\nConvertibles:\nHayato [--board\u003dAsurada]\nStoro [--board\u003ddedede]\nDelbin [--board\u003dvolteer]\n\nDetachables:\nkakadu [--board\u003dkukui]\nCoachz [--board strongbad]",
+      "revId": "90e928e0b82fe4daa0b695b8269c2c125b0efe70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
