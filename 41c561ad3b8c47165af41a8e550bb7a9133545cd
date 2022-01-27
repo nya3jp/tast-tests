@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c064bda_0c4ace74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/keyboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-27T07:25:40Z",
+      "side": 0,
+      "message": "ricardoq: can you help confirm if this could be just \"chromeLoggedIn\" or should be \"chromePolicyLoggedIn\"?",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "41c561ad3b8c47165af41a8e550bb7a9133545cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
