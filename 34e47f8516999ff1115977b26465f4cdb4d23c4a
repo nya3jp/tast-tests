@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5670147f_46e97f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-01-27T17:32:03Z",
+      "side": 1,
+      "message": "How about we just have one uiauto proto. We still need other proto, but we don\u0027t need the service. Just need the message.\n\nuiauto.proto\n```\nimport \".../keyboard.proto\"\nimport \".../mouse.proto\"\n...\n\nservice UIService {\n  rpc Actions(ActionsRequest) return (google.protobuf.Empty) {}\n}\n\nmessage ActionsRequest {\n  repeat Action action \u003d 1;\n}\n\nmessage Action {\n\n  oneof request {\n  \n     KeyboardRequest keyboard_req \u003d 1;\n     MouseRequest    mouse_req \u003d 2;\n     ...\n  }\n\n```\n\nkeyboard.proto\n```\nmessage KeyboardRequest {\n  enum KeyType {\n      TYPE \u003d 0;\n      ACCEL \u003d 1;\n      ACCELPRESS \u003d 2;\n      ACCELRELEASE \u003d 3;\n  \n  }\n  KeyType key_type \u003d 0;\n  string key \u003d 1;\n \n}\n\n```\nI just want to illustrate the idea. The syntax may be wrong. Please take a look and see if it is what you want. Thanks.\n\nAgain, it is only for discussion sake. Thanks.",
+      "parentUuid": "8cb87a3c_5f05e7fd",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1f4e5e6_0ae9cf3a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
         "patchSetId": 5
