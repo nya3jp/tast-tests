@@ -9,6 +9,7 @@ package kioskmode
 import (
 	"context"
 	"io/ioutil"
+	"os"
 	"strings"
 	"time"
 
@@ -20,7 +21,9 @@ import (
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/syslog"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/timing"
 )
 
 var (
@@ -44,8 +47,8 @@ var (
 	// KioskAppAccountID identifier of the Kiosk application.
 	KioskAppAccountID   = "arbitrary_id_store_app_2"
 	kioskAppAccountType = policy.AccountTypeKioskApp
-	// kioskAppID pointing to the Printtest app - not listed in the WebStore.
-	kioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
+	// KioskAppID pointing to the Printtest app - not listed in the WebStore.
+	KioskAppID = "aajgmlihcokkalfjbangebcffdoanjfo"
 	// KioskAppBtnNode node representing this application on the Apps menu on
 	// the Sign-in screen.
 	KioskAppBtnNode = nodewith.Name("Simple Printest").ClassName("MenuItemView")
@@ -53,7 +56,7 @@ var (
 		AccountID:   &KioskAppAccountID,
 		AccountType: &kioskAppAccountType,
 		KioskAppInfo: &policy.KioskAppInfo{
-			AppId: &kioskAppID,
+			AppId: &KioskAppID,
 		}}
 
 	// DefaultLocalAccountsConfiguration holds default Kiosks accounts
@@ -89,6 +92,12 @@ type Kiosk struct {
 // Chrome. Ideally we would serve an empty policies slice however, that makes
 // Chrome crashes when AutoLaunch() option was used.
 func (k *Kiosk) Close(ctx context.Context) (retErr error) {
+	// If Chrome fails to start in RestartChromeWithOptions it has already been
+	// cleaned up by startChromeClearPolicies.
+	if k.cr == nil {
+		return errors.New("Skipping kiosk.Close() because Chrome is nil")
+	}
+
 	// Using defer to make sure Chrome is always closed.
 	defer func(ctx context.Context) {
 		if err := k.cr.Close(ctx); err != nil {
@@ -294,7 +303,7 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 func startChromeClearPolicies(ctx context.Context, fdms *fakedms.FakeDMS, username, password string) error {
 	cr, err := chrome.New(
 		ctx,
-		chrome.FakeLogin(chrome.Creds{User: username, Pass: password}),
+		chrome.NoLogin(),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepEnrollment(),
 	)
@@ -307,4 +316,57 @@ func startChromeClearPolicies(ctx context.Context, fdms *fakedms.FakeDMS, userna
 		return errors.Wrap(err, "failed to clear policies")
 	}
 	return nil
+}
+
+// WaitForCrxInCache waits for Kiosk crx to be available in cache.
+func WaitForCrxInCache(ctx context.Context, id string) error {
+	const crxCachePath = "/home/chronos/kiosk/crx/"
+	ctx, st := timing.Start(ctx, "wait_crx_cache")
+	defer st.End()
+
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		files, err := ioutil.ReadDir(crxCachePath)
+		if err != nil {
+			if errors.Is(err, os.ErrNotExist) {
+				return errors.Wrap(err, "Kiosk crx cache does not exist yet")
+			}
+			return testing.PollBreak(errors.Wrap(err, "failed to list content of Kiosk cache"))
+		}
+
+		for _, file := range files {
+			if strings.HasPrefix(file.Name(), id) {
+				testing.ContextLog(ctx, "Found crx in cache: "+file.Name())
+				return nil
+			}
+		}
+
+		return errors.Wrap(err, "Kiosk crx cache does not have "+id)
+	}, nil)
+}
+
+// RestartChromeWithOptions replaces the current Chrome in kiosk instance with
+// a new one using custom options. It will be closed by Kiosk.Close().
+func (k *Kiosk) RestartChromeWithOptions(ctx context.Context, opts ...chrome.Option) (*chrome.Chrome, error) {
+	if err := k.cr.Close(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to close Chrome")
+	}
+	k.cr = nil
+
+	testing.ContextLog(ctx, "Restarting ui")
+	if err := upstart.RestartJob(ctx, "ui"); err != nil {
+		if err := startChromeClearPolicies(ctx, k.fdms, fixtures.Username, fixtures.Password); err != nil {
+			return nil, errors.Wrap(err, "could not finish cleanup")
+		}
+		return nil, errors.Wrap(err, "failed to restart ui")
+	}
+
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		if err := startChromeClearPolicies(ctx, k.fdms, fixtures.Username, fixtures.Password); err != nil {
+			return nil, errors.Wrap(err, "could not finish cleanup")
+		}
+		return nil, errors.Wrap(err, "failed to start new Chrome")
+	}
+	k.cr = cr
+	return cr, err
 }
