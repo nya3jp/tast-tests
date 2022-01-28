@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AutofillCreditCardEnabled</title>
+</head>
+
+<body>
+    <form method="post">
+        <label for="ccname">Name on card</label>
+        <input name="ccname" id="ccname" autocomplete="cc-name">
+
+        <label for="cardnumber">Card Number</label>
+        <input name="cardnumber" id="cardnumber" autocomplete="cc-number">
+
+        <label for="cvc">CVC</label>
+        <input name="cvc" id="cvc" autocomplete="cc-csc">
+
+        <label for="ccexp">Expiry</label>
+        <input name="cc-exp" id="ccexp" autocomplete="cc-exp">
+
+        <input type="submit" id="button" value="OK">
+    </form>
+</body>
+
+</html>
