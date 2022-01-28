@@ -46,6 +46,30 @@
       },
       "revId": "954050151b37f3b436f236ab005821c1027160ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e279c7_ab87e19f",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-01-28T12:04:23Z",
+      "side": 1,
+      "message": "Sorry for not providing enough context in the description. I have expanded it and you can see more context in the attached bug. This CL both fixes the test and re-enables it on CQ. It was disabled because it was consistently failing after golang uprev to 1.17.1 and now that I have found the root cause and implemented a workaround, we can put it back on CQ at the same time. It was neither flaky before, nor it is flaky now (ran it ~50 times locally).\n\nTest calls the method indirectly via dbusutil.ConnectPrivateWithAuth.",
+      "parentUuid": "2dc5fc4c_69b49e7f",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "954050151b37f3b436f236ab005821c1027160ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
