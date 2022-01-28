@@ -63,6 +63,20 @@ func init() {
 		PostTestTimeout: 15 * time.Second,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromeAdminDeskTemplatesLoggedIn,
+		Desc:     "Logged into a user session with admin desk templates",
+		Contacts: []string{"zhumatthew@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOpts: []chrome.Option{chrome.EnableFeatures("DesksTemplates")},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
 }
 
 type policyChromeFixture struct {
@@ -140,7 +154,6 @@ func (p *policyChromeFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 		chrome.DeferLogin(),
 	}
 	opts = append(opts, p.extraOpts...)
-
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
