@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c906b3_77daaf1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-01-28T15:11:38Z",
+      "side": 1,
+      "message": "LGTM, thanks!",
+      "revId": "9e80066b5aec7c4814d1fe8cf5b0365a5f2c3d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb7d11f_7507113c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-01-28T15:11:38Z",
+      "side": 1,
+      "message": "nit: sorry, overlooked: no need in \u0027else if\u0027, can be just if, since s.Fatal ends the test anyway if gets into the first branch.",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "9e80066b5aec7c4814d1fe8cf5b0365a5f2c3d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
