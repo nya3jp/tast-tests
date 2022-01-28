@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2967dd0f_4d3fff7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-28T10:30:28Z",
+      "side": 1,
+      "message": "just a quick partial comment regarding testing.State and error:",
+      "revId": "83a2405bcbb21f7f33f26f929250d804a84acbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
