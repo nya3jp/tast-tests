@@ -39,6 +39,30 @@
       },
       "revId": "52447310927a3a7a7a46e3a65be29df8a1ccde65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a76e4d8_dfdb7697",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-01-28T05:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "161555f7_dd2025c0",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 120,
+        "endChar": 12
+      },
+      "revId": "52447310927a3a7a7a46e3a65be29df8a1ccde65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
