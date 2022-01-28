@@ -1,0 +1,56 @@
+[
+  {
+  "created_time_usec": "13281141065620048",
+  "desk": {
+    "apps": [
+      {
+        "active_tab_index": 1,
+        "app_type": "BROWSER",
+        "display_id": "2200000000",
+        "tabs": [
+          {
+            "url": "https://threadit.app/login?redirect=%2F"
+          },
+          {
+            "url": "https://chrome.google.com/webstore/detail/experimental-desk-templat/pmofhigcpodjnhicaeeidfgeppimmkgn/related"
+          }
+        ],
+        "title": "",
+        "window_bound": {
+          "height": 1284,
+          "left": 680,
+          "top": 0,
+          "width": 1100
+        },
+        "window_id": 9,
+        "window_state": "NORMAL",
+        "z_index": 1
+      },
+      {
+        "active_tab_index": 0,
+        "app_type": "BROWSER",
+        "display_id": "2200000000",
+        "tabs": [
+          {
+            "url": "https://mail.google.com/mail/u/0/#inbox"
+          }
+        ],
+        "title": "_crx_fmgjjmmmlfnkbppncabfkddbjimcfncm",
+        "window_bound": {
+          "height": 1268,
+          "left": 1101,
+          "top": 52,
+          "width": 1100
+        },
+        "window_id": 16,
+        "window_state": "NORMAL",
+        "z_index": 2
+      }
+    ]
+  },
+  "name": "Test Admin template for default user",
+  "updated_time_usec": "13281141065620048",
+  "uuid": "62056d03-7231-4813-bc5b-1a07f80d58fa",
+  "version": 1
+  }
+]
