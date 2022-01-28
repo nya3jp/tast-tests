@@ -67,6 +67,24 @@
       "message": "batrapranav@ PTAL",
       "revId": "8849b3b9a5417366950db00de5a165c84cbd87fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfda9d0_d6f6db3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-01-28T00:21:57Z",
+      "side": 1,
+      "message": "lgtm",
+      "parentUuid": "4009b8a2_ca5cb577",
+      "revId": "8849b3b9a5417366950db00de5a165c84cbd87fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
