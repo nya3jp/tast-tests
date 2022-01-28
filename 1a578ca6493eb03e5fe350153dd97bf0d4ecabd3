@@ -33,6 +33,236 @@
       "message": "Thanks for working on this. I will review it ASAP.",
       "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7317a8d7_93c9ef17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "Please add my name in the contacts:\n\nlance.wang@cienet.com  // Author\nshengjun@google.com  // PoC",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c62ba0e_b06a3adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "essential-inputs-team@google.com",
+      "range": {
+        "startLine": 34,
+        "startChar": 90,
+        "endLine": 34,
+        "endChar": 120
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f6bbafa_7dea6591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "add \"group:input-tools\" as well.",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 6
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26321beb_449091d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "Using InputsStableModels instead.",
+      "range": {
+        "startLine": 37,
+        "startChar": 28,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d51002_ba07c2a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "Input methods have been predefined here. https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/HEAD/src/chromiumos/tast/local/chrome/ime/input_method.go#193\n\nBtw, Kana and Roman are not input methods but different input mode. Only things displayed in OS settings is considered an input method.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a033b27_c14eda28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "Using precondition: `pre.VKEnabledTablet`\n\nTablet mode makes more sense to test virtual keyboard.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 27
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e22af2_8f0e5a59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "Below is a common practice in Inputs package. You can find it in other tests as well.\n\ncr :\u003d s.PreValue().(pre.PreData).Chrome\ntconn :\u003d s.PreValue().(pre.PreData).TestAPIConn\nuc :\u003d s.PreValue().(pre.PreData).UserContext\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\ndefer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4435a828_d62a344c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "The test server should be launched before tests. It can be reused across tests since each typing action will clear the field first.\n\nits, err :\u003d testserver.Launch(ctx, cr, tconn)\nif err !\u003d nil {\n\ts.Fatal(\"Failed to launch inputs test server: \", err)\n}\ndefer its.Close()",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 4
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "899bf22a_4b36a694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "This code is similar to the implementation in virtual_keyboard_japanese_input_mode.go. I would like to pull out the logic into a common function, then shared across. I can take care of it early next week.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 1
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed9bc6a_776f983d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/check_all_keys.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T10:33:28Z",
+      "side": 1,
+      "message": "In CJK input methods where using suggestion bar to select candidate, can be temporarily skipped in this test. The output is decided by backend decoder, not always fixed. So this test can be very fragile.",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 244,
+        "endChar": 31
+      },
+      "revId": "1a578ca6493eb03e5fe350153dd97bf0d4ecabd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
