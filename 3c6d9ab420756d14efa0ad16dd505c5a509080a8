@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "599da3bc_700311cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-01-28T06:27:28Z",
+      "side": 1,
+      "message": "Question, thanks.",
+      "revId": "3c6d9ab420756d14efa0ad16dd505c5a509080a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf49e551_364264a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/custom_kernel_tracing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-01-28T06:27:28Z",
+      "side": 1,
+      "message": "Does it not work due to root issue? Like in local adb, need run \"adb root\" first?",
+      "revId": "3c6d9ab420756d14efa0ad16dd505c5a509080a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caf5a51_0394634a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/tracing/tracing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-01-28T06:27:28Z",
+      "side": 1,
+      "message": "Does the 1.6 Ghz define by ARCVM?",
+      "revId": "3c6d9ab420756d14efa0ad16dd505c5a509080a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
