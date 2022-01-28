@@ -39,8 +39,8 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 
 	splitViewDragPoints := []coords.Point{
 		info.WorkArea.CenterPoint(),
-		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width-1, info.WorkArea.CenterY()),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width/4, info.WorkArea.CenterY()),
+		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width-1, info.WorkArea.CenterY()),
 	}
 	snapRightPoint := coords.NewPoint(info.WorkArea.Right()-1, info.WorkArea.CenterY())
 
@@ -87,7 +87,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 		pc.DragTo(splitViewDragPoints[2], slow),
 		pc.DragTo(splitViewDragPoints[0], slow),
 	)
-	const dividerDragError = "failed to drag divider slightly right, all the way left, and back to center"
+	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
 	if err := dragDivider(ctx); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
