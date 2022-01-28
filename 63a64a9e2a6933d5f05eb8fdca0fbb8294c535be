@@ -62,6 +62,30 @@
       },
       "revId": "63a64a9e2a6933d5f05eb8fdca0fbb8294c535be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4cda4a_626cecd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-28T15:11:03Z",
+      "side": 1,
+      "message": "Yeah, this is important point, please use ServeAndVerify() instead.",
+      "parentUuid": "b20d5e5b_a1bf81e7",
+      "range": {
+        "startLine": 118,
+        "startChar": 24,
+        "endLine": 118,
+        "endChar": 39
+      },
+      "revId": "63a64a9e2a6933d5f05eb8fdca0fbb8294c535be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
