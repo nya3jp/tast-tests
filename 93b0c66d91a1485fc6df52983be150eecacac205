@@ -33,6 +33,24 @@
       "message": "please add LacrosStatus: testing.LacrosVariantExists",
       "revId": "93b0c66d91a1485fc6df52983be150eecacac205",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c09be7_711db262",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/prevent_default_profile_removal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1393955
+      },
+      "writtenOn": "2022-01-28T08:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee135e3a_bfed6554",
+      "revId": "93b0c66d91a1485fc6df52983be150eecacac205",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
