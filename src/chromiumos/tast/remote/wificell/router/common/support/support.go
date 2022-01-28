@@ -25,6 +25,8 @@ const (
 	LegacyT RouterType = iota
 	// AxT is the ax router type.
 	AxT
+	// OpenWrtT is the openwrt router type.
+	OpenWrtT
 )
 
 // Router contains the basic methods that must be implemented across all routers.
