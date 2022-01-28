@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0921a661_08143c0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_google_safe_search.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T16:06:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c09ed1e8_d9c1bb5b",
+      "range": {
+        "startLine": 87,
+        "startChar": 39,
+        "endLine": 87,
+        "endChar": 55
+      },
+      "revId": "e077ecfed31d9945852847d42c1139c607862388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c4a7259_c6ab839c",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63a4054_3e2b2918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_you_tube_restrict.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T16:06:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c4a7259_c6ab839c",
+      "range": {
+        "startLine": 122,
+        "startChar": 9,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "e077ecfed31d9945852847d42c1139c607862388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a9bbad6_c4cc9be7",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-01-28T15:46:50Z",
       "side": 1,
       "message": "same as before.",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "e077ecfed31d9945852847d42c1139c607862388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dd181f_33d5a56c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_you_tube_restrict.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T16:06:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a9bbad6_c4cc9be7",
       "range": {
         "startLine": 128,
         "startChar": 9,
