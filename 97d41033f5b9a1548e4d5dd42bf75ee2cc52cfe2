@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "934ef50f_21667db1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:18:01Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "97d41033f5b9a1548e4d5dd42bf75ee2cc52cfe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44990071_f0848d41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safesearch/google.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:18:01Z",
+      "side": 1,
+      "message": "nit: `Chrome`",
+      "range": {
+        "startLine": 19,
+        "startChar": 48,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "97d41033f5b9a1548e4d5dd42bf75ee2cc52cfe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
