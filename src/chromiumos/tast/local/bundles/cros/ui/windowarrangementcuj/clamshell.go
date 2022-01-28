@@ -192,7 +192,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err := kw.AccelAction(topRow.SelectTask)(ctx); err != nil {
 		return errors.Wrap(err, "failed to enter overview mode")
 	}
-	// Snap one of the window to the left from the overview grid.
+	// Create a second virtual desk.
 	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to create a new desk")
 	}
@@ -200,11 +200,11 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
+	// Drag the first window from overview grid to snap.
 	w, err := ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the window in the overview mode")
 	}
-	// Drag the first window from overview grid to snap.
 	if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(), pc.DragTo(snapLeftPoint, duration))(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag window from overview to snap")
 	}
@@ -212,6 +212,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
 	}
+	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider with an overview window")
 	dragDivider := pc.Drag(splitViewDragPoints[0],
 		pc.DragTo(splitViewDragPoints[1], duration),
@@ -222,6 +223,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if err := dragDivider(ctx); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
+	// Drag the second window to another desk to obtain an empty overview grid.
 	w, err = ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to find the window in the overview mode to drag to snap")
@@ -233,7 +235,6 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	if deskMiniViewCount := len(deskMiniViews); deskMiniViewCount < 2 {
 		return errors.Wrapf(err, "expected more than 1 desk mini-views; found %v", deskMiniViewCount)
 	}
-	// Drag the second window to another desk to obtain an empty overview grid.
 	if err := pc.Drag(w.OverviewInfo.Bounds.CenterPoint(),
 		ui.Sleep(2*time.Second),
 		pc.DragTo(deskMiniViews[1].Location.CenterPoint(), duration))(ctx); err != nil {
