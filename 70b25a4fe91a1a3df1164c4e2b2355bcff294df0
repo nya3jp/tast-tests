@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32f8941_dba3e239",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-01-28T09:43:10Z",
+      "side": 1,
+      "message": "Hi,\nPlease take a look :)\n\nAdded also sebsg@ since you were the owner of the policy on policy_templates.json.",
+      "revId": "70b25a4fe91a1a3df1164c4e2b2355bcff294df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
