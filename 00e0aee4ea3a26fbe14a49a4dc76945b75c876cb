@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16597ab0_bf27bb97",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T13:18:33Z",
+      "side": 1,
+      "message": "Like `preUpdateTimeoutN2N`?",
+      "parentUuid": "96da8142_3648dc0e",
+      "revId": "00e0aee4ea3a26fbe14a49a4dc76945b75c876cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80b92123_f5795403",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_n.go",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-01-28T13:05:44Z",
       "side": 1,
       "message": "Use more descriptive names.\n\nMaybe preparationTimeout + verificationTimeout ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "00e0aee4ea3a26fbe14a49a4dc76945b75c876cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b271f81f_7380a252",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_n.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T13:18:33Z",
+      "side": 1,
+      "message": "I started with that, but in case of N2M it is not just verification but restoration as well.",
+      "parentUuid": "80b92123_f5795403",
       "range": {
         "startLine": 17,
         "startChar": 1,
