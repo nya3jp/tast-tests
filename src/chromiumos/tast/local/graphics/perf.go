@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
@@ -292,6 +293,34 @@ func MeasurePackageCStateCounters(ctx context.Context, t time.Duration, p *perf.
 	testing.ContextLogf(ctx, "c0: %f%%", c0Percent)
 	reportMetric("c0", "percent", c0Percent, perf.SmallerIsBetter, p)
 
+	return nil
+}
+
+// MeasureFdCount counts the number of open FDs during playback.
+func MeasureFdCount(ctx context.Context, p *perf.Values) error {
+	processes, err := chromeproc.GetGPUProcesses()
+	if err != nil {
+		return errors.Wrap(err, "failed to get gpu process")
+	}
+	if len(processes) == 0 {
+		return errors.New("no processes found")
+	}
+
+	fdCount := 0
+	for _, process := range processes {
+		// Note: current gopsutil is old so that context.Context is not
+		// supported.
+		// Note: there's very rare possibility of race condition here, if
+		// the target process is kill'ed and collected, then a number of
+		// process is created, then PID could be reused.
+		// Though, practically it should rarely happen.
+		files, err := process.OpenFiles()
+		if err != nil {
+			return errors.Wrap(err, "failed to get fds for process")
+		}
+		fdCount += len(files)
+	}
+	reportMetric("openFds", "count", float64(fdCount), perf.SmallerIsBetter, p)
 	return nil
 }
 

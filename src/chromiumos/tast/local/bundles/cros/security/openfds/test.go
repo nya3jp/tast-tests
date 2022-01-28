@@ -97,10 +97,10 @@ func expectMode(lmode uint32, expectModes []uint32) bool {
 	return false
 }
 
-// openFileModes extracts all the opened files of the p, with annotating
+// OpenFileModes extracts all the opened files of the p, with annotating
 // mode of the original file and mode of the lstat(2) of the /proc/*/fd/{FD}
 // file.
-func openFileModes(ctx context.Context, p *process.Process) ([]fileMode, error) {
+func OpenFileModes(ctx context.Context, p *process.Process) ([]fileMode, error) {
 	// Note: current gopsutil is old so that context.Context is not
 	// supported.
 	// Note: there's very rare possibility of race condition here, if
@@ -162,7 +162,7 @@ func Expect(ctx context.Context, s *testing.State, allowDirs bool, p *process.Pr
 		es[i].pathRegex = regexp.MustCompile("^(" + es[i].PathPattern + ")$")
 	}
 
-	files, err := openFileModes(ctx, p)
+	files, err := OpenFileModes(ctx, p)
 	if err != nil {
 		s.Errorf("Failed to obtain opened fds for %v: %v", p, err)
 		return
