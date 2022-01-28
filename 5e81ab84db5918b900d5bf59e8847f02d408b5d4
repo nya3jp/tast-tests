@@ -22,6 +22,30 @@
       },
       "revId": "5e81ab84db5918b900d5bf59e8847f02d408b5d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d3b33df_fcdf0dde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T06:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65b5d61_f09357e1",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 3
+      },
+      "revId": "5e81ab84db5918b900d5bf59e8847f02d408b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

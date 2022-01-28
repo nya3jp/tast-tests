@@ -354,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa2d457_46e3411b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T06:52:02Z",
+      "side": 1,
+      "message": "Got it. Sorry for misunderstanding the meanings. Agree with functions that are only used once do not need to be placed in a common library.",
+      "parentUuid": "9544fb38_51b82e50",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba33f48_a33bca26",
