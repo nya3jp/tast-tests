@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7633e89_e59f1e38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T13:18:55Z",
+      "side": 1,
+      "message": "LGTM % nit. Thanks for the coverage and using right away both browsers Daniel 👍",
+      "revId": "5bde91f831b4d99b6d7dd4b73c6d9b8a063e647d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2fedcf5_733e9a65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/tab_capture_allowed_by_origins.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T13:18:55Z",
+      "side": 1,
+      "message": "would be great to have that check here too 😎 -\u003e those two nodes should not show up.",
+      "range": {
+        "startLine": 131,
+        "startChar": 77,
+        "endLine": 131,
+        "endChar": 121
+      },
+      "revId": "5bde91f831b4d99b6d7dd4b73c6d9b8a063e647d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3cf8e79_0275033e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/tab_capture_allowed_by_origins.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T13:18:55Z",
+      "side": 1,
+      "message": "nit: Could you extract this and below nodewith and assign them names. I almost commented that the lines are duplicated as the node names differ just a little.",
+      "range": {
+        "startLine": 132,
+        "startChar": 33,
+        "endLine": 132,
+        "endChar": 130
+      },
+      "revId": "5bde91f831b4d99b6d7dd4b73c6d9b8a063e647d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
