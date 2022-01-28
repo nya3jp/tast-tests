@@ -314,11 +314,22 @@ func Validate(rs []*SensorReading, start, end time.Duration, sn *Sensor, collect
 			sn.Location, sn.Name, float64(sn.MaxFrequency)/1e3, collectTime, len(rs), expected)
 	}
 
+	// Allowed interval between samples, less 150% of the configured period, expressed in nano seconds.
+	// Given |MaxFrequency| is in kHz, use 1.5e12 as numerator.
+	maxInterval := time.Duration(1.5e12 / float64(sn.MaxFrequency))
+
 	last := start
 	for ix, sr := range rs {
 		if sr.Timestamp < last {
 			return errors.Errorf("timestamp out of order for %v %v at index %v: got %v; want >= %v",
 				sn.Location, sn.Name, ix, sr.Timestamp, last)
+		}
+		// Ignore the first few samples to be sure the sensor is settled.
+		// Check only gyroscope: other sensors, like accelerometer may not be interrupt driven and can have
+		// more variation between samples.
+		if ix > 4 && sn.Name == Gyro && sr.Timestamp-last > maxInterval {
+			return errors.Errorf("too much delta between samples for %v %v at index %v(%v): got %v; want <= %v",
+				sn.Location, sn.Name, ix, sr.Timestamp, sr.Timestamp-last, maxInterval)
 		}
 
 		last = sr.Timestamp
