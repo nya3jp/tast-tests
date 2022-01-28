@@ -16,6 +16,47 @@
       "message": "Hi Tatsuhisa, I tried running the patch on my eve, the test failed with below error, \narcappcompat.Gmail.vm_clamshell_mode [ FAIL ] Clamshell: Resize window: Failed to click on the compat-mode dialog: failed to find the compat-mode menu dialog of com.google.android.gm: context deadline exceeded; last error follows: Uncaught (in promise): \"multiple nodes matched, if you expect this and only want the first use First(): {className: /\\\\bBubbleDialogDelegateView\\\\b/}\". Wanted to let you know. Thanks.\n",
       "revId": "0237a9b8b16151cd78dfafb9dd1d86002ab79bfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "797b07fc_c57a07c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-28T16:43:10Z",
+      "side": 1,
+      "message": "Thanks. I could reproduce and identify the error.\n\nIn both cases (the dialog and the window), there are multiple nodes that match if we find just by the name, or the class.\n\n                            node id\u003d425 role\u003dstaticText state\u003d{} parentID\u003d405 childIds\u003d[] name\u003dTablet className\u003dLabel\n                          node id\u003d407 role\u003dmenuItem state\u003d{\"focusable\":true} parentID\u003d421 childIds\u003d[427] name\u003dResizable className\u003dButton\n                            node id\u003d427 role\u003dstaticText state\u003d{} parentID\u003d407 childIds\u003d[] name\u003dResizable className\u003dLabel\n                        node id\u003d420 role\u003dunknown state\u003d{\"offscreen\":true} parentID\u003d419 childIds\u003d[]\n\nafter fixing this, another error was uncovered. (see the other comment)",
+      "parentUuid": "6f23f351_894d6005",
+      "revId": "0237a9b8b16151cd78dfafb9dd1d86002ab79bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d302170_720c91bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/testutil/testutil.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-28T16:43:10Z",
+      "side": 1,
+      "message": "This should be Name(), because it was\nFindParams{Name: resizableButtonName}\nin the old code.",
+      "range": {
+        "startLine": 700,
+        "startChar": 34,
+        "endLine": 700,
+        "endChar": 63
+      },
+      "revId": "0237a9b8b16151cd78dfafb9dd1d86002ab79bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
