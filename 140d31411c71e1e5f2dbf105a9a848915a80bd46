@@ -16,6 +16,46 @@
       "message": "Hi Kamil,\n\nThis CL adds a Lacros policy test for BasicAuthOverHttpEnabled, PTAL!\n\nRegards,\nJit",
       "revId": "140d31411c71e1e5f2dbf105a9a848915a80bd46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db7a4ee_b257a651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T09:12:09Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "140d31411c71e1e5f2dbf105a9a848915a80bd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052c7af5_9da926ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/basic_auth_over_http_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T09:12:09Z",
+      "side": 1,
+      "message": "Let\u0027s set that and the other timeout below to 10 seconds.",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "140d31411c71e1e5f2dbf105a9a848915a80bd46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
