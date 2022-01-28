@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7004921a_07d83750",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-01-28T23:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4561db8b_940f379d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "630f0c60d97b21d50a0bea4443143da7729b8c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d3a10c8b_73fbc4c0",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-28T23:46:54Z",
       "side": 1,
       "message": "please add your name here as well.",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "630f0c60d97b21d50a0bea4443143da7729b8c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03cdc7b2_69b1cf52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-01-28T23:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30aeb0e7_39bdf661",
       "range": {
         "startLine": 32,
         "startChar": 4,
