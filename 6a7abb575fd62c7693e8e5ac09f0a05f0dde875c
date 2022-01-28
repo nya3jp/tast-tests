@@ -83,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "761de577_f0d89f25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T13:41:10Z",
+      "side": 1,
+      "message": "Or can you check the sites linked in go/crsb-safer-chrome-wp-update ?",
+      "parentUuid": "b452d2b8_077c6cef",
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53e2c738_db47217f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
         "patchSetId": 1
