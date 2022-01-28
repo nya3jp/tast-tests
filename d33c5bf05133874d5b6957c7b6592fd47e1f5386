@@ -208,6 +208,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1bec0f9_fb5e263f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-28T13:03:55Z",
+      "side": 1,
+      "message": "You should not assume that you always have the same ctx object. Here cleanupCtx depends on the initial `ctx`, but you use it inside a function which has its own `ctx` which might be different.",
+      "parentUuid": "65469c13_e28db663",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c6e7dc38_c5b7f389",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
         "patchSetId": 1
@@ -243,6 +267,30 @@
       "side": 1,
       "message": "I don\u0027t think that\u0027s possible, because `server.URL` is not const. Am I missing something (I am new to Go)?",
       "parentUuid": "c6e7dc38_c5b7f389",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "058e6c12_28722eff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-28T13:03:55Z",
+      "side": 1,
+      "message": "No problem. Here is how you can do it:\n\n```\nserver :\u003d httptest.NewServer(http.FileServer(s.DataFileSystem()))\ndefer server.Close()\n\nconst (\n    indexURL \u003d fmt.Sprintf(\"%s/%s\", server.URL, indexFileName)\n    matchingURL \u003d fmt.Sprintf(\"%s/%s?matching\u003d1\", server.URL, downloadFileName)\n)\n\n```",
+      "parentUuid": "6684dc18_85c44c66",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -337,6 +385,30 @@
       "side": 1,
       "message": "If you open a website in Chrome, say example.com, and then click a link on that site to example.com/foo.zip, then Chrome will download that zip file without navigating to example.com/foo.zip, i.e. the address bar will still show example.com.\nSimilarly, if we used NewConn(\"example.com/foo.zip\"), Chrome downloads the file, but stays on the `about:blank` page. However, NewConn expects the URL to change to example.com/foo.zip and thus never returns.\nDoes that make sense? I also slightly rewrote the comment to hopefully make it clearer.",
       "parentUuid": "13f9e146_6c236f18",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4f9e3f_f3e0dcc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-28T13:03:55Z",
+      "side": 1,
+      "message": "Ack. Thanks for explaining.",
+      "parentUuid": "af14da07_b40636f0",
       "range": {
         "startLine": 122,
         "startChar": 0,

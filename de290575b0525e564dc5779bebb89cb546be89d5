@@ -16,6 +16,29 @@
       "message": "Thanks lamzin@! PTAL again.",
       "revId": "de290575b0525e564dc5779bebb89cb546be89d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181ada2f_27ee5439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-28T13:03:55Z",
+      "side": 1,
+      "message": "nit: use Fatal if it does not make sense to continue test",
+      "range": {
+        "startLine": 139,
+        "startChar": 6,
+        "endLine": 139,
+        "endChar": 11
+      },
+      "revId": "de290575b0525e564dc5779bebb89cb546be89d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
