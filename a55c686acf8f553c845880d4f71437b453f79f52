@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e1799b_b2e7474a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/tab_capture_allowed_by_origins.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-28T11:25:24Z",
+      "side": 1,
+      "message": "Wonder if there\u0027s an elegant way to handle this \"Chrome\" vs. \"Chromium\" situation.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 149
+      },
+      "revId": "a55c686acf8f553c845880d4f71437b453f79f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
