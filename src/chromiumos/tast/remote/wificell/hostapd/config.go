@@ -316,8 +316,9 @@ func BasicRates(r ...float32) Option {
 func NewConfig(ops ...Option) (*Config, error) {
 	// Default config.
 	conf := &Config{
-		SSID:           RandomSSID("TAST_TEST_"),
-		SecurityConfig: &base.Config{},
+		SSID:            RandomSSID("TAST_TEST_"),
+		SecurityConfig:  &base.Config{},
+		EnvironmentVars: map[string]string{},
 	}
 	for _, op := range ops {
 		op(conf)
@@ -369,6 +370,7 @@ type Config struct {
 	AdditionalBSSs     []AdditionalBSS
 	SupportedRates     []float32
 	BasicRates         []float32
+	EnvironmentVars    map[string]string
 }
 
 // Format composes a hostapd.conf based on the given Config, iface and ctrlPath.
