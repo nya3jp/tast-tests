@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55e98c0_1838b9f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-01-28T11:58:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b905562c_ade2a70b",
+      "revId": "61c0bfae975012b930d573c1820a4f2c0e710cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e93dc6d6_a5e41678",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-27T17:45:32Z",
       "side": 1,
       "message": "Does this always need to check for an err, regardless of printingAllowed? \n\nIf param.restriction is warnCancelled then printingAllowed is false but the call to testPrinting could fail when hitting Esc. That would return `false` to printingPossible (and may fail down below) but it seems that error should have been handled here as well since printingPossible now contains an invalid false (it didn\u0027t really make it all the way through).",
+      "revId": "61c0bfae975012b930d573c1820a4f2c0e710cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90025ed8_bf0db139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_printing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-01-28T11:58:46Z",
+      "side": 1,
+      "message": "Good point, I think it could\u0027ve happened even blocked. Since I\u0027m already passing the restriction type to testPrinting(), I also moved the checks there so it\u0027s no longer necessary to compare printingAllowed and printingPossible etc.",
+      "parentUuid": "e93dc6d6_a5e41678",
       "revId": "61c0bfae975012b930d573c1820a4f2c0e710cb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

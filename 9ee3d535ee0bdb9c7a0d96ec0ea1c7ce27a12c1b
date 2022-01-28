@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d62ee9b_c1ad0c7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-01-28T11:58:46Z",
+      "side": 1,
+      "message": "Sergey, PTAL as well as Aya is OOTO and I did some additional changes since her +1",
+      "revId": "9ee3d535ee0bdb9c7a0d96ec0ea1c7ce27a12c1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
