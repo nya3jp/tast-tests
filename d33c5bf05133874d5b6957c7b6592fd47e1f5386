@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11d2c522_504a37dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfbc9ef5_c1fdcff8",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63f73945_be93b7c7",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-27T17:27:31Z",
       "side": 1,
       "message": "nit: remove it, you already have informational attribute in line 43",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 48
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0be5727_3847fb4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f73945_be93b7c7",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff12d8cb_0a133496",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebaa435a_645fea64",
+      "range": {
+        "startLine": 63,
+        "startChar": 12,
+        "endLine": 63,
+        "endChar": 15
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f51194e_577d08b6",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-01-27T17:27:31Z",
       "side": 1,
       "message": "nit: move closer to the first use",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65469c13_e28db663",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Ack - I would prefer to leave it here since most other policy tests also have the cleanupCtx at this location and I don\u0027t think it would be good to move it into the for loop.",
+      "parentUuid": "9f51194e_577d08b6",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6684dc18_85c44c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s possible, because `server.URL` is not const. Am I missing something (I am new to Go)?",
+      "parentUuid": "c6e7dc38_c5b7f389",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cbaf381_cb3f0e00",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
         "patchSetId": 1
@@ -146,6 +266,30 @@
       "writtenOn": "2022-01-27T17:27:31Z",
       "side": 1,
       "message": "nit: I think this sign does nothing here, so maybe remove replace `NewConn` by NewConn()",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 7
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab50dfcc_a837b2e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Done -- removed the ` and added parentheses.",
+      "parentUuid": "2cbaf381_cb3f0e00",
       "range": {
         "startLine": 123,
         "startChar": 6,
@@ -181,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af14da07_b40636f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "If you open a website in Chrome, say example.com, and then click a link on that site to example.com/foo.zip, then Chrome will download that zip file without navigating to example.com/foo.zip, i.e. the address bar will still show example.com.\nSimilarly, if we used NewConn(\"example.com/foo.zip\"), Chrome downloads the file, but stays on the `about:blank` page. However, NewConn expects the URL to change to example.com/foo.zip and thus never returns.\nDoes that make sense? I also slightly rewrote the comment to hopefully make it clearer.",
+      "parentUuid": "13f9e146_6c236f18",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7148e1aa_b44cfb70",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
         "patchSetId": 1
@@ -192,6 +360,30 @@
       "writtenOn": "2022-01-27T17:27:31Z",
       "side": 1,
       "message": "nit: address bar",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15020c35_e66702d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7148e1aa_b44cfb70",
       "range": {
         "startLine": 125,
         "startChar": 6,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d50ae70_bbacc4b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6b05665_4c78b77a",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 62
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b02b922_7b27d28d",
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f0ae87_fa227365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Done - good point!",
+      "parentUuid": "1b02b922_7b27d28d",
+      "range": {
+        "startLine": 146,
+        "startChar": 55,
+        "endLine": 146,
+        "endChar": 72
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d885bab9_e9e7596d",
@@ -261,6 +501,30 @@
       "writtenOn": "2022-01-27T17:27:31Z",
       "side": 1,
       "message": "this error message is the same as in line 153. I think it will be easier to understand this message, if you rephrase it to smth like\n\n```\ns.Error(\"Failed to wait for file to auto open: \", err)\n```\n\nsame for another error message",
+      "range": {
+        "startLine": 149,
+        "startChar": 32,
+        "endLine": 149,
+        "endChar": 81
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68838b61_9c587cbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T11:18:57Z",
+      "side": 1,
+      "message": "Done - definitely true :+1:",
+      "parentUuid": "d885bab9_e9e7596d",
       "range": {
         "startLine": 149,
         "startChar": 32,
