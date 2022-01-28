@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab02700_8204ad37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T14:50:05Z",
+      "side": 1,
+      "message": "nit: The empty lines here can be removed.",
+      "range": {
+        "startLine": 116,
+        "startChar": 71,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "df0e81d25f2cb763dccbfd3921a89e5d618ecdc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
