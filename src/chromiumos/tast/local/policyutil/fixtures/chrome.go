@@ -35,6 +35,20 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.ChromePolicyLoggedInIsolatedApp,
+		Desc:     "Logged into a user session with web app isolation enabled",
+		Contacts: []string{"simonha@google.com"},
+		Impl: &policyChromeFixture{
+			extraOpts: []chrome.Option{chrome.ExtraArgs("--enable-features=WebAppEnableIsolatedStorage")},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.FakeDMS,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromeEnrolledLoggedIn,
 		Desc:     "Logged into a user session with enrollment",
 		Contacts: []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},

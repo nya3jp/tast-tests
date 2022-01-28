@@ -20,6 +20,8 @@ const (
 
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/chrome.go.
 const (
+	// ChromePolicyLoggedInIsolatedApp is a fixture name.
+	ChromePolicyLoggedInIsolatedApp = "chromePolicyLoggedInIsolatedApp"
 	// ChromePolicyLoggedIn is a fixture name.
 	ChromePolicyLoggedIn = "chromePolicyLoggedIn"
 	// ChromeEnrolledLoggedIn is a fixture name.
