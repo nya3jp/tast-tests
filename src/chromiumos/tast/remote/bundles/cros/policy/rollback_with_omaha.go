@@ -27,35 +27,35 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         RollbackWithGaia,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		Func:         RollbackWithOmaha,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Example test for the enterprise rollback update",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{}, // Manual execution only.
-		VarDeps:      []string{"policy.RollbackWithGaia.confirm", "policy.RollbackWithGaia.sourceVersion", "policy.RollbackWithGaia.targetVersion"},
+		VarDeps:      []string{"policy.RollbackWithOmaha.confirm", "policy.RollbackWithOmaha.sourceVersion", "policy.RollbackWithOmaha.targetVersion"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.autoupdate.UpdateService"},
 		Timeout:      5 * time.Minute,
 	})
 }
 
-// RollbackWithGaia test must be provided the source and target image versions.
+// RollbackWithOmaha test must be provided the source and target image versions.
 // The source version should be a full version string. The target can be
 // just a prefix. Furthermore, test should be started with
-//   -var=policy.RollbackWithGaia.confirm=ICanRollbackMyDUT
+//   -var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
 // to avoid accidental execution of the test.
 //
 // For example, to run a rollback from M96 to M94:
 // tast run
-//   -var=policy.RollbackWithGaia.confirm=ICanRollbackMyDUT
-//   -var=policy.RollbackWithGaia.sourceVersion=14244.0.0
-//   -var=policy.RollbackWithGaia.targetVersion=14092.
-//   <ip> policy.RollbackWithGaia
-func RollbackWithGaia(ctx context.Context, s *testing.State) {
-	if s.RequiredVar("policy.RollbackWithGaia.confirm") != "ICanRollbackMyDUT" {
+//   -var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
+//   -var=policy.RollbackWithOmaha.sourceVersion=14244.0.0
+//   -var=policy.RollbackWithOmaha.targetVersion=14092.
+//   <ip> policy.RollbackWithOmaha
+func RollbackWithOmaha(ctx context.Context, s *testing.State) {
+	if s.RequiredVar("policy.RollbackWithOmaha.confirm") != "ICanRollbackMyDUT" {
 		s.Log("You should only run this example test if you have manual access to your DUT")
 		s.Log("After the update, you can restore the previous partition with the following command:")
 		s.Log("\tupdate_engine_client --rollback --nopowerwash")
@@ -124,7 +124,7 @@ func RollbackWithGaia(ctx context.Context, s *testing.State) {
 		}
 		defer policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 
-		targetVersion := s.RequiredVar("policy.RollbackWithGaia.targetVersion")
+		targetVersion := s.RequiredVar("policy.RollbackWithOmaha.targetVersion")
 
 		// Set update policies.
 		rollbackPolicies := []policy.Policy{
@@ -156,7 +156,7 @@ func RollbackWithGaia(ctx context.Context, s *testing.State) {
 			}
 		}(cleanupCtx)
 
-		sourceVersion := s.RequiredVar("policy.RollbackWithGaia.sourceVersion")
+		sourceVersion := s.RequiredVar("policy.RollbackWithOmaha.sourceVersion")
 
 		// Update DUT with an update from the official prod server.
 		// The server is given explicitly because self-built images may not have
