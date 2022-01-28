@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7046d966_1ca081e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-28T20:09:06Z",
+      "side": 1,
+      "message": "nit: this line is too long",
+      "range": {
+        "startLine": 14,
+        "startChar": 72,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "17a086fbbeba958a323af556f7b4b5a036deb9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08278570_12d81255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/folder_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-28T20:09:06Z",
+      "side": 1,
+      "message": "Should we check that there is only one unnamed folder in the apps grid?",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "17a086fbbeba958a323af556f7b4b5a036deb9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf040dc_6ff931ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/folder_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-01-28T20:09:06Z",
+      "side": 1,
+      "message": "Can we combine `dragFolderToScrollableContainerBottom` and `dragFolderToScrollableContainerTop`? There seems be some code duplication between these two methods.",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 42
+      },
+      "revId": "17a086fbbeba958a323af556f7b4b5a036deb9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
