@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a6c1a8c_3c55ee06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T09:59:31Z",
+      "side": 1,
+      "message": "nit: `security: Refactor`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39650946_2ccd55f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T09:59:31Z",
+      "side": 1,
+      "message": "nit: Subject line is too long. If possible, it should be \u003c\u003d 50 characters.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5bd8c2_1069aa95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T09:59:31Z",
+      "side": 1,
+      "message": "minor nit: the commit message lines can be up to 72 chars long. But it is also good as it is.",
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7393cd0d_a51e9bf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T09:59:31Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88998b1d_9403bc69",
+        "filename": "src/chromiumos/tast/local/mountns/mountns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T09:59:31Z",
+      "side": 1,
+      "message": "Naming the return value here can be confusing, as you are using `err` as an unrelated variable in the function.",
+      "range": {
+        "startLine": 43,
+        "startChar": 51,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf492560_8de5b82f",
+        "filename": "src/chromiumos/tast/local/mountns/mountns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T09:59:31Z",
+      "side": 1,
+      "message": "Please include the variable names to the harmonisation as well.",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e4abb7e_8d7f5b57",
+        "filename": "src/chromiumos/tast/local/mountns/mountns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T09:59:31Z",
+      "side": 1,
+      "message": "`return nil`",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 7
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
