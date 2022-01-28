@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "276a197e_2bf2e248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-01-28T14:13:50Z",
+      "side": 1,
+      "message": "kamilszarek@: I added a fixture for being able to start chrome with app isolation. PTAL",
+      "revId": "84aecc09759baeb4be653ae602ab44e1f09b36db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
