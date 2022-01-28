@@ -9702,11 +9702,11 @@ type WebAppInstallForceList struct {
 }
 
 type WebAppInstallForceListValue struct {
-	CreateDesktopShortcut  bool                                   `json:"create_desktop_shortcut"`
-	CustomIcon             *WebAppInstallForceListValueCustomIcon `json:"custom_icon"`
-	CustomName             string                                 `json:"custom_name"`
-	DefaultLaunchContainer string                                 `json:"default_launch_container"`
-	FallbackAppName        string                                 `json:"fallback_app_name"`
+	CreateDesktopShortcut  bool                                   `json:"create_desktop_shortcut,omitempty"`
+	CustomIcon             *WebAppInstallForceListValueCustomIcon `json:"custom_icon,omitempty"`
+	CustomName             string                                 `json:"custom_name,omitempty"`
+	DefaultLaunchContainer string                                 `json:"default_launch_container,omitempty"`
+	FallbackAppName        string                                 `json:"fallback_app_name,omitempty"`
 	Url                    string                                 `json:"url"`
 }
 
