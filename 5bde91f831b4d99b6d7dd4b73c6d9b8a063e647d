@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5374cb09_9e8ff38a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/tab_capture_allowed_by_origins.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-28T17:01:46Z",
+      "side": 1,
+      "message": "This is exactly what this node search does. The title of the DesktopMediaPickerDialogView is \"Share a Chrom[e|ium] tab\" when you can only pick tabs and \"Choose what to share\" when you can select also other things besides tabs.\nI\u0027ve improved the comment to make this clear.",
+      "parentUuid": "e2fedcf5_733e9a65",
+      "range": {
+        "startLine": 131,
+        "startChar": 77,
+        "endLine": 131,
+        "endChar": 121
+      },
+      "revId": "5bde91f831b4d99b6d7dd4b73c6d9b8a063e647d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3cf8e79_0275033e",
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "You could also use nodewith.Regex with a pattern that matches both the branded and the non-branded version of the string.",
       "parentUuid": "d3cf8e79_0275033e",
+      "range": {
+        "startLine": 132,
+        "startChar": 33,
+        "endLine": 132,
+        "endChar": 130
+      },
+      "revId": "5bde91f831b4d99b6d7dd4b73c6d9b8a063e647d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2a7b9b_081ab556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/tab_capture_allowed_by_origins.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-28T17:01:46Z",
+      "side": 1,
+      "message": "Nice! Didn\u0027t know about NameRegex.",
+      "parentUuid": "f883fba3_e550ed1a",
       "range": {
         "startLine": 132,
         "startChar": 33,
