@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7382db_1e251f86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "i suggest changing the headline to tast-tests to make the repo scope clear.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72aa48f8_efb1824f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "It seems like there was also refactoring of the ax packages, i suggest also making sure that your changes didn\u0027t impact the ax test suite. Let me know if you want documentation on how to run these tests.",
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f8ae50b_948cb240",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "First round of reviews.",
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86709159_ca510081",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "These changes don\u0027t seem to be relevant to the patchset?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baeb86f6_2807de4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "If there\u0027s a TODO, we usually have a buganizer bug to filed to track the effort. I\u0027d file a bug for this or link to an existing effort.\ne.g\n```\n// TODO(b:BUGID)\n```",
+      "range": {
+        "startLine": 1335,
+        "startChar": 5,
+        "endLine": 1335,
+        "endChar": 9
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77127654_a517b385",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "type is vague in an error clause. I recommend \"Router failed capabilities validation\"",
+      "range": {
+        "startLine": 1342,
+        "startChar": 26,
+        "endLine": 1342,
+        "endChar": 30
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1003236e_b6533336",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "wouldn\u0027t this return be redundant with the WithDHCP error? Maybe just return err.",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 80
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d08dd1d_6c4749b0",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/doc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "We should elaborate that legacy routers mostly refer to Gale routers but the package has in the past referred to whirlwind routers. Also maybe comment that the code inside here is expected to eventually be deprecated.",
+      "range": {
+        "startLine": 5,
+        "startChar": 66,
+        "endLine": 5,
+        "endChar": 72
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

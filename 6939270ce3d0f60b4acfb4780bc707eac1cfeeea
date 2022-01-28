@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1747800f_0c87d874",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 0,
+      "message": "where did this code segment go?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "6939270ce3d0f60b4acfb4780bc707eac1cfeeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

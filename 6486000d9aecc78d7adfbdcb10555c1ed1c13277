@@ -127,6 +127,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a599faa5_5fdfd0ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "I agree with renaming ap to apIface rename as the return type is APIface and the return object corresponds to the hostapd service.",
+      "parentUuid": "34e8afb1_40fc9acf",
+      "range": {
+        "startLine": 1329,
+        "startChar": 2,
+        "endLine": 1329,
+        "endChar": 9
+      },
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8430a5f9_23134ae9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 6
@@ -577,6 +601,24 @@
       "side": 1,
       "message": "Hmm good point. It was already legacy so I just left it as that, but perhaps `gale` is more appropriate. I\u0027ll confirm that before changing it as I did not pick it.",
       "parentUuid": "a7d156af_a8e485d0",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13956a5e_32e37912",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-01-28T23:03:29Z",
+      "side": 1,
+      "message": "I agree perhaps we should clarify more what legacy is in the documentation. I still prefer the legacy package name as this code used to correspond to whirlwind devices as well.",
+      "parentUuid": "639e4c83_8fd28ab6",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
