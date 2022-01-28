@@ -16,6 +16,92 @@
       "message": "mohamedaomar@: PTAL at these MGS Tast tests",
       "revId": "e077ecfed31d9945852847d42c1139c607862388",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace7c53f_75225bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-28T15:46:50Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "e077ecfed31d9945852847d42c1139c607862388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09ed1e8_d9c1bb5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_google_safe_search.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-28T15:46:50Z",
+      "side": 1,
+      "message": "I wouldn\u0027t send the testing.State as a parameter, and return error instead.",
+      "range": {
+        "startLine": 87,
+        "startChar": 39,
+        "endLine": 87,
+        "endChar": 55
+      },
+      "revId": "e077ecfed31d9945852847d42c1139c607862388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c4a7259_c6ab839c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_you_tube_restrict.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-28T15:46:50Z",
+      "side": 1,
+      "message": "return this err wrapped, to make it different from the next call.",
+      "range": {
+        "startLine": 122,
+        "startChar": 9,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "e077ecfed31d9945852847d42c1139c607862388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9bbad6_c4cc9be7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mgs/force_you_tube_restrict.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-28T15:46:50Z",
+      "side": 1,
+      "message": "same as before.",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 12
+      },
+      "revId": "e077ecfed31d9945852847d42c1139c607862388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
