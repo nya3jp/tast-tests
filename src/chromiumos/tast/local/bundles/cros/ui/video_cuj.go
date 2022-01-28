@@ -444,7 +444,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enter fullscreen: ", err)
 	}
 
-	if err = recorder.Run(ctx, func(ctx context.Context) error {
+	if err := recorder.RunUntil(ctx, func(ctx context.Context) error {
 		s.Log("Switch away from fullscreen video")
 		if tabletMode {
 			if err := tapFullscreenButton(); err != nil {
@@ -512,7 +512,7 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}); err != nil {
+	}, time.Minute); err != nil {
 		s.Fatal("Failed: ", err)
 	}
 
