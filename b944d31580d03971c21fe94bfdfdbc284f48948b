@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b41aaca3_50d252f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T13:56:09Z",
+      "side": 1,
+      "message": "All other tests did still work, when run individually. Running kiosk.* did not succeed due to b/216779473, but it\u0027s unrelated to the specific change.",
+      "parentUuid": "3683d327_68d1425d",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a2ed4f93_0a085d70",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b3fb32e_fab65a77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e76b28_7b094daf",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c75308c_e6272202",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-01-27T16:08:11Z",
       "side": 1,
       "message": "nit/style: no empty line needed. it is better to put error check tied to the calling code for readability, IMO.",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b119e434_f18cc5b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T13:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c75308c_e6272202",
       "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76632a1e_f77b84b1",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T13:56:09Z",
+      "side": 1,
+      "message": "Thanks for pointing that out, I was not aware of the different locations. I have implemented another approach, which reads the lacros PID from the chrome logfile. This eliminates the need to specify the path and should eliminate the risk to specify a wrong one.\nWhat do you think?",
+      "parentUuid": "d7d9011b_f639ce22",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fd1a0d6_ed524b8e",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
         "patchSetId": 4
@@ -99,6 +171,24 @@
       "writtenOn": "2022-01-27T16:08:11Z",
       "side": 1,
       "message": "also could you add an enum to representing one of these three?",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f44ca93_aa6d7642",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T13:56:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4fd1a0d6_ed524b8e",
       "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +206,24 @@
       "writtenOn": "2022-01-27T12:54:03Z",
       "side": 1,
       "message": "for the future - change for the library could be in a separate CL 😎",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb18d6af_ed7e4779",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T13:56:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d2e012d4_801eef53",
       "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
