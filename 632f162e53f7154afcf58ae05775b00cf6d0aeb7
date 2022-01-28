@@ -16,6 +16,69 @@
       "message": "Note: while running the ash and lacros tests independently work, when I run tast run $DUT policy.UserFeedbackAllowed* I get some errors locally, so I have not been able to verify the test works as expected yet.",
       "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ac2f6f_9868f806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T13:36:43Z",
+      "side": 1,
+      "message": "Hi, this is my first tast test, so please let me know if there is something I can improve in the code, or if there is a better recommended way to perform any of the steps I have followed. I have also added some questions in the code for clarifications. Thanks!",
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc44a47_ce2be621",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T13:36:43Z",
+      "side": 1,
+      "message": "I have included this line because I have noticed the other tests has it, but can you please clarify what does it mean and why is it included?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 45
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35193556_207a2a0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T13:36:43Z",
+      "side": 1,
+      "message": "Is 2 seconds enough? Is it too long? Which is the recommended number to avoid flakiness?",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 33
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
