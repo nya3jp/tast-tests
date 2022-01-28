@@ -230,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fdc6c18_cfbaccc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T13:15:10Z",
+      "side": 1,
+      "message": "Done, thank you for the further explanation!\nI didn\u0027t realize that the callback passed to s.Run receives its own context. I suppose that is something that should be changed in many of the other policy tests as well.",
+      "parentUuid": "b1bec0f9_fb5e263f",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6e7dc38_c5b7f389",
@@ -291,6 +315,30 @@
       "side": 1,
       "message": "No problem. Here is how you can do it:\n\n```\nserver :\u003d httptest.NewServer(http.FileServer(s.DataFileSystem()))\ndefer server.Close()\n\nconst (\n    indexURL \u003d fmt.Sprintf(\"%s/%s\", server.URL, indexFileName)\n    matchingURL \u003d fmt.Sprintf(\"%s/%s?matching\u003d1\", server.URL, downloadFileName)\n)\n\n```",
       "parentUuid": "6684dc18_85c44c66",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "d33c5bf05133874d5b6957c7b6592fd47e1f5386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91e557f_9aa7d085",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T13:15:10Z",
+      "side": 1,
+      "message": "Hmm, I get the following error: \"fmt.Sprintf(\"%s/%s\", server.URL, indexFileName) (value of type string) is not constant\". This is how the code looks like:\n\n```\n// AutoOpenAllowedForURLs tests the AutoOpenAllowedForURLs policy.\nfunc AutoOpenAllowedForURLs(ctx context.Context, s *testing.State) {\n\tcr :\u003d s.FixtValue().(chrome.HasChrome).Chrome()\n\tfdms :\u003d s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()\n\n\tserver :\u003d httptest.NewServer(http.FileServer(s.DataFileSystem()))\n\tdefer server.Close()\n\n\tconst (\n\t\tindexURL \u003d fmt.Sprintf(\"%s/%s\", server.URL, indexFileName)\n\t\tmatchingURL \u003d fmt.Sprintf(\"%s/%s?matching\u003d1\", server.URL, downloadFileName)\n\t)\n```",
+      "parentUuid": "058e6c12_28722eff",
       "range": {
         "startLine": 71,
         "startChar": 0,
