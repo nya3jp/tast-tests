@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be8f9648_e22e4d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-28T16:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f373be_dacb13e9",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4fa420_6da9b1e3",
@@ -95,6 +119,30 @@
       "writtenOn": "2022-01-28T15:39:31Z",
       "side": 1,
       "message": "why I\u0027m added to this test? :\"D",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8bd0f6e_0267ad85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-28T16:34:20Z",
+      "side": 1,
+      "message": "My fault, I used the Dino test as template and totally forgot to change this 😊",
+      "parentUuid": "1a4fa420_6da9b1e3",
       "range": {
         "startLine": 34,
         "startChar": 3,
@@ -128,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "162f63b7_4e2da71e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-28T16:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f728adb_6c42b165",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 104
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "475ed0b2_249e8873",
@@ -141,6 +213,30 @@
       "writtenOn": "2022-01-28T15:34:39Z",
       "side": 1,
       "message": "This value should be included in the testing table.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c01ab9c_ebd197b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-28T16:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "475ed0b2_249e8873",
       "range": {
         "startLine": 129,
         "startChar": 3,
@@ -174,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eaff2bb_1bfb3df4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-28T16:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "559fb78a_75c6bea6",
+      "range": {
+        "startLine": 143,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 24
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c604295_fb65fb7b",
@@ -187,6 +307,30 @@
       "writtenOn": "2022-01-28T15:34:39Z",
       "side": 1,
       "message": "If there is an error handling this request, like a timeout, the test will pass instead of failing.\nIf you use `EnsureGoneFor()`, it only return without an error when it is sure that the item you are looking for is not there.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91ea6ec_2891a19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-28T16:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c604295_fb65fb7b",
       "range": {
         "startLine": 152,
         "startChar": 1,
