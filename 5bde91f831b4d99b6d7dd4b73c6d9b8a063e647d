@@ -62,6 +62,30 @@
       },
       "revId": "5bde91f831b4d99b6d7dd4b73c6d9b8a063e647d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f883fba3_e550ed1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/tab_capture_allowed_by_origins.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-01-28T13:31:19Z",
+      "side": 1,
+      "message": "You could also use nodewith.Regex with a pattern that matches both the branded and the non-branded version of the string.",
+      "parentUuid": "d3cf8e79_0275033e",
+      "range": {
+        "startLine": 132,
+        "startChar": 33,
+        "endLine": 132,
+        "endChar": 130
+      },
+      "revId": "5bde91f831b4d99b6d7dd4b73c6d9b8a063e647d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
