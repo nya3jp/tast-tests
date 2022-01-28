@@ -183,12 +183,14 @@ func Driver(ctx context.Context, s *testing.State) {
 	netDriversRoot := filepath.Join("/lib/modules", u.Release, "kernel/drivers/net")
 	expectedModulePath := filepath.Join(netDriversRoot, expectedPath)
 
-	if _, err := os.Stat(expectedModulePath); err != nil {
-		if os.IsNotExist(err) {
-			s.Error("Module does not exist: ", err)
-		} else {
-			s.Error("Failed to stat module path: ", err)
-		}
+	if info, err := os.Stat(filepath.Dir(expectedModulePath)); err != nil {
+		s.Error("Failed to stat module dir: ", err)
+	} else if !info.IsDir() {
+		s.Errorf("%v is not a directory", filepath.Dir(expectedModulePath))
+	}
+
+	if match, _ := filepath.Glob(expectedModulePath + "*"); match == nil {
+		s.Errorf("Failed to locate module matching %v*", expectedModulePath)
 	}
 
 	moduleDir := filepath.Join("/sys/class/net", netIf, "device/driver/")
