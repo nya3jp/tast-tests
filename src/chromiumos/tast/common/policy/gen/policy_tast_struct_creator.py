@@ -623,6 +623,27 @@ func (v *KerberosAccountsValueOmitKrb5conf) SetPassword(password string) { v.Pas
 """
   return attr_type, attr_structs
 
+def parse_override_web_app_install_force_list(p, refs):
+  value_name = 'WebAppInstallForceListValue'
+  attr_type = '[]*' + value_name
+  attr_structs = """
+type WebAppInstallForceListValue struct {
+\tCreateDesktopShortcut\tbool\t`json:"create_desktop_shortcut,omitempty"`
+\tCustomIcon\t*WebAppInstallForceListValueCustomIcon\t`json:"custom_icon,omitempty"`
+\tCustomName\tstring\t`json:"custom_name,omitempty"`
+\tDefaultLaunchContainer\tstring                                 `json:"default_launch_container,omitempty"`
+\tFallbackAppName\tstring                                 `json:"fallback_app_name,omitempty"`
+\tUrl\tstring\t`json:"url"`
+}
+
+type WebAppInstallForceListValueCustomIcon struct {
+\tHash\tstring\t`json:"hash"`
+\tUrl\tstring\t`json:"url"`
+}
+
+"""
+  return attr_type, attr_structs
+
 def ref_parse_override_managed_bookmarks(schema, refs):
   name = 'Ref' + schema['items']['id']
   refs[schema['items']['id']] = Reference(name, '*'+name, '')
@@ -644,7 +665,8 @@ PARSE_OVERRIDES = {
     'DeviceLocalAccounts': parse_override_device_local_accounts,
     'OpenNetworkConfiguration': parse_override_onc,
     'DeviceOpenNetworkConfiguration': parse_override_onc,
-    'KerberosAccounts': parse_override_kerberos_accounts
+    'KerberosAccounts': parse_override_kerberos_accounts,
+    'WebAppInstallForceList': parse_override_web_app_install_force_list,
 }
 
 # Functions to use for reference objects when the default way won't work.
