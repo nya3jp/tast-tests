@@ -38,6 +38,7 @@ import (
 	"chromiumos/tast/remote/wificell/router/ax"
 	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/router/legacy"
+	"chromiumos/tast/remote/wificell/router/openwrt"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/wifi"
@@ -550,16 +551,12 @@ func (tf *TestFixture) getUniqueAPName() string {
 	return id
 }
 
-// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to chose router
+// ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to choose router
 // to establish the AP on.
 func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
-	r, ok := tf.routers[idx].object.(router.Standard)
-	if !ok {
-		return nil, errors.Errorf("router device of type %v does not have standard support", tf.routers[idx].object.RouterType())
-	}
-
+	r := tf.routers[idx].object
 	name := tf.getUniqueAPName()
 
 	if fac != nil {
@@ -1010,6 +1007,15 @@ func (tf *TestFixture) AxRouter() (*ax.Router, error) {
 	return r, nil
 }
 
+// OpenWrtRouter returns router.Standard 0 object in the fixture as an openwrt.Router
+func (tf *TestFixture) OpenWrtRouter() (*openwrt.Router, error) {
+	r, ok := tf.Router().(*openwrt.Router)
+	if !ok {
+		return nil, errors.New("router is not an OpenWrt router")
+	}
+	return r, nil
+}
+
 // Pcap returns the pcap router.Standard object in the fixture.
 func (tf *TestFixture) Pcap() router.Base {
 	return tf.pcap
@@ -1243,6 +1249,8 @@ func newRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string, rtyp
 		return legacy.NewRouter(ctx, daemonCtx, host, name)
 	case support.AxT:
 		return ax.NewRouter(ctx, daemonCtx, host, name)
+	case support.OpenWrtT:
+		return openwrt.NewRouter(ctx, daemonCtx, host, name)
 	default:
 		return nil, errors.Errorf("unexpected routerType, got %v", rtype)
 	}
