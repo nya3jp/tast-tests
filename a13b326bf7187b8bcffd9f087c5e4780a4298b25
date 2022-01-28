@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "110a293e_0001cbf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-01-28T10:42:49Z",
+      "side": 1,
+      "message": "Thanks, Yi, LGTM.\n\nA general question most probably for the follow-up: Can we cover a PWA kiosk as well?",
+      "revId": "a13b326bf7187b8bcffd9f087c5e4780a4298b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500e2beb_346e4d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-01-28T10:42:49Z",
+      "side": 1,
+      "message": "nit: is it possible to use some existing kiosk fixture for that?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "a13b326bf7187b8bcffd9f087c5e4780a4298b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
