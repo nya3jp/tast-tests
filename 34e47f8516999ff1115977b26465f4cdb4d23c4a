@@ -211,6 +211,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "396b607e_52b0bdde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1529897
+      },
+      "writtenOn": "2022-01-28T00:15:33Z",
+      "side": 1,
+      "message": "(just realized somehow my personal gmail account was used above, that\u0027s wired.)\nThis thread becomes long, I have a few small questions and we can take it offline, thanks",
+      "parentUuid": "a2ee3060_e49c5400",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1f4e5e6_0ae9cf3a",
         "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/keyboard_service_grpc.go",
         "patchSetId": 5
