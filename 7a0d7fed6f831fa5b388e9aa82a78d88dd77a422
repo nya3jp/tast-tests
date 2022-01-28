@@ -16,6 +16,75 @@
       "message": "Hi,\nPlease take a look :)\n\nAdded also pmarko@ since you were the owner of the policy on policy_templates.json.",
       "revId": "7a0d7fed6f831fa5b388e9aa82a78d88dd77a422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd7dd5d_1c620b87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-28T11:05:55Z",
+      "side": 1,
+      "message": "nit: i think this comment is a bit redundant. You have pretty good self documented name IMO",
+      "range": {
+        "startLine": 53,
+        "startChar": 51,
+        "endLine": 53,
+        "endChar": 152
+      },
+      "revId": "7a0d7fed6f831fa5b388e9aa82a78d88dd77a422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d56ee4f_2eb672c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-28T11:05:55Z",
+      "side": 1,
+      "message": "nit: rename to disallow",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 25
+      },
+      "revId": "7a0d7fed6f831fa5b388e9aa82a78d88dd77a422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e75797c_b222695a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-28T11:05:55Z",
+      "side": 1,
+      "message": "It\u0027s unclear what is the actual state of that UI node. Maybe let\u0027s find UI node and compare actual Checked value vs want value? Same for restriction",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "7a0d7fed6f831fa5b388e9aa82a78d88dd77a422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
