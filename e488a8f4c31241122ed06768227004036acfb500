@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cf5d53_a7f187e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-28T15:42:40Z",
+      "side": 1,
+      "message": "I\u0027m also not sure why you get that nil pointer. :/\nIt might also be a sign that there\u0027s something wrong with the code we haven\u0027t found yet.",
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b69f26_a1d15491",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-28T15:42:40Z",
+      "side": 1,
+      "message": "btmojo?",
+      "range": {
+        "startLine": 79,
+        "startChar": 54,
+        "endLine": 79,
+        "endChar": 55
+      },
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f03caf_ab1cc84b",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-28T15:42:40Z",
+      "side": 1,
+      "message": "nit: Make this a pointer to be consistent?",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e418091_282e8834",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-28T15:42:40Z",
+      "side": 1,
+      "message": "According to documentation Reset will not be run at the moment, because it\u0027s only run between tests not after the last one, so this is *probably* not causing the nullptr.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#fixtures\n\nBut I think you\u0027d need to release `Js` before these lines.\n\nOr just remove line 39-41? I don\u0027t see why you need to reset the js object, just calling initSysPropObs should suffice?",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

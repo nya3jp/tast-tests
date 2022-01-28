@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "085e2262_f991c2b4",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-01-28T15:42:40Z",
+      "side": 1,
+      "message": "It does, see https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/network/netconfig/cros_network_config_types.go;l\u003d1?q\u003dcros_network_config_ty\u0026sq\u003dpackage:chromeos_public",
+      "parentUuid": "ef32eb02_0b16982f",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "356d2e9b_60484df6",
         "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
         "patchSetId": 12
