@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "970f7142_bca18981",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-01-28T17:12:54Z",
+      "side": 1,
+      "message": "I tried https://proxx.app/ in the test and it showed \"Network unavailable\". Looks like Kiosk cache hasn\u0027t been implemented for PWAs yet.",
+      "parentUuid": "0a520be3_5310067e",
+      "revId": "a13b326bf7187b8bcffd9f087c5e4780a4298b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "500e2beb_346e4d4d",
