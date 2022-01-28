@@ -56,6 +56,53 @@
       },
       "revId": "222dfc4a17d1850503e0e08d76241c3b319f8df2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5b878e_838ee68a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/https_only_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T09:16:16Z",
+      "side": 1,
+      "message": "If setting DNS resolver would\u0027t take much time - let\u0027s do it, instead of using the 3rd party site.",
+      "parentUuid": "e0f1c326_1cc75796",
+      "range": {
+        "startLine": 159,
+        "startChar": 33,
+        "endLine": 159,
+        "endChar": 55
+      },
+      "revId": "222dfc4a17d1850503e0e08d76241c3b319f8df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "564a31d9_3ec15717",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/https_only_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T09:16:16Z",
+      "side": 1,
+      "message": "let\u0027s increase this timeout to 10 seconds.",
+      "range": {
+        "startLine": 167,
+        "startChar": 47,
+        "endLine": 167,
+        "endChar": 60
+      },
+      "revId": "222dfc4a17d1850503e0e08d76241c3b319f8df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
