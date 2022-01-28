@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b4924d4_1a02c430",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2022-01-28T14:27:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "838d9b41_7f073fbd",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cfa24ae_42c3822a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-28T13:30:54Z",
       "side": 1,
       "message": "`tast run \u003cip\u003e policy.SafeSitesFilterBehavior`",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6539ad30_63fedbc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2022-01-28T14:27:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cfa24ae_42c3822a",
       "range": {
         "startLine": 10,
         "startChar": 5,
@@ -134,6 +182,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "116d3e48_b493b9eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2022-01-28T14:27:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53e2c738_db47217f",
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce25275_7a37fcd8",
@@ -147,6 +213,30 @@
       "writtenOn": "2022-01-28T13:30:54Z",
       "side": 1,
       "message": "nit: For the last error, we usually use `s.Error` instead of fatal.",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 12
+      },
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa47bade_dee8ef97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2022-01-28T14:27:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce25275_7a37fcd8",
       "range": {
         "startLine": 111,
         "startChar": 7,
