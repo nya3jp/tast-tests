@@ -231,6 +231,11 @@ func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 	}, nil
 }
 
+// ClosePage closes the physical tab of web page to the test server.
+func (its *InputsTestServer) ClosePage(ctx context.Context) error {
+	return its.pc.CloseTarget(ctx)
+}
+
 // Close release the connection and stop the local web server.
 func (its *InputsTestServer) Close() {
 	its.pc.Close()
