@@ -145,9 +145,9 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to get initial histogram")
 	}
 
-	var gpuErr, cStateErr, cpuErr error
+	var gpuErr, cStateErr, cpuErr, fdErr error
 	var wg sync.WaitGroup
-	wg.Add(3)
+	wg.Add(4)
 	go func() {
 		defer wg.Done()
 		gpuErr = graphics.MeasureGPUCounters(ctx, measurementDuration, p)
@@ -160,6 +160,10 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 		defer wg.Done()
 		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, stabilizationDuration, measurementDuration, p)
 	}()
+	go func() {
+		defer wg.Done()
+		fdErr = graphics.MeasureFdCount(ctx, measurementDuration, p)
+	}()
 	wg.Wait()
 	if gpuErr != nil {
 		return errors.Wrap(gpuErr, "failed to measure GPU counters")
@@ -169,6 +173,9 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 	}
 	if cpuErr != nil {
 		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
+	}
+	if fdErr != nil {
+		return errors.Wrap(fdErr, "failed to measure open FD count")
 	}
 
 	if err := graphics.UpdatePerfMetricFromHistogram(ctx, tconn, decodeHistogram, initDecodeHistogram, p, "video_decode_delay"); err != nil {
