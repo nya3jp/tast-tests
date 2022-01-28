@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/testing"
@@ -292,6 +293,54 @@ func MeasurePackageCStateCounters(ctx context.Context, t time.Duration, p *perf.
 	testing.ContextLogf(ctx, "c0: %f%%", c0Percent)
 	reportMetric("c0", "percent", c0Percent, perf.SmallerIsBetter, p)
 
+	return nil
+}
+
+// MeasureFdCount counts the average and peak number of open FDs during playback.
+// Polls every 1 seconds up until the duration given.
+func MeasureFdCount(ctx context.Context, duration time.Duration, p *perf.Values) error {
+	testing.ContextLog(ctx, "Measuring open file descriptors for ", duration)
+	processes, err := chromeproc.GetGPUProcesses()
+	if err != nil {
+		return errors.Wrap(err, "failed to get gpu process")
+	}
+	if len(processes) == 0 {
+		return errors.New("no processes found")
+	}
+
+	peakFds := 0
+	totalFds := 0
+	iterations := 0
+	startTime := time.Now()
+	elapsed := time.Since(startTime)
+	for elapsed < duration {
+		fdCount := 0
+		for _, process := range processes {
+			// Note: current gopsutil is old so that context.Context is not
+			// supported.
+			// Note: there's very rare possibility of race condition here, if
+			// the target process is kill'ed and collected, then a number of
+			// process is created, then PID could be reused.
+			// Though, practically it should rarely happen.
+			files, err := process.OpenFiles()
+			if err != nil {
+				return errors.Wrap(err, "failed to get fds for process")
+			}
+			fdCount += len(files)
+		}
+
+		if fdCount > peakFds {
+			peakFds = fdCount
+		}
+		totalFds += fdCount
+		iterations++
+
+		testing.Sleep(ctx, time.Duration( /*ms=*/ 1000))
+		elapsed = time.Since(startTime)
+	}
+
+	reportMetric("peakOpenFds", "count", float64(peakFds), perf.SmallerIsBetter, p)
+	reportMetric("averageOpenFds", "count", float64(totalFds)/float64(iterations), perf.SmallerIsBetter, p)
 	return nil
 }
 
