@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11c0886_4f110893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-01-28T15:16:20Z",
+      "side": 1,
+      "message": "It should be possible if PWA kiosk is cached. I tried the default web kiosk google.com and it wasn\u0027t cached. Do we have any test PWA that supports offline mode?",
+      "parentUuid": "110a293e_0001cbf4",
+      "revId": "a13b326bf7187b8bcffd9f087c5e4780a4298b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "500e2beb_346e4d4d",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-28T10:42:49Z",
       "side": 1,
       "message": "nit: is it possible to use some existing kiosk fixture for that?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "a13b326bf7187b8bcffd9f087c5e4780a4298b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc245d0_15bd7f4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-01-28T15:16:20Z",
+      "side": 1,
+      "message": "There is a similar fixture KioskLoggedIn that starts web kiosk. I tried to copy it to a new one for starting chrome app kiosk. But the test crashed with \"Do not call Close while precondition is being used\" because it tries to stop existing Chrome and start a new one. Therefore I don\u0027t think it\u0027s possible using a kiosk fixture for this specific test without removing this Chrome.Close() check.\n\nI did notice that using KioskAutoLaunchCleanup makes more sense for this test. So I changed the fixture to KioskAutoLaunchCleanup.",
+      "parentUuid": "500e2beb_346e4d4d",
       "range": {
         "startLine": 41,
         "startChar": 1,
