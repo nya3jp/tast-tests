@@ -16,6 +16,23 @@
       "message": "Thanks for the review.",
       "revId": "e8bd6bd2e662db2c98beeab613924d9a08a0178c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba55a44a_d437019d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202846
+      },
+      "writtenOn": "2022-01-28T17:59:46Z",
+      "side": 1,
+      "message": "The test \nquicksettings.SignInScreen.noaudio_nobattery\npass while I run it at local.",
+      "revId": "e8bd6bd2e662db2c98beeab613924d9a08a0178c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
