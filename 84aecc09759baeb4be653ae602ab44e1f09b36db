@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f944e8f_be461718",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T14:26:10Z",
+      "side": 1,
+      "message": "nit: Add \"tast-tests: \" prefix",
+      "revId": "84aecc09759baeb4be653ae602ab44e1f09b36db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8648998f_a65dd07b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T14:26:10Z",
+      "side": 1,
+      "message": "nit: compilation would nice to have:\nfast_build.sh -T",
+      "revId": "84aecc09759baeb4be653ae602ab44e1f09b36db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "276a197e_2bf2e248",
@@ -14,6 +48,40 @@
       "writtenOn": "2022-01-28T14:13:50Z",
       "side": 1,
       "message": "kamilszarek@: I added a fixture for being able to start chrome with app isolation. PTAL",
+      "revId": "84aecc09759baeb4be653ae602ab44e1f09b36db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b30a71d_9b86067e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T14:26:10Z",
+      "side": 1,
+      "message": "Is there a test in development that uses this fixture?\n\nLGTM % nit",
+      "revId": "84aecc09759baeb4be653ae602ab44e1f09b36db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ef86b0_30628f2f",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T14:26:10Z",
+      "side": 1,
+      "message": "add a contact mailing list as well.",
       "revId": "84aecc09759baeb4be653ae602ab44e1f09b36db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
