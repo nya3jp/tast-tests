@@ -5,7 +5,10 @@
 package common
 
 import (
+	"context"
 	"time"
+
+	"chromiumos/tast/common/network/ip"
 )
 
 const (
@@ -31,3 +34,17 @@ const (
 
 // RouterCloseContextDuration is a shorter context.Context duration is used for running things before Router.Close to reserve time for it to run.
 const RouterCloseContextDuration = 5 * time.Second
+
+// RemoveDevicesWithPrefix removes the devices whose names start with the given prefix.
+func RemoveDevicesWithPrefix(ctx context.Context, ipr *ip.Runner, prefix string) error {
+	devs, err := ipr.LinkWithPrefix(ctx, prefix)
+	if err != nil {
+		return err
+	}
+	for _, dev := range devs {
+		if err := ipr.DeleteLink(ctx, dev); err != nil {
+			return err
+		}
+	}
+	return nil
+}

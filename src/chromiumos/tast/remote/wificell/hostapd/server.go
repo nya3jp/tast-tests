@@ -100,9 +100,14 @@ func (s *Server) filename(suffix string) string {
 	return fmt.Sprintf("hostapd-%s-%s.%s", s.name, s.iface, suffix)
 }
 
-// confPath returns the path of s's config file.
-func (s *Server) confPath() string {
+// confPathServer returns the path of s's config file.
+func (s *Server) confPathServer() string {
 	return path.Join(s.workDir, s.filename("conf"))
+}
+
+// confPathOutDir returns the path of the stored config file under OutDir.
+func (s *Server) confPathOutDir() string {
+	return s.filename("conf")
 }
 
 // ctrlPath returns the path of s's control socket.
@@ -125,11 +130,24 @@ func (s *Server) initConfig(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "initConfig")
 	defer st.End()
 
+	// Build the config
 	conf, err := s.conf.Format(s.iface, s.ctrlPath())
 	if err != nil {
 		return err
 	}
-	if err := linuxssh.WriteFile(ctx, s.host, s.confPath(), []byte(conf), 0644); err != nil {
+
+	// Write the config to local log
+	outDirConfFile, err := fileutil.PrepareOutDirFile(ctx, s.confPathOutDir())
+	if err != nil {
+		return errors.Wrapf(err, "failed to prepare local hostapd config file copy %q", s.confPathOutDir())
+	}
+	_, err = outDirConfFile.WriteString(conf)
+	if err != nil {
+		return errors.Wrapf(err, "failed to write local hostapd config file copy %q", s.confPathOutDir())
+	}
+
+	// Write the config to server
+	if err := linuxssh.WriteFile(ctx, s.host, s.confPathServer(), []byte(conf), 0644); err != nil {
 		return errors.Wrap(err, "failed to write config")
 	}
 	return nil
@@ -155,15 +173,16 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 		testing.ContextLogf(ctx, "Starting hostapd %s on interface %s", s.name, s.iface)
 	}
 
-	// TODO(crbug.com/1047146): Remove the env part after we drop the old crypto like MD5.
-	cmdStrs := []string{
-		// Environment variables.
-		"OPENSSL_CONF=/etc/ssl/openssl.cnf.compat",
-		"OPENSSL_CHROMIUM_SKIP_TRUSTED_PURPOSE_CHECK=1",
-		// hostapd command.
-		hostapdCmd, "-dd", "-t", "-K", shutil.Escape(s.confPath()),
+	// Run hostapd command with any set environment variables
+	var commands []string
+	for key, value := range s.conf.EnvironmentVars {
+		commands = append(commands, fmt.Sprintf("%s=%q", key, value))
 	}
-	cmd := s.host.CommandContext(ctx, "sh", "-c", strings.Join(cmdStrs, " "))
+	commands = append(commands, []string{
+		hostapdCmd, "-dd", "-t", "-K", shutil.Escape(s.confPathServer()),
+	}...)
+	cmd := s.host.CommandContext(ctx, "sh", "-c", strings.Join(commands, " "))
+
 	// Prepare stdout/stderr log files.
 	var err error
 	s.stderrFile, err = fileutil.PrepareOutDirFile(ctx, s.stderrFilename())
@@ -182,9 +201,9 @@ func (s *Server) start(fullCtx context.Context) (retErr error) {
 		return errors.Wrap(err, "failed to obtain StdoutPipe of hostapd")
 	}
 	readyFunc := func(buf []byte) (bool, error) {
-		if bytes.Contains(buf, []byte("Interface initialization failed")) {
+		if bytes.Contains(buf, []byte("Interface initialization failed")) || bytes.Contains(buf, []byte("Failed to initialize interface")) {
 			return false, errors.New("hostapd failed to initialize AP interface")
-		} else if bytes.Contains(buf, []byte("Setup of interface done")) {
+		} else if bytes.Contains(buf, []byte("Setup of interface done")) || bytes.Contains(buf, []byte("AP-ENABLED")) {
 			return true, nil
 		}
 		return false, nil
@@ -245,7 +264,7 @@ func (s *Server) Close(ctx context.Context) error {
 	if s.cmd != nil {
 		s.cmd.Abort()
 		// TODO(crbug.com/1030635): Abort might not work, use pkill to ensure the daemon is killed.
-		s.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", hostapdCmd, s.confPath())).Run()
+		s.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", hostapdCmd, s.confPathServer())).Run()
 
 		// Skip the error in Wait as the process is aborted and always has error in wait.
 		s.cmd.Wait()
@@ -259,7 +278,7 @@ func (s *Server) Close(ctx context.Context) error {
 	if s.stderrFile != nil {
 		s.stderrFile.Close()
 	}
-	if err := s.host.CommandContext(ctx, "rm", s.confPath()).Run(); err != nil {
+	if err := s.host.CommandContext(ctx, "rm", s.confPathServer()).Run(); err != nil {
 		return errors.Wrap(err, "failed to remove config")
 	}
 	return nil

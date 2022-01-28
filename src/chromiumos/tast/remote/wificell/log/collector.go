@@ -41,17 +41,23 @@ func (b *buffer) Dump(w io.Writer) error {
 
 // Collector watches a file on remote host and collects the appended contents.
 type Collector struct {
-	host *ssh.Conn
-	buf  buffer
-	path string
-	cmd  *ssh.Cmd
+	host                    *ssh.Conn
+	buf                     buffer
+	path                    string
+	cmd                     *ssh.Cmd
+	tailFollowNameSupported bool
 }
 
 // StartCollector spawns a log collector on file p on host.
-func StartCollector(ctx context.Context, host *ssh.Conn, p string) (*Collector, error) {
+//
+// Set tailFollowNameSupported to true if the host's tail implementation
+// supports the "--follow=name" command to allow for tail following to stay
+// at the same filename rather than follow the file if the name changes.
+func StartCollector(ctx context.Context, host *ssh.Conn, p string, tailFollowNameSupported bool) (*Collector, error) {
 	c := &Collector{
-		host: host,
-		path: p,
+		host:                    host,
+		path:                    p,
+		tailFollowNameSupported: tailFollowNameSupported,
 	}
 	if err := c.start(ctx); err != nil {
 		return nil, err
@@ -61,7 +67,14 @@ func StartCollector(ctx context.Context, host *ssh.Conn, p string) (*Collector, 
 
 // start spawns the tail command to track the target log file.
 func (c *Collector) start(ctx context.Context) error {
-	cmd := c.host.CommandContext(ctx, "tail", "--follow=name", c.path)
+	var followArg string
+	if c.tailFollowNameSupported {
+		followArg = "--follow=name"
+	} else {
+		followArg = "-f"
+	}
+
+	cmd := c.host.CommandContext(ctx, "tail", followArg, c.path)
 
 	cmd.Stdout = &c.buf
 
@@ -81,6 +94,6 @@ func (c *Collector) Dump(w io.Writer) error {
 func (c *Collector) Close() error {
 	c.cmd.Abort()
 	// Ignore the error as wait always has error on aborted command.
-	c.cmd.Wait()
+	_ = c.cmd.Wait()
 	return nil
 }
