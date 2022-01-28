@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42dfab8_b5bbcbea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-28T15:54:27Z",
+      "side": 1,
+      "message": "LGTM % minor nit",
+      "revId": "a99a2d7792408e05a48c1e4c3e4d48dbc8c0c550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f1a524_0acc2cf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-01-28T15:54:27Z",
+      "side": 1,
+      "message": "the browser",
+      "range": {
+        "startLine": 156,
+        "startChar": 34,
+        "endLine": 156,
+        "endChar": 40
+      },
+      "revId": "a99a2d7792408e05a48c1e4c3e4d48dbc8c0c550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
