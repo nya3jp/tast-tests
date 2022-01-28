@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34e8afb1_40fc9acf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:02:32Z",
+      "side": 1,
+      "message": "The pre-existing `ap` variable I mean",
+      "parentUuid": "a44cf093_cd3ad8dd",
+      "range": {
+        "startLine": 1329,
+        "startChar": 2,
+        "endLine": 1329,
+        "endChar": 9
+      },
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8430a5f9_23134ae9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 6
