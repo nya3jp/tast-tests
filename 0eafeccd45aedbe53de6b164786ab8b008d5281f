@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ae8417_eb9d947c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T07:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d31483e_0e19ef33",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c49bef88_c63a822d",
@@ -95,6 +119,30 @@
       "writtenOn": "2022-01-27T10:25:42Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 106,
+        "startChar": 6,
+        "endLine": 106,
+        "endChar": 11
+      },
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "655346d2_8dec9977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T07:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c49bef88_c63a822d",
       "range": {
         "startLine": 106,
         "startChar": 6,
@@ -124,6 +172,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0c3d8ec_e6e0e048",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T07:42:06Z",
+      "side": 1,
+      "message": "Thanks for pointing me to this. cr.NewConn() states page loading should be completed when returning. I falsely assumed this would include rendering, which it obviously doesn\u0027t. The search bar is now found in any case. I changed the code to properly wait and check the search bar invisible state. Please let me know what you think.",
+      "parentUuid": "73135771_dccf35ee",
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29152f79_e19a3ae6",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
         "patchSetId": 2
@@ -135,6 +201,24 @@
       "writtenOn": "2022-01-27T17:39:11Z",
       "side": 1,
       "message": "Should it be Fatal?",
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "059d5a6a_189c86b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T07:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29152f79_e19a3ae6",
       "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -152,6 +236,24 @@
       "writtenOn": "2022-01-28T00:04:32Z",
       "side": 1,
       "message": "I believe we use s.Log in tests. You would only use testing.contextlog in test libraries that don\u0027t have access to s.",
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8220d954_734abd61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-01-28T07:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8fdb38a_f4786848",
       "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
