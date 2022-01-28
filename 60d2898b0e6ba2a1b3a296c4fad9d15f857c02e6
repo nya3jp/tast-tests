@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba610f0_2182a22d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T01:09:08Z",
+      "side": 1,
+      "message": "Sorry for not noticing while migrating.",
+      "parentUuid": "6c14f7ce_3898a5c6",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 45
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff4c87e8_4f77fbae",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-27T12:27:40Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 44
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4eb78c_7b14f194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T01:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff4c87e8_4f77fbae",
       "range": {
         "startLine": 130,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e700b827_858b5613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T01:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "948ff127_1863d323",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 43
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc4a9567_87cbc8ee",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-01-27T12:27:40Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 48
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72dec683_819432c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T01:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc4a9567_87cbc8ee",
       "range": {
         "startLine": 150,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aacf107_17163012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T01:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9db123_c1118e33",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 52
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f09c969e_54cfab5b",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-01-27T12:27:40Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 161,
+        "endChar": 55
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9afc5458_cd2ac4bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T01:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f09c969e_54cfab5b",
       "range": {
         "startLine": 161,
         "startChar": 3,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84cd338_3f4c5adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T01:09:08Z",
+      "side": 1,
+      "message": "Thanks for your advice. Separate from main test logic.",
+      "parentUuid": "3f768144_bf28b55e",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba33f48_a33bca26",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-01-27T12:27:40Z",
       "side": 1,
       "message": "ditto and same to the rest if any.",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a741efc_fd12c426",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-01-28T01:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba33f48_a33bca26",
       "range": {
         "startLine": 190,
         "startChar": 2,
