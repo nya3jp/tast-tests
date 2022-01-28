@@ -355,6 +355,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ec7aa2a_b4fbef68",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-28T23:12:45Z",
+      "side": 1,
+      "message": "I think the API that waits for the launcher state should interpret kClosed as home launcher is not visible in tablet mode.\nhttps://source.chromium.org/chromium/chromium/src/+/main:ash/autotest_private_api_utils.cc;drc\u003d26dd002a83267574673aac767df641a945c2e7fe;l\u003d171\n\n(if you already tried it and it doesn\u0027t work, this is fine too)",
+      "parentUuid": "aa8565fb_1e5c647a",
+      "revId": "b671edac69925329aa2a6599e71caefd47b6b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b9bc620_97324ff9",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 13

@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87350341_60fcdacd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-28T23:12:45Z",
+      "side": 1,
+      "message": "remove the comment, or rephrase it (something like - make sure tablet mode launcher closes before opening a launcher instance for test)",
+      "revId": "4705453efff089c31d36de332c810480ac577c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236651f5_06f6ffd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-28T23:12:45Z",
+      "side": 1,
+      "message": "it\u0027s unclear when reading the test code that TriggerAppListSortAndWait ensures the undo button exists, probably better to move that waiter here (or rename that method)?",
+      "revId": "4705453efff089c31d36de332c810480ac577c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef12ee5b_f82d4033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-28T23:12:45Z",
+      "side": 1,
+      "message": "I\u0027d ad a step to verify the undo button gets shown",
+      "revId": "4705453efff089c31d36de332c810480ac577c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087905b6_764ed5a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-28T23:12:45Z",
+      "side": 1,
+      "message": "verify the undo toast is gone?",
+      "revId": "4705453efff089c31d36de332c810480ac577c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4963a137_13d26c1d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-28T23:12:45Z",
+      "side": 1,
+      "message": "specify what this is waiting for, or separate part that waits for undo button out",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 30
+      },
+      "revId": "4705453efff089c31d36de332c810480ac577c17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
