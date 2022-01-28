@@ -39,6 +39,30 @@
       },
       "revId": "33c654432afde19047edadf1034c7750e15d3acb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce170bf_9983e9f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_safe_search.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-01-28T14:52:19Z",
+      "side": 1,
+      "message": "Done - PTAL again.",
+      "parentUuid": "c6735f96_fd04cc10",
+      "range": {
+        "startLine": 147,
+        "startChar": 30,
+        "endLine": 147,
+        "endChar": 55
+      },
+      "revId": "33c654432afde19047edadf1034c7750e15d3acb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
