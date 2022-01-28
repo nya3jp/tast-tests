@@ -316,6 +316,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c43c661a_8c892171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-01-28T18:36:20Z",
+      "side": 1,
+      "message": "Sure. I am okay to add scroll metrics in a follow-up.\n\nI think touchpad should be put under Wheel:\nhttps://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/common/input/web_gesture_event.cc;l\u003d112;drc\u003d60124005e97ae2716b0fb34187d82da6019b571f;bpv\u003d0;bpt\u003d1",
+      "parentUuid": "9fe74424_34fbab14",
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fab60a12_f307679b",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
         "patchSetId": 3
