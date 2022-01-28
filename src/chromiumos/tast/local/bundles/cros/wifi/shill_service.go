@@ -2373,6 +2373,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 
 		mwifiexFormat = "/sys/kernel/debug/mwifiex/%s/reset"
 		ath10kFormat  = "/sys/kernel/debug/ieee80211/%s/ath10k/simulate_fw_crash"
+		ath11kFormat  = "/sys/kernel/debug/ath11k/wcn6855 hw2.0/simulate_fw_crash"
 		// Possible reset paths for Intel wireless NICs are:
 		// 1. /sys/kernel/debug/iwlwifi/{iface}/iwlmvm/fw_restart
 		//    Logs look like: iwlwifi 0000:00:0c.0: 0x00000038 | BAD_COMMAND
@@ -2505,6 +2506,18 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		}
 		return nil
 	}
+	ath11kResetPath := func(_ context.Context, iface string) (string, error) {
+		if !fileExists(ath11kFormat) {
+			return "", errors.Errorf("ath11k reset path %q does not exist", ath11kFormat)
+		}
+		return ath11kFormat, nil
+	}
+	ath11kReset := func(_ context.Context, resetPath string) error {
+		if err := writeStringToFile(resetPath, "assert"); err != nil {
+			return errors.Wrapf(err, "failed to write to the reset path %q", resetPath)
+		}
+		return nil
+	}
 	ath10kWCN3990ResetPath := func(ctx context.Context, iface string) (string, error) {
 		rp, err := ath10kResetPath(ctx, iface)
 		if err != nil {
@@ -2618,6 +2631,7 @@ func (s *ShillService) ResetTest(ctx context.Context, req *wifi.ResetTestRequest
 		// WCN3990 belongs to ath10k Wi-Fi family. Evaluate the specific Wi-Fi module detectors first.
 		{ath10kWCN3990Reset, ath10kWCN3990ResetPath},
 		{ath10kReset, ath10kResetPath},
+		{ath11kReset, ath11kResetPath},
 		{iwlwifiReset, iwlwifiResetPath},
 		{mt76Reset, mt76ResetPath},
 		{rtw88Reset, rtw88ResetPath},
