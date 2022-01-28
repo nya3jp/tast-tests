@@ -157,6 +157,30 @@
       },
       "revId": "7a0d7fed6f831fa5b388e9aa82a78d88dd77a422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c994f8_18a12f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-01-28T12:54:12Z",
+      "side": 1,
+      "message": "That\u0027s true! Thanks for pointing!",
+      "parentUuid": "2c055583_965ec8ce",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "7a0d7fed6f831fa5b388e9aa82a78d88dd77a422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
