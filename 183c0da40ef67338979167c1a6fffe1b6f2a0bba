@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2197562c_7511feab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-28T23:38:16Z",
+      "side": 1,
+      "message": "LGTM. Btw, are these vars to be used locally for this test or could it be a global var https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code?",
+      "revId": "183c0da40ef67338979167c1a6fffe1b6f2a0bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f411192e_c7109921",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-01-28T23:38:16Z",
+      "side": 1,
+      "message": "Not for this CL, but does it need a lacros variant? 😊 I assume so in that the test seems to interact with a browser.",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "183c0da40ef67338979167c1a6fffe1b6f2a0bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
