@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24e3fa11_d4ffe65d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-28T15:04:23Z",
+      "side": 1,
+      "message": "I reduced timeout from 30s and 15s to 5s, thank you.\n\nIn the |IsNodeFound| function description they said: \"IsNodeFound immediately checks\". I guess, it would be better to wait a bit to make sure that the element is really not in the UI and it will not appear later.",
+      "parentUuid": "c482f7fd_391377a2",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "81e58a181758b46c262926fc92faadc77ab57426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "becea530_ecd72242",
         "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-28T12:48:03Z",
       "side": 1,
       "message": "I see a similarity in this and the next 3 blocks. What\u0027s about making a parameterized for-loop (class name and probably a string to include into a fatal message)?\nIt will be possible to extend the test easily if we decide to check more system UI elements in the future.\n\nLike here:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/allow_dinosaur_easter_egg_ash_lacros.go;l\u003d57",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "81e58a181758b46c262926fc92faadc77ab57426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c1f75db_e64d5e70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-28T15:04:23Z",
+      "side": 1,
+      "message": "Thank you, it looks really better with Table-driven tests",
+      "parentUuid": "becea530_ecd72242",
       "range": {
         "startLine": 59,
         "startChar": 1,
