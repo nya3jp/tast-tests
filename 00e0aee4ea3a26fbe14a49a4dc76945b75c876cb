@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7daf1e5c_ccdedbac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T13:38:07Z",
+      "side": 1,
+      "message": "See below.",
+      "parentUuid": "16597ab0_bf27bb97",
+      "revId": "00e0aee4ea3a26fbe14a49a4dc76945b75c876cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80b92123_f5795403",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_n.go",
         "patchSetId": 1
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "I started with that, but in case of N2M it is not just verification but restoration as well.",
       "parentUuid": "80b92123_f5795403",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "00e0aee4ea3a26fbe14a49a4dc76945b75c876cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7033642_262a4efc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_n.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T13:38:07Z",
+      "side": 1,
+      "message": "preUpdateTimeoutN2N is clearer, but I would still prefer the timeouts to refer to what they are actually affecting.\n\nMaybe for N2M you can add another timeout for cleanup?",
+      "parentUuid": "b271f81f_7380a252",
       "range": {
         "startLine": 17,
         "startChar": 1,
