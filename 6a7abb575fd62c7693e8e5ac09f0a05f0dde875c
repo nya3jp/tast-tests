@@ -101,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bf66b6b_eba8b2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2022-01-28T14:20:59Z",
+      "side": 1,
+      "message": "Thanks for the link, but this policy is about adult content,\nand https://testsafebrowsing.appspot.com/ only has links for unsafe content.\n\nI also tried a local html page called `porn.html`, but that doesn\u0027t trigger the adult content filtering.",
+      "parentUuid": "761de577_f0d89f25",
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53e2c738_db47217f",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
         "patchSetId": 1
