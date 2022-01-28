@@ -30,9 +30,10 @@ import (
 type simpleConnectTestcase struct {
 	apOpts []ap.Option
 	// If unassigned, use default security config: open network.
-	secConfFac      security.ConfigFactory
-	pingOps         []ping.Option
-	expectedFailure bool
+	secConfFac             security.ConfigFactory
+	pingOps                []ping.Option
+	expectedFailure        bool
+	unsupportedRouterTypes []support.RouterType
 }
 
 // EAP certs/keys for EAP tests.
@@ -43,6 +44,8 @@ var (
 	eapCert3AltSub       = certificate.TestCert3AltSubjectMatch()
 	eapCert3DomainSuffix = certificate.TestCert3DomainSuffixMatch()
 )
+
+var unsupportedRouterTypesForWep = []support.RouterType{support.OpenWrtT}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -178,75 +181,95 @@ func init() {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 40-bit pre-shared keys.
 				Name: "wep40",
 				Val: []simpleConnectTestcase{{
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep40Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}},
 				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can connect to a WEP network with both open and shared system authentication and 104-bit pre-shared keys.
 				Name: "wep104",
 				Val: []simpleConnectTestcase{{
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(1), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(2), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
-					secConfFac: wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					secConfFac:             wep.NewConfigFactory(wep104Keys(), wep.DefaultKey(3), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}},
 				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can connect to a hidden WEP network with open/shared system authentication and 40/104-bit pre-shared keys.
 				Name: "wephidden",
 				Val: []simpleConnectTestcase{{
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
-					secConfFac: wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+					secConfFac:             wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
-					secConfFac: wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+					secConfFac:             wep.NewConfigFactory(wep40KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
-					secConfFac: wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+					secConfFac:             wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				}, {
-					apOpts:     []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
-					secConfFac: wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1), ap.Hidden()},
+					secConfFac:             wep.NewConfigFactory(wep104KeysHidden(), wep.AuthAlgs(wep.AuthAlgoShared)),
 				}},
 				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
@@ -514,7 +537,8 @@ func init() {
 				// Verifies that DUT can connect to a protected network supporting for dynamic WEP encryption.
 				Name: "8021xwep",
 				Val: []simpleConnectTestcase{{
-					apOpts: []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
+					unsupportedRouterTypes: unsupportedRouterTypesForWep,
+					apOpts:                 []ap.Option{ap.Mode(ap.Mode80211g), ap.Channel(1)},
 					secConfFac: dynamicwep.NewConfigFactory(
 						eapCert1.CACred.Cert, eapCert1.ServerCred,
 						dynamicwep.ClientCACert(eapCert1.CACred.Cert),
@@ -1425,7 +1449,19 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 	}
 
 	testcases := s.Param().([]simpleConnectTestcase)
+	tfRouterType := tf.Router().RouterType()
 	for i, tc := range testcases {
+		rtSupported := true
+		for _, rt := range tc.unsupportedRouterTypes {
+			if tfRouterType == rt {
+				rtSupported = false
+				break
+			}
+		}
+		if !rtSupported {
+			s.Fatalf("Testcase #%d not supported with wificell router type %q", i, tf.Router().RouterTypeName())
+		}
+
 		subtest := func(ctx context.Context, s *testing.State) {
 			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps, tc.expectedFailure)
 		}
