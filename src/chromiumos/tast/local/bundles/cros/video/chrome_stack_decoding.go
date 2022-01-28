@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 var av1CommonFiles = []string{
@@ -96,17 +97,6 @@ var h264Files = map[string][]string{
 		"test_vectors/h264/baseline/SVA_NL2_E.h264",
 
 		// The following test vectors are disabled because they don't verify that
-		// some slice header's |first_mb_in_slice| are not equal to zero as
-		// expected, see b/216179527.
-		//"test_vectors/h264/baseline/BA1_FT_C.h264",
-		//"test_vectors/h264/baseline/BASQP1_Sony_C.h264",
-		//"test_vectors/h264/baseline/CI1_FT_B.h264",
-		//"test_vectors/h264/baseline/SVA_Base_B.h264",
-		//"test_vectors/h264/baseline/SVA_CL1_E.h264",
-		//"test_vectors/h264/baseline/SVA_FM1_E.h264",
-		//"test_vectors/h264/baseline/MR1_BT_A.h264",
-
-		// The following test vectors are disabled because they don't verify that
 		// |max_num_reorder_frames| is smaller or equal to the DPB size, see
 		// b/216179527.
 		//"test_vectors/h264/baseline/MR2_TANDBERG_E.h264",
@@ -152,14 +142,6 @@ var h264Files = map[string][]string{
 		"test_vectors/h264/main/src19td.IBP.h264",
 		"test_vectors/h264/main/HCMP1_HHI_A.h264",
 
-		// The following test vectors are disabled because they don't verify that
-		// some slice header's |first_mb_in_slice| are not equal to zero as
-		// expected, see b/216319263.
-		//"test_vectors/h264/main/CABACI3_Sony_B.h264",
-		//"test_vectors/h264/main/CABAST3_Sony_E.h264",
-		//"test_vectors/h264/main/CABASTBR3_Sony_B.h264",
-		//"test_vectors/h264/main/SL1_SVA_B.h264",
-
 		// The following test vectors are disabled because they don't verify the
 		// SPS's |frame_mbs_only_flag|, i.e. they contain interlaced macroblocks
 		// which are not supported, see b/216319263.
@@ -184,6 +166,23 @@ var h264Files = map[string][]string{
 		//"test_vectors/h264/main/CVMAQP3_Sony_D.h264",
 		//"test_vectors/h264/main/camp_mot_mbaff0_full.h264",
 		//"test_vectors/h264/main/cvmp_mot_mbaff0_full_B.h264",
+	},
+	// The following test vectors are separated because they don't verify that all
+	// slice header's |first_mb_in_slice| is zero, which is not supported by
+	// Chromium's parsers (see b/216179527). Stateful decoders, who have their own
+	// H.264 parsers, might support them, though.
+	"first_mb_in_slice": {
+		"test_vectors/h264/baseline/BA1_FT_C.h264",
+		"test_vectors/h264/baseline/BASQP1_Sony_C.h264",
+		"test_vectors/h264/baseline/CI1_FT_B.h264",
+		"test_vectors/h264/baseline/SVA_Base_B.h264",
+		"test_vectors/h264/baseline/SVA_CL1_E.h264",
+		"test_vectors/h264/baseline/SVA_FM1_E.h264",
+		"test_vectors/h264/baseline/MR1_BT_A.h264",
+		"test_vectors/h264/main/CABACI3_Sony_B.h264",
+		"test_vectors/h264/main/CABAST3_Sony_E.h264",
+		"test_vectors/h264/main/CABASTBR3_Sony_B.h264",
+		"test_vectors/h264/main/SL1_SVA_B.h264",
 	},
 }
 
@@ -415,6 +414,16 @@ func init() {
 			ExtraData:         appendJSONFiles(h264Files["main"]),
 			Val: chromeStackDecodingTestParam{
 				videoFiles:    h264Files["main"],
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "h264_first_mb_in_slice",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
+			ExtraData:         appendJSONFiles(h264Files["first_mb_in_slice"]),
+			Val: chromeStackDecodingTestParam{
+				videoFiles:    h264Files["first_mb_in_slice"],
 				validatorType: decoding.MD5,
 			},
 		}, {
