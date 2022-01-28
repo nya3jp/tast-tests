@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ebaad14_09e41518",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-28T14:53:38Z",
+      "side": 1,
+      "message": "Hi gabormagda@,\n\nPTAL at this Lacros policy tast test.\nI am getting some errors in CQ and it looks like they are not related to my CL. Can you recommend the proper action for this?\n\nThank you,\nMaria",
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
