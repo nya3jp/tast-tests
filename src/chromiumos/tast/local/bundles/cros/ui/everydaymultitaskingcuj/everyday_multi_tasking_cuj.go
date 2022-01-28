@@ -493,27 +493,22 @@ func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 }
 
 func playYoutubeMusic(ctx context.Context, resources *runResources) error {
+	const actionName = "play youtube music"
+	ui := resources.ui
+	uiHdl := resources.uiHandler
 	shuffleButton := nodewith.Name("Shuffle").Role(role.Button)
 	pauseButton := nodewith.Name("Pause").Role(role.Button)
+	reviewIconUpdateWindow := nodewith.Name("Review icon update").Role(role.Window)
+	okButton := nodewith.Name("OK").Role(role.Button).Ancestor(reviewIconUpdateWindow)
+	dismissReviewIconUpdateIfPresent := ui.IfSuccessThen(
+		ui.WithTimeout(3*time.Second).WaitUntilExists(reviewIconUpdateWindow),
+		uiauto.NamedAction("close 'Review icon update' dialog", uiHdl.Click(okButton)))
 
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		return uiauto.Combine("play youtube music",
-			resources.uiHandler.Click(shuffleButton),
-			dismissReviewIconUpdateIfPresent(resources.ui, resources.uiHandler),
-			resources.ui.WaitUntilExists(pauseButton),
-		)(ctx)
-	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
-}
-
-func dismissReviewIconUpdateIfPresent(ui *uiauto.Context, uiHdl cuj.UIActionHandler) func(context.Context) error {
-	reviewIconUpdateDialog := nodewith.Name("Review icon update").Role(role.Dialog)
-	okButton := nodewith.Name("OK").Role(role.Button)
-
-	return func(ctx context.Context) error {
-		if err := ui.WithTimeout(3 * time.Second).WaitUntilExists(reviewIconUpdateDialog)(ctx); err == nil {
-			testing.ContextLog(ctx, "Detected 'Review icon update' dialog")
-			return uiHdl.Click(okButton)(ctx)
-		}
-		return nil
-	}
+	return uiauto.NamedAction(actionName,
+		// Sometimes closing the dialog doesn't work, so add retry here.
+		ui.Retry(3, uiauto.Combine(actionName,
+			uiHdl.Click(shuffleButton),
+			dismissReviewIconUpdateIfPresent,
+			ui.WaitUntilExists(pauseButton),
+		)))(ctx)
 }
