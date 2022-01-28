@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d65b5d61_f09357e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T02:47:04Z",
+      "side": 1,
+      "message": "Can you use uiauto.Combine to reduce the redundant code.",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 3
+      },
+      "revId": "5e81ab84db5918b900d5bf59e8847f02d408b5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

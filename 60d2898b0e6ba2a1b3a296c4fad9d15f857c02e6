@@ -332,6 +332,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9544fb38_51b82e50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-01-28T02:47:04Z",
+      "side": 1,
+      "message": "My point is that there are 2 files in this cl using the same name frontline_worker_cuj.go, how I can know why it is structured in this way. In my understanding one is test logic, one is lib. Then can you name them using a meaningful name to improve readability.\n\nSecond question, the only purpose of creating a common function / lib is to share usage. It does not make sense to create a lib file to serve only one usage.",
+      "parentUuid": "b84cd338_3f4c5adb",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 2
+      },
+      "revId": "60d2898b0e6ba2a1b3a296c4fad9d15f857c02e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba33f48_a33bca26",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontline_worker_cuj.go",
         "patchSetId": 9
