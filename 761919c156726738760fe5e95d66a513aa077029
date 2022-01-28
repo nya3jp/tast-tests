@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a014851_61aa8a39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T13:22:37Z",
+      "side": 1,
+      "message": "I didn\u0027t forget about it... Bugbash took over every single free spot. I want to run the Kiosk version of this tests locally.",
+      "revId": "761919c156726738760fe5e95d66a513aa077029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
