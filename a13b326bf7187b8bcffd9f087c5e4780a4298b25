@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d13d1b39_f65e4136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-01-28T16:29:16Z",
+      "side": 1,
+      "message": "I was pointed to https://proxx.app/ . Of course, later on we will need to have our own PWA for tests supporting offline mode.",
+      "parentUuid": "e11c0886_4f110893",
+      "revId": "a13b326bf7187b8bcffd9f087c5e4780a4298b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "500e2beb_346e4d4d",
