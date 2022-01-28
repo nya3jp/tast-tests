@@ -39,6 +39,30 @@
       },
       "revId": "9e80066b5aec7c4814d1fe8cf5b0365a5f2c3d7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eeaf308_463fc16b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-28T16:02:50Z",
+      "side": 1,
+      "message": "If I delete \"else\" statement, we will use the first err from the line: \"testConn, err :\u003d cr.TestAPIConn(ctx)\". But we need the latest declaration from \"if\" statement.",
+      "parentUuid": "4fb7d11f_7507113c",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 12
+      },
+      "revId": "9e80066b5aec7c4814d1fe8cf5b0365a5f2c3d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
