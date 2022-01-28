@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "838d9b41_7f073fbd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T13:30:54Z",
+      "side": 1,
+      "message": "nit: `policy: Add SafeSitesFilterBehavior test`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cfa24ae_42c3822a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T13:30:54Z",
+      "side": 1,
+      "message": "`tast run \u003cip\u003e policy.SafeSitesFilterBehavior`",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "22c0ea3e_c6105ea4",
@@ -14,6 +60,63 @@
       "writtenOn": "2022-01-28T13:16:08Z",
       "side": 1,
       "message": "PTAL",
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b452d2b8_077c6cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T13:30:54Z",
+      "side": 1,
+      "message": "Can you check if you can create a html page and host that as unsafe site?\nIt better not to rely on an external site whenever possible.",
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e2c738_db47217f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T13:30:54Z",
+      "side": 1,
+      "message": "Please add an `unset` case as well.",
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce25275_7a37fcd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T13:30:54Z",
+      "side": 1,
+      "message": "nit: For the last error, we usually use `s.Error` instead of fatal.",
+      "range": {
+        "startLine": 111,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 12
+      },
       "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
