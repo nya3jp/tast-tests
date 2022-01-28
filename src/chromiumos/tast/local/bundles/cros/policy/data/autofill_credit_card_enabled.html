@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AutofillCreditCardEnabled</title>
+</head>
+
+<body>
+    <form method="post">
+        <label for="ccname">Name on card</label>
+        <input name="ccname" id="ccname" required placeholder="Full Name" autocomplete="cc-name" autofocus>
+
+        <label for="cardnumber">Card Number</label>
+        <input name="cardnumber" id="cardnumber" required autocomplete="cc-number">
+
+        <label for="cvc">CVC</label>
+        <input name="cvc" id="cvc" required autocomplete="cc-csc">
+
+        <label for="ccexp">Expiry</label>
+        <input name="cc-exp" id="ccexp" required placeholder="MM-YYYY" autocomplete="cc-exp">
+
+        <input type="submit" id="button" value="OK">
+    </form>
+
+    <script>
+        function isCreditCardNumberSet() {
+            return !document.getElementById("cardnumber").value;
+        }
+    </script>
+</body>
+
+</html>
