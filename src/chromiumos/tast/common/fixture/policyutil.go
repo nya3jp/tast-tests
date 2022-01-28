@@ -26,6 +26,8 @@ const (
 	ChromeEnrolledLoggedIn = "chromeEnrolledLoggedIn"
 	// ChromeEnrolledLoggedInARC is a fixture name.
 	ChromeEnrolledLoggedInARC = "chromeEnrolledLoggedInARC"
+	// ChromeAdminDeskTemplatesLoggedIn is a fixture name.
+	ChromeAdminDeskTemplatesLoggedIn = "chromeAdminDeskTemplatesLoggedIn"
 )
 
 // Fixtures defined in chromiumos/tast/local/mgs/fixture.go.
