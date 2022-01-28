@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ce1970_c8d8385f",
+        "filename": "src/chromiumos/tast/local/dbusutil/service.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-28T08:31:36Z",
+      "side": 1,
+      "message": "why this change is in this CL? Was it intended? Commit message says nothing about this nor test calls it.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "954050151b37f3b436f236ab005821c1027160ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
