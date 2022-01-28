@@ -33,6 +33,57 @@
       "message": "takise@: Thank you for reviewing!\ntast-owners@: Please take a look.",
       "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf76cd7_a64e62a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-28T02:56:04Z",
+      "side": 1,
+      "message": "Nit: Add a comment saying why you\u0027re dragging to this particular place",
+      "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc5b8042_eb637471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-28T02:56:04Z",
+      "side": 1,
+      "message": "You\u0027re calling this in a bunch of functions. Maybe pull this into the parameters?",
+      "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b27eb654_7421a50d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-28T02:56:04Z",
+      "side": 1,
+      "message": "You mention reducing noise on a screenshot, but you don\u0027t appear to actually take any screenshots in this test?",
+      "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
