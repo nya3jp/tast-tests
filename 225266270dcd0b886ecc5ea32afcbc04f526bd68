@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d95dc85_4d972199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-01-28T04:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf76cd7_a64e62a5",
+      "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc5b8042_eb637471",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f4df31_75389e3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-01-28T04:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc5b8042_eb637471",
+      "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b27eb654_7421a50d",
@@ -82,6 +118,24 @@
       "writtenOn": "2022-01-28T02:56:04Z",
       "side": 1,
       "message": "You mention reducing noise on a screenshot, but you don\u0027t appear to actually take any screenshots in this test?",
+      "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c38bf121_0ee5c5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-01-28T04:11:28Z",
+      "side": 1,
+      "message": "wm.CheckResizeLockState uses screenshot. That\u0027s what I wrote \"checking the visibility of the translucent window border\".\n\nMade the comment a bit more explicit.",
+      "parentUuid": "b27eb654_7421a50d",
       "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
