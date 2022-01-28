@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb13b04_11a5137c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "Running `tast run $DUT policy.UserFeedbackAllowed*` after updating the code with the suggestions seems to work without the previous error during the LacrosPolicyLoggedIn fixture set up. I can verify everything works now.",
+      "parentUuid": "374dddea_c8f832c2",
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdc44a47_ce2be621",
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/internal/testing/test.go;l\u003d115?q\u003dLacrosVariantUnknown\n\nThis documents if the test has been reviewed for lacros. The correct value here is LacrosVariantExists.",
       "parentUuid": "fdc44a47_ce2be621",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 45
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15be4520_1f74448c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "Ah, thanks for the clarification!",
+      "parentUuid": "3aaa6896_3a9e88a8",
       "range": {
         "startLine": 30,
         "startChar": 2,
@@ -129,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc0f132_2b6a8bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "Updated, thanks!",
+      "parentUuid": "ed980707_6310e6ea",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 33
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df7276fa_c0496d57",
@@ -142,6 +208,24 @@
       "writtenOn": "2022-01-28T13:45:37Z",
       "side": 1,
       "message": "Since you are testing 2 different things, you can nest each in an s.Run for better logging + code organization.",
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d879c64_f892b713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "This is a great tip, thanks for the suggestion :) I have updated the code",
+      "parentUuid": "df7276fa_c0496d57",
       "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -169,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "370a72be_d3d11b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0a8eb2a_feb42b69",
+      "range": {
+        "startLine": 143,
+        "startChar": 7,
+        "endLine": 143,
+        "endChar": 12
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6988005e_09d54e3b",
@@ -182,6 +290,30 @@
       "writtenOn": "2022-01-28T13:45:37Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 147,
+        "startChar": 7,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cb3337_176fa033",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6988005e_09d54e3b",
       "range": {
         "startLine": 147,
         "startChar": 7,
@@ -217,6 +349,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0473a1a8_f8029b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "I agree Name(\"Report an issue… Alt+Shift+I\") is probably unnecessary, but maybe it is more clear to use NameContaining(\"Report an issue\") instead of the key combination for reading/understanding purposes, WDYT?",
+      "parentUuid": "f189af4f_9a11862d",
+      "range": {
+        "startLine": 163,
+        "startChar": 61,
+        "endLine": 163,
+        "endChar": 65
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b6065a4_9ea65f5d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
         "patchSetId": 1
@@ -228,6 +384,30 @@
       "writtenOn": "2022-01-28T13:45:37Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 166,
+        "startChar": 7,
+        "endLine": 166,
+        "endChar": 12
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9dcabd7_e4091f06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b6065a4_9ea65f5d",
       "range": {
         "startLine": 166,
         "startChar": 7,
@@ -251,6 +431,30 @@
       "writtenOn": "2022-01-28T13:45:37Z",
       "side": 1,
       "message": "Error",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 170,
+        "endChar": 12
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1bb1db_c75d8b1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d428840_576db5b0",
       "range": {
         "startLine": 170,
         "startChar": 7,

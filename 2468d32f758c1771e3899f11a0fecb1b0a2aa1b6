@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc6443e8_39a3c4bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "Thanks for the suggestions and clarifications; I have updated the code. Running the three types of test (ash, lacros, both) now works without errors.",
+      "revId": "2468d32f758c1771e3899f11a0fecb1b0a2aa1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60867a31_206c5c85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:23:52Z",
+      "side": 1,
+      "message": "I have renamed this variable. It was a window on an old code I had before creating the cl and I forgot to update it.",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 16
+      },
+      "revId": "2468d32f758c1771e3899f11a0fecb1b0a2aa1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
