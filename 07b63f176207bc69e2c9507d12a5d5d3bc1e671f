@@ -117,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d7d94e_6f53c4a3",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-28T18:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ea5bc2_daced3af",
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "536c8042_0ef0a8d9",
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "Same like L285 on Fibocom devices.",
       "parentUuid": "536c8042_0ef0a8d9",
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8a79fbd_dc5416c7",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-28T18:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cbb1a23_fb41a4b6",
       "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -230,6 +266,24 @@
       "side": 1,
       "message": "This is error coming from DBus call reply on trogdor, and need to compare exact error. So have to keep though it\u0027s not matching other messages.",
       "parentUuid": "60430f38_27dd51c4",
+      "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "538401cc_f2e8a9a3",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-01-28T18:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59db5904_010da93d",
       "revId": "07b63f176207bc69e2c9507d12a5d5d3bc1e671f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
