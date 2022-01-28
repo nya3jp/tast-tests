@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d55bc5_3606ef00",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-28T18:43:12Z",
+      "side": 1,
+      "message": "NOTE: I\u0027ll replace this with the drag method being added in CL:3415981",
+      "revId": "ac3d225614334ee3ec869a548e835eb15fb9433c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
