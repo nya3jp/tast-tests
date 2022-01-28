@@ -6,6 +6,7 @@ package accountmanager
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	androidui "chromiumos/tast/common/android/ui"
@@ -22,6 +23,13 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+var chromePreWithFeaturesEnabled = chrome.NewPrecondition("chrome_pre_with_arc_restrictions", chrome.EnableFeatures("ArcAccountRestrictions"))
+
+// ChromePreWithFeaturesEnabled returns a precondition with flags enabled
+func ChromePreWithFeaturesEnabled() testing.Precondition {
+	return chromePreWithFeaturesEnabled
+}
 
 // DefaultUITimeout is the default timeout for UI interactions.
 const DefaultUITimeout = 20 * time.Second
@@ -49,7 +57,7 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	root := GetAddAccountDialog()
 
 	// Click OK.
-	okButton := nodewith.Name("OK").Role(role.Button).Ancestor(root)
+	okButton := nodewith.NameRegex(regexp.MustCompile("(OK|Continue)")).Role(role.Button).Ancestor(root)
 	if err := uiauto.Combine("Click on OK and proceed",
 		ui.WaitUntilExists(okButton),
 		ui.LeftClick(okButton),
