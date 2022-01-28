@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -22,11 +22,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ForceYouTubeRestrict,
+		Func:         ForceYouTubeSafetyMode,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Check if YouTube content restrictions work as specified by the ForceYouTubeRestrict policy",
+		Desc:         "Test the behavior of deprecated ForceYouTubeSafetyMode policy: check if YouTube safe search is enabled based on the value of the policy",
 		Contacts: []string{
-			"sinhak@google.com",
+			"cmfcmf@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
@@ -43,8 +43,7 @@ func init() {
 	})
 }
 
-// ForceYouTubeRestrict tests the behavior of the ForceYouTubeRestrict Enterprise policy.
-func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
+func ForceYouTubeSafetyMode(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
@@ -54,48 +53,68 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	for _, param := range []struct {
-		// name is the subtest name.
-		name string
-		// value is the policy value.
-		value *policy.ForceYouTubeRestrict
-		// stringContentRestricted is whether strong content is expected to be restricted.
+		name                    string
 		strongContentRestricted bool
-		// mildContentRestricted is whether mild content is expected to be restricted.
-		mildContentRestricted bool
+		mildContentRestricted   bool
+		value                   []policy.Policy
 	}{
 		{
-			name:                    "disabled",
-			value:                   &policy.ForceYouTubeRestrict{Val: safesearch.ForceYouTubeRestrictDisabled},
+			name:                    "enabled",
+			strongContentRestricted: true,
+			mildContentRestricted:   false,
+			value:                   []policy.Policy{&policy.ForceYouTubeSafetyMode{Val: true}},
+		},
+		{
+			name:                    "enabled_overwritten_by_ForceYouTubeRestrict_disabled",
 			strongContentRestricted: false,
 			mildContentRestricted:   false,
+			value: []policy.Policy{
+				&policy.ForceYouTubeSafetyMode{Val: true},
+				&policy.ForceYouTubeRestrict{Val: safesearch.ForceYouTubeRestrictDisabled}},
 		},
 		{
-			name:                    "moderate",
-			value:                   &policy.ForceYouTubeRestrict{Val: safesearch.ForceYouTubeRestrictModerate},
-			strongContentRestricted: true,
-			mildContentRestricted:   false,
-		},
-		{
-			name:                    "strict",
-			value:                   &policy.ForceYouTubeRestrict{Val: safesearch.ForceYouTubeRestrictStrict},
+			name:                    "enabled_overwritten_by_ForceYouTubeRestrict_strict",
 			strongContentRestricted: true,
 			mildContentRestricted:   true,
+			value: []policy.Policy{
+				&policy.ForceYouTubeSafetyMode{Val: true},
+				&policy.ForceYouTubeRestrict{Val: safesearch.ForceYouTubeRestrictStrict}},
+		},
+		{
+			name:                    "disabled",
+			strongContentRestricted: false,
+			mildContentRestricted:   false,
+			value:                   []policy.Policy{&policy.ForceYouTubeSafetyMode{Val: false}},
+		},
+		{
+			name:                    "disabled_overwritten_by_ForceYouTubeRestrict_moderate",
+			strongContentRestricted: true,
+			mildContentRestricted:   false,
+			value: []policy.Policy{
+				&policy.ForceYouTubeSafetyMode{Val: false},
+				&policy.ForceYouTubeRestrict{Val: safesearch.ForceYouTubeRestrictModerate}},
+		},
+		{
+			name:                    "disabled_overwritten_by_ForceYouTubeRestrict_strict",
+			strongContentRestricted: true,
+			mildContentRestricted:   true,
+			value: []policy.Policy{
+				&policy.ForceYouTubeSafetyMode{Val: false},
+				&policy.ForceYouTubeRestrict{Val: safesearch.ForceYouTubeRestrictStrict}},
 		},
 		{
 			name:                    "unset",
-			value:                   &policy.ForceYouTubeRestrict{Stat: policy.StatusUnset},
 			strongContentRestricted: false,
 			mildContentRestricted:   false,
+			value:                   []policy.Policy{&policy.ForceYouTubeSafetyMode{Stat: policy.StatusUnset}},
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
 			}
 
-			// Update policies.
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{param.value}); err != nil {
+			if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.value); err != nil {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
@@ -106,7 +125,6 @@ func ForceYouTubeRestrict(ctx context.Context, s *testing.State) {
 			}
 			defer closeBrowser(cleanupCtx)
 
-			// Run actual test.
 			if err := safesearch.TestYouTubeRestrictedMode(ctx, br, param.strongContentRestricted, param.mildContentRestricted); err != nil {
 				s.Error("Failed to verify YouTube content restriction: ", err)
 			}
