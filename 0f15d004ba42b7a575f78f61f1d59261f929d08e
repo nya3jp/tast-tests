@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3a2717_e6f549b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-28T21:51:52Z",
+      "side": 1,
+      "message": "This is in tast-tests repo, so this is a little bit redundant.\n\nHow about \"arc: Use white wallpaper in arc.ResizeLock\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "0f15d004ba42b7a575f78f61f1d59261f929d08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c7f075_bcb75a72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-28T21:51:52Z",
+      "side": 1,
+      "message": "Do you have a bug number？",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "0f15d004ba42b7a575f78f61f1d59261f929d08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6d43ad0e_d45aecf8",
@@ -65,6 +111,23 @@
       "writtenOn": "2022-01-28T08:08:33Z",
       "side": 1,
       "message": "Po-Hsien: friendly ping :)",
+      "revId": "0f15d004ba42b7a575f78f61f1d59261f929d08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa2467d_f515d698",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-01-28T21:51:52Z",
+      "side": 1,
+      "message": "LGTM % the commit message.",
       "revId": "0f15d004ba42b7a575f78f61f1d59261f929d08e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
