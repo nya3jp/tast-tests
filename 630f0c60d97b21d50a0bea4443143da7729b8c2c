@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a10c8b_73fbc4c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-01-28T23:35:48Z",
+      "side": 1,
+      "message": "Logs of TPS related metrics can be found in https://paste.googleplex.com/6635697248141312\n\nMost of the test case here is the same as in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3350994, but we need a extra test to run in crosbolt and publish extra metrics.\n\nCode difference between previous CL will be commented inline.",
+      "revId": "630f0c60d97b21d50a0bea4443143da7729b8c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0d0e0a_1cc2cbc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-01-28T23:35:48Z",
+      "side": 1,
+      "message": "This test will be run on crosbolt as only crosbolt metrics will be collected by TPS.",
+      "revId": "630f0c60d97b21d50a0bea4443143da7729b8c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010ffc5e_7405ff5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-01-28T23:35:48Z",
+      "side": 1,
+      "message": "Dependency is changed from \"andriod_vm\" to \"arc\" as \"arc\" can be easier satisfied in DUT.",
+      "revId": "630f0c60d97b21d50a0bea4443143da7729b8c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5484cad9_b790e9cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-01-28T23:35:48Z",
+      "side": 1,
+      "message": "Here setup cujRecorder to record TPS related metrics.",
+      "revId": "630f0c60d97b21d50a0bea4443143da7729b8c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00bd56e_7af35bc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-01-28T23:35:48Z",
+      "side": 1,
+      "message": "Run test cases with cuiRecorder turned on in background.",
+      "revId": "630f0c60d97b21d50a0bea4443143da7729b8c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
