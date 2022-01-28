@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4662b182_56d90149",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-28T21:23:56Z",
+      "side": 1,
+      "message": "I am checking with tast team about this issue.",
+      "parentUuid": "c1cf5d53_a7f187e8",
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4657d00_9beec2ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-28T21:23:56Z",
+      "side": 1,
+      "message": "Hi Miriam,\n\nI have addressed the review comment. I am checking with tast team about the null pointer issues in teardown.\n\nRegards\nShijin ",
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9b69f26_a1d15491",
@@ -31,6 +66,30 @@
       "writtenOn": "2022-01-28T15:42:40Z",
       "side": 1,
       "message": "btmojo?",
+      "range": {
+        "startLine": 79,
+        "startChar": 54,
+        "endLine": 79,
+        "endChar": 55
+      },
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e95fedb_05276612",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-28T21:23:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b69f26_a1d15491",
       "range": {
         "startLine": 79,
         "startChar": 54,
@@ -64,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6998b041_747ccdb6",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-28T21:23:56Z",
+      "side": 1,
+      "message": "Done, but then all references in the test have to have * to dereference.",
+      "parentUuid": "e7f03caf_ab1cc84b",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e418091_282e8834",
@@ -77,6 +160,30 @@
       "writtenOn": "2022-01-28T15:42:40Z",
       "side": 1,
       "message": "According to documentation Reset will not be run at the moment, because it\u0027s only run between tests not after the last one, so this is *probably* not causing the nullptr.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#fixtures\n\nBut I think you\u0027d need to release `Js` before these lines.\n\nOr just remove line 39-41? I don\u0027t see why you need to reset the js object, just calling initSysPropObs should suffice?",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 50
+      },
+      "revId": "e488a8f4c31241122ed06768227004036acfb500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc22c0a6_fdfa23e3",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-28T21:23:56Z",
+      "side": 1,
+      "message": "I have added code to release JS before it.\nThere are too many interacting parts here Mojo, JS etc, so I want to extra careful. I will revisit this later when there are more tests using the fixture.",
+      "parentUuid": "5e418091_282e8834",
       "range": {
         "startLine": 39,
         "startChar": 11,

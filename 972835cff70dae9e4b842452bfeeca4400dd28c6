@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8789b6b1_dcc3d3d3",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/api.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-28T21:23:56Z",
+      "side": 1,
+      "message": "Got it. I was still leaving the type in the entries and that was causing the error.",
+      "parentUuid": "085e2262_f991c2b4",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "356d2e9b_60484df6",
