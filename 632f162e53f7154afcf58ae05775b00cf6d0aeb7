@@ -126,6 +126,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c173e2da_54b0d86e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T16:29:03Z",
+      "side": 1,
+      "message": "Keep the faillog here.",
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35193556_207a2a0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
         "patchSetId": 1
@@ -361,6 +378,30 @@
       "side": 1,
       "message": "I agree Name(\"Report an issue… Alt+Shift+I\") is probably unnecessary, but maybe it is more clear to use NameContaining(\"Report an issue\") instead of the key combination for reading/understanding purposes, WDYT?",
       "parentUuid": "f189af4f_9a11862d",
+      "range": {
+        "startLine": 163,
+        "startChar": 61,
+        "endLine": 163,
+        "endChar": 65
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8522849_b94cd75f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T16:29:03Z",
+      "side": 1,
+      "message": "The combination is less likely to change over time.",
+      "parentUuid": "0473a1a8_f8029b72",
       "range": {
         "startLine": 163,
         "startChar": 61,

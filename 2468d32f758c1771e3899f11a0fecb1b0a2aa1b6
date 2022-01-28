@@ -39,6 +39,30 @@
       },
       "revId": "2468d32f758c1771e3899f11a0fecb1b0a2aa1b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d039a1d_896ce381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T16:29:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60867a31_206c5c85",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 16
+      },
+      "revId": "2468d32f758c1771e3899f11a0fecb1b0a2aa1b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
