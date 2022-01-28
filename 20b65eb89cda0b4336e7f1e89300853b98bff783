@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05638574_cfabd498",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-01-28T05:12:03Z",
+      "side": 1,
+      "message": "Maybe give some more context here, testImageURL and usbdev",
+      "range": {
+        "startLine": 611,
+        "startChar": 26,
+        "endLine": 611,
+        "endChar": 53
+      },
+      "revId": "20b65eb89cda0b4336e7f1e89300853b98bff783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
