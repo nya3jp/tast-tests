@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b6c0c6_1d64b4ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-28T14:11:44Z",
+      "side": 1,
+      "message": "Happy to review! The owners on the policy_templates.json are random for most pre-existing policies, so I am the proud owner of ... this thing! :-D",
+      "parentUuid": "45c867d1_5780f8b6",
+      "revId": "7a0d7fed6f831fa5b388e9aa82a78d88dd77a422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bd7dd5d_1c620b87",
