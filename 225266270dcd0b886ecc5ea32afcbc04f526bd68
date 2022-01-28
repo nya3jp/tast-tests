@@ -138,6 +138,24 @@
       "parentUuid": "b27eb654_7421a50d",
       "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a0c353_bf36ebfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/compat_snap.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-28T04:18:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c38bf121_0ee5c5f4",
+      "revId": "225266270dcd0b886ecc5ea32afcbc04f526bd68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
