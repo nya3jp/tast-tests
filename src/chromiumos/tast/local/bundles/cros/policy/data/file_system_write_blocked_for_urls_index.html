@@ -1,0 +1,16 @@
+<a href="#">showSaveFilePicker</a>
+<script>
+  // Create a promise that we can check from Tast that resolves to true or
+  // false depending on whether the file picker opened successfully.
+  let resolve;
+  window.filePickerShownPromise = new Promise(_resolve => resolve = _resolve);
+
+  document.querySelector("a").addEventListener("click", (e) => {
+    e.preventDefault();
+    window.showSaveFilePicker({ suggestedName: 'test-file' })
+      .then(() => resolve(true))
+      // showSaveFilePicker() throws if it fails to open due to a policy or if
+      // the user closes it without saving.
+      .catch(() => resolve(false))
+  });
+</script>
