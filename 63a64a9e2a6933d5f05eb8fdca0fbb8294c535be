@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d682fe4_89bedcf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-28T14:19:30Z",
+      "side": 1,
+      "message": "+Sonja PTAL \n\nI\u0027ve tried to eye-diff this CL and CL:3423946 (context: it seems that this work was done ~twice due to duplicate tracking bugs). The only two relevant differences in the common sections I\u0027ve spotted are in the comments below but please also take a look.\n\nThanks!",
+      "revId": "63a64a9e2a6933d5f05eb8fdca0fbb8294c535be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b9d111_09dc8d8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-28T14:19:30Z",
+      "side": 1,
+      "message": "WDYT about using \"allow\" and \"disallow\" here as suggested in CL:3423946 ?\n\nI think those are nicer names :-)",
+      "range": {
+        "startLine": 86,
+        "startChar": 23,
+        "endLine": 86,
+        "endChar": 27
+      },
+      "revId": "63a64a9e2a6933d5f05eb8fdca0fbb8294c535be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20d5e5b_a1bf81e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_service_enabled.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-01-28T14:19:30Z",
+      "side": 1,
+      "message": "CL:3423946 is suggesting ServeAndVerify here; any idea which is better?",
+      "range": {
+        "startLine": 118,
+        "startChar": 24,
+        "endLine": 118,
+        "endChar": 39
+      },
+      "revId": "63a64a9e2a6933d5f05eb8fdca0fbb8294c535be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
