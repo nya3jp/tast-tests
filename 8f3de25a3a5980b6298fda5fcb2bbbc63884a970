@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e0c613_2735720b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:34:39Z",
+      "side": 1,
+      "message": "nit: `policy: Add Lacros test for ShowFullUrlsInAddressBar`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2ebaad14_09e41518",
@@ -14,6 +37,139 @@
       "writtenOn": "2022-01-28T14:53:38Z",
       "side": 1,
       "message": "Hi gabormagda@,\n\nPTAL at this Lacros policy tast test.\nI am getting some errors in CQ and it looks like they are not related to my CL. Can you recommend the proper action for this?\n\nThank you,\nMaria",
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bf24e9_f2018dbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:34:39Z",
+      "side": 1,
+      "message": "You are right, the failure is unrelated to your change. Sadly a CQ failure like this is quite common. It is \"normal\" to send the CL 3-4 times to the CQ.",
+      "parentUuid": "2ebaad14_09e41518",
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f373be_dacb13e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:34:39Z",
+      "side": 1,
+      "message": "nit: `LacrosVariantExists` (we are currently updating the existing tests as well)",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f728adb_6c42b165",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:34:39Z",
+      "side": 1,
+      "message": "It should be after `defer closeBrowser(cleanupCtx)` to contain UI elements from the Lacros browser as well.",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 104
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "475ed0b2_249e8873",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:34:39Z",
+      "side": 1,
+      "message": "This value should be included in the testing table.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "559fb78a_75c6bea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:34:39Z",
+      "side": 1,
+      "message": "nit: `if fullURLItemShown :\u003d checkAlwaysShowFullURLItem(ctx, ui); fullURLItemShown {`",
+      "range": {
+        "startLine": 143,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 24
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c604295_fb65fb7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-28T15:34:39Z",
+      "side": 1,
+      "message": "If there is an error handling this request, like a timeout, the test will pass instead of failing.\nIf you use `EnsureGoneFor()`, it only return without an error when it is sure that the item you are looking for is not there.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
       "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
