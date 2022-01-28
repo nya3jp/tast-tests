@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d7e8977_a5f90ef3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513943
+      },
+      "writtenOn": "2022-01-28T15:27:32Z",
+      "side": 1,
+      "message": "@poromov: As discussed, PS 6 includes changes that enable setting test cases with warning restrictions to informational, and keeping only ash+blocked and ash+allowed variants as critical.",
+      "revId": "673e6c312e8ea7902bc88939c1ee90d5548d2a3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
