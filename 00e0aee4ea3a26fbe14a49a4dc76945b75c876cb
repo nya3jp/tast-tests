@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c4f2cb0_59d2b8a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T13:05:44Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "00e0aee4ea3a26fbe14a49a4dc76945b75c876cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96da8142_3648dc0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T13:05:44Z",
+      "side": 1,
+      "message": "nit: Use more descriptive names. Same as below",
+      "revId": "00e0aee4ea3a26fbe14a49a4dc76945b75c876cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80b92123_f5795403",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_n.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T13:05:44Z",
+      "side": 1,
+      "message": "Use more descriptive names.\n\nMaybe preparationTimeout + verificationTimeout ?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "00e0aee4ea3a26fbe14a49a4dc76945b75c876cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3014b00a_cb09da4b",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T13:05:44Z",
+      "side": 1,
+      "message": "very minor nit: keep this as ctx",
+      "range": {
+        "startLine": 115,
+        "startChar": 18,
+        "endLine": 115,
+        "endChar": 27
+      },
+      "revId": "00e0aee4ea3a26fbe14a49a4dc76945b75c876cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
