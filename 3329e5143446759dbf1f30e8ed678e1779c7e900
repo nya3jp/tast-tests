@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a332a5e5_ab447cfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/rollback_with_omaha.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-28T13:00:56Z",
+      "side": 1,
+      "message": "IS this a secret variable or supplied via CLI?",
+      "revId": "3329e5143446759dbf1f30e8ed678e1779c7e900",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
