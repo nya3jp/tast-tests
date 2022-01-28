@@ -61,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a44cf093_cd3ad8dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Is that really necessary? I renamed the local variable here since it collided with the pre-existing `ax` variable used for the  \"chromiumos/tast/remote/wificell/hostapd\" import rename. If it\u0027s a big deal I can just remove this change from the CL and leave it as-is.",
+      "parentUuid": "9dd8e852_f64ecf9b",
+      "range": {
+        "startLine": 1329,
+        "startChar": 2,
+        "endLine": 1329,
+        "endChar": 9
+      },
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8430a5f9_23134ae9",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
         "patchSetId": 6
@@ -72,6 +96,24 @@
       "writtenOn": "2022-01-28T09:41:04Z",
       "side": 1,
       "message": "nit: end with .",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c73bb81_08fb87d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "8430a5f9_23134ae9",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -89,6 +131,24 @@
       "writtenOn": "2022-01-28T09:41:04Z",
       "side": 1,
       "message": "nit: end with .",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13026ae5_59fe8624",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "34aa83fb_735a51be",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -118,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "231a0103_fec4fce9",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "While that would work, I\u0027d rather not add an unnecessary naming collision with the `router` package. Since `r` is already used too for the param name, I went with `rWithSupport` to verbosely clarify that it has the support. Since later it is just used from the `APIface` which is `router` anyways I think it\u0027s fine to leave this as-is here. Is that fine?",
+      "parentUuid": "98a93f03_bd149b36",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0bb5e7e_553e294d",
         "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
         "patchSetId": 6
@@ -129,6 +213,24 @@
       "writtenOn": "2022-01-28T09:41:04Z",
       "side": 1,
       "message": "nit: just expose a constant for the timeout and use ctxutil.Shorten in tests",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85a309c8_8526450c",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Done, though this isn\u0027t for tests themselves but for the router implementations. In this CL it\u0027s only used in one place, but it is reused in the next CL in the chain for the OpenWrt implementation.",
+      "parentUuid": "e0bb5e7e_553e294d",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -150,6 +252,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44dcd31d_cd9d3bc7",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/doc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "98c31b5b_04eeae3f",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ff43564_b6ad830a",
@@ -163,6 +283,24 @@
       "writtenOn": "2022-01-28T09:41:04Z",
       "side": 1,
       "message": "Is this useful? users can use a cast to get the actual type.",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c64e3ab6_d71a7501",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Yes, this allows places where any support.Router is present to switch for differing logic easily. This is used primarily in the test fixture to choose the correct constructor.",
+      "parentUuid": "2ff43564_b6ad830a",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +322,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "645ead02_49abb6da",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Done. I actually meant to do this as I put it on the Router interface for that reason. I just had it here first.",
+      "parentUuid": "3daee621_a568d809",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5f3e5df_c0e6d7b9",
@@ -201,6 +357,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1374cb83_9178be68",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Yes, see my other response.",
+      "parentUuid": "c5f3e5df_c0e6d7b9",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab1bd766_88491cdd",
@@ -214,6 +388,30 @@
       "writtenOn": "2022-01-28T09:41:04Z",
       "side": 1,
       "message": "nit: explain in the comment what Veth is.",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 7
+      },
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b02374d9_ceca07c6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "I added a little more clarity to the comment.",
+      "parentUuid": "ab1bd766_88491cdd",
       "range": {
         "startLine": 128,
         "startChar": 3,
@@ -247,6 +445,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df9bea8_236b55b6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "09370d10_502456be",
+      "range": {
+        "startLine": 149,
+        "startChar": 55,
+        "endLine": 149,
+        "endChar": 57
+      },
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e839dc2_0d84bb63",
@@ -260,6 +482,24 @@
       "writtenOn": "2022-01-28T09:41:04Z",
       "side": 1,
       "message": "Will this be replaced by hardware deps? If yes, add a TODO here as well.\nIf not, I\u0027d prefer for tests to use the functions below to check for the type. stringly comparisons are not the way to go.",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f765c56_9c721a9d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "It\u0027s unclear if hardware deps are able to cover APs like this currently, but the goal is to be able to do something like that. As for the string comparisons, that is only used to determine which of the WithX functions to use for it. It still uses casting, and the WithX functions should be used for specific usage, though this function is purely for conveniently validating more than one type of support at a time so. This makes it so you don\u0027t have to have a lot of manual checking and error formatting every time, and ensures that the error you get back is very explicitly telling you which support you are missing.\n\nI\u0027m still new to Go so if this is more of a Go no-no I can just remove it. I just thought it would make usage easier and less of a pain to check support. What do you think?",
+      "parentUuid": "5e839dc2_0d84bb63",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -283,6 +523,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "639e4c83_8fd28ab6",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Hmm good point. It was already legacy so I just left it as that, but perhaps `gale` is more appropriate. I\u0027ll confirm that before changing it as I did not pick it.",
+      "parentUuid": "a7d156af_a8e485d0",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf53126c_01ac864e",
         "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
         "patchSetId": 6
@@ -294,6 +552,24 @@
       "writtenOn": "2022-01-28T09:41:04Z",
       "side": 1,
       "message": "Is this interface even needed? Maybe just use support.Router everywhere?",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d34b557b_97a917b0",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "Technically no, but I put it there since where you use it you include the package and IMO it\u0027s more clear that `router.Base` is a basic router than `support.Router` since the latter does not imply level of support.\n\nSee go/tast-router-package-generic-refactor for more insight on the design.",
+      "parentUuid": "bf53126c_01ac864e",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -311,6 +587,24 @@
       "writtenOn": "2022-01-28T09:41:04Z",
       "side": 1,
       "message": "Why would this interface be used instead of a specific one that defines exactly what the function needs? It would catch more issues at compile time.",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d995059_b3448da4",
+        "filename": "src/chromiumos/tast/remote/wificell/router/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-28T21:00:54Z",
+      "side": 1,
+      "message": "This is to allow for swapping out different router implementations that have equivalent \"Standard\" support without requiring the test writer to care about it. While you could cast for each support every time, that\u0027s can be cumbersome to write over and over if you know you just want a common router. This allows the test writer to just require the \"standard set of support that our common routers should have and not have to pick each one every time. Moving forward it may be more correct to cast to direct support interfaces, but having this here keeps the usage closer what the tests do already, thus requiring minimal changes.\n\nSee go/tast-router-package-generic-refactor for more insight on the design.",
+      "parentUuid": "ae502298_5ccdd7af",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
