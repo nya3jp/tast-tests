@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dd07619_b8f5aaba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:52:54Z",
+      "side": 1,
+      "message": "I moved the faillog to be on each of the nested Run, so it generates the tree based on what it is being tested (ui_tree + unset/allow/deny + menu_access/key_combination), so there are 6 possible outcomes when it fails instead of only 3 (ui_tree + unset/allow/deny), that it is why I thought it was not necessary here. Should the code always include a faillog after an s.Run so every possible fail dumps the UI tree?",
+      "parentUuid": "c173e2da_54b0d86e",
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35193556_207a2a0b",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
         "patchSetId": 1
@@ -402,6 +420,30 @@
       "side": 1,
       "message": "The combination is less likely to change over time.",
       "parentUuid": "0473a1a8_f8029b72",
+      "range": {
+        "startLine": 163,
+        "startChar": 61,
+        "endLine": 163,
+        "endChar": 65
+      },
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2471b41_7281b524",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-01-28T16:52:54Z",
+      "side": 1,
+      "message": "Good point, I have updated it, thanks :)",
+      "parentUuid": "e8522849_b94cd75f",
       "range": {
         "startLine": 163,
         "startChar": 61,
