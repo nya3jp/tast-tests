@@ -56,6 +56,15 @@ var nextVirtTouchNum = 1 // appended to virtual touchscreen device name
 
 const touchFrequency = 5 * time.Millisecond
 
+// ZoomType represents the zoom type to perform.
+type ZoomType int
+
+// Holds all the zoom types that can be performed.
+const (
+	ZoomIn ZoomType = iota
+	ZoomOut
+)
+
 // Touchscreen returns an TouchscreenEventWriter to inject events into an arbitrary touchscreen device.
 func Touchscreen(ctx context.Context) (*TouchscreenEventWriter, error) {
 	infos, err := readDevices("")
@@ -594,30 +603,69 @@ func (tw *TouchEventWriter) moveMultipleTouches(ctx context.Context, pointsPerTo
 	return nil
 }
 
-// ZoomIn performs a series of touches that start from centerX, centerY
-// and move both NE, and SW d away to simulate a pinch zoom in.
-func (tw *TouchEventWriter) ZoomIn(ctx context.Context, centerX, centerY, d TouchCoord, t time.Duration) error {
+// performPinchZoom performs a pinch zoom using the provided coordinates.
+// A zoom in will start at the center and move points to the bottomLeft,
+// and topRight. A zoom out will do the inverse.
+func (tw *TouchEventWriter) performPinchZoom(ctx context.Context, center, bottomLeft, topRight coords.Point, t time.Duration, zoom ZoomType) error {
+	// Ensure enough touches are provided.
 	if len(tw.touches) < 2 {
 		return errors.New("must have at least two touches to perform a zoom")
 	}
 
+	// Set up the points based on the zoom type.
+	var leftFingerStart, leftFingerEnd coords.Point
+	var rightFingerStart, rightFingerEnd coords.Point
+	switch zoom {
+	case ZoomIn:
+		leftFingerStart = center
+		leftFingerEnd = bottomLeft
+		rightFingerStart = center
+		rightFingerEnd = topRight
+	case ZoomOut:
+		leftFingerStart = bottomLeft
+		leftFingerEnd = center
+		rightFingerStart = topRight
+		rightFingerEnd = center
+	default:
+		return errors.Errorf("invalid zoom provided: %v", zoom)
+	}
+
+	// Perform the zoom over a series of steps.
 	steps := int(t/touchFrequency) + 1
-	leftFingerPoints := getPointsBetweenCoords(tw.tsw, centerX, centerY, centerX-d, centerY-d, steps)
-	rightFingerPoints := getPointsBetweenCoords(tw.tsw, centerX, centerY, centerX+d, centerY+d, steps)
+	leftFingerPoints := getPointsBetweenCoords(tw.tsw, TouchCoord(leftFingerStart.X), TouchCoord(leftFingerStart.Y), TouchCoord(leftFingerEnd.X), TouchCoord(leftFingerEnd.Y), steps)
+	rightFingerPoints := getPointsBetweenCoords(tw.tsw, TouchCoord(rightFingerStart.X), TouchCoord(rightFingerStart.Y), TouchCoord(rightFingerEnd.X), TouchCoord(rightFingerEnd.Y), steps)
 	return tw.moveMultipleTouches(ctx, leftFingerPoints, rightFingerPoints)
 }
 
-// ZoomOut performs a series of touches that start from the NE, and SW corners that are d
-// away from centerX, and centerY, and end at centerX, centerY to simulate a pinch zoom out.
-func (tw *TouchEventWriter) ZoomOut(ctx context.Context, centerX, centerY, d TouchCoord, t time.Duration) error {
-	if len(tw.touches) < 2 {
-		return errors.New("must have at least two touches to perform a zoom")
-	}
+// Zoom performs a pinch-to-zoom where the distance traveled to/from the
+// provided center point is d for each finger.
+func (tw *TouchEventWriter) Zoom(ctx context.Context, centerX, centerY, d TouchCoord, t time.Duration, zoom ZoomType) error {
+	bottomLeft := coords.NewPoint(int(centerX)-int(d), int(centerY)+int(d))
+	topRight := coords.NewPoint(int(centerX)+int(d), int(centerY)-int(d))
+	center := coords.NewPoint(int(centerX), int(centerY))
+	return tw.performPinchZoom(ctx, center, bottomLeft, topRight, t, zoom)
+}
 
-	steps := int(t/touchFrequency) + 1
-	leftFingerPoints := getPointsBetweenCoords(tw.tsw, centerX-d, centerY-d, centerX, centerY, steps)
-	rightFingerPoints := getPointsBetweenCoords(tw.tsw, centerX+d, centerY+d, centerX, centerY, steps)
-	return tw.moveMultipleTouches(ctx, leftFingerPoints, rightFingerPoints)
+// ZoomRelativeToSize performs a pinch-to-zoom where the distance traveled, and
+// center point are calculated based on the size of the Touch writer's
+// dimensions. This function will attempt to use as much of the dimensions
+// as possible in order to reliably trigger the zoom.
+func (tw *TouchEventWriter) ZoomRelativeToSize(ctx context.Context, t time.Duration, zoom ZoomType) error {
+	// Used to shrink the size of the writer in order to utilize as much
+	// as possible without reaching the bounds.
+	const sizeInset = 10
+
+	// Generate a rectangle that is a bit smaller than the
+	// dimensions of the writer.
+	writerDimensions := coords.NewRect(0, 0, int(tw.tsw.Width()), int(tw.tsw.Height()))
+	insetWriterDimensions := writerDimensions.WithInset(sizeInset, sizeInset)
+
+	// Calculate the relevant points which use up as much of the writer's
+	// dimensions as possible.
+	center := insetWriterDimensions.CenterPoint()
+	bottomLeft := insetWriterDimensions.BottomLeft()
+	topRight := insetWriterDimensions.TopRight()
+	return tw.performPinchZoom(ctx, center, bottomLeft, topRight, t, zoom)
 }
 
 // DoubleSwipe performs a swipe movement with two touches. One is from x0/y0 to x1/y1, and the other is x0+d/y0 to x1+d/y1.
