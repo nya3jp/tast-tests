@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -812,5 +813,40 @@ func RestoreArcvmDevConf(ctx context.Context) error {
 			return err
 		}
 	}
+	return nil
+}
+
+// CheckNoDex2Oat verifies whether ARC is pre-optimized and no dex2oat was previously running in the background.
+func CheckNoDex2Oat(outDir string) error {
+	const (
+		containerDexPrefix = `/system/bin/dex2oat .*--dex-file=(.+?) --`
+		vmDexPrefix        = `DexInv: --- BEGIN \'(.+?)\' ---`
+	)
+
+	isVMEnabled, err := VMEnabled()
+	if err != nil {
+		return errors.Wrap(err, "failed to get whether ARCVM is enabled")
+	}
+
+	// check logcat for evidence of dex2oat running.
+	logcatPath := filepath.Join(outDir, "logcat.txt")
+
+	dump, err := ioutil.ReadFile(logcatPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read logcat")
+	}
+
+	dexPrefix := containerDexPrefix
+	if isVMEnabled {
+		dexPrefix = vmDexPrefix
+	}
+	m := regexp.MustCompile(dexPrefix).FindAllStringSubmatch(string(dump), -1)
+	for _, match := range m {
+		res := match[1]
+		if !strings.HasPrefix(res, "/data/") {
+			return errors.Errorf("failed due to system resource %q not pre-optimized", res)
+		}
+	}
+
 	return nil
 }

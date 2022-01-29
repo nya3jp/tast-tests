@@ -31,10 +31,12 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PowerIdlePerf,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Measures the battery drain of an idle system",
+		Desc:         "Measures the battery drain of an idle system with and without ARC",
 		Contacts: []string{
-			"cwd@chromium.org",
+			"cwd@chromium.org", // Author
+			"alanding@chromium.org",
 			"arcvm-eng@google.com",
+			"arc-performance@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
@@ -56,7 +58,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.ForceBatteryDischarge,
 				},
-				Fixture: "arcBooted",
+				Fixture: "arcBootedRestricted",
 			},
 			{
 				Name:              "vm",
@@ -65,7 +67,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.ForceBatteryDischarge,
 				},
-				Fixture: "arcBooted",
+				Fixture: "arcBootedRestricted",
 			},
 			{
 				Name:              "noarc_nobatterymetrics",
@@ -83,7 +85,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.NoBatteryDischarge,
 				},
-				Fixture: "arcBooted",
+				Fixture: "arcBootedRestricted",
 			},
 			{
 				Name:              "vm_nobatterymetrics",
@@ -92,10 +94,20 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.NoBatteryDischarge,
 				},
-				Fixture: "arcBooted",
+				Fixture: "arcBootedRestricted",
 			},
 		},
 	})
+}
+
+// idleCoolDownConfig returns the config to wait for the machine to cooldown for PowerIdlePerf test.
+// This overrides the default config timeout (5 minutes) and temperature threshold (46 C)
+// settings to reduce test flakes on low-end devices.
+func idleCoolDownConfig() cpu.CoolDownConfig {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.PollTimeout = 7 * time.Minute
+	cdConfig.TemperatureThreshold = 60000
+	return cdConfig
 }
 
 func PowerIdlePerf(ctx context.Context, s *testing.State) {
@@ -139,10 +151,17 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Finished setup")
 
-	// Wait until CPU is cooled down.
-	cooldownTime, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI))
+	// Wait until CPU is cooled down and idle.
+	cooldownTime, err := cpu.WaitUntilCoolDown(ctx, idleCoolDownConfig())
 	if err != nil {
 		s.Fatal("CPU failed to cool down: ", err)
+	}
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("CPU failed to idle: ", err)
+	}
+
+	if err := arc.CheckNoDex2Oat(s.OutDir()); err != nil {
+		s.Fatal("Failed to verify dex2oat was not running: ", err)
 	}
 
 	if err := metrics.Start(ctx); err != nil {
