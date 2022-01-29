@@ -37,7 +37,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromePolicyLoggedInIsolatedApp,
 		Desc:     "Logged into a user session with web app isolation enabled",
-		Contacts: []string{"simonha@google.com"},
+		Contacts: []string{"simonha@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl: &policyChromeFixture{
 			extraOpts: []chrome.Option{chrome.ExtraArgs("--enable-features=WebAppEnableIsolatedStorage")},
 		},
