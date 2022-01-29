@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -70,15 +71,12 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	ui := uiauto.New(tconn)
-	bubble := nodewith.ClassName(ash.AppListBubbleClassName)
-
-	// When a DUT switches from tablet mode to clamshell mode, sometimes it
-	// takes a while to settle down. Wait for the transition to finish.
-	if err := ui.WaitForLocation(nodewith.Root())(ctx); err != nil {
-		s.Fatal("Failed to wait for location changes: ", err)
+	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+		s.Fatal("Launcher not closed: ", err)
 	}
 
+	ui := uiauto.New(tconn)
+	bubble := nodewith.ClassName(ash.AppListBubbleClassName)
 	if err := uiauto.Combine("open bubble by clicking home button",
 		ui.LeftClick(nodewith.ClassName("ash/HomeButton")),
 		ui.WaitUntilExists(bubble),
@@ -107,7 +105,7 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not reopen bubble by pressing Search key: ", err)
 	}
 
-	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(bubble)
+	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(nodewith.ClassName(launcher.BubbleAppsGridViewClass))
 
 	if s.Param().(bubbleSmokeTestType) == enableLauncherAppSort {
 		// When the launcher app sort feature is enabled, fake apps are placed at the front. In this case, scroll the apps grid to the end to show the setting app button before launching the app.
