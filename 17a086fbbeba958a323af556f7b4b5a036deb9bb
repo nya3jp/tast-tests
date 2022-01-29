@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03894ec_2770d98c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-29T04:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7046d966_1ca081e8",
+      "range": {
+        "startLine": 14,
+        "startChar": 72,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "17a086fbbeba958a323af556f7b4b5a036deb9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08278570_12d81255",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "679c89ca_9c56bb06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/folder_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-29T04:29:29Z",
+      "side": 1,
+      "message": "Probably not. We should generally not have folders in grid at this point, and trying to use an existing one may add some complexity (e.g. we may have to find the page for the folder/ switch to that page, or scroll to the folder; and if the folder is on the last page, we\u0027d have to move it before doing drag to next page) - I think just creating folder is simpler 😊\n\nThough, I did attempt to make the test less sensible to folder existing in the grid at the start of the test by naming the test folder (so the test does not get tripped up when searching for unnamed folders).",
+      "parentUuid": "08278570_12d81255",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "17a086fbbeba958a323af556f7b4b5a036deb9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cf040dc_6ff931ae",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-28T20:09:06Z",
       "side": 1,
       "message": "Can we combine `dragFolderToScrollableContainerBottom` and `dragFolderToScrollableContainerTop`? There seems be some code duplication between these two methods.",
+      "range": {
+        "startLine": 244,
+        "startChar": 5,
+        "endLine": 244,
+        "endChar": 42
+      },
+      "revId": "17a086fbbeba958a323af556f7b4b5a036deb9bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0df52a1_699ef89a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/folder_drag_and_drop.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-29T04:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cf040dc_6ff931ae",
       "range": {
         "startLine": 244,
         "startChar": 5,
