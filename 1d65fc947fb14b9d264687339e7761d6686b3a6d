@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a54895_2cc4f992",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-29T16:22:21Z",
+      "side": 1,
+      "message": "2 seems low - the standard seems to be 5-10 seconds elsewhere.",
+      "revId": "1d65fc947fb14b9d264687339e7761d6686b3a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc53957_a2670ebc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-29T16:22:21Z",
+      "side": 1,
+      "message": "Move below the error check so the message is relevant.",
+      "revId": "1d65fc947fb14b9d264687339e7761d6686b3a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "782a8a2e_51725381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-29T16:22:21Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "1d65fc947fb14b9d264687339e7761d6686b3a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4b203d_3ffac1b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-29T16:22:21Z",
+      "side": 1,
+      "message": "Do you want something like: `IfSuccessThen(...)` here instead if there\u0027s only a chance the popup appears?",
+      "revId": "1d65fc947fb14b9d264687339e7761d6686b3a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
