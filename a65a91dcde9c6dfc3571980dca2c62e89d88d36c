@@ -16,6 +16,29 @@
       "message": "lgtm",
       "revId": "a65a91dcde9c6dfc3571980dca2c62e89d88d36c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "430b2c08_710e2706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-01-29T06:27:06Z",
+      "side": 1,
+      "message": "r.duration accumulates with each run, right?",
+      "range": {
+        "startLine": 393,
+        "startChar": 7,
+        "endLine": 393,
+        "endChar": 15
+      },
+      "revId": "a65a91dcde9c6dfc3571980dca2c62e89d88d36c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
