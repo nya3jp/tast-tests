@@ -29,6 +29,9 @@ import (
 // ExpandedItemsClass define the class name of the expanded launcher view which is used as search parameters in ui.
 const ExpandedItemsClass = "AppListItemView"
 
+// BubbleAppsGridViewClass defines the class name of the bubble apps grid.
+const BubbleAppsGridViewClass = "ScrollableAppsGridView"
+
 // UnnamedFolderFinder is the finder of a newly created folder with the default name.
 var UnnamedFolderFinder = nodewith.Name("Folder Unnamed").ClassName(ExpandedItemsClass)
 
