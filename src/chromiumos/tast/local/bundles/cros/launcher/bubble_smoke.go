@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -107,7 +108,7 @@ func BubbleSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not reopen bubble by pressing Search key: ", err)
 	}
 
-	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(bubble)
+	settingButton := nodewith.Role(role.Button).Name(apps.Settings.Name).Ancestor(nodewith.ClassName(launcher.BubbleAppsGridViewClass))
 
 	if s.Param().(bubbleSmokeTestType) == enableLauncherAppSort {
 		// When the launcher app sort feature is enabled, fake apps are placed at the front. In this case, scroll the apps grid to the end to show the setting app button before launching the app.
