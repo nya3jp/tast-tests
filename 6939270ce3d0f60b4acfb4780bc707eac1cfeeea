@@ -22,6 +22,30 @@
       },
       "revId": "6939270ce3d0f60b4acfb4780bc707eac1cfeeea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf44b702_c22f0e63",
+        "filename": "src/chromiumos/tast/remote/wificell/router/ax/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 0,
+      "message": "I removed the interface and just made it a struct as to more adhere to https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#interfaces.\n\n\"Go interfaces generally belong in the package that consumes values of the interface type, not a package that implements the interface type. The implementing package should return concrete (usually pointer or struct) types. That way, new methods can be added to implementations without requiring extensive refactoring\"\n\nEach router implementation is now named the same, Router, and it\u0027s just under a different package. So it\u0027s `ax.Router`, `legacy.Router`, and `openwrt.Router` now and those are all structs.",
+      "parentUuid": "1747800f_0c87d874",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "6939270ce3d0f60b4acfb4780bc707eac1cfeeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

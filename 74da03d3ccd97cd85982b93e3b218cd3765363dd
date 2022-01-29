@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a1da72_9d879a8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "3b7382db_1e251f86",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72aa48f8_efb1824f",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-28T23:03:29Z",
       "side": 1,
       "message": "It seems like there was also refactoring of the ax packages, i suggest also making sure that your changes didn\u0027t impact the ax test suite. Let me know if you want documentation on how to run these tests.",
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be65d8b_a3f24d72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 1,
+      "message": "I tried running the wifi.AxSimpleConnect.* tests using the donut lab AX wificells, chromeos1-dev-host9 and chromeos1-dev-host10, and both fail but not due to my changes as the same failure happens with the commit prior to this one as well (6939270ce). I have filed b/216865684 to address this issue.",
+      "parentUuid": "72aa48f8_efb1824f",
       "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b71a0c2_d88ef6d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 1,
+      "message": "The change was required by the repo preflight checks. I think since I changed a line in this file it ran this check for perhaps the first time since the check was there? Either way I had to fix it to upload my commits.",
+      "parentUuid": "86709159_ca510081",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baeb86f6_2807de4e",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-01-28T23:03:29Z",
       "side": 1,
       "message": "If there\u0027s a TODO, we usually have a buganizer bug to filed to track the effort. I\u0027d file a bug for this or link to an existing effort.\ne.g\n```\n// TODO(b:BUGID)\n```",
+      "range": {
+        "startLine": 1335,
+        "startChar": 5,
+        "endLine": 1335,
+        "endChar": 9
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23225896_99df295e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 1,
+      "message": "I don\u0027t really have a clear enough idea of how to do that right now or if that TODO will really match what we are thinking with the labeling, so I just removed the TODO.",
+      "parentUuid": "baeb86f6_2807de4e",
       "range": {
         "startLine": 1335,
         "startChar": 5,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3442b75_5d741855",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 1,
+      "message": "I agree, I updated it to your suggestion.",
+      "parentUuid": "77127654_a517b385",
+      "range": {
+        "startLine": 1342,
+        "startChar": 26,
+        "endLine": 1342,
+        "endChar": 30
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1003236e_b6533336",
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7daeb827_a9117c5d",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 1,
+      "message": "Good point. This is what I would have done but actually after looking at it again, this explicit casting is no longer needed since I later refactored it to have a specific `supportedRouter` interface that has DHCP support. I did adjust it to just use the returned err from the support.Validate call in the StartAPIface though.",
+      "parentUuid": "1003236e_b6533336",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 80
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d08dd1d_6c4749b0",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-01-28T23:03:29Z",
       "side": 1,
       "message": "We should elaborate that legacy routers mostly refer to Gale routers but the package has in the past referred to whirlwind routers. Also maybe comment that the code inside here is expected to eventually be deprecated.",
+      "range": {
+        "startLine": 5,
+        "startChar": 66,
+        "endLine": 5,
+        "endChar": 72
+      },
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa3f02d_b05a0b9e",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/doc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 1,
+      "message": "I\u0027ve updated the comment to include more of the history and deprecation expectation.",
+      "parentUuid": "3d08dd1d_6c4749b0",
       "range": {
         "startLine": 5,
         "startChar": 66,

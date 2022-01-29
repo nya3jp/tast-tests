@@ -149,6 +149,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "822c6c6f_55680940",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-29T00:54:23Z",
+      "side": 1,
+      "message": "I\u0027m going to keep the change to `apIface` in then, if that\u0027s not okay just let me know.",
+      "parentUuid": "a599faa5_5fdfd0ba",
+      "range": {
+        "startLine": 1329,
+        "startChar": 2,
+        "endLine": 1329,
+        "endChar": 9
+      },
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8430a5f9_23134ae9",
