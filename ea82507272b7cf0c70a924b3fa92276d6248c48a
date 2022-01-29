@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf158160_009f7a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-29T01:37:00Z",
+      "side": 1,
+      "message": "If any test assertion fails, it would just return an error and stop the test at L220, right?",
+      "parentUuid": "acd44646_ab4800c0",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 4
+      },
+      "revId": "ea82507272b7cf0c70a924b3fa92276d6248c48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8932634_b2526aed",
