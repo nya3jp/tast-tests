@@ -16,6 +16,24 @@
       "message": "Would you have any recommendations here?",
       "revId": "793466f64a2420bd48b9a559e0b4d83e0b6fb55f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f31e87fe_104245b9",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-29T00:07:21Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "parentUuid": "80bf3a96_46b3b176",
+      "revId": "793466f64a2420bd48b9a559e0b4d83e0b6fb55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
