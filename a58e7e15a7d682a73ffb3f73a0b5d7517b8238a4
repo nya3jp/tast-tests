@@ -332,6 +332,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc286da1_3aae2cf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-29T00:29:30Z",
+      "side": 1,
+      "message": "Thanks! Yeah I tried again some wheel metrics and none of them had recorded histogram during the swipe: CompositorLatency.CompositorOnlyFrame.WheelScroll.TotalLatency/CompositorLatency.DroppedFrame.WheelScroll.TotalLatency/CompositorLatency.WheelScroll/Event.Latency.ScrollBegin.Wheel.TimeToHandled2/EventLatency.GestureScrollUpdate.Wheel.TotalLatency/Graphics.Smoothness.PercentDroppedFrames.CompositorThread.WheelScroll, I would leave it as a to-do",
+      "parentUuid": "c43c661a_8c892171",
+      "revId": "a58e7e15a7d682a73ffb3f73a0b5d7517b8238a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fab60a12_f307679b",
