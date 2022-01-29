@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c25ff586_791d3167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-29T00:20:16Z",
+      "side": 1,
+      "message": "\u003e return errors.Wrapf(err, \"failed to open %s\", app.Name)\n\nreason: the whole function is error {...} so the return value is an error. If anything goes wrong, it would trigger L218",
+      "parentUuid": "66c060e0_7c9d51e9",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 4
+      },
+      "revId": "ea82507272b7cf0c70a924b3fa92276d6248c48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8932634_b2526aed",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
         "patchSetId": 4
