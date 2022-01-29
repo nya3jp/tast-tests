@@ -77,6 +77,28 @@ func init() {
 		TearDownTimeout: resetTimeout,
 	})
 
+	// arcBootedRestricted is a fixture similar to arcBootedWithDisableSyncFlags. The only difference
+	// from arcBootedWithDisableSyncFlags is that CGroups is used to limit the CPU time of ARC.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedRestricted",
+		Desc: "ARC is booted in Idle state",
+		Contacts: []string{
+			"alanding@chromium.org",
+			"arc-performance@google.com",
+		},
+		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ARCEnabled(),
+				chrome.RestrictARCCPU(),
+				chrome.ExtraArgs(DisableSyncFlags()...),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
+		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: resetTimeout,
+	})
+
 	// arcBootedWithPlayStore is a fixture similar to arcBooted along with GAIA login and Play Store Optin.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithPlayStore",
