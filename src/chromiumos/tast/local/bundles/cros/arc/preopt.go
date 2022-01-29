@@ -6,10 +6,6 @@ package arc
 
 import (
 	"context"
-	"io/ioutil"
-	"path/filepath"
-	"regexp"
-	"strings"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -18,11 +14,6 @@ import (
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/testing"
 )
-
-type preoptTestParam struct {
-	// Template to search dex2oat runs in logcat
-	template string
-}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -33,44 +24,25 @@ func init() {
 			"khmel@chromium.org", // author.
 			"arc-performance@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
+		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p", "chrome"},
-			Val: preoptTestParam{
-				template: `/system/bin/dex2oat .*--dex-file=(.+?) --`,
-			},
+			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
-			Val: preoptTestParam{
-				template: `DexInv: --- BEGIN \'(.+?)\' ---`,
-			},
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 		Timeout: 4 * time.Minute,
 	})
 }
 
 func Preopt(ctx context.Context, s *testing.State) {
-	param := s.Param().(preoptTestParam)
-
 	if err := performBootAndWaitForIdle(ctx, s.OutDir()); err != nil {
 		s.Fatal("Failed to boot ARC: ", err)
 	}
 
-	// Read what ARC logs from the beginning. If we start logcat now, it would likely miss many entries.
-	logcatPath := filepath.Join(s.OutDir(), "logcat.txt")
-
-	dump, err := ioutil.ReadFile(logcatPath)
-	if err != nil {
-		s.Fatal("Failed to read logcat: ", err)
-	}
-
-	m := regexp.MustCompile(param.template).FindAllStringSubmatch(string(dump), -1)
-	for _, match := range m {
-		res := match[1]
-		if !strings.HasPrefix(res, "/data/") {
-			s.Errorf("Found unpreoptimized system resource %q", res)
-		}
+	if err := arc.CheckNoDex2Oat(s.OutDir()); err != nil {
+		s.Fatal("Failed to verify dex2oat was not running: ", err)
 	}
 }
 

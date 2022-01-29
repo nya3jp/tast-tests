@@ -4,6 +4,9 @@
 
 package arc
 
+// To update test parameters after modifying this file, run:
+// TAST_GENERATE_UPDATE=1 ~/trunk/src/platform/tast/tools/go.sh test -count=1 chromiumos/tast/local/bundles/cros/arc/
+
 import (
 	"strings"
 	"testing"
@@ -64,12 +67,12 @@ func TestPowerIdlePerfParamsAreGenerated(t *testing.T) {
 			{
 				"",
 				"android_p",
-				"arcBooted",
+				"arcBootedRestricted",
 			},
 			{
 				"vm",
 				"android_vm",
-				"arcBooted",
+				"arcBootedRestricted",
 			},
 		} {
 			name := genTestName([]string{arcType.name, batteryMode.name})
