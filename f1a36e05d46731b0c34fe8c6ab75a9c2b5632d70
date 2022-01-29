@@ -510,6 +510,30 @@
       },
       "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4c0372_452c65b6",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-01-29T00:10:25Z",
+      "side": 1,
+      "message": "That\u0027s fair, though I would probably add a comment here referring to your failures as the reason to do this.",
+      "parentUuid": "d2c8bd02_9017e355",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 38
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
