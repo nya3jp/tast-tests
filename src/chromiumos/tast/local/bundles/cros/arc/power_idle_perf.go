@@ -7,6 +7,8 @@ package arc
 import (
 	"bufio"
 	"context"
+	"io/ioutil"
+	"path/filepath"
 	"regexp"
 	"strconv"
 	"strings"
@@ -14,6 +16,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cpu"
@@ -31,10 +34,12 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PowerIdlePerf,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Measures the battery drain of an idle system",
+		Desc:         "Measures the battery drain of an idle system with and without ARC",
 		Contacts: []string{
-			"cwd@chromium.org",
+			"cwd@chromium.org", // Author
+			"alanding@chromium.org",
 			"arcvm-eng@google.com",
+			"arc-performance@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
@@ -56,7 +61,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.ForceBatteryDischarge,
 				},
-				Fixture: "arcBooted",
+				Fixture: "arcBootedRestricted",
 			},
 			{
 				Name:              "vm",
@@ -65,7 +70,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.ForceBatteryDischarge,
 				},
-				Fixture: "arcBooted",
+				Fixture: "arcBootedRestricted",
 			},
 			{
 				Name:              "noarc_nobatterymetrics",
@@ -83,7 +88,7 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.NoBatteryDischarge,
 				},
-				Fixture: "arcBooted",
+				Fixture: "arcBootedRestricted",
 			},
 			{
 				Name:              "vm_nobatterymetrics",
@@ -92,10 +97,20 @@ func init() {
 				Val: testArgsForPowerIdlePerf{
 					setupOption: setup.NoBatteryDischarge,
 				},
-				Fixture: "arcBooted",
+				Fixture: "arcBootedRestricted",
 			},
 		},
 	})
+}
+
+// idleCoolDownConfig returns the config to wait for the machine to cooldown for PowerIdlePerf test.
+// This overrides the default config timeout (5 minutes) and temperature threshold (46 C)
+// settings to reduce test flakes on low-end devices.
+func idleCoolDownConfig() cpu.CoolDownConfig {
+	cdConfig := cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI)
+	cdConfig.PollTimeout = 7 * time.Minute
+	cdConfig.TemperatureThreshold = 60000
+	return cdConfig
 }
 
 func PowerIdlePerf(ctx context.Context, s *testing.State) {
@@ -120,6 +135,11 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	vmEnabled, err := arc.VMEnabled()
+	if err != nil {
+		s.Fatal("Failed to get whether ARCVM is enabled: ", err)
+	}
+
 	sup, cleanup := setup.New("power idle perf")
 	defer func() {
 		if err := cleanup(cleanupCtx); err != nil {
@@ -139,10 +159,17 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Finished setup")
 
-	// Wait until CPU is cooled down.
-	cooldownTime, err := cpu.WaitUntilCoolDown(ctx, cpu.DefaultCoolDownConfig(cpu.CoolDownPreserveUI))
+	// Wait until CPU is cooled down and idle.
+	cooldownTime, err := cpu.WaitUntilCoolDown(ctx, idleCoolDownConfig())
 	if err != nil {
 		s.Fatal("CPU failed to cool down: ", err)
+	}
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("CPU failed to idle: ", err)
+	}
+
+	if err := checkDex2Oat(s.OutDir(), vmEnabled); err != nil {
+		s.Fatal("Failed to verify dex2oat is not running: ", err)
 	}
 
 	if err := metrics.Start(ctx); err != nil {
@@ -223,4 +250,34 @@ func PowerIdlePerf(ctx context.Context, s *testing.State) {
 	if err := p.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
+}
+
+// checkDex2Oat verifies whether ARC is pre-optimized and no dex2oat running in background.
+func checkDex2Oat(outDir string, vmEnabled bool) error {
+	const (
+		containerDexPrefix = `/system/bin/dex2oat .*--dex-file=(.+?) --`
+		vmDexPrefix        = `DexInv: --- BEGIN \'(.+?)\' ---`
+	)
+
+	// check logcat for evidence of dex2oat running.
+	logcatPath := filepath.Join(outDir, "logcat.txt")
+
+	dump, err := ioutil.ReadFile(logcatPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read logcat")
+	}
+
+	dexPrefix := containerDexPrefix
+	if vmEnabled {
+		dexPrefix = vmDexPrefix
+	}
+	m := regexp.MustCompile(dexPrefix).FindAllStringSubmatch(string(dump), -1)
+	for _, match := range m {
+		res := match[1]
+		if !strings.HasPrefix(res, "/data/") {
+			return errors.Errorf("failed due to system resource %q not preoptimized", res)
+		}
+	}
+
+	return nil
 }
