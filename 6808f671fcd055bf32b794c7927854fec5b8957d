@@ -68,6 +68,29 @@
       },
       "revId": "6808f671fcd055bf32b794c7927854fec5b8957d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7477d44e_b5934f40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-01-29T01:47:24Z",
+      "side": 1,
+      "message": "If any error is returned in the above func(ctx context.Context) error (i.e. L106 to L219), the test would fail with message \"Failed to conduct the recorder task: {err}\"",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 15
+      },
+      "revId": "6808f671fcd055bf32b794c7927854fec5b8957d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
