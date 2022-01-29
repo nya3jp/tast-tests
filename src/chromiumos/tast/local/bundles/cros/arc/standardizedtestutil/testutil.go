@@ -423,17 +423,13 @@ func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWri
 	// Perform the appropriate zoom.
 	switch zoomType {
 	case ZoomIn:
-		if err := mtw.ZoomIn(ctx, *x, *y, input.TouchCoord(zoomDistancePerFinger), zoomDuration); err != nil {
+		if err := mtw.Zoom(ctx, *x, *y, input.TouchCoord(zoomDistancePerFinger), zoomDuration, input.ZoomIn); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}
-
-		break
 	case ZoomOut:
-		if err := mtw.ZoomOut(ctx, *x, *y, input.TouchCoord(zoomDistancePerFinger), zoomDuration); err != nil {
+		if err := mtw.Zoom(ctx, *x, *y, input.TouchCoord(zoomDistancePerFinger), zoomDuration, input.ZoomOut); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}
-
-		break
 	default:
 		return errors.Errorf("invalid zoom type provided: %v", zoomType)
 	}
@@ -745,8 +741,7 @@ func TrackpadScroll(ctx context.Context, trackpad *input.TrackpadEventWriter, te
 // TrackpadZoom performs a two-finger zoom gesture on the trackpad.
 func TrackpadZoom(ctx context.Context, trackpad *input.TrackpadEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType ZoomType) error {
 	const (
-		zoomDistancePerFinger = 450
-		zoomDuration          = 200 * time.Millisecond
+		zoomDuration = 200 * time.Millisecond
 	)
 
 	if err := validatePointerCanBeUsed(ctx, testParameters); err != nil {
@@ -767,24 +762,16 @@ func TrackpadZoom(ctx context.Context, trackpad *input.TrackpadEventWriter, test
 		return errors.Wrap(err, "unable to setup writer for two finger gestures")
 	}
 
-	// The zoom can start at the middle of the trackpad.
-	x := trackpad.Width() / 2
-	y := trackpad.Height() / 2
-
 	// Perform the appropriate zoom.
 	switch zoomType {
 	case ZoomIn:
-		if err := mtw.ZoomIn(ctx, x, y, zoomDistancePerFinger, zoomDuration); err != nil {
+		if err := mtw.ZoomRelativeToSize(ctx, zoomDuration, input.ZoomIn); err != nil {
 			return errors.Wrap(err, "unable to zoom in")
 		}
-
-		break
 	case ZoomOut:
-		if err := mtw.ZoomOut(ctx, x, y, zoomDistancePerFinger, zoomDuration); err != nil {
+		if err := mtw.ZoomRelativeToSize(ctx, zoomDuration, input.ZoomOut); err != nil {
 			return errors.Wrap(err, "unable to zoom out")
 		}
-
-		break
 	default:
 		return errors.Errorf("invalid zoom type provided: %v", zoomType)
 	}
