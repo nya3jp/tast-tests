@@ -151,6 +151,31 @@ func GetPrepareFakeAppsWithNamesOptions(names []string) ([]chrome.Option, string
 	return opts, extDirBase, nil
 }
 
+// GetPrepareFakeAppsWithIconDataOptions is similar with GetPrepareFakeAppsWithNamesOptions,
+// with a difference that GetPrepareFakeAppsWithIconDataOptions allows the caller
+// to specify app names and icon data.
+func GetPrepareFakeAppsWithIconDataOptions(names []string, iconData [][]byte) ([]chrome.Option, string, error) {
+	if len(names) != len(iconData) {
+		return nil, "", errors.Errorf("unexpected count of icon data: got %d, expecting %d", len(iconData), len(names))
+	}
+
+	extDirBase, err := ioutil.TempDir("", "")
+	if err != nil {
+		return nil, extDirBase, errors.Wrap(err, "failed to create tempdir")
+	}
+
+	dirs, err := prepareFakeAppsWithIconData(extDirBase, names, iconData)
+	if err != nil {
+		return nil, extDirBase, errors.Wrap(err, "failed to prepare data for fake apps")
+	}
+
+	opts := make([]chrome.Option, 0, len(names))
+	for _, dir := range dirs {
+		opts = append(opts, chrome.UnpackedExtension(dir))
+	}
+	return opts, extDirBase, nil
+}
+
 // prepareFakeApp creates data for a fake app with the specified app name and
 // icon (if any).
 func prepareFakeApp(baseDir, appName, iconDir string, iconFileMap map[int]string) (string, error) {
@@ -198,8 +223,8 @@ func prepareFakeApp(baseDir, appName, iconDir string, iconFileMap map[int]string
 
 // prepareFakeAppIcon creates icon images in different scales with the given
 // icon data. These images are stored in a directory created under `baseDir`.
-func prepareFakeAppIcon(baseDir string, iconData []byte) (string, map[int]string, error) {
-	iconDir := filepath.Join(baseDir, "icons")
+func prepareFakeAppIcon(baseDir, imageDir string, iconData []byte) (string, map[int]string, error) {
+	iconDir := filepath.Join(baseDir, imageDir)
 	if err := os.Mkdir(iconDir, 0755); err != nil {
 		return "", nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
 	}
@@ -243,7 +268,7 @@ func PrepareDefaultFakeApps(baseDir string, appNames []string, hasIcon bool) ([]
 	var iconFiles map[int]string
 	var err error
 	if hasIcon {
-		iconDir, iconFiles, err = prepareFakeAppIcon(baseDir, fakeIconData)
+		iconDir, iconFiles, err = prepareFakeAppIcon(baseDir, "defaultIcons", fakeIconData)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parepare the shared icon for fake apps")
 		}
@@ -251,6 +276,32 @@ func PrepareDefaultFakeApps(baseDir string, appNames []string, hasIcon bool) ([]
 
 	var dirs []string
 	for _, appName := range appNames {
+		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to prepare data for %s", appName)
+		}
+		dirs = append(dirs, dir)
+	}
+
+	return dirs, nil
+}
+
+func prepareFakeAppsWithIconData(baseDir string, appNames []string, iconData [][]byte) ([]string, error) {
+	if len(appNames) != len(iconData) {
+		return nil, errors.Errorf("unexpected count of icon data: got %d, expecting %d", len(iconData), len(appNames))
+	}
+
+	if err := extension.ChownContentsToChrome(baseDir); err != nil {
+		return nil, errors.Wrapf(err, "failed to change ownership of %s", baseDir)
+	}
+
+	var dirs []string
+	for index, appName := range appNames {
+		iconDir, iconFiles, err := prepareFakeAppIcon(baseDir, appName+"Icons", iconData[index])
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parepare icons for the fake app %s", appName)
+		}
+
 		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare data for %s", appName)
