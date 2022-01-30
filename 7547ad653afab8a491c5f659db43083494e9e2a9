@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72858c51_0218171d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-30T22:54:33Z",
+      "side": 1,
+      "message": "nit: use the team alias chromeos-files-syd@google.com as well",
+      "range": {
+        "startLine": 35,
+        "startChar": 28,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "7547ad653afab8a491c5f659db43083494e9e2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fee98bc9_575b71fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-30T22:54:33Z",
+      "side": 1,
+      "message": "One useful thing in a fixture to ensure appropriate cleanup if the fixture itself fails is to defer a func that does cleanup of each stag and in the func check if there is an error, for example if the last archive fails to copy across you want to clean up all the prior archives and reset the state so if SetUp runs again it is running on a \"clean\" state.\n\nExample: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/smb/fixture.go;l\u003d70-74;drc\u003d447908db9da48a3039e15caba36b63f30bcd9625",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 66
+      },
+      "revId": "7547ad653afab8a491c5f659db43083494e9e2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0351250_d9b394ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-30T22:54:33Z",
+      "side": 1,
+      "message": "nit: you can actually chain these together using uiauto.Combine.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "7547ad653afab8a491c5f659db43083494e9e2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
