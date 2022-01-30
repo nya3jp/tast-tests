@@ -857,6 +857,12 @@ func (a *App) RecordGif(ctx context.Context, save bool) (os.FileInfo, error) {
 
 // savedDir returns the path to the folder where captured files might be saved.
 func savedDir(ctx context.Context, cr *chrome.Chrome) (string, error) {
+	// TODO: Calls made from hwsec/cryptohome_path_binary.go are possibly a better place to
+	// differentiate between regular users and guest users. Also, don't rely on the username.
+	if cr.NormalizedUser() == "$guest@gmail.com" {
+		return "/home/chronos/user/MyFiles/Camera", nil
+	}
+
 	path, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		return "", err
