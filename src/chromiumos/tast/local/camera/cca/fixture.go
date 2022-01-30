@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -52,6 +53,7 @@ func init() {
 		TearDownTimeout: tearDownTimeout,
 	})
 
+	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaLaunchedGuest",
 		Desc:            "Launched CCA",
@@ -288,6 +290,10 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		}()
 	}
 
+	if f.guestMode {
+		mountns.EnterUserSessionMountNs(ctx)
+	}
+
 	tb, err := testutil.NewTestBridge(ctx, cr, f.cameraType())
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
@@ -320,6 +326,10 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 			s.Error("Failed to tear down ARC: ", err)
 		}
 		f.arc = nil
+	}
+
+	if f.guestMode {
+		mountns.EnterInitMountNs(ctx)
 	}
 
 	if err := f.cr.Close(ctx); err != nil {
