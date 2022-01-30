@@ -6,10 +6,12 @@ package policy
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -110,17 +112,29 @@ func DeviceOffHours(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			// Read updated policies.
-			dutPolicies, err := policyutil.PoliciesFromDUT(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to get device policies: ", err)
-			}
-
-			// Check availability of DeviceGuestModeEnabled policy.
+			// The OffHoursPolicy itself triggers another change of policies if active.
+			// On slow devices, this update might not be immediately available after
+			// the refresh. Thus, let's try a few times.
 			guestModeShouldBeSet := !param.active
-			_, ok := dutPolicies.Chrome[guestModeName]
-			if ok != guestModeShouldBeSet {
-				s.Errorf("Invalid DeviceGuestModeEnabled policy availability: expected %t; got %t", guestModeShouldBeSet, ok)
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				// Read updated policies.
+				dutPolicies, err := policyutil.PoliciesFromDUT(ctx, tconn)
+				if err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to get device policies"))
+				}
+
+				// Check availability of DeviceGuestModeEnabled policy.
+				guestModeIsSet := false
+				_, guestModeIsSet = dutPolicies.Chrome[guestModeName]
+				if guestModeIsSet != guestModeShouldBeSet {
+					return errors.Errorf("invalid DeviceGuestModeEnabled policy availability: expected %t; got %t", guestModeShouldBeSet, guestModeIsSet)
+				}
+				return nil
+			}, &testing.PollOptions{
+				Timeout:  30 * time.Second,
+				Interval: 100 * time.Millisecond,
+			}); err != nil {
+				s.Error("Policies do not have the expected values: ", err)
 			}
 		})
 	}
