@@ -5,7 +5,10 @@
 package launcher
 
 import (
+	"bytes"
 	"context"
+	"image"
+	"image/png"
 	"os"
 	"sort"
 
@@ -27,6 +30,21 @@ type testType struct {
 // An array of strings sorted in alphabetical order. These strings are used as app names when installing fake apps.
 var fakeAppAlphabeticalNames = []string{"a", "B", "c", "d", "E"}
 
+// The app names whose corresponding icons follow the color order.
+var fakeAppColorOrderNames = []string{"white", "red", "yellow", "cyan", "blue", "purple", "black"}
+
+func getIconImageNames() []string {
+	prefix := "app_list_sort_smoke_"
+	suffix := ".png"
+
+	names := make([]string, len(fakeAppColorOrderNames))
+	for index, color := range fakeAppColorOrderNames {
+		names[index] = prefix + color + suffix
+	}
+
+	return names
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AppListSortSmoke,
@@ -39,6 +57,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Data:         getIconImageNames(),
 		Params: []testing.Param{
 			{
 				Name: "clamshell_alphabetical",
@@ -48,15 +67,46 @@ func init() {
 				Name: "tablet_alphabetical",
 				Val:  testType{TabletMode: true, SortMethod: launcher.AlphabeticalSort},
 			},
+			{
+				Name: "clamshell_color",
+				Val:  testType{TabletMode: false, SortMethod: launcher.ColorSort},
+			},
+			{
+				Name: "tablet_color",
+				Val:  testType{TabletMode: true, SortMethod: launcher.ColorSort},
+			},
 		},
 	})
 }
 
 func AppListSortSmoke(ctx context.Context, s *testing.State) {
-	// Create the fake apps with the specified names.
-	opts, extDirBase, err := ash.GetPrepareFakeAppsWithNamesOptions(fakeAppAlphabeticalNames)
-	if err != nil {
-		s.Fatal("Failed to create the fake apps with the specified names")
+	var opts []chrome.Option
+	var extDirBase string
+	var err error
+
+	testParam := s.Param().(testType)
+	var fakeAppNamesInOrder []string
+
+	// Prepare fake apps based on the sort method.
+	switch testParam.SortMethod {
+	case launcher.AlphabeticalSort:
+		fakeAppNamesInOrder = fakeAppAlphabeticalNames
+		opts, extDirBase, err = ash.GetPrepareFakeAppsWithNamesOptions(fakeAppNamesInOrder)
+	case launcher.ColorSort:
+		fakeAppNamesInOrder = fakeAppColorOrderNames
+		iconNames := getIconImageNames()
+		iconData := make([][]byte, len(iconNames))
+		for index, imageName := range iconNames {
+			imageBytes, err := getImgBytesFromFilePath(s.DataPath(imageName))
+			if err != nil {
+				s.Fatalf("Failed to read icon data from %s: %v", imageName, err)
+			}
+			iconData[index] = imageBytes
+		}
+		opts, extDirBase, err = ash.GetPrepareFakeAppsWithIconDataOptions(fakeAppNamesInOrder, iconData)
+		if err != nil {
+			s.Fatal("Failed to create the fake apps with the specified names: ", err)
+		}
 	}
 	defer os.RemoveAll(extDirBase)
 
@@ -75,7 +125,6 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	testParam := s.Param().(testType)
 	tabletMode := testParam.TabletMode
 	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
@@ -116,7 +165,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		appsGrid = nodewith.ClassName(launcher.BubbleAppsGridViewClass)
 	}
 
-	lastFakeAppName := fakeAppAlphabeticalNames[len(fakeAppAlphabeticalNames)-1]
+	lastFakeAppName := fakeAppNamesInOrder[len(fakeAppNamesInOrder)-1]
 	lastFakeApp := nodewith.ClassName(launcher.ExpandedItemsClass).Ancestor(appsGrid).Name(lastFakeAppName)
 	ui := uiauto.New(tconn)
 	if err := ui.WaitForLocation(lastFakeApp)(ctx); err != nil {
@@ -141,7 +190,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the dragged item bounds to become stable: ", err)
 	}
 
-	defaultFakeAppIndices, err := launcher.GetItemIndicesByName(ctx, ui, fakeAppAlphabeticalNames, appsGrid)
+	defaultFakeAppIndices, err := launcher.GetItemIndicesByName(ctx, ui, fakeAppNamesInOrder, appsGrid)
 	if err != nil {
 		s.Fatal("Failed to get the indices of the fake apps: ", err)
 	}
@@ -150,12 +199,12 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to trigger %v: %v", testParam.SortMethod, err)
 	}
 
-	fakeAppIndices, err := launcher.GetItemIndicesByName(ctx, ui, fakeAppAlphabeticalNames, appsGrid)
+	fakeAppIndices, err := launcher.GetItemIndicesByName(ctx, ui, fakeAppNamesInOrder, appsGrid)
 	if err != nil {
 		s.Fatal("Failed to get view indices of fake apps: ", err)
 	}
 
-	if err := verifyFakeAppsOrdered(fakeAppIndices, fakeAppAlphabeticalNames); err != nil {
+	if err := verifyFakeAppsOrdered(fakeAppIndices, fakeAppNamesInOrder); err != nil {
 		s.Fatal("Failed to verify fake apps order: ", err)
 	}
 
@@ -168,7 +217,7 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to undo alphabetical sorting: ", err)
 	}
 
-	recoveredIndices, err := launcher.GetItemIndicesByName(ctx, ui, fakeAppAlphabeticalNames, appsGrid)
+	recoveredIndices, err := launcher.GetItemIndicesByName(ctx, ui, fakeAppNamesInOrder, appsGrid)
 	if err != nil {
 		s.Fatal("Failed to get fake apps' indices after reverting sorting: ", err)
 	}
@@ -210,14 +259,33 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Didn't expect to find undo button: ", err)
 	}
 
-	fakeAppIndices, err = launcher.GetItemIndicesByName(ctx, ui, fakeAppAlphabeticalNames, appsGrid)
+	fakeAppIndices, err = launcher.GetItemIndicesByName(ctx, ui, fakeAppNamesInOrder, appsGrid)
 	if err != nil {
 		s.Fatal("Failed to get view indices of fake apps: ", err)
 	}
 
-	if err := verifyFakeAppsOrdered(fakeAppIndices, fakeAppAlphabeticalNames); err != nil {
+	if err := verifyFakeAppsOrdered(fakeAppIndices, fakeAppNamesInOrder); err != nil {
 		s.Fatal("Failed to verify fake apps order: ", err)
 	}
+}
+
+func getImgBytesFromFilePath(filePath string) ([]byte, error) {
+	f, err := os.Open(filePath)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	image, _, err := image.Decode(f)
+	if err != nil {
+		return nil, err
+	}
+	buf := new(bytes.Buffer)
+	err = png.Encode(buf, image)
+	if err != nil {
+		return nil, err
+	}
+	imgBytes := buf.Bytes()
+	return imgBytes, nil
 }
 
 type indexNamePair struct {
