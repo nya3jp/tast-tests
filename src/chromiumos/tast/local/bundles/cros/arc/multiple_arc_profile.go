@@ -12,6 +12,7 @@ import (
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/accountmanager"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
@@ -23,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -218,55 +218,19 @@ func addARCAccount(ctx context.Context, arcDevice *androidui.Device, tconn *chro
 		androidui.TextMatches("(?i)Add account"), androidui.Enabled(true))
 
 	if err := addAccount.WaitForExists(ctx, 10*time.Second); err != nil {
-		return errors.Wrap(err, "failed finding About Device Text View")
+		return errors.Wrap(err, "failed finding addAccount Text View")
 	}
 
 	if err := addAccount.Click(ctx); err != nil {
-		return errors.Wrap(err, "failed to click About Device")
+		return errors.Wrap(err, "failed to click addAccount")
 	}
 
-	// Click OK and Enter User Name.
-	if err := uiauto.Combine("Click on OK and proceed",
-		ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("OK").Role(role.Button)),
-		ui.WaitUntilExists(nodewith.Name("Email or phone").Role(role.TextField)),
-		ui.LeftClick(nodewith.Name("Email or phone").Role(role.TextField)),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on user name")
-	}
-
-	// Set up keyboard.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get keyboard")
-	}
-	defer kb.Close()
-
-	if err := kb.Type(ctx, secondUser+"\n"); err != nil {
-		return errors.Wrap(err, "failed to type user name")
-	}
-
-	// Enter Password.
-	if err := uiauto.Combine("Click on Password",
-		ui.WaitUntilExists(nodewith.Name("Enter your password").Role(role.TextField)),
-		ui.LeftClick(nodewith.Name("Enter your password").Role(role.TextField)),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on password")
-	}
-
-	if err := kb.Type(ctx, secondPassword); err != nil {
-		return errors.Wrap(err, "failed to type password")
-	}
-
-	if err := uiauto.Combine("Agree and Finish Adding Account",
-		ui.LeftClick(nodewith.Name("Next").Role(role.Button)),
-		// We need to focus the button first to click at right location
-		// as it returns wrong coordinates when button is offscreen.
-		ui.FocusAndWait(nodewith.Name("I agree").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("I agree").Role(role.Button)),
-		ui.WaitUntilExists(nodewith.Name("Manage Android preferences").Role(role.Link).Focused()),
-	)(ctx); err != nil {
+	if err := accountmanager.AddAccount(ctx, tconn, secondUser, secondPassword); err != nil {
 		return errors.Wrap(err, "failed to add account")
+	}
+
+	if err := ui.WaitUntilExists(nodewith.Name("Manage Android preferences").Role(role.Link).Focused())(ctx); err != nil {
+		return errors.Wrap(err, "failed to find Manage Android preferences link")
 	}
 	return nil
 }
