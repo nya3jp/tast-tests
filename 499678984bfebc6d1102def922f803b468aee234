@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "499678984bfebc6d1102def922f803b468aee234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b113cee_61662c87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-30T23:46:49Z",
+      "side": 1,
+      "message": "Nit: searchNode.Visible()",
+      "revId": "499678984bfebc6d1102def922f803b468aee234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

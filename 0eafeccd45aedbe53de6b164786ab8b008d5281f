@@ -188,6 +188,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d660d080_8301fd1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-01-30T23:46:49Z",
+      "side": 1,
+      "message": "LGTM, thanks",
+      "parentUuid": "b0c3d8ec_e6e0e048",
+      "revId": "0eafeccd45aedbe53de6b164786ab8b008d5281f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29152f79_e19a3ae6",
