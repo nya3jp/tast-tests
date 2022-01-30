@@ -113,17 +113,6 @@ func ContentPreview(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Log("Failed to create ScreenRecorder: ", err)
-	}
-
-	defer uiauto.ScreenRecorderStopSaveRelease(cleanupCtx, screenRecorder, filepath.Join(s.OutDir(), "contentpreview.webm"))
-
-	if screenRecorder != nil {
-		screenRecorder.Start(ctx, tconn)
-	}
-
 	ui := uiauto.New(tconn)
 	bubbleView := nodewith.ClassName("SharesheetBubbleView").Role(role.Window)
 	shareLabel := nodewith.Name(filesapp.Share).ClassName("Label").Role(role.StaticText).Ancestor(bubbleView)
