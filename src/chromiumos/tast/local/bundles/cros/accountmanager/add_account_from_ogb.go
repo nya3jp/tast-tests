@@ -97,6 +97,11 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find add account link: ", err)
 	}
 
+	// ARC toggle should NOT be checked.
+	if err := accountmanager.CheckArcToggleStatus(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to check ARC toggle status: ", err)
+	}
+
 	s.Log("Adding a secondary Account")
 	if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
 		s.Fatal("Failed to add a secondary Account: ", err)
