@@ -14,8 +14,10 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/testing"
 )
 
@@ -45,12 +47,33 @@ func init() {
 }
 
 func ChromeValidity(ctx context.Context, s *testing.State) {
-	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), s.Param().(browser.Type))
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}
-	defer closeBrowser(ctx)
 
+	s.Log("Opening a new blank window to see if browserutil.CloseAboutBlank can close one")
+	testing.Sleep(ctx, 3*time.Second)
+	br.NewConn(ctx, chrome.BlankURL, browser.WithNewWindow())
+
+	s.Log("browserutil.WaitForWindow starts")
+	testing.Sleep(ctx, 3*time.Second)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get the connection to the test API: ", err)
+	}
+	err = browserutil.WaitForWindow(ctx, tconn, bt, "")
+	if err != nil {
+		s.Fatal("Failed to wait for the browser to open: ", err)
+	}
+
+	s.Log("browserutil.CloseAboutBlank starts")
+	testing.Sleep(ctx, 3*time.Second)
+	browserutil.CloseAboutBlank(ctx, br, s.Param().(browser.Type))
+
+	defer closeBrowser(ctx)
 	testConcurrentTabs(ctx, s, br)
 }
 

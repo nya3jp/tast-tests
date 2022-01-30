@@ -17,6 +17,14 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// // CloseBrowser closes defines the clean up function of chrome browser.
+// // This is a no-op for ash-chrome,
+// type CloseBrowser func(ctx context.Context) error
+
+// // CloseAboutBlankFunc defines the helper to close about:blank page. It is
+// // implemented for lacros-chrome and no-op for ash-chrome.
+// type CloseAboutBlank func(ctx context.Context) error
+
 // SetUp returns a Browser instance for a given fixture value and browser type.
 // It also returns a closure to be called in order to close the browser instance,
 // after which the instance should not be used any further.
