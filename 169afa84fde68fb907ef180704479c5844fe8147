@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a090c64_02294bd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T22:56:30Z",
+      "side": 1,
+      "message": "Manually, I just verified that one. I relied on the CQ to verify the remaining tests. Do you think I could just add \"CQ\" to that line?",
+      "parentUuid": "fbad9c8c_f8f9af04",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "169afa84fde68fb907ef180704479c5844fe8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1137e0c0_ad243651",

@@ -22,6 +22,30 @@
       },
       "revId": "636f5626ff01b186f9d6e84e8ea3a88f0637e67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5795de0c_83669c77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/user_files_guest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T22:56:30Z",
+      "side": 1,
+      "message": "Sorry, I thought I had already replied here. How do you think would be the best way to do so? Perhaps just adding a comment on top of the fixture declaration?",
+      "parentUuid": "afad2824_436e8936",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "636f5626ff01b186f9d6e84e8ea3a88f0637e67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
