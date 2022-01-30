@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dfa7472_d8718c64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-01-30T23:12:15Z",
+      "side": 1,
+      "message": "alexanderhartl@: I added a configuration function for certificates of the locally hosted https server for tast-tests. This is a follow-up change of [1]. PTAL\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3423961",
+      "revId": "02ce0f646a76501900fae77fb803d09cc6e4dddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
