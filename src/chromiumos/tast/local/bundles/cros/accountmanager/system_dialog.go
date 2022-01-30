@@ -43,7 +43,7 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "system_dialog")
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
@@ -80,7 +80,7 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 	}
 	// Find "More actions, <email>" button to make sure that account was added.
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
+	if err := ui.WithTimeout(accountmanager.LongUITimeout).WaitUntilExists(moreActionsButton)(ctx); err != nil {
 		s.Fatal("Failed to find More actions button: ", err)
 	}
 }

@@ -49,7 +49,7 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	root := GetAddAccountDialog()
 
 	// Click OK.
-	okButton := nodewith.Name("OK").Role(role.Button).Ancestor(root)
+	okButton := nodewith.Name("Continue").Role(role.Button).Ancestor(root)
 	if err := uiauto.Combine("Click on OK and proceed",
 		ui.WaitUntilExists(okButton),
 		ui.LeftClick(okButton),

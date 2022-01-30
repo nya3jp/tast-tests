@@ -77,7 +77,7 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "add_account_os_settings")
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")
