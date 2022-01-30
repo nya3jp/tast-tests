@@ -65,63 +65,47 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 
+	// Browser controls to open a profile:
 	profileToolbarButton := nodewith.ClassName("AvatarToolbarButton").Role(role.Button).Focusable()
-	if err := uiauto.Combine("Click on profileToolbarButton",
-		ui.WaitUntilExists(profileToolbarButton),
-		ui.LeftClick(profileToolbarButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to click on profileToolbarButton: ", err)
-	}
-
 	profileMenu := nodewith.NameStartingWith("Accounts and sync").Role(role.Menu)
 	addProfileButton := nodewith.Name("Add").Role(role.Button).Focusable().Ancestor(profileMenu)
-	if err := uiauto.Combine("Click on addProfileButton",
-		ui.WaitUntilExists(addProfileButton),
-		ui.LeftClick(addProfileButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to click on addProfileButton: ", err)
-	}
 
-	s.Log("Adding a new profile")
+	// Nodes in the profile addition dialog:
 	addAccountDialog := accountmanager.GetAddAccountDialog()
 	addProfileRoot := nodewith.Name("Set up your new Chrome profile").Role(role.RootWebArea)
 	nextButton := nodewith.Name("Next").Role(role.Button).Focusable().Ancestor(addProfileRoot)
-	if err := uiauto.Combine("Click on nextButton",
-		ui.WaitUntilExists(nextButton),
-		ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(addAccountDialog)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to click on nextButton: ", err)
-	}
-
-	s.Log("Adding a secondary account")
-	if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
-		s.Fatal("Failed to add a secondary account: ", err)
-	}
-
-	s.Log("Finish profile addition")
 	finishAddProfileRoot := nodewith.Name("Chrome browser sync is on").Role(role.RootWebArea)
 	doneButton := nodewith.Name("Done").Role(role.Button).Focusable().Ancestor(finishAddProfileRoot)
-	if err := uiauto.Combine("Click on doneButton",
-		ui.WaitUntilExists(nodewith.Name("Chrome browser sync is on").Role(role.Heading).Ancestor(finishAddProfileRoot)),
-		ui.WaitUntilExists(doneButton),
-		ui.LeftClick(doneButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to click on doneButton: ", err)
-	}
 
-	s.Log("Make sure that a new profile was added for the correct account")
-	// Window of the new profile should be focused now.
+	// Nodes that belong to the new profile:
 	newProfileWindow := nodewith.NameContaining("Google Chrome").Role(role.Window).Focused()
-	if err := uiauto.Combine("Click on profileToolbarButton in new profile",
-		ui.WaitUntilExists(newProfileWindow),
-		ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
-		ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to click on profileToolbarButton in new profile: ", err)
-	}
-
 	newProfileMenu := nodewith.NameStartingWith("Accounts and sync").NameContaining(username).Role(role.Menu)
-	if err := ui.WaitUntilExists(newProfileMenu)(ctx); err != nil {
-		s.Fatalf("Failed to check that a new profile for the secondary account %v was created: %v", username, err)
+
+	s.Log("Adding a new profile")
+	if err := uiauto.Combine("Add a new profile",
+		uiauto.Combine("Click a button to add a profile",
+			ui.WaitUntilExists(profileToolbarButton),
+			ui.LeftClick(profileToolbarButton),
+			ui.WaitUntilExists(addProfileButton),
+			ui.LeftClick(addProfileButton),
+		),
+		uiauto.Combine("Click next and add an account",
+			ui.WaitUntilExists(nextButton),
+			ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(addAccountDialog)),
+			accountmanager.AddAccountAction(tconn, username, password),
+		),
+		uiauto.Combine("Check that the final screen is open and click done",
+			ui.WaitUntilExists(nodewith.Name("Chrome browser sync is on").Role(role.Heading).Ancestor(finishAddProfileRoot)),
+			ui.WaitUntilExists(doneButton),
+			ui.LeftClick(doneButton),
+		),
+		uiauto.Combine("Check that the new profile was created and belongs to the correct account",
+			ui.WaitUntilExists(newProfileWindow),
+			ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
+			ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),
+			ui.WaitUntilExists(newProfileMenu),
+		),
+	)(ctx); err != nil {
+		s.Fatal("Failed to create a new profile for secondary account: ", err)
 	}
 }

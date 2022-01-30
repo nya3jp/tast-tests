@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/accountmanager"
@@ -16,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
@@ -95,59 +95,34 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	}
 	defer d.Close(ctx)
 
-	if err := accountmanager.OpenOneGoogleBar(ctx, tconn, br); err != nil {
-		s.Fatal("Failed to open OGB: ", err)
-	}
-
-	if err := clickAddAccount(ctx, ui); err != nil {
-		s.Fatal("Failed to find add account link: ", err)
-	}
-
-	// ARC toggle should NOT be checked.
-	if err := accountmanager.CheckArcToggleStatus(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to check ARC toggle status: ", err)
-	}
-
-	s.Log("Adding a secondary Account")
-	if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
-		s.Fatal("Failed to add a secondary Account: ", err)
-	}
-
-	s.Log("Verifying that account is present in OS Settings")
-	// Open Account Manager page in OS Settings and find Add Google Account button.
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(nodewith.Name("Add Google Account").Role(role.Button))); err != nil {
-		s.Fatal("Failed to launch Account Manager page: ", err)
-	}
-	// Find "More actions, <email>" button to make sure that account was added.
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
-		s.Fatal("Failed to find More actions button: ", err)
-	}
-
-	// Check that account is present in OGB.
-	s.Log("Verifying that account is present in OGB")
 	secondaryAccountListItem := nodewith.NameContaining(username).Role(role.Link)
-	if err := accountmanager.CheckOneGoogleBar(ctx, tconn, br, ui.WaitUntilExists(secondaryAccountListItem)); err != nil {
-		s.Fatal("Failed to check that account is present in OGB: ", err)
-	}
 
-	// Check that account is present in ARC.
-	s.Log("Verifying that account is NOT present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, d, username); err != nil {
-		s.Fatal("Failed to check that account is not present in ARC err: ", err)
-	} else if present {
-		s.Fatal("Account is present in ARC")
+	if err := uiauto.Combine("Add a secondary account",
+		accountmanager.OpenOneGoogleBarAction(tconn, br),
+		clickAddAccountAction(ui),
+		accountmanager.CheckArcToggleStatusAction(tconn, false),
+		accountmanager.AddAccountAction(tconn, username, password),
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
+		ui.WaitUntilExists(moreActionsButton),
+		accountmanager.CheckOneGoogleBarAction(tconn, br, ui.WaitUntilExists(secondaryAccountListItem)),
+		// Check that account is not present in ARC.
+		accountmanager.CheckAccountNotPresentInArcAction(tconn, d, username),
+	)(ctx); err != nil {
+		s.Fatal("Failed to add a secondary account: ", err)
 	}
 }
 
-// clickAddAccount clicks on 'add another account' button in OGB.
-func clickAddAccount(ctx context.Context, ui *uiauto.Context) error {
-	addAccount := nodewith.Name("Add another account").Role(role.Link)
-	if err := uiauto.Combine("Click add account",
-		ui.WaitUntilExists(addAccount),
-		ui.LeftClick(addAccount),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to find and click add account link")
+// clickAddAccountAction returns an action that clicks on 'add another account' button in OGB.
+func clickAddAccountAction(ui *uiauto.Context) action.Action {
+	return func(ctx context.Context) error {
+		addAccount := nodewith.Name("Add another account").Role(role.Link)
+		if err := uiauto.Combine("Click add account",
+			ui.WaitUntilExists(addAccount),
+			ui.LeftClick(addAccount),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find and click add account link")
+		}
+		return nil
 	}
-	return nil
 }

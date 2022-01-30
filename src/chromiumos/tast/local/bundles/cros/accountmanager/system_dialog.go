@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
@@ -58,29 +57,18 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 
-	// Open Account Manager page in OS Settings and find Add Google Account button.
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton)); err != nil {
-		s.Fatal("Failed to launch Account Manager page: ", err)
-	}
-
-	// Click the button to open account addition dialog.
-	if err := ui.LeftClick(addAccountButton)(ctx); err != nil {
-		s.Fatal("Failed to click Add Google Account button: ", err)
-	}
-
-	s.Log("Adding a secondary Account")
-	if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
-		s.Fatal("Failed to add a secondary Account: ", err)
-	}
-
-	// Make sure that the settings page is focused again.
-	if err := ui.WaitUntilExists(addAccountButton)(ctx); err != nil {
-		s.Fatal("Failed to find Add Google Account button: ", err)
-	}
-	// Find "More actions, <email>" button to make sure that account was added.
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
-		s.Fatal("Failed to find More actions button: ", err)
+
+	if err := uiauto.Combine("Add a secondary Account",
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
+		ui.LeftClick(addAccountButton),
+		accountmanager.AddAccountAction(tconn, username, password),
+		// Make sure that the settings page is focused again.
+		ui.WaitUntilExists(addAccountButton),
+		// Find "More actions, <email>" button to make sure that account was added.
+		ui.WaitUntilExists(moreActionsButton),
+	)(ctx); err != nil {
+		s.Fatal("Failed to add a secondary Account: ", err)
 	}
 }
