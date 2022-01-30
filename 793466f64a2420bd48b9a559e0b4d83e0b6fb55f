@@ -34,6 +34,24 @@
       "parentUuid": "80bf3a96_46b3b176",
       "revId": "793466f64a2420bd48b9a559e0b4d83e0b6fb55f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5538e9e0_92bd4f84",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T22:58:47Z",
+      "side": 1,
+      "message": "`tast run $DUT \"*CCAUIGuest*\"` fails if we don\u0027t do that, because otherwise cryptohome returns a path that cannot be found. I\u0027m not quite sure the cryptohome internals that cause it to return such path for guest users.",
+      "parentUuid": "f31e87fe_104245b9",
+      "revId": "793466f64a2420bd48b9a559e0b4d83e0b6fb55f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
