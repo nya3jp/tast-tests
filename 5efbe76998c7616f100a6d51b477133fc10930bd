@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e8c7ff_7177370b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T23:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39650946_2ccd55f8",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e686468_0d960bf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T23:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a6c1a8c_3c55ee06",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab5bd8c2_1069aa95",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-01-28T09:59:31Z",
       "side": 1,
       "message": "minor nit: the commit message lines can be up to 72 chars long. But it is also good as it is.",
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4335ddd1_c0f4baf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T23:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab5bd8c2_1069aa95",
       "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +160,30 @@
       "writtenOn": "2022-01-28T09:59:31Z",
       "side": 1,
       "message": "Naming the return value here can be confusing, as you are using `err` as an unrelated variable in the function.",
+      "range": {
+        "startLine": 43,
+        "startChar": 51,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a801460_1b390514",
+        "filename": "src/chromiumos/tast/local/mountns/mountns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T23:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88998b1d_9403bc69",
       "range": {
         "startLine": 43,
         "startChar": 51,
@@ -151,6 +241,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da032a43_d8c09682",
+        "filename": "src/chromiumos/tast/local/mountns/mountns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T23:25:34Z",
+      "side": 1,
+      "message": "Oh, never mind. I hadn\u0027t noticed `EnterUserSessionMountNS` was using `NS` instead of `Ns`. Let me update the function name instead, since \"namespace\" is usually written as a single word.",
+      "parentUuid": "c88c5a86_36ac48ec",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e4abb7e_8d7f5b57",
@@ -164,6 +278,30 @@
       "writtenOn": "2022-01-28T09:59:31Z",
       "side": 1,
       "message": "`return nil`",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 7
+      },
+      "revId": "5efbe76998c7616f100a6d51b477133fc10930bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281fa833_4014c9ab",
+        "filename": "src/chromiumos/tast/local/mountns/mountns.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-30T23:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e4abb7e_8d7f5b57",
       "range": {
         "startLine": 66,
         "startChar": 1,
