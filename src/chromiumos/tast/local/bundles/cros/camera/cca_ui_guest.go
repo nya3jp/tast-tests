@@ -6,8 +6,12 @@ package camera
 
 import (
 	"context"
+	"runtime"
+	"time"
 
 	"chromiumos/tast/common/media/caps"
+	"chromiumos/tast/local/camera/cca"
+	"chromiumos/tast/local/mountns"
 	"chromiumos/tast/testing"
 )
 
@@ -24,7 +28,28 @@ func init() {
 }
 
 func CCAUIGuest(ctx context.Context, s *testing.State) {
-	// TODO(pihsun): Test take a photo. Currently app.TakeSinglePhoto fails
-	// because it can't find the result photo, which is located in the guest
-	// ephermeral home directory.
+	app := s.FixtValue().(cca.FixtureData).App()
+	s.FixtValue().(cca.FixtureData).SetDebugParams(cca.DebugParams{SaveCameraFolderWhenFail: true})
+
+	// Bind to the platform thread as mount namespace is effective
+	// per thread.
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+
+	// TODO(pihsun): This doesn't work if put in the fixture, investigate why.
+	mountns.EnterUserSessionMountNS(ctx)
+	defer mountns.EnterInitMountNS(ctx)
+
+	if err := app.SwitchMode(ctx, cca.Photo); err != nil {
+		s.Error("Failed to switch to photo mode: ", err)
+	}
+	if _, err := app.TakeSinglePhoto(ctx, cca.TimerOff); err != nil {
+		s.Error("Failed to take photo: ", err)
+	}
+	if err := app.SwitchMode(ctx, cca.Video); err != nil {
+		s.Error("Failed to switch to video mode: ", err)
+	}
+	if _, err := app.RecordVideo(ctx, cca.TimerOff, 3*time.Second); err != nil {
+		s.Error("Failed to record video: ", err)
+	}
 }
