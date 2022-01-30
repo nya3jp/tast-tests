@@ -65,6 +65,22 @@ type TargetID = driver.TargetID
 // TargetMatcher is chrome.TargetMatcher.
 type TargetMatcher = driver.TargetMatcher
 
+// MatchTargetID returns a TargetMatcher that matches targets with the supplied ID.
+func MatchTargetID(id TargetID) TargetMatcher {
+	return driver.MatchTargetID(id)
+}
+
+// MatchTargetURL returns a TargetMatcher that matches targets with the supplied URL.
+func MatchTargetURL(url string) TargetMatcher {
+	return driver.MatchTargetURL(url)
+}
+
+// MatchTargetURLPrefix returns a TargetMatcher that matches targets whose URL starts with the
+// supplied prefix.
+func MatchTargetURLPrefix(prefix string) TargetMatcher {
+	return driver.MatchTargetURLPrefix(prefix)
+}
+
 // NewConnForTarget iterates through all available targets and returns a connection to the
 // first one that is matched by tm.
 func (b *Browser) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
