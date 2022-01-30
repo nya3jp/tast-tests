@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbad9c8c_f8f9af04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-30T22:40:17Z",
+      "side": 1,
+      "message": "nit: I know you\u0027ve mentioned it offline, but are you able to just note down the tests you verified? The tests that directly (or indirectly) use chromeLoggedInGuest",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "169afa84fde68fb907ef180704479c5844fe8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1137e0c0_ad243651",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-01-30T22:40:17Z",
+      "side": 1,
+      "message": "LGTM % nit. Also please wait for Jorge\u0027s review before submitting 👍",
+      "revId": "169afa84fde68fb907ef180704479c5844fe8147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
