@@ -39,6 +39,30 @@
       },
       "revId": "e604070499df05deaa4bfa5f1ab65214db623dab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811554a0_4a58195c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-01-30T17:19:32Z",
+      "side": 1,
+      "message": "I think the easiest for now would be doing\nbrowserfixt.SetUpWithURL(..., url) with url \u003d \"\" or \"about:blank\" to uniformly open one window in either case, followed by ash.CreateWindows(..., 1) or just br.NewConn(...) to open one additional window.\n\nIf you also need to wait for the windows to be visible, perhaps we can generalize the WaitForWindow from https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3341459 to take a slice of titles instead of a single title.\n\nOther comments:\n\n- lacros.CloseAboutBlank would close all windows in your case, I believe.\n\n- The basic problem is, of course, that browserfixt.SetUp opens a window in the Lacros case but not in the Ash case. Is it fundamentally necessary that it opens a window in the Lacros case, or could we avoid that somehow, perhaps using the keep-alive mechanism that I\u0027m not really familiar with? If we can\u0027t avoid it, could we change SetUp to also open a window in the Ash case?\n\n- The test currently passes even with only one browser window open. If the number of windows is important perhaps you can add an asseertion somewhere.",
+      "parentUuid": "0b0b7284_7e85fcbc",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "e604070499df05deaa4bfa5f1ab65214db623dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
