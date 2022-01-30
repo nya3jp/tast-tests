@@ -28,6 +28,24 @@ const (
 	uninstallationTimeout = time.Minute
 )
 
+const (
+	// External data.
+	busterAMD       = "crostini_test_container_metadata_buster_amd64.tar.xz"
+	rootfsBusterAMD = "crostini_test_container_rootfs_buster_amd64.tar.xz"
+
+	bullseyeAMD       = "crostini_test_container_metadata_bullseye_amd64.tar.xz"
+	rootfsBullseyeAMD = "crostini_test_container_rootfs_bullseye_amd64.tar.xz"
+
+	lcAMD       = "crostini_app_test_container_metadata_bullseye_amd64.tar.xz"
+	rootfsLCAMD = "crostini_app_test_container_rootfs_bullseye_amd64.tar.xz"
+
+	busterARM       = "crostini_test_container_metadata_buster_arm.tar.xz"
+	rootfsBusterARM = "crostini_test_container_rootfs_buster_arm.tar.xz"
+
+	bullseyeARM       = "crostini_test_container_metadata_bullseye_arm.tar.xz"
+	rootfsBullseyeARM = "crostini_test_container_rootfs_bullseye_arm.tar.xz"
+)
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            "crostiniBuster",
@@ -42,7 +60,7 @@ func init() {
 		// TODO (jinrongwu): switch to Global RunTime Variable when deprecating pre.go.
 		// The same for the rest keepState var.
 		Vars: []string{"keepState"},
-		Data: []string{"crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+		Data: []string{busterAMD, rootfsBusterAMD, busterARM, rootfsBusterARM},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -55,7 +73,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 		Vars:            []string{"keepState"},
-		Data:            []string{"crostini_test_container_metadata_bullseye_amd64.tar.xz", "crostini_test_container_rootfs_bullseye_amd64.tar.xz"},
+		Data:            []string{bullseyeAMD, rootfsBullseyeAMD, bullseyeARM, rootfsBullseyeARM},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -68,7 +86,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
-		Data:            []string{"crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+		Data:            []string{busterAMD, rootfsBusterAMD, busterARM, rootfsBusterARM},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -81,7 +99,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
-		Data:            []string{"crostini_test_container_metadata_bullseye_amd64.tar.xz", "crostini_test_container_rootfs_bullseye_amd64.tar.xz"},
+		Data:            []string{bullseyeAMD, rootfsBullseyeAMD, bullseyeARM, rootfsBullseyeARM},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -94,7 +112,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 		Vars:            []string{"keepState"},
-		Data:            []string{"crostini_app_test_container_metadata_bullseye_amd64.tar.xz", "crostini_app_test_container_rootfs_bullseye_amd64.tar.xz"},
+		Data:            []string{lcAMD, rootfsLCAMD},
 	})
 
 }
