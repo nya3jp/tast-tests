@@ -89,6 +89,12 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC
 
+	d, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed initializing UI Automator: ", err)
+	}
+	defer d.Close(ctx)
+
 	// Open Account Manager page in OS Settings and find Add Google Account button.
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
 	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton)); err != nil {
@@ -129,7 +135,7 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 
 	// Check that account is present in ARC.
 	s.Log("Verifying that account is present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, a, username); err != nil {
+	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, d, username); err != nil {
 		s.Fatalf("Failed to check that account is present in ARC err=%v", err)
 	} else if !present {
 		s.Fatal("Account is not present in ARC")
@@ -163,7 +169,7 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 
 	// Check that account is not present in ARC.
 	s.Log("Verifying that account is not present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, a, username); err != nil {
+	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, d, username); err != nil {
 		s.Fatalf("Failed to check that account is NOT present in ARC, err=%v", err)
 	} else if present {
 		s.Fatal("Account is still present in ARC")
