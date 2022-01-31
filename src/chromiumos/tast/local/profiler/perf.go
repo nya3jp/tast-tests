@@ -14,7 +14,6 @@ import (
 	"strconv"
 	"strings"
 	"syscall"
-
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -132,7 +131,6 @@ func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, erro
 	if opts.perfType == perfStat && opts.pid < 0 {
 		return nil, errors.Errorf("invalid pid %d for perfStat", opts.pid)
 	}
-
 	cmd, err := getCmd(ctx, outDir, opts)
 	if err != nil {
 		return nil, err
@@ -143,6 +141,7 @@ func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, erro
 		return nil, errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(cmd.Args))
 	}
 
+
 	success := false
 	defer func() {
 		if !success {
@@ -150,7 +149,6 @@ func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, erro
 			cmd.Wait()
 		}
 	}()
-
 	// KASLR makes looking up the symbols from the binary impossible, save
 	// the running symbols from DUT to outDir.
 	kallsymsPath := filepath.Join(outDir, "kallsyms")
@@ -278,7 +276,6 @@ func (p *perf) handleStat() error {
 
 func (p *perf) handleSched(ctx context.Context) error {
 	perfPath := filepath.Join(p.outDir, perfSchedFileName)
-
 	maxLatencyMs, err := getMaxLatencyMs(ctx, perfPath, p.opts.procName)
 	if err != nil {
 		return errors.Wrap(err, "failed to parse sched file")
@@ -312,5 +309,6 @@ func (p *perf) end(ctx context.Context) error {
 	if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Signaled() || ws.Signal() != syscall.SIGINT {
 		return errors.Wrap(err, "failed waiting for the command to exit")
 	}
+
 	return p.handleOutput(ctx)
 }
