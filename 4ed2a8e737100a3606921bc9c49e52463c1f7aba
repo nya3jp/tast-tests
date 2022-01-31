@@ -105,6 +105,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb7c3e06_469abb17",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-01-31T09:49:05Z",
+      "side": 1,
+      "message": "I \"revisited\" the visitor pattern to understand this comment :).\nI want to make sure I understand your proposal before I code it to avoid unnecessary churn.  Here\u0027s how this would look like:\n1) This function no longer returns SharedInfoMap\n2) Instead, this function takes a point to the visitor (callback style)\n3) The final loop invokes the visitor (e.g., accept() from the pattern) passing to it the data that would go into the map - so the visitor can build the map from the data emitted by this function.",
+      "parentUuid": "9021ce92_2aee5f41",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dafa0ca_52129173",
         "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
         "patchSetId": 1
