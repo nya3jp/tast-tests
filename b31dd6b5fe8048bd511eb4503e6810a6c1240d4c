@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a0b0b00_1f47b88a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/window_capture_allowed_by_origins.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-31T12:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05f7982_20f53b52",
+      "range": {
+        "startLine": 8,
+        "startChar": 15,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "b31dd6b5fe8048bd511eb4503e6810a6c1240d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6f8ce84_fc8c99d5",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2666bfe_bd54efb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/window_capture_allowed_by_origins.html",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-31T12:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6f8ce84_fc8c99d5",
+      "revId": "b31dd6b5fe8048bd511eb4503e6810a6c1240d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4f2573c_b06ed6c6",
@@ -88,6 +130,24 @@
       "writtenOn": "2022-01-31T09:05:47Z",
       "side": 1,
       "message": "nit: Initialize this outside the for loop.",
+      "revId": "b31dd6b5fe8048bd511eb4503e6810a6c1240d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "067c04ab_5bb9b346",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-31T12:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f2573c_b06ed6c6",
       "revId": "b31dd6b5fe8048bd511eb4503e6810a6c1240d4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66677cb1_0853a2a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-31T12:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b5aae4d_a19eda5e",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 37
+      },
+      "revId": "b31dd6b5fe8048bd511eb4503e6810a6c1240d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec0cbbb_b3e2a592",
@@ -128,6 +212,30 @@
       "writtenOn": "2022-01-31T09:05:47Z",
       "side": 1,
       "message": "Use the same timeout as for EnsureGoneFor. It will make sure that if that timeout is too short we are not missing errors.",
+      "range": {
+        "startLine": 132,
+        "startChar": 17,
+        "endLine": 132,
+        "endChar": 32
+      },
+      "revId": "b31dd6b5fe8048bd511eb4503e6810a6c1240d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe65a6a2_f022f25f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/window_capture_allowed_by_origins.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1528908
+      },
+      "writtenOn": "2022-01-31T12:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec0cbbb_b3e2a592",
       "range": {
         "startLine": 132,
         "startChar": 17,
