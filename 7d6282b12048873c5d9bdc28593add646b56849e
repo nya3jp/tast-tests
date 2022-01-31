@@ -16,6 +16,24 @@
       "message": "Can I know more context about this patch? Why is there a bluetooth audio test in tast? Who is going to use and maintain the test? \n\nThis patch verifies that audio is routed through BT device by cras. Is there any plan about developing full-blown bluetooth audio tests in tast?\n",
       "revId": "7d6282b12048873c5d9bdc28593add646b56849e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a97f7b3b_7cc30009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-01-31T07:23:59Z",
+      "side": 1,
+      "message": "These are the TCs developed by Intel and we are sharing them with Google so that they can be executed by partners and ODMs.\n\nAs we discussed with Alex, once the CL gets merged, Google will take care of maintaining the scripts.\n\nWe will plan to upstream the other BT scripts soon.",
+      "parentUuid": "9792599c_e7a2531a",
+      "revId": "7d6282b12048873c5d9bdc28593add646b56849e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
