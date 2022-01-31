@@ -15,13 +15,25 @@ import (
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
-		Name: "chromeLoggedInWithBluetoothRevamp",
+		Name: "chromeLoggedInWithBluetoothRevampEnabled",
 		Desc: "Logs into a user session with the BluetoothRevamp feature flag enabled",
 		Contacts: []string{
 			"chadduffin@chromium.org",
 			"cros-connectivity@google.com",
 		},
-		Impl:            ChromeLoggedInWithBluetoothRevampEnabled(),
+		Impl:            ChromeLoggedInWithBluetoothRevamp(true),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "chromeLoggedInWithBluetoothRevampDisabled",
+		Desc: "Logs into a user session with the BluetoothRevamp feature flag disabled",
+		Contacts: []string{
+			"chadduffin@chromium.org",
+			"cros-connectivity@google.com",
+		},
+		Impl:            ChromeLoggedInWithBluetoothRevamp(false),
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -34,19 +46,22 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		Impl:            &chromeLoggedInWithBluetoothEnabled{},
-		Parent:          "chromeLoggedInWithBluetoothRevamp",
+		Parent:          "chromeLoggedInWithBluetoothRevampEnabled",
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 }
 
-// ChromeLoggedInWithBluetoothRevampEnabled returns a fixture implementation
-// that builds on the existing chromeLoggedIn fixture to also enable the
+// ChromeLoggedInWithBluetoothRevamp returns a fixture implementation that
+// builds on the existing chromeLoggedIn fixture to also enable or disable the
 // BluetoothRevamp feature flag.
-func ChromeLoggedInWithBluetoothRevampEnabled() testing.FixtureImpl {
+func ChromeLoggedInWithBluetoothRevamp(enabled bool) testing.FixtureImpl {
 	return chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-		return []chrome.Option{chrome.EnableFeatures("BluetoothRevamp")}, nil
+		if enabled {
+			return []chrome.Option{chrome.EnableFeatures("BluetoothRevamp")}, nil
+		}
+		return []chrome.Option{chrome.DisableFeatures("BluetoothRevamp")}, nil
 	})
 }
 
