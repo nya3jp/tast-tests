@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6743d3e_1a1376e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-31T12:30:56Z",
+      "side": 1,
+      "message": "This is being checked in kioskmode.New() when kioskmode.AutoLaunch() option is used. Please remove.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "81b2be007bc3f657863688d8b04fbd853dfd6881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
