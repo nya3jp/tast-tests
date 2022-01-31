@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22af605_a7407d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/guest_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-31T13:31:43Z",
+      "side": 1,
+      "message": "Recently I found out that\n\t// New tests should not use this value, i.e. new tests should always consider lacros.\n\nI guess we should go with LacrosVariantUnneeded ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 24,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "a602ef3e8f5bc57ee86bed2e3d80151744dff773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d9b2e7_94eba4e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/guest_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-31T13:31:43Z",
+      "side": 1,
+      "message": "Sign",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "a602ef3e8f5bc57ee86bed2e3d80151744dff773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d475ea6_e54e69ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/guest_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-31T13:31:43Z",
+      "side": 1,
+      "message": "why do we wait for the \"stopped\" signal? I\u0027d expect that guest session should \"start\" :)",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 24
+      },
+      "revId": "a602ef3e8f5bc57ee86bed2e3d80151744dff773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e623c7_a7e589cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/guest_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-31T13:31:43Z",
+      "side": 1,
+      "message": "please provide the name via API",
+      "range": {
+        "startLine": 91,
+        "startChar": 31,
+        "endLine": 91,
+        "endChar": 46
+      },
+      "revId": "a602ef3e8f5bc57ee86bed2e3d80151744dff773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88c42efa_034c4fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/guest_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-31T13:31:43Z",
+      "side": 1,
+      "message": "maybe leverage uiauto.Combine here",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "a602ef3e8f5bc57ee86bed2e3d80151744dff773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c36bc8a_1647999c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/guest_button.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-01-31T13:31:43Z",
+      "side": 1,
+      "message": "guest",
+      "range": {
+        "startLine": 105,
+        "startChar": 35,
+        "endLine": 105,
+        "endChar": 40
+      },
+      "revId": "a602ef3e8f5bc57ee86bed2e3d80151744dff773",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
