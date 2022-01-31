@@ -39,6 +39,30 @@
       },
       "revId": "f1395c7509202e988749c938e53facc3264f0151",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a976ed0_68aaa8c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking_connectivity.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-01-31T01:22:12Z",
+      "side": 1,
+      "message": "\u003e Looks like from the comments, the idea here was to avoid failing this test for non-ARC related reasons right?\n\nYes. More generally we have other platform tests that depend on setup of external components whose failures in tests are reported as errors but are not really errors as far as actionability goes. What should we do with that ? As you said we would have ideally a separate return status like \"setup error\" or \"environment error\".",
+      "parentUuid": "9cf3fea1_5114e158",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "f1395c7509202e988749c938e53facc3264f0151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
