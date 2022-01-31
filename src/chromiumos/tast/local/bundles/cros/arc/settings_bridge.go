@@ -201,8 +201,8 @@ func testProxySync(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		name: "FixedServers",
 		config: chromeproxy.ProxyConfig{
 			Mode: chromeproxy.ModeFixedServers,
-			Rules: chromeproxy.ProxyRules{
-				SingleProxy: chromeproxy.ProxyServer{
+			Rules: &chromeproxy.ProxyRules{
+				SingleProxy: &chromeproxy.ProxyServer{
 					Host: "proxy",
 					Port: 8080,
 				},
@@ -224,7 +224,7 @@ func testProxySync(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 		name: "PacScript",
 		config: chromeproxy.ProxyConfig{
 			Mode: chromeproxy.ModePacScript,
-			PacScript: chromeproxy.PacScript{
+			PacScript: &chromeproxy.PacScript{
 				URL: "http://example.com",
 			},
 		},
