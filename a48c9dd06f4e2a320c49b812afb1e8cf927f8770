@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90427fd7_ed139de5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-01-31T18:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf71175_fc07de28",
+      "revId": "a48c9dd06f4e2a320c49b812afb1e8cf927f8770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "241ffbb8_96f786ac",
@@ -83,6 +101,24 @@
       "writtenOn": "2022-01-27T08:44:54Z",
       "side": 1,
       "message": "please change to testing.LacrosVariantExists",
+      "revId": "a48c9dd06f4e2a320c49b812afb1e8cf927f8770",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63b61203_504e6b6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-01-31T18:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04dc25e3_5ad4427d",
       "revId": "a48c9dd06f4e2a320c49b812afb1e8cf927f8770",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
