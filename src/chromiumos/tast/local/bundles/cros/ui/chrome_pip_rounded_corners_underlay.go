@@ -96,7 +96,8 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Expected 1 window; found ", wsCount)
 	}
 
-	if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, ash.WindowStateMaximized); err != nil {
+	wID := ws[0].ID
+	if err := ash.SetWindowStateAndWait(ctx, tconn, wID, ash.WindowStateMaximized); err != nil {
 		s.Fatal("Failed to maximize window: ", err)
 	}
 
@@ -122,6 +123,13 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		ac.WithTimeout(10*time.Second).WaitUntilExists(pipWindow),
 	)(ctx); err != nil {
 		s.Fatal("Failed to show the PIP window: ", err)
+	}
+
+	// Minimize the main browser window to ensure that its overlay
+	// strategy will not be detected when what we want to know is
+	// the overlay strategy used for the PIP window.
+	if err := ash.SetWindowStateAndWait(ctx, tconn, wID, ash.WindowStateMinimized); err != nil {
+		s.Fatal("Failed to minimize window: ", err)
 	}
 
 	initialHist, err := metrics.GetHistogram(ctx, tconn, histName)
