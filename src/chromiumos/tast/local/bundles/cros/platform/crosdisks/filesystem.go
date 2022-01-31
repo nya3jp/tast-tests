@@ -72,7 +72,7 @@ func withLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, sizeByte
 // testMountFilesystem mounts the loopback device, attempts a write and returns an error if unsuccessful.
 func testMountFilesystem(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosdisks.LoopbackDevice, label string) error {
 	expectedMountPath := filepath.Join("/media/removable", label)
-	return withMountDo(ctx, cd, ld.DevicePath(), "", "rw", func(ctx context.Context, mountPath string) error {
+	return withMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
 		if expectedMountPath != mountPath {
 			return errors.Errorf("unexpected mount_path: got %q; want %q", mountPath, expectedMountPath)
 		}
