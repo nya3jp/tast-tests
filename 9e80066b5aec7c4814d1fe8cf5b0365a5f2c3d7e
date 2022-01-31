@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df553f49_8cf4a46a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-31T11:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e295da5b_ae32def0",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "9e80066b5aec7c4814d1fe8cf5b0365a5f2c3d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0a785cc_487076a2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-30T21:22:08Z",
       "side": 1,
       "message": "nit: start with lower-case, `defaultUITimeout`, since it is an unexported constant.",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "9e80066b5aec7c4814d1fe8cf5b0365a5f2c3d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "731d74e1_959b3b35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-31T11:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0a785cc_487076a2",
       "range": {
         "startLine": 45,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca142e97_e86a41d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-31T11:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a66498_a40759c7",
+      "range": {
+        "startLine": 53,
+        "startChar": 47,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "9e80066b5aec7c4814d1fe8cf5b0365a5f2c3d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0c213d2_92f018d7",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-01-30T21:22:08Z",
       "side": 1,
       "message": "use `HasClass`, ClassName is being deprecated.",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "9e80066b5aec7c4814d1fe8cf5b0365a5f2c3d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e3dc82_63ec8f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1438077
+      },
+      "writtenOn": "2022-01-31T11:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0c213d2_92f018d7",
       "range": {
         "startLine": 85,
         "startChar": 22,
