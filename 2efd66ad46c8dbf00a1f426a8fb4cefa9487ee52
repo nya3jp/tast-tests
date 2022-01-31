@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c447d96_4a7de2f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-01-31T20:38:06Z",
+      "side": 1,
+      "message": "changed the role from Button to Window to avoid conflicts.",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 501,
+        "endChar": 80
+      },
+      "revId": "2efd66ad46c8dbf00a1f426a8fb4cefa9487ee52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7842f439_116958c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-01-31T20:38:06Z",
+      "side": 1,
+      "message": "optimized with IfSuccessThen",
+      "range": {
+        "startLine": 503,
+        "startChar": 1,
+        "endLine": 503,
+        "endChar": 33
+      },
+      "revId": "2efd66ad46c8dbf00a1f426a8fb4cefa9487ee52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
