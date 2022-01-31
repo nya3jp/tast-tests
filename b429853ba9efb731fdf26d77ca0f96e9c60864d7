@@ -39,6 +39,30 @@
       },
       "revId": "b429853ba9efb731fdf26d77ca0f96e9c60864d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e45ef79_a37b1c92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2022-01-31T15:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1ddb868_ff8e59b8",
+      "range": {
+        "startLine": 187,
+        "startChar": 23,
+        "endLine": 187,
+        "endChar": 30
+      },
+      "revId": "b429853ba9efb731fdf26d77ca0f96e9c60864d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
