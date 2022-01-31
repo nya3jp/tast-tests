@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06c88d7_4f5a34fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-01-31T12:23:38Z",
+      "side": 1,
+      "message": "I have changed the test so that it creates and closes two separate Kiosk instances. It works as intended on my test device.",
+      "parentUuid": "d8b244a8_6d6a4b7b",
+      "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "224fcad9_56f8e617",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95cff658_0b59819e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-01-31T12:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224fcad9_56f8e617",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8cc4b24_60970986",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-31T10:41:31Z",
       "side": 1,
       "message": "minor nit: Chrome",
+      "range": {
+        "startLine": 84,
+        "startChar": 47,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61634d42_bb6be933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-01-31T12:23:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8cc4b24_60970986",
       "range": {
         "startLine": 84,
         "startChar": 47,
