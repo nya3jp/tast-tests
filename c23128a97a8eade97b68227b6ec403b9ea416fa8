@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "77d26915_e1bb0b8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T16:55:57Z",
+      "side": 1,
+      "message": "nit: no need for a `.` at the end of the subject line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 53,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "c23128a97a8eade97b68227b6ec403b9ea416fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2f4ce6f_30fbbfcb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T16:55:57Z",
+      "side": 1,
+      "message": "nit: its",
+      "range": {
+        "startLine": 11,
+        "startChar": 21,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "c23128a97a8eade97b68227b6ec403b9ea416fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "19ffdce8_29de89bb",
@@ -14,6 +60,23 @@
       "writtenOn": "2022-01-31T16:51:14Z",
       "side": 1,
       "message": "PTAL 😊",
+      "revId": "c23128a97a8eade97b68227b6ec403b9ea416fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c63e41_275b3e0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T16:55:57Z",
+      "side": 1,
+      "message": "LGTM % nits",
       "revId": "c23128a97a8eade97b68227b6ec403b9ea416fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
