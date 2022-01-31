@@ -16,6 +16,24 @@
       "message": "\ntast-remote-tests-cros-0.0.2-r9260: src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go:224:7: Fatalf format %d has arg address.htmlFieldID of wrong type string\ntast-remote-tests-cros-0.0.2-r9260: src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go:227:7: Fatalf format %d has arg valueFromHTML of wrong type string\ntast-remote-tests-cros-0.0.2-r9260:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r9260::chromiumos failed (compile phase):",
       "revId": "a05e9def07a24b4befadbfc2afcf33c62a49a02e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef56a33a_2329eab8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-01-31T17:00:40Z",
+      "side": 1,
+      "message": "This one was already fixed 😊",
+      "parentUuid": "09bd0d92_0f382030",
+      "revId": "a05e9def07a24b4befadbfc2afcf33c62a49a02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
