@@ -24,7 +24,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothRevamp",
+		Fixture:      "chromeLoggedInWithBluetoothEnabled",
 	})
 }
 
