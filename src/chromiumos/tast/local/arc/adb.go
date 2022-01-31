@@ -29,9 +29,7 @@ func connectADB(ctx context.Context) (*adb.Device, error) {
 	if device, err := adb.WaitForDevice(ctx, func(d *adb.Device) bool {
 		return strings.HasPrefix(d.Serial, "emulator-")
 	}, 10*time.Second); err == nil {
-		if err = device.WaitForState(ctx, adb.StateDevice, ctxutil.MaxTimeout); err == nil {
-			return device, nil
-		}
+		return device, device.WaitForState(ctx, adb.StateDevice, ctxutil.MaxTimeout)
 	}
 
 	// https://developer.android.com/studio/command-line/adb#notlisted shows that on certain conditions emulator may not be listed.
