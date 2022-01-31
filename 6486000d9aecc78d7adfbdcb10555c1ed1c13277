@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98c867ab_c296b8f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-31T20:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f420daf3_aa1757da",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dd8e852_f64ecf9b",
@@ -656,6 +674,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4761b68_b6419b02",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-31T20:03:07Z",
+      "side": 1,
+      "message": "Yeah I see what you mean. I think I\u0027m just getting used to the go way of doing things. I\u0027ll remove all the WithXXX functions and just have usage rely on go interface casting.",
+      "parentUuid": "5489cd03_1235d5bf",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7d156af_a8e485d0",
         "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
         "patchSetId": 6
@@ -721,6 +757,24 @@
       "side": 1,
       "message": "legacy is fine if there is no better name for it, but I still don\u0027t like it as a widely used package name.",
       "parentUuid": "13956a5e_32e37912",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b59182c1_53efb835",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-31T20:03:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "571e06b6_9d3cae23",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
