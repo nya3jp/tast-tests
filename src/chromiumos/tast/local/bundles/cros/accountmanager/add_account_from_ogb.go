@@ -77,7 +77,6 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	defer func(ctx context.Context) {
 		s.Log("Running test cleanup")
@@ -85,6 +84,8 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to do cleanup: ", err)
 		}
 	}(cleanupCtx)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "add_account_from_ogb")
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC
