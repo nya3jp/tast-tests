@@ -14,14 +14,17 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -46,6 +49,7 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}},
+		Data: []string{"autofill_address_enabled.html"},
 	})
 }
 
@@ -61,11 +65,56 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	addressValues := []struct {
+		// The field's name on the settings page.
+		fieldName string
+		// The value that which set on the settings page and which should have been filled into the html input field after the autofill has been triggered.
+		fieldValue string
+		// The field's corresponding id on autofill_address_enabled.html
+		htmlFieldID string
+	}{
+		{
+			fieldName:   "Name",
+			fieldValue:  "Tester",
+			htmlFieldID: "name",
+		},
+		{
+			fieldName:   "Street address",
+			fieldValue:  "Some address 123",
+			htmlFieldID: "street-address",
+		},
+		{
+			fieldName:   "City",
+			fieldValue:  "City",
+			htmlFieldID: "city",
+		},
+		{
+			fieldName:   "ZIP code",
+			fieldValue:  "11111",
+			htmlFieldID: "postal-code",
+		},
+		{
+			fieldName:   "Phone",
+			fieldValue:  "010123123",
+			htmlFieldID: "phone",
+		},
+		{
+			fieldName:   "Email",
+			fieldValue:  "test@gmail.com",
+			htmlFieldID: "email",
+		},
+	}
+
 	for _, param := range []struct {
 		name            string
-		wantRestriction restriction.Restriction        // wantRestriction is the wanted restriction state of the toggle button for the "Save and fill addresses" option.
-		wantChecked     checked.Checked                // wantChecked is the wanted checked state of the toggle button for the "Save and fill addresses" option.
-		policy          *policy.AutofillAddressEnabled // policy is the value of the policy.
+		wantRestriction restriction.Restriction
+		wantChecked     checked.Checked
+		policy          *policy.AutofillAddressEnabled
 	}{
 		{
 			name:            "unset",
@@ -114,6 +163,70 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				Checked(param.wantChecked).
 				Verify(); err != nil {
 				s.Error("Unexpected settings state: ", err)
+			}
+
+			if param.wantChecked == checked.True {
+				ui := uiauto.New(tconn)
+
+				// Click the button to add a new credit card.
+				if err := ui.LeftClick(nodewith.Name("Add").Role(role.Button))(ctx); err != nil {
+					s.Fatal("Failed to click the Add button: ", err)
+				}
+
+				// Find the Save button node, meaning the form is open.
+				if err := ui.WaitUntilExists(nodewith.Name("Save").Role(role.Button))(ctx); err != nil {
+					s.Fatal("Failed to find the Save button: ", err)
+				}
+
+				kb, err := input.Keyboard(ctx)
+				if err != nil {
+					s.Fatal(errors.Wrap(err, "failed to get the keyboard"))
+				}
+				defer kb.Close()
+
+				// Fill in the address input fields and click on the save button.
+				for _, address := range addressValues {
+					if err := ui.LeftClick(nodewith.Role(role.TextField).Name(address.fieldName))(ctx); err != nil {
+						s.Fatal("Failed to click the text field: ", err)
+					}
+					if err := kb.Type(ctx, address.fieldValue); err != nil {
+						s.Fatal("Failed to type to the text field: ", err)
+					}
+				}
+				if err := ui.LeftClick(nodewith.Role(role.Button).Name("Save"))(ctx); err != nil {
+					s.Fatal("Failed to click the Save button: ", err)
+				}
+
+				// Open the website with the address form.
+				conn, err := br.NewConn(ctx, server.URL+"/"+"autofill_address_enabled.html")
+				if err != nil {
+					s.Fatal("Failed to open website: ", err)
+				}
+				defer conn.Close()
+
+				// Ensure the page is ready.
+				if err := ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button))(ctx); err != nil {
+					s.Fatal("Failed to find the ok button: ", err)
+				}
+
+				// Trigger the autofill by clicking the email field and choosing the suggested address (this could be any of the address fields).
+				if err := ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Email"))(ctx); err != nil {
+					s.Fatal("Failed to click the Email text field: ", err)
+				}
+				if err := ui.LeftClick(nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView"))(ctx); err != nil {
+					s.Fatal("Failed to click the AutofillPopupSuggestionView listBoxOption: ", err)
+				}
+
+				// Run JavaScript checks to confirm that all the address fields are set correctly.
+				for _, address := range addressValues {
+					var valueFromHTML string
+					if err := conn.Eval(ctx, "document.getElementById('"+address.htmlFieldID+"').value", &valueFromHTML); err != nil {
+						s.Fatalf("Failed to complete JS test. With params %d and %e. Error: %f", valueFromHTML, address.htmlFieldID, err)
+					}
+					if valueFromHTML != address.fieldValue {
+						s.Fatalf("Address was not set properly. %d doesnt match with %e", valueFromHTML, address.htmlFieldID)
+					}
+				}
 			}
 		})
 	}
