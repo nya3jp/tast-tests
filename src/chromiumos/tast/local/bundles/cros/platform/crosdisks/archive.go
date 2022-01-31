@@ -198,13 +198,43 @@ func testMacOSUTF8InArchives(ctx context.Context, s *testing.State, cd *crosdisk
 // testSJISInArchives tests that filenames encoded in Shift JIS are correctly detected and converted to UTF-8.
 // https://crbug.com/846195
 // https://crbug.com/834544
+// https://crbug.com/1287893
 func testSJISInArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
 	expectedContent := DirectoryContents{
 		"新しいフォルダ/SJIS_835C_ソ.txt":    {Mtime: 347068800},
 		"新しいフォルダ/新しいテキスト ドキュメント.txt": {Mtime: 1002026088},
 	}
 	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), nil, expectedContent); err != nil {
-		s.Error("Test failed: ", err)
+		s.Error("Test failed without encoding: ", err)
+	}
+
+	// Check that passed encoding is taken in account.
+	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=Shift_JIS"}, expectedContent); err != nil {
+		s.Error("Test failed with encoding=Shift_JIS: ", err)
+	}
+
+	// Check that if the passed encoding is wrong, we get garbled filenames.
+	// Convert from Code Page 866.
+	expectedContent = DirectoryContents{
+		"РVВ╡ВвГtГHГЛГ_/SJIS_835C_Г\\.txt":               {Mtime: 347068800},
+		"РVВ╡ВвГtГHГЛГ_/РVВ╡ВвГeГLГXГg ГhГLГЕГБГУГg.txt": {Mtime: 1002026088},
+	}
+	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=cp866"}, expectedContent); err != nil {
+		s.Error("Test failed with encoding=cp866: ", err)
+	}
+	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=IBM866"}, expectedContent); err != nil {
+		s.Error("Test failed with encoding=IBM866: ", err)
+	}
+
+	// Using the special "libzip" encoding instructs mount-zip to use
+	// libzip's encoding detection and conversion. In this case, it
+	// considers that the filenames are in Code Page 437.
+	expectedContent = DirectoryContents{
+		"ÉVé╡éóâtâHâïâ_/SJIS_835C_â\\.txt":               {Mtime: 347068800},
+		"ÉVé╡éóâtâHâïâ_/ÉVé╡éóâeâLâXâg âhâLâàâüâôâg.txt": {Mtime: 1002026088},
+	}
+	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=libzip"}, expectedContent); err != nil {
+		s.Error("Test failed with encoding=libzip: ", err)
 	}
 }
 
