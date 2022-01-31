@@ -16,6 +16,24 @@
       "message": "This will cause all tests to download both amd64 and arm containers when they only need one of the two.\n\nCan you use GetContainerMetadataArtifact and GetContainerRootfsArtifact like our existing tests do? They should do the right thing",
       "revId": "d218d6d4a94c2e773d8109fbba99cb33a7d61a85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ca4170_06c751fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-31T05:10:08Z",
+      "side": 1,
+      "message": "Also if the CL chain starting with CL:3422357 lands we will probably have to change those data definitions. Better to keep them in one place.",
+      "parentUuid": "cfb4ac76_b1ef059b",
+      "revId": "d218d6d4a94c2e773d8109fbba99cb33a7d61a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
