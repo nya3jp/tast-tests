@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b244a8_6d6a4b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T10:41:31Z",
+      "side": 1,
+      "message": "Adding Kamil as a reviewer, as there are multiple Kiosk instance openings and closings.\nI would say it is better to keep the instances separate, and I don\u0027t know if it possible to combine them like this.",
+      "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "224fcad9_56f8e617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T10:41:31Z",
+      "side": 1,
+      "message": "`kiosk.Close(ctx)` is closing the chrome instance as well, so closing it here can have side effects.\nIt is better to trigger the deferred kiosk closing instead.\nYou can do it by for example putting the code above into an anonymous function.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 2
+      },
+      "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8cc4b24_60970986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T10:41:31Z",
+      "side": 1,
+      "message": "minor nit: Chrome",
+      "range": {
+        "startLine": 84,
+        "startChar": 47,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
