@@ -232,6 +232,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0c7256c_43573d68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-31T01:11:55Z",
+      "side": 1,
+      "message": "Could the dry run sucessfully passing have the same effect?",
+      "parentUuid": "342dfbc0_3f2585b3",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "f1a36e05d46731b0c34fe8c6ab75a9c2b5632d70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e8adbdd_5068efda",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
         "patchSetId": 3

@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "552232f2_d8452d78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-31T01:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72858c51_0218171d",
+      "range": {
+        "startLine": 35,
+        "startChar": 28,
+        "endLine": 35,
+        "endChar": 49
+      },
+      "revId": "7547ad653afab8a491c5f659db43083494e9e2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fee98bc9_575b71fc",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6cef490_d5835fa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-31T01:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fee98bc9_575b71fc",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 66
+      },
+      "revId": "7547ad653afab8a491c5f659db43083494e9e2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0351250_d9b394ff",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-30T22:54:33Z",
       "side": 1,
       "message": "nit: you can actually chain these together using uiauto.Combine.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "7547ad653afab8a491c5f659db43083494e9e2a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1dafbb8_10274648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/pre/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-01-31T01:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0351250_d9b394ff",
       "range": {
         "startLine": 94,
         "startChar": 1,
