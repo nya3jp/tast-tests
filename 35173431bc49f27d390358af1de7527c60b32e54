@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639b1c61_3a479874",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T14:52:34Z",
+      "side": 1,
+      "message": "I would like to ask you to create a follow up CL with some minor fixes.",
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61180b55_c7eae5ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_name.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T14:52:34Z",
+      "side": 1,
+      "message": "Can you modify it to LacrosVariantExists?",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f9039e_371e6f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_name.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T14:52:34Z",
+      "side": 1,
+      "message": "In case the test fails, this won\u0027t help, as every cleanup step will be completed by the time the UI tree dump is created. Please use `defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+param.name)` placed after after `defer closeBrowser(cleanupCtx)` instead.\nThis way the Lacros browser will be still open when the dump is created.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 68
+      },
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4e8dd3_0de81951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_name.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T14:52:34Z",
+      "side": 1,
+      "message": "If you prefer, all of these can be combined under a `uiauto.Combine()` call, even the keyboard interactions with `kb.TypeAction()` and `kb.AccelAction()`.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 4
+      },
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
