@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6100ea69_d15fe45d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-01-31T18:33:26Z",
+      "side": 1,
+      "message": "Questions: does this sample once, or sample continuously and then\nlog either the max or the average? IIUC this method is called \nonce and the result logged, so the timing would be an issue. We\nmight need to sample repeatedly and log the maximum?",
+      "range": {
+        "startLine": 299,
+        "startChar": 47,
+        "endLine": 299,
+        "endChar": 64
+      },
+      "revId": "bd2366afdb21bb95dc37f472342ffc38d28826e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
