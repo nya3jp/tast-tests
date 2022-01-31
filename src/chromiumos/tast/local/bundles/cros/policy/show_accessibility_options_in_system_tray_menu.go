@@ -112,7 +112,7 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 			// Get all the feature pod icons in the system tray.
 			uia := uiauto.New(tconn)
 			systemTrayContainer := nodewith.ClassName("SystemTrayContainer")
-			podIcons, err := uia.NodesInfo(ctx, nodewith.ClassName("FeaturePodIconButton").Ancestor(systemTrayContainer))
+			podIcons, err := uia.NodesInfo(ctx, nodewith.ClassName("IconButton").Ancestor(systemTrayContainer))
 			if err != nil {
 				s.Fatal("Failed to get a list of feature pod icons: ", err)
 			}

@@ -230,7 +230,7 @@ func PodIconButton(setting SettingPod) *nodewith.Finder {
 
 	// The pod icon names change based on their state, but a substring containing the setting name stays
 	// the same regardless of state, so we can match that in the name attribute.
-	return nodewith.HasClass("FeaturePodIconButton").NameContaining(string(setting))
+	return nodewith.HasClass("IconButton").NameContaining(string(setting))
 }
 
 // PodLabelButton generates nodewith.Finder to enter the panel of the specified quick setting pod.
