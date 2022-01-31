@@ -34,6 +34,24 @@
       "parentUuid": "cfb4ac76_b1ef059b",
       "revId": "d218d6d4a94c2e773d8109fbba99cb33a7d61a85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b23864_1da55be7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-01-31T08:23:40Z",
+      "side": 1,
+      "message": "Thanks for the comment and information. I\u0027ll wait for that cl to submit.",
+      "parentUuid": "21ca4170_06c751fa",
+      "revId": "d218d6d4a94c2e773d8109fbba99cb33a7d61a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
