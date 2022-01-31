@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc1f2c2_10c1b040",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T14:38:33Z",
+      "side": 1,
+      "message": "LGTM % comment",
+      "revId": "9916dde136caa538f262f26b088a96b63135eb98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "013e6cc3_80e331a5",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "It throws \"Failed to update policies\" when I change it.",
       "parentUuid": "013e6cc3_80e331a5",
+      "range": {
+        "startLine": 96,
+        "startChar": 24,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "9916dde136caa538f262f26b088a96b63135eb98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0518646_8b6e5679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T14:38:33Z",
+      "side": 1,
+      "message": "Can you add a comment on this? So in the future we can avoid that someone tries to \"fix\" it.",
+      "parentUuid": "3798a2ca_0253b7af",
       "range": {
         "startLine": 96,
         "startChar": 24,
