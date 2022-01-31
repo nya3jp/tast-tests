@@ -19,7 +19,7 @@ import (
 
 func testVolumeRename(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosdisks.LoopbackDevice) error {
 	// Mount and then unmount through the CrosDisks API to ensure correct permissions on the device, which depend on the filesystem type.
-	if err := withMountDo(ctx, cd, ld.DevicePath(), "", "", func(ctx context.Context, mountPath string) error {
+	if err := withMountDo(ctx, cd, ld.DevicePath(), "", nil, func(ctx context.Context, mountPath string) error {
 		return nil
 	}); err != nil {
 		return err

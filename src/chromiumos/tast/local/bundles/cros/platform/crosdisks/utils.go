@@ -28,9 +28,9 @@ const chronosUID = 1000
 const chronosGID = 1000
 
 // mount is a convenience wrapper for mounting with CrosDisks.
-func mount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, options string) (m crosdisks.MountCompleted, err error) {
+func mount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string) (m crosdisks.MountCompleted, err error) {
 	testing.ContextLogf(ctx, "Mounting %q as %q with options %q", source, fsType, options)
-	m, err = cd.MountAndWaitForCompletion(ctx, source, fsType, strings.Split(options, ","))
+	m, err = cd.MountAndWaitForCompletion(ctx, source, fsType, options)
 	if err != nil {
 		err = errors.Wrap(err, "failed to invoke mount")
 		return
@@ -43,7 +43,7 @@ func mount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, options
 }
 
 // withMountDo mounts the specified source and if it succeeds calls the provided function, cleaning up the mount afterwards.
-func withMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, options string, f func(ctx context.Context, mountPath string) error) (err error) {
+func withMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string, f func(ctx context.Context, mountPath string) error) (err error) {
 	ctxForUnmount := ctx
 	ctx, unmount := ctxutil.Shorten(ctx, time.Second*5)
 	defer unmount()
@@ -84,7 +84,7 @@ func withMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, o
 }
 
 // verifyMountStatus checks that mounting yields the expected status.
-func verifyMountStatus(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType, options string, expectedStatus uint32) error {
+func verifyMountStatus(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string, expectedStatus uint32) error {
 	m, err := mount(ctx, cd, source, fsType, options)
 	if err != nil {
 		return errors.Wrapf(err, "failed to invoke mount for %q", source)
