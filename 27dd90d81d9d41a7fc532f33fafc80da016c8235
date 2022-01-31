@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e09e766_391177f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-31T05:44:47Z",
+      "side": 1,
+      "message": "Sorry I missed this earlier.\nsectionAttribute() parses this output. Use of CombinedOutput for parsing is generally avoided because it may have both stderr and stdout without detereministic order.\nIf we know which stream actually contains the needed information, we should use that.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#combinedoutput",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec4b9e96_5a63d2e7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-31T05:44:47Z",
+      "side": 1,
+      "message": "For these functions using command execution, I still think reporting error from the Command class in case of execution failure is usually better.\nIt is because that err can tell what happened in case the command execution itself failed (e.g. command not found) even before the program can write something to stderr/stdout.\n\nExample:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go;l\u003d229;drc\u003d9ec715139635146810e152efafb79da23dabff55",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

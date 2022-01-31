@@ -87,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba914c5_fbacf80c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-01-31T05:44:47Z",
+      "side": 1,
+      "message": "Thanks, now I got it.\nIf you want log only when an error happens here, changing the meaning of the last argument to \"dump log on error\" would be an option.\nSee:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;l\u003d28;drc\u003d64b6b252b101b80a2dd5ba0b881e15ebd864cbdf",
+      "parentUuid": "bae8476e_437ae687",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa1e0e05_b1c4ab9a",
