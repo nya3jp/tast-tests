@@ -34,6 +34,24 @@
       "parentUuid": "0ea76070_9147e52d",
       "revId": "4487af7ceb248fc9a3a295f4f8469e4c84c951b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed0c030_24e32e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266035
+      },
+      "writtenOn": "2022-01-31T13:06:02Z",
+      "side": 1,
+      "message": "It might be I have an old image in my DUT. But great that this thing works 😄",
+      "parentUuid": "4e90225d_2bf09b00",
+      "revId": "4487af7ceb248fc9a3a295f4f8469e4c84c951b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
