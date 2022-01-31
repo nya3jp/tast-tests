@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a40c4e34_0dc52c55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2022-01-31T13:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de501f26_3dedd41b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "b2b9d4dea95c5e9ac344a44a0bc9d85fe880b13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6aa9316e_3b878dfc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eac27e4_811f6f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2022-01-31T13:26:09Z",
+      "side": 1,
+      "message": "Oh, I mistakenly thought that constants have to be at file level in Golang. TIL, thanks!",
+      "parentUuid": "0fd67d3e_3f57fb4f",
+      "revId": "b2b9d4dea95c5e9ac344a44a0bc9d85fe880b13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57a46229_26510ef4",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-01-31T10:20:24Z",
       "side": 1,
       "message": "We are using `defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+param.name)` in the other tests. It a UI tree dump as well, but I don\u0027T think that is an issue.\nAnd this function call is there permanently, so no need to remove it when the test is stable.\n\nAlso, with Lacros tests, it should be put after the `defer closeBrowser(cleanupCtx)` line, otherwise the Lacros browser is closed before the screenshot is taken.",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 16
+      },
+      "revId": "b2b9d4dea95c5e9ac344a44a0bc9d85fe880b13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7729a8bd_ed533371",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/force_you_tube_restrict.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1252512
+      },
+      "writtenOn": "2022-01-31T13:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57a46229_26510ef4",
       "range": {
         "startLine": 116,
         "startChar": 3,
