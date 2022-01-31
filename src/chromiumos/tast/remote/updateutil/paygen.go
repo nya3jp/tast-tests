@@ -106,6 +106,30 @@ func (p *Paygen) FilterBoardChannelDeltaType(board, channel, deltaType string) *
 	return &filtered
 }
 
+// FilterBoard filters for a specific board string.
+func (p Paygen) FilterBoard(board string) *Paygen {
+	var filtered Paygen
+	for _, delta := range p.Deltas {
+		if delta.Board.PublicCodename == board {
+			filtered.Deltas = append(filtered.Deltas, delta)
+		}
+	}
+
+	return &filtered
+}
+
+// FilterDeltaType filters by type.
+func (p Paygen) FilterDeltaType(deltaType string) *Paygen {
+	var filtered Paygen
+	for _, delta := range p.Deltas {
+		if delta.DeltaType == deltaType {
+			filtered.Deltas = append(filtered.Deltas, delta)
+		}
+	}
+
+	return &filtered
+}
+
 // FilterMilestone filters the deltas based on the milestone.
 func (p Paygen) FilterMilestone(milestone int) *Paygen {
 	var filtered Paygen
