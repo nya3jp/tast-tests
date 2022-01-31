@@ -8,6 +8,8 @@ import (
 	"context"
 	"path/filepath"
 	"strings"
+	"syscall"
+	"unsafe"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/testing"
@@ -16,13 +18,49 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: V4L2Compliance,
-		Desc: "Runs V4L2Compliance in all the Media Devices",
+		Desc: "Runs V4L2Compliance in all the Cameras",
 		Contacts: []string{
 			"ribalda@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})
+}
+
+type v4l2Capability struct {
+	driver       [16]byte
+	card         [32]byte
+	busInfo      [32]byte
+	version      uint32
+	capabilities uint32
+	deviceCaps   uint32
+	reserved     [3]uint32
+}
+
+func deviceIsCamera(devname string) (bool, error) {
+	const VIDIOC_QUERYCAP = 0x80685600
+	const V4L2_CAP_VIDEO_CAPTURE = 1
+	const V4L2_CAP_VIDEO_OUTPUT = 2
+
+	fd, err := syscall.Open(devname, syscall.O_RDONLY, 0)
+	if err != nil {
+		return false, err
+	}
+	defer syscall.Close(fd)
+
+	capabilities := v4l2Capability{}
+	_, _, errno := syscall.Syscall(
+		syscall.SYS_IOCTL,
+		uintptr(fd),
+		VIDIOC_QUERYCAP,
+		uintptr(unsafe.Pointer(&capabilities)),
+	)
+	if errno != 0 {
+		return false, syscall.Errno(errno)
+	}
+
+	return (capabilities.deviceCaps&V4L2_CAP_VIDEO_CAPTURE) != 0 && (capabilities.deviceCaps&V4L2_CAP_VIDEO_OUTPUT) == 0, nil
+
 }
 
 func V4L2Compliance(ctx context.Context, s *testing.State) {
@@ -33,6 +71,14 @@ func V4L2Compliance(ctx context.Context, s *testing.State) {
 	}
 
 	for _, videodev := range mediaDevices {
+
+		if isCamera, err := deviceIsCamera(videodev); err != nil {
+			s.Errorf("Error checking if %s is a camera: %v", videodev, err)
+			continue
+		} else if !isCamera {
+			continue
+		}
+
 		cmd := testexec.CommandContext(ctx, "v4l2-compliance", "-v", "-d", videodev)
 		out, err := cmd.Output(testexec.DumpLogOnError)
 
