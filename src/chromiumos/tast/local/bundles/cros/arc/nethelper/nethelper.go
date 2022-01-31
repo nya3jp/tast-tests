@@ -179,13 +179,13 @@ func Start(ctx context.Context, port int) (*Connection, error) {
 
 // AddTcTbf adds up traffic control token bucket filter queuing discipling for the
 // connection using speed rate (mbit), token latency (ms), and burst bucket size (kb).
-func (c *Connection) AddTcTbf(ctx context.Context, rate, latency, burst int) error {
+func (c *Connection) AddTcTbf(ctx context.Context, rate float64, latency, burst int) error {
 	if len(c.ifaces) == 0 {
 		return errors.New("failed to obtain connection interface")
 	}
 
 	for _, i := range c.ifaces {
-		rule := "dev " + i.Name + " root tbf rate " + strconv.Itoa(rate) + "mbit latency " + strconv.Itoa(latency) + "ms burst " + strconv.Itoa(burst) + "kb"
+		rule := "dev " + i.Name + " root tbf rate " + strconv.FormatFloat(rate, 'f', -1, 32) + "mbit latency " + strconv.Itoa(latency) + "ms burst " + strconv.Itoa(burst) + "kb"
 		c.tcrules = append(c.tcrules, rule)
 		args := append([]string{"qdisc", "add"}, strings.Fields(rule)...)
 		testing.ContextLogf(ctx, "Adding tc-tbf configuration: %s", strings.Join(args[:], " "))
