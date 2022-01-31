@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cda7a00_69c9b867",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-01-31T04:37:03Z",
+      "side": 1,
+      "message": "lgtm with a nit.",
+      "revId": "0608abc000d56699f85ce055fad9b56752618690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c39272e_c9c67b0e",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-01-31T04:37:03Z",
+      "side": 1,
+      "message": "It looks like topLeft actually (assuming (0, 0) is the top left corner).",
+      "range": {
+        "startLine": 643,
+        "startChar": 1,
+        "endLine": 643,
+        "endChar": 11
+      },
+      "revId": "0608abc000d56699f85ce055fad9b56752618690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
