@@ -16,6 +16,46 @@
       "message": "thanks!",
       "revId": "cff954be047e48e9cdc3b3930e2f6540d9541734",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a01e6eb5_8bb85214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T14:18:09Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "cff954be047e48e9cdc3b3930e2f6540d9541734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3353fb75_89bf492a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/ssl_error_override_allowed.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T14:18:09Z",
+      "side": 1,
+      "message": "nit: for_origin",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 19
+      },
+      "revId": "cff954be047e48e9cdc3b3930e2f6540d9541734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
