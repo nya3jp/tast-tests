@@ -22,6 +22,30 @@
       },
       "revId": "9916dde136caa538f262f26b088a96b63135eb98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3798a2ca_0253b7af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-31T13:55:50Z",
+      "side": 1,
+      "message": "It throws \"Failed to update policies\" when I change it.",
+      "parentUuid": "013e6cc3_80e331a5",
+      "range": {
+        "startLine": 96,
+        "startChar": 24,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "9916dde136caa538f262f26b088a96b63135eb98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -387,6 +387,30 @@
       },
       "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a53ac48_4804e6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1396815
+      },
+      "writtenOn": "2022-01-31T13:55:50Z",
+      "side": 1,
+      "message": "As discussed in private, we should only check that the item is not present, so I will leave the solution as is.",
+      "parentUuid": "b5048f9d_14abc99a",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
