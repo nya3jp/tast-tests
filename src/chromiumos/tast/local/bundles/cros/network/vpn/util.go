@@ -6,6 +6,11 @@ package vpn
 
 import (
 	"context"
+	"io/ioutil"
+	"os"
+	"strconv"
+	"strings"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -14,7 +19,51 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// VerifyVPNProfile verifies a VPN service with certain GUID exists in shill, and can be connected if |verifyConnect| set to true.
+// checkPidExists returns if the process with the pid stored in |pidFile| is
+// still running. Returns false if |pidFile| does not exist.
+func checkPidExists(pidFile string) (bool, error) {
+	pidStr, err := ioutil.ReadFile(pidFile)
+	if err != nil && errors.Is(err, os.ErrNotExist) {
+		return false, nil
+	}
+	if err != nil {
+		return false, err
+	}
+	pid, err := strconv.Atoi(strings.TrimRight(string(pidStr), "\n"))
+	if err != nil {
+		return false, err
+	}
+	process, err := os.FindProcess(int(pid))
+	if err != nil {
+		return false, errors.Wrapf(err, "failed to find process: %d", pid)
+	}
+	err = process.Signal(syscall.Signal(0))
+	return err == nil, nil
+}
+
+// waitForCharonStop waits until the charon process stopped after the
+// disconnection of an strongswan-based connection. Otherwise, the next
+// connecting attempt (perhaps in another subtest) may fail if the charon is
+// still running at that time. If the connection is not strongswan-based,
+// returns immediately.
+func waitForCharonStop(ctx context.Context) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		isRunning, err := checkPidExists("/run/ipsec/charon.pid")
+		if err != nil {
+			return errors.Wrap(err, "failed to check process by pid file")
+		}
+		if !isRunning {
+			return nil
+		}
+		return errors.New("charon is still running")
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for charon stopped")
+	}
+	return nil
+}
+
+// VerifyVPNProfile verifies a VPN service with certain GUID exists in shill,
+// and can be connected if |verifyConnect| set to true.
 func VerifyVPNProfile(ctx context.Context, m *shill.Manager, serviceGUID string, verifyConnect bool) error {
 	testing.ContextLog(ctx, "Trying to find service with guid ", serviceGUID)
 
@@ -40,11 +89,6 @@ func VerifyVPNProfile(ctx context.Context, m *shill.Manager, serviceGUID string,
 	if err = service.Connect(ctx); err != nil {
 		return errors.Wrapf(err, "failed to connect the service %v", service)
 	}
-	defer func() {
-		if err = service.Disconnect(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to disconnect service ", service)
-		}
-	}()
 
 	timeoutCtx, cancel := context.WithTimeout(ctx, 35*time.Second)
 	defer cancel()
@@ -56,5 +100,13 @@ func VerifyVPNProfile(ctx context.Context, m *shill.Manager, serviceGUID string,
 	if state == shillconst.ServiceStateFailure {
 		return errors.Errorf("service %v became failure state", service)
 	}
+
+	if err = service.Disconnect(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to disconnect service ", service)
+	}
+	if err = waitForCharonStop(ctx); err != nil {
+		return err
+	}
+
 	return nil
 }
