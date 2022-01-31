@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f5559a_7b2e66e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_hash.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-31T16:27:49Z",
+      "side": 1,
+      "message": "BiosService doesn\u0027t have BackupECRW any more, now the backup function takes params for the EC/AP and RO/RW/RW_B.",
+      "range": {
+        "startLine": 54,
+        "startChar": 19,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "b80944c191fef65e186954d8ae6abf79d4c7d70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
