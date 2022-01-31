@@ -156,3 +156,13 @@ func GetUSBCamerasFromV4L2Test(ctx context.Context) ([]string, error) {
 	}
 	return strings.Fields(string(out)), nil
 }
+
+// GetCaptureDevicesFromV4L2Test returns a list of usb camera paths.
+func GetCaptureDevicesFromV4L2Test(ctx context.Context) ([]string, error) {
+	cmd := testexec.CommandContext(ctx, "media_v4l2_test", "--list_capture_devices")
+	out, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, err
+	}
+	return strings.Fields(string(out)), nil
+}
