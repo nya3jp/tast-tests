@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5c8512_ff17184b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-01-31T20:34:41Z",
+      "side": 1,
+      "message": "hrmm, This is causing CQ failures:\n\n```\ntast-remote-tests-cros-0.0.2-r9268: # chromiumos/tast/local/bundles/cros/policy\ntast-remote-tests-cros-0.0.2-r9268: src/chromiumos/tast/local/bundles/cros/policy/file_system_write_blocked_for_urls.go:32:7: indexFileName redeclared in this block\ntast-remote-tests-cros-0.0.2-r9268: \tprevious declaration at src/chromiumos/tast/local/bundles/cros/policy/auto_open_allowed_for_urls.go:33:21\ntast-remote-tests-cros-0.0.2-r9268:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r9268::chromiumos failed (compile phase):\n```\n\nSee https://ci.chromium.org/ui/p/chromeos/builders/cq/cherry-cq/b8823491268387615105/overview",
+      "revId": "f12f601de041d269633a9886ce6bef06c588bd13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
