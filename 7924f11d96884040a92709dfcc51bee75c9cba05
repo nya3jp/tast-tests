@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d607d3d2_dbac86ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-01-31T07:55:40Z",
+      "side": 1,
+      "message": "Thanks for the fix!",
+      "revId": "7924f11d96884040a92709dfcc51bee75c9cba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1195108d_9876991d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-01-31T07:55:40Z",
+      "side": 1,
+      "message": "Just to check my understanding, this function is defined in connection.go, right?\nIt sounds a little weird to put this in that file... (`util.go` sounds like a better place if we don\u0027t want another file?) And is it possible to wrap the whole poll() into a function (i.e., waitCharonExited()) and thus it can be used in the two places?",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "7924f11d96884040a92709dfcc51bee75c9cba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
