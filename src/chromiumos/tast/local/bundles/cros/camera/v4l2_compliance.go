@@ -6,17 +6,17 @@ package camera
 
 import (
 	"context"
-	"path/filepath"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: V4L2Compliance,
-		Desc: "Runs V4L2Compliance in all the Media Devices",
+		Desc: "Runs V4L2Compliance in all the Capture Devices",
 		Contacts: []string{
 			"ribalda@chromium.org",
 			"chromeos-camera-eng@google.com",
@@ -27,12 +27,12 @@ func init() {
 
 func V4L2Compliance(ctx context.Context, s *testing.State) {
 
-	mediaDevices, err := filepath.Glob("/dev/v4l/by-path/*")
+	captureDevices, err := testutil.GetCaptureDevicesFromV4L2Test(ctx)
 	if err != nil {
-		s.Fatal("Failed to list Media Devices: ", err)
+		s.Fatal("Failed to list Capture Devices: ", err)
 	}
 
-	for _, videodev := range mediaDevices {
+	for _, videodev := range captureDevices {
 		cmd := testexec.CommandContext(ctx, "v4l2-compliance", "-v", "-d", videodev)
 		out, err := cmd.Output(testexec.DumpLogOnError)
 
