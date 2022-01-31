@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d046dbb_7829e8f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-01-31T17:05:40Z",
+      "side": 1,
+      "message": "\u003e tast-remote-tests-cros-0.0.2-r9258: src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed.go:143:5: Errorf format %q has arg blocked of wrong type bool\n",
+      "revId": "ccdd296cb38f9e2b6a2d18a23b7be298ce33ccaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
