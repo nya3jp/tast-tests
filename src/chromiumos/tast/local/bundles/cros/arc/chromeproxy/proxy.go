@@ -36,7 +36,7 @@ type ProxyServer struct {
 
 // ProxyRules is go binding of chrome.proxy.ProxyRules.
 type ProxyRules struct {
-	SingleProxy ProxyServer `json:"singleProxy,omitempty"`
+	SingleProxy *ProxyServer `json:"singleProxy,omitempty"`
 	// No support for proxyForHttp, proxyForHttps, proxyForFtp and fallbackProxy, yet.
 	BypassList []string `json:"bypassList,omitempty"`
 }
@@ -49,9 +49,9 @@ type PacScript struct {
 
 // ProxyConfig is go binding of chrome.proxy.ProxyConfig.
 type ProxyConfig struct {
-	Rules     ProxyRules `json:"rules,omitempty"`
-	PacScript PacScript  `json:"pacScript,omitempty"`
-	Mode      Mode       `json:"mode,omitempty"`
+	Rules     *ProxyRules `json:"rules,omitempty"`
+	PacScript *PacScript  `json:"pacScript,omitempty"`
+	Mode      Mode        `json:"mode"`
 }
 
 // ProxySettings is go binding of the value to be passed to chrome.proxy.settings.set.
