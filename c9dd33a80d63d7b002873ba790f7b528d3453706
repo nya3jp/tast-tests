@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b32549e_4c88b928",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-31T14:09:49Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "c9dd33a80d63d7b002873ba790f7b528d3453706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ec221f_4502ad00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/change_arc_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-31T14:09:49Z",
+      "side": 1,
+      "message": "Please update it to testing.LacrosVariantExists",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 44
+      },
+      "revId": "c9dd33a80d63d7b002873ba790f7b528d3453706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91f1acd_612417a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/change_arc_availability.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-01-31T14:09:49Z",
+      "side": 1,
+      "message": "I would put the modeActionButton just before referencing it to avoid scrolling up to check its definition.",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 47
+      },
+      "revId": "c9dd33a80d63d7b002873ba790f7b528d3453706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
