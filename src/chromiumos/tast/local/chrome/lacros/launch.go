@@ -76,8 +76,6 @@ func Connect(ctx context.Context, lacrosPath, userDataDir string) (l *Lacros, re
 
 // LaunchFromShelf launches lacros-chrome via shelf.
 func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath string) (*Lacros, error) {
-	const newTabTitle = "New Tab"
-
 	// Make sure Lacros app is not running before launch.
 	if running, err := ash.AppRunning(ctx, tconn, apps.Lacros.ID); err != nil {
 		return nil, errors.Wrap(err, "failed to check if app is not running before launch")
@@ -91,7 +89,7 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 	}
 
 	testing.ContextLog(ctx, "Wait for Lacros window")
-	if err := WaitForLacrosWindow(ctx, tconn, newTabTitle); err != nil {
+	if err := WaitForLacrosWindow(ctx, tconn, ""); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for lacros")
 	}
 
