@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/errors"
 )
 
+
 type instance interface {
 	end(ctx context.Context) error
 }

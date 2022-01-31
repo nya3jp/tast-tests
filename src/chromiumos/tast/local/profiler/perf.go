@@ -14,11 +14,11 @@ import (
 	"strconv"
 	"strings"
 	"syscall"
-
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/shutil"
+	"chromiumos/tast/testing"
 )
 
 // perf represents the perf profiler.
@@ -143,6 +143,7 @@ func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, erro
 		return nil, errors.Wrapf(err, "failed running %s", shutil.EscapeSlice(cmd.Args))
 	}
 
+
 	success := false
 	defer func() {
 		if !success {
@@ -150,7 +151,7 @@ func newPerf(ctx context.Context, outDir string, opts *PerfOpts) (instance, erro
 			cmd.Wait()
 		}
 	}()
-
+	testing.ContextLog(ctx, "started cmd: now in state: ", cmd.Cmd.Args)
 	// KASLR makes looking up the symbols from the binary impossible, save
 	// the running symbols from DUT to outDir.
 	kallsymsPath := filepath.Join(outDir, "kallsyms")
@@ -190,6 +191,7 @@ func getCmd(ctx context.Context, outDir string, opts *PerfOpts) (*testexec.Cmd, 
 
 // getMaxLatencyMs is for perf sched latency and parses Maximum latency from wake up to switch.
 func getMaxLatencyMs(ctx context.Context, perfSchedFile, procName string) (float64, error) {
+	testing.ContextLog(ctx, "MIIIIIIIIIINE sched file: ", perfSchedFile)
 	cmd := testexec.CommandContext(ctx, "perf", "sched", "latency", "-i", perfSchedFile)
 
 	output, err := cmd.Output()
@@ -278,7 +280,6 @@ func (p *perf) handleStat() error {
 
 func (p *perf) handleSched(ctx context.Context) error {
 	perfPath := filepath.Join(p.outDir, perfSchedFileName)
-
 	maxLatencyMs, err := getMaxLatencyMs(ctx, perfPath, p.opts.procName)
 	if err != nil {
 		return errors.Wrap(err, "failed to parse sched file")

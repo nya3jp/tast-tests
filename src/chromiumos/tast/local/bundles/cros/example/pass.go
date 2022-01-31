@@ -16,6 +16,7 @@ func init() {
 		Desc:     "Always passes",
 		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline"},
+		Fixture:  "profilerRunning",
 	})
 }
 
