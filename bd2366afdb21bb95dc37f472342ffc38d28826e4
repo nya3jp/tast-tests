@@ -22,6 +22,30 @@
       },
       "revId": "bd2366afdb21bb95dc37f472342ffc38d28826e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b28f752_62913b0c",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-01-31T22:59:43Z",
+      "side": 1,
+      "message": "Ah yes, that\u0027s a pretty good point. It was originally only recording it at one instance during the run (likely the very beginning).\n\nI\u0027ve updated it to poll ~1/s and the record the peak open fds and the overall average.",
+      "parentUuid": "6100ea69_d15fe45d",
+      "range": {
+        "startLine": 299,
+        "startChar": 47,
+        "endLine": 299,
+        "endChar": 64
+      },
+      "revId": "bd2366afdb21bb95dc37f472342ffc38d28826e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
