@@ -160,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "905dc2db_d269a5d9",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-31T04:28:31Z",
+      "side": 1,
+      "message": "Thank you for suggestion. Hmmm.... I think the former approach looks straightforward and stable/robust, because there\u0027s no guarantee that log line message won\u0027t change. Also, this works if the lacros is launched from Ash directly (e.g. via Shelf), but some tests directly executes lacros from shell/commandline.",
+      "parentUuid": "76632a1e_f77b84b1",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fd1a0d6_ed524b8e",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
         "patchSetId": 4
