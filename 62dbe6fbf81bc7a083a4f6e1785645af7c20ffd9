@@ -16,6 +16,24 @@
       "message": "could you describe where this calculation comes from in a comment?",
       "revId": "62dbe6fbf81bc7a083a4f6e1785645af7c20ffd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15700e0_dc275e55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/iio/ring.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2022-01-31T16:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "688c3cba_a35c6822",
+      "revId": "62dbe6fbf81bc7a083a4f6e1785645af7c20ffd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
