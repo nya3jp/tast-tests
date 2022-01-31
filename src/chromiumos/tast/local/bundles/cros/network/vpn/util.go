@@ -40,11 +40,6 @@ func VerifyVPNProfile(ctx context.Context, m *shill.Manager, serviceGUID string,
 	if err = service.Connect(ctx); err != nil {
 		return errors.Wrapf(err, "failed to connect the service %v", service)
 	}
-	defer func() {
-		if err = service.Disconnect(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to disconnect service ", service)
-		}
-	}()
 
 	timeoutCtx, cancel := context.WithTimeout(ctx, 35*time.Second)
 	defer cancel()
@@ -56,5 +51,25 @@ func VerifyVPNProfile(ctx context.Context, m *shill.Manager, serviceGUID string,
 	if state == shillconst.ServiceStateFailure {
 		return errors.Errorf("service %v became failure state", service)
 	}
+
+	if err = service.Disconnect(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to disconnect service ", service)
+	}
+	// For an L2TP/IPsec connection, waits until the charon process stopped.
+	// Otherwise the next run of the test may fail if the charon is still
+	// running at that time.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		isRunning, err := checkPidExists("/run/ipsec/charon.pid")
+		if err != nil {
+			return errors.Wrap(err, "failed to check process by pid file")
+		}
+		if !isRunning {
+			return nil
+		}
+		return errors.New("charon is still running")
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for charon stopped")
+	}
+
 	return nil
 }
