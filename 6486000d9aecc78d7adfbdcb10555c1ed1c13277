@@ -290,6 +290,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f711a8a_65b5de0a",
+        "filename": "src/chromiumos/tast/remote/wificell/ap_iface.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-31T09:22:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "231a0103_fec4fce9",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0bb5e7e_553e294d",
@@ -391,6 +415,24 @@
       "side": 1,
       "message": "Yes, this allows places where any support.Router is present to switch for differing logic easily. This is used primarily in the test fixture to choose the correct constructor.",
       "parentUuid": "2ff43564_b6ad830a",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2382b9f6_f5d7ed26",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-31T09:22:42Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "c64e3ab6_d71a7501",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -596,6 +638,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5489cd03_1235d5bf",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-31T09:22:42Z",
+      "side": 1,
+      "message": "I don\u0027t see the benefit of all the WithXXX helpers. Using them is not reducing code complexity or verboseness. Just use the built-in casting everywhere, it will be easier to maintain consistency that way.\n\nI like the interface design and how composable it is, but IMO it\u0027s not using all go features when passing interfaces around. Go interfaces work with method names, so it\u0027s easy to create composed interfaces like what you did with Standard.\n\nI\u0027d go with a more fine-grained approach:\nIf a test needs a specific interface, they can just cast the router to that interface and call it.\nIf you need to pass a router around, just create a new interface that contains the features you need. This might create many composite interfaces, but I suspect only some combinations will be popular and those can be exposed as \"standard\" interfaces instead of requiring everything.\n\nThis approach will make it easier to add new router types in the future without requiring any updates to the tests.\n\n+ I hope the features the test need can be encoded as hardware deps and the casts can be made without error checking. Panicking if tast runs the test when it shouldn\u0027t is fine. For now, performing the check insidte the test is also fine and the same reasoning applies.",
+      "parentUuid": "3f765c56_9c721a9d",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7d156af_a8e485d0",
         "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
         "patchSetId": 6
@@ -643,6 +703,24 @@
       "side": 1,
       "message": "I agree perhaps we should clarify more what legacy is in the documentation. I still prefer the legacy package name as this code used to correspond to whirlwind devices as well.",
       "parentUuid": "639e4c83_8fd28ab6",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571e06b6_9d3cae23",
+        "filename": "src/chromiumos/tast/remote/wificell/router/legacy/router.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-31T09:22:42Z",
+      "side": 1,
+      "message": "legacy is fine if there is no better name for it, but I still don\u0027t like it as a widely used package name.",
+      "parentUuid": "13956a5e_32e37912",
       "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
