@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/dlp/restrictionlevel"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -29,20 +30,10 @@ import (
 // finder for the print dialog.
 var printDialog = nodewith.Name("Print").HasClass("RootView").Role(role.Window)
 
-// Type of the DLP restriction enforced, potentially including the user's response to the warning dialog (proceed or cancel).
-type restrictionLevel int
-
-const (
-	allowed restrictionLevel = iota
-	blocked
-	warnCancelled
-	warnProceeded
-)
-
 type printingTestParams struct {
 	name        string
 	url         string
-	restriction restrictionLevel
+	restriction restrictionlevel.RestrictionLevel
 	policyDLP   []policy.Policy
 	browserType browser.Type
 }
@@ -108,7 +99,7 @@ func init() {
 			Val: printingTestParams{
 				name:        "blocked",
 				url:         "https://www.example.com/",
-				restriction: blocked,
+				restriction: restrictionlevel.Blocked,
 				policyDLP:   blockPolicy,
 				browserType: browser.TypeAsh,
 			},
@@ -118,7 +109,7 @@ func init() {
 			Val: printingTestParams{
 				name:        "allowed",
 				url:         "https://www.chromium.com/",
-				restriction: allowed,
+				restriction: restrictionlevel.Allowed,
 				policyDLP:   blockPolicy,
 				browserType: browser.TypeAsh,
 			},
@@ -129,7 +120,7 @@ func init() {
 			Val: printingTestParams{
 				name:        "warn_proceded",
 				url:         "https://www.example.com/",
-				restriction: warnProceeded,
+				restriction: restrictionlevel.WarnProceeded,
 				policyDLP:   warnPolicy,
 				browserType: browser.TypeAsh,
 			},
@@ -140,7 +131,7 @@ func init() {
 			Val: printingTestParams{
 				name:        "warn_cancelled",
 				url:         "https://www.example.com/",
-				restriction: warnCancelled,
+				restriction: restrictionlevel.WarnCancelled,
 				policyDLP:   warnPolicy,
 				browserType: browser.TypeAsh,
 			},
@@ -152,7 +143,7 @@ func init() {
 			Val: printingTestParams{
 				name:        "blocked",
 				url:         "https://www.example.com/",
-				restriction: blocked,
+				restriction: restrictionlevel.Blocked,
 				policyDLP:   blockPolicy,
 				browserType: browser.TypeLacros,
 			},
@@ -164,7 +155,7 @@ func init() {
 			Val: printingTestParams{
 				name:        "allowed",
 				url:         "https://www.chromium.com/",
-				restriction: allowed,
+				restriction: restrictionlevel.Allowed,
 				policyDLP:   blockPolicy,
 				browserType: browser.TypeLacros,
 			},
@@ -176,7 +167,7 @@ func init() {
 			Val: printingTestParams{
 				name:        "warn_proceeded",
 				url:         "https://www.example.com/",
-				restriction: warnProceeded,
+				restriction: restrictionlevel.WarnProceeded,
 				policyDLP:   warnPolicy,
 				browserType: browser.TypeLacros,
 			},
@@ -188,7 +179,7 @@ func init() {
 			Val: printingTestParams{
 				name:        "warn_cancelled",
 				url:         "https://www.example.com/",
-				restriction: warnCancelled,
+				restriction: restrictionlevel.WarnCancelled,
 				policyDLP:   warnPolicy,
 				browserType: browser.TypeLacros,
 			},
@@ -245,7 +236,7 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	}
 
 	// Confirm that the notification only appeared if expected.
-	if s.Param().(printingTestParams).restriction == blocked {
+	if s.Param().(printingTestParams).restriction == restrictionlevel.Blocked {
 		if _, err := ash.WaitForNotification(ctx, tconn, 15*time.Second, ash.WaitIDContains("print_dlp_blocked"), ash.WaitTitle("Printing is blocked")); err != nil {
 			s.Error("Failed to wait for notification with title 'Printing is blocked': ", err)
 		}
@@ -253,20 +244,20 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 }
 
 // testPrinting tests whether printing is possible via hotkey (Ctrl + P).
-func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, restriction restrictionLevel) error {
+func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, restriction restrictionlevel.RestrictionLevel) error {
 	// Type the shortcut.
 	if err := keyboard.Accel(ctx, "Ctrl+P"); err != nil {
 		return errors.Wrap(err, "failed to type printing hotkey")
 	}
 
-	if restriction == warnProceeded {
+	if restriction == restrictionlevel.WarnProceeded {
 		// Hit Enter, which is equivalent to clicking on the "Print anyway" button.
 		if err := keyboard.Accel(ctx, "Enter"); err != nil {
 			return errors.Wrap(err, "failed to hit Enter")
 		}
 	}
 
-	if restriction == warnCancelled {
+	if restriction == restrictionlevel.WarnCancelled {
 		// Hit Esc, which is equivalent to clicking on the "Cancel" button.
 		if err := keyboard.Accel(ctx, "Esc"); err != nil {
 			return errors.Wrap(err, "failed to hit Esc")
@@ -276,7 +267,7 @@ func testPrinting(ctx context.Context, tconn *chrome.TestConn, keyboard *input.K
 	// Check that the printing dialog appears if and only if printing the page is allowed.
 	ui := uiauto.New(tconn)
 
-	if restriction == allowed || restriction == warnProceeded {
+	if restriction == restrictionlevel.Allowed || restriction == restrictionlevel.WarnProceeded {
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(printDialog)(ctx); err != nil {
 			return errors.Wrap(err, "failed to find the printing window")
 		}
