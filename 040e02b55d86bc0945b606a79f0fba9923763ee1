@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faaa70a0_2979f7fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-01-31T16:33:28Z",
+      "side": 1,
+      "message": "Thanks for the help, I switched to arcBooted which has eliminated the flakiness for both these tests:\n\nhttps://tastboard.corp.google.com/test/arc.StandardizedKeyboardCopyPaste\nhttps://tastboard.corp.google.com/test/arc.StandardizedKeyboardCopyPaste.tablet_mode",
+      "parentUuid": "fde46701_26efbfd1",
+      "revId": "040e02b55d86bc0945b606a79f0fba9923763ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee89fc8f_1ddaf848",
