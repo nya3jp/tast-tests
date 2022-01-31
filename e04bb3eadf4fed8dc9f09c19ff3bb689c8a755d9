@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae67928_7254ff0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T16:43:45Z",
+      "side": 1,
+      "message": "nit: you can skip this.",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "e04bb3eadf4fed8dc9f09c19ff3bb689c8a755d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "769ad0c5_5542574c",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-01-31T16:41:02Z",
       "side": 1,
       "message": "Hi,\nThis might fix the issues found on lacros, but not sure (at least it will make the test less flaky in general).\n\ngabormagda@ Do you know how to add some specific test case for this CL to confirm if it does?",
+      "revId": "e04bb3eadf4fed8dc9f09c19ff3bb689c8a755d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58673d26_4a646a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_extended_reporting_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T16:43:45Z",
+      "side": 1,
+      "message": "This should be placed after `defer closeBrowser(cleanupCtx)`. This way the screenshot and the UI dump is created before the Lacros browser is closed.",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 104
+      },
       "revId": "e04bb3eadf4fed8dc9f09c19ff3bb689c8a755d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
