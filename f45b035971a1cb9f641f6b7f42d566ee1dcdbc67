@@ -16,6 +16,24 @@
       "message": "@tbarzic: I am thinking whether we should avoid using \"ScrollableAppsGridView\". Instead, make the node name of \"ScrollableAppsGridView\" to be \"AppsGridView\". Because I notice some functions like `launcher.LaunchApp` could be broken when we enable the productivity launcher flag since they do not take continue section into consideration. What\u0027s more, these function are used by some tests which do not specify the mode (tablet or clamshell). Maybe just use \"AppsGridView\" as the node name for both PagedAppsGridView and ScrollableAppsGridView makes the job easier.",
       "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54020dea_b16aace4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-01-31T19:00:36Z",
+      "side": 1,
+      "message": "I had a similar though, but I\u0027m fine using ScrollableAppsGrid for now - I imagine we\u0027d have to fix up tests that use clamshell mode launcher when the featur eflag is enabled either way (e.g. just waiting for peeking/fullscreen launcher state would fail in those tests).",
+      "parentUuid": "7e9de437_b5efcd77",
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
