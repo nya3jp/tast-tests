@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a200b1b4_66119893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-01-31T16:50:16Z",
+      "side": 1,
+      "message": "Failures were due to lack of DUT availability. Tests affected are not in CQ suite yet.",
+      "revId": "e9d10559cd6bdbe8ece1b58b51a2b23a2772aa27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
