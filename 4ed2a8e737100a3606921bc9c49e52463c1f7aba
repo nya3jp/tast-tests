@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a80f7da_ca478dbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-31T07:05:03Z",
+      "side": 1,
+      "message": "Had a chat with Alex offline.\n\nInstead of android_userland_footprint, we could create a metric (for each crosvm instance) that is the size of crosvm, minus the guest shared memory region. The intent would be to detect guest behaviour that increses ARCVM memory use without actually using more memory in the guest (e.g. more file access, which would then increase crosvm\u0027s page cache use).\n\nI don\u0027t think we need to distinguish parent from child crosvm processes.",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f28a658_e880b355",
+        "filename": "src/chromiumos/tast/local/memory/aggregate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-31T07:05:03Z",
+      "side": 1,
+      "message": "Why are you separating child and parent PSS for the shared memory region here? If the root crosvm process has referenced any of that memory then this will under count because we won\u0027t be including the parent process\u0027s PSS.",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe63953_f6aa6be5",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-31T07:05:03Z",
+      "side": 1,
+      "message": "Can we separate this into two different functions:\none that logs the result of dumpsys meminfo, and returns a digest\nanother that takes that digest and logs the perf metrics.\n\n\nI think this will make LogMemoryStats more natural, as we can query all the data at once, and if that data is used in more than one place, we can just pass it to more than one perf logging function.",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d6c3a5_1ffd1661",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-31T07:05:03Z",
+      "side": 1,
+      "message": "I don\u0027t like the amotic operations here. The existing code puts everything it needs into separate indices of `rollups`, and then does aggregation single threaded in the loop below.\n\nSo if you\u0027re going to use atomics, could you make the existing code use them as well to be consistent?",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3294f1_a762a56a",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-31T07:05:03Z",
+      "side": 1,
+      "message": "This function only returns ARCVM\u0027s main process.\n\nI don\u0027t really like how we duplicate the regex matching of command lines here and in processCategories below.\n\nThe fact that we\u0027re using regexp to determine what\u0027s ARCVM isn\u0027t great, but at least we should keep it in one place, or get rid of it entirely.",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9021ce92_2aee5f41",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-31T07:05:03Z",
+      "side": 1,
+      "message": "Now that there are two different things we need out of smaps, maybe use the visitor pattern to separate metric aggregation from the details of parsing smaps?",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dafa0ca_52129173",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-01-31T07:05:03Z",
+      "side": 1,
+      "message": "Same comment as above. Make a separate function for collecting the metrics, pass the metrics into this function, which will only do logging.",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
