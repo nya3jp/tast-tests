@@ -32,7 +32,7 @@ func init() {
 		Desc:         "Measure frames per second and check it is close to 60 fps",
 		Contacts:     []string{"drinkcat@chromium.org", "chromeos-gfx@google.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "no_qemu"},
+		SoftwareDeps: []string{"chrome", "no_chrome_dcheck", "no_qemu"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay(),
 			// See crbug.com/1031054, broken on veyron
 			hwdep.SkipOnPlatform("tiger")),
