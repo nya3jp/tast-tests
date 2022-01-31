@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9e4d6b_1bf045ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-01-31T04:34:53Z",
+      "side": 1,
+      "message": "Looks trivial so skipping shadow review.\nTast LGTM.",
+      "revId": "5cc429eecf7ead356aa17086ff1d7d0f7ec8eb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
