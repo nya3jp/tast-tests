@@ -363,6 +363,30 @@
       },
       "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5048f9d_14abc99a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/show_full_urls_in_address_bar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T10:50:16Z",
+      "side": 1,
+      "message": "For some reason I thought that it no problem if we have an error and return with `true`, but it is not the case.\nIt seems like you have to split the check based on the expectation, and use `WaitUntilExists()` and `EnsureGoneFor()` in the branches.\nIt might be better to do it without creating a separate function for it, but it is your call.",
+      "parentUuid": "b91ea6ec_2891a19a",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 2
+      },
+      "revId": "8f3de25a3a5980b6298fda5fcb2bbbc63884a970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
