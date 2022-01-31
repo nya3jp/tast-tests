@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04cbfe6_3bd7180b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-31T18:04:39Z",
+      "side": 1,
+      "message": "I think you should add a short sleep before this line just to be sure we get to the firmware screen.  Or maybe wait for S0?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "5c7f520b89f045aa52ff75e8bae02b3f890ecfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d467b08_5320d28f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-31T18:04:39Z",
+      "side": 1,
+      "message": "Setting",
+      "range": {
+        "startLine": 105,
+        "startChar": 26,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "5c7f520b89f045aa52ff75e8bae02b3f890ecfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a2837b_ce2331eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-31T18:04:39Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 140,
+        "startChar": 13,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "5c7f520b89f045aa52ff75e8bae02b3f890ecfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10cb1d17_396659e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-31T18:04:39Z",
+      "side": 1,
+      "message": "So here, you might get an S0 even if the machine is powering off, if you check too quickly, so I would add a delay before checking for S0.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 48
+      },
+      "revId": "5c7f520b89f045aa52ff75e8bae02b3f890ecfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc417b9_63cf2e20",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_lid_shutdown.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-01-31T18:04:39Z",
+      "side": 1,
+      "message": "I suggest dev mode instead of normal.\n\nHere is why, assume that the flag isn\u0027t working, and somehow you get past the S0 check above and then opening the lid starts a boot as above on line 91. Then the machine will boot, and you will connect and never know that it didn\u0027t actually get through the firmware menu.\n\nIf instead you go to dev mode, then you have 2 places to catch a problem.  One is the S0 check on line 145, but then also, you can make sure you ended up in dev mode, before you even open the lid. If you are in normal mode, that is a sign that the firmware screen didn\u0027t actually get you to where you wanted to be.\n\nAlso, the fwScreenToXXXMode functions don\u0027t check that you are in the right mode afterwards, so add that check to make sure we get there.  But they do call WaitConnect, so you know it is up.\n\nThe only potential problem I see here is that you might get booted, then linux will notice the lid is closed and shutdown again. And since the lid open happens after the boot is finished, you can\u0027t prevent that by opening the lid quickly.",
+      "range": {
+        "startLine": 149,
+        "startChar": 47,
+        "endLine": 149,
+        "endChar": 53
+      },
+      "revId": "5c7f520b89f045aa52ff75e8bae02b3f890ecfab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
