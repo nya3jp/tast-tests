@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb4ac76_b1ef059b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-01-31T05:08:11Z",
+      "side": 1,
+      "message": "This will cause all tests to download both amd64 and arm containers when they only need one of the two.\n\nCan you use GetContainerMetadataArtifact and GetContainerRootfsArtifact like our existing tests do? They should do the right thing",
+      "revId": "d218d6d4a94c2e773d8109fbba99cb33a7d61a85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
