@@ -16,6 +16,24 @@
       "message": "Hi Alex! Here is a patch addressing the comment you left.\nI\u0027m going to try if the flag necessary for this policy is set by CQ for the lacros test. If not I will just leave the ash test.",
       "revId": "4487af7ceb248fc9a3a295f4f8469e4c84c951b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e90225d_2bf09b00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-31T09:17:45Z",
+      "side": 1,
+      "message": "The CQ cannot set any flags. The whole startup takes place in the fixture and the test code. If it still works then maybe the flag is not required.",
+      "parentUuid": "0ea76070_9147e52d",
+      "revId": "4487af7ceb248fc9a3a295f4f8469e4c84c951b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
