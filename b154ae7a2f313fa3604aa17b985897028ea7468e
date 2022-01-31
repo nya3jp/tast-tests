@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ffca39_9e633f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-01-31T13:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb674273_11885788",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 1
+      },
+      "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f797a5d_f8e91e51",
@@ -166,6 +190,24 @@
       "writtenOn": "2022-01-31T12:23:39Z",
       "side": 1,
       "message": "What if we called this function ResatartChromeWithOptions and do here:\n\nif err \u003d k.cr.Close(ctx); err !\u003d nil {\n\ts.Fatal(\"Failed to close Chrome instance: \", err)\n}\ns.Log(\"Restarting ui\")\nif err :\u003d upstart.RestartJob(ctx, \"ui\"); err !\u003d nil {\n\ts.Fatal(\"Failed to restart ui: \", err)\n}\n\nThen tests would not need to do Chrome trestat",
+      "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37dc0dbd_0a2d1437",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-01-31T13:39:02Z",
+      "side": 1,
+      "message": "I have changed the test to create a separate Kiosk context while offline and it worked well. Therefore this function is no longer needed.",
+      "parentUuid": "9f797a5d_f8e91e51",
       "revId": "b154ae7a2f313fa3604aa17b985897028ea7468e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
