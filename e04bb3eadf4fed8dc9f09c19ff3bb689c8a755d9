@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c752fcaa_797a5548",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-01-31T16:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ae67928_7254ff0a",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "e04bb3eadf4fed8dc9f09c19ff3bb689c8a755d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "769ad0c5_5542574c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-31T16:43:45Z",
       "side": 1,
       "message": "This should be placed after `defer closeBrowser(cleanupCtx)`. This way the screenshot and the UI dump is created before the Lacros browser is closed.",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 104
+      },
+      "revId": "e04bb3eadf4fed8dc9f09c19ff3bb689c8a755d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fab4b08_9386c31e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_browsing_extended_reporting_enabled.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-01-31T16:51:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58673d26_4a646a53",
       "range": {
         "startLine": 92,
         "startChar": 3,
