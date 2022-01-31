@@ -16,6 +16,40 @@
       "message": "I hope this will address the OffHours test flakiness reported by Miriam.",
       "revId": "996489374a18064842f1c2841067c55879ba5b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07ea18c_b4f33fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-31T09:02:24Z",
+      "side": 1,
+      "message": "Use testing.Poll instead of a for loop. It respects ctx timeout.",
+      "revId": "996489374a18064842f1c2841067c55879ba5b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32853ce8_db0d8ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-01-31T09:02:24Z",
+      "side": 1,
+      "message": "Set the interval for testing.Poll instead. I\u0027d also recommend something smaller like 100ms.",
+      "revId": "996489374a18064842f1c2841067c55879ba5b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
