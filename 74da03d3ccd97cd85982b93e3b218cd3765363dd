@@ -85,6 +85,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fa5078cb_8bc653a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-31T23:58:32Z",
+      "side": 1,
+      "message": "With the bug resolved, I re-ran tests tests and all passed.",
+      "parentUuid": "2be65d8b_a3f24d72",
+      "revId": "74da03d3ccd97cd85982b93e3b218cd3765363dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9f8ae50b_948cb240",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7

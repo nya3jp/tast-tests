@@ -690,6 +690,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8c21e99_bf3d041f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/support/support.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-01-31T23:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4761b68_b6419b02",
+      "revId": "6486000d9aecc78d7adfbdcb10555c1ed1c13277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7d156af_a8e485d0",
