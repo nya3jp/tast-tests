@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "975b4c2e_11d9b3e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-31T12:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a714c41_cd39d3e3",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "8c95aeccc988837794c7301bc15864c0672d6cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "476a2c63_566c8f5f",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-01-31T12:37:43Z",
       "side": 1,
       "message": "shouldn\u0027t be expectedBlock ?",
+      "range": {
+        "startLine": 75,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "8c95aeccc988837794c7301bc15864c0672d6cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "937d809a_a6513df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-31T12:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "476a2c63_566c8f5f",
       "range": {
         "startLine": 75,
         "startChar": 24,
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fafab032_e1162c76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-31T12:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fd9dd28_3f4c5ac8",
+      "revId": "8c95aeccc988837794c7301bc15864c0672d6cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b0e14a4_70df4dea",
@@ -111,6 +177,30 @@
       "writtenOn": "2022-01-31T12:37:43Z",
       "side": 1,
       "message": "those parameters should be swapped.",
+      "range": {
+        "startLine": 143,
+        "startChar": 68,
+        "endLine": 143,
+        "endChar": 97
+      },
+      "revId": "8c95aeccc988837794c7301bc15864c0672d6cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb9bd02_b77c03f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/video_capture_allowed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-01-31T12:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0e14a4_70df4dea",
       "range": {
         "startLine": 143,
         "startChar": 68,
