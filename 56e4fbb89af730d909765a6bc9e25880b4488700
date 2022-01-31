@@ -16,6 +16,69 @@
       "message": "Hey Dominique,\nWould be nice if you could take a look, whether this covers what we want it to cover 😊\nThanks!",
       "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb9b817b_00898f8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360995
+      },
+      "writtenOn": "2022-01-31T15:42:44Z",
+      "side": 1,
+      "message": "Looks good as far as I can tell minus a few nits, but I\u0027m not very familiar with tast tests so defenitely add more reviewer(s).",
+      "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d5de22c_f2ef1535",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1360995
+      },
+      "writtenOn": "2022-01-31T15:42:44Z",
+      "side": 1,
+      "message": "As far as I can tell every fixture is the same, except for what account is used. Is there a way to simplify how those fixtures are declared?",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c9bb34_b941eb0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1360995
+      },
+      "writtenOn": "2022-01-31T15:42:44Z",
+      "side": 1,
+      "message": "Remove this line or the comment part.",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 6
+      },
+      "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
