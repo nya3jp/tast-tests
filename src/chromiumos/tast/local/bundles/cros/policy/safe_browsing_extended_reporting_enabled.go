@@ -12,9 +12,11 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -56,6 +58,11 @@ func SafeBrowsingExtendedReportingEnabled(ctx context.Context, s *testing.State)
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	for _, param := range []struct {
 		name            string
 		wantRestriction restriction.Restriction
@@ -82,7 +89,7 @@ func SafeBrowsingExtendedReportingEnabled(ctx context.Context, s *testing.State)
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			ui := uiauto.New(tconn)
 
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
@@ -100,11 +107,21 @@ func SafeBrowsingExtendedReportingEnabled(ctx context.Context, s *testing.State)
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
-			if err := policyutil.SettingsPage(ctx, cr, br, "security").
-				SelectNode(ctx, nodewith.
-					Name("Help improve security on the web for everyone").
-					Role(role.ToggleButton)).
+			settingsPage := policyutil.SettingsPage(ctx, cr, br, "security")
+			toggle := nodewith.Name("Help improve security on the web for everyone").Role(role.ToggleButton)
+
+			// Ensure the test works despite the screen size.
+			if err := uiauto.Combine("Wait and find the toggle.",
+				ui.WaitUntilExists(toggle),
+				ui.MakeVisible(toggle),
+			)(ctx); err != nil {
+				s.Fatal(errors.Wrap(err, "failed to find the toggle"))
+			}
+
+			if err := settingsPage.
+				SelectNode(ctx, toggle).
 				Restriction(param.wantRestriction).
 				Checked(param.wantChecked).
 				Verify(); err != nil {
