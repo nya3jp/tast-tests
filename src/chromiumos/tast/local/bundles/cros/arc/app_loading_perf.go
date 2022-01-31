@@ -7,6 +7,7 @@ package arc
 import (
 	"context"
 	"math"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -165,11 +166,15 @@ func init() {
 // uploads.  The overall final benchmark score combined and uploaded as well.
 func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	const (
-		// tbfRateMbit specifies how fast the data will leave the primary bucket.
-		tbfRateMbit = 10
-		// tbfLatency is amount of time a packet can be delayed by token rate before drop.
+		// tbfRateMbit* specifies how fast the data will leave the primary bucket (float).
+		tbfRateMbitX86 = 10
+		// TODO(b/215621884): Based on ARCVM network team's manual iperf3 bandwidth and Play
+		// Store game download tests on kukui vs. kukui-arc-r. Targeting simulated performance
+		// where VM is at ~50% of Container. Need to verify on more ARM boards with Crosbolt data.
+		tbfRateMbitArm = 1.35
+		// tbfLatency is amount of time a packet can be delayed by token rate before drop (int).
 		tbfLatencyMs = 18
-		// tbfBurst is the size of the bucket used by rate option.
+		// tbfBurst is the size of the bucket used by rate option (int).
 		tbfBurstKb = 10
 	)
 
@@ -187,9 +192,15 @@ func AppLoadingPerf(ctx context.Context, s *testing.State) {
 	// Add initial traffic control queuing discipline settings (b/169947243) for
 	// traffic shaping based on experiments with netem, RTT latency, and iperf3
 	// bandwidth measurements. Only kernel version 4.4+ supports tc-tbf.
-	if ver, _, err := sysutil.KernelVersionAndArch(); err != nil {
+	if ver, arch, err := sysutil.KernelVersionAndArch(); err != nil {
 		s.Fatal("Failed to get kernel version: ", err)
 	} else if ver.IsOrLater(4, 4) {
+		var tbfRateMbit float64
+		if strings.HasPrefix(arch, "x86") {
+			tbfRateMbit = tbfRateMbitX86
+		} else {
+			tbfRateMbit = tbfRateMbitArm
+		}
 		if err := conn.AddTcTbf(ctx, tbfRateMbit, tbfLatencyMs, tbfBurstKb); err != nil {
 			s.Fatal("Failed to add tc-tbf: ", err)
 		}
@@ -332,7 +343,7 @@ func calcGeometricMean(scores []float64) (float64, error) {
 
 // runAppLoadingTest will test each app loading subflow with timeout.
 func runAppLoadingTest(ctx context.Context, config apploading.TestConfig, a *arc.ARC, cr *chrome.Chrome) (float64, error) {
-	shorterCtx, cancel := context.WithTimeout(ctx, 510*time.Second)
+	shorterCtx, cancel := context.WithTimeout(ctx, 610*time.Second)
 	defer cancel()
 
 	// Each subflow should take no longer than 8.5 minutes based on stainless
