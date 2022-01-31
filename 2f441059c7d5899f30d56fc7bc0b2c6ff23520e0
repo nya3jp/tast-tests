@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "864559b1_b50b67b9",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T10:58:03Z",
+      "side": 1,
+      "message": "Update comment and variable name as well.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 70
+      },
+      "revId": "2f441059c7d5899f30d56fc7bc0b2c6ff23520e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2474a23_bf8c0ae8",
         "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2022-01-31T08:49:51Z",
       "side": 1,
       "message": "Oh it looks like it isn\u0027t going to solve the issue. I need the screenshot to be taken before the test cleanup. But the test cleanup function also requires tconn\n\nCan I just move \"defer faillog.DumpUITree...\" to L88? Or are there any other options?\nAlso, do I really need to use \"DumpUITreeWithScreenshotOnError\"? The test still takes some screenshot anyways",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 14
+      },
+      "revId": "2f441059c7d5899f30d56fc7bc0b2c6ff23520e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f106d0f9_13138d52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-01-31T10:58:03Z",
+      "side": 1,
+      "message": "You can move it to L88, it is better to have it before the cleanup. We do this for the Lacros tests as well.\nThe test only creates a screenshot at the very end, so it is usually holds no information.",
+      "parentUuid": "b2474a23_bf8c0ae8",
       "range": {
         "startLine": 75,
         "startChar": 0,
