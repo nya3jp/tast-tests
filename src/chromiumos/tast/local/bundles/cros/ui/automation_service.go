@@ -6,8 +6,11 @@ package ui
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
+	"sync"
+	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -21,6 +24,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/common"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
+	inputspb "chromiumos/tast/services/cros/inputs"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -36,9 +41,14 @@ func init() {
 	})
 }
 
+const (
+	errMsgCombinedFailed = "combine action :%s failed"
+)
+
 // AutomationService implements tast.cros.ui.AutomationService
 type AutomationService struct {
 	sharedObject *common.SharedObjectsForService
+	mutex        sync.Mutex
 }
 
 // Info returns the information for the node found by the input finder.
@@ -203,6 +213,155 @@ func (svc *AutomationService) WaitUntilExists(ctx context.Context, req *pb.WaitU
 	}
 	if err := ui.WaitUntilExists(finder)(ctx); err != nil {
 		return nil, errors.Wrapf(err, "failed calling WaitUntilExists with finder: %v", finder.Pretty())
+	}
+	return &empty.Empty{}, nil
+}
+
+func (svc *AutomationService) Sleep(ctx context.Context, req *pb.SleepRequest) (*empty.Empty, error) {
+	svc.sharedObject.ChromeMutex.Lock()
+	defer svc.sharedObject.ChromeMutex.Unlock()
+
+	ui, err := getUIAutoContext(ctx, svc)
+	if err != nil {
+		return nil, err
+	}
+	if err := ui.Sleep(time.Duration(req.Duration))(ctx); err != nil {
+		return nil, errors.Wrapf(err, "failed to sleep for %v", time.Duration(req.Duration))
+	}
+	return &empty.Empty{}, nil
+}
+
+func (svc *AutomationService) Combine(ctx context.Context, req *pb.CombineRequest) (*empty.Empty, error) {
+	for idx, nw := range req.Actions {
+		switch val := nw.Request.(type) {
+		case *pb.Action_LeftClickRequest:
+			childReq := val.LeftClickRequest
+			if _, err := svc.LeftClick(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_RightClickRequest:
+			childReq := val.RightClickRequest
+			if _, err := svc.RightClick(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_DoubleClickRequest:
+			childReq := val.DoubleClickRequest
+			if _, err := svc.DoubleClick(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_MouseClickAtLocationRequest:
+			childReq := val.MouseClickAtLocationRequest
+			if _, err := svc.MouseClickAtLocation(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_WaitUntilExistsRequest:
+			childReq := val.WaitUntilExistsRequest
+			if _, err := svc.WaitUntilExists(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_SleepRequest:
+			childReq := val.SleepRequest
+			if _, err := svc.Sleep(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_TypeRequest:
+			childReq := val.TypeRequest
+			if _, err := svc.Type(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_AccelRequest:
+			childReq := val.AccelRequest
+			if _, err := svc.Accel(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_AccelPressRequest:
+			childReq := val.AccelPressRequest
+			if _, err := svc.AccelPress(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+		case *pb.Action_AccelReleaseRequest:
+			childReq := val.AccelReleaseRequest
+			if _, err := svc.AccelRelease(ctx, childReq); err != nil {
+				return nil, errors.Wrapf(err, errMsgCombinedFailed, req.Name)
+			}
+
+		}
+
+		fmt.Printf("%d", idx)
+	}
+	return &empty.Empty{}, nil
+}
+
+// Type injects key events suitable for generating the string s.
+// Only characters that can be typed using a QWERTY keyboard are supported,
+// and the current keyboard layout must be QWERTY. The left Shift key is automatically
+// pressed and released for uppercase letters or other characters that can be typed
+// using Shift.
+func (svc *AutomationService) Type(ctx context.Context, req *inputspb.TypeRequest) (*empty.Empty, error) {
+	svc.mutex.Lock()
+	defer svc.mutex.Unlock()
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get keyboard handle")
+	}
+	defer kb.Close()
+	if err := kb.Type(ctx, req.Key); err != nil {
+		return nil, errors.Wrapf(err, "failed to type %v", req.Key)
+	}
+	return &empty.Empty{}, nil
+}
+
+// Accel injects a sequence of key events simulating the accelerator (a.k.a. hotkey) described by s being typed.
+// Accelerators are described as a sequence of '+'-separated, case-insensitive key characters or names.
+// In addition to non-whitespace characters that are present on a QWERTY keyboard, the following key names may be used:
+//	Modifiers:     "Ctrl", "Alt", "Search", "Shift"
+//	Whitespace:    "Enter", "Space", "Tab", "Backspace"
+//	Function keys: "F1", "F2", ..., "F12"
+// "Shift" must be included for keys that are typed using Shift; for example, use "Ctrl+Shift+/" rather than "Ctrl+?".
+func (svc *AutomationService) Accel(ctx context.Context, req *inputspb.AccelRequest) (*empty.Empty, error) {
+	svc.mutex.Lock()
+	defer svc.mutex.Unlock()
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get keyboard handle")
+	}
+	defer kb.Close()
+	if err := kb.Accel(ctx, req.Key); err != nil {
+		return nil, errors.Wrapf(err, "failed to call Accel %v", req.Key)
+	}
+	return &empty.Empty{}, nil
+}
+
+// AccelPress injects a sequence of key events simulating pressing the accelerator (a.k.a. hotkey) described by s.
+func (svc *AutomationService) AccelPress(ctx context.Context, req *inputspb.AccelPressRequest) (*empty.Empty, error) {
+	svc.mutex.Lock()
+	defer svc.mutex.Unlock()
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get keyboard handle")
+	}
+	defer kb.Close()
+	if err := kb.AccelPress(ctx, req.Key); err != nil {
+		return nil, errors.Wrapf(err, "failed to call AccelPress %v", req.Key)
+	}
+	return &empty.Empty{}, nil
+}
+
+// AccelRelease injects a sequence of key events simulating release the accelerator (a.k.a. hotkey) described by s.
+func (svc *AutomationService) AccelRelease(ctx context.Context, req *inputspb.AccelReleaseRequest) (*empty.Empty, error) {
+	svc.mutex.Lock()
+	defer svc.mutex.Unlock()
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get keyboard handle")
+	}
+	defer kb.Close()
+	if err := kb.AccelRelease(ctx, req.Key); err != nil {
+		return nil, errors.Wrapf(err, "failed to call AccelRelease %v", req.Key)
 	}
 	return &empty.Empty{}, nil
 }

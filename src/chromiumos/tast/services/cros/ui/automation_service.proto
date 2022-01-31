@@ -8,6 +8,8 @@ package tast.cros.ui;
 
 import "google/protobuf/empty.proto";
 
+import "keyboard_service.proto";
+
 option go_package = "chromiumos/tast/services/cros/ui";
 
 // AutomationService enables automating with the ChromeOS UI through the
@@ -39,6 +41,10 @@ service AutomationService {
 
   // WaitUntilExists waits until the node found by the input finder exists.
   rpc WaitUntilExists(WaitUntilExistsRequest) returns (google.protobuf.Empty) {}
+
+  rpc Sleep(SleepRequest) returns (google.protobuf.Empty) {}
+
+  rpc Combine(CombineRequest) returns (google.protobuf.Empty) {}
 }
 
 message LeftClickRequest {
@@ -65,6 +71,32 @@ message MouseClickAtLocationRequest {
 
 message WaitUntilExistsRequest {
   Finder finder = 1;
+}
+
+message SleepRequest {
+  int64 duration = 1;
+}
+
+message CombineRequest {
+  repeated Action actions = 1;
+  string name = 2;
+}
+
+message Action {
+  oneof request {
+    LeftClickRequest leftClickRequest = 1;
+    RightClickRequest rightClickRequest = 2;
+    DoubleClickRequest doubleClickRequest = 3;
+    MouseClickAtLocationRequest mouseClickAtLocationRequest = 4;
+    WaitUntilExistsRequest waitUntilExistsRequest = 5;
+    SleepRequest sleepRequest = 6;
+
+    // import request from Keyboard_service.proto
+    tast.cros.inputs.TypeRequest typeRequest = 7;
+    tast.cros.inputs.AccelRequest accelRequest = 8;
+    tast.cros.inputs.AccelPressRequest accelPressRequest = 9;
+    tast.cros.inputs.AccelReleaseRequest accelReleaseRequest = 10;
+  }
 }
 
 message InfoRequest {
