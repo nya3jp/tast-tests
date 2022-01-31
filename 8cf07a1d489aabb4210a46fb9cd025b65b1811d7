@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4679da35_b1ce4cf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-01-31T16:17:32Z",
+      "side": 1,
+      "message": "LGTM, although, at least in my case, the gopls file never got generated in the tast-test repo",
+      "revId": "8cf07a1d489aabb4210a46fb9cd025b65b1811d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
