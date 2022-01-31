@@ -34,6 +34,23 @@
       "parentUuid": "9792599c_e7a2531a",
       "revId": "7d6282b12048873c5d9bdc28593add646b56849e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7ce1d4_7e3dbec9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-01-31T17:26:11Z",
+      "side": 1,
+      "message": "Hi Ambalavanan,\n\nIs this supposed to be a semi-manual test? AFAIK the code for bluetooth peer has not been implemented in Tast so there isn\u0027t a way to execute this in the bluetooth test beds.\n\nRegards\nShijin\n\n",
+      "revId": "7d6282b12048873c5d9bdc28593add646b56849e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
