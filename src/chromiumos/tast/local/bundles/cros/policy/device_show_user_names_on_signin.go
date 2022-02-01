@@ -45,32 +45,50 @@ func DeviceShowUserNamesOnSignin(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Create a fake user so the user pod (avatar + name) would appear on the login screen.
-	cr, err := chrome.New(ctx, chrome.KeepEnrollment(), chrome.DMSPolicy(fdms.URL))
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	username := cr.Creds().User
-	cr.Close(ctx)
-
-	// Start a new Chrome instance with the login screen.
-	cr, err = chrome.New(ctx,
+	cr, err := chrome.New(ctx,
 		chrome.NoLogin(),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepState())
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatal("Failed to start Chrome: ", err)
 	}
 
-	defer cr.Close(cleanUpCtx)
-
+	userPod := nodewith.ClassName("UserView").First()
 	tconn, err := cr.SigninProfileTestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Creating login test API connection failed: ", err)
 	}
 
 	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+
+	// Check if user pod already exists. Otherwise create a fake user.
+	if err := ui.WithTimeout(2 * time.Second).WaitUntilExists(userPod)(ctx); err != nil {
+		cr.Close(ctx)
+
+		// Create a fake user so the user pod (avatar + name) would appear on the login screen.
+		if cr, err = chrome.New(ctx, chrome.KeepEnrollment(), chrome.DMSPolicy(fdms.URL)); err != nil {
+			s.Fatal("Chrome login failed: ", err)
+		}
+		cr.Close(ctx)
+
+		// Start a new Chrome instance with the login screen.
+		cr, err = chrome.New(ctx,
+			chrome.NoLogin(),
+			chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
+			chrome.DMSPolicy(fdms.URL),
+			chrome.KeepState())
+		if err != nil {
+			s.Fatal("Chrome login failed: ", err)
+		}
+		tconn, err = cr.SigninProfileTestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Creating login test API connection failed: ", err)
+		}
+		ui = uiauto.New(tconn).WithTimeout(10 * time.Second)
+	}
+
+	defer cr.Close(cleanUpCtx)
 
 	for _, param := range []struct {
 		name          string
@@ -100,8 +118,7 @@ func DeviceShowUserNamesOnSignin(ctx context.Context, s *testing.State) {
 			}
 
 			if param.showUserNames {
-				podName := nodewith.Name(username).Role(role.Button).Ancestor(nodewith.ClassName("UserView"))
-				if err := ui.WaitUntilExists(podName)(ctx); err != nil {
+				if err := ui.WaitUntilExists(userPod)(ctx); err != nil {
 					s.Error("Userpod did not appear: ", err)
 				}
 			} else {
