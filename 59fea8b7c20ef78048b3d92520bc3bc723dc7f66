@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c12bc69_6c858365",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-02-01T19:22:02Z",
+      "side": 1,
+      "message": "Hi Keigo,\n\nCould you review and +2 again. \n\nRegards\n",
+      "revId": "59fea8b7c20ef78048b3d92520bc3bc723dc7f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

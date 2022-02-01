@@ -56,6 +56,30 @@
       },
       "revId": "51eb8b0e0ded755d744c340412d221cc7e52e1e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e428d1_9e094be4",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-02-01T19:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddcd7531_7d16907b",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "51eb8b0e0ded755d744c340412d221cc7e52e1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
