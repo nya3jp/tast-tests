@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/systemlogs"
 	"chromiumos/tast/lsbrelease"
 )
 
@@ -21,21 +20,14 @@ func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, username str
 	attrs := crossdevicecommon.CrosAttributes{
 		User: username,
 	}
-	const expectedKey = "CHROME VERSION"
-	version, err := systemlogs.GetSystemLogs(ctx, tconn, expectedKey)
+	out, err := testexec.CommandContext(ctx, "/opt/google/chrome/chrome", "--version").Output()
 	if err != nil {
-		return nil, errors.Wrap(err, "failed getting system logs to check Chrome version")
+		return nil, errors.Wrap(err, "failed to get chrome version")
 	}
-	if version == "" {
-		return nil, errors.Wrap(err, "system logs result empty")
-	}
-	// The output on test images contains 'unknown' for the channel, i.e. '91.0.4435.0 unknown', so just extract the channel version.
-	const versionPattern = `([0-9\.]+) [\w+]`
-	r, err := regexp.Compile(versionPattern)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to compile Chrome version pattern")
-	}
-	versionMatch := r.FindStringSubmatch(version)
+	// The output on test images contains 'unknown' for the channel, i.e. 'Google Chrome 91.0.4435.0 unknown', so just extract the channel version.
+	const versionPattern = `[A-Za-z ]+([0-9\.]+) [\w+]`
+	r := regexp.MustCompile(versionPattern)
+	versionMatch := r.FindStringSubmatch(string(out))
 	if len(versionMatch) == 0 {
 		return nil, errors.New("failed to find valid Chrome version")
 	}
