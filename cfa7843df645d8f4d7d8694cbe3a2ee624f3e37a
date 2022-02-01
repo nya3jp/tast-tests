@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bab3385_d0e79c4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-02-01T01:36:29Z",
+      "side": 1,
+      "message": "You need to patch cros-disks with CL 3426080 first.",
+      "parentUuid": "b82585d8_e6aed784",
+      "revId": "cfa7843df645d8f4d7d8694cbe3a2ee624f3e37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b076b80_33bf744b",
