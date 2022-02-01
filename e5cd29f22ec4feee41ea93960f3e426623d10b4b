@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd2b2863_443f93b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-02-01T00:43:39Z",
+      "side": 1,
+      "message": "For reference: https://developer.chrome.com/docs/extensions/reference/proxy/#proxy-modes",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "e5cd29f22ec4feee41ea93960f3e426623d10b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf00f98_d02cf3a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-02-01T00:43:39Z",
+      "side": 1,
+      "message": "TBH I am not sure whether this is a proper solution, and would like to have inputs from golang / Tast experts.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "e5cd29f22ec4feee41ea93960f3e426623d10b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806e76ed_e5569bbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-02-01T00:43:39Z",
+      "side": 1,
+      "message": "PTAL. Thanks!",
+      "revId": "e5cd29f22ec4feee41ea93960f3e426623d10b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
