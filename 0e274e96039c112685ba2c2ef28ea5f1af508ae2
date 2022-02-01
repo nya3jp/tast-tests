@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7c64a5_fdb1ba53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-01T19:09:02Z",
+      "side": 1,
+      "message": "now*",
+      "range": {
+        "startLine": 16,
+        "startChar": 51,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8fe772_99b52319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-01T19:09:02Z",
+      "side": 1,
+      "message": "Hi Gabor, Kamil, PTAL at this CL. Thanks!",
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
