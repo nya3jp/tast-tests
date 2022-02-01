@@ -6,7 +6,9 @@ package isolatedapp
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
+	"net"
 	"net/http"
 
 	"chromiumos/tast/local/chrome"
@@ -19,9 +21,9 @@ import (
 )
 
 /*
-The HTTPSServer structure that stores all information to start the https server.
+The HTTPSServerConfiguration structure that stores all information to start the https server.
 */
-type HTTPSServer struct {
+type HTTPSServerConfiguration struct {
 	Headers               map[string]string
 	ServerKeyPath         string
 	ServerCertificatePath string
@@ -29,31 +31,69 @@ type HTTPSServer struct {
 	CaCertificatePath     string
 }
 
-var serverConfiguration HTTPSServer
-
 func copyFile(source, destination string) error {
 	bytesRead, err := ioutil.ReadFile(source)
 	ioutil.WriteFile(destination, bytesRead, 0644)
 	return err
 }
 
+type httpsHandler struct {
+}
+
+func (handler httpsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	for key, value := range server.ServerConfiguration.Headers {
+		w.Header().Set(key, value)
+	}
+	path := r.URL.String()
+	b, _ := ioutil.ReadFile(server.ServerConfiguration.HostedFilesBasePath + "/" + path[1:len(path)])
+	w.WriteHeader(200)
+	w.Write([]byte(b))
+}
+
+/*
+The HTTPSServer structure contains all meta data and control objects for a https server.
+*/
+type HTTPSServer struct {
+	ServerConfiguration HTTPSServerConfiguration
+	Server              *http.Server
+	Address             string
+	Error               error
+	handler             httpsHandler
+}
+
+var server HTTPSServer
+
 /*
 StartServer starts up an https server without blocking.
+Returns a Server instance containing
+- the server configuration,
+- the http server control object,
+- the base address,
+- an error object in case the server could not be started.
 */
-func StartServer(configuration HTTPSServer) {
+func StartServer(configuration HTTPSServerConfiguration) HTTPSServer {
 
-	serverConfiguration = configuration
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		for key, value := range serverConfiguration.Headers {
-			w.Header().Set(key, value)
-		}
-		path := r.URL.String()
-		b, _ := ioutil.ReadFile(serverConfiguration.HostedFilesBasePath + "/" + path[1:len(path)])
-		w.WriteHeader(200)
-		w.Write([]byte(b))
-	})
-
-	go http.ListenAndServeTLS(":443", serverConfiguration.ServerCertificatePath, serverConfiguration.ServerKeyPath, nil)
+	server = HTTPSServer{
+		ServerConfiguration: configuration,
+		Server:              &http.Server{},
+		Address:             "",
+		Error:               nil,
+		handler:             httpsHandler{},
+	}
+	address, err := net.ResolveTCPAddr("tcp", "localhost:0")
+	if err != nil {
+		server.Error = err
+		return server
+	}
+	listener, err := net.ListenTCP("tcp", address)
+	if err != nil {
+		server.Error = err
+		return server
+	}
+	server.Server.Handler = &server.handler
+	go server.Server.ServeTLS(listener, configuration.ServerCertificatePath, configuration.ServerKeyPath)
+	server.Address = fmt.Sprintf("https://localhost:%d", listener.Addr().(*net.TCPAddr).Port)
+	return server
 
 }
 
@@ -61,7 +101,7 @@ func StartServer(configuration HTTPSServer) {
 ConfigureChromeToAcceptCertificate adds the specified CA certificate to the authorities configuration of chrome.
 The server certificate will then be accepted by chrome without complaining about security.
 */
-func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration HTTPSServer, chrome *chrome.Chrome, targetBrowser *browser.Browser, testConnection *chrome.TestConn) error {
+func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration HTTPSServerConfiguration, chrome *chrome.Chrome, targetBrowser *browser.Browser, testConnection *chrome.TestConn) error {
 
 	certificateDestination := filesapp.MyFilesPath + "/" + filesapp.Downloads + "/ca-cert.pem"
 	copyFile(configuration.CaCertificatePath, certificateDestination)
