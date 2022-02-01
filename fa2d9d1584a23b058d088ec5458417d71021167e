@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4806101_af7eabb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-02-01T00:50:04Z",
+      "side": 1,
+      "message": "Nit, commit message is wrapping over, try to keep chars/line under 73 chars.",
+      "range": {
+        "startLine": 7,
+        "startChar": 74,
+        "endLine": 7,
+        "endChar": 75
+      },
+      "revId": "fa2d9d1584a23b058d088ec5458417d71021167e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8943ef5c_1a82b82c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-02-01T00:50:04Z",
+      "side": 1,
+      "message": "LGTM. minor formatting suggestion.",
+      "revId": "fa2d9d1584a23b058d088ec5458417d71021167e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
