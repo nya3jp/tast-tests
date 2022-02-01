@@ -21,7 +21,7 @@ const resetTimeout = 30 * time.Second
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToChromeAndArc",
-		Desc: "Logged in using real Gaia account. ARC is booted with disabling sync flags",
+		Desc: "Logged in using real Gaia account. ARC is booted with disabling sync flags. ArcAccountRestrictions feature is enabled",
 		Contacts: []string{
 			"anastasiian@chromium.org", "team-dent@google.com",
 		},
@@ -35,13 +35,14 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToLacros",
-		Desc: "Logged in using real Gaia account + with Lacros enabled. ARC is booted with disabling sync flags",
+		Desc: "Logged in using real Gaia account + with Lacros enabled. ARC is booted with disabling sync flags. ArcAccountRestrictions feature is enabled",
 		Contacts: []string{
 			"anastasiian@chromium.org", "team-dent@google.com",
 		},
 		Impl: lacrosfixt.NewFixture(lacrosfixt.Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+				chrome.EnableFeatures("ArcAccountRestrictions"),
 				chrome.ARCSupported(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 				chrome.ExtraArgs("--disable-lacros-keep-alive"),
@@ -57,7 +58,7 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToChromeAndArcWithLacros",
-		Desc: "Logged in using real Gaia account + with Lacros enabled. ARC is booted with disabling sync flags",
+		Desc: "Logged in using real Gaia account + with Lacros enabled. ARC is booted with disabling sync flags. ArcAccountRestrictions feature is enabled",
 		Contacts: []string{
 			"anastasiian@chromium.org", "team-dent@google.com",
 		},
@@ -139,6 +140,7 @@ func (f *accountManagerTestFixture) SetUp(ctx context.Context, s *testing.FixtSt
 
 		opts := []chrome.Option{
 			chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+			chrome.EnableFeatures("ArcAccountRestrictions"),
 			chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...),
 		}
