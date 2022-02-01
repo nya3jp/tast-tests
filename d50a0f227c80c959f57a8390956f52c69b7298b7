@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a771b169_4b77bccb",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-01T21:49:43Z",
+      "side": 1,
+      "message": "Q: Would it be acceptable to route a call to Browser for a generalized function that is more than a single line change? See `browser.IsTargetAvailable` in this CL that is copied from `chrome.IsTargetAvailable`.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "d50a0f227c80c959f57a8390956f52c69b7298b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
