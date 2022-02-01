@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eebc2bf5_c65a8242",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-01T06:08:00Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49981475_eb70e9aa",
@@ -36,6 +53,52 @@
         "startChar": 60,
         "endLine": 41,
         "endChar": 75
+      },
+      "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14bb1a91_e8fc8075",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-01T06:08:00Z",
+      "side": 1,
+      "message": "optional: I find appending \"failed to\" when wrapping errors to produce a lot of repetition, as the final error message ends up looking like:\n\"Failed to conduct the recorder task: failed to open: failed to .... \".\n\nSuggest to change wrapping messages to eliminate this string, e.g. change this message to \"opening %s\".",
+      "range": {
+        "startLine": 111,
+        "startChar": 30,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b599d55c_43f9de9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-01T06:08:00Z",
+      "side": 1,
+      "message": "ditto here and many examples below.",
+      "range": {
+        "startLine": 119,
+        "startChar": 28,
+        "endLine": 119,
+        "endChar": 37
       },
       "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
