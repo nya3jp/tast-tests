@@ -6,7 +6,9 @@ package isolatedapp
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
+	"net"
 	"net/http"
 
 	"chromiumos/tast/local/chrome"
@@ -19,9 +21,9 @@ import (
 )
 
 /*
-The HTTPSServer structure that stores all information to start the https server.
+The HTTPSServerConfiguration structure that stores all information to start the https server.
 */
-type HTTPSServer struct {
+type HTTPSServerConfiguration struct {
 	Headers               map[string]string
 	ServerKeyPath         string
 	ServerCertificatePath string
@@ -29,31 +31,79 @@ type HTTPSServer struct {
 	CaCertificatePath     string
 }
 
-var serverConfiguration HTTPSServer
-
 func copyFile(source, destination string) error {
 	bytesRead, err := ioutil.ReadFile(source)
 	ioutil.WriteFile(destination, bytesRead, 0644)
 	return err
 }
 
-/*
-StartServer starts up an https server without blocking.
-*/
-func StartServer(configuration HTTPSServer) {
+type httpsHandler struct {
+}
 
-	serverConfiguration = configuration
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		for key, value := range serverConfiguration.Headers {
-			w.Header().Set(key, value)
-		}
-		path := r.URL.String()
-		b, _ := ioutil.ReadFile(serverConfiguration.HostedFilesBasePath + "/" + path[1:len(path)])
+func (handler httpsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	for key, value := range server.ServerConfiguration.Headers {
+		w.Header().Set(key, value)
+	}
+	path := r.URL.String()
+	b, err := ioutil.ReadFile(server.ServerConfiguration.HostedFilesBasePath + "/" + path[1:len(path)])
+	if err != nil {
+		w.WriteHeader(404)
+	} else {
 		w.WriteHeader(200)
 		w.Write([]byte(b))
-	})
+	}
+}
 
-	go http.ListenAndServeTLS(":443", serverConfiguration.ServerCertificatePath, serverConfiguration.ServerKeyPath, nil)
+/*
+The HTTPSServer structure contains all meta data and control objects for a https server.
+*/
+type HTTPSServer struct {
+	ServerConfiguration HTTPSServerConfiguration
+	server              *http.Server
+	Address             string
+	Error               error
+	handler             httpsHandler
+}
+
+var server HTTPSServer
+
+/*
+Close shuts down a server that was started with the StartServer function.
+*/
+func (server HTTPSServer) Close() error {
+	return server.server.Close()
+}
+
+/*
+StartServer starts up an https server without blocking.
+Returns a Server instance containing
+- the server configuration,
+- the base address,
+- an error object in case the server could not be started.
+*/
+func StartServer(configuration HTTPSServerConfiguration) HTTPSServer {
+
+	server = HTTPSServer{
+		ServerConfiguration: configuration,
+		server:              &http.Server{},
+		Address:             "",
+		Error:               nil,
+		handler:             httpsHandler{},
+	}
+	address, err := net.ResolveTCPAddr("tcp", "localhost:0")
+	if err != nil {
+		server.Error = err
+		return server
+	}
+	listener, err := net.ListenTCP("tcp", address)
+	if err != nil {
+		server.Error = err
+		return server
+	}
+	server.server.Handler = &server.handler
+	go server.server.ServeTLS(listener, configuration.ServerCertificatePath, configuration.ServerKeyPath)
+	server.Address = fmt.Sprintf("https://localhost:%d", listener.Addr().(*net.TCPAddr).Port)
+	return server
 
 }
 
@@ -61,7 +111,7 @@ func StartServer(configuration HTTPSServer) {
 ConfigureChromeToAcceptCertificate adds the specified CA certificate to the authorities configuration of chrome.
 The server certificate will then be accepted by chrome without complaining about security.
 */
-func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration HTTPSServer, chrome *chrome.Chrome, targetBrowser *browser.Browser, testConnection *chrome.TestConn) error {
+func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration HTTPSServerConfiguration, chrome *chrome.Chrome, targetBrowser *browser.Browser, testConnection *chrome.TestConn) error {
 
 	certificateDestination := filesapp.MyFilesPath + "/" + filesapp.Downloads + "/ca-cert.pem"
 	copyFile(configuration.CaCertificatePath, certificateDestination)
