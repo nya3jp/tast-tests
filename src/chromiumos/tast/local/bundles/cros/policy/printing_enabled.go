@@ -37,8 +37,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of PrintingEnabled policy, checking the correspoding menu item restriction and printing preview dialog after setting the policy",
 		Contacts: []string{
-			"omse@google.com", // Test author
-			"chromeos-commercial-remote-management@google.com",
+			"abuaboud@google.com",
+			"chromeos-commercial-networking@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr: []string{
