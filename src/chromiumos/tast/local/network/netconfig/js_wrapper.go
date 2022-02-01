@@ -39,6 +39,10 @@ async function() {
     async forgetNetwork(guid) {
       return await this.getCrosNetworkConfig().forgetNetwork(guid);
     },
+
+    async setNetworkTypeEnabledState(networkType, enable) {
+      return await this.getCrosNetworkConfig().setNetworkTypeEnabledState(networkType, enable);
+    },
   }
 }
 `

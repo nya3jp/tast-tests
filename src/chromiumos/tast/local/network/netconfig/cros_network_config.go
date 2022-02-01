@@ -12,6 +12,11 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
+/*
+ The following data structure are defined in cros_network_config.mojom
+ https://chromium.googlesource.com/chromium/src/+/refs/heads/main/chromeos/services/network_config/public/mojom/cros_network_config.mojom
+*/
+
 // CrosNetworkConfig contains the mojo connection to cros_network_config.
 type CrosNetworkConfig struct {
 	conn       *chrome.Conn
@@ -83,4 +88,18 @@ func (c *CrosNetworkConfig) ForgetNetwork(ctx context.Context, guid string) (boo
 		return false, errors.Wrap(err, "failed to run forgetNetwork")
 	}
 	return result.Success, nil
+}
+
+// SetNetworkTypeEnabledState enables/disable a given Network_Type
+func (c *CrosNetworkConfig) SetNetworkTypeEnabledState(ctx context.Context, networkType NetworkType, enable bool) error {
+	var result struct{ Success bool }
+	if err := c.mojoRemote.Call(ctx, &result,
+		"function(networkType, enable) { return this.setNetworkTypeEnabledState(networkType, enable)}", networkType, enable); err != nil {
+		return errors.Wrap(err, "failed to run setNetworkTypeEnabledState")
+	}
+	if result.Success != true {
+		return errors.New("setNetworkTypeEnabledState returned false")
+	}
+
+	return nil
 }
