@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbe11c73_1b4ab054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-02-01T22:49:14Z",
+      "side": 1,
+      "message": "tast-remote-tests-cros-0.0.2-r9293: src/chromiumos/tast/remote/bundles/cros/wifi/mar_bssid_roam.go:143:31: undefined: router.SupportCapture\ntast-remote-tests-cros-0.0.2-r9293: src/chromiumos/tast/remote/bundles/cros/wifi/mar_ssid_roam.go:126:31: undefined: router.SupportCapture\ntast-remote-tests-cros-0.0.2-r9293:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r9293::chromiumos failed (compile phase):\ntast-remote-tests-cros-0.0.2-r9293:  *   (no error message)\ntast-remote-tests-cros-0.0.2-r9293:  * ",
+      "revId": "b7581f67be69e454ced705b90cb3eedf34cbb33a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
