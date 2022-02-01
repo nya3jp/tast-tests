@@ -178,6 +178,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b1fb43b_e9cb6cd0",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-02-01T07:14:55Z",
+      "side": 1,
+      "message": "Based on ashproc.Processes(), we know the executable of all ash chrome instances. Can we assume that any chrome which isn\u0027t using that executable is lacros?",
+      "parentUuid": "905dc2db_d269a5d9",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fd1a0d6_ed524b8e",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
         "patchSetId": 4
