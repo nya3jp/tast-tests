@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6273605_cbcdf7a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-01T09:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "639b1c61_3a479874",
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4299ab8a_5c1a8912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-01T09:44:20Z",
+      "side": 1,
+      "message": "created a separate CL with requested changes: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3429241",
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61180b55_c7eae5ad",
@@ -31,6 +66,30 @@
       "writtenOn": "2022-01-31T14:52:34Z",
       "side": 1,
       "message": "Can you modify it to LacrosVariantExists?",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be0db0e_3cccc67a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_name.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-01T09:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61180b55_c7eae5ad",
       "range": {
         "startLine": 31,
         "startChar": 24,
@@ -64,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf035e60_29d56bdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_name.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-01T09:44:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74f9039e_371e6f1b",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 68
+      },
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb4e8dd3_0de81951",
@@ -77,6 +160,30 @@
       "writtenOn": "2022-01-31T14:52:34Z",
       "side": 1,
       "message": "If you prefer, all of these can be combined under a `uiauto.Combine()` call, even the keyboard interactions with `kb.TypeAction()` and `kb.AccelAction()`.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 4
+      },
+      "revId": "35173431bc49f27d390358af1de7527c60b32e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "796da9aa_1063d458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_name.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-01T09:44:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cb4e8dd3_0de81951",
       "range": {
         "startLine": 136,
         "startChar": 0,
