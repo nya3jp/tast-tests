@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0dc0ca1_413227c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/safesetid_ensure_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-02-01T16:14:59Z",
+      "side": 1,
+      "message": "Upon further inspection, we do not want to filter out any kernels from the test, as this is replacing the old Python 2 autotest.",
+      "parentUuid": "200bf485_8bfe7002",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "23c2d1090f1e70874d178e64c6103ab2b758dfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ecc6009_90899ab5",

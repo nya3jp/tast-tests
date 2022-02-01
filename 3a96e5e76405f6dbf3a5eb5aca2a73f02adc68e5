@@ -16,6 +16,24 @@
       "message": "One thing we might want to do is have an image test that makes sure the installed SafeSetID config isn\u0027t broken (i.e. all the users and groups exist)",
       "revId": "3a96e5e76405f6dbf3a5eb5aca2a73f02adc68e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df5c0380_f9e8dced",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-02-01T16:14:59Z",
+      "side": 1,
+      "message": "Existing users was checked within checkExistingUsers, I\u0027ve extended the logic to groups with checkUsersAndGroupsExist().",
+      "parentUuid": "d941e8af_5c7e77b4",
+      "revId": "3a96e5e76405f6dbf3a5eb5aca2a73f02adc68e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
