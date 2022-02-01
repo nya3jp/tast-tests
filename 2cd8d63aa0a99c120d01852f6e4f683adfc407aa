@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e368660e_f5797452",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/browser/chrome_service_grpc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-01T07:58:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be206054_7071d804",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "2cd8d63aa0a99c120d01852f6e4f683adfc407aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "362b2ad4_be7fdfdf",
