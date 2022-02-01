@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b580e7cd_30a8d553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-01T05:28:15Z",
+      "side": 1,
+      "message": "The code LG, but I think it\u0027s better to be consulted by the test Contacts about what to do for this special case.",
+      "revId": "2052922a1649d40f41690bc88654e08556301b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
