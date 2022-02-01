@@ -70,6 +70,30 @@
       },
       "revId": "636f5626ff01b186f9d6e84e8ea3a88f0637e67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31dbe150_6dcb7c5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/user_files_guest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-02-01T00:57:15Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Would you mind if I applied your suggestion on a subsequent CL? I\u0027m having some trouble landing these due to issues with some trybots. Since my 4 CLs on this matter are linked together, I\u0027m afraid they will start getting merge-conflicts if I don\u0027t merge them soon.",
+      "parentUuid": "cdc95061_c32591a0",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "636f5626ff01b186f9d6e84e8ea3a88f0637e67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
