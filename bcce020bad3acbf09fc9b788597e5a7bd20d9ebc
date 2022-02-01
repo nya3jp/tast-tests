@@ -63,6 +63,30 @@
       },
       "revId": "bcce020bad3acbf09fc9b788597e5a7bd20d9ebc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7854fd_b6521815",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-01T15:50:30Z",
+      "side": 1,
+      "message": "Sounds good, thanks for the clarification.",
+      "parentUuid": "8e121421_797ccbd1",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 2
+      },
+      "revId": "bcce020bad3acbf09fc9b788597e5a7bd20d9ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
