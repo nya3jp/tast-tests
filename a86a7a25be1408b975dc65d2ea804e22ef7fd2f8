@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb15ef33_270d84d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-01T09:22:13Z",
+      "side": 1,
+      "message": "vsavu@: I added a test case demonstrating the new utilities for testing isolated apps. PTAL.",
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
