@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87037a8a_2afdf3ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-02-01T04:59:01Z",
+      "side": 1,
+      "message": "AFAIU, vp9 is a video codec format, and it\u0027s not guaranteed that there\u0027s no other codec format other than vp9 and vp8.\nHow about having video codec enum like meetLayoutType above?",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a03bda61_5591f2a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 1
