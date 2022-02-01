@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5e51a7_4bcdc341",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-01T14:54:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "068e01b1_004e3f4b",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 142
+      },
+      "revId": "70aa6456699617ff5a9a8673d7bbeb908e299f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acac8722_653e3c79",
@@ -65,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0f3558f_9b0b663b",
+        "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-01T14:54:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acac8722_653e3c79",
+      "revId": "70aa6456699617ff5a9a8673d7bbeb908e299f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "084c4f03_6c853038",
@@ -78,6 +120,24 @@
       "writtenOn": "2022-02-01T13:29:51Z",
       "side": 1,
       "message": "is the comment then still up to date?",
+      "revId": "70aa6456699617ff5a9a8673d7bbeb908e299f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc51f39_046cd82b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-01T14:54:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "084c4f03_6c853038",
       "revId": "70aa6456699617ff5a9a8673d7bbeb908e299f63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
