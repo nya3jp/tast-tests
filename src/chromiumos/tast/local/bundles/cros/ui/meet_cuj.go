@@ -53,18 +53,19 @@ const (
 
 // meetTest specifies the setting of a Hangouts Meet journey. More info at go/cros-meet-tests.
 type meetTest struct {
-	num        int            // Number of the participants in the meeting.
-	layout     meetLayoutType // Type of the layout in the meeting.
-	present    bool           // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
-	docs       bool           // Whether it is running with a Google Docs window.
-	jamboard   bool           // Whether it is running with a Jamboard window.
-	split      bool           // Whether it is in split screen mode. It can not be true if docs is false.
-	cam        bool           // Whether the camera is on or not.
-	power      bool           // Whether to collect power metrics.
-	duration   time.Duration  // Duration of the meet call. Must be less than test timeout.
-	useLacros  bool           // Whether to use lacros browser.
-	tracing    bool           // Whether to turn on tracing.
-	validation bool           // Whether to add extra cpu loads before collecting metrics.
+	num         int                  // Number of the participants in the meeting.
+	layout      meetLayoutType       // Type of the layout in the meeting.
+	present     bool                 // Whether it is presenting the Google Docs or not. It can not be true if docs is false.
+	docs        bool                 // Whether it is running with a Google Docs window.
+	jamboard    bool                 // Whether it is running with a Jamboard window.
+	split       bool                 // Whether it is in split screen mode. It can not be true if docs is false.
+	cam         bool                 // Whether the camera is on or not.
+	power       bool                 // Whether to collect power metrics.
+	duration    time.Duration        // Duration of the meet call. Must be less than test timeout.
+	useLacros   bool                 // Whether to use lacros browser.
+	tracing     bool                 // Whether to turn on tracing.
+	validation  bool                 // Whether to add extra cpu loads before collecting metrics.
+	botsOptions []bond.AddBotsOption // Customizes the meeting participant bots.
 }
 
 const defaultTestTimeout = 7 * time.Minute
@@ -202,6 +203,30 @@ func init() {
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			// 49p with vp8 video codec.
+			Name:    "49p_vp8",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:         49,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
+			},
+			Fixture:           "loggedInToCUJUser",
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, caps.HWDecodeVP8},
+		}, {
+			// 49p with vp9 video codec.
+			Name:    "49p_vp9",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:         49,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				botsOptions: []bond.AddBotsOption{bond.WithVP9(true, true)},
+			},
+			Fixture:           "loggedInToCUJUser",
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, caps.HWDecodeVP9},
 		}},
 	})
 }
@@ -663,12 +688,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		sctx, cancel := context.WithTimeout(ctx, timeout)
+		sctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
 		// Add 30 seconds to the bot duration to make sure that bots do not leave
 		// slightly earlier than the test scenario.
 		if !codeOk {
-			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
+			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second, meet.botsOptions...); err != nil {
 				return errors.Wrap(err, "failed to create bots")
 			}
 		}
