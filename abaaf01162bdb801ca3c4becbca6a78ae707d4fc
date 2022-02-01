@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18df8b0b_c38ef07b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-01T23:09:21Z",
+      "side": 1,
+      "message": "Would it be good to expose the chrome.Target* in lacros package like browser.Target* in browser?\n\nGoing further, would it be worth removing all the chrome.* dependencies entirely from lacros to address the type inconsistency in the doc below?\nhttps://docs.google.com/document/d/1W8pw9bpiECrWSwk5elMN3_f7p4aI85wkBTXMymo9Vrg/edit?resourcekey\u003d0-eYsWiPYdUBbjBJpiDqOKiA#heading\u003dh.mg3a156s32al",
+      "range": {
+        "startLine": 109,
+        "startChar": 59,
+        "endLine": 109,
+        "endChar": 79
+      },
+      "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
