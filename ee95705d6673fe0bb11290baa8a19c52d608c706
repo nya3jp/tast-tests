@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ed7d8587_f261a828",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-01T03:15:57Z",
+      "side": 1,
+      "message": "Previously, I just ran `tast run $DUT arc.PowerIdlePerf` which I assume builds implicitly.  But I just tried `./fast_build.sh -T` as well.  Thanks!",
+      "parentUuid": "a9d8751e_49c5849a",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "ee95705d6673fe0bb11290baa8a19c52d608c706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "90feadcf_f38547fd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
