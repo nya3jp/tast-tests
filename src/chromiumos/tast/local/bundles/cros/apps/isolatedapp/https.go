@@ -7,7 +7,9 @@ package isolatedapp
 import (
 	"context"
 	"io/ioutil"
+	"net"
 	"net/http"
+	"strconv"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -29,7 +31,7 @@ type HTTPSServer struct {
 	CaCertificatePath     string
 }
 
-var serverConfiguration HTTPSServer
+var handler serverHandler
 
 func copyFile(source, destination string) error {
 	bytesRead, err := ioutil.ReadFile(source)
@@ -37,23 +39,30 @@ func copyFile(source, destination string) error {
 	return err
 }
 
+type serverHandler struct {
+	ServerConfiguration HTTPSServer
+}
+
+func (handler serverHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	for key, value := range handler.ServerConfiguration.Headers {
+		w.Header().Set(key, value)
+	}
+	path := r.URL.String()
+	b, _ := ioutil.ReadFile(handler.ServerConfiguration.HostedFilesBasePath + "/" + path[1:len(path)])
+	w.WriteHeader(200)
+	w.Write([]byte(b))
+}
+
 /*
 StartServer starts up an https server without blocking.
 */
-func StartServer(configuration HTTPSServer) {
+func StartServer(configuration HTTPSServer) string {
 
-	serverConfiguration = configuration
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		for key, value := range serverConfiguration.Headers {
-			w.Header().Set(key, value)
-		}
-		path := r.URL.String()
-		b, _ := ioutil.ReadFile(serverConfiguration.HostedFilesBasePath + "/" + path[1:len(path)])
-		w.WriteHeader(200)
-		w.Write([]byte(b))
-	})
-
-	go http.ListenAndServeTLS(":443", serverConfiguration.ServerCertificatePath, serverConfiguration.ServerKeyPath, nil)
+	address, _ := net.ResolveTCPAddr("tcp", "localhost:0")
+	listener, _ := net.ListenTCP("tcp", address)
+	handler = serverHandler{configuration}
+	go http.ServeTLS(listener, handler, configuration.ServerCertificatePath, configuration.ServerKeyPath)
+	return "https://localhost:" + strconv.FormatInt(int64(listener.Addr().(*net.TCPAddr).Port), 10)
 
 }
 

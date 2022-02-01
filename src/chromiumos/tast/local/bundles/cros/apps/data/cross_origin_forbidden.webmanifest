@@ -1,0 +1,20 @@
+{
+  "name": "CrossOriginForbidden",
+  "short_name": "CrossOriginForbidden",
+  "description": "Isolated web app that tries to follow a cross origin link.",
+  "icons": [{
+      "src": "/cross_origin_forbidden_icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },{
+      "src": "/cross_origin_forbidden_icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "/crossoriginforbidden.html",
+  "scope": "/",
+  "display": "fullscreen",
+  "theme_color": "white",
+  "background_color": "white",
+  "isolated_storage": true
+}
