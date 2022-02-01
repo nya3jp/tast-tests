@@ -12,7 +12,9 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ui"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	pb "chromiumos/tast/services/cros/wilco"
 	"chromiumos/tast/testing"
 )
@@ -63,18 +65,9 @@ func (p *PowerMenuService) IsPowerMenuPresent(ctx context.Context, req *empty.Em
 		return nil, err
 	}
 
-	root, err := ui.Root(ctx, tconn)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get root node")
-	}
-	defer root.Release(ctx)
-
 	// Check if the power menu is displayed
-	params := ui.FindParams{
-		ClassName: "PowerButtonMenuView",
-		Role:      ui.RoleTypeMenu,
-	}
-	exists, err := root.DescendantExists(ctx, params)
+	ui := uiauto.New(tconn)
+	exists, err := ui.IsNodeFound(ctx, nodewith.HasClass("PowerButtonMenuView").Role(role.Menu))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find power menu")
 	}
