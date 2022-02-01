@@ -410,6 +410,30 @@
       },
       "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec2d07a_bcad969a",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/fixture.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-02-01T02:14:46Z",
+      "side": 1,
+      "message": "Fixed the issue with releasing the fixture. \nhttps://groups.google.com/a/chromium.org/g/tast-users/c/kcIoHJ3rbq4/m/WgNfefxmEAAJ?utm_medium\u003demail\u0026utm_source\u003dfooter",
+      "parentUuid": "a7a1ec1f_3418e060",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 23
+      },
+      "revId": "972835cff70dae9e4b842452bfeeca4400dd28c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

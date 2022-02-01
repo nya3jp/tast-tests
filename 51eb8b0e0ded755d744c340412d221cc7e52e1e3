@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef59f999_19181b33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-02-01T02:14:46Z",
+      "side": 1,
+      "message": "Hi Miriam,\n\nI have addressed all the comment. PTAL.\n\nRegards\nShijin",
+      "revId": "51eb8b0e0ded755d744c340412d221cc7e52e1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
