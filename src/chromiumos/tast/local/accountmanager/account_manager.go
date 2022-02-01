@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -127,6 +128,31 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to add account")
 	}
+	return nil
+}
+
+// CheckArcToggleStatus compares the state of the "ARC toggle" in the account addition flow with the expected value.
+func CheckArcToggleStatus(ctx context.Context, tconn *chrome.TestConn, brType browser.Type, expectedVal bool) error {
+	if brType != browser.TypeLacros {
+		// The feature is applied only if Lacros is enabled.
+		return nil
+	}
+	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+	root := GetAddAccountDialog()
+	toggle := nodewith.NameStartingWith("Use this account with Android apps").Role(role.ToggleButton).Ancestor(root)
+	if err := ui.WaitUntilExists(toggle)(ctx); err != nil {
+		return errors.Wrap(err, "failed to find ARC toggle")
+	}
+
+	toggleInfo, err := ui.Info(ctx, toggle)
+	if err != nil {
+		return errors.Wrap(err, "failed to get ARC toggle info")
+	}
+	isToggleChecked := (toggleInfo.Checked == checked.True)
+	if isToggleChecked != expectedVal {
+		return errors.Errorf("expected toggle checked state to be %t but got %t", expectedVal, isToggleChecked)
+	}
+
 	return nil
 }
 
