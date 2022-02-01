@@ -12,12 +12,12 @@ import (
 	"image/jpeg"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
@@ -114,9 +114,6 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to update policies: ", err)
 			}
 
-			ui := uiauto.New(tconn)
-			userImagePreviewNode := nodewith.Name("User image preview").Role(role.Image)
-
 			// Open the OS settings changePicture page.
 			conn, err := apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/changePicture")
 			if err != nil {
@@ -124,21 +121,25 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
-			// Get the list of device account images to select one of them.
-			selectorRadioGroup := nodewith.Role(role.RadioGroup)
-			deviceAccountImages, err := ui.NodesInfo(ctx, nodewith.Ancestor(selectorRadioGroup))
+			// Get the list of device account images to select the last one of them.
+			ui := uiauto.New(tconn)
+			deviceAccountImages, err := ui.NodesInfo(ctx, nodewith.Ancestor(nodewith.Role(role.RadioGroup)))
 			if err != nil {
 				s.Fatal("Failed to get deviceAccountImages for selector node: ", err)
 			}
+			avatarImageNodeInfo := deviceAccountImages[len(deviceAccountImages)-1]
+			avatarImageNode := nodewith.Role(role.RadioButton).Name(avatarImageNodeInfo.Name)
 
 			// Click on a new avatar image, the user image preview should be changed immediately regardless of the policy existence.
 			// If the policy is set, the setting is not applied after exiting the view.
-			if err := uiauto.Combine("Click on a new avatar image and wait until the image preview is updated",
-				ui.LeftClick(nodewith.Name(deviceAccountImages[len(deviceAccountImages)-1].Name)),
-				ui.WithTimeout(timeout).WaitUntilExists(userImagePreviewNode),
+			if err := uiauto.Combine("Click on the selected avatar image",
+				ui.WithTimeout(5*time.Second).MakeVisible(avatarImageNode),
+				ui.LeftClick(avatarImageNode),
 			)(ctx); err != nil {
-				s.Fatal("Failed to click on a new avatar image and wait until the image preview is updated: ", err)
+				s.Fatal("Failed to click on the selected avatar image: ", err)
 			}
+
+			userImagePreviewNode := nodewith.Name("User image preview").Role(role.Image)
 
 			// Determine the bounds of the user image preview.
 			loc, err := ui.Location(ctx, userImagePreviewNode)
@@ -172,9 +173,9 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 
 			if param.shouldMatchPolicyImage {
 				// Verify that the user image is the policy-provided one (red image).
-				// The image in now cropped to be a circe (filled with ~78% red).
+				// Although the image in now cropped to be a circle (filled with ~78% red), the bounds determined by |rect| is totally inside the circle, so 100% red.
 				prcnt := getRedColorPercentage(userImageScreenshot)
-				if !(75 < prcnt && prcnt < 81) {
+				if prcnt < 95 {
 					s.Errorf("User image preview doesn't match the policy-provided image: Red pixels percentage: %d", prcnt)
 					if err := saveImage(filepath.Join(s.OutDir(), "red_avatar.jpeg"), userImageScreenshot); err != nil {
 						s.Error("Failed to save the avatar image: ", err)
@@ -182,26 +183,17 @@ func UserAvatarImage(ctx context.Context, s *testing.State) {
 				}
 			} else {
 				// Verify that the device account image has changed to the selected avatar image by the user.
-				// There are some animated account images, so comparing just two states is not enough.
-				if err := testing.Poll(ctx, func(ctx context.Context) error {
-					// Take a screenshot of the user image preview to check if it was changed or not.
-					userImageScreenshot, err = screenshot.GrabAndCropScreenshot(ctx, cr, rect)
-					if err != nil {
-						return errors.Wrap(err, "failed to grab screenshot in poll")
-					}
+				userImagePreviewNodeInfo, err := ui.NodesInfo(ctx, userImagePreviewNode)
+				if err != nil {
+					s.Fatal("Failed to get User Image Preview for selector node: ", err)
+				}
+				imagePreviewSrcAttr := userImagePreviewNodeInfo[0].HTMLAttributes["src"]
+				avatarImageDataURLAttr := avatarImageNodeInfo.HTMLAttributes["data-url"]
 
-					sim, err := getSimilarityPercentage(avatarImageScreenshot, userImageScreenshot)
-					if err != nil {
-						return errors.Wrap(err, "failed to count images simialrity percentage")
-					}
-
-					if sim < 95 {
-						return errors.Errorf("similarity percentage is too low; got %d, want at least 95", sim)
-					}
-
-					return nil
-				}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-					s.Error("User cannot change device account image: ", err)
+				// Check if both (the image preview and the selected avatar image) come from the same source.
+				// Image preview src attribute value contains extra scaling information, for example if avatar image data-url attribute equals to "chrome://theme/IDR_LOGIN_DEFAULT_USER_82", then image preview might be "chrome://theme/IDR_LOGIN_DEFAULT_USER_82@2x"
+				if !strings.HasPrefix(imagePreviewSrcAttr, avatarImageDataURLAttr) {
+					s.Errorf("User cannot change user account image, imagePreviewSrcAttr=%s, avatarImageDataURLAttr=%s", imagePreviewSrcAttr, avatarImageDataURLAttr)
 					if err := saveImage(filepath.Join(s.OutDir(), "original_avatar.jpeg"), avatarImageScreenshot); err != nil {
 						s.Error("Failed to save the original avatar image: ", err)
 					}
@@ -243,18 +235,6 @@ func getRedColorPercentage(img image.Image) int {
 	total := (bounds.Max.Y - bounds.Min.Y) * (bounds.Max.X - bounds.Min.X)
 	prcnt := sim * 100 / total
 	return prcnt
-}
-
-func getSimilarityPercentage(img1, img2 image.Image) (int, error) {
-	diff, err := imgcmp.CountDiffPixels(img1, img2, 10)
-	if err != nil {
-		return -1, err
-	}
-
-	bounds := img1.Bounds()
-	total := (bounds.Max.Y - bounds.Min.Y) * (bounds.Max.X - bounds.Min.X)
-	prcnt := 100 - diff*100/total
-	return prcnt, nil
 }
 
 func saveImage(filename string, img image.Image) error {
