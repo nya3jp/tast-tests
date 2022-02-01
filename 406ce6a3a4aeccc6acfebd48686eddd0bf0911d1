@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aee4175c_dbb81267",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-02-01T21:49:13Z",
+      "side": 1,
+      "message": "Hi Oleh, I apologize for asking again, but could you give my CL +2 again? I wasn\u0027t able to pass the CQ last time, but I\u0027ve done a dry run and everything seems to be in order.",
+      "revId": "406ce6a3a4aeccc6acfebd48686eddd0bf0911d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
