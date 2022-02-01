@@ -28,7 +28,7 @@ func init() {
 		Contacts:     []string{"anastasiian@chromium.org", "team-dent@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Pre:          accountmanager.ChromePreWithFeaturesEnabled(),
 		VarDeps:      []string{"accountmanager.username1", "accountmanager.password1"},
 	})
 }

@@ -120,12 +120,12 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to check that account is present in OGB: ", err)
 	}
 
-	// Check that account is present in ARC.
-	s.Log("Verifying that account is present in ARC")
+	// Check that account is not present in ARC.
+	s.Log("Verifying that account is NOT present in ARC")
 	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, a, username); err != nil {
-		s.Fatal("Failed to check that account is present in ARC err: ", err)
-	} else if !present {
-		s.Fatal("Account is not present in ARC")
+		s.Fatal("Failed to check that account is not present in ARC err: ", err)
+	} else if present {
+		s.Fatal("Account is present in ARC")
 	}
 }
 
