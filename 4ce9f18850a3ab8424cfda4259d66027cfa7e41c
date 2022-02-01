@@ -16,6 +16,29 @@
       "message": "lgtm, thanks!",
       "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49981475_eb70e9aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-02-01T04:54:26Z",
+      "side": 1,
+      "message": "nit, optional: 2 * time.Minute\n?",
+      "range": {
+        "startLine": 41,
+        "startChar": 60,
+        "endLine": 41,
+        "endChar": 75
+      },
+      "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
