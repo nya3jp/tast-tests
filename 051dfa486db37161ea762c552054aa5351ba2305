@@ -16,6 +16,69 @@
       "message": "Hi Kamil, would you mind reviewing this and approving this CL? Thanks!",
       "revId": "051dfa486db37161ea762c552054aa5351ba2305",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f8901b_9f4a366e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-01T08:28:54Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "051dfa486db37161ea762c552054aa5351ba2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b767656_dba5e058",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-01T08:28:54Z",
+      "side": 1,
+      "message": "I am not familiar with the recorder that is used here but could we be more specific what is being measured during scrolling the GSheet?",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "051dfa486db37161ea762c552054aa5351ba2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f82db43_7e2e3fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-01T08:28:54Z",
+      "side": 1,
+      "message": "nit: I would split this putting each parameter to new line and add comment, especially to magic numbers (arbitrary number that is passed to the function, e.g. 1)",
+      "range": {
+        "startLine": 155,
+        "startChar": 22,
+        "endLine": 157,
+        "endChar": 27
+      },
+      "revId": "051dfa486db37161ea762c552054aa5351ba2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
