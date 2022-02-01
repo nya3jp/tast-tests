@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c06dc6f_36ab9587",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-01T04:08:31Z",
+      "side": 1,
+      "message": "Xiyuan also to review, in case there\u0027s an issue with 49 bots",
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a03bda61_5591f2a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-01T04:08:31Z",
+      "side": 1,
+      "message": "So we\u0027re guaranteed that this will be vp8, is that right?",
+      "range": {
+        "startLine": 227,
+        "startChar": 36,
+        "endLine": 227,
+        "endChar": 47
+      },
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
