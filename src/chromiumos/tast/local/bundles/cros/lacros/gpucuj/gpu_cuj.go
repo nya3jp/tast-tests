@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
-	"chromiumos/tast/local/chrome/ui"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
@@ -103,23 +102,7 @@ var pageSet = []page{
 //   ltconn: chrome.TestConn to lacros chrome.
 //   tconn: chrome.TestConn to either ChromeOS or lacros chrome, i.e. both are usable.
 
-func leftClickLacros(ctx context.Context, ctconn *chrome.TestConn, windowID int, n *ui.Node) error {
-	if err := n.Update(ctx); err != nil {
-		return errors.Wrap(err, "failed to update the node's location")
-	}
-	if n.Location.Empty() {
-		return errors.New("this node doesn't have a location on the screen and can't be clicked")
-	}
-	w, err := ash.GetWindow(ctx, ctconn, windowID)
-	if err != nil {
-		return err
-	}
-	// Compute the node coordinates in cros-chrome root window coordinate space by
-	// adding the top left coordinate of the lacros-chrome window in cros-chrome root window coorindates.
-	return mouse.Click(ctconn, w.BoundsInRoot.TopLeft().Add(n.Location.CenterPoint()), mouse.LeftButton)(ctx)
-}
-
-func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn, clickFn func(*ui.Node) error) error {
+func toggleThreeDotMenu(ctx context.Context, tconn *chrome.TestConn) error {
 	// Open the three-dot menu via keyboard shortcut.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -265,14 +248,10 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f lacrosfixt.FixtValue
 	// Open the threedot menu if indicated.
 	// TODO(edcourtney): Sometimes the accessibility tree isn't populated for lacros chrome, which causes this code to fail.
 	if invoc.scenario == TestTypeThreeDot {
-		clickFn := func(n *ui.Node) error { return n.LeftClick(ctx) }
-		if invoc.bt == browser.TypeLacros {
-			clickFn = func(n *ui.Node) error { return leftClickLacros(ctx, f.TestAPIConn(), w.ID, n) }
-		}
-		if err := toggleThreeDotMenu(ctx, tconn, clickFn); err != nil {
+		if err := toggleThreeDotMenu(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to open three dot menu")
 		}
-		defer toggleThreeDotMenu(ctx, tconn, clickFn)
+		defer toggleThreeDotMenu(ctx, tconn)
 	}
 
 	// Sleep for three seconds after loading pages / setting up the environment.
