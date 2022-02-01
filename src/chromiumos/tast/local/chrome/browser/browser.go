@@ -11,6 +11,7 @@ import (
 
 	"android.googlesource.com/platform/external/perfetto/protos/perfetto/trace/github.com/google/perfetto/perfetto_proto"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 )
@@ -55,6 +56,12 @@ func (b *Browser) NewConn(ctx context.Context, url string, opts ...CreateTargetO
 	return b.sess.NewConn(ctx, url, opts...)
 }
 
+// Target is chrome.Target.
+type Target = driver.Target
+
+// TargetID is chrome.TargetID.
+type TargetID = driver.TargetID
+
 // TargetMatcher is chrome.TargetMatcher.
 type TargetMatcher = driver.TargetMatcher
 
@@ -62,6 +69,26 @@ type TargetMatcher = driver.TargetMatcher
 // first one that is matched by tm.
 func (b *Browser) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
 	return b.sess.NewConnForTarget(ctx, tm)
+}
+
+// FindTargets returns the info about Targets, which satisfies the given cond condition.
+// This must not be called after Close().
+func (b *Browser) FindTargets(ctx context.Context, tm TargetMatcher) ([]*Target, error) {
+	return b.sess.FindTargets(ctx, tm)
+}
+
+// CloseTarget closes the target identified by the given id.
+func (b *Browser) CloseTarget(ctx context.Context, id TargetID) error {
+	return b.sess.CloseTarget(ctx, id)
+}
+
+// IsTargetAvailable checks if there is any matched target.
+func (b *Browser) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
+	targets, err := b.FindTargets(ctx, tm)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to get targets")
+	}
+	return len(targets) != 0, nil
 }
 
 // TestConn is chrome.TestConn.
