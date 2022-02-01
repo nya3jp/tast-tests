@@ -16,6 +16,109 @@
       "message": "Adding Akihiro to review the ChromeVox part, as he wrote the ChromeVox tast tests (which were a great inspiration for this :)).",
       "revId": "1ccc16572a095f95e6181e503ed0ae69ed09566c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3d92c6_df91e572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-01T13:46:10Z",
+      "side": 1,
+      "message": "LGTM\nYou did some interesting things in this CL, so I will get a 2nd opinion before giving +2.",
+      "revId": "1ccc16572a095f95e6181e503ed0ae69ed09566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90bb845a_82c54a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/enable_a11y_image_labels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-01T13:46:10Z",
+      "side": 1,
+      "message": "Quite a unique cleanup function creation 👍",
+      "revId": "1ccc16572a095f95e6181e503ed0ae69ed09566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceff02b0_fdd3050c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/enable_a11y_image_labels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-01T13:46:10Z",
+      "side": 1,
+      "message": "Add (and populate) this to the testing table.",
+      "range": {
+        "startLine": 150,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 18
+      },
+      "revId": "1ccc16572a095f95e6181e503ed0ae69ed09566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4195a9a_eb7220e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/enable_a11y_image_labels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-01T13:46:10Z",
+      "side": 1,
+      "message": "minor nit: cvConn",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 7
+      },
+      "revId": "1ccc16572a095f95e6181e503ed0ae69ed09566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6241d226_ba15b968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/enable_a11y_image_labels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-01T13:46:10Z",
+      "side": 1,
+      "message": "nit: `ctx` is enough here.",
+      "range": {
+        "startLine": 231,
+        "startChar": 13,
+        "endLine": 231,
+        "endChar": 23
+      },
+      "revId": "1ccc16572a095f95e6181e503ed0ae69ed09566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
