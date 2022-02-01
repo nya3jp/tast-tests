@@ -34,6 +34,24 @@
       "parentUuid": "4679da35_b1ce4cf8",
       "revId": "8cf07a1d489aabb4210a46fb9cd025b65b1811d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd7ff48_8af1da2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-01T01:01:12Z",
+      "side": 1,
+      "message": "good point. I used to have code-navigation working... but it is no longer working... I wonder why... probably that\u0027s why I\u0027m not seeing the gopls file.",
+      "parentUuid": "3443c496_1c5db4f7",
+      "revId": "8cf07a1d489aabb4210a46fb9cd025b65b1811d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
