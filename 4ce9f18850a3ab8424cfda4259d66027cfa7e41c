@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef7e362a_7eca66e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-01T23:02:31Z",
+      "side": 1,
+      "message": "The way I look at it, it is obviously an error, \"failed to\" is simply repeating what I know (it is an error) so ends up being visual noise.\n\nIn fact, the first \"Failed to\" is probably not even necessary as Tast gives you a prefix like this in the logs:\n2022-01-21T08:44:57.635934Z [08:44:57.348] Error at desk_templates_cuj.go:123:\n\nThe additional space it occupies is particularly annoying when it pushes the reason beyond the maximum reason length in Tastboard, so that the interesting part of the message is actually hidden behind ellipsis (\"...\").\n\nThat said, I marked this \u0027optional\u0027, so you are free to ignore me :)",
+      "parentUuid": "636770c9_0703bdd7",
+      "range": {
+        "startLine": 111,
+        "startChar": 30,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b599d55c_43f9de9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
         "patchSetId": 6
