@@ -65,6 +65,7 @@ type meetTest struct {
 	useLacros  bool           // Whether to use lacros browser.
 	tracing    bool           // Whether to turn on tracing.
 	validation bool           // Whether to add extra cpu loads before collecting metrics.
+	vp9        bool           // Whether to use the vp9 video codec (rather than vp8) if the device supports it.
 }
 
 const defaultTestTimeout = 7 * time.Minute
@@ -95,6 +96,7 @@ func init() {
 				layout:   meetLayoutTiled,
 				cam:      true,
 				duration: 30 * time.Minute,
+				vp9:      true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -108,6 +110,7 @@ func init() {
 				docs:    true,
 				split:   true,
 				cam:     true,
+				vp9:     true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -118,6 +121,7 @@ func init() {
 				num:    16,
 				layout: meetLayoutTiled,
 				cam:    true,
+				vp9:    true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -129,6 +133,7 @@ func init() {
 				layout:  meetLayoutTiled,
 				cam:     true,
 				tracing: true,
+				vp9:     true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -140,6 +145,7 @@ func init() {
 				layout:     meetLayoutTiled,
 				cam:        true,
 				validation: true,
+				vp9:        true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -152,6 +158,7 @@ func init() {
 				docs:   true,
 				split:  true,
 				cam:    true,
+				vp9:    true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -164,6 +171,7 @@ func init() {
 				layout: meetLayoutTiled,
 				cam:    true,
 				power:  true,
+				vp9:    true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -176,6 +184,7 @@ func init() {
 				layout: meetLayoutTiled,
 				cam:    true,
 				power:  true,
+				vp9:    true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -188,6 +197,7 @@ func init() {
 				jamboard: true,
 				split:    true,
 				cam:      true,
+				vp9:      true,
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -199,9 +209,34 @@ func init() {
 				layout:    meetLayoutTiled,
 				cam:       true,
 				useLacros: true,
+				vp9:       true,
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			// 49p with vp8 video codec.
+			Name:    "49p_vp8",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:    49,
+				layout: meetLayoutTiled,
+				cam:    true,
+				vp9:    false,
+			},
+			Fixture:           "loggedInToCUJUser",
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP8, caps.HWDecodeVP8},
+		}, {
+			// 49p with vp9 video codec.
+			Name:    "49p_vp9",
+			Timeout: defaultTestTimeout,
+			Val: meetTest{
+				num:    49,
+				layout: meetLayoutTiled,
+				cam:    true,
+				vp9:    true,
+			},
+			Fixture:           "loggedInToCUJUser",
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, caps.HWDecodeVP9},
 		}},
 	})
 }
@@ -651,12 +686,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		sctx, cancel := context.WithTimeout(ctx, timeout)
+		sctx, cancel := context.WithTimeout(ctx, 30*time.Second)
 		defer cancel()
 		// Add 30 seconds to the bot duration to make sure that bots do not leave
 		// slightly earlier than the test scenario.
 		if !codeOk {
-			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
+			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second, bond.WithVP9(meet.vp9, meet.vp9)); err != nil {
 				return errors.Wrap(err, "failed to create bots")
 			}
 		}
