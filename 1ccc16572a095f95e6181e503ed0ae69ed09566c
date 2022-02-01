@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a768143_43bc5bf0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/enable_a11y_image_labels_image.jpg",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-01T14:00:13Z",
+      "side": 1,
+      "message": "This file is too big, and should be hosted externally.\nPlease check http://go/tast-writing#External-data-files",
+      "revId": "1ccc16572a095f95e6181e503ed0ae69ed09566c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "90bb845a_82c54a38",
