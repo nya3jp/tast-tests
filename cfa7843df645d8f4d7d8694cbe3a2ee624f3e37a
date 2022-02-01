@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82585d8_e6aed784",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T01:33:46Z",
+      "side": 1,
+      "message": "I just tried to run this locally and it failed, it seems to detect the encoding correctly?\n\n2022-02-01T01:30:45.563539Z [01:30:45.448] Extra item \"新しいフォルダ/SJIS_835C_ソ.txt\"\n2022-02-01T01:30:45.563594Z [01:30:45.448] Extra item \"新しいフォルダ/新しいテキスト ドキュメント.txt\"\n2022-02-01T01:30:45.563623Z [01:30:45.448] Missing item \"РVВ╡ВвГtГHГЛГ_/SJIS_835C_Г\\\\.txt\"\n2022-02-01T01:30:45.563655Z [01:30:45.448] Missing item \"РVВ╡ВвГtГHГЛГ_/РVВ╡ВвГeГLГXГg ГhГLГЕГБГУГg.txt\"\n\nAny ideas why?",
+      "revId": "cfa7843df645d8f4d7d8694cbe3a2ee624f3e37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b076b80_33bf744b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/crosdisks/archive.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T01:33:46Z",
+      "side": 1,
+      "message": "Now we have multiple conditions in this single verification block, maybe add a prefix on which encoding failed? like Test failed with encoding\u003dShift_JIS",
+      "range": {
+        "startLine": 213,
+        "startChar": 11,
+        "endLine": 213,
+        "endChar": 22
+      },
+      "revId": "cfa7843df645d8f4d7d8694cbe3a2ee624f3e37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
