@@ -161,6 +161,30 @@
       },
       "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f381a42_06b2360d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-01T08:46:35Z",
+      "side": 1,
+      "message": "fyi, CL for proper IDs is here: cl/425551818",
+      "parentUuid": "a6a485bd_1f11d47b",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 6
+      },
+      "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
