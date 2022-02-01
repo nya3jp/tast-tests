@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5874704_caefc23f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T05:49:02Z",
+      "side": 1,
+      "message": "So I\u0027m moving across to the UMA, will hold off on landing this patch until the UMA changes land and chrome has uprevved. Stay tuned!",
+      "revId": "2c80af3caaf7682f811a65afc09a33c34f7cba03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

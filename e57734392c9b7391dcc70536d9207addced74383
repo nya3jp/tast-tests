@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a24b0bcd_b2fd2975",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T05:49:02Z",
+      "side": 1,
+      "message": "This indicates whether the SWA is enabled or not. See line 52 for how this switches it on and off",
+      "parentUuid": "5c5f8bdb_7478cd54",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dd1d5aae_885eb905",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
         "patchSetId": 1
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "025fff4c_a5ff05d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T05:49:02Z",
+      "side": 1,
+      "message": "Yeah it will be, when you s.Fatal, s.Error etc. within a s.Run it only fails that subtest.",
+      "parentUuid": "0f883bb7_aad36031",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 76
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09864be1_5c638c04",
@@ -93,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66eb382f_49c72d2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T05:49:02Z",
+      "side": 1,
+      "message": "Yup same thing.",
+      "parentUuid": "09864be1_5c638c04",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f37d49c9_df80c841",
@@ -106,6 +178,54 @@
       "writtenOn": "2022-01-24T09:50:55Z",
       "side": 1,
       "message": "In the doc you wrote, you said about UMA, will you add the UMA afterwards?",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 13
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc6169c_3c4f20ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T05:49:02Z",
+      "side": 1,
+      "message": "Yup, latest patch set utilises UMA.",
+      "parentUuid": "f37d49c9_df80c841",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 13
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e024f224_1638392f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T05:49:02Z",
+      "side": 1,
+      "message": "Yeah latest patch set will",
+      "parentUuid": "f37d49c9_df80c841",
       "range": {
         "startLine": 105,
         "startChar": 11,
@@ -152,6 +272,30 @@
       "writtenOn": "2022-01-24T09:50:55Z",
       "side": 1,
       "message": "nit: Let\u0027s move this variable after the `Wait until CPU idle ...` WDYT?\n\nThe first time reading I got tricked that this was executed before the CPU idle thingy.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4214728_5209cf9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-01T05:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4c6363b_07279850",
       "range": {
         "startLine": 133,
         "startChar": 1,
