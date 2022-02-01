@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f15a7c8_be6148ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-01T17:22:13Z",
+      "side": 1,
+      "message": "Denis Tosic wrote \"Setting allow_vp9\u003dfalse and send_vp9\u003dfalse on the bots should force the cros device to send and receive VP8 (and vice versa with true, assuming it\u0027s capable),\" in Comment #5 on the bug referenced in the commit message. It is simplest for me to use a bool because the destination of the data is\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/bond/bond.go;drc\u003d0ca8b18d2322b9b8533f28b69973c2e95d673980;l\u003d196\n\nThat being said, I can see that the prototype has provisions for many more video codecs, on lines 42-81:\nhttps://source.corp.google.com/piper///depot/google3/buzz/mediaengines/sdk/talk/harmony/videooptions.proto;rcl\u003d409736249;l\u003d42\n\nSo Denis Tosic, can you please provide more context on this?",
+      "parentUuid": "87037a8a_2afdf3ce",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a03bda61_5591f2a2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-01T04:08:31Z",
       "side": 1,
       "message": "So we\u0027re guaranteed that this will be vp8, is that right?",
+      "range": {
+        "startLine": 227,
+        "startChar": 36,
+        "endLine": 227,
+        "endChar": 47
+      },
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aabef323_0e5df351",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-01T17:22:13Z",
+      "side": 1,
+      "message": "This is a duplicate of the code review comment by Keigo Oka.",
+      "parentUuid": "a03bda61_5591f2a2",
       "range": {
         "startLine": 227,
         "startChar": 36,
