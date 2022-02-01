@@ -653,10 +653,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		sctx, cancel := context.WithTimeout(ctx, timeout)
 		defer cancel()
-		// Add 30 seconds to the bot duration to make sure that bots do not leave
-		// slightly earlier than the test scenario.
+		// Subtract 1 from the number of meeting participants to compute
+		// how many bots are needed, because the test user counts as a
+		// participant too. Add 30 seconds to the bot duration to ensure
+		// that bots do not leave slightly earlier than the test scenario.
 		if !codeOk {
-			if _, err := bc.AddBots(sctx, meetingCode, meet.num, meetTimeout+30*time.Second); err != nil {
+			if _, err := bc.AddBots(sctx, meetingCode, meet.num-1, meetTimeout+30*time.Second); err != nil {
 				return errors.Wrap(err, "failed to create bots")
 			}
 		}
