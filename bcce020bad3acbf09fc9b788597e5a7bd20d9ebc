@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a14ffdd_a292735e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-01T03:04:46Z",
+      "side": 1,
+      "message": "TY.  PTAL, @functional (non-tast) reviewers.",
+      "revId": "bcce020bad3acbf09fc9b788597e5a7bd20d9ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd49d1d3_45b2a838",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-01-31T16:03:11Z",
       "side": 1,
       "message": "Have we run into circumstances where the CPU is \"idle\" (as decided by cpu.WaitUntilIdle) but dex2oat is still running?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 2
+      },
+      "revId": "bcce020bad3acbf09fc9b788597e5a7bd20d9ebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e121421_797ccbd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-01T03:04:46Z",
+      "side": 1,
+      "message": "This is a check to make sure dex2oat wasn\u0027t previously running before wait until idle (it shouldn\u0027t).  If it was running, then there\u0027s also a chance it may run after wait until idle (due to something unexpected) which is non-ideal for this test. But it should not be running at the moment cpu.WaitUntilIdle is executing.",
+      "parentUuid": "fd49d1d3_45b2a838",
       "range": {
         "startLine": 171,
         "startChar": 0,
