@@ -34,6 +34,621 @@
       "parentUuid": "7e9de437_b5efcd77",
       "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c406791_6d9e2b22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: this comment is a bit redundant IMO, same for the next one",
+      "range": {
+        "startLine": 23,
+        "startChar": 30,
+        "endLine": 23,
+        "endChar": 69
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1166998_11448e3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: rename to tabletMode because upper case is used when you make this field public, e.g. available outside of the package",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0478f7ab_1e34ded3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: move it inside AppListSortSmoke function",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52964461_e3e2980b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: right now you are using only launcher.AlphabeticalSort in parametrised tests. Maybe remove SortMethod parameter for now?",
+      "range": {
+        "startLine": 45,
+        "startChar": 38,
+        "endLine": 45,
+        "endChar": 75
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5845c470_cbdf29a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: it looks like you are trying to cleanup tconn in this defer statement. move it after blank line after line 71. So it will be clear that you depend on \"cr\" object.",
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f145c759_bb835b08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: expanded application ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 47
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e655f1c1_44280937",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: maybe reshuffle a bit?\n\n```\nclassName :\u003d launcher.PagedAppsGridViewClass\nif !tabletMode {\n  className \u003d launcher.BubbleAppsGridViewClass\n}\nappsGrid :\u003d nodewith.ClassName(className)\n```\n\nor even\n\n```\nappsGrid :\u003d nodewith.ClassName(launcher.PagedAppsGridViewClass)\nif !tabletMode {\n  appsGrid \u003d nodewith.ClassName(launcher.BubbleAppsGridViewClass)\n}\n```",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 0
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb8b0ad6_702ae555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 123,
+        "startChar": 45,
+        "endLine": 123,
+        "endChar": 46
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73bc15a1_6f04b8f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: don\u0027t use : in error messages. : is a separator between errors when you wrap them.\n\ninstead use \u003d, i.e.:\n`unexpected view indices count \u003d got %d, want %d`",
+      "range": {
+        "startLine": 243,
+        "startChar": 53,
+        "endLine": 243,
+        "endChar": 54
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7279fbf_4292fe94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "This looks too complicated IMO. What if you restore order of apps based on viewIndices and then compare that list and namesInOrder?\n\ne.g.\n\n```\nfunc verifyAppsOrdered(viewIndices []int, wantOrder []string) {\n  // check that slices are the same size\n  ...\n  \n  gotOrder :\u003d make([]string, len(namesInOrder))\n  for i, index :\u003d range viewIndices {\n    gotOrder[index] \u003d wantOrder[i]\n  }\n\n  if !reflect.DeepEqual(gotOrder, wantOrder) {\n    ... // return error\n  }\n}\n```",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 0
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f060f2_9b7e6367",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: remove \"Default\" from name?",
+      "range": {
+        "startLine": 104,
+        "startChar": 13,
+        "endLine": 104,
+        "endChar": 20
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55e7142_9a90a3ca",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: use `i` as more common name?",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ced49e92_5acddc50",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "Generage fake apps and pass it to GetPrepareFakeAppsWithNamesOptions\n\ne.g.\n\n```\nfunc GetPrepareFakeAppsOptions(\n    numFakeApps int) ([]chrome.Option, string, error) {\n  return GetPrepareFakeAppsWithNamesOptions(\n      generateDefaultFakeAppNames(numFakeApps))\n}\n\n```",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 0
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d234ac27_5542cbba",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: Don\u0027t start methods with Get\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 8
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328e303a_b6dc9df9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 193,
+        "startChar": 68,
+        "endLine": 193,
+        "endChar": 70
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dfbd9ea_d1e2c468",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: don\u0027t use ` in names in comments\nhttps://go.dev/doc/effective_go#commentary",
+      "range": {
+        "startLine": 233,
+        "startChar": 35,
+        "endLine": 233,
+        "endChar": 36
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a461a8_7be1bd26",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "same: do you need default in name?",
+      "range": {
+        "startLine": 237,
+        "startChar": 12,
+        "endLine": 237,
+        "endChar": 19
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36094f0_14d85bc4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: sortContextMenuItem",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 20
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f309eb1e_699e1538",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: group them together, e.g.\n\n```\nvar sortMenuName string\nswitch sortType {\ncase AlphabeticalSort:\n\tsortMenuName \u003d \"Name\"\ncase ColorSort:\n\tsortMenuName \u003d \"Color\"}\n\nsortContextMenuItem :\u003d nodewith.Name(sortMenuName).ClassName(\"MenuItemView\")\nreorderContextMenuItem :\u003d nodewith.Name(\"Reorder by\").ClassName(\"MenuItemView\")\nundoButton :\u003d nodewith.Name(\"Undo\").ClassName(\"PillButton\")\n\nif err :\u003d ...\n```",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 0
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bb07a9d_4c617b5f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: maybe add a bit more context here?",
+      "range": {
+        "startLine": 225,
+        "startChar": 28,
+        "endLine": 225,
+        "endChar": 48
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b77174_62644377",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "remove, it\u0027s never used",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 29
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceb2196c_b606f90f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 441,
+        "startChar": 68,
+        "endLine": 441,
+        "endChar": 69
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e40baff_62ee4d6f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: can we use \"\u0027s\" here?",
+      "range": {
+        "startLine": 448,
+        "startChar": 57,
+        "endLine": 448,
+        "endChar": 59
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a5188c_787f9b9e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: add move context. You have the same message twice in this function. In case of error, it might be hard to tell where exactly error happened",
+      "range": {
+        "startLine": 460,
+        "startChar": 28,
+        "endLine": 460,
+        "endChar": 52
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7de1ad_ae4c9f98",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 463,
+        "startChar": 42,
+        "endLine": 463,
+        "endChar": 43
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba8a625_d0bde10c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 536,
+        "startChar": 5,
+        "endLine": 536,
+        "endChar": 8
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcd994d2_280f79a4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-01T12:44:06Z",
+      "side": 1,
+      "message": "nit: %q. Same in other places",
+      "range": {
+        "startLine": 569,
+        "startChar": 81,
+        "endLine": 569,
+        "endChar": 82
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
