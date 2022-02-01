@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6190da2e_99d3f528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-01T08:02:44Z",
+      "side": 1,
+      "message": "We can revisit issue of exposing UIAutomation combine function to compose smaller functions in future CRs. It likely involves a separate more in depth discussions. Here is a WIP: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3428328",
+      "parentUuid": "f91306de_46eca1c2",
+      "revId": "1b84d9ebf4b100923e8f2c94bef61bcf840a22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21168fb0_adcc5c3a",
