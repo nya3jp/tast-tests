@@ -100,6 +100,16 @@ func (l *Lacros) FindTargets(ctx context.Context, tm chrome.TargetMatcher) ([]*c
 	return l.sess.FindTargets(ctx, tm)
 }
 
+// CloseTarget closes the target identified by the given id.
+func (l *Lacros) CloseTarget(ctx context.Context, id chrome.TargetID) error {
+	return l.sess.CloseTarget(ctx, id)
+}
+
+// IsTargetAvailable checks if there is any matched target.
+func (l *Lacros) IsTargetAvailable(ctx context.Context, tm TargetMatcher) (bool, error) {
+	return Browser().IsTargetAvailable(ctx, tm)
+}
+
 // NewConn creates a new Chrome renderer and returns a connection to it.
 // If url is empty, an empty page (about:blank) is opened. Otherwise, the page
 // from the specified URL is opened. You can assume that the page loading has
