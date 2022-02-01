@@ -39,6 +39,30 @@
       },
       "revId": "0608abc000d56699f85ce055fad9b56752618690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0849b166_cd621918",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-01T23:48:53Z",
+      "side": 1,
+      "message": "Good catch - kept the name but adjusted the addition/subtraction.",
+      "parentUuid": "8c39272e_c9c67b0e",
+      "range": {
+        "startLine": 643,
+        "startChar": 1,
+        "endLine": 643,
+        "endChar": 11
+      },
+      "revId": "0608abc000d56699f85ce055fad9b56752618690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
