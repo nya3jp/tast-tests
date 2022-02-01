@@ -210,6 +210,21 @@ func WMEventTypeForState(state WindowStateType) WMEventType {
 	return stateToWmTypes[state]
 }
 
+// BringWindowToForeground takes windowTitle, finds the window and activates it.
+func BringWindowToForeground(ctx context.Context, tconn *chrome.TestConn, windowTitle string) (*Window, error) {
+	predicate := func(w *Window) bool {
+		return w.Title == windowTitle
+	}
+
+	w, err := FindWindow(ctx, tconn, predicate)
+	if err != nil {
+		return w, errors.Wrapf(err, "failed to find window with title : %q", windowTitle)
+	}
+
+	err = w.ActivateWindow(ctx, tconn)
+	return w, err
+}
+
 // SetWindowState requests changing the state of the window to the requested
 // event type and returns the updated state if waitForStateChange is true.
 // Otherwise, SetWindowState just sends a WMEvent and returns the expected state.
