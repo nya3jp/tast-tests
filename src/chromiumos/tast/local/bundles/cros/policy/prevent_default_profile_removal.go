@@ -56,29 +56,11 @@ func PreventDefaultProfileRemoval(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(f.TestAPIConn())
 	buttonWith := nodewith.Role(role.Button).Focusable()
 
-	// TODO(crbug/1291208): The UI tree reports the location of some buttons wrongly.
-	// This helper function offsets the click location to compensate for that.
-	// Remove once the UI tree reports the locations correctly.
-	leftClickWithOffset := func(finder *nodewith.Finder) func(context.Context) error {
-		return func(ctx context.Context) error {
-			l, err := ui.Location(ctx, finder)
-			if err != nil {
-				return err
-			}
-			if err := ui.MouseClickAtLocation(0 /*leftClick*/, l.WithOffset(-50, -30).CenterPoint())(ctx); err != nil {
-				return err
-			}
-			return nil
-		}
-	}
-
 	if err := uiauto.Combine("open profile settings",
 		ui.LeftClick(buttonWith.ClassName("AvatarToolbarButton")),
 		ui.LeftClick(buttonWith.Name("Manage profiles")),
-		// TODO(crbug/1291208): Replace with ui.LeftClick once the UI tree reports
-		// the location correctly.
-		leftClickWithOffset(buttonWith.Name("More actions")),
-		leftClickWithOffset(nodewith.Role(role.MenuItem).Focusable().ClassName("dropdown-item").Name("Delete")),
+		ui.LeftClick(buttonWith.Name("More actions")),
+		ui.LeftClick(nodewith.Role(role.MenuItem).Focusable().ClassName("dropdown-item").Name("Delete")),
 	)(ctx); err != nil {
 		s.Fatal("Failed to manipulate ui: ", err)
 	}
