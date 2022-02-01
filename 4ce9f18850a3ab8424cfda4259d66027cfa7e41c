@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2acab0d_f3e45a2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-02-01T18:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49981475_eb70e9aa",
+      "range": {
+        "startLine": 41,
+        "startChar": 60,
+        "endLine": 41,
+        "endChar": 75
+      },
+      "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14bb1a91_e8fc8075",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "636770c9_0703bdd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-02-01T18:44:30Z",
+      "side": 1,
+      "message": "I\u0027m looking at it this way: \"Fail to conduct the the recorder task\" is like a high level error, and then \"Failed to open..\"gives the detailed explanation of what failed. If it were to be changed to \"Failed to conduct the recorder task: open..\", would it sounds more like \"Failed to conduct the recorder task, in order to fix it, you need to open...\"?",
+      "parentUuid": "14bb1a91_e8fc8075",
+      "range": {
+        "startLine": 111,
+        "startChar": 30,
+        "endLine": 111,
+        "endChar": 39
+      },
+      "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b599d55c_43f9de9d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
         "patchSetId": 6
@@ -94,6 +142,30 @@
       "writtenOn": "2022-02-01T06:08:00Z",
       "side": 1,
       "message": "ditto here and many examples below.",
+      "range": {
+        "startLine": 119,
+        "startChar": 28,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "4ce9f18850a3ab8424cfda4259d66027cfa7e41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40bd9697_55ccca56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-02-01T18:44:30Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "b599d55c_43f9de9d",
       "range": {
         "startLine": 119,
         "startChar": 28,
