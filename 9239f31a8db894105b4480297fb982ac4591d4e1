@@ -16,6 +16,24 @@
       "message": "What do you think?\n- I don\u0027t see how we can make WaitForWindow a method on browser.Browser without cyclic imports.\n- It would be nice to eliminate lacros.WaitForLacrosWindow but I don\u0027t see how (this is somewhat related to the previous point).",
       "revId": "9239f31a8db894105b4480297fb982ac4591d4e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c308680a_3e50340b",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-01T19:32:12Z",
+      "side": 1,
+      "message": "Hi Georg, I have also run into the similar issue of this, and tried to capture a few points: go/lacros-tast-api-comparison Can you take a look to see if there is anything we can work together with? Thanks,",
+      "parentUuid": "a501fadb_efbc9948",
+      "revId": "9239f31a8db894105b4480297fb982ac4591d4e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
