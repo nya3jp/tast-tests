@@ -183,6 +183,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a788df4_ba622c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/safe_sites_filter_behavior.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2022-02-01T07:45:33Z",
+      "side": 1,
+      "message": "There are no policy owners. The ones assigned in policy_templates.json were incorrectly assigned (their words), and the \u0027family experiences\u0027 team (https://moma.corp.google.com/team/1511209318988) that depends on the policy also denies ownership.\n\nThe famility experiences team did indicate their own tests also rely on external websites for the content filtering, so there probably is no way to test this without using an external website.",
+      "parentUuid": "e9da1988_c565a6f0",
+      "revId": "6a7abb575fd62c7693e8e5ac09f0a05f0dde875c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53e2c738_db47217f",
