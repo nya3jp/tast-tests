@@ -16,6 +16,24 @@
       "message": "FYI as I saw you used \u0027Ack\u0027 in a number of places where you actioned the comment:\nThe convention when replying to comments is to use \u0027Done\u0027 when the comment is actioned and \u0027Ack\u0027 when it is not.\n\nSpecifically, from https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/commit_checklist.md#18_implement-feedback-from-your-reviewers:\n- Clicking Done on the comment will comment “Done” and resolve this comment. This usually is used in response to a requested change by the reviewer, and tells the reviewer that you have made the change that they requested.\n- Clicking Ack on the comment will comment “Ack” (short for “Acknowledged”) and resolve this comment. This usually is used in response to a non-actionable comment by the reviewer, and tells the reviewer that you understand.",
       "revId": "bf9b16c63e362cffc736ece9bb5d6dbd1017b144",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad941c8_22cbd4c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-02-01T08:38:54Z",
+      "side": 1,
+      "message": "Unresolving to make sure you see this comment.",
+      "parentUuid": "da678560_d656164f",
+      "revId": "bf9b16c63e362cffc736ece9bb5d6dbd1017b144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
