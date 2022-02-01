@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "068e01b1_004e3f4b",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-01T13:32:13Z",
+      "side": 1,
+      "message": "Agree, no need to expose it in the package.",
+      "parentUuid": "9346b0b4_e2de5c50",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 142
+      },
+      "revId": "70aa6456699617ff5a9a8673d7bbeb908e299f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acac8722_653e3c79",
         "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
         "patchSetId": 1
