@@ -42,10 +42,10 @@ func ResolveLocalHostname(ctx context.Context, s *testing.State) {
 	if len(hostname) < 7 || hostname[len(hostname)-6:] != ".local" {
 		s.Fatal("Invalid hostname: ", hostname)
 	}
-	// Resolve the mDNS hostname to an IP address via gethostip. If avahi is not used
-	// to resolve the hostname or avahi fails to resolve the hostname, gethostip will
+	// Resolve the mDNS hostname to an IP address via gethostbyname2(). If avahi is not used
+	// to resolve the hostname or avahi fails to resolve the hostname, gethostbyname2() will
 	// fail and return an error code.
-	if err := testexec.CommandContext(ctx, "gethostip", hostname).Run(testexec.DumpLogOnError); err != nil {
-		s.Fatal("gethostip failed: ", err)
+	if err := testexec.CommandContext(ctx, "getent", "hosts", hostname).Run(testexec.DumpLogOnError); err != nil {
+		s.Fatal("getent hosts failed: ", err)
 	}
 }

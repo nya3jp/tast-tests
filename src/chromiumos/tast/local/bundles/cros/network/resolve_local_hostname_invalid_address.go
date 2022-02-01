@@ -33,11 +33,11 @@ func ResolveLocalHostnameInvalidAddress(ctx context.Context, s *testing.State) {
 		s.Fatal("syslog.NewReader failed: ", err)
 	}
 	defer reader.Close()
-	// gethostip is a small program in syslinux which calls gethostbyname().
-	cmd := testexec.CommandContext(ctx, "gethostip", "INVALID_ADDRESS.local")
-	if out, _ := cmd.CombinedOutput(); string(out) != "INVALID_ADDRESS.local: Unknown host\n" {
+	// getent hosts is a small program which calls gethostbyname2().
+	cmd := testexec.CommandContext(ctx, "getent", "hosts", "INVALID_ADDRESS.local")
+	if code, ok := testexec.ExitCode(cmd.Run()); !ok || code != 2 {
 		cmd.DumpLog(ctx)
-		s.Fatal("gethostip failed: ", string(out))
+		s.Fatal("getent hosts failed: ", err)
 	}
 	for {
 		entry, err := reader.Read()
