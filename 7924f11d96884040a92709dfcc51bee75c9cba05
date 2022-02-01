@@ -39,6 +39,30 @@
       },
       "revId": "7924f11d96884040a92709dfcc51bee75c9cba05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3810bce8_a1b61505",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-02-01T07:19:56Z",
+      "side": 1,
+      "message": "Thanks for the comment. Done moving checkPidExists() to util.go and creating a shared waitCharonExited() for the polling.",
+      "parentUuid": "1195108d_9876991d",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "7924f11d96884040a92709dfcc51bee75c9cba05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
