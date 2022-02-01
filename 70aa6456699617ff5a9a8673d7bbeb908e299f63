@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9346b0b4_e2de5c50",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-01T13:27:41Z",
+      "side": 1,
+      "message": "I would put it to the `chrome.NewPrecondition()` function to limit the scope.\nKamil, WDYT?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 142
+      },
+      "revId": "70aa6456699617ff5a9a8673d7bbeb908e299f63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
