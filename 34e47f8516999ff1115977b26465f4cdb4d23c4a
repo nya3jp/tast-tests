@@ -233,6 +233,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a852655_c69bb12a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/keyboard_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-02-01T08:10:26Z",
+      "side": 1,
+      "message": "Re: Seewai\u0027s suggestion. I put together a WIP CR for that: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3428328\n\nFor now, I think we can first expose this first set of functionalities and add further expansion later. I think UIAutomation Combine and proto imports will warrant a more in depth discussion, which can be done as a future item to this.",
+      "parentUuid": "396b607e_52b0bdde",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "34e47f8516999ff1115977b26465f4cdb4d23c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1f4e5e6_0ae9cf3a",
