@@ -23,9 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SystemTrayPerf,
+		Func:         QuickSettingsPerf,
 		LacrosStatus: testing.LacrosVariantUnknown,
-		Desc:         "Measures animation smoothness of system tray animations",
+		Desc:         "Measures animation smoothness of quick settings expand and collapse animations",
 		Contacts:     []string{"amehfooz@chromium.org", "leandre@chromium.org", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
@@ -41,7 +41,7 @@ func init() {
 	})
 }
 
-func SystemTrayPerf(ctx context.Context, s *testing.State) {
+func QuickSettingsPerf(ctx context.Context, s *testing.State) {
 	isArc := s.Param().(bool)
 
 	// Ensure display on to record ui performance correctly.
