@@ -84,3 +84,17 @@ func (c *CrosNetworkConfig) ForgetNetwork(ctx context.Context, guid string) (boo
 	}
 	return result.Success, nil
 }
+
+// SetNetworkTypeEnabledState enables/disable a given Network_Type
+func (c *CrosNetworkConfig) SetNetworkTypeEnabledState(ctx context.Context, networkType NetworkType, enable bool) error {
+	var result struct{ Success bool }
+	if err := c.mojoRemote.Call(ctx, &result,
+		"function(networkType, enable) { return this.setNetworkTypeEnabledState(networkType, enable)}", networkType, enable); err != nil {
+		return errors.Wrap(err, "failed to run setNetworkTypeEnabledState")
+	}
+	if result.Success != true {
+		return errors.New("setNetworkTypeEnabledState failed")
+	}
+
+	return nil
+}
