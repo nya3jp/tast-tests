@@ -35,6 +35,40 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f4ff03_0612ba7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-01T07:57:09Z",
+      "side": 1,
+      "message": "Thanks in advance for the review!",
+      "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3353bc62_a1453b38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-01T07:57:09Z",
+      "side": 1,
+      "message": "This is needed to make this file pass a precommit test.\n@Tast-reviewer: is there a better way to do this?\nThe error is:\n\"Tast requires exactly one symbol (test function or service type) to be exported in an entry file\"",
+      "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d5de22c_f2ef1535",
@@ -58,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ac46ab_27012461",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-01T07:57:09Z",
+      "side": 1,
+      "message": "unfortunately, that\u0027s not possible and you can see similar patterns all over, e.g., \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/fixture.go?q\u003dAddFixture\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch",
+      "parentUuid": "1d5de22c_f2ef1535",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40c9bb34_b941eb0e",
@@ -71,6 +129,30 @@
       "writtenOn": "2022-01-31T15:42:44Z",
       "side": 1,
       "message": "Remove this line or the comment part.",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 6
+      },
+      "revId": "56e4fbb89af730d909765a6bc9e25880b4488700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a485bd_1f11d47b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-01T07:57:09Z",
+      "side": 1,
+      "message": "Will do, once I have added the ID\u0027s to the webpage :)",
+      "parentUuid": "40c9bb34_b941eb0e",
       "range": {
         "startLine": 214,
         "startChar": 3,
