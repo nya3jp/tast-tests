@@ -28,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DefaultSearchProviderName,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of DefaultSearchProviderName policy: check if specified provider name is displayed correctly",
 		Contacts: []string{
 			"jaflis@google.org", // Test author
@@ -68,7 +68,6 @@ func DefaultSearchProviderName(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	uiauto := uiauto.New(tconn)
 
@@ -124,6 +123,7 @@ func DefaultSearchProviderName(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to setup chrome: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Open an empty page.
 			// Use chrome://newtab to open new tab page (see https://crbug.com/1188362#c19).
