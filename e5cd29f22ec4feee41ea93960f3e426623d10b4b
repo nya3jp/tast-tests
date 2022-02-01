@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "edee3eb6_c4baf190",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-01T07:25:22Z",
+      "side": 1,
+      "message": "nit: in precise, maybe\n\n\"does not work for struct-value fields on marshaling\"\n\nIt works on deserialization, AFAIK.",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "e5cd29f22ec4feee41ea93960f3e426623d10b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd2b2863_443f93b2",
@@ -26,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ce03d65_caa111d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-01T07:25:22Z",
+      "side": 1,
+      "message": "nit/maybe:\n\nIn order to drop the members from serialized JSON data,",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "e5cd29f22ec4feee41ea93960f3e426623d10b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6cf00f98_d02cf3a8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -37,6 +83,30 @@
       "writtenOn": "2022-02-01T00:43:39Z",
       "side": 1,
       "message": "TBH I am not sure whether this is a proper solution, and would like to have inputs from golang / Tast experts.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "e5cd29f22ec4feee41ea93960f3e426623d10b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507b05ac_28f15f5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-01T07:25:22Z",
+      "side": 1,
+      "message": "I think this is what we need. It is implicitly mentioned in\nhttps://pkg.go.dev/encoding/json#Marshal\n\n\u003d\u003d quote \u003d\u003d \nThe \"omitempty\" option specifies that the field should be omitted from the encoding if the field has an empty value, defined as false, 0, a nil pointer, a nil interface value, and any empty array, slice, map, or string\n\u003d\u003d quote end \u003d\u003d\n\nso switching to a pointer to set \"a nil pointer\" is what we want.",
+      "parentUuid": "6cf00f98_d02cf3a8",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -77,6 +147,23 @@
       "writtenOn": "2022-02-01T00:53:04Z",
       "side": 1,
       "message": "lgtm, thank for the fix!",
+      "revId": "e5cd29f22ec4feee41ea93960f3e426623d10b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e9d49e_65483e09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-01T07:25:22Z",
+      "side": 1,
+      "message": "Eliot is OOO today so skipping shadow review.",
       "revId": "e5cd29f22ec4feee41ea93960f3e426623d10b4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
