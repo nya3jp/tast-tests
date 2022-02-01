@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3bdc17_9a75ff9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-01T08:46:57Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "b0a3053fdb6ac49b4e4bc1e8b8849a7f462bdb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76f0d82d_9132bb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/delete_print_job_history_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-01T08:46:57Z",
+      "side": 1,
+      "message": "I\u0027d move this after line 113\ndefer conn.Close()\nso that if the test fails we can get a screenshot before the browser closes.",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 111
+      },
+      "revId": "b0a3053fdb6ac49b4e4bc1e8b8849a7f462bdb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddab1d08_9d81c6d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/delete_print_job_history_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-01T08:46:57Z",
+      "side": 1,
+      "message": "I\u0027d move this before the subtests loop.",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "b0a3053fdb6ac49b4e4bc1e8b8849a7f462bdb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
