@@ -94,6 +94,30 @@
       },
       "revId": "636f5626ff01b186f9d6e84e8ea3a88f0637e67b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f496aad6_d77ba4f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/user_files_guest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-02-01T19:48:06Z",
+      "side": 1,
+      "message": "I don\u0027t mind fixing this in a follow-up.",
+      "parentUuid": "31dbe150_6dcb7c5c",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "636f5626ff01b186f9d6e84e8ea3a88f0637e67b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
