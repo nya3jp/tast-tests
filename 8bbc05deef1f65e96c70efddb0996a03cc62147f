@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "621ed69c_5af8be3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-01T17:24:59Z",
+      "side": 1,
+      "message": "lgtm from my perspective.",
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87037a8a_2afdf3ce",
@@ -101,6 +118,30 @@
       "writtenOn": "2022-02-01T17:22:13Z",
       "side": 1,
       "message": "This is a duplicate of the code review comment by Keigo Oka.",
+      "parentUuid": "a03bda61_5591f2a2",
+      "range": {
+        "startLine": 227,
+        "startChar": 36,
+        "endLine": 227,
+        "endChar": 47
+      },
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f773579a_3dc7a7e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-01T17:24:59Z",
+      "side": 1,
+      "message": "This means we only run `49p_vp8` on devices with hardware vp8 encoding.\n\nThe bond call opt `bond.WithVP9(allowVP9, sendVP9 bool)` tells the meet backend whether to use vp9. Per Denis, setting `false` should force to use vp8.",
       "parentUuid": "a03bda61_5591f2a2",
       "range": {
         "startLine": 227,
