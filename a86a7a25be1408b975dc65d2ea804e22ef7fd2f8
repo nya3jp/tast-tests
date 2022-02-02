@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "81890119_49bc11ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T08:51:39Z",
+      "side": 1,
+      "message": "Small t",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fb15ef33_270d84d9",
@@ -14,6 +37,132 @@
       "writtenOn": "2022-02-01T09:22:13Z",
       "side": 1,
       "message": "vsavu@: I added a test case demonstrating the new utilities for testing isolated apps. PTAL.",
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67064798_f6fc326d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T08:51:39Z",
+      "side": 1,
+      "message": "Use this prefix for all files. Be consistent.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25aec9b9_dd01c9c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T08:51:39Z",
+      "side": 1,
+      "message": "Prefix all data files with the test name.",
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8eb037_9b46e53d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T08:51:39Z",
+      "side": 1,
+      "message": "Make this a constant and use it in the Data field as well",
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51376800_aa4f6469",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T08:51:39Z",
+      "side": 1,
+      "message": "Use the filepath package",
+      "range": {
+        "startLine": 76,
+        "startChar": 25,
+        "endLine": 76,
+        "endChar": 68
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f1ddd6f_6da5f89d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T08:51:39Z",
+      "side": 1,
+      "message": "Don\u0027t expect port 80/443 to be available during testing. Use a random port instead.",
+      "range": {
+        "startLine": 98,
+        "startChar": 38,
+        "endLine": 98,
+        "endChar": 47
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8382330c_3919410b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T08:51:39Z",
+      "side": 1,
+      "message": "Use the same constant as above",
+      "range": {
+        "startLine": 98,
+        "startChar": 48,
+        "endLine": 98,
+        "endChar": 68
+      },
       "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
