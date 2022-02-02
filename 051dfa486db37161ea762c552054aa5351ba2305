@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3b60fa_e98efb1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-02-02T07:11:43Z",
+      "side": 1,
+      "message": "This recorder collects CPU/RAM/FPS/Thermal as well as other custom metrics(e.g. latency and smoothness), so maybe I can put \"overall performance\" here?",
+      "parentUuid": "2b767656_dba5e058",
+      "range": {
+        "startLine": 33,
+        "startChar": 17,
+        "endLine": 33,
+        "endChar": 42
+      },
+      "revId": "051dfa486db37161ea762c552054aa5351ba2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f82db43_7e2e3fee",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-01T08:28:54Z",
       "side": 1,
       "message": "nit: I would split this putting each parameter to new line and add comment, especially to magic numbers (arbitrary number that is passed to the function, e.g. 1)",
+      "range": {
+        "startLine": 155,
+        "startChar": 22,
+        "endLine": 157,
+        "endChar": 27
+      },
+      "revId": "051dfa486db37161ea762c552054aa5351ba2305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd3af62_0bc591b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-02-02T07:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f82db43_7e2e3fee",
       "range": {
         "startLine": 155,
         "startChar": 22,
