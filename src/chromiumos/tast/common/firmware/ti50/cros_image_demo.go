@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	bootTimeout = time.Minute
+	bootTimeout = 90 * time.Second
 )
 
 // Demo uses some of the CrOSImage to control the board.  Image is optional,
