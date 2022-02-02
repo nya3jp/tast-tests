@@ -56,7 +56,7 @@ func TabLoadingAnimationPerf(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		conn, err := cr.NewConn(ctx, server.URL+"/tab_loading_test.html")
 		if err != nil {
 			s.Fatal("Failed to open a testing page: ", err)

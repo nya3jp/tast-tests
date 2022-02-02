@@ -105,7 +105,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set all windows as normal state: ", err)
 	}
 
-	r := perfutil.NewRunner(cr)
+	r := perfutil.NewRunner(cr.Browser())
 	r.Runs = 3
 	r.RunTracing = false
 
