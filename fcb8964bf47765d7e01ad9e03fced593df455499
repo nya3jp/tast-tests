@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "425f761c_90b93887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-02T05:54:52Z",
+      "side": 1,
+      "message": "Hi Eric, PTALA after moving check function to arc.go per Charles\u0027 suggestion.  Thanks!",
+      "revId": "fcb8964bf47765d7e01ad9e03fced593df455499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
