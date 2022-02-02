@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "69b1a48c_1e341c88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-02T13:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81890119_49bc11ee",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fb15ef33_270d84d9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cecc85f_966862c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-02T13:49:59Z",
+      "side": 1,
+      "message": "done for all files except favicon.ico (which is fetched automatically by the browser by this name).",
+      "parentUuid": "67064798_f6fc326d",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25aec9b9_dd01c9c7",
@@ -77,6 +125,24 @@
       "writtenOn": "2022-02-02T08:51:39Z",
       "side": 1,
       "message": "Prefix all data files with the test name.",
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39bdef51_a3e18b29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-02T13:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25aec9b9_dd01c9c7",
       "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "839238ad_19503491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-02T13:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d8eb037_9b46e53d",
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51376800_aa4f6469",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-02-02T08:51:39Z",
       "side": 1,
       "message": "Use the filepath package",
+      "range": {
+        "startLine": 76,
+        "startChar": 25,
+        "endLine": 76,
+        "endChar": 68
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d321ec9_cef7f9f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-02T13:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51376800_aa4f6469",
       "range": {
         "startLine": 76,
         "startChar": 25,
@@ -167,6 +275,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97c39bf_768d5a3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-02T13:49:59Z",
+      "side": 1,
+      "message": "Added a change in https.go to use a free port.",
+      "parentUuid": "8f1ddd6f_6da5f89d",
+      "range": {
+        "startLine": 98,
+        "startChar": 38,
+        "endLine": 98,
+        "endChar": 47
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f037677b_fa243af7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-02T13:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8382330c_3919410b",
+      "range": {
+        "startLine": 98,
+        "startChar": 48,
+        "endLine": 98,
+        "endChar": 68
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11a141b0_9e99876f",
@@ -180,6 +336,30 @@
       "writtenOn": "2022-02-02T08:52:21Z",
       "side": 1,
       "message": "chromium.org ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6289167a_a889b2cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/crossoriginforbidden.html",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-02T13:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11a141b0_9e99876f",
       "range": {
         "startLine": 10,
         "startChar": 21,
