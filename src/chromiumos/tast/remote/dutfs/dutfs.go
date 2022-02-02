@@ -147,6 +147,19 @@ func (c *Client) TempDir(ctx context.Context, dir, pattern string) (string, erro
 	return res.Name, nil
 }
 
+// MkDir creates a non-temporary directory.
+// The remote implementation calls os.Mkdir; see that for more details.
+func (c *Client) MkDir(ctx context.Context, name string, mode os.FileMode) error {
+	res, err := c.fs.MkDir(ctx, &baserpc.MkDirRequest{Name: name, Mode: uint32(mode)})
+	if err != nil {
+		return err
+	}
+	if res.Error != nil {
+		return decodeErr(res.Error)
+	}
+	return nil
+}
+
 // fileInfo wraps baserpc.FileInfo to implement os.FileInfo interface.
 type fileInfo struct {
 	pb *baserpc.FileInfo

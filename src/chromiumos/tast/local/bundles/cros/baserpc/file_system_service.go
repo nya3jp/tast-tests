@@ -132,6 +132,18 @@ func (fs *FileSystemService) TempDir(ctx context.Context, req *baserpc.TempDirRe
 	return &res, nil
 }
 
+// MkDir creates a non-temporary directory.
+func (fs *FileSystemService) MkDir(ctx context.Context, req *baserpc.MkDirRequest) (*baserpc.MkDirResponse, error) {
+	var res baserpc.MkDirResponse
+	res.Error = encodeErr(func() error {
+		if err := os.Mkdir(req.Name, os.FileMode(req.Mode)); err != nil {
+			return err
+		}
+		return nil
+	}())
+	return &res, nil
+}
+
 func toFileInfoProto(fi os.FileInfo) (*baserpc.FileInfo, error) {
 	ts, err := ptypes.TimestampProto(fi.ModTime())
 	if err != nil {
