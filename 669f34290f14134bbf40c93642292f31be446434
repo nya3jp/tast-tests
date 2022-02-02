@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3850fd50_25ac64e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-02T10:19:39Z",
+      "side": 1,
+      "message": "nit: `policy: Fix SpellCheckEnabled test for tablet devices`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "669f34290f14134bbf40c93642292f31be446434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "95123603_9e3d9be1",
@@ -18,6 +41,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2add729_3ccc9f85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-02T10:19:39Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "669f34290f14134bbf40c93642292f31be446434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d23bbf86_f0825734",
@@ -31,6 +71,30 @@
       "writtenOn": "2022-02-01T18:30:13Z",
       "side": 1,
       "message": "I\u0027m not sure what the appropriate timeout to use is.\n\nShould I just omit the timeout entirely and let the overall test time out instead?",
+      "range": {
+        "startLine": 127,
+        "startChar": 41,
+        "endLine": 127,
+        "endChar": 43
+      },
+      "revId": "669f34290f14134bbf40c93642292f31be446434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04692fb1_d7417123",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/spell_check_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-02T10:19:39Z",
+      "side": 1,
+      "message": "I would start at 15 second .",
+      "parentUuid": "d23bbf86_f0825734",
       "range": {
         "startLine": 127,
         "startChar": 41,
