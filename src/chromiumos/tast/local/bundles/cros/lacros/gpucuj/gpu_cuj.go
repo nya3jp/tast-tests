@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/local/chrome/ui"
@@ -174,7 +174,7 @@ type testInvocation struct {
 // runTest runs the common part of the GpuCUJ performance test - that is, shared between ChromeOS chrome and lacros chrome.
 // tconn is a test connection to the current browser being used (either ChromeOS or lacros chrome).
 func runTest(ctx context.Context, tconn *chrome.TestConn, f lacrosfixt.FixtValue, tracer traceable, invoc *testInvocation) error {
-	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
+	w, err := browserutil.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
 	if err != nil {
 		return err
 	}
@@ -212,7 +212,7 @@ func runTest(ctx context.Context, tconn *chrome.TestConn, f lacrosfixt.FixtValue
 			return nil
 		}
 	} else if invoc.scenario == TestTypeMoveOcclusion || invoc.scenario == TestTypeMoveOcclusionWithCrosWindow {
-		wb, err := lacros.FindFirstBlankWindow(ctx, f.TestAPIConn())
+		wb, err := browserutil.FindFirstBlankWindow(ctx, f.TestAPIConn())
 		if err != nil {
 			return err
 		}
