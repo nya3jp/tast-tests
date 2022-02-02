@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "006505db_8c5d0e39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-02T12:20:45Z",
+      "side": 1,
+      "message": "The subject is too long. Please move this part to the details of the description.",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "69e6825a_2290a859",
@@ -66,6 +89,29 @@
       "side": 1,
       "message": "True, makes sense. For this particular test, the job will never succeed, since there is no real printer (not even a virtual one).\n\nI think the best path forward for this CL would be to remove `printManagementApp.VerifyNoHistoryLabel()` entirely. The entire flow of print job history is already tested by non-policy printer tests anyways. WDYT?",
       "parentUuid": "eb8999b1_55330384",
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9722d1f_9a6f2424",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-02T12:20:45Z",
+      "side": 1,
+      "message": "Is 20 second a normal wait time for print jobs to refresh?\nIt seems quite long.",
+      "range": {
+        "startLine": 56,
+        "startChar": 58,
+        "endLine": 56,
+        "endChar": 59
+      },
       "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
