@@ -113,8 +113,9 @@ func init() {
 					enableBT: true,
 				},
 			}, {
-				Name:    "plus_spotify_quickcheck",
-				Timeout: 15 * time.Minute,
+				Name:      "plus_spotify_quickcheck",
+				Timeout:   15 * time.Minute,
+				ExtraAttr: []string{"group:crosbolt", "crosbolt_perbuild"},
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.SpotifyAppName,
