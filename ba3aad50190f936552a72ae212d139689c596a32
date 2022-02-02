@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b84fc19_e4b8927a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/apps_cached_offline.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-02-02T10:15:43Z",
+      "side": 1,
+      "message": "Definitely no. But for some reason all existing Kiosk tests are using s.Error() here. I changed it to s.Fatal() anyway.",
+      "parentUuid": "71c74e88_7fa6d3ed",
+      "revId": "ba3aad50190f936552a72ae212d139689c596a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "494c5288_f9ea8934",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-02T10:00:42Z",
       "side": 1,
       "message": "Can you check what happens in the defered Kiosk closing, if you make the function fail here? I don\u0027t know what happens if `cr.Close()` is called a second time.\nI want to make sure it won\u0027t panic.",
+      "revId": "ba3aad50190f936552a72ae212d139689c596a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc2ceb9_8d738143",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-02-02T10:15:43Z",
+      "side": 1,
+      "message": "It won\u0027t panic. But it will be stuck at policyutil.ServeAndRefresh() until timeout. Does it make sense skipping policyutil.ServeAndRefresh() if Chrome is already closed?",
+      "parentUuid": "494c5288_f9ea8934",
       "revId": "ba3aad50190f936552a72ae212d139689c596a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
