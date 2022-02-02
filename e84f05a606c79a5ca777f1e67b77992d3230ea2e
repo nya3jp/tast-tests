@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e6825a_2290a859",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-02-02T11:00:55Z",
+      "side": 1,
+      "message": "Friendly ping - is there anything else missing for you to review this CL?",
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
