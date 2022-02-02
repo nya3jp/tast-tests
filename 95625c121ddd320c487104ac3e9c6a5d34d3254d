@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111d0ab1_ed717147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-02T06:49:57Z",
+      "side": 1,
+      "message": "Can you please add a group email as well in case you are unreachable?",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "841ba197_2e2627ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-02T06:49:57Z",
+      "side": 1,
+      "message": "Is the configuration of WP tied to the specific username?\n\nPerhaps you should add a comment on how to update/check it is correct?",
+      "range": {
+        "startLine": 99,
+        "startChar": 52,
+        "endLine": 99,
+        "endChar": 61
+      },
+      "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1849face_dd0e9b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-02-02T06:49:57Z",
+      "side": 1,
+      "message": "Why do you launch files app rather than checking the file system directly?  If there is a good reason please comment it, otherwise remove as this will be flaky for no reason.",
+      "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
