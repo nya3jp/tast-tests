@@ -46,6 +46,30 @@
       },
       "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9259c3_79bd1dec",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T22:21:17Z",
+      "side": 1,
+      "message": "AFAICT they are needed to implement CloseAboutBlank in browserutil (https://crrev.com/c/3426334) that helps migrate these ui tests to Lacros (https://crrev.com/c/3399870)",
+      "parentUuid": "a334a89e_de99a6b1",
+      "range": {
+        "startLine": 109,
+        "startChar": 59,
+        "endLine": 109,
+        "endChar": 79
+      },
+      "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
