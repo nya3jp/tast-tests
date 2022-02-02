@@ -28,21 +28,9 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
-		Timeout:      8 * time.Minute,
+		Timeout:      12 * time.Minute,
 		Data:         []string{"logo_chrome.png"},
 	})
-}
-
-// expectError returns an action that checks if an expected error is returned by an action.
-func expectError(action uiauto.Action, expectation string) func(ctx context.Context) error {
-	return func(ctx context.Context) error {
-		if err := action(ctx); err == nil {
-			return errors.Errorf("didn't get the expected error: %s", expectation)
-		} else if !strings.Contains(err.Error(), expectation) {
-			return errors.Errorf("expected error: %s, actual error: %s", expectation, err)
-		}
-		return nil
-	}
 }
 
 func BasicDetections(ctx context.Context, s *testing.State) {
@@ -67,6 +55,19 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 	verifyChromeIsShown := uiauto.NamedAction("verify that chrome is shown",
 		ui.WaitUntilExists(chromeWindow.Visible()))
 
+	expectError := func(f *uidetection.Finder, expectation string) func(ctx context.Context) error {
+		return func(ctx context.Context) error {
+			if loc, err := ud.Location(ctx, f); err == nil {
+				return errors.Errorf("expected error: %s, actually successful with value %+v", expectation, loc)
+			} else if !strings.Contains(err.Error(), expectation) {
+				return errors.Errorf("expected error: %s, actual error: %s", expectation, err)
+			}
+			return nil
+		}
+	}
+
+	maximizeButton := nodewith.Role(role.Button).ClassName("FrameCaptionButton").Name("Maximize")
+
 	// Perform UI interaction to click Chrome logo to open Chrome,
 	// click "Add shortcut", and click "cancel".
 	// This covers all three UI detections: custom icon detection,
@@ -79,44 +80,48 @@ func BasicDetections(ctx context.Context, s *testing.State) {
 			ud.LeftClick(uidetection.Word("Cancel")),
 			ud.WaitUntilGone(uidetection.Word("Cancel")),
 			// Check the negative cases.
-			expectError(ud.Exists(uidetection.Word("Google")), uidetection.ErrMultipleMatch),
-			expectError(ud.Exists(uidetection.Word("Google").Nth(4)), uidetection.ErrNthNotFound),
-			expectError(ud.Exists(uidetection.TextBlock([]string{"Add", "shortcut"}).Nth(2)), uidetection.ErrNthNotFound)),
+			expectError(uidetection.Word("Google"), uidetection.ErrMultipleMatch),
+			expectError(uidetection.Word("Google").Nth(4), uidetection.ErrNthNotFound),
+			expectError(uidetection.TextBlock([]string{"Add", "shortcut"}).Nth(2), uidetection.ErrNthNotFound),
+			// Maximize chrome to ensure that the left and the right of the chrome
+			// are empty bounding boxes later on. Do this early so that we don't
+			// have a race condition later.
+			ui.IfSuccessThen(ui.Exists(maximizeButton), ui.LeftClick(maximizeButton))),
 
 		uiauto.Combine("verify that within successfully matches",
 			uiauto.Combine("for px",
-				expectError(ud.Exists(chromeIcon.WithinPx(coords.NewRect(0, 0, 50, 50))), uidetection.ErrNotFound),
+				expectError(chromeIcon.WithinPx(coords.NewRect(0, 0, 50, 50)), uidetection.ErrNotFound),
 				ud.LeftClick(chromeIcon.WithinPx(coords.NewRect(50, 50, 9999, 9999))),
 				verifyChromeIsMinimized),
 			uiauto.Combine("for dp",
-				expectError(ud.Exists(chromeIcon.WithinDp(coords.NewRect(0, 0, 50, 50))), uidetection.ErrNotFound),
+				expectError(chromeIcon.WithinDp(coords.NewRect(0, 0, 50, 50)), uidetection.ErrNotFound),
 				ud.LeftClick(chromeIcon.WithinDp(coords.NewRect(50, 50, 9999, 9999))),
 				verifyChromeIsShown),
 			uiauto.Combine("for ui detection",
-				expectError(ud.Exists(chromeIcon.Within(addShortcut)), uidetection.ErrNotFound),
+				expectError(chromeIcon.Within(addShortcut), uidetection.ErrNotFound),
 				ud.LeftClick(chromeIcon.Within(chromeIcon)),
 				verifyChromeIsMinimized),
 			uiauto.Combine("for a11y nodes",
-				expectError(ud.Exists(chromeIcon.WithinA11yNode(notificationArea)), uidetection.ErrNotFound),
+				expectError(chromeIcon.WithinA11yNode(notificationArea), uidetection.ErrNotFound),
 				ud.LeftClick(chromeIcon.WithinA11yNode(bottomBar)),
 				verifyChromeIsShown)),
 
 		uiauto.Combine("verify that relative pixel successfully match",
 			uiauto.Combine("for a11y nodes",
-				expectError(ud.Exists(chromeIcon.RightOfA11yNode(chromeWindow)), uidetection.ErrNotFound),
-				expectError(ud.Exists(chromeIcon.LeftOfA11yNode(chromeWindow)), uidetection.ErrNotFound),
+				expectError(chromeIcon.RightOfA11yNode(chromeWindow), uidetection.ErrEmptyBoundingBox),
+				expectError(chromeIcon.LeftOfA11yNode(chromeWindow), uidetection.ErrEmptyBoundingBox),
 				ud.LeftClick(chromeIcon.LeftOfA11yNode(notificationArea)),
 				verifyChromeIsMinimized),
 			uiauto.Combine("for dp",
-				expectError(ud.Exists(chromeIcon.LeftOfDp(50)), uidetection.ErrNotFound),
+				expectError(chromeIcon.LeftOfDp(50), uidetection.ErrNotFound),
 				ud.LeftClick(chromeIcon.RightOfDp(50)),
 				verifyChromeIsShown),
 			uiauto.Combine("for ui detection",
-				expectError(ud.Exists(chromeIcon.Above(addShortcut)), uidetection.ErrNotFound),
+				expectError(chromeIcon.Above(addShortcut), uidetection.ErrNotFound),
 				ud.LeftClick(chromeIcon.Below(addShortcut)),
 				verifyChromeIsMinimized),
 			uiauto.Combine("for px",
-				expectError(ud.Exists(chromeIcon.AbovePx(100)), uidetection.ErrNotFound),
+				expectError(chromeIcon.AbovePx(100), uidetection.ErrNotFound),
 				ud.LeftClick(chromeIcon.BelowPx(100)),
 				verifyChromeIsShown)))(ctx); err != nil {
 		s.Fatal("Failed to perform image-based UI interactions: ", err)

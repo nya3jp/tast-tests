@@ -53,6 +53,9 @@ func crop(img image.Image, boundingBox coords.Rect) (image.Image, error) {
 	bounds := img.Bounds().Intersect(image.Rect(boundingBox.Left, boundingBox.Top, boundingBox.Right(), boundingBox.Bottom()))
 	cropped := image.NewRGBA(bounds)
 	draw.Draw(cropped, bounds, img, bounds.Min, draw.Src)
+	if cropped.Bounds().Empty() {
+		return nil, errors.New(ErrEmptyBoundingBox)
+	}
 	return cropped, nil
 }
 
@@ -65,7 +68,7 @@ func takeScreenshot(ctx context.Context, tconn *chrome.TestConn, boundingBox coo
 
 	cropped, err := crop(uncropped, boundingBox)
 	if err != nil {
-		return nil, errors.Wrap(err, "unable to crop image")
+		return nil, err
 	}
 
 	imgBuf := new(bytes.Buffer)
@@ -90,7 +93,7 @@ func takeStableScreenshot(ctx context.Context, tconn *chrome.TestConn, pollOpts 
 		}
 		currentScreen, err = crop(uncropped, boundingBox)
 		if err != nil {
-			return errors.Wrap(err, "unable to crop image")
+			return err
 		}
 		if err = equal(currentScreen, lastScreen); err != nil {
 			return errors.Wrapf(err, "screen has not stopped changing after %s, perhaps increase timeout or use immediate-screenshot strategy", time.Since(start))
