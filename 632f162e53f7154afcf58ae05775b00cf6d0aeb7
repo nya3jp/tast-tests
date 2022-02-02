@@ -159,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9fcc7b_aac7c987",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_feedback_allowed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:49:03Z",
+      "side": 1,
+      "message": "You make a good point about keeping the faillog where it is now.",
+      "parentUuid": "0dd07619_b8f5aaba",
+      "revId": "632f162e53f7154afcf58ae05775b00cf6d0aeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35193556_207a2a0b",
