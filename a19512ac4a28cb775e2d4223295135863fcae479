@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b941a4a1_c2c5437c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-02T15:23:12Z",
+      "side": 1,
+      "message": "Does the test work currently in the VM? There used to be no TPM emulation in VMs, but this might\u0027ve changed.\n\nAlso do we have some TPM-less devices among the tast bots?\n\nIf either of these is true, we either need to limit the test to devices with TPM (probably via hardware deps), or we\u0027ll need to improve the test tool to use a fake TPM backend when necessary.",
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f9d466_1ad8eaac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-02T15:23:12Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cf4aa99_418b8da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-02T15:23:12Z",
+      "side": 1,
+      "message": "In the future we\u0027ll also have a test for the full end-to-end recovery flow (at the D-Bus level or, even better, by simulating the user actions in the UI). From that perspective, maybe let\u0027s call the currently called test \"recovery_crypto\"?",
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2cb89bb_8877ba58",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-02T15:23:12Z",
+      "side": 1,
+      "message": "Is the pattern needed, or can we pass an empty string here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 60
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7f6d0c_815effde",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-02T15:23:12Z",
+      "side": 1,
+      "message": "nit: Consider using terms \"fileName\" and \"filePath\" alternatively.",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95683a94_c641a9e2",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-02T15:23:12Z",
+      "side": 1,
+      "message": "nit: Let\u0027s use filepath.Join().",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9b70eda_b3886beb",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-02T15:23:12Z",
+      "side": 1,
+      "message": "nit: Can we simplify these lines to:\n\n  \"--destination_share_out_file\", c.getFullFileName(destinationShareFile),",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 68
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98a990e0_525ecd4f",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-02-02T15:23:12Z",
+      "side": 1,
+      "message": "How will the bytes be formatted? If this will try to cast the bytes to characters (UTF?) the result will be unreadable.\n\nWould it print bytes as numbers if we pass them here without converting to a string? Or alternatively do a hexencoding, so that it\u0027s easy for the developer to inspect the bytes with some tool.",
+      "range": {
+        "startLine": 131,
+        "startChar": 51,
+        "endLine": 131,
+        "endChar": 84
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
