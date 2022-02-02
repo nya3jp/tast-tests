@@ -34,7 +34,7 @@ import (
 // Tast can sometimes be run against a freshly-booted VM, and we don't want every test that
 // depends on a critical daemon to need to call upstart.WaitForJobStatus to wait for the
 // corresponding job to be running. See https://crbug.com/897521 for more details.
-func Wait(ctx context.Context) error {
+func Wait(ctx context.Context, systemServicesTimeout time.Duration) error {
 	// Periodically log a message to make it clearer what we're doing.
 	// Sending a periodic control message is also needed to let the main tast process
 	// know that the DUT is still responsive.
@@ -79,8 +79,9 @@ func Wait(ctx context.Context) error {
 
 	// If system-services doesn't enter "start/running", everything's probably broken, so give up.
 	const systemServicesJob = "system-services"
+	testing.ContextLogf(ctx, "SystemServicesTimeout value is %f seconds", systemServicesTimeout.Seconds())
 	if err := upstart.WaitForJobStatus(ctx, systemServicesJob, upstartcommon.StartGoal, upstartcommon.RunningState,
-		upstart.TolerateWrongGoal, 2*time.Minute); err != nil {
+		upstart.TolerateWrongGoal, systemServicesTimeout); err != nil {
 		return errors.Wrapf(err, "failed waiting for %v job", systemServicesJob)
 	}
 
