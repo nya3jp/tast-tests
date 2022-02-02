@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e368694b_f975a9c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2022-02-02T15:45:21Z",
+      "side": 1,
+      "message": "Hi, ptal. I rewrote your test a bit to make adding my new test cases easier and to check the icon.",
+      "revId": "3396acbed5c566713402467e14a8ee5ba19d9099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
