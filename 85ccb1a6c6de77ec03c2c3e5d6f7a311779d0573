@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d70f27_0a8aeaa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-02T20:52:46Z",
+      "side": 1,
+      "message": "Adding Alexandre to reviewers",
+      "revId": "85ccb1a6c6de77ec03c2c3e5d6f7a311779d0573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d2ab44_a3921612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-02T20:52:46Z",
+      "side": 1,
+      "message": "I think we don\u0027t even want to launch spotify, just a no-op android app. raging@ can confirm",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "85ccb1a6c6de77ec03c2c3e5d6f7a311779d0573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c5d89f_a70d22dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-02T20:52:46Z",
+      "side": 1,
+      "message": "Let\u0027s add both tests to crosbolt:\nExtraAttr:         []string{\"group:crosbolt\", \"crosbolt_perbuild\"},",
+      "revId": "85ccb1a6c6de77ec03c2c3e5d6f7a311779d0573",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
