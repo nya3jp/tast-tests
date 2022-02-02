@@ -16,6 +16,166 @@
       "message": "vsavu@: thanks for reviewing. Fixed the code according to your comments. PTAL.",
       "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e185b684_2232c973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/cross_origin_forbidden.webmanifest",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:46:01Z",
+      "side": 1,
+      "message": "Also update this",
+      "range": {
+        "startLine": 14,
+        "startChar": 17,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5fb4b35_4699749f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/crossoriginforbidden.webmanifest",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:46:01Z",
+      "side": 1,
+      "message": "This file is still here",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702e5909_cad7ab40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/favicon.ico",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:46:01Z",
+      "side": 1,
+      "message": "Also set a prefix for favicon",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5b29b23_9cddd00a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:46:01Z",
+      "side": 1,
+      "message": "Document the return value",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867a02f2_bae9e258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:46:01Z",
+      "side": 1,
+      "message": "Don\u0027t ignore errors",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73983d39_a743c5bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:46:01Z",
+      "side": 1,
+      "message": "Don\u0027t ignore errors",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72d821c0_71a0f61e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:46:01Z",
+      "side": 1,
+      "message": "You also need to be able to stop the server somehow.",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f79096f_df54650a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:46:01Z",
+      "side": 1,
+      "message": "nit: use fmt.Sprintf",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
