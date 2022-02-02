@@ -51,6 +51,24 @@
       "parentUuid": "363aed31_f0569c64",
       "revId": "fcb8964bf47765d7e01ad9e03fced593df455499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d251c02_38197b3b",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-02T19:31:33Z",
+      "side": 1,
+      "message": "SG, I can update preopt.go to use common function.\n\n\u003e\u003e  For example GMS Core may download by itself some module\n\nIs this a concern if we are not starting the play store (plan to do it separately).",
+      "parentUuid": "89b80cc9_d2b26cb6",
+      "revId": "fcb8964bf47765d7e01ad9e03fced593df455499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
