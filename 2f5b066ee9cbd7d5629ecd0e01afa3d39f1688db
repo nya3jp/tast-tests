@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26b2f38_8d451c30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_show_user_names_on_signin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-02T08:12:00Z",
+      "side": 0,
+      "message": "But now that I\u0027m thinking about that. Shouldn\u0027t this called have removed all the cryptohomes? And it probably did but the user records stayed in the local state. Should we fix it instead?",
+      "range": {
+        "startLine": 49,
+        "startChar": 35,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "2f5b066ee9cbd7d5629ecd0e01afa3d39f1688db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
