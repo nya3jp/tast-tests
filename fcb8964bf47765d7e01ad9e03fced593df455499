@@ -69,6 +69,24 @@
       "parentUuid": "89b80cc9_d2b26cb6",
       "revId": "fcb8964bf47765d7e01ad9e03fced593df455499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b96776b_d45888f5",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-02T20:50:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d251c02_38197b3b",
+      "revId": "fcb8964bf47765d7e01ad9e03fced593df455499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
