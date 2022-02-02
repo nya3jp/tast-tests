@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ac6d27_e7e85c28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-02T01:58:57Z",
+      "side": 1,
+      "message": "There are two different types of usages of `runCommandLine` in this test.\n\n1) Just running command line. In this case we are interested in any output from a run, just everything, both stderr and stdout. Also in this case we are interested to see the output regardless of return value of command line invocation (doesn\u0027t matter, success of failure, we need all output).\n\n2) Running command line and parsing the output. In this case we are interested in stdout, because if there is an error that means nothing to parse.\n\nAt the moment using `CombinedOutput` covers both cases nicely and compactly.\n\nIt covers 1) because we need any output.\nIn case of 2) we have\n2a) normal execution, output contains stdout only, parsing goes ahead successfully\n2b) something went wrong, output contains both stderr and stdout. Then parsing will fail, and test will fail as well, which is WAI.\n\nI thought about it for a while, but I came to a conclusion that re-writing `runCommandLine` with conditional statements, or splitting it into two different functions would just bloat the code without giving any benefits.\nWhat do you think?",
+      "parentUuid": "4e09e766_391177f8",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec4b9e96_5a63d2e7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-31T05:44:47Z",
       "side": 1,
       "message": "For these functions using command execution, I still think reporting error from the Command class in case of execution failure is usually better.\nIt is because that err can tell what happened in case the command execution itself failed (e.g. command not found) even before the program can write something to stderr/stdout.\n\nExample:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/printer/test_ppds.go;l\u003d229;drc\u003d9ec715139635146810e152efafb79da23dabff55",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81654737_c28fc72c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-02T01:58:57Z",
+      "side": 1,
+      "message": "I added err into fatal message for flashromRead and flashromWrite, so now if err contains some useful information it will also be logged.",
+      "parentUuid": "ec4b9e96_5a63d2e7",
       "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

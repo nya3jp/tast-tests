@@ -105,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6d3821_4dc5baa7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-02T01:58:57Z",
+      "side": 1,
+      "message": "\u003e If you want log only when an error happens here\n\nThere are some invocations of `runCommandLine` where I just want to log no matter whether it\u0027s an error or success. That\u0027s why I named the last argument `logOutput`.\nSo I can\u0027t say I am dumping log on error. Do you think existing name can be fine?",
+      "parentUuid": "bba914c5_fbacf80c",
+      "revId": "68a11c60138200959d7979437255b3aa004a6d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa1e0e05_b1c4ab9a",
