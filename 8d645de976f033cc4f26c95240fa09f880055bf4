@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e219317d_0870a692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2022-02-02T15:55:14Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t notice you are tast-owner. I guess then I only need you to review this CL?",
+      "revId": "8d645de976f033cc4f26c95240fa09f880055bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
