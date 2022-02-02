@@ -8,6 +8,7 @@ package kioskmode
 
 import (
 	"context"
+	"io/ioutil"
 	"strings"
 	"time"
 
@@ -66,6 +67,15 @@ var (
 	}
 )
 
+const (
+	// KioskStartingLog is reported by chrome once the kiosk mode is starting.
+	KioskStartingLog = "Starting kiosk mode"
+	// KioskLaunchSucceededLog is reported by chrome once the kiosk launch is succeded.
+	KioskLaunchSucceededLog = "Kiosk launch succeeded"
+	// KioskClosingSplashScreenLog is reported by chtome once the splash screen is gone.
+	KioskClosingSplashScreenLog = "App window created, closing splash screen."
+)
+
 // Kiosk structure holds necessary references and provides a way to safely
 // close Kiosk mode.
 type Kiosk struct {
@@ -112,9 +122,6 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 	testing.ContextLog(ctx, "Waiting for Kiosk mode start")
 
 	const (
-		kioskStarting        = "Starting kiosk mode"
-		kioskLaunchSucceeded = "Kiosk launch succeeded"
-
 		// logScanTimeout is a timeout for log messages indicating Kiosk startup
 		// and successful launch to be present. It is set to over a minute as Kiosk
 		// mode launch varies depending on device. crbug.com/1222136
@@ -123,7 +130,7 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 
 	if _, err := reader.Wait(ctx, logScanTimeout,
 		func(e *syslog.Entry) bool {
-			return strings.Contains(e.Content, kioskStarting)
+			return strings.Contains(e.Content, KioskStartingLog)
 		},
 	); err != nil {
 		return errors.Wrap(err, "failed to verify starting of Kiosk mode")
@@ -132,10 +139,24 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 	testing.ContextLog(ctx, "Waiting for successful Kiosk mode launch")
 	if _, err := reader.Wait(ctx, logScanTimeout,
 		func(e *syslog.Entry) bool {
-			return strings.Contains(e.Content, kioskLaunchSucceeded)
+			return strings.Contains(e.Content, KioskLaunchSucceededLog)
 		},
 	); err != nil {
 		return errors.Wrap(err, "failed to verify successful launch of Kiosk mode")
+	}
+
+	return nil
+}
+
+// IsKioskAppStarted searches for existing logs to confirm Kiosk is running.
+func IsKioskAppStarted(ctx context.Context) error {
+	logContent, err := ioutil.ReadFile(syslog.ChromeLogFile)
+	if err != nil {
+		return errors.Wrap(err, "failed to read "+syslog.ChromeLogFile)
+	}
+
+	if !strings.Contains(string(logContent), KioskClosingSplashScreenLog) {
+		return errors.New("failed to verify successful launch of Kiosk mode")
 	}
 	return nil
 }
