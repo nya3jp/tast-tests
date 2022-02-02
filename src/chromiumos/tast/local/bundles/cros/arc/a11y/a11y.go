@@ -173,7 +173,7 @@ func RunTest(ctx context.Context, s *testing.State, activities []TestActivity, f
 				s.Fatal("Failed to start activity: ", err)
 			}
 			defer act.Stop(ctx, tconn)
-			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree"+activity.Name+".txt")
+			defer faillog.DumpUITreeOnErrorToFile(ctx, s.OutDir(), s.HasError, tconn, "ui_tree"+activity.Name)
 
 			if err := func() error {
 				application := nodewith.Name(activity.Title).Role(role.Application)
