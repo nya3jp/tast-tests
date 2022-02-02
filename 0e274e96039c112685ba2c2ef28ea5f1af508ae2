@@ -77,6 +77,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b3f64a4_ed1bd458",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-02T09:48:36Z",
+      "side": 1,
+      "message": "As I checked the logs, the cropping is inside the circle only if the device is in tablet mode.\nOtherwise it would fail on all boards with the current condition.\nPlease make some checks on this.",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 154
+      },
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76cb4665_99963966",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 1
