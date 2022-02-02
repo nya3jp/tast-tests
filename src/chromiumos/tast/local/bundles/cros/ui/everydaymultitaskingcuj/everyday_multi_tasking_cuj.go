@@ -31,10 +31,16 @@ import (
 )
 
 const (
+	// HelloWorldAppName indicates to test against a "Hello world" ARC app.
+	HelloWorldAppName = "Hello world"
 	// YoutubeMusicAppName indicates to test against YoutubeMusic.
 	YoutubeMusicAppName = "ytmusic"
 	// SpotifyAppName indicates to test against Spotify.
 	SpotifyAppName = "Spotify"
+
+	helloworldAPKName      = "ArcAppValidityTest.apk"
+	helloworldPackageName  = "org.chromium.arc.testapp.appvaliditytast"
+	helloworldActivityName = ".MainActivity"
 
 	initialVolume = 60
 )
@@ -85,10 +91,20 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 		return errors.Wrap(err, "failed to obtain the top-row layout")
 	}
 
+	var appHelloWorld *arc.Activity
 	var appSpotify *Spotify
+	switch params.appName {
+	case HelloWorldAppName:
+		testing.ContextLog(ctx, "Install ", helloworldPackageName)
+		if err := a.Install(ctx, arc.APKPath(helloworldAPKName)); err != nil {
+			return errors.Wrap(err, "failed to install \"Hello world\" ARC app")
+		}
 
-	// Prepare ARC and install android apps for the everyday multitasking: Spotify.
-	if params.appName == SpotifyAppName {
+		if appHelloWorld, err = arc.NewActivity(a, helloworldPackageName, helloworldActivityName); err != nil {
+			return errors.Wrap(err, "failed to create activity for \"Hello world\" ARC app")
+		}
+		defer appHelloWorld.Close()
+	case SpotifyAppName:
 		if appSpotify, err = NewSpotify(ctx, kb, a, tconn, params.account); err != nil {
 			return errors.Wrap(err, "failed to create Spotify instance")
 		}
@@ -171,10 +187,21 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 	}(faillogCtx)
 
 	var appStartTime int64
-	// Launch arc apps from the app launcher; first open the app-launcher, type
-	// the query and select the first search result, and wait for the app window
-	// to appear. When the app has the splash screen, skip it.
-	if params.appName == SpotifyAppName {
+	switch params.appName {
+	case HelloWorldAppName:
+		testing.ContextLog(ctx, "Launch \"Hello world\" ARC app")
+		if err := recorder.Run(ctx, func(ctx context.Context) error {
+			startTime := time.Now()
+			// Use arc.WithWaitForLaunch() because we are measuring how long the launch takes.
+			if err := appHelloWorld.Start(ctx, tconn, arc.WithWaitForLaunch()); err != nil {
+				return err
+			}
+			appStartTime = time.Since(startTime).Milliseconds()
+			return nil
+		}); err != nil {
+			return errors.Wrap(err, "failed to launch \"Hello world\" ARC app")
+		}
+	case SpotifyAppName:
 		if err = recorder.Run(ctx, func(ctx context.Context) error {
 			t, err := appSpotify.Launch(ctx)
 			if err != nil {
@@ -403,10 +430,12 @@ func switchWindows(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestCon
 				}
 				winName := "Chrome"
 				switchFunc := resources.uiHandler.SwitchToAppWindowByIndex(winName, wIdx)
-				if strings.Contains(ws[i].Title, SpotifyAppName) {
-					winName = SpotifyAppName
-					// Spotify has only one window, use SwitchToAppWindow() function.
-					switchFunc = resources.uiHandler.SwitchToAppWindow(winName)
+				for _, appName := range []string{HelloWorldAppName, SpotifyAppName} {
+					if strings.Contains(ws[i].Title, appName) {
+						winName = appName
+						// Use SwitchToAppWindow() because the app has only one window.
+						switchFunc = resources.uiHandler.SwitchToAppWindow(appName)
+					}
 				}
 				testing.ContextLogf(ctx, "Switching window to %q", ws[i].Title)
 				return switchFunc(ctx)
