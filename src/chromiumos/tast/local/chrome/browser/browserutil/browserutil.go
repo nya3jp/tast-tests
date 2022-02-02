@@ -8,15 +8,19 @@ package browserutil
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/testing"
 )
+
+var pollOptions = &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}
 
 // CloseAboutBlank finds a first target that is about:blank, closes it, then waits until it's gone.
 // TODO: Add browser.Type to Browser.
@@ -64,4 +68,52 @@ func CloseWindow(ctx context.Context, br *browser.Browser, bt browser.Type, url 
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
+}
+
+// FindFirstBlankWindow finds the first window whose title is 'about:blank'.
+// Args: tconn is a TestConn from *ash-chrome*.
+func FindFirstBlankWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, error) {
+	return waitForWindowWithPredicate(ctx, tconn, func(w *ash.Window) bool {
+		return strings.Contains(w.Title, chrome.BlankURL)
+	})
+}
+
+// FindFirstNonBlankWindow finds the first window whose title is not 'about:blank'.
+// Args: tconn is a TestConn from *ash-chrome*.
+func FindFirstNonBlankWindow(ctx context.Context, tconn *chrome.TestConn) (*ash.Window, error) {
+	return waitForWindowWithPredicate(ctx, tconn, func(w *ash.Window) bool {
+		return !strings.Contains(w.Title, chrome.BlankURL)
+	})
+}
+
+// WaitForWindow waits for a browser window to be visible whose title equals or
+// extends the given titlePrefix.
+// Args: tconn is a TestConn from *ash-chrome*.
+func WaitForWindow(ctx context.Context, tconn *chrome.TestConn, bt browser.Type, titlePrefix string) error {
+	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+		return w.IsVisible && isBrowserWindow(w, bt, titlePrefix)
+	}, pollOptions); err != nil {
+		return errors.Wrapf(err, "failed to wait for visible %v browser window (titlePrefix: %v)", bt, titlePrefix)
+	}
+	return nil
+}
+
+func isBrowserWindow(w *ash.Window, bt browser.Type, titlePrefix string) bool {
+	switch bt {
+	case browser.TypeAsh:
+		titlePrefix = "Chrome - " + titlePrefix
+		return w.WindowType == ash.WindowTypeBrowser && strings.HasPrefix(w.Title, titlePrefix)
+	case browser.TypeLacros:
+		return w.WindowType == ash.WindowTypeLacros && strings.HasPrefix(w.Title, titlePrefix)
+	}
+	return false // an unknown window. code should not reach here
+}
+
+// waitForWindowWithPredicate waits for a browser window until a given predicate is met.
+// Args: tconn is a TestConn from *ash-chrome*.
+func waitForWindowWithPredicate(ctx context.Context, tconn *chrome.TestConn, p func(*ash.Window) bool) (*ash.Window, error) {
+	if err := ash.WaitForCondition(ctx, tconn, p, pollOptions); err != nil {
+		return nil, err
+	}
+	return ash.FindWindow(ctx, tconn, p)
 }

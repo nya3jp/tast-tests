@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
 	"chromiumos/tast/testing"
@@ -42,7 +42,7 @@ const (
 )
 
 func runOctaneTest(ctx context.Context, f lacrosfixt.FixtValue, conn *chrome.Conn) (float64, error) {
-	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
+	w, err := browserutil.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
 	if err != nil {
 		return 0.0, err
 	}
