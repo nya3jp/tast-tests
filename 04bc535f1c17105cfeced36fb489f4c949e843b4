@@ -34,6 +34,24 @@
       "parentUuid": "cf71cdae_42297f98",
       "revId": "04bc535f1c17105cfeced36fb489f4c949e843b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c966a3_33ba410c",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-02T01:55:46Z",
+      "side": 1,
+      "message": "Thanks. Is the needed size of the inset independent of such device variance?\nWhat I imagined was that, if \"reaching the edges\" were something to do with physical device, this sizeInset could also be relative to the full trackpad size (like 1% of the width).",
+      "parentUuid": "1c47024f_fe709c51",
+      "revId": "04bc535f1c17105cfeced36fb489f4c949e843b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
