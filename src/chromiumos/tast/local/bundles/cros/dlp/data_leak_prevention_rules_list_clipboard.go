@@ -133,6 +133,7 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 			if err := uiauto.Combine("Pasting into search bar",
 				ui.WaitUntilExists(searchNode.Visible()),
 				ui.LeftClick(searchNode),
+				ui.WaitUntilExists(searchNode.Focused()),
 				keyboard.AccelAction("Ctrl+V"),
 			)(ctx); err != nil {
 				s.Fatal("Failed to paste into search bar: ", err)
