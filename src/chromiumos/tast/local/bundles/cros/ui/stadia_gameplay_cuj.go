@@ -127,9 +127,21 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfigWithTestConn(
-		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-		"percent", perf.SmallerIsBetter, []int64{50, 80}, bTconn)}
+	configs := []cuj.MetricConfig{
+		// Ash metrics config, always collected from ash-chrome.
+		cuj.NewCustomMetricConfig(
+			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
+			perf.SmallerIsBetter, []int64{50, 80}),
+		cuj.NewCustomMetricConfig(
+			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
+			perf.SmallerIsBetter, []int64{0, 3}),
+
+		// Browser metrics config, collected from ash-chrome or lacros-chrome
+		// depending on the browser being used.
+		cuj.NewCustomMetricConfigWithTestConn(
+			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
+			perf.SmallerIsBetter, []int64{50, 80}, bTconn),
+	}
 
 	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {

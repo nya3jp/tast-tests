@@ -31,6 +31,7 @@ func MetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Apps.StateTransition.Drag.PresentationTime.TabletMode", "ms", perf.SmallerIsBetter, []int64{25, 300}),
 
 		// Smoothness.
+		NewCustomMetricConfig("Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent", perf.SmallerIsBetter, []int64{50, 80}),
 		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent", perf.SmallerIsBetter, []int64{20, 50}),
 		NewCustomMetricConfig("Graphics.Smoothness.PercentDroppedFrames.AllInteractions", "percent", perf.SmallerIsBetter, []int64{20, 50}),
 		NewSmoothnessMetricConfig("Apps.PaginationTransition.AnimationSmoothness.ClamshellMode"),
@@ -68,6 +69,7 @@ func MetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToLargestContentfulPaint", "ms", perf.SmallerIsBetter, []int64{300, 2000}),
 		NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms", perf.SmallerIsBetter, []int64{300, 2000}),
 		NewCustomMetricConfig("Browser.Responsiveness.JankyIntervalsPerThirtySeconds", "janks", perf.SmallerIsBetter, []int64{0, 3}),
+		NewCustomMetricConfig("Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks", perf.SmallerIsBetter, []int64{0, 3}),
 
 		// Startup Latency.
 		NewCustomMetricConfig("Startup.FirstWebContents.NonEmptyPaint3", "ms", perf.SmallerIsBetter, []int64{300, 2000}),

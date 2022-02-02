@@ -183,7 +183,14 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	ac := uiauto.New(tconn)
 
-	var configs []cuj.MetricConfig
+	configs := []cuj.MetricConfig{
+		cuj.NewCustomMetricConfig(
+			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
+			perf.SmallerIsBetter, []int64{50, 80}),
+		cuj.NewCustomMetricConfig(
+			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
+			perf.SmallerIsBetter, []int64{0, 3}),
+	}
 	if tabletMode {
 		configs = append(configs,
 			cuj.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
