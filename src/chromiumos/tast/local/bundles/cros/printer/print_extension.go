@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/testing"
@@ -21,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PrintExtension,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that printing via the chrome.printing extension API works properly",
 		Contacts:     []string{"batrapranav@google.com", "cros-printing-dev@chromium.org"},
 		Attr: []string{
@@ -31,16 +32,31 @@ func init() {
 			"paper-io_printing",
 		},
 		Data:         []string{ppdFile, goldenFile},
-		Pre:          chrome.LoggedIn(),
-		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Params: []testing.Param{
 			{
-				Name: "cancel",
-				Val:  true,
+				Name:              "cancel",
+				Val:               true,
+				ExtraSoftwareDeps: []string{"chrome"},
+				Fixture:           "chromeLoggedIn",
 			},
 			{
-				Name: "complete",
-				Val:  false,
+				Name:              "complete",
+				Val:               false,
+				ExtraSoftwareDeps: []string{"chrome"},
+				Fixture:           "chromeLoggedIn",
+			},
+			{
+				Name:              "lacros_cancel",
+				Val:               true,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "lacros",
+			},
+			{
+				Name:              "lacros_complete",
+				Val:               false,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "lacros",
 			},
 		},
 	})
@@ -75,9 +91,16 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 	}
 	defer printer.Close()
 
-	tconn, err := s.PreValue().(*chrome.Chrome).TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
+	var tconn *chrome.TestConn
+	if ash, ok := s.FixtValue().(*chrome.Chrome); ok {
+		tconn, err = ash.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create test API connection: ", err)
+		}
+	} else if lacros, ok := s.FixtValue().(lacrosfixt.FixtValue); ok {
+		tconn = lacros.TestAPIConn()
+	} else {
+		s.Fatal("Invalid fixture type")
 	}
 
 	s.Log("Registering a printer")
