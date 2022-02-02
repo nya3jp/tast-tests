@@ -410,8 +410,8 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			if err := ytConn.Eval(ctx,
 				`(function() {
 						var b = document.querySelector('video').getBoundingClientRect();
-						return Math.abs(b.width -  window.screen.width) < 1e-5 ||
-						       Math.abs(b.height - window.screen.height) < 1e-5;
+						return Math.abs(b.width -  window.screen.width) < 2 ||
+						       Math.abs(b.height - window.screen.height) < 2;
 					})()`,
 				&fullscreen); err != nil {
 				return errors.Wrap(err, "failed to check video size")
