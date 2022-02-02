@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471d58ee_fd271225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/close.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-02T16:33:06Z",
+      "side": 1,
+      "message": "nit: I think we should use Fatalf for this kind of thing.",
+      "revId": "2e21efc2090b27ed5e1b16e249a61b3d525f8fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d0c682e_2deb83b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/close.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-02T16:33:06Z",
+      "side": 1,
+      "message": "ditto re: Fatalf",
+      "revId": "2e21efc2090b27ed5e1b16e249a61b3d525f8fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d43690_1e7e2140",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-02T16:33:06Z",
+      "side": 1,
+      "message": "Unless you mean to export these identifiers outside of this file, you should start the names with a lowercase letter.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 1
+      },
+      "revId": "2e21efc2090b27ed5e1b16e249a61b3d525f8fb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
