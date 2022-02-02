@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb03f88_df264de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-02T22:05:03Z",
+      "side": 1,
+      "message": "Code is fine, but I think it is better to have actual user to approve the interface.",
+      "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
