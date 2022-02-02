@@ -421,6 +421,12 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 			}
 			f.lacrosPath = filepath.Dir(matches[0])
 		case Rootfs:
+			// deploy_chrome --lacros deploys to this directory.
+			if matches, err := filepath.Glob("/usr/local/lacros-chrome/chrome"); err == nil {
+				f.lacrosPath = filepath.Dir(matches[0])
+				break
+			}
+
 			// When launched from the rootfs partition, the lacros-chrome is already located
 			// at /opt/google/lacros/lacros.squash in the OS, will be mounted at /run/lacros/.
 			matches, err := f.waitForPathToExist(ctx, "/run/lacros/chrome")
