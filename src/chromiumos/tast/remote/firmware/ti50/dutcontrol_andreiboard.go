@@ -57,11 +57,25 @@ func NewDUTControlAndreiboard(grpcConn *grpc.ClientConn, bufSize int, readTimeou
 }
 
 // FlashImage flashes image at the specified path on localhost to the board.
-func (a *DUTControlAndreiboard) FlashImage(ctx context.Context, image string) error {
+func (a *DUTControlAndreiboard) FlashImage(ctx context.Context, image string) (err error) {
 	imageBytes, err := ioutil.ReadFile(image)
 	if err != nil {
 		return errors.Wrapf(err, "reading image file %q", image)
 	}
+
+	// Close and Re-open the port because opentitantool console occupies the UART that rescue uses.
+	wasOpen := a.IsOpen()
+	err = a.Close(ctx)
+	if err != nil {
+		return errors.Wrap(err, "close console before rescue")
+	}
+	defer func() {
+		if wasOpen {
+			if e := a.Open(ctx); e != nil && err == nil {
+				err = e
+			}
+		}
+	}()
 
 	req := &dutcontrol.RescueRequest{Image: imageBytes}
 	res, err := a.client.Rescue(ctx, req)
@@ -103,9 +117,4 @@ func (a *DUTControlAndreiboard) Reset(ctx context.Context) error {
 		return err
 	}
 	return nil
-}
-
-// Close and free resources.
-func (a *DUTControlAndreiboard) Close(ctx context.Context) error {
-	return a.Andreiboard.Close(ctx)
 }

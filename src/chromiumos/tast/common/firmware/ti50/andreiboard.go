@@ -35,8 +35,8 @@ func (a *Andreiboard) GetSpiFlash() string {
 	return a.spiflash
 }
 
-// openPort opens the port upon first use.
-func (a *Andreiboard) openPort(ctx context.Context) error {
+// Open opens the console port.
+func (a *Andreiboard) Open(ctx context.Context) error {
 	if a.port != nil {
 		return nil
 	}
@@ -48,14 +48,19 @@ func (a *Andreiboard) openPort(ctx context.Context) error {
 	return nil
 }
 
-// Close the port.
+// IsOpen returns true iff the port is open.
+func (a *Andreiboard) IsOpen() bool {
+	return a.port != nil
+}
+
+// Close closes the console port.
 func (a *Andreiboard) Close(ctx context.Context) error {
 	if a.port != nil {
 		err := a.port.Close(ctx)
 		if err != nil {
-			a.port = nil
+			return err
 		}
-		return err
+		a.port = nil
 	}
 	return nil
 }
@@ -81,7 +86,7 @@ func appendToLogFile(ctx context.Context, buf []byte) error {
 
 // ReadSerialSubmatch reads from the serial port until regex is matched.
 func (a *Andreiboard) ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp) (output [][]byte, err error) {
-	if err := a.openPort(ctx); err != nil {
+	if err := a.Open(ctx); err != nil {
 		return nil, errors.Wrap(err, "port open error")
 	}
 
@@ -119,7 +124,7 @@ func (a *Andreiboard) ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp)
 
 // WriteSerial writes to the serial port.
 func (a *Andreiboard) WriteSerial(ctx context.Context, b []byte) error {
-	if err := a.openPort(ctx); err != nil {
+	if err := a.Open(ctx); err != nil {
 		return err
 	}
 	n, err := a.port.Write(ctx, b)

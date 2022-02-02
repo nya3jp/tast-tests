@@ -17,7 +17,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:    Ti50Demo,
 		Desc:    "Demo ti50 in remote environment(Andreiboard connected to labstation)",
-		Timeout: 1 * time.Minute,
+		Timeout: 2 * time.Minute,
 		Vars:    []string{"image"},
 		Contacts: []string{
 			"aluo@chromium.org",            // Test Author
@@ -51,6 +51,14 @@ func Ti50Demo(ctx context.Context, s *testing.State) {
 		image = s.DataPath("ti50_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin")
 		s.Log("Using image from build at: ", image)
 	}
+
+	err = board.Open(ctx)
+	if err != nil {
+		s.Fatal("Open console port: ", err)
+	}
+	// Wait a little for opentitantool to take over the console, this will test
+	// that flashing still works after the console command.
+	testing.Sleep(ctx, 5*time.Second)
 
 	if err = ti50.Demo(ctx, board, image); err != nil {
 		s.Fatal("Ti50Demo Failed: ", err)

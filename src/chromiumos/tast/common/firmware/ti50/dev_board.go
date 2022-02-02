@@ -11,6 +11,8 @@ import (
 
 // DevBoard is the generic interface for development boards.
 type DevBoard interface {
+	// Open opens the console port.
+	Open(ctx context.Context) error
 	// ReadSerialSubmatch reads output from port until regex is matched.
 	ReadSerialSubmatch(ctx context.Context, re *regexp.Regexp) (output [][]byte, err error)
 	// WriteSerial writes to port.
@@ -21,6 +23,6 @@ type DevBoard interface {
 	FlashImage(ctx context.Context, imagePath string) error
 	// Reset the DevBoard.
 	Reset(ctx context.Context) error
-	// Close and cleanup.
+	// Close closes the console port.
 	Close(ctx context.Context) error
 }

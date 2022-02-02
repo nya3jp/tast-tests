@@ -21,7 +21,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:    Ti50SystemTestImage,
 		Desc:    "Ti50 system test",
-		Timeout: 5 * time.Minute,
+		Timeout: 10 * time.Minute,
 		Vars:    []string{"image"},
 		Contacts: []string{
 			"ecgh@chromium.org",
@@ -52,6 +52,11 @@ func Ti50SystemTestImage(ctx context.Context, s *testing.State) {
 		if err = board.FlashImage(ctx, image); err != nil {
 			s.Fatalf("Failed to flash %s: %v", image, err)
 		}
+	}
+
+	err = board.Open(ctx)
+	if err != nil {
+		s.Fatal("Open console port: ", err)
 	}
 
 	if err = board.Reset(ctx); err != nil {
