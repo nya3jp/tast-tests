@@ -13,6 +13,9 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/printer/fake"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/printer"
 	"chromiumos/tast/testing"
@@ -21,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PrintExtension,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that printing via the chrome.printing extension API works properly",
 		Contacts:     []string{"batrapranav@google.com", "cros-printing-dev@chromium.org"},
 		Attr: []string{
@@ -31,16 +34,31 @@ func init() {
 			"paper-io_printing",
 		},
 		Data:         []string{ppdFile, goldenFile},
-		Pre:          chrome.LoggedIn(),
-		SoftwareDeps: []string{"chrome", "cros_internal", "cups"},
+		SoftwareDeps: []string{"cros_internal", "cups"},
 		Params: []testing.Param{
 			{
-				Name: "cancel",
-				Val:  true,
+				Name:              "cancel",
+				Val:               true,
+				ExtraSoftwareDeps: []string{"chrome"},
+				Fixture:           "chromeLoggedIn",
 			},
 			{
-				Name: "complete",
-				Val:  false,
+				Name:              "complete",
+				Val:               false,
+				ExtraSoftwareDeps: []string{"chrome"},
+				Fixture:           "chromeLoggedIn",
+			},
+			{
+				Name:              "lacros_cancel",
+				Val:               true,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "lacros",
+			},
+			{
+				Name:              "lacros_complete",
+				Val:               false,
+				ExtraSoftwareDeps: []string{"lacros"},
+				Fixture:           "lacros",
 			},
 		},
 	})
@@ -75,18 +93,38 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 	}
 	defer printer.Close()
 
-	tconn, err := s.PreValue().(*chrome.Chrome).TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
+	// crosConn is used to call autotestPrivate methods since
+	// Lacros Chrome does not support the autotestPrivate API.
+	var crosConn *chrome.TestConn    // Ash Chrome
+	var browserConn *chrome.TestConn // Either Ash or Lacros Chrome
+	if ash, ok := s.FixtValue().(*chrome.Chrome); ok {
+		crosConn, err = ash.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("ash.TestAPIConn() failed: ", err)
+		}
+		browserConn = crosConn
+	} else if lacros, ok := s.FixtValue().(lacrosfixt.FixtValue); ok {
+		crosConn = lacros.TestAPIConn()
+		lacros, closeBrowser, err := browserfixt.SetUp(ctx, lacros, browser.TypeLacros)
+		if err != nil {
+			s.Fatal("Failed to launch lacros: ", err)
+		}
+		defer closeBrowser(ctx)
+		browserConn, err = lacros.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("lacros.TestAPIConn() failed: ", err)
+		}
+	} else {
+		s.Fatal("Invalid fixture type")
 	}
 
 	s.Log("Registering a printer")
-	if err := tconn.Call(ctx, nil, "chrome.autotestPrivate.updatePrinter", map[string]string{"printerName": printerName, "printerId": printerID, "printerDesc": printerDesc, "printerUri": "socket://localhost", "printerPpd": ppdFilePath}); err != nil {
+	if err := crosConn.Call(ctx, nil, "chrome.autotestPrivate.updatePrinter", map[string]string{"printerName": printerName, "printerId": printerID, "printerDesc": printerDesc, "printerUri": "socket://localhost", "printerPpd": ppdFilePath}); err != nil {
 		s.Fatal("autotestPrivate.updatePrinter() failed: ", err)
 	}
 
 	defer func() {
-		if err := tconn.Call(ctx, nil, "chrome.autotestPrivate.removePrinter", printerID); err != nil {
+		if err := crosConn.Call(ctx, nil, "chrome.autotestPrivate.removePrinter", printerID); err != nil {
 			s.Fatal("autotestPrivate.removePrinter() failed: ", err)
 		}
 	}()
@@ -101,7 +139,8 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 		Source           string
 		URI              string
 	}
-	if err := tconn.Call(ctx, &printers, "tast.promisify(chrome.printing.getPrinters)"); err != nil {
+
+	if err := browserConn.Call(ctx, &printers, "tast.promisify(chrome.printing.getPrinters)"); err != nil {
 		s.Fatal("Failed to call getPrinters: ", err)
 	}
 	if len(printers) != 1 {
@@ -135,7 +174,7 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 		}
 		Status string
 	}
-	if err := tconn.Call(ctx, &info, "tast.promisify(chrome.printing.getPrinterInfo)", printerID); err != nil {
+	if err := browserConn.Call(ctx, &info, "tast.promisify(chrome.printing.getPrinterInfo)", printerID); err != nil {
 		s.Fatal("Failed to call getPrinterInfo: ", err)
 	}
 	if info.Capabilities.Version != "1.0" {
@@ -154,11 +193,11 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Registering chrome.printing.onJobStatusChanged listener")
-	if err := tconn.Eval(ctx, "var events = []; chrome.printing.onJobStatusChanged.addListener((id,status)=>events.push({id: id, status: status}))", nil); err != nil {
+	if err := browserConn.Eval(ctx, "var events = []; chrome.printing.onJobStatusChanged.addListener((id,status)=>events.push({id: id, status: status}))", nil); err != nil {
 		s.Fatal("Failed to register onJobStatusChanged observer: ", err)
 	}
 
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setWhitelistedPref)", "printing.printing_api_extensions_whitelist", []string{chrome.TestExtensionID}); err != nil {
+	if err := browserConn.Call(ctx, nil, "tast.promisify(chrome.settingsPrivate.setPref)", "printing.printing_api_extensions_whitelist", []string{chrome.TestExtensionID}); err != nil {
 		s.Fatal("Failed to set printing.printing_api_extensions_whitelist: ", err)
 	}
 
@@ -167,7 +206,7 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 		JobID  string
 		Status string
 	}
-	if err := tconn.Eval(ctx, `tast.promisify(chrome.printing.submitJob)({
+	if err := browserConn.Eval(ctx, `tast.promisify(chrome.printing.submitJob)({
 	  job: {
 	    contentType: "application/pdf",
 	    document: new Blob([atob("JVBERi0xLjAKMSAwIG9iajw8L1BhZ2VzIDIgMCBSPj5lbmRvYmogMiAwIG9iajw8L0tpZHNbMyAw\nIFJdL0NvdW50IDE+PmVuZG9iaiAzIDAgb2JqPDwvTWVkaWFCb3hbMCAwIDMgM10+PmVuZG9iagp0\ncmFpbGVyPDwvUm9vdCAxIDAgUj4+Cg==")]),
@@ -217,11 +256,11 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 		ID     string
 		Status string
 	}
-	if err := tconn.Eval(ctx, "events", &events); err != nil {
+	if err := browserConn.Eval(ctx, "events", &events); err != nil {
 		s.Fatal("Failed to get events: ", err)
 	}
 	if len(events) != 2 {
-		s.Fatal("Unexpected number of events: ", len(events))
+		s.Fatalf("Unexpected number of events (%d): %s", len(events), events)
 	}
 	if events[0].ID != job.JobID || events[0].Status != "PENDING" {
 		s.Errorf("Unxpected event: %s %s", events[0].ID, events[0].Status)
@@ -230,34 +269,28 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 		s.Errorf("Unexpected event: %s %s", events[1].ID, events[1].Status)
 	}
 
+	var expectedStatus string
 	if s.Param().(bool) {
 		s.Log("Calling chrome.printing.cancelJob")
-		if err := tconn.Call(ctx, nil, "tast.promisify(chrome.printing.cancelJob)", job.JobID); err != nil {
+		if err := browserConn.Call(ctx, nil, "tast.promisify(chrome.printing.cancelJob)", job.JobID); err != nil {
 			s.Fatal("Failed to call cancelJob: ", err)
 		}
-		if err := tconn.Eval(ctx, "events", &events); err != nil {
-			s.Fatal("Failed to get events: ", err)
-		}
-		if len(events) != 3 {
-			s.Fatal("Unexpected number of events: ", len(events))
-		}
-		if events[2].ID != job.JobID || events[2].Status != "CANCELED" {
-			s.Errorf("Unexpected event: %s %s", events[2].ID, events[2].Status)
-		}
+		expectedStatus = "CANCELED"
 	} else {
 		s.Log("Disconnecting printer")
 		printer.Close()
-		if err := tconn.WaitForExprFailOnErrWithTimeout(ctx, "events.length >= 3", 10*time.Second); err != nil {
-			s.Error("Failure waiting for events: ", err)
-		}
-		if err := tconn.Eval(ctx, "events", &events); err != nil {
-			s.Fatal("Failed to get events: ", err)
-		}
-		if len(events) != 3 {
-			s.Fatal("Unexpected number of events: ", len(events))
-		}
-		if events[2].ID != job.JobID || events[2].Status != "PRINTED" {
-			s.Errorf("Unexpected event: %s %s", events[2].ID, events[2].Status)
-		}
+		expectedStatus = "PRINTED"
+	}
+	if err := browserConn.WaitForExprFailOnErrWithTimeout(ctx, "events.length >= 3", 10*time.Second); err != nil {
+		s.Error("Failure waiting for events: ", err)
+	}
+	if err := browserConn.Eval(ctx, "events", &events); err != nil {
+		s.Fatal("Failed to get events: ", err)
+	}
+	if len(events) != 3 {
+		s.Fatalf("Unexpected number of events (%d): %s", len(events), events)
+	}
+	if events[2].ID != job.JobID || events[2].Status != expectedStatus {
+		s.Errorf("Unexpected event: %s %s", events[2].ID, events[2].Status)
 	}
 }
