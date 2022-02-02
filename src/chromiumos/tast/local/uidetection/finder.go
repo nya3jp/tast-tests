@@ -6,7 +6,6 @@ package uidetection
 
 import (
 	"context"
-	"math"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -24,10 +23,14 @@ const (
 	ErrMultipleMatch = "there are multiple matches"
 	// ErrNthNotFound is the error when the Nth element doesn't exist.
 	ErrNthNotFound = "Nth element not found"
+	// ErrEmptyBoundingBox is the error when the relative matchers create a
+	// screenshot of zero size.
+	ErrEmptyBoundingBox = "The element you're trying to screenshot has zero size"
 )
 
-// maxInt isn't available in go 1.15.
-const maxInt = int(math.MaxInt32)
+// maxScreenSizePx is the maximum width / height of the screen, in pixels.
+// Don't use math.maxInt, because it can cause integer overflow.
+const maxScreenSizePx = 100000
 
 // Location represents the location of a matching UI element.
 type Location struct {
@@ -153,19 +156,19 @@ func (f *Finder) WithinA11yNode(other *nodewith.Finder) *Finder {
 }
 
 func above(px int) *coords.Rect {
-	return &coords.Rect{Left: 0, Top: 0, Width: maxInt, Height: px}
+	return &coords.Rect{Left: 0, Top: 0, Width: maxScreenSizePx, Height: px}
 }
 
 func below(px int) *coords.Rect {
-	return &coords.Rect{Left: 0, Top: px, Width: maxInt, Height: maxInt}
+	return &coords.Rect{Left: 0, Top: px, Width: maxScreenSizePx, Height: maxScreenSizePx}
 }
 
 func leftOf(px int) *coords.Rect {
-	return &coords.Rect{Left: 0, Top: 0, Width: px, Height: maxInt}
+	return &coords.Rect{Left: 0, Top: 0, Width: px, Height: maxScreenSizePx}
 }
 
 func rightOf(px int) *coords.Rect {
-	return &coords.Rect{Left: px, Top: 0, Width: maxInt, Height: maxInt}
+	return &coords.Rect{Left: px, Top: 0, Width: maxScreenSizePx, Height: maxScreenSizePx}
 }
 
 type directionFn = func(px int) *coords.Rect
@@ -193,7 +196,6 @@ func (f *Finder) a11yNodeConstraintBuilder(other *nodewith.Finder, direction dir
 			return nil, err
 		}
 		return direction(side(coords.ConvertBoundsFromDPToPX(*loc, scaleFactor))), nil
-
 	})
 }
 
@@ -282,7 +284,7 @@ func (f *Finder) locationPx(ctx context.Context, uda *Context, scaleFactor float
 	// Take the screenshot depending on the provided strategy.
 	var imagePng []byte
 	var err error
-	boundingBox := coords.Rect{Left: 0, Top: 0, Width: maxInt, Height: maxInt}
+	boundingBox := coords.Rect{Left: 0, Top: 0, Width: maxScreenSizePx, Height: maxScreenSizePx}
 
 	for _, constraint := range f.constraints {
 		rect, err := constraint(ctx, uda, scaleFactor)
