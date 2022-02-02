@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31c09f89_259fd2fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-02T02:43:38Z",
+      "side": 1,
+      "message": "LGTM after David\u0027s comment is resolved.",
+      "revId": "169f1dc0892d76490d5a0bcc989ada29ec910e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c78b6d8_74a54ebe",
@@ -31,6 +48,23 @@
       "writtenOn": "2022-02-01T17:00:49Z",
       "side": 1,
       "message": "This is missing a corresponding `defer kb.Close()`",
+      "revId": "169f1dc0892d76490d5a0bcc989ada29ec910e23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0067a5d2_ad3ebf78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/system_tray_items_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-02T02:43:38Z",
+      "side": 1,
+      "message": "optional: I found this wrapping error don\u0027t need to describe the content of Combine again, because the Action built by uiauto.Combine can return an error including the name.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/action/action.go;l\u003d42;drc\u003d3d16fabd45e2b06f07484ab6ccf63574842dbd4f\n\nSo I suggest a shorter description or omit error wrapping.",
       "revId": "169f1dc0892d76490d5a0bcc989ada29ec910e23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
