@@ -16,6 +16,23 @@
       "message": "Hi Eric, PTALA after moving check function to arc.go per Charles\u0027 suggestion.  Thanks!",
       "revId": "fcb8964bf47765d7e01ad9e03fced593df455499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363aed31_f0569c64",
+        "filename": "src/chromiumos/tast/local/arc/arc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-02-02T19:06:04Z",
+      "side": 1,
+      "message": "this likely may fail even for normal case.\nThere are number of cases when system does dex2oat for /data apk. Even if APP sync and other updates are disabled. For example GMS Core may download by itself some module",
+      "revId": "fcb8964bf47765d7e01ad9e03fced593df455499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
