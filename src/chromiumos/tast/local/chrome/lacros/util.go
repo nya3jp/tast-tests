@@ -21,6 +21,8 @@ import (
 
 var pollOptions = &testing.PollOptions{Timeout: 10 * time.Second}
 
+// waitForWindowWithPredicate waits for a browser window until a given predicate is met.
+// TODO: Move to browserutil.go, then delete it.
 func waitForWindowWithPredicate(ctx context.Context, ctconn *chrome.TestConn, p func(*ash.Window) bool) (*ash.Window, error) {
 	if err := ash.WaitForCondition(ctx, ctconn, p, pollOptions); err != nil {
 		return nil, err
@@ -29,6 +31,7 @@ func waitForWindowWithPredicate(ctx context.Context, ctconn *chrome.TestConn, p 
 }
 
 // FindFirstBlankWindow finds the first window whose title is 'about:blank'.
+// TODO: Move to browserutil.go, then delete it.
 func FindFirstBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
 	return waitForWindowWithPredicate(ctx, ctconn, func(w *ash.Window) bool {
 		return strings.Contains(w.Title, "about:blank")
@@ -36,6 +39,7 @@ func FindFirstBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Wi
 }
 
 // FindFirstNonBlankWindow finds the first window whose title is not 'about:blank'.
+// TODO: Move to browserutil.go, then delete it.
 func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash.Window, error) {
 	return waitForWindowWithPredicate(ctx, ctconn, func(w *ash.Window) bool {
 		return !strings.Contains(w.Title, "about:blank")
@@ -43,6 +47,7 @@ func FindFirstNonBlankWindow(ctx context.Context, ctconn *chrome.TestConn) (*ash
 }
 
 // WaitForLacrosWindow waits for a Lacros window to be open and have the title to be visible if it is specified as a param.
+// TODO: Generalize to browser, move to browserutil.go, then delete it.
 func WaitForLacrosWindow(ctx context.Context, tconn *chrome.TestConn, title string) error {
 	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
 		if !w.IsVisible {
