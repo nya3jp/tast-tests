@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ef9d35_d83f69f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-02T18:44:58Z",
+      "side": 1,
+      "message": "Alexandre - is plus_spotify_quickcheck the right test? You also have bluetooth basic and plus.\n\nXiyuan/Yichen - is there anything to do to test this change?",
+      "revId": "797686bfc6380e81301dbf21cfec7480b233fead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
