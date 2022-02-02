@@ -40,6 +40,7 @@ var eventTypeIoctls = map[EventType]uint{
 	EV_MSC: 104, // UI_SET_MSCBIT
 	EV_LED: 105, // UI_SET_LEDBIT
 	EV_SND: 106, // UI_SET_SNDBIT
+	EV_FF:  107, // UI_SET_FFBIT
 	EV_SW:  109, // UI_SET_SWBIT
 }
 
@@ -144,7 +145,7 @@ func performVirtDevSetup(f *os.File, name string, id devID, axes map[EventCode]A
 		id           devID
 		name         [uinputMaxNameLen]byte
 		ffEffectsMax uint32
-	}{id: id}
+	}{id: id, ffEffectsMax: 0x4f}
 	copy(uinputSetup.name[:], []byte(name))
 
 	// UI_ABS_SETUP is only available in v3.14 and newer kernels. Fallback to the old interface.
@@ -163,7 +164,7 @@ func performVirtDevSetup(f *os.File, name string, id devID, axes map[EventCode]A
 		id                               devID
 		ffEffectsMax                     uint32
 		absMax, absMin, absFuzz, absFlat [absCnt]int32
-	}{id: id}
+	}{id: id, ffEffectsMax: 0x4f}
 	copy(uinputUserDev.name[:], []byte(name))
 
 	for code, info := range axes {
