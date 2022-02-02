@@ -22,6 +22,30 @@
       },
       "revId": "dee49badd88896a1d2e1d4c61e65553f93214f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f64204f_36f312d9",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-02T20:39:37Z",
+      "side": 1,
+      "message": "Would it be okay to automatically detect and use the lacros path in /etc/chrome_dev.conf instead of requiring lacrosDeployedBinary to be manually specified? I think lacrosDeployedBinary may also be deprecated based on the following comment: \"This workaround is to be removed soon once lab provisioning is supported for Lacros\".",
+      "parentUuid": "20a97a90_3e6c39aa",
+      "range": {
+        "startLine": 424,
+        "startChar": 3,
+        "endLine": 428,
+        "endChar": 4
+      },
+      "revId": "dee49badd88896a1d2e1d4c61e65553f93214f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
