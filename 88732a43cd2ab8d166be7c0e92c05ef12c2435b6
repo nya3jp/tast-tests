@@ -439,6 +439,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5d0a643_9133cbbf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "No, please close not to leak fd.\nAll the same code should be fixed, too. (fixing other test is not a scope of this CL, though)",
+      "parentUuid": "6b5ad9a0_44ffbb1c",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "205c8422_2420799f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 14
@@ -474,6 +492,30 @@
       "side": 1,
       "message": "I went through the file, and applied this pattern in other places as well.",
       "parentUuid": "205c8422_2420799f",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be71eaf_951aef74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "nit: not done here?",
+      "parentUuid": "41a18791_2e778ede",
       "range": {
         "startLine": 119,
         "startChar": 1,
@@ -673,6 +715,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44876bf8_6bd052d7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "It\u0027s documented in ParseInt referred from ParseUint.\nhttps://pkg.go.dev/strconv#ParseInt",
+      "parentUuid": "ae07f12a_a2dc0c11",
+      "range": {
+        "startLine": 144,
+        "startChar": 34,
+        "endLine": 144,
+        "endChar": 74
+      },
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9639d6a_f55842d4",
@@ -740,6 +806,24 @@
       "side": 1,
       "message": "I don\u0027t think this would work... let me give you an example of what we are parsing: example output of `dump_fmap` command https://paste.googleplex.com/6564209966972928\n\nAs you see there are many sections, we are looking for one with area_name equal to `section`. Unfortunately, the attributes we are looking for (area_offset and area_size) are placed *before* area_name line. When we found area_name, we need the values from two *previous* lines.\nOnce we found what we need, nothing more to do, can return straight away.",
       "parentUuid": "387521b6_fdad8eab",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc9bd9c_d9680a0f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "Recommendation is to parse the data as it should be.\nSplit lines into blocks, starting with \"area:\" until next \"area:\".\nInside each block, parse offset/size/name, and if found return the value.\n\nCurrent code looks confusing (and actually the data was different from what I expected).",
+      "parentUuid": "91aaab6b_bdb8fc6d",
       "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -858,6 +942,24 @@
       "side": 1,
       "message": "This `ddTemplate` situation needs more work for sure, but we agreed in the team that will be a follow up. I have a bug assigned to me: https://b.corp.google.com/issues/214445819 so I will take care of `ddTemplate` as a separate task.",
       "parentUuid": "b55df8e3_bbb5c134",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faff181b_5e1b3fc2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "getting rid of dd sounds better.\nBut regardless of that, please do not introduce shell here. You can just pass args as an array of strings, and I couldn\u0027t find any blockers to make it happen in this CL.",
+      "parentUuid": "3d857bef_7e1dd523",
       "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

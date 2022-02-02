@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab85fd12_df0597ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "Recommendation:\noutput the both stdout/stderr to a log file always. Preserve some of them (maybe on failure) to output directory.\nLet it return stdout only for parsing.\n\nmixing up stdout/stderr does not sound a good design anyways.",
+      "parentUuid": "50ac6d27_e7e85c28",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec4b9e96_5a63d2e7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 17

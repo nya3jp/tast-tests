@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45e2899_6728faa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "sorry for taking longer time than usual for this iteration.",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062acddb_91c4470d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "(sorry overlooked at the prev iteration).\nmultiline log is discouraged. Could you output into log file, instead?",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c3d46e_1f54cc40",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "could you error message of the surrounding context?\n\nDitto for all below.",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bbb3da_5a96d1e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T11:53:14Z",
+      "side": 1,
+      "message": "style:\n\ns.Fatalf(\"Flashrom read into file %s failed: %v\", biosImagePath, err)\n\nditto for below.",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
