@@ -406,6 +406,16 @@ func (f *fixtImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} 
 
 	// Prepare the lacros binary if it isn't deployed already via lacrosDeployedBinary.
 	if !deployed {
+		if f.mode == Omaha || f.mode == Rootfs {
+			config, err := ioutil.ReadFile("/etc/chrome_dev.conf")
+			if err == nil {
+				for _, line := range strings.Split(string(config), "\n") {
+					if line == "--lacros-chrome-path=/usr/local/lacros-chrome" {
+						s.Fatal("Lacros deployment detected. Did you forget to include -var lacrosDeployedBinary=/usr/local/lacros-chrome?")
+					}
+				}
+			}
+		}
 		switch f.mode {
 		case External:
 			if err := prepareLacrosBinary(ctx, s); err != nil {
