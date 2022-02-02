@@ -33,6 +33,24 @@
       "message": "This looks really useful for other tests, could you make it a method somewhere in src/chromiumos/tast/local/arc?\n\nAlso, I think you can implement it with WaitForLogcat in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/logcat.go",
       "revId": "b8a4658170ed5aed38024a854ad44d38aeb83133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79298b3_69181304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1414348
+      },
+      "writtenOn": "2022-02-02T05:52:13Z",
+      "side": 1,
+      "message": "Thanks for taking a look!  I moved the function to src/chromiumos/tast/local/arc/arc.go per suggestion.\n\nWaitForLogcat only returns true if the expected contents is found.  If not it keeps scanning / polling and returns error when context deadline is exceeded.  Which is kind of opposite of the logic I\u0027m looking for.  For our use case, we want to check once for not found -\u003e return normally and move on (don\u0027t error or poll), found -\u003e return error.",
+      "parentUuid": "458e128b_1cbeba33",
+      "revId": "b8a4658170ed5aed38024a854ad44d38aeb83133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
