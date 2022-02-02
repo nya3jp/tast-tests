@@ -36,27 +36,23 @@ func init() {
 			// Val: scanner descriptor file
 			// ExtraData: scanner descriptor file
 			{
-				Name:      "canon_mf741c",
-				Val:       "canon_mf741c_descriptor.json",
-				ExtraData: []string{"canon_mf741c_descriptor.json"},
-			}, {
 				//MFP in lab
 				Name:      "brother_dcp_l2550dw",
 				Val:       "brother_dcp_l2550dw_descriptor.json",
 				ExtraData: []string{"brother_dcp_l2550dw_descriptor.json"},
-				ExtraAttr: []string{"paper-io_mfp_printscan" },
+				ExtraAttr: []string{"paper-io_mfp_printscan"},
 			}, {
 				//MFP in lab
 				Name:      "hp_laserjet_pro_m478",
 				Val:       "hp_laserjet_pro_m478_descriptor.json",
 				ExtraData: []string{"hp_laserjet_pro_m478_descriptor.json"},
-				ExtraAttr: []string{"paper-io_mfp_printscan" },
+				ExtraAttr: []string{"paper-io_mfp_printscan"},
 			}, {
 				//MFP in lab
 				Name:      "sharp_mx_b467f",
 				Val:       "sharp_mx_b467f_descriptor.json",
 				ExtraData: []string{"sharp_mx_b467f_descriptor.json"},
-				ExtraAttr: []string{"paper-io_mfp_printscan" },
+				ExtraAttr: []string{"paper-io_mfp_printscan"},
 			},
 		},
 	})
