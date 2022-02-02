@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/arcappcompat/pre"
 	"chromiumos/tast/local/bundles/cros/arcappcompat/testutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -121,6 +122,8 @@ func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.Te
 		passwordText       = "Password"
 		logInText          = "Log In"
 		noneOfTheAboveText = "NONE OF THE ABOVE"
+		neverButtonID      = "com.google.android.gms:id/credential_save_reject"
+		notNowID           = "android:id/autofill_save_no"
 	)
 
 	// Click on sign in button.
@@ -171,6 +174,22 @@ func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.Te
 		s.Fatal("Failed to enterPassword: ", err)
 	}
 
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get tablet mode: ", err)
+	}
+	deviceMode := "clamshell"
+	if tabletModeEnabled {
+		deviceMode = "tablet"
+		// Press back to make login button visible.
+		if err := d.PressKeyCode(ctx, ui.KEYCODE_BACK, 0); err != nil {
+			s.Log("Failed to enter KEYCODE_BACK: ", err)
+		} else {
+			s.Log("Entered KEYCODE_BACK")
+		}
+	}
+	s.Logf("device %v mode", deviceMode)
+
 	// Click on log in button
 	logInButton := d.Object(ui.Text(logInText))
 	if err := logInButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
@@ -178,6 +197,23 @@ func launchAppForPandora(ctx context.Context, s *testing.State, tconn *chrome.Te
 	} else if err := logInButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on LogIn button: ", err)
 	}
+
+	// Click on never button.
+	neverButton := d.Object(ui.ID(neverButtonID))
+	if err := neverButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("Never Button doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
+
+	// Click on no thanks button.
+	clickOnNoThanksButton := d.Object(ui.ID(notNowID))
+	if err := clickOnNoThanksButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
+		s.Log("clickOnNoThanksButton doesn't exist: ", err)
+	} else if err := clickOnNoThanksButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on clickOnNoThanksButton: ", err)
+	}
+
 	testutil.HandleDialogBoxes(ctx, s, d, appPkgName)
 	// Check for launch verifier.
 	launchVerifier := d.Object(ui.PackageName(appPkgName))
