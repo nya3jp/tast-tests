@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -67,7 +66,7 @@ func StandardizedTouchscreenScroll(ctx context.Context, s *testing.State) {
 }
 
 func runStandardizedTouchScreenScrollTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams) error {
-	touchScreen, err := input.Touchscreen(ctx)
+	touchScreen, err := standardizedtestutil.GetStandardizedTouchscreen(ctx, testParameters.TestConn)
 	if err != nil {
 		return errors.Wrap(err, "unable to initialize the touchscreen")
 	}
@@ -89,7 +88,7 @@ func runStandardizedTouchScreenScrollTest(ctx context.Context, testParameters st
 	return nil
 }
 
-func performTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, touchScreen *input.TouchscreenEventWriter, scrollDirection standardizedtestutil.ScrollDirection) error {
+func performTest(ctx context.Context, testParameters standardizedtestutil.TestFuncParams, txtSuccessSelector *ui.Object, touchScreen *standardizedtestutil.StandardizedTouchscreen, scrollDirection standardizedtestutil.ScrollDirection) error {
 	const (
 		maxNumScrollIterations = 15
 	)

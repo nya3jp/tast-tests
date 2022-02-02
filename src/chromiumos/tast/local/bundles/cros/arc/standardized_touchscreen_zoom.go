@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/arc/standardizedtestutil"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -72,12 +71,6 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, testParameters stan
 	txtZoomOutStateID := testParameters.AppPkgName + ":id/txtZoomOutState"
 	zoomOutSuccessLabelSelector := testParameters.Device.Object(ui.ID(txtZoomOutStateID), ui.Text("ZOOM OUT: COMPLETE"))
 
-	touchScreen, err := input.Touchscreen(ctx)
-	if err != nil {
-		return errors.Wrap(err, "unable to initialize the touchscreen")
-	}
-	defer touchScreen.Close()
-
 	if err := txtZoomSelector.WaitForExists(ctx, standardizedtestutil.ShortUITimeout); err != nil {
 		return errors.Wrap(err, "unable to find the element to zoom in on")
 	}
@@ -92,7 +85,7 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, testParameters stan
 	}
 
 	// After the zoom in, only the zoom in label should be in the success state.
-	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.ZoomIn); err != nil {
+	if err := standardizedtestutil.TouchscreenZoom(ctx, testParameters, txtZoomSelector, standardizedtestutil.ZoomIn); err != nil {
 		return errors.Wrap(err, "unable to perform the zoom")
 	}
 
@@ -105,7 +98,7 @@ func runStandardizedTouchscreenZoomTest(ctx context.Context, testParameters stan
 	}
 
 	// After the zoom out, all zoom labels should be in the success state.
-	if err := standardizedtestutil.TouchscreenZoom(ctx, touchScreen, testParameters, txtZoomSelector, standardizedtestutil.ZoomOut); err != nil {
+	if err := standardizedtestutil.TouchscreenZoom(ctx, testParameters, txtZoomSelector, standardizedtestutil.ZoomOut); err != nil {
 		return errors.Wrap(err, "unable to perform the zoom")
 	}
 
