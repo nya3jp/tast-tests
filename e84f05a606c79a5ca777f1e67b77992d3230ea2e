@@ -16,6 +16,40 @@
       "message": "Friendly ping - is there anything else missing for you to review this CL?",
       "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fed0491f_74b166f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-02-02T11:14:46Z",
+      "side": 1,
+      "message": "LGTM w/ comments",
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb8999b1_55330384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-02-02T11:14:46Z",
+      "side": 1,
+      "message": "Can the job complete in the meanwhile? IMHO it\u0027s best to check this before submitting the print job to avoid flakiness.\n\nAlso job history is separate feature from the user POV as it has dedicated UI. Do you think that it\u0027s perhaps better to have a separate test suite for History? You could also then check that it does contain a print job once it is completed.",
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
