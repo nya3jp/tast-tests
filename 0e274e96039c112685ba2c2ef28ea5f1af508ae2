@@ -39,6 +39,57 @@
       "message": "Hi Gabor, Kamil, PTAL at this CL. Thanks!",
       "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb7a6649_c4407d68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-02T08:00:54Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98de77ef_fc34b763",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-02T08:00:54Z",
+      "side": 1,
+      "message": "Please use line break at 80 chars.\n\nSame below.\n\nbtw, is this comment still relevant as below we check if prcnt \u003c 95.",
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76cb4665_99963966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-02T08:00:54Z",
+      "side": 1,
+      "message": "Line break.",
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
