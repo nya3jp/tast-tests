@@ -52,6 +52,24 @@
       "parentUuid": "1c47024f_fe709c51",
       "revId": "04bc535f1c17105cfeced36fb489f4c949e843b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14b29722_533c129d",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-02T16:19:13Z",
+      "side": 1,
+      "message": "That\u0027s a good point and fits better with the intent of the method. I adjusted it to be 1% of the smaller side.",
+      "parentUuid": "17c966a3_33ba410c",
+      "revId": "04bc535f1c17105cfeced36fb489f4c949e843b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
