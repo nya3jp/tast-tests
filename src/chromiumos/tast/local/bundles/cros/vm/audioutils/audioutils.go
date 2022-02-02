@@ -55,14 +55,12 @@ func CrosvmCmd(ctx context.Context, kernelPath, kernelLogPath string, kernelArgs
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to convert cras grp id to integer")
 	}
-	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Credential: &syscall.Credential{
-			Uid:         0,
-			Gid:         0,
-			Groups:      []uint32{uint32(crasGrpID)},
-			NoSetGroups: false,
-		},
-	}
+	cmd.Cred(syscall.Credential{
+		Uid:         0,
+		Gid:         0,
+		Groups:      []uint32{uint32(crasGrpID)},
+		NoSetGroups: false,
+	})
 
 	return cmd, nil
 }
