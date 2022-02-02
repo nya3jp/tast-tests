@@ -360,15 +360,16 @@ func (c *Connection) createL2TPIPsecProperties() (map[string]interface{}, error)
 
 func (c *Connection) createOpenVPNProperties() (map[string]interface{}, error) {
 	properties := map[string]interface{}{
-		"Name":                  "test-vpn-openvpn",
-		"Provider.Host":         c.Server.UnderlayIP,
-		"Provider.Type":         "openvpn",
-		"Type":                  "vpn",
-		"OpenVPN.CACertPEM":     []string{certificate.TestCert1().CACred.Cert},
-		"OpenVPN.Pkcs11.ID":     c.certID,
-		"OpenVPN.Pkcs11.PIN":    c.certPin,
-		"OpenVPN.RemoteCertEKU": "TLS Web Server Authentication",
-		"OpenVPN.Verb":          "5",
+		"Name":                    "test-vpn-openvpn",
+		"Provider.Host":           c.Server.UnderlayIP,
+		"Provider.Type":           "openvpn",
+		"Type":                    "vpn",
+		"OpenVPN.CACertPEM":       []string{certificate.TestCert1().CACred.Cert},
+		"OpenVPN.Pkcs11.ID":       c.certID,
+		"OpenVPN.Pkcs11.PIN":      c.certPin,
+		"OpenVPN.RemoteCertEKU":   "TLS Web Server Authentication",
+		"OpenVPN.TLSAuthContents": openvpnTLSAuthKey,
+		"OpenVPN.Verb":            "5",
 	}
 
 	if c.config.OpenVPNUseUserPassword {
