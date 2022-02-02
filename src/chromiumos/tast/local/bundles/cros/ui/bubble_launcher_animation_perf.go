@@ -129,7 +129,7 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// Run the launcher open/close flow with no browser windows open.
 	// This aligns with ui.LauncherAnimationPerf for the legacy launcher.
 	name := "0windows"
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	runner.RunMultiple(ctx, s, name,
 		perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			return openAndCloseLauncher(ctx, tconn, ui)
