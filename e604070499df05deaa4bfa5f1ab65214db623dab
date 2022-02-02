@@ -87,6 +87,30 @@
       },
       "revId": "e604070499df05deaa4bfa5f1ab65214db623dab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6987d582_7c23d722",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-02T15:44:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1bba9f39_4923c2e7",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 2
+      },
+      "revId": "e604070499df05deaa4bfa5f1ab65214db623dab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
