@@ -9,6 +9,8 @@ import (
 	"os"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	applauncher "chromiumos/tast/local/chrome/uiauto/launcher"
@@ -54,7 +56,7 @@ func AppLauncherLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking that Lacros window is visible")
-	if err := lacros.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
+	if err := browserutil.WaitForWindow(ctx, tconn, browser.TypeLacros, "New Tab"); err != nil {
 		s.Fatal("Failed waiting for Lacros window to be visible: ", err)
 	}
 

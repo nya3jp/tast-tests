@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -116,8 +117,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	}
 
 	f := s.FixtValue()
-	cr := f.(chrome.HasChrome).Chrome()
 
+	cr := f.(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
@@ -140,6 +141,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	url := server.URL + "/animation.html"
 
+	bt := s.Param().(browser.Type)
+
 	// TODO(oshima|mukai): run animation once to force creating a
 	// launcher widget once we have a utility to initialize the
 	// prevHists with current data. (crbug.com/1024071)
@@ -160,7 +163,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 
 			if numWindows != 0 {
-				_, l, cs, err := lacros.Setup(ctx, f, s.Param().(browser.Type))
+				_, l, cs, err := lacros.Setup(ctx, f, bt)
 				if err != nil {
 					s.Fatal("Failed to setup lacrostest: ", err)
 				}
@@ -168,8 +171,8 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 
 				// To stabilize, if lacros is the test target, wait for the about:blank
 				// window opens.
-				if s.Param().(browser.Type) == browser.TypeLacros {
-					if err := lacros.WaitForLacrosWindow(ctx, tconn, chrome.BlankURL); err != nil {
+				if bt == browser.TypeLacros {
+					if err := browserutil.WaitForWindow(ctx, tconn, bt, chrome.BlankURL); err != nil {
 						s.Fatal("Failed to wait for Lacros's blank window: ", err)
 					}
 				}
@@ -178,7 +181,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to create browser windows: ", err)
 				}
 
-				if s.Param().(browser.Type) == browser.TypeLacros {
+				if bt == browser.TypeLacros {
 					// Close the empty tab after a tab with url is opened.
 					// Otherwise, this may trigger to terminate lacros.
 					if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {

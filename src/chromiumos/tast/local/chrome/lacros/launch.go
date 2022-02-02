@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
 	"chromiumos/tast/local/chrome/jslog"
@@ -89,7 +90,7 @@ func LaunchFromShelf(ctx context.Context, tconn *chrome.TestConn, lacrosPath str
 	}
 
 	testing.ContextLog(ctx, "Wait for Lacros window")
-	if err := WaitForLacrosWindow(ctx, tconn, ""); err != nil {
+	if err := browserutil.WaitForWindow(ctx, tconn, browser.TypeLacros, ""); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for lacros")
 	}
 
@@ -176,7 +177,7 @@ func LaunchWithURL(ctx context.Context, f lacrosfixt.FixtValue, url string) (*La
 	}()
 
 	// Wait for a window that matches what a lacros window looks like.
-	if err := WaitForLacrosWindow(ctx, f.TestAPIConn(), ""); err != nil {
+	if err := browserutil.WaitForWindow(ctx, f.TestAPIConn(), browser.TypeLacros, ""); err != nil {
 		return nil, err
 	}
 	l, err := Connect(ctx, f.LacrosPath(), userDataDir)
