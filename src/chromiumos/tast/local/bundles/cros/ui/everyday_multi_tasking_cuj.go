@@ -22,9 +22,10 @@ import (
 )
 
 type multiTaskingParam struct {
-	tier     cuj.Tier
-	appName  string
-	enableBT bool // enable the bluetooth or not
+	tier        cuj.Tier
+	appName     string
+	enableBT    bool // enable the bluetooth or not
+	spotifyIdle bool // just launch Spotify; do not play music. Only applies if appName is "Spotify"
 }
 
 func init() {
@@ -120,6 +121,26 @@ func init() {
 					appName:  et.SpotifyAppName,
 					enableBT: false,
 				},
+			}, {
+				Name:              "plus_spotify_idle",
+				Timeout:           15 * time.Minute,
+				ExtraSoftwareDeps: []string{"android_p"},
+				Val: multiTaskingParam{
+					tier:        cuj.Plus,
+					appName:     et.SpotifyAppName,
+					enableBT:    false,
+					spotifyIdle: true,
+				},
+			}, {
+				Name:              "plus_spotify_idle_vm",
+				Timeout:           15 * time.Minute,
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Val: multiTaskingParam{
+					tier:        cuj.Plus,
+					appName:     et.SpotifyAppName,
+					enableBT:    false,
+					spotifyIdle: true,
+				},
 			},
 		},
 	})
@@ -130,6 +151,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	tier := param.tier
 	app := param.appName
 	enableBT := param.enableBT
+	spotifyIdle := param.spotifyIdle
 
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
 	a := s.FixtValue().(cuj.FixtureData).ARC
@@ -234,7 +256,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	ccaScriptPaths := []string{s.DataPath("cca_ui.js")}
-	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, tabletMode)
+	testRunParams := et.NewRunParams(tier, ccaScriptPaths, s.OutDir(), app, account, spotifyIdle, tabletMode)
 	if err := et.Run(ctx, cr, a, testRunParams); err != nil {
 		s.Fatal("Failed to run everyday multi-tasking cuj test: ", err)
 	}

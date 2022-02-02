@@ -46,12 +46,13 @@ type RunParams struct {
 	outDir         string
 	appName        string
 	account        string // account is the one used by Spotify APP to do login.
+	spotifyIdle    bool   // spotifyIdle means just launch Spotify; do not play music. It only applies if appName is "Spotify"
 	tabletMode     bool
 }
 
 // NewRunParams constructs a RunParams struct and returns the pointer to it.
-func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, tabletMode bool) *RunParams {
-	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, tabletMode: tabletMode}
+func NewRunParams(tier cuj.Tier, ccaScriptPaths []string, outDir, appName, account string, spotifyIdle, tabletMode bool) *RunParams {
+	return &RunParams{tier: tier, ccaScriptPaths: ccaScriptPaths, outDir: outDir, appName: appName, account: account, spotifyIdle: spotifyIdle, tabletMode: tabletMode}
 }
 
 type runResources struct {
@@ -181,6 +182,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, params *RunParams) 
 				return errors.Wrap(err, "failed to Launch Spotify")
 			}
 			appStartTime = t.Milliseconds()
+
+			if params.spotifyIdle {
+				return nil
+			}
 
 			testing.ContextLog(ctx, "Start to play Spotify")
 			if err = appSpotify.Play(ctx); err != nil {
