@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281e0f62_f42d4099",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-02T21:31:44Z",
+      "side": 1,
+      "message": "I end up adding \"JankyIntervalsPerThirtySeconds3\" instead of 2. 2 is marked for deprecation [1]. And 3 skips first 30s of chrome start compared with 2 because profile loading in that 30s is known to be janky. From our use case (test after chrome start and after user sign in, i.e. after profile loading), 3 and 2 are the same.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:tools/metrics/histograms/metadata/browser/histograms.xml;l\u003d351;drc\u003d9e0688dedc17c43f07cc6aa28a03c73db9075ec4;bpv\u003d0;bpt\u003d0 ",
+      "revId": "d23e340e0aecb61f0deeebb239c9ebe95b75d451",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
