@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b626f572_254c79bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-02-02T13:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a5341d6_d1cb12c3",
+      "revId": "6c1c619d642c6763394799b38058c2d47fb552c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88f87ba7_82011228",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-02T00:16:18Z",
       "side": 1,
       "message": "nit: you can just return this, i.e. return testing.Poll",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "6c1c619d642c6763394799b38058c2d47fb552c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2eab39b_8b435f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-02-02T13:52:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88f87ba7_82011228",
       "range": {
         "startLine": 50,
         "startChar": 11,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1517e0cd_215d3139",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-02-02T13:52:58Z",
+      "side": 1,
+      "message": "Ah yes, that should still be in defer. Thanks a lot for pointing out!",
+      "parentUuid": "bf10d70b_172c0e50",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 30
+      },
+      "revId": "6c1c619d642c6763394799b38058c2d47fb552c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e80f6ad_92c1d9f7",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-02-02T00:16:18Z",
       "side": 1,
       "message": "nit: if you\u0027re not going to wrap this error with anything, you can just end the line with return waitForCharonStop(ctx)",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "6c1c619d642c6763394799b38058c2d47fb552c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbaee92a_0d5c1bff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-02-02T13:52:58Z",
+      "side": 1,
+      "message": "No longer relevant because of the previous change.",
+      "parentUuid": "7e80f6ad_92c1d9f7",
       "range": {
         "startLine": 107,
         "startChar": 11,
