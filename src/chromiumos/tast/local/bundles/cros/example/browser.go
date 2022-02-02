@@ -6,15 +6,12 @@ package example
 
 import (
 	"context"
-	"time"
 
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/browser/browserutil"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
 
@@ -65,26 +62,8 @@ func Browser(ctx context.Context, s *testing.State) {
 		if _, err := br.NewConn(ctx, chrome.BlankURL, opts...); err != nil {
 			s.Fatalf("Failed to open a window, browser: %v, err: %v", bt, err)
 		}
-		// TODO: Remove the boilerplate below that gives a demo on different ways to check the browser window is visible for each browser.
-		// This could be simplified with a new browser util in a follow up.
-		switch bt {
-		case browser.TypeAsh:
-			// Check if the app is visible by querying the app ID.
-			var app apps.App
-			app, err = apps.ChromeOrChromium(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to find Chrome or Chromium app info: ", err)
-			}
-			if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
-				s.Fatalf("Failed to wait for %v browser window to be visible", bt)
-			}
-		case browser.TypeLacros:
-			// Check if the app is visible by querying the app ID, the window name and title as well.
-			if err := lacros.WaitForLacrosWindow(ctx, tconn, ""); err != nil {
-				s.Fatalf("Failed to wait for %v browser window to be visible", bt)
-			}
-		default:
-			s.Fatal("Unknown browser type", bt)
+		if err := browserutil.WaitForWindow(ctx, tconn, bt, ""); err != nil {
+			s.Fatalf("Failed to wait for the window to be open, browser: %v, err: %v", bt, err)
 		}
 	}
 

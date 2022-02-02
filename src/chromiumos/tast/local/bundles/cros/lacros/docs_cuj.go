@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
@@ -145,7 +146,7 @@ func runDocsPageLoad(
 	}
 	defer cleanup(ctx)
 
-	w, err := lacros.FindFirstBlankWindow(ctx, tconn)
+	w, err := browserutil.FindFirstBlankWindow(ctx, tconn)
 	if err != nil {
 		return 0.0, 0.0, err
 	}

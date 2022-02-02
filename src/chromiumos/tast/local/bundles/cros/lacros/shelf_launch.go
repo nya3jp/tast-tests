@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
@@ -119,7 +121,8 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking that Lacros window is visible")
-	if err := lacros.WaitForLacrosWindow(ctx, tconn, "New Tab"); err != nil {
+
+	if err := browserutil.WaitForWindow(ctx, tconn, browser.TypeLacros, "New Tab"); err != nil {
 		// Grab Lacros logs to assist debugging before exiting.
 		if errCopy := fsutil.CopyFile(filepath.Join(lacros.UserDataDir, "lacros.log"), filepath.Join(s.OutDir(), "lacros.log")); errCopy != nil {
 			s.Log("Failed to copy /home/chronos/user/lacros/lacros.log to the OutDir ", errCopy)
@@ -146,7 +149,7 @@ func ShelfLaunch(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
-	if err := lacros.WaitForLacrosWindow(ctx, tconn, "about:blank"); err != nil {
+	if err := browserutil.WaitForWindow(ctx, tconn, browser.TypeLacros, "about:blank"); err != nil {
 		s.Fatal("Failed waiting for Lacros to navigate to about:blank page: ", err)
 	}
 
