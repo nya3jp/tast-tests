@@ -16,6 +16,24 @@
       "message": "is this the absolute size?\n(I am not familiar with this logic, so just for my curiousity)",
       "revId": "04bc535f1c17105cfeced36fb489f4c949e843b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c47024f_fe709c51",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-02T01:44:16Z",
+      "side": 1,
+      "message": "The trackpad size will be dependent on the DUT itself. I.e. on my helios device, valid coordinates are from (0,0) to (3987, 1960). The purpose of this is to just shrink those full dimensions down so coordinates are contained within the full trackpad without reaching the edges.",
+      "parentUuid": "cf71cdae_42297f98",
+      "revId": "04bc535f1c17105cfeced36fb489f4c949e843b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
