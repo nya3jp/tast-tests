@@ -16,6 +16,29 @@
       "message": "TY!",
       "revId": "8f8efd92b8ef490c295470ee0ac27abcc3aaab7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2771cfa1_d4f53391",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1136699
+      },
+      "writtenOn": "2022-02-02T19:03:12Z",
+      "side": 1,
+      "message": "to confirm Idle and not idle",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "8f8efd92b8ef490c295470ee0ac27abcc3aaab7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
