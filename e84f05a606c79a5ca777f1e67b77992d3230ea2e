@@ -95,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b7cce6b_0e10792f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-02-02T18:07:13Z",
+      "side": 1,
+      "message": "Dropping the line SGTM.",
+      "parentUuid": "8276fdbf_72476b6a",
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9722d1f_9a6f2424",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/printmanagementapp/printmanagementapp.go",
         "patchSetId": 4
