@@ -39,6 +39,30 @@
       },
       "revId": "761919c156726738760fe5e95d66a513aa077029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "582e0371_3c89edde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vdi/open_desktop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-02T15:20:56Z",
+      "side": 1,
+      "message": "Ack.\nremoved the kiosk params for now, and will add it with the cleanup in a different CL.",
+      "parentUuid": "c20d0789_10e02e85",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "761919c156726738760fe5e95d66a513aa077029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
