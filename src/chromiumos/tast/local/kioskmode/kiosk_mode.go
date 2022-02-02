@@ -73,7 +73,6 @@ const (
 	// KioskLaunchSucceededLog is reported by chrome once the kiosk launch is succeeded.
 	KioskLaunchSucceededLog = "Kiosk launch succeeded"
 	// KioskClosingSplashScreenLog is reported by chtome once the splash screen is gone.
-	KioskClosingSplashScreenLog = "App window created, closing splash screen."
 )
 
 // Kiosk structure holds necessary references and provides a way to safely
