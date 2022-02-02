@@ -78,6 +78,26 @@ func init() {
 					enableBT: true,
 				},
 			}, {
+				Name:              "plus_helloworld",
+				Timeout:           15 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"android_p"},
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.HelloWorldAppName,
+					enableBT: false,
+				},
+			}, {
+				Name:              "plus_helloworld_vm",
+				Timeout:           15 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraSoftwareDeps: []string{"android_vm"},
+				Val: multiTaskingParam{
+					tier:     cuj.Plus,
+					appName:  et.HelloWorldAppName,
+					enableBT: false,
+				},
+			}, {
 				Name:    "plus_ytmusic",
 				Timeout: 30 * time.Minute,
 				Val: multiTaskingParam{
