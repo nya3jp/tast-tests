@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fceac94_674a5a72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-02T16:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "111d0ab1_ed717147",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "841ba197_2e2627ed",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c6e07c3_45b50928",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/fixtures.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-02T16:37:02Z",
+      "side": 1,
+      "message": "added a comment and moved the creation of the parameters into the fixtures, as these are actually tied together with the credentials.\nDoes this look good to you?",
+      "parentUuid": "841ba197_2e2627ed",
+      "range": {
+        "startLine": 99,
+        "startChar": 52,
+        "endLine": 99,
+        "endChar": 61
+      },
+      "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1849face_dd0e9b7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
         "patchSetId": 11
@@ -60,6 +108,24 @@
       "writtenOn": "2022-02-02T06:49:57Z",
       "side": 1,
       "message": "Why do you launch files app rather than checking the file system directly?  If there is a good reason please comment it, otherwise remove as this will be flaky for no reason.",
+      "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1449de21_05bbd854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-02T16:37:02Z",
+      "side": 1,
+      "message": "I\u0027ve honestly just copied this part from this test:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/download_restrictions.go\n\nWould you suggest to use ReadDir and polling for that, or is there a better option to replace the filesapp usage?\n\nI\u0027m also not sure whether it is guaranteed that the notification is only shown once the file is actually created. If that were the case, we could remove the polling.",
+      "parentUuid": "1849face_dd0e9b7b",
       "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
