@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f509e5f_bacbdeee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-02-02T04:46:10Z",
+      "side": 1,
+      "message": "That dex checking code looks really useful for other tests, so it would be nice to put it in the arc package somewhere.\n\nOtherwise, LGTM",
+      "revId": "b8a4658170ed5aed38024a854ad44d38aeb83133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "458e128b_1cbeba33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-02-02T04:46:10Z",
+      "side": 1,
+      "message": "This looks really useful for other tests, could you make it a method somewhere in src/chromiumos/tast/local/arc?\n\nAlso, I think you can implement it with WaitForLogcat in http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/logcat.go",
+      "revId": "b8a4658170ed5aed38024a854ad44d38aeb83133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
