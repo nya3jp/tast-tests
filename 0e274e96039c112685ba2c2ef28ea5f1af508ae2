@@ -164,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "538b7a86_0bcfbdda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-02T16:13:51Z",
+      "side": 1,
+      "message": "Ah, so this was the cause, that the rectangle was calculated for a built-in avatar image. Nice catch :)",
+      "parentUuid": "94a280ff_7eed2326",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 154
+      },
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76cb4665_99963966",

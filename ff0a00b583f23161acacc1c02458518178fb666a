@@ -16,6 +16,23 @@
       "message": "Thanks for the quick review.\n\nI modified the commit message to better explain what was introduced in this CL.",
       "revId": "ff0a00b583f23161acacc1c02458518178fb666a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "095809ae_52cffe73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-02T16:13:51Z",
+      "side": 1,
+      "message": "LGTM\nThanks for revisiting this test!",
+      "revId": "ff0a00b583f23161acacc1c02458518178fb666a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
