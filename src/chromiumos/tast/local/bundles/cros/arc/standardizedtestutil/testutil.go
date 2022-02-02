@@ -114,6 +114,21 @@ const (
 	UpScroll
 )
 
+// StandardizedTouchscreen is a wrapper around the touchscreen that
+// hides configuration which allows the touchscreen to work on all DUTs.
+type StandardizedTouchscreen struct {
+	ts *input.TouchscreenEventWriter
+}
+
+// Close closes the touchscreen device.
+func (ts *StandardizedTouchscreen) Close() error {
+	if ts.ts == nil {
+		return errors.New("invalid touchscreen instance")
+	}
+
+	return ts.ts.Close()
+}
+
 // GetClamshellTest returns the test cases required for clamshell devices.
 func GetClamshellTest(fn TestFunc) Test {
 	return Test{
@@ -305,19 +320,19 @@ func StandardizedTestLayoutID(appPkgName string) string {
 
 // TouchscreenTap performs a tap on the touchscreen.
 func TouchscreenTap(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, tapType TouchscreenTapType) error {
-	touchScreen, err := input.Touchscreen(ctx)
+	touchScreen, err := NewStandardizedTouchscreen(ctx, testParameters.TestConn)
 	if err != nil {
 		return errors.Wrap(err, "Unable to initialize touchscreen")
 	}
-	defer touchScreen.Close()
+	defer touchScreen.ts.Close()
 
-	touchScreenSingleEventWriter, err := touchScreen.NewSingleTouchWriter()
+	touchScreenSingleEventWriter, err := touchScreen.ts.NewSingleTouchWriter()
 	if err != nil {
 		return errors.Wrap(err, "Unable to initialize touchscreen single event writer")
 	}
 	defer touchScreenSingleEventWriter.Close()
 
-	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen.ts, selector)
 	if err != nil {
 		return errors.Wrap(err, "Unable to get touch screen coords")
 	}
@@ -350,20 +365,20 @@ func TouchscreenTap(ctx context.Context, testParameters TestFuncParams, selector
 // TouchscreenScroll performs a scroll on the touchscreen. Due to
 // different device settings, the actual scroll amount in pixels will be imprecise.
 // Therefore, multiple iterations should be run, with a check for the desired output between each call.
-func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, scrollDirection ScrollDirection) error {
+func TouchscreenScroll(ctx context.Context, touchScreen *StandardizedTouchscreen, testParameters TestFuncParams, selector *ui.Object, scrollDirection ScrollDirection) error {
 	const (
 		VerticalScrollAmount = 250
 		ScrollDuration       = 500 * time.Millisecond
 	)
 
-	touchScreenSingleEventWriter, err := touchScreen.NewSingleTouchWriter()
+	touchScreenSingleEventWriter, err := touchScreen.ts.NewSingleTouchWriter()
 	if err != nil {
 		return errors.Wrap(err, "Unable to initialize touchscreen single event writer")
 	}
 	defer touchScreenSingleEventWriter.Close()
 
 	// Start the scroll on the provided element.
-	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen.ts, selector)
 	if err != nil {
 		return errors.Wrap(err, "Unable to get touch screen coords")
 	}
@@ -397,28 +412,34 @@ func TouchscreenScroll(ctx context.Context, touchScreen *input.TouchscreenEventW
 // TouchscreenZoom performs a zoom on the touchscreen. Zoom in distance
 // varies per device but the function aims to zoom by 2x (i.e. a scale factor of 2.0
 // when zooming in, or .5 when zooming out).
-func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWriter, testParameters TestFuncParams, selector *ui.Object, zoomType ZoomType) error {
+func TouchscreenZoom(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, zoomType ZoomType) error {
 	const (
 		zoomDistanceAsProportionOfTouchscreen = .15
 		zoomDuration                          = 250 * time.Millisecond
 	)
 
+	touchScreen, err := NewStandardizedTouchscreen(ctx, testParameters.TestConn)
+	if err != nil {
+		return errors.Wrap(err, "unable to initialize the touchscreen")
+	}
+	defer touchScreen.ts.Close()
+
 	// Zoom is implemented as a two finger pinch so it requires two touches.
-	mtw, err := touchScreen.NewMultiTouchWriter(2)
+	mtw, err := touchScreen.ts.NewMultiTouchWriter(2)
 	if err != nil {
 		return errors.Wrap(err, "unable to initialize event writer")
 	}
 	defer mtw.Close()
 
 	// Get the coordinates of the element to perform the zoom gesture on.
-	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen.ts, selector)
 	if err != nil {
 		return errors.Wrap(err, "unable to get start coordinates")
 	}
 
 	// Start from the element and move fingers an amount relative to the size of the touchscreen
 	// in order to trigger the pinch zoom. Attempt to keep it within the bounds of the smallest dimension.
-	zoomDistancePerFinger := math.Min(float64(touchScreen.Width()), float64(touchScreen.Height())) * zoomDistanceAsProportionOfTouchscreen
+	zoomDistancePerFinger := math.Min(float64(touchScreen.ts.Width()), float64(touchScreen.ts.Height())) * zoomDistanceAsProportionOfTouchscreen
 
 	// Perform the appropriate zoom.
 	switch zoomType {
@@ -442,6 +463,29 @@ func TouchscreenZoom(ctx context.Context, touchScreen *input.TouchscreenEventWri
 	return nil
 }
 
+// NewStandardizedTouchscreen returns a touchscreen that has been configured to
+// work on all DUTs.
+func NewStandardizedTouchscreen(ctx context.Context, tconn *chrome.TestConn) (*StandardizedTouchscreen, error) {
+	touchScreen, err := input.Touchscreen(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to initialize touchscreen")
+	}
+
+	// Adjust the orientation based on the display so that the coordinates
+	// identified by element selectors are translated to the touchscreen
+	// correctly.
+	orientation, err := display.GetOrientation(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get display orientation")
+	}
+
+	if err := touchScreen.SetRotation(-orientation.Angle); err != nil {
+		return nil, errors.Wrap(err, "failed to set rotation of touchscreen")
+	}
+
+	return &StandardizedTouchscreen{ts: touchScreen}, nil
+}
+
 // TouchscreenSwipe performs a swipe in a given direction, starting from the provided selector.
 // Due to different device settings, the actual swipe distance will be imprecise but aims to be near 50 pixels.
 func TouchscreenSwipe(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, numTouches int, swipeDirection TouchscreenSwipeDirection) error {
@@ -451,19 +495,19 @@ func TouchscreenSwipe(ctx context.Context, testParameters TestFuncParams, select
 		swipeDistance          = input.TouchCoord(250)
 	)
 
-	touchScreen, err := input.Touchscreen(ctx)
+	touchScreen, err := NewStandardizedTouchscreen(ctx, testParameters.TestConn)
 	if err != nil {
 		return errors.Wrap(err, "unable to initialize touchscreen")
 	}
-	defer touchScreen.Close()
+	defer touchScreen.ts.Close()
 
-	tsw, err := touchScreen.NewMultiTouchWriter(numTouches)
+	tsw, err := touchScreen.ts.NewMultiTouchWriter(numTouches)
 	if err != nil {
 		return errors.Wrap(err, "unable to initialize touchscreen event writer")
 	}
 	defer tsw.Close()
 
-	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen, selector)
+	x, y, err := getTouchEventCoordinatesForElement(ctx, testParameters, touchScreen.ts, selector)
 	if err != nil {
 		return errors.Wrap(err, "unable to get touch screen coords")
 	}
