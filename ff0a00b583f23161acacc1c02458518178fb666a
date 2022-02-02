@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76ad48b_49156aa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-02T15:50:33Z",
+      "side": 1,
+      "message": "Thanks for the quick review.\n\nI modified the commit message to better explain what was introduced in this CL.",
+      "revId": "ff0a00b583f23161acacc1c02458518178fb666a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

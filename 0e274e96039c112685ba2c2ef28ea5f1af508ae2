@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ad05aa0e_aec38abf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-02T15:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec7c64a5_fdb1ba53",
+      "range": {
+        "startLine": 16,
+        "startChar": 51,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7a8fe772_99b52319",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -98,6 +122,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8d37ac_95cb240e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-02T15:50:33Z",
+      "side": 1,
+      "message": "line break done.\n\nI kept the original check and so kept the original description as is.",
+      "parentUuid": "98de77ef_fc34b763",
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a280ff_7eed2326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-02T15:50:33Z",
+      "side": 1,
+      "message": "I checked it on my drallion DUT and it wasn\u0027t in tablet mode, the policy image dimensions are 288x288 but other images are 196x196.\n\nBut you are right, that doesn\u0027t apply to everything.\n\nModified the logic to recalculate the image preview bounds and get the correct dimensions. The output screenshot contains the whole circle now.",
+      "parentUuid": "0b3f64a4_ed1bd458",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 176,
+        "endChar": 154
+      },
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76cb4665_99963966",
@@ -111,6 +177,24 @@
       "writtenOn": "2022-02-02T08:00:54Z",
       "side": 1,
       "message": "Line break.",
+      "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382c6bdd_90156b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-02T15:50:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76cb4665_99963966",
       "revId": "0e274e96039c112685ba2c2ef28ea5f1af508ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
