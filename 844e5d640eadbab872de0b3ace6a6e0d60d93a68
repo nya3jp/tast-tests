@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5b5072_da05a4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fcab776_9c13a594",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8415c68a_be844519",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-02-02T12:22:04Z",
       "side": 1,
       "message": "testing.Sleep is discouraged in general. Could you wait for a proper condition instead?",
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36ddd451_131c8278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "Yes, this could be updated with a new util function (browserutil.WaitForWindow) in a follow up. This initial test would focus on checking the CloseAboutBlank added in this CL. Added a TODO for a removal of Sleep.",
+      "parentUuid": "8415c68a_be844519",
       "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +142,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d31d208_9daf716c",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "The way I see this is .. it\u0027d rather be more clear for Browser abstraction (not just for Ash or Lacros). Since the porting guidelines encourage to use Browser over Lacros in tests, it\u0027d be natural to have these utils in Browser (thus, browserutil) and use them in tests along with a Browser instance.\n\nHere are some examples that would find it useful:\n- https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3399870/comments/0b0b7284_7e85fcbc\n- https://crrev.com/c/3399870\n- https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go\n\n+Georg for any thoughts? Do you think your pending CL https://crrev.com/c/3341459 finds this CL and a POC https://crrev.com/c/3430743 useful?",
+      "parentUuid": "7e9fa05b_6ac5ae89",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "725dd4c3_3c8028b4",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
         "patchSetId": 4
@@ -111,6 +177,24 @@
       "writtenOn": "2022-02-02T12:22:04Z",
       "side": 1,
       "message": "the behavior if there are multiple tabs showing the same url is unclear.\nHmm... TBH, the API looks like a bit ad-hoc as it assumes the first returned targetID, which I\u0027m not sure if there\u0027s some guarantee.",
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc0858c_5302b6bd",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "Agreed. Not clear to me either since it comes down to how the DevTools return it. \n\nIs it okay as it\u0027s actually the same implementation as lacros.CloseAboutBlank?\n\nLooking up CloseAboutBlank http://source/search?q\u003d%5C.CloseAboutBlank\u0026sq\u003d I think it should be okay in that the legacy code just needs to close one blank window with no other requirement on the targets.",
+      "parentUuid": "725dd4c3_3c8028b4",
       "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -128,6 +212,30 @@
       "writtenOn": "2022-02-02T12:22:04Z",
       "side": 1,
       "message": "I guess this closes just a tab, rather than a window? (unless it is the last tab on the window)",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2ba73c_1ac8105c",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "Thanks for the point. I have updated example.Browser to test that. Looks like the underlying API CloseTarget works for tabs and windows as well. \nI just ended up choosing the \u0027window\u0027 term that I think could represent both. Please advise if there is a better name.",
+      "parentUuid": "bd58cb18_3e41f35c",
       "range": {
         "startLine": 29,
         "startChar": 10,
@@ -163,6 +271,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e706ff30_d9d42cc1",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "That\u0027s a possibility for sure. \nIt would boil down to choose whether (1) the use case (closing the last opened window) should not be allowed for all browsers or (2) not just for lacros exceptionally until the life cycle discrepancy is addressed for fix.\n\nI\u0027d vote for the latter (2), but I\u0027m open to (1). Please let me know how you see this.",
+      "parentUuid": "192b5f42_58dbaa9f",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4654def7_7b36cf94",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
         "patchSetId": 4
@@ -174,6 +306,30 @@
       "writtenOn": "2022-02-02T12:22:04Z",
       "side": 1,
       "message": "style\n\nif err :\u003d br.CloseTarget(...); err !\u003d nil {",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 16
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43caed2_795c44f9",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4654def7_7b36cf94",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -207,6 +363,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "335bd1e1_ac2056a8",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23a91f0e_05290e53",
+      "range": {
+        "startLine": 58,
+        "startChar": 60,
+        "endLine": 58,
+        "endChar": 75
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f52564a6_c02782ca",
@@ -220,6 +400,30 @@
       "writtenOn": "2022-02-02T12:22:04Z",
       "side": 1,
       "message": "instead, can we check if targetID still exists?",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12d81f6_d3e15f58",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T18:44:14Z",
+      "side": 1,
+      "message": "Done. That sounds more clear. Thanks for the catch!",
+      "parentUuid": "f52564a6_c02782ca",
       "range": {
         "startLine": 62,
         "startChar": 2,
