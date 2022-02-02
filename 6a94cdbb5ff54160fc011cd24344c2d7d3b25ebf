@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de53ab9a_77a9f2cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-02T16:35:13Z",
+      "side": 1,
+      "message": "mostly looks good, nice!",
+      "revId": "6a94cdbb5ff54160fc011cd24344c2d7d3b25ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fb844f_3cbd81ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/learn_more_wrong_password.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-02T16:35:13Z",
+      "side": 1,
+      "message": "any reason you need to declare this here and not just\n\n```\ncreds :\u003d cr.Creds()\n```\n\non L41 instead?",
+      "revId": "6a94cdbb5ff54160fc011cd24344c2d7d3b25ebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
