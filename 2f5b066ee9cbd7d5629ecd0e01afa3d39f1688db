@@ -22,6 +22,30 @@
       },
       "revId": "2f5b066ee9cbd7d5629ecd0e01afa3d39f1688db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98446db7_4fa5c4bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_show_user_names_on_signin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T08:39:40Z",
+      "side": 0,
+      "message": "KeepEnrollment still removes all cryptohomes, but it does not clear local state. We need a more fine-grained cleanup to just clear local state (or do it just in this test).",
+      "parentUuid": "d26b2f38_8d451c30",
+      "range": {
+        "startLine": 49,
+        "startChar": 35,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "2f5b066ee9cbd7d5629ecd0e01afa3d39f1688db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
