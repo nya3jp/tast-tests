@@ -656,6 +656,101 @@ func (x *TempDirResponse) GetError() *Error {
 	return nil
 }
 
+type MkDirRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// If dir is the empty string, the default directory for temporary files is used.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// If no permissions are given, default to 0755.
+	Mode uint32 `protobuf:"varint,3,opt,name=mode,proto3" json:"mode,omitempty"`
+}
+
+func (x *MkDirRequest) Reset() {
+	*x = MkDirRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_file_system_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MkDirRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MkDirRequest) ProtoMessage() {}
+
+func (x *MkDirRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_file_system_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *MkDirRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *MkDirRequest) GetMode() uint32 {
+	if x != nil {
+		return x.Mode
+	}
+	return 0
+}
+
+type MkDirResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// If there's an error, it is type *PathError.
+	Error *Error `protobuf:"bytes,2,opt,name=error,proto3" json:"error,omitempty"`
+}
+
+func (x *MkDirResponse) Reset() {
+	*x = MkDirResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_file_system_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MkDirResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MkDirResponse) ProtoMessage() {}
+
+func (x *MkDirResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_file_system_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *MkDirResponse) GetError() *Error {
+	if x != nil {
+		return x.Error
+	}
+	return nil
+}
+
 // FileInfo contains attributes of a file.
 type FileInfo struct {
 	state         protoimpl.MessageState
@@ -1209,12 +1304,14 @@ var file_file_system_proto_goTypes = []interface{}{
 	(*RemoveResponse)(nil),      // 9: tast.cros.baserpc.RemoveResponse
 	(*TempDirRequest)(nil),      // 10: tast.cros.baserpc.TempDirRequest
 	(*TempDirResponse)(nil),     // 11: tast.cros.baserpc.TempDirResponse
-	(*FileInfo)(nil),            // 12: tast.cros.baserpc.FileInfo
-	(*Error)(nil),               // 13: tast.cros.baserpc.Error
-	(*LinkError)(nil),           // 14: tast.cros.baserpc.LinkError
-	(*PathError)(nil),           // 15: tast.cros.baserpc.PathError
-	(*SyscallError)(nil),        // 16: tast.cros.baserpc.SyscallError
-	(*timestamp.Timestamp)(nil), // 17: google.protobuf.Timestamp
+	(*MkDirRequest)(nil),        // 12: tast.cros.baserpc.MkDirRequest
+	(*MkDirResponse)(nil),       // 13: tast.cros.baserpc.MkDirResponse
+	(*FileInfo)(nil),            // 14: tast.cros.baserpc.FileInfo
+	(*Error)(nil),               // 15: tast.cros.baserpc.Error
+	(*LinkError)(nil),           // 16: tast.cros.baserpc.LinkError
+	(*PathError)(nil),           // 17: tast.cros.baserpc.PathError
+	(*SyscallError)(nil),        // 18: tast.cros.baserpc.SyscallError
+	(*timestamp.Timestamp)(nil), // 19: google.protobuf.Timestamp
 }
 var file_file_system_proto_depIdxs = []int32{
 	13, // 0: tast.cros.baserpc.ReadDirResponse.error:type_name -> tast.cros.baserpc.Error
@@ -1517,6 +1614,8 @@ type FileSystemClient interface {
 	RemoveAll(ctx context.Context, in *RemoveRequest, opts ...grpc.CallOption) (*RemoveResponse, error)
 	// TempDir creates a temporary directory.
 	TempDir(ctx context.Context, in *TempDirRequest, opts ...grpc.CallOption) (*TempDirResponse, error)
+	// MkDir creates a temporary directory.
+	MkDir(ctx context.Context, in *MkDirRequest, opts ...grpc.CallOption) (*MkDirResponse, error)
 }
 
 type fileSystemClient struct {
@@ -1590,6 +1689,15 @@ func (c *fileSystemClient) TempDir(ctx context.Context, in *TempDirRequest, opts
 	return out, nil
 }
 
+func (c *fileSystemClient) MkDir(ctx context.Context, in *MkDirRequest, opts ...grpc.CallOption) (*MkDirResponse, error) {
+	out := new(MkDirResponse)
+	err := c.cc.Invoke(ctx, "/tast.cros.baserpc.FileSystem/MkDir", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // FileSystemServer is the server API for FileSystem service.
 type FileSystemServer interface {
 	// ReadDir returns the content of a directory.
@@ -1606,6 +1714,8 @@ type FileSystemServer interface {
 	RemoveAll(context.Context, *RemoveRequest) (*RemoveResponse, error)
 	// TempDir creates a temporary directory.
 	TempDir(context.Context, *TempDirRequest) (*TempDirResponse, error)
+	// MkDir creates a temporary directory.
+	MkDir(context.Context, *MkDirRequest) (*MkDirResponse, error)
 }
 
 // UnimplementedFileSystemServer can be embedded to have forward compatible implementations.
@@ -1633,7 +1743,9 @@ func (*UnimplementedFileSystemServer) RemoveAll(context.Context, *RemoveRequest)
 func (*UnimplementedFileSystemServer) TempDir(context.Context, *TempDirRequest) (*TempDirResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TempDir not implemented")
 }
-
+func (*UnimplementedFileSystemServer) MkDir(context.Context, *MkDirRequest) (*MkDirResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TempDir not implemented")
+}
 func RegisterFileSystemServer(s *grpc.Server, srv FileSystemServer) {
 	s.RegisterService(&_FileSystem_serviceDesc, srv)
 }
@@ -1764,6 +1876,24 @@ func _FileSystem_TempDir_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _FileSystem_MkDir_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MkDirRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileSystemServer).MkDir(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tast.cros.baserpc.FileSystem/MkDir",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileSystemServer).MkDir(ctx, req.(*MkDirRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _FileSystem_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "tast.cros.baserpc.FileSystem",
 	HandlerType: (*FileSystemServer)(nil),
@@ -1795,6 +1925,10 @@ var _FileSystem_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TempDir",
 			Handler:    _FileSystem_TempDir_Handler,
+		},
+		{
+			MethodName: "MkDir",
+			Handler:    _FileSystem_MkDir_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
