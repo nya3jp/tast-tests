@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9914a58c_a3fabdbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/crossoriginforbidden.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:47:37Z",
+      "side": 1,
+      "message": "You can serve favocion.ico from a different data file.",
+      "parentUuid": "5cecc85f_966862c1",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "a86a7a25be1408b975dc65d2ea804e22ef7fd2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25aec9b9_dd01c9c7",

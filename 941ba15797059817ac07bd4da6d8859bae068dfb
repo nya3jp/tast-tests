@@ -157,6 +157,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a24749a_2eff4e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-02T14:47:37Z",
+      "side": 1,
+      "message": "See the external policy data handling for an example:\n\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/policyutil/externaldata/server.go",
+      "parentUuid": "72d821c0_71a0f61e",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f79096f_df54650a",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
         "patchSetId": 3
