@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a97a90_3e6c39aa",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T12:07:06Z",
+      "side": 1,
+      "message": "instead could you take a look into /etc/chrome_dev.conf, and if there\u0027re lacros configuration, could you report an error, specifically iff lacrosDeployedBinary is not passed?\nCould you add the same check to Omaha case, too?",
+      "range": {
+        "startLine": 424,
+        "startChar": 3,
+        "endLine": 428,
+        "endChar": 4
+      },
+      "revId": "dee49badd88896a1d2e1d4c61e65553f93214f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
