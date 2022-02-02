@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f5afaf_5e60d22f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-02T03:10:56Z",
+      "side": 1,
+      "message": "Can you take a look to see if this makes sense for what we talked about in go/lacros-tast-api-comparison? Thanks,",
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
