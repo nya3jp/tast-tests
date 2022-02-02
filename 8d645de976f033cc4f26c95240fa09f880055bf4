@@ -16,6 +16,46 @@
       "message": "Oh, I didn\u0027t notice you are tast-owner. I guess then I only need you to review this CL?",
       "revId": "8d645de976f033cc4f26c95240fa09f880055bf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b4091c_efe3bdad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-02T16:40:56Z",
+      "side": 1,
+      "message": "LGTM % nit\n\nThanks for extending the test.",
+      "revId": "8d645de976f033cc4f26c95240fa09f880055bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ca4972_4218d428",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/web_app_install_force_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-02T16:40:56Z",
+      "side": 1,
+      "message": "nit: comments need to be sentences.",
+      "range": {
+        "startLine": 81,
+        "startChar": 49,
+        "endLine": 81,
+        "endChar": 54
+      },
+      "revId": "8d645de976f033cc4f26c95240fa09f880055bf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
