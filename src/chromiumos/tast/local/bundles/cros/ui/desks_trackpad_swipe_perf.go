@@ -86,7 +86,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 	// passed to doTrackpadFourFingerSwipeScroll stay on the trackpad.
 	fingerDistance := fingerSpacing * 4
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Do a big swipe going right. This will continuously shift to the next desk on the right.
 		if err := doTrackpadFourFingerSwipeScroll(ctx, 0, tpw.Width()-fingerDistance); err != nil {
 			return errors.Wrap(err, "failed to perform four finger scroll")

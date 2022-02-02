@@ -42,7 +42,7 @@ func DesksAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Create a new desk other than the default desk, activate it, then remove it.
 		if err = ash.CreateNewDesk(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to create a new desk")

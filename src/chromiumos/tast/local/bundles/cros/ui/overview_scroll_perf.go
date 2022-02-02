@@ -83,7 +83,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("It does not appear to be in the overview mode: ", err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Scroll from the top right of the screen to the top middle (1/4 of the
 		// screen width). The destination position should match with the next swipe
 		// to make the same amount of scrolling.

@@ -84,7 +84,7 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	url := server.URL + "/animation.html"
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	currentWindows := 0
 	// Run the overview mode enter/exit flow for various situations.
 	// - change the number of browser windows, 2 or 8

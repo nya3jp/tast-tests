@@ -73,7 +73,7 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil || len(ws) == 0 {
 			s.Fatal("Failed to obtain the window list: ", err)

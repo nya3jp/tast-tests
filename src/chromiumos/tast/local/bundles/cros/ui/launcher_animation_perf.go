@@ -144,7 +144,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// launcher widget once we have a utility to initialize the
 	// prevHists with current data. (crbug.com/1024071)
 
-	runner := perfutil.NewRunner(cr)
+	runner := perfutil.NewRunner(cr.Browser())
 	// Run the launcher open/close flow for various situations.
 	// - change the number of browser windows, 0 or 2.
 	// - peeking->close, peeking->half, peeking->half->fullscreen->close, fullscreen->close.
