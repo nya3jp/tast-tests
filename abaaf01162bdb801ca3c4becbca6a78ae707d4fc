@@ -22,6 +22,30 @@
       },
       "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a334a89e_de99a6b1",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-02T12:09:35Z",
+      "side": 1,
+      "message": "I\u0027d be more practical, i.e. hold on adding the method until they turn out needed.\n\n\u003e would it be worth removing all the chrome.* dependencies entirely from lacros to address the type inconsistency in the doc below?\n\nI think that\u0027s worth doing as a clean up.",
+      "parentUuid": "18df8b0b_c38ef07b",
+      "range": {
+        "startLine": 109,
+        "startChar": 59,
+        "endLine": 109,
+        "endChar": 79
+      },
+      "revId": "abaaf01162bdb801ca3c4becbca6a78ae707d4fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
