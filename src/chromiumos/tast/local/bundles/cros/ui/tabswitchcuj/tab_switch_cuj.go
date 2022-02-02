@@ -155,9 +155,23 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil, cuj.NewCustomMetricConfigWithTestConn(
-		"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter,
-		[]int64{800, 1600}, bTconn))
+	configs := []cuj.MetricConfig{
+		// Ash metrics config, always collected from ash-chrome.
+		cuj.NewCustomMetricConfig(
+			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
+			perf.SmallerIsBetter, []int64{50, 80}),
+		cuj.NewCustomMetricConfig(
+			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
+			perf.SmallerIsBetter, []int64{0, 3}),
+
+		// Browser metrics config, collected from ash-chrome or lacros-chrome
+		// depending on the browser being used.
+		cuj.NewCustomMetricConfigWithTestConn(
+			"MPArch.RWH_TabSwitchPaintDuration", "ms", perf.SmallerIsBetter,
+			[]int64{800, 1600}, bTconn),
+	}
+
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}

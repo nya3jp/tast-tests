@@ -85,7 +85,15 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 
 	password := cr.Creds().Pass
 
-	recorder, err := cuj.NewRecorder(ctx, cr, nil)
+	configs := []cuj.MetricConfig{
+		cuj.NewCustomMetricConfig(
+			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
+			perf.SmallerIsBetter, []int64{50, 80}),
+		cuj.NewCustomMetricConfig(
+			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
+			perf.SmallerIsBetter, []int64{0, 3}),
+	}
+	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)
 	}

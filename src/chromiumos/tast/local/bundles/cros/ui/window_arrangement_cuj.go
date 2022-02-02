@@ -153,7 +153,15 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	// also the percent of dropped frames of video; In tablet mode, this test will measure
 	// the combinations of input latency of tab dragging and of input latency of split view
 	// resizing and the percent of dropped frames of video.
-	var configs []cuj.MetricConfig
+	configs := []cuj.MetricConfig{
+		// Ash metrics config, always collected from ash-chrome.
+		cuj.NewCustomMetricConfig(
+			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
+			perf.SmallerIsBetter, []int64{50, 80}),
+		cuj.NewCustomMetricConfig(
+			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
+			perf.SmallerIsBetter, []int64{0, 3}),
+	}
 	if !tabletMode {
 		configs = []cuj.MetricConfig{
 			cuj.NewLatencyMetricConfig("Ash.TabDrag.PresentationTime.ClamshellMode"),

@@ -389,9 +389,21 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	configs := []cuj.MetricConfig{cuj.NewCustomMetricConfigWithTestConn(
-		"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video",
-		"percent", perf.SmallerIsBetter, []int64{5, 10}, bTconn)}
+	configs := []cuj.MetricConfig{
+		// Ash metrics config, always collected from ash-chrome.
+		cuj.NewCustomMetricConfig(
+			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
+			perf.SmallerIsBetter, []int64{50, 80}),
+		cuj.NewCustomMetricConfig(
+			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
+			perf.SmallerIsBetter, []int64{0, 3}),
+
+		// Browser metrics config, collected from ash-chrome or lacros-chrome
+		// depending on the browser being used.
+		cuj.NewCustomMetricConfigWithTestConn(
+			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
+			perf.SmallerIsBetter, []int64{5, 10}, bTconn),
+	}
 	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
 		configs = append(configs, cuj.NewCustomMetricConfigWithTestConn(
 			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter,
