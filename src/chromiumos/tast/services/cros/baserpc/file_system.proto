@@ -31,6 +31,9 @@ service FileSystem {
 
   // TempDir creates a temporary directory.
   rpc TempDir (TempDirRequest) returns (TempDirResponse) {}
+
+  // MkDir creates a temporary directory.
+  rpc MkDir (MkDirRequest) returns (MkDirResponse) {}
 }
 
 message ReadDirRequest {
@@ -93,6 +96,17 @@ message TempDirResponse {
   // The name of the new directory.
   string name = 1;
   Error error = 2;
+}
+
+message MkDirRequest {
+  // If dir is the empty string, the default directory for temporary files is used.
+  string name = 1;
+  // Permission bits (before umask)
+  uint32 mode = 2;
+}
+
+message MkDirResponse {
+  Error error = 1;
 }
 
 // FileInfo contains attributes of a file.
