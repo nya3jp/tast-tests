@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58045cec_58210204",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-03T11:43:39Z",
+      "side": 1,
+      "message": "thanks! I\u0027ve updated the CL. PTAL",
+      "revId": "9fc8d80eb707cad3a66e17888e7ce7e5d57214ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
