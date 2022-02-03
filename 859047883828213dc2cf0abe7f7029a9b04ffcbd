@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6b8628_af9a08db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-03T03:27:03Z",
+      "side": 1,
+      "message": "Automating a manual test that can now be automated due to acuiti.  Manual test is referenced in the commit message.",
+      "revId": "859047883828213dc2cf0abe7f7029a9b04ffcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
