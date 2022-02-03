@@ -20,7 +20,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks that system web apps are installed in guest mode",
 		Contacts: []string{
-			"benreich@chromium.org",
 			"chrome-apps-platform-rationalization@google.com",
 		},
 		Timeout:      3 * time.Minute,

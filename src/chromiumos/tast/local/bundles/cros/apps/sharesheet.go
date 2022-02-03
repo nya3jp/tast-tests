@@ -31,7 +31,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verify sharing a file to PWA works",
 		Contacts: []string{
-			"benreich@chromium.org",
 			"chromeos-apps-foundation-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},

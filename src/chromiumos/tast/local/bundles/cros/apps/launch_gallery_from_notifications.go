@@ -34,7 +34,6 @@ func init() {
 		Desc:         "Verify Gallery launches correctly when opening image from notifications",
 		Contacts: []string{
 			"backlight-swe@google.com",
-			"benreich@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,

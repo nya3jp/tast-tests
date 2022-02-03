@@ -28,7 +28,6 @@ func init() {
 		Desc:         "Verifies that System Web Apps can launch through their URL",
 		Contacts: []string{
 			"chrome-apps-platform-rationalization@google.com",
-			"benreich@chromium.org",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
