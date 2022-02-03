@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1667176a_24e82430",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-02-03T04:13:21Z",
+      "side": 1,
+      "message": "Thanks for explaining. 👍",
+      "parentUuid": "025fff4c_a5ff05d5",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 76
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09864be1_5c638c04",
@@ -301,6 +325,30 @@
         "startChar": 1,
         "endLine": 133,
         "endChar": 15
+      },
+      "revId": "e57734392c9b7391dcc70536d9207addced74383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5edc6da1_d1e2573d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/ui_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-02-03T04:13:21Z",
+      "side": 1,
+      "message": "ping on this small nit. 😊",
+      "parentUuid": "a3040fa5_267fb213",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 41
       },
       "revId": "e57734392c9b7391dcc70536d9207addced74383",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

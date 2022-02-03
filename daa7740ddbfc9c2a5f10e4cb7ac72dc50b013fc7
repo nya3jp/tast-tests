@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92f243b_1f67fc05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250573
+      },
+      "writtenOn": "2022-02-03T04:13:21Z",
+      "side": 1,
+      "message": "Sorry for the delay, the new patchset changed so little in a neat way that I missed the change. 😮",
+      "revId": "daa7740ddbfc9c2a5f10e4cb7ac72dc50b013fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
