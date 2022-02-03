@@ -137,6 +137,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb90ba9c_67a79ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-03T18:17:13Z",
+      "side": 1,
+      "message": "Sure, done adding the wait that currently works for both types of the browser. \n\nPTAL at what it\u0027s like today:\nhttps://crrev.com/c/3426334/6..7 (this CL)\n\nAlso at my proposal to see how it could improve with the utils generalized to Browser in the follow-up CL:\nhttps://crrev.com/c/3430743/6/src/chromiumos/tast/local/bundles/cros/example/browser.go",
+      "parentUuid": "d4215769_c92b6a31",
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e9fa05b_6ac5ae89",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
         "patchSetId": 4
@@ -301,6 +319,30 @@
       "side": 1,
       "message": "That\u0027s a possibility for sure. \nIt would boil down to choose whether (1) the use case (closing the last opened window) should not be allowed for all browsers or (2) not just for lacros exceptionally until the life cycle discrepancy is addressed for fix.\n\nI\u0027d vote for the latter (2), but I\u0027m open to (1). Please let me know how you see this.",
       "parentUuid": "192b5f42_58dbaa9f",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4afec0e_c4a725eb",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-03T18:17:13Z",
+      "side": 1,
+      "message": "For clarity it will close all tabs/windows with a given url for ash-chrome, all except for the last window for lacros-chrome to avoid the process exit. \n\nMy thought behind the line 48-50 is\nmaintaining consistency doesn\u0027t have to imply fixing something that works okay now (closing all ash windows). Leaving something that doesn\u0027t work (closing all lacros windows) with a future plan would be reasonably acceptable as long as it is a known issue for us to address in the future.",
+      "parentUuid": "e706ff30_d9d42cc1",
       "range": {
         "startLine": 48,
         "startChar": 1,
