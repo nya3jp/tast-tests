@@ -57,11 +57,10 @@ func InitializeAllowedEntries() []AllowedEntry {
 		// Need to try to get more info about these:
 		// {"shill", "unknown", ".*", 0},
 		{"shill", "userdb_utils.cc", ".*Unable to find user pluginvm.*", 0}, // b/213922333
-		// Need to try to get more info about these:
-		// {"shill", "utils.cc", ".*AddDBusError.*", 0},
-		{"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0}, // b/208652858
-		// Not showing up in feedback reports, we should investigate this.
-		// {"shill", "wifi.cc", ".*Unsupported NL80211_ATTR_REG_ALPHA2 attribute: 99.*", 0},
+		// 'modem in failed state' errors are handled in shill. Because they are DBus errors, suppressing them is difficult:
+		{"shill", "utils.cc", ".*AddDBusError.*org.freedesktop.ModemManager1.Error.Core.WrongState, Message=modem in failed state", 0},
+		{"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0},        // b/208652858
+		{"shill", "wifi.cc", ".*Unsupported NL80211_ATTR_REG_ALPHA2 attribute: 99.*", 0}, // b/217761687
 		{"wpa_supplicant", "", ".*Could not set interface wlan0 flags \\(UP\\): Input\\/output error.*", 0},
 		{"wpa_supplicant", "", ".*nl80211: Could not set interface 'wlan0' UP.*", 0},
 		{"wpa_supplicant", "", ".*Permission denied.*", 0},
