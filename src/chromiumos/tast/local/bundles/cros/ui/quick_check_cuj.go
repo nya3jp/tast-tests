@@ -17,10 +17,13 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -82,6 +85,8 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
+
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
 	password := cr.Creds().Pass
 
@@ -169,6 +174,45 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 
 		elapsed = time.Since(start)
 		s.Log("Elapsed ms: ", elapsed.Milliseconds())
+
+		s.Log("Waiting to simulate a user passively reading the email thread (top scroll position)")
+		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep (top scroll position)")
+		}
+
+		emailThread := nodewith.Role("genericContainer").ClassName("AO")
+		emailThreadBounds, err := ac.Location(ctx, emailThread)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the email thread location")
+		}
+		scrollThumbDragOffset := coords.NewPoint(-5, 5)
+		scrollThumbDragStart := emailThreadBounds.TopRight().Add(scrollThumbDragOffset)
+		scrollThumbDragMiddle := coords.NewPoint(
+			emailThreadBounds.Right(),
+			emailThreadBounds.Top+nonnegativeIntDivideAndRoundToNearest(emailThreadBounds.Height, 3),
+		).Add(scrollThumbDragOffset)
+		scrollThumbDragEnd := emailThreadBounds.BottomRight().Add(scrollThumbDragOffset)
+
+		s.Log("Scrolling the email thread (top to middle)")
+		if err := mouse.Drag(tconn, scrollThumbDragStart, scrollThumbDragMiddle, 3*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag the thumb of the email thread's scrollbar from top to middle")
+		}
+
+		s.Log("Waiting to simulate a user passively reading the email thread (middle scroll position)")
+		if err := testing.Sleep(ctx, 25*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep (middle scroll position)")
+		}
+
+		s.Log("Scrolling the email thread (middle to bottom)")
+		if err := mouse.Drag(tconn, scrollThumbDragMiddle, scrollThumbDragEnd, 2*time.Second)(ctx); err != nil {
+			return errors.Wrap(err, "failed to drag the thumb of the email thread's scrollbar from middle to bottom")
+		}
+
+		s.Log("Waiting to simulate a user passively reading the email thread (bottom scroll position)")
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep (bottom scroll position)")
+		}
+
 		return nil
 	}); err != nil {
 		s.Fatal("Failed to run the test scenario: ", err)
@@ -188,4 +232,8 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	if err := pv.Save(s.OutDir()); err != nil {
 		s.Error("Failed saving perf data: ", err)
 	}
+}
+
+func nonnegativeIntDivideAndRoundToNearest(n, d int) int {
+	return (n + d/2) / d
 }
