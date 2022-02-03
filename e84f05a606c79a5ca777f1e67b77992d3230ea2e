@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "116f8dbe_a2a583f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-02-03T08:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "006505db_8c5d0e39",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 72
+      },
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "69e6825a_2290a859",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -111,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7883d3_b57bc081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-02-03T08:14:18Z",
+      "side": 1,
+      "message": "Done - line removed.",
+      "parentUuid": "4b7cce6b_0e10792f",
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9722d1f_9a6f2424",
@@ -124,6 +166,30 @@
       "writtenOn": "2022-02-02T12:20:45Z",
       "side": 1,
       "message": "Is 20 second a normal wait time for print jobs to refresh?\nIt seems quite long.",
+      "range": {
+        "startLine": 56,
+        "startChar": 58,
+        "endLine": 56,
+        "endChar": 59
+      },
+      "revId": "e84f05a606c79a5ca777f1e67b77992d3230ea2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a309c57b_e80234c7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printmanagementapp/printmanagementapp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-02-03T08:14:18Z",
+      "side": 1,
+      "message": "I removed this code, thus this i no longer a concern.",
+      "parentUuid": "a9722d1f_9a6f2424",
       "range": {
         "startLine": 56,
         "startChar": 58,
