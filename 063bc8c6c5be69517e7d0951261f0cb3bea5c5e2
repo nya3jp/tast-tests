@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e257eb0_b30b0f6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-03T12:09:47Z",
+      "side": 1,
+      "message": "LGTM % question and nit",
+      "revId": "063bc8c6c5be69517e7d0951261f0cb3bea5c5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0cbedfe_03c06cb0",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-03T12:09:47Z",
+      "side": 1,
+      "message": "Do we open a browser before calling this?\nIf so, then this line is already there in `NewConn()`\nCan you check if it works without it?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "063bc8c6c5be69517e7d0951261f0cb3bea5c5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a52c58_fbc170f8",
+        "filename": "src/chromiumos/tast/local/vdi/apps/citrix/connector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-03T12:09:47Z",
+      "side": 1,
+      "message": "Do we need this comment and the next one?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "063bc8c6c5be69517e7d0951261f0cb3bea5c5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4356f14_55b7265c",
