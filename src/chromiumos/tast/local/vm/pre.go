@@ -57,8 +57,10 @@ type PreData struct {
 func Artifact() testing.Precondition { return artifactPre }
 
 var artifactPre = &preImpl{
-	name:    "vm_artifact",
-	timeout: 15 * time.Second,
+	name: "vm_artifact",
+	// If a previous test left a lot of outstanding I/O, we may eat a lot of
+	// time unmounting and setting up a new image.
+	timeout: 40 * time.Second,
 }
 
 // Implementation of VM precondition.
