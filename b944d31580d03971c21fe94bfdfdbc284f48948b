@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85cab87b_cb859a04",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-02-03T15:06:57Z",
+      "side": 1,
+      "message": "Following the advice from Hidehiko, the different lacros locations are now distinguishable by the enum. Let me know what you think.\n\nTBH I can\u0027t judge if the approach of using a non-ash chrome works universally. If so, I can change the implementation of course.",
+      "parentUuid": "2b1fb43b_e9cb6cd0",
+      "revId": "b944d31580d03971c21fe94bfdfdbc284f48948b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fd1a0d6_ed524b8e",
         "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
         "patchSetId": 4
