@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb614aac_07da19b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-03T09:21:57Z",
+      "side": 1,
+      "message": "Yes: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "parentUuid": "5006b208_b23264bc",
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12f9d466_1ad8eaac",
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "We can pass an empty string, but I thought that prefix makes it clear what test created the folder",
       "parentUuid": "c2cb89bb_8877ba58",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 60
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63cc9755_49027e51",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-03T09:21:57Z",
+      "side": 1,
+      "message": "+1 for a prefix",
+      "parentUuid": "e4b78c11_69d80362",
       "range": {
         "startLine": 39,
         "startChar": 34,
