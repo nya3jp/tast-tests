@@ -92,7 +92,7 @@ func init() {
 func Dropbox(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.dropbox.android"
-		appActivity = ".activity.DbxMainActivity"
+		appActivity = ".activity.LoginOrNewAcctActivity"
 	)
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
