@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c28e320_d1ded194",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-03T12:41:50Z",
+      "side": 1,
+      "message": "Cool, thanks, done",
+      "parentUuid": "56f0d197_96d5fb58",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d829cac_3a6f4f1a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3da2d89b_09c42db6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-03T12:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d829cac_3a6f4f1a",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "604b37ae_5f3c8f0b",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-03T09:46:11Z",
       "side": 1,
       "message": "Is there anything we could poll for instead to ensure the certs are working?",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 31
+      },
+      "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecffa694_ed45d95d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-03T12:41:50Z",
+      "side": 1,
+      "message": "There\u0027s no UI indication when they start working. \n\nThe only alternative I can imagine, is to try loading the website without waiting, and if it fails, reload it. \nBut I\u0027m not sure the added complexity is worth it. We can think about it, if it\u0027s flaky, but at least on my device it works half of the time even without timeout, so with 1 second I expect it to be quite stable.\n\nFor reloading, I\u0027d like to do it this way:\n1) navigate to the page\n2) wait until (error screen OR cert selection dialog)\n3) if error screen -\u003e go to 1) (no more than N times)\n4) continue working with the website\n\nBut I don\u0027t know how to implement the step 2). Do you know if I can combine two Finder-s and then know which one was triggered? \nEnsureGoneFor(error screen, 1 * Second) could be another option, but then again it can be flaky just because a website didn\u0027t load in 1 sec on some slow device. \n\nAnd we will probably need to sleep on step 3) in this case as well, because if it iterates through all the N attempts too quickly, it will also break.",
+      "parentUuid": "604b37ae_5f3c8f0b",
       "range": {
         "startLine": 266,
         "startChar": 1,
