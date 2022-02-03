@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "968c70f1_8a495149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T10:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929d1783_52daf750",
+      "revId": "584c750dd3d4f585e988ceda2ce89f19c45bb75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4882f68_73ffea52",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df92f8bc_2878dcfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_crypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T10:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4882f68_73ffea52",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "584c750dd3d4f585e988ceda2ce89f19c45bb75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b97bfb6_eb0dd0b5",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-02-03T09:21:57Z",
       "side": 1,
       "message": "Use testexec.DumpLogOnError, no need for your own helper",
+      "revId": "584c750dd3d4f585e988ceda2ce89f19c45bb75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf1bc619_588eb5db",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T10:12:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b97bfb6_eb0dd0b5",
       "revId": "584c750dd3d4f585e988ceda2ce89f19c45bb75e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +148,30 @@
       "writtenOn": "2022-02-03T09:21:57Z",
       "side": 1,
       "message": ":\u003d in all if with err",
+      "range": {
+        "startLine": 125,
+        "startChar": 35,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "584c750dd3d4f585e988ceda2ce89f19c45bb75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a5197e_23797986",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T10:12:59Z",
+      "side": 1,
+      "message": "Then I get `recoverySecretCreatedData declared but not used`\nIt looks like the scope of recoverySecretCreatedData is also limited to `if` in that case but I\u0027m using it at L131",
+      "parentUuid": "30eaa2ee_4360880e",
       "range": {
         "startLine": 125,
         "startChar": 35,
