@@ -33,15 +33,20 @@ type UserContext struct {
 	tags       map[ActionTag]struct{}
 }
 
+// UserActionCfg represents optional configurations of a user action.
+type UserActionCfg struct {
+	Attributes     map[string]string
+	Tags           []ActionTag
+	ValidateResult action.Action                                    // validateResult should only check the outcome of the user action.
+	Callback       func(ctx context.Context, actionErr error) error // callback takes action error as input.
+}
+
 // UserAction represents the user action.
 type UserAction struct {
-	name           string
-	action         action.Action
-	userContext    *UserContext
-	attributes     map[string]string
-	tags           map[ActionTag]struct{}
-	validateResult action.Action                                      // validateResult should only check the outcome of the user action.
-	callback       func(ctx context.Context, actionError error) error // callback takes action error as input.
+	name          string
+	action        action.Action
+	userActionCfg *UserActionCfg
+	userContext   *UserContext
 }
 
 // NewUserContext returns a new user context.
@@ -123,14 +128,6 @@ func (uc *UserContext) TestAPIConn() *chrome.TestConn {
 	return uc.tconn
 }
 
-// UserActionCfg represents optional configurations of a user action.
-type UserActionCfg struct {
-	Attributes     map[string]string
-	Tags           []ActionTag
-	ValidateResult action.Action
-	Callback       func(ctx context.Context, actionErr error) error
-}
-
 func fromAction(name string, action action.Action, uc *UserContext, uac *UserActionCfg) *UserAction {
 	if uac == nil {
 		uac = &UserActionCfg{}
@@ -144,19 +141,11 @@ func fromAction(name string, action action.Action, uc *UserContext, uac *UserAct
 		uac.Tags = []ActionTag{}
 	}
 
-	actionTagsMap := make(map[ActionTag]struct{})
-	for _, tag := range uac.Tags {
-		actionTagsMap[tag] = struct{}{}
-	}
-
 	return &UserAction{
-		name:           name,
-		action:         action,
-		userContext:    uc,
-		attributes:     uac.Attributes,
-		tags:           actionTagsMap,
-		validateResult: uac.ValidateResult,
-		callback:       uac.Callback,
+		name:          name,
+		action:        action,
+		userContext:   uc,
+		userActionCfg: uac,
 	}
 }
 
@@ -174,7 +163,7 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 	for k, v := range ua.userContext.attributes {
 		combinedAttributes[k] = v
 	}
-	for k, v := range ua.attributes {
+	for k, v := range ua.userActionCfg.Attributes {
 		combinedAttributes[k] = v
 	}
 
@@ -184,8 +173,9 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 	for k := range ua.userContext.tags {
 		combinedTagsMap[k] = struct{}{}
 	}
-	for k := range ua.tags {
-		combinedTagsMap[k] = struct{}{}
+
+	for _, tag := range ua.userActionCfg.Tags {
+		combinedTagsMap[tag] = struct{}{}
 	}
 
 	combinedTags := make([]ActionTag, 0, len(combinedTagsMap))
@@ -212,12 +202,12 @@ func (ua *UserAction) Run(ctx context.Context) (err error) {
 	}(ctx)
 	err = ua.action(ctx)
 	// Only validate action result if the action finished without error.
-	if err == nil && ua.validateResult != nil {
-		err = ua.validateResult(ctx)
+	if err == nil && ua.userActionCfg.ValidateResult != nil {
+		err = ua.userActionCfg.ValidateResult(ctx)
 	}
 
-	if ua.callback != nil {
-		if callbackError := ua.callback(ctx, err); callbackError != nil {
+	if ua.userActionCfg.Callback != nil {
+		if callbackError := ua.userActionCfg.Callback(ctx, err); callbackError != nil {
 			testing.ContextLogf(ctx, "callback failed in action %q: %v", ua.name, callbackError)
 		}
 	}
@@ -236,14 +226,12 @@ func (ua *UserAction) UserContext() *UserContext {
 
 // SetAttribute set the value of an attribute of the user action.
 func (ua *UserAction) SetAttribute(key, value string) {
-	ua.attributes[key] = value
+	ua.userActionCfg.Attributes[key] = value
 }
 
 // AddTags adds tags to the user action.
 func (ua *UserAction) AddTags(actionTags []ActionTag) {
-	for _, newTag := range actionTags {
-		ua.tags[newTag] = struct{}{}
-	}
+	ua.userActionCfg.Tags = append(ua.userActionCfg.Tags, actionTags...)
 }
 
 type actionResult struct {
@@ -306,4 +294,11 @@ func (ar *actionResult) writeToFile(outDir string) error {
 	defer w.Flush()
 
 	return w.Write(strArray)
+}
+
+// ContextedAction gives env info to an action. It logs when an action starts,
+// and if the action fails, tells you the name of the failing action.
+func ContextedAction(name string, uc *UserContext, cfg *UserActionCfg, fn action.Action) action.Action {
+	userAction := fromAction(name, fn, uc, cfg)
+	return userAction.Run
 }
