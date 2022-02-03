@@ -14,12 +14,12 @@ import (
 	"strings"
 
 	"github.com/golang/protobuf/proto"
-	"golang.org/x/sys/unix"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/timing"
 )
 
 const (
@@ -48,11 +48,15 @@ const (
 
 // MountComponent mounts a component image from the provided image path.
 func MountComponent(ctx context.Context, image string) error {
+	ctx, st := timing.Start(ctx, "mount_component")
+	defer st.End()
+
 	if err := os.MkdirAll(TerminaMountDir, 0755); err != nil {
 		return err
 	}
-	// Unmount any existing component.
-	unix.Unmount(TerminaMountDir, 0)
+
+	// Unmount any existing component, ignoring errors.
+	_ = testexec.CommandContext(ctx, "umount", TerminaMountDir).Run()
 
 	// We could call losetup manually and use the mount syscall... or
 	// we could let mount(8) do the work.
@@ -67,7 +71,10 @@ func MountComponent(ctx context.Context, image string) error {
 
 // UnmountComponent unmounts any active VM component.
 func UnmountComponent(ctx context.Context) error {
-	if err := unix.Unmount(TerminaMountDir, 0); err != nil {
+	ctx, st := timing.Start(ctx, "umount_component")
+	defer st.End()
+
+	if err := testexec.CommandContext(ctx, "umount", TerminaMountDir).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to unmount component")
 	}
 
