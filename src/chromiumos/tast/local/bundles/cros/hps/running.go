@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -20,6 +21,8 @@ func init() {
 			"chromeos-hps-swe@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
+		// Skip on brya until we have some brya DUTs with HPS
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("brya")),
 		SoftwareDeps: []string{"hps"},
 	})
 }
