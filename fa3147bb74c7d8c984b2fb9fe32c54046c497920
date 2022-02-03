@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "324fc906_c91f2ec2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-02-03T04:38:08Z",
+      "side": 1,
+      "message": "Hi Jun,\nSorry for another adjustment(changing the function name from `removeFile` to `RemoveFile`). Please review it again. Appreciate!",
+      "revId": "fa3147bb74c7d8c984b2fb9fe32c54046c497920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f35f2dc_b26d79bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj/google_sheets.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-02-03T04:38:08Z",
+      "side": 1,
+      "message": "Hi Jun,\nSince the main logic is moved to \"frontline_worker_cuj.go\", the removeFile function needs to be an exported function so that it doesn\u0027t encounter build failures.",
+      "range": {
+        "startLine": 69,
+        "startChar": 23,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "fa3147bb74c7d8c984b2fb9fe32c54046c497920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
