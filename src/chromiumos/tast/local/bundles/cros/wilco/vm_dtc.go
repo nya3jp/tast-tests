@@ -24,7 +24,7 @@ func init() {
 			"lamzin@google.com", // wilco_dtc_supportd author
 			"chromeos-wilco@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"}, // b/217770420
 		SoftwareDeps: []string{"vm_host", "wilco"},
 	})
 }
