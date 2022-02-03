@@ -16,6 +16,40 @@
       "message": "Kylem friendly ping",
       "revId": "2b5362d0c55db02817573e126ce53eabf95e8989",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ea7f30_02e53803",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-03T01:58:01Z",
+      "side": 1,
+      "message": "sorry for the delay, LGTM",
+      "revId": "2b5362d0c55db02817573e126ce53eabf95e8989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25e8ad17_1134a0cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/folder_drag_and_drop.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-03T01:58:01Z",
+      "side": 1,
+      "message": "I would recommend setting aside some time for all of the deferred functions to run with this pattern:\n```\n// Use ctx normally throughout, and cleanupCtx in deferred functions\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n```",
+      "revId": "2b5362d0c55db02817573e126ce53eabf95e8989",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
