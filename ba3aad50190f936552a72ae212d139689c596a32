@@ -86,6 +86,24 @@
       "parentUuid": "494c5288_f9ea8934",
       "revId": "ba3aad50190f936552a72ae212d139689c596a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56387c5_370386af",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T14:29:08Z",
+      "side": 1,
+      "message": "I would pass this question to Kamil. How robust should we make the Kiosk fixture?\nAs I see `kiosk.Close()` will fail if chrome is not in a good state.\n@Kamil: how about adding `k.cr \u003d nil` after the closing here, and do a `nil` check in `kiosk.Close()`, and open a new session if needed for updating the policies?",
+      "parentUuid": "adc2ceb9_8d738143",
+      "revId": "ba3aad50190f936552a72ae212d139689c596a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
