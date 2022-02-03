@@ -13,9 +13,11 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/browser/browserutil"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -27,7 +29,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowCyclePerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the animation smoothness of window cycle animations when alt + tabbing",
 		Contacts:     []string{"yjliu@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -59,11 +61,10 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
-	if err != nil {
-		s.Fatal("Failed to initialize test: ", err)
-	}
-	defer lacros.CloseLacros(ctx, l)
+	bt := s.Param().(browser.Type)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	defer closeBrowser(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -87,14 +88,14 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 	runner := perfutil.NewRunner(cr.Browser())
 	// If these window number values are changed, make sure to check lacros about:blank pages are closed correctly.
 	for i, numWindows := range []int{2, 8} {
-		if err := ash.CreateWindows(ctx, tconn, cs, ui.PerftestURL, numWindows-numExistingWindows); err != nil {
+		if err := ash.CreateWindows(ctx, tconn, br, ui.PerftestURL, numWindows-numExistingWindows); err != nil {
 			s.Fatal("Failed to open browser windows: ", err)
 		}
 
 		// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.
-		if i == 0 && s.Param().(browser.Type) == browser.TypeLacros {
-			if err := l.CloseAboutBlank(ctx, tconn, 1); err != nil {
-				s.Fatal("Failed to close about:blank: ", err)
+		if i == 0 && bt == browser.TypeLacros {
+			if err := browserutil.CloseAboutBlank(ctx, br, bt); err != nil {
+				s.Fatal("Failed to close an extra blank window for lacros-chrome: ", err)
 			}
 		}
 
