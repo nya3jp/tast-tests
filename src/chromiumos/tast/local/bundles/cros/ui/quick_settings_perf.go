@@ -128,7 +128,8 @@ func QuickSettingsPerf(ctx context.Context, s *testing.State) {
 	},
 		"Ash.StatusAreaShowBubble.PresentationTime",
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToCollapsed",
-		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded"),
+		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded",
+		"Ash.Window.AnimationSmoothness.Hide"),
 		perfutil.StoreAllWithHeuristics(""))
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {
