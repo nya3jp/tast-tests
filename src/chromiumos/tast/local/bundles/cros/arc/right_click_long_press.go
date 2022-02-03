@@ -63,12 +63,11 @@ func RightClickLongPress(ctx context.Context, s *testing.State) {
 	}
 	defer act.Stop(cleanupCtx, tconn)
 
-	if err := wm.CheckVisibility(ctx, tconn, wm.BubbleDialogClassName, true); err != nil {
-		s.Fatal("Failed to wait for splash: ", err)
-	}
-
-	if err := wm.CloseSplash(ctx, tconn, wm.InputMethodClick, nil); err != nil {
-		s.Fatal("Failed to close splash: ", err)
+	// Close the splash screen if it's shown.
+	if err := wm.CheckVisibility(ctx, tconn, wm.BubbleDialogClassName, true); err == nil {
+		if err := wm.CloseSplash(ctx, tconn, wm.InputMethodClick, nil); err != nil {
+			s.Fatal("Failed to close splash: ", err)
+		}
 	}
 
 	window, err := ash.GetARCAppWindowInfo(ctx, tconn, pkg)
