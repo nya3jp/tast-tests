@@ -46,6 +46,30 @@
       },
       "revId": "769192d01e48a284e1d4d3169ee764041841c397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3b0af6_ee4a2511",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T15:44:09Z",
+      "side": 1,
+      "message": "Wraping preserves the type of an error (there are some with types, like ctx timeout), so when you are returning from a function, it is better to use wrap, so you don\u0027t loose information.\nBut when you call `s.Fatal()`, it just outputs a string, and the error types are not included either way. As using wrap is longer, but doesn\u0027t add anything, we don\u0027t use it here.",
+      "parentUuid": "bd69652a_eb8c02a4",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "769192d01e48a284e1d4d3169ee764041841c397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
