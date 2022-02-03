@@ -16,6 +16,40 @@
       "message": "Another edge case.",
       "revId": "ce5f35013b4991dcef97044e7fae12613504d404",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f52e51d_27a52a8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-03T05:04:44Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "ce5f35013b4991dcef97044e7fae12613504d404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b521f4e5_4bb81e04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-03T05:04:44Z",
+      "side": 1,
+      "message": "A little worried that no-one will know the rationale for these numbers as time passes",
+      "revId": "ce5f35013b4991dcef97044e7fae12613504d404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
