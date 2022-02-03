@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e4703d_13b295df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-03T03:45:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab5e34ac_66677667",
+      "revId": "859047883828213dc2cf0abe7f7029a9b04ffcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a6eaacf_a4740a00",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-03T03:38:58Z",
       "side": 1,
       "message": "You RunCrostiniPostTest twice?",
+      "revId": "859047883828213dc2cf0abe7f7029a9b04ffcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6a15fc_70a4e02b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-03T03:45:41Z",
+      "side": 1,
+      "message": "Yes it appears I do.  Should be only this one.  The other one was exuberant cmd+v. Removed",
+      "parentUuid": "6a6eaacf_a4740a00",
       "revId": "859047883828213dc2cf0abe7f7029a9b04ffcbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19fd17c4_0074b8cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-03T03:45:41Z",
+      "side": 1,
+      "message": "Yes, used to be here and forgot to remove the comment.  Is now near line 106 where this tidy up actually happens.",
+      "parentUuid": "5ecdbe53_f6c3635f",
+      "revId": "859047883828213dc2cf0abe7f7029a9b04ffcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c7634cc_68913a88",
@@ -82,6 +136,30 @@
       "writtenOn": "2022-02-03T03:38:58Z",
       "side": 1,
       "message": "Typo",
+      "range": {
+        "startLine": 163,
+        "startChar": 58,
+        "endLine": 163,
+        "endChar": 64
+      },
+      "revId": "859047883828213dc2cf0abe7f7029a9b04ffcbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea1cd9b_be1354da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-03T03:45:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c7634cc_68913a88",
       "range": {
         "startLine": 163,
         "startChar": 58,
