@@ -180,6 +180,30 @@
       },
       "revId": "584c750dd3d4f585e988ceda2ce89f19c45bb75e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90fdba1b_27e35a6a",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-03T11:13:03Z",
+      "side": 1,
+      "message": "you can move\n\nrecoverySecretCreatedData, err :\u003d ioutil.ReadFile(c.getFullFilePath(recoverySecretCreatedFile)\n\nbefore the if. That will solve the scope for recoverySecretCreatedData. You also don\u0027t need to declare it anymore. Same for recoverySecretDecrypedData.",
+      "parentUuid": "04a5197e_23797986",
+      "range": {
+        "startLine": 125,
+        "startChar": 35,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "584c750dd3d4f585e988ceda2ce89f19c45bb75e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
