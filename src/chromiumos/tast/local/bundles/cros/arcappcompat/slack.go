@@ -97,7 +97,7 @@ var blockedModels = []string{
 	"caroline",
 	"helios",
 	"kohaku",
-	"kevin",
+	"kevin1",
 	"bluebird",
 	"soraka",
 	"lazor",

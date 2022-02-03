@@ -108,7 +108,7 @@ func init() {
 // skipOnNoBackCameraModels is a list of models to be skipped from test runs.
 var skipOnNoBackCameraModels = []string{
 	"eve",
-	"kevin",
+	"kevin1",
 	"caroline",
 	"nasher360",
 	"careena",
