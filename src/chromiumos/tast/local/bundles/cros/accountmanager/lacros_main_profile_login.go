@@ -64,7 +64,7 @@ func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
 		ui.WaitUntilExists(profileToolbarButton),
 		ui.LeftClick(profileToolbarButton),
 		ui.WaitUntilExists(loggedInUserEmail),
-		ui.WaitUntilExists(syncIsOnMessage),
+		ui.WithTimeout(1*time.Minute).WaitUntilExists(syncIsOnMessage),
 	)(ctx); err != nil {
 		s.Fatal("Failed to check that the user is logged in: ", err)
 	}
