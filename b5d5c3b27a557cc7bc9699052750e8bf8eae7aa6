@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea5d032f_490a9f7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj/google_sheets.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-03T01:53:49Z",
+      "side": 1,
+      "message": "nit: define a series of actions, then combine them to run.",
+      "range": {
+        "startLine": 120,
+        "startChar": 23,
+        "endLine": 120,
+        "endChar": 37
+      },
+      "revId": "b5d5c3b27a557cc7bc9699052750e8bf8eae7aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e2cd630_8e2b820a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj/google_sheets.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-03T01:53:49Z",
+      "side": 1,
+      "message": "recommend to refine most methods to action.Action if it can.",
+      "range": {
+        "startLine": 159,
+        "startChar": 23,
+        "endLine": 159,
+        "endChar": 41
+      },
+      "revId": "b5d5c3b27a557cc7bc9699052750e8bf8eae7aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
