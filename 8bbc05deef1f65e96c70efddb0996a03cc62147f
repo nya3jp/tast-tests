@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a0a067_56299688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-03T17:30:57Z",
+      "side": 1,
+      "message": "I have decided to use []bond.AddBotsOption as the test parameter type. I think that approach will prove satisfying to everyone, myself included. Have a look.",
+      "parentUuid": "40142f8b_b9ace844",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a03bda61_5591f2a2",
@@ -191,6 +215,30 @@
       "side": 1,
       "message": "Correct, setting both to false should force vp8, and both to true forces vp9.\n\nFwiw, (allowVP9 \u003d true, sendVP9\u003dfalse) is allowed -\u003e this means vp9 receive/decode, but vp8 send/encode . The combination (allowVP9 \u003d false, sendVP9\u003dtrue) is not valid.",
       "parentUuid": "f773579a_3dc7a7e0",
+      "range": {
+        "startLine": 227,
+        "startChar": 36,
+        "endLine": 227,
+        "endChar": 47
+      },
+      "revId": "8bbc05deef1f65e96c70efddb0996a03cc62147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cae8e0e_3ff8b1f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-03T17:30:57Z",
+      "side": 1,
+      "message": "See the discussion started by Keigo Oka.",
+      "parentUuid": "dd9cf9a3_2f7a7b45",
       "range": {
         "startLine": 227,
         "startChar": 36,
