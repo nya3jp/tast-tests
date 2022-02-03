@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfda332b_50ca0552",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-03T11:28:05Z",
+      "side": 1,
+      "message": "FYI - the test fails as the Chrome is not opened when using this fixture. An .ica file is downloaded instead. Not sure what is the expectation here. \nI will reach out to whoever should know to clarify.",
+      "revId": "063bc8c6c5be69517e7d0951261f0cb3bea5c5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4356f14_55b7265c",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vdiconnector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-03T11:28:05Z",
+      "side": 1,
+      "message": "any idea how to mark this as an optional parameter?\nIt is used in PWA fixture but is absolutely not needed for Chrome app based fixtures.",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "063bc8c6c5be69517e7d0951261f0cb3bea5c5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
