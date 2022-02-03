@@ -16,6 +16,23 @@
       "message": "This is a big change, so I am adding a Victor as well to double check things.",
       "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4b60de_6856f8ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T14:37:08Z",
+      "side": 1,
+      "message": "The certificates are expired and not something that is used in other places, right?",
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
