@@ -224,6 +224,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ee0281_41c70b14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-03T09:32:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f98a92b4_93a12be4",
+      "range": {
+        "startLine": 45,
+        "startChar": 38,
+        "endLine": 45,
+        "endChar": 75
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5845c470_cbdf29a7",
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "f145c759_bb835b08",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 47
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ad298df_ff5b8289",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-03T09:32:28Z",
+      "side": 1,
+      "message": "Do you need use \"Application\" or \"application\"?",
+      "parentUuid": "a181cae8_152dca85",
       "range": {
         "startLine": 100,
         "startChar": 27,
@@ -484,6 +532,30 @@
       "side": 1,
       "message": "I thought about it before. But the issue is: the apps that we would like to check are only a part of all the installed apps. Therefore an element in `viewIndices` could be greater than len(`viewIndices`).",
       "parentUuid": "d7279fbf_4292fe94",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 0
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c369df52_0d893306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-03T09:32:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c15b322c_e0f6d980",
       "range": {
         "startLine": 223,
         "startChar": 0,
@@ -813,6 +885,30 @@
       "side": 1,
       "message": "In a subsequent CL, I will add a function to install apps with specified icons. In contrast, `PrepareDefaultFakeApps` use a default app icon. I think \"default\" is required here",
       "parentUuid": "e8a461a8_7be1bd26",
+      "range": {
+        "startLine": 237,
+        "startChar": 12,
+        "endLine": 237,
+        "endChar": 19
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dcdb26d_2e12e800",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-03T09:32:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b122c56_4e9a7c5b",
       "range": {
         "startLine": 237,
         "startChar": 12,
