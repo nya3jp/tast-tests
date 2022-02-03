@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb7e9ff3_9c06d7e7",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1533163
+      },
+      "writtenOn": "2022-02-03T20:22:26Z",
+      "side": 1,
+      "message": "I added it so that, after deployment we can see what value is being passed for the timeout. Once we are confident that the timeout value is passed properly for all usecases i was planning to remove it.\n\nHowever your suggestion also sounds good. We can add it to the error. If it timesout, then we would know what value was passed in for the timeout to the bundle. So let me remove this log from here.",
+      "parentUuid": "dcc5e825_8c3e1be7",
+      "revId": "cde5b6d70381b101aeff761ce7a2d8bbd41a738a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c11ea5b_daca6713",
         "filename": "src/chromiumos/tast/local/ready/ready.go",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-03T00:05:13Z",
       "side": 1,
       "message": "```\n\t\treturn errors.Wrapf(err, \"failed waiting for %v job after %f seconds\", systemServicesJob, systemServicesTimeout.Seconds())\n```",
+      "revId": "cde5b6d70381b101aeff761ce7a2d8bbd41a738a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b0c290_5681023e",
+        "filename": "src/chromiumos/tast/local/ready/ready.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1533163
+      },
+      "writtenOn": "2022-02-03T20:22:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "5c11ea5b_daca6713",
       "revId": "cde5b6d70381b101aeff761ce7a2d8bbd41a738a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
