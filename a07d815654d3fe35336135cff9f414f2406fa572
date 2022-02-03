@@ -140,6 +140,30 @@
       },
       "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "002d42df_2b391eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-03T12:53:50Z",
+      "side": 1,
+      "message": "Ok, then let\u0027s try it with the sleep for now.",
+      "parentUuid": "ecffa694_ed45d95d",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 31
+      },
+      "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
