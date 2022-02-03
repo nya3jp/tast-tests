@@ -70,6 +70,30 @@
       },
       "revId": "769192d01e48a284e1d4d3169ee764041841c397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59c78ab7_c2194299",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-02-03T15:45:35Z",
+      "side": 1,
+      "message": "Ah, that makes sense! Thank you!",
+      "parentUuid": "4e3b0af6_ee4a2511",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "769192d01e48a284e1d4d3169ee764041841c397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
