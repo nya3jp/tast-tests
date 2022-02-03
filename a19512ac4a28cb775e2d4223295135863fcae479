@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5006b208_b23264bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T08:16:30Z",
+      "side": 1,
+      "message": "Good point! Added `SoftwareDeps: []string{\"tpm\"}`\nWill it cover TPM 1 and TPM 2 ?",
+      "parentUuid": "b941a4a1_c2c5437c",
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "12f9d466_1ad8eaac",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0359fed5_d3927113",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T08:16:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cf4aa99_418b8da9",
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2cb89bb_8877ba58",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-02-02T15:23:12Z",
       "side": 1,
       "message": "Is the pattern needed, or can we pass an empty string here?",
+      "range": {
+        "startLine": 39,
+        "startChar": 34,
+        "endLine": 39,
+        "endChar": 60
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b78c11_69d80362",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T08:16:30Z",
+      "side": 1,
+      "message": "We can pass an empty string, but I thought that prefix makes it clear what test created the folder",
+      "parentUuid": "c2cb89bb_8877ba58",
       "range": {
         "startLine": 39,
         "startChar": 34,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5413ba6_306f070f",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T08:16:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7f6d0c_815effde",
+      "range": {
+        "startLine": 58,
+        "startChar": 27,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95683a94_c641a9e2",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-02-02T15:23:12Z",
       "side": 1,
       "message": "nit: Let\u0027s use filepath.Join().",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a161c24a_3cb200f6",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T08:16:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95683a94_c641a9e2",
       "range": {
         "startLine": 59,
         "startChar": 24,
@@ -146,6 +254,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99ec9a76_a5a17593",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T08:16:30Z",
+      "side": 1,
+      "message": "Do you mean to call it like this:\n`cryptohome-test-tool --action\u003drecovery_crypto_create_hsm_payload --destination_share_out_file dst_file_path --channel_pub_key_out_file channel_pub_file_path ...` ?\n\nI this case I get `ERROR cryptohome-test-tool: [cryptohome-test-tool.cc(63)] --destination_share_out_file is mandatory.`",
+      "parentUuid": "b9b70eda_b3886beb",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 68
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "98a990e0_525ecd4f",
         "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
         "patchSetId": 1
@@ -157,6 +289,30 @@
       "writtenOn": "2022-02-02T15:23:12Z",
       "side": 1,
       "message": "How will the bytes be formatted? If this will try to cast the bytes to characters (UTF?) the result will be unreadable.\n\nWould it print bytes as numbers if we pass them here without converting to a string? Or alternatively do a hexencoding, so that it\u0027s easy for the developer to inspect the bytes with some tool.",
+      "range": {
+        "startLine": 131,
+        "startChar": 51,
+        "endLine": 131,
+        "endChar": 84
+      },
+      "revId": "a19512ac4a28cb775e2d4223295135863fcae479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da3057ed_e33318cf",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-03T08:16:30Z",
+      "side": 1,
+      "message": "The content of the file is already in hexadecimal I think.\nExample of the output:\n`2022-02-03T08:12:22.062579Z [08:12:22.106] Error at recovery_crypto.go:48: Failed to validate: Created 0fe89fbe70abdf634b69eb10bfcc2f28e9bfbb543d6165b2cc8ff6b5854653fb, decrypted 0fe89fbe70abdf634b69eb10bfcc2f28e9bfbb543d6165b2cc8ff6b5854653fb`",
+      "parentUuid": "98a990e0_525ecd4f",
       "range": {
         "startLine": 131,
         "startChar": 51,
