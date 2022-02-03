@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f0d197_96d5fb58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-03T09:46:11Z",
+      "side": 1,
+      "message": "If you have many ui interactions in a row you can combine them:\n\n\tconst trustCheckboxText \u003d \"Trust this certificate for identifying websites\"\n\tif err :\u003d uiauto.Combine(\"import CA cert\",\n\t\tui.LeftClick(nodewith.Name(\"Authorities\").Role(role.Tab)),\n\t\tui.WaitUntilExists(nodewith.Name(\"Authorities\").ClassName(\"tab selected\")),\n\t\tui.LeftClick(nodewith.Name(\"Import\").Role(role.Button)),\n\t\tui.LeftClick(nodewith.Name(fileName).Role(role.StaticText)),\n\t\tui.LeftClick(nodewith.Name(trustCheckboxText).Role(role.CheckBox)),\n\t\tui.LeftClick(nodewith.Name(\"OK\").Role(role.Button)),\n\t)(ctx); err !\u003d nil {\n\t\ts.Error(\"Failed to import CA cert: \", err)\n\t}",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d829cac_3a6f4f1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-03T09:46:11Z",
+      "side": 1,
+      "message": "As above, these can be combined:\n\n\tkb, err :\u003d input.Keyboard(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to find keyboard: \", err)\n\t}\n\tpasswordDialog :\u003d nodewith.Name(\"Enter your certificate password\").Role(role.Dialog)\n\tpasswordTextBox :\u003d nodewith.Role(role.TextField).Editable()\n\tif err :\u003d uiauto.Combine(\"import client cert\",\n\t\tui.LeftClick(nodewith.Name(\"Your certificates\").Role(role.Tab)),\n\t\tui.WaitUntilExists(nodewith.Name(\"Your certificates\").ClassName(\"tab selected\")),\n\t\tui.LeftClick(nodewith.Name(\"Import and Bind\").Role(role.Button)),\n\t\tui.LeftClick(nodewith.Name(fileName).Role(role.StaticText)),\n\t\tui.LeftClick(nodewith.Name(\"Open\").Role(role.Button)),\n\t\tui.LeftClick(passwordTextBox.Ancestor(passwordDialog)),\n\t\tkb.TypeAction(\"12345\"),\n\t\tui.LeftClick(nodewith.Name(\"OK\").Role(role.Button)),\n\t)(ctx); err !\u003d nil {\n\t\ts.Error(\"Failed to import client certificate: \", err)\n\t}",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604b37ae_5f3c8f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-03T09:46:11Z",
+      "side": 1,
+      "message": "Is there anything we could poll for instead to ensure the certs are working?",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 31
+      },
+      "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
