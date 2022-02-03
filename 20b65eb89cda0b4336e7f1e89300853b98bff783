@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1db01be_6deacea9",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-03T01:47:29Z",
+      "side": 1,
+      "message": "Please add a comment like \n\"TODO: revisit later if when we have a solution for b/217635723\"\n\nThanks.",
+      "revId": "20b65eb89cda0b4336e7f1e89300853b98bff783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05638574_cfabd498",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 6
