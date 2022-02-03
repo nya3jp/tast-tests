@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d52d7dcd_14777e60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "How do I get both stdout and stderr while running command only once? Maybe I am missing something, but I don\u0027t see anything except for CombinedOutput that can give me both. `cmd.Output()` gives only stdout. I can\u0027t run command second time to get stderr.",
+      "parentUuid": "ab85fd12_df0597ff",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec4b9e96_5a63d2e7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 17

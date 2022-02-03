@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aa324bb_eda0d78b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "all good no worries! thank you for detailed reviews!",
+      "parentUuid": "c45e2899_6728faa2",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "062acddb_91c4470d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-02T11:53:14Z",
       "side": 1,
       "message": "(sorry overlooked at the prev iteration).\nmultiline log is discouraged. Could you output into log file, instead?",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00023c44_4eee7cf9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "What are the reasons why multiline log is discouraged? I seems normal thing to do for this test, I can explain why.\nThe whole console output from the test run is many lines anyway, and it is useful because you can clearly see from console output what\u0027s going on. Specifically, it is useful to have output from command line runs in console output, because it gives the needed information.\nOr do you mean to say that in addition to console output test should also create a log file with the same information?",
+      "parentUuid": "062acddb_91c4470d",
       "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e6d91d_e7cf8908",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52c3d46e_1f54cc40",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58bbb3da_5a96d1e3",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-02-02T11:53:14Z",
       "side": 1,
       "message": "style:\n\ns.Fatalf(\"Flashrom read into file %s failed: %v\", biosImagePath, err)\n\nditto for below.",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fec8b2ec_a0b4fa72",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58bbb3da_5a96d1e3",
       "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

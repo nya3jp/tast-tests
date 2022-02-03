@@ -455,6 +455,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada8ac1d_a3215f53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d0a643_9133cbbf",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "205c8422_2420799f",
@@ -516,6 +534,30 @@
       "side": 1,
       "message": "nit: not done here?",
       "parentUuid": "41a18791_2e778ede",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e12fa2cc_4d63abfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3be71eaf_951aef74",
       "range": {
         "startLine": 119,
         "startChar": 1,
@@ -830,6 +872,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5143573b_f033fb90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "Correct me if I am wrong, this is my understanding of the idea:\n1) You are suggesting to have two loops instead of one\n2) The first loop would build a data structure in memory, which effectively stores the whole results of dump_fmap\n3) Second loop iterates over that data structure in memory, and finds the area values\n\nIt seems to me, this will take twice more time and twice more memory... why are you recommending it?",
+      "parentUuid": "8cc9bd9c_d9680a0f",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "878161fa_66bdb939",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 14
@@ -960,6 +1020,24 @@
       "side": 1,
       "message": "getting rid of dd sounds better.\nBut regardless of that, please do not introduce shell here. You can just pass args as an array of strings, and I couldn\u0027t find any blockers to make it happen in this CL.",
       "parentUuid": "3d857bef_7e1dd523",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "324f2ae0_dfee2e2c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-03T07:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faff181b_5e1b3fc2",
       "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
