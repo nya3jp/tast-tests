@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b2d82e_0ab0b1a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "Please describe in a little more detail on what functionality is added now.",
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d06e81c_21cfc8b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "It is better to use a little more unique filenames, as there are exported to the whole policy package, and collisions can happen.\nE.g. `autofillCardCertFile`",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e0265c_b227587f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "This should be moved after `defer closeBrowser(cleanupCtx)`, so the UI dump is created before the browser window is closed.",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 104
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "433aa8d3_0c984fd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "Add comment on what this branch will do.",
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b434853_ddcae1d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "No need to wrap the error.",
+      "range": {
+        "startLine": 186,
+        "startChar": 20,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1ff37b_4393c0f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "If you use `kb.TypeAction()`, you can use `uiauto.Combine()` to spare some error handling.",
+      "range": {
+        "startLine": 199,
+        "startChar": 18,
+        "endLine": 199,
+        "endChar": 22
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14eca25_5952f8eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "These UI interaction can be combined as well.",
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1ba142_df8b9610",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "`s.Fatalf(\"Failed to complete the JS test for htmlFieldID\u003d%s: %v\", creditCardField.htmlFieldID, err)`",
+      "range": {
+        "startLine": 238,
+        "startChar": 6,
+        "endLine": 238,
+        "endChar": 97
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86b5189_7a52b985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "`s.Fatalf(\"Credit card field was not set properly; got %q, want %q\", valueFromHTML, creditCardField.fieldValue)`",
+      "range": {
+        "startLine": 241,
+        "startChar": 6,
+        "endLine": 241,
+        "endChar": 150
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f42dd4_f820f6ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-03T12:40:26Z",
+      "side": 1,
+      "message": "Use `path.Join()` instead.",
+      "range": {
+        "startLine": 256,
+        "startChar": 18,
+        "endLine": 256,
+        "endChar": 80
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
