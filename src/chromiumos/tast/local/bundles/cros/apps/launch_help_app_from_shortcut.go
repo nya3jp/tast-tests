@@ -31,7 +31,6 @@ func init() {
 		Desc:         "Help app can be launched using shortcut Ctrl+Shift+/",
 		Contacts: []string{
 			"showoff-eng@google.com",
-			"benreich@chromium.org",
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},

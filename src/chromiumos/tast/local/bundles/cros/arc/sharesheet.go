@@ -30,7 +30,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Install ARC app and share to app via Sharesheet",
 		Contacts: []string{
-			"benreich@chromium.org",
 			"melzhang@chromium.org",
 			"chromeos-apps-foundation-team@google.com",
 		},
