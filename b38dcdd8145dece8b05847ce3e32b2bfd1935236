@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38dd7869_d701f42e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6b2d82e_0ab0b1a2",
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d06e81c_21cfc8b8",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-03T12:40:26Z",
       "side": 1,
       "message": "It is better to use a little more unique filenames, as there are exported to the whole policy package, and collisions can happen.\nE.g. `autofillCardCertFile`",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de91f5eb_1f7a4630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d06e81c_21cfc8b8",
       "range": {
         "startLine": 36,
         "startChar": 6,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c03264b_0c0ad16a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0e0265c_b227587f",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 104
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "433aa8d3_0c984fd5",
@@ -81,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be3630f9_72df523a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "433aa8d3_0c984fd5",
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b434853_ddcae1d6",
@@ -94,6 +178,30 @@
       "writtenOn": "2022-02-03T12:40:26Z",
       "side": 1,
       "message": "No need to wrap the error.",
+      "range": {
+        "startLine": 186,
+        "startChar": 20,
+        "endLine": 186,
+        "endChar": 24
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "045d15fa_4f297c9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b434853_ddcae1d6",
       "range": {
         "startLine": 186,
         "startChar": 20,
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ca5baae_d3dadd62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1ff37b_4393c0f3",
+      "range": {
+        "startLine": 199,
+        "startChar": 18,
+        "endLine": 199,
+        "endChar": 22
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f14eca25_5952f8eb",
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b411fdc2_f45d7247",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14eca25_5952f8eb",
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd1ba142_df8b9610",
@@ -157,6 +307,30 @@
       "writtenOn": "2022-02-03T12:40:26Z",
       "side": 1,
       "message": "`s.Fatalf(\"Failed to complete the JS test for htmlFieldID\u003d%s: %v\", creditCardField.htmlFieldID, err)`",
+      "range": {
+        "startLine": 238,
+        "startChar": 6,
+        "endLine": 238,
+        "endChar": 97
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e14a66_f74025e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd1ba142_df8b9610",
       "range": {
         "startLine": 238,
         "startChar": 6,
@@ -190,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "574e981a_6afebfe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86b5189_7a52b985",
+      "range": {
+        "startLine": 241,
+        "startChar": 6,
+        "endLine": 241,
+        "endChar": 150
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14f42dd4_f820f6ed",
@@ -203,6 +401,30 @@
       "writtenOn": "2022-02-03T12:40:26Z",
       "side": 1,
       "message": "Use `path.Join()` instead.",
+      "range": {
+        "startLine": 256,
+        "startChar": 18,
+        "endLine": 256,
+        "endChar": 80
+      },
+      "revId": "b38dcdd8145dece8b05847ce3e32b2bfd1935236",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2610af24_7eca346f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T13:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f42dd4_f820f6ed",
       "range": {
         "startLine": 256,
         "startChar": 18,
