@@ -52,6 +52,24 @@
       "parentUuid": "67ea7268_b1240e66",
       "revId": "d2446d0147391582d92fd5d99ab93bb44e076067",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519fc350_cdc1c4f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-02-03T02:05:31Z",
+      "side": 1,
+      "message": "Hm, no matter which CL lands first, until both (revert and reland) change lands into chromium, we won\u0027t be able to confirm if the test is broken from bot results.\n\nAnyway, at least I locally build ToT chrome with dcheck and confirmed that test is passing.",
+      "parentUuid": "fa56bb70_23c22d1b",
+      "revId": "d2446d0147391582d92fd5d99ab93bb44e076067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
