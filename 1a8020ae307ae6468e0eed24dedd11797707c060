@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d6136b_1842e441",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-02-03T22:17:00Z",
+      "side": 1,
+      "message": "Might want to put example lines that would be caught by these here so that future readers know what these statements are looking for at a glance (and also if things have gotten out of sync, etc.)",
+      "revId": "1a8020ae307ae6468e0eed24dedd11797707c060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
