@@ -167,9 +167,9 @@ func GetContainerMetadataArtifact(debianVersion vm.ContainerDebianVersion, large
 // different values on different architectures.
 func GetContainerRootfsArtifact(debianVersion vm.ContainerDebianVersion, largeContainer bool) string {
 	if largeContainer {
-		return fmt.Sprintf("crostini_app_test_container_rootfs_%s_%s.tar.xz", debianVersion, vm.TargetArch())
+		return fmt.Sprintf("crostini_app_test_container_rootfs_%s_%s.squashfs", debianVersion, vm.TargetArch())
 	}
-	return fmt.Sprintf("crostini_test_container_rootfs_%s_%s.tar.xz", debianVersion, vm.TargetArch())
+	return fmt.Sprintf("crostini_test_container_rootfs_%s_%s.squashfs", debianVersion, vm.TargetArch())
 }
 
 // GetInstallerOptions returns an InstallationOptions struct with data
