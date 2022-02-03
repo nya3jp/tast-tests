@@ -70,6 +70,30 @@
       },
       "revId": "dee49badd88896a1d2e1d4c61e65553f93214f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14189ed7_ea5b757b",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-03T03:51:05Z",
+      "side": 1,
+      "message": "That makes sense; thanks! I edited the CL so that a fatal error is generated if lacros is deployed but lacrosDeployedBinary is unset instead of the test hanging.",
+      "parentUuid": "49f0fded_a914520d",
+      "range": {
+        "startLine": 424,
+        "startChar": 3,
+        "endLine": 428,
+        "endChar": 4
+      },
+      "revId": "dee49badd88896a1d2e1d4c61e65553f93214f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
