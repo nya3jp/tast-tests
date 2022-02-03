@@ -39,6 +39,30 @@
       },
       "revId": "063bc8c6c5be69517e7d0951261f0cb3bea5c5e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39772ecc_f19d4770",
+        "filename": "src/chromiumos/tast/local/vdi/apps/vdiconnector.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-03T11:51:08Z",
+      "side": 1,
+      "message": "Unfortunately no. In this case, you can decide if you want to move Init outside of interface since it\u0027s no longer generic.",
+      "parentUuid": "f4356f14_55b7265c",
+      "range": {
+        "startLine": 31,
+        "startChar": 28,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "063bc8c6c5be69517e7d0951261f0cb3bea5c5e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
