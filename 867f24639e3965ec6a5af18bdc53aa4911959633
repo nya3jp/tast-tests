@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7b1a9a_9e5565cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-03T10:04:11Z",
+      "side": 1,
+      "message": "nit: put it into defer statement",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "867f24639e3965ec6a5af18bdc53aa4911959633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0f293e_ba0aaaa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-03T10:04:11Z",
+      "side": 1,
+      "message": "nit: Unexpected server request URIs: got %s; want %s",
+      "range": {
+        "startLine": 167,
+        "startChar": 14,
+        "endLine": 167,
+        "endChar": 67
+      },
+      "revId": "867f24639e3965ec6a5af18bdc53aa4911959633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
