@@ -16,6 +16,24 @@
       "message": "Should we revert crrev.com/c/3429343 at first?",
       "revId": "d2446d0147391582d92fd5d99ab93bb44e076067",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67ea7268_b1240e66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-02-03T01:20:04Z",
+      "side": 1,
+      "message": "I will make the revert once lkgm is upreved.\n\nI think it\u0027s okay to reland this no matter whether this test is ignored in chromium ci. Do we have any reason that the chromium one needs to land first?",
+      "parentUuid": "3876a1b6_c077f896",
+      "revId": "d2446d0147391582d92fd5d99ab93bb44e076067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
