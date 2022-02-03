@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type roamTestcase struct {
@@ -66,6 +67,7 @@ func init() {
 					apOpts2:    []hostapd.Option{hostapd.Mode(hostapd.Mode80211nMixed), hostapd.Channel(48), hostapd.HTCaps(hostapd.HTCapHT20)},
 					secConfFac: wep.NewConfigFactory([]string{"abcde", "fedcba9876", "ab\xe4\xb8\x89", "\xe4\xb8\x89\xc2\xa2"}, wep.DefaultKey(0), wep.AuthAlgs(wep.AuthAlgoOpen)),
 				},
+				ExtraHardwareDeps: hwdep.D(hwdep.WifiWEP()),
 			}, {
 				// Verifies that DUT can roam between two WPA-EAP APs in full view of it.
 				Name: "8021xwpa",
