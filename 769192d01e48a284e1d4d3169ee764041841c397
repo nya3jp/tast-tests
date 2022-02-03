@@ -22,6 +22,30 @@
       },
       "revId": "769192d01e48a284e1d4d3169ee764041841c397",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd69652a_eb8c02a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/printers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-02-03T15:37:36Z",
+      "side": 1,
+      "message": "Done - even though I don\u0027t think I have fully understood when to wrap errors and when not to wrap them yet. The docs say \"It is recommended to wrap when you cross package boundary, which represents some kind of barrier beneath which everything is an implementation detail. Otherwise it is fine to return an error without wrapping, if you can\u0027t really add much context to make debugging easier. Use your best judgement to decide wrap or not.\" [1] I suppose this means that errors should almost never be wrapped when writing simple policy tests?\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#error-construction",
+      "parentUuid": "5b3b4b73_c7225972",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "769192d01e48a284e1d4d3169ee764041841c397",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
