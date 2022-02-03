@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca43b97c_5f8e6f8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T16:56:58Z",
+      "side": 1,
+      "message": "They are generated for testing purposes and not used elsewhere.",
+      "parentUuid": "8f4b60de_6856f8ad",
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c519c64_c60e663f",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a58d3d_fe7979b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T16:56:58Z",
+      "side": 1,
+      "message": "I was trying this quickly and it doesnt seem to save the settings with the form submit. I dont really have time to investigate this more at the moment, but the fields could be filled like this:\n\n```\n// Fill in the credit card details and click on the save button.\nfor _, creditCardField :\u003d range creditCardFields {\n  if err :\u003d conn.Call(ctx, nil, `(fieldId, fieldValue) \u003d\u003e {\n    document.getElementById(fieldId).value \u003d fieldValue;\n\n  }`, creditCardField.htmlFieldID, creditCardField.fieldValue); err !\u003d nil {\n    s.Fatal(\"Could not observe spelling marker changes: \", err)\n  }\n}\n\nif err :\u003d ui.WaitUntilExists(nodewith.Name(\"OK\").Role(role.Button))(ctx); err !\u003d nil {\n  s.Fatal(\"Failed to click the Save button: \", err)\n}\n\n```\n\nNot sure why the form submit doesn\u0027t trigger the credit card to be saved. Maybe because the request fails.",
+      "parentUuid": "1c519c64_c60e663f",
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2266751_4a3eba52",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-02-03T15:24:33Z",
       "side": 1,
       "message": "Why do you need this replace? Add a comment.",
+      "range": {
+        "startLine": 214,
+        "startChar": 25,
+        "endLine": 214,
+        "endChar": 32
+      },
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38ced0a_8203c6a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T16:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2266751_4a3eba52",
       "range": {
         "startLine": 214,
         "startChar": 25,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a261ffd2_e772a7b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T16:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8ac5a12_14eddc22",
+      "range": {
+        "startLine": 234,
+        "startChar": 26,
+        "endLine": 234,
+        "endChar": 50
+      },
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48b732e6_ff73ee8b",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-02-03T15:24:33Z",
       "side": 1,
       "message": "Errorf",
+      "range": {
+        "startLine": 237,
+        "startChar": 8,
+        "endLine": 237,
+        "endChar": 14
+      },
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd1d47d9_ca5575b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T16:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48b732e6_ff73ee8b",
       "range": {
         "startLine": 237,
         "startChar": 8,
