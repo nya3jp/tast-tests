@@ -70,6 +70,24 @@
       "parentUuid": "17c966a3_33ba410c",
       "revId": "04bc535f1c17105cfeced36fb489f4c949e843b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fedbb0b7_4645d765",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-03T01:18:18Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why this inset is needed and how much inset is needed, but I am OK with it as long as it works for the purpose of your test.",
+      "parentUuid": "14b29722_533c129d",
+      "revId": "04bc535f1c17105cfeced36fb489f4c949e843b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
