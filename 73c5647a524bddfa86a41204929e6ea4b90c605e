@@ -33,6 +33,92 @@
       "message": "The certificates are expired and not something that is used in other places, right?",
       "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c519c64_c60e663f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-03T15:24:33Z",
+      "side": 1,
+      "message": "Can this be done by filling in the website and saving from there? It would reduce our dependence on the settings UI.",
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2266751_4a3eba52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-03T15:24:33Z",
+      "side": 1,
+      "message": "Why do you need this replace? Add a comment.",
+      "range": {
+        "startLine": 214,
+        "startChar": 25,
+        "endLine": 214,
+        "endChar": 32
+      },
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ac5a12_14eddc22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-03T15:24:33Z",
+      "side": 1,
+      "message": "get",
+      "range": {
+        "startLine": 234,
+        "startChar": 26,
+        "endLine": 234,
+        "endChar": 50
+      },
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48b732e6_ff73ee8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-03T15:24:33Z",
+      "side": 1,
+      "message": "Errorf",
+      "range": {
+        "startLine": 237,
+        "startChar": 8,
+        "endLine": 237,
+        "endChar": 14
+      },
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
