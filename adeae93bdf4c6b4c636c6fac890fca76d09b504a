@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfba021b_3ab9e0a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-02-03T08:46:14Z",
+      "side": 1,
+      "message": "Hi Gabor,\nI think this should pass the CQ now, so could you please take a look. :)\nThere was a lot of \"failed to install chromeos-base/power_manager\" errors going on lately.",
+      "revId": "adeae93bdf4c6b4c636c6fac890fca76d09b504a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
