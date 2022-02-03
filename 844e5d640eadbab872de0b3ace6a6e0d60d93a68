@@ -119,6 +119,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4215769_c92b6a31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-03T06:53:37Z",
+      "side": 1,
+      "message": "IMO we should not submit this without fixing Sleep (and not add a TODO). IIRC we already had a way to wait for the window to be visible in the existing lacros library.",
+      "parentUuid": "36ddd451_131c8278",
+      "revId": "844e5d640eadbab872de0b3ace6a6e0d60d93a68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e9fa05b_6ac5ae89",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserutil/browserutil.go",
         "patchSetId": 4
