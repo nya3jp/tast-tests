@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7320fe3_d7695a06",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-03T06:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3f5f08_1d824be7",
+      "range": {
+        "startLine": 414,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 122
+      },
+      "revId": "f43c70c20498734fa78c5399b49ddfe093a6d7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9751671b_ccbf82f3",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-03T05:59:47Z",
       "side": 1,
       "message": "In theory, the value of --lacros-chrome-path can be any, and if set any, Omaha/Rootfs would fail.\n\nCan this be\n\nfor _, line :\u003d ... {\n  line \u003d strings.TrimSpace(line)\n  if strings.HasPrefix(line, \"--lacros-chrome-path\u003d\") {\n    ...",
+      "range": {
+        "startLine": 413,
+        "startChar": 5,
+        "endLine": 415,
+        "endChar": 6
+      },
+      "revId": "f43c70c20498734fa78c5399b49ddfe093a6d7b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a2bd5e_49ab9326",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/fixtimpl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-03T06:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9751671b_ccbf82f3",
       "range": {
         "startLine": 413,
         "startChar": 5,
