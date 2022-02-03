@@ -122,7 +122,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
 	if vmEnabled {
-		chromeArgs = append(chromeArgs, "--arcvm-ureadahead-mode=generate")
+		chromeArgs = append(chromeArgs, "--arcvm-mount-debugfs", "--arcvm-ureadahead-mode=generate")
 	}
 
 	opts := []chrome.Option{
