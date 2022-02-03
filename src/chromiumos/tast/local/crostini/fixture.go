@@ -42,7 +42,7 @@ func init() {
 		// TODO (jinrongwu): switch to Global RunTime Variable when deprecating pre.go.
 		// The same for the rest keepState var.
 		Vars: []string{"keepState"},
-		Data: []string{"crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+		Data: []string{"crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.squashfs"},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -55,7 +55,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 		Vars:            []string{"keepState"},
-		Data:            []string{"crostini_test_container_metadata_bullseye_amd64.tar.xz", "crostini_test_container_rootfs_bullseye_amd64.tar.xz"},
+		Data:            []string{"crostini_test_container_metadata_bullseye_amd64.tar.xz", "crostini_test_container_rootfs_bullseye_amd64.squashfs"},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -68,7 +68,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
-		Data:            []string{"crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.tar.xz"},
+		Data:            []string{"crostini_test_container_metadata_buster_amd64.tar.xz", "crostini_test_container_rootfs_buster_amd64.squashfs"},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -81,7 +81,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 		Vars:            []string{"keepState", "ui.gaiaPoolDefault"},
-		Data:            []string{"crostini_test_container_metadata_bullseye_amd64.tar.xz", "crostini_test_container_rootfs_bullseye_amd64.tar.xz"},
+		Data:            []string{"crostini_test_container_metadata_bullseye_amd64.tar.xz", "crostini_test_container_rootfs_bullseye_amd64.squashfs"},
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -94,7 +94,7 @@ func init() {
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: chrome.ResetTimeout + uninstallationTimeout,
 		Vars:            []string{"keepState"},
-		Data:            []string{"crostini_app_test_container_metadata_bullseye_amd64.tar.xz", "crostini_app_test_container_rootfs_bullseye_amd64.tar.xz"},
+		Data:            []string{"crostini_app_test_container_metadata_bullseye_amd64.tar.xz", "crostini_app_test_container_rootfs_bullseye_amd64.squashfs"},
 	})
 
 }
