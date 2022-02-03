@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6613f9_f966ba30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-03T10:38:18Z",
+      "side": 1,
+      "message": "LacrosVariantUnneeded?\nI guess this test doesn\u0027t need lacros variant since it\u0027s not opening any browser window, right?",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "3f57033ff6d40e81e3a02bc922be25a78d50451e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75f5a777_f1e429d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-03T10:38:18Z",
+      "side": 1,
+      "message": "comments should end with .",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "3f57033ff6d40e81e3a02bc922be25a78d50451e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b084d8_0a1c1402",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-03T10:38:18Z",
+      "side": 1,
+      "message": "I think you can combine both and serve array of policies in ServeAndVerify()\n\ninstead of value:\npolicies []policy.Policy\n\nand then set it\npolicies: []policy.Policy{\n\u0026policy.PreconfiguredDeskTemplatesValue{...},\n\u0026policy.DeskTemplatesEnabled{...},\n},\n\nthen you can call\npolicyutil.ServeAndVerify(ctx, fdms, cr, param.policies);",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "3f57033ff6d40e81e3a02bc922be25a78d50451e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab6bef6_79ce0f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-03T10:38:18Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 35
+      },
+      "revId": "3f57033ff6d40e81e3a02bc922be25a78d50451e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e6d7ba_da4a3eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-03T10:38:18Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 72
+      },
+      "revId": "3f57033ff6d40e81e3a02bc922be25a78d50451e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
