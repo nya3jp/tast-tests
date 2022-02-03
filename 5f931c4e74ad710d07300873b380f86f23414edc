@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d416103_fa1c68db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-03T02:14:40Z",
+      "side": 1,
+      "message": "This test is a bit complicated, I think it could be improved by:\n1. Splitting out window resize utilities into a support package for general use\n2. Simplify or avoid using the app interface, I\u0027m not sure that it\u0027s necessary and IMO it makes the test more complicated",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47be85b0_729ac59e",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-01-27T18:29:20Z",
       "side": 1,
       "message": "should this put into wmp package?",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de9e4a71_f5e8d969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-03T02:14:40Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "47be85b0_729ac59e",
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +100,23 @@
       "writtenOn": "2022-01-27T19:49:33Z",
       "side": 1,
       "message": "nit: missing comment description",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097e174b_db6d6be5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-03T02:14:40Z",
+      "side": 1,
+      "message": "is GAIA needed here? can you use a fake login instead?",
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +191,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38ac1ec7_d33efb99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-03T02:14:40Z",
+      "side": 1,
+      "message": "I think it would be good to move this functionality out to a support package. General window resizing utilities sound like they could be useful for other tests.",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 21
+      },
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33c703e2_3dd31ca4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
         "patchSetId": 4
@@ -207,6 +282,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8584496_13f02eef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-03T02:14:40Z",
+      "side": 1,
+      "message": "This interface seems a bit complicated, the functionality for each kind of app is already pretty self-contained. How does the test look without this?",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a03919db_87aacdcb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
         "patchSetId": 4
@@ -218,6 +310,29 @@
       "writtenOn": "2022-01-27T19:49:33Z",
       "side": 1,
       "message": "nit: uninstall ?",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e1b3cd_2f7d4d10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-03T02:14:40Z",
+      "side": 1,
+      "message": "do you need to use YT music? can you just use the playstore if you\u0027re interested in resizing an ARC app?",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 25
+      },
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
