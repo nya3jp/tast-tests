@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef411a9_f21d19d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/paypal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-02-03T19:36:16Z",
+      "side": 1,
+      "message": "it\u0027s better if these kind of things can be done by real hardware dependencies, which can eventually be sourced from hardware configuration databases. (They also typically get a runtime-detection implementation, so tests can still be run without the HW database.)\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#adding-new-hardware-conditions",
+      "range": {
+        "startLine": 108,
+        "startChar": 3,
+        "endLine": 108,
+        "endChar": 27
+      },
+      "revId": "4e9df26106280a65535ef88d09ddda0b66996f6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
