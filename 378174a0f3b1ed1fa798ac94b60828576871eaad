@@ -16,6 +16,24 @@
       "message": "nit: Could you call these two something a little easier to tell apart?  The code below looks reasonable to me, but cr and br are really easy to mix up.",
       "revId": "378174a0f3b1ed1fa798ac94b60828576871eaad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dddd382c_a1ef0db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-03T02:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94d34365_a21a7b28",
+      "revId": "378174a0f3b1ed1fa798ac94b60828576871eaad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
