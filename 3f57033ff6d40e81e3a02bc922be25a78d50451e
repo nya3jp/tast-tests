@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcced0e_7cd9ce61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-02-04T09:19:01Z",
+      "side": 1,
+      "message": "yeah, you\u0027re right.\nI\u0027m not really sure if we need a lacros variant for this test. so unknown is okay.",
+      "parentUuid": "a4ace323_f8bfee71",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "3f57033ff6d40e81e3a02bc922be25a78d50451e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75f5a777_f1e429d5",
