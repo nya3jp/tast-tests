@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ef4bb19_9b541efe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "Why is this in policy. ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1321a808_ec6ebbb2",
@@ -14,6 +37,276 @@
       "writtenOn": "2022-02-03T12:53:50Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae8d1de_63c54889",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "Generally LGTM % a few nits and a suggestion :-)",
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa2ba68_97908084",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: Let\u0027s write\n\n// Client certificate and key that will be used by Chrome to authenticate on the website.\n// It is in a PKCS#12 format becuase that\u0027s what chrome supports for importing client certificates. The password for the PCKS#12 archive is \"12345\".",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2c7b61_0b764043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: (both in PEM format)",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0dd06b_5234382b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: Chrome OS file picker ?",
+      "range": {
+        "startLine": 69,
+        "startChar": 43,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eda29e5_7df56092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "Maybe chowning to chronos is good enough here?\nE.g.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go;l\u003d246?q\u003dos.chown\u0026start\u003d11\n\n(not sure)",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e615b50_4a8d2c6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: Let\u0027s say\n\"and uses the Import button on the chrome://settings/certificates page to manually import it.",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b548a0d_35816273",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: Similarly here we can say \"uses the Import and Bind button on the chrome://settings/certificates page to manually import it.",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a02d2f_e6de0b76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "Should this be a constant defined next to the file name constant? WDYT?",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1347e430_22391258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: No \u0027to\u0027 here :-)\n(a bit weird - https://english-at-home.com/grammar/make-and-let/ )",
+      "range": {
+        "startLine": 172,
+        "startChar": 58,
+        "endLine": 172,
+        "endChar": 60
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ab6fe3_63379ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: here I would suggest:\n\n\"effectively testing that\"",
+      "range": {
+        "startLine": 172,
+        "startChar": 70,
+        "endLine": 172,
+        "endChar": 75
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec118058_addeed27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: OK",
+      "range": {
+        "startLine": 197,
+        "startChar": 30,
+        "endLine": 197,
+        "endChar": 34
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd889a7_e02559c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "nit: We could make this a constant so it\u0027s not repeated",
+      "range": {
+        "startLine": 201,
+        "startChar": 35,
+        "endLine": 201,
+        "endChar": 48
+      },
       "revId": "8a1715ed77d429801746971351187367cff76dfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

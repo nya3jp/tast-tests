@@ -164,6 +164,30 @@
       },
       "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6dbab29_6ebce877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-04T12:59:55Z",
+      "side": 1,
+      "message": "I guess you could import CA cert first and client cert second and then wait for the client cert to be in chaps using something like this:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/required_client_certificate.go;l\u003d114?q\u003dfile:tast%20requiredcli",
+      "parentUuid": "002d42df_2b391eb4",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 31
+      },
+      "revId": "a07d815654d3fe35336135cff9f414f2406fa572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
