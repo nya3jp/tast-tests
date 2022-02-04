@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2231d423_95cdb623",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-02-04T21:14:22Z",
+      "side": 1,
+      "message": "You can rebase on parent using the \"REBASE\" button on the top right corner.",
+      "revId": "039f0e046f56defb11b558a0a2f4ae08b478f363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
