@@ -72,6 +72,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25ba1bf2_a48d06a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-02-04T02:32:02Z",
+      "side": 1,
+      "message": "Can you please try adding postTestTimeout similar to arcBooted fixture giving time to save the logs and check.\nReference - https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/fixture.go;l\u003d22;bpv\u003d1",
+      "revId": "bf3d1f8df7d1530391bd26bc13340e5f7c1d4386",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5df01998_91f79246",
         "filename": "src/chromiumos/tast/local/accountmanager/fixture.go",
         "patchSetId": 1
