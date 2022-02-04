@@ -64,18 +64,18 @@ func LacrosSecondaryProfilesAllowed(ctx context.Context, s *testing.State) {
 		newProfileOrGuestAllowed bool
 	}{
 		{
-			name:  "true",
-			value: &policy.LacrosSecondaryProfilesAllowed{Val: true},
+			name:                     "true",
+			value:                    &policy.LacrosSecondaryProfilesAllowed{Val: true},
 			newProfileOrGuestAllowed: true,
 		},
 		{
-			name:  "false",
-			value: &policy.LacrosSecondaryProfilesAllowed{Val: false},
+			name:                     "false",
+			value:                    &policy.LacrosSecondaryProfilesAllowed{Val: false},
 			newProfileOrGuestAllowed: false,
 		},
 		{
-			name:  "unset",
-			value: &policy.LacrosSecondaryProfilesAllowed{Stat: policy.StatusUnset},
+			name:                     "unset",
+			value:                    &policy.LacrosSecondaryProfilesAllowed{Stat: policy.StatusUnset},
 			newProfileOrGuestAllowed: false,
 		},
 	} {

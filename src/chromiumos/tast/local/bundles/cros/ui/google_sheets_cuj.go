@@ -113,7 +113,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	// TODO(yichenz): Add scroll metrics.
 	configs := []cuj.MetricConfig{
 		cuj.NewCustomMetricConfig("PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
-		perf.SmallerIsBetter, []int64{4000, 5000})}
+			perf.SmallerIsBetter, []int64{4000, 5000})}
 	recorder, err := cuj.NewRecorder(ctx, cr, nil, configs...)
 	if err != nil {
 		s.Fatal("Failed to create a CUJ recorder: ", err)

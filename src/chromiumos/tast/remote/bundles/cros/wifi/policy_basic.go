@@ -11,6 +11,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/common/wifi/security"
@@ -22,6 +23,10 @@ import (
 	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
+)
+
+var (
+	eapCertPolicyBasic1 = certificate.TestCert1()
 )
 
 func init() {
@@ -48,7 +53,7 @@ func PolicyBasic(ctx context.Context, s *testing.State) {
 	deviceApSSID := ap.RandomSSID("TAST_TEST_DEVICE_")
 	userApOpts := []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(36), ap.HTCaps(ap.HTCapHT20), ap.SSID(userApSSID)}
 	userSecConfFac := tunneled1x.NewConfigFactory(
-		eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "tast-user@managedchrome.com", "test0000",
+		eapCertPolicyBasic1.CACred.Cert, eapCertPolicyBasic1.ServerCred, eapCertPolicyBasic1.CACred.Cert, "tast-user@managedchrome.com", "test0000",
 		tunneled1x.Mode(wpa.ModePureWPA2),
 		tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 		tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
@@ -90,7 +95,7 @@ func PolicyBasic(ctx context.Context, s *testing.State) {
 			sameAp:    true,
 			devApOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(6), ap.HTCaps(ap.HTCapHT20), ap.SSID(userApSSID)},
 			devSecConfFac: tunneled1x.NewConfigFactory(
-				eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+				eapCertPolicyBasic1.CACred.Cert, eapCertPolicyBasic1.ServerCred, eapCertPolicyBasic1.CACred.Cert, "testuser", "password",
 				tunneled1x.Mode(wpa.ModePureWPA2),
 				tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
@@ -173,7 +178,7 @@ func PolicyBasic(ctx context.Context, s *testing.State) {
 			sameAp:    false,
 			devApOpts: []ap.Option{ap.Mode(ap.Mode80211nPure), ap.Channel(6), ap.HTCaps(ap.HTCapHT20), ap.SSID(deviceApSSID)},
 			devSecConfFac: tunneled1x.NewConfigFactory(
-				eapCert1.CACred.Cert, eapCert1.ServerCred, eapCert1.CACred.Cert, "testuser", "password",
+				eapCertPolicyBasic1.CACred.Cert, eapCertPolicyBasic1.ServerCred, eapCertPolicyBasic1.CACred.Cert, "testuser", "password",
 				tunneled1x.Mode(wpa.ModePureWPA2),
 				tunneled1x.OuterProtocol(tunneled1x.Layer1TypePEAP),
 				tunneled1x.InnerProtocol(tunneled1x.Layer2TypeMSCHAPV2),
