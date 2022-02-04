@@ -19,7 +19,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr: []string{"group:mainline", "group:wificell", "wificell_func", "group:firmware", "firmware_ec", "group:labqual"},
+		Attr: []string{"group:mainline", "group:wificell", "wificell_func", "wificell_dut_validation", "group:firmware", "firmware_ec", "group:labqual"},
 	})
 }
 
