@@ -21,14 +21,13 @@ func init() {
 		Func:    Ti50CCDUpdate,
 		Desc:    "Ti50 firmware update over CCD using gsctool",
 		Timeout: 5 * time.Minute,
-		Vars:    []string{"image", "ccdimage", "serial"},
+		Vars:    []string{"ccdimage", "serial"},
 		Contacts: []string{
 			"ecgh@chromium.org",
 			"ti50-core@google.com",
 		},
-		Data:    []string{"ti50_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin"},
 		Attr:    []string{"group:firmware"},
-		Fixture: fixture.DevBoardService,
+		Fixture: fixture.Ti50,
 	})
 }
 
@@ -49,18 +48,6 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 	ccdimage := s.RequiredVar("ccdimage")
 	if _, err := os.Stat(ccdimage); err != nil {
 		s.Fatal("ccdimage file not found: ", err)
-	}
-
-	image, ok := s.Var("image")
-
-	if !ok {
-		image = s.DataPath("ti50_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin")
-	}
-
-	if image != "" {
-		if err = board.FlashImage(ctx, image); err != nil {
-			s.Fatalf("Failed to flash %s: %v", image, err)
-		}
 	}
 
 	if err = board.Reset(ctx); err != nil {

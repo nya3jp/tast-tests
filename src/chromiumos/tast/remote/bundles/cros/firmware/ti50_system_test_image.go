@@ -22,14 +22,12 @@ func init() {
 		Func:    Ti50SystemTestImage,
 		Desc:    "Ti50 system test",
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"image"},
 		Contacts: []string{
 			"ecgh@chromium.org",
 			"ti50-core@google.com",
 		},
-		Data:    []string{"system_test_auto_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin"},
 		Attr:    []string{"group:firmware"},
-		Fixture: fixture.DevBoardService,
+		Fixture: fixture.SystemTestAuto,
 	})
 }
 
@@ -40,18 +38,6 @@ func Ti50SystemTestImage(ctx context.Context, s *testing.State) {
 	board, err := f.DevBoard(ctx, 10000, time.Second)
 	if err != nil {
 		s.Fatal("Could not get board: ", err)
-	}
-
-	image, ok := s.Var("image")
-
-	if !ok {
-		image = s.DataPath("system_test_auto_ti50_Unknown_PrePVT_ti50-accessory-nodelocked-ro-premp.bin")
-	}
-
-	if image != "" {
-		if err = board.FlashImage(ctx, image); err != nil {
-			s.Fatalf("Failed to flash %s: %v", image, err)
-		}
 	}
 
 	err = board.Open(ctx)
