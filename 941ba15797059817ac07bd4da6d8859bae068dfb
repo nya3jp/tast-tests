@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fef127c_6af45c7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/cross_origin_forbidden.webmanifest",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T11:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e185b684_2232c973",
+      "range": {
+        "startLine": 14,
+        "startChar": 17,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5fb4b35_4699749f",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-02-02T14:46:01Z",
       "side": 1,
       "message": "This file is still here",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7c4e64a_0b5869e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/crossoriginforbidden.webmanifest",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T11:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5fb4b35_4699749f",
       "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57fb79c0_ffa47b24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/data/favicon.ico",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T11:59:31Z",
+      "side": 1,
+      "message": "I removed it.",
+      "parentUuid": "702e5909_cad7ab40",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5b29b23_9cddd00a",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-02-02T14:46:01Z",
       "side": 1,
       "message": "Document the return value",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "285469dd_6502f4f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T11:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5b29b23_9cddd00a",
       "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +193,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87128813_e34cfb33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T11:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "867a02f2_bae9e258",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73983d39_a743c5bf",
@@ -128,6 +230,30 @@
       "writtenOn": "2022-02-02T14:46:01Z",
       "side": 1,
       "message": "Don\u0027t ignore errors",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92181b2b_a7e4097e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T11:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73983d39_a743c5bf",
       "range": {
         "startLine": 62,
         "startChar": 11,
@@ -173,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "096db314_19520bee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T11:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a24749a_2eff4e37",
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f79096f_df54650a",
@@ -186,6 +330,30 @@
       "writtenOn": "2022-02-02T14:46:01Z",
       "side": 1,
       "message": "nit: use fmt.Sprintf",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "941ba15797059817ac07bd4da6d8859bae068dfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c4645b1_d7ac2b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/isolatedapp/https.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T11:59:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f79096f_df54650a",
       "range": {
         "startLine": 65,
         "startChar": 8,
