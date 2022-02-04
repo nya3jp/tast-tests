@@ -16,6 +16,91 @@
       "message": "Hi Sergey, please LMK if I should add someone else as reviewer. The failing tests don\u0027t seem (to me at least) to be related to my CL.",
       "revId": "a76795ec914745fcb85e5f72d7d828f0c7e7cb4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b2e31d4_a0700f45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-04T17:46:36Z",
+      "side": 1,
+      "message": "Few nits while waiting on CR from Sergey or someone else on your team",
+      "revId": "a76795ec914745fcb85e5f72d7d828f0c7e7cb4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2403434e_c760d29e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-04T17:46:36Z",
+      "side": 1,
+      "message": "nit: const (\n...\n...\n)",
+      "revId": "a76795ec914745fcb85e5f72d7d828f0c7e7cb4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485273bf_19c0517e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-04T17:46:36Z",
+      "side": 1,
+      "message": "nit: missing comment.",
+      "revId": "a76795ec914745fcb85e5f72d7d828f0c7e7cb4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b57692_3481fb2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-04T17:46:36Z",
+      "side": 1,
+      "message": "nit: missing function name",
+      "revId": "a76795ec914745fcb85e5f72d7d828f0c7e7cb4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5ae8d6_0b83d8e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/restrictionlevel/restrictionlevel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-04T17:46:36Z",
+      "side": 1,
+      "message": "Should be named restriction_level.go to match the format used elsewhere in Tast.",
+      "revId": "a76795ec914745fcb85e5f72d7d828f0c7e7cb4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
