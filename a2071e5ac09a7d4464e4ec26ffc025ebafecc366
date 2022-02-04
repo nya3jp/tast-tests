@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bb60a26_6afd4266",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-04T06:42:20Z",
+      "side": 1,
+      "message": "Firstly, the logging guideline is here:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#formatting\n\n\u003e In all cases, please avoid multiline strings since they make logs difficult to read. To preserve multiline output from an external program, please write it to an output file instead of logging it.\n\nI think another reasons is that, automated processings of logs can parse each line. If there is multiline log, they need to identify which lines correspond to a single log, but it is ill-posed problem when multiline log can contain confusing contents in it.\n\n\nSecondly, logs are primarily for helping identifying cause of issues when test failed or something went wrong.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log\n\nIf you are writing something that needs to be monitored continuously even when the test is success, it would be better to output to a separate result file (like done for performance tests) so that it could be manupulated by other tasks more reliably and flexibly.",
+      "parentUuid": "00023c44_4eee7cf9",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52c3d46e_1f54cc40",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 18
