@@ -16,6 +16,23 @@
       "message": "LGTM from tast owner perspective.",
       "revId": "8fb32fdc52e202c9f2ce0c0b42dc1ed1cedd8fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2224aa82_8c11dd21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-02-04T18:28:47Z",
+      "side": 1,
+      "message": "Alex, just want to make sure this look okay from your side. The change is requested by raging@ to evaluate ARCVM impact. PTAL. Thanks.",
+      "revId": "8fb32fdc52e202c9f2ce0c0b42dc1ed1cedd8fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
