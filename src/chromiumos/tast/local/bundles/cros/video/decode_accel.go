@@ -20,7 +20,7 @@ import (
 // tests/devices to add to the CQ.
 var cqAllowlist = []string{
 	"eve",
-	"kevin1",
+	"kevin",
 }
 
 type videoDecodeAccelTestParam struct {
