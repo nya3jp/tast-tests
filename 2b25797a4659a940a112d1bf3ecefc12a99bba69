@@ -34,6 +34,23 @@
       "parentUuid": "4eb672b8_f2674a94",
       "revId": "2b25797a4659a940a112d1bf3ecefc12a99bba69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b534df_ff38febd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-02-04T00:34:42Z",
+      "side": 1,
+      "message": "nit: this can be in a different CL. I see other tests using the same variables such as diag_secure_wifi.go, mtbf.go, simple_connect.go. I think they should be defined in one file once. Maybe chromiumos/tast/common/crypto/certificate\n\nI think the test before this change was actually using the vars defined in simple_connect.go which is not good.\n\nuse in simple_connect.go.\n```\n// EAP certs/keys for EAP tests.\nvar (\n\teapCert1             \u003d certificate.TestCert1()\n\teapCert2             \u003d certificate.TestCert2()\n\teapCert3             \u003d certificate.TestCert3()\n\teapCert3AltSub       \u003d certificate.TestCert3AltSubjectMatch()\n\teapCert3DomainSuffix \u003d certificate.TestCert3DomainSuffixMatch()\n)\n```",
+      "revId": "2b25797a4659a940a112d1bf3ecefc12a99bba69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
