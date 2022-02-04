@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ba2fcd_1c4b74ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T16:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3e1b2e_eb7dc002",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "d2acd061e56abc68a26adab52af952c78239c692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8a2db55_487e90a5",
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d435cb_2f1cd733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T16:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8a2db55_487e90a5",
+      "revId": "d2acd061e56abc68a26adab52af952c78239c692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "300409e4_d88fb933",
@@ -88,6 +130,24 @@
       "writtenOn": "2022-02-04T13:16:40Z",
       "side": 1,
       "message": "Make this a method of server, no need to expose the internal http server.",
+      "revId": "d2acd061e56abc68a26adab52af952c78239c692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e787148f_9d4ed04a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/cross_origin_forbidden.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1526977
+      },
+      "writtenOn": "2022-02-04T16:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "300409e4_d88fb933",
       "revId": "d2acd061e56abc68a26adab52af952c78239c692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
