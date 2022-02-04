@@ -51,6 +51,24 @@
       "parentUuid": "05ff51f1_f099d998",
       "revId": "93db2207fe17db92123f39cc091efd55773faf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0298a82c_7790e76a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-04T17:35:00Z",
+      "side": 1,
+      "message": "Possibly - there are a lot of non-related ARC tests that use the touchscreen as well so I\u0027m hesitant to modify it directly. That said, I think there are some abstractions that can be made from this standardization logic to make these raw input devices easier to use. There are things that aren\u0027t super obvious to test writers (devices can be scaled/rotated, keyboards can have different top row layouts, etc.) that I\u0027ve coded around for these tests but at some point they should probably all be pulled out into some input wrappers that other tests can use. \n\nI\u0027ll start thinking through that as more of these tests get to critical, and put together a quick one pager to get feedback.",
+      "parentUuid": "87aaee0d_22435efc",
+      "revId": "93db2207fe17db92123f39cc091efd55773faf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
