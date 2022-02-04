@@ -16,6 +16,23 @@
       "message": "PTAL at this CL that moves the `safesearch` package up in the tree to make it usable in MGS tests as well. I am not sure whether placing it in the `policyutil` folder is okay, feel free to suggest other locations (or let me know if you think that sharing this code is not a good idea).",
       "revId": "095b3e48689d0d9d6ab109eb3f4957c1ec47403a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3dd2eb4_688add4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-04T14:36:02Z",
+      "side": 1,
+      "message": "Thanks for the clean up Christian 👍",
+      "revId": "095b3e48689d0d9d6ab109eb3f4957c1ec47403a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
