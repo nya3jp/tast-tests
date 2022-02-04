@@ -46,7 +46,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data:         []string{"popups_for_url_check_index.html", "popups_for_url_check_popup.html"},
 		Params: []testing.Param{
 			{
@@ -129,6 +129,7 @@ func init() {
 				Name:              "lacros_default",
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
+				ExtraAttr:         []string{"informational"},
 				Val: []popupsSettingTestTable{
 					{
 						name:        "allowed",
@@ -154,6 +155,7 @@ func init() {
 				Name:              "lacros_allowlist",
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
+				ExtraAttr:         []string{"informational"},
 				Val: []popupsSettingTestTable{
 					{
 						name:        "blocklist_unset_default_block",
@@ -181,6 +183,7 @@ func init() {
 				Name:              "lacros_blocklist",
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
+				ExtraAttr:         []string{"informational"},
 				Val: []popupsSettingTestTable{
 					{
 						name:        "allowlist_unset_default_allow",
