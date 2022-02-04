@@ -128,6 +128,24 @@
       "parentUuid": "1849face_dd0e9b7b",
       "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a314b09_ddb0aeeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/test_download.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1528043
+      },
+      "writtenOn": "2022-02-04T12:25:00Z",
+      "side": 1,
+      "message": "I\u0027m using os.Stat for that now. No polling done as it\u0027s not needed.",
+      "parentUuid": "1449de21_05bbd854",
+      "revId": "95625c121ddd320c487104ac3e9c6a5d34d3254d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
