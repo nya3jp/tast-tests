@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3ffac9_48c7e6a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-04T12:06:18Z",
+      "side": 1,
+      "message": "LGTM\nI think it is enough to add a ToDo to think about the cleanup we had a discussion about.",
+      "revId": "0b5c36a6409ea2eda7d6a33e5f9ac34f588a277a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
