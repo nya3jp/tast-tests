@@ -12,11 +12,11 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/policy/safesearch"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/policyutil"
+	"chromiumos/tast/local/policyutil/safesearch"
 	"chromiumos/tast/testing"
 )
 
