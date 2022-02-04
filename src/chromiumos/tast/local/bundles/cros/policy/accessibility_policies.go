@@ -274,7 +274,7 @@ func init() {
 			},
 			{
 				Name:      "spoken_feedback",
-				ExtraAttr: []string{"group:mainline", "informational"},
+				ExtraAttr: []string{"group:mainline"},
 				Timeout:   3 * time.Minute,
 				Val: []accessibilityTestCase{
 					{
@@ -323,7 +323,7 @@ func init() {
 			},
 			{
 				Name:      "virtual_keyboard",
-				ExtraAttr: []string{"group:mainline", "informational"},
+				ExtraAttr: []string{"group:mainline"},
 				Timeout:   3 * time.Minute,
 				Val: []accessibilityTestCase{
 					{
