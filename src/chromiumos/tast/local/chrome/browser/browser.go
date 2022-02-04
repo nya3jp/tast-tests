@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/local/chrome/internal/cdputil"
 	"chromiumos/tast/local/chrome/internal/driver"
+	"chromiumos/tast/testing"
 )
 
 // Type indicates the type of Chrome browser to be used.
@@ -25,14 +26,19 @@ const (
 	TypeLacros Type = "lacros"
 )
 
-// Browser consists of just a Chrome session.
+// Closer holds a weak reference to a function needed to close an underlying browser either ash-chrome or lacros-chrome.
+// (Browser).Close will call the closer function.
+type Closer func(ctx context.Context) error
+
+// Browser consists of a Chrome session and a closer to be called in (Browser).Close.
 type Browser struct {
-	sess *driver.Session
+	sess   *driver.Session
+	closer Closer
 }
 
 // New creates a new Browser instance from an existing Chrome session.
-func New(sess *driver.Session) *Browser {
-	return &Browser{sess}
+func New(sess *driver.Session, closer Closer) *Browser {
+	return &Browser{sess, closer}
 }
 
 // CreateTargetOption is cpdutil.CreateTargetOption.
@@ -62,6 +68,16 @@ type TargetMatcher = driver.TargetMatcher
 // first one that is matched by tm.
 func (b *Browser) NewConnForTarget(ctx context.Context, tm TargetMatcher) (*Conn, error) {
 	return b.sess.NewConnForTarget(ctx, tm)
+}
+
+// Close calls a closer function registered from a caller of New which is either lacros-chrome or ash-chrome.
+func (b *Browser) Close(ctx context.Context) error {
+	if b.closer != nil && b.sess != nil {
+		// TODO: Remove log.
+		testing.ContextLogf(ctx, "DEBUG: Closing browser. closer: %#v", b.closer)
+		return b.closer(ctx)
+	}
+	return nil // No closer found skipping Close
 }
 
 // TestConn is chrome.TestConn.
