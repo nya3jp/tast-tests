@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "741d3829_1027592f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-04T21:44:01Z",
+      "side": 1,
+      "message": "All the other commands use the Touchscreen once and then discard it. Scroll requires multiple iterations so I originally opted to instantiate it once and pass a reference to the scroll method. The alternatives I can think of are:\n\n1. Reinstantiate it for each iteration of the scroll. This way feels slow, and error prone to me.\n2. Adjust the scroll method to accept some number of iterations and perform all of them at once (while instantiating the touch screen once internally). This could work but callers won\u0027t know how the app responds (each DUT handles the distance a differently when the Android app processes it) and may want to check the app state after each iteration. We could add a pass/fail func param which we provide to the method but that\u0027s an additional assumption about how the caller wants to use the method.\n\nThat said, I think it\u0027s an OK tradeoff unless you had additional thoughts or think one of those reasons is more valid than how it is today.",
+      "parentUuid": "0f22d5df_1078ca66",
+      "range": {
+        "startLine": 421,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "93db2207fe17db92123f39cc091efd55773faf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d2753ae_9d18995f",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "writtenOn": "2022-02-04T21:13:21Z",
       "side": 1,
       "message": "The function name generally should not start with `Get` (https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters). Perhaps rename it to NewStandardizedTouchscreen?",
+      "range": {
+        "startLine": 468,
+        "startChar": 5,
+        "endLine": 468,
+        "endChar": 31
+      },
+      "revId": "93db2207fe17db92123f39cc091efd55773faf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3bdff33_76b1969e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-04T21:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d2753ae_9d18995f",
       "range": {
         "startLine": 468,
         "startChar": 5,
