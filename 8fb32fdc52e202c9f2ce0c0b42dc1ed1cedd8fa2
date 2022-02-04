@@ -33,6 +33,75 @@
       "message": "Alex, just want to make sure this look okay from your side. The change is requested by raging@ to evaluate ARCVM impact. PTAL. Thanks.",
       "revId": "8fb32fdc52e202c9f2ce0c0b42dc1ed1cedd8fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07291c4a_498c6cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-04T19:30:09Z",
+      "side": 1,
+      "message": "FUI the original EverydayMultiTasking CUJ assumes the App will play music and it will change DUT volumes during test. Not sure if this APK do music playing or not but volume control will run anyway.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 50
+      },
+      "revId": "8fb32fdc52e202c9f2ce0c0b42dc1ed1cedd8fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09966a9b_1e0c6d89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-04T19:30:09Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the helloworld APK be downloaded before installing? Include it in the test Data definition.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 72
+      },
+      "revId": "8fb32fdc52e202c9f2ce0c0b42dc1ed1cedd8fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47dac2c5_0f76a3da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-04T19:30:09Z",
+      "side": 1,
+      "message": "There is a special handling when switching app windows if running in tablet mode with UI operations. Hellow World App should be handled here as well if it is to be run under this mode.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 54
+      },
+      "revId": "8fb32fdc52e202c9f2ce0c0b42dc1ed1cedd8fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
