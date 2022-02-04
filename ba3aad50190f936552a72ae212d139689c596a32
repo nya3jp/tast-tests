@@ -122,6 +122,24 @@
       "parentUuid": "f56387c5_370386af",
       "revId": "ba3aad50190f936552a72ae212d139689c596a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd9bae2_a873a44e",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1368301
+      },
+      "writtenOn": "2022-02-04T13:50:24Z",
+      "side": 1,
+      "message": "I added both nil check and startChromeClearPolicies here. FakeLogin has been replaced with NoLogin in startChromeClearPolicies because Chrome will still auto launch Kiosk even when FakeLogin is set, resulting in timeout of waiting for cryptohome. Policies can still be refreshed on login screen with NoLogin enabled.",
+      "parentUuid": "e01dc974_b8f02736",
+      "revId": "ba3aad50190f936552a72ae212d139689c596a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
