@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "324c01ea_78a33293",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-02-04T17:35:15Z",
+      "side": 1,
+      "message": "pretty sure I\u0027m not affecting crostini.VerifyAppX11.* tests, and these failures look preexisting. tastboard shows a lot actually...probably should be kicked from CQ?\n\nanyway, retry\n\nhttps://tastboard.corp.google.com/test/crostini.VerifyAppX11.bullseye_stable",
+      "revId": "07accf3f8a0d6b912c78aa7d4039d9ea0fb4e033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
