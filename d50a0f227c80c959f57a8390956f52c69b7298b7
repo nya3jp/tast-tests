@@ -46,6 +46,30 @@
       },
       "revId": "d50a0f227c80c959f57a8390956f52c69b7298b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b9aeef_6a89087f",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-04T16:44:00Z",
+      "side": 1,
+      "message": "Good call. Btw, with that I guess chrome and browser will be cross-referenced which we\u0027d want to avoid. Sure, we can do that but after cleaning up dependency graph something like this (https://graphviz.corp.google.com/#7c042bc0d25a50531939d4060fa12d21) that lets chrome and lacros depend on browser but not vice versa by moving all consts (chrome.BlankURL) being used in chrome to browser.\nI can probably leave a TODO in chrome.IsTargetAvailable for the future clean up if this makes sense.",
+      "parentUuid": "ab6d6f72_e8ad3fba",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "d50a0f227c80c959f57a8390956f52c69b7298b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
