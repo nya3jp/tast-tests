@@ -104,6 +104,24 @@
       "parentUuid": "4449b613_40a69c41",
       "revId": "2b25797a4659a940a112d1bf3ecefc12a99bba69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4c62db_c8cf0923",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-02-04T20:22:04Z",
+      "side": 1,
+      "message": "I made another CL that goes before this one: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3441077",
+      "parentUuid": "26c148d2_08f2d684",
+      "revId": "2b25797a4659a940a112d1bf3ecefc12a99bba69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
