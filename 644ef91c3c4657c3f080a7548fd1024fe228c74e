@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03bb7d40_cfa3d25e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-02-04T08:00:14Z",
+      "side": 1,
+      "message": "You also need to update the symlinks in:\n\nsrc/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/graphics/data/\nsrc/platform/tast-tests-private/src/chromiumos/tast/local/bundles/crosint/multivm/data/\n\nin a linked CL",
+      "revId": "644ef91c3c4657c3f080a7548fd1024fe228c74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b09783ed_047a15d1",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-02-04T08:00:14Z",
+      "side": 1,
+      "message": "These should just use GetContainerRootfsArtifact and GetContainerMetadataArtifact (for example, they currently grab the wrong artifacts when running on ARM devices)",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "644ef91c3c4657c3f080a7548fd1024fe228c74e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
