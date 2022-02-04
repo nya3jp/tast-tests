@@ -43,7 +43,7 @@ func init() {
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{
 			{
 				Name:    "both",
@@ -156,6 +156,7 @@ func init() {
 			{
 				Name:              "lacros_both",
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				Val: []vkTestCase{
 					{
@@ -217,6 +218,7 @@ func init() {
 			{
 				Name:              "lacros_virtual",
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				Val: []vkTestCase{
 					{
@@ -242,6 +244,7 @@ func init() {
 			{
 				Name:              "lacros_touch_virtual",
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 				Fixture:           fixture.LacrosPolicyLoggedIn,
 				Val: []vkTestCase{
 					{
