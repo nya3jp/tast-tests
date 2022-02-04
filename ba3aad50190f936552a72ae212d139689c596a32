@@ -158,6 +158,24 @@
       "parentUuid": "e01dc974_b8f02736",
       "revId": "ba3aad50190f936552a72ae212d139689c596a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b713dd32_ecdc19f7",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-04T14:33:42Z",
+      "side": 1,
+      "message": "Please ignore my last comment. Don\u0027t know how it got here.",
+      "parentUuid": "801bf88b_7c5d1935",
+      "revId": "ba3aad50190f936552a72ae212d139689c596a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
