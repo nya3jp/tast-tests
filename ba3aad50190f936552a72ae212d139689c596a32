@@ -140,6 +140,24 @@
       "parentUuid": "e01dc974_b8f02736",
       "revId": "ba3aad50190f936552a72ae212d139689c596a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801bf88b_7c5d1935",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-04T14:32:59Z",
+      "side": 1,
+      "message": "Plus the test is covered",
+      "parentUuid": "e01dc974_b8f02736",
+      "revId": "ba3aad50190f936552a72ae212d139689c596a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
