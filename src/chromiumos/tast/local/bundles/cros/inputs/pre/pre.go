@@ -57,7 +57,7 @@ var InputsStableModels = hwdep.Model(StableModels...)
 // InputsUnstableModels is a list of models to run inputs tests at 'informational' so that we know once they are stable enough to be promoted to CQ.
 // kevin64 is an experimental board does not support nacl, which fails Canvas installation.
 // To stabilize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
-var InputsUnstableModels = hwdep.SkipOnModel(append(StableModels, "kevin1")...)
+var InputsUnstableModels = hwdep.SkipOnModel(append(StableModels, "kevin")...)
 
 // resetTimeout is the timeout duration to trying reset of the current precondition.
 const resetTimeout = 30 * time.Second

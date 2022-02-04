@@ -69,8 +69,7 @@ var UnstableModels = []string{
 	// Platform hana
 	"hana",
 	// Platform kevin
-	"kevin",
-	"kevin1", // crbug.com/1140145
+	"kevin", // crbug.com/1140145
 	// Platform kukui
 	"krane",
 	// Platform lulu

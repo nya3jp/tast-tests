@@ -32,7 +32,7 @@ var AppsStableModels = hwdep.Model(stableModels...)
 // AppsUnstableModels is a list of models to run inputs tests at 'informational' so that we know once they are stable enough to be promoted to CQ.
 // kevin64 is an experimental board does not support nacl, which fails Canvas installation.
 // To stabilize the tests, have to exclude entire kevin model as no distinguish between kevin and kevin64.
-var AppsUnstableModels = hwdep.SkipOnModel(append(stableModels, "kevin1")...)
+var AppsUnstableModels = hwdep.SkipOnModel(append(stableModels, "kevin")...)
 
 // TODO(crbug.com/1137646): Remove this list once crbug.com/1072877 has been fixed.
 var systemWebAppsUnstableModels = []string{
