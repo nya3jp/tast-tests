@@ -23,6 +23,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type testType int
+
+const (
+	// testTypeNormal says to run the Speedometer test as usual.
+	testTypeNormal testType = iota
+	// testTypeDisplayNone says to run the Speedometer test without showing the page.
+	testTypeDisplayNone
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Speedometer,
@@ -35,9 +44,15 @@ func init() {
 		Params: []testing.Param{{
 			Name:    "",
 			Fixture: "speedometerWPRLacros",
+			Val:     testTypeNormal,
+		}, {
+			Name:    "displaynone",
+			Fixture: "speedometerWPRLacros",
+			Val:     testTypeDisplayNone,
 		}, {
 			Name:    "waylanddecreasedpriority",
 			Fixture: "lacrosWaylandDecreasedPriority",
+			Val:     testTypeNormal,
 		}},
 	})
 }
@@ -46,7 +61,7 @@ const (
 	speedometerURL = "https://browserbench.org/Speedometer2.0/"
 )
 
-func runSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue, conn *chrome.Conn) (float64, error) {
+func runSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue, t testType, conn *chrome.Conn) (float64, error) {
 	w, err := lacros.FindFirstNonBlankWindow(ctx, f.TestAPIConn())
 	if err != nil {
 		return 0.0, err
@@ -54,6 +69,14 @@ func runSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue, conn *chrom
 
 	if err := ash.SetWindowStateAndWait(ctx, f.TestAPIConn(), w.ID, ash.WindowStateMaximized); err != nil {
 		return 0.0, errors.Wrap(err, "failed to maximize window")
+	}
+
+	if t == testTypeDisplayNone {
+		if err := conn.Call(ctx, nil, `() => {
+				document.documentElement.style.display = 'none';
+			}`); err != nil {
+			return 0.0, errors.Wrap(err, "failed to set display none")
+		}
 	}
 
 	var score float64
@@ -86,24 +109,24 @@ func runSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue, conn *chrom
 	return score, nil
 }
 
-func runLacrosSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue) (float64, error) {
+func runLacrosSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue, t testType) (float64, error) {
 	conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, f, speedometerURL, lacrosperf.StabilizeAfterOpeningURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup lacros-chrome test page")
 	}
 	defer cleanup(ctx)
 
-	return runSpeedometerTest(ctx, f, conn)
+	return runSpeedometerTest(ctx, f, t, conn)
 }
 
-func runCrosSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue) (float64, error) {
+func runCrosSpeedometerTest(ctx context.Context, f lacrosfixt.FixtValue, t testType) (float64, error) {
 	conn, cleanup, err := lacrosperf.SetupCrosTestWithPage(ctx, f, speedometerURL, lacrosperf.StabilizeAfterOpeningURL)
 	if err != nil {
 		return 0.0, errors.Wrap(err, "failed to setup cros-chrome test page")
 	}
 	defer cleanup(ctx)
 
-	return runSpeedometerTest(ctx, f, conn)
+	return runSpeedometerTest(ctx, f, t, conn)
 }
 
 func Speedometer(ctx context.Context, s *testing.State) {
@@ -123,7 +146,7 @@ func Speedometer(ctx context.Context, s *testing.State) {
 	}()
 
 	pv := perf.NewValues()
-	lscore, err := runLacrosSpeedometerTest(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+	lscore, err := runLacrosSpeedometerTest(ctx, s.FixtValue().(lacrosfixt.FixtValue), s.Param().(testType))
 	if err != nil {
 		s.Fatal("Failed to run lacros Speedometer test: ", err)
 	}
@@ -134,7 +157,7 @@ func Speedometer(ctx context.Context, s *testing.State) {
 		Direction: perf.BiggerIsBetter,
 	}, lscore)
 
-	cscore, err := runCrosSpeedometerTest(ctx, s.FixtValue().(lacrosfixt.FixtValue))
+	cscore, err := runCrosSpeedometerTest(ctx, s.FixtValue().(lacrosfixt.FixtValue), s.Param().(testType))
 	if err != nil {
 		s.Fatal("Failed to run cros Speedometer test: ", err)
 	}
