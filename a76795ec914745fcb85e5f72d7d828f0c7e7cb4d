@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2cc8d03_a53ce740",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-04T15:36:38Z",
+      "side": 1,
+      "message": "Hi Sergey, please LMK if I should add someone else as reviewer. The failing tests don\u0027t seem (to me at least) to be related to my CL.",
+      "revId": "a76795ec914745fcb85e5f72d7d828f0c7e7cb4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
