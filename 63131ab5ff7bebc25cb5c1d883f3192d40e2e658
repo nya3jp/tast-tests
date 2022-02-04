@@ -50,6 +50,23 @@
       "message": "+1 to Harpreet comment about cq-depend",
       "revId": "63131ab5ff7bebc25cb5c1d883f3192d40e2e658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125d7f95_96d10c0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-04T20:56:14Z",
+      "side": 1,
+      "message": "This change requires https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3441195.\n\nPlease add Cq-Depend to it.",
+      "revId": "63131ab5ff7bebc25cb5c1d883f3192d40e2e658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
