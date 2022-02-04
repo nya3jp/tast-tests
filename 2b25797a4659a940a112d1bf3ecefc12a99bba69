@@ -69,6 +69,24 @@
       "parentUuid": "00b534df_ff38febd",
       "revId": "2b25797a4659a940a112d1bf3ecefc12a99bba69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c148d2_08f2d684",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/policy_basic.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-02-04T02:41:47Z",
+      "side": 1,
+      "message": "I think doing this in a CL before this is reasonable. You can create a new CL with the changes, then rebase this CL on it.\n\nIf you think that is a lot of work a new CL after this will do.",
+      "parentUuid": "4449b613_40a69c41",
+      "revId": "2b25797a4659a940a112d1bf3ecefc12a99bba69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
