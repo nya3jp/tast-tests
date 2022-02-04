@@ -69,6 +69,52 @@
       "parentUuid": "87aaee0d_22435efc",
       "revId": "93db2207fe17db92123f39cc091efd55773faf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f22d5df_1078ca66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-04T21:13:21Z",
+      "side": 1,
+      "message": "Is there a reason why this method is implemented differently with TouchscreenScroll, where `touchScreen` is passed in the func arguments? while it is created in TouchscreenZoom.",
+      "range": {
+        "startLine": 421,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "93db2207fe17db92123f39cc091efd55773faf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2753ae_9d18995f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-04T21:13:21Z",
+      "side": 1,
+      "message": "The function name generally should not start with `Get` (https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#getters). Perhaps rename it to NewStandardizedTouchscreen?",
+      "range": {
+        "startLine": 468,
+        "startChar": 5,
+        "endLine": 468,
+        "endChar": 31
+      },
+      "revId": "93db2207fe17db92123f39cc091efd55773faf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
