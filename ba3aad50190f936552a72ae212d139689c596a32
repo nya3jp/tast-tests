@@ -104,6 +104,24 @@
       "parentUuid": "adc2ceb9_8d738143",
       "revId": "ba3aad50190f936552a72ae212d139689c596a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e01dc974_b8f02736",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-04T11:41:27Z",
+      "side": 1,
+      "message": "I would say the nil check is a good to add in the kiosk.Close(). However here I would do what we do in the kiosk.New() https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3420298/9/src/chromiumos/tast/local/kioskmode/kiosk_mode.go#241 - when something goes horribly wrong we call startChromeClearPolicies. The only thing would be to pass the fdms as a parameter as well.",
+      "parentUuid": "f56387c5_370386af",
+      "revId": "ba3aad50190f936552a72ae212d139689c596a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
