@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5694cfc3_9d8c0751",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-02-04T07:48:23Z",
+      "side": 1,
+      "message": "mohamedaomar@: PTAL again, your review was lost due to the rebase and because I incorporated your feedback on error wrapping into `src/chromiumos/tast/local/bundles/cros/policy/safesearch/youtube.go`, which I added in another CL.\n\nkamilszarek@, mohamedaomar@: IIRC I had already talked with kamilszarek@ about the code duplication of the safesearch test code between these MGS tests and the policy tests (policy.ForceSafeSearch, policy.ForceGoogleSafeSearch, policy.ForceYouTubeSafetyMode, policy.ForceYouTubeRestrict). Now that the safesearch test functions are nicely extracted into a `safesearch` subpackage, I think we now have a good option to re-use the `safesearch` package in policy tests as well. I have created another CL (https://crrev.com/c/3439407) that does that.",
+      "revId": "01dd5b9389023f7f2410114f407443738e0545f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
