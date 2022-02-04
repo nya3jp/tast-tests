@@ -16,6 +16,69 @@
       "message": "Hi Tast Owners,\n\nPTAL",
       "revId": "ff12636053c72275aa007b51724403392792fd5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7edd39_cca143f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-04T12:41:22Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "ff12636053c72275aa007b51724403392792fd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46495bb3_aee154fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/stop_launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-04T12:41:22Z",
+      "side": 1,
+      "message": "WDYT if we modify it to : AutoLoginBailout?\nThere is a policy related to bailout so if someone would be looking for a \"bailout\" they will see we have a bailout tests already and could easily make their own :)",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "ff12636053c72275aa007b51724403392792fd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a057747_1cbdffd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/stop_launch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-04T12:41:22Z",
+      "side": 1,
+      "message": "Why do we need restart Chrome once more?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "ff12636053c72275aa007b51724403392792fd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
