@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b14846_c9a8f788",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123029
+      },
+      "writtenOn": "2022-02-04T22:56:27Z",
+      "side": 1,
+      "message": "Hi Seewai,\nRan ./fast_build.sh -T and it passed. Updated the commit message.\nDetails @ https://paste.googleplex.com/4834338270085120\n\nRegards,\nDinesh",
+      "revId": "7fc95e29a0147e8885cd2d9a38f1820962e7f3da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
