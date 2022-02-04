@@ -356,6 +356,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0e3b697_557c9166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-02-04T20:36:13Z",
+      "side": 1,
+      "message": "Miss that. Will handle in the subsequent CL.",
+      "parentUuid": "5ad298df_ff5b8289",
+      "range": {
+        "startLine": 100,
+        "startChar": 27,
+        "endLine": 100,
+        "endChar": 47
+      },
+      "revId": "f45b035971a1cb9f641f6b7f42d566ee1dcdbc67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e655f1c1_44280937",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
         "patchSetId": 17
