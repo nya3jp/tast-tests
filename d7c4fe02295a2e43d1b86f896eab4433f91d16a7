@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "240dca12_85b0a423",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-04T13:42:28Z",
+      "side": 1,
+      "message": "Test results:\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.allowlist\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.blocklist\nhttps://tastboard.corp.google.com/test/policy.ImagesForURLCheck.default",
+      "revId": "d7c4fe02295a2e43d1b86f896eab4433f91d16a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
