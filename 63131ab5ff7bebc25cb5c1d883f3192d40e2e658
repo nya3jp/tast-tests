@@ -33,6 +33,23 @@
       "message": "Hi Harpreet/Shijin,\nI added these two tests to suite:wificell_dut_validation. Can you please validate the change?\nI will submit a separate cl for adding the suite in auto test.\n\nRegards,\nDinesh",
       "revId": "63131ab5ff7bebc25cb5c1d883f3192d40e2e658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "021b382b_6cccae2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-02-04T20:37:34Z",
+      "side": 1,
+      "message": "+1 to Harpreet comment about cq-depend",
+      "revId": "63131ab5ff7bebc25cb5c1d883f3192d40e2e658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
