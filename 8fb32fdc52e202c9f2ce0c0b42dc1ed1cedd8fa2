@@ -81,6 +81,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c27ecb_1cd22696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-04T21:39:09Z",
+      "side": 1,
+      "message": "That does not apply to the ARC apps in [1]. They are built at the same time the Chrome OS test image is built, and automatically put in /usr/local/libexec/tast/apks/local/cros/ on the DUT. They will be on the DUT even if you never run any Tast tests at all. Observe that [2] leaves the test Data definition blank, and there is no problem.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/android/\n[2] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/app_validity.go",
+      "parentUuid": "09966a9b_1e0c6d89",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 72
+      },
+      "revId": "8fb32fdc52e202c9f2ce0c0b42dc1ed1cedd8fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47dac2c5_0f76a3da",
@@ -94,6 +118,30 @@
       "writtenOn": "2022-02-04T19:30:09Z",
       "side": 1,
       "message": "There is a special handling when switching app windows if running in tablet mode with UI operations. Hellow World App should be handled here as well if it is to be run under this mode.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 54
+      },
+      "revId": "8fb32fdc52e202c9f2ce0c0b42dc1ed1cedd8fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5eada5_d05ad52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj/everyday_multi_tasking_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-04T21:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47dac2c5_0f76a3da",
       "range": {
         "startLine": 433,
         "startChar": 0,
