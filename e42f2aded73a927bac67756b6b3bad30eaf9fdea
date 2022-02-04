@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa24366b_ce59df68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-02-04T19:07:50Z",
+      "side": 1,
+      "message": "https://crbug.com/1293135 -- updated \"Disallow-Recycled-Builds\" to get some progress",
+      "revId": "e42f2aded73a927bac67756b6b3bad30eaf9fdea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
