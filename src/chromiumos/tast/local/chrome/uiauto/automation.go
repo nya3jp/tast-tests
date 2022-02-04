@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -98,6 +99,13 @@ type Action = action.Action
 // and if the action fails, tells you the name of the failing action.
 func NamedAction(name string, fn Action) Action {
 	return action.Named(name, fn)
+}
+
+// UserAction wraps an action with context information.
+// For more details, refer to https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/useractions/README.md.
+func UserAction(name string, fn Action, uc *useractions.UserContext, cfg *useractions.UserActionCfg) Action {
+	userAction := useractions.NewUserAction(name, fn, uc, cfg)
+	return userAction.Run
 }
 
 // Combine combines a list of functions from Context to error into one function.
