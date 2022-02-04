@@ -20,7 +20,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Runs an X11 crostini application from the terminal and verifies that it renders",
 		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"}, // https://crbug.com/1293135
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
