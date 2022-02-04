@@ -128,6 +128,21 @@ func (s *SendSurface) ConfirmationToken(ctx context.Context) (string, error) {
 	return token, nil
 }
 
+// ConfirmationTokenWithTimeout gets the secure sharing token for the transfer.
+// This function will only wait up until the specified timeout. The Android Nearby snippet
+// still requires a token if one is available, even for in-contact sharing. However sometimes
+// there is no token, in which case the snippet will ignore it.
+func (s *SendSurface) ConfirmationTokenWithTimeout(ctx context.Context, timeout time.Duration) (string, error) {
+	if err := s.conn.WaitForExprWithTimeout(ctx, confirmationTokenJS, timeout); err != nil {
+		return "", errors.Wrap(err, "failed waiting for valid confirmation token")
+	}
+	var token string
+	if err := s.conn.Eval(ctx, confirmationTokenJS, &token); err != nil {
+		return "", errors.Wrap(err, "failed to get confirmation token")
+	}
+	return token, nil
+}
+
 // Cancel cancels the share on discovery page.
 func (s *SendSurface) Cancel(ctx context.Context) error {
 	if err := s.conn.WaitForExpr(ctx, onCancelJS); err != nil {

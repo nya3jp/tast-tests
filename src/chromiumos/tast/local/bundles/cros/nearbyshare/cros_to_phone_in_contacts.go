@@ -7,12 +7,14 @@ package nearbyshare
 import (
 	"context"
 	"path/filepath"
+	"time"
 
 	"chromiumos/tast/common/android"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -86,6 +88,28 @@ func CrosToPhoneInContacts(ctx context.Context, s *testing.State) {
 		testFiles = append(testFiles, filepath.Join(nearbycommon.SendDir, f))
 	}
 
+	s.Log("Starting in-contacts receiving on the Android device")
+	testTimeout := testData.TestTimeout
+	if err := androidDevice.ReceiveFile(ctx, crosDisplayName, androidDisplayName, false /*isHighVisibility*/, testTimeout); err != nil {
+		s.Fatal("Failed to start receiving on Android: ", err)
+	}
+	// Defer cancelling receiving if something goes wrong.
+	var shareCompleted bool
+	defer func() {
+		if !shareCompleted {
+			s.Log("Cancelling receiving")
+			if err := screenshot.CaptureChrome(ctx, cr, filepath.Join(s.OutDir(), "after_sharing.png")); err != nil {
+				s.Log("Failed to capture a screenshot before cancelling receiving")
+			}
+			if err := androidDevice.CancelReceivingFile(ctx); err != nil {
+				s.Error("Failed to cancel receiving after the share failed: ", err)
+			}
+			if err := androidDevice.AwaitSharingStopped(ctx, testTimeout); err != nil {
+				s.Error("Failed waiting for the Android device to signal that sharing has finished: ", err)
+			}
+		}
+	}()
+
 	s.Log("Starting sending on the CrOS device")
 	sender, err := nearbyshare.StartSendFiles(ctx, cr, testFiles)
 	if err != nil {
@@ -99,20 +123,28 @@ func CrosToPhoneInContacts(ctx context.Context, s *testing.State) {
 		s.Fatal("CrOS device failed to select Android device as a receiver and start the transfer: ", err)
 	}
 
-	// TODO(b/179309645): Remove UI-based Android controls once API control is available.
-	s.Log("Waiting for contacts receiving UI on Android receiver")
-	if err := androidDevice.InitUI(ctx); err != nil {
-		s.Fatal("Failed to start UI Automator: ", err)
-	}
-	defer androidDevice.CloseUI(ctx)
-	if err := androidDevice.WaitForInContactSenderUI(ctx, crosDisplayName, nearbycommon.DetectShareTargetTimeout); err != nil {
-		s.Fatal("Failed to find receive UI on the Android device: ", err)
+	s.Log("Waiting for Android receiver to detect the incoming share from CrOS sender")
+	if err := androidDevice.AwaitReceiverConfirmation(ctx, nearbycommon.DetectShareTargetTimeout); err != nil {
+		s.Fatal("Failed waiting for the Android device to detect the share: ", err)
 	}
 
-	s.Log("Accepting the share through the UI on the Android receiver")
-	if err := androidDevice.AcceptUI(ctx, testData.TransferTimeout); err != nil {
-		s.Fatal("Android failed to accept the share through the UI: ", err)
+	// Get the secure sharing token to confirm the share on Android.
+	token, err := sender.ConfirmationTokenWithTimeout(ctx, 30*time.Second)
+	if err != nil {
+		s.Log("No token found, proceeding without one")
+		token = ""
 	}
+
+	s.Log("Accepting the share on the Android receiver")
+	if err := androidDevice.AcceptTheSharing(ctx, token); err != nil {
+		s.Fatal("Failed to accept the share on the Android device: ", err)
+	}
+
+	s.Log("Waiting for the Android receiver to signal that sharing has completed")
+	if err := androidDevice.AwaitSharingStopped(ctx, testData.TransferTimeout); err != nil {
+		s.Fatal("Failed waiting for the Android device to signal that sharing has finished: ", err)
+	}
+	shareCompleted = true
 
 	// Hash the file on both sides and confirm they match. Android receives shares in its default downloads directory.
 	if err := nearbytestutils.FileHashComparison(ctx, filenames, nearbycommon.SendDir, android.DownloadDir, androidDevice); err != nil {
