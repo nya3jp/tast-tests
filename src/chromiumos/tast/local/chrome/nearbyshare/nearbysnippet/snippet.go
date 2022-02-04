@@ -277,7 +277,14 @@ func (a *AndroidNearbyDevice) AwaitSharingStopped(ctx context.Context, timeout t
 
 // AcceptTheSharing accepts the share on the receiver side.
 func (a *AndroidNearbyDevice) AcceptTheSharing(ctx context.Context, token string) error {
-	_, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "acceptTheSharing", token)
+	var err error
+	if token == "" {
+		// Sometimes there will be no sharing token for in-contact shares.
+		// In this case, sending nil as the RPC param will make the snippet skip the token verification.
+		_, err = a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "acceptTheSharing", nil)
+	} else {
+		_, err = a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "acceptTheSharing", token)
+	}
 	return err
 }
 
