@@ -16,6 +16,23 @@
       "message": "Hi Seewai,\nThanks for your support. Please find below logs for TEST performed as part of this cl:\nhttps://paste.googleplex.com/4675474476236800\nhttps://paste.googleplex.com/6751053862141952\n\nRegards,\nDinesh",
       "revId": "3123b56b6b5ffc6dca63f0d5c24b7065ff534f56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635fbb9c_80168e8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-04T23:23:48Z",
+      "side": 1,
+      "message": "Correct Cq-Depend syntax should be \n\nchromium:3441195\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#cq-depend",
+      "revId": "3123b56b6b5ffc6dca63f0d5c24b7065ff534f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
