@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "186c5d3e_5400d9b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-04T09:15:37Z",
+      "side": 1,
+      "message": "This can also be a TODO for a later improvement. Please also file a bug for the next BugBash 😀",
+      "parentUuid": "9c2fa224_94c339d3",
+      "revId": "73c5647a524bddfa86a41204929e6ea4b90c605e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2266751_4a3eba52",
