@@ -10,10 +10,9 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/mgs"
+	"chromiumos/tast/local/policyutil/safesearch"
 	"chromiumos/tast/testing"
 )
 
@@ -77,28 +76,9 @@ func ForceGoogleSafeSearch(ctx context.Context, s *testing.State) {
 			br := cr.Browser()
 
 			// Run actual test.
-			if err := testGoogleSafeSearch(ctx, br, param.wantSafe); err != nil {
+			if err := safesearch.TestGoogleSafeSearch(ctx, br, param.wantSafe); err != nil {
 				s.Error("Failed to verify state of Google safe search: ", err)
 			}
 		})
 	}
-}
-
-func testGoogleSafeSearch(ctx context.Context, br *browser.Browser, safeSearchExpected bool) error {
-	conn, err := br.NewConn(ctx, "https://www.google.com/search?q=kittens")
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to Chrome")
-	}
-	defer conn.Close()
-
-	var isSafe bool
-	if err := conn.Eval(ctx, `new URL(document.URL).searchParams.get("safe") == "active"`, &isSafe); err != nil {
-		return errors.Wrap(err, "could not read safe search param from URL")
-	}
-
-	if isSafe != safeSearchExpected {
-		return errors.Errorf("unexpected safe search behavior; got %t, want %t", isSafe, safeSearchExpected)
-	}
-
-	return nil
 }
