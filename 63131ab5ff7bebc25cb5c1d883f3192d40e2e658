@@ -67,6 +67,23 @@
       "message": "This change requires https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3441195.\n\nPlease add Cq-Depend to it.",
       "revId": "63131ab5ff7bebc25cb5c1d883f3192d40e2e658",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac81cb2_6ab483f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-04T20:56:59Z",
+      "side": 1,
+      "message": "Also, please add run Tast unit test \n\nfast_build.sh -T\n\nThanks.\n",
+      "revId": "63131ab5ff7bebc25cb5c1d883f3192d40e2e658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
