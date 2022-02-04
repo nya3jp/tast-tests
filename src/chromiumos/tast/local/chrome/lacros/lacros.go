@@ -38,7 +38,7 @@ type Lacros struct {
 
 // Browser returns a Browser instance.
 func (l *Lacros) Browser() *browser.Browser {
-	return browser.New(l.sess)
+	return browser.New(l.sess, browser.Closer(l.Close))
 }
 
 // StartTracing starts trace events collection for the selected categories. Android
@@ -66,6 +66,9 @@ func (l *Lacros) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error)
 
 // Close kills a launched instance of lacros-chrome.
 func (l *Lacros) Close(ctx context.Context) error {
+	if l.sess == nil {
+		return errors.New("close should not be called on already closed session")
+	}
 	if err := l.sess.Close(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to close connection to lacros-chrome: ", err)
 	}

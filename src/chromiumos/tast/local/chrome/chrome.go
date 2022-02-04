@@ -160,7 +160,11 @@ func (c *Chrome) Chrome() *Chrome { return c }
 
 // Browser returns a Browser instance.
 func (c *Chrome) Browser() *browser.Browser {
-	return browser.New(c.sess)
+	return browser.New(
+		c.sess,
+		// (Browser).Close does nothing for ash-chrome now since (Chrome).Close runs all clean up for it.
+		// However, if there is any clean up for ash as a browser (eg, closing window in between tests) to be called in (Browser).Close, please add here.
+		browser.Closer(func(ctx context.Context) error { return nil }))
 }
 
 // Creds returns credentials used to log into a session.
