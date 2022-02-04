@@ -16,6 +16,41 @@
       "message": "Hi Hanada-san, I assigned this to you while also making comments in the other submission \"Adjust trackpad zoom...\" so I wanted to send a friendly ping. No rush, I just didn\u0027t want it to get lost in your inbox!",
       "revId": "93db2207fe17db92123f39cc091efd55773faf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87aaee0d_22435efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-02-04T15:34:23Z",
+      "side": 1,
+      "message": "lgtm!\n\nDo you think the same failure can happen on the other tests using input.Touchscreen?\nIf so, it may be worth changing input.Touchscreen directly to apply the rotation by default.",
+      "revId": "93db2207fe17db92123f39cc091efd55773faf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94a446e_6e3f84d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-02-04T15:34:23Z",
+      "side": 1,
+      "message": "Thanks for the heads up! You\u0027re right. I missed this one somehow. Sorry for the delay!",
+      "parentUuid": "05ff51f1_f099d998",
+      "revId": "93db2207fe17db92123f39cc091efd55773faf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
