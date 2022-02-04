@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31841a5a_021185b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-04T16:48:44Z",
+      "side": 1,
+      "message": "Test results:\nhttps://tastboard.corp.google.com/test/policy.PromptForDownloadLocation",
+      "revId": "2ace00fa0f72662555992559a5073670907c95c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
