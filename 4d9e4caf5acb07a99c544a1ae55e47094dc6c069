@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80805483_a47680d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-04T16:32:11Z",
+      "side": 1,
+      "message": "Should it be set to something else? I feel that there is no \"this test is for mixed browsers\", but LacrosVariantUnneeded probably makes more sense.",
+      "range": {
+        "startLine": 32,
+        "startChar": 24,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa41a63_47675cbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-04T16:32:11Z",
+      "side": 1,
+      "message": "What is confusing - how this related to \"url\" param of the test?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 32
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68021b98_362cca48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-04T16:32:11Z",
+      "side": 1,
+      "message": "I may miss something, but doesn\u0027t this check mean \"if copy is not allowed and notification is shown then fail\"? Or what means notification !\u003d nil?\n\nAlso, I think we anyway need to also check that notification is not shown if copy was allowed.",
+      "range": {
+        "startLine": 181,
+        "startChar": 6,
+        "endLine": 181,
+        "endChar": 47
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3ed5334_6b39ef65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-04T16:32:11Z",
+      "side": 1,
+      "message": "Error here",
+      "range": {
+        "startLine": 182,
+        "startChar": 6,
+        "endLine": 182,
+        "endChar": 11
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790b95ae_978d1c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-04T16:32:11Z",
+      "side": 1,
+      "message": "Also Error, not fatal. And not that \"couldn\u0027t check\", but checked and found an error.",
+      "range": {
+        "startLine": 189,
+        "startChar": 6,
+        "endLine": 189,
+        "endChar": 63
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aec2525_7da5908e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-04T16:32:11Z",
+      "side": 1,
+      "message": "Please combine it with the previous checks and do it more logically separated if possible.",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 4
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
