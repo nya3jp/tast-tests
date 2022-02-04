@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1caf38f8_7cc63cab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-04T00:41:03Z",
+      "side": 1,
+      "message": "Please see the linked page in my previous comment. The section has an example of reading stderr.\n\nTast\u0027s testexec.CommandContext uses exec.Cmd in golang standard libs.\nhttps://pkg.go.dev/os/exec#Cmd\nIn the same was done for exec.Cmd, we can set a Writer to the class to get each Stdout and Stderr.\n\n    var stderr bytes.Buffer\n    cmd.Stderr \u003d \u0026stderr",
+      "parentUuid": "d52d7dcd_14777e60",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec4b9e96_5a63d2e7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 17
