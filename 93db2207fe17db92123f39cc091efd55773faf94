@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "815c6c47_0d09b736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-04T22:02:01Z",
+      "side": 1,
+      "message": "Thanks for the clarifications! The existing implementation makes sense to me.",
+      "parentUuid": "741d3829_1027592f",
+      "range": {
+        "startLine": 421,
+        "startChar": 1,
+        "endLine": 425,
+        "endChar": 29
+      },
+      "revId": "93db2207fe17db92123f39cc091efd55773faf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d2753ae_9d18995f",
