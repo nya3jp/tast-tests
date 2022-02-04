@@ -11,6 +11,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var exampleSerial = testing.RegisterVarString(
+	"fixture.serial",
+	"Default",
+	"Serial number of a connected Android device",
+)
+var exampleLabstation = testing.RegisterVarString(
+	"fixture.labstation",
+	"",
+	"Hostname of the labstation that the Android devices are connected to",
+)
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "metaRemote",
@@ -28,6 +39,9 @@ func (*metaRemoteFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	if x, ok := s.Var("meta.metaRemote.SetUpError"); ok {
 		s.Error(x)
 	}
+	s.Log(exampleLabstation.Value())
+	s.Log(exampleSerial.Value())
+
 	return nil
 }
 
