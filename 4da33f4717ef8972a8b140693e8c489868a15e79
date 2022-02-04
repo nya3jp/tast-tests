@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca55b12c_17d77cff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T12:47:18Z",
+      "side": 1,
+      "message": "nit: finish comments with period.",
+      "range": {
+        "startLine": 63,
+        "startChar": 30,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "revId": "4da33f4717ef8972a8b140693e8c489868a15e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75eb2e29_171d1acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T12:47:18Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 67,
+        "startChar": 24,
+        "endLine": 67,
+        "endChar": 29
+      },
+      "revId": "4da33f4717ef8972a8b140693e8c489868a15e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb78cdd1_5f5c68cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T12:47:18Z",
+      "side": 1,
+      "message": "nit: swap lines. Theoretically, Lock() might panic, then Unlock() will be called, but probably it shouldn\u0027t\n\ni.e.\n\n```\nsrvCallsMutex.Lock()\ndefer srvCallsMutex.Unlock()\n```",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "4da33f4717ef8972a8b140693e8c489868a15e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c63d0d2_d9ace730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T12:47:18Z",
+      "side": 1,
+      "message": "Isn\u0027t it abc?",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 16
+      },
+      "revId": "4da33f4717ef8972a8b140693e8c489868a15e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ec7cb9_c1848fe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T12:47:18Z",
+      "side": 1,
+      "message": "Can it be nil if err is nil?",
+      "range": {
+        "startLine": 179,
+        "startChar": 7,
+        "endLine": 179,
+        "endChar": 29
+      },
+      "revId": "4da33f4717ef8972a8b140693e8c489868a15e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f21a0f7_2031e483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T12:47:18Z",
+      "side": 1,
+      "message": "nit: you can drop/skip interval in favor of default one which is 100 ms and instead use timeout (maybe 5s?) which is more helpful",
+      "range": {
+        "startLine": 183,
+        "startChar": 27,
+        "endLine": 183,
+        "endChar": 59
+      },
+      "revId": "4da33f4717ef8972a8b140693e8c489868a15e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca870d1_802106de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T12:47:18Z",
+      "side": 1,
+      "message": "Log \"err\" in s.Fatal",
+      "range": {
+        "startLine": 184,
+        "startChar": 13,
+        "endLine": 184,
+        "endChar": 48
+      },
+      "revId": "4da33f4717ef8972a8b140693e8c489868a15e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b03971f_abc9c8f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T12:47:18Z",
+      "side": 1,
+      "message": "nit: drop this :",
+      "range": {
+        "startLine": 193,
+        "startChar": 59,
+        "endLine": 193,
+        "endChar": 60
+      },
+      "revId": "4da33f4717ef8972a8b140693e8c489868a15e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
