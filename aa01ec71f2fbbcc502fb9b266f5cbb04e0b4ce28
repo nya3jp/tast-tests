@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51a31626_b571bc8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-02-04T05:47:40Z",
+      "side": 1,
+      "message": "I see that this section was also copied from [1]. Could you also refactor it into the familylink.go common library?\n\n[1] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_insession.go;l\u003d50?q\u003df:tast%20%22more%20actions%22%20f:family",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 2
+      },
+      "revId": "aa01ec71f2fbbcc502fb9b266f5cbb04e0b4ce28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ac51f7a_cd2eb325",
         "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
         "patchSetId": 1
@@ -67,6 +90,76 @@
         "startChar": 5,
         "endLine": 112,
         "endChar": 27
+      },
+      "revId": "aa01ec71f2fbbcc502fb9b266f5cbb04e0b4ce28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "677471f5_b0930297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-02-04T05:47:40Z",
+      "side": 1,
+      "message": "+1 to what Aga said. Please add this function to the common library and recycle as much code as possible. If the UI changes and breaks this test, we shouldn\u0027t have to modify the code in multiple places.",
+      "parentUuid": "5aa6d3aa_7d78504a",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "aa01ec71f2fbbcc502fb9b266f5cbb04e0b4ce28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97ded1b8_b1b53245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-02-04T05:47:40Z",
+      "side": 1,
+      "message": "Nit: exist, here and below.",
+      "range": {
+        "startLine": 149,
+        "startChar": 34,
+        "endLine": 149,
+        "endChar": 40
+      },
+      "revId": "aa01ec71f2fbbcc502fb9b266f5cbb04e0b4ce28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff3bd12_07d0bbc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-02-04T05:47:40Z",
+      "side": 1,
+      "message": "Did you mean to return an error here if the button doesn\u0027t exist? Also below.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 7
       },
       "revId": "aa01ec71f2fbbcc502fb9b266f5cbb04e0b4ce28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
