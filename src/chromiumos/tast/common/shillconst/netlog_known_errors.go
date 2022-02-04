@@ -36,6 +36,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"patchpaneld", "shill_client.cc", ".*Unknown interface name eth\\d.*", 0},
 		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0}, // b/210893108
 		// {"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                             // b/208654528
+		{"shill", "device_info.cc", ".*Add link message does not have IFLA_ADDRESS, link: rmnet_ipa0, Technology: ethernet.*", 0}, // b/208654528
 		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                        // b/211000413
 		{"shill", "eap_listener.cc", ".*Could not bind socket to interface: No such device.*", 0},                                 // Test lab only
 		{"shill", "eap_listener.cc", ".*Could not open EAP listener socket.*", 0},                                                 // Test lab only
