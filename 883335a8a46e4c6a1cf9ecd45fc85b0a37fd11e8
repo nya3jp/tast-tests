@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00fbb25a_49a06596",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T13:53:10Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "883335a8a46e4c6a1cf9ecd45fc85b0a37fd11e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26de2ecf_e55ee000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T13:53:10Z",
+      "side": 1,
+      "message": "nit: don\u0027t start error with capital. Also good to include current value in the error message\n\n```\nerrors.Errorf(\n  \"unexpected address bar content \u003d got %q, want %q\",\n  currentNodeInfo.Value searchTerm)\n```",
+      "range": {
+        "startLine": 172,
+        "startChar": 11,
+        "endLine": 172,
+        "endChar": 73
+      },
+      "revId": "883335a8a46e4c6a1cf9ecd45fc85b0a37fd11e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3e4ea5_9d992adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/default_search_provider_suggest_url.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-04T13:53:10Z",
+      "side": 1,
+      "message": "nit: maybe \"Failed to wait expected value in the address bar\"?",
+      "range": {
+        "startLine": 174,
+        "startChar": 13,
+        "endLine": 174,
+        "endChar": 56
+      },
+      "revId": "883335a8a46e4c6a1cf9ecd45fc85b0a37fd11e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
