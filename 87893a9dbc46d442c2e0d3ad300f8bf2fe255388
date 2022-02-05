@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f8ffc91_20f68b06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T17:23:04Z",
+      "side": 1,
+      "message": "Do we want to add another line about how to run the unit test \"automation_service_test.go\"?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 5
+      },
+      "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6bb03f88_df264de5",
@@ -14,6 +37,144 @@
       "writtenOn": "2022-02-02T22:05:03Z",
       "side": 1,
       "message": "Code is fine, but I think it is better to have actual user to approve the interface.",
+      "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30d57329_be7ca3de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/automation_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T17:23:04Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 360,
+        "startChar": 4,
+        "endLine": 360,
+        "endChar": 6
+      },
+      "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bead33cf_b182165c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/automation_service_grpc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T17:23:04Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 4
+      },
+      "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4f81ff_579ef417",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/automation_service_grpc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T17:23:04Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 4
+      },
+      "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750a2a1f_293b5871",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/automation_service_grpc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T17:23:04Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2cf2ff_d26e6ff6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/automation_service_grpc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T17:23:04Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 4
+      },
+      "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a881551_dffbe870",
+        "filename": "src/chromiumos/tast/services/cros/ui/automation_service.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T17:23:04Z",
+      "side": 1,
+      "message": "Not sure why we need to add enum name as prefix?\nCould we consider not adding the prefix, eg:\n\n```\nenum State {\n  UNSPECIFIED \u003d 0;\n```\n\nthen use it in Go:\n  return State_UNSPECIFIED",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 1
+      },
       "revId": "87893a9dbc46d442c2e0d3ad300f8bf2fe255388",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
