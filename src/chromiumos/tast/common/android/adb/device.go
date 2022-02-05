@@ -194,7 +194,8 @@ func (d *Device) WaitForState(ctx context.Context, want State, timeout time.Dura
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		got, err := d.State(ctx)
 		if err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to get the device state"))
+			// When using adb over tcp/ip the state may not be read on the first attempt.
+			return errors.Wrap(err, "failed to get the device state")
 		}
 		if got != want {
 			return errors.Errorf("incorrect device state(got: %v, want: %v)", got, want)

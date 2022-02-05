@@ -67,6 +67,11 @@ func vendorKeyPath() string {
 	return strings.Join(paths, ":")
 }
 
+// ARCPrivateKey returns the private key used by ARC++ to connect to Android
+func ARCPrivateKey() string {
+	return vendorKeys[0].privateKey
+}
+
 // InstallVendorKeys installs vendor public/private key for authorizing adb connection.
 func InstallVendorKeys() error {
 	if err := os.MkdirAll(adbHome, 0755); err != nil {
