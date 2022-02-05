@@ -211,7 +211,7 @@ func testSnapshot(ctx context.Context, d *debugd.Debugd) error {
 		return errors.Wrap(err, "failed to read snapshot contents")
 	}
 
-	if trace != snapshot {
+	if !strings.HasSuffix(trace, snapshot) {
 		if err := ioutil.WriteFile(filepath.Join(dir, "snapshot"), []byte(snapshot), 0644); err != nil {
 			testing.ContextLog(ctx, "Failed to write snapshot file to output dir")
 		}
