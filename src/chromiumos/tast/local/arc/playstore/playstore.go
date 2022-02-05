@@ -22,6 +22,8 @@ type operation string
 const (
 	installApp operation = "install"
 	updateApp  operation = "update"
+
+	defaultUITimeout = 20 * time.Second
 )
 
 func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
@@ -39,22 +41,37 @@ func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonT
 	return nil
 }
 
+func findPercentageOfAppInstalled(ctx context.Context, d *ui.Device, percentageClassName, percentageText string) {
+	currPerInfo := d.Object(ui.ClassName(percentageClassName), ui.TextMatches("(?i)"+percentageText))
+	if err := currPerInfo.WaitForExists(ctx, defaultUITimeout); err == nil {
+		getInfo, err := currPerInfo.GetText(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Current progress percentage is not displayed yet")
+		}
+		testing.ContextLogf(ctx, "Percentage of app installed so far: %v ", getInfo)
+	}
+}
+
 // installOrUpdate uses the Play Store to install or update an application.
 func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int, op operation) error {
 	const (
-		defaultUITimeout = 20 * time.Second
-		shortUITimeout   = 10 * time.Second
+		shortUITimeout = 10 * time.Second
+		longUITimeout  = 90 * time.Second
 
-		accountSetupText          = "Complete account setup"
-		permissionsText           = "needs access to"
-		cantDownloadText          = "Can.t download.*"
-		cantInstallText           = "Can.t install.*"
-		versionText               = "Your device isn.t compatible with this version."
-		compatibleText            = "Your device is not compatible with this item."
-		openMyAppsText            = "Please open my apps.*"
-		termsOfServiceText        = "Terms of Service"
-		linkPaypalAccountText     = "Want to link your PayPal account.*"
-		installAppsFromDeviceText = "Install apps from your devices"
+		currentPerInfoClassName = "android.widget.TextView"
+
+		accountSetupText              = "Complete account setup"
+		permissionsText               = "needs access to"
+		cantDownloadText              = "Can.t download.*"
+		cantInstallText               = "Can.t install.*"
+		versionText                   = "Your device isn.t compatible with this version."
+		compatibleText                = "Your device is not compatible with this item."
+		openMyAppsText                = "Please open my apps.*"
+		termsOfServiceText            = "Terms of Service"
+		linkPaypalAccountText         = "Want to link your PayPal account.*"
+		installAppsFromDeviceText     = "Install apps from your devices"
+		currentInstallPercentInGBText = ".*GB"
+		currentInstallPercentInMBText = ".*MB"
 
 		acceptButtonText   = "accept"
 		continueButtonText = "continue"
@@ -155,6 +172,24 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 				}
 			} else {
 				return testing.PollBreak(errors.Errorf("hit %s attempt limit of %d times", op, tryLimit))
+			}
+		}
+
+		// Wait until progress bar is gone.
+		progressBar := d.Object(ui.ClassName("android.widget.ProgressBar"))
+		if err := progressBar.WaitForExists(ctx, defaultUITimeout); err == nil {
+			for _, val := range []struct {
+				currentPercentInfoClassName string
+				currentInstallPercentInText string
+			}{
+				{currentPerInfoClassName, currentInstallPercentInMBText},
+				{currentPerInfoClassName, currentInstallPercentInGBText},
+			} {
+				findPercentageOfAppInstalled(ctx, d, val.currentPercentInfoClassName, val.currentInstallPercentInText)
+			}
+			testing.ContextLog(ctx, "Wait until progress bar is gone")
+			if err := progressBar.WaitUntilGone(ctx, longUITimeout); err != nil {
+				return errors.Wrap(err, "progress bar still exists")
 			}
 		}
 
