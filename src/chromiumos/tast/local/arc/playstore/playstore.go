@@ -24,6 +24,8 @@ type operation string
 const (
 	installApp operation = "install"
 	updateApp  operation = "update"
+
+	defaultUITimeout = 20 * time.Second
 )
 
 func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonText string, timeout time.Duration) error {
@@ -41,22 +43,37 @@ func findAndDismissDialog(ctx context.Context, d *ui.Device, dialogText, buttonT
 	return nil
 }
 
+func findPercentageOfAppInstalled(ctx context.Context, d *ui.Device, percentageClassName, percentageText string) {
+	currPerInfo := d.Object(ui.ClassName(percentageClassName), ui.TextMatches("(?i)"+percentageText))
+	if err := currPerInfo.WaitForExists(ctx, defaultUITimeout); err == nil {
+		getInfo, err := currPerInfo.GetText(ctx)
+		if err != nil {
+			testing.ContextLog(ctx, "Current progress percentage is not displayed yet")
+		}
+		testing.ContextLogf(ctx, "Percentage of app installed so far: %v ", getInfo)
+	}
+}
+
 // installOrUpdate uses the Play Store to install or update an application.
 func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName string, tryLimit int, op operation) error {
 	const (
-		defaultUITimeout = 20 * time.Second
-		shortUITimeout   = 10 * time.Second
+		shortUITimeout = 10 * time.Second
+		longUITimeout  = 90 * time.Second
 
-		accountSetupText          = "Complete account setup"
-		permissionsText           = "needs access to"
-		cantDownloadText          = "Can.t download.*"
-		cantInstallText           = "Can.t install.*"
-		versionText               = "Your device isn.t compatible with this version."
-		compatibleText            = "Your device is not compatible with this item."
-		openMyAppsText            = "Please open my apps.*"
-		termsOfServiceText        = "Terms of Service"
-		linkPaypalAccountText     = "Want to link your PayPal account.*"
-		installAppsFromDeviceText = "Install apps from your devices"
+		currentPerInfoClassName = "android.widget.TextView"
+
+		accountSetupText              = "Complete account setup"
+		permissionsText               = "needs access to"
+		cantDownloadText              = "Can.t download.*"
+		cantInstallText               = "Can.t install.*"
+		versionText                   = "Your device isn.t compatible with this version."
+		compatibleText                = "Your device is not compatible with this item."
+		openMyAppsText                = "Please open my apps.*"
+		termsOfServiceText            = "Terms of Service"
+		linkPaypalAccountText         = "Want to link your PayPal account.*"
+		installAppsFromDeviceText     = "Install apps from your devices"
+		currentInstallPercentInGBText = ".*GB"
+		currentInstallPercentInMBText = ".*MB"
 
 		acceptButtonText   = "accept"
 		continueButtonText = "continue"
@@ -161,7 +178,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Handle "Want to link your PayPal account" if necessary.
-		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText)).WaitForExists(ctx, defaultUITimeout); err == nil {
+		if err := d.Object(ui.TextMatches("(?i)"+linkPaypalAccountText), ui.Enabled(true)).WaitForExists(ctx, defaultUITimeout); err == nil {
 			testing.ContextLog(ctx, "Want to link your paypal account does exist")
 			noThanksButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+noThanksButtonText))
 			if err := noThanksButton.WaitForExists(ctx, defaultUITimeout); err != nil {
@@ -180,7 +197,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		}
 
 		// Complete account setup if necessary.
-		if err := d.Object(ui.Text(accountSetupText)).WaitForExists(ctx, shortUITimeout); err == nil {
+		if err := d.Object(ui.Text(accountSetupText), ui.Enabled(true)).WaitForExists(ctx, shortUITimeout); err == nil {
 			testing.ContextLog(ctx, "Completing account setup")
 			continueButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+continueButtonText))
 			if err := continueButton.WaitForExists(ctx, defaultUITimeout); err != nil {
@@ -201,6 +218,24 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 		// Grant permissions if necessary.
 		if err := findAndDismissDialog(ctx, d, permissionsText, acceptButtonText, defaultUITimeout); err != nil {
 			return testing.PollBreak(err)
+		}
+
+		// Wait until progress bar is gone.
+		progressBar := d.Object(ui.ClassName("android.widget.ProgressBar"))
+		if err := progressBar.WaitForExists(ctx, defaultUITimeout); err == nil {
+			for _, val := range []struct {
+				currentPercentInfoClassName string
+				currentInstallPercentInText string
+			}{
+				{currentPerInfoClassName, currentInstallPercentInMBText},
+				{currentPerInfoClassName, currentInstallPercentInGBText},
+			} {
+				findPercentageOfAppInstalled(ctx, d, val.currentPercentInfoClassName, val.currentInstallPercentInText)
+			}
+			testing.ContextLog(ctx, "Wait until progress bar is gone")
+			if err := progressBar.WaitUntilGone(ctx, longUITimeout); err != nil {
+				return errors.Wrap(err, "progress bar still exists")
+			}
 		}
 
 		// Make sure we are still on the Play Store installation page by checking whether the "open" or "play" button exists.
