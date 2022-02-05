@@ -73,6 +73,7 @@ func init() {
 			Name:              "vp9_hw_svc_l3t3_key",
 			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", "L3T3_KEY"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			Name:              "vp8_hw_multi_vp9_3x3",
