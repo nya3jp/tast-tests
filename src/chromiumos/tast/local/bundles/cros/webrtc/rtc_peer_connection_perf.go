@@ -26,6 +26,10 @@ func init() {
 		Data:         append(peerconnection.DataFiles(), peerconnection.LoopbackFile),
 		// TODO(crbug.com/1029548): Add more variations here, e.g. vp8.
 		Params: []testing.Param{{
+			Name:    "av1_sw",
+			Val:     peerconnection.MakeSWTestOptions("AV1"),
+			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
+		}, {
 			Name:              "h264_hw",
 			Val:               peerconnection.MakeTestOptions("H264"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, caps.HWEncodeH264, "proprietary_codecs"},
@@ -89,10 +93,6 @@ func init() {
 			Fixture:           "chromeVideoWithFakeWebcam",
 			// Trogdor doesn't have enough hardware contexts to pass this test.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor")),
-		}, {
-			Name:    "av1_sw",
-			Val:     peerconnection.MakeSWTestOptions("AV1"),
-			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
 			Name:              "vp8_hw_multi_vp9_3x3_global_vaapi_lock_disabled",
 			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 3, "tulip2-320x180.vp9.webm"),
