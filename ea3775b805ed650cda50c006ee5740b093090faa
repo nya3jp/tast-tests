@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce0324f8_ce325b12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-05T08:23:10Z",
+      "side": 1,
+      "message": "Adding xiyuan to reviewers",
+      "revId": "ea3775b805ed650cda50c006ee5740b093090faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ea724d_8eb44899",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-05T08:23:10Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be DragPoints?",
+      "revId": "ea3775b805ed650cda50c006ee5740b093090faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f04c62b_bfb83204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-02-05T08:23:10Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be Drag? Let\u0027s add a function comment",
+      "revId": "ea3775b805ed650cda50c006ee5740b093090faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
