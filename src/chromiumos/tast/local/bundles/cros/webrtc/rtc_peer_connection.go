@@ -103,7 +103,7 @@ func init() {
 			Name:              "vp9_dec_force_l3t3_key",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP9"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("dedede", "trogdor", "volteer")),
 			Fixture:           "chromeVideoWithFakeWebcamAndForceL3T3KeyVP9",
 		}, {
 			// This is a decoding test of 2 temporal layers test, via the (experimental) API.
@@ -125,7 +125,7 @@ func init() {
 			Name:              "vp9_dec_svc_l3t3_key",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP9", svc: "L3T3_KEY"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			ExtraHardwareDeps: hwdep.D(hwdep.Platform("dedede", "trogdor", "volteer")),
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			Name:              "h264_enc",
