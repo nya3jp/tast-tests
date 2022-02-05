@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81506ba_93d463fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-02-05T08:17:23Z",
+      "side": 1,
+      "message": "Hi Jun,\nThis CL would be the last of this new CUJ case. Thank you for your time.\n\nOne of the previous CL had slightly changed. Could you please review it again? Thanks.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3376815",
+      "revId": "3ade1c6b9409f673e31de5b8075e2fd696361387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
