@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1dbbf64_1a58f0f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T18:16:25Z",
+      "side": 1,
+      "message": "so we can\u0027t do screen record during Chroms session restart?\nhttps://crrev.com/c/3362666/13/src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go#43\nis this design to work in this way?",
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18fcde6_5b97da99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T18:16:25Z",
+      "side": 1,
+      "message": "Why we need this check?\nIt seems totally equal to `svc.fileName \u003d req.FileName`.",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4da04092_93c6d6b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/screen_recorder_service.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T18:16:25Z",
+      "side": 1,
+      "message": "nit: better to have space between? `\" + dir`",
+      "range": {
+        "startLine": 103,
+        "startChar": 59,
+        "endLine": 103,
+        "endChar": 62
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116ec9d3_e429a58a",
+        "filename": "src/chromiumos/tast/services/cros/ui/screen_recorder_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T18:16:25Z",
+      "side": 1,
+      "message": "This service seems not related to \"Nearby Share feature\".",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e0e006_a9314264",
+        "filename": "src/chromiumos/tast/services/cros/ui/screen_recorder_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T18:16:25Z",
+      "side": 1,
+      "message": "seems ` and` unnecessary?",
+      "range": {
+        "startLine": 20,
+        "startChar": 65,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b70c43_f9348ccf",
+        "filename": "src/chromiumos/tast/services/cros/ui/screen_recorder_service.proto",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T18:16:25Z",
+      "side": 1,
+      "message": "Would you consider to add the docstring about this can be empty and ScreenRecorderService will use tmemp file path for it?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "87c55ff4e26b04d6e397678baf711b1cec2e6892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
