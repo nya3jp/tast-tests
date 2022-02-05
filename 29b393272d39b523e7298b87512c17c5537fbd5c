@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea26c17_5e959159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "nit: missing space here\n\nand the following lines",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40902938_24872fcd",
+        "filename": "src/chromiumos/tast/local/common/shared_object.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "is \"collector\" more suitable here?",
+      "range": {
+        "startLine": 16,
+        "startChar": 79,
+        "endLine": 16,
+        "endChar": 91
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25323b81_98dd133b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "According to chrome_service.go#toOptions, \nit seems that the default one is `chrome.FakeLogin`? \nIf yes, do we want to rename this to \"default_fake_login\"?",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee157ce9_e13f7825",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "Should this be \"LoginMode_NO_LOGIN\" to \"TryReuseSession\"?",
+      "range": {
+        "startLine": 53,
+        "startChar": 18,
+        "endLine": 53,
+        "endChar": 38
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b17c94_85c0ac89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "I think we missed a very important CUJ: login with GAIA account.",
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df5b7b87_c69f6f55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1fc74c3_07879865",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32715d11_f3f84351",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "nit: How about \"CrOS server process\" to make the log more helpful?",
+      "range": {
+        "startLine": 60,
+        "startChar": 48,
+        "endLine": 60,
+        "endChar": 60
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf78dc8_3ab6e610",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e811febd_579d194a",
+        "filename": "src/chromiumos/tast/remote/crosserverutil/cros_server_util.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "nit: missing space here",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 4
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "160f96cd_5dd5c1c5",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "Is ChromeService only for \"Nearby Share feature\"?\nIt seems this is for restarting Chrome session and\nnot related to \"Nearby Share feature\".",
+      "range": {
+        "startLine": 13,
+        "startChar": 55,
+        "endLine": 13,
+        "endChar": 75
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ba8034_71588626",
+        "filename": "src/chromiumos/tast/services/cros/ui/chrome_service.proto",
+        "patchSetId": 16
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T16:31:29Z",
+      "side": 1,
+      "message": "There\u0027s a \"try_reuse_session\" in the NewRequest, \nit seems we can also \"attach\" to a Chrome session?\nDo we want to address this in the method name and docstring?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "29b393272d39b523e7298b87512c17c5537fbd5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
