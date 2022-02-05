@@ -61,7 +61,7 @@ service NearbyShareService {
   rpc StartLogging (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
   // SaveLogs is used to saved the relevant log files for a nearby share run.
-  rpc SaveLogs (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc SaveLogs (SaveLogsRequest) returns (google.protobuf.Empty) {}
 
   // ClearTransferredFiles clears the transferred files in the receiver's Downloads folder.
   rpc ClearTransferredFiles (google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -142,4 +142,9 @@ message CrOSShareTokenResponse {
 // CrOSAttributesResponse contains the attributes for a chromeos DUT.
 message CrOSAttributesResponse {
   string attributes = 1;
+}
+
+// SaveLogsRequest contains whether or not to save a screenshot and a UI tree dump.
+message SaveLogsRequest {
+  bool save_ui_logs = 1;
 }
