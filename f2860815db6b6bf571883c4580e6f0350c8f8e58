@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bab7f29_775e8b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "This is defined here: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/crostini/ui/sharedfolders/sharedfolders.go;l\u003d36",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0970d9b7_67998a26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "Please do not define the package const, instead, put it inside the func.\nSame comment for the rest consts.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d889efb8_0730c229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "This is defined here: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/filesapp/filesapp.go;l\u003d29",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34c074c6_57df3756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "Usually it is recommended to use filepath.Join instead of adding strings together to form a path.",
+      "range": {
+        "startLine": 31,
+        "startChar": 68,
+        "endLine": 31,
+        "endChar": 69
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c82e416_80f82969",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "Usually the first contact is the author. I\u0027m not needed here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 42,
+        "endChar": 47
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac940b6a_51ee3d5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "These two steps could be combined through uiauto.Combine",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 95
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde0d72f_2d45e102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "This should be immediately after filesApp.ClickContextMenuItem.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 6
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9a68e0_107b30f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "Please use filepath.Join",
+      "range": {
+        "startLine": 118,
+        "startChar": 52,
+        "endLine": 118,
+        "endChar": 85
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff7fdf9_5c39843d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "Please do not pass s around, return an error instead.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 11
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9245d0d_107417b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "Usually the error msg should be: Failed to ...",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7751c3e_8f9fb986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "This could be flaky especially in tablet mode as the files app icon could be covered by other windows (gedit, terminal app). \nNot sure whether this func would bring the window to foreground: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;l\u003d260\nIf it does not, suggest to write a new one to bring a window foreground.",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 14
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2deb38fe_e6f9dc3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "It seems that this test case could be splitted into two parts: before restart crostini and after restart crostini. Suggest to write two func to cover this to make the major func shorter and easier for reading.",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29ce1362_008005b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-05T00:28:38Z",
+      "side": 1,
+      "message": "It does not input any string?",
+      "range": {
+        "startLine": 177,
+        "startChar": 35,
+        "endLine": 177,
+        "endChar": 47
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
