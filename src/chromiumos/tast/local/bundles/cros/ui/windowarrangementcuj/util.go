@@ -8,12 +8,15 @@ package windowarrangementcuj
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
+	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
 
@@ -31,6 +34,10 @@ type ChromeCleanUpFunc func(ctx context.Context) error
 // CloseAboutBlankFunc defines the helper to close about:blank page. It is
 // implemented for lacros-chrome and no-op for ash-chrome.
 type CloseAboutBlankFunc func(ctx context.Context) error
+
+// DragPoints holds three points, to signify a drag from the first point
+// to the second point, then the third point, and back to the first point.
+type DragPoints [3]coords.Point
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
 func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrome, ash.ConnSource, *chrome.TestConn, ChromeCleanUpFunc, CloseAboutBlankFunc, *chrome.TestConn, error) {
@@ -99,4 +106,9 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrom
 
 	ok = true
 	return cr, cs, tconn, cleanup, closeAboutBlank, bTconn, nil
+}
+
+// Drag does the specified drag based on the documentation of DragPoints.
+func Drag(ctx context.Context, pc pointer.Context, p DragPoints, duration time.Duration) error {
+	return pc.Drag(p[0], pc.DragTo(p[1], duration), pc.DragTo(p[2], duration), pc.DragTo(p[0], duration))(ctx)
 }

@@ -37,7 +37,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 		return errors.Wrap(err, "failed to get the primary display info")
 	}
 
-	splitViewDragPoints := []coords.Point{
+	splitViewDragPoints := DragPoints{
 		info.WorkArea.CenterPoint(),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width/4, info.WorkArea.CenterY()),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width-1, info.WorkArea.CenterY()),
@@ -82,13 +82,8 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 
 	// Split view resizing by dragging the divider.
 	testing.ContextLog(ctx, "Dragging the divider with two snapped windows")
-	dragDivider := pc.Drag(splitViewDragPoints[0],
-		pc.DragTo(splitViewDragPoints[1], slow),
-		pc.DragTo(splitViewDragPoints[2], slow),
-		pc.DragTo(splitViewDragPoints[0], slow),
-	)
 	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
-	if err := dragDivider(ctx); err != nil {
+	if err := Drag(ctx, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
@@ -108,7 +103,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 
 	// Split view resizing by dragging the divider.
 	testing.ContextLog(ctx, "Dragging the divider with an overview window")
-	if err := dragDivider(ctx); err != nil {
+	if err := Drag(ctx, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
@@ -132,7 +127,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 
 	// Split view resizing by dragging the divider.
 	testing.ContextLog(ctx, "Dragging the divider with an empty overview grid")
-	if err := dragDivider(ctx); err != nil {
+	if err := Drag(ctx, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 

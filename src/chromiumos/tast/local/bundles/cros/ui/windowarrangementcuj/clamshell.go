@@ -8,11 +8,13 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -56,7 +58,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 		return errors.Wrap(err, "failed to get the primary display info")
 	}
 
-	splitViewDragPoints := []coords.Point{
+	splitViewDragPoints := DragPoints{
 		info.WorkArea.CenterPoint(),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width/4, info.WorkArea.CenterY()),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width-1, info.WorkArea.CenterY()),
@@ -176,9 +178,30 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 		return errors.Wrap(err, "failed to wait for windows to be snapped correctly")
 	}
 
-	// Split view resizing. Some preparations need to be done before dragging the divider in
-	// order to collect Ash.SplitViewResize.PresentationTime.SingleWindow. It must have a snapped
-	// window and an overview grid to be able to collect the metrics for SplitViewController.
+	// Use multiresize on the two snapped windows.
+	if err := action.Combine(
+		"hover mouse over split view divider to show the multiresizer",
+		mouse.Move(tconn, splitViewDragPoints[0].Sub(coords.NewPoint(10, 10)), 0),
+		mouse.Move(tconn, splitViewDragPoints[0], duration),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to hover mouse over split view divider")
+	}
+	multiresizerBounds, err := ui.Location(ctx, nodewith.Role("window").ClassName("MultiWindowResizeController"))
+	if err != nil {
+		return errors.Wrap(err, "failed to get the multiresizer location")
+	}
+	offset := multiresizerBounds.CenterPoint().Sub(splitViewDragPoints[0])
+	var multiresizeDragPoints DragPoints
+	for i := range multiresizeDragPoints {
+		multiresizeDragPoints[i] = splitViewDragPoints[i].Add(offset)
+	}
+	// Drag divider.
+	testing.ContextLog(ctx, "Dragging the divider with two snapped windows")
+	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
+	if err := Drag(ctx, pc, multiresizeDragPoints, duration); err != nil {
+		return errors.Wrap(err, dividerDragError)
+	}
+
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to open the keyboard")
@@ -214,13 +237,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	}
 	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider with an overview window")
-	dragDivider := pc.Drag(splitViewDragPoints[0],
-		pc.DragTo(splitViewDragPoints[1], duration),
-		pc.DragTo(splitViewDragPoints[2], duration),
-		pc.DragTo(splitViewDragPoints[0], duration),
-	)
-	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
-	if err := dragDivider(ctx); err != nil {
+	if err := Drag(ctx, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 	// Drag the second window to another desk to obtain an empty overview grid.
@@ -246,7 +263,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	}
 	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider with an empty overview grid")
-	if err := dragDivider(ctx); err != nil {
+	if err := Drag(ctx, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
