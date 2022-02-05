@@ -44,6 +44,7 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 	const (
 		defaultUITimeout = 20 * time.Second
 		shortUITimeout   = 10 * time.Second
+		longUITimeout    = 90 * time.Second
 
 		accountSetupText          = "Complete account setup"
 		permissionsText           = "needs access to"
@@ -175,6 +176,13 @@ func installOrUpdate(ctx context.Context, a *arc.ARC, d *ui.Device, pkgName stri
 			if err := skipButton.Click(ctx); err != nil {
 				return testing.PollBreak(err)
 			}
+		}
+
+		// Wait until progress bar is gone.
+		progressBar := d.Object(ui.ClassName("android.widget.ProgressBar"))
+		if err := progressBar.WaitForExists(ctx, defaultUITimeout); err == nil {
+			testing.ContextLog(ctx, "Wait until progress bar is gone")
+			progressBar.WaitUntilGone(ctx, longUITimeout)
 		}
 
 		// Complete account setup if necessary.
