@@ -404,14 +404,17 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 // PostTest will pull the logs from the DUT and delete leftover logs and test files.
 func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	// Save logs on each DUT.
-	if _, err := f.sender.SaveLogs(ctx, &empty.Empty{}); err != nil {
+	if _, err := f.sender.SaveLogs(ctx, &nearbyservice.SaveLogsRequest{SaveUiLogs: s.HasError()}); err != nil {
 		s.Error("Failed to save nearby share logs on the sender: ", err)
 	}
-	if _, err := f.receiver.SaveLogs(ctx, &empty.Empty{}); err != nil {
+	if _, err := f.receiver.SaveLogs(ctx, &nearbyservice.SaveLogsRequest{SaveUiLogs: s.HasError()}); err != nil {
 		s.Error("Failed to save nearby share logs on the receiver: ", err)
 	}
 	// Pull the log files back to the host.
 	logsToSave := []string{nearbyshare.ChromeLog, nearbyshare.MessageLog, nearbyshare.BtsnoopLog}
+	if s.HasError() {
+		logsToSave = append(logsToSave, "faillog")
+	}
 	duts := []*dut.DUT{f.d1, f.d2}
 	tags := []string{"sender", "receiver"}
 	for i, dut := range duts {
