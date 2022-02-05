@@ -119,7 +119,8 @@ type DRMTraceSnapshotType uint32
 
 // This must match the DRMTraceSnapshotType enum defined in org.chromium.debugd.xml.
 const (
-	DRMTraceSnapshotTypeTrace DRMTraceSnapshotType = 0
+	DRMTraceSnapshotTypeTrace    DRMTraceSnapshotType = 0
+	DRMTraceSnapshotTypeModetest DRMTraceSnapshotType = 1
 )
 
 // DRMTraceCategories is a bitmask used as an argument to the DRMTraceSetCategories method.

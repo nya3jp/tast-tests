@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -74,8 +75,11 @@ func DRMTraceTool(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verify DRMTraceSnapshot method")
-	if err := testSnapshot(ctx, dbgd); err != nil {
-		s.Error("Failed to verify DRMTraceSnapshot: ", err)
+	if err := testTraceSnapshot(ctx, dbgd); err != nil {
+		s.Error("Failed to verify DRMTraceSnapshot for drm_trace: ", err)
+	}
+	if err := testModetestSnapshot(ctx, dbgd); err != nil {
+		s.Error("Failed to verify DRMTraceSnapshot for modetest: ", err)
 	}
 
 	s.Log("Verify DRMTraceTool parameters are reset correctly")
@@ -169,8 +173,8 @@ func testSetSize(ctx context.Context, d *debugd.Debugd) error {
 	return nil
 }
 
-// testSnapshot verifies the DRMTraceSnapshot D-Bus method.
-func testSnapshot(ctx context.Context, d *debugd.Debugd) error {
+// testTraceSnapshot verifies the DRMTraceSnapshot D-Bus method for debugd.DRMTraceSnapshotTypeTrace
+func testTraceSnapshot(ctx context.Context, d *debugd.Debugd) error {
 	dir, ok := testing.ContextOutDir(ctx)
 	if !ok {
 		return errors.New("couldn't get output dir")
@@ -222,6 +226,59 @@ func testSnapshot(ctx context.Context, d *debugd.Debugd) error {
 	}
 
 	return nil
+}
+
+// testModetestSnapshot verifies the DRMTraceSnapshot D-Bus method for debugd.DRMTraceSnapshotTypeModetest
+func testModetestSnapshot(ctx context.Context, d *debugd.Debugd) error {
+	dir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("couldn't get output dir")
+	}
+
+	// Clear any snapshots from previous runs.
+	if err := removeDirContents("/var/log/display_debug"); err != nil {
+		return errors.Wrap(err, "failed to clear /var/log/display_debug directory")
+	}
+
+	// Do the snapshot.
+	if err := d.DRMTraceSnapshot(ctx, debugd.DRMTraceSnapshotTypeModetest); err != nil {
+		return errors.Wrap(err, "failed to call DRMTraceSnapshot")
+	}
+
+	// Read the snapshot.
+	matches, err := filepath.Glob("/var/log/display_debug/modetest.*")
+	if err != nil {
+		return errors.Wrapf(err, "failed to glob directory: %s", "/var/log/display_debug/modetest.*")
+	}
+	if len(matches) != 1 {
+		return errors.Errorf("unexpected number of glob matches: got %d want 1", len(matches))
+	}
+
+	snapshot, err := readFileToString(matches[0])
+	if err != nil {
+		return errors.Wrap(err, "failed to read snapshot contents")
+	}
+
+	// Check if it looks like reasonable modetest output.
+	var reason string
+	if len(snapshot) == 0 {
+		reason = "snapshot is empty"
+	} else if match, _ := regexp.Match("(?m)^Connectors:", []byte(snapshot)); !match {
+		reason = "did not find Connectors section"
+	} else if match, _ := regexp.Match("(?m)^CRTCs:", []byte(snapshot)); !match {
+		reason = "did not find CRTCs section"
+	} else if match, _ := regexp.Match("(?m)^Planes:", []byte(snapshot)); !match {
+		reason = "did not find Planes section"
+	} else {
+		// modetest output looks reasonable, return with no error.
+		return nil
+	}
+
+	// Fall through to error handling.
+	if err := ioutil.WriteFile(filepath.Join(dir, "modetest_snapshot"), []byte(snapshot), 0644); err != nil {
+		testing.ContextLog(ctx, "Failed to write snapshot file to output dir")
+	}
+	return errors.Errorf("snapshot contents does not look like modetest output: %s", reason)
 }
 
 // testLogin verifies that drm_trace related configuration is reset correctly on login.
