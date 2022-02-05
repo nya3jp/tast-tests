@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39293551_9715ba41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-05T21:28:28Z",
+      "side": 1,
+      "message": "This is fine with me. Note that I had success asking Jesse\u0027s team to save logs for me in Tast directly: https://b.corp.google.com/issues/198206508#comment6\n\nCan consider adding a FR to them for this if that makes sense for all multi dut tests?",
+      "revId": "90ec0294c7773c0e6272e31e3ccfc0c9f940fa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5180264_bd8c1183",
+        "filename": "src/chromiumos/tast/services/cros/nearbyservice/nearby_share_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-02-05T21:28:28Z",
+      "side": 1,
+      "message": "ui-related logs isn\u0027t super clear",
+      "range": {
+        "startLine": 147,
+        "startChar": 51,
+        "endLine": 147,
+        "endChar": 67
+      },
+      "revId": "90ec0294c7773c0e6272e31e3ccfc0c9f940fa5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
