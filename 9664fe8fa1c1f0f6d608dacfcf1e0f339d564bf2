@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f301c6_f28ff72c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-02-05T01:45:14Z",
+      "side": 1,
+      "message": "Update comment?",
+      "range": {
+        "startLine": 73,
+        "startChar": 85,
+        "endLine": 73,
+        "endChar": 103
+      },
+      "revId": "9664fe8fa1c1f0f6d608dacfcf1e0f339d564bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9943e168_d59b3789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_reporter_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-02-05T01:45:14Z",
+      "side": 1,
+      "message": "Move inside the if statement?",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 2
+      },
+      "revId": "9664fe8fa1c1f0f6d608dacfcf1e0f339d564bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99d13ef4_ab8ec6aa",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1300299
+      },
+      "writtenOn": "2022-02-05T01:45:14Z",
+      "side": 1,
+      "message": "I don\u0027t see this used anywhere",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "9664fe8fa1c1f0f6d608dacfcf1e0f339d564bf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
