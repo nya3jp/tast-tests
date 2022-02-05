@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/services/cros/nearbyservice"
@@ -145,7 +146,8 @@ func (n *NearbyService) StartLogging(ctx context.Context, req *empty.Empty) (*em
 }
 
 // SaveLogs saves the chrome and messages logs on the DUT.
-func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+// It will additionally save a screenshot and UI tree dump on error.
+func (n *NearbyService) SaveLogs(ctx context.Context, req *nearbyservice.SaveLogsRequest) (*empty.Empty, error) {
 	var err error
 	if err = os.RemoveAll(nearbycommon.NearbyLogDir); err != nil {
 		testing.ContextLog(ctx, "Failed to delete nearby log dir: ", err)
@@ -170,6 +172,7 @@ func (n *NearbyService) SaveLogs(ctx context.Context, req *empty.Empty) (*empty.
 	if err := fsutil.CopyFile(filepath.Join(os.TempDir(), nearbycommon.BtsnoopLog), filepath.Join(nearbycommon.NearbyLogDir, nearbycommon.BtsnoopLog)); err != nil {
 		testing.ContextLog(ctx, "Failed to save btsnoop log: ", err)
 	}
+	faillog.DumpUITreeWithScreenshotOnError(ctx, nearbycommon.NearbyLogDir, func() bool { return req.SaveUiLogs }, n.cr, "ui")
 	return &empty.Empty{}, err
 }
 
