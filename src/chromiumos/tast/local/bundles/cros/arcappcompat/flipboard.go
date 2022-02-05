@@ -113,6 +113,7 @@ func launchAppForFlipboard(ctx context.Context, s *testing.State, tconn *chrome.
 		flipID                   = "flipboard.app:id/cover_flip_hint"
 		noneOFTheAboveButtonText = "None Of The Above"
 		notNowID                 = "android:id/autofill_save_no"
+		neverButtonID            = "com.google.android.gms:id/credential_save_reject"
 	)
 
 	// Click on sign in button.
@@ -208,19 +209,26 @@ func launchAppForFlipboard(ctx context.Context, s *testing.State, tconn *chrome.
 
 	// Click on signin Button until flip button exist.
 	signInButton := d.Object(ui.ID(nextID))
-	notNowButton := d.Object(ui.ID(notNowID))
+	neverButton := d.Object(ui.ID(neverButtonID))
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := notNowButton.Exists(ctx); err != nil {
+		if err := neverButton.Exists(ctx); err != nil {
 			signInButton.Click(ctx)
 			return err
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: testutil.LongUITimeout}); err != nil {
+		s.Log("neverButton doesn't exist: ", err)
+	} else if err := neverButton.Click(ctx); err != nil {
+		s.Fatal("Failed to click on neverButton: ", err)
+	}
+
+	// Click on notNowButton.
+	notNowButton := d.Object(ui.ID(notNowID))
+	if err := notNowButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
 		s.Log("notNowButton doesn't exist: ", err)
 	} else if err := notNowButton.Click(ctx); err != nil {
 		s.Fatal("Failed to click on notNowButton: ", err)
 	}
-
 	// Check for flip button.
 	checkForflipButton := d.Object(ui.ID(flipID))
 	if err := checkForflipButton.WaitForExists(ctx, testutil.DefaultUITimeout); err != nil {
