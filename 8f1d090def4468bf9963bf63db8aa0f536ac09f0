@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "8f1d090def4468bf9963bf63db8aa0f536ac09f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2b1d12_7d8993a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/ui/chrome_service_grpc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1459387
+      },
+      "writtenOn": "2022-02-05T17:12:34Z",
+      "side": 1,
+      "message": "Could we consider to move these lines into a function in cros_server_util.go?\nI see you have similar codes block in this change and 3362668, 3362669, 3362670.\nIt seems not a good idea to duplicate codes: go/UnhealthyIdioms#poor-sharing",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "8f1d090def4468bf9963bf63db8aa0f536ac09f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
