@@ -9,6 +9,7 @@ import (
 	"regexp"
 	"time"
 
+	"chromiumos/tast/common/action"
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
@@ -38,6 +39,18 @@ const LongUITimeout = time.Minute
 // GetAddAccountDialog returns a root node of the system account addition dialog.
 func GetAddAccountDialog() *nodewith.Finder {
 	return nodewith.Name("Sign in to add a Google account").Role(role.RootWebArea)
+}
+
+// OpenAccountManagerSettingsAction returns an action that opens OS Settings > Accounts.
+func OpenAccountManagerSettingsAction(tconn *chrome.TestConn, cr *chrome.Chrome) action.Action {
+	return func(ctx context.Context) error {
+		ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
+		// Open Account Manager page in OS Settings and find Add Google Account button.
+		if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(nodewith.Name("Add Google Account").Role(role.Button))); err != nil {
+			return errors.Wrap(err, "failed to launch Account Manager page")
+		}
+		return nil
+	}
 }
 
 // AddAccount adds an account in-session. Account addition dialog should be already open.
@@ -98,35 +111,26 @@ func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password str
 		return errors.Wrap(err, "failed to click on user name")
 	}
 
-	// Enter the User Name.
-	if err := kb.Type(ctx, email+"\n"); err != nil {
-		return errors.Wrap(err, "failed to type user name")
-	}
-
-	// Enter Password.
 	passwordField := nodewith.Name("Enter your password").Role(role.TextField).Ancestor(root)
-	if err := uiauto.Combine("Click on Password",
-		ui.WaitUntilExists(passwordField),
-		ui.LeftClick(passwordField),
-	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to click on password")
-	}
-
-	if err := kb.Type(ctx, password); err != nil {
-		return errors.Wrap(err, "failed to type password")
-	}
-
 	nextButton := nodewith.Name("Next").Role(role.Button).Ancestor(root)
 	iAgreeButton := nodewith.Name("I agree").Role(role.Button).Ancestor(root)
-	if err := uiauto.Combine("Agree and Finish Adding Account",
+
+	if err := uiauto.Combine("Enter email add password",
+		// Enter the User Name.
+		kb.TypeAction(email+"\n"),
+		ui.WaitUntilExists(passwordField),
+		ui.LeftClick(passwordField),
+		// Enter the Password.
+		kb.TypeAction(password),
 		ui.LeftClick(nextButton),
 		// We need to focus the button first to click at right location
 		// as it returns wrong coordinates when button is offscreen.
 		ui.FocusAndWait(iAgreeButton),
 		ui.LeftClick(iAgreeButton),
 	)(ctx); err != nil {
-		return errors.Wrap(err, "failed to add account")
+		return errors.Wrap(err, "failed enter email and password")
 	}
+
 	return nil
 }
 
@@ -215,6 +219,27 @@ func openOGB(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration)
 	return nil
 }
 
+// CheckAccountPresentInArcAction returns an action that checks that account is present in ARC.
+func CheckAccountPresentInArcAction(tconn *chrome.TestConn, d *androidui.Device, accountName string) action.Action {
+	return checkIsAccountPresentInArc(tconn, d, accountName, true)
+}
+
+// CheckAccountNotPresentInArcAction returns an action that checks that account is not present in ARC.
+func CheckAccountNotPresentInArcAction(tconn *chrome.TestConn, d *androidui.Device, accountName string) action.Action {
+	return checkIsAccountPresentInArc(tconn, d, accountName, false)
+}
+
+func checkIsAccountPresentInArc(tconn *chrome.TestConn, d *androidui.Device, accountName string, expectedVal bool) action.Action {
+	return func(ctx context.Context) error {
+		if present, err := IsAccountPresentInArc(ctx, tconn, d, accountName); err != nil {
+			return errors.Wrap(err, "failed to check whether account is present in ARC")
+		} else if expectedVal != present {
+			return errors.Errorf("expected IsAccountPresentInArc to return %t but got %t", expectedVal, present)
+		}
+		return nil
+	}
+}
+
 // IsAccountPresentInArc returns `true` if account is present in ARC Settings > Accounts.
 func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, d *androidui.Device, accountName string) (bool, error) {
 	const (
@@ -285,9 +310,7 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome,
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 
 	// Open Account Manager page in OS Settings.
-	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
-	_, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton))
-	if err != nil {
+	if err := OpenAccountManagerSettingsAction(tconn, cr)(ctx); err != nil {
 		return errors.Wrap(err, "failed to launch Account Manager page")
 	}
 

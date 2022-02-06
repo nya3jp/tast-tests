@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
@@ -116,13 +115,12 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verifying that account is present in OS Settings")
-	// Open Account Manager page in OS Settings and find Add Google Account button.
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(nodewith.Name("Add Google Account").Role(role.Button))); err != nil {
-		s.Fatal("Failed to launch Account Manager page: ", err)
-	}
 	// Find "More actions, <email>" button to make sure that account was added.
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
-	if err := ui.WaitUntilExists(moreActionsButton)(ctx); err != nil {
+	if err := uiauto.Combine("Click add Google Account button",
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
+		ui.WaitUntilExists(moreActionsButton),
+	)(ctx); err != nil {
 		s.Fatal("Failed to find More actions button: ", err)
 	}
 
