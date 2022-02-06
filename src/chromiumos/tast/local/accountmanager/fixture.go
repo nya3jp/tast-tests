@@ -18,6 +18,10 @@ import (
 
 const resetTimeout = 30 * time.Second
 
+// postTestTimeout is the timeout duration to save logs after each test.
+// It's intentionally set longer than resetTimeout because dumping 'dumpsys' takes around 20 seconds.
+const postTestTimeout = resetTimeout + 20*time.Second
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInToChromeAndArc",
@@ -29,6 +33,7 @@ func init() {
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 		Vars: []string{
 			"ui.gaiaPoolDefault",
 		},
@@ -65,6 +70,7 @@ func init() {
 		Parent:          "loggedInToLacros",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
+		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: resetTimeout,
 		Vars: []string{
 			"ui.gaiaPoolDefault",
@@ -203,9 +209,13 @@ func (f *accountManagerTestFixture) Reset(ctx context.Context) error {
 }
 
 func (f *accountManagerTestFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
-
+	if err := f.arc.ResetOutDir(ctx, s.OutDir()); err != nil {
+		s.Error("Failed to reset outDir field of ARC object: ", err)
+	}
 }
 
 func (f *accountManagerTestFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
-
+	if err := f.arc.SaveLogFiles(ctx); err != nil {
+		s.Error("Failed to save ARC-related log files: ", err)
+	}
 }
