@@ -12,7 +12,6 @@ import (
 	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -217,18 +216,11 @@ func openOGB(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration)
 }
 
 // IsAccountPresentInArc returns `true` if account is present in ARC Settings > Accounts.
-func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, accountName string) (bool, error) {
+func IsAccountPresentInArc(ctx context.Context, tconn *chrome.TestConn, d *androidui.Device, accountName string) (bool, error) {
 	const (
 		scrollClassName   = "android.widget.ScrollView"
 		textViewClassName = "android.widget.TextView"
 	)
-
-	// Initialize UI automator for ARC.
-	d, err := a.NewUIDevice(ctx)
-	if err != nil {
-		return false, errors.Wrap(err, "failed initializing UI Automator")
-	}
-	defer d.Close(ctx)
 
 	if err := apps.Launch(ctx, tconn, apps.AndroidSettings.ID); err != nil {
 		return false, errors.Wrap(err, "failed to launch AndroidSettings")
