@@ -142,8 +142,26 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 		}
 		defer kb.Close()
 
+		m, err := input.Mouse(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get mouse")
+		}
+		defer m.Close()
+
+		// On some devices, the text field for the provider might be hidden by the bottom bar.
+		// Scroll down then focus on the text field.
+		if err := m.ScrollDown(); err != nil {
+			return errors.Wrap(err, "failed to scroll down")
+		}
 		tf := nodewith.Role(role.TextField).Name("Enter custom provider")
+		if err := ac.FocusAndWait(tf)(ctx); err != nil {
+			return errors.Wrap(err, "failed to focus on the text field")
+		}
+
 		rg := nodewith.Role(role.RadioGroup)
+		if err := ac.WaitForLocation(rg)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for radio group")
+		}
 		rbsInfo, err := ac.NodesInfo(ctx, nodewith.Role(role.RadioButton).Ancestor(rg))
 		if err != nil {
 			return errors.Wrap(err, "failed to get secure DNS radio buttons information")
