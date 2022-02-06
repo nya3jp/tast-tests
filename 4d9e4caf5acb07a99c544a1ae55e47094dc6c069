@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ec97299_f95925e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "How can we make sure that there are at least 10 words?",
+      "range": {
+        "startLine": 67,
+        "startChar": 24,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "935f6145_f7f9e2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "If it is matching the first words, suggest to use NameStartingWith.",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5cc2f03_eb724599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "WaitUntilExists is the only one func, Combine is not necessary.",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "80805483_a47680d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
         "patchSetId": 6
@@ -42,6 +111,190 @@
         "startChar": 0,
         "endLine": 50,
         "endChar": 32
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c3aee2_85754920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "Recommend to specify the source and destination browser in the sub test name to make debugging easier in case of error.",
+      "range": {
+        "startLine": 65,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7336ff_2652b49e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca72624_2356f79f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "This error msg is inconsistent with the comment above but it aligns with the func name. It could cause confusion. Maybe just delete the comment.",
+      "range": {
+        "startLine": 103,
+        "startChar": 23,
+        "endLine": 103,
+        "endChar": 39
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b031c8b8_944a1918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "I do not think we need to connect to the test API in each subtest.",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bfb349d_4229d958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 25
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b6359a_399eb516",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "Please keep the error msg consistent: Failed to ...",
+      "range": {
+        "startLine": 120,
+        "startChar": 13,
+        "endLine": 120,
+        "endChar": 45
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a5c07ac_870fe9ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "Please use AccelAction and uiauto.Combine",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 142,
+        "endChar": 4
+      },
+      "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23409f8f_f3753222",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard_mixed_type_browsers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-06T08:48:55Z",
+      "side": 1,
+      "message": "Put this into uiauto.Combine?",
+      "range": {
+        "startLine": 166,
+        "startChar": 46,
+        "endLine": 166,
+        "endChar": 61
       },
       "revId": "4d9e4caf5acb07a99c544a1ae55e47094dc6c069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
