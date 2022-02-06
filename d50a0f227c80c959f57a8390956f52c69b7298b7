@@ -118,6 +118,30 @@
       },
       "revId": "d50a0f227c80c959f57a8390956f52c69b7298b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45feaa69_59935b93",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-06T15:44:19Z",
+      "side": 1,
+      "message": "I meant (1) + not even defining the method on Ash and Lacros but instead just inlining your (2) and (3) at call sites. Not a strong opinion though.",
+      "parentUuid": "977d9a41_3f43b797",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "d50a0f227c80c959f57a8390956f52c69b7298b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
