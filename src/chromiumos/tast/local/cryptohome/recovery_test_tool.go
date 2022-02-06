@@ -19,6 +19,7 @@ import (
 
 const (
 	destinationShareFile        = "dst"
+	rsaPrivKeyFile              = "rsa_priv_key"
 	channelPubKeyFile           = "channel_pub"
 	channelPrivKeyFile          = "channel_priv"
 	hsmPayloadFile              = "hsm_payload"
@@ -74,6 +75,7 @@ func (c *RecoveryTestTool) CreateHsmPayload(ctx context.Context) error {
 	return c.call(ctx,
 		"--action=recovery_crypto_create_hsm_payload",
 		c.getFileParam("destination_share_out_file", destinationShareFile),
+		c.getFileParam("rsa_priv_key_out_file", rsaPrivKeyFile),
 		c.getFileParam("channel_pub_key_out_file", channelPubKeyFile),
 		c.getFileParam("channel_priv_key_out_file", channelPrivKeyFile),
 		c.getFileParam("serialized_hsm_payload_out_file", hsmPayloadFile),
@@ -85,6 +87,7 @@ func (c *RecoveryTestTool) CreateHsmPayload(ctx context.Context) error {
 func (c *RecoveryTestTool) CreateRecoveryRequest(ctx context.Context) error {
 	return c.call(ctx,
 		"--action=recovery_crypto_create_recovery_request",
+		c.getFileParam("rsa_priv_key_in_file", rsaPrivKeyFile),
 		c.getFileParam("channel_pub_key_in_file", channelPubKeyFile),
 		c.getFileParam("channel_priv_key_in_file", channelPrivKeyFile),
 		c.getFileParam("serialized_hsm_payload_in_file", hsmPayloadFile),
