@@ -113,7 +113,7 @@ func getTap(ctx context.Context, pc *patchpanel.Client, cid uint32) (device tapD
 		}
 	}
 
-	fd, err := openTapDevice(resp.Device)
+	fd, err := openTapDevice(resp.Devices[0])
 	if err != nil {
 		shutdown()
 		err = errors.Wrap(err, "failed to open Tap device")
@@ -123,9 +123,9 @@ func getTap(ctx context.Context, pc *patchpanel.Client, cid uint32) (device tapD
 	// Convert BaseAddr into an IP address
 	// Note that we need to explicitly change byte order from "network order" (= big endian) to little endian.
 	gateway := make(net.IP, 4)
-	binary.LittleEndian.PutUint32(gateway[0:], resp.Device.HostIpv4Addr)
+	binary.LittleEndian.PutUint32(gateway[0:], resp.Devices[0].HostIpv4Addr)
 	addr := make(net.IP, 4)
-	binary.LittleEndian.PutUint32(addr[0:], resp.Device.Ipv4Addr)
+	binary.LittleEndian.PutUint32(addr[0:], resp.Devices[0].Ipv4Addr)
 
 	device = tapDevice{
 		fd:      fd,
