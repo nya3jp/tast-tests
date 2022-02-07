@@ -7,23 +7,30 @@ package wmp
 import (
 	"context"
 	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/apputil/notificationshowcase"
 	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
+
+const resizeWindowArcAppApkFileName = "ArcNotificationTest2.apk"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -46,6 +53,7 @@ func init() {
 				Name:              "arc",
 				Val:               true, // Expect to test on ARC++ app.
 				ExtraSoftwareDeps: []string{"arc"},
+				ExtraData:         []string{resizeWindowArcAppApkFileName},
 				Timeout:           5 * time.Minute,
 			}},
 	})
@@ -114,21 +122,51 @@ func ResizeWindow(ctx context.Context, s *testing.State) {
 			},
 		}
 	} else {
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			s.Fatal("Failed to get the keyboard: ", err)
+		}
+		defer kb.Close()
+
+		a, err := arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to create an ARC instance: ", err)
+		}
+		defer a.Close(cleanupCtx)
+
+		nsApp, err := notificationshowcase.NewApp(ctx, a, tconn, kb, s.DataPath(resizeWindowArcAppApkFileName))
+		if err != nil {
+			s.Fatal("Failed to create Notification Showcase app: ", err)
+		}
+		defer nsApp.Close(cleanupCtx, cr, s.HasError, s.OutDir())
+
+		if err := nsApp.Install(ctx); err != nil {
+			s.Fatal("Failed to install Notification Showcase app: ", err)
+		}
+
 		appList = []*wmputils.ResizeApp{
-			// Choose PlayStore as an ARC++ app so that it won't have to install any extra ARC++ app.
+			// We use Notification Showcase app because:
+			// 1. this installed from APK file, which will not require authenticated login.
+			// 2. it will skip Play Store installation process, which will not be affected by Play Store factors.
+			// 3. this app is a small-size app which will be easier to resize without creating afterimages on low-end DUTs.
 			{
-				Name: apps.PlayStore.Name,
-				// The app "Play Store" isn't unified depending on different models.
-				// e.g.: the app is apps.PlayStore.ID on Volteer,
-				// "acemnolionkahnbnbangggohjkggjfpl" on Hayato,
-				// "cnbgggchhmkkdmeppjobngjoejnihlei" on Berknip.
-				// Thus, the ID isn't specified in this test.
-				ID:           "",
+				Name:         notificationshowcase.AppName,
+				ID:           notificationshowcase.AppID,
 				IsArcApp:     true,
-				WindowFinder: nodewith.HasClass("RootView").NameContaining(apps.PlayStore.Name),
+				WindowFinder: nodewith.HasClass("RootView").NameContaining(notificationshowcase.AppName),
 			},
 		}
 	}
+
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	if err := screenRecorder.Start(ctx, tconn); err != nil {
+		s.Log("Failed to start ScreenRecorder: ", err)
+	}
+	defer uiauto.ScreenRecorderStopSaveRelease(cleanupCtx, screenRecorder, filepath.Join(s.OutDir(), "record.webm"))
 
 	for _, app := range appList {
 		f := func(ctx context.Context, s *testing.State) {
