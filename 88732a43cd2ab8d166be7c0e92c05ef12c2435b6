@@ -890,6 +890,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "afe5bcf5_3fe4d49c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-07T11:26:03Z",
+      "side": 1,
+      "message": "While hidehiko is still OOO, just my thoughts.\nI think your understanding of the idea is correct.\nIt is true that the proposed approach take some more time, but still just proportional to the number of input lines, and would not practically affect test runtime, same for memory usage.\nThe point is that, by splitting each step (separating file into blocks and parsing fields), it is made clearer what data structure we expect, so that other people would not come up with the question like hidehiko did.\nIf we want to keep the old test code from autotest as-is, at least comment lines to describe what file structure this processes would be needed here.\n\nAs an additional bonus we get by separating line blocks first, we could detect errorenous inputs rather than silently giving wrong result. For example, if any of the line were dropped by some reason hypothetically,\n\narea:            2\narea_offset:     0x00000000\narea_size:       0x00001000 (4096)\narea_name:       SI_DESC\narea:            3\narea_size:       0x001ff000 (2093056)\narea_name:       IFWI\n\nThe existing code will get wrong information for IFWI, without detecting that unexpected input.\n\nAlso, this is just my guess, but looking the pasted dump_fmap log, the intent of the log looks like \n- each area block starts by \"area:\" line\nrather than\n- each area block ends with \"area-name\" line\n\nSo I guess in the future if dump_fmap adds another field, it can be like:\n\narea:            2\narea_offset:     0x00000000\narea_size:       0x00001000 (4096)\narea_name:       SI_DESC\narea_role:       SOMETHING\narea:            3\narea_offset:     0x00001000\n\nso the implicit assumption that area_name is at the end of each block, looks risky.",
+      "parentUuid": "5143573b_f033fb90",
+      "revId": "88732a43cd2ab8d166be7c0e92c05ef12c2435b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "878161fa_66bdb939",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 14
