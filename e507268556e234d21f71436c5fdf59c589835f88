@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36888a5b_10e7df0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-07T04:51:37Z",
+      "side": 1,
+      "message": "Couple minor comments, otherwise LGTM.",
+      "revId": "e507268556e234d21f71436c5fdf59c589835f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604fb65b_06fe5d6e",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-07T04:51:37Z",
+      "side": 1,
+      "message": "Is there a tracking bug for this migration you could stick in the TODO instead?",
+      "revId": "e507268556e234d21f71436c5fdf59c589835f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "178f1c66_2b4b2f0d",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-07T04:51:37Z",
+      "side": 1,
+      "message": "Ditto above about tracking bug",
+      "revId": "e507268556e234d21f71436c5fdf59c589835f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
