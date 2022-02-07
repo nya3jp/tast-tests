@@ -24,3 +24,6 @@ const LocalWallpaperFilename = "set_local_wallpaper_light_pink_20210929.jpg"
 
 // LocalWallpaperColor is the color of LocalWallpaperFilename.
 var LocalWallpaperColor = color.RGBA{255, 203, 198, 255}
+
+// WhiteWallpaperName is the name of a solid white wallpaper in the solid colors collection.
+const WhiteWallpaperName = "White"

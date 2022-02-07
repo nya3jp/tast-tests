@@ -23,7 +23,6 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
 	ashwallpaper "chromiumos/tast/local/wallpaper"
-	ashwallpaperconstants "chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -256,17 +255,13 @@ func CompatSnap(ctx context.Context, s *testing.State) {
 	// Set a pure white wallpaper to reduce the noises on a screenshot because currently wm.CheckResizeLockState checks the visibility of the translucent window border based on a screenshot.
 	// The wallpaper will exist continuous if the Chrome session gets reused.
 	ui := uiauto.New(tconn)
-	if err := ashwallpaper.OpenWallpaperPicker(ui)(ctx); err != nil {
-		s.Fatal("Failed to open wallpaper picker: ", err)
+	mew, err := input.Mouse(ctx)
+	if err != nil {
+		s.Fatal("Failed to setup the mouse: ", err)
 	}
-	if err := ashwallpaper.SelectCollection(ui, ashwallpaperconstants.SolidColorsCollection)(ctx); err != nil {
-		s.Fatal("Failed to select wallpaper collection: ", err)
-	}
-	if err := ashwallpaper.SelectImage(ui, "White")(ctx); err != nil {
-		s.Fatal("Failed to select wallpaper image: ", err)
-	}
-	if err := ashwallpaper.CloseWallpaperPicker()(ctx); err != nil {
-		s.Fatal("Failed to close wallpaper picker: ", err)
+	defer mew.Close()
+	if err := ashwallpaper.SetSolidWhiteWallpaper(ctx, ui, mew); err != nil {
+		s.Fatal("Failed to set the white wallpaper: ", err)
 	}
 
 	// Install the test app.

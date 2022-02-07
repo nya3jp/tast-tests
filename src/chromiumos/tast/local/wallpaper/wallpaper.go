@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -150,5 +151,42 @@ func ValidateDiff(img1, img2 image.Image, expectedPercent int) error {
 	if percentage := diff * 100 / total; percentage < expectedPercent {
 		return errors.Errorf("unexpected percentage: got %d%%; want at least %d%%", percentage, expectedPercent)
 	}
+	return nil
+}
+
+// SetSolidWhiteWallpaper sets the wallpaper to the solid white.
+func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context, mew *input.MouseEventWriter) error {
+	const (
+		maxNumSelectRetries = 4
+		numScrolls          = 100
+	)
+
+	if err := OpenWallpaperPicker(ui)(ctx); err != nil {
+		return errors.Wrap(err, "failed to open wallpaper picker")
+	}
+	if err := SelectCollection(ui, constants.SolidColorsCollection)(ctx); err != nil {
+		return errors.Wrap(err, "failed to select wallpaper collection")
+	}
+
+	// "White" wallpaper is at the end of the wallpaper list so we need to scroll down to make it visible on a small display.
+	var selectImageErr error
+	for i := 0; i < maxNumSelectRetries; i++ {
+		if selectImageErr = SelectImage(ui.WithTimeout(5*time.Second), constants.WhiteWallpaperName)(ctx); selectImageErr == nil {
+			break
+		}
+		for j := 0; j < numScrolls; j++ {
+			if err := mew.ScrollDown(); err != nil {
+				return errors.Wrap(err, "failed to scroll down")
+			}
+		}
+	}
+	if selectImageErr != nil {
+		return errors.Wrapf(selectImageErr, "failed to select wallpaper image after %d retries", maxNumSelectRetries)
+	}
+
+	if err := CloseWallpaperPicker()(ctx); err != nil {
+		return errors.Wrap(err, "failed to close wallpaper picker")
+	}
+
 	return nil
 }
