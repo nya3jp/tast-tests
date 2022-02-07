@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/touch"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
 )
@@ -75,14 +76,13 @@ func (cvk *CheckVirtualKeyboardService) ClickChromeAddressBar(ctx context.Contex
 	}
 	cvk.tconn = tconn
 
-	uiauto := uiauto.New(tconn)
-
 	addressBarNode := nodewith.Role(role.TextField).Name("Address and search bar")
-	if err := uiauto.LeftClickUntil(
-		addressBarNode,
-		uiauto.WaitUntilExists(addressBarNode.Focused()),
-	)(ctx); err != nil {
-		return nil, errors.Wrap(err, "could not find the address bar")
+	tc, err := touch.New(ctx, cvk.tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create the touch context instance")
+	}
+	if err := tc.Tap(addressBarNode)(ctx); err != nil {
+		return nil, errors.Wrap(err, "unable to detect Chrome OS virtual keyboard")
 	}
 
 	return &empty.Empty{}, nil
