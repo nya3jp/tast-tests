@@ -176,6 +176,24 @@
       "parentUuid": "801bf88b_7c5d1935",
       "revId": "ba3aad50190f936552a72ae212d139689c596a32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c3a233_31691cb4",
+        "filename": "src/chromiumos/tast/local/kioskmode/kiosk_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T10:48:54Z",
+      "side": 1,
+      "message": "Closing this thread.",
+      "parentUuid": "b713dd32_ecdc19f7",
+      "revId": "ba3aad50190f936552a72ae212d139689c596a32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
