@@ -140,6 +140,30 @@
       },
       "revId": "fd2bc084858f28c1acbfb4d07a08f325b48aca44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ca0fe6_40924cfd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/power_modes.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-07T17:13:27Z",
+      "side": 1,
+      "message": "There isn\u0027t any service that exists just to log into chrome, but using this one seems wrong.\n\ntast.cros.ui.ScreenLockService would be slightly better, as it only has login \u0026 lock related methods.",
+      "parentUuid": "0a923f7d_adaeb02a",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "fd2bc084858f28c1acbfb4d07a08f325b48aca44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
