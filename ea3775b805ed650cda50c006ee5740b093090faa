@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a19a9a60_9da7828d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-02-07T11:16:47Z",
+      "side": 1,
+      "message": "I believe tablet test uses the same drag function, could we move dragPoints and drag() to utils and update the tablet test to use them as well? Also please add a comment about this type.",
+      "parentUuid": "05ea724d_8eb44899",
+      "revId": "ea3775b805ed650cda50c006ee5740b093090faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f04c62b_bfb83204",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
         "patchSetId": 1
