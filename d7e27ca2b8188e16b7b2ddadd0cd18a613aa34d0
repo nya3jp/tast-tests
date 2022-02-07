@@ -16,6 +16,52 @@
       "message": "PTAL, thanks!",
       "revId": "d7e27ca2b8188e16b7b2ddadd0cd18a613aa34d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f7d3ae_c9379f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-02-07T01:29:12Z",
+      "side": 1,
+      "message": "This seems like an OK near-term fix but possibly brittle if anything in the UI changes? Is there a better way to do all of this? Can we hook in under the UI?  Or use specifically named/ID\u0027d elements?",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 46
+      },
+      "revId": "d7e27ca2b8188e16b7b2ddadd0cd18a613aa34d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e3f035_65cafc55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-02-07T01:29:12Z",
+      "side": 1,
+      "message": "what does stable mean?",
+      "range": {
+        "startLine": 163,
+        "startChar": 68,
+        "endLine": 163,
+        "endChar": 74
+      },
+      "revId": "d7e27ca2b8188e16b7b2ddadd0cd18a613aa34d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
