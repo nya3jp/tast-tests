@@ -16,6 +16,92 @@
       "message": "shadow reviewer lgtm",
       "revId": "07a9a373927cfd06edcea45835367458010a5441",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "346f9dbe_3309d0e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-07T16:55:57Z",
+      "side": 1,
+      "message": "+2 % nits",
+      "revId": "07a9a373927cfd06edcea45835367458010a5441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2766ce_b24993be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/arc_account_picker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-07T16:55:57Z",
+      "side": 1,
+      "message": "huge nit (here and in the other Combine): Confirm -\u003e confirm\n\nFrom the uiauto.Combine doc:\n\n  // It is recommended to start the name of operations with a verb, e.g.,\n  //     \"open Downloads and right click a folder\n  // Then the failure msg would be like:\n  //     \"failed to open Downloads and right click a folder on step ...",
+      "range": {
+        "startLine": 103,
+        "startChar": 27,
+        "endLine": 103,
+        "endChar": 28
+      },
+      "revId": "07a9a373927cfd06edcea45835367458010a5441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2bf0014_1d193bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/arc_account_picker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-07T16:55:57Z",
+      "side": 1,
+      "message": "huge nit, here and in the rest of the file: Arc -\u003e ARC\n\nI\u0027ve seen that some tests are using Arc, but the correct name is ARC.\n\nSee:\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 127,
+        "startChar": 10,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "07a9a373927cfd06edcea45835367458010a5441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6855c488_b5508e3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/arc_account_picker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-07T16:55:57Z",
+      "side": 1,
+      "message": "all non-trivial functions should a docstring",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 38
+      },
+      "revId": "07a9a373927cfd06edcea45835367458010a5441",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
