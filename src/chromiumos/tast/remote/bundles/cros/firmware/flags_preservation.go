@@ -24,7 +24,7 @@ func init() {
 		Func:         FlagsPreservation,
 		Desc:         "Checks that flag values are preserved over different power cycles",
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.DevMode,
 		SoftwareDeps: []string{"crossystem"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
