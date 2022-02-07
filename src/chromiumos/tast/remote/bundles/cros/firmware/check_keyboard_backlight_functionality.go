@@ -25,7 +25,7 @@ func init() {
 		Func:         CheckKeyboardBacklightFunctionality,
 		Desc:         "Confirm keyboard backlight support and check keyboard backlight functionality",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_experimental"},
+		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.ChromeUIService"},
 		HardwareDeps: hwdep.D(
