@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
@@ -80,20 +81,24 @@ func ScrollToTextFragmentEnabled(ctx context.Context, s *testing.State) {
 	defer server.Close()
 
 	for _, param := range []struct {
-		name  string
-		value *policy.ScrollToTextFragmentEnabled
+		name       string
+		value      *policy.ScrollToTextFragmentEnabled
+		wantInView bool
 	}{
 		{
-			name:  "enabled",
-			value: &policy.ScrollToTextFragmentEnabled{Val: true},
+			name:       "enabled",
+			value:      &policy.ScrollToTextFragmentEnabled{Val: true},
+			wantInView: true,
 		},
 		{
-			name:  "disabled",
-			value: &policy.ScrollToTextFragmentEnabled{Val: false},
+			name:       "disabled",
+			value:      &policy.ScrollToTextFragmentEnabled{Val: false},
+			wantInView: false,
 		},
 		{
-			name:  "unset",
-			value: &policy.ScrollToTextFragmentEnabled{Stat: policy.StatusUnset},
+			name:       "unset",
+			value:      &policy.ScrollToTextFragmentEnabled{Stat: policy.StatusUnset},
+			wantInView: true,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
@@ -125,24 +130,24 @@ func ScrollToTextFragmentEnabled(ctx context.Context, s *testing.State) {
 
 			// We can't test if the text fragment is highlighted as the highlighting is not part of the accessbility
 			// tree. Check that the text fragment has scrolled into view instead.
-			inView := isInView(ctx, s, conn, "fragment")
-			if param.value.Val || param.value.Stat == policy.StatusUnset {
-				// Policy is enabled or unset, should have scrolled to text fragment.
+			inView, err := isInView(ctx, conn, "fragment")
+			if err != nil {
+				s.Fatal("Failed to check if fragment was in view: ", err)
+			}
+
+			if param.wantInView {
 				if !inView {
 					s.Fatal("Text fragment unexpectedly not in view")
 				}
-			} else {
-				// Policy is disabled, should not have scrolled to text fragment.
-				if inView {
-					s.Fatal("Text fragment unexpectedly in view")
-				}
+			} else if inView {
+				s.Fatal("Text fragment unexpectedly in view")
 			}
 		})
 	}
 }
 
 // isInView checks if the element with fragmentID is in the viewport of the window by using an IntersectionObserver.
-func isInView(ctx context.Context, s *testing.State, conn *browser.Conn, fragmentID string) bool {
+func isInView(ctx context.Context, conn *browser.Conn, fragmentID string) (bool, error) {
 	ctx, cancel := context.WithTimeout(ctx, 1*time.Second)
 	defer cancel()
 
@@ -164,8 +169,8 @@ func isInView(ctx context.Context, s *testing.State, conn *browser.Conn, fragmen
 			observer.observe(target);
 		});
 	}`, fragmentID); err != nil {
-		s.Fatal("Could not check if fragment was in view: ", err)
+		return false, errors.Wrap(err, "could not check if fragment was in view")
 	}
 
-	return inView
+	return inView, nil
 }
