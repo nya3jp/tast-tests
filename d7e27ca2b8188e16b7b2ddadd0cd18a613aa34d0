@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea856946_669a1c49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-02-07T01:40:03Z",
+      "side": 1,
+      "message": "I think this will be safe because I also added L157 which will refocus (might also scroll back up to the text field) if the scroll down is too far.\n\nThe problem before is that the text field is viewable and clickable, but is too close to the bottom bar so that clicking the field will ended up clicking the bar.\n\nI agree that it might resurface on UI change. However, I also think that the probability of it happening is quite small given that refocus probably will put the text field in a \"normal\" location. I\u0027m also currently not sure how to fix this other than making sure the page and bottom bar don\u0027t overlap (since through the code it looks like that the text field is viewable and clickable but in actuality it is not).",
+      "parentUuid": "67f7d3ae_c9379f88",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 46
+      },
+      "revId": "d7e27ca2b8188e16b7b2ddadd0cd18a613aa34d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7e3f035_65cafc55",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-07T01:29:12Z",
       "side": 1,
       "message": "what does stable mean?",
+      "range": {
+        "startLine": 163,
+        "startChar": 68,
+        "endLine": 163,
+        "endChar": 74
+      },
+      "revId": "d7e27ca2b8188e16b7b2ddadd0cd18a613aa34d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6ac584_c92460d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-02-07T01:40:03Z",
+      "side": 1,
+      "message": "Updated! Done.",
+      "parentUuid": "f7e3f035_65cafc55",
       "range": {
         "startLine": 163,
         "startChar": 68,
