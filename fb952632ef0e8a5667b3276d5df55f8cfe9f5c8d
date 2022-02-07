@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69243dd6_34083ea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-02-07T12:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c656a00_6a3083b4",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "fb952632ef0e8a5667b3276d5df55f8cfe9f5c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c70c146c_496ebc19",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7cf043_79c1402b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-02-07T12:45:50Z",
+      "side": 1,
+      "message": "Cool, this much nicer!",
+      "parentUuid": "c70c146c_496ebc19",
+      "revId": "fb952632ef0e8a5667b3276d5df55f8cfe9f5c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e3f204_34fa4a6d",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-02-07T10:34:43Z",
       "side": 1,
       "message": "Maybe: \"Polcies do not have the expected values: \"",
+      "range": {
+        "startLine": 137,
+        "startChar": 13,
+        "endLine": 137,
+        "endChar": 19
+      },
+      "revId": "fb952632ef0e8a5667b3276d5df55f8cfe9f5c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dafe5a2_d7561235",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-02-07T12:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20e3f204_34fa4a6d",
       "range": {
         "startLine": 137,
         "startChar": 13,
