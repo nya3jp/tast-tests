@@ -16,6 +16,29 @@
       "message": "Hi Jeremy, \n\nCan you please review this CL again?",
       "revId": "9fe9fbc43b2823b280f9a785bbe534d3696e1a9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f0e9f13_7d0bdae0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/s3_suspend_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-07T17:16:20Z",
+      "side": 1,
+      "message": "There isn\u0027t any service that exists just to log into chrome, but using this one seems wrong.\n\ntast.cros.ui.ScreenLockService would be slightly better, as it only has login \u0026 lock related methods.",
+      "range": {
+        "startLine": 137,
+        "startChar": 20,
+        "endLine": 137,
+        "endChar": 47
+      },
+      "revId": "9fe9fbc43b2823b280f9a785bbe534d3696e1a9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
