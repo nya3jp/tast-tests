@@ -16,6 +16,29 @@
       "message": "PTAL if it is okay, thanks!",
       "revId": "ff60ecf6fb7565f2a08b361a1a0b265afa988ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab3e7057_02b8427a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-02-07T07:52:50Z",
+      "side": 1,
+      "message": "\"failed to wait for radio group\" or similar is less of a mouthful and might be sufficiently descriptive",
+      "range": {
+        "startLine": 163,
+        "startChar": 43,
+        "endLine": 163,
+        "endChar": 97
+      },
+      "revId": "ff60ecf6fb7565f2a08b361a1a0b265afa988ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
