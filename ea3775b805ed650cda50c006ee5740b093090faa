@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bed576_aeba0ca0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-07T17:25:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a19a9a60_9da7828d",
+      "revId": "ea3775b805ed650cda50c006ee5740b093090faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f04c62b_bfb83204",
@@ -83,6 +101,24 @@
       "writtenOn": "2022-02-05T08:23:10Z",
       "side": 1,
       "message": "Shouldn\u0027t this be Drag? Let\u0027s add a function comment",
+      "revId": "ea3775b805ed650cda50c006ee5740b093090faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1b45da_a63d8fbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-07T17:25:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f04c62b_bfb83204",
       "revId": "ea3775b805ed650cda50c006ee5740b093090faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
