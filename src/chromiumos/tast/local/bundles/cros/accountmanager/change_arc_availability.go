@@ -70,6 +70,13 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC
+	defer a.DumpUIHierarchyOnError(ctx, s.OutDir(), s.HasError)
+
+	arcDevice, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer arcDevice.Close(ctx)
 
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
@@ -107,7 +114,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 
 	// Check that account is present in ARC.
 	s.Log("Verifying that account is present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, a, username); err != nil {
+	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, arcDevice, username); err != nil {
 		s.Fatal("Failed to check that account is present in ARC err: ", err)
 	} else if !present {
 		s.Fatal("Account is not present in ARC")
@@ -129,7 +136,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 
 	// Check that account is not present in ARC.
 	s.Log("Verifying that account is not present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, a, username); err != nil {
+	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, arcDevice, username); err != nil {
 		s.Fatal("Failed to check that account is NOT present in ARC, err: ", err)
 	} else if present {
 		s.Fatal("Account is still present in ARC")
@@ -151,7 +158,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 
 	// Check that account is present in ARC.
 	s.Log("Verifying that account is present in ARC")
-	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, a, username); err != nil {
+	if present, err := accountmanager.IsAccountPresentInArc(ctx, tconn, arcDevice, username); err != nil {
 		s.Fatal("Failed to check that account is present in ARC err: ", err)
 	} else if !present {
 		s.Fatal("Account is not present in ARC")

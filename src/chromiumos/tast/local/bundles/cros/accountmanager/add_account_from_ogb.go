@@ -89,6 +89,13 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	a := s.FixtValue().(accountmanager.FixtureData).ARC
+	defer a.DumpUIHierarchyOnError(ctx, s.OutDir(), s.HasError)
+
+	arcDevice, err := a.NewUIDevice(ctx)
+	if err != nil {
+		s.Fatal("Failed to initialize UI Automator: ", err)
+	}
+	defer arcDevice.Close(ctx)
 
 	if err := accountmanager.OpenOneGoogleBar(ctx, tconn, br); err != nil {
 		s.Fatal("Failed to open OGB: ", err)
@@ -129,7 +136,7 @@ func AddAccountFromOGB(ctx context.Context, s *testing.State) {
 	// Account is expected to be not present in ARC only if browser type is Lacros. The feature is being applied only if Lacros is enabled.
 	expectedPresentInArc := s.Param().(browser.Type) != browser.TypeLacros
 
-	presentInArc, err := accountmanager.IsAccountPresentInArc(ctx, tconn, a, username)
+	presentInArc, err := accountmanager.IsAccountPresentInArc(ctx, tconn, arcDevice, username)
 	if err != nil {
 		s.Fatal("Failed to check if account is present in ARC err: ", err)
 	}
