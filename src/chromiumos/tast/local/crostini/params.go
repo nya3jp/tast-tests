@@ -143,6 +143,12 @@ type Param struct {
 	// UseGaiaLogin controls whether using gaia user to login
 	// to the DUT.
 	UseGaiaLogin bool
+
+	// UseFixture controls whether using fixture or precondition to
+	// set up Crostini and cleanup tests.
+	// This is used to migrate the tests from precondition to fixture.
+	// TODO (jinrongwu): remove this once the migration is done.
+	UseFixture bool
 }
 
 type generatedParam struct {
@@ -152,6 +158,7 @@ type generatedParam struct {
 	ExtraSoftwareDeps []string
 	ExtraHardwareDeps string
 	Pre               string
+	Fixture           string
 	Timeout           time.Duration
 	Val               string
 }
@@ -163,6 +170,7 @@ const template = `{{range .}} {
 	{{if .ExtraSoftwareDeps}} ExtraSoftwareDeps: []string{ {{range .ExtraSoftwareDeps}}{{fmt .}},{{end}} }, {{end}}
 	{{if .ExtraHardwareDeps}} ExtraHardwareDeps: {{.ExtraHardwareDeps}},                                    {{end}}
 	{{if .Pre}}               Pre:               {{.Pre}},                                                  {{end}}
+	{{if .Fixture}}           Fixture:           {{.Fixture}},                                              {{end}}
 	{{if .Timeout}}           Timeout:           {{fmt .Timeout}},                                          {{end}}
 	{{if .Val}}               Val:               {{.Val}},                                                  {{end}}
 }, {{end}}`
@@ -258,22 +266,6 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				extraAttr = append(extraAttr, "informational")
 			}
 
-			var extraData []string
-			extraData = append(extraData,
-				fmt.Sprintf("crostini.GetContainerMetadataArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
-				fmt.Sprintf("crostini.GetContainerRootfsArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
-			)
-
-			// Quote the extra data strings we got passed,
-			// so we can define the container and VM
-			// artifacts with runtime functions while
-			// still taking string literals from the
-			// outside world.
-			for _, data := range testCase.ExtraData {
-				extraData = append(extraData,
-					fmt.Sprintf("%q", data))
-			}
-
 			var extraSoftwareDeps []string
 			extraSoftwareDeps = append(extraSoftwareDeps, "dlc")
 
@@ -296,17 +288,6 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				}
 			}
 
-			var precondition string
-			if testCase.SelfManagedInstall {
-				precondition = ""
-			} else if testCase.UseLargeContainer {
-				precondition = fmt.Sprintf("crostini.StartedBy%s%sLargeContainer()", "Dlc", strings.Title(string(i.debianVersion)))
-			} else if testCase.UseGaiaLogin {
-				precondition = fmt.Sprintf("crostini.StartedBy%s%sGaia()", "Dlc", strings.Title(string(i.debianVersion)))
-			} else {
-				precondition = fmt.Sprintf("crostini.StartedBy%s%s()", "Dlc", strings.Title(string(i.debianVersion)))
-			}
-
 			var timeout time.Duration
 			if testCase.Timeout != time.Duration(0) {
 				timeout = testCase.Timeout
@@ -314,15 +295,60 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				timeout = 7 * time.Minute
 			}
 
-			testParam := generatedParam{
+			var extraData []string
+			var testParam generatedParam
+			var fixture, precondition string
+			if testCase.UseFixture {
+				if testCase.SelfManagedInstall {
+					fixture = ""
+				} else if testCase.UseLargeContainer {
+					fixture = fmt.Sprintf("\"crostini%sLargeContainer\"", strings.Title(string(i.debianVersion)))
+				} else if testCase.UseGaiaLogin {
+					fixture = fmt.Sprintf("\"crostini%sGaia\"", strings.Title(string(i.debianVersion)))
+				} else {
+					fixture = fmt.Sprintf("\"crostini%s\"", strings.Title(string(i.debianVersion)))
+				}
+			} else {
+				extraData = append(extraData,
+					fmt.Sprintf("crostini.GetContainerMetadataArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
+					fmt.Sprintf("crostini.GetContainerRootfsArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
+				)
+
+				if testCase.SelfManagedInstall {
+					precondition = ""
+				} else if testCase.UseLargeContainer {
+					precondition = fmt.Sprintf("crostini.StartedBy%s%sLargeContainer()", "Dlc", strings.Title(string(i.debianVersion)))
+				} else if testCase.UseGaiaLogin {
+					precondition = fmt.Sprintf("crostini.StartedBy%s%sGaia()", "Dlc", strings.Title(string(i.debianVersion)))
+				} else {
+					precondition = fmt.Sprintf("crostini.StartedBy%s%s()", "Dlc", strings.Title(string(i.debianVersion)))
+				}
+			}
+
+			// Quote the extra data strings we got passed,
+			// so we can define the container and VM
+			// artifacts with runtime functions while
+			// still taking string literals from the
+			// outside world.
+			for _, data := range testCase.ExtraData {
+				extraData = append(extraData,
+					fmt.Sprintf("%q", data))
+			}
+
+			testParam = generatedParam{
 				Name:              name,
 				ExtraAttr:         append(testCase.ExtraAttr, extraAttr...),
 				ExtraData:         extraData,
 				ExtraSoftwareDeps: append(testCase.ExtraSoftwareDeps, extraSoftwareDeps...),
 				ExtraHardwareDeps: hardwareDeps,
-				Pre:               precondition,
 				Timeout:           timeout,
 				Val:               testCase.Val,
+			}
+
+			if testCase.UseFixture {
+				testParam.Fixture = fixture
+			} else {
+				testParam.Pre = precondition
 			}
 			result = append(result, testParam)
 		}
