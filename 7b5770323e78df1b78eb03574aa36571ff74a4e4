@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6390fb9_730fe86b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-02-07T19:16:12Z",
+      "side": 1,
+      "message": "This variable is needed by `generateIconImageNames()` which is used to specify Data.\n\nActually `fakeAppAlphabeticalNames` does not have to be out of the main test function. But maybe by putting it aside `fakeAppColorOrderNames`, code is more readable.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "7b5770323e78df1b78eb03574aa36571ff74a4e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
