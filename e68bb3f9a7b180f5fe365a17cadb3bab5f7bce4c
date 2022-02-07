@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "e68bb3f9a7b180f5fe365a17cadb3bab5f7bce4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e4ab2c_b407ba94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T13:18:32Z",
+      "side": 1,
+      "message": "It seems like the test is failing on VM execution.\n@Alex, do you think it is something that should be fixed, or the test doesn\u0027t make much sense on VMs?",
+      "revId": "e68bb3f9a7b180f5fe365a17cadb3bab5f7bce4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
