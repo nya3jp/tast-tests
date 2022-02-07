@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65045b47_98d08c92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "I agree, expectations per soc will be needed but having the data first will help.",
+      "parentUuid": "3fc425d0_fdf547e3",
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "571d620d_2c3d88f5",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-07T11:14:52Z",
       "side": 1,
       "message": "executable",
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b4b1dc_041e19d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "571d620d_2c3d88f5",
       "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "411694db_76f3c0c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670e211c_aac12cf0",
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7da6b193_64a4de54",
@@ -65,6 +119,30 @@
       "writtenOn": "2022-02-07T11:14:52Z",
       "side": 1,
       "message": "We need a new suite for you but for now use \"group:graphics\", \"graphics_weekly\"",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 58
+      },
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0190df7d_825518eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da6b193_64a4de54",
       "range": {
         "startLine": 34,
         "startChar": 25,
@@ -115,6 +193,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "325d5e07_ddfa7ff6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14821,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff65191_40603cb4",
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb56fd7_69437b18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14821,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "214f338f_3baf7959",
+      "range": {
+        "startLine": 14821,
+        "startChar": 12,
+        "endLine": 14821,
+        "endChar": 26
+      },
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7272ca74_fef22326",
@@ -155,6 +275,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b254782b_97de1018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14823,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6b665d8_d08baed3",
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cfc0bdf_502bb88b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 14823,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7272ca74_fef22326",
+      "range": {
+        "startLine": 14823,
+        "startChar": 16,
+        "endLine": 14823,
+        "endChar": 46
+      },
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e5fe9ce_786a0588",
@@ -168,6 +330,30 @@
       "writtenOn": "2022-02-07T11:14:52Z",
       "side": 1,
       "message": "Executable",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 4
+      },
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13035ec_1960e348",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e5fe9ce_786a0588",
       "range": {
         "startLine": 20,
         "startChar": 1,
@@ -201,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeec4365_98f02af9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7e01c1b_235574a7",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "276279e1_284cba68",
@@ -224,6 +434,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf5e5aea_4e5ec4fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "It comes from google3 which does things like that.\nI kept it because I have some scripts that make use of having the same layout for google3 and cros description.\nI will take the time to update those script and remove it from here as we don\u0027t need it.",
+      "parentUuid": "276279e1_284cba68",
+      "range": {
+        "startLine": 28,
+        "startChar": 55,
+        "endLine": 30,
+        "endChar": 67
+      },
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "383ff1c0_9a0cc54c",
@@ -237,6 +471,30 @@
       "writtenOn": "2022-02-07T11:14:52Z",
       "side": 1,
       "message": "We don\u0027t need these comments.\nPlease sort all addTest lines.",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "61c1ae0ce22e62d801c09c4e4c180bd33758625e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f43e1b2e_956d5564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/opencl_cts_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1513952
+      },
+      "writtenOn": "2022-02-07T15:03:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "383ff1c0_9a0cc54c",
       "range": {
         "startLine": 44,
         "startChar": 1,
