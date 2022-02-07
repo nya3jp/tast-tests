@@ -22,8 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
-	ashwallpaper "chromiumos/tast/local/wallpaper"
-	ashwallpaperconstants "chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -187,17 +185,8 @@ func ResizeLock(ctx context.Context, s *testing.State) {
 	// Set a pure white wallpaper to reduce the noises on a screenshot because currently checking the visibility of the translucent window border relies on a screenshot.
 	// The Wallpaper will exist continuous if the Chrome session gets reused.
 	ui := uiauto.New(tconn)
-	if err := ashwallpaper.OpenWallpaperPicker(ui)(ctx); err != nil {
-		s.Fatal("Failed to open wallpaper picker: ", err)
-	}
-	if err := ashwallpaper.SelectCollection(ui, ashwallpaperconstants.SolidColorsCollection)(ctx); err != nil {
-		s.Fatal("Failed to select collection: ", err)
-	}
-	if err := ashwallpaper.SelectImage(ui, "White")(ctx); err != nil {
-		s.Fatal("Failed to select image: ", err)
-	}
-	if err := ashwallpaper.CloseWallpaperPicker()(ctx); err != nil {
-		s.Fatal("Failed to close wallpaper picker: ", err)
+	if err := wm.SetSolidWhiteWallpaper(ctx, ui); err != nil {
+		s.Fatal("Failed to set the white wallpaper: ", err)
 	}
 
 	for _, test := range testCases {
