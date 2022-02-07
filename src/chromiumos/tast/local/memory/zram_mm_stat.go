@@ -72,25 +72,25 @@ func NewZramMmStat() (*ZramMmStat, error) {
 
 // ZramMmStatMetrics writes a JSON file containing statistics from
 // /sys/block/zram/mm_stat. If outdir is "", then no logs are written.
-func ZramMmStatMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) error {
+func ZramMmStatMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) (*ZramSummary, error) {
 	stat, err := NewZramMmStat()
 	if err != nil {
-		return err
+		return nil, err
 	}
 	if len(outdir) > 0 {
 		statJSON, err := json.MarshalIndent(stat, "", "  ")
 		if err != nil {
-			return errors.Wrap(err, "failed to serialize mm_stat metrics to JSON")
+			return nil, errors.Wrap(err, "failed to serialize mm_stat metrics to JSON")
 		}
 		filename := fmt.Sprintf("zram_mm_stat%s.json", suffix)
 		if err := ioutil.WriteFile(path.Join(outdir, filename), statJSON, 0644); err != nil {
-			return errors.Wrapf(err, "failed to write zram mm_stats to %s", filename)
+			return nil, errors.Wrapf(err, "failed to write zram mm_stats to %s", filename)
 		}
 	}
 
 	if p == nil {
 		// No perf.Values, so exit without computing the metrics.
-		return nil
+		return nil, nil
 	}
 
 	p.Set(
@@ -109,5 +109,12 @@ func ZramMmStatMetrics(ctx context.Context, p *perf.Values, outdir, suffix strin
 		},
 		float64(stat.ComprDataSize)/MiB,
 	)
-	return nil
+
+	summary := &ZramSummary{
+		OrigDataSize:  stat.OrigDataSize,
+		ComprDataSize: stat.ComprDataSize,
+		MemUsedTotal:  stat.MemUsedTotal,
+	}
+
+	return summary, nil
 }
