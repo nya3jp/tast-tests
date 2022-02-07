@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32dc4b3_cfbbdfcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T11:02:08Z",
+      "side": 1,
+      "message": "I like the direction you are moving this helper library.",
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56c7aec_95ac82fa",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T11:02:08Z",
+      "side": 1,
+      "message": "typo: and",
+      "range": {
+        "startLine": 118,
+        "startChar": 39,
+        "endLine": 118,
+        "endChar": 42
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "871c89e1_c7278a53",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T11:02:08Z",
+      "side": 1,
+      "message": "to enter",
+      "range": {
+        "startLine": 131,
+        "startChar": 34,
+        "endLine": 131,
+        "endChar": 39
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7247aebc_3d74f1bf",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T11:02:08Z",
+      "side": 1,
+      "message": "Does it always work? If not, it can be placed in a `Poll()` instead.",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 3
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a12ede1_2c4841fb",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T11:02:08Z",
+      "side": 1,
+      "message": "If the account needs the `LongUITimeout` for it to appear, you should use `EnsureGoneFor()` with the same timeout if you want to make sure it won\u0027t appear.",
+      "range": {
+        "startLine": 254,
+        "startChar": 21,
+        "endLine": 254,
+        "endChar": 34
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36751ee3_524a15d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T11:02:08Z",
+      "side": 1,
+      "message": "nit: Add\nSame for the error message.",
+      "range": {
+        "startLine": 101,
+        "startChar": 33,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1e6adce_2f69496a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-07T11:02:08Z",
+      "side": 1,
+      "message": "From this function (because of the name), I would expect to contain the previous two steps as well (opening the settings and clicking the more button).\nMaybe I would even expect it to remove a specific account, where I have to add the name.\nIf it just removes the first account, it should be in the name.\nI know that you use this function in the cleanup as well, but maybe the part starting from when the More Actions button is clicked can be moved to a not exported function in the helper library.",
+      "range": {
+        "startLine": 151,
+        "startChar": 26,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
