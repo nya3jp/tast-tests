@@ -16,6 +16,24 @@
       "message": "will there be a separaet CL to add this as an informational test?",
       "revId": "d3d948f9427f88eb3f25e7c97f0d199309655778",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f19ca160_d7986d75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-07T00:55:10Z",
+      "side": 1,
+      "message": "We can do this, but what is the reason to do so? They\u0027ll run on crosbolt already and pass/fail results will be visible on go/tastboard too. IIUC we don\u0027t run perf tests on mainline normally.",
+      "parentUuid": "350533a0_942270f6",
+      "revId": "d3d948f9427f88eb3f25e7c97f0d199309655778",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
