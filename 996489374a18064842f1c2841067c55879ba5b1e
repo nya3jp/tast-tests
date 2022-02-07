@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a36557_5ff99a29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-02-07T10:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f07ea18c_b4f33fc8",
+      "revId": "996489374a18064842f1c2841067c55879ba5b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32853ce8_db0d8ddd",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-31T09:02:24Z",
       "side": 1,
       "message": "Set the interval for testing.Poll instead. I\u0027d also recommend something smaller like 100ms.",
+      "revId": "996489374a18064842f1c2841067c55879ba5b1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c2c3afa_af2b90d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-02-07T10:09:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32853ce8_db0d8ddd",
       "revId": "996489374a18064842f1c2841067c55879ba5b1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
