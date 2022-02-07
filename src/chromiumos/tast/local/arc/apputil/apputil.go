@@ -76,7 +76,7 @@ func (app *App) Install(ctx context.Context) error {
 	return nil
 }
 
-// Launch launches the ARC app and returns the time spent for the app to be visible.
+// Launch launches the ARC app.
 // The app has to be installed before calling this function,
 // i.e. `Install(context.Context)` should be called first.
 func (app *App) Launch(ctx context.Context) (time.Duration, error) {
@@ -141,11 +141,23 @@ func (app *App) Close(ctx context.Context, cr *chrome.Chrome, hasError func() bo
 	if !app.launched {
 		return nil
 	}
-	w, err := ash.GetARCAppWindowInfo(ctx, app.Tconn, app.PkgName)
+	return app.CloseWindow(ctx)
+}
+
+// CloseWindow closes the ARC app window.
+// This function aims at closing the ARC app window for certain purposes.
+// This function is not an alternative function for Close().
+func (app *App) CloseWindow(ctx context.Context) error {
+	window, err := ash.GetARCAppWindowInfo(ctx, app.Tconn, app.PkgName)
 	if err != nil {
 		return errors.Wrap(err, "failed to get ARC UI window info")
 	}
-	return w.CloseWindow(ctx, app.Tconn)
+
+	if err := window.CloseWindow(ctx, app.Tconn); err != nil {
+		return errors.Wrap(err, "failed to close window")
+	}
+
+	return nil
 }
 
 // DismissMobilePrompt dismisses the prompt of "This app is designed for mobile".
