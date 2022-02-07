@@ -31,6 +31,7 @@ func init() {
 			"ui.chameleon_display_port", // The port connected as extended display. Default is 3.
 
 		},
+		Data: []string{conference.CameraVideo},
 		Params: []testing.Param{
 			{
 				Name:    "premium_meet_large",
@@ -59,6 +60,12 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to dial to remote dut: ", err)
 	}
 	defer c.Close(ctx)
+
+	remoteCameraVideoPath, err := conference.PushFileToTmpDir(ctx, s, dut, conference.CameraVideo)
+	if err != nil {
+		s.Fatal("Failed to push file to DUT's tmp directory: ", err)
+	}
+	defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
 
 	if chameleonAddr, ok := s.Var("ui.chameleon_addr"); ok {
 		// Use chameleon board as extended display. Make sure chameleon is connected.
@@ -96,6 +103,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		Tier:            param.Tier,
 		RoomSize:        int64(param.Size),
 		ExtendedDisplay: true,
+		CameraVideoPath: remoteCameraVideoPath,
 	}); err != nil {
 		s.Fatal("Failed to run Meet Scenario: ", err)
 	}

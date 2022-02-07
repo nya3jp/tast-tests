@@ -76,6 +76,31 @@ type ConferenceService struct {
 	s *testing.ServiceState
 }
 
+func confereceChromeOpts(accountPool, cameraVideoPath string) []chrome.Option {
+	chromeArgs := chromeArgsWithFileCameraInput(cameraVideoPath)
+	return []chrome.Option{
+		// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
+		// Remove this when new UI becomes default.
+		chrome.EnableFeatures("WebUITabStrip"),
+		chrome.KeepState(),
+		chrome.ARCSupported(),
+		chrome.GAIALoginPool(accountPool),
+		chrome.ExtraArgs(chromeArgs...)}
+}
+
+// chromeArgsWithFileCameraInput returns Chrome extra args as string slice
+// for video test with a Y4M/MJPEG fileName streamed as live camera input.
+func chromeArgsWithFileCameraInput(fileName string) []string {
+	args := []string{
+		// See https://webrtc.github.io/webrtc-org/testing/.
+		// Feed a test pattern to getUserMedia() instead of live camera input.
+		"--use-fake-device-for-media-stream",
+		// Feed a Y4M/MJPEG test file to getUserMedia() instead of live camera input.
+		"--use-file-for-fake-video-capture=" + fileName,
+	}
+	return args
+}
+
 func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.MeetScenarioRequest) (*empty.Empty, error) {
 	roomSize := int(req.RoomSize)
 	meet, err := conference.GetGoogleMeetConfig(ctx, s.s, roomSize)
@@ -92,13 +117,8 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		if !ok {
 			return errors.New("failed to get variable ui.cujAccountPool")
 		}
-		cr, err := chrome.New(ctx,
-			// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
-			// Remove this when new UI becomes default.
-			chrome.EnableFeatures("WebUITabStrip"),
-			chrome.KeepState(),
-			chrome.ARCSupported(),
-			chrome.GAIALoginPool(accountPool))
+		opts := confereceChromeOpts(accountPool, req.CameraVideoPath)
+		cr, err := chrome.New(ctx, opts...)
 		if err != nil {
 			return errors.Wrap(err, "failed to restart Chrome")
 		}
@@ -301,16 +321,8 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	}
 
 	testing.ContextLog(ctx, "Start zoom meet scenario")
-	cr, err := chrome.New(ctx,
-		// Make sure we are running new chrome UI when tablet mode is enabled by CUJ test.
-		// Remove this when new UI becomes default.
-		chrome.EnableFeatures("WebUITabStrip"),
-		chrome.KeepState(),
-		chrome.ARCSupported(),
-		chrome.GAIALoginPool(accountPool))
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to restart Chrome")
-	}
+	opts := confereceChromeOpts(accountPool, req.CameraVideoPath)
+	cr, err := chrome.New(ctx, opts...)
 	account := cr.Creds().User
 
 	tconn, err := cr.TestAPIConn(ctx)
