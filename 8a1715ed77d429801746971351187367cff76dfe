@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e3ad5e53_e099c442",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "No idea, just a typo, fixed \u003d)",
+      "parentUuid": "7ef4bb19_9b541efe",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1321a808_ec6ebbb2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad42eed1_2fb926eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa2ba68_97908084",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b2c7b61_0b764043",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-02-04T12:59:55Z",
       "side": 1,
       "message": "nit: (both in PEM format)",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 28
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c19e6f52_96cbc508",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b2c7b61_0b764043",
       "range": {
         "startLine": 42,
         "startChar": 27,
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a244aa06_14bf1431",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b0dd06b_5234382b",
+      "range": {
+        "startLine": 69,
+        "startChar": 43,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4eda29e5_7df56092",
@@ -140,6 +236,30 @@
       "writtenOn": "2022-02-04T12:59:55Z",
       "side": 1,
       "message": "Maybe chowning to chronos is good enough here?\nE.g.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/filemanager/deletion.go;l\u003d246?q\u003dos.chown\u0026start\u003d11\n\n(not sure)",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd3e766_1726efe6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Yep, works, done",
+      "parentUuid": "4eda29e5_7df56092",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c50c45b_e81c0550",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e615b50_4a8d2c6f",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b548a0d_35816273",
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d5f303_b8fa4fe5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b548a0d_35816273",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 21
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21a02d2f_e6de0b76",
@@ -209,6 +377,30 @@
       "writtenOn": "2022-02-04T12:59:55Z",
       "side": 1,
       "message": "Should this be a constant defined next to the file name constant? WDYT?",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b8c403_68e11a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21a02d2f_e6de0b76",
       "range": {
         "startLine": 127,
         "startChar": 16,
@@ -265,6 +457,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "111300cc_84966304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ab6fe3_63379ad6",
+      "range": {
+        "startLine": 172,
+        "startChar": 70,
+        "endLine": 172,
+        "endChar": 75
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12316d54_27e68ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1347e430_22391258",
+      "range": {
+        "startLine": 172,
+        "startChar": 58,
+        "endLine": 172,
+        "endChar": 60
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec118058_addeed27",
@@ -288,6 +528,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65385a11_a8d87ed9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec118058_addeed27",
+      "range": {
+        "startLine": 197,
+        "startChar": 30,
+        "endLine": 197,
+        "endChar": 34
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdd889a7_e02559c1",
@@ -301,6 +565,30 @@
       "writtenOn": "2022-02-04T12:59:55Z",
       "side": 1,
       "message": "nit: We could make this a constant so it\u0027s not repeated",
+      "range": {
+        "startLine": 201,
+        "startChar": 35,
+        "endLine": 201,
+        "endChar": 48
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6adb6e9_163576b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-07T14:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd889a7_e02559c1",
       "range": {
         "startLine": 201,
         "startChar": 35,
