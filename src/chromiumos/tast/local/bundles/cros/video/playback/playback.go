@@ -221,3 +221,11 @@ func sampleDroppedFrames(ctx context.Context, conn *chrome.Conn, p *perf.Values)
 
 	return nil
 }
+
+// DataFiles returns the default data files each test case uses.
+func DataFiles() []string {
+	return []string{
+		"video.html",
+		"playback.js",
+	}
+}
