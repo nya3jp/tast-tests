@@ -27,14 +27,28 @@ func init() {
 			"hidehiko@chromium.org", // Tast port author.
 			"cros-arc-te@google.com",
 		},
-		Attr:         []string{"group:mainline", "group:arc-functional"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
+		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
+			ExtraAttr:         []string{"group:arc-functional"},
 			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
 		}, {
 			Name:              "vm",
+			ExtraAttr:         []string{"group:arc-functional"},
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
+		}, {
+			Name:              "refresh",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBootedWithNotificationRefresh",
+		}, {
+			Name:              "refresh_vm",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBootedWithNotificationRefresh",
 		}},
 	})
 }
