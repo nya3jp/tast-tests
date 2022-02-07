@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84643fc_2e7f4078",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-07T17:09:17Z",
+      "side": 1,
+      "message": "Please check that this code reboots into dev mode when PressEnterAtToNorm is passed in and FWMP is not, so that we don\u0027t get a false positive. I.e. We are in dev mode, dev mode is allowed by policy, and PressEnterAtToNorm is passed in. Do we end up in dev mode? That is what we would want to happen.\n\nOne way to be more certain, would be to press Ctrl-D a few times, and then switch to ENTER. Then we should be in dev mode if allowed, but fall back to normal if not allowed.",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 0
+      },
+      "revId": "34828a7d719311a2e836332290e6d594a0278e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5858ee5d_a4e17943",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-07T17:09:17Z",
+      "side": 1,
+      "message": "If you take my suggestion, you would check the \"PressEnterOnToNorm\" flag here.",
+      "range": {
+        "startLine": 646,
+        "startChar": 3,
+        "endLine": 659,
+        "endChar": 3
+      },
+      "revId": "34828a7d719311a2e836332290e6d594a0278e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
