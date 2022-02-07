@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78ae32f9_4bd72ae9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-07T05:31:38Z",
+      "side": 1,
+      "message": "\u003e \u003e please avoid multiline strings since they make logs difficult to read\n\u003e Difficult for whom?\nI am not the author of the document, but my theory is, \"for any programs in the automation systems that runs in the Chromium development and its infra ecosystem, which already exist and added in the future\".\n\u003e For us (which means, people who are reading the logs for this test) this is exactly desired output. We are happy to read it.\nI agree. So I think\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Output-files\nis the thing that fits your usage, because it assures to keep the original content as-is.\n\n\u003e Which exactly automated processings you are referring to? My goal is to optimise for actual usages of this test, when someone runs the test and then reads the output from console.\nI think this is the important point.\nWhat is the actual usage? Is this test run on the luci infra for a ceratin builder or CQ, besides manual testing by a developer?\n\n\u003e I think there are two different things we are talking about: one is console output from running test, second is output into a log file.\nLogs written by the logging function of Tast is output to both the dedicated logging file(s) and the console, by default. So these two things are linked actually, as long as we use the testing.ContextLog here. So writing an output file separated from the logging, \"Output Files\" in the above linked document, it will be resolved.",
+      "parentUuid": "c356931a_c2cef042",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52c3d46e_1f54cc40",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 18

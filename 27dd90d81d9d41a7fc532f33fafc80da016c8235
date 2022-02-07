@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "370ce1d3_1aac1832",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-07T05:31:38Z",
+      "side": 1,
+      "message": "\u003e it assumes that only one is needed: either stdout or stderr.\nNo. We can set different Writer objects to each, cmd.Stderr and cmd.Stdout, so that we can get two outputs separately by running cmd.Run().\nhttps://pkg.go.dev/os/exec#Cmd\n\nThere was a test flakiness issue caused by relying on the order of the combined stdout and stderr in the past. Lots of other tests uses it, meaning that they should be examined for if they have the same flakiness.\n\nWhat I think necessary is:\n- Do not parse results originated from CombinedOutput() for any test assertions. \nAnd some recommendations:\n- It may be acceptable to write CombinedOutput result if it is just for the purpose of human readers. (to a dedicated output file separated from the log)\n- However I still recommend to output them to separate files, like \"foo_stderr.txt\" and \"foo_stdout.txt\".",
+      "parentUuid": "c9ae104f_3b252073",
+      "revId": "27dd90d81d9d41a7fc532f33fafc80da016c8235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec4b9e96_5a63d2e7",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 17
