@@ -111,31 +111,48 @@ func generateFakeAppNames(numFakeApps int) []string {
 
 // GeneratePrepareFakeAppsWithNamesOptions calls PrepareDefaultFakeApps() and
 // returns options to be used by chrome.New() for logging in with the newly
-// created fake apps. The caller is also responsible for cleaning up the
-// extDirBase which gets created.
-func GeneratePrepareFakeAppsWithNamesOptions(names []string) ([]chrome.Option, string, error) {
-	extDirBase, err := ioutil.TempDir("", "")
+// created fake apps. baseDir is the path to the directory for keeping app data.
+// The function caller should always clean baseDir regardless of function
+// execution results. names specify app names.
+func GeneratePrepareFakeAppsWithNamesOptions(baseDir string, names []string) ([]chrome.Option, error) {
+	dirs, err := PrepareDefaultFakeApps(baseDir, names, true)
 	if err != nil {
-		return nil, extDirBase, errors.Wrap(err, "failed to create tempdir")
-	}
-
-	dirs, err := PrepareDefaultFakeApps(extDirBase, names, true)
-	if err != nil {
-		return nil, extDirBase, errors.Wrap(err, "failed to create fake apps")
+		return nil, errors.Wrap(err, "failed to create fake apps")
 	}
 
 	opts := make([]chrome.Option, 0, len(names))
 	for _, dir := range dirs {
 		opts = append(opts, chrome.UnpackedExtension(dir))
 	}
-	return opts, extDirBase, nil
+	return opts, nil
+}
+
+// GeneratePrepareFakeAppsWithIconDataOptions is similar with GeneratePrepareFakeAppsWithNamesOptions,
+// with a difference that GeneratePrepareFakeAppsWithIconDataOptions allows the
+// caller to specify both app names and icon data. The caller has the duty to
+// clean baseDir.
+func GeneratePrepareFakeAppsWithIconDataOptions(baseDir string, names []string, iconData [][]byte) ([]chrome.Option, error) {
+	if len(names) != len(iconData) {
+		return nil, errors.Errorf("unexpected count of icon data: got %d, expecting %d", len(iconData), len(names))
+	}
+
+	dirs, err := prepareFakeAppsWithIconData(baseDir, names, iconData)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to prepare data for fake apps")
+	}
+
+	opts := make([]chrome.Option, 0, len(names))
+	for _, dir := range dirs {
+		opts = append(opts, chrome.UnpackedExtension(dir))
+	}
+	return opts, nil
 }
 
 // GeneratePrepareFakeAppsOptions is similar with GeneratePrepareFakeAppsWithNamesOptions,
 // with a difference that GeneratePrepareFakeAppsOptions accepts the fake app
 // count as the parameter.
-func GeneratePrepareFakeAppsOptions(numFakeApps int) ([]chrome.Option, string, error) {
-	return GeneratePrepareFakeAppsWithNamesOptions(generateFakeAppNames(numFakeApps))
+func GeneratePrepareFakeAppsOptions(baseDir string, numFakeApps int) ([]chrome.Option, error) {
+	return GeneratePrepareFakeAppsWithNamesOptions(baseDir, generateFakeAppNames(numFakeApps))
 }
 
 // prepareFakeApp creates data for a fake app with the specified app name and
@@ -185,8 +202,9 @@ func prepareFakeApp(baseDir, appName, iconDir string, iconFileMap map[int]string
 
 // prepareFakeAppIcon creates icon images in different scales with the given
 // icon data. These images are stored in a directory created under baseDir.
-func prepareFakeAppIcon(baseDir string, iconData []byte) (string, map[int]string, error) {
-	iconDir := filepath.Join(baseDir, "icons")
+// iconFolder specifies the directory's name.
+func prepareFakeAppIcon(baseDir, iconFolder string, iconData []byte) (string, map[int]string, error) {
+	iconDir := filepath.Join(baseDir, iconFolder)
 	if err := os.Mkdir(iconDir, 0755); err != nil {
 		return "", nil, errors.Wrapf(err, "failed to create the icon directory %q", iconDir)
 	}
@@ -230,7 +248,7 @@ func PrepareDefaultFakeApps(baseDir string, appNames []string, hasIcon bool) ([]
 	var iconFiles map[int]string
 	var err error
 	if hasIcon {
-		iconDir, iconFiles, err = prepareFakeAppIcon(baseDir, fakeIconData)
+		iconDir, iconFiles, err = prepareFakeAppIcon(baseDir, "defaultIcons", fakeIconData)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to parepare the shared icon for fake apps")
 		}
@@ -238,6 +256,34 @@ func PrepareDefaultFakeApps(baseDir string, appNames []string, hasIcon bool) ([]
 
 	var dirs []string
 	for _, appName := range appNames {
+		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to prepare data for %q", appName)
+		}
+		dirs = append(dirs, dir)
+	}
+
+	return dirs, nil
+}
+
+// prepareFakeAppsWithIconData is similar with PrepareDefaultFakeApps, but with
+// the difference that app icons are specified by the parameter.
+func prepareFakeAppsWithIconData(baseDir string, appNames []string, iconData [][]byte) ([]string, error) {
+	if len(appNames) != len(iconData) {
+		return nil, errors.Errorf("unexpected count of icon data: got %d, expecting %d", len(iconData), len(appNames))
+	}
+
+	if err := extension.ChownContentsToChrome(baseDir); err != nil {
+		return nil, errors.Wrapf(err, "failed to change ownership of %q", baseDir)
+	}
+
+	var dirs []string
+	for index, appName := range appNames {
+		iconDir, iconFiles, err := prepareFakeAppIcon(baseDir, appName+"Icons", iconData[index])
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to parepare icons for the fake app %q", appName)
+		}
+
 		dir, err := prepareFakeApp(baseDir, appName, iconDir, iconFiles)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to prepare data for %q", appName)
