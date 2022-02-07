@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "20c0cca5_2770fc24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-07T09:43:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e58103_c2031cdb",
+      "revId": "454135c5779873c82658512609c88fe4e01ee076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f6dc2c9b_0f8267de",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-26T08:32:37Z",
       "side": 1,
       "message": "Is this random required for the test?",
+      "revId": "454135c5779873c82658512609c88fe4e01ee076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ef6b0c_7153c795",
+        "filename": "src/chromiumos/tast/local/bundles/cros/taskmanager/close_tab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-07T09:43:58Z",
+      "side": 1,
+      "message": "In some other tests, we found that some public websites might refuse to serve, most likely due to requests too frequently.\nTherefore we shuffle the slice to avoid accessing some same websites every time.\n\nWe have improved the comment to clarify it.",
+      "parentUuid": "09a00633_30b787c7",
       "revId": "454135c5779873c82658512609c88fe4e01ee076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
