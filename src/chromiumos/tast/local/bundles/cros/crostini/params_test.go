@@ -18,12 +18,6 @@ import (
 )
 
 var testFiles = []string{
-	"audio_basic.go",
-	"audio_playback_configurations.go",
-	"basic.go",
-	"command_cd.go",
-	"command_ps.go",
-	"command_vim.go",
 	"copy_files_to_linux_files.go",
 	"crash_reporter.go",
 	"drag_drop.go",
@@ -77,6 +71,25 @@ var testFiles = []string{
 func TestParams(t *testing.T) {
 	params := crostini.MakeTestParams(t)
 	for _, filename := range testFiles {
+		genparams.Ensure(t, filename, params)
+	}
+}
+
+var testFilesFix = []string{
+	"audio_basic.go",
+	"audio_playback_configurations.go",
+	"basic.go",
+	"command_cd.go",
+	"command_ps.go",
+	"command_vim.go",
+}
+
+func TestFixTestParams(t *testing.T) {
+	for _, filename := range testFilesFix {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Timeout:    2 * time.Minute,
+			UseFixture: true,
+		}})
 		genparams.Ensure(t, filename, params)
 	}
 }
