@@ -22,33 +22,32 @@ import (
 const (
 	// TODO(b/149590275): remove once fixed
 	flashprotectOutputHardwareAndSoftwareWriteProtectEnabledBloonchipper = `Flash protect flags: 0x0000040f wp_gpio_asserted ro_at_boot ro_now rollback_now all_now
-Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
+Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
 Writable flags:      0x00000000
 `
 	flashprotectOutputHardwareAndSoftwareWriteProtectEnabled = `Flash protect flags: 0x0000000b wp_gpio_asserted ro_at_boot ro_now
-Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
+Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
 Writable flags:      0x00000004 all_now
 `
 
 	// TODO(b/149590275): remove once fixed
 	flashprotectOutputHardwareWriteProtectDisabledAndSoftwareWriteProtectEnabledBloonchipper = `Flash protect flags: 0x00000407 ro_at_boot ro_now rollback_now all_now
-Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
+Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
 Writable flags:      0x00000000
 `
 
 	flashprotectOutputHardwareWriteProtectDisabledAndSoftwareWriteProtectEnabled = `Flash protect flags: 0x00000003 ro_at_boot ro_now
-Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
+Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
 Writable flags:      0x00000000
 `
 
-	// TODO(b/149590275): remove once fixed
-	flashprotectOutputHardwareAndSoftwareWriteProtectEnabledROBloonchipper = `Flash protect flags: 0x0000000b wp_gpio_asserted ro_at_boot ro_now
+	flashprotectOutputHardwareAndSoftwareWriteProtectEnabledRO = `Flash protect flags: 0x0000000b wp_gpio_asserted ro_at_boot ro_now
 Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
 Writable flags:      0x00000004 all_now
 `
 
 	flashprotectOutputHardwareAndSoftwareWriteProtectDisabled = `Flash protect flags: 0x00000000
-Valid flags:         0x0000003f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT
+Valid flags:         0x0000083f wp_gpio_asserted ro_at_boot ro_now all_now STUCK INCONSISTENT UNKNOWN_ERROR
 Writable flags:      0x00000001 ro_at_boot
 `
 )
@@ -69,6 +68,7 @@ const (
 	FlashProtectRwNow             FlashProtectFlags = 0x100 // RW flash code protected now.
 	FlashProtectRollbackAtBoot    FlashProtectFlags = 0x200 // Rollback information flash region protected when the EC boots.
 	FlashProtectRollbackNow       FlashProtectFlags = 0x400 // Rollback information flash region protected now.
+	FlashProtectUnknownError      FlashProtectFlags = 0x800 // Error - unknown error.
 )
 
 // IsSet checks if the given flags are set.
@@ -195,15 +195,15 @@ func expectedFlashProtectOutput(fpBoard FPBoardName, curImage FWImageType, softw
 
 	switch {
 	case softwareWriteProtectEnabled && hardwareWriteProtectEnabled:
-		// TODO(b/149590275): remove once fixed
-		if fpBoard == FPBoardNameBloonchipper {
-			if curImage == ImageTypeRO {
-				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledROBloonchipper
-			} else {
-				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledBloonchipper
-			}
+		if curImage == ImageTypeRO {
+			expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledRO
 		} else {
-			expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabled
+			// TODO(b/149590275): remove once fixed
+			if fpBoard == FPBoardNameBloonchipper {
+				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabledBloonchipper
+			} else {
+				expectedOutput = flashprotectOutputHardwareAndSoftwareWriteProtectEnabled
+			}
 		}
 	case softwareWriteProtectEnabled && !hardwareWriteProtectEnabled:
 		// TODO(b/149590275): remove once fixed
