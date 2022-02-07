@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a6d48fa_b066832b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1512112
+      },
+      "writtenOn": "2022-02-07T19:37:06Z",
+      "side": 1,
+      "message": "[nit] t?",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "fc8ba1960733a765e5d555f0b8744d67211014e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "67d0ef7e_0d7e2359",
         "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
         "patchSetId": 1
@@ -55,6 +78,30 @@
       "side": 1,
       "message": "It replicates Chrome behaviour: any such format can be used for\nthe primary plane.",
       "parentUuid": "67d0ef7e_0d7e2359",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "fc8ba1960733a765e5d555f0b8744d67211014e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c09614e_d100fb1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1512112
+      },
+      "writtenOn": "2022-02-07T19:37:06Z",
+      "side": 1,
+      "message": "Ah. This wasn\u0027t clear from the rest of the context around here, could you add a comment and/or line to the description?",
+      "parentUuid": "db935274_9a6a524a",
       "range": {
         "startLine": 127,
         "startChar": 3,
