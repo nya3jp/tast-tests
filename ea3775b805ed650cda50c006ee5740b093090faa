@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06f6e50d_d486c89b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-07T19:26:44Z",
+      "side": 1,
+      "message": "It seems that your approval was automatically removed when I uploaded a new patchset. Do you also approve of the latest patchset?",
+      "parentUuid": "2b90e5a1_1d819324",
+      "revId": "ea3775b805ed650cda50c006ee5740b093090faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05ea724d_8eb44899",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
         "patchSetId": 1
