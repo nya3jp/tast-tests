@@ -6,6 +6,7 @@ package launcher
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 	"time"
 
@@ -48,12 +49,17 @@ func init() {
 
 // CreateAndFillFolder tests that a folder can be filled to the maximum allowed size.
 func CreateAndFillFolder(ctx context.Context, s *testing.State) {
+	extDirBase, err := ioutil.TempDir("", "")
+	if err != nil {
+		s.Fatal("Failed to create a temporary directory: ", err)
+	}
+	defer os.RemoveAll(extDirBase)
+
 	// Create 50 fake apps and get the the options to add to the new chrome session.
-	opts, extDirBase, err := ash.GeneratePrepareFakeAppsOptions(50)
+	opts, err := ash.GeneratePrepareFakeAppsOptions(extDirBase, 50)
 	if err != nil {
 		s.Fatal("Failed to create 50 fake apps")
 	}
-	defer os.RemoveAll(extDirBase)
 
 	testCase := s.Param().(launcher.TestCase)
 	productivityLauncher := testCase.ProductivityLauncher

@@ -6,6 +6,7 @@ package launcher
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
 
 	"chromiumos/tast/local/chrome"
@@ -47,12 +48,17 @@ func init() {
 
 // RemoveAppsFromFolder tests that items can be removed from a folder.
 func RemoveAppsFromFolder(ctx context.Context, s *testing.State) {
+	extDirBase, err := ioutil.TempDir("", "")
+	if err != nil {
+		s.Fatal("Failed to create a temporary directory: ", err)
+	}
+	defer os.RemoveAll(extDirBase)
+
 	// Create 10 fake apps and get the the options to add to the new chrome session.
-	opts, extDirBase, err := ash.GeneratePrepareFakeAppsOptions(10)
+	opts, err := ash.GeneratePrepareFakeAppsOptions(extDirBase, 10)
 	if err != nil {
 		s.Fatal("Failed to create 10 fake apps")
 	}
-	defer os.RemoveAll(extDirBase)
 
 	testCase := s.Param().(launcher.TestCase)
 	productivityLauncher := testCase.ProductivityLauncher
