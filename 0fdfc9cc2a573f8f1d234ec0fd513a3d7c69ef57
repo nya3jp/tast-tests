@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "0fdfc9cc2a573f8f1d234ec0fd513a3d7c69ef57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c9b283_ee2c2072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1414062
+      },
+      "writtenOn": "2022-02-07T13:56:21Z",
+      "side": 1,
+      "message": "Thanks. I probably should write more tast tests to learn more of the idioms :-)",
+      "revId": "0fdfc9cc2a573f8f1d234ec0fd513a3d7c69ef57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
