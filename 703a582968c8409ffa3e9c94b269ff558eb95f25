@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24c2664_94aef13d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "Thank you for the CL. Left few comments.",
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c8efba_0904a1ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_available_routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "It bothers me that we do an O(N^2) here. I came to know there is no set impl in golang but we can achieve O(N) using maps:\n\n```\n\twantRoutines :\u003d []string{\n\t\t\"battery_capacity\",\n\t\t\"battery_health\",\n\t\t\"cpu_cache\",\n\t\t\"cpu_stress\",\n\t\t\"cpu_floating_point_accuracy\",\n\t\t\"cpu_prime_search\",\n\t\t\"battery_discharge\",\n\t\t\"battery_charge\",\n\t\t\"memory\",\n\t}\n\n\n\tset :\u003d make(map[string]struct{})\n\tfor _, routine :\u003d range resp.Routines {\n\t\tset[routine] \u003d struct{}{}\n\t}\n\n\tfor _, want :\u003d range wantRoutines {\n\t\tif _, ok :\u003d set[want]; !ok {\n\t\t\ts.Errorf(\"Wanted %q routine is missing in available routines %v\", want, resp.Routines)\n\t\t}\n\t}\n```\n\nSounds like the size of an empty struct is 0 bytes | https://dave.cheney.net/2014/03/25/the-empty-struct#:~:text\u003dhis%20comment%20below.-,An%20empty%20struct,a%20width%20of%20zero.%20It%20occupies%20zero%20bytes%20of%20storage.,-var%20s%20struct",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27112a9f_ba2f8e74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "nit: remove \\n",
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8f61b2_e9542d48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "It is confusing that we have two time buffers/margins (20 seconds from cleanupTimeout, and 30 seconds in SetUpTimeout), can we include just one time buffer/margin, so it will be LoginTimeout + ResetTimeout + Buffer/Margin?",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 72
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54645522_66f28dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "nit: remove \\n",
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f313f70_857bc4f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "Value looks a bit generic, can we choose a more scoped name?\n\nTaking a step back: Is there a reason why not including chrome.Conn\u0027s directly in the fixture?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5bef669_c1e3b854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "Q: does this include errors due to installation failures?\n\nIdeally we want to make sure the extension is installed. Will cr.NewConn in line 111 make sure that the sw URL opens successfully?",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb46d37_a30a6706",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "do we really need to add tast into the PWA page?",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5decfd12_89c54098",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "can this be a constant variable?",
+      "range": {
+        "startLine": 111,
+        "startChar": 53,
+        "endLine": 111,
+        "endChar": 85
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f3c674_9e3019b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-07T16:06:27Z",
+      "side": 1,
+      "message": "Is there a reason why the logic goes into cleanUp() and not directly in TearDown()?",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
