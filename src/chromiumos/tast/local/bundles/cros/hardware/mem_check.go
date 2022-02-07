@@ -20,7 +20,9 @@ func init() {
 			"chromeos-memory@google.com",
 			"hidehiko@chromium.org", // Tast port author.
 		},
-		SoftwareDeps: []string{"mosys"},
+		// TODO(b/213995159): Update the test, manatee memory management
+		// is different and hypervisor doesn't give us all the memory.
+		SoftwareDeps: []string{"mosys", "no_manatee"},
 		Attr:         []string{"group:mainline"},
 	})
 }
