@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6a228c_b791c285",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-07T12:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acaae9bb_d6cb72d8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "8f0ba04b5ef7eef8c97ed23d54a9fc0c9cf76b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07c6e897_f27010d0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee58ccb_2b94e0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-07T12:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07c6e897_f27010d0",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "8f0ba04b5ef7eef8c97ed23d54a9fc0c9cf76b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "921e1f08_705cdfd9",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-02-07T09:40:49Z",
       "side": 1,
       "message": "nit: to initialize",
+      "range": {
+        "startLine": 96,
+        "startChar": 18,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "8f0ba04b5ef7eef8c97ed23d54a9fc0c9cf76b63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78556ec5_0d456da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_from_ogb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-07T12:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "921e1f08_705cdfd9",
       "range": {
         "startLine": 96,
         "startChar": 18,
