@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b934b0_6b29f868",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-02-07T10:25:25Z",
+      "side": 1,
+      "message": "I\u0027ve made relevant changes on boot_mode to replace part of the original test script. I\u0027ve also run this new patch successfully on the same models listed in one earlier comment by Carlos.",
+      "revId": "5e3e88b3e6528948d7e20846bd7fe79632647018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
