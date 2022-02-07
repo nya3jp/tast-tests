@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96dccc8_66c6234d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-07T10:46:38Z",
+      "side": 1,
+      "message": "+jaflis@ - maybe we should extract more helper functions regarding user removal?",
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca420000_6ddb27ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-07T10:46:38Z",
+      "side": 1,
+      "message": "use chrome.LoginTimeout * \u003cnumber of logins\u003e + \u003csome extra time\u003e",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2af78619_78029477",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-07T10:46:38Z",
+      "side": 1,
+      "message": "this might not work because it calls\n\ttconn, err :\u003d cr.TestAPIConn(ctx)\nwhich is not available at the login screen.",
+      "range": {
+        "startLine": 58,
+        "startChar": 15,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af39ae8a_bbb245b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-07T10:46:38Z",
+      "side": 1,
+      "message": "for this to work you need to wait for the ownership established after the first login (see userutil.WaitForOwnership)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a84517_ab151e5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-07T10:46:38Z",
+      "side": 1,
+      "message": "do we need 5? I think 2 or 3 is enough. It would make the test faster.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9cbc03_86279b93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-07T10:46:38Z",
+      "side": 1,
+      "message": "this makes difficult to change the strings on the chrome side. Any chance we could provide the names via test api (see https://docs.google.com/document/d/1cxMLPQUNVVoa_i3dBfrAGhITQtdKV_HS1vdcM8BjKEE/edit?resourcekey\u003d0-TOcN57danKvOskgvJGpRJQ#heading\u003dh.v7qa4pg619lx for details) ?",
+      "range": {
+        "startLine": 165,
+        "startChar": 45,
+        "endLine": 165,
+        "endChar": 65
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3648020d_3d09a5cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-07T10:46:38Z",
+      "side": 1,
+      "message": "why do we need IfSuccessThen here? Isn\u0027t it covered already by uiauto.Combine?",
+      "range": {
+        "startLine": 186,
+        "startChar": 6,
+        "endLine": 186,
+        "endChar": 19
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
