@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ff65f22_66113be9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-07T15:47:16Z",
+      "side": 1,
+      "message": "there is at least one more test in which we remove users on the sing-in screen, login.RemoveExistingUser (and another test where we remove users in Settings, probably not relevant here). I think it makes sense to extract the common part. We already have one function helping to check if the user was deleted successfully (userutil.GetKnownEmailsFromLocalState), and functions creating new users, e.g. userutil.CreateUser",
+      "parentUuid": "d96dccc8_66c6234d",
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca420000_6ddb27ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
         "patchSetId": 1
@@ -37,6 +55,23 @@
         "endLine": 37,
         "endChar": 32
       },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a69eb62e_ffd640a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-07T15:47:16Z",
+      "side": 1,
+      "message": "we already have helper functions for creating users and logging in, see e.g. userutil.CreateUser, userutil.Login (in user_util.go)",
       "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
