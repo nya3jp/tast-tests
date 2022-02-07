@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c656a00_6a3083b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-07T10:35:36Z",
+      "side": 1,
+      "message": "Use a PollBreak here instead.",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "fb952632ef0e8a5667b3276d5df55f8cfe9f5c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c70c146c_496ebc19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-07T10:35:36Z",
+      "side": 1,
+      "message": "Polling includes an interval. You can set it to 100ms instead.",
+      "revId": "fb952632ef0e8a5667b3276d5df55f8cfe9f5c8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20e3f204_34fa4a6d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_off_hours.go",
         "patchSetId": 3
