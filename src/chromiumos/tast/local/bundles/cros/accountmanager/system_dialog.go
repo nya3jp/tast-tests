@@ -16,7 +16,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
@@ -59,14 +58,12 @@ func SystemDialog(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(accountmanager.DefaultUITimeout)
 
-	// Open Account Manager page in OS Settings and find Add Google Account button.
+	// Open Account Manager page in OS Settings and click Add Google Account button.
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
-	if _, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton)); err != nil {
-		s.Fatal("Failed to launch Account Manager page: ", err)
-	}
-
-	// Click the button to open account addition dialog.
-	if err := ui.LeftClick(addAccountButton)(ctx); err != nil {
+	if err := uiauto.Combine("Click Add Google Account button",
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
+		ui.LeftClickUntil(addAccountButton, ui.Exists(accountmanager.GetAddAccountDialog())),
+	)(ctx); err != nil {
 		s.Fatal("Failed to click Add Google Account button: ", err)
 	}
 
