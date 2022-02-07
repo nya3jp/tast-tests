@@ -16,6 +16,29 @@
       "message": "jshargo@ PTAL\n\nOthers FYI",
       "revId": "fc8ba1960733a765e5d555f0b8744d67211014e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67d0ef7e_0d7e2359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1512112
+      },
+      "writtenOn": "2022-02-07T18:59:21Z",
+      "side": 1,
+      "message": "Why return early here instead of looking at the rest of the primary formats?",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "fc8ba1960733a765e5d555f0b8744d67211014e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
