@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d913f24_712733d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-02-07T09:13:10Z",
+      "side": 1,
+      "message": "Hi Shuo-Peng Liao,\n\nCan you please review this CL again?",
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
