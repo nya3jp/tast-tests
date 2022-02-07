@@ -39,6 +39,30 @@
       },
       "revId": "fc8ba1960733a765e5d555f0b8744d67211014e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db935274_9a6a524a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-07T19:32:48Z",
+      "side": 1,
+      "message": "It replicates Chrome behaviour: any such format can be used for\nthe primary plane.",
+      "parentUuid": "67d0ef7e_0d7e2359",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "fc8ba1960733a765e5d555f0b8744d67211014e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
