@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "619f633c_6102bcef",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-07T22:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23e8f51d_271c97c2",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 72
+      },
+      "revId": "e507268556e234d21f71436c5fdf59c589835f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "178f1c66_2b4b2f0d",
@@ -148,6 +172,30 @@
       "side": 1,
       "message": "There is no extraData for fixture at present. So I\u0027ll move the declaration of extraData and the Quote part out and leave the crostini.GetContainerMetadataArtifact inside.",
       "parentUuid": "cef151e9_f9fb860f",
+      "range": {
+        "startLine": 322,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 5
+      },
+      "revId": "e507268556e234d21f71436c5fdf59c589835f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d73002_2cf7c248",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-07T22:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc324713_5b6f7eef",
       "range": {
         "startLine": 322,
         "startChar": 4,
