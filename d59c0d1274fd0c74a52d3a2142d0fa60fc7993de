@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb7a4e8_7ccfb65e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-07T00:18:47Z",
+      "side": 1,
+      "message": "It\u0027s helpful to tell us what\u0027s different and how the reland addresses whatever broke the first landing. Also, how did you test this change?",
+      "revId": "d59c0d1274fd0c74a52d3a2142d0fa60fc7993de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce97f1aa_ba4a2163",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-07T00:18:47Z",
+      "side": 1,
+      "message": "Couple questions, otherwise LGTM, I\u0027m assuming nothing\u0027s changed besides keeping the .tar.xz files needed for the internal tests?",
+      "revId": "d59c0d1274fd0c74a52d3a2142d0fa60fc7993de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4295db75_82fb88fa",
+        "filename": "src/chromiumos/tast/local/crostini/data/crostini_app_test_container_metadata_bullseye_amd64.tar.xz.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-02-07T00:18:47Z",
+      "side": 1,
+      "message": "Is the plan to have both .tar.xz and squashfs, switch the private symlinks to the squashfs, then remove the .tar.xz as a set of three commits?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 84
+      },
+      "revId": "d59c0d1274fd0c74a52d3a2142d0fa60fc7993de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
