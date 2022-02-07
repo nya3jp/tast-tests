@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c356931a_c2cef042",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1402113
+      },
+      "writtenOn": "2022-02-07T03:20:47Z",
+      "side": 1,
+      "message": "Thank you for the explanation! Also, I read the links you provided.\nI understand there is a generic approach, but I don\u0027t think we have to apply it rigidly in this case. I have few questions, it would be great to make sure we are on the same page, and talking about the same things. Thanks!\n\n\u003e please avoid multiline strings since they make logs difficult to read\nDifficult for whom? For us (which means, people who are reading the logs for this test) this is exactly desired output. We are happy to read it.\n\n\u003e automated processings of logs can parse each line. If there is multiline log, they need to identify which lines correspond to a single log\nWhich exactly automated processings you are referring to? My goal is to optimise for actual usages of this test, when someone runs the test and then reads the output from console.\n\n\u003e it would be better to output to a separate result file\nI think there are two different things we are talking about: one is console output from running test, second is output into a log file. Do you mean I should create a result log file, in addition to console output, with the same content as console output? I can do this, would this resolve this comment thread?",
+      "parentUuid": "7bb60a26_6afd4266",
+      "revId": "a2071e5ac09a7d4464e4ec26ffc025ebafecc366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52c3d46e_1f54cc40",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
         "patchSetId": 18
