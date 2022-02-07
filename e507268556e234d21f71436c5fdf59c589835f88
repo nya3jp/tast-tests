@@ -55,6 +55,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23e8f51d_271c97c2",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-02-07T22:31:06Z",
+      "side": 1,
+      "message": "I don\u0027t think this can be removed. We\u0027re still going to have test-cases with test-case-specific data files, we just won\u0027t be adding GetContainer{Rootfs,Metadata}Artifact",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 72
+      },
+      "revId": "e507268556e234d21f71436c5fdf59c589835f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "178f1c66_2b4b2f0d",
         "filename": "src/chromiumos/tast/local/crostini/params.go",
         "patchSetId": 1
@@ -84,6 +107,29 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "178f1c66_2b4b2f0d",
+      "revId": "e507268556e234d21f71436c5fdf59c589835f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef151e9_f9fb860f",
+        "filename": "src/chromiumos/tast/local/crostini/params.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-02-07T22:31:06Z",
+      "side": 1,
+      "message": "This block should stay where it is and the fixture case should still accept extra data",
+      "range": {
+        "startLine": 322,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 5
+      },
       "revId": "e507268556e234d21f71436c5fdf59c589835f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
