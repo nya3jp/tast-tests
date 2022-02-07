@@ -26,6 +26,7 @@ func init() {
 		ServiceDeps: []string{
 			"tast.cros.ui.ConferenceService",
 		},
+		Data: []string{conference.CameraVideo},
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
@@ -96,11 +97,18 @@ func ZoomConfCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer c.Close(cleanupCtx)
 
+	remoteCameraVideoPath, err := conference.PushFileToTmpDir(ctx, s, dut, conference.CameraVideo)
+	if err != nil {
+		s.Fatal("Failed to push file to DUT's tmp directory: ", err)
+	}
+	defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
+
 	client := pb.NewConferenceServiceClient(c.Conn)
 	if _, err := client.RunZoomScenario(ctx, &pb.MeetScenarioRequest{
 		Tier:            param.Tier,
 		RoomSize:        int64(param.Size),
 		ExtendedDisplay: false,
+		CameraVideoPath: remoteCameraVideoPath,
 	}); err != nil {
 		s.Fatal("Failed to run Zoom Scenario: ", err)
 	}

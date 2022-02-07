@@ -25,6 +25,7 @@ func init() {
 		ServiceDeps: []string{
 			"tast.cros.ui.ConferenceService",
 		},
+		Data: []string{conference.CameraVideo},
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
@@ -104,11 +105,18 @@ func GoogleMeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer c.Close(ctx)
 
+	remoteCameraVideoPath, err := conference.PushFileToTmpDir(ctx, s, dut, conference.CameraVideo)
+	if err != nil {
+		s.Fatal("Failed to push file to DUT's tmp directory: ", err)
+	}
+	defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
+
 	client := pb.NewConferenceServiceClient(c.Conn)
 	if _, err := client.RunGoogleMeetScenario(ctx, &pb.MeetScenarioRequest{
 		Tier:            param.Tier,
 		RoomSize:        int64(param.Size),
 		ExtendedDisplay: false,
+		CameraVideoPath: remoteCameraVideoPath,
 	}); err != nil {
 		s.Fatal("Failed to run Meet Scenario: ", err)
 	}
