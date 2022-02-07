@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b000e77_b1af5f2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-07T22:41:42Z",
+      "side": 1,
+      "message": "LGTM % remaining nits",
+      "revId": "5c741abaac82ed97eec081e2694b1568f8f8384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3b50ef_6a8b355f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-07T22:41:42Z",
+      "side": 1,
+      "message": "JFYI, even though this is copied from the other test, in case someone looks this up in the future:\n\n--slot expects the slot id.\nOn Chrome OS, chaps numbers the slots as integers, starting from 0, in the order they are loaded.\nThe system slot is usually loaded first (due to a command-line parameter to the chaps daemon) so it gets slot id 0.\nThe user slot is loaded second so it gets slot id 1.\n\nIn theory we should not be hardcoding these slot ids here but getting them using some API call instead (e.g. asking cryptohome through its API[0], or matching the slot path[1].\nIn practice that would be pretty complex, and the user slot always gets id 1, and the other test is already doing this too, so I think this is fine.\n\n[0] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/system_api/dbus/cryptohome/UserDataAuth.proto;l\u003d834;drc\u003d9285664c0c0e31dcf53441d56c6d490c195c690d\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/shill/pkcs11_data_store.cc;l\u003d275;drc\u003ddc33b7ca26a0b4e9514afd65f90a5c02a66fd854)",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "5c741abaac82ed97eec081e2694b1568f8f8384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b545e27_34776ed2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-07T22:41:42Z",
+      "side": 1,
+      "message": "nit: Personally I would pass this in as param to waitForClientCert so it\u0027s more generic (optional:) )",
+      "range": {
+        "startLine": 161,
+        "startChar": 31,
+        "endLine": 161,
+        "endChar": 48
+      },
+      "revId": "5c741abaac82ed97eec081e2694b1568f8f8384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

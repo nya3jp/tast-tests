@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee5f7e3_2ea0cabc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-07T22:41:42Z",
+      "side": 1,
+      "message": "Seems to be not fixed yet in PS4. (JFYI chromeos repo requires you to change the local commit message using git commit --amend and then re-upload that)",
+      "parentUuid": "e3ad5e53_e099c442",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1321a808_ec6ebbb2",
@@ -401,6 +425,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "21a02d2f_e6de0b76",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "8a1715ed77d429801746971351187367cff76dfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc20f2bc_3d0d8398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-02-07T22:41:42Z",
+      "side": 1,
+      "message": "Looks forgotten so friendly ping (but I don\u0027t care too much, was just an idea :-) )",
+      "parentUuid": "c8b8c403_68e11a47",
       "range": {
         "startLine": 127,
         "startChar": 16,
