@@ -124,9 +124,13 @@ func NewScreenRecorder(ctx context.Context, tconn *chrome.TestConn) (*ScreenReco
 	ui := New(tconn)
 	shareScreenDialog := nodewith.Name("Choose what to share").ClassName("DesktopMediaPickerDialogView")
 	entireDesktopButton := nodewith.ClassName("DesktopMediaSourceView").Role(role.Button).Ancestor(shareScreenDialog)
-	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog)
+	// The share button becomes focusable after the entire desktop button is clicked.
+	shareButton := nodewith.Name("Share").Role(role.Button).Ancestor(shareScreenDialog).Focusable()
 
-	if err := Combine("start screen recorder through ui", ui.LeftClick(entireDesktopButton), ui.LeftClick(shareButton))(ctx); err != nil {
+	if err := Combine("start screen recorder through ui",
+		ui.WithInterval(500*time.Millisecond).LeftClickUntil(entireDesktopButton, ui.Exists(shareButton)),
+		ui.LeftClick(shareButton),
+	)(ctx); err != nil {
 		return nil, err
 	}
 
