@@ -30,8 +30,8 @@ const (
 	// subtitleText indicates content written as a subtitle of "Microsoft PowerPoint" or "Google Slides".
 	subtitleText = "CUJ subtitle"
 
-	// sheetName indicates the name of the existing spreadsheet.
-	sheetName = "sample"
+	// sheetName indicates the name of the copied spreadsheet name.
+	sheetName = "sum-sample"
 
 	// rangeOfCells indicates the sum of rows in the spreadsheet.
 	rangeOfCells = 100
@@ -49,7 +49,7 @@ const (
 type ProductivityApp interface {
 	CreateDocument(ctx context.Context) error
 	CreateSlides(ctx context.Context) error
-	CreateSpreadsheet(ctx context.Context) (string, error)
+	CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error)
 	OpenSpreadsheet(ctx context.Context, filename string) error
 	MoveDataFromDocToSheet(ctx context.Context) error
 	MoveDataFromSheetToDoc(ctx context.Context) error
