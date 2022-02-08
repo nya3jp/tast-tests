@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73512694_5d56eb88",
+        "filename": "src/chromiumos/tast/local/memory/aggregate.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-02-08T11:43:56Z",
+      "side": 1,
+      "message": "no longer separating it.",
+      "parentUuid": "7f28a658_e880b355",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fe63953_f6aa6be5",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-01-31T07:05:03Z",
       "side": 1,
       "message": "Can we separate this into two different functions:\none that logs the result of dumpsys meminfo, and returns a digest\nanother that takes that digest and logs the perf metrics.\n\n\nI think this will make LogMemoryStats more natural, as we can query all the data at once, and if that data is used in more than one place, we can just pass it to more than one perf logging function.",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed1dfa0_ab1d3b01",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-02-08T11:43:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe63953_f6aa6be5",
       "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a2e7ae_58950802",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-02-08T11:43:56Z",
+      "side": 1,
+      "message": "no longer using atomics - and indeed, the original code intent is better preserved doing everything without it.",
+      "parentUuid": "d9d6c3a5_1ffd1661",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b3294f1_a762a56a",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-01-31T07:05:03Z",
       "side": 1,
       "message": "This function only returns ARCVM\u0027s main process.\n\nI don\u0027t really like how we duplicate the regex matching of command lines here and in processCategories below.\n\nThe fact that we\u0027re using regexp to determine what\u0027s ARCVM isn\u0027t great, but at least we should keep it in one place, or get rid of it entirely.",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cbcad67_692784cc",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-02-08T11:43:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b3294f1_a762a56a",
       "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bb79102_163dadb3",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-02-08T11:43:56Z",
+      "side": 1,
+      "message": "once I removed the atomic use and made it more similar to existing pattern, it got so simple that I see little value in adding a visitor pattern to fan the info out to multiple consumers.",
+      "parentUuid": "eb7c3e06_469abb17",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9dafa0ca_52129173",
@@ -134,6 +224,24 @@
       "writtenOn": "2022-01-31T07:05:03Z",
       "side": 1,
       "message": "Same comment as above. Make a separate function for collecting the metrics, pass the metrics into this function, which will only do logging.",
+      "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d95279_682d5a5d",
+        "filename": "src/chromiumos/tast/local/memory/zram_mm_stat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-02-08T11:43:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dafa0ca_52129173",
       "revId": "4ed2a8e737100a3606921bc9c49e52463c1f7aba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
