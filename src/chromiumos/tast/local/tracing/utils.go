@@ -5,7 +5,9 @@
 package tracing
 
 import (
+	"bytes"
 	"context"
+	"encoding/csv"
 	"io/ioutil"
 	"log"
 	"os"
@@ -63,6 +65,20 @@ func (sess *Session) RunMetrics(ctx context.Context, traceProcessorPath string, 
 	}
 
 	return tbm, nil
+}
+
+// RunQuery processes the trace data with a SQL query and returns the query csv result as [][]string.
+func (sess *Session) RunQuery(ctx context.Context, traceProcessorPath, queryPath string) ([][]string, error) {
+	cmd := testexec.CommandContext(ctx, traceProcessorPath, sess.TraceResultFile.Name(), "-q", queryPath)
+	out, err := cmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run metrics with trace_processor_shell")
+	}
+
+	// trace_procesor_shell query output is in csv.
+	csv := csv.NewReader(bytes.NewReader(out))
+	// Return the query csv result as [][]string.
+	return csv.ReadAll()
 }
 
 // RemoveTraceResultFile removes the temp file of trace result.
