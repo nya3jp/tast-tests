@@ -20,6 +20,7 @@ func init() {
 		Desc:         "Collects performance values for WebRTC captureStream() (canvas, video)",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
+			"hiroh@chromium.org",
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},

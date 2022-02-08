@@ -37,8 +37,8 @@ func init() {
 		Desc:         "Verifies that WebRTC RTCPeerConnection works, maybe verifying use of a hardware accelerator",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
+			"hiroh@chromium.org",
 			"chromeos-gfx-video@google.com",
-			"chromeos-video-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         append(peerconnection.DataFiles(), peerconnection.LoopbackFile),

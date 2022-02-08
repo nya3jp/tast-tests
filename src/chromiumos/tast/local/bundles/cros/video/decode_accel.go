@@ -33,7 +33,10 @@ func init() {
 		Func:         DecodeAccel,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies hardware decode acceleration by running the video_decode_accelerator_tests binary",
-		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+		},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "h264",

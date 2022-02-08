@@ -22,7 +22,11 @@ func init() {
 		Func:         DecodeAccelPerf,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures hardware video decode performance by running the video_decode_accelerator_perf_tests binary",
-		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{
+			"mcasas@chromium.org",
+			"hiroh@chromium.org", // Underlying binary author.
+			"chromeos-gfx-video@google.com",
+		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "video_decoder_legacy_supported"},
 		Params: []testing.Param{{

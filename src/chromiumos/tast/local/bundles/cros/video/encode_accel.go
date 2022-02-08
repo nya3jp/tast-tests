@@ -35,7 +35,10 @@ func init() {
 		Func:         EncodeAccel,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies hardware encode acceleration by running the video_encode_accelerator_tests binary",
-		Contacts:     []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
+		Contacts: []string{
+			"hiroh@chromium.org",
+			"chromeos-gfx-video@google.com",
+		},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},

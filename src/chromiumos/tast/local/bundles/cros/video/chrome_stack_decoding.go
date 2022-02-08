@@ -344,7 +344,11 @@ func init() {
 		Func:         ChromeStackDecoding,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies video decoding using Chrome's stack (via the video_decode_accelerator_tests binary) and either MD5 or SSIM criteria",
-		Contacts:     []string{"hiroh@chromium.org", "chromeos-gfx-video@google.com"},
+		Contacts: []string{
+			"mcasas@chromium.org",
+			"hiroh@chromium.org", // Underlying binary author.
+			"chromeos-gfx-video@google.com",
+		},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "av1_common",

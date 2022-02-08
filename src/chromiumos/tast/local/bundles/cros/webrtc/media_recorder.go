@@ -23,7 +23,6 @@ func init() {
 		Contacts: []string{
 			"mcasas@chromium.org",
 			"chromeos-gfx-video@google.com",
-			"chromeos-video-eng@google.com",
 		},
 
 		SoftwareDeps: []string{"chrome"},
