@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"alvinjia@google.com", "chromeos-engprod-sydney@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "chromeLoggedInClamshell",
 		Timeout:      12 * time.Minute,
 		Data:         []string{"logo_chrome.png"},
 	})

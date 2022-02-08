@@ -27,6 +27,18 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInClamshell",
+		Desc:     "Logged into a user session in Clamshell mode",
+		Contacts: []string{"alvinjia@google.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{ExtraArgs("--force-tablet-mode=clamshell")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInForEA",
 		Desc:     "Logged into a user session for essential apps",
 		Contacts: []string{"shengjun@chromium.org"},
