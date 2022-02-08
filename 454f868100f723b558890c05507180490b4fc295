@@ -22,6 +22,30 @@
       },
       "revId": "454f868100f723b558890c05507180490b4fc295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f00062_fe12da6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/v4l2_compliance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-02-08T14:53:03Z",
+      "side": 1,
+      "message": "Good point. \n\nThanks for the suggestion!",
+      "parentUuid": "f8bc23d1_6c8f19a7",
+      "range": {
+        "startLine": 62,
+        "startChar": 22,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "454f868100f723b558890c05507180490b4fc295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
