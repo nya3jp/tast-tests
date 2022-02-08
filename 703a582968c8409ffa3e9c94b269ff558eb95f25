@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02fc342_eaad9d7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_available_routines.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01c8efba_0904a1ed",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27112a9f_ba2f8e74",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-02-07T16:06:27Z",
       "side": 1,
       "message": "nit: remove \\n",
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "756a6297_0844fb7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "I\u0027d like to keep it, because these constants belong to different categories.",
+      "parentUuid": "27112a9f_ba2f8e74",
       "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2da2b7_7cd5d6ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "Cleanup and SetUp function need different margins. In the SetUp function we have to reserve enough time for proper cleanup, so we cannot avoid double margin.\n\nWe can be greedy and keep just one, but test might be more flaky.",
+      "parentUuid": "5b8f61b2_e9542d48",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 72
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54645522_66f28dfe",
@@ -115,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b8255d_2cf0e76a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "same. I\u0027d like to keep it, because different fields belong to different categories. First 2 are \"private\" fixture fields. 3rd field exposed to tests.",
+      "parentUuid": "54645522_66f28dfe",
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f313f70_857bc4f6",
@@ -128,6 +212,30 @@
       "writtenOn": "2022-02-07T16:06:27Z",
       "side": 1,
       "message": "Value looks a bit generic, can we choose a more scoped name?\n\nTaking a step back: Is there a reason why not including chrome.Conn\u0027s directly in the fixture?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a56c20_528dc622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "Value is pretty common name in fixtures, it\u0027s framework specific name/term:\nhttps://source.chromium.org/search?q\u003dfile:tast-tests%20%20fixture.Value\n\nSetUp function returns some object that tests have access to. We can return Value or telemetryExtensionFixture. The idea of returning Value is that we expose minimal required entities/information needed for each test.",
+      "parentUuid": "2f313f70_857bc4f6",
       "range": {
         "startLine": 60,
         "startChar": 5,
@@ -161,6 +269,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39e67689_e9625926",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "No, this won\u0027t include such errors. If you fail to load your extension, Chrome will silently crash. This fixture keeps the same behaviour as other existing tests.\n\nI have a WIP CL to load extension from files app:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3183342\n\nIf we didn\u0027t crash in line 97, we were able to load extension.\n\nI don\u0027t think we can connect to not installed extension in line 111.",
+      "parentUuid": "f5bef669_c1e3b854",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 42
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bb46d37_a30a6706",
@@ -174,6 +306,30 @@
       "writtenOn": "2022-02-07T16:06:27Z",
       "side": 1,
       "message": "do we really need to add tast into the PWA page?",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c354a3_57bac7af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "Yes, in this CL we use it: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3447892",
+      "parentUuid": "9bb46d37_a30a6706",
       "range": {
         "startLine": 107,
         "startChar": 11,
@@ -207,6 +363,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a15d151d_380b61fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "In the future it will be part of the future when there will be more telemetry extensions to support. At this moment, it\u0027s used only once, so it makes sense to just inline it here.",
+      "parentUuid": "5decfd12_89c54098",
+      "range": {
+        "startLine": 111,
+        "startChar": 53,
+        "endLine": 111,
+        "endChar": 85
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12f3c674_9e3019b5",
@@ -220,6 +400,30 @@
       "writtenOn": "2022-02-07T16:06:27Z",
       "side": 1,
       "message": "Is there a reason why the logic goes into cleanUp() and not directly in TearDown()?",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf7a18a_f43adce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:45:36Z",
+      "side": 1,
+      "message": "This is what other Tast owners suggested in the chat. I personally don\u0027t have strong opinion here.\n\nFew pros:\n1. You can add some logic in TearDown that you would not put into cleanUp function\n2. A bit more flexibility if someone decide to change fixture interface.\n\nLet me know if you have strong opinion here about what we should do.",
+      "parentUuid": "12f3c674_9e3019b5",
       "range": {
         "startLine": 125,
         "startChar": 3,
