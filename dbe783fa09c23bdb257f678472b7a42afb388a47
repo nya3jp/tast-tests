@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca9f3f2_47468958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-08T01:32:35Z",
+      "side": 1,
+      "message": "Sorry I started the CL review from the end -- what about \nadding a new SupportsTemporalLayerEncoding hwdep ? That\nway later on we only need to update one place.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d740?q\u003dSupportsNV12Overlays",
+      "range": {
+        "startLine": 133,
+        "startChar": 45,
+        "endLine": 133,
+        "endChar": 64
+      },
+      "revId": "dbe783fa09c23bdb257f678472b7a42afb388a47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
