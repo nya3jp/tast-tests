@@ -63,7 +63,7 @@ const (
 	// defaultLoops is the default number of loops tested in cyclictest.
 	defaultLoops = 6000
 	// defaultP99Threshold is the default p99 latency threshold allowed in cyclictest.
-	defaultP99Threshold = 100 * time.Microsecond
+	defaultP99Threshold = 200 * time.Microsecond
 	// defaultStressWorker is the number of workers spawned in the stress test per cpu thread.
 	defaultStressWorker = 2
 )
@@ -184,7 +184,7 @@ func init() {
 					Interval:     defaultInterval,
 					Loops:        defaultLoops,
 					Affinity:     defaultAff,
-					P99Threshold: defaultP99Threshold,
+					P99Threshold: 1000 * time.Microsecond,
 					StressConfig: nil,
 				},
 			},
@@ -199,7 +199,7 @@ func init() {
 					Interval:     defaultInterval,
 					Loops:        defaultLoops,
 					Affinity:     defaultAff,
-					P99Threshold: defaultP99Threshold,
+					P99Threshold: 500 * time.Microsecond,
 					StressConfig: nil,
 				},
 			},
