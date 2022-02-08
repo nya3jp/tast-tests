@@ -16,6 +16,87 @@
       "message": "Resolved merge conflict due to recent changes in kiosk_mode",
       "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "892600d9_b076781f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T02:44:50Z",
+      "side": 1,
+      "message": "Almost LG.",
+      "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "621b6827_2ec4c0dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T02:44:50Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f0ca3c_0051f58e",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T02:44:50Z",
+      "side": 1,
+      "message": "I think len(matches) !\u003d 1 is the necessary condition.\nSpecifically, if there\u0027re multiple matches, then second (or later) may be the process we\u0027re looking for?\n\nWe may need to improve the function in the future, though.",
+      "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45900e3c_52eda8e2",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T02:44:50Z",
+      "side": 1,
+      "message": "\u003e \"Unkown\" is a possible misspelling of \"Unknown\".\n\nPlease fix.",
+      "parentUuid": "1497abbe_6d6433f8",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
