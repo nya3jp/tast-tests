@@ -25,7 +25,7 @@ type uiDetector struct {
 const retryPolicy = `{
 	"methodConfig": [{
 		"name": [{ "service": "google.chromeos.uidetection.v1.UiDetectionService", "method": "ExecuteDetection" }],
-		"timeout": "60s",
+		"timeout": "15s",
 		"retryPolicy": {
 		  "maxAttempts": 5,
 		  "initialBackoff": "1s",
