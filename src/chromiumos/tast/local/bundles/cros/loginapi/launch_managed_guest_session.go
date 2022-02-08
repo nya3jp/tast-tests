@@ -35,14 +35,9 @@ func LaunchManagedGuestSession(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
 	accountID := "foo@bar.com"
-	// These extensions are unlisted on the Chrome Web Store but can be
-	// downloaded directly using the extension IDs.
-	// The code for the extensions can be found in the Chromium repo at
-	// chrome/test/data/extensions/api_test/login_screen_apis/.
-	// ID for "Login screen APIs test extension".
-	loginScreenExtensionID := "oclffehlkdgibkainkilopaalpdobkan"
-	// ID for "Login screen APIs in-session test extension".
-	inSessionExtensionID := "ofcpkomnogjenhfajfjadjmjppbegnad"
+
+	loginScreenExtensionID := mgs.LoginScreenExtensionID
+	inSessionExtensionID := mgs.InSessionExtensionID
 
 	mgs, cr, err := mgs.New(
 		ctx,
