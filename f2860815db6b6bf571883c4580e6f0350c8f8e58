@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f821fe0a_869d63be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bab7f29_775e8b28",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 18
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0970d9b7_67998a26",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-05T00:28:38Z",
       "side": 1,
       "message": "Please do not define the package const, instead, put it inside the func.\nSame comment for the rest consts.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "469d1a46_587073ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0970d9b7_67998a26",
       "range": {
         "startLine": 30,
         "startChar": 1,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b90128_9af3074d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d889efb8_0730c229",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afea1053_d8719417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34c074c6_57df3756",
+      "range": {
+        "startLine": 31,
+        "startChar": 68,
+        "endLine": 31,
+        "endChar": 69
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c82e416_80f82969",
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01799900_0c644314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c82e416_80f82969",
+      "range": {
+        "startLine": 42,
+        "startChar": 25,
+        "endLine": 42,
+        "endChar": 47
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac940b6a_51ee3d5f",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-02-05T00:28:38Z",
       "side": 1,
       "message": "These two steps could be combined through uiauto.Combine",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 95
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c778ad12_6a140da7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac940b6a_51ee3d5f",
       "range": {
         "startLine": 89,
         "startChar": 1,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "317a4008_c1769ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Not sure that\u0027s right. This defer is for the terminal app, not the filesApp? Also the terminalApp var need to be declared first before it can be referenced, and so this defer cannot be earlier unless we launch the terminal app earlier which is not necessary.",
+      "parentUuid": "cde0d72f_2d45e102",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 6
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e9a68e0_107b30f4",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
         "patchSetId": 3
@@ -175,6 +343,30 @@
       "writtenOn": "2022-02-05T00:28:38Z",
       "side": 1,
       "message": "Please use filepath.Join",
+      "range": {
+        "startLine": 118,
+        "startChar": 52,
+        "endLine": 118,
+        "endChar": 85
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0c9297_02e410cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e9a68e0_107b30f4",
       "range": {
         "startLine": 118,
         "startChar": 52,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e404452a_aaa92180",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cff7fdf9_5c39843d",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 11
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9245d0d_107417b1",
@@ -221,6 +437,30 @@
       "writtenOn": "2022-02-05T00:28:38Z",
       "side": 1,
       "message": "Usually the error msg should be: Failed to ...",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 15
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33c24386_50fc053f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9245d0d_107417b1",
       "range": {
         "startLine": 130,
         "startChar": 11,
@@ -256,6 +496,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4669e214_0ff88361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Have adjusted to use the ash Window API rather than manipulate shelf buttons.",
+      "parentUuid": "c7751c3e_8f9fb986",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 14
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2deb38fe_e6f9dc3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
         "patchSetId": 3
@@ -267,6 +531,30 @@
       "writtenOn": "2022-02-05T00:28:38Z",
       "side": 1,
       "message": "It seems that this test case could be splitted into two parts: before restart crostini and after restart crostini. Suggest to write two func to cover this to make the major func shorter and easier for reading.",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 20
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9623add3_fadf0489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2deb38fe_e6f9dc3c",
       "range": {
         "startLine": 147,
         "startChar": 1,
@@ -290,6 +578,30 @@
       "writtenOn": "2022-02-05T00:28:38Z",
       "side": 1,
       "message": "It does not input any string?",
+      "range": {
+        "startLine": 177,
+        "startChar": 35,
+        "endLine": 177,
+        "endChar": 47
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b2f45d_0d3afdcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-08T10:41:09Z",
+      "side": 1,
+      "message": "comment was misleading. Is meant to refer to the string that was in the file.  Have adjusted the comment - thanks for pointing this out!",
+      "parentUuid": "29ce1362_008005b5",
       "range": {
         "startLine": 177,
         "startChar": 35,
