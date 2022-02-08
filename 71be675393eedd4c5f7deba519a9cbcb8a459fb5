@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48c7e100_638ea4d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-02-08T19:22:21Z",
+      "side": 1,
+      "message": "Yea, you can skip the -var\u003dbuildurl\u003d arg entirely and it will use the existing image.  See line 123 of image.go.",
+      "parentUuid": "dd84be1d_e47f77a4",
+      "revId": "71be675393eedd4c5f7deba519a9cbcb8a459fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5ae029_136fd5b7",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-02-07T17:20:11Z",
       "side": 1,
       "message": "Consider using s.CloudStorage instead of gsutil, as it will download the file from a devserver (GS Caching server) and might save some download time.",
+      "range": {
+        "startLine": 149,
+        "startChar": 9,
+        "endLine": 149,
+        "endChar": 52
+      },
+      "revId": "71be675393eedd4c5f7deba519a9cbcb8a459fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ed9bad_2f02ff3b",
+        "filename": "src/chromiumos/tast/remote/firmware/ti50/fixture/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2022-02-08T19:22:21Z",
+      "side": 1,
+      "message": "Good suggestion, I tried it out as suggested, but since firmware images are in the chromeos-releases bucket, it threw an error due to not being in the CloudStorage\u0027s allowed bucket list.",
+      "parentUuid": "ee5ae029_136fd5b7",
       "range": {
         "startLine": 149,
         "startChar": 9,
