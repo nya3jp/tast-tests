@@ -221,6 +221,23 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 		Vars:            []string{LacrosDeployedBinary},
 	})
+
+	// lacrosUIKeepAlive is similar to lacros but should be used
+	// by tests that will launch lacros from the ChromeOS UI (e.g shelf) instead
+	// of by command line, and this test assuming that Lacros will be keep alive
+	// in the background even if the browser is turned off.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosUIKeepAlive",
+		Desc:     "Lacros Chrome from a pre-built image using the UI and the Lacros chrome will stay alive even when the browser terminated",
+		Contacts: []string{"mxcai@chromium.org", "hidehiko@chromium.org"},
+		Impl: NewFixture(Rootfs, func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("LacrosPrimary")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Vars:            []string{LacrosDeployedBinary},
+	})
 }
 
 // TODO(tvignatti): how do we make sure Lacros has this flag implemented? See crrev.com/c/3304121.
