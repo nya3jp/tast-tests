@@ -68,6 +68,23 @@
       "parentUuid": "f8e4ab2c_b407ba94",
       "revId": "e68bb3f9a7b180f5fe365a17cadb3bab5f7bce4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ab2729_a3f94e54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-08T13:47:12Z",
+      "side": 1,
+      "message": "I am abandoning this change, as the test cannot go to CQ as is.",
+      "revId": "e68bb3f9a7b180f5fe365a17cadb3bab5f7bce4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
