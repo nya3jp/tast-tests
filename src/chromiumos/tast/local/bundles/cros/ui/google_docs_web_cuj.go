@@ -28,7 +28,8 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      "loggedInAndKeepState",
 		Vars: []string{
-			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
+			"ui.sampleSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
+			"ui.cuj_mode",       // Optional. Expecting "tablet" or "clamshell".
 		},
 		Params: []testing.Param{
 			{
@@ -48,6 +49,11 @@ func init() {
 
 func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(cuj.FixtureData).Chrome
+
+	sampleSheetURL, ok := s.Var("ui.sampleSheetURL")
+	if !ok {
+		s.Fatal("Require variable ui.sampleSheetURL is not provided")
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -107,7 +113,7 @@ func GoogleDocsWebCUJ(ctx context.Context, s *testing.State) {
 		testFileLocation = s.DataPath("productivity_cuj_voice_to_text_en.wav")
 	}
 
-	if err := productivitycuj.Run(ctx, cr, office, tier, tabletMode, s.OutDir(), expectedText, testFileLocation); err != nil {
+	if err := productivitycuj.Run(ctx, cr, office, tier, tabletMode, s.OutDir(), sampleSheetURL, expectedText, testFileLocation); err != nil {
 		s.Fatal("Failed to run productivity cuj: ", err)
 	}
 }

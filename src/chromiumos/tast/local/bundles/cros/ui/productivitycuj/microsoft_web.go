@@ -122,7 +122,7 @@ func (app *MicrosoftWebOffice) CreateSlides(ctx context.Context) error {
 }
 
 // CreateSpreadsheet creates a new spreadsheet from microsoft web app and returns sheet name.
-func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context) (string, error) {
+func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error) {
 	conn, err := app.openOneDrive(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to open OneDrive")
