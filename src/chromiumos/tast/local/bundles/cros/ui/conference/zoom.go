@@ -220,18 +220,18 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 	ui := uiauto.New(conf.tconn)
 	toggleVideo := func(ctx context.Context) error {
-		cameraButton := nodewith.NameRegex(regexp.MustCompile(cameraRegexCapture)).Role(role.Button)
+		cameraButton := nodewith.NameRegex(regexp.MustCompile(cameraRegexCapture)).Role(role.Button).Focusable()
 		info, err := ui.Info(ctx, cameraButton)
 		if err != nil {
 			return errors.Wrap(err, "failed to wait for the meet camera switch button to show")
 		}
-		startVideoButton := nodewith.NameRegex(regexp.MustCompile(startVideoRegexCapture)).Role(role.Button)
+		startVideoButton := nodewith.NameRegex(regexp.MustCompile(startVideoRegexCapture)).Role(role.Button).Focusable()
 		if err := ui.Exists(startVideoButton)(ctx); err == nil {
 			testing.ContextLog(ctx, "Turn camera from off to on")
 		} else {
 			testing.ContextLog(ctx, "Turn camera from on to off")
 		}
-		nowCameraButton := nodewith.Name(info.Name).Role(role.Button)
+		nowCameraButton := nodewith.Name(info.Name).Role(role.Button).Focusable()
 		if err := ui.LeftClickUntil(nowCameraButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(nowCameraButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to toggle video")
 		}
@@ -239,18 +239,18 @@ func (conf *ZoomConference) VideoAudioControl(ctx context.Context) error {
 	}
 
 	toggleAudio := func(ctx context.Context) error {
-		audioButton := nodewith.NameRegex(regexp.MustCompile(audioRegexCapture)).Role(role.Button)
+		audioButton := nodewith.NameRegex(regexp.MustCompile(audioRegexCapture)).Role(role.Button).Focusable()
 		info, err := ui.Info(ctx, audioButton)
 		if err != nil {
 			return errors.Wrap(err, "failed to wait for the meet microphone switch button to show")
 		}
-		unmuteButton := nodewith.NameRegex(regexp.MustCompile(unmuteRegexCapture)).Role(role.Button)
+		unmuteButton := nodewith.NameRegex(regexp.MustCompile(unmuteRegexCapture)).Role(role.Button).Focusable()
 		if err := ui.Exists(unmuteButton)(ctx); err == nil {
 			testing.ContextLog(ctx, "Turn microphone from mute to unmute")
 		} else {
 			testing.ContextLog(ctx, "Turn microphone from unmute to mute")
 		}
-		nowAudioButton := nodewith.Name(info.Name).Role(role.Button)
+		nowAudioButton := nodewith.Name(info.Name).Role(role.Button).Focusable()
 		if err := ui.LeftClickUntil(nowAudioButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(nowAudioButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to toggle audio")
 		}
