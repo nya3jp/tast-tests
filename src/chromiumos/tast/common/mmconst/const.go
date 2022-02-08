@@ -11,13 +11,15 @@ import "time"
 
 // ModemManager1.Modem properties
 const (
-	ModemPropertyDevice         = "Device"
-	ModemPropertySim            = "Sim"
-	ModemPropertySimSlots       = "SimSlots"
-	ModemPropertyPrimarySimSlot = "PrimarySimSlot"
-	ModemPropertyState          = "State"
-	ModemPropertyPowered        = "PowerState"
-	ModemPropertyManufacturer   = "Manufacturer"
+	ModemPropertyBearer           = "Bearer"
+	ModemPropertyDevice           = "Device"
+	ModemPropertyInitialEpsBearer = "InitialEpsBearer"
+	ModemPropertySim              = "Sim"
+	ModemPropertySimSlots         = "SimSlots"
+	ModemPropertyPrimarySimSlot   = "PrimarySimSlot"
+	ModemPropertyState            = "State"
+	ModemPropertyPowered          = "PowerState"
+	ModemPropertyManufacturer     = "Manufacturer"
 )
 
 // ModemManager1.Modem.Simple properties

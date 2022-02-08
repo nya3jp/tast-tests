@@ -7,6 +7,7 @@ package cellular
 
 import (
 	"context"
+	"io/ioutil"
 	"math/rand"
 	"os"
 	"path/filepath"
@@ -386,6 +387,39 @@ func (h *Helper) RestartModemManager(ctx context.Context, enableDebugLogs bool) 
 	return nil
 }
 
+// ResetShill restarts shill and clears all profiles. // TODO: move to chromiumos/tast/local/shill
+func (h *Helper) ResetShill(ctx context.Context) []error {
+	var errs []error
+	if err := upstart.StopJob(ctx, "shill"); err != nil {
+		errs = append(errs, errors.Wrap(err, "failed to stop shill"))
+	}
+	if err := os.Remove(shillconst.DefaultProfilePath); err != nil && !os.IsNotExist(err) {
+		errs = append(errs, errors.Wrap(err, "failed to remove default profile"))
+	}
+	if err := upstart.RestartJob(ctx, "shill"); err != nil {
+		// No more can be done if shill doesn't start
+		return append(errs, errors.Wrap(err, "failed to restart shill"))
+	}
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		// No more can be done if a manger interface cannot be created
+		return append(errs, errors.Wrap(err, "failed to create new shill manager"))
+	}
+	if err = manager.PopAllUserProfiles(ctx); err != nil {
+		errs = append(errs, errors.Wrap(err, "failed to pop all user profiles"))
+	}
+
+	// Wait until a service is connected.
+	expectProps := map[string]interface{}{
+		shillconst.ServicePropertyIsConnected: true,
+	}
+	if _, err := manager.WaitForServiceProperties(ctx, expectProps, 30*time.Second); err != nil {
+		errs = append(errs, errors.Wrap(err, "failed to wait for connected service"))
+	}
+
+	return errs
+}
+
 // CaptureDBusLogs - Capture DBus system logs
 // Return nil if DBus log collection succeeds, else return error.
 func (h *Helper) CaptureDBusLogs(ctx context.Context) error {
@@ -743,4 +777,55 @@ func (h *Helper) EnterIncorrectPuk(ctx context.Context, currentPuk string) error
 	}
 
 	return errors.Wrap(err, "unusual puk error")
+}
+
+// SetServiceProvidersOverride adds an override MODB to shill.
+func SetServiceProvidersOverride(ctx context.Context, sourceFile string) error {
+	// TODO: return error
+	input, err := ioutil.ReadFile(sourceFile)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read %q", sourceFile)
+
+	}
+
+	err = ioutil.WriteFile("/usr/share/shill/serviceproviders-override.pbf", input, 0644)
+	if err != nil {
+		return errors.Wrapf(err, "failed to write %q", "/usr/share/shill/serviceproviders-override.pbf")
+	}
+	return nil
+}
+
+// getCellularServiceDictProperty dict gets a shill service dictionary property
+func (h *Helper) getCellularServiceDictProperty(ctx context.Context, propertyName string) (map[string]string, error) {
+	// Verify that a connectable Cellular service exists and ensure it is connected.
+	service, err := h.FindServiceForDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to find Cellular Service for Device")
+	}
+	props, err := service.GetShillProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "error getting Service properties")
+	}
+	info, err := props.Get(propertyName)
+	if err != nil {
+		return nil, errors.Wrapf(err, "error getting property %q", propertyName)
+	}
+
+	// dictProp := make(map[string]string)
+	dictProp, ok := info.(map[string]string)
+	if !ok {
+		return nil, errors.Wrapf(err, "invalid format for %q", propertyName)
+	}
+
+	return dictProp, nil
+}
+
+// GetCellularLastAttachAPN dict gets Cellular.LastAttachAPN dictionary from shill properties.
+func (h *Helper) GetCellularLastAttachAPN(ctx context.Context) (map[string]string, error) {
+	return h.getCellularServiceDictProperty(ctx, shillconst.ServicePropertyCellularLastAttachAPN)
+}
+
+// GetCellularLastGoodAPN dict gets Cellular.LastAttachAPN dictionary from shill properties.
+func (h *Helper) GetCellularLastGoodAPN(ctx context.Context) (map[string]string, error) {
+	return h.getCellularServiceDictProperty(ctx, shillconst.ServicePropertyCellularLastGoodAPN)
 }
