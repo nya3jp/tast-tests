@@ -440,3 +440,30 @@ func AuthenticateWithAuthSession(ctx context.Context, username, password string,
 
 	return authSessionID, nil
 }
+
+// UpdateUserCredentialWithAuthSession authenticates an existing user via auth session API.
+func UpdateUserCredentialWithAuthSession(ctx context.Context, username, oldPassword, newPassword string, isEphemeral, isKioskUser bool) (string, error) {
+	cmdRunner := hwseclocal.NewCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := cryptohome.StartAuthSession(ctx, username, isEphemeral)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to start Auth session")
+	}
+	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
+
+	// Authenticate the same AuthSession using authSessionID.
+	// If we cannot authenticate, do not proceed with mount and unmount.
+	if err := cryptohome.AuthenticateAuthSession(ctx, oldPassword, authSessionID, isKioskUser); err != nil {
+		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
+	}
+
+	// UpdateCredential with the same AuthSession using authSessionID.
+	if err := cryptohome.UpdateCredentialWithAuthSession(ctx, newPassword, authSessionID, isKioskUser); err != nil {
+		return "", errors.Wrap(err, "failed to update credential with AuthSession")
+	}
+	testing.ContextLog(ctx, "User credential updated successfully")
+
+	return authSessionID, nil
+}
