@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55828bc4_2b2d8448",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-08T12:10:57Z",
+      "side": 1,
+      "message": "It is better if the validation takes place in the test, and not in a helper function.\nDo you think it is possible to modify this so it returns with `(bool, error)` like before, but making it more stable?",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 37
+      },
+      "revId": "b06b62cffe51aaf99a96ced36e10386fff7ebab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "989a5fcd_91208e82",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-08T12:10:57Z",
+      "side": 1,
+      "message": "What would be a manual validation look like here?\nAs it is now, I think it is even possible that the account exists, but we haven\u0027t scrolled to it yet, so `accountExists` is false, but as we are expecting false, the function returns that everything if fine.",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 3
+      },
+      "revId": "b06b62cffe51aaf99a96ced36e10386fff7ebab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
