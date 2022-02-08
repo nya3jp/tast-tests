@@ -4,7 +4,7 @@
      found in the LICENSE file.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.chromium.arc.testapp.appvaliditytast">
+    package="org.chromium.arc.testapp.helloworld">
 
     <uses-sdk
         android:minSdkVersion="24"

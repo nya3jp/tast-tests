@@ -4,7 +4,7 @@
  * found in the LICENSE file.
  */
 
-package org.chromium.arc.testapp.appvaliditytast;
+package org.chromium.arc.testapp.helloworld;
 
 import android.app.Activity;
 import android.os.Bundle;

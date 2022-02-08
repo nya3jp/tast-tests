@@ -38,8 +38,8 @@ const (
 	// SpotifyAppName indicates to test against Spotify.
 	SpotifyAppName = "Spotify"
 
-	helloworldAPKName      = "ArcAppValidityTest.apk"
-	helloworldPackageName  = "org.chromium.arc.testapp.appvaliditytast"
+	helloworldAPKName      = "ArcHelloWorld.apk"
+	helloworldPackageName  = "org.chromium.arc.testapp.helloworld"
 	helloworldActivityName = ".MainActivity"
 
 	initialVolume = 60

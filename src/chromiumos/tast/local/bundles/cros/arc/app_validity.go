@@ -36,8 +36,8 @@ func init() {
 func AppValidity(ctx context.Context, s *testing.State) {
 	const (
 		// This is a plain hello world app.
-		apk = "ArcAppValidityTest.apk"
-		pkg = "org.chromium.arc.testapp.appvaliditytast"
+		apk = "ArcHelloWorld.apk"
+		pkg = "org.chromium.arc.testapp.helloworld"
 		cls = ".MainActivity"
 	)
 
