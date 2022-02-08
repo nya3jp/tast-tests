@@ -340,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f6f5d6e_4fb21bf4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-08T17:01:57Z",
+      "side": 1,
+      "message": "Up to you, but I\u0027d add it in the other CL.",
+      "parentUuid": "92c354a3_57bac7af",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5decfd12_89c54098",
@@ -424,6 +448,30 @@
       "side": 1,
       "message": "This is what other Tast owners suggested in the chat. I personally don\u0027t have strong opinion here.\n\nFew pros:\n1. You can add some logic in TearDown that you would not put into cleanUp function\n2. A bit more flexibility if someone decide to change fixture interface.\n\nLet me know if you have strong opinion here about what we should do.",
       "parentUuid": "12f3c674_9e3019b5",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503ee64e_623ecd60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-08T17:01:57Z",
+      "side": 1,
+      "message": "Looking at https://source.corp.google.com/search?q\u003dTearDown%5C(%20f:go\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public\n\nI haven\u0027t seen this pattern (TearDown() has one line call to a cleanUp function). For me it looks off. Even in the future if we have logic that is part of TearDown and not part of cleanUp, I\u0027d put everything in TearDown() unless it becomes too big.",
+      "parentUuid": "dcf7a18a_f43adce6",
       "range": {
         "startLine": 125,
         "startChar": 3,
