@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d441c0bf_05d6fe69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/lacros_restart_on_crash.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-02-08T09:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "621b6827_2ec4c0dc",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49f0ca3c_0051f58e",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-02-08T02:44:50Z",
       "side": 1,
       "message": "I think len(matches) !\u003d 1 is the necessary condition.\nSpecifically, if there\u0027re multiple matches, then second (or later) may be the process we\u0027re looking for?\n\nWe may need to improve the function in the future, though.",
+      "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f44c9b_054416f0",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-02-08T09:06:51Z",
+      "side": 1,
+      "message": "Thanks, I agree that if len(matches)!\u003d1, then we probably need to improve the function.",
+      "parentUuid": "49f0ca3c_0051f58e",
       "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -89,6 +131,30 @@
       "side": 1,
       "message": "\u003e \"Unkown\" is a possible misspelling of \"Unknown\".\n\nPlease fix.",
       "parentUuid": "1497abbe_6d6433f8",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "5c7eb59ee5045073a33490d39f114c154da84d92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c2aac3_4e23d43c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-02-08T09:06:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45900e3c_52eda8e2",
       "range": {
         "startLine": 55,
         "startChar": 28,
