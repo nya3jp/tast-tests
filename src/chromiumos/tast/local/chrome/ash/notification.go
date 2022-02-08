@@ -152,6 +152,7 @@ type NotificationItem struct {
 
 // CreateTestNotification creates a notification with a custom title and message.
 // iconUrl is a required field to the chrome.notifiations.create() call so a 1px transparent data-url is hardcoded.
+// tconn is an arg to be passed in from active browser under test (either ash-chrome or lacros-chrome).
 func CreateTestNotification(ctx context.Context, tconn *chrome.TestConn, notificationType NotificationType, title, message string) (string, error) {
 	var id string
 	var imageURL string
