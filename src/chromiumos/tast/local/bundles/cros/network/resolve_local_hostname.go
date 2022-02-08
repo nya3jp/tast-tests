@@ -6,9 +6,12 @@ package network
 
 import (
 	"context"
+	"fmt"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
 
@@ -42,10 +45,24 @@ func ResolveLocalHostname(ctx context.Context, s *testing.State) {
 	if len(hostname) < 7 || hostname[len(hostname)-6:] != ".local" {
 		s.Fatal("Invalid hostname: ", hostname)
 	}
+
+	reader, err := syslog.NewReader(ctx)
+	if err != nil {
+		s.Fatal("syslog.NewReader failed: ", err)
+	}
+	defer reader.Close()
+
 	// Resolve the mDNS hostname to an IP address via getent hosts. If avahi is not used
 	// to resolve the hostname or avahi fails to resolve the hostname, gethostbyname2() will
 	// fail and getent hosts will return an error code.
+	s.Log("Resolving ", hostname)
 	if err := testexec.CommandContext(ctx, "getent", "hosts", hostname).Run(testexec.DumpLogOnError); err != nil {
 		s.Fatal("getent hosts failed: ", err)
+	}
+
+	if _, err := reader.Wait(ctx, 10*time.Second, func(e *syslog.Entry) bool {
+		return e.Program == "avahi-daemon" && e.Severity == "INFO" && strings.HasPrefix(e.Content, fmt.Sprintf("Resolved hostname %s ", hostname))
+	}); err != nil {
+		s.Fatal("Avahi log message not found: ", err)
 	}
 }
