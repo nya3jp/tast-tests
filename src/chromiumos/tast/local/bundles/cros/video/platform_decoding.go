@@ -670,7 +670,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -683,7 +683,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_256X144_fr15_bd8_frm_resize_l1.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_384X192_fr30_bd8_frm_resize_l11.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_384X192_fr30_bd8_frm_resize_l11.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -696,7 +696,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_256X144_fr15_bd8_gf_dist_4_l1.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_384X192_fr30_bd8_gf_dist_4_l11.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_384X192_fr30_bd8_gf_dist_4_l11.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_384X192_fr30_bd8_gf_dist_4_l11.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -709,7 +709,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_248X144_fr15_bd8_odd_size_l1.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_376X184_fr30_bd8_odd_size_l11.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_376X184_fr30_bd8_odd_size_l11.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_376X184_fr30_bd8_odd_size_l11.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -722,7 +722,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_256X144_fr15_bd8_sub8X8_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_384X192_fr30_bd8_sub8X8_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_384X192_fr30_bd8_sub8X8_l11.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -735,7 +735,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_256X144_fr15_bd8_sub8x8_sf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_384X192_fr30_bd8_sub8x8_sf_l11.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -748,7 +748,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_480X256_fr30_bd8_8buf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_640X384_fr30_bd8_8buf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_640X384_fr30_bd8_8buf_l21.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -761,7 +761,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_480X256_fr30_bd8_frm_resize_l2.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_640X384_fr30_bd8_frm_resize_l21.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_640X384_fr30_bd8_frm_resize_l21.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -774,7 +774,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_480X256_fr30_bd8_gf_dist_4_l2.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_480X256_fr30_bd8_gf_dist_4_l2.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_480X256_fr30_bd8_gf_dist_4_l2.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_640X384_fr30_bd8_gf_dist_4_l21.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_640X384_fr30_bd8_gf_dist_4_l21.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_640X384_fr30_bd8_gf_dist_4_l21.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -787,7 +787,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_472X248_fr30_bd8_odd_size_l2.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_472X248_fr30_bd8_odd_size_l2.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_472X248_fr30_bd8_odd_size_l2.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_632X376_fr30_bd8_odd_size_l21.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_632X376_fr30_bd8_odd_size_l21.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_632X376_fr30_bd8_odd_size_l21.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -800,7 +800,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_480X256_fr30_bd8_sub8X8_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_640X384_fr30_bd8_sub8X8_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_640X384_fr30_bd8_sub8X8_l21.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -813,7 +813,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_480X256_fr30_bd8_sub8x8_sf_l2.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_640X384_fr30_bd8_sub8x8_sf_l21.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -826,7 +826,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1080X512_fr30_bd8_8buf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_1280X768_fr30_bd8_8buf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_1280X768_fr30_bd8_8buf_l31.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -839,7 +839,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1080X512_fr30_bd8_frm_resize_l3.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_1280X768_fr30_bd8_frm_resize_l31.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_1280X768_fr30_bd8_frm_resize_l31.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -852,7 +852,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_1080X512_fr30_bd8_gf_dist_4_l3.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_1080X512_fr30_bd8_gf_dist_4_l3.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_1080X512_fr30_bd8_gf_dist_4_l3.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_1280X768_fr30_bd8_gf_dist_4_l31.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_1280X768_fr30_bd8_gf_dist_4_l31.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_1280X768_fr30_bd8_gf_dist_4_l31.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -865,7 +865,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_1080X504_fr30_bd8_odd_size_l3.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_1080X504_fr30_bd8_odd_size_l3.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_1080X504_fr30_bd8_odd_size_l3.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_1280X768_fr30_bd8_odd_size_l31.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_1280X768_fr30_bd8_odd_size_l31.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_1280X768_fr30_bd8_odd_size_l31.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -878,7 +878,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1080X512_fr30_bd8_sub8X8_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_1280X768_fr30_bd8_sub8X8_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_1280X768_fr30_bd8_sub8X8_l31.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -891,7 +891,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1080X512_fr30_bd8_sub8x8_sf_l3.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_1280X768_fr30_bd8_sub8x8_sf_l31.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -904,7 +904,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr30_bd8_8buf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_2048X1088_fr60_bd8_6buf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_2048X1088_fr60_bd8_6buf_l41.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -917,7 +917,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr30_bd8_frm_resize_l4.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_2048X1088_fr60_bd8_frm_resize_l41.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_2048X1088_fr60_bd8_frm_resize_l41.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -930,7 +930,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_2048X1088_fr30_bd8_gf_dist_4_l4.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_2048X1088_fr30_bd8_gf_dist_4_l4.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_2048X1088_fr30_bd8_gf_dist_4_l4.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_2048X1088_fr60_bd8_gf_dist_5_l41.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_2048X1088_fr60_bd8_gf_dist_5_l41.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_2048X1088_fr60_bd8_gf_dist_5_l41.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -943,7 +943,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr30_bd8_odd_size_l4.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr30_bd8_odd_size_l4.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr30_bd8_odd_size_l4.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_2040X1080_fr60_bd8_odd_size_l41.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_2040X1080_fr60_bd8_odd_size_l41.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_2040X1080_fr60_bd8_odd_size_l41.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -956,7 +956,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr30_bd8_sub8X8_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_2048X1088_fr60_bd8_sub8X8_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_2048X1088_fr60_bd8_sub8X8_l41.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -969,7 +969,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr30_bd8_sub8x8_sf_l4.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_2048X1088_fr60_bd8_sub8x8_sf_l41.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -982,7 +982,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr30_bd8_4buf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr30_bd8_4buf_l5.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -995,7 +995,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr30_bd8_frm_resize_l5.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr30_bd8_frm_resize_l5.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1008,7 +1008,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_4096X2176_fr30_bd8_gf_dist_6_l5.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_4096X2176_fr30_bd8_gf_dist_6_l5.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_4096X2176_fr30_bd8_gf_dist_6_l5.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1021,7 +1021,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_4088X2168_fr30_bd8_odd_size_l5.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_4088X2168_fr30_bd8_odd_size_l5.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_4088X2168_fr30_bd8_odd_size_l5.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1034,7 +1034,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr30_bd8_sub8X8_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr30_bd8_sub8X8_l5.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1047,7 +1047,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr30_bd8_sub8x8_sf_l5.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1060,7 +1060,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_4096X2176_fr60_bd8_4buf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_4096X2176_fr60_bd8_4buf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_4096X2176_fr60_bd8_4buf_l51.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding(), hwdep.MinMemory(7169)),
@@ -1073,7 +1073,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/frm_resize/crowd_run_4096X2176_fr60_bd8_frm_resize_l51.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/grass_1_4096X2176_fr60_bd8_frm_resize_l51.ivf", "test_vectors/vp9/Profile_0_8bit/frm_resize/street1_1_4096X2176_fr60_bd8_frm_resize_l51.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding(), hwdep.MinMemory(7169)),
@@ -1086,7 +1086,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/gf_dist/crowd_run_4096X2176_fr60_bd8_gf_dist_10_l51.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/grass_1_4096X2176_fr60_bd8_gf_dist_10_l51.ivf", "test_vectors/vp9/Profile_0_8bit/gf_dist/street1_1_4096X2176_fr60_bd8_gf_dist_10_l51.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding(), hwdep.MinMemory(7169)),
@@ -1099,7 +1099,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/odd_size/crowd_run_4088X2168_fr60_bd8_odd_size_l51.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/grass_1_4088X2168_fr60_bd8_odd_size_l51.ivf", "test_vectors/vp9/Profile_0_8bit/odd_size/street1_1_4088X2168_fr60_bd8_odd_size_l51.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding(), hwdep.MinMemory(7169)),
@@ -1112,7 +1112,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8X8/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/grass_1_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8X8/street1_1_4096X2176_fr60_bd8_sub8X8_l51.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding(), hwdep.MinMemory(7169)),
@@ -1125,7 +1125,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/sub8x8_sf/crowd_run_4096X2176_fr60_bd8_sub8X8_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/grass_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf", "test_vectors/vp9/Profile_0_8bit/sub8x8_sf/street1_1_4096X2176_fr60_bd8_sub8x8_sf_l51.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           24 * time.Hour,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding(), hwdep.MinMemory(7169)),
@@ -1134,11 +1134,24 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
 			{
+				Name: "v4l2_stateless_vp9_0_group1_buf",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/v4l2_stateless_decoder",
+					commandBuilder: v4l2StatelessDecodeArgs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatelessVideoDecoding()),
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
+			{
 				Name: "v4l2_vp9_0_svc",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1151,7 +1164,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp8/inter/vp80-02-inter-1402.ivf", "test_vectors/vp8/inter/vp80-02-inter-1412.ivf", "test_vectors/vp8/inter/vp80-02-inter-1418.ivf", "test_vectors/vp8/inter/vp80-02-inter-1424.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1403.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1426.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1427.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1432.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1435.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1437.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1441.ivf", "test_vectors/vp8/inter/vp80-03-segmentation-1442.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1428.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1429.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1430.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1431.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1433.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1434.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1438.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1439.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1440.ivf", "test_vectors/vp8/inter/vp80-05-sharpness-1443.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1164,7 +1177,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1408.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1409.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1410.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-03-segmentation-1413.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1404.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1405.ivf", "test_vectors/vp8/inter_multi_coeff/vp80-04-partitions-1406.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1177,7 +1190,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp8/inter_segment/vp80-03-segmentation-1407.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1190,7 +1203,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp8/intra/vp80-01-intra-1400.ivf", "test_vectors/vp8/intra/vp80-01-intra-1411.ivf", "test_vectors/vp8/intra/vp80-01-intra-1416.ivf", "test_vectors/vp8/intra/vp80-01-intra-1417.ivf", "test_vectors/vp8/intra/vp80-03-segmentation-1401.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1203,7 +1216,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp8/intra_multi_coeff/vp80-03-segmentation-1414.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1216,7 +1229,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp8/intra_segment/vp80-03-segmentation-1415.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1229,7 +1242,7 @@ func init() {
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp8/vp80-00-comprehensive-001.ivf", "test_vectors/vp8/vp80-00-comprehensive-002.ivf", "test_vectors/vp8/vp80-00-comprehensive-003.ivf", "test_vectors/vp8/vp80-00-comprehensive-004.ivf", "test_vectors/vp8/vp80-00-comprehensive-005.ivf", "test_vectors/vp8/vp80-00-comprehensive-007.ivf", "test_vectors/vp8/vp80-00-comprehensive-008.ivf", "test_vectors/vp8/vp80-00-comprehensive-009.ivf", "test_vectors/vp8/vp80-00-comprehensive-010.ivf", "test_vectors/vp8/vp80-00-comprehensive-011.ivf", "test_vectors/vp8/vp80-00-comprehensive-012.ivf", "test_vectors/vp8/vp80-00-comprehensive-013.ivf", "test_vectors/vp8/vp80-00-comprehensive-015.ivf", "test_vectors/vp8/vp80-00-comprehensive-016.ivf", "test_vectors/vp8/vp80-00-comprehensive-017.ivf", "test_vectors/vp8/vp80-00-comprehensive-018.ivf"},
 					decoder:        "v4l2_stateful_decoder",
-					commandBuilder: v4l2DecodeArgs,
+					commandBuilder: v4l2StatefulDecodeArgs,
 				},
 				Timeout:           10 * time.Minute,
 				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatefulVideoDecoding()),
@@ -1262,7 +1275,9 @@ func shouldStopOnFailure(s *testing.State) bool {
 }
 
 // PlatformDecoding runs the media/gpu/vaapi/test:decode_test binary for vaapi
-// or drm-tests/v4l2_stateful_decoder binary on the file specified in the testing state.
+// or drm-tests/v4l2_stateful_decoder binary for v4l2 stateful or
+// media/gpu/v4l2/test:v4l2_stateless_decoder binary for v4l2 stateless
+// on the file specified in the testing state.
 // The test fails if any of the VAAPI or V4L2 calls fail (or if the test is incorrectly invoked):
 // notably, the binary does not check for correctness of decoded output.
 // This test is motivated by instances in which libva uprevs may introduce regressions
@@ -1292,12 +1307,11 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	}
 	defer upstart.EnsureJobRunning(cleanupCtx, "ui")
 
-	// Run the decode_test binary for vaapi or the v4l2_stateful_decoder binary
-	// for v4l2, propagating its errors: the binary fails if the VAAPI or V4l2 calls
-	// themselves error, the binary is called on unsupported inputs or could not open
-	// the DRI render node, or the binary otherwise crashes.
-	// The test may also fail if the decoded results do not match expected MD5
-	// hashes.
+	// Run the decode_test binary for vaapi or the v4l2_stateful_decoder binary or
+	// v4l2_stateless_decoder binary for v4l2, propagating its errors: the binary fails
+	// if the VAAPI or V4l2 calls themselves error, the binary is called on unsupported
+	// inputs or could not open the DRI render node, or the binary otherwise crashes.
+	// The test may also fail if the decoded results do not match expected MD5 hashes.
 	exec := testOpt.decoder
 	stopOnFailure := shouldStopOnFailure(s)
 
@@ -1325,9 +1339,29 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	}
 }
 
-// v4l2DecodeArgs provides the arguments to use with the stateful decoding binary exe for v4l2.
-func v4l2DecodeArgs(ctx context.Context, filename string) (command []string) {
+// v4l2StatefulDecodeArgs provides the arguments to use with the stateful decoding binary exe for v4l2.
+func v4l2StatefulDecodeArgs(ctx context.Context, filename string) (command []string) {
 	command = append(command, "--file="+filename, "--md5", "--log_level=1")
+
+	// Query the driver info. If we are on a MediaTek platform, add --mmap to the
+	// command line.
+	v4l2CtlCmd := testexec.CommandContext(ctx, "v4l2-ctl", "--device",
+		"/dev/video-dec0", "-D")
+	v4l2Out, err := v4l2CtlCmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return
+	}
+	mtkDetect := regexp.MustCompile(`mtk-vcodec-dec`)
+	if mtkDetect.MatchString(string(v4l2Out)) {
+		command = append(command, "--mmap")
+	}
+	return
+}
+
+// v4l2StatelessDecodeArgs provides the arguments to use with the stateless decoding binary exe for v4l2.
+func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []string) {
+	// TODO(stevecho): md5 support has to be added
+	command = append(command, "--video="+filename)
 
 	// Query the driver info. If we are on a MediaTek platform, add --mmap to the
 	// command line.
