@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc7b57b_4f57eb54",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-08T07:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56c7aec_95ac82fa",
+      "range": {
+        "startLine": 118,
+        "startChar": 39,
+        "endLine": 118,
+        "endChar": 42
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "871c89e1_c7278a53",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-07T11:02:08Z",
       "side": 1,
       "message": "to enter",
+      "range": {
+        "startLine": 131,
+        "startChar": 34,
+        "endLine": 131,
+        "endChar": 39
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80b5d99_c27ad026",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-08T07:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "871c89e1_c7278a53",
       "range": {
         "startLine": 131,
         "startChar": 34,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "351d96fc_58c09fc3",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-08T07:29:53Z",
+      "side": 1,
+      "message": "This one should always work, but I added polling to the account search below",
+      "parentUuid": "7247aebc_3d74f1bf",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 3
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a12ede1_2c4841fb",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-02-07T11:02:08Z",
       "side": 1,
       "message": "If the account needs the `LongUITimeout` for it to appear, you should use `EnsureGoneFor()` with the same timeout if you want to make sure it won\u0027t appear.",
+      "range": {
+        "startLine": 254,
+        "startChar": 21,
+        "endLine": 254,
+        "endChar": 34
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5cb66f_81346e09",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-08T07:29:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a12ede1_2c4841fb",
       "range": {
         "startLine": 254,
         "startChar": 21,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28fb6a85_823c44d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-08T07:29:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36751ee3_524a15d3",
+      "range": {
+        "startLine": 101,
+        "startChar": 33,
+        "endLine": 101,
+        "endChar": 36
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1e6adce_2f69496a",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-02-07T11:02:08Z",
       "side": 1,
       "message": "From this function (because of the name), I would expect to contain the previous two steps as well (opening the settings and clicking the more button).\nMaybe I would even expect it to remove a specific account, where I have to add the name.\nIf it just removes the first account, it should be in the name.\nI know that you use this function in the cleanup as well, but maybe the part starting from when the More Actions button is clicked can be moved to a not exported function in the helper library.",
+      "range": {
+        "startLine": 151,
+        "startChar": 26,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "259c4a826a100ccac533199857b7e180a714a0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76cb5993_893b61eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_account_os_settings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-08T07:29:53Z",
+      "side": 1,
+      "message": "That\u0027s a good idea, thanks!\nDone",
+      "parentUuid": "e1e6adce_2f69496a",
       "range": {
         "startLine": 151,
         "startChar": 26,
