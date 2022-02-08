@@ -16,6 +16,23 @@
       "message": "Hi Kamil,\n\nThis test is causing failures of other tests under the same fixture. I figured out that it\u0027s because the test times out on many slow devices. The clean up doesn\u0027t seem to work while Kiosk is launching.\n\nI also noticed that startChromeClearPolicies() doesn\u0027t work at all on some devices regardless of whether we use FakeLogin() or NoLogin(). It\u0027s some connection failures. I wasn\u0027t able to find out a fix. Looks like it never happens in any test run so I left a FIXME here to maybe fix later.\n\nPlease take a look. Thanks!",
       "revId": "55527281d3e20ef6537d2577c10fe12cdb13bffb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa7ac3a_3601415c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-08T16:24:43Z",
+      "side": 1,
+      "message": "First of all - great finding! I already see that we don\u0027t use dedicated context for cleaning. Hence, when test times out and we want to do the clean up we pass the context to the cleaning function but it won\u0027t get executed as context timed out already. \n\nThanks a lot for bringing that up and time spent in investigation!",
+      "revId": "55527281d3e20ef6537d2577c10fe12cdb13bffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
