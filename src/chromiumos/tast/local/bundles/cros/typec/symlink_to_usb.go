@@ -24,11 +24,11 @@ func init() {
 	})
 }
 
-const typecPath = "/sys/class/typec/"
-
 // SymlinkToUsb checks the symlink from typec connector to usb port and from usb port to typec connector
 // typec conn -> usb port -> typec conn
 func SymlinkToUsb(ctx context.Context, s *testing.State) {
+	const typecPath = "/sys/class/typec/"
+
 	ls, err := ioutil.ReadDir(typecPath)
 	if err != nil {
 		s.Fatal("Could not read typec directory: ", err)
