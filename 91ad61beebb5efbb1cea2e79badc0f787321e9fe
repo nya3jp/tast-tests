@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0c52d7c6_96849c81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_oem_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:43:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5fa594_403647c2",
+      "range": {
+        "startLine": 69,
+        "startChar": 70,
+        "endLine": 69,
+        "endChar": 78
+      },
+      "revId": "91ad61beebb5efbb1cea2e79badc0f787321e9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "623d6f2f_c8da9d99",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_oem_data.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-08T05:38:03Z",
       "side": 1,
       "message": "Might want to also log the output (b) if an error is encountered to help with debugging.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "91ad61beebb5efbb1cea2e79badc0f787321e9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced34e44_ed1cf107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_oem_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:43:00Z",
+      "side": 1,
+      "message": "I think if I include testexec.DumpLogOnError, I should see \"b\" in logs.",
+      "parentUuid": "623d6f2f_c8da9d99",
       "range": {
         "startLine": 71,
         "startChar": 0,
