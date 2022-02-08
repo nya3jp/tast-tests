@@ -16,6 +16,120 @@
       "message": "also replied to hidehiko\u0027s proposal.",
       "revId": "fe8f833255b84ddc5521dbc8136189bda5c17617",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69c5307_43fd1c82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T15:16:43Z",
+      "side": 1,
+      "message": "A few cosmetic feedback in addition to what we discussed yesterday to shorten the iteration.",
+      "revId": "fe8f833255b84ddc5521dbc8136189bda5c17617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c022e81_f799eef7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T15:16:43Z",
+      "side": 1,
+      "message": "could you close the file around L110 instead?\nAlso, handle the error?",
+      "revId": "fe8f833255b84ddc5521dbc8136189bda5c17617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c86118_46324a6b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T15:16:43Z",
+      "side": 1,
+      "message": "nit: (oops i overlooked in the last iteration).\npath.Join(dutLocalDataDir, \"bios_image.bin\")",
+      "range": {
+        "startLine": 224,
+        "startChar": 18,
+        "endLine": 224,
+        "endChar": 52
+      },
+      "revId": "fe8f833255b84ddc5521dbc8136189bda5c17617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5f117c_d7afbe6e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T15:16:43Z",
+      "side": 1,
+      "message": "ditto for path.Join()",
+      "revId": "fe8f833255b84ddc5521dbc8136189bda5c17617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "263cde42_7133d2d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T15:16:43Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "fe8f833255b84ddc5521dbc8136189bda5c17617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e8f28e8_cbfcdb6f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_flash_erasers.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T15:16:43Z",
+      "side": 1,
+      "message": "nit/style: \"if\u003d\" + dutBlobFilePath\n\nfor concat two strings. (otherwise keep using fmt.Sprintf should be just fine)",
+      "range": {
+        "startLine": 251,
+        "startChar": 31,
+        "endLine": 251,
+        "endChar": 68
+      },
+      "revId": "fe8f833255b84ddc5521dbc8136189bda5c17617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
