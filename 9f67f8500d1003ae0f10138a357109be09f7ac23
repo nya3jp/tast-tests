@@ -16,6 +16,24 @@
       "message": "Could we instead do chromeLoggedIn and then just write the following:\n\n```\nif err :\u003d ash.SetTabletModeEnabled(ctx, tconn, false); err !\u003d nil {\n  s.Fatal(\"Failed to enter clamshell mode: \", err)\n}\n```\n\nIf my understanding is correct, fixtures should not be added lightly, as tast can test multiple things with the same fixture together with very little work required in between them.\n\nThe alternative I can think of would be to use parent fixtures (https://docs.google.com/presentation/d/1WeiYrQWw2-X1gQ3jPhhQnhAdUZdlIsRuslw7bXx6xFQ/edit#slide\u003did.g9b9e1ba508_0_35)",
       "revId": "9f67f8500d1003ae0f10138a357109be09f7ac23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "993be33c_8a48fa81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/uidetection/basic_detections.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-08T05:02:13Z",
+      "side": 1,
+      "message": "Done. Revised to use `ash.SetTabletModeEnabled`. Thanks!",
+      "parentUuid": "cd199c61_3d45e2cd",
+      "revId": "9f67f8500d1003ae0f10138a357109be09f7ac23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
