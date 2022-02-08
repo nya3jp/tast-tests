@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b6dc71_81ae972d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-08T17:27:16Z",
+      "side": 1,
+      "message": "Idea looks good but the CLs need a different split.",
+      "revId": "32b28b5d030c0c009c7bc024845b0e018d2b2415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe55895a_1054d6e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-08T17:27:16Z",
+      "side": 1,
+      "message": "I would separate the pure code refactoring part\n(i.e. this DataFiles() and moving the JS to a \nplayback.js file) to a CL on its own, then have\na CL where you add setGridSize() and use it at\nthe same time.",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "32b28b5d030c0c009c7bc024845b0e018d2b2415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
