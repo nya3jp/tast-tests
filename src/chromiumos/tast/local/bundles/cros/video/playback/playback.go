@@ -7,6 +7,8 @@ package playback
 
 import (
 	"context"
+	"fmt"
+	"math"
 	"net/http"
 	"net/http/httptest"
 	"sync"
@@ -53,7 +55,7 @@ const (
 
 // RunTest measures a number of performance metrics while playing a video with
 // or without hardware acceleration as per decoderType.
-func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome, videoName string, decoderType DecoderType) {
+func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrome.Chrome, videoName string, decoderType DecoderType, gridSize int) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
@@ -66,7 +68,7 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrom
 	defer crastestclient.Unmute(ctx)
 
 	s.Log("Starting playback")
-	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, s.OutDir()); err != nil {
+	if err = measurePerformance(ctx, cs, cr, s.DataFileSystem(), videoName, decoderType, gridSize, s.OutDir()); err != nil {
 		s.Fatal("Playback test failed: ", err)
 	}
 }
@@ -74,7 +76,7 @@ func RunTest(ctx context.Context, s *testing.State, cs ash.ConnSource, cr *chrom
 // measurePerformance collects video playback performance playing a video with
 // either SW or HW decoder.
 func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrome, fileSystem http.FileSystem, videoName string,
-	decoderType DecoderType, outDir string) error {
+	decoderType DecoderType, gridSize int, outDir string) error {
 	// Wait until CPU is idle enough. CPU usage can be high immediately after login for various reasons (e.g. animated images on the lock screen).
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return err
@@ -96,8 +98,15 @@ func measurePerformance(ctx context.Context, cs ash.ConnSource, cr *chrome.Chrom
 		return errors.Wrap(err, "failed to retrieve DevTools Media messages")
 	}
 
-	// Wait until video element is loaded.
-	if err := conn.WaitForExpr(ctx, "document.getElementsByTagName('video').length > 0"); err != nil {
+	if gridSize > 1 {
+		if err := conn.Call(ctx, nil, "setGridSize", gridSize); err != nil {
+			return errors.Wrap(err, "failed to adjust the grid size")
+		}
+	}
+
+	// Wait until video element(s) are loaded.
+	exprn := fmt.Sprintf("document.getElementsByTagName('video').length == %d", int(math.Max(1.0, float64(gridSize*gridSize))))
+	if err := conn.WaitForExpr(ctx, exprn); err != nil {
 		return errors.Wrap(err, "failed to wait for video element loading")
 	}
 
