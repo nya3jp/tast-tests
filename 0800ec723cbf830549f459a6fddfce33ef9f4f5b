@@ -16,6 +16,69 @@
       "message": "Hi all,\n\nPTAL.",
       "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "078897dc_312993b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-08T15:03:19Z",
+      "side": 1,
+      "message": "LGTM % nits. Thanks, Oleh!",
+      "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56da570b_66b26ab8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-08T15:03:19Z",
+      "side": 1,
+      "message": "nit: I am not sure I understand what the test is doing by reading this name. Can we choose another name? e.g. PwaExtensionCommunication, MessageExchange",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626365fc_2230f1d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-08T15:03:19Z",
+      "side": 1,
+      "message": "nit: WYDT about making this a constant as part of the fixture?",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
