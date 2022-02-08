@@ -27,7 +27,10 @@ func init() {
 		Func:         PlaybackPerf,
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures video playback performance in Chrome browser with/without HW acceleration",
-		Contacts:     []string{"hiroh@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts: []string{
+			"mcasas@chromium.org",
+			"chromeos-gfx-video@google.com",
+		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		// Default timeout (i.e. 2 minutes) is not enough for low-end devices.
