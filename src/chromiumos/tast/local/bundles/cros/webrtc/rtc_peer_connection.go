@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/webrtc/peerconnection"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 // rtcTest is used to describe the config used to run each test case.
@@ -95,21 +94,6 @@ func init() {
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", simulcast: true},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Fixture:           "chromeVideoWithFakeWebcam",
-		}, {
-			// This is a 3 temporal layers test.
-			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
-			Name:              "vp9_enc_force_l1t3",
-			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			Fixture:           "chromeVideoWithFakeWebcamAndForceL1T3VP9",
-		}, {
-			// This is 3 spatial layers, 3 temporal layers (each) k-SVC.
-			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
-			Name:              "vp9_enc_force_l3t3_key",
-			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9"},
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
-			Fixture:           "chromeVideoWithFakeWebcamAndForceL3T3KeyVP9",
 		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
