@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb899280_a99856d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-08T15:28:53Z",
+      "side": 1,
+      "message": "Not sure I understand correctly, but if you\u0027re not removing users in your test anymore then there is no need to create a helper function for that.",
+      "parentUuid": "bfae1c46_8e9625ee",
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca420000_6ddb27ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
         "patchSetId": 1
