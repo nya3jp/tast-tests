@@ -742,6 +742,36 @@ func TestPlatformDecodingParams(t *testing.T) {
 		}
 	}
 
+	// Generates V4L2 Stateless VP9 tests.
+	for i, profile := range []string{"profile_0"} {
+		for _, levelGroup := range []string{"group1"} {
+			for _, cat := range []string{
+				"buf",
+			} {
+				files := vp9WebmFiles[profile][levelGroup][cat]
+				param := paramData{
+					Name:         fmt.Sprintf("v4l2_stateless_vp9_%d_%s_%s", i, levelGroup, cat),
+					Decoder:      filepath.Join(chrome.BinTestDir, "v4l2_stateless_decoder"),
+					CmdBuilder:   "v4l2StatelessDecodeArgs",
+					Files:        files,
+					Timeout:      defaultTimeout,
+					SoftwareDeps: []string{"v4l2_codec"},
+					Metadata:     genExtraData(files),
+					Attr:         []string{"graphics_video_vp9"},
+				}
+				if extension, ok := vp9GroupExtensions[levelGroup]; ok {
+					param.Timeout = extension
+				}
+
+				// TODO(stevecho): hardwareDeps needs to be added
+				hardwareDeps := []string{"hwdep.SupportsV4L2StatelessVideoDecoding()"}
+
+				param.HardwareDeps = strings.Join(hardwareDeps, ", ")
+				params = append(params, param)
+			}
+		}
+	}
+
 	params = append(params, paramData{
 		Name:         fmt.Sprintf("v4l2_vp9_0_svc"),
 		Decoder:      "v4l2_stateful_decoder",
