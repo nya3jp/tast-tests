@@ -29,7 +29,9 @@ func init() {
 			"pathan.jilani@intel.com",
 			"intel-chrome-system-automation-team@intel.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr: []string{"group:mainline"},
+		// TODO(b/200837194): Remove this after the volteer2 issue fix.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("volteer2")),
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 		Params: []testing.Param{{
@@ -40,6 +42,11 @@ func init() {
 			Val:       true,
 			// TODO(b/207569436): Define hardware dependency and get rid of hard-coding the models.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("brya", "redrix", "kano", "anahera", "primus", "crota")),
+		}, {
+			Name:              "volteer2",
+			ExtraAttr:         []string{"informational"},
+			Val:               false,
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("volteer2")),
 		}},
 	})
 }
