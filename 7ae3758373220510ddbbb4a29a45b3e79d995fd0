@@ -16,6 +16,23 @@
       "message": "Hi Kamil,\n\nThis CL is a small cleanup for the ScrollToTextFragmentEnabled test, PTAL!\n\nRegards,\nJit",
       "revId": "7ae3758373220510ddbbb4a29a45b3e79d995fd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b4e53c_4da7a619",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-08T10:57:42Z",
+      "side": 1,
+      "message": "Looks good. Tanks for the clean up 👍",
+      "revId": "7ae3758373220510ddbbb4a29a45b3e79d995fd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
