@@ -2,8 +2,41 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+const videoClass = 'videoTile';
+
+function setGridSize(dimension) {
+  if (dimension <= 0) return;
+
+  // Find the |container| and make it a |dimension| x |dimension| grid; repeat()
+  // allows for automatically ordering sub-grids into |dimension| columns, see
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+  const container = document.getElementById('container');
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(' + dimension + ', 1fr)';
+
+  // Adjust until we get |dimension| x |dimension| videos.
+  const numVideos = document.getElementsByClassName(videoClass).length;
+  const numExtraVideosInGrid = dimension * dimension - numVideos;
+  if (numExtraVideosInGrid > 0) {
+    for (let i = 0; i < numExtraVideosInGrid; i++) {
+      const video = document.createElement('video');
+      video.className = videoClass;
+      video.controls = true;
+      video.autoplay = true;
+      video.muted = true;
+      const div = document.createElement('div');
+      div.appendChild(video);
+      container.appendChild(div);
+    }
+  } else {
+    for (let i = 0; i > numExtraVideosInGrid; i--) {
+      container.removeChild(container.lastChild);
+    }
+  }
+}
+
 async function playUntilEnd(videoSourcePath, unmutePlayer) {
-  let videos = document.getElementsByName('media');
+  let videos = Array.from(document.getElementsByClassName(videoClass));
   videos.forEach(async video => {
     video.src = videoSourcePath;
     video.muted = !unmutePlayer;
@@ -14,10 +47,9 @@ async function playUntilEnd(videoSourcePath, unmutePlayer) {
 }
 
 async function playRepeatedly(videoSourcePath) {
-  let videos = document.getElementsByName("media");
+  let videos = Array.from(document.getElementsByClassName(videoClass));
   videos.forEach(async video => {
     video.src = videoSourcePath;
-    video.muted = true;
     video.loop = true;
     await video.play();
   }
