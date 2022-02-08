@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b81d5b_6579b1ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-08T18:39:01Z",
+      "side": 1,
+      "message": "Sorry for the late review... I missed this  review-request",
+      "revId": "d075698c5969804b640f793e0a333eea44af5487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b57cad_c1ac976d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-08T18:39:01Z",
+      "side": 1,
+      "message": "is ExtraSoftwareDeps needed?\n\nI think adding the Chrome Fixture should cover it... similar for the Lacros Fixture.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "d075698c5969804b640f793e0a333eea44af5487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa11dbf3_378706d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-08T18:39:01Z",
+      "side": 1,
+      "message": "huge nit (here and in the rest of the file)  ash -\u003e Ash, chrome -\u003e Chrome, lacros -\u003e Lacros",
+      "range": {
+        "startLine": 96,
+        "startChar": 37,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "d075698c5969804b640f793e0a333eea44af5487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ba3780_c12a5ee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-08T18:39:01Z",
+      "side": 1,
+      "message": "the `// ash chrome` comment is somewhat confusing.\n\nIIUC, the comment says that `crosConn` will be used only in the Ash version.\nBut in L105 `crosConn` is being assigned with the lacros connection.\n\nin any case it is not clear what are the differences between crosConn and browserConn.\nPerhaps adding a comment with more detail  (?)",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "d075698c5969804b640f793e0a333eea44af5487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
