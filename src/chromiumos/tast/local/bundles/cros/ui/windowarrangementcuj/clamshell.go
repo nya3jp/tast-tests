@@ -243,7 +243,7 @@ func RunClamShell(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Contex
 	// Drag the second window to another desk to obtain an empty overview grid.
 	w, err = ash.FindFirstWindowInOverview(ctx, tconn)
 	if err != nil {
-		return errors.Wrap(err, "failed to find the window in the overview mode to drag to snap")
+		return errors.Wrap(err, "failed to find the window in the overview mode to drag to another desk")
 	}
 	deskMiniViews, err := ui.NodesInfo(ctx, nodewith.ClassName("DeskMiniView"))
 	if err != nil {
