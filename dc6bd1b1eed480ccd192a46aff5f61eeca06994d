@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa2220a_eebaf11f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-02-08T03:20:24Z",
+      "side": 1,
+      "message": "I think we have StringPrintf somewhere here - that may be cleaner to use",
+      "range": {
+        "startLine": 307,
+        "startChar": 17,
+        "endLine": 307,
+        "endChar": 23
+      },
+      "revId": "dc6bd1b1eed480ccd192a46aff5f61eeca06994d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
