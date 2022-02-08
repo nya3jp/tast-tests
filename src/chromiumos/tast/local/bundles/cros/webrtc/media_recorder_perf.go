@@ -27,8 +27,8 @@ func init() {
 		Desc:         "Captures performance data about MediaRecorder for both SW and HW",
 		Contacts: []string{
 			"mcasas@chromium.org", // Test author.
+			"hiroh@chromium.org",
 			"chromeos-gfx-video@google.com",
-			"chromeos-video-eng@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"loopback_media_recorder.html"},
