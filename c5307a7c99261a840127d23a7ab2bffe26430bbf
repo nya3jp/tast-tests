@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "024587ad_74ff444b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-08T15:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a76a3267_4c195051",
+      "range": {
+        "startLine": 128,
+        "startChar": 24,
+        "endLine": 128,
+        "endChar": 37
+      },
+      "revId": "c5307a7c99261a840127d23a7ab2bffe26430bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d5018d8_3313ea1f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-07T16:59:54Z",
       "side": 1,
       "message": "It should not result in fatal error, just an error. Same for other cases above where the test was able to run, but found non-expected behavior.",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 3
+      },
+      "revId": "c5307a7c99261a840127d23a7ab2bffe26430bbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08036fcf_7d155698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-08T15:05:10Z",
+      "side": 1,
+      "message": "It was easier to just send the testing state over and log the errors directly. Done.",
+      "parentUuid": "5d5018d8_3313ea1f",
       "range": {
         "startLine": 304,
         "startChar": 0,
