@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -27,7 +28,7 @@ const uiTimeout = 30 * time.Second
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Smoke,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that notifications appear in notification centre and can be interacted with",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -36,18 +37,38 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 // Smoke tests that notifications appear in notification centre.
 func Smoke(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
-
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	// Setup a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, s.FixtValue(), bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatalf("Failed to create Test API connection for %v browser: %v", bt, err)
+	}
+
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
@@ -57,7 +78,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 	defer cleanup(ctx)
 
 	s.Log("Creating notification")
-	if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, "TestNotification1", "blahhh"); err != nil {
+	if _, err := browser.CreateTestNotification(ctx, bTconn, browser.NotificationTypeBasic, "TestNotification1", "blahhh"); err != nil {
 		s.Fatal("Failed to create test notification: ", err)
 	}
 	s.Log("Checking that notification appears")
@@ -97,7 +118,7 @@ func Smoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close notification: ", err)
 	}
 	s.Log("Firing another notification while notification centre is open")
-	if _, err := browser.CreateTestNotification(ctx, tconn, browser.NotificationTypeBasic, "TestNotification2", "testttt"); err != nil {
+	if _, err := browser.CreateTestNotification(ctx, bTconn, browser.NotificationTypeBasic, "TestNotification2", "testttt"); err != nil {
 		s.Fatal("Failed to create test notification: ", err)
 	}
 	s.Log("Closing notification from notification centre")
