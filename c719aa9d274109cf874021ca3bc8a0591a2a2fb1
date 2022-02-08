@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfae1c46_8e9625ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:39:34Z",
+      "side": 1,
+      "message": "We have removed the step to remove existing users, should we extract that logic as a helper function?",
+      "parentUuid": "1ff65f22_66113be9",
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca420000_6ddb27ff",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
         "patchSetId": 1
@@ -49,6 +67,30 @@
       "writtenOn": "2022-02-07T10:46:38Z",
       "side": 1,
       "message": "use chrome.LoginTimeout * \u003cnumber of logins\u003e + \u003csome extra time\u003e",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be307a9_e344d50a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:39:34Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ca420000_6ddb27ff",
       "range": {
         "startLine": 37,
         "startChar": 0,
@@ -76,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da200a7f_60216fd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:39:34Z",
+      "side": 1,
+      "message": "Thank you for the information, we have applied the helper function instead.",
+      "parentUuid": "a69eb62e_ffd640a6",
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2af78619_78029477",
@@ -89,6 +149,30 @@
       "writtenOn": "2022-02-07T10:46:38Z",
       "side": 1,
       "message": "this might not work because it calls\n\ttconn, err :\u003d cr.TestAPIConn(ctx)\nwhich is not available at the login screen.",
+      "range": {
+        "startLine": 58,
+        "startChar": 15,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd9fd367_6a10a2ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:39:34Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "2af78619_78029477",
       "range": {
         "startLine": 58,
         "startChar": 15,
@@ -122,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95ba12a_1dd65ece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:39:34Z",
+      "side": 1,
+      "message": "We remove this step due to this test won\u0027t share session with any other tests",
+      "parentUuid": "af39ae8a_bbb245b1",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8a84517_ab151e5d",
@@ -135,6 +243,30 @@
       "writtenOn": "2022-02-07T10:46:38Z",
       "side": 1,
       "message": "do we need 5? I think 2 or 3 is enough. It would make the test faster.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a85534e5_41e4be7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a84517_ab151e5d",
       "range": {
         "startLine": 121,
         "startChar": 0,
@@ -168,6 +300,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce7de0d8_b32986b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:39:34Z",
+      "side": 1,
+      "message": "Sorry we don\u0027t have access to the mentioned document, a request for permission was sent, but currently we have removed this and its related steps.",
+      "parentUuid": "3a9cbc03_86279b93",
+      "range": {
+        "startLine": 165,
+        "startChar": 45,
+        "endLine": 165,
+        "endChar": 65
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3648020d_3d09a5cf",
@@ -181,6 +337,30 @@
       "writtenOn": "2022-02-07T10:46:38Z",
       "side": 1,
       "message": "why do we need IfSuccessThen here? Isn\u0027t it covered already by uiauto.Combine?",
+      "range": {
+        "startLine": 186,
+        "startChar": 6,
+        "endLine": 186,
+        "endChar": 19
+      },
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bc6e5db_9739d30f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/sign_out_all.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:39:34Z",
+      "side": 1,
+      "message": "A prompt of \"Sign in another user\" will show when signing in the first non-owner user and won\u0027t pop-up again after dismissing it.\nWe now trigger a kb accel to dismiss the possible prompt whether it shows or not.",
+      "parentUuid": "3648020d_3d09a5cf",
       "range": {
         "startLine": 186,
         "startChar": 6,
