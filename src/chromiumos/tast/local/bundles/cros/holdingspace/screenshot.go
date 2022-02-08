@@ -48,6 +48,11 @@ func init() {
 				testfunc: testScreenshotLaunch,
 			},
 		}, {
+			Name: "overflow",
+			Val: screenshotParams{
+				testfunc: testScreenshotOverflow,
+			},
+		}, {
 			Name: "pin_and_unpin",
 			Val: screenshotParams{
 				testfunc: testScreenshotPinAndUnpin,
@@ -88,6 +93,7 @@ func Screenshot(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
+	var screenshotLocation string
 	if err := uiauto.Combine("capture screenshot",
 		// Prior to capturing a screenshot, holding space should be empty and
 		// therefore the holding space tray node should not exist.
@@ -95,19 +101,15 @@ func Screenshot(ctx context.Context, s *testing.State) {
 
 		// Capture a fullscreen screenshot using the virtual keyboard. This should
 		// behave consistently across device form factors.
-		takeScreenshot(),
+		func(ctx context.Context) error {
+			screenshotLocation, err = takeScreenshot(ctx)
+			return err
+		},
 	)(ctx); err != nil {
 		s.Fatal("Failed to capture screenshot: ", err)
 	}
 
-	// Ensure a screenshot has been captured.
-	screenshots, err = getScreenshots()
-	if err != nil || len(screenshots) != 1 {
-		s.Fatal("Failed to capture screenshot: ", err)
-	}
-
 	// Defer clean up of the screenshot file.
-	screenshotLocation := screenshots[0]
 	defer os.Remove(screenshotLocation)
 
 	// Trim screenshot filename.
@@ -140,7 +142,8 @@ func Screenshot(ctx context.Context, s *testing.State) {
 	// screenshot are removed when the backing file is removed.
 	if err := uiauto.Combine("remove associated chips and views",
 		ui.WaitUntilGone(holdingspace.FindChip().Name(screenshotName)),
-		ui.WaitUntilGone(holdingspace.FindScreenCaptureView().Name(screenshotName)))(ctx); err != nil {
+		ui.WaitUntilGone(holdingspace.FindScreenCaptureView().Name(screenshotName)),
+	)(ctx); err != nil {
 		s.Fatal("Failed to remove associated chips and views: ", err)
 	}
 }
@@ -163,6 +166,104 @@ func testScreenshotLaunch(
 			Ancestor(nodewith.NameStartingWith(apps.Gallery.Name).HasClass("BrowserFrame")).
 			Role(role.Image).Name(screenshotName)),
 	)
+}
+
+// testScreenshotOverflow performs testing of screenshot overflow behavior.
+func testScreenshotOverflow(
+	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
+	return func(ctx context.Context) error {
+		// Holding space UI can accommodate up to three screenshots at a time. This
+		// test will take three additional screenshots to the one already taken in
+		// order to force overflow behavior.
+		screenshotLocations := make([]string, 3)
+
+		// Defer removal of screenshots taken during this test.
+		defer func() {
+			for _, screenshotLocation := range screenshotLocations {
+				if len(screenshotLocation) > 0 {
+					os.Remove(screenshotLocation)
+				}
+			}
+		}()
+
+		return uiauto.Combine("overflow screenshots",
+			// Left click the tray to open the bubble.
+			ui.LeftClick(holdingspace.FindTray()),
+			ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+				Name(screenshotName)),
+
+			// Take the first additional screenshot and verify state.
+			func(ctx context.Context) error {
+				var err error
+				if screenshotLocations[0], err = takeScreenshot(ctx); err != nil {
+					return err
+				}
+				return uiauto.Combine(
+					"verify state after first additional screenshot",
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(filepath.Base(screenshotLocations[0]))),
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(screenshotName)),
+				)(ctx)
+			},
+
+			// Take the second additional screenshot and verify state.
+			func(ctx context.Context) error {
+				var err error
+				if screenshotLocations[1], err = takeScreenshot(ctx); err != nil {
+					return err
+				}
+				return uiauto.Combine(
+					"verify state after second additional screenshot",
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(filepath.Base(screenshotLocations[0]))),
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(filepath.Base(screenshotLocations[1]))),
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(screenshotName)),
+				)(ctx)
+			},
+
+			// Take the third additional screenshot and verify state.
+			func(ctx context.Context) error {
+				var err error
+				if screenshotLocations[2], err = takeScreenshot(ctx); err != nil {
+					return err
+				}
+				return uiauto.Combine(
+					"verify state after third additional screenshot",
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(filepath.Base(screenshotLocations[0]))),
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(filepath.Base(screenshotLocations[1]))),
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(filepath.Base(screenshotLocations[2]))),
+					ui.WaitUntilGone(holdingspace.FindScreenCaptureView().
+						Name(screenshotName)),
+					ui.EnsureGoneFor(holdingspace.FindScreenCaptureView().
+						Name(screenshotName), 5*time.Second),
+				)(ctx)
+			},
+
+			// Remove the second additional screenshot and verify state.
+			func(ctx context.Context) error {
+				os.Remove(screenshotLocations[1])
+				return uiauto.Combine(
+					"verify state after removing second additional screenshot",
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(filepath.Base(screenshotLocations[0]))),
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(filepath.Base(screenshotLocations[2]))),
+					ui.WaitUntilExists(holdingspace.FindScreenCaptureView().
+						Name(screenshotName)),
+					ui.WaitUntilGone(holdingspace.FindScreenCaptureView().
+						Name(screenshotLocations[1])),
+					ui.EnsureGoneFor(holdingspace.FindScreenCaptureView().
+						Name(screenshotLocations[1]), 5*time.Second),
+				)(ctx)
+			},
+		)(ctx)
+	}
 }
 
 // testScreenshotPinAndUnpin performs testing of pinning and unpinning a screenshot.
@@ -216,44 +317,61 @@ func testScreenshotRemove(
 	)
 }
 
-// getScreenshots returns the names of screenshot files present in the users
+// getScreenshots returns the locations of screenshot files present in the user's
 // downloads directory. Screenshot files are assumed to match a specific pattern.
-func getScreenshots() ([]string, error) {
-	return filepath.Glob(filepath.Join(filesapp.DownloadPath, "Screenshot*.png"))
+func getScreenshots() (map[string]struct{}, error) {
+	result := make(map[string]struct{})
+	screenshots, err := filepath.Glob(filepath.Join(
+		filesapp.DownloadPath, "Screenshot*.png"))
+	if err == nil {
+		for i := range screenshots {
+			result[screenshots[i]] = struct{}{}
+		}
+	}
+	return result, err
 }
 
-// takeScreenshot returns an action which captures a fullscreen screenshot using
-// the virtual keyboard. This should behave consistently across device form factors.
-func takeScreenshot() uiauto.Action {
-	return func(ctx context.Context) error {
-		// Cache existing screenshots.
-		screenshots, err := getScreenshots()
-		if err != nil {
-			return err
-		}
+// takeScreenshot captures a fullscreen screenshot using the virtual keyboard
+// and returns the location of the screenshot file in the user's downloads
+// directory. This should behave consistently across device form factors.
+func takeScreenshot(ctx context.Context) (string, error) {
+	var result string
 
-		// Create virtual keyboard.
-		keyboard, err := input.VirtualKeyboard(ctx)
-		if err != nil {
-			return err
-		}
-		defer keyboard.Close()
-
-		// Take a screenshot.
-		if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
-			return err
-		}
-
-		// Wait for screenshot.
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			newScreenshots, err := getScreenshots()
-			if err != nil {
-				return testing.PollBreak(err)
-			}
-			if reflect.DeepEqual(screenshots, newScreenshots) {
-				return errors.New("waiting for screenshot")
-			}
-			return nil
-		}, nil)
+	// Cache existing screenshots.
+	screenshots, err := getScreenshots()
+	if err != nil {
+		return result, err
 	}
+
+	// Create virtual keyboard.
+	keyboard, err := input.VirtualKeyboard(ctx)
+	if err != nil {
+		return result, err
+	}
+	defer keyboard.Close()
+
+	// Take a screenshot.
+	if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
+		return result, err
+	}
+
+	// Wait for screenshot.
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		newScreenshots, err := getScreenshots()
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+		if reflect.DeepEqual(screenshots, newScreenshots) {
+			return errors.New("waiting for screenshot")
+		}
+		for newScreenshot := range newScreenshots {
+			if _, exists := screenshots[newScreenshot]; !exists {
+				result = newScreenshot
+				return nil
+			}
+		}
+		return nil
+	}, nil)
+
+	return result, err
 }
