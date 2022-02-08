@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc058102_6db2072f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-08T10:21:58Z",
+      "side": 1,
+      "message": "nit: this part can be removed.",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "61c7d69f32b823fa337311f4e22729f386b84acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "142fa0aa_c40c87db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-08T10:21:58Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "61c7d69f32b823fa337311f4e22729f386b84acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4dcd5e0_2944a3dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-08T10:21:58Z",
+      "side": 1,
+      "message": "Can you fix this line as well to get nicer error messages?\n`s.Fatal(\"Failed to trigger and use credit card autofill: \", err))`",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 80
+      },
+      "revId": "61c7d69f32b823fa337311f4e22729f386b84acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4fe9b12_f9e1ab3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-02-08T10:21:58Z",
+      "side": 1,
+      "message": "nit: add a comment on what this part is meant to do.",
+      "revId": "61c7d69f32b823fa337311f4e22729f386b84acc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
