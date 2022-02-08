@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "b96130fecbfebb2653f2f81a9be4137dca46be44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fec7e4f_ce1c38b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-02-08T20:15:40Z",
+      "side": 1,
+      "message": "nit: readability\n\nMove success case outside the loop. Instead of put inside the for-loop, I\u0027d move outside, and I\u0027d replace the `return` with a `break`.\n\nand `len(invocationError) \u003e 0` means error.\n\n\nnot-nit:\nIIUC, as long as one of the valid formats succeeds, then the test passes. Is that correct?\nIs there a way to determine which are the primary formats that must pass?\nPerhaps by parsing some info from the kernel, or perhaps by adding a parameter to `plane_test` that lists the supported primary formats?\n\nIdeally you should only tests what must pass.\nAnd only report error on tests that failed to pass.\n\nBut if the test is Ok as it is, then I\u0027d add comment explaining why you are testing all those formats, and why the tests succeeds if only one of them passes.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 9
+      },
+      "revId": "b96130fecbfebb2653f2f81a9be4137dca46be44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
