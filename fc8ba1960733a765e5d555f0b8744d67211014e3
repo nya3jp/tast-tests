@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6288989_dadf4ab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-08T01:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6d48fa_b066832b",
+      "range": {
+        "startLine": 88,
+        "startChar": 34,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "fc8ba1960733a765e5d555f0b8744d67211014e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67d0ef7e_0d7e2359",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Ah. This wasn\u0027t clear from the rest of the context around here, could you add a comment and/or line to the description?",
       "parentUuid": "db935274_9a6a524a",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 9
+      },
+      "revId": "fc8ba1960733a765e5d555f0b8744d67211014e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "065b6b0f_b2db0fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-08T01:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c09614e_d100fb1a",
       "range": {
         "startLine": 127,
         "startChar": 3,
