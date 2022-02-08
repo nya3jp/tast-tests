@@ -186,15 +186,15 @@ func init() {
 			Name:              "vp9_540p_l2t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L2T3"),
 			ExtraData:         encode.TestData(crowd540p),
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
 		}, {
 			Name:              "vp9_540p_l3t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(crowd540p, videotype.VP9Prof, "L3T3"),
 			ExtraData:         encode.TestData(crowd540p),
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			// Need caps.HWEncodeVP9OddDimension capability because the height at the bottom spatial layer is 540 / 4 = 135.
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, caps.HWEncodeVP9OddDimension, "vaapi"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, caps.HWEncodeVP9OddDimension},
 		}, {
 			Name:              "vp9_720p",
 			Val:               encode.MakeTestOptions(crowd720p, videotype.VP9Prof),
@@ -214,14 +214,14 @@ func init() {
 			Name:              "vp9_720p_l2t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.VP9Prof, "L2T3"),
 			ExtraData:         encode.TestData(crowd720p),
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 		}, {
 			Name:              "vp9_720p_l3t3",
 			Val:               encode.MakeTestOptionsWithSVCLayers(crowd720p, videotype.VP9Prof, "L3T3"),
 			ExtraData:         encode.TestData(crowd720p),
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 		}, {
 			Name:              "vp9_1080p",
 			Val:               encode.MakeTestOptions(crowd1080p, videotype.VP9Prof),
