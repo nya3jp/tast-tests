@@ -154,26 +154,41 @@ func DefaultSearchProviderSuggestURL(ctx context.Context, s *testing.State) {
 				s.Fatal("Could not find the address bar: ", err)
 			}
 
-			// Type something.
-			const searchTerm = "abc"
-			if err := kb.Type(ctx, searchTerm); err != nil {
-				s.Fatalf("Failed to type %q: %v", searchTerm, err)
-			}
-
-			// Wait until the address bar has "abc" as content.
+			// Wait until the server processed the initial request.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				currentNodeInfo, err := ui.Info(ctx, addressBarNode)
-				if err != nil {
-					return testing.PollBreak(errors.Wrap(err, "failed to get info of the address bar"))
-				}
-				if currentNodeInfo.Value == searchTerm {
+				if len(param.wantCalls) <= 1 {
+					// We don't actually query the server here, so just return.
 					return nil
 				}
-				return errors.Errorf(
-					"unexpected address bar content: got %q, want %q",
-					currentNodeInfo.Value, searchTerm)
+				if len(srvCalls) == 1 {
+					return nil
+				}
+				return errors.Errorf("unexpected number of calls to server: got %d, want 1", len(srvCalls))
 			}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
-				s.Fatal("Failed to wait for expected value in the address bar: ", err)
+				s.Fatal("Failed to wait for expected calls to the server: ", err)
+			}
+
+			// Type something.
+			const searchTerm = "abc"
+			for i, c := range searchTerm {
+				if err := kb.Type(ctx, string(c)); err != nil {
+					s.Fatalf("Failed to type %q: %v", c, err)
+				}
+
+				// Wait until the server processed the resulting request.
+				if err := testing.Poll(ctx, func(ctx context.Context) error {
+					if len(param.wantCalls) <= 1 {
+						// We don't actually query the server here, so just return.
+						return nil
+					}
+					// For the i-th character (e.g. for "a" i=0) we expect to see i+2 calls to the server (e.g. one for "" and one for "a").
+					if len(srvCalls) == i+2 {
+						return nil
+					}
+					return errors.Errorf("unexpected number of calls to server: got %d, want %d", len(srvCalls), i+2)
+				}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+					s.Fatal("Failed to wait for expected calls to the server: ", err)
+				}
 			}
 
 			// Load the page.
