@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9be5770d_102793cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349498
+      },
+      "writtenOn": "2022-02-08T02:01:02Z",
+      "side": 1,
+      "message": "There is a failure in camera.GetUserMedia.fake:\n\n2022-02-07T16:38:32.880330Z [16:38:32.421] Connecting to Chrome target 277C963068EEF461126998B9CA0BA105\n2022-02-07T16:38:40.657300Z [16:38:40.196] Error at pre.go:98: [Precondition failure] Failed to start Chrome: login failed: test API extension is unavailable: context deadline exceeded; last error follows: cdp.Runtime: Evaluate: context deadline exceeded\n2022-02-07T16:38:40.662494Z [16:38:40.196] Stack trace:\n[Precondition failure] Failed to start Chrome\n\tat chromiumos/tast/local/chrome.(*preImpl).Prepare (pre.go:98)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func2 (run.go:805)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_amd64.s:1581)\nlogin failed\n\tat chromiumos/tast/local/chrome.New (chrome.go:338)\n\tat chromiumos/tast/local/chrome.(*preImpl).Prepare (pre.go:97)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func2 (run.go:805)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_amd64.s:1581)\ntest API extension is unavailable\n\tat chromiumos/tast/local/chrome/internal/driver.(*Session).testAPIConnFor (session.go:227)\n\tat chromiumos/tast/local/chrome/internal/driver.(*Session).TestAPIConn (session.go:201)\n\tat chromiumos/tast/local/chrome/internal/login.LogIn (login.go:61)\n\tat chromiumos/tast/local/chrome.New (chrome.go:329)\n\tat chromiumos/tast/local/chrome.(*preImpl).Prepare (pre.go:97)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func2 (run.go:805)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_amd64.s:1581)\ncontext deadline exceeded; last error follows\n\tat chromiumos/tast/internal/testingutil.Poll (poll.go:87)\n\tat chromiumos/tast/testing.Poll (util.go:43)\n\tat chromiumos/tast/local/chrome/internal/cdputil.(*Conn).WaitForExpr (conn.go:257)\n\tat chromiumos/tast/local/chrome/internal/driver.(*Conn).waitForExprImpl (conn.go:207)\n\tat chromiumos/tast/local/chrome/internal/driver.(*Conn).WaitForExprWithTimeout (conn.go:190)\n\tat chromiumos/tast/local/chrome/internal/driver.(*Conn).WaitForExpr (conn.go:185)\n\tat chromiumos/tast/local/chrome/internal/driver.(*Session).testAPIConnFor (session.go:226)\n\tat chromiumos/tast/local/chrome/internal/driver.(*Session).TestAPIConn (session.go:201)\n\t...\ncdp.Runtime: Evaluate: context deadline exceeded\n\tat ???\n2022-02-07T16:38:40.671321Z [16:38:40.205] Closing precondition \"chrome_videoWithFakeWebcam\"\n2022-02-07T16:38:41.782558Z [16:38:41.323] Connecting to browser at ws://localhost:35121/devtools/browser/df27ec3e-b718-4d83-98fd-23656648622c\n2022-02-07T16:38:42.283506Z [16:38:41.825] Connecting to Chrome target 277C963068EEF461126998B9CA0BA105\n2022-02-07T16:38:43.201290Z [16:38:42.741] Taking screenshot via chrome API\n2022-02-07T16:38:49.547595Z Completed test camera.GetUserMedia.fake in 1m29.558s with 1 error(s)",
+      "revId": "1ab31262cb11c83c19cb780ba95bb371fd6dcd1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
