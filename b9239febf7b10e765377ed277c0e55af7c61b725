@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a31a2e5c_a865d4ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_vpd_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-02-08T06:46:36Z",
+      "side": 1,
+      "message": "nit: want -\u003e expected",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "b9239febf7b10e765377ed277c0e55af7c61b725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
