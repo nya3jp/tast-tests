@@ -209,58 +209,6 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeVideoWithFakeWebcamAndForceL1T3VP9",
-		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but forcing WebRTC to use three temporal layers for VP9 encoding",
-		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs(chromeFakeWebcamArgs...),
-				chrome.ExtraArgs("--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_1SL3TL/"),
-			}, nil
-		}),
-		Parent:          "gpuWatchDog",
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeVideoWithFakeWebcamAndForceL3T3KeyVP9",
-		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but forcing WebRTC to use 3 spatial layers, 3 temporal layers and on key picture inter prediction for VP9 encoding",
-		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs(chromeFakeWebcamArgs...),
-				chrome.ExtraArgs(chromeForceUseL3T3KeyVP9...),
-			}, nil
-		}),
-		Parent:          "gpuWatchDog",
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeVideoWithFakeWebcamAndForceL3T3KeyVP9AndNoHwAcceleration",
-		Desc:     "Similar to chromeVideoWithFakeWebcamAndForceL3T3KeyVP9 but not using hardware acceleration for neither encoding nor decoding",
-		Contacts: []string{"chromeos-gfx-video@google.com"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ExtraArgs(chromeVideoArgs...),
-				chrome.ExtraArgs(chromeFakeWebcamArgs...),
-				chrome.ExtraArgs(chromeForceUseL3T3KeyVP9...),
-				chrome.ExtraArgs("--disable-accelerated-video-encode"),
-				chrome.ExtraArgs("--disable-accelerated-video-decode"),
-			}, nil
-		}),
-		Parent:          "gpuWatchDog",
-		SetUpTimeout:    chrome.LoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeVideoWithFakeWebcamAndSVCEnabled",
 		Desc:     "Similar to chromeVideoWithFakeWebcam fixture but allowing use of the Web SVC API",
 		Contacts: []string{"chromeos-gfx-video@google.com"},
@@ -618,12 +566,4 @@ var chromeAllowDistinctiveIdentifierArgs = []string{
 
 var chromeWebCodecsArgs = []string{
 	"--enable-blink-features=WebCodecs",
-}
-
-// Force 3 spatial layers, 3 temporal layers (each) k-SVC VP9 HW encoding.
-// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
-var chromeForceUseL3T3KeyVP9 = []string{
-	"--force-fieldtrials=WebRTC-SupportVP9SVC/EnabledByFlag_3SL3TL/",
-	"--force-fieldtrials=WebRTC-Vp9InterLayerPred/Enabled,inter_layer_pred_mode:onkeypic/",
-	"--enable-features=VaapiVp9kSVCHWEncoding",
 }
