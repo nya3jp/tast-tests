@@ -300,6 +300,8 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 // mode - when kioskmode.AutoLaunch() option was used. We need to start Chrome
 // and clean policies to prevent Chrome starting automatically in Kiosk mode
 // for next test.
+// FIXME: this cleanup doesn't work on some devices (e.g. chell). FakeLogin()
+// doesn't work either. Need to figure out some way to fix this.
 func startChromeClearPolicies(ctx context.Context, fdms *fakedms.FakeDMS, username, password string) error {
 	cr, err := chrome.New(
 		ctx,

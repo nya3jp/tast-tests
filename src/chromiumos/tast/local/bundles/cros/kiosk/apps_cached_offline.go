@@ -6,6 +6,7 @@ package kiosk
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
@@ -27,6 +28,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.KioskAutoLaunchCleanup,
+		Timeout:      5 * time.Minute, // Starting Kiosk twice requires longer timeout.
 	})
 }
 
