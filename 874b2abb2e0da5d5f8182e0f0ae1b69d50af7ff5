@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea161c2a_60999d37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-02-08T01:54:06Z",
+      "side": 1,
+      "message": "Takise-san, please take a look. Thanks!",
+      "revId": "874b2abb2e0da5d5f8182e0f0ae1b69d50af7ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
