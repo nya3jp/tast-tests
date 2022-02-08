@@ -7,6 +7,7 @@ package fixture
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -58,6 +59,8 @@ type telemetryExtensionFixture struct {
 
 // Value is a value exposed by fixture to tests.
 type Value struct {
+	ExtID string
+
 	PwaConn *chrome.Conn
 	ExtConn *chrome.Conn
 }
@@ -108,7 +111,9 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to add Tast library to google.com: ", err)
 	}
 
-	extConn, err := cr.NewConn(ctx, "chrome-extension://gogonhoemckpdpadfnjnpgbjpbjnodgc/sw.js")
+	f.v.ExtID = "gogonhoemckpdpadfnjnpgbjpbjnodgc"
+
+	extConn, err := cr.NewConn(ctx, fmt.Sprintf("chrome-extension://%s/sw.js", f.v.ExtID))
 	if err != nil {
 		s.Fatal("Failed to create connection to Telemetry Extension: ", err)
 	}
