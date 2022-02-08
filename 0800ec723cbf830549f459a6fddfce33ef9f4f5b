@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cbca124a_88ed192c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-02-08T16:47:07Z",
+      "side": 1,
+      "message": "I didn\u0027t think cap is short for capability tbh :D\n\nI am thinking of two options:\n1) Use Capability* as a prefix.\n2) Leave out the prefix and just name the test without it.\n\nWhat is the reason to group tests in the first place?",
+      "parentUuid": "efdf6ad2_c3c3f130",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "626365fc_2230f1d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
         "patchSetId": 1
