@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0055a4cd_bdc9d0ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/windowResize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-08T17:48:13Z",
+      "side": 1,
+      "message": "I think the file should be named window_resize.go to match other file naming patterns.",
+      "revId": "2ad7f1be356c0e9727e2a867cc104f844ad2cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012a22f9_9c8ac451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/windowResize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-08T17:48:13Z",
+      "side": 1,
+      "message": "Is not returning the error here a case of \"Non-ARC app will be ignored\"? If so, maybe add a comment here to make it more clear.",
+      "revId": "2ad7f1be356c0e9727e2a867cc104f844ad2cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e85919_6561fcb6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/windowResize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-08T17:48:13Z",
+      "side": 1,
+      "message": "\u0027Get\u0027 isn\u0027t preferred in Go. Can this be \u0027AllBounds\u0027 ?",
+      "revId": "2ad7f1be356c0e9727e2a867cc104f844ad2cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3018c1_095737e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/windowResize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-08T17:48:13Z",
+      "side": 1,
+      "message": "this is a little difficult to read, especially the `passed \u0026\u0026 \u003ccond\u003e` on each line. Two options which may make it easier to follow:\n\n1. Follow what you did in `dragDetail`. i.e. in each case set a `xBias`, `yBias` and do the final check at the end of the method. I.e.\n\ncase TopLeft:\nxBias \u003d math.Abs(...);\nyBias \u003d math.Abs(...);\n\netc.\n\n2. Simply have the function return a bool rather than an error if the locations are valid:\n\ncase TopLeft:\nreturn Math.Abs(...) \u003c\u003d maxBias \u0026\u0026 Math.Abs(...) \u003c\u003d maxBias;",
+      "revId": "2ad7f1be356c0e9727e2a867cc104f844ad2cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
