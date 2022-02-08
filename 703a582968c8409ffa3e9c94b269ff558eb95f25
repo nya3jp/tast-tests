@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4117691d_93cddb80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-08T19:12:27Z",
+      "side": 1,
+      "message": "Please mention that you ran the \"fast_build.sh -T\" in the TEST\u003d line. Thanks.",
+      "parentUuid": "529c4ebb_142bf5e5",
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01c8efba_0904a1ed",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_available_routines.go",
         "patchSetId": 2
