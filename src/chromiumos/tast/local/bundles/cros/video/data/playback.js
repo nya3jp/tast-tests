@@ -2,8 +2,30 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+function setGridSize(dimension) {
+  // Find the |container| and make it a |dimension| x |dimension| grid; repeat()
+  // allows for automatically ordering sub-grids into |dimension| columns, see
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+  const container = document.getElementById('container');
+  container.style.display = 'grid';
+  container.style.gridTemplateColumns = 'repeat(' + dimension + ', 1fr)';
+
+  // Append additional videos to the DOM.
+  const numExtraVideosInGrid = dimension * dimension - 1;
+  for (let i = 0; i < numExtraVideosInGrid; i++) {
+    const video = document.createElement('video');
+    video.className = 'videoTile';
+    video.controls = true;
+    video.autoplay = true;
+    video.muted = true;
+    const div = document.createElement('div');
+    div.appendChild(video);
+    container.appendChild(div);
+  }
+}
+
 async function playUntilEnd(videoSourcePath, unmutePlayer) {
-  let videos = document.getElementsByName('media');
+  let videos = Array.from(document.getElementsByClassName('videoTile'));
   videos.forEach(async video => {
     video.src = videoSourcePath;
     video.muted = !unmutePlayer;
@@ -14,10 +36,9 @@ async function playUntilEnd(videoSourcePath, unmutePlayer) {
 }
 
 async function playRepeatedly(videoSourcePath) {
-  let videos = document.getElementsByName("media");
+  let videos = Array.from(document.getElementsByClassName('videoTile'));
   videos.forEach(async video => {
     video.src = videoSourcePath;
-    video.muted = true;
     video.loop = true;
     await video.play();
   }
