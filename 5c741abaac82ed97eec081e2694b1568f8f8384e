@@ -62,6 +62,30 @@
       },
       "revId": "5c741abaac82ed97eec081e2694b1568f8f8384e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f007f6c_f5254ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-02-08T10:07:15Z",
+      "side": 1,
+      "message": "None of these methods are really generic, and I think it\u0027s ok for now.",
+      "parentUuid": "4b545e27_34776ed2",
+      "range": {
+        "startLine": 161,
+        "startChar": 31,
+        "endLine": 161,
+        "endChar": 48
+      },
+      "revId": "5c741abaac82ed97eec081e2694b1568f8f8384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
