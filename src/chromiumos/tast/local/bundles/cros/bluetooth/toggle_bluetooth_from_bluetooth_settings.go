@@ -6,10 +6,13 @@ package bluetooth
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -45,8 +48,15 @@ func ToggleBluetoothFromBluetoothSettings(ctx context.Context, s *testing.State)
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	// Reserve ten seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn)
-	defer app.Close(ctx)
+	defer app.Close(cleanupCtx)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	if err != nil {
 		s.Fatal("Failed to show the Bluetooth Settings sub-page: ", err)
