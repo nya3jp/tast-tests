@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "839e397d_ab9ad3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-08T15:08:10Z",
+      "side": 1,
+      "message": "Please let me know if I should add someone else to the reviewers list.",
+      "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
