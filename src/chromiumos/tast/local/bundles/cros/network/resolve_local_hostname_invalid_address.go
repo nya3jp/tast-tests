@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/syslog"
@@ -39,13 +40,9 @@ func ResolveLocalHostnameInvalidAddress(ctx context.Context, s *testing.State) {
 		cmd.DumpLog(ctx)
 		s.Fatal("getent hosts failed")
 	}
-	for {
-		entry, err := reader.Read()
-		if err != nil {
-			s.Fatal("Avahi log message not found: ", err)
-		}
-		if entry.Program == "avahi-daemon" && entry.Severity == "WARNING" && entry.Content == "Failed to resolve hostname INVALID_ADDRESS.local (interface -1, protocol -1, flags 0, IPv4 yes, IPv6 no)" {
-			break
-		}
+	if _, err := reader.Wait(ctx, 10*time.Second, func(e *syslog.Entry) bool {
+		return e.Program == "avahi-daemon" && e.Severity == "WARNING" && e.Content == "Failed to resolve hostname INVALID_ADDRESS.local (interface -1, protocol -1, flags 0, IPv4 yes, IPv6 no)"
+	}); err != nil {
+		s.Fatal("Avahi log message not found: ", err)
 	}
 }
