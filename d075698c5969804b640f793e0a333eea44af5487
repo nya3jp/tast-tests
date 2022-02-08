@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e699118_9870c1e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-08T19:47:15Z",
+      "side": 1,
+      "message": "Tast fixtures do not support SoftwareDeps - I think the idea is to keep all softwaredeps in the main test file so that it\u0027s easy to tell at a glance which software each test depends on.",
+      "parentUuid": "c3b57cad_c1ac976d",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 21
+      },
+      "revId": "d075698c5969804b640f793e0a333eea44af5487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa11dbf3_378706d2",
@@ -77,6 +101,54 @@
       "writtenOn": "2022-02-08T18:39:01Z",
       "side": 1,
       "message": "the `// ash chrome` comment is somewhat confusing.\n\nIIUC, the comment says that `crosConn` will be used only in the Ash version.\nBut in L105 `crosConn` is being assigned with the lacros connection.\n\nin any case it is not clear what are the differences between crosConn and browserConn.\nPerhaps adding a comment with more detail  (?)",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "d075698c5969804b640f793e0a333eea44af5487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d63182_49e45ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-08T19:47:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa11dbf3_378706d2",
+      "range": {
+        "startLine": 96,
+        "startChar": 37,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "d075698c5969804b640f793e0a333eea44af5487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f931d7_6cfb0e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-08T19:47:15Z",
+      "side": 1,
+      "message": "lacros.TestAPIConn() returns a connection to the Ash chrome browser. I added a comment mentioning that crosConn is necessary in order to use the autotestPrivate API.",
+      "parentUuid": "41ba3780_c12a5ee4",
       "range": {
         "startLine": 96,
         "startChar": 5,
