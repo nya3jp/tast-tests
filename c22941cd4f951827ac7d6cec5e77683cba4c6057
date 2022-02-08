@@ -16,6 +16,40 @@
       "message": "hiroh@ WDYT? I left you/added you for all encoding/RTCPeerConnection\ntests.",
       "revId": "c22941cd4f951827ac7d6cec5e77683cba4c6057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ce808a_2ea54984",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-02-08T03:17:19Z",
+      "side": 1,
+      "message": "Thanks. I have one request.",
+      "revId": "c22941cd4f951827ac7d6cec5e77683cba4c6057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dfdb3a5_2791cd70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-02-08T03:17:19Z",
+      "side": 1,
+      "message": "I would like to be OWNER of all video perf tests. Can you add me? ditto for other perf tests.",
+      "revId": "c22941cd4f951827ac7d6cec5e77683cba4c6057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
