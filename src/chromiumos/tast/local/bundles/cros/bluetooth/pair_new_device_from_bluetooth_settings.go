@@ -9,6 +9,7 @@ import (
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/testing"
 )
@@ -37,6 +38,9 @@ func PairNewDeviceFromBluetoothSettings(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
+	// TODO(b/216303490): Remove once test pass rate is >99%.
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	app, err := ossettings.NavigateToBluetoothSettingsPage(ctx, tconn)
 	defer app.Close(ctx)
