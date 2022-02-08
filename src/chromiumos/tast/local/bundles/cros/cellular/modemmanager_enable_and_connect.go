@@ -6,7 +6,6 @@ package cellular
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -14,7 +13,6 @@ import (
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cellular"
 	"chromiumos/tast/local/modemmanager"
 	"chromiumos/tast/local/shill"
@@ -113,11 +111,11 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	apn := getApn(ctx, helper)
 
 	// Connect and poll for modem state.
-	if err := connect(ctx, simpleModem, simpleConnectProps); err != nil {
+	if err := modemmanager.Connect(ctx, simpleModem, simpleConnectProps, 30*time.Second); err != nil {
 		// Retry with first apn from Cellular.APNList.
 		simpleConnectProps = map[string]interface{}{"apn": apn}
 		s.Log("Empty apn connect failed with: ", err)
-		if err = connect(ctx, simpleModem, simpleConnectProps); err != nil {
+		if err = modemmanager.Connect(ctx, simpleModem, simpleConnectProps, 30*time.Second); err != nil {
 			s.Fatal("Modem connect failed with error: ", err)
 		}
 	}
@@ -134,26 +132,6 @@ func ModemmanagerEnableAndConnect(ctx context.Context, s *testing.State) {
 	if err := modemmanager.EnsureConnectState(ctx, modem, simpleModem, false); err != nil {
 		s.Fatal("Modem not disconnected: ", err)
 	}
-}
-
-// connect polls on simple modem D-Bus connect call with given apn.
-func connect(ctx context.Context, modem *modemmanager.Modem, props map[string]interface{}) error {
-	// Connect and poll for modem state.
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		errConn := modem.Call(ctx, mmconst.ModemConnect, props).Err
-		if (errConn != nil) && (strings.Contains(errConn.Error(), "no-service")) {
-			return errors.Wrap(errConn, "failed to connect can be network issue")
-		}
-		if isConnected, err := modem.IsConnected(ctx); err != nil {
-			return errors.Wrap(err, "failed to fetch connected state")
-		} else if !isConnected {
-			return errors.Wrap(err, "modem not connected")
-		}
-		return nil
-	}, &testing.PollOptions{
-		Timeout:  30 * time.Second,
-		Interval: 2 * time.Second,
-	})
 }
 
 // getApn returns first available apn from Cellular.APNList.

@@ -11,6 +11,7 @@ import "time"
 
 // ModemManager1.Modem properties
 const (
+	ModemPropertyBearers        = "Bearers"
 	ModemPropertyDevice         = "Device"
 	ModemPropertySim            = "Sim"
 	ModemPropertySimSlots       = "SimSlots"
@@ -18,6 +19,11 @@ const (
 	ModemPropertyState          = "State"
 	ModemPropertyPowered        = "PowerState"
 	ModemPropertyManufacturer   = "Manufacturer"
+)
+
+// ModemManager1.Modem.Modem3gpp properties
+const (
+	ModemModem3gppPropertyInitialEpsBearer = "InitialEpsBearer"
 )
 
 // ModemManager1.Modem.Simple properties

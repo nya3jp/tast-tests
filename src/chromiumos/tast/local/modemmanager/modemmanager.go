@@ -10,6 +10,7 @@ const (
 	DBusModemmanagerPath                 = "/org/freedesktop/ModemManager1"
 	DBusModemmanagerService              = "org.freedesktop.ModemManager1"
 	DBusModemmanagerInterface            = "org.freedesktop.ModemManager1"
+	DBusModemmanagerBearerInterface      = "org.freedesktop.ModemManager1.Bearer"
 	DBusModemmanagerModemInterface       = "org.freedesktop.ModemManager1.Modem"
 	DBusModemmanager3gppModemInterface   = "org.freedesktop.ModemManager1.Modem.Modem3gpp"
 	DBusModemmanagerSimpleModemInterface = "org.freedesktop.ModemManager1.Modem.Simple"

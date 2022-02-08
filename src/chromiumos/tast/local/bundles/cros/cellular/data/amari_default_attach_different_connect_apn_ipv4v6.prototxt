@@ -1,0 +1,23 @@
+mno {
+  data {
+    uuid : "d433d22c-02ac-43b5-b2b3-91f96c4b2d7a"
+    country : "us"
+    localized_name {
+      name : "Cros Cellular Network"
+    }
+    mccmnc : "00101"
+    mobile_apn {
+      apn : "amari_ipv4v6"
+      ip_type: IPV4V6
+    }
+    mobile_apn {
+      apn : "amari_ipv6"
+      ip_type: IPV6
+    }
+    mobile_apn {
+      apn : "amari_default_attach"
+      ip_type: IPV4V6
+      is_attach_apn : true
+    }
+  }
+}
