@@ -127,9 +127,17 @@ const (
 	ServicePropertyProvider       = "Provider"
 
 	// Cellular service property names.
-	ServicePropertyCellularICCID        = "Cellular.ICCID"
-	ServicePropertyCellularAllowRoaming = "Cellular.AllowRoaming"
-	ServicePropertyCellularRoamingState = "Cellular.RoamingState"
+	ServicePropertyCellularICCID         = "Cellular.ICCID"
+	ServicePropertyCellularAllowRoaming  = "Cellular.AllowRoaming"
+	ServicePropertyCellularLastGoodAPN   = "Cellular.LastGoodAPN"
+	ServicePropertyCellularLastAttachAPN = "Cellular.LastAttachAPN"
+	ServicePropertyCellularRoamingState  = "Cellular.RoamingState"
+
+	// Keys into the dictionaries exposed as properties for LastAttachAPN and LastGoodAPN
+	DevicePropertyCellularAPNInfoApnName   = "apn"
+	DevicePropertyCellularAPNInfoApnSource = "apn_source"
+	DevicePropertyCellularAPNInfoApnAttach = "attach"
+	DevicePropertyCellularAPNInfoApnIPType = "ip_type"
 
 	// WiFi service property names.
 	ServicePropertyPassphrase          = "Passphrase"
