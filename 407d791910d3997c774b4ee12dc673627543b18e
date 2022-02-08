@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2292378d_6ad0fd48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-08T16:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15e11d36_bb27cc3b",
+      "revId": "407d791910d3997c774b4ee12dc673627543b18e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aede244_67ef5766",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69bd8f95_b7ac2595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-08T16:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aede244_67ef5766",
+      "range": {
+        "startLine": 89,
+        "startChar": 43,
+        "endLine": 89,
+        "endChar": 48
+      },
+      "revId": "407d791910d3997c774b4ee12dc673627543b18e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e67dc6d9_f9c39447",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-02-08T03:36:44Z",
       "side": 1,
       "message": "nit: is",
+      "range": {
+        "startLine": 125,
+        "startChar": 31,
+        "endLine": 125,
+        "endChar": 34
+      },
+      "revId": "407d791910d3997c774b4ee12dc673627543b18e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74c1ffb_5864f69a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/platform_overlays.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-08T16:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67dc6d9_f9c39447",
       "range": {
         "startLine": 125,
         "startChar": 31,
