@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e448dd63_467a84c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-02-08T23:43:02Z",
+      "side": 1,
+      "message": "Did this block get copied from the other test?  Looks like this is resolving the missing name in addition to the expected one.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "0da150c49c8d1f083871b113ca1c4584b195e637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817fda4a_82f824c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-02-08T23:43:02Z",
+      "side": 1,
+      "message": "Have you been able to confirm this on once of the devices that\u0027s been flaky?  `Wait` seems like the logical thing, but when I looked at its code I thought it had an early return when it gets back an EOF.",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "0da150c49c8d1f083871b113ca1c4584b195e637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
