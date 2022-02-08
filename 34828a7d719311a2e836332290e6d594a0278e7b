@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e2762f1_f26b0bac",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-02-08T11:01:24Z",
+      "side": 1,
+      "message": "Below is what I saw if we\u0027re in dev mode using fixture, dev mode was allowed (FWMP unset), and PressEnterAtToNorm was passed in:\n\nAt reboot, DUT would display the \"You\u0027re in developer mode\" screen with two options: \"Return to Secure Mode\"/\"Boot from internal disk\". \n\nBy default, the second option is usually highlighted, and as a result, pressing ENTER would boot DUT into {developer mode, from internal device, signature verified kernel key}. \n\nBut, I agree that moving this section and appending it after pressing Ctrl-D would fit better with the overall logic of this test.\n\nThanks for the suggestion!",
+      "parentUuid": "a84643fc_2e7f4078",
+      "range": {
+        "startLine": 448,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 0
+      },
+      "revId": "34828a7d719311a2e836332290e6d594a0278e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5858ee5d_a4e17943",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-07T17:09:17Z",
       "side": 1,
       "message": "If you take my suggestion, you would check the \"PressEnterOnToNorm\" flag here.",
+      "range": {
+        "startLine": 646,
+        "startChar": 3,
+        "endLine": 659,
+        "endChar": 3
+      },
+      "revId": "34828a7d719311a2e836332290e6d594a0278e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79c20a1d_df1a7029",
+        "filename": "src/chromiumos/tast/remote/firmware/boot_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-02-08T11:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5858ee5d_a4e17943",
       "range": {
         "startLine": 646,
         "startChar": 3,

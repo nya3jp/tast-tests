@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55c012d_49319f94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-02-08T11:01:24Z",
+      "side": 1,
+      "message": "Some new changes were made with respect to the suggestion below.",
+      "revId": "e10e56afbf7ec494d8ed056c878737e1316203df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
