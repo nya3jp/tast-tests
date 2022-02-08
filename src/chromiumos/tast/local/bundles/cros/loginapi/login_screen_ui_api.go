@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/mgs"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
@@ -57,16 +58,9 @@ func LoginScreenUIAPI(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	// This extension is unlisted on the Chrome Web Store but can be
-	// downloaded directly using the extension IDs.
-	// ID for "Login screen APIs test extension".
-	// The code for the extension can be found in the Chromium repo at
-	// chrome/test/data/extensions/api_test/login_screen_apis/extension.
-	loginScreenExtensionID := "oclffehlkdgibkainkilopaalpdobkan"
-
 	policies := []policy.Policy{
 		&policy.DeviceLoginScreenExtensions{
-			Val: []string{loginScreenExtensionID},
+			Val: []string{mgs.LoginScreenExtensionID},
 		},
 	}
 
@@ -89,7 +83,7 @@ func LoginScreenUIAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome restart failed: ", err)
 	}
 
-	loginScreenBGURL := chrome.ExtensionBackgroundPageURL(loginScreenExtensionID)
+	loginScreenBGURL := chrome.ExtensionBackgroundPageURL(mgs.LoginScreenExtensionID)
 	bgConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(loginScreenBGURL))
 	if err != nil {
 		s.Fatal("Failed to connect to login screen background page: ", err)
@@ -110,7 +104,7 @@ func LoginScreenUIAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show window: ", err)
 	}
 
-	windowURL := fmt.Sprintf("chrome-extension://%s/window.html", loginScreenExtensionID)
+	windowURL := fmt.Sprintf("chrome-extension://%s/window.html", mgs.LoginScreenExtensionID)
 	windowConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(windowURL))
 	if err != nil {
 		s.Fatal("Failed to connect to window: ", err)

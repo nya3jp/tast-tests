@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/mgs"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/local/session"
@@ -60,15 +61,6 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 	accountID := "foo@bar.com"
 	accountType := policy.AccountTypePublicSession
 
-	// These extensions are unlisted on the Chrome Web Store but can be
-	// downloaded directly using the extension IDs.
-	// The code for the extensions can be found in the Chromium repo at
-	// chrome/test/data/extensions/api_test/login_screen_apis/.
-	// ID for "Login screen APIs test extension".
-	loginScreenExtensionID := "oclffehlkdgibkainkilopaalpdobkan"
-	// ID for "Login screen APIs in-session test extension".
-	inSessionExtensionID := "ofcpkomnogjenhfajfjadjmjppbegnad"
-
 	policies := []policy.Policy{
 		&policy.DeviceLocalAccounts{
 			Val: []policy.DeviceLocalAccountInfo{
@@ -79,14 +71,14 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 			},
 		},
 		&policy.DeviceLoginScreenExtensions{
-			Val: []string{loginScreenExtensionID},
+			Val: []string{mgs.LoginScreenExtensionID},
 		},
 	}
 
 	pb := fakedms.NewPolicyBlob()
 	pb.AddPolicies(policies)
 	pb.AddPublicAccountPolicy(accountID, &policy.ExtensionInstallForcelist{
-		Val: []string{inSessionExtensionID},
+		Val: []string{mgs.InSessionExtensionID},
 	})
 
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
@@ -119,7 +111,7 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 	}
 	defer swStart.Close(ctx)
 
-	loginScreenBGURL := chrome.ExtensionBackgroundPageURL(loginScreenExtensionID)
+	loginScreenBGURL := chrome.ExtensionBackgroundPageURL(mgs.LoginScreenExtensionID)
 	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(loginScreenBGURL))
 	if err != nil {
 		s.Fatal("Failed to connect to login screen background page: ", err)
@@ -151,7 +143,7 @@ func LaunchManagedGuestSessionWithPassword(ctx context.Context, s *testing.State
 		s.Fatal("Timeout before getting SessionStateChanged signal: ", err)
 	}
 
-	inSessionBGURL := chrome.ExtensionBackgroundPageURL(inSessionExtensionID)
+	inSessionBGURL := chrome.ExtensionBackgroundPageURL(mgs.InSessionExtensionID)
 	inSessionConn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(inSessionBGURL))
 	if err != nil {
 		s.Fatal("Failed to connect to in-session background page: ", err)
