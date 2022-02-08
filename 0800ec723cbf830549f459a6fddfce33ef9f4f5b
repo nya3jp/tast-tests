@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efdf6ad2_c3c3f130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:56:10Z",
+      "side": 1,
+      "message": "I was thinking about grouping tests into multiple categories: API, capabilities (message passing, options page, etc). That\u0027s why I put prefixes `api_` and `cap_` before each test name. I think such prefix will help to organise tests better. WDYT? Do you know maybe better name instead of cap_?",
+      "parentUuid": "56da570b_66b26ab8",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "626365fc_2230f1d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-08T15:03:19Z",
       "side": 1,
       "message": "nit: WYDT about making this a constant as part of the fixture?",
+      "range": {
+        "startLine": 54,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a48730_6b56818b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-08T15:56:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "626365fc_2230f1d0",
       "range": {
         "startLine": 54,
         "startChar": 3,
