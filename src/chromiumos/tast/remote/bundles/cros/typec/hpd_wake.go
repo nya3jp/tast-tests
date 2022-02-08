@@ -59,14 +59,21 @@ func HpdWake(ctx context.Context, s *testing.State) {
 
 	// Configure Servo to be OK with CC being off.
 	svo := pxy.Servo()
-	if err := svo.SetOnOff(ctx, servo.CCDKeepaliveEn, servo.Off); err != nil {
-		s.Fatal("Failed to disable CCD keepalive: ", err)
+	// Only bother doing this if the device has CCD.
+	ret, err := svo.HasCCD(ctx)
+	if err != nil {
+		s.Fatal("Failed to check servo CCD capability: ", err)
 	}
-	defer func() {
-		if err := svo.SetOnOff(ctxForCleanUp, servo.CCDKeepaliveEn, servo.On); err != nil {
-			s.Log("Unable to enable CCD keepalive: ", err)
+	if ret {
+		if err := svo.SetOnOff(ctx, servo.CCDKeepaliveEn, servo.Off); err != nil {
+			s.Fatal("Failed to disable CCD keepalive: ", err)
 		}
-	}()
+		defer func() {
+			if err := svo.SetOnOff(ctxForCleanUp, servo.CCDKeepaliveEn, servo.On); err != nil {
+				s.Log("Unable to enable CCD keepalive: ", err)
+			}
+		}()
+	}
 
 	// Wait for servo control to take effect.
 	if err := testing.Sleep(ctx, time.Second); err != nil {
