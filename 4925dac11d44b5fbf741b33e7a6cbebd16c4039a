@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "570ab870_4a0d177f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-08T11:03:48Z",
+      "side": 1,
+      "message": "Keep the test names as is, but document what you wrote here in comments for both tests. It should be clear what is being tested in each.",
+      "parentUuid": "b3aafcb6_c4de0d2c",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb66f72e_54789496",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
         "patchSetId": 2
