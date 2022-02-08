@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f5e5c5_bbbbb604",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-08T23:52:31Z",
+      "side": 1,
+      "message": "\u003e \"occassional\" is a possible misspelling of \"occasional\".\n\nPlease fix.",
+      "parentUuid": "861db987_df508656",
+      "range": {
+        "startLine": 11,
+        "startChar": 26,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "d75487c99ad5e9150c199db7fcd2c5786ae249e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
