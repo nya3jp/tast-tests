@@ -1,0 +1,10 @@
+buffers: {
+    size_kb: 8192
+    fill_policy: DISCARD
+}
+data_sources: {
+    config {
+        name: "linux.sysfs_power"
+    }
+}
+duration_ms: 10000
