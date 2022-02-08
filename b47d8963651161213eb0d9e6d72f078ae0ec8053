@@ -16,6 +16,69 @@
       "message": "Thanks for the review!",
       "revId": "b47d8963651161213eb0d9e6d72f078ae0ec8053",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28948ba7_9b7ac098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-08T20:15:47Z",
+      "side": 1,
+      "message": "looks good, besides last suggestion on the checking",
+      "revId": "b47d8963651161213eb0d9e6d72f078ae0ec8053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0634ab4d_9bc64556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-08T20:15:47Z",
+      "side": 1,
+      "message": "Should we also check screenshot.HashScreenshots() in this case?",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 3
+      },
+      "revId": "b47d8963651161213eb0d9e6d72f078ae0ec8053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e691886a_d8407e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1162075
+      },
+      "writtenOn": "2022-02-08T20:15:47Z",
+      "side": 1,
+      "message": "IMO this section should be outside if section for condition (params.restriction \u003d\u003d restrictionlevel.WarnCancelled) and be checked always.",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 3
+      },
+      "revId": "b47d8963651161213eb0d9e6d72f078ae0ec8053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
