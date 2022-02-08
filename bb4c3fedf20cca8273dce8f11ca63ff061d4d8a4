@@ -16,6 +16,29 @@
       "message": "Please let me know if I should add someone else to the reviewers list.",
       "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeada909_d5a013d9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-08T22:11:32Z",
+      "side": 1,
+      "message": "You don\u0027t need to use `LeftClickUntil`. Adding `Focusable` to the sharebutton should achive what you want here. `ui.LeftClick` implicitly waits until the focusable button is available (https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast-tests.git/src/chromiumos/tast/local/chrome/uiauto#Context.LeftClick).",
+      "range": {
+        "startLine": 130,
+        "startChar": 55,
+        "endLine": 130,
+        "endChar": 152
+      },
+      "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
