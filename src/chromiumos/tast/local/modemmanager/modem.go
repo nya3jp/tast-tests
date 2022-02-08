@@ -7,6 +7,7 @@ package modemmanager
 import (
 	"context"
 	"math"
+	"strings"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -69,9 +70,28 @@ func (m *Modem) GetSimpleModem(ctx context.Context) (*Modem, error) {
 	return &Modem{ph}, nil
 }
 
+// GetModem3gpp creates a PropertyHolder for the Modem3gpp object.
+func (m *Modem) GetModem3gpp(ctx context.Context) (*Modem, error) {
+	modemPath := dbus.ObjectPath(m.String())
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanager3gppModemInterface, modemPath)
+	if err != nil {
+		return nil, err
+	}
+	return &Modem{ph}, nil
+}
+
 // GetSimProperties creates a PropertyHolder for the Sim object and returns the associated Properties.
 func (m *Modem) GetSimProperties(ctx context.Context, simPath dbus.ObjectPath) (*dbusutil.Properties, error) {
 	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerSimInterface, simPath)
+	if err != nil {
+		return nil, err
+	}
+	return ph.GetProperties(ctx)
+}
+
+// GetBearerProperties creates a PropertyHolder for the Bearer object and returns the associated Properties.
+func (m *Modem) GetBearerProperties(ctx context.Context, bearerPath dbus.ObjectPath) (*dbusutil.Properties, error) {
+	ph, err := dbusutil.NewPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanagerBearerInterface, bearerPath)
 	if err != nil {
 		return nil, err
 	}
@@ -411,6 +431,26 @@ func EnsureRegistered(ctx context.Context, modem, simpleModem *Modem) error {
 	return nil
 }
 
+// Connect polls on simple modem D-Bus connect call with given apn.
+func Connect(ctx context.Context, modem *Modem, props map[string]interface{}, timeout time.Duration) error {
+	// Connect and poll for modem state.
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		errConn := modem.Call(ctx, mmconst.ModemConnect, props).Err
+		if (errConn != nil) && (strings.Contains(errConn.Error(), "no-service")) {
+			return errors.Wrap(errConn, "failed to connect can be network issue")
+		}
+		if isConnected, err := modem.IsConnected(ctx); err != nil {
+			return errors.Wrap(err, "failed to fetch connected state")
+		} else if !isConnected {
+			return errors.Wrap(err, "modem not connected")
+		}
+		return nil
+	}, &testing.PollOptions{
+		Timeout:  timeout,
+		Interval: 2 * time.Second,
+	})
+}
+
 // InhibitModem inhibits the first available modem on DBus. Use the returned callback to uninhibit.
 func InhibitModem(ctx context.Context) (func(ctx context.Context) error, error) {
 	modem, err := NewModem(ctx)
@@ -590,4 +630,120 @@ func GetPuk(ctx context.Context, iccid string) (string, error) {
 	}
 
 	return pukVal, nil
+}
+
+// SetInitialEpsBearerSettings sets the Attach APN.
+func SetInitialEpsBearerSettings(ctx context.Context, modem3gpp *Modem, props map[string]interface{}) error {
+	if c := modem3gpp.Call(ctx, "SetInitialEpsBearerSettings", props); c.Err != nil {
+		return errors.Wrap(c.Err, "failed to set initial EPS bearer settings")
+	}
+	return nil
+}
+
+// // GetInitialEpsBearerSettings sets the Attach APN.
+// func GetInitialEpsBearerSettings(ctx context.Context, modem *Modem) (map[string]interface{}, error) {
+
+// 	modem3gpp, err := modem.GetModem3gpp(ctx)
+// 	if err != nil {
+// 		return nil, errors.Wrap(err, "could not get modem3gpp object")
+// 	}
+// 	modemProps, err := modem3gpp.GetProperties(ctx)
+// 	if err != nil {
+// 		return nil, errors.Wrap(err, "failed to call getproperties on modem")
+// 	}
+// 	bearerPath, err := modemProps.GetObjectPath(mmconst.ModemPropertyInitialEpsBearer)
+// 	if err != nil {
+// 		return nil, errors.Wrap(err, "failed to get modem bearer property")
+// 	}
+// 	bearerProps, err := modem.GetBearerProperties(ctx, bearerPath)
+// 	if err != nil {
+// 		return nil, errors.Wrap(err, "failed to read bearer properties")
+// 	}
+// 	apnProps, err := bearerProps.Get("Properties") //TODO: create const?
+// 	if err != nil {
+// 		return nil, errors.Wrap(err, "failed to read InitialEpsBearer properties")
+// 	}
+// 	testing.ContextLog(ctx, "apnProps", apnProps) //TODO:remove
+// 	return apnProps.(map[string]interface{}), nil
+// }
+
+type eProperties struct {
+	properties *dbusutil.Properties
+	err        error
+}
+type eInterface struct {
+	iface interface{}
+	err   error
+}
+type eObjectPath struct {
+	objectPath dbus.ObjectPath
+	err        error
+}
+type ePropertyHolder struct {
+	propertyHolder *dbusutil.PropertyHolder
+	err            error
+}
+
+func (i eProperties) gGet(prop string) eInterface {
+	if i.err != nil {
+		return eInterface{nil, i.err}
+	}
+	val, err := i.properties.Get(prop)
+	return eInterface{val, err}
+}
+
+func (i eObjectPath) gGetObjectProperties(ctx context.Context, service, iface string) eProperties {
+	if i.err != nil {
+		return eProperties{nil, i.err}
+	}
+	ph, err := dbusutil.NewPropertyHolder(ctx, service, iface, i.objectPath)
+	if err != nil {
+		return eProperties{nil, err}
+	}
+	val, err := ph.GetProperties(ctx)
+	return eProperties{val, err}
+}
+
+func (i eProperties) gGetObjectPath(prop string) eObjectPath {
+	if i.err != nil {
+		return eObjectPath{"", i.err}
+	}
+	val, err := i.properties.GetObjectPath(prop)
+	return eObjectPath{val, err}
+}
+
+func (i ePropertyHolder) gGetProperties(ctx context.Context) eProperties {
+	if i.err != nil {
+		return eProperties{nil, i.err}
+	}
+	val, err := i.propertyHolder.GetProperties(ctx)
+	return eProperties{val, err}
+}
+
+func (i eObjectPath) gGetPropertyHolder(ctx context.Context, service, iface string) ePropertyHolder {
+	if i.err != nil {
+		return ePropertyHolder{nil, i.err}
+	}
+	ph, err := dbusutil.NewPropertyHolder(ctx, service, iface, i.objectPath)
+	if err != nil {
+		return ePropertyHolder{nil, err}
+	}
+	return ePropertyHolder{ph, nil}
+}
+
+// GetInitialEpsBearerSettings sets the Attach APN.
+func (m *Modem) GetInitialEpsBearerSettings(ctx context.Context, modem *Modem) (map[string]interface{}, error) {
+	eModemPath := eObjectPath{dbus.ObjectPath(m.String()), nil}
+	apnPropsGet := eModemPath.gGetPropertyHolder(ctx, DBusModemmanagerService, DBusModemmanager3gppModemInterface).
+		gGetProperties(ctx).
+		gGetObjectPath(mmconst.ModemPropertyInitialEpsBearer).
+		gGetObjectProperties(ctx, DBusModemmanagerService, DBusModemmanagerBearerInterface).
+		gGet("Properties")
+
+	//TODO: create const for `Properties`?
+	if apnPropsGet.err != nil {
+		return nil, errors.Wrap(apnPropsGet.err, "failed to read InitialEpsBearer properties")
+	}
+	testing.ContextLog(ctx, "apnProps", apnPropsGet.iface) //TODO:remove
+	return apnPropsGet.iface.(map[string]interface{}), nil
 }
