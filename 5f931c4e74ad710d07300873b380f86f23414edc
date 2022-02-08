@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca289332_d562d6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "de9e4a71_f5e8d969",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "929cfd95_e877ec2b",
@@ -87,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb8767b_61f66697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "We removed this type and adopted another implementation according to other feedback.",
+      "parentUuid": "929cfd95_e877ec2b",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfb86a54_6fdb5cfb",
@@ -100,6 +136,24 @@
       "writtenOn": "2022-01-27T19:49:33Z",
       "side": 1,
       "message": "nit: missing comment description",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c7dd4f_2e7779cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "dfb86a54_6fdb5cfb",
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -123,6 +177,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5708a2e5_c231bf6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "The procedure listed to test on ARC++ app, GAIA is required to download the app.\nOr are there any flag or policy we can use?",
+      "parentUuid": "097e174b_db6d6be5",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a672b85c_3c92cd89",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
         "patchSetId": 4
@@ -134,6 +206,24 @@
       "writtenOn": "2022-01-27T19:49:33Z",
       "side": 1,
       "message": "nit: can this be moved out into a private func. that has a description of it\u0027s inputs/return types so it\u0027s more clear? Additionally, is it possible to remove these bitwise operators completely (which tend to be a little more difficult to follow) in place of arrays/contains, or something simpler?",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c48db15_e9bad274",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Adopted another implementation as suggested.",
+      "parentUuid": "a672b85c_3c92cd89",
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -155,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf898c1_5961cff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d6fb7a_0a5bbe41",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf74bf48_4f6a3f9a",
@@ -168,6 +276,24 @@
       "writtenOn": "2022-01-27T19:49:33Z",
       "side": 1,
       "message": "Should this be pulled out of the function and set before calling the function? It seems you can shorten the context once and then use that shorted version for anything that follows.",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25bf4597_06477070",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Moved into private function",
+      "parentUuid": "bf74bf48_4f6a3f9a",
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -212,6 +338,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b06f81_a4712b1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Moved to `src/chromiumos/tast/local/bundles/cros/wmp/wmputils/windowResize.go`",
+      "parentUuid": "38ac1ec7_d33efb99",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 21
+      },
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a713684f_e1aa9a8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "90dd4d0b_1730075a",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c703e2_3dd31ca4",
@@ -225,6 +393,24 @@
       "writtenOn": "2022-01-27T19:49:33Z",
       "side": 1,
       "message": "nit: missing comment",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "080a9a43_7383401d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "33c703e2_3dd31ca4",
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -246,6 +432,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f7624f_39e39460",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "8717a025_eacfcec3",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "535d857f_a55e3de7",
@@ -259,6 +463,24 @@
       "writtenOn": "2022-01-27T19:49:33Z",
       "side": 1,
       "message": "nit: default case missing as above",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46a80e60_4d8be0dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "535d857f_a55e3de7",
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -297,6 +519,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97bfbe1_47abf8ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "We have removed this interface as suggested.",
+      "parentUuid": "2c9cabac_7b10652e",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e3de0c_dd4edc7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "We have removed this interface as suggested.",
+      "parentUuid": "c8584496_13f02eef",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a03919db_87aacdcb",
@@ -314,6 +572,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52ce9a8a_02ed555e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "We have removed this interface as suggested.",
+      "parentUuid": "a03919db_87aacdcb",
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e1b3cd_2f7d4d10",
@@ -327,6 +603,30 @@
       "writtenOn": "2022-02-03T02:14:40Z",
       "side": 1,
       "message": "do you need to use YT music? can you just use the playstore if you\u0027re interested in resizing an ARC app?",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 25
+      },
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c330f8d_781447ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-08T09:22:21Z",
+      "side": 1,
+      "message": "The procedure listed to test on ARC++ app and we choose the YT music. Is it accessible to use the playstore as an ARC++ app?",
+      "parentUuid": "93e1b3cd_2f7d4d10",
       "range": {
         "startLine": 483,
         "startChar": 17,
