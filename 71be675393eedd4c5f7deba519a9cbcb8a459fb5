@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd84be1d_e47f77a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2022-02-08T17:54:03Z",
+      "side": 1,
+      "message": "Is it possible to skip the flash step if I want to re-run a test?\nI used to use image\u003d\"\" to do that.",
+      "revId": "71be675393eedd4c5f7deba519a9cbcb8a459fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee5ae029_136fd5b7",
