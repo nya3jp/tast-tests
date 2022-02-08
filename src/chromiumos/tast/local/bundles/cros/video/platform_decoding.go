@@ -1134,6 +1134,19 @@ func init() {
 				ExtraAttr:         []string{"graphics_video_vp9"},
 			},
 			{
+				Name: "v4l2_stateless_vp9_0_group1_buf",
+				Val: platformDecodingParams{
+					filenames:      []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf"},
+					decoder:        "/usr/local/libexec/chrome-binary-tests/v4l2_stateless_decoder",
+					commandBuilder: v4l2StatelessDecodeArgs,
+				},
+				Timeout:           10 * time.Minute,
+				ExtraHardwareDeps: hwdep.D(hwdep.SupportsV4L2StatelessVideoDecoding()),
+				ExtraSoftwareDeps: []string{"v4l2_codec"},
+				ExtraData:         []string{"test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_256X144_fr15_bd8_8buf_l1.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/crowd_run_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/grass_1_384X192_fr30_bd8_8buf_l11.ivf.json", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf", "test_vectors/vp9/Profile_0_8bit/buf/street1_1_384X192_fr30_bd8_8buf_l11.ivf.json"},
+				ExtraAttr:         []string{"graphics_video_vp9"},
+			},
+			{
 				Name: "v4l2_vp9_0_svc",
 				Val: platformDecodingParams{
 					filenames:      []string{"test_vectors/vp9/kSVC/ksvc_3sl_3tl_key100.ivf"},
@@ -1262,7 +1275,9 @@ func shouldStopOnFailure(s *testing.State) bool {
 }
 
 // PlatformDecoding runs the media/gpu/vaapi/test:decode_test binary for vaapi
-// or drm-tests/v4l2_stateful_decoder binary on the file specified in the testing state.
+// or drm-tests/v4l2_stateful_decoder binary for v4l2 stateful or
+// media/gpu/v4l2/test:v4l2_stateless_decoder binary for v4l2 stateless
+// on the file specified in the testing state.
 // The test fails if any of the VAAPI or V4L2 calls fail (or if the test is incorrectly invoked):
 // notably, the binary does not check for correctness of decoded output.
 // This test is motivated by instances in which libva uprevs may introduce regressions
@@ -1292,12 +1307,11 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	}
 	defer upstart.EnsureJobRunning(cleanupCtx, "ui")
 
-	// Run the decode_test binary for vaapi or the v4l2_stateful_decoder binary
-	// for v4l2, propagating its errors: the binary fails if the VAAPI or V4l2 calls
-	// themselves error, the binary is called on unsupported inputs or could not open
-	// the DRI render node, or the binary otherwise crashes.
-	// The test may also fail if the decoded results do not match expected MD5
-	// hashes.
+	// Run the decode_test binary for vaapi or the v4l2_stateful_decoder binary or
+	// v4l2_stateless_decoder binary for v4l2, propagating its errors: the binary fails
+	// if the VAAPI or V4l2 calls themselves error, the binary is called on unsupported
+	// inputs or could not open the DRI render node, or the binary otherwise crashes.
+	// The test may also fail if the decoded results do not match expected MD5 hashes.
 	exec := testOpt.decoder
 	stopOnFailure := shouldStopOnFailure(s)
 
@@ -1328,6 +1342,26 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 // v4l2DecodeArgs provides the arguments to use with the stateful decoding binary exe for v4l2.
 func v4l2DecodeArgs(ctx context.Context, filename string) (command []string) {
 	command = append(command, "--file="+filename, "--md5", "--log_level=1")
+
+	// Query the driver info. If we are on a MediaTek platform, add --mmap to the
+	// command line.
+	v4l2CtlCmd := testexec.CommandContext(ctx, "v4l2-ctl", "--device",
+		"/dev/video-dec0", "-D")
+	v4l2Out, err := v4l2CtlCmd.Output(testexec.DumpLogOnError)
+	if err != nil {
+		return
+	}
+	mtkDetect := regexp.MustCompile(`mtk-vcodec-dec`)
+	if mtkDetect.MatchString(string(v4l2Out)) {
+		command = append(command, "--mmap")
+	}
+	return
+}
+
+// v4l2StatelessDecodeArgs provides the arguments to use with the stateless decoding binary exe for v4l2.
+func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []string) {
+	// TODO(stevecho): md5 support has to be added
+	command = append(command, "--video="+filename)
 
 	// Query the driver info. If we are on a MediaTek platform, add --mmap to the
 	// command line.
