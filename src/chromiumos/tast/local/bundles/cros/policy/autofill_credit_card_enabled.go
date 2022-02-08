@@ -256,6 +256,7 @@ func configureChromeToAcceptCertificate(ctx context.Context, cr *chrome.Chrome, 
 	policyutil.SettingsPage(ctx, cr, br, "certificates")
 
 	authorities := nodewith.Name("Authorities").Role(role.Tab)
+	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
 	importButton := nodewith.Name("Import").Role(role.Button)
 	certFileItem := nodewith.Name(autofillCreditCardCaCertFile).First()
 	openButton := nodewith.Name("Open").Role(role.Button)
@@ -268,6 +269,7 @@ func configureChromeToAcceptCertificate(ctx context.Context, cr *chrome.Chrome, 
 	if err := uiauto.Combine("set_cerficiate",
 		ui.WaitUntilExists(authorities),
 		ui.LeftClick(authorities),
+		ui.WaitUntilExists(authTabText),
 		ui.WaitUntilExists(importButton),
 		ui.LeftClick(importButton),
 		ui.WaitUntilExists(certFileItem),
@@ -279,6 +281,25 @@ func configureChromeToAcceptCertificate(ctx context.Context, cr *chrome.Chrome, 
 		ui.LeftClick(trust2Checkbox),
 		ui.LeftClick(trust3Checkbox),
 		ui.LeftClick(okButton),
+	)(ctx); err != nil {
+		return err
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
+	}
+	defer kb.Close()
+
+	googleCertCollapsiblePanel := nodewith.Name("org-Google").Role(role.InlineTextBox)
+	certificateText := nodewith.Name("TastCA").Role(role.StaticText)
+	if err := uiauto.Combine("ensure certificate was added successfully",
+		ui.WaitUntilExists(googleCertCollapsiblePanel),
+		ui.MakeVisible(googleCertCollapsiblePanel),
+		ui.LeftClick(googleCertCollapsiblePanel),
+		kb.AccelAction("Tab"),
+		kb.AccelAction("Enter"),
+		ui.WaitUntilExists(certificateText),
 	)(ctx); err != nil {
 		return err
 	}
