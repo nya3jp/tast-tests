@@ -33,6 +33,24 @@
       "message": "nit: increase the timeout for the many Chrome starts.",
       "revId": "9fc8d80eb707cad3a66e17888e7ce7e5d57214ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17808a29_8cbc3642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/device_show_user_names_on_signin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-02-08T09:42:26Z",
+      "side": 1,
+      "message": "Done, not sure what is the good timeout though. There is no chrome.StartTimeout constant which should not take into account cryptohome mount time.",
+      "parentUuid": "025b6b34_d78bcb61",
+      "revId": "9fc8d80eb707cad3a66e17888e7ce7e5d57214ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
