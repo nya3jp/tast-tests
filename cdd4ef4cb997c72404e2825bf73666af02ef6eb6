@@ -22,6 +22,30 @@
       },
       "revId": "cdd4ef4cb997c72404e2825bf73666af02ef6eb6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a16b07b_2a328e5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/fwmp_across_tpm_clear.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-02-08T09:06:32Z",
+      "side": 0,
+      "message": "sorry this change was a mistake. restoring it.",
+      "parentUuid": "08d3d388_177bb76d",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "cdd4ef4cb997c72404e2825bf73666af02ef6eb6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
