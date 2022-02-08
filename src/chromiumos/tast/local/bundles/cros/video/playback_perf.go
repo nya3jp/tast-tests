@@ -20,6 +20,9 @@ type playbackPerfParams struct {
 	fileName    string
 	decoderType playback.DecoderType
 	browserType browser.Type
+	// Creates a layout of |gridSize| x |gridSize| videos for playback. Values
+	// less than 1 are clamped to a grid of 1x1.
+	gridSize int
 }
 
 func init() {
@@ -103,6 +106,18 @@ func init() {
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
 			Fixture:           "chromeVideoLacros",
+		}, {
+			Name: "h264_720p_30fps_hw_3x3",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.h264.mp4",
+				decoderType: playback.Hardware,
+				browserType: browser.TypeAsh,
+				gridSize:    3,
+			},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"720p_30fps_300frames.h264.mp4"},
+			Fixture:           "chromeVideo",
 		}, {
 			Name: "h264_1080p_30fps_hw",
 			Val: playbackPerfParams{
@@ -193,6 +208,18 @@ func init() {
 				fileName:    "720p_30fps_300frames.vp8.webm",
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"720p_30fps_300frames.vp8.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
+			Fixture:           "chromeVideo",
+		}, {
+			Name: "vp8_720p_30fps_hw_3x3",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.vp8.webm",
+				decoderType: playback.Hardware,
+				browserType: browser.TypeAsh,
+				gridSize:    3,
 			},
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 			ExtraData:         []string{"720p_30fps_300frames.vp8.webm"},
@@ -305,6 +332,18 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "lacros"},
 			Fixture:           "chromeVideoLacros",
 		}, {
+			Name: "vp9_720p_30fps_hw_3x3",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.vp9.webm",
+				decoderType: playback.Hardware,
+				browserType: browser.TypeAsh,
+				gridSize:    3,
+			},
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
+			ExtraData:         []string{"720p_30fps_300frames.vp9.webm"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			Fixture:           "chromeVideo",
+		}, {
 			Name: "vp9_1080p_30fps_hw",
 			Val: playbackPerfParams{
 				fileName:    "1080p_30fps_300frames.vp9.webm",
@@ -360,6 +399,17 @@ func init() {
 				fileName:    "720p_30fps_300frames.av1.mp4",
 				decoderType: playback.Hardware,
 				browserType: browser.TypeAsh,
+			},
+			ExtraData:         []string{"720p_30fps_300frames.av1.mp4"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
+			Fixture:           "chromeVideoWithHWAV1Decoding",
+		}, {
+			Name: "av1_720p_30fps_hw_3x3",
+			Val: playbackPerfParams{
+				fileName:    "720p_30fps_300frames.av1.mp4",
+				decoderType: playback.Hardware,
+				browserType: browser.TypeAsh,
+				gridSize:    3,
 			},
 			ExtraData:         []string{"720p_30fps_300frames.av1.mp4"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeAV1},
@@ -817,5 +867,5 @@ func PlaybackPerf(ctx context.Context, s *testing.State) {
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
-	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, testOpt.decoderType)
+	playback.RunTest(ctx, s, cs, cr, testOpt.fileName, testOpt.decoderType, testOpt.gridSize)
 }
