@@ -14,6 +14,9 @@ import (
 // quickSettingsFinder is the finder to find the Quick Settings area in the UI.
 var quickSettingsFinder = nodewith.ClassName("UnifiedSystemTrayView")
 
+// StatusAreaWidget is the finder to find the control widgets.
+var StatusAreaWidget = nodewith.Role(role.Pane).HasClass("ash/StatusAreaWidgetDelegate")
+
 // CollapseButton is the finder for the collapse button, which collapses Quick Settings.
 var CollapseButton = nodewith.Role(role.Button).ClassName("CollapseButton").Name("Collapse menu")
 
