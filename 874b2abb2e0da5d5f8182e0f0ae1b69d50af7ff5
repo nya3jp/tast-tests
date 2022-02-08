@@ -16,6 +16,40 @@
       "message": "Takise-san, please take a look. Thanks!",
       "revId": "874b2abb2e0da5d5f8182e0f0ae1b69d50af7ff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fd5195e_d648ed6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/resize_lock.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-02-08T02:24:40Z",
+      "side": 1,
+      "message": "Don\u0027t we need to unset the wallpaper with defer?",
+      "revId": "874b2abb2e0da5d5f8182e0f0ae1b69d50af7ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59eed525_8bc7c63c",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-02-08T02:24:40Z",
+      "side": 1,
+      "message": "I\u0027m fine with it, but not sure if a function to pick a white wallpaper is too specific to put into this package. Please ask the owner of this package for review.",
+      "revId": "874b2abb2e0da5d5f8182e0f0ae1b69d50af7ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
