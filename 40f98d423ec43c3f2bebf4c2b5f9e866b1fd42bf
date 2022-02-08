@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5290d3_bf536f60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-02-08T10:07:57Z",
+      "side": 1,
+      "message": "We will manage boards to be run by hwdep. This CL is no longer necessary. Abandon.",
+      "revId": "40f98d423ec43c3f2bebf4c2b5f9e866b1fd42bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c990bc7_ba6a9515",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-02-08T01:31:36Z",
       "side": 1,
       "message": "Two nits:\n- Brya also supports this encoding, perhaps we should create a SupportsTemporalLayerEncoding hwdep [1] and use it here?\n- \"trogdor\" is only one, we\u0027ll need \"strongbad\" here as well IIRC.\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d740?q\u003dSupportsNV12Overlays",
+      "range": {
+        "startLine": 106,
+        "startChar": 45,
+        "endLine": 106,
+        "endChar": 75
+      },
+      "revId": "40f98d423ec43c3f2bebf4c2b5f9e866b1fd42bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6ff734b_75053423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-02-08T10:07:57Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "6c990bc7_ba6a9515",
       "range": {
         "startLine": 106,
         "startChar": 45,
