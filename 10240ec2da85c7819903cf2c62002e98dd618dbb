@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39496e3_69d1b93e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-08T10:57:51Z",
+      "side": 1,
+      "message": "Maybe just put a []policy.Policy here.",
+      "revId": "10240ec2da85c7819903cf2c62002e98dd618dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87360ff_52b75130",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-08T10:57:51Z",
+      "side": 1,
+      "message": "presence?",
+      "range": {
+        "startLine": 298,
+        "startChar": 43,
+        "endLine": 298,
+        "endChar": 72
+      },
+      "revId": "10240ec2da85c7819903cf2c62002e98dd618dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
