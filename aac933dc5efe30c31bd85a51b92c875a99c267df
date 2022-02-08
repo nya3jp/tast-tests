@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e23bcf_df083bc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-08T01:57:26Z",
+      "side": 1,
+      "message": "I was just wondering if the flags this Fixture enables would apply\nto decoding and noticed that \n\n  --force-fieldtrials\u003dWebRTC-SupportVP9SVC/\n\n(e.g. here[1]) has been removed! [2] So maybe we need just to\nremove the ...AndForce... test cases? (I\u0027m surprised they are\nnot broken, perhaps we don\u0027t verify the number of encoders).\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/media/pre/fixture.go;l\u003d219?q\u003dWebRTC-SupportVP9SVC\n[2] https://webrtc-review.googlesource.com/c/src/+/237080",
+      "range": {
+        "startLine": 99,
+        "startChar": 48,
+        "endLine": 99,
+        "endChar": 63
+      },
+      "revId": "aac933dc5efe30c31bd85a51b92c875a99c267df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
