@@ -22,7 +22,7 @@ import (
 )
 
 // Run runs the specified user scenario in productivity with different CUJ tiers.
-func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.Tier, tabletMode bool, outDir, expectedText, testFileLocation string) (err error) {
+func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.Tier, tabletMode bool, outDir, sampleSheetURL, expectedText, testFileLocation string) (err error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
@@ -85,7 +85,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 	if tier == cuj.Premium {
 		productivityTimeout = 130 * time.Second
 	}
-	sheetName, err := app.CreateSpreadsheet(ctx)
+	sheetName, err := app.CreateSpreadsheet(ctx, sampleSheetURL)
 	if err != nil {
 		return err
 	}

@@ -75,46 +75,23 @@ func (app *GoogleDocs) CreateSlides(ctx context.Context) error {
 }
 
 // CreateSpreadsheet creates a new spreadsheet and fill default data.
-func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context) (string, error) {
-	conn, err := app.cr.NewConn(ctx, cuj.GoogleSheetsURL)
+func (app *GoogleDocs) CreateSpreadsheet(ctx context.Context, sampleSheetURL string) (string, error) {
+	conn, err := app.cr.NewConn(ctx, sampleSheetURL+"/copy")
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to open URL: %s", cuj.GoogleSheetsURL)
+		return "", errors.Wrapf(err, "failed to open URL: %s", sampleSheetURL)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	// If the file already exists, check the dependent cells first to prevent continuous failure due to incorrect content.
-	checkComputeChain := func(ctx context.Context) error {
-		for i := 1; i <= rangeOfCells; i++ {
-			idx := strconv.Itoa(i)
-			cell := fmt.Sprintf("A%d", i)
-			value, err := app.getCellValue(ctx, cell)
-			if err != nil {
-				return err
-			}
-			if value != idx {
-				if err := app.editCellValue(ctx, cell, idx); err != nil {
-					return err
-				}
-			}
-		}
-		return nil
+	copyButton := nodewith.Name("Make a copy").Role(role.Button)
+	if err := app.uiHdl.Click(copyButton)(ctx); err != nil {
+		return "", errors.Wrap(err, "failed to open the copied data spreadsheet")
 	}
 
-	section := nodewith.NameRegex(regexp.MustCompile("^(Today|Yesterday|Previous (7|30) days|Earlier).*")).Role(role.ListBox).First()
-	fileOption := nodewith.NameContaining(sheetName).Role(role.ListBoxOption).Ancestor(section).First()
-
-	// Check if the sample file exists. If not, create a blank one.
-	if err := app.ui.WaitUntilExists(fileOption)(ctx); err != nil {
-		return sheetName, app.createSampleSheet(ctx)
+	if err := app.renameFile(sheetName)(ctx); err != nil {
+		return "", err
 	}
-
-	testing.ContextLog(ctx, "Opening an existing spreadsheet")
-	return sheetName, uiauto.Combine("open an existing spreadsheet",
-		app.uiHdl.ClickUntil(fileOption, app.ui.WithTimeout(time.Second).WaitUntilGone(fileOption)),
-		app.validateEditMode,
-		uiauto.NamedAction("check dependent compute chain in a spreadsheet", checkComputeChain),
-	)(ctx)
+	return sheetName, nil
 }
 
 // OpenSpreadsheet creates a new document from GDocs.
@@ -271,7 +248,8 @@ func (app *GoogleDocs) VoiceToTextTesting(ctx context.Context, expectedText stri
 		}, &testing.PollOptions{Interval: time.Second, Timeout: 15 * time.Second})
 	}
 
-	menuBar := nodewith.Role(role.MenuBar)
+	docsWebArea := nodewith.NameContaining("Google Docs").Role(role.RootWebArea)
+	menuBar := nodewith.Role(role.MenuBar).Ancestor(docsWebArea)
 	tools := nodewith.Name("Tools").Role(role.MenuItem).FinalAncestor(menuBar)
 	toolsExpanded := tools.Expanded()
 	voiceTypingItem := nodewith.Name("Voice typing v Ctrl+Shift+S").Role(role.MenuItem)
@@ -308,13 +286,14 @@ func (app *GoogleDocs) Cleanup(ctx context.Context) error {
 	tabIndexMap := map[string]int{
 		docsTab:   0,
 		slidesTab: 1,
+		sheetsTab: 2,
 	}
 
 	menuBar := nodewith.Name("Menu bar").Role(role.Banner)
 	file := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBar)
 	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
 	dialog := nodewith.Name("File moved to trash").Role(role.Dialog)
-	homeScreen := nodewith.NameRegex(regexp.MustCompile("^Go to (Docs|Slides) home screen")).Role(role.Button).Ancestor(dialog)
+	homeScreen := nodewith.NameRegex(regexp.MustCompile("^Go to (Docs|Slides|Sheets) home screen")).Role(role.Button).Ancestor(dialog)
 
 	for k, v := range tabIndexMap {
 		testing.ContextLogf(ctx, "Switching to %q", k)
@@ -415,48 +394,21 @@ func (app *GoogleDocs) editCellValue(ctx context.Context, cell, value string) er
 	)(ctx)
 }
 
-// createSampleSheet creates a sample spreadsheet.
-func (app *GoogleDocs) createSampleSheet(ctx context.Context) error {
-	if err := app.openBlankDocument(ctx); err != nil {
-		return errors.Wrap(err, "failed to open a blank document")
-	}
-
-	testing.ContextLogf(ctx, "Writing cell(A1:A%d) values", rangeOfCells)
-	for i := 1; i <= rangeOfCells; i++ {
-		idx := strconv.Itoa(i)
-		cell := fmt.Sprintf("A%d", i)
-		if err := app.editCellValue(ctx, cell, idx); err != nil {
-			return errors.Wrapf(err, "failed to edit cell %q", cell)
-		}
-	}
-
-	formula := fmt.Sprintf("=SUM(A1:A%d)", rangeOfCells)
-	testing.ContextLog(ctx, "Writing cell(B1) value")
-	if err := app.editCellValue(ctx, "B1", formula); err != nil {
-		return errors.Wrap(err, `failed to edit cell "B1"`)
-	}
-
-	testing.ContextLog(ctx, "Writing cell(H1) value")
-	if err := app.editCellValue(ctx, "H1", "Copy to document"); err != nil {
-		return errors.Wrap(err, `failed to edit cell "H1"`)
-	}
-
+// renameFile renames the name of the spreadsheet.
+func (app *GoogleDocs) renameFile(sheetName string) uiauto.Action {
 	menuBar := nodewith.Name("Menu bar").Role(role.Banner)
 	fileItem := nodewith.Name("File").Role(role.MenuItem).Ancestor(menuBar)
-	renameItem := nodewith.Name("Rename r").Role(role.MenuItem)
+	fileMenu := nodewith.Role(role.Menu)
+	renameItem := nodewith.Name("Rename r").Role(role.MenuItem).Ancestor(fileMenu)
 	renameField := nodewith.Name("Rename").Role(role.TextField).Editable().Focused()
-
-	testing.ContextLog(ctx, "Renaming spreadsheet")
-	return uiauto.Combine("rename then save document",
+	return uiauto.Combine("rename the file",
 		app.ui.WaitUntilExists(menuBar),
-		// Click "File" and then "Rename".
-		app.uiHdl.Click(fileItem),
-		app.uiHdl.Click(renameItem),
-		app.ui.WaitUntilExists(renameField),
+		app.uiHdl.ClickUntil(fileItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileMenu)),
+		app.uiHdl.ClickUntil(renameItem, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(renameField)),
 		app.kb.TypeAction(sheetName),
 		app.kb.AccelAction("Enter"),
 		app.ui.Sleep(2*time.Second), // Wait Google Sheets to save the changes.
-	)(ctx)
+	)
 }
 
 // maybeCloseEditHistoryDialog closes the "See edit history of a cell" dialog if it exists.
