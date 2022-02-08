@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097b2c24_118b5561",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-08T07:59:53Z",
+      "side": 1,
+      "message": "style:\n- pls check err, before touching ret.\n- just \"ret\" is enough. (no \"\u003d\u003d true\", pls).\n\nStepping back, now Basic and HpdWake looks need the same environment.\nCan they share the environment via fixture?",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 42
+      },
+      "revId": "0882fed74f6f659562394f84cd5f79b6dd874a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
