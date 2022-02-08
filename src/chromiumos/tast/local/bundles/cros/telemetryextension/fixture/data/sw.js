@@ -2,4 +2,11 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-console.log("Hello from Telemetry Extension service worker!");
+chrome.runtime.onMessageExternal.addListener(
+    async function(request, sender, sendResponse) {
+        console.log("Request: ", request);
+        sendResponse({
+            'id': request.id + 1
+        });
+    }
+);
