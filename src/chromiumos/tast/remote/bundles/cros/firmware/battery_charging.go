@@ -42,11 +42,6 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 
 	// checkPowerInfo checks the power supply information after waking up DUT from suspend.
 	checkPowerInfo := func(ctx context.Context) (string, error) {
-		s.Log("Checking for DUT's powerstate at S0")
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 60*time.Second, "S0"); err != nil {
-			return "", errors.Wrap(err, "failed to get powerstate at S0 after waking DUT")
-		}
-
 		regex := `state:(\s+\w+\s?\w+)`
 		expMatch := regexp.MustCompile(regex)
 
@@ -77,6 +72,19 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 		hasPluggedAC := tc.plugAC
 
+		// Verify that DUT's charger was plugged/unplugged as expected.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			currentCharger, err := h.Servo.GetChargerAttached(ctx)
+			if err != nil {
+				return err
+			} else if currentCharger != hasPluggedAC {
+				return errors.Errorf("expected charger attached: %t, but got: %t", hasPluggedAC, currentCharger)
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
+			s.Fatal("While determining charger state: ", err)
+		}
+
 		s.Log("Suspending DUT")
 		cmd := h.DUT.Conn().CommandContext(ctx, "powerd_dbus_suspend")
 		if err := cmd.Start(); err != nil {
@@ -84,7 +92,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Checking for DUT in S0ix or S3 powerstates")
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 60*time.Second, "S0ix", "S3"); err != nil {
+		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0ix", "S3"); err != nil {
 			s.Fatal("Failed to get powerstates at S0ix or S3: ", err)
 		}
 
@@ -116,28 +124,29 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		var batteryState string
-		s.Log("Checking power supply information")
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			battery, err := checkPowerInfo(ctx)
-			if err != nil {
-				return err
-			}
-			switch hasPluggedAC {
-			case true:
-				if battery != "Fully charged" && battery != "Charging" {
-					return errors.Errorf("found unexpected battery state when AC plugged: %s", battery)
-				}
-			case false:
-				if battery != "Discharging" {
-					return errors.Errorf("found unexpected battery state when AC unplugged: %s", battery)
-				}
-			}
-			batteryState = battery
-			return nil
-		}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
-			s.Fatal("Unable to verify power supply information: ", err)
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+		defer cancelWaitConnect()
+
+		if err := h.WaitConnect(waitConnectCtx); err != nil {
+			s.Fatal("Failed to reconnect to DUT after waking DUT from suspend: ", err)
 		}
-		s.Logf("Battery state: %q", batteryState)
+
+		s.Log("Checking power supply information")
+		battery, err := checkPowerInfo(ctx)
+		if err != nil {
+			s.Fatal("While verifying power supply information: ", err)
+		}
+
+		switch hasPluggedAC {
+		case true:
+			if battery != "Fully charged" && battery != "Charging" {
+				s.Fatalf("Found unexpected battery state when AC plugged: %s", battery)
+			}
+		case false:
+			if battery != "Discharging" {
+				s.Fatalf("Found unexpected battery state when AC unplugged: %s", battery)
+			}
+		}
+		s.Logf("Battery state: %q", battery)
 	}
 }
