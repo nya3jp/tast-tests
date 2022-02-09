@@ -722,7 +722,7 @@ func EnterShelfOverflow(ctx context.Context, tconn *chrome.TestConn) error {
 	// Choose fake apps to prevent the problem.
 	var apps []*ChromeApp
 	for _, app := range installedApps {
-		if strings.HasPrefix(app.Name, "fake app") {
+		if strings.HasPrefix(app.Name, "fake") {
 			apps = append(apps, app)
 		}
 	}
