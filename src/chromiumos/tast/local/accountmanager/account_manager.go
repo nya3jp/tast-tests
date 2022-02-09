@@ -284,6 +284,19 @@ func RemoveAccountFromOSSettings(ctx context.Context, tconn *chrome.TestConn, br
 func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, brType browser.Type) error {
 	ui := uiauto.New(tconn).WithTimeout(DefaultUITimeout)
 
+	if err := ui.Exists(GetAddAccountDialog())(ctx); err == nil {
+		// Set up keyboard.
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get keyboard")
+		}
+		defer kb.Close()
+		// Press "Esc" to close the dialog.
+		if err := kb.Accel(ctx, "Esc"); err != nil {
+			return errors.Wrapf(err, "failed to write events %s", "Esc")
+		}
+	}
+
 	// Open Account Manager page in OS Settings.
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
 	_, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton))

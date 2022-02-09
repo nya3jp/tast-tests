@@ -74,7 +74,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 			_, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton))
 			return err
 		},
-		ui.LeftClick(addAccountButton),
+		ui.WithInterval(time.Second).LeftClickUntil(addAccountButton, ui.Exists(accountmanager.GetAddAccountDialog())),
 		func(ctx context.Context) error {
 			return accountmanager.AddAccount(ctx, tconn, username, password)
 		},

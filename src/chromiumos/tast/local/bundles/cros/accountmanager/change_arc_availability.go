@@ -89,7 +89,7 @@ func ChangeARCAvailability(ctx context.Context, s *testing.State) {
 	}
 
 	// Click the button to open account addition dialog.
-	if err := ui.LeftClick(addAccountButton)(ctx); err != nil {
+	if err := ui.WithInterval(time.Second).LeftClickUntil(addAccountButton, ui.Exists(accountmanager.GetAddAccountDialog()))(ctx); err != nil {
 		s.Fatal("Failed to click Add Google Account button: ", err)
 	}
 
