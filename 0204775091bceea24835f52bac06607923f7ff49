@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4062b1dd_8b7e36ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-02-09T02:52:51Z",
+      "side": 1,
+      "message": "mega nit: in existing code for lacros where there have been multiple types of connections it\u0027s used lowercase, i.e. btconn. See lacros.GpuCUJ for the precedent being set.",
+      "range": {
+        "startLine": 81,
+        "startChar": 46,
+        "endLine": 81,
+        "endChar": 52
+      },
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2e02aff_7f60f6e1",
         "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
         "patchSetId": 3
