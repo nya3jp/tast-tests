@@ -12,13 +12,59 @@ import (
 	"path"
 	"regexp"
 	"strconv"
+	"strings"
 
 	"github.com/shirou/gopsutil/process"
 	"golang.org/x/sync/errgroup"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/memory/kernelmeter"
 )
+
+// NameToCategoryMetricsMap maps a process category name to its key PSS metrics.
+type NameToCategoryMetricsMap map[string]*CategoryHostMetrics
+
+// CategoryHostMetrics has a summary of host HostMetrics
+// we keep on a per-category basis for reporting.
+// All values in Kilobytes.
+type CategoryHostMetrics struct {
+	Pss      uint64
+	PssSwap  uint64
+	PssGuest uint64
+}
+
+// HostSummary captures a few key data items that are used to compute
+// overall system memory status.
+// All values are expressed in Kilobytes.
+type HostSummary struct {
+	MemTotal         uint64
+	MemFree          uint64
+	HostCachedKernel uint64
+	CategoryMetrics  NameToCategoryMetricsMap
+}
+
+// SharedInfo holds shared memory use information for one process.
+// SharedSwapPss is the amount of swap used by shared memory regions divided by
+// the number of times those regions are mapped.
+// CrosvmGuestPss is the sum of the Pss used by the crosvm_guest region,
+//  (which means memory from the VM mapped on the host).
+type SharedInfo struct {
+	SharedSwapPss  uint64
+	CrosvmGuestPss uint64
+}
+
+// NamedSmapsRollup is a SmapsRollup plus the process name and ID, and
+// information on shared memory use (Shared field).
+type NamedSmapsRollup struct {
+	Command string
+	Pid     int32
+	Shared  *SharedInfo
+	Rollup  map[string]uint64
+}
+
+// SharedInfoMap maps process ids to shared memory information.
+type SharedInfoMap map[int32]*SharedInfo
 
 var smapsRollupRE = regexp.MustCompile(`(?m)^([^:]+):\s*(\d+)\s*kB$`)
 
@@ -37,30 +83,23 @@ func NewSmapsRollup(smapsRollupFileData []byte) (map[string]uint64, error) {
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to parse %q value from smaps_rollup: %q", field, kbString)
 		}
-		result[field] = kb * KiB
+		result[field] = kb
 	}
 	return result, nil
 }
 
-// NamedSmapsRollup is a SmapsRollup plus the process name and ID, and
-// SharedSwapPss, the amount of swap used by shared memory regions divided by
-// the number of times those regions are mapped.
-type NamedSmapsRollup struct {
-	Command       string
-	Pid           int32
-	SharedSwapPss uint64
-	Rollup        map[string]uint64
-}
-
-// SmapsRollups returns a NamedSmapsRollup for every process in processes. Sizes
-// are in bytes. The SharedSwapPss field is initialized from sharedSwapPss, if
-// provided.
-func SmapsRollups(ctx context.Context, processes []*process.Process, sharedSwapPss map[int32]uint64) ([]*NamedSmapsRollup, error) {
+// smapsRollups returns a NamedSmapsRollup for every process in processes.
+// It also fills the passed summary struct with PSS data about the crosvm * processes.
+// Sizes are in bytes.
+// The Shared field is initialized from sharedInfoMap, if provided.
+func smapsRollups(ctx context.Context, processes []*process.Process, sharedInfoMap SharedInfoMap, summary *HostSummary) ([]*NamedSmapsRollup, error) {
 	rollups := make([]*NamedSmapsRollup, len(processes))
 	g, ctx := errgroup.WithContext(ctx)
 	for index, process := range processes {
+		// All these are captured by value in the closure - and that is what we want.
 		i := index
 		p := process
+
 		g.Go(func() error {
 			// We're racing with this process potentially exiting, so just
 			// ignore errors and don't generate a NamesSmapsRollup if we fail to
@@ -83,10 +122,10 @@ func SmapsRollups(ctx context.Context, processes []*process.Process, sharedSwapP
 				return errors.Wrapf(err, "failed to parse /proc/%d/smaps_rollup", p.Pid)
 			}
 			rollups[i] = &NamedSmapsRollup{
-				Command:       command,
-				Pid:           p.Pid,
-				SharedSwapPss: sharedSwapPss[p.Pid],
-				Rollup:        rollup,
+				Command: command,
+				Pid:     p.Pid,
+				Rollup:  rollup,
+				Shared:  sharedInfoMap[p.Pid],
 			}
 			return nil
 		})
@@ -106,24 +145,28 @@ func SmapsRollups(ctx context.Context, processes []*process.Process, sharedSwapP
 // sharedSwapPssRE matches smaps entries that are mapped shared, with the
 // following match groups:
 // [1] The name of the mapping.
-// [2] The size of swapped out pages in the mapping, in kiB.
-var sharedSwapPssRE = regexp.MustCompile(`[[:xdigit:]]+-[[:xdigit:]]+ [-r][-w][-x]s [[:xdigit:]]+ [[:xdigit:]]+:[[:xdigit:]]+ [\d]+ +(\S[^\n]*)
-(?:\w+: +[^\n]+
-)*Swap: +(\d+) kB`)
+// [2] The PSS for that mapping within this process, in kIB
+// [3] The size of swapped out pages in the mapping, in kiB.
+var sharedSwapPssRE = regexp.MustCompile(`(?m)^[[:xdigit:]]+-[[:xdigit:]]+ [-r][-w][-x]s [[:xdigit:]]+ [[:xdigit:]]+:[[:xdigit:]]+ [\d]+ +(\S[^\n]*)$
+(?:^\w+: +[^\n]+$
+)*^Pss: +(\d+) kB$
+(?:^\w+: +[^\n]+$
+)*^Swap: +(\d+) kB$`)
 
-type sharedSwap struct {
+type sharedMapping struct {
 	name string
 	swap uint64
+	pss  uint64
 }
 
-// SharedSwapPss creates a map from Pid to the amount of SwapPss used by shared
+// makeSharedInfoMap creates a map from Pid to the amount of SwapPss used by shared
 // mappings per process. The SwapPss field in smaps_rollup does not include
 // memory swapped out of shared mappings. In order to calculate a complete
 // SwapPss, we parse smaps for all shared mappings in all processes, and then
 // divide their "Swap" value by the number of times the shared memory is mapped.
-func SharedSwapPss(ctx context.Context, processes []*process.Process) (map[int32]uint64, error) {
+func makeSharedInfoMap(ctx context.Context, processes []*process.Process) (SharedInfoMap, error) {
 	g, ctx := errgroup.WithContext(ctx)
-	procSwaps := make([][]sharedSwap, len(processes))
+	procSwaps := make([][]sharedMapping, len(processes))
 	for index, process := range processes {
 		i := index
 		pid := process.Pid
@@ -137,12 +180,17 @@ func SharedSwapPss(ctx context.Context, processes []*process.Process) (map[int32
 			matches := sharedSwapPssRE.FindAllSubmatch(smapsData, -1)
 			for _, match := range matches {
 				name := string(match[1])
-				swapKiB, err := strconv.ParseUint(string(match[2]), 10, 64)
+				pssKiB, err := strconv.ParseUint(string(match[2]), 10, 64)
 				if err != nil {
-					return errors.Wrapf(err, "failed to parse swap value %q", match[2])
+					return errors.Wrapf(err, "failed to parse pss value %q", match[2])
 				}
-				swap := swapKiB * KiB
-				procSwaps[i] = append(procSwaps[i], sharedSwap{name, swap})
+				swapKiB, err := strconv.ParseUint(string(match[3]), 10, 64)
+				if err != nil {
+					return errors.Wrapf(err, "failed to parse swap value %q", match[3])
+				}
+				pss := pssKiB
+				swap := swapKiB
+				procSwaps[i] = append(procSwaps[i], sharedMapping{name, swap, pss})
 			}
 			return nil
 		})
@@ -158,13 +206,20 @@ func SharedSwapPss(ctx context.Context, processes []*process.Process) (map[int32
 		}
 	}
 	// Use the counts to divide each mapping's swap size to compute SwapPss.
-	sharedSwapPss := make(map[int32]uint64)
+	// Also stack up each process's share of the crosvm_guest mapping
+	sharedInfoMap := make(SharedInfoMap)
 	for i, swaps := range procSwaps {
+		pid := processes[i].Pid
+		sharedInfo := &SharedInfo{}
+		sharedInfoMap[pid] = sharedInfo
 		for _, swap := range swaps {
-			sharedSwapPss[processes[i].Pid] += swap.swap / mapCount[swap.name]
+			if strings.HasPrefix(swap.name, "/memfd:crosvm_guest") {
+				sharedInfo.CrosvmGuestPss += swap.pss
+			}
+			sharedInfo.SharedSwapPss += swap.swap / mapCount[swap.name]
 		}
 	}
-	return sharedSwapPss, nil
+	return sharedInfoMap, nil
 }
 
 type processCategory struct {
@@ -200,68 +255,95 @@ var processCategories = []processCategory{
 	},
 }
 
-// SmapsMetrics writes a JSON file containing data from every running process'
-// smaps_rollup file. If perf.Values is not nil, it adds metrics based on
-// processCategories defined above. If outdir is "", then no logs are written.
-func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) error {
+// GetHostMetrics parses smaps and smaps_rollup information from every
+// running process on the ChromeOS (host) side.
+// Values are summarized according to the processCategories defined above and
+// returned in the HostSummary structure.
+// If outdir is provided, detailed rollup information is also written
+// to files in that directory.
+func GetHostMetrics(ctx context.Context, outdir, suffix string) (*HostSummary, error) {
 	processes, err := process.Processes()
 	if err != nil {
-		return errors.Wrap(err, "failed to get all processes")
+		return nil, errors.Wrap(err, "failed to get all processes")
 	}
-	sharedSwapPss, err := SharedSwapPss(ctx, processes)
+
+	sharedInfoMap, err := makeSharedInfoMap(ctx, processes)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	rollups, err := SmapsRollups(ctx, processes, sharedSwapPss)
+
+	summary := &HostSummary{CategoryMetrics: make(NameToCategoryMetricsMap)}
+
+	rollups, err := smapsRollups(ctx, processes, sharedInfoMap, summary)
 	if err != nil {
-		return err
+		return nil, err
 	}
+
+	meminfo, err := kernelmeter.ReadMemInfo()
+	if err != nil {
+		return nil, err
+	}
+
 	if len(outdir) > 0 {
+		// Dump intermediate data.
 		rollupsJSON, err := json.MarshalIndent(rollups, "", "  ")
 		if err != nil {
-			return errors.Wrap(err, "failed to convert smaps_rollups to JSON")
+			return nil, errors.Wrap(err, "failed to convert smaps_rollups to JSON")
 		}
 		filename := fmt.Sprintf("smaps_rollup%s.json", suffix)
 		if err := ioutil.WriteFile(path.Join(outdir, filename), rollupsJSON, 0644); err != nil {
-			return errors.Wrapf(err, "failed to write smaps_rollups to %s", filename)
+			return nil, errors.Wrapf(err, "failed to write smaps_rollups to %s", filename)
 		}
 	}
 
-	if p == nil {
-		// No perf.Values, so don't compute metrics.
-		return nil
-	}
+	// Convert reported totals in bytes into the common KiB unit.
+	summary.MemTotal = uint64(meminfo["MemTotal"]) / KiB
+	summary.MemFree = uint64(meminfo["MemFree"]) / KiB
+	summary.HostCachedKernel = uint64(meminfo["SReclaimable"]+meminfo["Buffers"]+meminfo["Cached"]-meminfo["Mapped"]) / KiB
 
-	metrics := make(map[string]struct{ pss, pssSwap float64 })
+	metrics := summary.CategoryMetrics // Shallow copy, as it is a map.
 	for _, rollup := range rollups {
 		for _, category := range processCategories {
 			if category.commandRE.MatchString(rollup.Command) {
 				metric := metrics[category.name]
+				if metric == nil {
+					// This is the first time seeing this category, so add it as zeroes.
+					metric = &CategoryHostMetrics{}
+					metrics[category.name] = metric
+				}
 				pss, ok := rollup.Rollup["Pss"]
 				if !ok {
-					return errors.Errorf("smaps_rollup for process %d does not include Pss", rollup.Pid)
+					return nil, errors.Errorf("smaps_rollup for process %d does not include Pss", rollup.Pid)
 				}
 				swapPss, ok := rollup.Rollup["SwapPss"]
 				if !ok {
-					return errors.Errorf("smaps_rollup for process %d does not include SwapPss", rollup.Pid)
+					return nil, errors.Errorf("smaps_rollup for process %d does not include SwapPss", rollup.Pid)
 				}
-				metric.pss += float64(pss) / MiB
-				metric.pssSwap += float64(swapPss+rollup.SharedSwapPss) / MiB
-				metrics[category.name] = metric
+				metric.Pss += pss
+				metric.PssSwap += swapPss
+				if rollup.Shared != nil {
+					metric.PssSwap += rollup.Shared.SharedSwapPss
+					metric.PssGuest += rollup.Shared.CrosvmGuestPss
+				}
 				// Only the first matching category should contain this process.
 				break
 			}
 		}
 	}
+	return summary, nil
+}
 
-	for name, value := range metrics {
+// ReportHostMetrics outputs a set of representative metrics
+// into the supplied performance data dictionary.
+func ReportHostMetrics(summary *HostSummary, p *perf.Values, suffix string) {
+	for name, value := range summary.CategoryMetrics {
 		p.Set(
 			perf.Metric{
 				Name:      fmt.Sprintf("%s%s_pss", name, suffix),
 				Unit:      "MiB",
 				Direction: perf.SmallerIsBetter,
 			},
-			value.pss,
+			float64(value.Pss)/KiBInMiB,
 		)
 		p.Set(
 			perf.Metric{
@@ -269,7 +351,7 @@ func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) er
 				Unit:      "MiB",
 				Direction: perf.SmallerIsBetter,
 			},
-			value.pssSwap,
+			float64(value.PssSwap)/KiBInMiB,
 		)
 		p.Set(
 			perf.Metric{
@@ -277,8 +359,7 @@ func SmapsMetrics(ctx context.Context, p *perf.Values, outdir, suffix string) er
 				Unit:      "MiB",
 				Direction: perf.SmallerIsBetter,
 			},
-			value.pss+value.pssSwap,
+			float64(value.Pss+value.PssSwap)/KiBInMiB,
 		)
 	}
-	return nil
 }

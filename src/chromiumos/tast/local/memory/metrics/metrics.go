@@ -124,8 +124,13 @@ func LogMemoryStatsSlice(begin, end *BaseMemoryStats, p *perf.Values, suffix str
 func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, a *arc.ARC, p *perf.Values, outdir, suffix string) error {
 
 	// These metrics are relatively cheap to get.
-	if err := memory.ZramMmStatMetrics(ctx, p, outdir, suffix); err != nil {
+	zramSummary, err := memory.GetZramMmStatMetrics(ctx, outdir, suffix)
+	if err != nil {
 		return errors.Wrap(err, "failed to collect zram mm_stats metrics")
+	}
+
+	if p != nil {
+		memory.ReportZramMmStatMetrics(zramSummary, p, suffix)
 	}
 
 	var basecopy *MemoryStatsSnapshot
@@ -163,32 +168,43 @@ func LogMemoryStats(ctx context.Context, base *BaseMemoryStats, a *arc.ARC, p *p
 
 	// Order is critical here: SmapsMetrics and CrosvmFincoreMetrics do heavy processing,
 	// and we don't want that processing to interfere in the earlier, cheaper stats.
-	if err := memory.SmapsMetrics(ctx, p, outdir, suffix); err != nil {
-		return errors.Wrap(err, "failed to collect smaps_rollup metrics")
+	hostSummary, err := memory.GetHostMetrics(ctx, outdir, suffix)
+	if err != nil {
+		return errors.Wrap(err, "failed to collect host metrics")
+	}
+
+	if p != nil {
+		memory.ReportHostMetrics(hostSummary, p, suffix)
 	}
 
 	if err := memory.CrosvmFincoreMetrics(ctx, p, outdir, suffix); err != nil {
 		return errors.Wrap(err, "failed to collect crosvm fincore metrics")
 	}
 
+	var vmSummary *memoryarc.VMSummary
 	if a != nil {
 		const dumpsysRetries = 3
-		dumpsysSucceeded := false
 		for i := 0; i < dumpsysRetries; i++ {
-			if err := memoryarc.DumpsysMeminfoMetrics(ctx, a, p, outdir, suffix); err != nil {
+			vmSummary, err = memoryarc.GetDumpsysMeminfoMetrics(ctx, a, outdir, suffix)
+			if err != nil {
 				testing.ContextLog(ctx, "Failed to collect ARC dumpsys meminfo metrics: ", err)
 				if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 					return errors.Wrap(err, "failed to sleep between dumpsys meminfo retries")
 				}
 			} else {
-				dumpsysSucceeded = true
 				break
 			}
 		}
-		if !dumpsysSucceeded {
+		if vmSummary == nil {
 			testing.ContextLogf(ctx, "Failed to collect ARC dumpsys meminfo metrics after %d tries", dumpsysRetries)
 		}
 	}
 
+	if p != nil && vmSummary != nil {
+		memoryarc.ReportDumpsysMeminfoMetrics(vmSummary, p, suffix)
+		if hostSummary != nil && zramSummary != nil {
+			ReportSummaryMetrics(vmEnabled, hostSummary, vmSummary, zramSummary, p, suffix)
+		}
+	}
 	return nil
 }
