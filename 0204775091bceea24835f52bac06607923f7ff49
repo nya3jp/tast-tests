@@ -69,6 +69,30 @@
       },
       "revId": "0204775091bceea24835f52bac06607923f7ff49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e629ed_00d8ee0a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-09T03:10:44Z",
+      "side": 1,
+      "message": "Any thought on this? I\u0027m a kind of inclined to use *browser.TestConn for the function that needs it for browser interaction.",
+      "parentUuid": "d2e02aff_7f60f6e1",
+      "range": {
+        "startLine": 156,
+        "startChar": 49,
+        "endLine": 156,
+        "endChar": 71
+      },
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
