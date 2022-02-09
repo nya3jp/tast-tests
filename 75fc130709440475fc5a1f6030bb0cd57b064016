@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a99300cf_9460ad7f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_cbi_eeprom.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-09T23:25:35Z",
+      "side": 1,
+      "message": "fix desc",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "75fc130709440475fc5a1f6030bb0cd57b064016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1bce7fa_fefdace5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_cbi_eeprom.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-02-09T23:25:35Z",
+      "side": 1,
+      "message": "Calling servo.HasControl feels better than ignoring the error.",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 44
+      },
+      "revId": "75fc130709440475fc5a1f6030bb0cd57b064016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
