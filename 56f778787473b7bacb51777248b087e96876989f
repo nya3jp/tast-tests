@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95dd9120_c7b6b233",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/playback.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-02-09T15:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab3c33dc_63068960",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "56f778787473b7bacb51777248b087e96876989f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea2d2154_9118250f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-09T01:13:49Z",
       "side": 1,
       "message": "nit: Add \"autoplay\" and \"muted\" attributes?",
+      "range": {
+        "startLine": 16,
+        "startChar": 34,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "56f778787473b7bacb51777248b087e96876989f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "636942a2_0406d437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-02-09T15:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea2d2154_9118250f",
       "range": {
         "startLine": 16,
         "startChar": 34,
