@@ -22,6 +22,30 @@
       },
       "revId": "0882fed74f6f659562394f84cd5f79b6dd874a56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41f17c38_bfbb4322",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-02-09T07:32:29Z",
+      "side": 1,
+      "message": "\u003e style:\n\u003e pls check err, before touching ret.\n\u003e just \"ret\" is enough. (no \"\u003d\u003d true\", pls).\n\nAck.\n\n\n\u003e Stepping back, now Basic and HpdWake looks need the same environment.\nCan they share the environment via fixture?\n\nProbably (?).\n\nI\u0027m not familiar with fixtures, but we can address that (do you have links/examples I can follow?). Can it be a follow up CL? It seems like a refactor which should be separate from this.",
+      "parentUuid": "097b2c24_118b5561",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 42
+      },
+      "revId": "0882fed74f6f659562394f84cd5f79b6dd874a56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
