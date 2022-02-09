@@ -16,6 +16,29 @@
       "message": "Forgot to hit send....",
       "revId": "a3d506038aad6f88e9ab82f3d11e160c92bd0fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5cba84a_c841db44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T15:15:06Z",
+      "side": 1,
+      "message": "on error, this test should report error, right?",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 43
+      },
+      "revId": "a3d506038aad6f88e9ab82f3d11e160c92bd0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
