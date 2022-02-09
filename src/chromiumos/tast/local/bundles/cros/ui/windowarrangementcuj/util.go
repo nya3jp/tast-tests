@@ -109,6 +109,49 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*chrome.Chrom
 }
 
 // Drag does the specified drag based on the documentation of DragPoints.
-func Drag(ctx context.Context, pc pointer.Context, p DragPoints, duration time.Duration) error {
-	return pc.Drag(p[0], pc.DragTo(p[1], duration), pc.DragTo(p[2], duration), pc.DragTo(p[0], duration))(ctx)
+func Drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, p DragPoints, duration time.Duration) error {
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get windows before drag")
+	}
+
+	initialBoundsMap := make(map[int]coords.Rect)
+	for _, w := range ws {
+		initialBoundsMap[w.ID] = w.BoundsInRoot
+	}
+
+	if err := pc.Drag(
+		p[0],
+		pc.DragTo(p[1], duration),
+		pc.DragTo(p[2], duration),
+		pc.DragTo(p[0], duration),
+		func(ctx context.Context) error {
+			// When you are moving/resizing a window, its bounds can take a moment
+			// to update after the pointer moves. We need to wait for the expected
+			// final window bounds before ending the drag. The final bounds should
+			// match the initial bounds because the drag begins and ends at p[0].
+			// If the drag does not move/resize any windows, this code is okay as
+			// the final bounds should match the initial bounds in that case too.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				ws, err := ash.GetAllWindows(ctx, tconn)
+				if err != nil {
+					return testing.PollBreak(errors.Wrap(err, "failed to get windows when drag is almost done"))
+				}
+
+				for _, w := range ws {
+					if initialBounds := initialBoundsMap[w.ID]; !w.BoundsInRoot.Equals(initialBounds) {
+						return errors.Wrapf(err, "got window bounds %v; want %v", w.BoundsInRoot, initialBounds)
+					}
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+				return errors.Wrap(err, "failed to wait for window bounds to be what they were before the drag")
+			}
+			return nil
+		},
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to drag")
+	}
+
+	return nil
 }
