@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c79015_0be900b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-02-09T21:53:27Z",
+      "side": 0,
+      "message": "Thinking about this some more, I think that we do want to call IsAvailable for Wifi here so that we wait for WiFi to come up (when it is available). \n\nBut if WiFi is not available, that shouldn\u0027t be a fatal error, we should just use an info log here.",
+      "revId": "479f430cc908c8fb250946c974426a273566bc07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
