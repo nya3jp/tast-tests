@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a32c541_a297feab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-02-09T04:48:10Z",
+      "side": 1,
+      "message": "LGTM, except for that nit about the comment.",
+      "revId": "ecefb107232a294576b2bf71dba054c4ae543ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0613c8_b976b09f",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-02-09T04:48:10Z",
+      "side": 1,
+      "message": "Please update the comment, p isn\u0027t a parameter any more. We now return stuff.",
+      "range": {
+        "startLine": 140,
+        "startChar": 77,
+        "endLine": 142,
+        "endChar": 22
+      },
+      "revId": "ecefb107232a294576b2bf71dba054c4ae543ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4573f5_833ae9d4",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-02-09T04:48:10Z",
+      "side": 1,
+      "message": "nice comment, that was not obvious in the original.",
+      "revId": "ecefb107232a294576b2bf71dba054c4ae543ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
