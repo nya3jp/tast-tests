@@ -63,6 +63,53 @@
       },
       "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "911eb41f_e3cac486",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-09T22:16:49Z",
+      "side": 1,
+      "message": "The implementation looks fine. If that is the case, the original problem might be that `entireDesktopButton` was not ready to receive clicks, which explains why it works if you repeatedly click on it.\n\nNot sure if adding `Focusable` to `entireDesktopButton` helps.\n\nI am also fine with the current solution.",
+      "parentUuid": "4ae94f6b_ef174696",
+      "range": {
+        "startLine": 130,
+        "startChar": 55,
+        "endLine": 130,
+        "endChar": 152
+      },
+      "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af1fd35_4019fa11",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-02-09T22:16:49Z",
+      "side": 1,
+      "message": "nit: consider refactoring this one line to:\n\n```\nif err :\u003d Combine(\"start screen recorder through ui\",\n    action1,\n    action2,\n)(ctx); err !\u003d nil {...\n```\n\nfor better readability.",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 18
+      },
+      "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
