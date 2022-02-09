@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e29f231c_6ddad46c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-02-09T16:50:30Z",
+      "side": 1,
+      "message": "Hi, I\u0027m curious why can\u0027t use the lacrosPrimary fixture.",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c30e8bba_0b34987d",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
         "patchSetId": 2
