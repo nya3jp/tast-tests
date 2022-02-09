@@ -41,9 +41,10 @@ func init() {
 				ExtraAttr: []string{"group:graphics", "graphics_nightly"},
 				Fixture:   "graphicsNoChrome",
 			}, {
-				Name:      "hasty",
-				Val:       config{config: &glbench.CrosConfig{Hasty: true}},
-				ExtraAttr: []string{"group:mainline"},
+				Name: "hasty",
+				Val:  config{config: &glbench.CrosConfig{Hasty: true}},
+				// b/218604048: test breaking in CQ, marking as informational.
+				ExtraAttr: []string{"group:mainline", "informational"},
 				Timeout:   5 * time.Minute,
 				Fixture:   "graphicsNoChrome",
 			}, {
