@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75e38c77_b5cd9525",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T08:08:32Z",
+      "side": 1,
+      "message": "Sorry for long waiting. I didn\u0027t empty all the review queue before the long vacation.",
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "468b7d0d_f47d2677",
@@ -59,6 +76,29 @@
         "startChar": 2,
         "endLine": 56,
         "endChar": 17
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5311c04_17845539",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T08:08:32Z",
+      "side": 1,
+      "message": "It is a []byte. If the value can be converted to int, please convert here.\n\nslpOpSetPreBytes, err :\u003d ...\n...\nslpOpSetPre, err :\u003d strconv.Atoi(string(byteNumber))\n...\n\nSame for slpOpSetPost",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 12
       },
       "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -175,6 +215,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd8cee6c_7323a12d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T08:08:32Z",
+      "side": 1,
+      "message": "This is sort of redundant as the message provides the full file path.",
+      "range": {
+        "startLine": 149,
+        "startChar": 30,
+        "endLine": 149,
+        "endChar": 34
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c25d4a_88cb54fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T08:08:32Z",
+      "side": 1,
+      "message": "Failed: SLP counter value %q should be different from the one before suspend %q",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 95
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "445b19ce_b428b409",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
         "patchSetId": 2
@@ -191,6 +277,52 @@
         "startChar": 54,
         "endLine": 157,
         "endChar": 62
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b64d894_df424396",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T08:08:32Z",
+      "side": 1,
+      "message": "Failed:",
+      "range": {
+        "startLine": 172,
+        "startChar": 12,
+        "endLine": 172,
+        "endChar": 18
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c672e8_003b2c28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T08:08:32Z",
+      "side": 1,
+      "message": "Failed:",
+      "range": {
+        "startLine": 176,
+        "startChar": 11,
+        "endLine": 176,
+        "endChar": 17
       },
       "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
