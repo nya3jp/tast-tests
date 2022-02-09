@@ -63,9 +63,8 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInGuest",
+		Name:     "chromeLoggedInGuestUserSessionNs",
 		Desc:     "Logged into a guest user session",
 		Contacts: []string{"benreich@chromium.org"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
@@ -76,9 +75,8 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInGuestForEA",
+		Name:     "chromeLoggedInGuestUserSessionNsForEA",
 		Desc:     "Logged into a guest user session for essential apps",
 		Contacts: []string{"shengjun@chromium.org"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
@@ -89,9 +87,8 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// Warning: this fixture enters the user session namespace
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInGuestForInputs",
+		Name:     "chromeLoggedInGuestUserSessionNsForInputs",
 		Desc:     "Logged into a guest user session for essential inputs",
 		Contacts: []string{"shengjun@chromium.org"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
