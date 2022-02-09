@@ -273,6 +273,9 @@ func (c *Config) EnableWallpaperSWA() bool { return c.m.EnableWallpaperSWA }
 // UseSandboxGaia returns true if the sandbox instance of Gaia should be used.
 func (c *Config) UseSandboxGaia() bool { return c.m.UseSandboxGaia }
 
+// DisableFieldTrialConfig returns whether to disable field trial testing config.
+func (c *Config) DisableFieldTrialConfig() bool { return c.m.DisableFieldTrialConfig }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -327,6 +330,7 @@ type MutableConfig struct {
 	EnableFilesAppSWA               bool       `reuse_match:"true"`
 	EnableWallpaperSWA              bool       `reuse_match:"true"`
 	UseSandboxGaia                  bool       `reuse_match:"true"`
+	DisableFieldTrialConfig         bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -363,6 +367,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			EnableFilesAppSWA:               false,
 			EnableWallpaperSWA:              true,
 			UseSandboxGaia:                  false,
+			DisableFieldTrialConfig:         false,
 		},
 	}
 	for _, opt := range opts {
