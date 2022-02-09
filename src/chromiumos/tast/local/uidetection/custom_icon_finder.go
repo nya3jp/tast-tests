@@ -6,6 +6,7 @@ package uidetection
 
 import (
 	"fmt"
+	"path/filepath"
 
 	pb "chromiumos/tast/local/uidetection/api"
 )
@@ -25,5 +26,5 @@ func CustomIcon(iconFile string) *Finder {
 			},
 		},
 	}
-	return newFromRequest(detectionRequest, iconFile)
+	return newFromRequest(detectionRequest, filepath.Base(iconFile))
 }

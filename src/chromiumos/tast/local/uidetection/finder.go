@@ -312,7 +312,7 @@ func (f *Finder) locationPx(ctx context.Context, uda *Context, scaleFactor float
 	failure := func(err error) (*Location, error) {
 		// Save the screenshot if the test fails to find an element.
 		if err := saveBytesImageToOutput(ctx, imagePng, screenshotFile); err != nil {
-			testing.ContextLogf(ctx, "Failed to save the screenshot: %s", err)
+			testing.ContextLogf(ctx, "INFO: couldn't save the screenshot to %s for the failed UI detection: %s", screenshotFile, err)
 		}
 		return nil, err
 	}
