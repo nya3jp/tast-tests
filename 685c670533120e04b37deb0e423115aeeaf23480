@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a5afaf4_0727efb0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-09T16:33:35Z",
+      "side": 1,
+      "message": "If |gridSize| could have a value 0 (meaning \"no grid\"), then\nwe could rely on Golang default values, and not need the \nfactory functions below, leaving many the existing test cases\nunchanged and just specifying the |gridSize| in the new test \ncases, WDYT?",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 84
+      },
+      "revId": "685c670533120e04b37deb0e423115aeeaf23480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3c8dbe_2386110f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-09T16:33:35Z",
+      "side": 1,
+      "message": "micro-nit: Go has a flat namespace per folder, so this might\nclash in the future with other similar functions (symbols?)\nwith the same name. Maybe s/createParams/createPlaybackParams/\n? Just a thought.",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "685c670533120e04b37deb0e423115aeeaf23480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
