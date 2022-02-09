@@ -1203,7 +1203,7 @@ func TestOpenclCtsParamsAreGenerated(t *testing.T) {
 	addTest("integer_ops", "long_logic", "", "fail", 1)
 	addTest("integer_ops", "long_math", "", "fail", 1)
 	addTest("integer_ops", "long_shift", "", "fail", 1)
-	addTest("integer_ops", "popcount", "", "fail", 1)
+	addTest("integer_ops", "popcount", "65535", "pass", 1)
 	addTest("integer_ops", "quick_char_compare", "", "pass", 1)
 	addTest("integer_ops", "quick_char_logic", "", "pass", 1)
 	addTest("integer_ops", "quick_char_math", "", "pass", 1)
