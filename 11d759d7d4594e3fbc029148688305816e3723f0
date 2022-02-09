@@ -16,6 +16,188 @@
       "message": "Hey Hidehiko, can you please take a look of this CL?\nWhen i test this test locally (in betty), for the first time i build and run the test, the LaunchLacrosFromShelf seems not working, do you have any idea why that might be the case? Thanks",
       "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4d5d0ca_87f17035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "Thank you for adding the test!",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c30e8bba_0b34987d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "nit: LacrosVariantExist as you write the lacros test :-)",
+      "range": {
+        "startLine": 25,
+        "startChar": 37,
+        "endLine": 25,
+        "endChar": 44
+      },
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c56011_cad2de1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "It is recommended to add the individual contributor name. Maybe mxcai@ can be added here?",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d04260e_22cd8e12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "nit: this can be dropped (dup with Attr).",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f727dce_1557e3ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "Can we have comment where this comes from?",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad5d733_411072bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "nit: defer l.Close() pls (explicit l.Close below won\u0027t be called on failure.)",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a43e6eb_b40cc3ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "nit:\n\nconst pwaURL \u003d",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8c1f70_73168906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "clarification: do you need to wait for the state transition here? Or are they on the same page and no wait is needed?",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee14ce3_21732bdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 9
+      },
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b55db3f_0c680169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:22:11Z",
+      "side": 1,
+      "message": "nit: dup line (with just below)?",
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
