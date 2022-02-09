@@ -28,7 +28,7 @@ func TestGlBenchParams(t *testing.T) {
 		}, {
 			Name:      "hasty",
 			Val:       config{config: &glbench.CrosConfig{Hasty: true}},
-			ExtraAttr: []string{"group:mainline"},
+			ExtraAttr: []string{"group:mainline", "informational"},
 			Timeout:   5 * time.Minute,
 			Fixture:   "graphicsNoChrome",
 		},`
