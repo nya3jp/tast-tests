@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e479a3fc_17863f6a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-02-09T14:29:14Z",
+      "side": 1,
+      "message": "Is it an arbitrary number or, there\u0027s a reason to use it? Could you comment?",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f301eb5_c63a4e28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-02-09T14:29:14Z",
+      "side": 1,
+      "message": "To prevent goroutine leaks, can we do\n\n```\nvar wg sync.WaitGroup\n\nhandlePipeLines :\u003d func(...) {\n  wg.Add(1)\n  ...\n  go func() {\n    ...\n    wg.Done()\n  }()\n}\ndefer wg.Wait()\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 4
+      },
+      "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6c2dd9f_541615bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-02-09T14:29:14Z",
+      "side": 1,
+      "message": "Can we make sure cmd is killed and waited in defer statement?\nOtherwise, cmd will not be waited in case s.Fatal is called mid-test.\n\n```\ndefer func() {\n  cmd.Process.Kill() \n  cmd.Wait()\n}()\n```",
+      "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb6861f_cc10fa87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests_debugger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-02-09T14:29:14Z",
+      "side": 1,
+      "message": "Same here. Can we kill and wait the command in defer?",
+      "revId": "ed1ed27c364b4089e16b1d79e7d3240ec9200aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
