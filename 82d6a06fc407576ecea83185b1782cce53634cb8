@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcffaa89_20adba25",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-02-09T18:56:31Z",
+      "side": 1,
+      "message": "Can we make that a separate change? It seems like a different issue from this CL.",
+      "parentUuid": "4151c05f_fbbfbdf2",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "82d6a06fc407576ecea83185b1782cce53634cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec7ba8a3_b1afc1ce",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-09T09:22:03Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "82d6a06fc407576ecea83185b1782cce53634cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2691557_e5622a5a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-02-09T18:56:31Z",
+      "side": 1,
+      "message": "Same comment as before. This sounds like a separate change (I don\u0027t want to conflate it with this CL). That makes future reverts easier without affecting other changes.",
+      "parentUuid": "ec7ba8a3_b1afc1ce",
       "range": {
         "startLine": 66,
         "startChar": 25,
