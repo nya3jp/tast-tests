@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c2d1a9_1f931383",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-09T09:22:03Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "82d6a06fc407576ecea83185b1782cce53634cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4151c05f_fbbfbdf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-09T09:22:03Z",
+      "side": 1,
+      "message": "nit: pass ctxForCleanUp by value, not bind by reference:\n\n```\ndefer func(ctx context.Context) {\n  if err :\u003d svo.SetOnOff(ctx, servo.CCDKeepaliveEn, servo.On); err !\u003d nil {\n    s.Log(\"Unable to enable CCD keepalive: \", err)\n  }\n}(ctxForCleanUp)\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "82d6a06fc407576ecea83185b1782cce53634cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7ba8a3_b1afc1ce",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/hpd_wake.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-09T09:22:03Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "82d6a06fc407576ecea83185b1782cce53634cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
