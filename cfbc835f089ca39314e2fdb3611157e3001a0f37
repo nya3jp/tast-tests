@@ -20,6 +20,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a56d4d88_6dfa7baa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T15:08:58Z",
+      "side": 1,
+      "message": "we should not change the data dependency on runtime.\nIn this case, I think you\u0027ll need to list all data.",
+      "range": {
+        "startLine": 43,
+        "startChar": 60,
+        "endLine": 43,
+        "endChar": 84
+      },
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e728b85b_2066d495",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T15:08:58Z",
+      "side": 1,
+      "message": "could you move this out so that no need to compile multiple times?",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "026f1920_5205141f",
         "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
         "patchSetId": 7
@@ -49,6 +89,41 @@
       "side": 1,
       "message": "As we haven\u0027t created metrics for chromeos, and android metrics are quite useful, we choose to use the existing android metrics for now.\n\nRefs: \nhttps://docs.google.com/document/d/1r9OjfQoWbBlJnNA3R6dZgGPfc3nRvtcLCC-S93kaDjg/edit?resourcekey\u003d0-oyfwJYw0L9Bf38GMeA2fVg#bookmark\u003did.4des8jezb0li\nhttps://cs.android.com/android/platform/superproject/+/master:external/perfetto/protos/perfetto/metrics/metrics.proto;l\u003d107",
       "parentUuid": "026f1920_5205141f",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed3ad089_52ee8cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T15:08:58Z",
+      "side": 1,
+      "message": "Could you document explicitly here?",
+      "parentUuid": "5c569a4b_d36ca233",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3476bccf_a90ae697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/sensor_iioservice_hard.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T15:08:58Z",
+      "side": 1,
+      "message": "ditto",
       "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -119,6 +194,46 @@
       "side": 1,
       "message": "\u003e Does it mean that any test that want to report CPU usage information will have to use this file?\nNo, each test in hardware can use the wanted process name.\n\n\u003e move it to the sensor code.\nWhere? like hardware/iio/const.go ? It seems that declaring it in one of the sensor_iioservice...go doesn\u0027t make sense, and we couldn\u0027t declare it twice.",
       "parentUuid": "14efb425_27f98041",
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "968b3742_b6bb8690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T15:08:58Z",
+      "side": 1,
+      "message": "could you avoid taking testing.State? Instead, could you return error properly and let caller handle it?\n\nDitto for below.",
+      "range": {
+        "startLine": 17,
+        "startChar": 126,
+        "endLine": 17,
+        "endChar": 143
+      },
+      "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e52e105_152c31a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hardware/util/util.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T15:08:58Z",
+      "side": 1,
+      "message": "you can return so foundTarget is no longer needed.\n\nditto for below.",
       "revId": "cfbc835f089ca39314e2fdb3611157e3001a0f37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
