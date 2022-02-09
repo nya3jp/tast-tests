@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0f6893_2ae76b58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "could you avoid generating the data on runtime, like formatting the string?\nPractically, testing.Test here should be build-time constant. There\u0027s no way to guarantee in Go, unfortunately, so we cannot make a lint, but we need it. It is important because this is an interface to talk to infra running the test, and in near future these metadata must be available before executing the test itself.",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc55fe7_98aee755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "can these be a part of testParam, too?",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 48
+      },
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d26d2e0_ad81698d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "err check should come before defer, right?",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87eb125f_acdc83d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "nit: buf :\u003d \u0026bytes.Buffer{} is enough?",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f426e23_4761d46d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "nit/style:\n\nif err :\u003d png.Encode(buf, image); err !\u003d nil {\n  return nil, err\n}\nreturn buf.Bytes(), nil",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 21
+      },
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db39f5ad_1e83dde9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "pls document the responsibility of the caller. (on success it must delete the directory).",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecef7b49_d346dcb5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "could you delete the dir and return nil-value (empty string) on error for consistency?\nDitto for below. (and above, if you can fix the existing code, too).",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67c48ad_7c521863",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "could you document the side effect? In both success and error cases, and what is the expected handling in callers?",
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a828bd4_941c7784",
+        "filename": "src/chromiumos/tast/local/chrome/ash/launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:10:11Z",
+      "side": 1,
+      "message": "sytle: could you follow the common message pattern?\n\nunexpected count of icon: got %d, want %d",
+      "range": {
+        "startLine": 281,
+        "startChar": 58,
+        "endLine": 281,
+        "endChar": 81
+      },
+      "revId": "2e644a6c817ad544faf53ee97dc42cba01c735b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
