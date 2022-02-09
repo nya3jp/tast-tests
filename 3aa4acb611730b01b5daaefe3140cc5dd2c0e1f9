@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fed40b_48f8c1f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-09T20:11:06Z",
+      "side": 1,
+      "message": "Add some comments to help the review.",
+      "revId": "3aa4acb611730b01b5daaefe3140cc5dd2c0e1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e948ae_139eb095",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-09T20:11:06Z",
+      "side": 1,
+      "message": "To reviewers: this fixture just reuse the implementation in chrome package. Provide optionsCallBack to provide authentication info and other Chrome options.\n\nOne of the Chrome options is chrome.TryReuseSession(), this is used by MTBF testing to make sure Chrome login session is re-used and no new login when initiating different tast runs.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 62
+      },
+      "revId": "3aa4acb611730b01b5daaefe3140cc5dd2c0e1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "559f2751_cfd92d26",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-09T20:11:06Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 64
+      },
+      "revId": "3aa4acb611730b01b5daaefe3140cc5dd2c0e1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "460b7ec2_c27b49e2",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-09T20:11:06Z",
+      "side": 1,
+      "message": "To reviewers: set the parent to above fixture, but provide new implementation to clean up remaining Chrome tabs from last re-used login session.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "3aa4acb611730b01b5daaefe3140cc5dd2c0e1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a5de24_9d14cfda",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-02-09T20:11:06Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 38
+      },
+      "revId": "3aa4acb611730b01b5daaefe3140cc5dd2c0e1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
