@@ -86,21 +86,21 @@ const (
 	encoderPossibleClones                       = 5
 )
 
-type modetestCrtcColumn int
+type modetestModeInfoColumn int
 
 const (
-	crtcID         modetestCrtcColumn = 1
-	crtcName                          = 2
-	crtcVrefresh                      = 3
-	crtcHdisplay                      = 4
-	crtcHsyncStart                    = 5
-	crtcHsyncEnd                      = 6
-	crtcHtotal                        = 7
-	crtcVdisplay                      = 8
-	crtcVSyncStart                    = 9
-	crtcVsyncEnd                      = 10
-	crtcVtotal                        = 11
-	crtcClock                         = 12
+	modeInfoID         modetestModeInfoColumn = 1
+	modeInfoName                              = 2
+	modeInfoVrefresh                          = 3
+	modeInfoHdisplay                          = 4
+	modeInfoHsyncStart                        = 5
+	modeInfoHsyncEnd                          = 6
+	modeInfoHtotal                            = 7
+	modeInfoVdisplay                          = 8
+	modeInfoVSyncStart                        = 9
+	modeInfoVsyncEnd                          = 10
+	modeInfoVtotal                            = 11
+	modeInfoClock                             = 12
 )
 
 func isPrivacyScreenSupported(ctx context.Context) (bool, error) {
@@ -211,7 +211,7 @@ func getModetestEncoderInfo(ctx context.Context, encoderID string, column modete
 	return strings.TrimRight(string(b), "\n"), nil
 }
 
-func getModetestCrtcInfo(ctx context.Context, crtcID string, column modetestCrtcColumn) (string, error) {
+func getModetestCrtcInfo(ctx context.Context, crtcID string, column modetestModeInfoColumn) (string, error) {
 	// Example output of "modetest -p" (partially):
 	// id      fb      pos     size
 	// 41      97      (0,0)   (1920x1280)
@@ -225,6 +225,33 @@ func getModetestCrtcInfo(ctx context.Context, crtcID string, column modetestCrtc
 	}
 
 	return strings.TrimRight(string(b), "\n"), nil
+}
+
+func getModetestModeInfo(ctx context.Context, column modetestModeInfoColumn) (string, error) {
+	// Example output of mode info:
+	// #0 1920x1280 60.00 1920 1944 1992 2080 1280 1286 1303 1320 164740 flags: nhsync, nvsync; type: preferred, driver
+	//
+	// We should find the mode info in the following ways:
+	// 1. Find the mode info in crtc first, it means the current used mode info.
+	// 2. Fall back to the "preferred" mode info in connector info.
+	if encoderID, err := getModetestConnectorInfo(ctx, connectorEncoder); err != nil {
+		return "", err
+	} else if encoderID == "0" {
+		// It means that we can't find the crtc info. So fall back to method 2.
+		cmd := "modetest -c | grep eDP -A 10 | grep preferred | awk -e '{print $" + strconv.Itoa(int(column)) + "}'"
+		b, err := testexec.CommandContext(ctx, "sh", "-c", cmd).Output(testexec.DumpLogOnError)
+		if err != nil {
+			return "", err
+		}
+
+		return strings.TrimRight(string(b), "\n"), nil
+	} else if crtcID, err := getModetestEncoderInfo(ctx, encoderID, encoderCrtc); err != nil {
+		return "", err
+	} else if info, err := getModetestCrtcInfo(ctx, crtcID, column); err != nil {
+		return "", err
+	} else {
+		return info, nil
+	}
 }
 
 func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) error {
@@ -250,17 +277,13 @@ func verifyEmbeddedDisplaySize(ctx context.Context, EDP *embeddedDisplayInfo) er
 }
 
 func verifyEmbeddedDisplayResolution(ctx context.Context, EDP *embeddedDisplayInfo) error {
-	if encoderID, err := getModetestConnectorInfo(ctx, connectorEncoder); err != nil {
+	if horizontalRaw, err := getModetestModeInfo(ctx, modeInfoHdisplay); err != nil {
 		return err
-	} else if crtcID, err := getModetestEncoderInfo(ctx, encoderID, encoderCrtc); err != nil {
-		return err
-	} else if horizontalRaw, err := getModetestCrtcInfo(ctx, crtcID, crtcHdisplay); err != nil {
-		return nil
 	} else if horizontal, err := strconv.ParseUint(horizontalRaw, 10, 32); err != nil {
 		return err
 	} else if err := compareUint32Pointer(EDP.ResolutionHorizontal, uint32(horizontal), "ResolutionHorizontal"); err != nil {
 		return err
-	} else if verticalRaw, err := getModetestCrtcInfo(ctx, crtcID, crtcVdisplay); err != nil {
+	} else if verticalRaw, err := getModetestModeInfo(ctx, modeInfoVdisplay); err != nil {
 		return err
 	} else if vertical, err := strconv.ParseUint(verticalRaw, 10, 32); err != nil {
 		return err
@@ -273,19 +296,15 @@ func verifyEmbeddedDisplayResolution(ctx context.Context, EDP *embeddedDisplayIn
 
 func verifyEmbeddedDisplayRefreshRate(ctx context.Context, EDP *embeddedDisplayInfo) error {
 	var wantRefreshRate float64
-	if encoderID, err := getModetestConnectorInfo(ctx, connectorEncoder); err != nil {
-		return err
-	} else if crtcID, err := getModetestEncoderInfo(ctx, encoderID, encoderCrtc); err != nil {
-		return err
-	} else if htotalRaw, err := getModetestCrtcInfo(ctx, crtcID, crtcHtotal); err != nil {
+	if htotalRaw, err := getModetestModeInfo(ctx, modeInfoHtotal); err != nil {
 		return err
 	} else if htotal, err := strconv.ParseUint(htotalRaw, 10, 32); err != nil {
 		return err
-	} else if vtotalRaw, err := getModetestCrtcInfo(ctx, crtcID, crtcVtotal); err != nil {
+	} else if vtotalRaw, err := getModetestModeInfo(ctx, modeInfoVtotal); err != nil {
 		return err
 	} else if vtotal, err := strconv.ParseUint(vtotalRaw, 10, 32); err != nil {
 		return err
-	} else if clockRaw, err := getModetestCrtcInfo(ctx, crtcID, crtcClock); err != nil {
+	} else if clockRaw, err := getModetestModeInfo(ctx, modeInfoClock); err != nil {
 		return err
 	} else if clock, err := strconv.ParseUint(clockRaw, 10, 32); err != nil {
 		return err
