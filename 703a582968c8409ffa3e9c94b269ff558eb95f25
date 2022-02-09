@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3111ba18_a445845a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-09T18:25:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4117691d_93cddb80",
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01c8efba_0904a1ed",
@@ -490,6 +508,30 @@
       "side": 1,
       "message": "Looking at https://source.corp.google.com/search?q\u003dTearDown%5C(%20f:go\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public\n\nI haven\u0027t seen this pattern (TearDown() has one line call to a cleanUp function). For me it looks off. Even in the future if we have logic that is part of TearDown and not part of cleanUp, I\u0027d put everything in TearDown() unless it becomes too big.",
       "parentUuid": "dcf7a18a_f43adce6",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "703a582968c8409ffa3e9c94b269ff558eb95f25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7ad3bc_f552db67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-09T18:25:57Z",
+      "side": 1,
+      "message": "I didn\u0027t find example of calling TearDown() from SetUp() either. I\u0027ll remove cleanUp function.",
+      "parentUuid": "503ee64e_623ecd60",
       "range": {
         "startLine": 125,
         "startChar": 3,
