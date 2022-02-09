@@ -108,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06cee69a_8cb0a1a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T03:23:11Z",
+      "side": 1,
+      "message": "MessagePipe is better than CapMessagePipe.\n\nUsually the tests are for functionality test. Performance tests have \"Pref\" prefix or suffix. Stress tests have \"Stress\" prefix or suffix.",
+      "parentUuid": "cbca124a_88ed192c",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "626365fc_2230f1d0",
         "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
         "patchSetId": 1
