@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba332cf_46f8b85b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_in_contacts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-09T00:36:26Z",
+      "side": 1,
+      "message": "as long as a token doesn\u0027t show up afterwards, but after 30 seconds it seems like a pretty good bet that it won\u0027t.",
+      "parentUuid": "82d14c43_8692bc90",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 48
+      },
+      "revId": "be5ad6fd7f7b2686e0c12ef5953364a131e0c090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7aeeb3e_6d33d663",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-05T21:19:51Z",
       "side": 1,
       "message": "Do we know what causes it to not appear?",
+      "range": {
+        "startLine": 282,
+        "startChar": 5,
+        "endLine": 282,
+        "endChar": 14
+      },
+      "revId": "be5ad6fd7f7b2686e0c12ef5953364a131e0c090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61fd9df_d84eb7e3",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-09T00:36:26Z",
+      "side": 1,
+      "message": "not sure on this one, will ask for some clarification",
+      "parentUuid": "b7aeeb3e_6d33d663",
       "range": {
         "startLine": 282,
         "startChar": 5,
