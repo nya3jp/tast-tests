@@ -188,6 +188,118 @@ var Catalan = InputMethod{
 	VoiceLanguage:       LanguageCa,
 }
 
+// GreekTransliteration represents the input method of Greek Transliteration.
+var GreekTransliteration = InputMethod{
+	Name:                "GreekTransliteration",
+	ID:                  "el-t-i0-und",
+	HandwritingLanguage: LanguageEl,
+	VoiceLanguage:       LanguageEl,
+}
+
+// Gujarati represents the input method of Gujarati.
+var Gujarati = InputMethod{
+	Name:                "Gujarati",
+	ID:                  "gu-t-i0-und",
+	HandwritingLanguage: LanguageGu,
+	VoiceLanguage:       LanguageGu,
+}
+
+// Hindi represents the input method of Hindi.
+var Hindi = InputMethod{
+	Name:                "Hindi",
+	ID:                  "hi-t-i0-und",
+	HandwritingLanguage: LanguageHi,
+	VoiceLanguage:       LanguageHi,
+}
+
+// Kannada represents the input method of Kannada.
+var Kannada = InputMethod{
+	Name:                "Kannada",
+	ID:                  "kn-t-i0-und",
+	HandwritingLanguage: LanguageKn,
+	VoiceLanguage:       LanguageKn,
+}
+
+// Malayalam represents the input method of Malayalam.
+var Malayalam = InputMethod{
+	Name:                "Malayalam",
+	ID:                  "ml-t-i0-und",
+	HandwritingLanguage: LanguageMl,
+	VoiceLanguage:       LanguageMl,
+}
+
+// Marathi represents the input method of Marathi.
+var Marathi = InputMethod{
+	Name:                "Marathi",
+	ID:                  "mr-t-i0-und",
+	HandwritingLanguage: LanguageMr,
+	VoiceLanguage:       LanguageMr,
+}
+
+// NepaliTransliteration represents the input method of Nepali transliteration.
+var NepaliTransliteration = InputMethod{
+	Name:                "NepaliTransliteration",
+	ID:                  "ne-t-i0-und",
+	HandwritingLanguage: LanguageNe,
+	VoiceLanguage:       LanguageNe,
+}
+
+// Odia represents the input method of Odia.
+var Odia = InputMethod{
+	Name:                "Odia",
+	ID:                  "or-t-i0-und",
+	HandwritingLanguage: LanguageOr,
+	VoiceLanguage:       LanguageOr,
+}
+
+// PersianTransliteration represents the input method of Persian transliteration.
+var PersianTransliteration = InputMethod{
+	Name:                "PersianTransliteration",
+	ID:                  "fa-t-i0-und",
+	HandwritingLanguage: LanguageFa,
+	VoiceLanguage:       LanguageFa,
+}
+
+// Punjabi represents the input method of Punjabi.
+var Punjabi = InputMethod{
+	Name:                "Punjabi",
+	ID:                  "pa-t-i0-und",
+	HandwritingLanguage: LanguagePa,
+	VoiceLanguage:       LanguagePa,
+}
+
+// Sanskrit represents the input method of Sanskrit.
+var Sanskrit = InputMethod{
+	Name:                "Sanskrit",
+	ID:                  "sa-t-i0-und",
+	HandwritingLanguage: LanguageSa,
+	VoiceLanguage:       LanguageSa,
+}
+
+// Tamil represents the input method of Tamil.
+var Tamil = InputMethod{
+	Name:                "Tamil",
+	ID:                  "ta-t-i0-und",
+	HandwritingLanguage: LanguageTa,
+	VoiceLanguage:       LanguageTa,
+}
+
+// Telugu represents the input method of Telugu.
+var Telugu = InputMethod{
+	Name:                "Telugu",
+	ID:                  "te-t-i0-und",
+	HandwritingLanguage: LanguageTe,
+	VoiceLanguage:       LanguageTe,
+}
+
+// Urdu represents the input method of Urdu.
+var Urdu = InputMethod{
+	Name:                "Urdu",
+	ID:                  "ur-t-i0-und",
+	HandwritingLanguage: LanguageUr,
+	VoiceLanguage:       LanguageUr,
+}
+
 // inputMethods represents in-use (available) IMEs in ChromeOS.
 // Only listed input methods are promised to be available.
 var inputMethods = []InputMethod{
@@ -207,6 +319,20 @@ var inputMethods = []InputMethod{
 	ChineseCangjie,
 	Korean,
 	Arabic,
+	GreekTransliteration,
+	Gujarati,
+	Hindi,
+	Kannada,
+	Malayalam,
+	Marathi,
+	NepaliTransliteration,
+	Odia,
+	PersianTransliteration,
+	Punjabi,
+	Sanskrit,
+	Tamil,
+	Telugu,
+	Urdu,
 }
 
 // ActiveInputMethod returns the active input method via Chrome API.
