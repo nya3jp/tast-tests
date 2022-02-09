@@ -134,6 +134,30 @@
       },
       "revId": "91ad61beebb5efbb1cea2e79badc0f787321e9fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a160e621_13c62f58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_oem_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-09T18:26:08Z",
+      "side": 1,
+      "message": "Thanks! Added extra log.",
+      "parentUuid": "e0e0692b_effdb8e8",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "91ad61beebb5efbb1cea2e79badc0f787321e9fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
