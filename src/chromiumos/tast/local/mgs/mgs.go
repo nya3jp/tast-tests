@@ -162,9 +162,11 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*MGS, *chr
 		return nil, nil, errors.Wrap(err, "Chrome restart failed")
 	}
 
-	// Ensure Chrome is ready for testing.
-	if _, err := cr.TestAPIConn(ctx); err != nil {
-		return nil, nil, errors.Wrap(err, "failed to create Test API connection")
+	if cfg.m.AutoLaunch {
+		// Ensure Chrome is ready for testing.
+		if _, err := cr.TestAPIConn(ctx); err != nil {
+			return nil, nil, errors.Wrap(err, "failed to create Test API connection")
+		}
 	}
 
 	return &MGS{cr: cr, fdms: fdms}, cr, nil
