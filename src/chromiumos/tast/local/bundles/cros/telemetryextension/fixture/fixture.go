@@ -20,14 +20,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const (
-	manifestJSON = "manifest.json"
-	swJS         = "sw.js"
-
-	cleanupTimeout = chrome.ResetTimeout + 20*time.Second
-)
-
-var dataFiles = []string{manifestJSON, swJS}
+const cleanupTimeout = chrome.ResetTimeout + 20*time.Second
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -38,19 +31,51 @@ func init() {
 			"mgawad@google.com", // Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
-		Impl:            newTelemetryExtensionFixture(),
+		Impl:            newTelemetryExtensionFixture(false),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
-		Data:            dataFiles,
+		Data:            extFiles(false),
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionOptionsPage",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension with options page",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(true),
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		Data:            extFiles(true),
 	})
 }
 
-func newTelemetryExtensionFixture() *telemetryExtensionFixture {
-	return &telemetryExtensionFixture{}
+func manifestFile(hasOptions bool) string {
+	if hasOptions {
+		return "manifest_with_options_page.json"
+	}
+	return "manifest_without_options_page.json"
+}
+
+func extFiles(hasOptions bool) []string {
+	files := []string{manifestFile(hasOptions), "sw.js"}
+	if hasOptions {
+		files = append(files, "options.html")
+	}
+	return files
+}
+
+func newTelemetryExtensionFixture(hasOptions bool) *telemetryExtensionFixture {
+	return &telemetryExtensionFixture{
+		hasOptions: hasOptions,
+	}
 }
 
 // telemetryExtensionFixture implements testing.FixtureImpl.
 type telemetryExtensionFixture struct {
+	hasOptions bool
+
 	dir string
 	cr  *chrome.Chrome
 
@@ -63,6 +88,8 @@ type Value struct {
 
 	PwaConn *chrome.Conn
 	ExtConn *chrome.Conn
+
+	TConn *chrome.TestConn
 }
 
 func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -85,7 +112,7 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to chown TelemetryExtension dir: ", err)
 	}
 
-	for _, file := range dataFiles {
+	for _, file := range extFiles(f.hasOptions) {
 		if err := fsutil.CopyFile(s.DataPath(file), filepath.Join(dir, file)); err != nil {
 			s.Fatalf("Failed to copy %q file to %q: %v", file, dir, err)
 		}
@@ -93,6 +120,10 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		if err := os.Chown(filepath.Join(dir, file), int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
 			s.Fatalf("Failed to chown %q: %v", file, err)
 		}
+	}
+
+	if err := os.Rename(filepath.Join(dir, manifestFile(f.hasOptions)), filepath.Join(dir, "manifest.json")); err != nil {
+		s.Fatal("Failed to rename manifest file: ", err)
 	}
 
 	cr, err := chrome.New(ctx, chrome.UnpackedExtension(dir))
@@ -122,6 +153,12 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 	if err := chrome.AddTastLibrary(ctx, extConn); err != nil {
 		s.Fatal("Failed to add Tast library to Telemetry Extension: ", err)
 	}
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get test API connections: ", err)
+	}
+	f.v.TConn = tconn
 
 	return &f.v
 }
