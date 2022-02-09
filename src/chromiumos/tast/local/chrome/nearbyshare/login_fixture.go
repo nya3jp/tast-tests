@@ -18,7 +18,7 @@ import (
 
 // NewNearbyShareLogin creates a fixture that logs in and enables Nearby Share.
 // Note that nearbyShareGAIALogin inherits from nearbyShareAndroidSetup.
-func NewNearbyShareLogin(arcEnabled, backgroundScanningEnabled bool) testing.FixtureImpl {
+func NewNearbyShareLogin(arcEnabled, backgroundScanningEnabled, useAndroidAccount bool) testing.FixtureImpl {
 	defaultNearbyOpts := []chrome.Option{
 		chrome.EnableFeatures("GwpAsanMalloc", "GwpAsanPartitionAlloc"),
 		chrome.DisableFeatures("SplitSettingsSync"),
@@ -32,8 +32,9 @@ func NewNearbyShareLogin(arcEnabled, backgroundScanningEnabled bool) testing.Fix
 			chrome.EnableFeatures("NearbySharingBackgroundScanning"))
 	}
 	return &nearbyShareLoginFixture{
-		opts:       defaultNearbyOpts,
-		arcEnabled: arcEnabled,
+		opts:              defaultNearbyOpts,
+		arcEnabled:        arcEnabled,
+		useAndroidAccount: useAndroidAccount,
 	}
 }
 
@@ -48,6 +49,9 @@ func init() {
 		customCrOSUsername = "cros_username"
 		customCrOSPassword = "cros_password"
 
+		defaultAndroidUsername = "nearbyshare.android_username"
+		defaultAndroidPassword = "nearbyshare.android_password"
+
 		// Set this var to True to prevent the tests from clearing existing user accounts from the DUT.
 		keepState = nearbycommon.KeepStateVar
 	)
@@ -59,12 +63,38 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(false, false),
+		Impl:   NewNearbyShareLogin(false, false, false),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
 			customCrOSUsername,
 			customCrOSPassword,
+			defaultAndroidUsername,
+			defaultAndroidPassword,
+			keepState,
+		},
+		SetUpTimeout:    2 * time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "nearbyShareGAIALoginAndroidAccount",
+		Desc: "CrOS login with Android nearby share account and Nearby Share enabled",
+		Contacts: []string{
+			"chromeos-sw-engprod@google.com",
+		},
+		Parent: "nearbyShareAndroidSetup",
+		Impl:   NewNearbyShareLogin(false, false, true),
+		Vars: []string{
+			defaultCrOSUsername,
+			defaultCrOSPassword,
+			customCrOSUsername,
+			customCrOSPassword,
+			defaultAndroidUsername,
+			defaultAndroidPassword,
 			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
@@ -81,12 +111,14 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(false, true),
+		Impl:   NewNearbyShareLogin(false, true, false),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
 			customCrOSUsername,
 			customCrOSPassword,
+			defaultAndroidUsername,
+			defaultAndroidPassword,
 			keepState,
 		},
 		SetUpTimeout:    2 * time.Minute,
@@ -104,12 +136,14 @@ func init() {
 			"arc-app-dev@google.com",
 		},
 		Parent: "nearbyShareAndroidSetup",
-		Impl:   NewNearbyShareLogin(true, false),
+		Impl:   NewNearbyShareLogin(true, false, false),
 		Vars: []string{
 			defaultCrOSUsername,
 			defaultCrOSPassword,
 			customCrOSUsername,
 			customCrOSPassword,
+			defaultAndroidUsername,
+			defaultAndroidPassword,
 			keepState,
 		},
 		SetUpTimeout:    3 * time.Minute,
@@ -121,10 +155,11 @@ func init() {
 }
 
 type nearbyShareLoginFixture struct {
-	opts       []chrome.Option
-	cr         *chrome.Chrome
-	arcEnabled bool
-	arc        *arc.ARC
+	opts              []chrome.Option
+	cr                *chrome.Chrome
+	arcEnabled        bool
+	arc               *arc.ARC
+	useAndroidAccount bool
 }
 
 func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -144,10 +179,17 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 	crosPassword := s.RequiredVar("nearbyshare.cros_password")
 	customUser, userOk := s.Var("cros_username")
 	customPass, passOk := s.Var("cros_password")
+
 	if userOk && passOk {
 		s.Log("Logging in with user-provided credentials")
 		crosUsername = customUser
 		crosPassword = customPass
+	} else if f.useAndroidAccount {
+
+		// Logging in on the same account as the Phone ensures that certificates are distributed to the CrOS device. Android prepends the logged in account to contacts. This works around the delay in syncing contacts from contacts.google.com to the Phones local address book, causing the CrOS device to fail during discovery because it is not able to dec.
+		s.Log("Logging in with Android GAIA credentials")
+		crosUsername = s.RequiredVar("nearbyshare.android_username")
+		crosPassword = s.RequiredVar("nearbyshare.android_password")
 	} else {
 		s.Log("Logging in with default GAIA credentials")
 	}

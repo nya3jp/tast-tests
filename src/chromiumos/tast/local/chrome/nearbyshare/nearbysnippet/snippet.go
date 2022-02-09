@@ -208,6 +208,12 @@ func (a *AndroidNearbyDevice) SetupDevice(ctx context.Context, dataUsage DataUsa
 	return err
 }
 
+// SetEnabled sets Nearby Share enabled.
+func (a *AndroidNearbyDevice) SetEnabled(ctx context.Context, enabled bool) error {
+	_, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "setEnabled", enabled)
+	return err
+}
+
 // ReceiveFile starts receiving with a timeout.
 // Sets the AndroidNearbyDevice's transferCallback, which is needed when awaiting follow-up SnippetEvents when calling eventWaitAndGet.
 func (a *AndroidNearbyDevice) ReceiveFile(ctx context.Context, senderName, receiverName string, isHighVisibility bool, turnaroundTime time.Duration) error {

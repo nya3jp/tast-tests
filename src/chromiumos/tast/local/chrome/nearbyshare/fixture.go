@@ -50,7 +50,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		Parent:          "nearbyShareGAIALogin",
+		Parent:          "nearbyShareGAIALoginAndroidAccount",
 		SetUpTimeout:    2 * time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -61,7 +61,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:   "nearbyShareDataUsageOnlineAllContacts",
 		Desc:   "Nearby Share enabled on CrOS and Android configured with 'Data Usage' set to 'Online',  'Visibility' set to 'All Contacts'",
-		Parent: "nearbyShareGAIALogin",
+		Parent: "nearbyShareGAIALoginAndroidAccount",
 		Impl:   NewNearbyShareFixture(nearbycommon.DataUsageOnline, nearbycommon.VisibilityAllContacts, nearbysnippet.DataUsageOnline, nearbysnippet.VisibilityAllContacts, false),
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
