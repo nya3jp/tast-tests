@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0c12c4b_44931200",
+        "filename": "src/chromiumos/tast/local/chrome/nearbyshare/login_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-02-09T18:50:25Z",
+      "side": 1,
+      "message": "maybe add a comment mentioning the contacts syncing issue and how this works around it",
+      "revId": "91d3d0d3ca2d516a00710818bfeef29d30bd1ada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
