@@ -77,7 +77,7 @@ func Basic(ctx context.Context, s *testing.State) {
 	}
 	defer func() {
 		if err := svo.SetOnOff(ctxForCleanUp, servo.CCDKeepaliveEn, servo.On); err != nil {
-			s.Error("Unable to enable CCD keepalive: ", err)
+			s.Log("Unable to enable CCD keepalive: ", err)
 		}
 	}()
 
