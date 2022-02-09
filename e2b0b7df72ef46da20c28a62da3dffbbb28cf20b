@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4642a0b4_25b48985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multiple_arc_profile.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-02-09T19:21:12Z",
+      "side": 1,
+      "message": "Nit: Get it from arc.parentUser var",
+      "range": {
+        "startLine": 102,
+        "startChar": 53,
+        "endLine": 102,
+        "endChar": 81
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18be7b9f_78fda92a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/educoexistence_arc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-02-09T19:21:12Z",
+      "side": 1,
+      "message": "Does this run on Lacros only? It is not expected behavior otherwise now.\nThe EDU account should not show in the account picker in ARC++. I would expect \"failed to find Account Name\" error.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "e2b0b7df72ef46da20c28a62da3dffbbb28cf20b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
