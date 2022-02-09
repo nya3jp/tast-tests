@@ -5,6 +5,7 @@
 package storage
 
 import (
+	"bytes"
 	"context"
 	"io/ioutil"
 	"os"
@@ -12,6 +13,7 @@ import (
 	"time"
 
 	androidui "chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -74,12 +76,12 @@ type TestConfig struct {
 // Downloads, MyFiles etc, using the test android app, ArcFileReaderTest. The app will display
 // the respective Action, URI and FileContent on its UI, to be validated against our
 // expected values.
-func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, cr *chrome.Chrome, d *androidui.Device, config TestConfig, expectations []Expectation) {
+func TestOpenWithAndroidApp(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, d *androidui.Device, config TestConfig, expectations []Expectation) error {
 	testing.ContextLogf(ctx, "Performing TestOpenWithAndroidApp on: %s", config.DirName)
 
 	testing.ContextLog(ctx, "Installing ArcFileReaderTest app")
 	if err := a.Install(ctx, arc.APKPath("ArcFileReaderTest.apk")); err != nil {
-		s.Fatal("Failed to install ArcFileReaderTest app: ", err)
+		return errors.Wrap(err, "failed to install ArcFileReaderTest app")
 	}
 
 	testFileLocation := filepath.Join(config.DirPath, config.FileName)
@@ -90,7 +92,7 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 		if fileNotExist {
 			testing.ContextLog(ctx, "Setting up a test file")
 			if err := ioutil.WriteFile(testFileLocation, []byte(ExpectedFileContent), 0666); err != nil {
-				s.Fatalf("Failed to create test file %s: %s", testFileLocation, err)
+				return errors.Wrapf(err, "failed to create test file %s", testFileLocation)
 			}
 		}
 		if !config.KeepFile {
@@ -99,21 +101,23 @@ func TestOpenWithAndroidApp(ctx context.Context, s *testing.State, a *arc.ARC, c
 	}
 
 	if err := a.WaitIntentHelper(ctx); err != nil {
-		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
+		return errors.Wrap(err, "failed to wait for ARC Intent Helper")
 	}
 
 	files, err := openFilesApp(ctx, cr)
 	if err != nil {
-		s.Fatal("Failed to open Files App: ", err)
+		return errors.Wrap(err, "failed to open Files app")
 	}
 
 	if err := openWithReaderApp(ctx, files, config); err != nil {
-		s.Fatal("Could not open file with ArcFileReaderTest: ", err)
+		return errors.Wrap(err, "failed to open file with ArcFileReaderTest app")
 	}
 
 	if err := validateResult(ctx, d, expectations); err != nil {
-		s.Fatal("ArcFileReaderTest's data is invalid: ", err)
+		return errors.Wrap(err, "ArcFileReaderTest app's data is invalid")
 	}
+
+	return nil
 }
 
 // openFilesApp opens the Files App and returns a pointer to it.
@@ -216,4 +220,84 @@ func validateLabel(ctx context.Context, d *androidui.Device, expectation Expecta
 
 	testing.ContextLogf(ctx, "Label content of %s = %s", expectation.LabelID, actual)
 	return nil
+}
+
+// TestVolumeSharing tests whether a storage volume is properly shared with ARC
+// by checking whether 1) a file created on the Android side can be read from
+// the Chrome OS side, and 2) a file created on the Chrome OS side can be read
+// by Android apps via the Chrome OS Files app.
+func TestVolumeSharing(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, d *androidui.Device, dirPath, dirName, uuid, fileName, dataPath string) error {
+	testing.ContextLog(ctx, "Testing Android -> CrOS")
+	if err := testVolumeSharingARCToCros(ctx, a, dirPath, uuid, fileName, dataPath); err != nil {
+		return errors.Wrap(err, "Android -> CrOS failed")
+	}
+
+	testing.ContextLog(ctx, "Testing CrOS -> Android")
+	if err := testVolumeSharingCrosToARC(ctx, a, cr, d, dirPath, dirName, uuid); err != nil {
+		return errors.Wrap(err, "CrOS -> Android failed")
+	}
+
+	return nil
+}
+
+// testVolumeSharingARCToCros checks whether a file created in a volume on the
+// Android side can be read from the Chrome OS side.
+func testVolumeSharingARCToCros(ctx context.Context, a *arc.ARC, crosDir, uuid, fileName, dataPath string) error {
+	androidPath := filepath.Join("/storage", uuid, fileName)
+	crosPath := filepath.Join(crosDir, fileName)
+
+	return testPushToARCAndReadFromCros(ctx, a, androidPath, crosPath, dataPath)
+}
+
+// testPushToARCAndReadFromCros pushes the content of dataPath (in Chrome OS)
+// to androidPath (in Android) using adb, and then checks whether the file can
+// be accessed under crosPath (in Chrome OS).
+func testPushToARCAndReadFromCros(ctx context.Context, a *arc.ARC, androidPath, crosPath, dataPath string) (retErr error) {
+	// Shorten the context to make room for cleanup jobs.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	expected, err := ioutil.ReadFile(dataPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read from %s in Chrome OS", dataPath)
+	}
+
+	if err := a.WriteFile(ctx, androidPath, expected); err != nil {
+		return errors.Wrapf(err, "failed to write to %s in Android", androidPath)
+	}
+	defer func(ctx context.Context) {
+		if err := a.RemoveAll(ctx, androidPath); err != nil {
+			if retErr == nil {
+				retErr = errors.Wrapf(err, "failed to remove %s in Android", androidPath)
+			} else {
+				testing.ContextLogf(ctx, "Failed to remove %s in Android: %v", androidPath, err)
+			}
+		}
+	}(cleanupCtx)
+
+	actual, err := ioutil.ReadFile(crosPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read from %s in Chrome OS", crosPath)
+	}
+	if !bytes.Equal(actual, expected) {
+		return errors.Errorf("content mismatch between %s in Android and %s in Chrome OS", androidPath, crosPath)
+	}
+
+	return nil
+}
+
+// testVolumeSharingCrosToARC checks whether a file created in a volume on the
+// Chrome OS side can be read by Android apps via the Chrome OS Files app.
+func testVolumeSharingCrosToARC(ctx context.Context, a *arc.ARC, cr *chrome.Chrome, d *androidui.Device, dirPath, dirName, uuid string) error {
+	config := TestConfig{DirPath: dirPath, DirName: dirName, DirTitle: "Files - " + dirName,
+		CreateTestFile: true, FileName: "storage.txt"}
+	testFileURI := arc.VolumeProviderContentURIPrefix + filepath.Join(uuid, config.FileName)
+
+	expectations := []Expectation{
+		{LabelID: ActionID, Value: ExpectedAction},
+		{LabelID: URIID, Value: testFileURI},
+		{LabelID: FileContentID, Value: ExpectedFileContent}}
+
+	return TestOpenWithAndroidApp(ctx, a, cr, d, config, expectations)
 }

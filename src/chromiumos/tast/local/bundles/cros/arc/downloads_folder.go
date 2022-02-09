@@ -58,5 +58,7 @@ func DownloadsFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for MyFiles to be mounted in ARC: ", err)
 	}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
+	if err := storage.TestOpenWithAndroidApp(ctx, a, cr, d, config, expectations); err != nil {
+		s.Fatal("Failed to open file with Android app: ", err)
+	}
 }

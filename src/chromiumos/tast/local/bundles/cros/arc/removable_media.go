@@ -18,14 +18,13 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies ARC removable media integration is working",
 		Contacts: []string{
-			"hashimoto@chromium.org", // original author
-			"hidehiko@chromium.org",  // Tast port author
+			"youkichihosoi@chromium.org",
 			"arc-storage@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Data:         []string{"capybara.jpg"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -36,5 +35,9 @@ func init() {
 }
 
 func RemovableMedia(ctx context.Context, s *testing.State) {
-	removablemedia.RunTest(ctx, s, s.FixtValue().(*arc.PreData).ARC, "capybara.jpg")
+	a := s.FixtValue().(*arc.PreData).ARC
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	d := s.FixtValue().(*arc.PreData).UIDevice
+
+	removablemedia.RunTest(ctx, s, a, cr, d, "capybara.jpg")
 }

@@ -77,5 +77,7 @@ func MTP(ctx context.Context, s *testing.State) {
 		{LabelID: storage.URIID, Value: mtpURI + config.FileName},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
+	if err := storage.TestOpenWithAndroidApp(ctx, a, cr, d, config, expectations); err != nil {
+		s.Fatal("Failed to open file with Android app: ", err)
+	}
 }

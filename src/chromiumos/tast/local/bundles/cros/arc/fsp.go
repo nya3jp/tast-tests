@@ -121,7 +121,9 @@ func Fsp(ctx context.Context, s *testing.State) {
 		{LabelID: storage.URIID, Value: constructFSPURI(userPath, config.FileName)},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expect)
+	if err := storage.TestOpenWithAndroidApp(ctx, a, cr, d, config, expect); err != nil {
+		s.Fatal("Failed to open file with Android app: ", err)
+	}
 }
 
 // unzipFile unzips the specified "zipFile" located at "folder" using the "unarchiver".
