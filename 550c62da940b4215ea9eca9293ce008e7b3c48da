@@ -33,6 +33,292 @@
       "message": "Hi Shuo-peng Liao,\n\nCan you please review this CL again?",
       "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6bc91f_80a66fd8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "DUTWakeS3UsingPowerButton\n\nNote that \"power button\" should not be written as \"powerbtn\".",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8884b5a8_2dd38033",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter if the name of a variable or a constant inside a function is capitalized. They are unexported. However, please be consistent. I would suggest making them uncapitalized as the general convention of variables inside a function are uncapitalized.",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04567aec_48ac38b2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "How about renaming it as \"configSuspendModeS3\" as \"switchToS3Cmd\" sounds like making the device entering S3 mode.",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1b478e_a5aa0f42",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "Same. configMemSleepS3",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17184590_35a015c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "configSuspendModeS0ix",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "855cad97_7b4eee71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "powerdSuspendModeCmd",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60f4cb48_8320df66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "Please add a comment:\n\n// For setting suspend mode, refer to: https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/power_manager/docs/suspend_stress_test.md",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb46b1a9_c59aa42d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "\"execute command %s\"\nor \n\"execute %s\"\nor we may just tell what action failed, e.g. \"Failed to switch to S3: %v\"\n\nSame below.",
+      "range": {
+        "startLine": 76,
+        "startChar": 22,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cff038_189e6e1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "Shall we move the defer func before running sleep commands above so that once they failed, the device can be recovered.",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3164deb_f4bf10cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "Failed: expect powerd configured to suspend to S3; S0ix found.",
+      "range": {
+        "startLine": 130,
+        "startChar": 13,
+        "endLine": 130,
+        "endChar": 77
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60fbb643_3e0f1ee9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "suspend the",
+      "range": {
+        "startLine": 136,
+        "startChar": 22,
+        "endLine": 136,
+        "endChar": 31
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85545c4_a99782e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "via servo",
+      "range": {
+        "startLine": 146,
+        "startChar": 55,
+        "endLine": 146,
+        "endChar": 57
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54db327_53b4c1c6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "It means when one of the requiredEventSet in requiredEventSets is found, the test passes. Is that correct?",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877081d7_2606c094",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dut_wake_on_powerbtn_press_s3.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T09:23:31Z",
+      "side": 1,
+      "message": "The two servo power key press actions are the same, right?\n\nIf so, we may make it a for-loop of two tries.",
+      "revId": "550c62da940b4215ea9eca9293ce008e7b3c48da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
