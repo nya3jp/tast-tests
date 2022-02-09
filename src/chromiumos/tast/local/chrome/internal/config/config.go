@@ -260,6 +260,9 @@ func (c *Config) EnableFilesAppSWA() bool { return c.m.EnableFilesAppSWA }
 // TODO(b/197963464) Remove this config item once Wallpaper SWA is fully launched.
 func (c *Config) EnableWallpaperSWA() bool { return c.m.EnableWallpaperSWA }
 
+// DisableFieldTrialConfig returns whether to disable field trial testing config.
+func (c *Config) DisableFieldTrialConfig() bool { return c.m.DisableFieldTrialConfig }
+
 // MutableConfig is a mutable version of Config. MutableConfig is wrapped with
 // Config to prevent mutation after it is returned by NewConfig.
 //
@@ -311,6 +314,7 @@ type MutableConfig struct {
 	EphemeralUser                   bool       `reuse_match:"true"`
 	EnableFilesAppSWA               bool       `reuse_match:"true"`
 	EnableWallpaperSWA              bool       `reuse_match:"true"`
+	DisableFieldTrialConfig         bool       `reuse_match:"true"`
 }
 
 // Option is a self-referential function can be used to configure Chrome.
@@ -346,6 +350,7 @@ func NewConfig(opts []Option) (*Config, error) {
 			EphemeralUser:                   false,
 			EnableFilesAppSWA:               false,
 			EnableWallpaperSWA:              true,
+			DisableFieldTrialConfig:         false,
 		},
 	}
 	for _, opt := range opts {
