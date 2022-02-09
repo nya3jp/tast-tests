@@ -105,6 +105,15 @@ func UseSandboxGaia() Option {
 	}
 }
 
+// DisableFieldTrialConfig returns an Option to disable field trial testing
+// config.
+func DisableFieldTrialConfig() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.DisableFieldTrialConfig = true
+		return nil
+	}
+}
+
 var random = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 // GAIALoginPool returns an Option that can be passed to New to perform a real

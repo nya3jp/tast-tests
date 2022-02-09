@@ -493,6 +493,10 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 	}
 	opts = append(opts, f.fOpts...)
 
+	// Disable finch test config because of tests failures.
+	// TODO(b/231963918, b/234840773): Remove after resolving the two failures.
+	opts = append(opts, chrome.DisableFieldTrialConfig())
+
 	switch f.dm {
 	case tabletMode:
 		opts = append(opts, chrome.ExtraArgs("--force-tablet-mode=touch_view"))
