@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b4ea8c_70cbbf0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-02-09T16:38:58Z",
+      "side": 1,
+      "message": "fast_build.sh is failing, let me fix that before CQ+2",
+      "revId": "e94c5944595e7548d6251900957059db4fdff4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
