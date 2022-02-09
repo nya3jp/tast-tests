@@ -144,6 +144,18 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer conn.Close()
 
+		s.Log("Maximizing the window (if it is not already maximized)")
+		ws, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get windows")
+		}
+		if wsCount := len(ws); wsCount != 1 {
+			return errors.Wrapf(err, "expected 1 window; found %d", wsCount)
+		}
+		if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, ash.WindowStateMaximized); err != nil {
+			return errors.Wrap(err, "failed to maximize window")
+		}
+
 		s.Log("Opening the first email thread")
 		firstRow := nodewith.Role(role.Row).First()
 		ac := uiauto.New(tconn)
