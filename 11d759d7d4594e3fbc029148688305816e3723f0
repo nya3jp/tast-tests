@@ -128,6 +128,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "521cc14c_5c8c8a52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-09T20:06:36Z",
+      "side": 1,
+      "message": "Just a quote from http://go/lacros-tast-porting \"The preferred method is using the Browser abstraction, which abstracts out whether the test is using Lacros or Ash Chrome browser\"\nCurious, isn\u0027t it recommended that new tests use the Browser unless exceptionally not possible to write the test without it? for consistency? I think keeping consistency helps make any future improvements easy. Any suggestion?",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 17
+      },
+      "revId": "11d759d7d4594e3fbc029148688305816e3723f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ad5d733_411072bc",
         "filename": "src/chromiumos/tast/local/bundles/cros/apps/lacros_web_apps.go",
         "patchSetId": 2
