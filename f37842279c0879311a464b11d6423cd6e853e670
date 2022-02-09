@@ -22,6 +22,40 @@
       },
       "revId": "f37842279c0879311a464b11d6423cd6e853e670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9777c90a_aa3e9fc0",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-09T11:09:55Z",
+      "side": 1,
+      "message": "How about returning an error if the assumption is broken by unexpected input? (maybe it happen by rounding?)\nnit: should this fill zero when vmSummary.UsedPss \u003d\u003d detailedPssUsage?",
+      "revId": "f37842279c0879311a464b11d6423cd6e853e670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae554ea_69c9722d",
+        "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-02-09T11:09:55Z",
+      "side": 1,
+      "message": "nit: \"a map\" instead of \"a dictionary\", for consistency with the other comment in CategoryMetrics (and golang)",
+      "revId": "f37842279c0879311a464b11d6423cd6e853e670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
