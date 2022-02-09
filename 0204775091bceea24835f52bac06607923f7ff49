@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43bde1d8_2eee4611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-02-09T14:16:04Z",
+      "side": 1,
+      "message": "I want to double check what is the scope of this test.\nIs this test 1) checking the behavior of ash notifications? Or 2) checking the \"chrome.notification\" API?\n\nIf the former, I\u0027m wondering if this lacros variation is what we should have here.\nIf the latter, I think it should make sense to refactor the \"create notification\" utility somehow nicely. (at least we should move it out from ash package, probably).",
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4062b1dd_8b7e36ee",
