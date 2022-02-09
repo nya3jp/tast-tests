@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df751cca_99c8e19c",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-09T14:41:47Z",
+      "side": 1,
+      "message": "Another option I can see is adding an autotest private API to Chrome, and then calling ARC from Chrome to get the list of ARC accounts (the ARC-Chrome API for this already exists).\n\nI would prefer to use UI here, but if the tests will still be flaky after this fix, I will do local testing to compare the current approach with using autotest API.",
+      "parentUuid": "75a90897_aac168fb",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 37
+      },
+      "revId": "b06b62cffe51aaf99a96ced36e10386fff7ebab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "989a5fcd_91208e82",
         "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
         "patchSetId": 6
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "If you want to make sure that something is not there, a pattern like in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d422 would be better.\nIn this case, is you expect it to not be there, but the account is there, you can break the poll. If it is not there, and the wait time is not over, poll again. If it is not there, and wait time is over, return with nil.\n\nThe poll should return with nil if the expectations are met, end with an error if not.\nAnd the poll error should be returned in the end.",
       "parentUuid": "64fb5312_86faa436",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 3
+      },
+      "revId": "b06b62cffe51aaf99a96ced36e10386fff7ebab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1f26c9e_b7d6694f",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-02-09T14:41:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40d54eaf_75ea3a0f",
       "range": {
         "startLine": 252,
         "startChar": 2,
