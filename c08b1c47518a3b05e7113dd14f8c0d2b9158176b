@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a2c311_81f1204d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-02-09T00:53:46Z",
+      "side": 1,
+      "message": "+tast-owners for approval, thanks!",
+      "revId": "c08b1c47518a3b05e7113dd14f8c0d2b9158176b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57f3261a_99b19671",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-02-08T13:33:15Z",
       "side": 1,
       "message": "Where\u0027s this one defined?",
+      "range": {
+        "startLine": 39,
+        "startChar": 22,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "c08b1c47518a3b05e7113dd14f8c0d2b9158176b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63da7d79_05ad33dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-02-09T00:53:46Z",
+      "side": 1,
+      "message": "In this patch: https://crrev.com/c/3439785",
+      "parentUuid": "57f3261a_99b19671",
       "range": {
         "startLine": 39,
         "startChar": 22,
