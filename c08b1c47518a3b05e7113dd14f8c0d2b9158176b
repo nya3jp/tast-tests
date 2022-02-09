@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad0f1ad_70ab7c64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/vpn/vpn_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-02-09T12:23:33Z",
+      "side": 1,
+      "message": "Thanks for the question! It seems that it does not matter according to my tests.",
+      "parentUuid": "15472591_ee06c1ae",
+      "range": {
+        "startLine": 387,
+        "startChar": 35,
+        "endLine": 387,
+        "endChar": 52
+      },
+      "revId": "c08b1c47518a3b05e7113dd14f8c0d2b9158176b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57f3261a_99b19671",
