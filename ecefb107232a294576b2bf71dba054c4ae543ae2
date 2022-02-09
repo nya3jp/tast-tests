@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "004563c5_a8278d1b",
+        "filename": "src/chromiumos/tast/local/memory/arc/dumpsys_meminfo.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1516044
+      },
+      "writtenOn": "2022-02-09T05:12:02Z",
+      "side": 1,
+      "message": "indeed!  updated the comments on all the 3 \"Get\" functions that changed that way.",
+      "parentUuid": "5c0613c8_b976b09f",
+      "range": {
+        "startLine": 140,
+        "startChar": 77,
+        "endLine": 142,
+        "endChar": 22
+      },
+      "revId": "ecefb107232a294576b2bf71dba054c4ae543ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6f4573f5_833ae9d4",
         "filename": "src/chromiumos/tast/local/memory/smaps_rollup.go",
         "patchSetId": 6
