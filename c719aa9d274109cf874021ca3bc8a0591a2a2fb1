@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb4ae8b_58b8fde7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-09T10:43:43Z",
+      "side": 1,
+      "message": "Sorry, this CL will not contain changes of \"remove users\" for now.\nWe will make the \"remove users\" as a helper function in future CL if other MTA tests require a similar step.",
+      "parentUuid": "bb899280_a99856d8",
+      "revId": "c719aa9d274109cf874021ca3bc8a0591a2a2fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca420000_6ddb27ff",
