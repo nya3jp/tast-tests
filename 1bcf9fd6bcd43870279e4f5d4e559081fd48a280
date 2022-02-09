@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f640b854_e96fad2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-09T09:24:17Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "1bcf9fd6bcd43870279e4f5d4e559081fd48a280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4ff6cf2_5e78029d",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-02-09T03:42:14Z",
       "side": 1,
       "message": "Does tast-lint allow this? Non-shadow reviewer to confirm, but values of testing.Test should be constants, not runtime code.",
+      "revId": "1bcf9fd6bcd43870279e4f5d4e559081fd48a280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a2c958_7ace2aa6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-09T09:24:17Z",
+      "side": 1,
+      "message": "Yes this is allowed, there are other tests doing this too, e.g. https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/touch_perf.go\n\nI also haven\u0027t found anything stating that testing.Test entries need to be constants.",
+      "parentUuid": "a4ff6cf2_5e78029d",
       "revId": "1bcf9fd6bcd43870279e4f5d4e559081fd48a280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
