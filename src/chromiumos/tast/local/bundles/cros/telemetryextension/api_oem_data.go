@@ -18,7 +18,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         APIOEMData,
 		LacrosStatus: testing.LacrosVariantNeeded,
-		Fixture:      "telemetryExtension",
 		Desc:         "Tests chrome.os.telemetry.getOemData Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author
@@ -30,10 +29,22 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "target_models",
+				Fixture:           "telemetryExtension",
 				ExtraHardwareDeps: dep.TargetModels(),
 			},
 			{
 				Name:              "low_priority_target_models",
+				Fixture:           "telemetryExtension",
+				ExtraHardwareDeps: dep.LowPriorityTargetModels(),
+			},
+			{
+				Name:              "target_models_managed",
+				Fixture:           "telemetryExtensionManaged",
+				ExtraHardwareDeps: dep.TargetModels(),
+			},
+			{
+				Name:              "low_priority_target_models_managed",
+				Fixture:           "telemetryExtensionManaged",
 				ExtraHardwareDeps: dep.LowPriorityTargetModels(),
 			},
 		},
