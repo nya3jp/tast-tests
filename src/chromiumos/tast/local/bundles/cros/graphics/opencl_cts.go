@@ -11680,9 +11680,9 @@ func init() {
 				Name: "integer_ops_popcount",
 				Val: oclctsTest{
 					executable:   "test_integer_ops",
-					args:         "popcount",
+					args:         "popcount 65535",
 					logFileName:  "integer_ops-popcount.txt",
-					expectedPass: false,
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
