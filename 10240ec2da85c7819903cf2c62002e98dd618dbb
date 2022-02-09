@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d62178_c45a9fb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/quick_unlock_mode_allowlist.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-02-09T10:16:25Z",
+      "side": 1,
+      "message": "Good point. Keep as is.",
+      "parentUuid": "ea059a55_a2aef4bd",
+      "revId": "10240ec2da85c7819903cf2c62002e98dd618dbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b87360ff_52b75130",
