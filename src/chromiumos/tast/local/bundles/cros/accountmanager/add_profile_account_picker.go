@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
@@ -71,10 +70,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	addAccountButton := nodewith.Name("Add Google Account").Role(role.Button)
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
 	if err := uiauto.Combine("Add a secondary account in OS Settings",
-		func(ctx context.Context) error {
-			_, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, "accountManager", ui.Exists(addAccountButton))
-			return err
-		},
+		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
 		ui.LeftClick(addAccountButton),
 		func(ctx context.Context) error {
 			return accountmanager.AddAccount(ctx, tconn, username, password)
