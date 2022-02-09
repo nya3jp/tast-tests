@@ -192,6 +192,23 @@
       "parentUuid": "400a9fae_5c211ad2",
       "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3b2d01d_3a51f4ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-09T17:24:51Z",
+      "side": 1,
+      "message": "Remove myself from the attention list for now. Please add me back when it is ready. Thanks.",
+      "revId": "c7749c592b272551cfd95cb86179b9def9913ee0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
