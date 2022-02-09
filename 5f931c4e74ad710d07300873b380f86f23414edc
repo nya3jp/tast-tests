@@ -635,6 +635,30 @@
       },
       "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55566477_9c5fa236",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/resize_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-09T10:38:12Z",
+      "side": 1,
+      "message": "\u003e Is it accessible to use the playstore as an ARC++ app?\n\nsorry, correction for a typo\nIs it acceptable to use the playstore as an ARC++ app?",
+      "parentUuid": "1c330f8d_781447ba",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 25
+      },
+      "revId": "5f931c4e74ad710d07300873b380f86f23414edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
