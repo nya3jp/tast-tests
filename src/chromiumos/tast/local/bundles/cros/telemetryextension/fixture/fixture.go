@@ -13,9 +13,13 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
@@ -31,7 +35,7 @@ func init() {
 			"mgawad@google.com", // Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
-		Impl:            newTelemetryExtensionFixture(false),
+		Impl:            newTelemetryExtensionFixture(false, false),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		Data:            extFiles(false),
@@ -44,10 +48,24 @@ func init() {
 			"mgawad@google.com", // Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
-		Impl:            newTelemetryExtensionFixture(true),
+		Impl:            newTelemetryExtensionFixture(true, false),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		Data:            extFiles(true),
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionManaged",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension for managed device",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(false, true),
+		Parent:          fixture.FakeDMSEnrolled,
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		Vars:            []string{"telemetryextension.Fixture.username", "telemetryextension.Fixture.password"},
 	})
 }
 
@@ -66,15 +84,17 @@ func extFiles(hasOptions bool) []string {
 	return files
 }
 
-func newTelemetryExtensionFixture(hasOptions bool) *telemetryExtensionFixture {
+func newTelemetryExtensionFixture(hasOptions bool, isManaged bool) *telemetryExtensionFixture {
 	return &telemetryExtensionFixture{
 		hasOptions: hasOptions,
+		isManaged:  isManaged,
 	}
 }
 
 // telemetryExtensionFixture implements testing.FixtureImpl.
 type telemetryExtensionFixture struct {
 	hasOptions bool
+	isManaged  bool
 
 	dir string
 	cr  *chrome.Chrome
@@ -102,37 +122,80 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 	}(cleanupCtx)
 
-	dir, err := ioutil.TempDir("", "telemetry_extension")
-	if err != nil {
-		s.Fatal("Failed to create temporary directory for TelemetryExtension: ", err)
-	}
-	f.dir = dir
+	if !f.isManaged {
+		dir, err := ioutil.TempDir("", "telemetry_extension")
+		if err != nil {
+			s.Fatal("Failed to create temporary directory for TelemetryExtension: ", err)
+		}
+		f.dir = dir
 
-	if err := os.Chown(dir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
-		s.Fatal("Failed to chown TelemetryExtension dir: ", err)
-	}
-
-	for _, file := range extFiles(f.hasOptions) {
-		if err := fsutil.CopyFile(s.DataPath(file), filepath.Join(dir, file)); err != nil {
-			s.Fatalf("Failed to copy %q file to %q: %v", file, dir, err)
+		if err := os.Chown(dir, int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+			s.Fatal("Failed to chown TelemetryExtension dir: ", err)
 		}
 
-		if err := os.Chown(filepath.Join(dir, file), int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
-			s.Fatalf("Failed to chown %q: %v", file, err)
+		for _, file := range extFiles(f.hasOptions) {
+			if err := fsutil.CopyFile(s.DataPath(file), filepath.Join(dir, file)); err != nil {
+				s.Fatalf("Failed to copy %q file to %q: %v", file, dir, err)
+			}
+
+			if err := os.Chown(filepath.Join(dir, file), int(sysutil.ChronosUID), int(sysutil.ChronosGID)); err != nil {
+				s.Fatalf("Failed to chown %q: %v", file, err)
+			}
+		}
+
+		if err := os.Rename(filepath.Join(dir, manifestFile(f.hasOptions)), filepath.Join(dir, "manifest.json")); err != nil {
+			s.Fatal("Failed to rename manifest file: ", err)
+		}
+
+		cr, err := chrome.New(ctx, chrome.UnpackedExtension(dir))
+		if err != nil {
+			s.Fatal("Failed to start Chrome: ", err)
+		}
+		f.cr = cr
+	} else {
+		fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
+		if !ok {
+			s.Fatal("Parent is not a FakeDMS fixture")
+		}
+
+		username := s.RequiredVar("telemetryextension.Fixture.username")
+		password := s.RequiredVar("telemetryextension.Fixture.password")
+
+		pb := fakedms.NewPolicyBlob()
+		pb.PolicyUser = username
+
+		// Telemetry Extension works only for affiliated users.
+		pb.DeviceAffiliationIds = []string{"default_affiliation_id"}
+		pb.UserAffiliationIds = []string{"default_affiliation_id"}
+
+		// We have to update fake DMS policy user and affiliation IDs before starting Chrome.
+		if err := fdms.WritePolicyBlob(pb); err != nil {
+			s.Fatal("Failed to write policy blob before starting Chrome: ", err)
+		}
+
+		cr, err := chrome.New(ctx,
+			chrome.KeepEnrollment(),
+			chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+			chrome.DMSPolicy(fdms.URL),
+			chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout))
+		if err != nil {
+			s.Fatal("Chrome startup failed: ", err)
+		}
+		f.cr = cr
+
+		// Force install Telemetry Extension by policy.
+		pb.AddPolicy(&policy.ExtensionInstallForcelist{Val: []string{
+			"gogonhoemckpdpadfnjnpgbjpbjnodgc;https://clients2.google.com/service/update2/crx",
+		}})
+		// Allow DevTools on force installed extensions. Value 1 here means "allowed".
+		pb.AddPolicy(&policy.DeveloperToolsAvailability{Val: 1})
+
+		if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
+			s.Fatal("Failed to serve and refresh: ", err)
 		}
 	}
 
-	if err := os.Rename(filepath.Join(dir, manifestFile(f.hasOptions)), filepath.Join(dir, "manifest.json")); err != nil {
-		s.Fatal("Failed to rename manifest file: ", err)
-	}
-
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(dir))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	f.cr = cr
-
-	pwaConn, err := cr.NewConn(ctx, "https://www.google.com")
+	pwaConn, err := f.cr.NewConn(ctx, "https://www.google.com")
 	if err != nil {
 		s.Fatal("Failed to create connection to google.com: ", err)
 	}
@@ -144,7 +207,7 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 
 	f.v.ExtID = "gogonhoemckpdpadfnjnpgbjpbjnodgc"
 
-	extConn, err := cr.NewConn(ctx, fmt.Sprintf("chrome-extension://%s/sw.js", f.v.ExtID))
+	extConn, err := f.cr.NewConn(ctx, fmt.Sprintf("chrome-extension://%s/sw.js", f.v.ExtID))
 	if err != nil {
 		s.Fatal("Failed to create connection to Telemetry Extension: ", err)
 	}
@@ -154,7 +217,7 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to add Tast library to Telemetry Extension: ", err)
 	}
 
-	tconn, err := cr.TestAPIConn(ctx)
+	tconn, err := f.cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get test API connections: ", err)
 	}
