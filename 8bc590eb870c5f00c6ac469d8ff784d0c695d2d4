@@ -16,6 +16,299 @@
       "message": "Hi Shuo-Peng Liao,\n\nCan you please review this CL again?",
       "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468b7d0d_f47d2677",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "If the test targets USB-C display only, i.e. exclude HDMI display, shall we rename it as SuspendResumeUSBCDisplay",
+      "range": {
+        "startLine": 27,
+        "startChar": 29,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16e3504d_9db2fad8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "s/suspnd/suspend/\n\nAlso, the following three error strings are not RegEx, let\u0027s remove \"Re\" suffix and move the three var to const.\n\nAlso, the three strings mean no error of specific type. How about adding \"No\" or \"Zero\" prefix? e.g. ZeroSuspendFailure",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85aee583_41c7ce8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "Poll for running suspend_stress_test",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 15
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4bcf0b_02ba7766",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "zeroSuspendErrors",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 14
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3852db7c_c66ddeb6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "expect zero failures for %q, got %q",
+      "range": {
+        "startLine": 121,
+        "startChar": 26,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bafd81c1_83ca0693",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "Run: suspend_stress_test -c 10\n\nAlso, if you want to log the message for each test step, you may also log \"Wait for a suspend test without failures.\" in the previous test step.",
+      "range": {
+        "startLine": 131,
+        "startChar": 26,
+        "endLine": 131,
+        "endChar": 64
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e510ba0_59910d70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "445b19ce_b428b409",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "got",
+      "range": {
+        "startLine": 157,
+        "startChar": 54,
+        "endLine": 157,
+        "endChar": 62
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cd47a0e_5cd3262a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 180,
+        "startChar": 38,
+        "endLine": 180,
+        "endChar": 47
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ebee352_267f4f48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "const displayInfoFile \u003d ...",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1459941d_2c7bfcd0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "failed to get display info",
+      "range": {
+        "startLine": 187,
+        "startChar": 28,
+        "endLine": 187,
+        "endChar": 63
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "887dd897_70354711",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "Be more precise: \n\nUnexpected number of external display: want %d, actual %d",
+      "range": {
+        "startLine": 191,
+        "startChar": 22,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b122bc24_cf0f84c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/suspend_resume_external_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-02-09T04:01:42Z",
+      "side": 1,
+      "message": "You may just return err.",
+      "range": {
+        "startLine": 197,
+        "startChar": 9,
+        "endLine": 197,
+        "endChar": 72
+      },
+      "revId": "8bc590eb870c5f00c6ac469d8ff784d0c695d2d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
