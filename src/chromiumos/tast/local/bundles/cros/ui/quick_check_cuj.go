@@ -57,7 +57,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 
 	// Shorten context a bit to allow for cleanup.
 	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
 	bt := s.Param().(browser.Type)
@@ -75,7 +75,7 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to initialize test: ", err)
 		}
-		defer lacros.CloseLacros(ctx, l)
+		defer lacros.CloseLacros(closeCtx, l)
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
