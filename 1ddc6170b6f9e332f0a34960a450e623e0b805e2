@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db6b5d25_0728cf89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-02-09T09:17:50Z",
+      "side": 1,
+      "message": "PTAL at this follow-up CL of https://crrev.com/c/3420325 that fixes a bug I introduced.",
+      "revId": "1ddc6170b6f9e332f0a34960a450e623e0b805e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
