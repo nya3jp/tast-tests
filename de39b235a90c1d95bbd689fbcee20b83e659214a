@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d33229_5c88bb71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "open",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca9a823_8af41fbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "I think the func name is self-explainning.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 77
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52eadba_5309305e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "Please handle the returned error.",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "877afb28_5b4527dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "Sorry, I did not realize that moving the vars inside the func and splitting the main func made the parameter list so long. Maybe we could move the shared vars out of func?",
+      "range": {
+        "startLine": 128,
+        "startChar": 48,
+        "endLine": 128,
+        "endChar": 170
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e30e76_aa678ebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "Should this be in the end of the test?",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d72763e_f984a720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "The func name is self-explainning.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 24
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7f32ca_c6863cee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "Please make the error msg more specific.",
+      "range": {
+        "startLine": 141,
+        "startChar": 18,
+        "endLine": 141,
+        "endChar": 29
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef99cdbc_cd3cfab0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "validate",
+      "range": {
+        "startLine": 179,
+        "startChar": 24,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a339bc47_b907c35a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "Since there is not other returns, just if err \u003d ...; err !\u003d nil {}.\n\nPlease check the rest as well.",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 16
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9557683f_cb8c0c46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "close",
+      "range": {
+        "startLine": 236,
+        "startChar": 24,
+        "endLine": 236,
+        "endChar": 29
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be97185_905320d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-09T04:10:22Z",
+      "side": 1,
+      "message": "Suggest to make this func a public func in vm.go so that other tests could use it.",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
