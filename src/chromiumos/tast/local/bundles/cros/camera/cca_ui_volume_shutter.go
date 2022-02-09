@@ -32,8 +32,6 @@ func init() {
 	})
 }
 
-var volumeKeys = []string{"volumedown", "volumeup"}
-
 func getActiveCrasNode(ctx context.Context, cras *audio.Cras) (*audio.CrasNode, error) {
 	nodes, err := cras.GetNodes(ctx)
 	if err != nil {
@@ -122,6 +120,12 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
+	topRow, err := input.KeyboardTopRowLayout(ctx, kb)
+	if err != nil {
+		s.Fatal("Failed to obtain the top-row layout: ", err)
+	}
+	volumeKeys := []string{topRow.VolumeDown, topRow.VolumeUp}
+
 	vh, err := newVolumeHelper(ctx)
 	if err != nil {
 		s.Fatal("Failed to create the volumeHelper: ", err)
@@ -144,7 +148,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 	subTestTimeout := 30 * time.Second
 	for _, tst := range []struct {
 		name     string
-		testFunc func(context.Context, *chrome.Chrome, *cca.App, *input.KeyboardEventWriter, *volumeHelper) error
+		testFunc func(context.Context, *chrome.Chrome, *cca.App, *input.KeyboardEventWriter, *volumeHelper, []string) error
 		tablet   bool
 	}{
 		{"testClamshell", testClamshell, false},
@@ -168,7 +172,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 			}
 			defer cleanup(cleanupCtx)
 
-			if err := tst.testFunc(ctx, cr, app, kb, vh); err != nil {
+			if err := tst.testFunc(ctx, cr, app, kb, vh, volumeKeys); err != nil {
 				s.Error("Test failed: ", err)
 			}
 		})
@@ -177,7 +181,7 @@ func CCAUIVolumeShutter(ctx context.Context, s *testing.State) {
 }
 
 // testClamshell tests behavior of pressing volume button in clamshell mode.
-func testClamshell(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+func testClamshell(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper, volumeKeys []string) error {
 	for _, key := range volumeKeys {
 		if err := vh.verifyVolumeChanged(ctx, func() error {
 			return kb.Accel(ctx, key)
@@ -189,7 +193,7 @@ func testClamshell(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *inp
 }
 
 // testTakePicture tests scenario of taking a picture by volume button in tablet mode.
-func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper, volumeKeys []string) error {
 	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
@@ -226,7 +230,7 @@ func testTakePicture(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 }
 
 // testRecordVideo tests scenario of recording one second video by volume button in tablet mode.
-func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) error {
+func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper, volumeKeys []string) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 	defer cancel()
@@ -289,7 +293,7 @@ func testRecordVideo(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *i
 }
 
 // testAppInBackground tests scenario of pressing volume button when CCA is in background in tablet mode.
-func testAppInBackground(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper) (retErr error) {
+func testAppInBackground(ctx context.Context, cr *chrome.Chrome, app *cca.App, kb *input.KeyboardEventWriter, vh *volumeHelper, volumeKeys []string) (retErr error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*5)
 	defer cancel()
