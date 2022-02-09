@@ -1,0 +1,13 @@
+<html>
+
+<button onclick="onAdd()">Add serial number permission</button>
+
+<script>
+    async function onAdd() {
+        chrome.permissions.request({
+            'permissions': ['os.telemetry.serial_number'],
+        });
+    }
+</script>
+
+</html>
