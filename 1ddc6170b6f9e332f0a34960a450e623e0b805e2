@@ -16,6 +16,23 @@
       "message": "PTAL at this follow-up CL of https://crrev.com/c/3420325 that fixes a bug I introduced.",
       "revId": "1ddc6170b6f9e332f0a34960a450e623e0b805e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9813916b_215983cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-02-09T11:06:37Z",
+      "side": 1,
+      "message": "Thanks for the fix!",
+      "revId": "1ddc6170b6f9e332f0a34960a450e623e0b805e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
