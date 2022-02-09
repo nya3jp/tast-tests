@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21120a86_079ac8d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-09T19:48:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0634ab4d_9bc64556",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 3
+      },
+      "revId": "b47d8963651161213eb0d9e6d72f078ae0ec8053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e691886a_d8407e54",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-02-08T20:15:47Z",
       "side": 1,
       "message": "IMO this section should be outside if section for condition (params.restriction \u003d\u003d restrictionlevel.WarnCancelled) and be checked always.",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 3
+      },
+      "revId": "b47d8963651161213eb0d9e6d72f078ae0ec8053",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a84541_6c33f4ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-09T19:48:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e691886a_d8407e54",
       "range": {
         "startLine": 285,
         "startChar": 0,
