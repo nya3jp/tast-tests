@@ -166,6 +166,12 @@ func (f *nearbyShareAndroidFixture) PostTest(ctx context.Context, s *testing.Fix
 
 // configureAndroidNearbySettings configures Nearby Share settings on an Android device.
 func configureAndroidNearbySettings(ctx context.Context, androidNearby *nearbysnippet.AndroidNearbyDevice, dataUsage nearbysnippet.DataUsage, visibility nearbysnippet.Visibility, name string) error {
+	// Ensure Nearby is disabled to avoid race conditions or starting up in an invalid state after the device is set up.
+	androidNearby.SetEnabled(ctx, false)
+	if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		return errors.Wrap(err, "failed to sleep after setting Nearby disabld via snippets")
+	}
+
 	if err := androidNearby.SetupDevice(ctx, dataUsage, visibility, name); err != nil {
 		return errors.Wrap(err, "failed to configure Android Nearby Share settings")
 	}
