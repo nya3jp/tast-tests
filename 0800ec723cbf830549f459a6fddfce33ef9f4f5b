@@ -130,6 +130,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5632d54_f68d831f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/cap_message_pipe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-09T18:25:27Z",
+      "side": 1,
+      "message": "OK, let\u0027s use MessagePipe name. We will revisit adding some prefix to some tests when there will be too many tests in one directory.",
+      "parentUuid": "06cee69a_8cb0a1a8",
+      "range": {
+        "startLine": 17,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "0800ec723cbf830549f459a6fddfce33ef9f4f5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "626365fc_2230f1d0",

@@ -39,6 +39,30 @@
       },
       "revId": "54c882f4a340cf5fa6bb0d28e18dfcbdbe387cba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9174aa20_0660240b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-02-09T18:25:27Z",
+      "side": 1,
+      "message": "I am personally OK with both names, but such change will be out of this CL scope.",
+      "parentUuid": "2e4d5bce_e56a714d",
+      "range": {
+        "startLine": 116,
+        "startChar": 68,
+        "endLine": 116,
+        "endChar": 73
+      },
+      "revId": "54c882f4a340cf5fa6bb0d28e18dfcbdbe387cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
