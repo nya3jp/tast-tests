@@ -164,7 +164,7 @@ func CheckPortsForTBTPartner(ctx context.Context) (int, error) {
 				return -1, nil
 			}
 
-			return -1, errors.Wrap(err, "failed to run ectool command")
+			return -1, errors.Wrapf(err, "failed to run 'ectool typecdiscovery %v 0' command ", strconv.Itoa(i))
 		}
 
 		// Look for a TBT SVID in the output. If one exists, return immediately.
