@@ -50,6 +50,24 @@
       "message": "could you clarify that if Stateful is specified, currently it will report an error if there\u0027s multiple candidates.",
       "revId": "6dbad61379d73be94a418be52868034420295e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4cdfe5_aceb4d0c",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosproc/proc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1529457
+      },
+      "writtenOn": "2022-02-09T09:54:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66e45b8a_5df93260",
+      "revId": "6dbad61379d73be94a418be52868034420295e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
