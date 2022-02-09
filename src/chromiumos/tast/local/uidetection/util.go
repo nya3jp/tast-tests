@@ -23,8 +23,8 @@ import (
 )
 
 const (
-	screenshotFile    = "screenshot.png"
-	oldScreenshotFile = "old_screenshot.png"
+	screenshotFile    = "uidetection_screenshot.png"
+	oldScreenshotFile = "old_uidetection_screenshot.png"
 )
 
 // readImage reads a PNG image and returns it in []byte.
@@ -102,10 +102,10 @@ func takeStableScreenshot(ctx context.Context, tconn *chrome.TestConn, pollOpts 
 	}, &pollOpts); err != nil {
 		// Save two screenshots to output dir in case of error.
 		if err := saveImageToOutput(ctx, currentScreen, screenshotFile); err != nil {
-			testing.ContextLogf(ctx, "Failed to save the screenshot: %s", err)
+			testing.ContextLogf(ctx, "INFO: couldn't save the screenshot to %s for debugging takeStableScreenshot: %s", screenshotFile, err)
 		}
 		if err := saveImageToOutput(ctx, lastScreen, oldScreenshotFile); err != nil {
-			testing.ContextLogf(ctx, "Failed to save the old screenshot: %s", err)
+			testing.ContextLogf(ctx, "INFO: couldn't save the old screenshot to %s for debugging takeStableScreenshot: %s", oldScreenshotFile, err)
 		}
 		return nil, errors.Wrap(err, "failed to take stable screenshot")
 	}
