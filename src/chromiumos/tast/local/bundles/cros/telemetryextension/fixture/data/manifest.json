@@ -12,12 +12,15 @@
     },
     "permissions": [
         "os.diagnostics",
-        "os.telemetry",
+        "os.telemetry"
+    ],
+    "optional_permissions": [
         "os.telemetry.serial_number"
     ],
     "externally_connectable": {
         "matches": [
             "*://www.google.com/*"
         ]
-    }
+    },
+    "options_page": "options.html"
 }

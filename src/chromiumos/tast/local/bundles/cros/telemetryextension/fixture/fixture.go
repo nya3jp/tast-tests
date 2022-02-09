@@ -14,20 +14,25 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/testing"
 )
 
 const (
 	manifestJSON = "manifest.json"
+	optionsHTML  = "options.html"
 	swJS         = "sw.js"
 
 	cleanupTimeout = chrome.ResetTimeout + 20*time.Second
 )
 
-var dataFiles = []string{manifestJSON, swJS}
+var dataFiles = []string{manifestJSON, optionsHTML, swJS}
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -123,6 +128,15 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		s.Fatal("Failed to add Tast library to Telemetry Extension: ", err)
 	}
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to get test API connections: ", err)
+	}
+
+	if err := requestSerialNumber(ctx, extConn, tconn); err != nil {
+		s.Fatal("Failed to request serial number permission from options page: ", err)
+	}
+
 	return &f.v
 }
 
@@ -161,5 +175,27 @@ func (f *telemetryExtensionFixture) PreTest(ctx context.Context, s *testing.Fixt
 func (f *telemetryExtensionFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
 func (f *telemetryExtensionFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+// requestSerialNumber opens options page and requests os.telemetry.serial_number permission.
+func requestSerialNumber(ctx context.Context, conn *chrome.Conn, tconn *chrome.TestConn) error {
+	if err := conn.Call(ctx, nil,
+		"tast.promisify(chrome.runtime.openOptionsPage)",
+	); err != nil {
+		return errors.Wrap(err, "failed to get response from Telemetry Extenion service worker")
+	}
+
+	ui := uiauto.New(tconn)
+	requestButton := nodewith.Name("Add serial number permission").Role(role.Button)
+	allowButton := nodewith.Name("Allow").Role(role.Button)
+	if err := uiauto.Combine("allow serial number permission",
+		ui.WithTimeout(5*time.Second).WaitUntilExists(requestButton),
+		ui.LeftClick(requestButton),
+		ui.WithTimeout(5*time.Second).WaitUntilExists(allowButton),
+		ui.LeftClickUntil(allowButton, ui.Gone(allowButton)),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to allow serial number permission")
+	}
 	return nil
 }
