@@ -85,6 +85,11 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		args = append(args, "--force-launch-browser")
 	}
 
+	// Use field trial testing config if not configured to be disabled.
+	if !cfg.DisableFieldTrialConfig() {
+		args = append(args, "--enable-field-trial-config")
+	}
+
 	// Enable verbose logging on some enrollment related files.
 	if cfg.EnableLoginVerboseLogs() {
 		args = append(args,
