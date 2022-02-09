@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b39db76_777be734",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-02-09T02:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9de121e6_24c09193",
+      "revId": "ae768ca79b84856c359ae39a503a9926a884036e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6163a50_d47c488e",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-12T02:29:51Z",
       "side": 1,
       "message": "Anything happens post test should not fail the test itself. Do you want to fail this test if closing Chrome failed?",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "ae768ca79b84856c359ae39a503a9926a884036e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ffa11a7_fe19d2da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-02-09T02:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6163a50_d47c488e",
       "range": {
         "startLine": 50,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34c15b35_20851251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-02-09T02:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c678d3de_b33f7cee",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "ae768ca79b84856c359ae39a503a9926a884036e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c239eaa2_90acc56e",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-01-12T02:29:51Z",
       "side": 1,
       "message": "Please do not ignore the error handling.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 25
+      },
+      "revId": "ae768ca79b84856c359ae39a503a9926a884036e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f508afd5_8e562cd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/launch_managed_guest_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-02-09T02:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c239eaa2_90acc56e",
       "range": {
         "startLine": 75,
         "startChar": 1,
