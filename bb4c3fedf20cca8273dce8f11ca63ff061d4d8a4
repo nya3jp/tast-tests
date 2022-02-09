@@ -39,6 +39,30 @@
       },
       "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae94f6b_ef174696",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1373247
+      },
+      "writtenOn": "2022-02-09T20:03:03Z",
+      "side": 1,
+      "message": "After testing it a few times, it looks like this does not work. If I just use ui.LeftClick the behavior is the same as before (without .Focusable()), which is that it works maybe 10% of the time on VM for me. So there might be a bug with the implementation of LeftClick itself.",
+      "parentUuid": "aeada909_d5a013d9",
+      "range": {
+        "startLine": 130,
+        "startChar": 55,
+        "endLine": 130,
+        "endChar": 152
+      },
+      "revId": "bb4c3fedf20cca8273dce8f11ca63ff061d4d8a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
