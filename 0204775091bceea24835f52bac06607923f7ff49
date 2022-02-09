@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e02aff_7f60f6e1",
+        "filename": "src/chromiumos/tast/local/chrome/ash/notification.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-09T00:01:08Z",
+      "side": 1,
+      "message": "This could be another example of a function that can take *browser.TestConn (instead of *chrome.TestConn) to make it clear that a tconn here should be passed in from active *browser* under tests. This will help differentiate it from many other ash functions that just need an ash-chrome tconn.\n\nProposal: https://docs.google.com/document/d/1W8pw9bpiECrWSwk5elMN3_f7p4aI85wkBTXMymo9Vrg/edit?resourcekey\u003d0-eYsWiPYdUBbjBJpiDqOKiA#bookmark\u003did.x4x3rbkug5gg",
+      "range": {
+        "startLine": 156,
+        "startChar": 49,
+        "endLine": 156,
+        "endChar": 71
+      },
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
