@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab3c33dc_63068960",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/playback.js",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-09T01:13:49Z",
+      "side": 1,
+      "message": "This will multiplicate the amount of elements with the\nsame name \"media\". I suspect the loading of a given url\nwill then be made by name, and this will rely implicitly\non the \u003cvideo\u003e in video.html having the same name, which\nfeels a bit brittle.  I see that the methods below find\nthe elements via \n  getElementsByName(\"media\")\n  \nmaybe we should find them by class instead, and remove\nthe name altogether?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "56f778787473b7bacb51777248b087e96876989f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea2d2154_9118250f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/video.html",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-09T01:13:49Z",
+      "side": 1,
+      "message": "nit: Add \"autoplay\" and \"muted\" attributes?",
+      "range": {
+        "startLine": 16,
+        "startChar": 34,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "56f778787473b7bacb51777248b087e96876989f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
