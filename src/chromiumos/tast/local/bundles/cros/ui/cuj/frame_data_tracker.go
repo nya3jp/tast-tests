@@ -58,10 +58,6 @@ func (t *FrameDataTracker) Stop(ctx context.Context, tconn *chrome.TestConn) err
 
 // Record stores the collected data into pv for further processing.
 func (t *FrameDataTracker) Record(pv *perf.Values) {
-	if len(t.animationData) == 0 {
-		return
-	}
-
 	feMetric := perf.Metric{
 		Name:      t.prefix + "Animation.FramesExpected",
 		Unit:      "count",
