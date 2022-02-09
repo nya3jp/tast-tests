@@ -82,6 +82,11 @@ func (r Rect) String() string {
 	return fmt.Sprintf("(%d, %d) - (%d x %d)", r.Left, r.Top, r.Width, r.Height)
 }
 
+// Equals returns true if the Rect equals another one.
+func (r Rect) Equals(r2 Rect) bool {
+	return r.Left == r2.Left && r.Top == r2.Top && r.Width == r2.Width && r.Height == r2.Height
+}
+
 // Right returns the x-value of the right edge of the rectangle.
 func (r Rect) Right() int {
 	return r.Left + r.Width

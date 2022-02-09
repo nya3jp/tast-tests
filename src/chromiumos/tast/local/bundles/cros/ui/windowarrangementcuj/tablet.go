@@ -83,7 +83,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 	// Split view resizing by dragging the divider.
 	testing.ContextLog(ctx, "Dragging the divider with two snapped windows")
 	const dividerDragError = "failed to drag divider slightly left, all the way right, and back to center"
-	if err := Drag(ctx, pc, splitViewDragPoints, slow); err != nil {
+	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
@@ -103,7 +103,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 
 	// Split view resizing by dragging the divider.
 	testing.ContextLog(ctx, "Dragging the divider with an overview window")
-	if err := Drag(ctx, pc, splitViewDragPoints, slow); err != nil {
+	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
@@ -127,7 +127,7 @@ func RunTablet(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, 
 
 	// Split view resizing by dragging the divider.
 	testing.ContextLog(ctx, "Dragging the divider with an empty overview grid")
-	if err := Drag(ctx, pc, splitViewDragPoints, slow); err != nil {
+	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
