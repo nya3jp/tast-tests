@@ -79,12 +79,18 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		s.Fatal("Failed to update chmod to 0777 for temp folder: ", err)
 	}
 
-	guestDir := filepath.Join(dir, "guestshare")
-	if err := os.MkdirAll(guestDir, 0777); err != nil {
+	f.guestDir = filepath.Join(dir, "guestshare")
+	if err := os.MkdirAll(f.guestDir, 0777); err != nil {
 		s.Fatal("Failed to create guestshare: ", err)
 	}
 
-	guestSambaConf, err := createGuestSambaConf(ctx, guestDir, dir)
+	// As we're forcing the user to chronos the guestshare directory must be
+	// owned to ensure files can be copied across.
+	if err := os.Chown(f.guestDir, 1000, 1000); err != nil {
+		s.Fatal("Failed to chown guestshare to chronos: ", err)
+	}
+
+	guestSambaConf, err := createGuestSambaConf(ctx, f.guestDir, dir)
 	if err != nil {
 		s.Fatal("Failed to create guest samba configuration: ", err)
 	}
@@ -101,7 +107,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	return FixtureData{
 		Chrome:         f.cr,
 		Server:         server,
-		GuestSharePath: guestDir,
+		GuestSharePath: f.guestDir,
 	}
 }
 
@@ -145,9 +151,11 @@ func createGuestSambaConf(ctx context.Context, sharePath, confLocation string) (
 [guestshare]
 	path = ` + sharePath + `
 	guest ok = yes
+	writeable = yes
 	browseable = yes
-	create mask = 0660
-	directory mask = 0770
+	create mask = 0644
+	directory mask = 0755
+	force user = chronos
 	read only = no`
 
 	sambaFileLocation := filepath.Join(confLocation, "smb.conf")
