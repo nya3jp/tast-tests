@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7fda2e_4434d96e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-09T00:26:30Z",
+      "side": 1,
+      "message": "Good catch - fixed",
+      "parentUuid": "e448dd63_467a84c6",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "0da150c49c8d1f083871b113ca1c4584b195e637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "817fda4a_82f824c8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-08T23:43:02Z",
       "side": 1,
       "message": "Have you been able to confirm this on once of the devices that\u0027s been flaky?  `Wait` seems like the logical thing, but when I looked at its code I thought it had an early return when it gets back an EOF.",
+      "range": {
+        "startLine": 69,
+        "startChar": 21,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "0da150c49c8d1f083871b113ca1c4584b195e637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba265fc_e7e1614b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/resolve_local_hostname.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-09T00:26:30Z",
+      "side": 1,
+      "message": "I think it should be okay - the early return is inside a poll() statement, so it will keep retrying until the timeout expires. See https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/syslog/reader.go;drc\u003db6e7b116629b6a4862d87b045b6fdd1cb853de1b;l\u003d368",
+      "parentUuid": "817fda4a_82f824c8",
       "range": {
         "startLine": 69,
         "startChar": 21,
