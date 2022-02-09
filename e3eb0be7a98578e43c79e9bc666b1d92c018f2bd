@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ca0e25_4c715f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-02-09T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9471ad61_ef3c88d8",
+      "revId": "e3eb0be7a98578e43c79e9bc666b1d92c018f2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "764d828a_fd4039b7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-08T11:03:48Z",
       "side": 1,
       "message": "If this conflicts with the other definition, move them both inside the test function. That will limit the scope.",
+      "revId": "e3eb0be7a98578e43c79e9bc666b1d92c018f2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e1eb7c5_cb7109fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-02-09T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "764d828a_fd4039b7",
       "revId": "e3eb0be7a98578e43c79e9bc666b1d92c018f2bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da67c3ea_b2c6e08f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-02-09T10:01:06Z",
+      "side": 1,
+      "message": "See the comment in the previous CL.",
+      "parentUuid": "bedaadca_a33b8792",
+      "revId": "e3eb0be7a98578e43c79e9bc666b1d92c018f2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df0bb934_6c172c83",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-02-08T11:03:48Z",
       "side": 1,
       "message": "How do tests affect each other? Link to b/210418148 here as well.",
+      "revId": "e3eb0be7a98578e43c79e9bc666b1d92c018f2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e3c7900_b70d119e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-02-09T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0bb934_6c172c83",
       "revId": "e3eb0be7a98578e43c79e9bc666b1d92c018f2bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

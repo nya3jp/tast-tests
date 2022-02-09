@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6397a9c_ae5c6eec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-02-09T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a684c7eb_0bdc783c",
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff785b3b_81aa69b3",
@@ -114,6 +132,30 @@
       "side": 1,
       "message": "Keep the test names as is, but document what you wrote here in comments for both tests. It should be clear what is being tested in each.",
       "parentUuid": "b3aafcb6_c4de0d2c",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "4925dac11d44b5fbf741b33e7a6cbebd16c4039a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65b2b9c_a858c0c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-02-09T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "570ab870_4a0d177f",
       "range": {
         "startLine": 37,
         "startChar": 16,
