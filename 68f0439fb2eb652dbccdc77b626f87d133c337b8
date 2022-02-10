@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad548c86_2a1649b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-02-10T07:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d55873a_a5b6df85",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1f3acca_ce1f426e",
