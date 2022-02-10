@@ -32,12 +32,25 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          assistant.VerboseLoggingEnabled(),
+		Params: []testing.Param{
+			{
+				Name:              "assistant_key",
+				Val:               assistant.AccelAssistantKey,
+				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
+			},
+			{
+				Name:              "search_plus_a",
+				Val:               assistant.AccelSearchPlusA,
+				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
+			},
+		},
 	})
 }
 
 // LauncherToPeekingAnimationPerf measures the animation smoothness of showing
 // and hiding the assistant while the launcher is open.
 func LauncherToPeekingAnimationPerf(ctx context.Context, s *testing.State) {
+	accel := s.Param().(assistant.Accelerator)
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -86,7 +99,7 @@ func LauncherToPeekingAnimationPerf(ctx context.Context, s *testing.State) {
 			tconn,
 			time.Second,
 			func(ctx context.Context) error {
-				return showAndHideAssistant(ctx, tconn, keyboard)
+				return showAndHideAssistant(ctx, tconn, keyboard, accel)
 			},
 			"Ash.Assistant.AnimationSmoothness.ResizeAssistantPageView",
 		)
@@ -122,11 +135,12 @@ func showAndHideAssistant(
 	ctx context.Context,
 	tconn *chrome.TestConn,
 	keyboard *input.KeyboardEventWriter,
+	accel assistant.Accelerator,
 ) error {
 	if err := toggleLauncher(ctx, tconn, ash.Peeking); err != nil {
 		return err
 	}
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
 		return errors.Wrap(err, "failed to open the embedded UI")
 	}
 	if err := keyboard.Accel(ctx, "esc"); err != nil {
