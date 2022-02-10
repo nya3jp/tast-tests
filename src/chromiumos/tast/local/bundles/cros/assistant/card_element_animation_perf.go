@@ -74,7 +74,7 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to wait for system cpu idle: ", err)
 		}
 
-		if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+		if err := assistant.ToggleUIWithHotkey(ctx, tconn, assistant.AccelAssistantKey); err != nil {
 			s.Fatal("Failed opening assistant: ", err)
 		}
 
