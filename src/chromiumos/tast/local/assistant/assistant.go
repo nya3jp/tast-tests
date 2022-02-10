@@ -11,6 +11,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -31,6 +32,15 @@ type QueryResponse struct {
 type QueryStatus struct {
 	QueryResponse `json:"queryResponse"`
 }
+
+// Accelerator used by Assistant
+type Accelerator ash.Accelerator
+
+// Accelerators to toggle Assistant UI
+var (
+	AccelAssistantKey = Accelerator{KeyCode: "assistant", Shift: false, Control: false, Alt: false, Search: false}
+	AccelSearchPlusA  = Accelerator{KeyCode: "a", Shift: false, Control: false, Alt: false, Search: true}
+)
 
 // Enable brings up Google Assistant service and returns any errors.
 func Enable(ctx context.Context, tconn *chrome.TestConn) error {
@@ -111,9 +121,9 @@ func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, 
 }
 
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.
-func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
-	if err := tconn.Call(ctx, nil, `async () => {
-		  let accel = {keyCode: 'assistant', shift: false, control: false, alt: false, search: false, pressed: true};
+func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn, accel Accelerator) error {
+	if err := tconn.Call(ctx, nil, `async (accel) => {
+		  accel.pressed = true;
 		  // Triggers the hotkey pressed event.
 		  await tast.promisify(chrome.autotestPrivate.activateAccelerator)(accel);
 		  // Releases the key for cleanup. This release event will not be handled as it is
@@ -121,7 +131,7 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn) error {
 		  // async call returned.
 		  accel.pressed = false;
 		  chrome.autotestPrivate.activateAccelerator(accel, () => {});
-		}`); err != nil {
+		}`, accel); err != nil {
 		return errors.Wrap(err, "failed to execute accelerator")
 	}
 

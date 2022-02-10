@@ -126,7 +126,7 @@ func showAndHideAssistant(
 	if err := toggleLauncher(ctx, tconn, ash.Peeking); err != nil {
 		return err
 	}
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+	if err := assistant.ToggleUIWithHotkey(ctx, tconn, assistant.AccelAssistantKey); err != nil {
 		return errors.Wrap(err, "failed to open the embedded UI")
 	}
 	if err := keyboard.Accel(ctx, "esc"); err != nil {

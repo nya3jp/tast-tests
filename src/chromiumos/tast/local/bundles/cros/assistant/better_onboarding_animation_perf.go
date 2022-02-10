@@ -128,7 +128,7 @@ func recordAssistantToggleSmoothness(ctx context.Context, tconn *chrome.TestConn
 // opens to Half state, rather than Peeking, because Better Onboarding requires extra space.
 func toggleAssistantUI(ctx context.Context, tconn *chrome.TestConn) error {
 	// Closed->Peeking.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+	if err := assistant.ToggleUIWithHotkey(ctx, tconn, assistant.AccelAssistantKey); err != nil {
 		return errors.Wrap(err, "failed to open the embedded UI")
 	}
 
@@ -137,7 +137,7 @@ func toggleAssistantUI(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	// Peeking->Closed.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+	if err := assistant.ToggleUIWithHotkey(ctx, tconn, assistant.AccelAssistantKey); err != nil {
 		return errors.Wrap(err, "failed to close the embedded UI")
 	}
 
