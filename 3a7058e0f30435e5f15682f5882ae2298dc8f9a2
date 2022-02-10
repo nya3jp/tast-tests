@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4b2fc3_91be6e2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-10T18:03:17Z",
+      "side": 1,
+      "message": "nit: s/a/any/ ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "3a7058e0f30435e5f15682f5882ae2298dc8f9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f31452_7ffeaff6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115680
+      },
+      "writtenOn": "2022-02-10T18:03:17Z",
+      "side": 1,
+      "message": "nit: s/WebCodecsEcnode/WebCodecsEncode/ ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 26
+      },
+      "revId": "3a7058e0f30435e5f15682f5882ae2298dc8f9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
