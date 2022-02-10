@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         HistoryClustersVisible,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Behavior of HistoryClustersVisible policy",
 		Contacts: []string{
 			"rodmartin@google.com", // Test author
@@ -40,7 +40,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Fixture:           fixture.LacrosPolicyLoggedInFeatureJourneys,
 			Val:               browser.TypeLacros,
 		}},
 	})
