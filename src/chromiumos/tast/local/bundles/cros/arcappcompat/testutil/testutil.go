@@ -117,7 +117,10 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 		s.Fatal("Failed to create new app activity: ", err)
 	}
 	defer act.Close()
+
 	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+	requestKeepAwake(ctx, tconn, s)
+
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to ensure the display is on: ", err)
 	}
@@ -161,6 +164,8 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 			ctx, cancel := ctxutil.Shorten(cleanupCtx, 20*time.Second)
 			defer cancel()
 			// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+			requestKeepAwake(ctx, tconn, s)
+
 			if err := power.TurnOnDisplay(ctx); err != nil {
 				s.Fatal("Failed to ensure the display is on: ", err)
 			}
@@ -286,6 +291,8 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 
 	s.Log("Installing app")
 	// TODO(b/166637700): Remove this if a proper solution is found that doesn't require the display to be on.
+	requestKeepAwake(ctx, tconn, s)
+
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to ensure the display is on: ", err)
 	}
@@ -295,6 +302,7 @@ func setUpDevice(ctx context.Context, s *testing.State, appPkgName, appActivity 
 	if err := playstore.InstallApp(ctx, a, d, appPkgName, 3); err != nil {
 		s.Fatal("Failed to install app: ", err)
 	}
+
 	// To get app version name.
 	out, err := a.Command(ctx, "dumpsys", "package", appPkgName).Output()
 	if err != nil {
@@ -1546,6 +1554,15 @@ func getAppWindowInfo(ctx context.Context, s *testing.State, a *arc.ARC, d *ui.D
 		}
 	}
 	return windowInfo, err
+}
+
+// requestKeepAwake func request to "chrome.power.requestKeepAwake" API to keep awake.
+func requestKeepAwake(ctx context.Context, tconn *chrome.TestConn, s *testing.State) error {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.power.requestKeepAwake('display')"); err != nil {
+		return errors.Wrap(err, "failed to request keepawake")
+	}
+	s.Log("Requested keep awake")
+	return nil
 }
 
 // dragToSnapFirstOverviewWindow finds the first window in overview, and drags
