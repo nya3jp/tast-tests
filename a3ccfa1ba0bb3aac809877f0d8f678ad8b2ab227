@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fc91a07_423eb5a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_out_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-10T09:41:31Z",
+      "side": 1,
+      "message": "nit: with 3 users you don\u0027t really need the loop and if/else",
+      "revId": "a3ccfa1ba0bb3aac809877f0d8f678ad8b2ab227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d4a7fc2_d617e86d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_out_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-10T09:41:31Z",
+      "side": 1,
+      "message": "user3 - probably you meant something different here?",
+      "revId": "a3ccfa1ba0bb3aac809877f0d8f678ad8b2ab227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5565b1_37fcfd1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_out_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-10T09:41:31Z",
+      "side": 1,
+      "message": "nit: (...) users WHO havent\u0027t signed in (?)",
+      "revId": "a3ccfa1ba0bb3aac809877f0d8f678ad8b2ab227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70499d31_f8f30967",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/sign_out_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1523324
+      },
+      "writtenOn": "2022-02-10T09:41:31Z",
+      "side": 1,
+      "message": "you could check the type of the error - if it\u0027s the one that you expect then you can ignore it, but there could be also other errors (e.g. the button does not exist)",
+      "revId": "a3ccfa1ba0bb3aac809877f0d8f678ad8b2ab227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
