@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e79a2e1_8d35ef66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-02-10T17:25:31Z",
+      "side": 1,
+      "message": "Today is a holiday in Japan, and that includes Tetsui Ohkubo. I am removing him and readding tast-owners in hopes of getting a reviewer who is working today.",
+      "revId": "e599079f647489ab6165dc289da6c0fa747818fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
