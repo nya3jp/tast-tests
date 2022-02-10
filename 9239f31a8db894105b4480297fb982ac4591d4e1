@@ -34,6 +34,24 @@
       "parentUuid": "a501fadb_efbc9948",
       "revId": "9239f31a8db894105b4480297fb982ac4591d4e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4631c32_5de09ed5",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T02:59:00Z",
+      "side": 1,
+      "message": "Georg, is there any test case that needs to check the title of browser to wait on?\n\nIf yes, Hidehiko, doesn\u0027t it make sense to generalize isBrowserWindow and WaitForWindow to Browser package (or Browserutil if needed to avoid cyclic imports)?",
+      "parentUuid": "c308680a_3e50340b",
+      "revId": "9239f31a8db894105b4480297fb982ac4591d4e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
