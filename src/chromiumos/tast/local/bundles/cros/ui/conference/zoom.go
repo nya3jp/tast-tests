@@ -6,6 +6,7 @@ package conference
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -406,6 +407,7 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 			// Some low end DUTs need more time to load the background settings.
 			ui.WithTimeout(longUITimeout).LeftClick(backgroundItem.Nth(backgroundNumber)),
 			ui.LeftClick(closeButton), // Close "Background" panel.
+			takeScreenshot(conf.cr, conf.outDir, fmt.Sprintf("change-background-to-background%d", backgroundNumber)),
 			// Double click to enter full screen.
 			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", true),
 			// After applying new background, give it 5 seconds for viewing before applying next one.

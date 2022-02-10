@@ -151,6 +151,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 				cuj.ExpandMenu(conf.tconn, turnOffButton, noEffectAndBlurRegion, 100),
 				ui.LeftClick(backgroundButton),
 				ui.WaitUntilExists(backgroundButton.Focused()),
+				takeScreenshot(conf.cr, conf.outDir, "change-background-to-blur"),
 				ui.LeftClick(closeButton), // Close "Background" panel.
 				// Some DUT performance is too poor, clicking the turn off button will trigger "Upload a background image".
 				// If the dialog "select a file to open" is opened, close it.
@@ -642,6 +643,7 @@ func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 				ui.LeftClick(changeBackground), // Open "Background" panel.
 				ui.WithTimeout(mediumUITimeout).LeftClick(backgroundButton),
 				ui.LeftClick(closeButton), // Close "Background" panel.
+				takeScreenshot(conf.cr, conf.outDir, "change-background-to-"+background),
 				// Double click to enter full screen.
 				doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Meet", true),
 				// After applying new background, give it 5 seconds for viewing before applying next one.
