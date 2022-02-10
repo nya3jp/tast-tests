@@ -83,16 +83,14 @@ func init() {
 		}, {
 			Name:              "vp9_hw_l1t2",
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T2"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
 		}, {
 			Name: "vp9_sw_l1t3",
 			Val:  webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferSoftware, ScalabilityMode: "L1T3"},
 		}, {
 			Name:              "vp9_hw_l1t3",
 			Val:               webcodecs.TestEncodeArgs{Codec: videotype.VP9, Acceleration: webcodecs.PreferHardware, ScalabilityMode: "L1T3"},
-			ExtraHardwareDeps: hwdep.D(hwdep.Platform("volteer", "dedede")),
-			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9, "vaapi"},
 		}},
 	})
 }
