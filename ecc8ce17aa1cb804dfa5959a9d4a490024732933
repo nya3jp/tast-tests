@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5039e2d_9b0c6468",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T03:52:26Z",
+      "side": 1,
+      "message": "Eliot, Hidehiko, can you give another look to follow up our sync? It keeps Close() consistent for all packages semantically so test writers don\u0027t have to deal with discrepancies. It\u0027s functionally the same as the `closerBrowser` closure from `browserfixt.SetUp`.",
+      "revId": "ecc8ce17aa1cb804dfa5959a9d4a490024732933",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
