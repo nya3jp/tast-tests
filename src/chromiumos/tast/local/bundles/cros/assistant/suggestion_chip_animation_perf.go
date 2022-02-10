@@ -120,7 +120,7 @@ func runQueryAndClickSuggestion(tconn *chrome.TestConn, query string) action.Act
 
 func toggleAssistantWithHotkey(tconn *chrome.TestConn) action.Action {
 	return func(ctx context.Context) error {
-		return assistant.ToggleUIWithHotkey(ctx, tconn)
+		return assistant.ToggleUIWithHotkey(ctx, tconn, assistant.AccelAssistantKey)
 	}
 }
 
