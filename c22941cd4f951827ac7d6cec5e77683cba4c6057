@@ -50,6 +50,24 @@
       "message": "I would like to be OWNER of all video perf tests. Can you add me? ditto for other perf tests.",
       "revId": "c22941cd4f951827ac7d6cec5e77683cba4c6057",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30d6bac_b904550e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-10T18:29:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dfdb3a5_2791cd70",
+      "revId": "c22941cd4f951827ac7d6cec5e77683cba4c6057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
