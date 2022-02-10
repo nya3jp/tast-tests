@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3e3607d_c98b3b5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T18:34:56Z",
+      "side": 1,
+      "message": "+amehfooz mind telling us know what is the intention of this test as Hidehiko mentioned? We\u0027re looking to see whether it needs a lacros variant or not and how to do it.",
+      "parentUuid": "43bde1d8_2eee4611",
+      "revId": "0204775091bceea24835f52bac06607923f7ff49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4062b1dd_8b7e36ee",
         "filename": "src/chromiumos/tast/local/bundles/cros/notifications/smoke.go",
         "patchSetId": 3
