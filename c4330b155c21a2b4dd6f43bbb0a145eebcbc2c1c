@@ -237,6 +237,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3949c85b_b84f779d",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-02-10T08:12:57Z",
+      "side": 1,
+      "message": "Fixed, thank you very much.",
+      "parentUuid": "d3e822e0_efca4a00",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "c4330b155c21a2b4dd6f43bbb0a145eebcbc2c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0b1ec3c_401a5f6c",
