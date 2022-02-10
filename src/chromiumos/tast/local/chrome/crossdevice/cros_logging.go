@@ -25,7 +25,7 @@ func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, username str
 		return nil, errors.Wrap(err, "failed to get chrome version")
 	}
 	// The output on test images contains 'unknown' for the channel, i.e. 'Google Chrome 91.0.4435.0 unknown', so just extract the channel version.
-	const versionPattern = `[A-Za-z ]+([0-9\.]+) [\w+]`
+	const versionPattern = `([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)`
 	r := regexp.MustCompile(versionPattern)
 	versionMatch := r.FindStringSubmatch(string(out))
 	if len(versionMatch) == 0 {
