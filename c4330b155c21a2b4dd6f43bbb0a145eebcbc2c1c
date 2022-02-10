@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f68f66_07b1d3b9",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:46:56Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "23baf356_31c06bf8",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "c4330b155c21a2b4dd6f43bbb0a145eebcbc2c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a710daba_def8243c",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Some remote tests might need this to remove existing/left-off tabs, should we expose this function by then?",
       "parentUuid": "efc7a391_9cda685b",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "c4330b155c21a2b4dd6f43bbb0a145eebcbc2c1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e822e0_efca4a00",
+        "filename": "src/chromiumos/tast/local/mtbf/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T07:46:56Z",
+      "side": 1,
+      "message": "Only expose it when it is used. It is irrelevant to this cl.",
+      "parentUuid": "e881413f_d27316aa",
       "range": {
         "startLine": 117,
         "startChar": 5,
