@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/media/decoding"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type videoDecodeAccelVdTestParam struct {
@@ -107,12 +108,12 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, "proprietary_codecs"},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
 		}, {
-			// Run with HW decoder using VA-API only because only the HW decoder can decode SVC stream correctly today.
 			// Decode VP9 spatial-SVC stream. Precisely the structure in the stream is called k-SVC, where spatial-layers are at key-frame only.
 			// The structure is used in Hangouts Meet. go/vp9-svc-hangouts for detail.
 			Name:              "vp9_keyframe_spatial_layers",
 			Val:               videoDecodeAccelVdTestParam{dataPath: "keyframe_spatial_layers_180p_360p.vp9.ivf"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
+			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
 		}, {
 			Name:              "av1_odd_dimension",
