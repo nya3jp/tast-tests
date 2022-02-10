@@ -116,11 +116,11 @@ func checkOnlineHelp(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto
 }
 
 func checkReportIssue(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
-	feedbackRoot := nodewith.Name("Feedback").Role(role.RootWebArea)
+	feedbackRoot := nodewith.Name("Send feedback to Google").HasClass("RootView")
 
 	return uiauto.Combine("check report issue",
 		settings.LeftClick(ossettings.ReportIssue),
-		ui.WaitUntilExists(nodewith.Name("Send feedback to Google").Role(role.StaticText).Ancestor(feedbackRoot)),
+		ui.WaitUntilExists(feedbackRoot),
 		ui.LeftClick(nodewith.Name("Close").Ancestor(feedbackRoot)),
 	)
 }
