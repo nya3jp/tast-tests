@@ -51,6 +51,30 @@ func init() {
 				ExtraData: []string{"big_txt.zip"},
 				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
 			},
+			{
+				Name:    "dataonline_noone_txt30mb_webrtc_and_wlan",
+				Fixture: "nearbyShareRemoteDataUsageOnlineNoOneWebRTCAndWLAN",
+				Val: nearbycommon.TestData{
+					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
+				ExtraData: []string{"big_txt.zip"},
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
+			},
+			{
+				Name:    "dataonline_noone_txt30mb_webrtc",
+				Fixture: "nearbyShareRemoteDataUsageOnlineNoOneWebRTCOnly",
+				Val: nearbycommon.TestData{
+					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
+				ExtraData: []string{"big_txt.zip"},
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
+			},
+			{
+				Name:    "dataonline_noone_txt30mb_wlan",
+				Fixture: "nearbyShareRemoteDataUsageOnlineNoOneWLANOnly",
+				Val: nearbycommon.TestData{
+					Filename: "big_txt.zip", TransferTimeout: nearbycommon.LargeFileOnlineTransferTimeout},
+				ExtraData: []string{"big_txt.zip"},
+				Timeout:   nearbycommon.DetectionTimeout + nearbycommon.LargeFileOnlineTransferTimeout,
+			},
 		},
 	})
 }
