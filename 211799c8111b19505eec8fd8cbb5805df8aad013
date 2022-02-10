@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7c8079_0e8c866a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/loginapi/launch_managed_guest_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-02-10T06:10:21Z",
+      "side": 1,
+      "message": "These variables are only used once or twice. You can direct use mgs.LoginScreenExtensionID instead of clam new variable.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 49
+      },
+      "revId": "211799c8111b19505eec8fd8cbb5805df8aad013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
