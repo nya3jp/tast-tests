@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Checks on device grammar check with physical keyboard typing",
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.GrammarEnabledModels...)),
 		SoftwareDeps: []string{"chrome"},
 		Pre:          pre.NonVKClamshellWithGrammarCheck,
