@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/apps/isolatedapp"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -22,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/https"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
@@ -71,7 +71,7 @@ func CrossOriginForbidden(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	baseDirectory, fileName := filepath.Split(s.DataPath(mainAppFile))
-	httpsServerConfiguration := isolatedapp.HTTPSServerConfiguration{
+	ServerConfiguration := https.ServerConfiguration{
 		Headers: map[string]string{
 			"Cross-Origin-Embedder-Policy": "require-corp",
 			"Cross-Origin-Opener-Policy":   "same-origin",
@@ -93,8 +93,8 @@ func CrossOriginForbidden(ctx context.Context, s *testing.State) {
 	}
 	defer closeBrowser(ctx)
 
-	isolatedapp.ConfigureChromeToAcceptCertificate(ctx, httpsServerConfiguration, cr, br, tconn)
-	server := isolatedapp.StartServer(httpsServerConfiguration)
+	https.ConfigureChromeToAcceptCertificate(ctx, ServerConfiguration, cr, br, tconn)
+	server := https.StartServer(ServerConfiguration)
 	if server.Error != nil {
 		s.Fatal("Could not start https server: ", err)
 	}

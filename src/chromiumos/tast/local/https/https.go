@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package isolatedapp
+package https
 
 import (
 	"context"
@@ -21,9 +21,9 @@ import (
 )
 
 /*
-The HTTPSServerConfiguration structure that stores all information to start the https server.
+The ServerConfiguration structure that stores all information to start the https server.
 */
-type HTTPSServerConfiguration struct {
+type ServerConfiguration struct {
 	Headers               map[string]string
 	ServerKeyPath         string
 	ServerCertificatePath string
@@ -55,22 +55,22 @@ func (handler httpsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 /*
-The HTTPSServer structure contains all meta data and control objects for a https server.
+The Server structure contains all meta data and control objects for a https server.
 */
-type HTTPSServer struct {
-	ServerConfiguration HTTPSServerConfiguration
+type Server struct {
+	ServerConfiguration ServerConfiguration
 	server              *http.Server
 	Address             string
 	Error               error
 	handler             httpsHandler
 }
 
-var server HTTPSServer
+var server Server
 
 /*
 Close shuts down a server that was started with the StartServer function.
 */
-func (server HTTPSServer) Close() error {
+func (server Server) Close() error {
 	return server.server.Close()
 }
 
@@ -81,9 +81,9 @@ Returns a Server instance containing
 - the base address,
 - an error object in case the server could not be started.
 */
-func StartServer(configuration HTTPSServerConfiguration) HTTPSServer {
+func StartServer(configuration ServerConfiguration) Server {
 
-	server = HTTPSServer{
+	server = Server{
 		ServerConfiguration: configuration,
 		server:              &http.Server{},
 		Address:             "",
@@ -111,7 +111,7 @@ func StartServer(configuration HTTPSServerConfiguration) HTTPSServer {
 ConfigureChromeToAcceptCertificate adds the specified CA certificate to the authorities configuration of chrome.
 The server certificate will then be accepted by chrome without complaining about security.
 */
-func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration HTTPSServerConfiguration, chrome *chrome.Chrome, targetBrowser *browser.Browser, testConnection *chrome.TestConn) error {
+func ConfigureChromeToAcceptCertificate(ctx context.Context, configuration ServerConfiguration, chrome *chrome.Chrome, targetBrowser *browser.Browser, testConnection *chrome.TestConn) error {
 
 	certificateDestination := filesapp.MyFilesPath + "/" + filesapp.Downloads + "/ca-cert.pem"
 	copyFile(configuration.CaCertificatePath, certificateDestination)
