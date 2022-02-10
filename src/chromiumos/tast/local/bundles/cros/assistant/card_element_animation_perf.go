@@ -31,8 +31,19 @@ func init() {
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Pre:          assistant.VerboseLoggingEnabled(),
+		Params: []testing.Param{
+			{
+				Name:              "assistant_key",
+				Val:               assistant.AccelAssistantKey,
+				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
+			},
+			{
+				Name:              "search_plus_a",
+				Val:               assistant.AccelSearchPlusA,
+				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
+			},
+		},
 	})
 }
 
@@ -41,6 +52,7 @@ func init() {
 // the performance of expanding the launcher from peeking to half height when
 // a card is displayed.
 func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
+	accel := s.Param().(assistant.Accelerator)
 	cr := s.PreValue().(*chrome.Chrome)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -74,7 +86,7 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to wait for system cpu idle: ", err)
 		}
 
-		if err := assistant.ToggleUIWithHotkey(ctx, tconn); err != nil {
+		if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
 			s.Fatal("Failed opening assistant: ", err)
 		}
 
