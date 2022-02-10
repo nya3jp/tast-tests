@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e24efd90_55dbfbb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-02-10T21:56:16Z",
+      "side": 1,
+      "message": "I\u0027d remove it so that this test is run on QC too.",
+      "parentUuid": "418a7fae_4772837c",
+      "range": {
+        "startLine": 152,
+        "startChar": 49,
+        "endLine": 152,
+        "endChar": 82
+      },
+      "revId": "915e1856c50387fc1699a8d840641e115d973995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94691e35_d45dca05",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/decode_accel_vd.go",
         "patchSetId": 1
