@@ -142,6 +142,30 @@
       },
       "revId": "d50a0f227c80c959f57a8390956f52c69b7298b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1329effa_f0441485",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacros.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-02-10T03:40:26Z",
+      "side": 1,
+      "message": "Thanks for that. IIUC since test writers can go with either Browser instance or Lacros, but not likely both, it seems to me that the method should be defined in all of those and called with the matching instance at call sites.",
+      "parentUuid": "45feaa69_59935b93",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 44
+      },
+      "revId": "d50a0f227c80c959f57a8390956f52c69b7298b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
