@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f032883_9fa930b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-02-10T23:02:45Z",
+      "side": 1,
+      "message": "Please manually run the tests to make sure it is run as expected. Also, please run tast unit tests: fast_build.sh -T.\n\nThanks.\n",
+      "revId": "71e6f7841b4e380f3ab640077cdc6c5d8c3bd3ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
