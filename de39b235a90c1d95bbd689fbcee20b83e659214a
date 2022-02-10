@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa79e35_41ecd57a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05d33229_5c88bb71",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aca9a823_8af41fbb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-09T04:10:22Z",
       "side": 1,
       "message": "I think the func name is self-explainning.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 77
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac17d96b_6813b720",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca9a823_8af41fbb",
       "range": {
         "startLine": 126,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32be9aa5_93cb6591",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b52eadba_5309305e",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 30
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "877afb28_5b4527dd",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-02-09T04:10:22Z",
       "side": 1,
       "message": "Sorry, I did not realize that moving the vars inside the func and splitting the main func made the parameter list so long. Maybe we could move the shared vars out of func?",
+      "range": {
+        "startLine": 128,
+        "startChar": 48,
+        "endLine": 128,
+        "endChar": 170
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a2ac69_99fd6523",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "877afb28_5b4527dd",
       "range": {
         "startLine": 128,
         "startChar": 48,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44713e9e_e4a6ad1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Good catch, yes thank you.",
+      "parentUuid": "82e30e76_aa678ebb",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d72763e_f984a720",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-02-09T04:10:22Z",
       "side": 1,
       "message": "The func name is self-explainning.",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 138,
+        "endChar": 24
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c08e26d_85ae0404",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d72763e_f984a720",
       "range": {
         "startLine": 138,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6af3a3_a6b7a249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b7f32ca_c6863cee",
+      "range": {
+        "startLine": 141,
+        "startChar": 18,
+        "endLine": 141,
+        "endChar": 29
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef99cdbc_cd3cfab0",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-02-09T04:10:22Z",
       "side": 1,
       "message": "validate",
+      "range": {
+        "startLine": 179,
+        "startChar": 24,
+        "endLine": 179,
+        "endChar": 32
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dacd57e5_588aa61b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef99cdbc_cd3cfab0",
       "range": {
         "startLine": 179,
         "startChar": 24,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23c1b6b1_9628818d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a339bc47_b907c35a",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 16
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9557683f_cb8c0c46",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af61b4f_0e13067c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9557683f_cb8c0c46",
+      "range": {
+        "startLine": 236,
+        "startChar": 24,
+        "endLine": 236,
+        "endChar": 29
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6be97185_905320d9",
@@ -244,6 +484,30 @@
       "writtenOn": "2022-02-09T04:10:22Z",
       "side": 1,
       "message": "Suggest to make this func a public func in vm.go so that other tests could use it.",
+      "range": {
+        "startLine": 246,
+        "startChar": 5,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "de39b235a90c1d95bbd689fbcee20b83e659214a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "085e8eea_fec07285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done, thank you. Excellent reminder.",
+      "parentUuid": "6be97185_905320d9",
       "range": {
         "startLine": 246,
         "startChar": 5,

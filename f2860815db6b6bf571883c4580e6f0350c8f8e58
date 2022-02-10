@@ -330,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6811c456_abf25400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317a4008_c1769ab8",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 6
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e9a68e0_107b30f4",
@@ -508,6 +532,30 @@
       "side": 1,
       "message": "Have adjusted to use the ash Window API rather than manipulate shelf buttons.",
       "parentUuid": "c7751c3e_8f9fb986",
+      "range": {
+        "startLine": 138,
+        "startChar": 5,
+        "endLine": 138,
+        "endChar": 14
+      },
+      "revId": "f2860815db6b6bf571883c4580e6f0350c8f8e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ec4ba6_d2ca64b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1518723
+      },
+      "writtenOn": "2022-02-10T02:56:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4669e214_0ff88361",
       "range": {
         "startLine": 138,
         "startChar": 5,
