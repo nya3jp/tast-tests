@@ -16,6 +16,23 @@
       "message": "Hi David / Yuichiro,\n Tried the second option “\"tast.promisify(chrome.power.requestKeepAwake(\u0027display\u0027)\"” as mentioned  in the comment, https://buganizer.corp.google.com/issues/166637700#comment13\n\nif err :\u003d tconn.Call(ctx, nil, \"tast.promisify(chrome.power.requestKeepAwake(\u0027display\u0027)\"); err !\u003d nil {\n       return errors.Wrap(err, \"failed to request keepawake\")\n   }\nI tried running the \"tast.arcappcompat.Snapchat\" using the command, \ntast -verbose run 192.168.1.86:22 arcappcompat.Snapchat.vm_clamshell_mode\nAfter around 10 minutes of run time,test is still failing with “Failed to ensure the display is on: failed to ensure powerd running:\u0027\u0027 error. Also I am not sure how to verify if the keep awake chrome extension api is added in the device. Could you please suggest. Thanks.\n",
       "revId": "1a884f2d69eb3e8c79b7177a6bd3960422f6a5de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8f9ea0_0ebc95cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-02-10T02:12:12Z",
+      "side": 1,
+      "message": "Since the CL doesn\u0027t fix the issue. Removing the reviewers from the CL.",
+      "revId": "1a884f2d69eb3e8c79b7177a6bd3960422f6a5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
