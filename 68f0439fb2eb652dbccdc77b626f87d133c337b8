@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d55873a_a5b6df85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1432569
+      },
+      "writtenOn": "2022-02-10T06:49:16Z",
+      "side": 1,
+      "message": "type smbFileOperationTestFunc \u003d func(ctx context.Context, kb *input.KeyboardEventWriter, s *testing.State, files *filesapp.FilesApp)",
+      "parentUuid": "78b54c31_60722afa",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 53
+      },
+      "revId": "68f0439fb2eb652dbccdc77b626f87d133c337b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1f3acca_ce1f426e",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/smb_file_operations.go",
         "patchSetId": 3
