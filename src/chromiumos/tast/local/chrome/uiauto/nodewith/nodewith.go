@@ -603,12 +603,25 @@ func HasClass(c string) *Finder {
 	return newFinder().HasClass(c)
 }
 
+// ClassNameRegex creates a Finder with a class name containing the specified regexp.
+func ClassNameRegex(r *regexp.Regexp) *Finder {
+	return newFinder().ClassNameRegex(r)
+}
+
 // HasClass creates a copy of the input Finder with a class name containing the specified class name.
 func (f *Finder) HasClass(c string) *Finder {
 	if _, ok := f.attributes["className"]; ok {
 		panic("mutliple class names not supported")
 	}
 	return f.Attribute("className", regexp.MustCompile("\\b"+regexp.QuoteMeta(c)+"\\b"))
+}
+
+// ClassNameRegex creates a copy of the input Finder with a class name containing the specified regexp.
+func (f *Finder) ClassNameRegex(r *regexp.Regexp) *Finder {
+	if _, ok := f.attributes["className"]; ok {
+		panic("mutliple class names not supported")
+	}
+	return f.Attribute("className", r)
 }
 
 // AutofillAvailable creates a Finder with AutofillAvailable set to true.
