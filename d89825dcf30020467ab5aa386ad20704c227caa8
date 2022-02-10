@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dcb46df_1c943a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523792
+      },
+      "writtenOn": "2022-02-10T15:18:08Z",
+      "side": 1,
+      "message": "@alexanderhartl, could you +2 again? I think changing the modified files set removed the previous pluses.",
+      "revId": "d89825dcf30020467ab5aa386ad20704c227caa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
