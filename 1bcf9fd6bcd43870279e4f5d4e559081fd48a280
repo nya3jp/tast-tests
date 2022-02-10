@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "143fa100_907c0565",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-10T09:07:43Z",
+      "side": 1,
+      "message": "Please resolve the comment before resubmitting.",
+      "revId": "1bcf9fd6bcd43870279e4f5d4e559081fd48a280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4ff6cf2_5e78029d",
@@ -67,6 +84,24 @@
       "side": 1,
       "message": "FWIW I asked on tast reviewers and it seems like these should be constants: https://groups.google.com/a/google.com/g/tast-reviewers/c/Wvsk6L2yikk",
       "parentUuid": "57a2c958_7ace2aa6",
+      "revId": "1bcf9fd6bcd43870279e4f5d4e559081fd48a280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd8d8f31_ddc89562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-02-10T09:07:43Z",
+      "side": 1,
+      "message": "Thanks for the follow up. This is news to me (and probably to a lot of other tast authors/reviewers too).\n\n@jeffcchen: could you then please fill the Data field directly with an array of strings instead of a function call so we follow the best practise here.",
+      "parentUuid": "e92d85bb_e8b16226",
       "revId": "1bcf9fd6bcd43870279e4f5d4e559081fd48a280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
