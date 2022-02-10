@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e136e07c_48a9fa95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1263546
+      },
+      "writtenOn": "2022-02-10T17:29:48Z",
+      "side": 1,
+      "message": "\"fast_build.sh -T\" succeeds, chumping this change as CQ failures are occurring.",
+      "revId": "a727d62fe1952e5a1e3b3b3f0f4c75295f78560f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
