@@ -16,6 +16,74 @@
       "message": "Let us investigate the reason why it enters the \"Completing account setup\" block and fails finding \"continue\" button which is not displayed in the installation flow of these apps.",
       "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8d2443_93607ab5",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-10T04:01:54Z",
+      "side": 1,
+      "message": "Remove this - the install function is built around retries so we can use shorter timeouts and rely on the retry logic as needed.",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9dbf77_1ab84807",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-10T04:01:54Z",
+      "side": 1,
+      "message": "Doesn\u0027t this technically happen before the \"// Installation is complete once the open button or the play button is enabled.\" step below? It\u0027s in a loop that gets retried but it should be in the correct chronological order of the ideal case if possible.",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9342b82_f8d390a6",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-10T04:01:54Z",
+      "side": 1,
+      "message": "Are you able to grab the current value (i.e. 50%) of the progress bar? If so, that value would be nice to log.",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57052a0_5d6a60b9",
+        "filename": "src/chromiumos/tast/local/arc/playstore/playstore.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-02-10T04:01:54Z",
+      "side": 1,
+      "message": "The body of this if statement should mimic what is done above with the tryLimit, otherwise this may only get run once when in reality it should be checked on each try. Something like:\n\n```\nif err :\u003d progressBar.WaitForExists(ctx, defaultUITimeout); err \u003d\u003d nil {\n  if tryLimit \u003d\u003d -1 || tries \u003c tryLimit {\n    tries++\n    testing.ContextLog(ctx, \"Wait until progress bar is gone\")\n    if err :\u003d progressBar.WaitUntilGone(ctx, defaultUITimeout); err !\u003d nil {\n      return errors.Wrap(err, \"progress bar still exists\")\n    }\n  } else {\n    return testing.PollBreak(errors.Errorf(\"progress bar still visible after %d times\", tryLimit))\n  }\n}\n```",
+      "revId": "e10e53eac566efa911eadca8af1fe8773b78b12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
