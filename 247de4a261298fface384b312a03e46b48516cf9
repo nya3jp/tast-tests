@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d84bd1_165b08dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/openfile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-10T06:12:17Z",
+      "side": 1,
+      "message": "Since cleanupCtx is only used to close files app, I think 2s is enough.",
+      "range": {
+        "startLine": 61,
+        "startChar": 37,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "247de4a261298fface384b312a03e46b48516cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e317a32_69dba07e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/openfile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-10T06:12:17Z",
+      "side": 1,
+      "message": "In the image verifier, we need to verify the content of the image. We need screen diff here. E.g: https://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go;l\u003d98",
+      "range": {
+        "startLine": 167,
+        "startChar": 23,
+        "endLine": 167,
+        "endChar": 29
+      },
+      "revId": "247de4a261298fface384b312a03e46b48516cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d752cd57_e15260b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/openfile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-10T06:12:17Z",
+      "side": 1,
+      "message": "Can we verify the content of pdf?",
+      "range": {
+        "startLine": 183,
+        "startChar": 22,
+        "endLine": 183,
+        "endChar": 28
+      },
+      "revId": "247de4a261298fface384b312a03e46b48516cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ef2d91_019e0ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/openfile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1398801
+      },
+      "writtenOn": "2022-02-10T06:12:17Z",
+      "side": 1,
+      "message": "Can we verify the content of text?",
+      "range": {
+        "startLine": 202,
+        "startChar": 22,
+        "endLine": 202,
+        "endChar": 28
+      },
+      "revId": "247de4a261298fface384b312a03e46b48516cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
