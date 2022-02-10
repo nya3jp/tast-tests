@@ -33,7 +33,6 @@ func init() {
 			{
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", true), crostini.GetContainerRootfsArtifact("buster", true)},
 				ExtraSoftwareDeps: []string{"dlc"},
-				ExtraHardwareDeps: crostini.CrostiniAppTest,
 				Pre:               crostini.StartedByDlcBusterLargeContainer(),
 				Timeout:           15 * time.Minute,
 			},
@@ -80,7 +79,8 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("Create a new project with defaults",
 		// Two-letter words normally need an exact match.
 		ud.LeftClick(uidetection.Word("OK").ExactMatch()),
-		ud.LeftClick(uidetection.TextBlock(strings.Split("Don't send", " "))),
+		// The initialization process may take longer than the default timeout 60s.
+		ud.WithTimeout(2*time.Minute).LeftClick(uidetection.TextBlock(strings.Split("Don't send", " "))),
 		ud.LeftClick(nextButton),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Install Type", " "))),
 		ud.LeftClick(nextButton),
@@ -93,7 +93,7 @@ func AppAndroidStudio(ctx context.Context, s *testing.State) {
 		ud.LeftClick(finishButton),
 		ud.LeftClick(uidetection.TextBlock(strings.Split("Start a new Android Studio project", " "))),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("Select a Project Template", " "))),
-		ud.LeftClick(nextButton),
+		ud.LeftClick(nextButton.WithinA11yNode(nodewith.Name("Create New Project").HasClass("Widget"))),
 		ud.LeftClick(finishButton),
 		uiauto.New(tconn).WaitUntilExists(newProjectWindow),
 	)(ctx); err != nil {
