@@ -40,7 +40,7 @@ func init() {
 		}, {
 			Name:              "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           fixture.LacrosPolicyLoggedIn,
+			Fixture:           fixture.LacrosPolicyLoggedInFeatureJourneys,
 			Val:               browser.TypeLacros,
 		}},
 	})
